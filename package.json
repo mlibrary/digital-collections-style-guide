@@ -1,0 +1,26 @@
+{
+  "name": "digital-collections-style-guide",
+  "version": "1.0.0",
+  "description": "A workshop repo to design and develop the details of the digital collections front-end. ",
+  "main": "index.js",
+  "dependencies": {},
+  "devDependencies": {
+    "@11ty/eleventy": "^0.11.1"
+  },
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "build": "npx @11ty/eleventy",
+    "develop": "npx @11ty/eleventy --serve",
+    "start": "npm run develop"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/mlibrary/digital-collections-style-guide.git"
+  },
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/mlibrary/digital-collections-style-guide/issues"
+  },
+  "homepage": "https://github.com/mlibrary/digital-collections-style-guide#readme"
+}
