@@ -1,3 +1,7 @@
+# 11ty
+
+_site/
+
 # Logs
 logs
 *.log

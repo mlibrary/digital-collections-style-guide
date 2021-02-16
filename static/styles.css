@@ -1,5 +1,42 @@
 /*
- * Anchors & Control
+ * Resets
+ *
+ */
+
+html {
+  box-sizing: border-box;
+}
+*,
+*:before,
+*:after {
+  box-sizing: inherit;
+}
+
+/*
+ * Variables
+ *
+ * All the CSS values that can be changed based
+ * on developer configuration or via media query.
+ */
+
+:root {
+  --viewport-margin: var(--space-medium);
+  --card-min-width: 320px;
+}
+
+@media (min-width: 720px) {
+  :root {
+    --viewport-margin: var(--space-xx-large);
+  }
+}
+
+/*
+ * Anchors/Links
+ *
+ * How about we just make links all have an underline?
+ * I mean, if you're going to use a link and not
+ * underline it, you better know your context and
+ * have a good reason to do so.
  */
 
 a {
@@ -13,33 +50,55 @@ a:hover {
 
 /*
  * Headings
+ *
+ * The most used headings I imagine
+ * are a page title (h1) and section
+ * headings (h2) plus the subtle heading
+ * that that typography is in the
+ * universal header. 
+ *
+ * Concerns/Thoughts
+ * - Rules for naming CSS classes?
+ * - Restrictions?
  */
 
-h1 {
+h1,
+.page-heading {
   font-size: var(--text-xx-large);
   font-family: var(--font-second-family);
   line-height: var(--line-height-page-heading);
 }
 
-h2 {
+h2,
+.section-heading {
   font-size: var(--text-large);
   font-weight: var(--bold);
 }
 
+h3,
+.subtle-heading {
+  color: var(--color-neutral-300);
+  letter-spacing: 1.25px;
+  text-transform: uppercase;
+  font-size: 14px;
+  font-weight: var(--bold);
+  font-family: var(--font-base-family);
+}
+
 /*
- * Layout
+ * Viewport Margins
+ *
+ * Handles the need for page content to be centered
+ * in the visible view port window and manage the
+ * ammount of margin between the site and the edge
+ * of the screen's viewport.
  */
 
 .viewport-container {
-  display: grid;
-  grid-template-columns:
-    [site-start] calc(50vw - 39rem)
-    [content-start] repeat(11, 1fr)
-    1fr [content-end]
-    calc(50vw - 39rem) [site-end];
-  grid-gap: var(--space-large);
-}
-
-.viewport-container > * {
-  grid-column: content-start / content-end;
+  width: 100%;
+  max-width: 1280px;
+  margin-left: auto;
+  margin-right: auto;
+  padding-left: var(--viewport-margin);
+  padding-right: var(--viewport-margin);
 }
