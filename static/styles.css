@@ -1,1 +1,45 @@
+/*
+ * Anchors & Control
+ */
 
+a {
+  color: var(--color-teal-400);
+  text-decoration: underline;
+}
+
+a:hover {
+  text-decoration-thickness: 2px;
+}
+
+/*
+ * Headings
+ */
+
+h1 {
+  font-size: var(--text-xx-large);
+  font-family: var(--font-second-family);
+  line-height: var(--line-height-page-heading);
+}
+
+h2 {
+  font-size: var(--text-large);
+  font-weight: var(--bold);
+}
+
+/*
+ * Layout
+ */
+
+.viewport-container {
+  display: grid;
+  grid-template-columns:
+    [site-start] calc(50vw - 39rem)
+    [content-start] repeat(11, 1fr)
+    1fr [content-end]
+    calc(50vw - 39rem) [site-end];
+  grid-gap: var(--space-large);
+}
+
+.viewport-container > * {
+  grid-column: content-start / content-end;
+}
