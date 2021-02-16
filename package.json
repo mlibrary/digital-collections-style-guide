@@ -5,7 +5,8 @@
   "main": "index.js",
   "dependencies": {},
   "devDependencies": {
-    "@11ty/eleventy": "^0.11.1"
+    "@11ty/eleventy": "^0.11.1",
+    "@umich-lib/components": "^1"
   },
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1",
