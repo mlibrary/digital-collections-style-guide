@@ -103,6 +103,30 @@ h3,
   padding-right: var(--viewport-margin);
 }
 
+
+/*
+ * Buttons
+ * We need some buttons. 
+ */
+
+.button {
+  outline: none;
+  display: inline-block;
+  padding: var(--space-small) var(--space-large);
+  background: var(--color-blue-100);
+  color: var(--color-teal-400);
+  font-size: 1rem;
+  line-height: 1.5;
+  font-weight: 700;
+  font-family: var(--font-base-family);
+  border-radius: var(--radius-default);
+}
+
+.button--loud {
+  background: var(--color-teal-400);
+  color: white;
+}
+
 /*
  * Record Container
  *
@@ -112,7 +136,8 @@ h3,
     display: grid;
     grid-template-columns: 12rem 1fr;
     column-gap: 0;
-    padding-top: var(--space-x-large)
+    padding-top: var(--space-x-large);
+    width: 50vw;
   }
 
 .record dt {
@@ -123,3 +148,14 @@ h3,
   border-bottom: 1px solid var(--color-neutral-100);
   padding: var(--space-small) 0;
 } 
+
+/*
+ * Action Panel
+ *
+ */
+
+ .action-panel {
+     border: 1px solid var(--color-neutral-100);
+     padding: var(--space-x-large);
+     width: 20vw;
+ }
