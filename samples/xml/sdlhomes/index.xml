@@ -1,0 +1,1962 @@
+<?xml version="1.0"?>
+<Top xmlns:dlxs="http://www.umdl.umich.edu/dlxs">
+	<!-- XSL fallback files -->
+	<XslFallbackFileList>
+		<Filename>xsl2htmlutils.xsl</Filename>
+		<Filename>htmlhead.xsl</Filename>
+		<Filename>displayheader.xsl</Filename>
+		<Filename>browseoptions.xsl</Filename>
+		<Filename>search.xsl</Filename>
+		<Filename>fieldvalues.xsl</Filename>
+		<Filename>index.xsl</Filename>
+	</XslFallbackFileList>
+	<!-- Custom OPTIONAL XML for top-level file index.xml<2> -->
+	<CustomXml>
+	</CustomXml>
+	<DlxsGlobals>
+		<CurrentCgi>
+			<Param name="cc">sdlhomes</Param>
+			<Param name="page">index</Param>
+			<Param name="c">sdlhomes</Param>
+			<Param name="debug">xsltwrite</Param>
+		</CurrentCgi>
+		<CurrentUrl>https://roger.quod.lib.umich.edu/cgi/i/image/image-idx?cc=sdlhomes;page=index;c=sdlhomes</CurrentUrl>
+		<UserAgent>Mozilla/5.0 (Macintosh; Intel Mac OS X 10.15; rv:81.0) Gecko/20100101 Firefox/81.0</UserAgent>
+		<ReferrerHref>
+		</ReferrerHref>
+		<Sid>b48ba14ceee04894c549c543cd7fe3dc</Sid>
+		<EffectiveLanguage>en</EffectiveLanguage>
+		<LanguageOptions>
+			<OptionalLanguage>en</OptionalLanguage>
+		</LanguageOptions>
+		<LangMap>
+			<!-- bbopenutils.xsl which serves bbopen.xsl, bbname.xsl -->
+			<!-- "items1" used by bbresults_nav.xsl SliceSummary -->
+			<!-- "portfolio" used by bbresults_nav.xsl CollectionName -->
+			<lookup id="bbopenutils">
+				<item key="portfolio">portfolio</item>
+				<item key="porthelp">
+					<b>Help</b>For Using Portfolios</item>
+				<item key="bbopenpageheader">Portfolios</item>
+				<item key="bbnamepageheader">Add&#xa0;to&#xa0;a&#xa0;New&#x0a;or Existing Portfolio</item>
+				<item key="yourport">your portfolios</item>
+				<item key="pubport">all public portfolios</item>
+				<item key="bbagname">portfolio name</item>
+				<item key="action">action</item>
+				<item key="items1">items</item>
+				<item key="shared">public</item>
+				<item key="username">owner(s)</item>
+				<item key="open3">open</item>
+				<item key="add3">add</item>
+				<item key="savename">save name</item>
+				<item key="saveowners">save owners</item>
+				<item key="bbdel3">delete...</item>
+				<item key="bbexportprep3">download...</item>
+				<item key="viewable">viewable by public</item>
+				<item key="instructionbbname">To create a<b>new</b>portfolio with the selected images, enter a name in the<b>text box</b>and click<b>Submit</b>.<br />To<b>add</b>the selected images to an<b>existing</b>portfolio, find the portfolio name in the table below and click<b>add</b>.</item>
+				<item key="0">no</item>
+				<item key="1">yes</item>
+				<item key="switch0">make&#xa0;public</item>
+				<item key="switch1">make&#xa0;private</item>
+				<item key="none present">None present.</item>
+			</lookup>
+			<!-- bbdel.xsl bbdelconf.xsl -->
+			<lookup id="bbdel">
+				<item key="successdel">Portfolio successfully deleted.</item>
+				<item key="instructionbbdel">You may open a portfolio or close this window.</item>
+				<item key="yes">Yes</item>
+				<item key="no">No</item>
+				<item key="instructionbbdelconf">Permanently delete portfolio?</item>
+				<item key="name">Name of portfolio</item>
+			</lookup>
+			<!-- bbexport.xsl -->
+			<lookup id="bbexport">
+				<item key="exportfull-image">media</item>
+				<item key="exportdescription">record</item>
+				<item key="accessdenied">The media was not included due
+					to a lack of access privileges. Sorry. You may view the record.</item>
+				<item key="index">index</item>
+				<item key="of">of</item>
+				<item key="viewonline">view online</item>
+				<item key="exportPageTitle">export</item>
+				<item key="guidelinesbuttontext">guidelines</item>
+				<item key="guidelinesTitle">Guidelines For Use</item>
+				<item key="portlastmod">portfolio last modified:</item>
+				<item key="forhelp">For help or to request permission to publish:</item>
+			</lookup>
+			<!-- bbexportprep.xsl -->
+			<lookup id="bbexportprep">
+				<item key="returntoportfolios">return to the list of portfolios</item>
+				<item key="morehelp">More Help</item>
+				<item key="imagesize">image size</item>
+				<item key="imagesizesmall">small</item>
+				<item key="imagesizemedium">medium (presentation)</item>
+				<item key="imagesizelarge">large</item>
+				<item key="imagesizelargest">largest</item>
+				<item key="download">download</item>
+				<item key="whendone1P1">When done, all of the
+					images (and/or other media) will reside on your computer for convenient
+					use. HTML pages are also included for viewing records and easy
+					navigation of images.</item>
+				<item key="long">The download may take several minutes to complete.</item>
+				<item key="portfoliodownloadsteps">Portfolio Download</item>
+				<item key="bbexportpreppageheader">Portfolio Download</item>
+				<item key="portfoliosdisabled">Portfolio functionality is
+					turned off.</item>
+				<item key="exportdisabled">Portfolio export functionality is turned
+					off.</item>
+				<item key="toomanyitemstodownload">Only the first $count items will be downloaded.</item>
+			</lookup>
+			<!-- displayheader_results.xsl --><!--<lookup id="displayheader_results_LEGACY">
+			<item key="thumbnail">images with captions</item>
+			<item key="thumbfull">images with record</item>
+			<item key="reslist">captions only</item>
+			<item key="bbthumbnail">images with captions</item>
+			<item key="bbthumbfull">images with record</item>
+			<item key="bbreslist">captions only</item>
+			<item key="prep">prep tables in use</item>
+			</lookup>
+			-->
+			<lookup id="displayheader_results">
+				<item key="thumbnail">grid</item>
+				<item key="thumbfull">grid + details</item>
+				<item key="reslist">list</item>
+				<item key="icon-thumbnail">icon-th</item>
+				<item key="icon-thumbfull">icon-picture</item>
+				<item key="icon-reslist">icon-th-list</item>
+				<item key="bbthumbnail">grid</item>
+				<item key="bbthumbfull">grid + details</item>
+				<item key="bbreslist">list</item>
+				<item key="icon-bbthumbnail">icon-th</item>
+				<item key="icon-bbthumbfull">icon-picture</item>
+				<item key="icon-bbreslist">icon-th-list</item>
+				<item key="prep">prep tables in use</item>
+			</lookup>
+			<!-- groups.xsl -->
+			<lookup id="groups">
+				<item key="groups">collection groups list</item>
+				<item key="selectgroup">Select a collection group</item>
+				<item key="instructiongroupspick">Collections are arranged into groups for searching. Click on a group name to search the collections in that group. A collection may include some content outside of the group's definition, and a collection could appear in more than one group. Click the title of a specific collection to search it alone. Sometimes it is advantageous to search a single collection. For example, search field and sorting options are often specific to the collection, allowing for a more refined search.</item>
+				<item key="more">more</item>
+				<item key="instructiongroupspick2">Some collections have a very narrow focus. Other collections are broader, and may encompass many sub-collections.  Occassionally an image appears in multiple collections, though generally there is a single authoritative source for each image.</item>
+				<item key="collections">collections</item>
+				<item key="media">images/media</item>
+				<item key="records2">records</item>
+			</lookup>
+			<!-- searchutils.xsl -->
+			<lookup id="searchutils">
+				<item key="see">see search tips</item>
+				<item key="instructioncollspick1">Select one or more databases to search. Click the database name to search it alone, often in more detail.</item>
+				<item key="instructionsearch1">To search, enter a word or phrase in a box below and select a field from the menu.</item>
+				<item key="instructionsearch2">It is not necessary to use more than one box.</item>
+				<item key="instructionsearch3">You can search all the databases in this group, or use the<b>list of databases</b>to restrict your search to a subset.</item>
+				<item key="newgroup">select a new group to search</item>
+				<item key="in">in</item>
+				<item key="rangehelp">e.g., 1954 to 1961, -825 to -800.</item>
+				<item key="only">has digital media</item>
+				<item key="PleaseSelectColl">Please select at least one database to search.</item>
+			</lookup>
+			<!-- browse.xsl, index.xsl -->
+			<lookup id="browse">
+				<item key="browse">Browse</item>
+			</lookup>
+			<!-- collinfo.xsl -->
+			<!-- index.xsl -->
+			<lookup id="index">
+				<item key="home">Home</item>
+				<item key="collinfo">database info</item>
+				<item key="closewindow">CLOSE WINDOW</item>
+				<item key="thiscoll">this collection</item><!--<item key="browseallimages">Browse all media</item>
+				<item key="browseallrecords">Browse all records</item>
+				<item key="browsesampleimages">Browse sample media</item>
+				<item key="browsesamplerecords">Browse sample records</item>
+				<item key="browsemediaaddsmods">Browse newest additions and updates</item>
+				<item key="browsemostviewed">Browse most viewed</item>
+				-->
+				<item key="browseallimages">All media</item>
+				<item key="browseallrecords">All records</item>
+				<item key="browsesampleimages">Sample media</item>
+				<item key="browsesamplerecords">Sample records</item>
+				<item key="browsemediaaddsmods">Newest additions and updates</item>
+				<item key="browsemostviewed">Most viewed</item>
+				<item key="access">Collection Access</item>
+				<item key="access1">Access to this collection is restricted to authorized users.</item>
+				<item key="access2">This collection is open to the public. You may have
+					additional privileges if you log in.</item>
+				<item key="access3">You are an authorized user of this collection.</item>
+				<item key="access4">Access restricted.</item>
+				<item key="sendcomments">Send comments on this collection to</item>
+				<item key="brief">Collection Size</item>
+				<item key="searchmulti">Search Multiple Collections</item>
+				<item key="selectagroup1">Select a group</item>
+				<item key="selectagroup2">of collections to search simultaneously. Search this collection together with others.</item>
+				<item key="numberof">Number of Images and Records Online</item>
+				<item key="images">Online Images/Media</item>
+				<item key="records">Records</item>
+			</lookup>
+			<!-- noresults.xsl -->
+			<lookup id="noresults">
+				<item key="noresults">No Results</item>
+				<item key="type_ic_range">ranges from</item>
+				<item key="type_ic_exact">is exactly</item>
+				<item key="type_default">contains the term(s)</item>
+				<item key="type_allmedia">media was added or updated within</item>
+				<item key="days">day(s).</item>
+				<item key="to">to</item>
+			</lookup>
+			<!-- results.xsl -->
+			<lookup id="results">
+				<item key="and">and</item>
+				<item key="view">view</item>
+				<item key="record">record</item>
+				<item key="digitalformat">digital format</item>
+				<item key="notavail">not available</item>
+				<item key="portfolioempty">This portfolio has no items.</item>
+				<item key="missing">no longer available</item>
+				<item key="restricted">Restricted.</item>
+				<item key="trytolocate">try to locate</item>
+				<item key="notifymaintainer">notify maintainer</item>
+				<item key="nosortvalue">no sort value</item>
+			</lookup>
+			<!-- thumbfull.xsl -->
+			<lookup id="thumbfull">
+				<item key="instructionthumbfullresults">Click on thumbnails to view larger images and full records.<br />Click "descriptive info" link to view record data to the left.</item>
+				<item key="descriptive">&lt;text</item>
+			</lookup>
+			<!-- reslist.xsl -->
+			<lookup id="reslist">
+				<item key="view4">view full record for<b>item</b>
+				</item>
+			</lookup>
+			<!-- displayheader.xsl -->
+			<lookup id="displayheader">
+				<item key="newsearch">advanced search</item>
+				<item key="quicksearch">Quick Search</item>
+			</lookup>
+			<!-- results_nav.xsl -->
+			<lookup id="results_nav">
+				<item key="to1">to</item>
+				<item key="of">of</item>
+				<item key="hits">hits</item>
+				<item key="login0">You are not logged in.</item>
+				<item key="login1">You are logged in.</item>
+				<item key="prev">previous</item>
+				<item key="next">next</item>
+				<item key="portfour">Portfolio storage is temporary.</item>
+				<item key="portone">Portfolio storage is long term.</item>
+				<item key="portthree">You do not own this portfolio.</item>
+				<item key="porttwo">You do not own this portfolio.</item>
+			</lookup>
+			<!-- bbcustomorder.xsl -->
+			<lookup id="bbcustomorder">
+				<item key="instructionbbcustomorder">To change the position of any image record in this portfilio, select it's title in the list, and click an appropriate directional arrow to move it up or down.  When you are done, click the save custom order button to return to the previous display.</item>
+				<item key="nocaption">no caption or caption too long.</item>
+			</lookup>
+			<!-- entry.xsl -->
+			<lookup id="entry">
+				<item key="bookmarkhelp">bookmark:</item>
+				<item key="downloadmedia">download largest size</item>
+				<item key="downloadmediacurrentsize">download current size</item>
+				<item key="newwindow">new window</item>
+				<item key="viewmediaonly">view media only</item>
+				<item key="otherviewsnothumb">view</item>
+				<item key="other">other views</item>
+				<item key="other views">other views</item>
+				<item key="other-views">other views</item>
+				<item key="full image">full image</item>
+				<item key="full-image">full-image</item>
+				<item key="description">description</item>
+				<item key="backtoresults">back to results</item>
+				<item key="previtem">&lt;&lt; previous item</item>
+				<item key="nextitem">next item &gt;&gt;</item>
+				<item key="addport">add to portfolio</item>
+				<item key="removeport">remove from portfolio</item>
+				<item key="relatedports">portfolio inclusions</item>
+				<item key="feedbacklink">Problems/comments about this item?</item>
+				<item key="feedbackreply">To request a reply, please provide your email address.</item>
+				<item key="feedbackcomments">Comments?</item>
+				<item key="feedbackusername">Include your user name?</item>
+				<item key="feedback">Feedback</item>
+			</lookup>
+			<!-- entry_imagetools.xsl -->
+			<lookup id="entry_imagetools">
+				<item key="video.sense">view</item>
+				<item key="video">video</item>
+				<item key="video.icon">icon-film</item>
+				<item key="audio.sense">listen to</item>
+				<item key="audio">audio</item>
+				<item key="audio.icon">icon-volume-down</item>
+				<item key="svg.sense">view</item>
+				<item key="svg">flash movie</item>
+				<item key="svg.icon">icon-film</item>
+				<item key="doc.sense">view</item>
+				<item key="doc">related document</item>
+				<item key="doc.icon">icon-file</item>
+				<item key="url.sense">view</item>
+				<item key="url">linked content in new window</item>
+				<item key="url.icon">icon-share</item>
+				<item key="image.sense">view</item>
+				<item key="image">image</item>
+				<item key="image.icon">icon-picture</item>
+				<item key="size">size</item>
+				<item key="nomedia">Sorry, digital media is not available for this item.</item>
+				<item key="panzoomhelp">How to interact with this image...</item>
+				<item key="tozoomin">zoom in: double-click</item>
+				<item key="tozoomout">zoom out: shift-double-click</item>
+				<item key="topan">pan: drag</item>
+				<item key="zoom">zoom</item>
+				<item key="sizes">image sizes</item>
+			</lookup>
+			<!-- tips.xsl -->
+			<lookup id="searchtips">
+				<item key="searchtips">search tips</item>
+				<item key="instructionsearchtips">
+					<p>
+						<b>Matching words:</b>The search
+						engine attempts to match any word or phrase exactly as you put it in
+						the box.</p>
+					<p>e.g.:<i>Picasso and Rembrandt</i>in a box will look
+						for</p>
+					<p>&#34;Picasso and Rembrandt&#34;</p>
+					<p>and produced no
+						results.</p>
+					<p>
+						<b>Punctuation:</b>All punctuation is treated as an
+						empty space.</p>
+					<p>
+						<b>Case</b>: The search engine is not case
+						sensitive.</p>
+					<p>
+						<b>Wildcards:</b>Use wildcard * to expand word
+						stems. This is a good way to search for variations on a
+						word.</p>
+					<p>
+						<b>Choose image collections</b>: Limit your search to only
+						those collections you choose in the image collections list.</p>
+				</item>
+			</lookup>
+			<!-- results.xsl -->
+			<lookup id="BbagOptionsMenu">
+				<item key="bbom.check">check all</item>
+				<item key="bbom.uncheck">uncheck all</item>
+				<item key="bbom.bbname">add checked to portfolio...</item>
+				<item key="bbom.remove">remove checked from portfolio</item>
+			</lookup>
+			<lookup id="viewinstruct">
+				<item key="thumbnail1">Use checkboxes to select images for adding to a
+					portfolio, then click the "add to portfolio" button. Click on
+					thumbnails to view larger images and full records.</item>
+				<item key="thumbnail0">Click on thumbnails to view larger images and full records.</item>
+				<item key="thumbfull0">Click on thumbnails to view larger images and full records. Click "descriptive info" link to view record data in this space.</item>
+				<item key="thumbfull1">Click on thumbnails to view larger images and full records.<br />Click "descriptive info" link to view record data in this space.</item>
+				<item key="reslist1">Use checkboxes to select records for adding to a portfolio, then click the "add to portfolio" button. Click "view full record" link the full record.</item>
+				<item key="reslist0">Click "view full record" link the full record.</item>
+				<item key="bbthumbnail1">Click on thumbnails to view larger images and full records.</item>
+				<item key="bbthumbnail0">Click on thumbnails to view larger images and full records.</item>
+				<item key="bbthumbfull0">Click on thumbnails to view larger images and full records. Click "descriptive info" link to view record data in this space.</item>
+				<item key="bbthumbfull1">Click on the thumbnail image to display a
+					large image. Click on the "descriptive info" link beneath any thumbnail image to see detailed record information in this space.</item>
+				<item key="bbreslist1">Click "view full record" link the full record.</item>
+				<item key="bbreslist0">Click "view full record" link the full record</item>
+				<item key="bbcustomorder1">To change the position of any image record in this portfilio, select it's title in the list, and click an appropriate directional arrow to move it up or down.  When you are done, click the save custom order button to return to the previous display.</item>
+				<item key="bbcustomorder0">
+				</item>
+				<item key="bbexport1">The portfolio package is ready for download as a ZIP file.</item>
+				<item key="medianodownload">sorry, media is not available for
+					download.</item>
+				<item key="bbexport0">
+				</item>
+			</lookup>
+			<lookup id="sort">
+				<item key="sort">sort</item>
+				<item key="sortnot2">too many results to sort</item>
+				<item key="customize">customize order...</item>
+			</lookup>
+			<lookup id="misc">
+				<!-- alt tags for graphics -->
+				<!-- login/out -->
+				<item key="login">login</item>
+				<item key="logout">logout</item>
+				<!-- open portfolio -->
+				<item key="portfolios">portfolios</item>
+				<!-- contact / help -->
+				<item key="contact">contact</item>
+				<item key="Contact">Contact</item>
+				<item key="help">help</item>
+				<!-- appears in "index", "searchutils" -->
+				<item key="search2">Search</item>
+				<item key="databases">Databases</item>
+				<item key="collhome">collection home</item>
+				<item key="close">close</item>
+				<item key="multiple">Multiple Collections</item>
+			</lookup>
+			<lookup id="SearchFormOpsMenu">
+				<item key="And">And</item>
+				<item key="Or">Or</item>
+				<item key="Not">Not</item>
+				<item key="and not">And Not</item>
+			</lookup>
+			<lookup id="SearchFormSelMenu">
+				<item key="ends">Ends with</item>
+				<item key="contains">Contains</item>
+				<item key="phrase">Contains the phrase</item>
+				<item key="starts">Starts with</item>
+				<item key="any">Contains any of these words</item>
+				<item key="all">Contains all of these words</item>
+				<item key="ic_exact">Exactly matches</item>
+				<item key="regex">Matches</item>
+			</lookup>
+			<!-- moaaic-group, searchmaps.xsl -->
+			<lookup id="searchmaps">
+				<item key="searchmaps">Search for maps</item>
+				<item key="instructionsearch1">Enter an exact word or phrase.</item>
+			</lookup>
+			<lookup id="NoResults">
+				<item key="sorrynoresults">Sorry, no results were found when searching
+					for items where...</item>
+				<item key="pleasetry">Please try again.</item>
+				<item key="mediaonly">Including an image or other media.</item>
+			</lookup>
+		</LangMap>
+		<TemplatePath>/l1/dev/roger/web/i/image/index.xml</TemplatePath>
+		<TemplateName>index</TemplateName>
+		<XcollMode>singlecoll</XcollMode>
+		<CurrentScriptName>/cgi/i/image/image-idx</CurrentScriptName>
+		<ScriptName application="text">/cgi/t/text/text-idx</ScriptName>
+		<ScriptName application="pageviewer">/cgi/t/text/pageviewer-idx</ScriptName>
+		<ScriptName application="ww">/cgi/t/text/ww2-idx</ScriptName>
+		<ScriptName application="findaid">/cgi/f/findaid/findaid-idx</ScriptName>
+		<ScriptName application="image">/cgi/i/image/image-idx</ScriptName>
+		<BookmarkableUrl>
+		</BookmarkableUrl>
+		<AuthenticationEnabled>1</AuthenticationEnabled>
+		<UserAuthenticated>0</UserAuthenticated>
+		<AuthenticatedUsername>
+		</AuthenticatedUsername>
+		<SupportedAuthSystems>
+			<System>um</System>
+		</SupportedAuthSystems>
+		<QuickBrowse>
+		</QuickBrowse>
+		<Feed>
+			<FeedLink type="short">
+			</FeedLink>
+			<FeedLink type="long">
+			</FeedLink>
+		</Feed>
+		<TaggingEnabled>0</TaggingEnabled>
+		<CollGroupMembership>:localhist-ic:</CollGroupMembership>
+		<EncodingType>
+			<?DOC_ENCODING_TYPE_XML?>
+		</EncodingType>
+		<HeadLinks>
+			<!-- <CssLink>//netdna.bootstrapcdn.com/twitter-bootstrap/2.3.2/css/bootstrap-combined.min.css</CssLink> -->
+			<CssLink>/i/image/bootstrap/css/bootstrap.min.css</CssLink>
+			<CssLink>/i/image/css/imageclass.css</CssLink>
+			<CssLink>/i/image/css/imageclass-specific.css</CssLink>
+			<BootstrapLink>//ajax.googleapis.com/ajax/libs/jquery/1.9.1/jquery.min.js</BootstrapLink>
+			<BootstrapLink>/i/image/jquery/jquery-migrate-1.2.1.js</BootstrapLink>
+			<BootstrapLink>//netdna.bootstrapcdn.com/twitter-bootstrap/2.3.2/js/bootstrap.min.js</BootstrapLink>
+			<!-- <BootstrapLink>/i/image/bootstrap/js/bootstrap.js</BootstrapLink> -->
+			<JavaScriptUrl>/i/image/js/jquery.placeholder.js</JavaScriptUrl>
+			<ApiUrl>/cgi/i/image/api</ApiUrl>
+			<Timestamp>20180409</Timestamp>
+			<AssetDebug>yes</AssetDebug>
+		</HeadLinks>
+	</DlxsGlobals>
+	<ExtraCSS>/i/image/css/index.css</ExtraCSS>
+	<CollName>
+		<Full>Saline Historic Homes</Full>
+		<Brief>Saline Historic Homes</Brief>
+	</CollName>
+	<JavaScriptUrl>/i/image/js/imageclass.js</JavaScriptUrl>
+	<!-- <ContactLink>'m'+'a'+'i'+'l'+'t'+'o'+':'+'s'+'d'+'l'+'p'+'h'+'o'+'t'+'o'+'s'+'-'+'h'+'e'+'l'+'p'+'@'+'u'+'m'+'i'+'c'+'h'+'.'+'e'+'d'+'u'</ContactLink>
+	<ContactText>E-mail Help</ContactText> -->
+  <ContactLink type="mailto">sdlphotos-help@umich.edu</ContactLink>
+  <ContactText>Saline Digital Collections Help</ContactText>
+	<LoginLink>
+		<Url>https://roger.quod.lib.umich.edu/cgi/dlxslogin/go?target=https%3A%2F%2Froger.quod.lib.umich.edu%2Fcgi%2Fi%2Fimage%2Fimage-idx%3Fkey_authret%3D1601991574</Url>
+		<Mode>login</Mode>
+	</LoginLink>
+	<TipsUrl>https://roger.quod.lib.umich.edu/cgi/i/image/image-idx?page=tips;c=sdlhomes</TipsUrl>
+	<SortOptionsMenu>
+		<HiddenVars>
+			<Variable name="cc">sdlhomes</Variable>
+			<Variable name="page">index</Variable>
+			<Variable name="c">sdlhomes</Variable>
+			<Variable name="debug">xsltwrite</Variable>
+		</HiddenVars>
+		<TotalResults>
+		</TotalResults>
+		<SortThresshold>1000</SortThresshold>
+		<ThresholdExceeded>false</ThresholdExceeded>
+		<Option>
+			<Label>(None)</Label>
+			<Value>none</Value>
+			<Focus>true</Focus>
+		</Option>
+		<Option>
+			<Label>Photo Date</Label>
+			<Value>sdlhomes_photo_date</Value>
+		</Option>
+		<Option>
+			<Label>Survey Date</Label>
+			<Value>sdlhomes_survey_dt</Value>
+		</Option>
+		<Option>
+			<Label>Photo Negative No.</Label>
+			<Value>sdlhomes_photo_neg_no</Value>
+		</Option>
+		<Name>sort</Name>
+		<Default>none</Default>
+	</SortOptionsMenu>
+	<Home>https://roger.quod.lib.umich.edu/cgi/i/image/image-idx?page=index;c=sdlhomes</Home>
+	<Help>https://roger.quod.lib.umich.edu/cgi/i/image/image-idx?page=help;c=sdlhomes</Help>
+	<Banner>
+		<Text>Saline Historic Homes</Text>
+	</Banner>
+	<OpenPortfolio>
+		<Url>https://roger.quod.lib.umich.edu/cgi/i/image/image-idx?page=bbopen</Url>
+	</OpenPortfolio>
+	<SearchLink>https://roger.quod.lib.umich.edu/cgi/i/image/image-idx?c=sdlhomes;page=search</SearchLink>
+	<BrowseImages>
+		<Url>https://roger.quod.lib.umich.edu/cgi/i/image/image-idx?sort=sdlhomes_photo_date;q1=sdlhomes;type=boolean;rgn1=ic_all;med=1;view=thumbnail;c=sdlhomes</Url>
+		<Type>browseallimages</Type>
+	</BrowseImages>
+	<BrowseRecords>
+		<!-- brwsrec not enabled in colldb -->
+	</BrowseRecords>
+	<BrowseMediaAddsMods>
+		<!-- brwsadds not enabled in colldb -->
+	</BrowseMediaAddsMods>
+	<BrowseMostViewed>
+		<Url>https://roger.quod.lib.umich.edu/cgi/i/image/image-idx?sort=mostviewed;type=mostviewed;view=thumbnail;c=sdlhomes</Url>
+		<Type>browsemostviewed</Type>
+	</BrowseMostViewed>
+	<BrowseOptions>
+	</BrowseOptions>
+	<RestrictStatus>access2</RestrictStatus>
+	<AccessRestrictions>
+		<Status>public</Status>
+		<Public href="https://roger.quod.lib.umich.edu/cgi/i/image/image-idx?auth=world;sort=sdlhomes_photo_date;q1=sdlhomes;type=boolean;rgn1=ic_all;view=reslist;c=sdlhomes">416</Public>
+		<Authorized>0</Authorized>
+		<Restricted>0</Restricted>
+	</AccessRestrictions>
+	<CollInfoLink>https://roger.quod.lib.umich.edu/cgi/i/image/image-idx?page=collinfo;c=sdlhomes</CollInfoLink>
+	<SearchForm>
+		<NumQs>2</NumQs>
+		<Q name="q1">
+			<Value>
+			</Value>
+			<Rgn name="rgn1">
+				<Option>
+					<Label>Anywhere in record</Label>
+					<Value>ic_all</Value>
+				</Option>
+				<Option>
+					<Label>Historic Name</Label>
+					<Value>sdlhomes_historic_name</Value>
+				</Option>
+				<Option>
+					<Label>Common Name</Label>
+					<Value>sdlhomes_common_name</Value>
+				</Option>
+				<Option>
+					<Label>District Name</Label>
+					<Value>sdlhomes_district_name</Value>
+				</Option>
+				<Option>
+					<Label>Bibliographic Reference</Label>
+					<Value>sdlhomes_ref</Value>
+				</Option>
+				<Option>
+					<Label>Photo Negative No.</Label>
+					<Value>sdlhomes_photo_neg_no</Value>
+				</Option>
+				<Name>rgn1</Name>
+				<Default>all</Default>
+			</Rgn>
+			<Op name="op2">
+				<Option>
+					<Label>And</Label>
+					<Value>And</Value>
+					<Focus>true</Focus>
+				</Option>
+				<Option>
+					<Label>Or</Label>
+					<Value>Or</Value>
+				</Option>
+				<Option>
+					<Label>Not</Label>
+					<Value>Not</Value>
+				</Option>
+				<Name>op2</Name>
+				<Default>And</Default>
+			</Op>
+			<Sel name="select1" abbr="ic_all">
+				<Option>
+					<Label>all</Label>
+					<Value>all</Value>
+				</Option>
+				<Name>select1</Name>
+				<Default>
+				</Default>
+			</Sel>
+			<Sel name="select1" abbr="sdlhomes_historic_name">
+				<Option>
+					<Label>all</Label>
+					<Value>all</Value>
+				</Option>
+				<Option>
+					<Label>any</Label>
+					<Value>any</Value>
+				</Option>
+				<Option>
+					<Label>phrase</Label>
+					<Value>phrase</Value>
+				</Option>
+				<Option>
+					<Label>ic_exact</Label>
+					<Value>ic_exact</Value>
+				</Option>
+				<Name>select1</Name>
+				<Default>
+				</Default>
+			</Sel>
+			<Sel name="select1" abbr="sdlhomes_common_name">
+				<Option>
+					<Label>all</Label>
+					<Value>all</Value>
+				</Option>
+				<Option>
+					<Label>any</Label>
+					<Value>any</Value>
+				</Option>
+				<Option>
+					<Label>phrase</Label>
+					<Value>phrase</Value>
+				</Option>
+				<Option>
+					<Label>ic_exact</Label>
+					<Value>ic_exact</Value>
+				</Option>
+				<Name>select1</Name>
+				<Default>
+				</Default>
+			</Sel>
+			<Sel name="select1" abbr="sdlhomes_district_name">
+				<Option>
+					<Label>all</Label>
+					<Value>all</Value>
+				</Option>
+				<Option>
+					<Label>any</Label>
+					<Value>any</Value>
+				</Option>
+				<Option>
+					<Label>phrase</Label>
+					<Value>phrase</Value>
+				</Option>
+				<Option>
+					<Label>ic_exact</Label>
+					<Value>ic_exact</Value>
+				</Option>
+				<Name>select1</Name>
+				<Default>
+				</Default>
+			</Sel>
+			<Sel name="select1" abbr="sdlhomes_ref">
+				<Option>
+					<Label>all</Label>
+					<Value>all</Value>
+				</Option>
+				<Option>
+					<Label>any</Label>
+					<Value>any</Value>
+				</Option>
+				<Option>
+					<Label>phrase</Label>
+					<Value>phrase</Value>
+				</Option>
+				<Option>
+					<Label>ic_exact</Label>
+					<Value>ic_exact</Value>
+				</Option>
+				<Name>select1</Name>
+				<Default>
+				</Default>
+			</Sel>
+			<Sel name="select1" abbr="sdlhomes_photo_neg_no">
+				<Option>
+					<Label>all</Label>
+					<Value>all</Value>
+				</Option>
+				<Option>
+					<Label>any</Label>
+					<Value>any</Value>
+				</Option>
+				<Option>
+					<Label>phrase</Label>
+					<Value>phrase</Value>
+				</Option>
+				<Option>
+					<Label>ic_exact</Label>
+					<Value>ic_exact</Value>
+				</Option>
+				<Name>select1</Name>
+				<Default>
+				</Default>
+			</Sel>
+		</Q>
+		<Q name="q2">
+			<Value>
+			</Value>
+			<Rgn name="rgn2">
+				<Option>
+					<Label>Anywhere in record</Label>
+					<Value>ic_all</Value>
+				</Option>
+				<Option>
+					<Label>Historic Name</Label>
+					<Value>sdlhomes_historic_name</Value>
+				</Option>
+				<Option>
+					<Label>Common Name</Label>
+					<Value>sdlhomes_common_name</Value>
+				</Option>
+				<Option>
+					<Label>District Name</Label>
+					<Value>sdlhomes_district_name</Value>
+				</Option>
+				<Option>
+					<Label>Bibliographic Reference</Label>
+					<Value>sdlhomes_ref</Value>
+				</Option>
+				<Option>
+					<Label>Photo Negative No.</Label>
+					<Value>sdlhomes_photo_neg_no</Value>
+				</Option>
+				<Name>rgn2</Name>
+				<Default>all</Default>
+			</Rgn>
+			<Sel name="select2" abbr="ic_all">
+				<Option>
+					<Label>all</Label>
+					<Value>all</Value>
+				</Option>
+				<Name>select2</Name>
+				<Default>
+				</Default>
+			</Sel>
+			<Sel name="select2" abbr="sdlhomes_historic_name">
+				<Option>
+					<Label>all</Label>
+					<Value>all</Value>
+				</Option>
+				<Option>
+					<Label>any</Label>
+					<Value>any</Value>
+				</Option>
+				<Option>
+					<Label>phrase</Label>
+					<Value>phrase</Value>
+				</Option>
+				<Option>
+					<Label>ic_exact</Label>
+					<Value>ic_exact</Value>
+				</Option>
+				<Name>select2</Name>
+				<Default>
+				</Default>
+			</Sel>
+			<Sel name="select2" abbr="sdlhomes_common_name">
+				<Option>
+					<Label>all</Label>
+					<Value>all</Value>
+				</Option>
+				<Option>
+					<Label>any</Label>
+					<Value>any</Value>
+				</Option>
+				<Option>
+					<Label>phrase</Label>
+					<Value>phrase</Value>
+				</Option>
+				<Option>
+					<Label>ic_exact</Label>
+					<Value>ic_exact</Value>
+				</Option>
+				<Name>select2</Name>
+				<Default>
+				</Default>
+			</Sel>
+			<Sel name="select2" abbr="sdlhomes_district_name">
+				<Option>
+					<Label>all</Label>
+					<Value>all</Value>
+				</Option>
+				<Option>
+					<Label>any</Label>
+					<Value>any</Value>
+				</Option>
+				<Option>
+					<Label>phrase</Label>
+					<Value>phrase</Value>
+				</Option>
+				<Option>
+					<Label>ic_exact</Label>
+					<Value>ic_exact</Value>
+				</Option>
+				<Name>select2</Name>
+				<Default>
+				</Default>
+			</Sel>
+			<Sel name="select2" abbr="sdlhomes_ref">
+				<Option>
+					<Label>all</Label>
+					<Value>all</Value>
+				</Option>
+				<Option>
+					<Label>any</Label>
+					<Value>any</Value>
+				</Option>
+				<Option>
+					<Label>phrase</Label>
+					<Value>phrase</Value>
+				</Option>
+				<Option>
+					<Label>ic_exact</Label>
+					<Value>ic_exact</Value>
+				</Option>
+				<Name>select2</Name>
+				<Default>
+				</Default>
+			</Sel>
+			<Sel name="select2" abbr="sdlhomes_photo_neg_no">
+				<Option>
+					<Label>all</Label>
+					<Value>all</Value>
+				</Option>
+				<Option>
+					<Label>any</Label>
+					<Value>any</Value>
+				</Option>
+				<Option>
+					<Label>phrase</Label>
+					<Value>phrase</Value>
+				</Option>
+				<Option>
+					<Label>ic_exact</Label>
+					<Value>ic_exact</Value>
+				</Option>
+				<Name>select2</Name>
+				<Default>
+				</Default>
+			</Sel>
+		</Q>
+		<HiddenVars>
+			<Variable name="type">boolean</Variable>
+			<Variable name="c">sdlhomes</Variable>
+		</HiddenVars>
+		<ResultsViewOptions>
+			<Option>
+				<Label>thumbnail</Label>
+				<Value>thumbnail</Value>
+				<Focus>true</Focus>
+			</Option>
+			<Option>
+				<Label>thumbfull</Label>
+				<Value>thumbfull</Value>
+			</Option>
+			<Option>
+				<Label>reslist</Label>
+				<Value>reslist</Value>
+			</Option>
+			<Name>view</Name>
+			<Default>thumbnail</Default>
+		</ResultsViewOptions>
+	</SearchForm>
+	<GroupsLink>https://roger.quod.lib.umich.edu/cgi/i/image/image-idx?page=groups</GroupsLink>
+	<Groups>
+		<Group GroupID="localhist-ic">Local History</Group>
+	</Groups>
+	<Stats>
+		<Records>345</Records>
+		<Images>413</Images>
+	</Stats>
+	<InsertTextInfo>
+		<div>
+			<div class="row-fluid">
+				<div class="span3" style="text-align: center">
+					<div style="margin-bottom: 8px">
+						<a href="http://saline.lib.mi.us/">
+							<img width="137" height="137" src="/s/sdlsvf/graphics/sdl_logo.gif" />
+							<br />
+							<strong>Saline District Library</strong>
+						</a>
+					</div>
+					<div>
+						<a href="http://www.salinehistory.org">
+							<img height="109" border="0" width="84" src="/s/sdlsvf/graphics/shshouse57.jpg" />
+							<br />
+							<strong>Saline Area Historical Society</strong>
+						</a>
+					</div>
+				</div>
+				<div class="span9">
+					<div class="instructiontxt">
+						<p>This<em>Historical and Architectural Survey</em>includes all structures built up to 1944 within the city limits of Saline Michigan.  Conducted in 1994 by Kosky and Glynn Associates, this survey is the result of the City’s intent to comply with the Certified Local Government requirements.  The objective of the survey was to research, photograph and map all structures built within the City of Saline between 1829 and 1944.  The completed project includes a survey card and black and white photograph for each structure, a map of all surveyed structures, and historical and architectural text encompassing the study period.</p>
+						<p>All original survey material is housed by the Historic District Commission at Saline City Hall. The 24-page report is also available at Saline District Library and<a href="http://www.salinelibrary.org/pdf/salinehistory/Historical_Architectural_Survey_1994.pdf">
+								<i class="icon-file">
+								</i>online</a>.</p>
+					</div>
+					<div id="useguidelines">
+						<p>The City of Saline is the copyright holder for the materials in this Saline Historic Homes online collection. The materials were
+							compiled by Sue Kosky and Kathie Glynn, who composed the 1994 Historical and Architectural Survey under a contract with the City of Saline. The project was comprised of the 350 photos and informational cards documenting historic homes in Saline.</p>
+						<p>The City of Saline is pleased to make these materials available for research and education for which no permission is required (though attribution is appreciated).  For other uses or questions, please contact:</p>
+						<p>Leslee Niethamer, Director<br />Saline District Library<br />555 N. Maple Road Saline, MI 48176<br />Telephone: (734) 429-5450<br />Fax: (734) 944-0600<br />
+							<a href="http://saline.lib.mi.us/">http://saline.lib.mi.us/</a>
+						</p>
+					</div>
+				</div>
+			</div>
+		</div>
+	</InsertTextInfo>
+	<InsertTextInfo2>
+		<div>
+			<!--
+			Copy this file (info2.txt) to a collection specific web
+			directory and  fill it with a description of the collection. It will
+			then appear in the page=index view for the collection.
+			-->
+		</div>
+	</InsertTextInfo2>
+	<InsertTextFieldInfo>
+		<div>
+			<!-- Copy this file (fieldinfo.txt) to a collection specific web directory and  fill it with field definitions and any other information that would help the user understand the fields and it will be inserted in to the collinfo view (collinfo.tpl) -->
+		</div>
+	</InsertTextFieldInfo>
+	<Subtitle>
+	</Subtitle>
+	<Snapshots>
+		<Snapshot href="/cgi/i/image/image-idx?c=sdlhomes;entryid=x-SL0914;viewid=SL091401.TIF">
+			<Thumbnail src="data:image/jpeg;base64,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
+PG/4h25XUqe7uNKlSrnVf//Z
+" />
+			<Record name="result">
+				<Section name="default">
+					<Field abbrev="sdlhomes_id" searchfield="false" sortfield="false">
+						<Values>
+							<Value>SL0914</Value>
+						</Values>
+						<Label display="on">Record ID</Label>
+					</Field>
+					<Field abbrev="sdlhomes_street_no" searchfield="false" sortfield="false">
+						<Values>
+							<Value>494 S. Ann Arbor St.</Value>
+						</Values>
+						<Label display="on">Street and No.</Label>
+					</Field>
+					<Field abbrev="sdlhomes_historic_name" searchfield="false" sortfield="false">
+						<Values>
+							<Value>Johnson House</Value>
+						</Values>
+						<Label display="on">Historic Name</Label>
+					</Field>
+					<Empty abbrev="sdlhomes_common_name" empty="yes">
+						<Label display="on">Common Name</Label>
+					</Empty>
+				</Section>
+			</Record>
+		</Snapshot>
+		<Snapshot href="/cgi/i/image/image-idx?c=sdlhomes;entryid=x-SL0915;viewid=SL091501.TIF">
+			<Thumbnail src="data:image/jpeg;base64,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
+Qi8jaKcyOWV02H8R8qKKKzqv/9k=
+" />
+			<Record name="result">
+				<Section name="default">
+					<Field abbrev="sdlhomes_id" searchfield="false" sortfield="false">
+						<Values>
+							<Value>SL0915</Value>
+						</Values>
+						<Label display="on">Record ID</Label>
+					</Field>
+					<Field abbrev="sdlhomes_street_no" searchfield="false" sortfield="false">
+						<Values>
+							<Value>523 S. Ann Arbor St.</Value>
+						</Values>
+						<Label display="on">Street and No.</Label>
+					</Field>
+					<Field abbrev="sdlhomes_historic_name" searchfield="false" sortfield="false">
+						<Values>
+							<Value>John Gough House</Value>
+						</Values>
+						<Label display="on">Historic Name</Label>
+					</Field>
+					<Empty abbrev="sdlhomes_common_name" empty="yes">
+						<Label display="on">Common Name</Label>
+					</Empty>
+				</Section>
+			</Record>
+		</Snapshot>
+		<Snapshot href="/cgi/i/image/image-idx?c=sdlhomes;entryid=x-SL0916;viewid=SL091601.TIF">
+			<Thumbnail src="data:image/jpeg;base64,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
+ZHEVvY2W8hJzp3Pesj4uWTxZdU+PAkrHU1BrJUcq5hPmVV0zGW0TuJoMaOp0q1gHojc/CoORxkhU
+fnNvpQ0SAMeJefIgdBWYBCEjZvH+6vNCAnGlOM53OaQXaVxI0GBJfYjyHVKKQUY1YA6k9QK5bn2K
+5JUlceNzEDUpDigfeCcg9apelI6IT8K6Sl07IR8EVYq4mBw00UOOQLfrWf0AlRHqcYpVm7WuAolu
+Hb0p/SLQyT/8++qby5IGcKFcaXj1JHtUBQX8cYxA3gNoSkEAkBXQ+lOBxjawsFtbiMYOdBPwrOeU
+e7iP/aukNpz4nU/fUg0l38IUQDCW5Cz6pwDUe9x3IOAyypLZzkIGkj3nNU1KG855vwSaVAZ/zqP+
+3+tBs3CFyXeLH9JWFJIdUjCyCdseVFMfwdBP5MHT0+kL6+6iue9FI4nslze4muTrdpluNrkKUlaW
+VEKHmCKhzYLv2ssv7Mv5UUVvNHn4ivXazTPsqvlR+I75ja0zh7IqvlRRSjhVkv37quPujq+VJmxX
+8/sm4+9hfyoopRweH76R/g877Ov5V5+Tt9P7Gn/ZlfKiilAOG78f2RP+zqpRPDd9/dM4e1lXyoop
+Qqnhu9nra5g/8K/lS6eGrvje2S/4CqKKlGpcAQ34HDZZksuNOc9atLiSk4OO1FFFY3o//9k=
+" />
+			<Record name="result">
+				<Section name="default">
+					<Field abbrev="sdlhomes_id" searchfield="false" sortfield="false">
+						<Values>
+							<Value>SL0916</Value>
+						</Values>
+						<Label display="on">Record ID</Label>
+					</Field>
+					<Field abbrev="sdlhomes_street_no" searchfield="false" sortfield="false">
+						<Values>
+							<Value>525 S. Ann Arbor St.</Value>
+						</Values>
+						<Label display="on">Street and No.</Label>
+					</Field>
+					<Empty abbrev="sdlhomes_historic_name" empty="yes">
+						<Label display="on">Historic Name</Label>
+					</Empty>
+					<Empty abbrev="sdlhomes_common_name" empty="yes">
+						<Label display="on">Common Name</Label>
+					</Empty>
+				</Section>
+			</Record>
+		</Snapshot>
+		<Snapshot href="/cgi/i/image/image-idx?c=sdlhomes;entryid=x-SL0917;viewid=SL091701.TIF">
+			<Thumbnail src="data:image/jpeg;base64,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
+" />
+			<Record name="result">
+				<Section name="default">
+					<Field abbrev="sdlhomes_id" searchfield="false" sortfield="false">
+						<Values>
+							<Value>SL0917</Value>
+						</Values>
+						<Label display="on">Record ID</Label>
+					</Field>
+					<Field abbrev="sdlhomes_street_no" searchfield="false" sortfield="false">
+						<Values>
+							<Value>535 S. Ann Arbor St.</Value>
+						</Values>
+						<Label display="on">Street and No.</Label>
+					</Field>
+					<Empty abbrev="sdlhomes_historic_name" empty="yes">
+						<Label display="on">Historic Name</Label>
+					</Empty>
+					<Empty abbrev="sdlhomes_common_name" empty="yes">
+						<Label display="on">Common Name</Label>
+					</Empty>
+				</Section>
+			</Record>
+		</Snapshot>
+		<Snapshot href="/cgi/i/image/image-idx?c=sdlhomes;entryid=x-SL0918;viewid=SL091801.TIF">
+			<Thumbnail src="data:image/jpeg;base64,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
+" />
+			<Record name="result">
+				<Section name="default">
+					<Field abbrev="sdlhomes_id" searchfield="false" sortfield="false">
+						<Values>
+							<Value>SL0918</Value>
+						</Values>
+						<Label display="on">Record ID</Label>
+					</Field>
+					<Field abbrev="sdlhomes_street_no" searchfield="false" sortfield="false">
+						<Values>
+							<Value>550 S. Ann Arbor St.</Value>
+						</Values>
+						<Label display="on">Street and No.</Label>
+					</Field>
+					<Field abbrev="sdlhomes_historic_name" searchfield="false" sortfield="false">
+						<Values>
+							<Value>William Barr House</Value>
+						</Values>
+						<Label display="on">Historic Name</Label>
+					</Field>
+					<Empty abbrev="sdlhomes_common_name" empty="yes">
+						<Label display="on">Common Name</Label>
+					</Empty>
+				</Section>
+			</Record>
+		</Snapshot>
+		<Snapshot href="/cgi/i/image/image-idx?c=sdlhomes;entryid=x-SL0919;viewid=SL091901.TIF">
+			<Thumbnail src="data:image/jpeg;base64,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
+jDnbqIStMGIHNFFFcaP/2Q==
+" />
+			<Record name="result">
+				<Section name="default">
+					<Field abbrev="sdlhomes_id" searchfield="false" sortfield="false">
+						<Values>
+							<Value>SL0919</Value>
+						</Values>
+						<Label display="on">Record ID</Label>
+					</Field>
+					<Field abbrev="sdlhomes_street_no" searchfield="false" sortfield="false">
+						<Values>
+							<Value>591 S. Ann Arbor St.</Value>
+						</Values>
+						<Label display="on">Street and No.</Label>
+					</Field>
+					<Empty abbrev="sdlhomes_historic_name" empty="yes">
+						<Label display="on">Historic Name</Label>
+					</Empty>
+					<Empty abbrev="sdlhomes_common_name" empty="yes">
+						<Label display="on">Common Name</Label>
+					</Empty>
+				</Section>
+			</Record>
+		</Snapshot>
+		<Snapshot href="/cgi/i/image/image-idx?c=sdlhomes;entryid=x-SL0920;viewid=SL092001.TIF">
+			<Thumbnail src="data:image/jpeg;base64,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
+" />
+			<Record name="result">
+				<Section name="default">
+					<Field abbrev="sdlhomes_id" searchfield="false" sortfield="false">
+						<Values>
+							<Value>SL0920</Value>
+						</Values>
+						<Label display="on">Record ID</Label>
+					</Field>
+					<Field abbrev="sdlhomes_street_no" searchfield="false" sortfield="false">
+						<Values>
+							<Value>605 S. Ann Arbor St.</Value>
+						</Values>
+						<Label display="on">Street and No.</Label>
+					</Field>
+					<Field abbrev="sdlhomes_historic_name" searchfield="false" sortfield="false">
+						<Values>
+							<Value>Crosby - Van Houten House</Value>
+						</Values>
+						<Label display="on">Historic Name</Label>
+					</Field>
+					<Empty abbrev="sdlhomes_common_name" empty="yes">
+						<Label display="on">Common Name</Label>
+					</Empty>
+				</Section>
+			</Record>
+		</Snapshot>
+		<Snapshot href="/cgi/i/image/image-idx?c=sdlhomes;entryid=x-SL1001;viewid=SL100101.TIF">
+			<Thumbnail src="data:image/jpeg;base64,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
+" />
+			<Record name="result">
+				<Section name="default">
+					<Field abbrev="sdlhomes_id" searchfield="false" sortfield="false">
+						<Values>
+							<Value>SL1001</Value>
+						</Values>
+						<Label display="on">Record ID</Label>
+					</Field>
+					<Field abbrev="sdlhomes_street_no" searchfield="false" sortfield="false">
+						<Values>
+							<Value>103 W. Bennett</Value>
+						</Values>
+						<Label display="on">Street and No.</Label>
+					</Field>
+					<Empty abbrev="sdlhomes_historic_name" empty="yes">
+						<Label display="on">Historic Name</Label>
+					</Empty>
+					<Empty abbrev="sdlhomes_common_name" empty="yes">
+						<Label display="on">Common Name</Label>
+					</Empty>
+				</Section>
+			</Record>
+		</Snapshot>
+		<Snapshot href="/cgi/i/image/image-idx?c=sdlhomes;entryid=x-SL1002;viewid=SL100201.TIF">
+			<Thumbnail src="data:image/jpeg;base64,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
+" />
+			<Record name="result">
+				<Section name="default">
+					<Field abbrev="sdlhomes_id" searchfield="false" sortfield="false">
+						<Values>
+							<Value>SL1002</Value>
+						</Values>
+						<Label display="on">Record ID</Label>
+					</Field>
+					<Field abbrev="sdlhomes_street_no" searchfield="false" sortfield="false">
+						<Values>
+							<Value>105 W. Bennett</Value>
+						</Values>
+						<Label display="on">Street and No.</Label>
+					</Field>
+					<Empty abbrev="sdlhomes_historic_name" empty="yes">
+						<Label display="on">Historic Name</Label>
+					</Empty>
+					<Empty abbrev="sdlhomes_common_name" empty="yes">
+						<Label display="on">Common Name</Label>
+					</Empty>
+				</Section>
+			</Record>
+		</Snapshot>
+		<Snapshot href="/cgi/i/image/image-idx?c=sdlhomes;entryid=x-SL1002;viewid=SL100202.TIF">
+			<Thumbnail src="data:image/jpeg;base64,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
+" />
+			<Record name="result">
+				<Section name="default">
+					<Field abbrev="sdlhomes_id" searchfield="false" sortfield="false">
+						<Values>
+							<Value>SL1002</Value>
+						</Values>
+						<Label display="on">Record ID</Label>
+					</Field>
+					<Field abbrev="sdlhomes_street_no" searchfield="false" sortfield="false">
+						<Values>
+							<Value>105 W. Bennett</Value>
+						</Values>
+						<Label display="on">Street and No.</Label>
+					</Field>
+					<Empty abbrev="sdlhomes_historic_name" empty="yes">
+						<Label display="on">Historic Name</Label>
+					</Empty>
+					<Empty abbrev="sdlhomes_common_name" empty="yes">
+						<Label display="on">Common Name</Label>
+					</Empty>
+				</Section>
+			</Record>
+		</Snapshot>
+		<Snapshot href="/cgi/i/image/image-idx?c=sdlhomes;entryid=x-SL1003;viewid=SL100301.TIF">
+			<Thumbnail src="data:image/jpeg;base64,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
+" />
+			<Record name="result">
+				<Section name="default">
+					<Field abbrev="sdlhomes_id" searchfield="false" sortfield="false">
+						<Values>
+							<Value>SL1003</Value>
+						</Values>
+						<Label display="on">Record ID</Label>
+					</Field>
+					<Field abbrev="sdlhomes_street_no" searchfield="false" sortfield="false">
+						<Values>
+							<Value>201 W. Bennett</Value>
+						</Values>
+						<Label display="on">Street and No.</Label>
+					</Field>
+					<Empty abbrev="sdlhomes_historic_name" empty="yes">
+						<Label display="on">Historic Name</Label>
+					</Empty>
+					<Empty abbrev="sdlhomes_common_name" empty="yes">
+						<Label display="on">Common Name</Label>
+					</Empty>
+				</Section>
+			</Record>
+		</Snapshot>
+		<Snapshot href="/cgi/i/image/image-idx?c=sdlhomes;entryid=x-SL1004;viewid=SL100401.TIF">
+			<Thumbnail src="data:image/jpeg;base64,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
+/9k=
+" />
+			<Record name="result">
+				<Section name="default">
+					<Field abbrev="sdlhomes_id" searchfield="false" sortfield="false">
+						<Values>
+							<Value>SL1004</Value>
+						</Values>
+						<Label display="on">Record ID</Label>
+					</Field>
+					<Field abbrev="sdlhomes_street_no" searchfield="false" sortfield="false">
+						<Values>
+							<Value>202 W. Bennett</Value>
+						</Values>
+						<Label display="on">Street and No.</Label>
+					</Field>
+					<Field abbrev="sdlhomes_historic_name" searchfield="false" sortfield="false">
+						<Values>
+							<Value>Gross Farm Equipment</Value>
+						</Values>
+						<Label display="on">Historic Name</Label>
+					</Field>
+					<Empty abbrev="sdlhomes_common_name" empty="yes">
+						<Label display="on">Common Name</Label>
+					</Empty>
+				</Section>
+			</Record>
+		</Snapshot>
+		<Snapshot href="/cgi/i/image/image-idx?c=sdlhomes;entryid=x-SL1005;viewid=SL100501.TIF">
+			<Thumbnail src="data:image/jpeg;base64,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
+NvAyM8Jy2difIelSpUrKf//Z
+" />
+			<Record name="result">
+				<Section name="default">
+					<Field abbrev="sdlhomes_id" searchfield="false" sortfield="false">
+						<Values>
+							<Value>SL1005</Value>
+						</Values>
+						<Label display="on">Record ID</Label>
+					</Field>
+					<Field abbrev="sdlhomes_street_no" searchfield="false" sortfield="false">
+						<Values>
+							<Value>203 W. Bennett</Value>
+						</Values>
+						<Label display="on">Street and No.</Label>
+					</Field>
+					<Empty abbrev="sdlhomes_historic_name" empty="yes">
+						<Label display="on">Historic Name</Label>
+					</Empty>
+					<Empty abbrev="sdlhomes_common_name" empty="yes">
+						<Label display="on">Common Name</Label>
+					</Empty>
+				</Section>
+			</Record>
+		</Snapshot>
+		<Snapshot href="/cgi/i/image/image-idx?c=sdlhomes;entryid=x-SL1006;viewid=SL100601.TIF">
+			<Thumbnail src="data:image/jpeg;base64,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
+j0rQ3hWS4bnmaQ9opyCQowPLaiiisXqv/9k=
+" />
+			<Record name="result">
+				<Section name="default">
+					<Field abbrev="sdlhomes_id" searchfield="false" sortfield="false">
+						<Values>
+							<Value>SL1006</Value>
+						</Values>
+						<Label display="on">Record ID</Label>
+					</Field>
+					<Field abbrev="sdlhomes_street_no" searchfield="false" sortfield="false">
+						<Values>
+							<Value>218 W. Bennett</Value>
+						</Values>
+						<Label display="on">Street and No.</Label>
+					</Field>
+					<Empty abbrev="sdlhomes_historic_name" empty="yes">
+						<Label display="on">Historic Name</Label>
+					</Empty>
+					<Empty abbrev="sdlhomes_common_name" empty="yes">
+						<Label display="on">Common Name</Label>
+					</Empty>
+				</Section>
+			</Record>
+		</Snapshot>
+		<Snapshot href="/cgi/i/image/image-idx?c=sdlhomes;entryid=x-SL1101;viewid=SL110101.TIF">
+			<Thumbnail src="data:image/jpeg;base64,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
+ydifWhbinVOnlkkDONs+PSpUqVnVf//Z
+" />
+			<Record name="result">
+				<Section name="default">
+					<Field abbrev="sdlhomes_id" searchfield="false" sortfield="false">
+						<Values>
+							<Value>SL1101</Value>
+						</Values>
+						<Label display="on">Record ID</Label>
+					</Field>
+					<Field abbrev="sdlhomes_street_no" searchfield="false" sortfield="false">
+						<Values>
+							<Value>100 Hall</Value>
+						</Values>
+						<Label display="on">Street and No.</Label>
+					</Field>
+					<Field abbrev="sdlhomes_historic_name" searchfield="false" sortfield="false">
+						<Values>
+							<Value>Schleh</Value>
+						</Values>
+						<Label display="on">Historic Name</Label>
+					</Field>
+					<Empty abbrev="sdlhomes_common_name" empty="yes">
+						<Label display="on">Common Name</Label>
+					</Empty>
+				</Section>
+			</Record>
+		</Snapshot>
+	</Snapshots>
+	<JavaScriptFooterUrl>/i/image/vendor/jquery.equalizecols.js</JavaScriptFooterUrl>
+	<ExtraIECSS test="lt IE 8">/i/image/css/ie7.css</ExtraIECSS>
+	<BannerImage>https://quod.lib.umich.edu/cgi/i/image/api/image/sdlhomes:SL1301:SL130101.TIF/full/res:2/0/native.jpg</BannerImage>
+  <CollDescr>Saline Historic Homes is a collection of photographs from a Historical and Architectural Survey that includes all structures built up to 1944 within the city limits of Saline, Michigan. Conducted in 1994 by Kosky and Glynn Associates, this survey is the result of the City's intent to comply with the Certified Local Government requirements. The objective of the survey was to research, photograph and map all structures built within the City of Saline between 1829 and 1944. The completed project includes a survey card and black and white photograph for each structure, a map of all surveyed structures, and historical and architectural text encompassing the study period.</CollDescr>
+  <CollectionLinks>
+    <Link href="http://saline.lib.mi.us/">Saline District Library</Link>
+    <Link href="http://www.salinehistory.org/">Saline Area Historical Society</Link>
+  </CollectionLinks>
+</Top>

@@ -2,6 +2,11 @@
 
 _site/
 
+# quombat xml/xsl
+samples/qbat
+samples/qui
+samples/index.html
+
 # Logs
 logs
 *.log
