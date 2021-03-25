@@ -4,6 +4,12 @@ BINDIR=`dirname $0`
 cd $BINDIR/../..
 ROOT=$PWD
 
+MATCH=$1
+if [ "$MATCH" = "" ]
+then
+  MATCH="\.xml"
+fi
+
 if [ ! -d "samples/qui" ]
 then
   mkdir samples/qui
@@ -12,7 +18,7 @@ fi
 find samples/qui -type f | xargs rm
 
 cd "./samples/xml"
-find . -type f | egrep "\.xml" | while read xmlfilename
+find . -type f | egrep "$MATCH" | while read xmlfilename
 do
   colldir=`dirname $xmlfilename`
   basename=`basename $xmlfilename .xml`
@@ -22,8 +28,8 @@ do
   cat <<EOF > /tmp/qui.$basename.xsl
 <?xml version="1.0" encoding="UTF-8" ?>
 <xsl:stylesheet version="1.0" xmlns="http://www.w3.org/1999/xhtml" xmlns:xsl="http://www.w3.org/1999/XSL/Transform" xmlns:dlxs="http://dlxs.org" xmlns:qbat="http://dlxs.org/quombat" xmlns:qui="http://dlxs.org/quombat/ui" xmlns:exsl="http://exslt.org/common" extension-element-prefixes="exsl">
-  <xsl:import href="$ROOT/samples/xsl/qui.core.xsl" />
-  <xsl:import href="$ROOT/samples/xsl/qui._social-links.xsl" />
+  <xsl:import href="$ROOT/samples/xsl/qui.base.xsl" />
+  <xsl:import href="$ROOT/samples/xsl/qui.social-links.xsl" />
   <xsl:import href="$ROOT/samples/xsl/qui.$basename.xsl" />
 EOF
 

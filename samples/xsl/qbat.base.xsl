@@ -1,4 +1,4 @@
-<xsl:stylesheet version="1.0" xmlns="http://www.w3.org/1999/xhtml" xmlns:xhtml="http://dlxs.org/quombat/xhtml" xmlns:xsl="http://www.w3.org/1999/XSL/Transform" xmlns:dlxs="http://dlxs.org" xmlns:qui="http://dlxs.org/quombat/ui">
+<xsl:stylesheet version="1.0" xmlns="http://www.w3.org/1999/xhtml" xmlns:xhtml="http://www.w3.org/1999/xhtml" xmlns:xsl="http://www.w3.org/1999/XSL/Transform" xmlns:dlxs="http://dlxs.org" xmlns:qui="http://dlxs.org/quombat/ui">
   <!-- <xsl:output method="html" version="1.0" encoding="utf-8" indent="yes" /> -->
 
   <xsl:output
@@ -14,35 +14,33 @@
   <xsl:template match="/">
     <html>
       <head>
-        <title>FINAL TRANSFORM</title>
+        <title>
+          <xsl:apply-templates select="//qui:head/qui:title" />
+        </title>
         <xsl:apply-templates select="//qui:block[@slot='meta-social']" mode="copy-guts" />
         <link href="https://unpkg.com/@umich-lib/css@v1/dist/umich-lib.css"  rel="stylesheet"/>
-        <link href="../node_modules/digital-collections-style-guide/static/styles.css" />
+        <link href="../../../../static/styles.css" rel="stylesheet" />
 
         <script type="module"  src="https://unpkg.com/@umich-lib/components@v1/dist/umich-lib/umich-lib.esm.js"></script>
         <script nomodule="" src="https://unpkg.com/@umich-lib/components@v1/dist/umich-lib/umich-lib.js"></script>
 
+        <xsl:apply-templates select="//qui:head/qui:block[@slot='meta-social']" />
+
         <style>
-          .grid-cols-sidebar {
-            grid-template-columns: minmax(min-content, 20rem) 1fr;
+          <!-- this should be somewhere else -->
+          body {
+            font-family: var(--font-base-family);
           }
         </style>
+
+        <xsl:call-template name="build-extra-styles" />
+
       </head>
       <body class="mb-8">
         <m-universal-header></m-universal-header>
         <xsl:apply-templates select="//qui:m-website-header" />
 
-        <h1 class="text-xl p-9">
-          <xsl:value-of select="//qui:head/qui:title" />
-        </h1>
-
         <main>
-          <xsl:attribute name="class">
-            <xsl:if test="//qui:sidebar">
-              <xsl:text>grid grid-cols-sidebar gap-2</xsl:text>
-            </xsl:if>
-          </xsl:attribute>
-          <xsl:apply-templates select="//qui:sidebar" />
           <xsl:apply-templates select="//qui:main" />
         </main>
 
@@ -50,10 +48,27 @@
     </html>
   </xsl:template>
 
+  <xsl:template name="build-extra-styles" />
+
   <xsl:template match="qui:m-website-header">
     <m-website-header name="{@name}">
       <xsl:apply-templates select="qui:nav" />
     </m-website-header>
+  </xsl:template>
+
+  <xsl:template match="qui:head/qui:title">
+    <xsl:for-each select="qui:values/qui:value">
+      <xsl:value-of select="." />
+      <xsl:if test="position() &lt; last()">
+        <xsl:text> | </xsl:text>
+      </xsl:if>
+    </xsl:for-each>
+    <xsl:text> | </xsl:text>
+    <xsl:text>University of Michigan Library Digital Collections</xsl:text>
+  </xsl:template>
+
+  <xsl:template match="qui:block">
+    <xsl:apply-templates select="." mode="copy-guts" />
   </xsl:template>
 
   <xsl:template match="qui:nav">
@@ -139,6 +154,12 @@
 
   <xsl:template match="node()" mode="copy-guts">
     <xsl:apply-templates select="*|text()" mode="copy" />
+  </xsl:template>
+
+  <xsl:template match="node()[namespace-uri() = 'http://www.w3.org/1999/xhtml']" mode="copy" priority="99">
+    <xsl:element name="{local-name()}" namespace="http://www.w3.org/1999/xhtml">
+      <xsl:apply-templates select="*|@*|text()" mode="copy" />
+    </xsl:element>
   </xsl:template>
 
   <xsl:template match="node()[namespace-uri() = 'http://dlxs.org/quombat/xhtml']" mode="copy" priority="99">

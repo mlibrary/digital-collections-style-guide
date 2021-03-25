@@ -9,11 +9,18 @@ then
   mkdir samples/qbat
 fi
 
+MATCH=$1
+if [ "$MATCH" = "" ]
+then
+  MATCH="\.xml"
+fi
+
 find samples/qbat -type f | xargs rm
 
 cd "./samples/qui"
-find . -type f | egrep "\.xml" | egrep "index.xml" | while read xmlfilename
+find . -type f | egrep "$MATCH" | while read xmlfilename
 do
+  echo "-- $xmlfilename"
   colldir=`dirname $xmlfilename`
   basename=`basename $xmlfilename .xml`
 
@@ -22,7 +29,7 @@ do
   cat <<EOF > /tmp/qbat.$basename.xsl
 <?xml version="1.0" encoding="UTF-8" ?>
 <xsl:stylesheet version="1.0" xmlns="http://www.w3.org/1999/xhtml" xmlns:xsl="http://www.w3.org/1999/XSL/Transform" xmlns:dlxs="http://dlxs.org" xmlns:qbat="http://dlxs.org/quombat" xmlns:qui="http://dlxs.org/quombat/ui" xmlns:exsl="http://exslt.org/common" extension-element-prefixes="exsl">
-  <xsl:import href="$ROOT/samples/xsl/qbat.core.xsl" />
+  <xsl:import href="$ROOT/samples/xsl/qbat.base.xsl" />
   <xsl:import href="$ROOT/samples/xsl/qbat.$basename.xsl" />
 EOF
 
@@ -78,7 +85,7 @@ do
       <td>$basename</td>
       <td><a href="xml/$collid/$basename.xml">XML</a></td>
       <td><a href="qui/$collid/$basename.xml">QUI</a></td>
-      <td><a href="qbat/$collid/$basename.html">QBAT HTML</a></td>
+      <td><a href="qbat/$collid/$basename/">QBAT HTML</a></td>
     </tr>
 EOF
 done
