@@ -33,6 +33,7 @@
           }
         </style>
 
+        <xsl:call-template name="build-extra-scripts" />
         <xsl:call-template name="build-extra-styles" />
 
       </head>
@@ -48,6 +49,7 @@
     </html>
   </xsl:template>
 
+  <xsl:template name="build-extra-scripts" />
   <xsl:template name="build-extra-styles" />
 
   <xsl:template match="qui:m-website-header">

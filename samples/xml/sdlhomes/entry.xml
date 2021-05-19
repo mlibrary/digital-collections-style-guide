@@ -551,6 +551,9 @@ for items where...</item>
 </DlxsGlobals>
 
 <CollName><Full>Saline Historic Homes</Full><Brief>Saline Historic Homes</Brief></CollName>
+<Publisher>
+  <Value>Saline District Library</Value>
+</Publisher>
 <EntryId>SL0101</EntryId>
 <RestrictStatus>access2</RestrictStatus>
 
@@ -690,6 +693,7 @@ waPidzZMYzjGc8/eiijBBkyRLkt/SKm5ccsflxRRWSijU2bMCBY8defQUUUUKKoG2f/Z
 <Ext>jp2</Ext>
 <MimeType>image/jp2</MimeType>
 </MediaInfo>
+<MiradorConfig mode="multiple" manifest-id="https://quod.lib.umich.edu/cgi/i/image/api/manifest/sdlhomes:SL0101:1" canvas-index="1"/>
 <ImageSizeTool><Level level="4"><Part name="Current">no</Part>
 <Part name="DownloadLink">https://roger.quod.lib.umich.edu/cgi/i/image/image-idx?from=index;rgn1=ic_all;q1=saline%20quadrangle;c=sdlhomes;debug=xml;size=20;chaperone=S-SDLHOMES-X-SL0101%20SL010102.TIF;evl=full-image;quality=4;view=entry;subview=download;cc=sdlhomes;entryid=x-sl0101;viewid=SL010102.TIF;start=1;resnum=2;lastview=thumbnail;lasttype=boolean</Part>
 <Part name="EntryLink">https://roger.quod.lib.umich.edu/cgi/i/image/image-idx?from=index;rgn1=ic_all;q1=saline%20quadrangle;c=sdlhomes;debug=xml;size=20;chaperone=S-SDLHOMES-X-SL0101%20SL010102.TIF;evl=full-image;quality=4;view=entry;subview=detail;cc=sdlhomes;entryid=x-sl0101;viewid=SL010102.TIF;start=1;resnum=2;lastview=thumbnail;lasttype=boolean</Part>

@@ -1,5 +1,25 @@
 <xsl:stylesheet version="1.0" xmlns="http://www.w3.org/1999/xhtml" xmlns:xhtml="http://dlxs.org/quombat/xhtml" xmlns:xsl="http://www.w3.org/1999/XSL/Transform" xmlns:dlxs="http://dlxs.org" xmlns:qui="http://dlxs.org/quombat/ui">
 
+  <xsl:template name="build-extra-scripts">
+    <script src="https://unpkg.com/mirador@latest/dist/mirador.min.js"></script>
+    <script src="/samples/js/entry.js"></script>
+  </xsl:template>
+
+  <xsl:template name="build-extra-styles">
+    <xsl:comment>DUBIOUS EXCEPTIONS</xsl:comment>
+    <style>
+      .viewer {
+        width: 98vw;
+        height: 80vh;
+        margin: 1rem auto;
+        position: relative;
+        border: 0;
+        display: block;
+        box-sizing: border-box;
+      }
+    </style>
+  </xsl:template>
+
   <xsl:template match="qui:main">
 
     <xsl:apply-templates select="qui:nav" />
@@ -37,7 +57,19 @@
   </xsl:template>
 
   <xsl:template name="build-asset-viewer">
-    <div style="width: 80vw; height: 60vw; background: #ddd; border: 1px solid black">
+    <xsl:variable name="viewer" select="//qui:viewer" />
+    <iframe id="viewer" class="viewer" allow="fullscreen" src="https://roger.quod.lib.umich.edu/cgi/i/image/api/embed/{$viewer/@collid}:{$viewer/@m_id}:{$viewer/@m_iid}"></iframe>
+  </xsl:template>
+
+  <xsl:template name="build-asset-viewer--inline">
+    <xsl:variable name="viewer" select="//qui:viewer" />
+    <div 
+      id="viewer"
+      class="viewer"
+      data-manifest-id="{$viewer/@manifest-id}" 
+      data-canvas-index="{$viewer/@canvas-index}"
+      data-provider="{$viewer/@provider}"
+      data-mode="{$viewer/@mode}">
     </div>
   </xsl:template>
 
