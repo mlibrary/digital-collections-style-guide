@@ -52,13 +52,18 @@
   </xsl:template>
 
   <xsl:template name="build-asset-viewer-configuration">
-    <qui:asset-configuration
-      host="{//MediaInfo/MediaHost}"
+    <xsl:variable name="config" select="//MiradorConfig" />
+    <xsl:variable name="publisher" select="//Publisher/Value" />
+    <qui:viewer
+      manifest-id="{$config/@manifest-id}"
+      canvas-index="{$config/@canvas-index}"
+      mode="{$config/@mode}"
       auth-check="{//MediaInfo/AuthCheck/@allowed}"
       mimetype="{//MediaInfo/mimetype}"
       width="{//MediaInfo/width}"
       height="{//MediaInfo/height}"
       levels="{//MediaInfo/Levels}"
+      collid="{//MediaInfo/ic_collid}"
       m_id="{//MediaInfo/m_id}"
       m_iid="{//MediaInfo/m_iid}" />
   </xsl:template>
