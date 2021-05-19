@@ -1,97 +1,267 @@
-<!doctype html>
+<!DOCTYPE html>
 <html lang="en">
   <head>
-    <meta charset="utf-8"/>
-    <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>Digital Collections Workshop — University of Michigan Library</title>
-    <meta name="description" content="{{ description }}"/>
+    <meta name="description" content="{{ description }}" />
 
     <!-- Social sharing meta -->
-    <meta property="og:url" name="twitter:url" content="https://design-system.lib.umich.edu{{ page.url }}">
-    <meta property="og:title" name="twitter:title"  content="{{ title }} | Design System | University of Michigan Library"/>
-    <meta property="og:description" name="twitter:description"  content="{{ description }}"/>
-    <meta property="og:image" name="twitter:image"  content="{{ site.cloudinary_url }}/image/upload/c_fill,g_faces,h_630,w_1200/l_text:Crimson%20Text_160_center:{{ title }},co_rgb:334354,c_fit/ds_share_bg.png"/>
-    <meta property="og:image:alt" name="twitter:image:alt"  content="{{ title }}"/>
-    <meta property="og:site_name" content="Design System | University of Michigan Library">
-    <meta name="twitter:card" content="summary_large_image"/>
+    <meta
+      property="og:url"
+      name="twitter:url"
+      content="https://design-system.lib.umich.edu{{ page.url }}"
+    />
+    <meta
+      property="og:title"
+      name="twitter:title"
+      content="{{ title }} | Design System | University of Michigan Library"
+    />
+    <meta
+      property="og:description"
+      name="twitter:description"
+      content="{{ description }}"
+    />
+    <meta
+      property="og:image"
+      name="twitter:image"
+      content="{{ site.cloudinary_url }}/image/upload/c_fill,g_faces,h_630,w_1200/l_text:Crimson%20Text_160_center:{{ title }},co_rgb:334354,c_fit/ds_share_bg.png"
+    />
+    <meta
+      property="og:image:alt"
+      name="twitter:image:alt"
+      content="{{ title }}"
+    />
+    <meta
+      property="og:site_name"
+      content="Design System | University of Michigan Library"
+    />
+    <meta name="twitter:card" content="summary_large_image" />
 
-    <link rel="icon" href="/static/images/favicon-32x32.png" type="image/png"/>
-    
-    <link href="https://unpkg.com/@umich-lib/css@v1/dist/umich-lib.css" rel="stylesheet"/>
+    <link rel="icon" href="/static/images/favicon-32x32.png" type="image/png" />
+
+    <link
+      href="https://unpkg.com/@umich-lib/css@v1/dist/umich-lib.css"
+      rel="stylesheet"
+    />
     <link href="/static/styles.css" rel="stylesheet" />
 
-    <script type="module" src="https://unpkg.com/@umich-lib/components@v1/dist/umich-lib/umich-lib.esm.js"></script>
-    <script nomodule src="https://unpkg.com/@umich-lib/components@v1/dist/umich-lib/umich-lib.js"></script>
-
+    <script
+      type="module"
+      src="https://unpkg.com/@umich-lib/components@v1/dist/umich-lib/umich-lib.esm.js"
+    ></script>
+    <script
+      nomodule
+      src="https://unpkg.com/@umich-lib/components@v1/dist/umich-lib/umich-lib.js"
+    ></script>
   </head>
-  <body>
-    <m-universal-header></m-universal-header>
-    <m-website-header name="Digital Collections"></m-website-header>
+
+  <body class="[ font-base-family ]">
+    <section class="border-bottom">
+      <m-universal-header></m-universal-header>
+      <m-website-header name="Digital Collections"></m-website-header>
+    </section>
 
     <main class="viewport-container">
-      <header aria-labelledby="page-title">
-      <h1 id="page-title">409 N. Ann Arbor St.</h1>
       <m-roger-eyes>[the content for why you're here, probably]</m-roger-eyes>
-      
-      <nav aria-labelledby="results-nav-heading">
-        <h2 id="results-nav-heading" class="visually-hidden">Results navigation</h2>
+
+      <section aria-labelledby="results-nav-heading">
+        <h2 id="results-nav-heading" class="visually-hidden">
+          Results navigation
+        </h2>
         <a href="">Back to search results</a>
-
-        <p>1 of 32 <a href="/">Next</a></p>
-      </nav>
-      </header>
-      
-      <section class="record-container">
-        <dl class="record">
-          <dt>Street and No.</dt>
-          <dd>409 N. Ann Arbor St.</dd>
-          <dt>Municipal Unit</dt>
-          <dd>Saline</dd>
-          <dt>County</dt>
-          <dd>Washtenaw</dd>
-          <dt>Original Usage</dt>
-          <dd>Residence</dd>
-          <dt>Present Usage</dt>
-          <dd>Residence</dd>
-          <dt>Ownership</dt>
-          <dd>Wiegand, James H. II</dd>
-          <dt>Photo Negative No.</dt>
-          <dd>17:17</dd>
-          <dt>Photo Date</dt>
-          <dd>January, 1994</dd>
-          <dt>Photo View</dt>
-          <dd>South and east facades taken facing northwest</dd>
-          <dt>Description</dt>
-          <dd>One and a half story, side gabled, Craftsman style house. Gabled dormer on center front facade. Full width porch with massive shingled support piers resting on a solid balustrade. Rectangular shed roof bay on south facade. Variety of window configurations: paired dormers are five vertical panes over one; bay windows are four over one; soe on over one; and center front has one large pane with two small rectangular lights above. Barn red wood shingles on exterior facade. Brick chimney on north facade. One and a half car, gable front garage at rear.</dd>
-          <dt>Date of Construction</dt>
-          <dd>1914</dd>
-          <dt>Context</dt>
-          <dd>The house was probably build by Orrin Briggs around 1914. The 1912 Sanborn map shows that Orrin Briggs had a planning mill on the property to the south (Orrin Parsons owned the planning before that, as early as 1988). Mr. Briggs lived in the house until his death in 1935, then his wife, Francis, lived in it until 1947. Mr. Briggs also owned the property to the north. Other owners: Charles Burkhardt in 1960; DAvid Harwood and Susan McDonald; and James H. Wiegand II 1994.</dd>
-          <dt>Bibliographic Reference</dt>
-          <dd>City Directories: 1878, 1894, 1899, 1912, 1916, 1920, 1926, 1941, 1945. Assessor's files: 1947 and current; U.S. Census:
-          1910, 1920. Sanborn Maps: 1888, 1893, 1899, 1912, 1921, 1929; Tax Rolls: 1931 and 1935.</dd>
-          <dt>From Source</dt>
-          <dd>MICHIGAN DEPARTMENT OF STATE KG 105</dd>
-          <dt>Survey Date</dt>
-          <dd>May, 1994</dd>
-          <dt>Surveyor</dt>
-          <dd>K. Glynn & S. Kosky</dd>
-          <dt>Recorder Date</dt>
-          <dd>April, 1994</dd>
-          <dt>Card No.</dt>
-          <dd>105</dd>
-        </dl>
       </section>
 
-      <section class="action-panel">
-        <h3>Actions</h2>
-        <button class="button button--loud">Download</button>
-        <ul>
-          <li>Save to Favorites</li>
-          <li>Copy Link</li>
-        </ul>
-
+      <section class="[ breadcrumb ]">
+        <nav aria-label="Breadcrumb">
+          <ol>
+            <li>
+              <a href="#"> Saline Historic Homes </a>
+              <svg
+                height="18px"
+                viewBox="0 0 20 20"
+                width="12px"
+                fill="#06080a"
+                aria-hidden="true"
+              >
+                <g>
+                  <g><rect fill="none" height="20" width="20" /></g>
+                </g>
+                <g>
+                  <polygon
+                    points="4.59,16.59 6,18 14,10 6,2 4.59,3.41 11.17,10"
+                  />
+                </g>
+              </svg>
+            </li>
+            <li>
+              <a href="#"> Search Results </a>
+              <svg
+                height="18px"
+                viewBox="0 0 20 20"
+                width="12px"
+                fill="#06080a"
+                aria-hidden="true"
+              >
+                <g>
+                  <g><rect fill="none" height="20" width="20" /></g>
+                </g>
+                <g>
+                  <polygon
+                    points="4.59,16.59 6,18 14,10 6,2 4.59,3.41 11.17,10"
+                  />
+                </g>
+              </svg>
+            </li>
+            <li>
+              <a href="./index.html" aria-current="page" class="active-link">
+                409. N. Ann Arbor Street
+              </a>
+            </li>
+          </ol>
+        </nav>
+        <p class="color-neutral-300">
+          1 of 32 <a href="/">Next</a
+          ><svg
+            height="18px"
+            viewBox="0 0 20 20"
+            width="12px"
+            fill="#06080a"
+            aria-hidden="true"
+          >
+            <g>
+              <g><rect fill="none" height="20" width="20" /></g>
+            </g>
+            <g>
+              <polygon points="4.59,16.59 6,18 14,10 6,2 4.59,3.41 11.17,10" />
+            </g>
+          </svg>
+        </p>
       </section>
+
+      <section class="hero">
+        <img src="img/409.png" alt="409 N. Ann Arbor Street House photograph" />
+      </section>
+      <h1 class="collection-heading">409 N. Ann Arbor St.</h1>
+      <div class="sidebar">
+        <section class="record-container">
+          <h3>About this home</h3>
+          <dl class="record">
+            <dt>Street and No.</dt>
+            <dd>409 N. Ann Arbor St.</dd>
+            <dt>Municipal Unit</dt>
+            <dd>Saline</dd>
+            <dt>County</dt>
+            <dd>Washtenaw</dd>
+            <dt>Original Usage</dt>
+            <dd>Residence</dd>
+            <dt>Present Usage</dt>
+            <dd>Residence</dd>
+            <dt>Ownership</dt>
+            <dd>Wiegand, James H. II</dd>
+          </dl>
+          <h3>About this photograph</h3>
+
+          <dl class="record">
+            <dt>Photo Negative No.</dt>
+            <dd>17:17</dd>
+            <dt>Photo Date</dt>
+            <dd>January, 1994</dd>
+            <dt>Photo View</dt>
+            <dd>South and east facades taken facing northwest</dd>
+            <dt>Description</dt>
+            <dd>
+              One and a half story, side gabled, Craftsman style house. Gabled
+              dormer on center front facade. Full width porch with massive
+              shingled support piers resting on a solid balustrade. Rectangular
+              shed roof bay on south facade. Variety of window configurations:
+              paired dormers are five vertical panes over one; bay windows are
+              four over one; soe on over one; and center front has one large
+              pane with two small rectangular lights above. Barn red wood
+              shingles on exterior facade. Brick chimney on north facade. One
+              and a half car, gable front garage at rear.
+            </dd>
+          </dl>
+          <h3>About the construction</h3>
+          <dl class="record">
+            <dt>Date of Construction</dt>
+            <dd>1914</dd>
+            <dt>Context</dt>
+            <dd>
+              The house was probably build by Orrin Briggs around 1914. The 1912
+              Sanborn map shows that Orrin Briggs had a planning mill on the
+              property to the south (Orrin Parsons owned the planning before
+              that, as early as 1988). Mr. Briggs lived in the house until his
+              death in 1935, then his wife, Francis, lived in it until 1947. Mr.
+              Briggs also owned the property to the north. Other owners: Charles
+              Burkhardt in 1960; DAvid Harwood and Susan McDonald; and James H.
+              Wiegand II 1994.
+            </dd>
+            <dt>Bibliographic Reference</dt>
+            <dd>
+              City Directories: 1878, 1894, 1899, 1912, 1916, 1920, 1926, 1941,
+              1945. Assessor's files: 1947 and current; U.S. Census: 1910, 1920.
+              Sanborn Maps: 1888, 1893, 1899, 1912, 1921, 1929; Tax Rolls: 1931
+              and 1935.
+            </dd>
+            <dt>From Source</dt>
+            <dd>MICHIGAN DEPARTMENT OF STATE KG 105</dd>
+            <dt>Survey Date</dt>
+            <dd>May, 1994</dd>
+            <dt>Surveyor</dt>
+            <dd>K. Glynn & S. Kosky</dd>
+            <dt>Recorder Date</dt>
+            <dd>April, 1994</dd>
+            <dt>Card No.</dt>
+            <dd>105</dd>
+          </dl>
+
+          <article>
+            <h3>Rights and Permissions</h3>
+            <p>
+              The University of Michigan Library provides access to these
+              materials for educational and research purposes. These materials
+              may be under copyright. If you decide to use any of these
+              materials, you are responsible for making your own legal
+              assessment and securing any necessary permission. If you have
+              questions about the collection, please contact Saline Digital
+              Collections help. If you have concerns about the inclusion of an
+              item in this collection, please contact Library Information
+              Technology.
+            </p>
+          </article>
+        </section>
+
+        <div>
+          <section class="action-panel">
+            <div class="[ border-bottom ]">
+              <h3>Actions</h3>
+              <button class="button button--loud">Download</button>
+              <ul>
+                <li>Save to Favorites</li>
+                <li>Copy Link</li>
+              </ul>
+            </div>
+            <div class="[ border-bottom ]">
+              <!-- This could be a block, first child has border, last child doesn't -->
+              <p class="[ bold ]">Collection</p>
+              <a href="#" class="[ block mb1 ]">Saline Historic Homes</a>
+            </div>
+            <div class="[ border-bottom ]">
+              <p class="[ bold ]">Image Size</p>
+              <p>2024 x 1472</p>
+            </div>
+            <div class="[ border-bottom ]">
+              <p class="[ bold ]">Record</p>
+              <p>SL1415</p>
+            </div>
+            <div>
+              <p class="[ bold ]">Bookmark</p>
+              <p class="border">quod link but not a link</p>
+            </div>
+          </section>
+        </div>
+      </div>
     </main>
 
     <!--
