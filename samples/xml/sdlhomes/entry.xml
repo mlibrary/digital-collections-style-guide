@@ -712,8 +712,39 @@ waPidzZMYzjGc8/eiijBBkyRLkt/SKm5ccsflxRRWSijU2bMCBY8defQUUUUKKoG2f/Z
 <Part name="MediaLink">/cgi/i/image/api/image/sdlhomes:SL0101:SL010102.TIF/full/res:0/0/native.jpg</Part><LevelWidth>2424</LevelWidth><LevelHeight>1664</LevelHeight><LevelMaxDim>2424</LevelMaxDim></Level><MaxWidth>2424</MaxWidth><MaxHeight>1664</MaxHeight></ImageSizeTool>
 <RevertSizeTool><!-- cannot revert until image has been zoomed. --></RevertSizeTool>
 <MediaEquivsTool></MediaEquivsTool>
-<Record name="entry"><Section name="About this home" class="about_this_home"><Field abbrev="sdlhomes_historic_name" searchfield="false" sortfield="false"><Values><Value>Saline Post Office</Value></Values><Label display="on">Historic Name</Label></Field><Field abbrev="sdlhomes_usgs_map" searchfield="true" sortfield="false"><Values><Value><Highlight searchfield="true" class="hilite1" seq="1">Saline Quadrangle</Highlight></Value></Values><Label display="on">USGS Map</Label></Field><Field abbrev="sdlhomes_common_name" searchfield="false" sortfield="false"><Values><Value>I&apos;ll Fix Dinner Tonight</Value></Values><Label display="on">Common Name</Label></Field><Field abbrev="sdlhomes_street_no" searchfield="false" sortfield="false"><Values><Value>101 N. Ann Arbor St.</Value></Values><Label display="on">Street and No.</Label></Field><Field abbrev="sdlhomes_municipal_unit" searchfield="false" sortfield="false"><Values><Value>Saline</Value></Values><Label display="on">Municipal Unit</Label></Field><Field abbrev="sdlhomes_county" searchfield="false" sortfield="false"><Values><Value>Washtenaw</Value></Values><Label display="on">County</Label></Field><Field abbrev="sdlhomes_orig_usage" searchfield="false" sortfield="false"><Values><Value>Post Office</Value></Values><Label display="on">Original Usage</Label></Field><Field abbrev="sdlhomes_present_usage" searchfield="false" sortfield="false"><Values><Value>Commercial</Value></Values><Label display="on">Present Usage</Label></Field><Field abbrev="sdlhomes_ownership" searchfield="false" sortfield="false"><Values><Value>Larder, Dr. John S.</Value></Values><Label display="on">Ownership</Label></Field></Section><Section name="About this photograph" class="about_this_photograph"><Field abbrev="sdlhomes_photo_neg_no" searchfield="false" sortfield="false"><Values><Value>20:18</Value></Values><Label display="on">Photo Negative No.</Label></Field><Field abbrev="sdlhomes_photo_date" searchfield="false" sortfield="false"><Values><Value>January, 1994</Value></Values><Label display="on">Photo Date</Label></Field><Field abbrev="sdlhomes_photo_view" searchfield="false" sortfield="false"><Values><Value>East facade taken facing west</Value></Values><Label display="on">Photo View</Label></Field></Section><Section name="About the construction" class="about_the_construction"><Field abbrev="sdlhomes_desc" searchfield="false" sortfield="false"><Values><Value>One story, red brick building. There is a thin band of plain concrete along cornice line. Recessed entry on south and north ends of storefronts. Two large windows beside each door with a strip of windows above. There is another large window in the recess. 101, the barber shop, has a projecting sign from above the door, and a traditional barber pole alongside the door. 103, &quot;I&apos;ll Fix Dinner Tonight&quot; has an awning which obscures the windows.</Value></Values><Label display="on">Description</Label></Field><Field abbrev="sdlhomes_date_construction" searchfield="false" sortfield="false"><Values><Value>1916</Value></Values><Label display="on">Date Of Construction</Label></Field><Field abbrev="sdlhomes_context" searchfield="false" sortfield="false"><Values><Value>Completed shortly after the new Library at 105 N. Ann Arbor St., this was the first building built specifically to function as a Post Office. Both sides of the building were used as the Post Office. It was then that locked boxes came into general use for the first time. The Post Office was open on Sunday morning when rural patrons coming in to church could pick up their mail. The Post Office remained in this building until 1939.</Value></Values><Label display="on">Context</Label></Field><Field abbrev="sdlhomes_ref" searchfield="false" sortfield="false"><Values><Value>City Directories: 1878, 1894, 1899, 1912, 1916, 1920, 1926, 1941, 1945. Assessor&apos;s files: 1947 and current; U.S. Census: 1910, 1920. Sanborn Maps: 1888, 1893, 1899, 1912, 1921; Saline Observer: February 16, 1939; Proctor, &quot;Old Saline Village&quot;.</Value></Values><Label display="on">Bibliographic Reference</Label></Field><Field abbrev="sdlhomes_form_source" searchfield="false" sortfield="false"><Values><Value>MICHIGAN DEPARTMENT OF STATE KG 52</Value></Values><Label display="on">Form Source</Label></Field></Section><Section name="About this record"><Field abbrev="sdlhomes_survey_dt" searchfield="false" sortfield="false"><Values><Value>May, 1994</Value></Values><Label display="on">Survey Date</Label></Field><Field abbrev="sdlhomes_surveyor" searchfield="false" sortfield="false"><Values><Value>K. Glynn &amp; S. Kosky</Value></Values><Label display="on">Surveyor</Label></Field><Field abbrev="sdlhomes_recorder_dt" searchfield="false" sortfield="false"><Values><Value>April, 1994</Value></Values><Label display="on">Recorder Date</Label></Field><Field abbrev="sdlhomes_card_no" searchfield="false" sortfield="false"><Values><Value>52</Value></Values><Label display="on">Card No.</Label></Field><Field abbrev="dlxs_ri" searchfield="false" sortfield="false"><Values><Value>The University of Michigan Library provides access to these materials for educational and research purposes. These materials may be under copyright. If you decide to use any of these materials, you are responsible for making your own legal assessment and securing any necessary permission. If you have questions about the collection, please contact <a href="mailto:sdlphotos-help@umich.edu">Saline Digital Collections help</a>. If you have concerns about the inclusion of an item in this collection, please contact <a href="mailto:LibraryIT-info@umich.edu">Library Information Technology</a>.</Value></Values><Label display="on">Copyright</Label></Field></Section></Record>
-<Record name="special"><Section name="default"><Field abbrev="dlxs_ma" searchfield="false" sortfield="false"><Values><Value>101 N. Ann Arbor St.</Value><Value>Saline Post Office</Value></Values><Label display="on">Title</Label></Field><Field abbrev="dc_ti" searchfield="false" sortfield="false"><Values><Value>101 N. Ann Arbor St.</Value><Value>Saline Post Office</Value><Value>I&apos;ll Fix Dinner Tonight</Value></Values><Label display="on">Title</Label></Field><Field abbrev="dc_de" searchfield="false" sortfield="false"><Values><Value>East facade taken facing west</Value><Value>One story, red brick building. There is a thin band of plain concrete along cornice line. Recessed entry on south and north ends of storefronts. Two large windows beside each door with a strip of windows above. There is another large window in the recess. 101, the barber shop, has a projecting sign from above the door, and a traditional barber pole alongside the door. 103, &quot;I&apos;ll Fix Dinner Tonight&quot; has an awning which obscures the windows.</Value></Values><Label display="on">Description</Label></Field></Section></Record>
+<Record name="entry"><Section name="About this home" class="about_this_home"><Field abbrev="sdlhomes_historic_name" searchfield="false" sortfield="false"><Values><Value>Saline Post Office</Value></Values><Label display="on">Historic Name</Label></Field><Field abbrev="sdlhomes_usgs_map" searchfield="true" sortfield="false"><Values><Value><Highlight searchfield="true" class="hilite1" seq="1">Saline Quadrangle</Highlight></Value></Values><Label display="on">USGS Map</Label></Field><Field abbrev="sdlhomes_common_name" searchfield="false" sortfield="false"><Values><Value>I&apos;ll Fix Dinner Tonight</Value></Values><Label display="on">Common Name</Label></Field><Field abbrev="sdlhomes_street_no" searchfield="false" sortfield="false"><Values><Value>101 N. Ann Arbor St.</Value></Values><Label display="on">Street and No.</Label></Field><Field abbrev="sdlhomes_municipal_unit" searchfield="false" sortfield="false"><Values><Value>Saline</Value></Values><Label display="on">Municipal Unit</Label></Field><Field abbrev="sdlhomes_county" searchfield="false" sortfield="false"><Values><Value>Washtenaw</Value></Values><Label display="on">County</Label></Field><Field abbrev="sdlhomes_orig_usage" searchfield="false" sortfield="false"><Values><Value>Post Office</Value></Values><Label display="on">Original Usage</Label></Field><Field abbrev="sdlhomes_present_usage" searchfield="false" sortfield="false"><Values><Value>Commercial</Value></Values><Label display="on">Present Usage</Label></Field><Field abbrev="sdlhomes_ownership" searchfield="false" sortfield="false"><Values><Value>Larder, Dr. John S.</Value></Values><Label display="on">Ownership</Label></Field></Section><Section name="About this photograph" class="about_this_photograph"><Field abbrev="sdlhomes_photo_neg_no" searchfield="false" sortfield="false"><Values><Value>20:18</Value></Values><Label display="on">Photo Negative No.</Label></Field><Field abbrev="sdlhomes_photo_date" searchfield="false" sortfield="false"><Values><Value>January, 1994</Value></Values><Label display="on">Photo Date</Label></Field><Field abbrev="sdlhomes_photo_view" searchfield="false" sortfield="false"><Values><Value>East facade taken facing west</Value></Values><Label display="on">Photo View</Label></Field></Section><Section name="About the construction" class="about_the_construction"><Field abbrev="sdlhomes_desc" searchfield="false" sortfield="false"><Values><Value>One story, red brick building. There is a thin band of plain concrete along cornice line. Recessed entry on south and north ends of storefronts. Two large windows beside each door with a strip of windows above. There is another large window in the recess. 101, the barber shop, has a projecting sign from above the door, and a traditional barber pole alongside the door. 103, &quot;I&apos;ll Fix Dinner Tonight&quot; has an awning which obscures the windows.</Value></Values><Label display="on">Description</Label></Field><Field abbrev="sdlhomes_date_construction" searchfield="false" sortfield="false"><Values><Value>1916</Value></Values><Label display="on">Date Of Construction</Label></Field><Field abbrev="sdlhomes_context" searchfield="false" sortfield="false"><Values><Value>Completed shortly after the new Library at 105 N. Ann Arbor St., this was the first building built specifically to function as a Post Office. Both sides of the building were used as the Post Office. It was then that locked boxes came into general use for the first time. The Post Office was open on Sunday morning when rural patrons coming in to church could pick up their mail. The Post Office remained in this building until 1939.</Value></Values><Label display="on">Context</Label></Field><Field abbrev="sdlhomes_ref" searchfield="false" sortfield="false"><Values><Value>City Directories: 1878, 1894, 1899, 1912, 1916, 1920, 1926, 1941, 1945. Assessor&apos;s files: 1947 and current; U.S. Census: 1910, 1920. Sanborn Maps: 1888, 1893, 1899, 1912, 1921; Saline Observer: February 16, 1939; Proctor, &quot;Old Saline Village&quot;.</Value></Values><Label display="on">Bibliographic Reference</Label></Field><Field abbrev="sdlhomes_form_source" searchfield="false" sortfield="false"><Values><Value>MICHIGAN DEPARTMENT OF STATE KG 52</Value></Values><Label display="on">Form Source</Label></Field></Section><Section name="About this record" class="about_this_record"><Field abbrev="sdlhomes_survey_dt" searchfield="false" sortfield="false"><Values><Value>May, 1994</Value></Values><Label display="on">Survey Date</Label></Field><Field abbrev="sdlhomes_surveyor" searchfield="false" sortfield="false"><Values><Value>K. Glynn &amp; S. Kosky</Value></Values><Label display="on">Surveyor</Label></Field><Field abbrev="sdlhomes_recorder_dt" searchfield="false" sortfield="false"><Values><Value>April, 1994</Value></Values><Label display="on">Recorder Date</Label></Field><Field abbrev="sdlhomes_card_no" searchfield="false" sortfield="false"><Values><Value>52</Value></Values><Label display="on">Card No.</Label></Field><Field abbrev="dlxs_ri" searchfield="false" sortfield="false"><Values><Value>The University of Michigan Library provides access to these materials for educational and research purposes. These materials may be under copyright. If you decide to use any of these materials, you are responsible for making your own legal assessment and securing any necessary permission. If you have questions about the collection, please contact <a href="mailto:sdlphotos-help@umich.edu">Saline Digital Collections help</a>. If you have concerns about the inclusion of an item in this collection, please contact <a href="mailto:LibraryIT-info@umich.edu">Library Information Technology</a>.</Value></Values><Label display="on">Copyright</Label></Field></Section></Record>
+<Record name="special">
+  <Section name="default">
+    <Field abbrev="dlxs_ma" searchfield="false" sortfield="false">
+      <Values>
+        <Value>101 N. Ann Arbor St.</Value>
+        <Value>Saline Post Office</Value>
+      </Values>
+      <Label display="on">Title</Label>
+    </Field>
+    <Field abbrev="dc_ti" searchfield="false" sortfield="false">
+      <Values>
+        <Value>101 N. Ann Arbor St.</Value>
+        <Value>Saline Post Office</Value>
+        <Value>I'll Fix Dinner Tonight</Value>
+      </Values>
+      <Label display="on">Title</Label>
+    </Field>
+    <Field abbrev="dc_de" searchfield="false" sortfield="false">
+      <Values>
+        <Value>East facade taken facing west</Value>
+        <Value>One story, red brick building. There is a thin band of plain concrete along cornice line. Recessed entry on south and north ends of storefronts. Two large windows beside each door with a strip of windows above. There is another large window in the recess. 101, the barber shop, has a projecting sign from above the door, and a traditional barber pole alongside the door. 103, "I'll Fix Dinner Tonight" has an awning which obscures the windows.</Value>
+      </Values>
+      <Label display="on">Description</Label>
+    </Field>
+    <Field abbrev="dlxs_catalog" searchfield="false" sortfield="false">
+      <Values>
+        <Value>004922831</Value>
+      </Values>
+      <Label display="on">dlxs_catalog</Label>
+    </Field>
+  </Section>
+</Record>
 <MediaDownloadLink><URL name="mediadownloadlink">/cgi/i/image/api/image/sdlhomes:SL0101:SL010102.TIF/full/res:0/0/native.jpg?attachment=1</URL><Filename>SL010102_sdlhomes.JPG</Filename></MediaDownloadLink>
 
 <inserttextentryinfo><div><!-- entryinfo.txt is a file that is inserted into entry.xml by the
@@ -864,8 +895,111 @@ XCEKh7kbvohCINyV9gEIQZch39z7IQhB/9k=
 </View>
 </RelatedViews>
 
-<Portfolios type="private"></Portfolios>
-<Portfolios type="public"></Portfolios>
+<Portfolios type="private">
+  <Portfolio id="49069670">
+    <Field name="bbagname" e="00%20UX%20Research">00 UX Research</Field>
+    <Field name="action">
+      <Action type="open">
+        <Url>https://quod.lib.umich.edu/cgi/i/image/image-idx?type=bbaglist;view=bbthumbnail;bbdbid=49069670</Url>
+      </Action>
+      <Action type="bbexportprep">
+        <Url>https://quod.lib.umich.edu/cgi/i/image/image-idx?bbdbid=49069670;page=bbexportprep</Url>
+      </Action>
+      <Action type="bbdel">
+        <Url>https://quod.lib.umich.edu/cgi/i/image/image-idx?bbdbid=49069670;page=bbdelconfirm</Url>
+      </Action>
+      <Action type="bbeditform">
+        <Url>https://quod.lib.umich.edu/cgi/i/image/image-idx?bbdbid=49069670;page=bbeditform</Url>
+      </Action>
+    </Field>
+    <Field name="itemcount">2</Field>
+    <Field name="shared">
+      <Public>0</Public>
+      <Action type="switchpublic">
+        <Url>
+          <Url>https://quod.lib.umich.edu/cgi/i/image/image-idx?type=bbaglist;view=bbthumbnail;bbdbid=49069670;bbaction=bbopen.makepublic</Url>
+        </Url>
+      </Action>
+    </Field>
+    <Field name="username">roger</Field>
+    <Field name="modified">2021-05-20 13:49:52</Field>
+    <Field name="modified_display"/>
+  </Portfolio>
+</Portfolios>
+<Portfolios type="public">
+  <Portfolio id="1056754085">
+    <Field name="bbagname" e="0%20-%20Aguilera-Mellado%2C%20f16%20-%20Spanish%20Avant%20Garde">0 - Aguilera-Mellado, f16 - Spanish Avant Garde</Field>
+    <Field name="action">
+      <Action type="open">
+        <Url>https://quod.lib.umich.edu/cgi/i/image/image-idx?type=bbaglist;view=bbthumbnail;bbdbid=1056754085</Url>
+      </Action>
+      <Action type="bbexportprep">
+        <Url>https://quod.lib.umich.edu/cgi/i/image/image-idx?bbdbid=1056754085;page=bbexportprep</Url>
+      </Action>
+    </Field>
+    <Field name="itemcount">23</Field>
+    <Field name="shared">
+      <Public>1</Public>
+    </Field>
+    <Field name="username">dchoberk</Field>
+    <Field name="modified">2016-10-17 13:32:01</Field>
+    <Field name="modified_display"/>
+  </Portfolio>
+  <Portfolio id="1012929674">
+    <Field name="bbagname" e="Catalan%20studies">Catalan studies</Field>
+    <Field name="action">
+      <Action type="open">
+        <Url>https://quod.lib.umich.edu/cgi/i/image/image-idx?type=bbaglist;view=bbthumbnail;bbdbid=1012929674</Url>
+      </Action>
+      <Action type="bbexportprep">
+        <Url>https://quod.lib.umich.edu/cgi/i/image/image-idx?bbdbid=1012929674;page=bbexportprep</Url>
+      </Action>
+    </Field>
+    <Field name="itemcount">18</Field>
+    <Field name="shared">
+      <Public>1</Public>
+    </Field>
+    <Field name="username">dchoberk mstang kholihan eveba rnhuff hanmcm lgialane ralomi apassiak</Field>
+    <Field name="modified">2016-09-13 15:27:51</Field>
+    <Field name="modified_display"/>
+  </Portfolio>
+  <Portfolio id="1691949311">
+    <Field name="bbagname" e="Spanish%20avant-garde">Spanish avant-garde</Field>
+    <Field name="action">
+      <Action type="open">
+        <Url>https://quod.lib.umich.edu/cgi/i/image/image-idx?type=bbaglist;view=bbthumbnail;bbdbid=1691949311</Url>
+      </Action>
+      <Action type="bbexportprep">
+        <Url>https://quod.lib.umich.edu/cgi/i/image/image-idx?bbdbid=1691949311;page=bbexportprep</Url>
+      </Action>
+    </Field>
+    <Field name="itemcount">122</Field>
+    <Field name="shared">
+      <Public>1</Public>
+    </Field>
+    <Field name="username">kholihan dchoberk mstang eveba rnhuff hanmcm lgialane ralomi apassiak</Field>
+    <Field name="modified">2016-09-13 15:27:51</Field>
+    <Field name="modified_display"/>
+  </Portfolio>
+  <Portfolio id="149160177">
+    <Field name="bbagname" e="Time%2C%20Finitude%2C%20and%20Violence%20in%20Early%2020th%20Century%20Spain">Time, Finitude, and Violence in Early 20th Century Spain</Field>
+    <Field name="action">
+      <Action type="open">
+        <Url>https://quod.lib.umich.edu/cgi/i/image/image-idx?type=bbaglist;view=bbthumbnail;bbdbid=149160177</Url>
+      </Action>
+      <Action type="bbexportprep">
+        <Url>https://quod.lib.umich.edu/cgi/i/image/image-idx?bbdbid=149160177;page=bbexportprep</Url>
+      </Action>
+    </Field>
+    <Field name="itemcount">20</Field>
+    <Field name="shared">
+      <Public>1</Public>
+    </Field>
+    <Field name="username">paligera</Field>
+    <Field name="modified">2016-09-30 13:30:20</Field>
+    <Field name="modified_display"/>
+  </Portfolio>
+</Portfolios>
 
 <ExtraIECSS test="lt IE 10">/i/image/vendor/Leaflet.Pancontrol/src/L.Control.Pan.ie.css</ExtraIECSS>
 <ExtraIECSS test="lt IE 10">/i/image/css/ie.css</ExtraIECSS>

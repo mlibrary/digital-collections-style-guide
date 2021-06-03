@@ -12,6 +12,7 @@
           <xsl:call-template name="build-head-title" />
         </qui:title>
         <xsl:call-template name="build-head-block" />
+        <xsl:call-template name="build-canonical-link" />
       </qui:head>
       <qui:body>
         <xsl:call-template name="build-site-header" />
@@ -50,6 +51,17 @@
   <xsl:template name="build-head-block" />
   <xsl:template name="build-head-title" />
   <xsl:template name="build-body-main" />
+
+  <xsl:template name="build-canonical-link">
+    <xsl:variable name="link">
+      <xsl:call-template name="get-canonical-link" />
+    </xsl:variable>
+    <xsl:if test="normalize-space($link)">
+      <qui:link rel="canonical" href="{$link}" />
+    </xsl:if>
+  </xsl:template>
+
+  <xsl:template name="get-canonical-link" />
 
   <xsl:template name="get-collection-title">
     <xsl:choose>
@@ -167,6 +179,10 @@
         </xsl:for-each>
       </qui:nav>
     </qui:panel>
+  </xsl:template>
+
+  <xsl:template match="HiddenVars/Variable">
+    <qui:hidden-input name="{@name}" value="{.}" />
   </xsl:template>
 
   <xsl:template match="*" mode="copy-guts">
