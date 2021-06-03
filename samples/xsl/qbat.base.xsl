@@ -12,7 +12,7 @@
     />
 
   <xsl:template match="/">
-    <html>
+    <html lang="en">
       <head>
         <title>
           <xsl:apply-templates select="//qui:head/qui:title" />
@@ -26,22 +26,17 @@
 
         <xsl:apply-templates select="//qui:head/qui:block[@slot='meta-social']" />
 
-        <style>
-          <!-- this should be somewhere else -->
-          body {
-            font-family: var(--font-base-family);
-          }
-        </style>
-
         <xsl:call-template name="build-extra-scripts" />
         <xsl:call-template name="build-extra-styles" />
 
       </head>
-      <body class="mb-8">
-        <m-universal-header></m-universal-header>
-        <xsl:apply-templates select="//qui:m-website-header" />
+      <body class="[ font-base-family ]">
+        <section class="border-bottom">
+          <m-universal-header></m-universal-header>
+          <xsl:apply-templates select="//qui:m-website-header" />
+        </section>
 
-        <main>
+        <main class="viewport-container">
           <xsl:apply-templates select="//qui:main" />
         </main>
 
@@ -115,15 +110,15 @@
   </xsl:template>
 
   <xsl:template match="qui:panel">
-    <div class="mt-9 mb-2 text-sm">
+    <div class="[ border-bottom ]">
       <xsl:apply-templates />
     </div>
   </xsl:template>
 
   <xsl:template match="qui:panel/qui:header">
-    <h2 class="text-neutral-300 uppercase font-semibold pb-2">
+    <h3>
       <xsl:apply-templates select="." mode="copy-guts" />
-    </h2>
+    </h3>
   </xsl:template>
 
   <xsl:template match="qui:panel/qui:nav">
@@ -156,6 +151,10 @@
 
   <xsl:template match="node()" mode="copy-guts">
     <xsl:apply-templates select="*|text()" mode="copy" />
+  </xsl:template>
+
+  <xsl:template match="qui:link" mode="copy" priority="99">
+    <a href="{@href}"><xsl:apply-templates mode="copy" /></a>
   </xsl:template>
 
   <xsl:template match="node()[namespace-uri() = 'http://www.w3.org/1999/xhtml']" mode="copy" priority="99">
