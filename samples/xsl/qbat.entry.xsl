@@ -1,4 +1,4 @@
-<xsl:stylesheet version="1.0" xmlns="http://www.w3.org/1999/xhtml" xmlns:xhtml="http://dlxs.org/quombat/xhtml" xmlns:xsl="http://www.w3.org/1999/XSL/Transform" xmlns:dlxs="http://dlxs.org" xmlns:qui="http://dlxs.org/quombat/ui" xmlns:exsl="http://exslt.org/common" extension-element-prefixes="exsl">
+<xsl:stylesheet version="1.0" xmlns="http://www.w3.org/1999/xhtml" xmlns:xhtml="http://www.w3.org/1999/xhtml" xmlns:xsl="http://www.w3.org/1999/XSL/Transform" xmlns:dlxs="http://dlxs.org" xmlns:qui="http://dlxs.org/quombat/ui" xmlns:exsl="http://exslt.org/common" extension-element-prefixes="exsl">
 
   <xsl:param name="prototype">stacked</xsl:param>
 
@@ -11,6 +11,9 @@
 
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@shoelace-style/shoelace@2.0.0-beta.43/dist/themes/base.css" />
     <script type="module" src="https://cdn.jsdelivr.net/npm/@shoelace-style/shoelace@2.0.0-beta.43/dist/shoelace.js"></script>
+
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/tocbot/4.11.1/tocbot.css" />
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/tocbot/4.11.1/tocbot.js"></script>
 
     <script src="/samples/js/entry.js"></script>
   </xsl:template>
@@ -67,6 +70,13 @@
       ul.outline {
         margin:0 1.5em 1.5em 1.5em;
       }
+
+      .js-toc {
+        position: fixed;
+        right: 10px;
+        top: 50%;
+        transform: translateY(-50%);
+      }
     </style>
   </xsl:template>
 
@@ -77,6 +87,8 @@
     <xsl:call-template name="build-asset-viewer" />
 
     <xsl:call-template name="build-collection-heading" />
+
+    <div class="js-toc"></div>
 
     <xsl:choose>
       <xsl:when test="$prototype = 'sidebar'">
@@ -107,7 +119,7 @@
 
   <xsl:template name="build-main-stacked">
 
-    <xsl:call-template name="build-page-navigator" />
+    <!-- <xsl:call-template name="build-page-navigator" /> -->
 
     <xsl:apply-templates select="qui:block[@slot='actions']" />
 
