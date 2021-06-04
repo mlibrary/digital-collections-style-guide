@@ -8,6 +8,10 @@
       <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.1/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-+0n0xVW2eSR5OomGNYDnhzAbDsOXxcvSN1TPprVMTNDbiYZCxYbOOl7+AMvyTG2x" crossorigin="anonymous" />
       <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.1/dist/js/bootstrap.bundle.min.js" integrity="sha384-gtEjrD/SeCtmISkJkNUaaKMoLD0//ElJ19smozuHV6z3Iehds+3Ulb9Bn9Plx0x4" crossorigin="anonymous"></script>
     </xsl:if>
+
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@shoelace-style/shoelace@2.0.0-beta.43/dist/themes/base.css" />
+    <script type="module" src="https://cdn.jsdelivr.net/npm/@shoelace-style/shoelace@2.0.0-beta.43/dist/shoelace.js"></script>
+
     <script src="/samples/js/entry.js"></script>
   </xsl:template>
 
@@ -27,10 +31,34 @@
         right: 50%;
       }
 
+      .toolbar {
+        display: flex;
+        align-items: center;
+        gap: 0.5rem;
+      }
+
       .button.small {
         font-size: 0.875rem;
         line-height: 1;
         padding: var(--space-x-small) var(--space-x-small);
+      }
+
+      .button {
+        border-color: var(--color-neutral-100);
+      }
+
+      sl-button::part(base) {
+        outline: none;
+        height: auto;
+        padding: var(--space-small) var(--space-large);
+        background: var(--color-blue-100);
+        color: var(--color-teal-400);
+        font-size: 1rem;
+        line-height: 1.5;
+        font-weight: 700;
+        font-family: var(--font-base-family);
+        border: 2px outset var(--color-neutral-100);
+        border-radius: var(--radius-default);
       }
 
       ul.outline li ul {
@@ -256,14 +284,35 @@
   <xsl:template match="qui:block[@slot='actions']">
     <div class="[ actions ]">
       <h2>Actions</h2>
-      <xsl:call-template name="build-download-action" />
-      <xsl:call-template name="build-favorite-action" />
-      <xsl:call-template name="build-copy-link-action" />
+      <div class="[ toolbar ]">
+        <xsl:call-template name="build-download-action" />
+        <xsl:call-template name="build-favorite-action" />
+        <xsl:call-template name="build-copy-link-action" />
+      </div>
     </div>
   </xsl:template>
 
   <xsl:template name="build-download-action">
-    <xsl:comment>using bootstrap conventions</xsl:comment>
+    <xsl:call-template name="build-download-action-shoelace" />
+    <!-- <xsl:call-template name="build-download-action-html" /> -->
+  </xsl:template>
+
+  <xsl:template name="build-download-action-shoelace">
+    <sl-dropdown id="dropdown-action">
+      <sl-button slot="trigger" caret="caret">Download</sl-button>
+      <sl-menu>
+        <xsl:for-each select="qui:download-options/qui:download-item">
+          <sl-menu-item data-href="{@href}">
+            <xsl:value-of select="@width" />
+            <xsl:text> x </xsl:text>
+            <xsl:value-of select="@height" />
+          </sl-menu-item>
+        </xsl:for-each>
+      </sl-menu>
+    </sl-dropdown>
+  </xsl:template>
+
+  <xsl:template name="build-download-action-html">
     <div class="dropdown">
       <xsl:call-template name="button">
         <xsl:with-param name="label">Download</xsl:with-param>
