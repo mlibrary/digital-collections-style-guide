@@ -40,6 +40,10 @@ svg {
   font-family: var(--font-base-family);
 }
 
+:focus {
+  border: solid 2px var(--color-indigo-400);
+}
+
 /*
 * Blocks
 *
@@ -61,6 +65,81 @@ svg {
   justify-content: space-between;
 }
 
+.select {
+  min-width: 12ch;
+  padding-left: 1em;
+}
+
+.dropdown {
+  font-size: 1rem;
+  font-family: var(--font-base-family);
+  color: #262626;
+  line-height: 1.5;
+  background-color: var(--color-neutral-100);
+  box-shadow: none;
+  cursor: pointer;
+  max-width: 100%;
+}
+
+.search-container {
+  height: 40px;
+  font-size: 1rem;
+}
+
+.results-search_input {
+  width: 80%;
+  font-family: var(--font-base-family);
+  padding-left: var(--space-medium);
+}
+
+.results-search {
+  padding-left: 0;
+}
+
+.results-list--small {
+  border-bottom: 1px solid var(--color-neutral-100);
+  color: var(--color-neutral-400);
+}
+
+.results-list--small:last-child {
+  border-bottom: 0;
+}
+
+.results-list__image {
+  width: 140px;
+  height: 140px;
+  padding: var(--space-medium);
+  padding-left: 0;
+}
+
+.results {
+  display: grid;
+  grid-template-columns: 9rem 1fr;
+  column-gap: 0;
+  width: 50vw;
+}
+
+.results dt {
+  font-weight: var(--bold);
+}
+
+.results dt,
+.results dd {
+  padding: var(--space-xxx-small) 0;
+  margin-left: 0;
+}
+
+.results-list__content > h4 {
+  font-weight: var(--regular);
+  text-decoration: underline;
+  font-size: var(--text-small);
+  margin: 1rem 0;
+}
+
+.filters {
+  padding-top: var(--space-xxxx-large);
+}
+
 /*
  * Utilities
  *
@@ -69,6 +148,10 @@ svg {
 
 .border {
   border: solid 2px var(--color-neutral-100);
+}
+
+.no-border {
+  border: 0;
 }
 
 .border-bottom {
@@ -89,6 +172,14 @@ svg {
 
 .block {
   display: block;
+}
+
+.spacer {
+  height: 50px;
+}
+
+.flex {
+  display: flex;
 }
 
 /*
@@ -212,9 +303,24 @@ h3,
   border-radius: var(--radius-default);
 }
 
+.button--small {
+  padding: var(--space-small);
+}
+
 .button--loud {
   background: var(--color-teal-400);
   color: white;
+}
+
+.button--primary {
+  background: var(--color-maize-400);
+  border: solid 1px var(--color-maize-400);
+  color: var(--color-neutral-400);
+}
+
+.button-icon {
+  bottom: 0.25em;
+  position: relative;
 }
 
 /*
@@ -240,17 +346,25 @@ h3,
   margin-left: 0;
 }
 
+.record-container {
+  width: 50vw;
+}
+
 /*
- * Action Panel
+ * Side Panel
  *
  */
 
-.action-panel {
-  border: 1px solid var(--color-neutral-100);
-  padding: var(--space-x-large);
+.side-panel {
   width: 20vw;
 }
 
-.record-container {
-  width: 50vw;
+/*
+ * Main Panel
+ *
+ */
+
+.main-panel {
+  padding: var(--space-x-large);
+  width: 80vw;
 }
