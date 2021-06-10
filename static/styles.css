@@ -303,6 +303,10 @@ h3,
   border-radius: var(--radius-default);
 }
 
+.button:focus {
+  box-shadow: 0 0 0 2px #ffffff, 0 0 0 4px var(--color-indigo-400);
+}
+
 .button--small {
   padding: var(--space-small);
 }
@@ -316,6 +320,10 @@ h3,
   background: var(--color-maize-400);
   border: solid 1px var(--color-maize-400);
   color: var(--color-neutral-400);
+}
+
+.button--primary:hover {
+  background: var(--color-maize-500);
 }
 
 .button-icon {
