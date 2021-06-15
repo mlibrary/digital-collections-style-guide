@@ -99,6 +99,12 @@ svg {
 .results-list--small {
   border-bottom: 1px solid var(--color-neutral-100);
   color: var(--color-neutral-400);
+  text-decoration: none;
+}
+
+.results-list--small a {
+  text-decoration: none;
+  color: var(--color-neutral-400);
 }
 
 .results-list--small:last-child {
@@ -134,7 +140,13 @@ svg {
   text-decoration: underline;
   font-size: var(--text-small);
   margin: 1rem 0;
+  color: var(--color-neutral-400)
 }
+.results-list__content > dt {
+text-decoration: none;
+}
+
+  
 
 .filters {
   padding-top: var(--space-xxxx-large);
