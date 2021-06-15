@@ -9,6 +9,7 @@ module.exports = function (eleventyConfig) {
   eleventyConfig.addPassthroughCopy('samples/qui');
   eleventyConfig.addPassthroughCopy('samples/xml');
   eleventyConfig.addPassthroughCopy('samples/js');
+  eleventyConfig.addPassthroughCopy('samples/styles');
   eleventyConfig.addPassthroughCopy('samples/xsl/debug.qui.xsl');
 
   // --- setUseGitIgnore(false) we shouldn't need these

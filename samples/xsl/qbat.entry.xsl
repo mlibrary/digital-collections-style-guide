@@ -15,6 +15,7 @@
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/tocbot/4.11.1/tocbot.css" />
     <script src="https://cdnjs.cloudflare.com/ajax/libs/tocbot/4.11.1/tocbot.js"></script>
 
+    <link rel="stylesheet" href="/samples/styles/entry.css" />
     <script src="/samples/js/entry.js"></script>
   </xsl:template>
 
@@ -22,61 +23,6 @@
     <xsl:comment>DUBIOUS EXCEPTIONS</xsl:comment>
     <!-- ideally would be the whole viewport width -->
     <style>
-      .viewer {
-        width: 98vw;
-        height: 80vh;
-        position: relative;
-        border: 0;
-        display: block;
-        margin-left: -49vw;
-        margin-right: -49vw;
-        left: 50%;
-        right: 50%;
-      }
-
-      .toolbar {
-        display: flex;
-        align-items: center;
-        gap: 0.5rem;
-      }
-
-      .button.small {
-        font-size: 0.875rem;
-        line-height: 1;
-        padding: var(--space-x-small) var(--space-x-small);
-      }
-
-      .button {
-        border-color: var(--color-neutral-100);
-      }
-
-      sl-button::part(base) {
-        outline: none;
-        height: auto;
-        padding: var(--space-small) var(--space-large);
-        background: var(--color-blue-100);
-        color: var(--color-teal-400);
-        font-size: 1rem;
-        line-height: 1.5;
-        font-weight: 700;
-        font-family: var(--font-base-family);
-        border: 2px outset var(--color-neutral-100);
-        border-radius: var(--radius-default);
-      }
-
-      ul.outline li ul {
-	      margin:0 1.5em;
-      }
-      ul.outline {
-        margin:0 1.5em 1.5em 1.5em;
-      }
-
-      .js-toc {
-        position: fixed;
-        right: 10px;
-        top: 50%;
-        transform: translateY(-50%);
-      }
     </style>
   </xsl:template>
 
@@ -88,19 +34,27 @@
 
     <xsl:call-template name="build-collection-heading" />
 
-    <div class="js-toc"></div>
+    <div class="[ container ] [ flex ]">
 
-    <xsl:choose>
-      <xsl:when test="$prototype = 'sidebar'">
-        <xsl:call-template name="build-main-sidebar" />
-      </xsl:when>
-      <xsl:when test="$prototype = 'stacked'">
-        <xsl:call-template name="build-main-stacked"></xsl:call-template>
-      </xsl:when>
-      <xsl:otherwise>
-        <pre>TBD</pre>
-      </xsl:otherwise>
-    </xsl:choose>
+      <div class="js-toc"></div>
+
+        <div class="[ container ]">
+          <xsl:choose>
+            <xsl:when test="$prototype = 'sidebar'">
+              <xsl:call-template name="build-main-sidebar" />
+            </xsl:when>
+            <xsl:when test="$prototype = 'stacked'">
+              <xsl:call-template name="build-main-stacked"></xsl:call-template>
+            </xsl:when>
+            <xsl:otherwise>
+              <pre>TBD</pre>
+            </xsl:otherwise>
+          </xsl:choose>
+        </div>
+
+    </div>
+
+
 
   </xsl:template>
 

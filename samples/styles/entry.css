@@ -1,0 +1,62 @@
+.viewer {
+  width: 98vw;
+  height: 80vh;
+  position: relative;
+  border: 0;
+  display: block;
+  margin-left: -49vw;
+  margin-right: -49vw;
+  left: 50%;
+  right: 50%;
+}
+
+.toolbar {
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+}
+
+.button.small {
+  font-size: 0.875rem;
+  line-height: 1;
+  padding: var(--space-x-small) var(--space-x-small);
+}
+
+.button {
+  border-color: var(--color-neutral-100);
+}
+
+sl-button::part(base) {
+  outline: none;
+  height: auto;
+  padding: var(--space-small) var(--space-large);
+  background: var(--color-blue-100);
+  color: var(--color-teal-400);
+  font-size: 1rem;
+  line-height: 1.5;
+  font-weight: 700;
+  font-family: var(--font-base-family);
+  border: 2px outset var(--color-neutral-100);
+  border-radius: var(--radius-default);
+}
+
+ul.outline li ul {
+  margin:0 1.5em;
+}
+ul.outline {
+  margin:0 1.5em 1.5em 1.5em;
+}
+
+.js-toc {
+  margin: 1rem;
+}
+  
+
+.js-toc .toc-list {
+  position: sticky;
+  top: 1rem;
+}
+
+.container {
+  position: relative;
+}
