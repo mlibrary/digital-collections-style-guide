@@ -12,7 +12,7 @@
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@shoelace-style/shoelace@2.0.0-beta.43/dist/themes/base.css" />
     <script type="module" src="https://cdn.jsdelivr.net/npm/@shoelace-style/shoelace@2.0.0-beta.43/dist/shoelace.js"></script>
 
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/tocbot/4.11.1/tocbot.css" />
+    <!-- <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/tocbot/4.11.1/tocbot.css" /> -->
     <script src="https://cdnjs.cloudflare.com/ajax/libs/tocbot/4.11.1/tocbot.js"></script>
 
     <link rel="stylesheet" href="/samples/styles/entry.css" />
@@ -36,7 +36,9 @@
 
     <div class="[ container ] [ flex ]">
 
-      <div class="js-toc"></div>
+      <div class="[ aside ]">
+        <div class="toc js-toc"></div>
+      </div>
 
         <div class="[ container ]">
           <xsl:choose>
