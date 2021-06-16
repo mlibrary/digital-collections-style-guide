@@ -256,6 +256,7 @@
         <xsl:call-template name="build-download-action" />
         <xsl:call-template name="build-favorite-action" />
         <xsl:call-template name="build-copy-link-action" />
+        <xsl:apply-templates select="." mode="extra" />
       </div>
     </div>
   </xsl:template>
@@ -341,7 +342,7 @@
       <xsl:if test="$block/qui:field">
         <dl class="record">
           <dt>More Item Details</dt>
-          <xsl:apply-templates select="$block/qui:field" mode="dd" />
+          <xsl:apply-templates select="$block/qui:field" mode="dl" />
         </dl>
       </xsl:if>
 
@@ -358,9 +359,17 @@
     </section>
   </xsl:template>
 
-  <xsl:template match="qui:field[@component='catalog-link']" mode="dd">
+  <xsl:template match="qui:field[@component='catalog-link']" mode="dl">
     <dd>
       <a class="catalog-link" href="https://search.lib.umich.edu/catalog/Record/{qui:values/qui:value}">
+        <xsl:value-of select="qui:label" />
+      </a>
+    </dd>
+  </xsl:template>
+
+  <xsl:template match="qui:field[@component='system-link']" mode="dl">
+    <dd>
+      <a class="system-link" href="{qui:values/qui:value}">
         <xsl:value-of select="qui:label" />
       </a>
     </dd>

@@ -185,7 +185,7 @@
       <xsl:apply-templates select="//Record[@name='special']//Field[@abbrev='dlxs_hathitrust']" mode="system-link">
         <xsl:with-param name="label">HathiTrust</xsl:with-param>
       </xsl:apply-templates>
-      <xsl:apply-templates select="//Record[@name='special']//Field[@abbrev='dlxs_findingaid']" mode="system-link">
+      <xsl:apply-templates select="//Record[@name='special']//Field[@abbrev='dlxs_findaid']" mode="system-link">
         <xsl:with-param name="label">Finding Aid</xsl:with-param>
       </xsl:apply-templates>
     </qui:block>

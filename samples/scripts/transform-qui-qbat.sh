@@ -36,7 +36,7 @@ EOF
   if [ -f "$ROOT/samples/xsl/$colldir/qbat.$basename.xsl" ]
   then
     cat <<EOF >> /tmp/qbat.$basename.xsl
-  <xsl:import href="$ROOT/samples/qui/$colldir/qbat.$basename.xsl" />
+  <xsl:import href="$ROOT/samples/xsl/$colldir/qbat.$basename.xsl" />
 EOF
   fi
 

@@ -743,6 +743,14 @@ waPidzZMYzjGc8/eiijBBkyRLkt/SKm5ccsflxRRWSijU2bMCBY8defQUUUUKKoG2f/Z
       </Values>
       <Label display="on">dlxs_catalog</Label>
     </Field>
+    <Field abbrev="dlxs_findaid" searchfield="false" sortfield="false">
+      <Values>
+        <Value>
+        http://quod.lib.umich.edu/c/clementsead/umich-wcl-M-3098wor?view=text
+        </Value>
+      </Values>
+      <Label display="on">dlxs_findaid</Label>
+    </Field>
   </Section>
 </Record>
 <MediaDownloadLink><URL name="mediadownloadlink">/cgi/i/image/api/image/sdlhomes:SL0101:SL010102.TIF/full/res:0/0/native.jpg?attachment=1</URL><Filename>SL010102_sdlhomes.JPG</Filename></MediaDownloadLink>
