@@ -40,6 +40,10 @@
           <xsl:apply-templates select="//qui:main" />
         </main>
 
+        <footer style="background: var(--color-blue-400); color: var(--color-blue-100); padding: var(--space-xxxx-large); margin-top: var(--space-xx-large);">
+          <p>TBD</p>
+        </footer>
+
       </body>
     </html>
   </xsl:template>
