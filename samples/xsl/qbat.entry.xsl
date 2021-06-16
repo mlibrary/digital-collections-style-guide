@@ -328,13 +328,111 @@
   </xsl:template>
 
   <xsl:template match="qui:block[@slot='rights-statement']">
-    <div class="[ panel ]">
+    <section class="[ record-container ]">
       <h2 id="rights-statement">Rights/Permissions</h2>
       <xsl:apply-templates mode="copy" />
-    </div>
+    </section>
   </xsl:template>
 
   <xsl:template name="build-panel-related-links">
+    <xsl:variable name="block" select="//qui:block[@slot='related-links']" />
+    <section class="[ record-container ]">
+      <h2 id="related-links">Related Links</h2>
+      <xsl:if test="$block/qui:field">
+        <dl class="record">
+          <dt>More Item Details</dt>
+          <xsl:apply-templates select="$block/qui:field" mode="dd" />
+        </dl>
+      </xsl:if>
+
+      <xsl:call-template name="build-panel-portfolios-dl" />
+
+      <h3>IIIF</h3>
+      <dl class="record">
+        <dt>Manifest</dt>
+        <dd>
+          <input type="text" value="{//qui:viewer/@manifest-id}" />
+        </dd>
+
+      </dl>
+    </section>
+  </xsl:template>
+
+  <xsl:template match="qui:field[@component='catalog-link']" mode="dd">
+    <dd>
+      <a class="catalog-link" href="https://search.lib.umich.edu/catalog/Record/{qui:values/qui:value}">
+        <xsl:value-of select="qui:label" />
+      </a>
+    </dd>
+  </xsl:template>
+
+  <xsl:template name="build-panel-portfolios-dl">
+    <xsl:variable name="private-list" select="//qui:portfolio-list[@type='private']" />
+    <xsl:variable name="public-list" select="//qui:portfolio-list[@type='public']" />
+
+    <xsl:if test="$private-list//qui:portfolio-link or $public-list//qui:portfolio-link">
+      <h3 id="portfolios">Portfolios</h3>
+      <dl class="record">
+        <xsl:if test="$private-list//qui:portfolio-link">
+          <dt>In your portfolios</dt>
+          <xsl:apply-templates select="$private-list" mode="dl" />
+        </xsl:if>
+        <xsl:if test="$public-list//qui:portfolio-link">
+          <dt id="public-list">In public portfolios</dt>
+          <xsl:apply-templates select="$public-list" mode="dl" />
+        </xsl:if>
+      </dl>
+
+    </xsl:if>
+    
+
+  </xsl:template>
+
+  <xsl:template match="qui:portfolio-list" mode="dl">
+    <xsl:for-each select="qui:portfolio-link">
+      <dd>
+        <a href="{@href}">
+          <xsl:value-of select="qui:title" />
+          <xsl:text> (</xsl:text>
+          <xsl:value-of select="qui:count" />
+          <xsl:text>)</xsl:text>
+        </a>
+      </dd>
+    </xsl:for-each>
+  </xsl:template>
+
+  <xsl:template match="qui:portfolio-list">
+    <ul>
+      <xsl:for-each select="qui:portfolio-link">
+        <li>
+          <a href="{@href}">
+            <xsl:value-of select="qui:title" />
+            <xsl:text> (</xsl:text>
+            <xsl:value-of select="qui:count" />
+            <xsl:text>)</xsl:text>
+          </a>
+          <xsl:if test="@editable = 'true'">
+            <form method="POST" action="#">
+              <input type="hidden" name="bbidno" value="{@bbidno}" />
+              <input type="hidden" name="bbdid" value="{@bbdid}" />
+              <xsl:call-template name="button">
+                <xsl:with-param name="label">Remove</xsl:with-param>
+                <xsl:with-param name="classes">small</xsl:with-param>
+              </xsl:call-template>
+            </form>
+          </xsl:if>
+        </li>
+      </xsl:for-each>
+    </ul>
+  </xsl:template>
+
+  <xsl:template match="qui:field" mode="dd">
+    <dd>
+
+    </dd>
+  </xsl:template>
+
+  <xsl:template name="build-panel-related-links-dl">
     <xsl:variable name="block" select="//qui:block[@slot='related-links']" />
     <div class="[ panel ]">
       <h2 id="related-links">Related Links</h2>

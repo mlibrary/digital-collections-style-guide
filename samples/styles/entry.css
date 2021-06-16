@@ -47,6 +47,10 @@ ul.outline {
   margin:0 1.5em 1.5em 1.5em;
 }
 
+dl.record dd + dd {
+  grid-column: 2/3;
+}
+
 /* TOCBOT */
 .toc {
  overflow-y:auto
