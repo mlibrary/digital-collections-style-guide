@@ -547,6 +547,21 @@
     <xsl:apply-templates />
   </xsl:template>
 
+  <xsl:template match="qui:anchor">
+    <li>
+      <a href="{@href}"><xsl:value-of select="@label" /></a>
+      <xsl:if test="qui:anchor">
+        <ul>
+          <xsl:apply-templates select="qui:anchor" />
+        </ul>
+      </xsl:if>
+    </li>
+  </xsl:template>
+
+  <xsl:template match="qui:block">
+    <xsl:apply-templates />
+  </xsl:template>
+
   <xsl:template match="qui:header[@role='main']">
   </xsl:template>
 
