@@ -40,6 +40,11 @@ sl-button::part(base) {
   border-radius: var(--radius-default);
 }
 
+sl-button.primary::part(base) {
+  background: var(--color-teal-500);
+  color: var(--color-neutral-100);
+}
+
 ul.outline li ul {
   margin:0 1.5em;
 }

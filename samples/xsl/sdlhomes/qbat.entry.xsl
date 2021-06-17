@@ -2,8 +2,8 @@
 <xsl:stylesheet version="1.0" xmlns:xsl="http://www.w3.org/1999/XSL/Transform" xmlns:qui="http://dlxs.org/quombat/ui" xmlns:xhtml="http://www.w3.org/1999/xhtml" xmlns:exsl="http://exslt.org/common" extension-element-prefixes="exsl">
 
   <xsl:template match="qui:block[@slot='actions']" mode="extra">
-    <xsl:variable name="record_no" select="//Record[@name='special']//Field[@abbrev='dlxs_catalog']" />
-    <xsl:variable name="barcode" select="//Record//Field[@abbrev='wcl1ic_bc']/Values/Value" />
+    <xsl:variable name="record_no" select="//qui:field[@key='dlxs_catalog']//qui:value" />
+    <xsl:variable name="barcode" select="//qui:field[@key='wcl1ic_bc']//qui:value" />
     <!-- <a class="button" href="http://mirlyn.lib.umich.edu/Record/{$record_no}/Request?barcode={$barcode}">Request This</a> -->
     <sl-button href="http://mirlyn.lib.umich.edu/Record/{$record_no}/Request?barcode={$barcode}">Request This</sl-button>
   </xsl:template>

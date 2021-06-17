@@ -268,7 +268,7 @@
 
   <xsl:template name="build-download-action-shoelace">
     <sl-dropdown id="dropdown-action">
-      <sl-button slot="trigger" caret="caret">Download</sl-button>
+      <sl-button slot="trigger" caret="caret" class="primary">Download</sl-button>
       <sl-menu>
         <xsl:for-each select="qui:download-options/qui:download-item">
           <sl-menu-item data-href="{@href}">
@@ -336,13 +336,14 @@
   </xsl:template>
 
   <xsl:template name="build-panel-related-links">
-    <xsl:variable name="block" select="//qui:block[@slot='related-links']" />
+    <xsl:variable name="block" select="//qui:block[@slot='special']" />
     <section class="[ record-container ]">
       <h2 id="related-links">Related Links</h2>
       <xsl:if test="$block/qui:field">
         <dl class="record">
           <dt>More Item Details</dt>
-          <xsl:apply-templates select="$block/qui:field" mode="dl" />
+          <xsl:apply-templates select="$block/qui:field[@component='catalog-link']" mode="dl" />
+          <xsl:apply-templates select="$block/qui:field[@component='system-link']" mode="dl" />
         </dl>
       </xsl:if>
 

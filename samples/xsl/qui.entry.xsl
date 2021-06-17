@@ -84,6 +84,9 @@
       <xsl:call-template name="build-record-technical-metadata" />
       <xsl:call-template name="build-record-metadata" />
     </qui:block>
+    <qui:block slot="special">
+      <xsl:call-template name="build-special-metadata" />
+    </qui:block>
   </xsl:template>
 
   <xsl:template name="build-record-header">
@@ -171,6 +174,29 @@
         </xsl:otherwise>
       </xsl:choose>
     </qui:block>
+  </xsl:template>
+
+  <xsl:template name="build-special-metadata">
+    <xsl:apply-templates select="//Record[@name='special']/Section/Field" />
+  </xsl:template>
+
+  <xsl:template match="Field[@abbrev='dlxs_catalog']" priority="99">
+    <xsl:apply-templates select="." mode="system-link">
+      <xsl:with-param name="component">catalog-link</xsl:with-param>
+      <xsl:with-param name="label">Catalog Record</xsl:with-param>
+    </xsl:apply-templates>
+  </xsl:template>
+
+  <xsl:template match="Field[@abbrev='dlxs_hathitrust']" priority="99">
+    <xsl:apply-templates select="." mode="system-link">
+      <xsl:with-param name="label">HathiTrust</xsl:with-param>
+    </xsl:apply-templates>
+  </xsl:template>
+
+  <xsl:template match="Field[@abbrev='dlxs_findaid']" priority="99">
+    <xsl:apply-templates select="." mode="system-link">
+      <xsl:with-param name="label">Finding Aid</xsl:with-param>
+    </xsl:apply-templates>
   </xsl:template>
 
   <xsl:template name="build-related-links">
