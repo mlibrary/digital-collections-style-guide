@@ -41,8 +41,8 @@ sl-button::part(base) {
 }
 
 sl-button.primary::part(base) {
-  background: var(--color-teal-500);
-  color: var(--color-neutral-100);
+  background: var(--color-teal-400);
+  color: #fff;
 }
 
 ul.outline li ul {
