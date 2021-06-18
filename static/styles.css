@@ -366,6 +366,15 @@ h3,
   margin-left: 0;
 }
 
+.record dd {
+  /* for longer/wrapping dt */
+  padding-left: var(--space-small);
+}
+
+.record dd + dd {
+  grid-column: 2/3;
+}
+
 .record-container {
   width: 50vw;
 }

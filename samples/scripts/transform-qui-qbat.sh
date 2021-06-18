@@ -23,28 +23,29 @@ do
   echo "-- $xmlfilename"
   colldir=`dirname $xmlfilename`
   basename=`basename $xmlfilename .xml`
+  template=`echo $basename | cut -d'-' -f1`
 
   mkdir -p "$ROOT/samples/qbat/$colldir"
 
-  cat <<EOF > /tmp/qbat.$basename.xsl
+  cat <<EOF > /tmp/qbat.$template.xsl
 <?xml version="1.0" encoding="UTF-8" ?>
 <xsl:stylesheet version="1.0" xmlns="http://www.w3.org/1999/xhtml" xmlns:xsl="http://www.w3.org/1999/XSL/Transform" xmlns:dlxs="http://dlxs.org" xmlns:qbat="http://dlxs.org/quombat" xmlns:qui="http://dlxs.org/quombat/ui" xmlns:exsl="http://exslt.org/common" extension-element-prefixes="exsl">
   <xsl:import href="$ROOT/samples/xsl/qbat.base.xsl" />
-  <xsl:import href="$ROOT/samples/xsl/qbat.$basename.xsl" />
+  <xsl:import href="$ROOT/samples/xsl/qbat.$template.xsl" />
 EOF
 
-  if [ -f "$ROOT/samples/xsl/$colldir/qbat.$basename.xsl" ]
+  if [ -f "$ROOT/samples/xsl/$colldir/qbat.$template.xsl" ]
   then
-    cat <<EOF >> /tmp/qbat.$basename.xsl
-  <xsl:import href="$ROOT/samples/xsl/$colldir/qbat.$basename.xsl" />
+    cat <<EOF >> /tmp/qbat.$template.xsl
+  <xsl:import href="$ROOT/samples/xsl/$colldir/qbat.$template.xsl" />
 EOF
   fi
 
-  cat <<EOF >> /tmp/qbat.$basename.xsl
+  cat <<EOF >> /tmp/qbat.$template.xsl
 </xsl:stylesheet>
 EOF
 
-  xsltproc /tmp/qbat.$basename.xsl $xmlfilename | \
+  xsltproc /tmp/qbat.$template.xsl $xmlfilename | \
     awk '$0 = NR == 1 ? "<!DOCTYPE html>" : $0' > $ROOT/samples/qbat/$colldir/$basename.html
 
 done
