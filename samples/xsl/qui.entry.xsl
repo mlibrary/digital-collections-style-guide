@@ -180,6 +180,10 @@
     <xsl:apply-templates select="//Record[@name='special']/Section/Field" />
   </xsl:template>
 
+  <xsl:template match="//Record[@name='entry']//Field[@abbrev='dlxs_catalog']" priority="100">
+    <xsl:message>AHOY</xsl:message>
+  </xsl:template>
+
   <xsl:template match="Field[@abbrev='dlxs_catalog']" priority="99">
     <xsl:apply-templates select="." mode="system-link">
       <xsl:with-param name="component">catalog-link</xsl:with-param>
