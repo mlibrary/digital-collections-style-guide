@@ -153,6 +153,46 @@
     </section>
   </xsl:template>
 
+  <xsl:template name="build-collection-heading">
+    <h1 class="collection-heading">
+      <xsl:value-of select="//qui:header[@role='main']" />
+    </h1>
+  </xsl:template>
+
+  <!-- FIELDS -->
+  <xsl:template match="qui:field[@component='catalog-link']" priority="99">
+    <p>
+      <a class="catalog-link" href="https://search.lib.umich.edu/catalog/Record/{qui:values/qui:value}">
+        <xsl:value-of select="qui:label" />
+      </a>
+    </p>
+  </xsl:template>
+
+  <xsl:template match="qui:field[@component='system-link']" priority="99">
+    <p>
+      <a class="system-link" href="{qui:values/qui:value}">
+        <xsl:value-of select="qui:label" />
+      </a>
+    </p>
+  </xsl:template>
+
+  <xsl:template match="qui:field[@component='input']//qui:value" mode="copy-guts" priority="99">
+    <input type="text" value="{.}" />
+  </xsl:template>
+
+  <xsl:template match="qui:field">
+    <dt data-key="{@key}">
+      <xsl:apply-templates select="qui:label" mode="copy-guts" />
+    </dt>
+    <xsl:for-each select="qui:values/qui:value">
+      <dd>
+        <xsl:apply-templates select="." mode="copy-guts" />
+      </dd>
+    </xsl:for-each>
+  </xsl:template>
+
+
+  <!-- UTILITY -->
   <xsl:template match="node()" mode="copy-guts">
     <xsl:apply-templates select="*|text()" mode="copy" />
   </xsl:template>

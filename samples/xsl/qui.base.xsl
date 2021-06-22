@@ -49,7 +49,16 @@
   </xsl:template>
 
   <xsl:template name="build-head-block" />
-  <xsl:template name="build-head-title" />
+  
+  <xsl:template name="build-head-title">
+    <qui:values>
+      <qui:value>
+        <xsl:call-template name="get-collection-title" />
+      </qui:value>
+    </qui:values>
+  </xsl:template>
+
+  
   <xsl:template name="build-body-main" />
 
   <xsl:template name="build-canonical-link">
@@ -183,6 +192,63 @@
 
   <xsl:template match="HiddenVars/Variable">
     <qui:hidden-input name="{@name}" value="{.}" />
+  </xsl:template>
+
+  <xsl:template match="Section">
+    <qui:section name="{@name}" slug="{@class}">
+      <xsl:apply-templates select="Field" />
+    </qui:section>
+  </xsl:template>
+
+  <xsl:template match="Field[@abbrev='dc_ri']" priority="100" />
+  <xsl:template match="Field[@abbrev='dlxs_ri']" priority="100" />
+
+  <xsl:template match="Field">
+    <qui:field key="{@abbrev}">
+      <qui:label>
+        <xsl:value-of select="Label" />
+      </qui:label>
+      <qui:values>
+        <xsl:for-each select="Values/Value">
+          <qui:value>
+            <xsl:apply-templates select="." />
+          </qui:value>
+        </xsl:for-each>
+      </qui:values>
+    </qui:field>
+  </xsl:template>
+
+  <xsl:template match="Field" mode="system-link">
+    <xsl:param name="label" />
+    <xsl:param name="component">system-link</xsl:param>
+    <qui:field key="{@abbrev}" component="{$component}">
+      <qui:label>
+        <xsl:value-of select="$label" />
+      </qui:label>
+      <qui:values>
+        <xsl:for-each select="Values/Value">
+          <qui:value>
+            <xsl:apply-templates select="." />
+          </qui:value>
+        </xsl:for-each>
+      </qui:values>
+    </qui:field>
+  </xsl:template>
+
+  <xsl:template match="Value[@link]">
+    <qui:link href="{@link}">
+      <xsl:value-of select="." />
+    </qui:link>
+  </xsl:template>
+
+  <xsl:template match="Value">
+    <xsl:apply-templates select="." mode="copy-guts" />
+  </xsl:template>
+
+  <xsl:template match="Value/Highlight" mode="copy" priority="100">
+    <xhtml:span class="{@class}" data-result-seq="{@seq}">
+      <xsl:value-of select="." />
+    </xhtml:span>
   </xsl:template>
 
   <xsl:template match="*" mode="copy-guts">

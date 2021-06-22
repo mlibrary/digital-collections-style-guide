@@ -135,6 +135,10 @@ svg {
   margin-left: 0;
 }
 
+.results dd + dd {
+  grid-column: 2/3;
+}
+
 .results-list__content > h4 {
   font-weight: var(--regular);
   text-decoration: underline;

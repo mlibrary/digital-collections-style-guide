@@ -472,6 +472,954 @@ for items where...</item>
     <Url>https://quod.lib.umich.edu/cgi/dlxslogin/go?target=https%3A%2F%2Fquod.lib.umich.edu%2Fcgi%2Fi%2Fimage%2Fimage-idx%3Fkey_authret%3D1624049455</Url>
     <Mode>login</Mode>
   </LoginLink>
+  <SearchForm>
+    <NumQs>2</NumQs>
+    <Q name="q1">
+      <Value>clark1ic</Value>
+      <Rgn name="rgn1">
+        <Option index="0">
+          <Label>Anywhere in record</Label>
+          <Value>ic_all</Value>
+          <Focus>true</Focus>
+        </Option>
+        <Option index="1">
+          <Label>Title</Label>
+          <Value>marc245</Value>
+        </Option>
+        <Option index="2">
+          <Label>Varying Form of Title</Label>
+          <Value>marc246</Value>
+        </Option>
+        <Option index="3">
+          <Label>Item Description</Label>
+          <Value>istruct_caption_item_description</Value>
+        </Option>
+        <Option index="4">
+          <Label>Main Entry - Personal Name</Label>
+          <Value>marc100</Value>
+        </Option>
+        <Option index="5">
+          <Label>Main Entry - Corporate Name</Label>
+          <Value>marc110</Value>
+        </Option>
+        <Option index="6">
+          <Label>Added Entry - Personal Name</Label>
+          <Value>marc700</Value>
+        </Option>
+        <Option index="7">
+          <Label>Added Entry - Corporate Name</Label>
+          <Value>marc710</Value>
+        </Option>
+        <Option index="8">
+          <Label>Published</Label>
+          <Value>marc260</Value>
+        </Option>
+        <Option index="9">
+          <Label>Description</Label>
+          <Value>marc300</Value>
+        </Option>
+        <Option index="10">
+          <Label>Note</Label>
+          <Value>marc500</Value>
+        </Option>
+        <Option index="11">
+          <Label>Subject Added Entry - Topical Term</Label>
+          <Value>marc650</Value>
+        </Option>
+        <Option index="12">
+          <Label>Subject Added Entry - Geographic Name</Label>
+          <Value>marc651</Value>
+        </Option>
+        <Option index="13">
+          <Label>Map Data</Label>
+          <Value>marc255</Value>
+        </Option>
+        <Option index="14">
+          <Label>Coded Cartographic Mathematical Data</Label>
+          <Value>marc034</Value>
+        </Option>
+        <Option index="15">
+          <Label>Local note</Label>
+          <Value>marc590</Value>
+        </Option>
+        <Option index="16">
+          <Label>Scan Date</Label>
+          <Value>scan_date</Value>
+        </Option>
+        <Option index="17">
+          <Label>Rights</Label>
+          <Value>dc_ri</Value>
+        </Option>
+        <Option index="18">
+          <Label>Record No.</Label>
+          <Value>record_no</Value>
+        </Option>
+        <Name>rgn1</Name>
+        <Default>ic_all</Default>
+      </Rgn>
+      <Op name="op2">
+        <Option index="0">
+          <Label>And</Label>
+          <Value>And</Value>
+          <Focus>true</Focus>
+        </Option>
+        <Option index="1">
+          <Label>Or</Label>
+          <Value>Or</Value>
+        </Option>
+        <Option index="2">
+          <Label>Not</Label>
+          <Value>Not</Value>
+        </Option>
+        <Name>op2</Name>
+        <Default>And</Default>
+      </Op>
+      <Sel name="select1" abbr="ic_all">
+        <Option index="0">
+          <Label>all</Label>
+          <Value>all</Value>
+        </Option>
+        <Name>select1</Name>
+        <Default/>
+      </Sel>
+      <Sel name="select1" abbr="marc245">
+        <Option index="0">
+          <Label>all</Label>
+          <Value>all</Value>
+        </Option>
+        <Option index="1">
+          <Label>any</Label>
+          <Value>any</Value>
+        </Option>
+        <Option index="2">
+          <Label>phrase</Label>
+          <Value>phrase</Value>
+        </Option>
+        <Option index="3">
+          <Label>ic_exact</Label>
+          <Value>ic_exact</Value>
+        </Option>
+        <Name>select1</Name>
+        <Default/>
+      </Sel>
+      <Sel name="select1" abbr="marc246">
+        <Option index="0">
+          <Label>all</Label>
+          <Value>all</Value>
+        </Option>
+        <Option index="1">
+          <Label>any</Label>
+          <Value>any</Value>
+        </Option>
+        <Option index="2">
+          <Label>phrase</Label>
+          <Value>phrase</Value>
+        </Option>
+        <Option index="3">
+          <Label>ic_exact</Label>
+          <Value>ic_exact</Value>
+        </Option>
+        <Name>select1</Name>
+        <Default/>
+      </Sel>
+      <Sel name="select1" abbr="istruct_caption_item_description">
+        <Option index="0">
+          <Label>all</Label>
+          <Value>all</Value>
+        </Option>
+        <Option index="1">
+          <Label>any</Label>
+          <Value>any</Value>
+        </Option>
+        <Option index="2">
+          <Label>phrase</Label>
+          <Value>phrase</Value>
+        </Option>
+        <Option index="3">
+          <Label>ic_exact</Label>
+          <Value>ic_exact</Value>
+        </Option>
+        <Name>select1</Name>
+        <Default/>
+      </Sel>
+      <Sel name="select1" abbr="marc100">
+        <Option index="0">
+          <Label>all</Label>
+          <Value>all</Value>
+        </Option>
+        <Option index="1">
+          <Label>any</Label>
+          <Value>any</Value>
+        </Option>
+        <Option index="2">
+          <Label>phrase</Label>
+          <Value>phrase</Value>
+        </Option>
+        <Option index="3">
+          <Label>ic_exact</Label>
+          <Value>ic_exact</Value>
+        </Option>
+        <Name>select1</Name>
+        <Default/>
+      </Sel>
+      <Sel name="select1" abbr="marc110">
+        <Option index="0">
+          <Label>all</Label>
+          <Value>all</Value>
+        </Option>
+        <Option index="1">
+          <Label>any</Label>
+          <Value>any</Value>
+        </Option>
+        <Option index="2">
+          <Label>phrase</Label>
+          <Value>phrase</Value>
+        </Option>
+        <Option index="3">
+          <Label>ic_exact</Label>
+          <Value>ic_exact</Value>
+        </Option>
+        <Name>select1</Name>
+        <Default/>
+      </Sel>
+      <Sel name="select1" abbr="marc700">
+        <Option index="0">
+          <Label>all</Label>
+          <Value>all</Value>
+        </Option>
+        <Option index="1">
+          <Label>any</Label>
+          <Value>any</Value>
+        </Option>
+        <Option index="2">
+          <Label>phrase</Label>
+          <Value>phrase</Value>
+        </Option>
+        <Option index="3">
+          <Label>ic_exact</Label>
+          <Value>ic_exact</Value>
+        </Option>
+        <Name>select1</Name>
+        <Default/>
+      </Sel>
+      <Sel name="select1" abbr="marc710">
+        <Option index="0">
+          <Label>all</Label>
+          <Value>all</Value>
+        </Option>
+        <Option index="1">
+          <Label>any</Label>
+          <Value>any</Value>
+        </Option>
+        <Option index="2">
+          <Label>phrase</Label>
+          <Value>phrase</Value>
+        </Option>
+        <Option index="3">
+          <Label>ic_exact</Label>
+          <Value>ic_exact</Value>
+        </Option>
+        <Name>select1</Name>
+        <Default/>
+      </Sel>
+      <Sel name="select1" abbr="marc260">
+        <Option index="0">
+          <Label>all</Label>
+          <Value>all</Value>
+        </Option>
+        <Option index="1">
+          <Label>any</Label>
+          <Value>any</Value>
+        </Option>
+        <Option index="2">
+          <Label>phrase</Label>
+          <Value>phrase</Value>
+        </Option>
+        <Option index="3">
+          <Label>ic_exact</Label>
+          <Value>ic_exact</Value>
+        </Option>
+        <Name>select1</Name>
+        <Default/>
+      </Sel>
+      <Sel name="select1" abbr="marc300">
+        <Option index="0">
+          <Label>all</Label>
+          <Value>all</Value>
+        </Option>
+        <Option index="1">
+          <Label>any</Label>
+          <Value>any</Value>
+        </Option>
+        <Option index="2">
+          <Label>phrase</Label>
+          <Value>phrase</Value>
+        </Option>
+        <Option index="3">
+          <Label>ic_exact</Label>
+          <Value>ic_exact</Value>
+        </Option>
+        <Name>select1</Name>
+        <Default/>
+      </Sel>
+      <Sel name="select1" abbr="marc500">
+        <Option index="0">
+          <Label>all</Label>
+          <Value>all</Value>
+        </Option>
+        <Option index="1">
+          <Label>any</Label>
+          <Value>any</Value>
+        </Option>
+        <Option index="2">
+          <Label>phrase</Label>
+          <Value>phrase</Value>
+        </Option>
+        <Option index="3">
+          <Label>ic_exact</Label>
+          <Value>ic_exact</Value>
+        </Option>
+        <Name>select1</Name>
+        <Default/>
+      </Sel>
+      <Sel name="select1" abbr="marc650">
+        <Option index="0">
+          <Label>all</Label>
+          <Value>all</Value>
+        </Option>
+        <Option index="1">
+          <Label>any</Label>
+          <Value>any</Value>
+        </Option>
+        <Option index="2">
+          <Label>phrase</Label>
+          <Value>phrase</Value>
+        </Option>
+        <Option index="3">
+          <Label>ic_exact</Label>
+          <Value>ic_exact</Value>
+        </Option>
+        <Name>select1</Name>
+        <Default/>
+      </Sel>
+      <Sel name="select1" abbr="marc651">
+        <Option index="0">
+          <Label>all</Label>
+          <Value>all</Value>
+        </Option>
+        <Option index="1">
+          <Label>any</Label>
+          <Value>any</Value>
+        </Option>
+        <Option index="2">
+          <Label>phrase</Label>
+          <Value>phrase</Value>
+        </Option>
+        <Option index="3">
+          <Label>ic_exact</Label>
+          <Value>ic_exact</Value>
+        </Option>
+        <Name>select1</Name>
+        <Default/>
+      </Sel>
+      <Sel name="select1" abbr="marc255">
+        <Option index="0">
+          <Label>all</Label>
+          <Value>all</Value>
+        </Option>
+        <Option index="1">
+          <Label>any</Label>
+          <Value>any</Value>
+        </Option>
+        <Option index="2">
+          <Label>phrase</Label>
+          <Value>phrase</Value>
+        </Option>
+        <Option index="3">
+          <Label>ic_exact</Label>
+          <Value>ic_exact</Value>
+        </Option>
+        <Name>select1</Name>
+        <Default/>
+      </Sel>
+      <Sel name="select1" abbr="marc034">
+        <Option index="0">
+          <Label>all</Label>
+          <Value>all</Value>
+        </Option>
+        <Option index="1">
+          <Label>any</Label>
+          <Value>any</Value>
+        </Option>
+        <Option index="2">
+          <Label>phrase</Label>
+          <Value>phrase</Value>
+        </Option>
+        <Option index="3">
+          <Label>ic_exact</Label>
+          <Value>ic_exact</Value>
+        </Option>
+        <Name>select1</Name>
+        <Default/>
+      </Sel>
+      <Sel name="select1" abbr="marc590">
+        <Option index="0">
+          <Label>all</Label>
+          <Value>all</Value>
+        </Option>
+        <Option index="1">
+          <Label>any</Label>
+          <Value>any</Value>
+        </Option>
+        <Option index="2">
+          <Label>phrase</Label>
+          <Value>phrase</Value>
+        </Option>
+        <Option index="3">
+          <Label>ic_exact</Label>
+          <Value>ic_exact</Value>
+        </Option>
+        <Name>select1</Name>
+        <Default/>
+      </Sel>
+      <Sel name="select1" abbr="scan_date">
+        <Option index="0">
+          <Label>all</Label>
+          <Value>all</Value>
+        </Option>
+        <Option index="1">
+          <Label>any</Label>
+          <Value>any</Value>
+        </Option>
+        <Option index="2">
+          <Label>phrase</Label>
+          <Value>phrase</Value>
+        </Option>
+        <Option index="3">
+          <Label>ic_exact</Label>
+          <Value>ic_exact</Value>
+        </Option>
+        <Name>select1</Name>
+        <Default/>
+      </Sel>
+      <Sel name="select1" abbr="dc_ri">
+        <Option index="0">
+          <Label>all</Label>
+          <Value>all</Value>
+        </Option>
+        <Option index="1">
+          <Label>any</Label>
+          <Value>any</Value>
+        </Option>
+        <Option index="2">
+          <Label>phrase</Label>
+          <Value>phrase</Value>
+        </Option>
+        <Option index="3">
+          <Label>ic_exact</Label>
+          <Value>ic_exact</Value>
+        </Option>
+        <Name>select1</Name>
+        <Default/>
+      </Sel>
+      <Sel name="select1" abbr="record_no">
+        <Option index="0">
+          <Label>all</Label>
+          <Value>all</Value>
+        </Option>
+        <Option index="1">
+          <Label>any</Label>
+          <Value>any</Value>
+        </Option>
+        <Option index="2">
+          <Label>phrase</Label>
+          <Value>phrase</Value>
+        </Option>
+        <Option index="3">
+          <Label>ic_exact</Label>
+          <Value>ic_exact</Value>
+        </Option>
+        <Name>select1</Name>
+        <Default/>
+      </Sel>
+    </Q>
+    <Q name="q2">
+      <Value/>
+      <Rgn name="rgn2">
+        <Option index="0">
+          <Label>Anywhere in record</Label>
+          <Value>ic_all</Value>
+        </Option>
+        <Option index="1">
+          <Label>Title</Label>
+          <Value>marc245</Value>
+        </Option>
+        <Option index="2">
+          <Label>Varying Form of Title</Label>
+          <Value>marc246</Value>
+        </Option>
+        <Option index="3">
+          <Label>Item Description</Label>
+          <Value>istruct_caption_item_description</Value>
+        </Option>
+        <Option index="4">
+          <Label>Main Entry - Personal Name</Label>
+          <Value>marc100</Value>
+        </Option>
+        <Option index="5">
+          <Label>Main Entry - Corporate Name</Label>
+          <Value>marc110</Value>
+        </Option>
+        <Option index="6">
+          <Label>Added Entry - Personal Name</Label>
+          <Value>marc700</Value>
+        </Option>
+        <Option index="7">
+          <Label>Added Entry - Corporate Name</Label>
+          <Value>marc710</Value>
+        </Option>
+        <Option index="8">
+          <Label>Published</Label>
+          <Value>marc260</Value>
+        </Option>
+        <Option index="9">
+          <Label>Description</Label>
+          <Value>marc300</Value>
+        </Option>
+        <Option index="10">
+          <Label>Note</Label>
+          <Value>marc500</Value>
+        </Option>
+        <Option index="11">
+          <Label>Subject Added Entry - Topical Term</Label>
+          <Value>marc650</Value>
+        </Option>
+        <Option index="12">
+          <Label>Subject Added Entry - Geographic Name</Label>
+          <Value>marc651</Value>
+        </Option>
+        <Option index="13">
+          <Label>Map Data</Label>
+          <Value>marc255</Value>
+        </Option>
+        <Option index="14">
+          <Label>Coded Cartographic Mathematical Data</Label>
+          <Value>marc034</Value>
+        </Option>
+        <Option index="15">
+          <Label>Local note</Label>
+          <Value>marc590</Value>
+        </Option>
+        <Option index="16">
+          <Label>Scan Date</Label>
+          <Value>scan_date</Value>
+        </Option>
+        <Option index="17">
+          <Label>Rights</Label>
+          <Value>dc_ri</Value>
+        </Option>
+        <Option index="18">
+          <Label>Record No.</Label>
+          <Value>record_no</Value>
+        </Option>
+        <Name>rgn2</Name>
+        <Default>all</Default>
+      </Rgn>
+      <Sel name="select2" abbr="ic_all">
+        <Option index="0">
+          <Label>all</Label>
+          <Value>all</Value>
+        </Option>
+        <Name>select2</Name>
+        <Default/>
+      </Sel>
+      <Sel name="select2" abbr="marc245">
+        <Option index="0">
+          <Label>all</Label>
+          <Value>all</Value>
+        </Option>
+        <Option index="1">
+          <Label>any</Label>
+          <Value>any</Value>
+        </Option>
+        <Option index="2">
+          <Label>phrase</Label>
+          <Value>phrase</Value>
+        </Option>
+        <Option index="3">
+          <Label>ic_exact</Label>
+          <Value>ic_exact</Value>
+        </Option>
+        <Name>select2</Name>
+        <Default/>
+      </Sel>
+      <Sel name="select2" abbr="marc246">
+        <Option index="0">
+          <Label>all</Label>
+          <Value>all</Value>
+        </Option>
+        <Option index="1">
+          <Label>any</Label>
+          <Value>any</Value>
+        </Option>
+        <Option index="2">
+          <Label>phrase</Label>
+          <Value>phrase</Value>
+        </Option>
+        <Option index="3">
+          <Label>ic_exact</Label>
+          <Value>ic_exact</Value>
+        </Option>
+        <Name>select2</Name>
+        <Default/>
+      </Sel>
+      <Sel name="select2" abbr="istruct_caption_item_description">
+        <Option index="0">
+          <Label>all</Label>
+          <Value>all</Value>
+        </Option>
+        <Option index="1">
+          <Label>any</Label>
+          <Value>any</Value>
+        </Option>
+        <Option index="2">
+          <Label>phrase</Label>
+          <Value>phrase</Value>
+        </Option>
+        <Option index="3">
+          <Label>ic_exact</Label>
+          <Value>ic_exact</Value>
+        </Option>
+        <Name>select2</Name>
+        <Default/>
+      </Sel>
+      <Sel name="select2" abbr="marc100">
+        <Option index="0">
+          <Label>all</Label>
+          <Value>all</Value>
+        </Option>
+        <Option index="1">
+          <Label>any</Label>
+          <Value>any</Value>
+        </Option>
+        <Option index="2">
+          <Label>phrase</Label>
+          <Value>phrase</Value>
+        </Option>
+        <Option index="3">
+          <Label>ic_exact</Label>
+          <Value>ic_exact</Value>
+        </Option>
+        <Name>select2</Name>
+        <Default/>
+      </Sel>
+      <Sel name="select2" abbr="marc110">
+        <Option index="0">
+          <Label>all</Label>
+          <Value>all</Value>
+        </Option>
+        <Option index="1">
+          <Label>any</Label>
+          <Value>any</Value>
+        </Option>
+        <Option index="2">
+          <Label>phrase</Label>
+          <Value>phrase</Value>
+        </Option>
+        <Option index="3">
+          <Label>ic_exact</Label>
+          <Value>ic_exact</Value>
+        </Option>
+        <Name>select2</Name>
+        <Default/>
+      </Sel>
+      <Sel name="select2" abbr="marc700">
+        <Option index="0">
+          <Label>all</Label>
+          <Value>all</Value>
+        </Option>
+        <Option index="1">
+          <Label>any</Label>
+          <Value>any</Value>
+        </Option>
+        <Option index="2">
+          <Label>phrase</Label>
+          <Value>phrase</Value>
+        </Option>
+        <Option index="3">
+          <Label>ic_exact</Label>
+          <Value>ic_exact</Value>
+        </Option>
+        <Name>select2</Name>
+        <Default/>
+      </Sel>
+      <Sel name="select2" abbr="marc710">
+        <Option index="0">
+          <Label>all</Label>
+          <Value>all</Value>
+        </Option>
+        <Option index="1">
+          <Label>any</Label>
+          <Value>any</Value>
+        </Option>
+        <Option index="2">
+          <Label>phrase</Label>
+          <Value>phrase</Value>
+        </Option>
+        <Option index="3">
+          <Label>ic_exact</Label>
+          <Value>ic_exact</Value>
+        </Option>
+        <Name>select2</Name>
+        <Default/>
+      </Sel>
+      <Sel name="select2" abbr="marc260">
+        <Option index="0">
+          <Label>all</Label>
+          <Value>all</Value>
+        </Option>
+        <Option index="1">
+          <Label>any</Label>
+          <Value>any</Value>
+        </Option>
+        <Option index="2">
+          <Label>phrase</Label>
+          <Value>phrase</Value>
+        </Option>
+        <Option index="3">
+          <Label>ic_exact</Label>
+          <Value>ic_exact</Value>
+        </Option>
+        <Name>select2</Name>
+        <Default/>
+      </Sel>
+      <Sel name="select2" abbr="marc300">
+        <Option index="0">
+          <Label>all</Label>
+          <Value>all</Value>
+        </Option>
+        <Option index="1">
+          <Label>any</Label>
+          <Value>any</Value>
+        </Option>
+        <Option index="2">
+          <Label>phrase</Label>
+          <Value>phrase</Value>
+        </Option>
+        <Option index="3">
+          <Label>ic_exact</Label>
+          <Value>ic_exact</Value>
+        </Option>
+        <Name>select2</Name>
+        <Default/>
+      </Sel>
+      <Sel name="select2" abbr="marc500">
+        <Option index="0">
+          <Label>all</Label>
+          <Value>all</Value>
+        </Option>
+        <Option index="1">
+          <Label>any</Label>
+          <Value>any</Value>
+        </Option>
+        <Option index="2">
+          <Label>phrase</Label>
+          <Value>phrase</Value>
+        </Option>
+        <Option index="3">
+          <Label>ic_exact</Label>
+          <Value>ic_exact</Value>
+        </Option>
+        <Name>select2</Name>
+        <Default/>
+      </Sel>
+      <Sel name="select2" abbr="marc650">
+        <Option index="0">
+          <Label>all</Label>
+          <Value>all</Value>
+        </Option>
+        <Option index="1">
+          <Label>any</Label>
+          <Value>any</Value>
+        </Option>
+        <Option index="2">
+          <Label>phrase</Label>
+          <Value>phrase</Value>
+        </Option>
+        <Option index="3">
+          <Label>ic_exact</Label>
+          <Value>ic_exact</Value>
+        </Option>
+        <Name>select2</Name>
+        <Default/>
+      </Sel>
+      <Sel name="select2" abbr="marc651">
+        <Option index="0">
+          <Label>all</Label>
+          <Value>all</Value>
+        </Option>
+        <Option index="1">
+          <Label>any</Label>
+          <Value>any</Value>
+        </Option>
+        <Option index="2">
+          <Label>phrase</Label>
+          <Value>phrase</Value>
+        </Option>
+        <Option index="3">
+          <Label>ic_exact</Label>
+          <Value>ic_exact</Value>
+        </Option>
+        <Name>select2</Name>
+        <Default/>
+      </Sel>
+      <Sel name="select2" abbr="marc255">
+        <Option index="0">
+          <Label>all</Label>
+          <Value>all</Value>
+        </Option>
+        <Option index="1">
+          <Label>any</Label>
+          <Value>any</Value>
+        </Option>
+        <Option index="2">
+          <Label>phrase</Label>
+          <Value>phrase</Value>
+        </Option>
+        <Option index="3">
+          <Label>ic_exact</Label>
+          <Value>ic_exact</Value>
+        </Option>
+        <Name>select2</Name>
+        <Default/>
+      </Sel>
+      <Sel name="select2" abbr="marc034">
+        <Option index="0">
+          <Label>all</Label>
+          <Value>all</Value>
+        </Option>
+        <Option index="1">
+          <Label>any</Label>
+          <Value>any</Value>
+        </Option>
+        <Option index="2">
+          <Label>phrase</Label>
+          <Value>phrase</Value>
+        </Option>
+        <Option index="3">
+          <Label>ic_exact</Label>
+          <Value>ic_exact</Value>
+        </Option>
+        <Name>select2</Name>
+        <Default/>
+      </Sel>
+      <Sel name="select2" abbr="marc590">
+        <Option index="0">
+          <Label>all</Label>
+          <Value>all</Value>
+        </Option>
+        <Option index="1">
+          <Label>any</Label>
+          <Value>any</Value>
+        </Option>
+        <Option index="2">
+          <Label>phrase</Label>
+          <Value>phrase</Value>
+        </Option>
+        <Option index="3">
+          <Label>ic_exact</Label>
+          <Value>ic_exact</Value>
+        </Option>
+        <Name>select2</Name>
+        <Default/>
+      </Sel>
+      <Sel name="select2" abbr="scan_date">
+        <Option index="0">
+          <Label>all</Label>
+          <Value>all</Value>
+        </Option>
+        <Option index="1">
+          <Label>any</Label>
+          <Value>any</Value>
+        </Option>
+        <Option index="2">
+          <Label>phrase</Label>
+          <Value>phrase</Value>
+        </Option>
+        <Option index="3">
+          <Label>ic_exact</Label>
+          <Value>ic_exact</Value>
+        </Option>
+        <Name>select2</Name>
+        <Default/>
+      </Sel>
+      <Sel name="select2" abbr="dc_ri">
+        <Option index="0">
+          <Label>all</Label>
+          <Value>all</Value>
+        </Option>
+        <Option index="1">
+          <Label>any</Label>
+          <Value>any</Value>
+        </Option>
+        <Option index="2">
+          <Label>phrase</Label>
+          <Value>phrase</Value>
+        </Option>
+        <Option index="3">
+          <Label>ic_exact</Label>
+          <Value>ic_exact</Value>
+        </Option>
+        <Name>select2</Name>
+        <Default/>
+      </Sel>
+      <Sel name="select2" abbr="record_no">
+        <Option index="0">
+          <Label>all</Label>
+          <Value>all</Value>
+        </Option>
+        <Option index="1">
+          <Label>any</Label>
+          <Value>any</Value>
+        </Option>
+        <Option index="2">
+          <Label>phrase</Label>
+          <Value>phrase</Value>
+        </Option>
+        <Option index="3">
+          <Label>ic_exact</Label>
+          <Value>ic_exact</Value>
+        </Option>
+        <Name>select2</Name>
+        <Default/>
+      </Sel>
+    </Q>
+    <HiddenVars>
+      <Variable name="type">boolean</Variable>
+      <Variable name="c">clark1ic</Variable>
+    </HiddenVars>
+    <MediaOnly>
+      <Visible>true</Visible>
+      <Focus>true</Focus>
+    </MediaOnly>
+    <ResultsViewOptions>
+      <Option index="0">
+        <Label>thumbnail</Label>
+        <Value>thumbnail</Value>
+      </Option>
+      <Option index="1">
+        <Label>thumbfull</Label>
+        <Value>thumbfull</Value>
+      </Option>
+      <Option index="2">
+        <Label>reslist</Label>
+        <Value>reslist</Value>
+        <Focus>true</Focus>
+      </Option>
+      <Name>view</Name>
+      <Default>reslist</Default>
+    </ResultsViewOptions>
+  </SearchForm>
   <SearchSummary/>
   <TotalResults>169</TotalResults>
   <Next>
