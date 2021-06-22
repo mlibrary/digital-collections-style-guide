@@ -475,6 +475,322 @@ for items where...</item>
     <Url>https://quod.lib.umich.edu/cgi/dlxslogin/go?target=https%3A%2F%2Fquod.lib.umich.edu%2Fcgi%2Fi%2Fimage%2Fimage-idx%3Fkey_authret%3D1624048840</Url>
     <Mode>login</Mode>
   </LoginLink>
+  <SearchForm>
+    <NumQs>2</NumQs>
+    <Q name="q1">
+      <Value>mlibrary1ic</Value>
+      <Rgn name="rgn1">
+        <Option index="0">
+          <Label>Anywhere in record</Label>
+          <Value>ic_all</Value>
+          <Focus>true</Focus>
+        </Option>
+        <Option index="1">
+          <Label>Catalog Number</Label>
+          <Value>mlibrary1ic_record_no</Value>
+        </Option>
+        <Option index="2">
+          <Label>Call Number</Label>
+          <Value>mlibrary1ic_call_number</Value>
+        </Option>
+        <Option index="3">
+          <Label>Title</Label>
+          <Value>mlibrary1ic_title</Value>
+        </Option>
+        <Option index="4">
+          <Label>Author</Label>
+          <Value>mlibrary1ic_author</Value>
+        </Option>
+        <Option index="5">
+          <Label>Publisher</Label>
+          <Value>mlibrary1ic_publisher</Value>
+        </Option>
+        <Name>rgn1</Name>
+        <Default>ic_all</Default>
+      </Rgn>
+      <Op name="op2">
+        <Option index="0">
+          <Label>And</Label>
+          <Value>And</Value>
+          <Focus>true</Focus>
+        </Option>
+        <Option index="1">
+          <Label>Or</Label>
+          <Value>Or</Value>
+        </Option>
+        <Option index="2">
+          <Label>Not</Label>
+          <Value>Not</Value>
+        </Option>
+        <Name>op2</Name>
+        <Default>And</Default>
+      </Op>
+      <Sel name="select1" abbr="ic_all">
+        <Option index="0">
+          <Label>all</Label>
+          <Value>all</Value>
+        </Option>
+        <Name>select1</Name>
+        <Default/>
+      </Sel>
+      <Sel name="select1" abbr="mlibrary1ic_record_no">
+        <Option index="0">
+          <Label>all</Label>
+          <Value>all</Value>
+        </Option>
+        <Option index="1">
+          <Label>any</Label>
+          <Value>any</Value>
+        </Option>
+        <Option index="2">
+          <Label>phrase</Label>
+          <Value>phrase</Value>
+        </Option>
+        <Option index="3">
+          <Label>ic_exact</Label>
+          <Value>ic_exact</Value>
+        </Option>
+        <Name>select1</Name>
+        <Default/>
+      </Sel>
+      <Sel name="select1" abbr="mlibrary1ic_call_number">
+        <Option index="0">
+          <Label>all</Label>
+          <Value>all</Value>
+        </Option>
+        <Option index="1">
+          <Label>any</Label>
+          <Value>any</Value>
+        </Option>
+        <Option index="2">
+          <Label>phrase</Label>
+          <Value>phrase</Value>
+        </Option>
+        <Option index="3">
+          <Label>ic_exact</Label>
+          <Value>ic_exact</Value>
+        </Option>
+        <Name>select1</Name>
+        <Default/>
+      </Sel>
+      <Sel name="select1" abbr="mlibrary1ic_title">
+        <Option index="0">
+          <Label>all</Label>
+          <Value>all</Value>
+        </Option>
+        <Option index="1">
+          <Label>any</Label>
+          <Value>any</Value>
+        </Option>
+        <Option index="2">
+          <Label>phrase</Label>
+          <Value>phrase</Value>
+        </Option>
+        <Option index="3">
+          <Label>ic_exact</Label>
+          <Value>ic_exact</Value>
+        </Option>
+        <Name>select1</Name>
+        <Default/>
+      </Sel>
+      <Sel name="select1" abbr="mlibrary1ic_author">
+        <Option index="0">
+          <Label>all</Label>
+          <Value>all</Value>
+        </Option>
+        <Option index="1">
+          <Label>any</Label>
+          <Value>any</Value>
+        </Option>
+        <Option index="2">
+          <Label>phrase</Label>
+          <Value>phrase</Value>
+        </Option>
+        <Option index="3">
+          <Label>ic_exact</Label>
+          <Value>ic_exact</Value>
+        </Option>
+        <Name>select1</Name>
+        <Default/>
+      </Sel>
+      <Sel name="select1" abbr="mlibrary1ic_publisher">
+        <Option index="0">
+          <Label>all</Label>
+          <Value>all</Value>
+        </Option>
+        <Option index="1">
+          <Label>any</Label>
+          <Value>any</Value>
+        </Option>
+        <Option index="2">
+          <Label>phrase</Label>
+          <Value>phrase</Value>
+        </Option>
+        <Option index="3">
+          <Label>ic_exact</Label>
+          <Value>ic_exact</Value>
+        </Option>
+        <Name>select1</Name>
+        <Default/>
+      </Sel>
+    </Q>
+    <Q name="q2">
+      <Value/>
+      <Rgn name="rgn2">
+        <Option index="0">
+          <Label>Anywhere in record</Label>
+          <Value>ic_all</Value>
+        </Option>
+        <Option index="1">
+          <Label>Catalog Number</Label>
+          <Value>mlibrary1ic_record_no</Value>
+        </Option>
+        <Option index="2">
+          <Label>Call Number</Label>
+          <Value>mlibrary1ic_call_number</Value>
+        </Option>
+        <Option index="3">
+          <Label>Title</Label>
+          <Value>mlibrary1ic_title</Value>
+        </Option>
+        <Option index="4">
+          <Label>Author</Label>
+          <Value>mlibrary1ic_author</Value>
+        </Option>
+        <Option index="5">
+          <Label>Publisher</Label>
+          <Value>mlibrary1ic_publisher</Value>
+        </Option>
+        <Name>rgn2</Name>
+        <Default>all</Default>
+      </Rgn>
+      <Sel name="select2" abbr="ic_all">
+        <Option index="0">
+          <Label>all</Label>
+          <Value>all</Value>
+        </Option>
+        <Name>select2</Name>
+        <Default/>
+      </Sel>
+      <Sel name="select2" abbr="mlibrary1ic_record_no">
+        <Option index="0">
+          <Label>all</Label>
+          <Value>all</Value>
+        </Option>
+        <Option index="1">
+          <Label>any</Label>
+          <Value>any</Value>
+        </Option>
+        <Option index="2">
+          <Label>phrase</Label>
+          <Value>phrase</Value>
+        </Option>
+        <Option index="3">
+          <Label>ic_exact</Label>
+          <Value>ic_exact</Value>
+        </Option>
+        <Name>select2</Name>
+        <Default/>
+      </Sel>
+      <Sel name="select2" abbr="mlibrary1ic_call_number">
+        <Option index="0">
+          <Label>all</Label>
+          <Value>all</Value>
+        </Option>
+        <Option index="1">
+          <Label>any</Label>
+          <Value>any</Value>
+        </Option>
+        <Option index="2">
+          <Label>phrase</Label>
+          <Value>phrase</Value>
+        </Option>
+        <Option index="3">
+          <Label>ic_exact</Label>
+          <Value>ic_exact</Value>
+        </Option>
+        <Name>select2</Name>
+        <Default/>
+      </Sel>
+      <Sel name="select2" abbr="mlibrary1ic_title">
+        <Option index="0">
+          <Label>all</Label>
+          <Value>all</Value>
+        </Option>
+        <Option index="1">
+          <Label>any</Label>
+          <Value>any</Value>
+        </Option>
+        <Option index="2">
+          <Label>phrase</Label>
+          <Value>phrase</Value>
+        </Option>
+        <Option index="3">
+          <Label>ic_exact</Label>
+          <Value>ic_exact</Value>
+        </Option>
+        <Name>select2</Name>
+        <Default/>
+      </Sel>
+      <Sel name="select2" abbr="mlibrary1ic_author">
+        <Option index="0">
+          <Label>all</Label>
+          <Value>all</Value>
+        </Option>
+        <Option index="1">
+          <Label>any</Label>
+          <Value>any</Value>
+        </Option>
+        <Option index="2">
+          <Label>phrase</Label>
+          <Value>phrase</Value>
+        </Option>
+        <Option index="3">
+          <Label>ic_exact</Label>
+          <Value>ic_exact</Value>
+        </Option>
+        <Name>select2</Name>
+        <Default/>
+      </Sel>
+      <Sel name="select2" abbr="mlibrary1ic_publisher">
+        <Option index="0">
+          <Label>all</Label>
+          <Value>all</Value>
+        </Option>
+        <Option index="1">
+          <Label>any</Label>
+          <Value>any</Value>
+        </Option>
+        <Option index="2">
+          <Label>phrase</Label>
+          <Value>phrase</Value>
+        </Option>
+        <Option index="3">
+          <Label>ic_exact</Label>
+          <Value>ic_exact</Value>
+        </Option>
+        <Name>select2</Name>
+        <Default/>
+      </Sel>
+    </Q>
+    <HiddenVars>
+      <Variable name="type">boolean</Variable>
+      <Variable name="c">mlibrary1ic</Variable>
+    </HiddenVars>
+    <MediaOnly>
+      <Visible>true</Visible>
+      <Focus>true</Focus>
+    </MediaOnly>
+    <ResultsViewOptions>
+      <Option index="0">
+        <Label>reslist</Label>
+        <Value>reslist</Value>
+        <Focus>true</Focus>
+      </Option>
+      <Name>view</Name>
+      <Default>reslist</Default>
+    </ResultsViewOptions>
+  </SearchForm>
   <SearchSummary/>
   <TotalResults>53</TotalResults>
   <Next>
