@@ -191,6 +191,9 @@
     </xsl:for-each>
   </xsl:template>
 
+  <xsl:template match="qui:hidden-input">
+    <input type="hidden" name="{@name}" value="{@value}" />
+  </xsl:template>
 
   <!-- UTILITY -->
   <xsl:template match="node()" mode="copy-guts">

@@ -1,5 +1,34 @@
 <?xml version="1.0" encoding="utf-8"?>
-<xsl:stylesheet version="1.0" xmlns:xsl="http://www.w3.org/1999/XSL/Transform" xmlns:qui="http://dlxs.org/quombat/ui" xmlns:xhtml="http://www.w3.org/1999/xhtml" xmlns:exsl="http://exslt.org/common" extension-element-prefixes="exsl">
+<xsl:stylesheet version="1.0" xmlns="http://www.w3.org/1999/xhtml" xmlns:xsl="http://www.w3.org/1999/XSL/Transform" xmlns:qui="http://dlxs.org/quombat/ui" xmlns:xhtml="http://www.w3.org/1999/xhtml" xmlns:exsl="http://exslt.org/common" extension-element-prefixes="exsl">
+
+  <xsl:template name="build-extra-styles">
+    <xsl:comment>DUBIOUS EXCEPTIONS</xsl:comment>
+    <style>
+      .pagination {
+        display: flex;
+        align-items: center;
+        justify-content: space-between;
+        margin-top: 1rem;
+      }
+
+      .pagination__links {
+        display: flex;
+        align-items: center;
+        gap: 1rem;
+      }
+
+      .pagination__form {
+        display: flex;
+        align-items: center;
+        gap: 0.5rem;
+      }
+
+      .pagination__input {
+        padding: 0.5rem;
+        max-width: 8ch;
+      }
+    </style>
+  </xsl:template>
 
   <xsl:template match="qui:main">
 
@@ -12,6 +41,7 @@
         <xsl:call-template name="build-search-form" />
         <xsl:call-template name="build-search-summary" />
         <xsl:call-template name="build-results-list" />
+        <xsl:call-template name="build-results-pagination" />
       </div>
     </div>
 
@@ -62,7 +92,7 @@
   </xsl:template>
 
   <xsl:template name="build-search-form">
-    <xsl:variable name="form" select="//qui:block[@slot='search-form']" />
+    <xsl:variable name="form" select="//qui:form[@id='collection-search']" />
     <fieldset class="[ results-search ][ no-border ]">
       <legend class="visually-hidden">Search</legend>
       <div class="[ search-container ] [ flex ]">
@@ -76,6 +106,7 @@
             <span>Search</span>
           </label>
         </div>
+        <xsl:apply-templates select="$form/qui:hidden-input" />
         <input id="search-collection" class="results-search_input" type="search" name="query" placeholder="" />
         <div class="flex">
           <button class="[ button button--primary button--small ]" type="submit" aria-label="Search">
@@ -106,6 +137,26 @@
     <xsl:apply-templates select="//qui:block[@slot='results']/qui:section" mode="result" />
   </xsl:template>
 
+  <xsl:template name="build-results-pagination">
+    <xsl:variable name="nav" select="//qui:main/qui:nav[@role='results']" />
+    <xsl:if test="$nav/qui:link">
+      <div class="[ pagination ]">
+        <div class="[ pagination__links ]">
+          <xsl:apply-templates select="$nav/qui:link[@rel='previous']" />
+          <xsl:apply-templates select="$nav/qui:link[@rel='next']" />
+        </div>
+        <div class="[ pagination__form ]">
+          <form>
+            <span>Go to page </span>
+            <input class="[ pagination__input ]" type="number" min="1" max="{$nav/@max}" value="{$nav/@current}" />
+            <span> of <xsl:value-of select="$nav/@max" /></span>
+            <button class="[ button button__small ]">Go</button>
+          </form>
+        </div>
+      </div>
+    </xsl:if>
+  </xsl:template>
+
   <xsl:template match="qui:section" mode="result">
     <section class="[ results-list--small ]">
       <a class="[ flex ]" href="{qui:link[@rel='result']/@href}">
@@ -128,6 +179,52 @@
       </xsl:if>
     </xsl:for-each>
   </xsl:template>
+
+  <xsl:template match="qui:link[@rel='previous']" priority="100">
+    <a href="{@href}">
+      <svg
+          height="18px"
+          viewBox="0 0 20 20"
+          width="12px"
+          fill="#06080a"
+          aria-hidden="true"
+          style="transform: rotate(-180deg)"
+        >
+          <g>
+            <g><rect fill="none" height="20" width="20" /></g>
+          </g>
+          <g>
+            <polygon
+              points="4.59,16.59 6,18 14,10 6,2 4.59,3.41 11.17,10"
+            />
+          </g>
+        </svg>
+        <span>Previous</span>
+      </a>
+  </xsl:template>
+
+  <xsl:template match="qui:link[@rel='next']" priority="100">
+    <a href="{@href}">
+      <span>Next</span>
+      <svg
+          height="18px"
+          viewBox="0 0 20 20"
+          width="12px"
+          fill="#06080a"
+          aria-hidden="true"
+        >
+        <g>
+          <g><rect fill="none" height="20" width="20" /></g>
+        </g>
+        <g>
+          <polygon
+            points="4.59,16.59 6,18 14,10 6,2 4.59,3.41 11.17,10"
+          />
+        </g>
+      </svg>
+    </a>
+  </xsl:template>
+
 
   <xsl:template name="build-navigation"></xsl:template>
 

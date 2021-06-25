@@ -39,7 +39,7 @@
       </xsl:choose>
     </xsl:variable>
     <xsl:variable name="tmp-xml">
-      <qui:nav role="results" total="{//TotalResults}" start="{//Fisheye/Url[@class='active']/@name}" end="{$end}">
+      <qui:nav role="results" total="{//TotalResults}" size="{$sz}" min="1" max="{count(//Fisheye/Url)}" current="{count(//Fisheye/Url[@class='active']/preceeding-sibling) + 1}" start="{//Fisheye/Url[@class='active']/@name}" end="{$end}">
         <xsl:call-template name="build-results-navigation-link">
           <xsl:with-param name="rel">next</xsl:with-param>
           <xsl:with-param name="href" select="/Top/Next/Url" />
@@ -68,13 +68,18 @@
   </xsl:template>
 
   <xsl:template name="build-results-list">
-    <qui:block slot="search-form">
-      <qui:select name="field">
-        <xsl:for-each select="//SearchForm/Q[@name='q1']/Rgn/Option">
-          <qui:option value="{Value}"><xsl:value-of select="Label" /></qui:option>
+    <xsl:variable name="q" select="//SearchForm/Q[@name='q1']" />
+    <qui:form id="collection-search">
+      <qui:select name="rgn1">
+        <xsl:for-each select="$q/Rgn/Option">
+          <xsl:variable name="value" select="Value" />
+          <xsl:if test="$q/Sel[@abbr=$value][Option/Value='all']">
+            <qui:option value="{Value}"><xsl:value-of select="Label" /></qui:option>
+          </xsl:if>
         </xsl:for-each>
       </qui:select>
-    </qui:block>
+      <qui:hidden-input name="select1" value="all" />
+    </qui:form>
     <qui:block slot="results">
       <xsl:apply-templates select="//Results/Result" />
     </qui:block>
