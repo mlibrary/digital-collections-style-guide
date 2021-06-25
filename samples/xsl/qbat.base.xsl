@@ -12,7 +12,7 @@
     />
 
   <xsl:template match="/">
-    <html>
+    <html lang="en">
       <head>
         <title>
           <xsl:apply-templates select="//qui:head/qui:title" />
@@ -26,28 +26,29 @@
 
         <xsl:apply-templates select="//qui:head/qui:block[@slot='meta-social']" />
 
-        <style>
-          <!-- this should be somewhere else -->
-          body {
-            font-family: var(--font-base-family);
-          }
-        </style>
-
+        <xsl:call-template name="build-extra-scripts" />
         <xsl:call-template name="build-extra-styles" />
 
       </head>
-      <body class="mb-8">
-        <m-universal-header></m-universal-header>
-        <xsl:apply-templates select="//qui:m-website-header" />
+      <body class="[ font-base-family ]">
+        <section class="border-bottom">
+          <m-universal-header></m-universal-header>
+          <xsl:apply-templates select="//qui:m-website-header" />
+        </section>
 
-        <main>
+        <main class="viewport-container">
           <xsl:apply-templates select="//qui:main" />
         </main>
+
+        <footer style="background: var(--color-blue-400); color: var(--color-blue-100); padding: var(--space-xxxx-large); margin-top: var(--space-xx-large);">
+          <p>TBD</p>
+        </footer>
 
       </body>
     </html>
   </xsl:template>
 
+  <xsl:template name="build-extra-scripts" />
   <xsl:template name="build-extra-styles" />
 
   <xsl:template match="qui:m-website-header">
@@ -113,15 +114,15 @@
   </xsl:template>
 
   <xsl:template match="qui:panel">
-    <div class="mt-9 mb-2 text-sm">
+    <div class="[ border-bottom ]">
       <xsl:apply-templates />
     </div>
   </xsl:template>
 
   <xsl:template match="qui:panel/qui:header">
-    <h2 class="text-neutral-300 uppercase font-semibold pb-2">
+    <h3>
       <xsl:apply-templates select="." mode="copy-guts" />
-    </h2>
+    </h3>
   </xsl:template>
 
   <xsl:template match="qui:panel/qui:nav">
@@ -152,8 +153,55 @@
     </section>
   </xsl:template>
 
+  <xsl:template name="build-collection-heading">
+    <h1 class="collection-heading">
+      <xsl:value-of select="//qui:header[@role='main']" />
+    </h1>
+  </xsl:template>
+
+  <!-- FIELDS -->
+  <xsl:template match="qui:field[@component='catalog-link']" priority="99">
+    <p>
+      <a class="catalog-link" href="https://search.lib.umich.edu/catalog/Record/{qui:values/qui:value}">
+        <xsl:value-of select="qui:label" />
+      </a>
+    </p>
+  </xsl:template>
+
+  <xsl:template match="qui:field[@component='system-link']" priority="99">
+    <p>
+      <a class="system-link" href="{qui:values/qui:value}">
+        <xsl:value-of select="qui:label" />
+      </a>
+    </p>
+  </xsl:template>
+
+  <xsl:template match="qui:field[@component='input']//qui:value" mode="copy-guts" priority="99">
+    <input type="text" value="{.}" />
+  </xsl:template>
+
+  <xsl:template match="qui:field">
+    <dt data-key="{@key}">
+      <xsl:apply-templates select="qui:label" mode="copy-guts" />
+    </dt>
+    <xsl:for-each select="qui:values/qui:value">
+      <dd>
+        <xsl:apply-templates select="." mode="copy-guts" />
+      </dd>
+    </xsl:for-each>
+  </xsl:template>
+
+  <xsl:template match="qui:hidden-input">
+    <input type="hidden" name="{@name}" value="{@value}" />
+  </xsl:template>
+
+  <!-- UTILITY -->
   <xsl:template match="node()" mode="copy-guts">
     <xsl:apply-templates select="*|text()" mode="copy" />
+  </xsl:template>
+
+  <xsl:template match="qui:link" mode="copy" priority="99">
+    <a href="{@href}"><xsl:apply-templates mode="copy" /></a>
   </xsl:template>
 
   <xsl:template match="node()[namespace-uri() = 'http://www.w3.org/1999/xhtml']" mode="copy" priority="99">

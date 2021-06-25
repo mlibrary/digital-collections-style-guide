@@ -135,6 +135,10 @@ svg {
   margin-left: 0;
 }
 
+.results dd + dd {
+  grid-column: 2/3;
+}
+
 .results-list__content > h4 {
   font-weight: var(--regular);
   text-decoration: underline;
@@ -364,6 +368,15 @@ h3,
   border-bottom: 1px solid var(--color-neutral-100);
   padding: var(--space-small) 0;
   margin-left: 0;
+}
+
+.record dd {
+  /* for longer/wrapping dt */
+  padding-left: var(--space-small);
+}
+
+.record dd + dd {
+  grid-column: 2/3;
 }
 
 .record-container {
