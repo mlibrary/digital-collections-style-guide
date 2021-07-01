@@ -80,6 +80,7 @@
       </qui:select>
       <qui:hidden-input name="select1" value="all" />
     </qui:form>
+    <xsl:apply-templates select="//Facets" />
     <qui:block slot="results">
       <xsl:apply-templates select="//Results/Result" />
     </qui:block>
@@ -100,6 +101,28 @@
         <xsl:apply-templates select="Record[@name='result']/Section" />
       </qui:block>
     </qui:section>
+  </xsl:template>
+
+  <xsl:template match="Facets">
+    <qui:filters-panel>
+      <xsl:for-each select="Field">
+        <qui:field key="{@abbrev}">
+          <qui:label>
+            <xsl:value-of select="Label" />
+          </qui:label>
+          <qui:values>
+            <xsl:for-each select="Values/Value">
+              <qui:value count="{@count}">
+                <xsl:if test="@selected">
+                  <xsl:attribute name="selected"><xsl:value-of select="@selected" /></xsl:attribute>
+                </xsl:if>
+                <xsl:value-of select="." />
+              </qui:value>
+            </xsl:for-each>
+          </qui:values>
+        </qui:field>
+      </xsl:for-each>
+    </qui:filters-panel>
   </xsl:template>
 
   <xsl:template match="MediaInfo" mode="iiif-link">

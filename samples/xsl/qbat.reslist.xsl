@@ -27,6 +27,33 @@
         padding: 0.5rem;
         max-width: 8ch;
       }
+
+      .gap-sm {
+        gap: 8px;
+      }
+
+      .filter__link {
+        text-decoration: none;
+        justify-content: space-between;
+        margin-bottom: var(--space-x-small);
+      }
+
+      .filter__link:hover span.value {
+        text-decoration: underline;
+      }
+
+      .filter__button {
+        background: #fff;
+        font-size: 0.875rem;
+        padding: var(--space-x-small);
+        color: var(--color-neutral-500);
+        font-weight: normal;
+      }
+
+
+      span.count {
+        color: #000;
+      }
     </style>
   </xsl:template>
 
@@ -35,7 +62,9 @@
     <xsl:call-template name="build-collection-heading" />
 
     <div class="flex">
-      <div class="side-panel"></div>
+      <div class="side-panel">
+        <xsl:call-template name="build-filters-panel" />
+      </div>
       <div class="main-panel">
         <xsl:call-template name="build-breadcrumbs" />
         <xsl:call-template name="build-search-form" />
@@ -154,6 +183,44 @@
           </form>
         </div>
       </div>
+    </xsl:if>
+  </xsl:template>
+
+  <xsl:template name="build-filters-panel">
+    <xsl:variable name="filters" select="//qui:filters-panel" />
+    <xsl:if test="$filters//qui:field">
+      <section class="[ filters ]" aria-labelledby="filters-heading">
+        <h2 id="filters-heading" class="visually-hidden">Filters</h2>
+        <div class="[ border-bottom ]">
+          <p class="[ bold ]">Filters</p>
+          <xsl:for-each select="$filters//qui:field">
+            <div class="[ border-bottom ]">
+              <p><xsl:value-of select="qui:label" /></p>
+              <ul>
+                <xsl:for-each select="qui:values/qui:value[position() &lt;= 10]">
+                  <li>
+                    <a href="#" class="[ flex filter__link ]">
+                      <span class="value"><xsl:value-of select="." /></span>
+                      <span class="count"><xsl:value-of select="@count" /></span>
+                    </a>
+                  </li>
+                </xsl:for-each>
+              </ul>
+              <xsl:if test="count(qui:values/qui:value) &gt; 10">
+                <p>
+                  <button class="[ button filter__button ]">
+                    <xsl:text>Show all </xsl:text>
+                    <xsl:value-of select="count(qui:values/qui:value)" />
+                    <xsl:text> </xsl:text>
+                    <xsl:value-of select="qui:label" />
+                    <xsl:text> filters</xsl:text>
+                  </button>
+                </p>
+              </xsl:if>
+            </div>
+          </xsl:for-each>
+        </div>
+      </section>
     </xsl:if>
   </xsl:template>
 
