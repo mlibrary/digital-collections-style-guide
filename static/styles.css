@@ -38,14 +38,14 @@ body {
   line-height: var(--line-height-default);
 }
 
+main {
+  padding-bottom: 5em;
+}
+
 /*
  * Globals 
  *
  */
-
-img {
-  max-width: 100%;
-}
 
 ol,
 ul {
@@ -87,12 +87,14 @@ details > summary::after {
   font-family: "Material Icons";
   content: "\e5cf";
   color: var(--color-teal-400);
+  vertical-align: sub;
 }
 
 details[open] > summary::after {
   font-family: "Material Icons";
   content: "\e5ce";
   color: var(--color-teal-400);
+  vertical-align: sub;
 }
 /* Removes the default arrow on Chrome */
 details > summary::-webkit-details-marker {
@@ -123,11 +125,6 @@ details > summary::-webkit-details-marker {
   padding: var(--space-xx-small);
 }
 
-.sidebar {
-  display: flex;
-  justify-content: space-between;
-}
-
 .select {
   min-width: 12ch;
   padding-left: 1em;
@@ -144,7 +141,7 @@ details > summary::-webkit-details-marker {
   max-width: 100%;
 }
 
-input {
+input[type="search"] {
   font-size: 1rem;
   font-family: var(--font-base-family);
   margin: 0;
@@ -182,13 +179,6 @@ input {
   border-bottom: 0;
 }
 
-.results-list__image {
-  width: 140px;
-  height: 140px;
-  padding: var(--space-medium);
-  padding-left: 0;
-}
-
 .results {
   display: grid;
   grid-template-columns: 9rem 1fr;
@@ -210,15 +200,15 @@ input {
   grid-column: 2/3;
 }
 
-.results-list__content > h4 {
-  font-weight: var(--regular);
-  text-decoration: underline;
-  font-size: var(--text-small);
-  margin: 1rem 0;
-  color: var(--color-neutral-400);
-}
 .results-list__content > dt {
   text-decoration: none;
+}
+
+.results-list__image {
+  width: 140px;
+  height: 140px;
+  padding: var(--space-medium);
+  padding-left: 0;
 }
 
 .filters {
@@ -228,6 +218,68 @@ input {
 .text-block {
   width: max(40vw);
 }
+
+/** CARD **/
+
+.card__gallery {
+  display: flex;
+  flex-flow: row wrap;
+}
+
+.card {
+  width: calc(100% / 4 - 8px);
+}
+
+.card__heading {
+  font-size: var(--text-small);
+  font-weight: var(--semibold);
+  color: var(--base-text-color);
+  margin: 1rem 0;
+}
+
+.card__image {
+  padding: var(--space-medium);
+  padding-left: 0;
+}
+
+/** SIDE PANEL BOX **/
+
+.side-panel__box {
+  display: flex;
+  flex-flow: column wrap;
+  width: 20vw;
+}
+
+.side-panel__box--wrapper {
+  margin: 3em;
+  padding: 1em;
+}
+
+.side-panel__box > details:not(:last-child) {
+  border-bottom: solid 1px var(--color-neutral-100);
+}
+
+.side-panel__box > *:not(:last-child) {
+  border-bottom: solid 1px var(--color-neutral-100);
+}
+
+.side-panel__box > details {
+  padding: 1em 0;
+}
+
+details > div {
+  padding: 0.25em;
+}
+
+.filters__count {
+  color: var(--color-neutral-300);
+}
+
+input[type="checkbox"] {
+  width: 20px;
+  height: 20px;
+}
+
 /*
  * Utilities
  *
@@ -243,7 +295,7 @@ input {
 }
 
 .border-bottom {
-  border-bottom: solid 2px var(--color-neutral-100);
+  border-bottom: solid 1px var(--color-neutral-100);
 }
 
 .light-text-color {
@@ -258,16 +310,8 @@ input {
   font-weight: var(--bold);
 }
 
-.mb1 {
-  margin-bottom: 1em;
-}
-
 .block {
   display: block;
-}
-
-.spacer {
-  height: 50px;
 }
 
 .flex {
@@ -286,13 +330,25 @@ input {
   flex-wrap: wrap;
 }
 
+.flex-space-between {
+  justify-content: space-between;
+}
+
+.mb-1 {
+  margin-bottom: 1em;
+}
+
+.mt-2 {
+  margin-top: 2em;
+}
+
+.p-half {
+  padding: 0.5em;
+}
+
 /*
  * Anchors/Links
  *
- * How about we just make links all have an underline?
- * I mean, if you're going to use a link and not
- * underline it, you better know your context and
- * have a good reason to do so.
  */
 
 .active-link {
@@ -336,6 +392,8 @@ h2,
 .section-heading {
   font-size: var(--text-large);
   font-weight: var(--bold);
+  padding-top: 0;
+  margin-top: 0;
 }
 
 h3,
@@ -346,7 +404,8 @@ h3,
   font-size: 14px;
   font-weight: var(--bold);
   font-family: var(--font-base-family);
-  padding-top: var(--space-large);
+  padding-top: var(--space-medium);
+  margin-top: 0;
 }
 
 .collection-heading {
@@ -360,6 +419,9 @@ h3,
 .collection-heading--small {
   font-size: 20px;
   font-weight: var(--bold);
+  font-family: var(--font-base-family);
+  color: var(--color-neutral-400);
+  line-height: 1.1;
 }
 
 /*
@@ -400,6 +462,10 @@ button {
 
 .button--small {
   padding: var(--space-small);
+}
+
+.button--large {
+  padding: var(--space-small) var(--space-xxx-large);
 }
 
 .button:focus {
