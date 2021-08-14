@@ -1,4 +1,22 @@
 /*
+ * Custom Properties
+ *
+ */
+
+:root {
+  --base-text-color: var(--color-neutral-400);
+  --light-text-color: var(--color-neutral-300);
+  --viewport-margin: var(--space-medium);
+  --card-min-width: 320px;
+}
+
+@media (min-width: 720px) {
+  :root {
+    --viewport-margin: var(--space-xx-large);
+  }
+}
+
+/*
  * Resets
  *
  */
@@ -14,11 +32,14 @@ html {
 
 body {
   margin: 0;
+  color: var(--base-text-color);
+  font-size: var(--text-base-size);
+  font-family: var(--font-base-family);
+  line-height: var(--line-height-default);
 }
 
 /*
  * Globals 
- *
  *
  */
 
@@ -33,22 +54,64 @@ ul {
 }
 
 svg {
+  display: inline-block;
   vertical-align: middle;
 }
 
-.font-base-family {
-  font-family: var(--font-base-family);
+a {
+  color: var(--color-teal-400);
+  text-decoration: underline;
+}
+
+a:hover {
+  text-decoration-thickness: 2px;
 }
 
 :focus {
   border: solid 2px var(--color-indigo-400);
 }
 
+address {
+  font-style: normal;
+}
+
+details > summary {
+  list-style: none;
+}
+
+details[open] {
+  padding-bottom: var(--space-x-large);
+}
+
+details > summary::after {
+  font-family: "Material Icons";
+  content: "\e5cf";
+  color: var(--color-teal-400);
+}
+
+details[open] > summary::after {
+  font-family: "Material Icons";
+  content: "\e5ce";
+  color: var(--color-teal-400);
+}
+/* Removes the default arrow on Chrome */
+details > summary::-webkit-details-marker {
+  display: none;
+}
+
 /*
 * Blocks
 *
-*
 */
+
+.hero__image {
+  margin: 2em 0;
+}
+
+.image-grid img {
+  padding: 0.5em;
+  width: calc(100% / 4 - 8px);
+}
 
 .breadcrumb {
   display: flex;
@@ -81,19 +144,27 @@ svg {
   max-width: 100%;
 }
 
-.search-container {
-  height: 40px;
+input {
   font-size: 1rem;
-}
-
-.results-search_input {
-  width: 80%;
   font-family: var(--font-base-family);
-  padding-left: var(--space-medium);
+  margin: 0;
+  border: solid 1px var(--color-neutral-300);
+  box-shadow: inset 0 1px 4px rgb(0 0 0 / 10%);
+  border-radius: 4px;
+  padding: 0.5rem 0.75rem;
+  width: 80%;
+  appearance: textfield;
+  font-family: inherit;
+  box-sizing: border-box;
+  height: 40px;
 }
 
-.results-search {
-  padding-left: 0;
+.input__group {
+  padding: 0 1.5em 0 0;
+}
+
+.list__links ul li {
+  margin-top: 0.5em;
 }
 
 .results-list--small {
@@ -144,18 +215,19 @@ svg {
   text-decoration: underline;
   font-size: var(--text-small);
   margin: 1rem 0;
-  color: var(--color-neutral-400)
+  color: var(--color-neutral-400);
 }
 .results-list__content > dt {
-text-decoration: none;
+  text-decoration: none;
 }
-
-  
 
 .filters {
   padding-top: var(--space-xxxx-large);
 }
 
+.text-block {
+  width: max(40vw);
+}
 /*
  * Utilities
  *
@@ -174,8 +246,12 @@ text-decoration: none;
   border-bottom: solid 2px var(--color-neutral-100);
 }
 
-.color-neutral-300 {
-  color: var(--color-neutral-300);
+.light-text-color {
+  color: var(--light-text-color);
+}
+
+.base-text-color {
+  color: var(--base-text-color);
 }
 
 .bold {
@@ -198,22 +274,16 @@ text-decoration: none;
   display: flex;
 }
 
-/*
- * Variables
- *
- * All the CSS values that can be changed based
- * on developer configuration or via media query.
- */
-
-:root {
-  --viewport-margin: var(--space-medium);
-  --card-min-width: 320px;
+.flex-end {
+  align-items: flex-end;
 }
 
-@media (min-width: 720px) {
-  :root {
-    --viewport-margin: var(--space-xx-large);
-  }
+.flex-center {
+  align-items: center;
+}
+
+.flex-wrap {
+  flex-wrap: wrap;
 }
 
 /*
@@ -225,18 +295,21 @@ text-decoration: none;
  * have a good reason to do so.
  */
 
-a {
-  color: var(--color-teal-400);
-  text-decoration: underline;
-}
-
-a:hover {
-  text-decoration-thickness: 2px;
-}
-
 .active-link {
   text-decoration: none;
   color: var(--color-neutral-400);
+}
+
+.link-box {
+  background-color: var(--color-teal-100);
+  padding: 1.5em;
+  margin: 1em 0;
+  display: inline-flex;
+  color: var(--base-text-color);
+}
+
+.link-box > * {
+  margin: 0 0.25em;
 }
 
 /*
@@ -255,6 +328,8 @@ h1,
   font-size: var(--text-xx-large);
   font-family: var(--font-second-family);
   line-height: var(--line-height-page-heading);
+  padding-top: 0;
+  margin-top: 0;
 }
 
 h2,
@@ -278,9 +353,13 @@ h3,
   color: var(--color-neutral-400);
   line-height: 1.1;
   font-weight: var(--bold);
-  font-size: 20px;
+  font-size: 32px;
   font-family: var(--font-base-family);
-  padding-top: var(--space-large);
+}
+
+.collection-heading--small {
+  font-size: 20px;
+  font-weight: var(--bold);
 }
 
 /*
@@ -303,43 +382,51 @@ h3,
 
 /*
  * Buttons
- * We need some buttons. 
  */
 
-.button {
+.button,
+button {
   outline: none;
   display: inline-block;
-  padding: var(--space-small) var(--space-large);
-  background: var(--color-blue-100);
-  color: var(--color-teal-400);
+  padding: 0 0.75rem;
   font-size: 1rem;
   line-height: 1.5;
-  font-weight: 700;
+  font-weight: var(--bold);
   font-family: var(--font-base-family);
   border-radius: var(--radius-default);
-}
-
-.button:focus {
-  box-shadow: 0 0 0 2px #ffffff, 0 0 0 4px var(--color-indigo-400);
+  align-items: center;
+  min-height: 2.5rem;
 }
 
 .button--small {
   padding: var(--space-small);
 }
 
-.button--loud {
-  background: var(--color-teal-400);
-  color: white;
+.button:focus {
+  box-shadow: 0 0 0 2px #ffffff, 0 0 0 4px var(--color-indigo-400);
+}
+
+.button:hover {
+  box-shadow: 0 0 0 2px #fff, 0 0 0 3px var(--color-neutral-400);
 }
 
 .button--primary {
-  background: var(--color-maize-400);
-  border: solid 1px var(--color-maize-400);
+  background: var(--color-teal-400);
+  border: solid 1px var(--color-teal-400);
+  color: #fff;
+}
+
+.button--secondary {
+  background: var(--color-neutral-100);
+  border: solid 1px var(--color-neutral-100);
+  border-radius: 0 2px 2px 0;
   color: var(--color-neutral-400);
 }
 
-.button--primary:hover {
-  background: var(--color-maize-500);
+.button--cta {
+  background: var(--color-maize-400);
+  border: solid 1px var(--color-maize-400);
+  color: var(--color-neutral-400);
 }
 
 .button-icon {
@@ -384,20 +471,14 @@ h3,
 }
 
 /*
- * Side Panel
+ * Layouts - Flex
  *
  */
 
 .side-panel {
-  width: 20vw;
+  width: 30vw;
 }
 
-/*
- * Main Panel
- *
- */
-
 .main-panel {
-  padding: var(--space-x-large);
-  width: 80vw;
+  width: 70vw;
 }

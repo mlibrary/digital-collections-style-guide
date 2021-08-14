@@ -39,13 +39,15 @@
     <meta name="twitter:card" content="summary_large_image" />
 
     <link rel="icon" href="/static/images/favicon-32x32.png" type="image/png" />
-
+    <link href="/static/styles.css" rel="stylesheet" />
     <link
       href="https://unpkg.com/@umich-lib/css@v1/dist/umich-lib.css"
       rel="stylesheet"
     />
-    <link href="/static/styles.css" rel="stylesheet" />
-
+    <link
+      rel="stylesheet"
+      href="https://fonts.googleapis.com/icon?family=Material+Icons"
+    />
     <script
       type="module"
       src="https://unpkg.com/@umich-lib/components@v1/dist/umich-lib/umich-lib.esm.js"
@@ -56,14 +58,182 @@
     ></script>
   </head>
 
-  <body class="[ font-base-family ]">
+  <body>
     <div class="border-bottom">
       <m-universal-header></m-universal-header>
-      <m-website-header name="Digital Collections"></m-website-header>
+      <m-website-header name="Digital Collections"> </m-website-header>
     </div>
 
     <main class="viewport-container">
       <m-roger-eyes>[the content for why you're here, probably]</m-roger-eyes>
+
+      <!-- Collection Home Page -->
+      <div class="hero__image">
+        <img
+          src="/static/img/saline-home-full.png"
+          alt="Saline Collection home page black and white photograph"
+        />
+      </div>
+
+      <div class="flex">
+        <div class="side-panel">
+          <fieldset class="[ input__group ] [ no-border ]">
+            <legend class="visually-hidden">Search within collection</legend>
+
+            <div class="[ flex flex-end ]">
+              <label for="search-in-collection" class="visually-hidden"
+                >Search within collection</label
+              >
+              <input
+                id="search-in-collection"
+                type="search"
+                name="query"
+                placeholder="Seach within collection"
+              />
+
+              <button
+                class="[ button button--secondary ] [ flex ]"
+                type="submit"
+                aria-label="Search"
+              >
+                <svg
+                  xmlns="https://www.w3.org/2000/svg"
+                  width="24px"
+                  height="24px"
+                  viewBox="0 0 24 24"
+                  aria-hidden="true"
+                  focusable="false"
+                  role="img"
+                >
+                  <path
+                    d="M15.5 14h-.79l-.28-.27C15.41 12.59 16 11.11 16 9.5 16 5.91 13.09 3 9.5 3S3 5.91 3 9.5 5.91 16 9.5 16c1.61 0 3.09-.59 4.23-1.57l.27.28v.79l5 4.99L20.49 19l-4.99-5zm-6 0C7.01 14 5 11.99 5 9.5S7.01 5 9.5 5 14 7.01 14 9.5 11.99 14 9.5 14z"
+                  ></path>
+                </svg>
+                <span class="visually-hidden">Submit</span>
+              </button>
+            </div>
+          </fieldset>
+
+          <section class="[ list__links ]">
+            <h3>In this collection</h3>
+            <ul>
+              <li><a href="#">Link placeholder</a></li>
+              <li><a href="#">Link placeholder</a></li>
+              <li><a href="#">Link placeholder</a></li>
+              <li><a href="#">Link placeholder</a></li>
+            </ul>
+
+            <h3>Related Collections</h3>
+            <ul>
+              <li><a href="#">Link placeholder</a></li>
+              <li><a href="#">Link placeholder</a></li>
+              <li><a href="#">Link placeholder</a></li>
+              <li><a href="#">Link placeholder</a></li>
+            </ul>
+
+            <h3>Contact</h3>
+            <ul>
+              <li><p>Saline Digital Collections Help</p></li>
+              <li><a href="#">Link placeholder</a></li>
+            </ul>
+          </section>
+        </div>
+
+        <div class="main-panel">
+          <h1 class="[ collection-heading ]">Saline Historic Homes</h1>
+          <p class="[ light-text-color ]">
+            <em
+              >This is a very brief introduction to the collection that is no
+              more than one to two sentences.</em
+            >
+          </p>
+
+          <div class="[ image-grid ] [ flex flex-wrap ]">
+            <img src="/static/img/sdl_1.png" alt="" />
+            <img src="/static/img/sdl_2.png" alt="" />
+            <img src="/static/img/sdl_3.png" alt="" />
+            <img src="/static/img/sdl_4.png" alt="" />
+          </div>
+
+          <div class="[ link-box ][ flex flex-center ]">
+            <svg
+              xmlns="https://www.w3.org/2000/svg"
+              height="16px"
+              viewBox="0 0 24 24"
+              width="16px"
+              fill="#106684"
+              aria-hidden="true"
+              focusable="false"
+              role="img"
+            >
+              <path d="M0 0h24v24H0V0z" fill="none" />
+              <path
+                d="M19 19H5V5h7V3H5c-1.11 0-2 .9-2 2v14c0 1.1.89 2 2 2h14c1.1 0 2-.9 2-2v-7h-2v7zM14 3v2h3.59l-9.83 9.83 1.41 1.41L19 6.41V10h2V3h-7z"
+              />
+            </svg>
+            <a href="#">Browse 312 collection items</a>
+          </div>
+
+          <div class="text-block">
+            <p>
+              This Historical and Architectural Survey includes all structures
+              built up to 1944 within the city limits of Saline Michigan.
+              Conducted in 1994 by Kosky and Glynn Associates, this survey is
+              the result of the City’s intent to comply with the Certified Local
+              Government requirements. The objective of the survey was to
+              research, photograph and map all structures built within the City
+              of Saline between 1829 and 1944. The completed project includes a
+              survey card and black and white photograph for each structure, a
+              map of all surveyed structures, and historical and architectural
+              text encompassing the study period.
+            </p>
+
+            <p>
+              All original survey material is housed by the Historic District
+              Commission at Saline City Hall. The 24-page report is also
+              available at Saline District Library and
+              <a href="google.com">online.</a>
+            </p>
+          </div>
+
+          <details class="[ mb1 ]">
+            <summary class="[ collection-heading--small ]">
+              Copyright information
+            </summary>
+            <div class="text-block">
+              <p>
+                The City of Saline is the copyright holder for the materials in
+                this Saline Historic Homes online collection. The materials were
+                compiled by Sue Kosky and Kathie Glynn, who composed the 1994
+                Historical and Architectural Survey under a contract with the
+                City of Saline. The project was comprised of the 350 photos and
+                informational cards documenting historic homes in Saline.
+              </p>
+              <p>
+                The City of Saline is pleased to make these materials available
+                for research and education for which no permission is required
+                (though attribution is appreciated). For other uses or
+                questions, please contact:
+              </p>
+            </div>
+            <address>
+              Mary Ellen Mulcrone, Director <br />
+              Saline District Library <br />
+              555 N. Maple Road Saline, MI 48176 <br />
+              Telephone: (734) 429-5450 <br />
+              Fax: (734) 944-0600 <br />
+              <a href="http://www.salinelibrary.org/"
+                >http://www.salinelibrary.org/</a
+              >
+            </address>
+          </details>
+        </div>
+      </div>
+
+      <!-- End Collection Home Page -->
+
+      <hr />
+      <!-- Collection Item Page -->
 
       <section aria-labelledby="results-nav-heading">
         <h2 id="results-nav-heading" class="visually-hidden">
@@ -78,14 +248,19 @@
             <li>
               <a href="#"> Saline Historic Homes </a>
               <svg
+                xmlns="https://www.w3.org/2000/svg"
                 height="18px"
                 viewBox="0 0 20 20"
                 width="12px"
                 fill="#06080a"
                 aria-hidden="true"
+                focusable="false"
+                role="img"
               >
                 <g>
-                  <g><rect fill="none" height="20" width="20" /></g>
+                  <g>
+                    <rect fill="none" height="20" width="20" />
+                  </g>
                 </g>
                 <g>
                   <polygon
@@ -97,14 +272,19 @@
             <li>
               <a href="#"> Search Results </a>
               <svg
+                xmlns="https://www.w3.org/2000/svg"
                 height="18px"
                 viewBox="0 0 20 20"
                 width="12px"
                 fill="#06080a"
                 aria-hidden="true"
+                focusable="false"
+                role="img"
               >
                 <g>
-                  <g><rect fill="none" height="20" width="20" /></g>
+                  <g>
+                    <rect fill="none" height="20" width="20" />
+                  </g>
                 </g>
                 <g>
                   <polygon
@@ -120,18 +300,23 @@
             </li>
           </ol>
         </nav>
-        <section class="pagination">
-          <p class="color-neutral-300">
-            1 of 32 <a href="/">Next</a
-            ><svg
+        <div class="pagination">
+          <p class="[ light-text-color ]">
+            1 of 32 <a href="/">Next</a>
+            <svg
+              xmlns="https://www.w3.org/2000/svg"
               height="18px"
               viewBox="0 0 20 20"
               width="12px"
               fill="#06080a"
               aria-hidden="true"
+              focusable="false"
+              role="img"
             >
               <g>
-                <g><rect fill="none" height="20" width="20" /></g>
+                <g>
+                  <rect fill="none" height="20" width="20" />
+                </g>
               </g>
               <g>
                 <polygon
@@ -140,12 +325,15 @@
               </g>
             </svg>
           </p>
-        </section>
+        </div>
       </div>
 
-      <section class="hero">
-        <img src="/static/img/409.png" alt="409 N. Ann Arbor Street House photograph" />
-      </section>
+      <div class="hero">
+        <img
+          src="/static/img/409.png"
+          alt="409 N. Ann Arbor Street House photograph"
+        />
+      </div>
       <h1 class="collection-heading">409 N. Ann Arbor St.</h1>
       <div class="sidebar">
         <section class="record-container">
@@ -240,7 +428,7 @@
           <section class="[ side-panel ] [ border ]">
             <div class="[ border-bottom ]">
               <h3>Actions</h3>
-              <button class="button button--loud">Download</button>
+              <button class="button button--primary">Download</button>
               <ul>
                 <li>Save to Favorites</li>
                 <li>Copy Link</li>
@@ -293,20 +481,25 @@
         </div>
 
         <div class="main-panel">
-          <section class="[ breadcrumb ]">
+          <div class="[ breadcrumb ]">
             <nav aria-label="Breadcrumb">
               <ol>
                 <li>
                   <a href="#">Bentley Image Bank</a>
                   <svg
+                    xmlns="https://www.w3.org/2000/svg"
                     height="18px"
                     viewBox="0 0 20 20"
                     width="12px"
                     fill="#06080a"
                     aria-hidden="true"
+                    focusable="false"
+                    role="img"
                   >
                     <g>
-                      <g><rect fill="none" height="20" width="20" /></g>
+                      <g>
+                        <rect fill="none" height="20" width="20" />
+                      </g>
                     </g>
                     <g>
                       <polygon
@@ -322,12 +515,18 @@
                 </li>
               </ol>
             </nav>
-          </section>
+          </div>
 
           <fieldset class="[ results-search ] [ no-border ]">
             <legend class="visually-hidden">Search</legend>
             <div class="[ search-container ] [ flex ]">
-              <select class="[ dropdown select ] [ bold no-border ]">
+              <label for="search-select" class="visually-hidden"
+                >Select a search filter:</label
+              >
+              <select
+                id="search-select"
+                class="[ dropdown select ] [ bold no-border ]"
+              >
                 <option value="keyword">Keyword</option>
                 <option value="title">Title</option>
                 <option value="author">Author</option>
@@ -341,7 +540,6 @@
 
               <input
                 id="search-collection"
-                class="results-search_input"
                 type="search"
                 name="query"
                 placeholder="Ann Arbor"
@@ -349,38 +547,25 @@
 
               <div class="flex">
                 <button
-                  class="[ button button--primary button--small ]"
+                  class="[ button button--cta ]"
                   type="submit"
                   aria-label="Search"
                 >
                   <svg
-                    width="20px"
-                    height="20px"
+                    xmlns="https://www.w3.org/2000/svg"
+                    width="24px"
+                    height="24px"
                     viewBox="0 0 24 24"
-                    class="button-icon"
                     aria-hidden="true"
+                    focusable="false"
+                    role="img"
                   >
                     <path
                       d="M15.5 14h-.79l-.28-.27C15.41 12.59 16 11.11 16 9.5 16 5.91 13.09 3 9.5 3S3 5.91 3 9.5 5.91 16 9.5 16c1.61 0 3.09-.59 4.23-1.57l.27.28v.79l5 4.99L20.49 19l-4.99-5zm-6 0C7.01 14 5 11.99 5 9.5S7.01 5 9.5 5 14 7.01 14 9.5 11.99 14 9.5 14z"
                     ></path>
                   </svg>
 
-                  <span
-                    style="
-                      border: 0px;
-                      clip: rect(0px, 0px, 0px, 0px);
-                      height: 1px;
-                      margin: -1px;
-                      overflow: hidden;
-                      padding: 0px;
-                      position: absolute;
-                      width: 1px;
-                      white-space: nowrap;
-                      overflow-wrap: normal;
-                    "
-                    class="visually-hidden"
-                    >Submit</span
-                  >
+                  <span class="visually-hidden">Submit</span>
                 </button>
               </div>
             </div>
@@ -392,87 +577,67 @@
           </p>
 
           <section class="[ results-list--small ]">
-            <a href="#" class="[ flex ]" >
-            <img
-              class="[ results-list__image ]"
-              src="static/img/test.png"
-              alt="alt text"
-            />
-            <div class="[ results-list__content ]">
-              <h4>101 N. Ann Arbor Street</h4>
-              <dl class="[ results ]">
-                <dt>Record ID:</dt>
-                <dd>SL0101</dd>
-                <dt>Historic Name:</dt>
-                <dd>Saline Post Office</dd>
-                <dt>Common Name:</dt>
-                <dd>I'll Fix Dinner</dd>
-              </dl>
-            </div>
-            </a>
-          </section>
-
-         <section class="[ results-list--small ]">
-            <a href="#" class="[ flex ]" >
-            <img
-              class="[ results-list__image ]"
-              src="static/img/test.png"
-              alt="alt text"
-            />
-            <div class="[ results-list__content ]">
-              <h4>101 N. Ann Arbor Street</h4>
-              <dl class="[ results ]">
-                <dt>Record ID:</dt>
-                <dd>SL0101</dd>
-                <dt>Historic Name:</dt>
-                <dd>Saline Post Office</dd>
-                <dt>Common Name:</dt>
-                <dd>I'll Fix Dinner</dd>
-              </dl>
-            </div>
+            <a href="#" class="[ flex ]">
+              <img
+                class="[ results-list__image ]"
+                src="static/img/test.png"
+                alt="alt text"
+              />
+              <div class="[ results-list__content ]">
+                <h4>101 N. Ann Arbor Street</h4>
+                <dl class="[ results ]">
+                  <dt>Record ID:</dt>
+                  <dd>SL0101</dd>
+                  <dt>Historic Name:</dt>
+                  <dd>Saline Post Office</dd>
+                  <dt>Common Name:</dt>
+                  <dd>I'll Fix Dinner</dd>
+                </dl>
+              </div>
             </a>
           </section>
 
           <section class="[ results-list--small ]">
-            <a href="#" class="[ flex ]" >
-            <img
-              class="[ results-list__image ]"
-              src="static/img/test.png"
-              alt="alt text"
-            />
-            <div class="[ results-list__content ]">
-              <h4>101 N. Ann Arbor Street</h4>
-              <dl class="[ results ]">
-                <dt>Record ID:</dt>
-                <dd>SL0101</dd>
-                <dt>Historic Name:</dt>
-                <dd>Saline Post Office</dd>
-                <dt>Common Name:</dt>
-                <dd>I'll Fix Dinner</dd>
-              </dl>
-            </div>
+            <a href="#" class="[ flex ]">
+              <img
+                class="[ results-list__image ]"
+                src="static/img/test.png"
+                alt="alt text"
+              />
+              <div class="[ results-list__content ]">
+                <h4>101 N. Ann Arbor Street</h4>
+                <dl class="[ results ]">
+                  <dt>Record ID:</dt>
+                  <dd>SL0101</dd>
+                  <dt>Historic Name:</dt>
+                  <dd>Saline Post Office</dd>
+                  <dt>Common Name:</dt>
+                  <dd>I'll Fix Dinner</dd>
+                </dl>
+              </div>
             </a>
           </section>
 
-          <!-- This is the non-clickable section result -->
-          <!--<section class="[ results-list--small ][ flex ]">
-            <img
-              class="results-list__image"
-              src="static/img/test.png"
-              alt="alt text"
-            />
-            <div class="results-list__content">
-              <h4>101 N. Ann Arbor Street</h4>
-              <dl class="results">
-                <dt>Record ID:</dt>
-                <dd>SL0101</dd>
-                <dt>Historic Name:</dt>
-                <dd>Saline Post Office</dd>
-                <dt>Common Name:</dt>
-                <dd>I'll Fix Dinner</dd>
-              </dl>
-            </div>
-          </section> -->
+          <section class="[ results-list--small ]">
+            <a href="#" class="[ flex ]">
+              <img
+                class="[ results-list__image ]"
+                src="static/img/test.png"
+                alt="alt text"
+              />
+              <div class="[ results-list__content ]">
+                <h4>101 N. Ann Arbor Street</h4>
+                <dl class="[ results ]">
+                  <dt>Record ID:</dt>
+                  <dd>SL0101</dd>
+                  <dt>Historic Name:</dt>
+                  <dd>Saline Post Office</dd>
+                  <dt>Common Name:</dt>
+                  <dd>I'll Fix Dinner</dd>
+                </dl>
+              </div>
+            </a>
+          </section>
         </div>
       </div>
     </main>
