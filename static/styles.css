@@ -78,7 +78,6 @@ address {
 /*
 * Blocks
 *
-*
 */
 
 .hero__image {
@@ -86,7 +85,8 @@ address {
 }
 
 .image-grid img {
-  padding: 0 0.5em;
+  padding: 0.5em;
+  width: calc(100% / 4 - 8px);
 }
 
 .breadcrumb {
@@ -202,7 +202,7 @@ input {
 }
 
 .text-block {
-  width: max(40vw);
+  width: max(45vw);
 }
 /*
  * Utilities
@@ -256,6 +256,10 @@ input {
 
 .flex-center {
   align-items: center;
+}
+
+.flex-wrap {
+  flex-wrap: wrap;
 }
 
 /*

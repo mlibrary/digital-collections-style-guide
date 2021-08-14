@@ -1,482 +1,610 @@
 <!DOCTYPE html>
 <html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Digital Collections Workshop — University of Michigan Library</title>
+    <meta name="description" content="{{ description }}" />
 
-<head>
-  <meta charset="utf-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>Digital Collections Workshop — University of Michigan Library</title>
-  <meta name="description" content="{{ description }}" />
+    <!-- Social sharing meta -->
+    <meta
+      property="og:url"
+      name="twitter:url"
+      content="https://design-system.lib.umich.edu{{ page.url }}"
+    />
+    <meta
+      property="og:title"
+      name="twitter:title"
+      content="{{ title }} | Design System | University of Michigan Library"
+    />
+    <meta
+      property="og:description"
+      name="twitter:description"
+      content="{{ description }}"
+    />
+    <meta
+      property="og:image"
+      name="twitter:image"
+      content="{{ site.cloudinary_url }}/image/upload/c_fill,g_faces,h_630,w_1200/l_text:Crimson%20Text_160_center:{{ title }},co_rgb:334354,c_fit/ds_share_bg.png"
+    />
+    <meta
+      property="og:image:alt"
+      name="twitter:image:alt"
+      content="{{ title }}"
+    />
+    <meta
+      property="og:site_name"
+      content="Design System | University of Michigan Library"
+    />
+    <meta name="twitter:card" content="summary_large_image" />
 
-  <!-- Social sharing meta -->
-  <meta property="og:url" name="twitter:url" content="https://design-system.lib.umich.edu{{ page.url }}" />
-  <meta property="og:title" name="twitter:title"
-    content="{{ title }} | Design System | University of Michigan Library" />
-  <meta property="og:description" name="twitter:description" content="{{ description }}" />
-  <meta property="og:image" name="twitter:image"
-    content="{{ site.cloudinary_url }}/image/upload/c_fill,g_faces,h_630,w_1200/l_text:Crimson%20Text_160_center:{{ title }},co_rgb:334354,c_fit/ds_share_bg.png" />
-  <meta property="og:image:alt" name="twitter:image:alt" content="{{ title }}" />
-  <meta property="og:site_name" content="Design System | University of Michigan Library" />
-  <meta name="twitter:card" content="summary_large_image" />
+    <link rel="icon" href="/static/images/favicon-32x32.png" type="image/png" />
+    <link href="/static/styles.css" rel="stylesheet" />
+    <link
+      href="https://unpkg.com/@umich-lib/css@v1/dist/umich-lib.css"
+      rel="stylesheet"
+    />
+    <script
+      type="module"
+      src="https://unpkg.com/@umich-lib/components@v1/dist/umich-lib/umich-lib.esm.js"
+    ></script>
+    <script
+      nomodule
+      src="https://unpkg.com/@umich-lib/components@v1/dist/umich-lib/umich-lib.js"
+    ></script>
+  </head>
 
-  <link rel="icon" href="/static/images/favicon-32x32.png" type="image/png" />
-  <link href="/static/styles.css" rel="stylesheet" />
-  <link href="https://unpkg.com/@umich-lib/css@v1/dist/umich-lib.css" rel="stylesheet" />
-  <script type="module" src="https://unpkg.com/@umich-lib/components@v1/dist/umich-lib/umich-lib.esm.js"></script>
-  <script nomodule src="https://unpkg.com/@umich-lib/components@v1/dist/umich-lib/umich-lib.js"></script>
-</head>
-
-<body>
-  <div class="border-bottom">
-    <m-universal-header></m-universal-header>
-    <m-website-header name="Digital Collections">
-    </m-website-header>
-  </div>
-
-  <main class="viewport-container">
-    <m-roger-eyes>[the content for why you're here, probably]</m-roger-eyes>
-
-    <hr/>
-
-  <!-- Collection Home Page -->
-
-  
-    <section class="hero__image">
-      <img src="/static/img/saline-home-full.png" alt="Saline Collection home page photograph" />
-    </section>
-
-    <section class="flex">
-    <div class="side-panel">
-      <fieldset class="[ input__group ] [ no-border ]">
-      
-        <legend class="visually-hidden">Search within collection</legend>
-
-        <div class="[ flex flex-end ]">
-        <input id="search-in-collection" type="search" name="query"
-          placeholder="Seach within collection" />
-
-          <button class="[ button button--secondary ] [ flex ]" type="submit" aria-label="Search">
-            <svg width="24px" height="24px" viewBox="0 0 24 24" aria-hidden="false"><path d="M15.5 14h-.79l-.28-.27C15.41 12.59 16 11.11 16 9.5 16 5.91 13.09 3 9.5 3S3 5.91 3 9.5 5.91 16 9.5 16c1.61 0 3.09-.59 4.23-1.57l.27.28v.79l5 4.99L20.49 19l-4.99-5zm-6 0C7.01 14 5 11.99 5 9.5S7.01 5 9.5 5 14 7.01 14 9.5 11.99 14 9.5 14z"></path></svg>
-            <span class="visually-hidden">Submit</span>
-          </button>
-        </div>
-    
-        </fieldset>
-
-    <section class="[ list__links ]">
-      
-      <h3>In this collection</h3>
-      <ul>
-        <li><a>Link placeholder</a></li>
-        <li><a>Link placeholder</a></li>
-        <li><a>Link placeholder</a></li>
-        <li><a>Link placeholder</a></li>
-      </ul>
-
-     
-        <h3>Related Collections</h3>
-        <ul>
-          <li><a>Link placeholder</a></li>
-          <li><a>Link placeholder</a></li>
-          <li><a>Link placeholder</a></li>
-          <li><a>Link placeholder</a></li>
-        </ul>
-     
-        <h3>Contact</h3>
-        <ul>
-          <li><p>Saline Digital Collections Help</p></li>
-          <li><a>Link placeholder</a></li>
-         </ul>
-      
-    </section>
+  <body>
+    <div class="border-bottom">
+      <m-universal-header></m-universal-header>
+      <m-website-header name="Digital Collections"> </m-website-header>
     </div>
 
-    <div class="main-panel">
-      <h1 class="[ collection-heading ]">Saline Historic Homes</h1>
-      <p class="[ light-text-color  ]"><em>This is a very brief introduction to the collection that is no more than one to two sentences.</em></p>
-    
+    <main class="viewport-container">
+      <m-roger-eyes>[the content for why you're here, probably]</m-roger-eyes>
 
-    <div class="[ image-grid ] [ flex ]">
-      <img src="/static/img/sdl_1.png" alt="">
-      <img src="/static/img/sdl_2.png" alt="">
-      <img src="/static/img/sdl_3.png" alt="">
-      <img src="/static/img/sdl_4.png" alt="">
-    </div>
-
-    <div class="[ link-box ][ flex flex-center ]">
-     <svg xmlns="http://www.w3.org/2000/svg" height="16px" viewBox="0 0 24 24" width="16px" fill="#106684"><path d="M0 0h24v24H0V0z" fill="none"/><path d="M19 19H5V5h7V3H5c-1.11 0-2 .9-2 2v14c0 1.1.89 2 2 2h14c1.1 0 2-.9 2-2v-7h-2v7zM14 3v2h3.59l-9.83 9.83 1.41 1.41L19 6.41V10h2V3h-7z"/></svg> <a >Browse 312 collection items</a>
-    </div>
-
-    <div class="text-block">
-      <p>This Historical and Architectural Survey includes all structures built up to 1944 within the city limits of Saline Michigan. Conducted in 1994 by Kosky and Glynn Associates, this survey is the result of the City’s intent to comply with the Certified Local Government requirements. The objective of the survey was to research, photograph and map all structures built within the City of Saline between 1829 and 1944. The completed project includes a survey card and black and white photograph for each structure, a map of all surveyed structures, and historical and architectural text encompassing the study period.</p>
-
-      <p>All original survey material is housed by the Historic District Commission at Saline City Hall. The 24-page report is also available at Saline District Library and <a href="google.com">online.</a></p>
-    </div>
-
-  <article>
-    <h2 class="[ collection-heading--small ]"">Copyright information</h2>
-
-    <div class="text-block">
-      <p>The City of Saline is the copyright holder for the materials in this Saline Historic Homes online collection. The materials were compiled by Sue Kosky and Kathie Glynn, who composed the 1994 Historical and Architectural Survey under a contract with the City of Saline. The project was comprised of the 350 photos and informational cards documenting historic homes in Saline.</p>
-      <p>The City of Saline is pleased to make these materials available for research and education for which no permission is required (though attribution is appreciated). For other uses or questions, please contact:</p>
-    </div>
-
-
-    <address>
-      Mary Ellen Mulcrone, Director <br/>
-      Saline District Library <br/>
-      555 N. Maple Road Saline, MI 48176 <br />
-      Telephone: (734) 429-5450 <br />
-      Fax: (734) 944-0600 <br />
-      <a href="http://www.salinelibrary.org/">http://www.salinelibrary.org/</a>
-    </address>
-  </article>
-</section>
-</div>  
-
-<!-- End Collection Home Page -->
-
-<hr/>
-  <!-- Collection Item Page -->
-
-    <section aria-labelledby="results-nav-heading">
-      <h2 id="results-nav-heading" class="visually-hidden">
-        Results navigation
-      </h2>
-      <a href="">Back to search results</a>
-    </section>
-
-    <div class="[ breadcrumb ]">
-      <nav aria-label="Breadcrumb">
-        <ol>
-          <li>
-            <a href="#"> Saline Historic Homes </a>
-            <svg height="18px" viewBox="0 0 20 20" width="12px" fill="#06080a" aria-hidden="true">
-              <g>
-                <g>
-                  <rect fill="none" height="20" width="20" />
-                </g>
-              </g>
-              <g>
-                <polygon points="4.59,16.59 6,18 14,10 6,2 4.59,3.41 11.17,10" />
-              </g>
-            </svg>
-          </li>
-          <li>
-            <a href="#"> Search Results </a>
-            <svg height="18px" viewBox="0 0 20 20" width="12px" fill="#06080a" aria-hidden="true">
-              <g>
-                <g>
-                  <rect fill="none" height="20" width="20" />
-                </g>
-              </g>
-              <g>
-                <polygon points="4.59,16.59 6,18 14,10 6,2 4.59,3.41 11.17,10" />
-              </g>
-            </svg>
-          </li>
-          <li>
-            <a href="./index.html" aria-current="page" class="active-link">
-              409. N. Ann Arbor Street
-            </a>
-          </li>
-        </ol>
-      </nav>
-      <section class="pagination">
-        <p class="[ light-text-color  ]">
-          1 of 32 <a href="/">Next</a><svg height="18px" viewBox="0 0 20 20" width="12px" fill="#06080a"
-            aria-hidden="true">
-            <g>
-              <g>
-                <rect fill="none" height="20" width="20" />
-              </g>
-            </g>
-            <g>
-              <polygon points="4.59,16.59 6,18 14,10 6,2 4.59,3.41 11.17,10" />
-            </g>
-          </svg>
-        </p>
-      </section>
-    </div>
-
-    <section class="hero">
-      <img src="/static/img/409.png" alt="409 N. Ann Arbor Street House photograph" />
-    </section>
-    <h1 class="collection-heading">409 N. Ann Arbor St.</h1>
-    <div class="sidebar">
-      <section class="record-container">
-        <h3>About this home</h3>
-        <dl class="record">
-          <dt>Street and No.</dt>
-          <dd>409 N. Ann Arbor St.</dd>
-          <dt>Municipal Unit</dt>
-          <dd>Saline</dd>
-          <dt>County</dt>
-          <dd>Washtenaw</dd>
-          <dt>Original Usage</dt>
-          <dd>Residence</dd>
-          <dt>Present Usage</dt>
-          <dd>Residence</dd>
-          <dt>Ownership</dt>
-          <dd>Wiegand, James H. II</dd>
-        </dl>
-        <h3>About this photograph</h3>
-
-        <dl class="record">
-          <dt>Photo Negative No.</dt>
-          <dd>17:17</dd>
-          <dt>Photo Date</dt>
-          <dd>January, 1994</dd>
-          <dt>Photo View</dt>
-          <dd>South and east facades taken facing northwest</dd>
-          <dt>Description</dt>
-          <dd>
-            One and a half story, side gabled, Craftsman style house. Gabled
-            dormer on center front facade. Full width porch with massive
-            shingled support piers resting on a solid balustrade. Rectangular
-            shed roof bay on south facade. Variety of window configurations:
-            paired dormers are five vertical panes over one; bay windows are
-            four over one; soe on over one; and center front has one large
-            pane with two small rectangular lights above. Barn red wood
-            shingles on exterior facade. Brick chimney on north facade. One
-            and a half car, gable front garage at rear.
-          </dd>
-        </dl>
-        <h3>About the construction</h3>
-        <dl class="record">
-          <dt>Date of Construction</dt>
-          <dd>1914</dd>
-          <dt>Context</dt>
-          <dd>
-            The house was probably build by Orrin Briggs around 1914. The 1912
-            Sanborn map shows that Orrin Briggs had a planning mill on the
-            property to the south (Orrin Parsons owned the planning before
-            that, as early as 1988). Mr. Briggs lived in the house until his
-            death in 1935, then his wife, Francis, lived in it until 1947. Mr.
-            Briggs also owned the property to the north. Other owners: Charles
-            Burkhardt in 1960; DAvid Harwood and Susan McDonald; and James H.
-            Wiegand II 1994.
-          </dd>
-          <dt>Bibliographic Reference</dt>
-          <dd>
-            City Directories: 1878, 1894, 1899, 1912, 1916, 1920, 1926, 1941,
-            1945. Assessor's files: 1947 and current; U.S. Census: 1910, 1920.
-            Sanborn Maps: 1888, 1893, 1899, 1912, 1921, 1929; Tax Rolls: 1931
-            and 1935.
-          </dd>
-          <dt>From Source</dt>
-          <dd>MICHIGAN DEPARTMENT OF STATE KG 105</dd>
-          <dt>Survey Date</dt>
-          <dd>May, 1994</dd>
-          <dt>Surveyor</dt>
-          <dd>K. Glynn & S. Kosky</dd>
-          <dt>Recorder Date</dt>
-          <dd>April, 1994</dd>
-          <dt>Card No.</dt>
-          <dd>105</dd>
-        </dl>
-
-        <article>
-          <h3>Rights and Permissions</h3>
-          <p>
-            The University of Michigan Library provides access to these
-            materials for educational and research purposes. These materials
-            may be under copyright. If you decide to use any of these
-            materials, you are responsible for making your own legal
-            assessment and securing any necessary permission. If you have
-            questions about the collection, please contact Saline Digital
-            Collections help. If you have concerns about the inclusion of an
-            item in this collection, please contact Library Information
-            Technology.
-          </p>
-        </article>
-      </section>
-
-      <div>
-        <section class="[ side-panel ] [ border ]">
-          <div class="[ border-bottom ]">
-            <h3>Actions</h3>
-            <button class="button button--primary">Download</button>
-            <ul>
-              <li>Save to Favorites</li>
-              <li>Copy Link</li>
-            </ul>
-          </div>
-          <div class=" [ border-bottom ]">
-            <!-- This could be a block, first child has border, last child doesn't -->
-            <p class="[ bold ]">Collection</p>
-            <a href="#" class="[ block mb1 ]">Saline Historic Homes</a>
-          </div>
-          <div class="[ border-bottom ]">
-            <p class="[ bold ]">Image Size</p>
-            <p>2024 x 1472</p>
-          </div>
-          <div class="[ border-bottom ]">
-            <p class="[ bold ]">Record</p>
-            <p>SL1415</p>
-          </div>
-          <div>
-            <p class="[ bold ]">Bookmark</p>
-            <p class="border">quod link but not a link</p>
-          </div>
-        </section>
-      </div>
-    </div>
-
-    <div class="spacer"></div>
-
-    <div class="flex">
-      <div class="side-panel">
-        <section class="[ filters ]" aria-labelledby="filters-heading">
-          <h2 id="filters-heading" class="visually-hidden">Filters</h2>
-          <div class="[ border-bottom ]">
-            <!-- This could be a block, first child has border, last child doesn't -->
-            <p class="[ bold ]">Filters</p>
-            <div class="[ border-bottom ]">
-              <p>File Type</p>
-            </div>
-            <div class="[ border-bottom ]">
-              <p>Subject</p>
-            </div>
-            <div class="[ border-bottom ]">
-              <p>Genre</p>
-            </div>
-            <div>
-              <p>Date</p>
-            </div>
-          </div>
-        </section>
+      <!-- Collection Home Page -->
+      <div class="hero__image">
+        <img
+          src="/static/img/saline-home-full.png"
+          alt="Saline Collection home page black and white photograph"
+        />
       </div>
 
-      <div class="main-panel">
-        <section class="[ breadcrumb ]">
-          <nav aria-label="Breadcrumb">
-            <ol>
-              <li>
-                <a href="#">Bentley Image Bank</a>
-                <svg height="18px" viewBox="0 0 20 20" width="12px" fill="#06080a" aria-hidden="true">
-                  <g>
-                    <g>
-                      <rect fill="none" height="20" width="20" />
-                    </g>
-                  </g>
-                  <g>
-                    <polygon points="4.59,16.59 6,18 14,10 6,2 4.59,3.41 11.17,10" />
-                  </g>
+      <div class="flex">
+        <div class="side-panel">
+          <fieldset class="[ input__group ] [ no-border ]">
+            <legend class="visually-hidden">Search within collection</legend>
+
+            <div class="[ flex flex-end ]">
+              <input
+                id="search-in-collection"
+                type="search"
+                name="query"
+                placeholder="Seach within collection"
+              />
+
+              <button
+                class="[ button button--secondary ] [ flex ]"
+                type="submit"
+                aria-label="Search"
+              >
+                <svg
+                  width="24px"
+                  height="24px"
+                  viewBox="0 0 24 24"
+                  aria-hidden="false"
+                >
+                  <path
+                    d="M15.5 14h-.79l-.28-.27C15.41 12.59 16 11.11 16 9.5 16 5.91 13.09 3 9.5 3S3 5.91 3 9.5 5.91 16 9.5 16c1.61 0 3.09-.59 4.23-1.57l.27.28v.79l5 4.99L20.49 19l-4.99-5zm-6 0C7.01 14 5 11.99 5 9.5S7.01 5 9.5 5 14 7.01 14 9.5 11.99 14 9.5 14z"
+                  ></path>
                 </svg>
-              </li>
-              <li>
-                <a href="#" class="active-link" aria-current="page">Search Results</a>
-              </li>
-            </ol>
-          </nav>
-        </section>
-
-        <fieldset class="[ results-search ] [ no-border ]">
-          <legend class="visually-hidden">Search</legend>
-          <div class="[ search-container ] [ flex ]">
-            <select class="[ dropdown select ] [ bold no-border ]">
-              <option value="keyword">Keyword</option>
-              <option value="title">Title</option>
-              <option value="author">Author</option>
-            </select>
-
-            <div class="[ border ]">
-              <label for="search-collection" class="visually-hidden">
-                <span>Search</span>
-              </label>
-            </div>
-
-            <input id="search-collection" type="search" name="query" placeholder="Ann Arbor" />
-
-            <div class="flex">
-              <button class="[ button button--cta ]" type="submit" aria-label="Search">
-
-                <svg width="24px" height="24px" viewBox="0 0 24 24" aria-hidden="true"><path d="M15.5 14h-.79l-.28-.27C15.41 12.59 16 11.11 16 9.5 16 5.91 13.09 3 9.5 3S3 5.91 3 9.5 5.91 16 9.5 16c1.61 0 3.09-.59 4.23-1.57l.27.28v.79l5 4.99L20.49 19l-4.99-5zm-6 0C7.01 14 5 11.99 5 9.5S7.01 5 9.5 5 14 7.01 14 9.5 11.99 14 9.5 14z"></path></svg>
-              
                 <span class="visually-hidden">Submit</span>
               </button>
             </div>
+          </fieldset>
+
+          <section class="[ list__links ]">
+            <h3>In this collection</h3>
+            <ul>
+              <li><a>Link placeholder</a></li>
+              <li><a>Link placeholder</a></li>
+              <li><a>Link placeholder</a></li>
+              <li><a>Link placeholder</a></li>
+            </ul>
+
+            <h3>Related Collections</h3>
+            <ul>
+              <li><a>Link placeholder</a></li>
+              <li><a>Link placeholder</a></li>
+              <li><a>Link placeholder</a></li>
+              <li><a>Link placeholder</a></li>
+            </ul>
+
+            <h3>Contact</h3>
+            <ul>
+              <li><p>Saline Digital Collections Help</p></li>
+              <li><a>Link placeholder</a></li>
+            </ul>
+          </section>
+        </div>
+
+        <div class="main-panel">
+          <h1 class="[ collection-heading ]">Saline Historic Homes</h1>
+          <p class="[ light-text-color ]">
+            <em
+              >This is a very brief introduction to the collection that is no
+              more than one to two sentences.</em
+            >
+          </p>
+
+          <div class="[ image-grid ] [ flex flex-wrap ]">
+            <img src="/static/img/sdl_1.png" alt="" />
+            <img src="/static/img/sdl_2.png" alt="" />
+            <img src="/static/img/sdl_3.png" alt="" />
+            <img src="/static/img/sdl_4.png" alt="" />
           </div>
-        </fieldset>
 
-        <p>
-          Showing 1-20 of 187 results for
-          <span class="[ bold ]">“Ann Arbor”</span>
-        </p>
+          <div class="[ link-box ][ flex flex-center ]">
+            <svg
+              xmlns="http://www.w3.org/2000/svg"
+              height="16px"
+              viewBox="0 0 24 24"
+              width="16px"
+              fill="#106684"
+            >
+              <path d="M0 0h24v24H0V0z" fill="none" />
+              <path
+                d="M19 19H5V5h7V3H5c-1.11 0-2 .9-2 2v14c0 1.1.89 2 2 2h14c1.1 0 2-.9 2-2v-7h-2v7zM14 3v2h3.59l-9.83 9.83 1.41 1.41L19 6.41V10h2V3h-7z"
+              />
+            </svg>
+            <a>Browse 312 collection items</a>
+          </div>
 
-        <section class="[ results-list--small ]">
-          <a href="#" class="[ flex ]">
-            <img class="[ results-list__image ]" src="static/img/test.png" alt="alt text" />
-            <div class="[ results-list__content ]">
-              <h4>101 N. Ann Arbor Street</h4>
-              <dl class="[ results ]">
-                <dt>Record ID:</dt>
-                <dd>SL0101</dd>
-                <dt>Historic Name:</dt>
-                <dd>Saline Post Office</dd>
-                <dt>Common Name:</dt>
-                <dd>I'll Fix Dinner</dd>
-              </dl>
+          <div class="text-block">
+            <p>
+              This Historical and Architectural Survey includes all structures
+              built up to 1944 within the city limits of Saline Michigan.
+              Conducted in 1994 by Kosky and Glynn Associates, this survey is
+              the result of the City’s intent to comply with the Certified Local
+              Government requirements. The objective of the survey was to
+              research, photograph and map all structures built within the City
+              of Saline between 1829 and 1944. The completed project includes a
+              survey card and black and white photograph for each structure, a
+              map of all surveyed structures, and historical and architectural
+              text encompassing the study period.
+            </p>
+
+            <p>
+              All original survey material is housed by the Historic District
+              Commission at Saline City Hall. The 24-page report is also
+              available at Saline District Library and
+              <a href="google.com">online.</a>
+            </p>
+          </div>
+
+          <article>
+            <h2 class="[ collection-heading--small ]">Copyright information</h2>
+
+            <div class="text-block">
+              <p>
+                The City of Saline is the copyright holder for the materials in
+                this Saline Historic Homes online collection. The materials were
+                compiled by Sue Kosky and Kathie Glynn, who composed the 1994
+                Historical and Architectural Survey under a contract with the
+                City of Saline. The project was comprised of the 350 photos and
+                informational cards documenting historic homes in Saline.
+              </p>
+              <p>
+                The City of Saline is pleased to make these materials available
+                for research and education for which no permission is required
+                (though attribution is appreciated). For other uses or
+                questions, please contact:
+              </p>
             </div>
-          </a>
-        </section>
-
-        <section class="[ results-list--small ]">
-          <a href="#" class="[ flex ]">
-            <img class="[ results-list__image ]" src="static/img/test.png" alt="alt text" />
-            <div class="[ results-list__content ]">
-              <h4>101 N. Ann Arbor Street</h4>
-              <dl class="[ results ]">
-                <dt>Record ID:</dt>
-                <dd>SL0101</dd>
-                <dt>Historic Name:</dt>
-                <dd>Saline Post Office</dd>
-                <dt>Common Name:</dt>
-                <dd>I'll Fix Dinner</dd>
-              </dl>
-            </div>
-          </a>
-        </section>
-
-        <section class="[ results-list--small ]">
-          <a href="#" class="[ flex ]">
-            <img class="[ results-list__image ]" src="static/img/test.png" alt="alt text" />
-            <div class="[ results-list__content ]">
-              <h4>101 N. Ann Arbor Street</h4>
-              <dl class="[ results ]">
-                <dt>Record ID:</dt>
-                <dd>SL0101</dd>
-                <dt>Historic Name:</dt>
-                <dd>Saline Post Office</dd>
-                <dt>Common Name:</dt>
-                <dd>I'll Fix Dinner</dd>
-              </dl>
-            </div>
-          </a>
-        </section>
-
-        <!-- This is the non-clickable section result -->
-        <!--<section class="[ results-list--small ][ flex ]">
-            <img
-              class="results-list__image"
-              src="static/img/test.png"
-              alt="alt text"
-            />
-            <div class="results-list__content">
-              <h4>101 N. Ann Arbor Street</h4>
-              <dl class="results">
-                <dt>Record ID:</dt>
-                <dd>SL0101</dd>
-                <dt>Historic Name:</dt>
-                <dd>Saline Post Office</dd>
-                <dt>Common Name:</dt>
-                <dd>I'll Fix Dinner</dd>
-              </dl>
-            </div>
-          </section> -->
+            <address>
+              Mary Ellen Mulcrone, Director <br />
+              Saline District Library <br />
+              555 N. Maple Road Saline, MI 48176 <br />
+              Telephone: (734) 429-5450 <br />
+              Fax: (734) 944-0600 <br />
+              <a href="http://www.salinelibrary.org/"
+                >http://www.salinelibrary.org/</a
+              >
+            </address>
+          </article>
+        </div>
       </div>
-    </div>
-  </main>
-</body>
 
+      <!-- End Collection Home Page -->
+
+      <hr />
+      <!-- Collection Item Page -->
+
+      <section aria-labelledby="results-nav-heading">
+        <h2 id="results-nav-heading" class="visually-hidden">
+          Results navigation
+        </h2>
+        <a href="">Back to search results</a>
+      </section>
+
+      <div class="[ breadcrumb ]">
+        <nav aria-label="Breadcrumb">
+          <ol>
+            <li>
+              <a href="#"> Saline Historic Homes </a>
+              <svg
+                height="18px"
+                viewBox="0 0 20 20"
+                width="12px"
+                fill="#06080a"
+                aria-hidden="true"
+              >
+                <g>
+                  <g>
+                    <rect fill="none" height="20" width="20" />
+                  </g>
+                </g>
+                <g>
+                  <polygon
+                    points="4.59,16.59 6,18 14,10 6,2 4.59,3.41 11.17,10"
+                  />
+                </g>
+              </svg>
+            </li>
+            <li>
+              <a href="#"> Search Results </a>
+              <svg
+                height="18px"
+                viewBox="0 0 20 20"
+                width="12px"
+                fill="#06080a"
+                aria-hidden="true"
+              >
+                <g>
+                  <g>
+                    <rect fill="none" height="20" width="20" />
+                  </g>
+                </g>
+                <g>
+                  <polygon
+                    points="4.59,16.59 6,18 14,10 6,2 4.59,3.41 11.17,10"
+                  />
+                </g>
+              </svg>
+            </li>
+            <li>
+              <a href="./index.html" aria-current="page" class="active-link">
+                409. N. Ann Arbor Street
+              </a>
+            </li>
+          </ol>
+        </nav>
+        <div class="pagination">
+          <p class="[ light-text-color ]">
+            1 of 32 <a href="/">Next</a
+            ><svg
+              height="18px"
+              viewBox="0 0 20 20"
+              width="12px"
+              fill="#06080a"
+              aria-hidden="true"
+            >
+              <g>
+                <g>
+                  <rect fill="none" height="20" width="20" />
+                </g>
+              </g>
+              <g>
+                <polygon
+                  points="4.59,16.59 6,18 14,10 6,2 4.59,3.41 11.17,10"
+                />
+              </g>
+            </svg>
+          </p>
+        </div>
+      </div>
+
+      <div class="hero">
+        <img
+          src="/static/img/409.png"
+          alt="409 N. Ann Arbor Street House photograph"
+        />
+      </div>
+      <h1 class="collection-heading">409 N. Ann Arbor St.</h1>
+      <div class="sidebar">
+        <section class="record-container">
+          <h3>About this home</h3>
+          <dl class="record">
+            <dt>Street and No.</dt>
+            <dd>409 N. Ann Arbor St.</dd>
+            <dt>Municipal Unit</dt>
+            <dd>Saline</dd>
+            <dt>County</dt>
+            <dd>Washtenaw</dd>
+            <dt>Original Usage</dt>
+            <dd>Residence</dd>
+            <dt>Present Usage</dt>
+            <dd>Residence</dd>
+            <dt>Ownership</dt>
+            <dd>Wiegand, James H. II</dd>
+          </dl>
+          <h3>About this photograph</h3>
+
+          <dl class="record">
+            <dt>Photo Negative No.</dt>
+            <dd>17:17</dd>
+            <dt>Photo Date</dt>
+            <dd>January, 1994</dd>
+            <dt>Photo View</dt>
+            <dd>South and east facades taken facing northwest</dd>
+            <dt>Description</dt>
+            <dd>
+              One and a half story, side gabled, Craftsman style house. Gabled
+              dormer on center front facade. Full width porch with massive
+              shingled support piers resting on a solid balustrade. Rectangular
+              shed roof bay on south facade. Variety of window configurations:
+              paired dormers are five vertical panes over one; bay windows are
+              four over one; soe on over one; and center front has one large
+              pane with two small rectangular lights above. Barn red wood
+              shingles on exterior facade. Brick chimney on north facade. One
+              and a half car, gable front garage at rear.
+            </dd>
+          </dl>
+          <h3>About the construction</h3>
+          <dl class="record">
+            <dt>Date of Construction</dt>
+            <dd>1914</dd>
+            <dt>Context</dt>
+            <dd>
+              The house was probably build by Orrin Briggs around 1914. The 1912
+              Sanborn map shows that Orrin Briggs had a planning mill on the
+              property to the south (Orrin Parsons owned the planning before
+              that, as early as 1988). Mr. Briggs lived in the house until his
+              death in 1935, then his wife, Francis, lived in it until 1947. Mr.
+              Briggs also owned the property to the north. Other owners: Charles
+              Burkhardt in 1960; DAvid Harwood and Susan McDonald; and James H.
+              Wiegand II 1994.
+            </dd>
+            <dt>Bibliographic Reference</dt>
+            <dd>
+              City Directories: 1878, 1894, 1899, 1912, 1916, 1920, 1926, 1941,
+              1945. Assessor's files: 1947 and current; U.S. Census: 1910, 1920.
+              Sanborn Maps: 1888, 1893, 1899, 1912, 1921, 1929; Tax Rolls: 1931
+              and 1935.
+            </dd>
+            <dt>From Source</dt>
+            <dd>MICHIGAN DEPARTMENT OF STATE KG 105</dd>
+            <dt>Survey Date</dt>
+            <dd>May, 1994</dd>
+            <dt>Surveyor</dt>
+            <dd>K. Glynn & S. Kosky</dd>
+            <dt>Recorder Date</dt>
+            <dd>April, 1994</dd>
+            <dt>Card No.</dt>
+            <dd>105</dd>
+          </dl>
+
+          <article>
+            <h3>Rights and Permissions</h3>
+            <p>
+              The University of Michigan Library provides access to these
+              materials for educational and research purposes. These materials
+              may be under copyright. If you decide to use any of these
+              materials, you are responsible for making your own legal
+              assessment and securing any necessary permission. If you have
+              questions about the collection, please contact Saline Digital
+              Collections help. If you have concerns about the inclusion of an
+              item in this collection, please contact Library Information
+              Technology.
+            </p>
+          </article>
+        </section>
+
+        <div>
+          <section class="[ side-panel ] [ border ]">
+            <div class="[ border-bottom ]">
+              <h3>Actions</h3>
+              <button class="button button--primary">Download</button>
+              <ul>
+                <li>Save to Favorites</li>
+                <li>Copy Link</li>
+              </ul>
+            </div>
+            <div class="[ border-bottom ]">
+              <!-- This could be a block, first child has border, last child doesn't -->
+              <p class="[ bold ]">Collection</p>
+              <a href="#" class="[ block mb1 ]">Saline Historic Homes</a>
+            </div>
+            <div class="[ border-bottom ]">
+              <p class="[ bold ]">Image Size</p>
+              <p>2024 x 1472</p>
+            </div>
+            <div class="[ border-bottom ]">
+              <p class="[ bold ]">Record</p>
+              <p>SL1415</p>
+            </div>
+            <div>
+              <p class="[ bold ]">Bookmark</p>
+              <p class="border">quod link but not a link</p>
+            </div>
+          </section>
+        </div>
+      </div>
+
+      <div class="spacer"></div>
+
+      <div class="flex">
+        <div class="side-panel">
+          <section class="[ filters ]" aria-labelledby="filters-heading">
+            <h2 id="filters-heading" class="visually-hidden">Filters</h2>
+            <div class="[ border-bottom ]">
+              <!-- This could be a block, first child has border, last child doesn't -->
+              <p class="[ bold ]">Filters</p>
+              <div class="[ border-bottom ]">
+                <p>File Type</p>
+              </div>
+              <div class="[ border-bottom ]">
+                <p>Subject</p>
+              </div>
+              <div class="[ border-bottom ]">
+                <p>Genre</p>
+              </div>
+              <div>
+                <p>Date</p>
+              </div>
+            </div>
+          </section>
+        </div>
+
+        <div class="main-panel">
+          <div class="[ breadcrumb ]">
+            <nav aria-label="Breadcrumb">
+              <ol>
+                <li>
+                  <a href="#">Bentley Image Bank</a>
+                  <svg
+                    height="18px"
+                    viewBox="0 0 20 20"
+                    width="12px"
+                    fill="#06080a"
+                    aria-hidden="true"
+                  >
+                    <g>
+                      <g>
+                        <rect fill="none" height="20" width="20" />
+                      </g>
+                    </g>
+                    <g>
+                      <polygon
+                        points="4.59,16.59 6,18 14,10 6,2 4.59,3.41 11.17,10"
+                      />
+                    </g>
+                  </svg>
+                </li>
+                <li>
+                  <a href="#" class="active-link" aria-current="page"
+                    >Search Results</a
+                  >
+                </li>
+              </ol>
+            </nav>
+          </div>
+
+          <fieldset class="[ results-search ] [ no-border ]">
+            <legend class="visually-hidden">Search</legend>
+            <div class="[ search-container ] [ flex ]">
+              <select class="[ dropdown select ] [ bold no-border ]">
+                <option value="keyword">Keyword</option>
+                <option value="title">Title</option>
+                <option value="author">Author</option>
+              </select>
+
+              <div class="[ border ]">
+                <label for="search-collection" class="visually-hidden">
+                  <span>Search</span>
+                </label>
+              </div>
+
+              <input
+                id="search-collection"
+                type="search"
+                name="query"
+                placeholder="Ann Arbor"
+              />
+
+              <div class="flex">
+                <button
+                  class="[ button button--cta ]"
+                  type="submit"
+                  aria-label="Search"
+                >
+                  <svg
+                    width="24px"
+                    height="24px"
+                    viewBox="0 0 24 24"
+                    aria-hidden="true"
+                  >
+                    <path
+                      d="M15.5 14h-.79l-.28-.27C15.41 12.59 16 11.11 16 9.5 16 5.91 13.09 3 9.5 3S3 5.91 3 9.5 5.91 16 9.5 16c1.61 0 3.09-.59 4.23-1.57l.27.28v.79l5 4.99L20.49 19l-4.99-5zm-6 0C7.01 14 5 11.99 5 9.5S7.01 5 9.5 5 14 7.01 14 9.5 11.99 14 9.5 14z"
+                    ></path>
+                  </svg>
+
+                  <span class="visually-hidden">Submit</span>
+                </button>
+              </div>
+            </div>
+          </fieldset>
+
+          <p>
+            Showing 1-20 of 187 results for
+            <span class="[ bold ]">“Ann Arbor”</span>
+          </p>
+
+          <section class="[ results-list--small ]">
+            <a href="#" class="[ flex ]">
+              <img
+                class="[ results-list__image ]"
+                src="static/img/test.png"
+                alt="alt text"
+              />
+              <div class="[ results-list__content ]">
+                <h4>101 N. Ann Arbor Street</h4>
+                <dl class="[ results ]">
+                  <dt>Record ID:</dt>
+                  <dd>SL0101</dd>
+                  <dt>Historic Name:</dt>
+                  <dd>Saline Post Office</dd>
+                  <dt>Common Name:</dt>
+                  <dd>I'll Fix Dinner</dd>
+                </dl>
+              </div>
+            </a>
+          </section>
+
+          <section class="[ results-list--small ]">
+            <a href="#" class="[ flex ]">
+              <img
+                class="[ results-list__image ]"
+                src="static/img/test.png"
+                alt="alt text"
+              />
+              <div class="[ results-list__content ]">
+                <h4>101 N. Ann Arbor Street</h4>
+                <dl class="[ results ]">
+                  <dt>Record ID:</dt>
+                  <dd>SL0101</dd>
+                  <dt>Historic Name:</dt>
+                  <dd>Saline Post Office</dd>
+                  <dt>Common Name:</dt>
+                  <dd>I'll Fix Dinner</dd>
+                </dl>
+              </div>
+            </a>
+          </section>
+
+          <section class="[ results-list--small ]">
+            <a href="#" class="[ flex ]">
+              <img
+                class="[ results-list__image ]"
+                src="static/img/test.png"
+                alt="alt text"
+              />
+              <div class="[ results-list__content ]">
+                <h4>101 N. Ann Arbor Street</h4>
+                <dl class="[ results ]">
+                  <dt>Record ID:</dt>
+                  <dd>SL0101</dd>
+                  <dt>Historic Name:</dt>
+                  <dd>Saline Post Office</dd>
+                  <dt>Common Name:</dt>
+                  <dd>I'll Fix Dinner</dd>
+                </dl>
+              </div>
+            </a>
+          </section>
+        </div>
+      </div>
+    </main>
+  </body>
 </html>
