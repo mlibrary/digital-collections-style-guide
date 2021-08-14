@@ -75,6 +75,30 @@ address {
   font-style: normal;
 }
 
+details > summary {
+  list-style: none;
+}
+
+details[open] {
+  padding-bottom: var(--space-x-large);
+}
+
+details > summary::after {
+  font-family: "Material Icons";
+  content: "\e5cf";
+  color: var(--color-teal-400);
+}
+
+details[open] > summary::after {
+  font-family: "Material Icons";
+  content: "\e5ce";
+  color: var(--color-teal-400);
+}
+/* Removes the default arrow on Chrome */
+details > summary::-webkit-details-marker {
+  display: none;
+}
+
 /*
 * Blocks
 *
@@ -202,7 +226,7 @@ input {
 }
 
 .text-block {
-  width: max(45vw);
+  width: max(40vw);
 }
 /*
  * Utilities
@@ -335,6 +359,7 @@ h3,
 
 .collection-heading--small {
   font-size: 20px;
+  font-weight: var(--bold);
 }
 
 /*

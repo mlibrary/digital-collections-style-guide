@@ -44,6 +44,10 @@
       href="https://unpkg.com/@umich-lib/css@v1/dist/umich-lib.css"
       rel="stylesheet"
     />
+    <link
+      rel="stylesheet"
+      href="https://fonts.googleapis.com/icon?family=Material+Icons"
+    />
     <script
       type="module"
       src="https://unpkg.com/@umich-lib/components@v1/dist/umich-lib/umich-lib.esm.js"
@@ -183,9 +187,10 @@
             </p>
           </div>
 
-          <article>
-            <h2 class="[ collection-heading--small ]">Copyright information</h2>
-
+          <details class="[ mb1 ]">
+            <summary class="[ collection-heading--small ]">
+              Copyright information
+            </summary>
             <div class="text-block">
               <p>
                 The City of Saline is the copyright holder for the materials in
@@ -212,7 +217,7 @@
                 >http://www.salinelibrary.org/</a
               >
             </address>
-          </article>
+          </details>
         </div>
       </div>
 
@@ -494,7 +499,13 @@
           <fieldset class="[ results-search ] [ no-border ]">
             <legend class="visually-hidden">Search</legend>
             <div class="[ search-container ] [ flex ]">
-              <select class="[ dropdown select ] [ bold no-border ]">
+              <label for="search-select" class="visually-hidden"
+                >Select a search filter:</label
+              >
+              <select
+                id="search-select"
+                class="[ dropdown select ] [ bold no-border ]"
+              >
                 <option value="keyword">Keyword</option>
                 <option value="title">Title</option>
                 <option value="author">Author</option>
