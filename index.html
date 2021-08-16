@@ -68,8 +68,9 @@
       <m-roger-eyes>[the content for why you're here, probably]</m-roger-eyes>
 
       <!-- Collection Home Page -->
-      <div class="hero__image">
+      <div class="hero">
         <img
+          class="hero__image"
           src="/static/img/saline-home-full.png"
           alt="Saline Collection home page black and white photograph"
         />
@@ -77,7 +78,7 @@
 
       <div class="flex">
         <div class="side-panel">
-          <fieldset class="[ input__group ] [ no-border ]">
+          <fieldset class="[ input-group ] [ no-border ]">
             <legend class="visually-hidden">Search within collection</legend>
 
             <div class="[ flex flex-end ]">
@@ -97,7 +98,7 @@
                 aria-label="Search"
               >
                 <svg
-                  xmlns="https://www.w3.org/2000/svg"
+                  xmlns="http://www.w3.org/2000/svg"
                   width="24px"
                   height="24px"
                   viewBox="0 0 24 24"
@@ -148,16 +149,25 @@
             >
           </p>
 
-          <div class="[ image-grid ] [ flex flex-wrap ]">
-            <img src="/static/img/sdl_1.png" alt="" />
-            <img src="/static/img/sdl_2.png" alt="" />
-            <img src="/static/img/sdl_3.png" alt="" />
-            <img src="/static/img/sdl_4.png" alt="" />
+          <div class="[ gallery-view ]">
+            <div class="[ card ]">
+              <img class="[ card__image ]" src="/static/img/sdl_1.png" alt="" />
+            </div>
+            <div class="[ card ]">
+              <img class="[ card__image ]" src="/static/img/sdl_2.png" alt="" />
+            </div>
+            <div class="[ card ]">
+              <img class="[ card__image ]" src="/static/img/sdl_3.png" alt="" />
+            </div>
+
+            <div class="[ card ]">
+              <img class="[ card__image ]" src="/static/img/sdl_4.png" alt="" />
+            </div>
           </div>
 
           <div class="[ link-box ][ flex flex-center ]">
             <svg
-              xmlns="https://www.w3.org/2000/svg"
+              xmlns="http://www.w3.org/2000/svg"
               height="16px"
               viewBox="0 0 24 24"
               width="16px"
@@ -196,7 +206,7 @@
             </p>
           </div>
 
-          <details class="[ mb1 ]">
+          <details class="[ mb-1 ]">
             <summary class="[ collection-heading--small ]">
               Copyright information
             </summary>
@@ -232,8 +242,7 @@
 
       <!-- End Collection Home Page -->
 
-      <hr />
-      <!-- Collection Item Page -->
+      <!-- Start Collection Item Page -->
 
       <section aria-labelledby="results-nav-heading">
         <h2 id="results-nav-heading" class="visually-hidden">
@@ -247,51 +256,9 @@
           <ol>
             <li>
               <a href="#"> Saline Historic Homes </a>
-              <svg
-                xmlns="https://www.w3.org/2000/svg"
-                height="18px"
-                viewBox="0 0 20 20"
-                width="12px"
-                fill="#06080a"
-                aria-hidden="true"
-                focusable="false"
-                role="img"
-              >
-                <g>
-                  <g>
-                    <rect fill="none" height="20" width="20" />
-                  </g>
-                </g>
-                <g>
-                  <polygon
-                    points="4.59,16.59 6,18 14,10 6,2 4.59,3.41 11.17,10"
-                  />
-                </g>
-              </svg>
             </li>
             <li>
               <a href="#"> Search Results </a>
-              <svg
-                xmlns="https://www.w3.org/2000/svg"
-                height="18px"
-                viewBox="0 0 20 20"
-                width="12px"
-                fill="#06080a"
-                aria-hidden="true"
-                focusable="false"
-                role="img"
-              >
-                <g>
-                  <g>
-                    <rect fill="none" height="20" width="20" />
-                  </g>
-                </g>
-                <g>
-                  <polygon
-                    points="4.59,16.59 6,18 14,10 6,2 4.59,3.41 11.17,10"
-                  />
-                </g>
-              </svg>
             </li>
             <li>
               <a href="./index.html" aria-current="page" class="active-link">
@@ -304,7 +271,7 @@
           <p class="[ light-text-color ]">
             1 of 32 <a href="/">Next</a>
             <svg
-              xmlns="https://www.w3.org/2000/svg"
+              xmlns="http://www.w3.org/2000/svg"
               height="18px"
               viewBox="0 0 20 20"
               width="12px"
@@ -330,154 +297,247 @@
 
       <div class="hero">
         <img
+          class="hero__image"
           src="/static/img/409.png"
           alt="409 N. Ann Arbor Street House photograph"
         />
       </div>
-      <h1 class="collection-heading">409 N. Ann Arbor St.</h1>
-      <div class="sidebar">
-        <section class="record-container">
-          <h3>About this home</h3>
-          <dl class="record">
-            <dt>Street and No.</dt>
-            <dd>409 N. Ann Arbor St.</dd>
-            <dt>Municipal Unit</dt>
-            <dd>Saline</dd>
-            <dt>County</dt>
-            <dd>Washtenaw</dd>
-            <dt>Original Usage</dt>
-            <dd>Residence</dd>
-            <dt>Present Usage</dt>
-            <dd>Residence</dd>
-            <dt>Ownership</dt>
-            <dd>Wiegand, James H. II</dd>
-          </dl>
-          <h3>About this photograph</h3>
 
-          <dl class="record">
-            <dt>Photo Negative No.</dt>
-            <dd>17:17</dd>
-            <dt>Photo Date</dt>
-            <dd>January, 1994</dd>
-            <dt>Photo View</dt>
-            <dd>South and east facades taken facing northwest</dd>
-            <dt>Description</dt>
-            <dd>
-              One and a half story, side gabled, Craftsman style house. Gabled
-              dormer on center front facade. Full width porch with massive
-              shingled support piers resting on a solid balustrade. Rectangular
-              shed roof bay on south facade. Variety of window configurations:
-              paired dormers are five vertical panes over one; bay windows are
-              four over one; soe on over one; and center front has one large
-              pane with two small rectangular lights above. Barn red wood
-              shingles on exterior facade. Brick chimney on north facade. One
-              and a half car, gable front garage at rear.
-            </dd>
-          </dl>
-          <h3>About the construction</h3>
-          <dl class="record">
-            <dt>Date of Construction</dt>
-            <dd>1914</dd>
-            <dt>Context</dt>
-            <dd>
-              The house was probably build by Orrin Briggs around 1914. The 1912
-              Sanborn map shows that Orrin Briggs had a planning mill on the
-              property to the south (Orrin Parsons owned the planning before
-              that, as early as 1988). Mr. Briggs lived in the house until his
-              death in 1935, then his wife, Francis, lived in it until 1947. Mr.
-              Briggs also owned the property to the north. Other owners: Charles
-              Burkhardt in 1960; DAvid Harwood and Susan McDonald; and James H.
-              Wiegand II 1994.
-            </dd>
-            <dt>Bibliographic Reference</dt>
-            <dd>
-              City Directories: 1878, 1894, 1899, 1912, 1916, 1920, 1926, 1941,
-              1945. Assessor's files: 1947 and current; U.S. Census: 1910, 1920.
-              Sanborn Maps: 1888, 1893, 1899, 1912, 1921, 1929; Tax Rolls: 1931
-              and 1935.
-            </dd>
-            <dt>From Source</dt>
-            <dd>MICHIGAN DEPARTMENT OF STATE KG 105</dd>
-            <dt>Survey Date</dt>
-            <dd>May, 1994</dd>
-            <dt>Surveyor</dt>
-            <dd>K. Glynn & S. Kosky</dd>
-            <dt>Recorder Date</dt>
-            <dd>April, 1994</dd>
-            <dt>Card No.</dt>
-            <dd>105</dd>
-          </dl>
+      <div class="flex">
+        <div class="[ main-panel ]">
+          <h1 class="collection-heading--small">409 N. Ann Arbor St.</h1>
 
-          <article>
-            <h3>Rights and Permissions</h3>
-            <p>
-              The University of Michigan Library provides access to these
-              materials for educational and research purposes. These materials
-              may be under copyright. If you decide to use any of these
-              materials, you are responsible for making your own legal
-              assessment and securing any necessary permission. If you have
-              questions about the collection, please contact Saline Digital
-              Collections help. If you have concerns about the inclusion of an
-              item in this collection, please contact Library Information
-              Technology.
-            </p>
-          </article>
-        </section>
+          <section class="record-container">
+            <h3>About this home</h3>
+            <dl class="record">
+              <dt>Street and No.</dt>
+              <dd>409 N. Ann Arbor St.</dd>
+              <dt>Municipal Unit</dt>
+              <dd>Saline</dd>
+              <dt>County</dt>
+              <dd>Washtenaw</dd>
+              <dt>Original Usage</dt>
+              <dd>Residence</dd>
+              <dt>Present Usage</dt>
+              <dd>Residence</dd>
+              <dt>Ownership</dt>
+              <dd>Wiegand, James H. II</dd>
+            </dl>
+            <h3>About this photograph</h3>
 
-        <div>
-          <section class="[ side-panel ] [ border ]">
-            <div class="[ border-bottom ]">
+            <dl class="record">
+              <dt>Photo Negative No.</dt>
+              <dd>17:17</dd>
+              <dt>Photo Date</dt>
+              <dd>January, 1994</dd>
+              <dt>Photo View</dt>
+              <dd>South and east facades taken facing northwest</dd>
+              <dt>Description</dt>
+              <dd>
+                One and a half story, side gabled, Craftsman style house. Gabled
+                dormer on center front facade. Full width porch with massive
+                shingled support piers resting on a solid balustrade.
+                Rectangular shed roof bay on south facade. Variety of window
+                configurations: paired dormers are five vertical panes over one;
+                bay windows are four over one; soe on over one; and center front
+                has one large pane with two small rectangular lights above. Barn
+                red wood shingles on exterior facade. Brick chimney on north
+                facade. One and a half car, gable front garage at rear.
+              </dd>
+            </dl>
+            <h3>About the construction</h3>
+            <dl class="record">
+              <dt>Date of Construction</dt>
+              <dd>1914</dd>
+              <dt>Context</dt>
+              <dd>
+                The house was probably build by Orrin Briggs around 1914. The
+                1912 Sanborn map shows that Orrin Briggs had a planning mill on
+                the property to the south (Orrin Parsons owned the planning
+                before that, as early as 1988). Mr. Briggs lived in the house
+                until his death in 1935, then his wife, Francis, lived in it
+                until 1947. Mr. Briggs also owned the property to the north.
+                Other owners: Charles Burkhardt in 1960; DAvid Harwood and Susan
+                McDonald; and James H. Wiegand II 1994.
+              </dd>
+              <dt>Bibliographic Reference</dt>
+              <dd>
+                City Directories: 1878, 1894, 1899, 1912, 1916, 1920, 1926,
+                1941, 1945. Assessor's files: 1947 and current; U.S. Census:
+                1910, 1920. Sanborn Maps: 1888, 1893, 1899, 1912, 1921, 1929;
+                Tax Rolls: 1931 and 1935.
+              </dd>
+              <dt>From Source</dt>
+              <dd>MICHIGAN DEPARTMENT OF STATE KG 105</dd>
+              <dt>Survey Date</dt>
+              <dd>May, 1994</dd>
+              <dt>Surveyor</dt>
+              <dd>K. Glynn & S. Kosky</dd>
+              <dt>Recorder Date</dt>
+              <dd>April, 1994</dd>
+              <dt>Card No.</dt>
+              <dd>105</dd>
+            </dl>
+
+            <article>
+              <h3>Rights and Permissions</h3>
+              <p>
+                The University of Michigan Library provides access to these
+                materials for educational and research purposes. These materials
+                may be under copyright. If you decide to use any of these
+                materials, you are responsible for making your own legal
+                assessment and securing any necessary permission. If you have
+                questions about the collection, please contact Saline Digital
+                Collections help. If you have concerns about the inclusion of an
+                item in this collection, please contact Library Information
+                Technology.
+              </p>
+            </article>
+          </section>
+        </div>
+
+        <div class="[ side-panel ]">
+          <section
+            class="[ side-panel__box side-panel__box--wrapper ] [ border ]"
+          >
+            <div>
               <h3>Actions</h3>
-              <button class="button button--primary">Download</button>
+              <button class="button button--primary button--large">
+                Download
+                <svg
+                  xmlns="http://www.w3.org/2000/svg"
+                  height="24px"
+                  viewBox="0 0 24 24"
+                  width="24px"
+                  fill="#ffffff"
+                  focusable="false"
+                  aria-hidden="true"
+                >
+                  <path d="M24 24H0V0h24v24z" fill="none" opacity=".87" />
+                  <path
+                    d="M16.59 8.59L12 13.17 7.41 8.59 6 10l6 6 6-6-1.41-1.41z"
+                  />
+                </svg>
+              </button>
               <ul>
-                <li>Save to Favorites</li>
-                <li>Copy Link</li>
+                <li>
+                  <svg
+                    xmlns="http://www.w3.org/2000/svg"
+                    height="16px"
+                    viewBox="0 0 24 24"
+                    width="16px"
+                    fill="#EABA02"
+                    focusable="false"
+                    aria-hidden="true"
+                  >
+                    <g>
+                      <path d="M0,0h24v24H0V0z" fill="none" />
+                      <path d="M0,0h24v24H0V0z" fill="none" />
+                    </g>
+                    <g>
+                      <path
+                        d="M12,17.27L18.18,21l-1.64-7.03L22,9.24l-7.19-0.61L12,2L9.19,8.63L2,9.24l5.46,4.73L5.82,21L12,17.27z"
+                      />
+                    </g>
+                  </svg>
+                  Save to Favorites
+                </li>
+                <li>
+                  <svg
+                    xmlns="http://www.w3.org/2000/svg"
+                    height="16px"
+                    viewBox="0 0 24 24"
+                    width="16px"
+                    fill="#212B36"
+                    focusable="false"
+                    aria-hidden="true"
+                  >
+                    <path d="M0 0h24v24H0V0z" fill="none" />
+                    <path
+                      d="M17 7h-4v2h4c1.65 0 3 1.35 3 3s-1.35 3-3 3h-4v2h4c2.76 0 5-2.24 5-5s-2.24-5-5-5zm-6 8H7c-1.65 0-3-1.35-3-3s1.35-3 3-3h4V7H7c-2.76 0-5 2.24-5 5s2.24 5 5 5h4v-2zm-3-4h8v2H8z"
+                    />
+                  </svg>
+                  Copy Link
+                </li>
               </ul>
             </div>
-            <div class="[ border-bottom ]">
-              <!-- This could be a block, first child has border, last child doesn't -->
+            <div>
               <p class="[ bold ]">Collection</p>
-              <a href="#" class="[ block mb1 ]">Saline Historic Homes</a>
+              <a href="#" class="[ block mb-1 ]">Saline Historic Homes</a>
             </div>
-            <div class="[ border-bottom ]">
+            <div>
               <p class="[ bold ]">Image Size</p>
               <p>2024 x 1472</p>
             </div>
-            <div class="[ border-bottom ]">
+            <div>
               <p class="[ bold ]">Record</p>
               <p>SL1415</p>
             </div>
             <div>
               <p class="[ bold ]">Bookmark</p>
-              <p class="border">quod link but not a link</p>
+              <p class="[ border p-half ]">http://quod.lib.umich.edu/s</p>
             </div>
           </section>
         </div>
       </div>
+      <!-- End Item Page View -->
 
-      <div class="spacer"></div>
+      <!-- Start Search Results View -->
 
       <div class="flex">
         <div class="side-panel">
-          <section class="[ filters ]" aria-labelledby="filters-heading">
-            <h2 id="filters-heading" class="visually-hidden">Filters</h2>
-            <div class="[ border-bottom ]">
-              <!-- This could be a block, first child has border, last child doesn't -->
-              <p class="[ bold ]">Filters</p>
-              <div class="[ border-bottom ]">
-                <p>File Type</p>
-              </div>
-              <div class="[ border-bottom ]">
-                <p>Subject</p>
-              </div>
-              <div class="[ border-bottom ]">
-                <p>Genre</p>
+          <h3 class="[ mt-2 ]">Filters</h3>
+          <div class="[ side-panel__box ]">
+            <details>
+              <summary>File Type</summary>
+              <div>
+                <input type="checkbox" id="file-type-audio" name="audio" />
+                <label for="file-type-audio"
+                  >Audio <span class="filters__count">(2)</span></label
+                >
               </div>
               <div>
-                <p>Date</p>
+                <input
+                  type="checkbox"
+                  id="file-type-image"
+                  name="image"
+                  checked
+                />
+                <label for="file-type-image"
+                  >Image <span class="filters__count">(24)</span></label
+                >
               </div>
-            </div>
-          </section>
+              <div>
+                <input type="checkbox" id="file-type-text" name="text" />
+                <label for="file-type-text"
+                  >Text <span class="filters__count">(5)</span></label
+                >
+              </div>
+              <div>
+                <input
+                  type="checkbox"
+                  id="file-type-video"
+                  name="video"
+                  checked
+                />
+                <label for="file-type-video"
+                  >Video <span class="filters__count">(1)</span></label
+                >
+              </div>
+            </details>
+
+            <details>
+              <summary>Subject</summary>
+            </details>
+
+            <details>
+              <summary>Genre</summary>
+            </details>
+
+            <details>
+              <summary>Date</summary>
+            </details>
+          </div>
         </div>
 
         <div class="main-panel">
@@ -486,27 +546,6 @@
               <ol>
                 <li>
                   <a href="#">Bentley Image Bank</a>
-                  <svg
-                    xmlns="https://www.w3.org/2000/svg"
-                    height="18px"
-                    viewBox="0 0 20 20"
-                    width="12px"
-                    fill="#06080a"
-                    aria-hidden="true"
-                    focusable="false"
-                    role="img"
-                  >
-                    <g>
-                      <g>
-                        <rect fill="none" height="20" width="20" />
-                      </g>
-                    </g>
-                    <g>
-                      <polygon
-                        points="4.59,16.59 6,18 14,10 6,2 4.59,3.41 11.17,10"
-                      />
-                    </g>
-                  </svg>
                 </li>
                 <li>
                   <a href="#" class="active-link" aria-current="page"
@@ -525,7 +564,7 @@
               >
               <select
                 id="search-select"
-                class="[ dropdown select ] [ bold no-border ]"
+                class="[ dropdown dropdown--neutral select ] [ bold no-border ]"
               >
                 <option value="keyword">Keyword</option>
                 <option value="title">Title</option>
@@ -552,7 +591,7 @@
                   aria-label="Search"
                 >
                   <svg
-                    xmlns="https://www.w3.org/2000/svg"
+                    xmlns="http://www.w3.org/2000/svg"
                     width="24px"
                     height="24px"
                     viewBox="0 0 24 24"
@@ -640,6 +679,138 @@
           </section>
         </div>
       </div>
+
+      <!-- Start Browse -->
+
+      <h1 class="[ collection-heading ]">Browse Collections</h1>
+
+      <div class="[ flex flex-space-between mb-3 ]">
+        <div class="input-group">
+          <label for="browse-collection-input" class="visually-hidden"
+            >Browse collections</label
+          >
+          <input
+            id="browse-collection-input"
+            type="search"
+            name="query"
+            placeholder="Seach for digital collection"
+          />
+        </div>
+
+        <div class="select-group">
+          <label for="browse-sort">Sort by:</label>
+          <select name="browse" id="browse-sort" class="[ dropdown select ]">
+            <option value="a-z">A-Z</option>
+            <option value="Z-A">Z-A</option>
+            <option value="newest">Newest</option>
+          </select>
+        </div>
+      </div>
+
+      <section aria-labelledby="browse-collection">
+        <h3 id="browse-collection" class="visually-hidden">
+          Browse entire collection
+        </h3>
+
+        <div class="[ gallery-view ]">
+          <div class="[ card ]">
+            <a href="#" class="[ card__link ] [ flex ]">
+              <div class="[ card__content ]">
+                <img
+                  class="[ card__image ]"
+                  src="static/img/american-poetry.png"
+                  alt=""
+                />
+                <h4 class="[ card__heading ]">20th Century American Poetry</h4>
+              </div>
+            </a>
+          </div>
+
+          <div class="[ card ]">
+            <a href="#" class="[ card__link ] [ flex ]">
+              <div class="[ card__content ]">
+                <img class="[ card__image ]" src="static/img/alas.png" alt="" />
+                <h4 class="[ card__heading ]">
+                  Abraham Lincoln Association Series
+                </h4>
+              </div>
+            </a>
+          </div>
+
+          <div class="[ card ]">
+            <a href="#" class="[ card__link ] [ flex ]">
+              <div class="[ card__content ]">
+                <img class="[ card__image ]" src="static/img/apis.png" alt="" />
+                <h4 class="[ card__heading ]">
+                  Advanced Papyrological Information System (APIS UM)
+                </h4>
+              </div>
+            </a>
+          </div>
+
+          <div class="[ card ]">
+            <a href="#" class="[ card__link ] [ flex ]">
+              <div class="[ card__content ]">
+                <img class="[ card__image ]" src="static/img/aahs.png" alt="" />
+                <h4 class="[ card__heading ]">
+                  African American History Collection
+                </h4>
+              </div>
+            </a>
+          </div>
+
+          <div class="[ card ]">
+            <a href="#" class="[ card__link ] [ flex ]">
+              <div class="[ card__content ]">
+                <img
+                  class="[ card__image ]"
+                  src="static/img/hussey.png"
+                  alt=""
+                />
+                <h4 class="[ card__heading ]">Alfred Hussey Collection</h4>
+              </div>
+            </a>
+          </div>
+
+          <div class="[ card ]">
+            <a href="#" class="[ card__link ] [ flex ]">
+              <div class="[ card__content ]">
+                <img
+                  class="[ card__image ]"
+                  src="static/img/american-jewess.png"
+                  alt=""
+                />
+                <h4 class="[ card__heading ]">American Jewess</h4>
+              </div>
+            </a>
+          </div>
+
+          <div class="[ card ]">
+            <a href="#" class="[ card__link ] [ flex ]">
+              <div class="[ card__content ]">
+                <img class="[ card__image ]" src="static/img/apd.png" alt="" />
+                <h4 class="[ card__heading ]">American Poetry Database</h4>
+              </div>
+            </a>
+          </div>
+
+          <div class="[ card ]">
+            <a href="#" class="[ card__link ] [ flex ]">
+              <div class="[ card__content ]">
+                <img
+                  class="[ card__image ]"
+                  src="static/img/american-verse.png"
+                  alt=""
+                />
+                <h4 class="[ card__heading ]">American Verse Project</h4>
+              </div>
+            </a>
+          </div>
+        </div>
+      </section>
+
+      <!-- End Browse -->
+      <br />
     </main>
   </body>
 </html>

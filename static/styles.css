@@ -38,14 +38,14 @@ body {
   line-height: var(--line-height-default);
 }
 
+main {
+  padding-bottom: 5em;
+}
+
 /*
  * Globals 
  *
  */
-
-img {
-  max-width: 100%;
-}
 
 ol,
 ul {
@@ -87,16 +87,73 @@ details > summary::after {
   font-family: "Material Icons";
   content: "\e5cf";
   color: var(--color-teal-400);
+  vertical-align: sub;
 }
 
 details[open] > summary::after {
   font-family: "Material Icons";
   content: "\e5ce";
   color: var(--color-teal-400);
+  vertical-align: sub;
 }
 /* Removes the default arrow on Chrome */
 details > summary::-webkit-details-marker {
   display: none;
+}
+
+/* Forms, Selects & Inputs */
+
+.select-group {
+  padding: 0 1.5em 0;
+  color: var(--light-text-color);
+}
+
+.select {
+  min-width: 12ch;
+  padding-left: 1em;
+  height: 40px;
+}
+
+.dropdown {
+  font-size: 1rem;
+  font-family: var(--font-base-family);
+  color: #262626;
+  line-height: 1.5;
+  box-shadow: none;
+  cursor: pointer;
+  max-width: 100%;
+}
+
+.dropdown--neutral {
+  background-color: var(--color-neutral-100);
+}
+
+.input-group {
+  padding: 0 1.5em 0 0;
+  min-width: 60%;
+}
+
+input {
+  font-size: 1rem;
+  font-family: var(--font-base-family);
+  margin: 0;
+  border: solid 1px var(--color-neutral-300);
+  box-shadow: inset 0 1px 4px rgb(0 0 0 / 10%);
+  border-radius: 4px;
+  padding: 0.5rem 0.75rem;
+  appearance: textfield;
+  font-family: inherit;
+  box-sizing: border-box;
+  height: 40px;
+}
+
+input[type="search"] {
+  width: 80%;
+}
+
+input[type="checkbox"] {
+  width: 20px;
+  height: 20px;
 }
 
 /*
@@ -104,14 +161,21 @@ details > summary::-webkit-details-marker {
 *
 */
 
-.hero__image {
-  margin: 2em 0;
+.hero {
+  margin: 1em 0 2em;
 }
 
-.image-grid img {
-  padding: 0.5em;
-  width: calc(100% / 4 - 8px);
+.hero__image {
+  max-width: 100%;
 }
+
+/* Text Block/ prose */
+
+.text-block {
+  width: max(40vw); /* Set line length for readability */
+}
+
+/** Breadcrumb **/
 
 .breadcrumb {
   display: flex;
@@ -123,49 +187,21 @@ details > summary::-webkit-details-marker {
   padding: var(--space-xx-small);
 }
 
-.sidebar {
-  display: flex;
-  justify-content: space-between;
+.breadcrumb li:not(:last-child):after {
+  font-family: "Material Icons";
+  content: "\e315";
+  vertical-align: bottom;
+  padding-left: 0.25em;
+  color: var(--color-teal-500);
 }
 
-.select {
-  min-width: 12ch;
-  padding-left: 1em;
-}
-
-.dropdown {
-  font-size: 1rem;
-  font-family: var(--font-base-family);
-  color: #262626;
-  line-height: 1.5;
-  background-color: var(--color-neutral-100);
-  box-shadow: none;
-  cursor: pointer;
-  max-width: 100%;
-}
-
-input {
-  font-size: 1rem;
-  font-family: var(--font-base-family);
-  margin: 0;
-  border: solid 1px var(--color-neutral-300);
-  box-shadow: inset 0 1px 4px rgb(0 0 0 / 10%);
-  border-radius: 4px;
-  padding: 0.5rem 0.75rem;
-  width: 80%;
-  appearance: textfield;
-  font-family: inherit;
-  box-sizing: border-box;
-  height: 40px;
-}
-
-.input__group {
-  padding: 0 1.5em 0 0;
-}
+/** Lists **/
 
 .list__links ul li {
   margin-top: 0.5em;
 }
+
+/** Results **/
 
 .results-list--small {
   border-bottom: 1px solid var(--color-neutral-100);
@@ -180,13 +216,6 @@ input {
 
 .results-list--small:last-child {
   border-bottom: 0;
-}
-
-.results-list__image {
-  width: 140px;
-  height: 140px;
-  padding: var(--space-medium);
-  padding-left: 0;
 }
 
 .results {
@@ -210,24 +239,92 @@ input {
   grid-column: 2/3;
 }
 
-.results-list__content > h4 {
-  font-weight: var(--regular);
-  text-decoration: underline;
-  font-size: var(--text-small);
-  margin: 1rem 0;
-  color: var(--color-neutral-400);
-}
 .results-list__content > dt {
   text-decoration: none;
+}
+
+.results-list__image {
+  width: 140px;
+  height: 140px;
+  padding: var(--space-medium);
+  padding-left: 0;
 }
 
 .filters {
   padding-top: var(--space-xxxx-large);
 }
 
-.text-block {
-  width: max(40vw);
+/** CARD **/
+
+.gallery-view {
+  display: flex;
+  flex-flow: row wrap;
 }
+
+.card {
+  width: calc(25% - 16px);
+  margin: 0 0.5em;
+}
+
+/** Was going to use clamp() but no IE 11 support) **/
+
+@media (min-width: 600px) and (max-width: 1000px) {
+  .card {
+    width: 50%;
+  }
+}
+
+@media screen and (max-width: 600px) {
+  .card {
+    width: 100%;
+  }
+}
+
+.card__image {
+  padding: 0;
+}
+
+.card__heading {
+  font-size: var(--text-small);
+  font-weight: var(--semibold);
+  color: var(--base-text-color);
+  margin-top: 0;
+  width: max(25ch);
+}
+
+/** SIDE PANEL BOX **/
+
+.side-panel__box {
+  display: flex;
+  flex-flow: column wrap;
+  width: 20vw;
+}
+
+.side-panel__box--wrapper {
+  margin: 3em;
+  padding: 1em;
+}
+
+.side-panel__box > details:not(:last-child) {
+  border-bottom: solid 1px var(--color-neutral-100);
+}
+
+.side-panel__box > *:not(:last-child) {
+  border-bottom: solid 1px var(--color-neutral-100);
+}
+
+.side-panel__box > details {
+  padding: 1em 0;
+}
+
+details > div {
+  padding: 0.25em;
+}
+
+.filters__count {
+  color: var(--color-neutral-300);
+}
+
 /*
  * Utilities
  *
@@ -243,7 +340,7 @@ input {
 }
 
 .border-bottom {
-  border-bottom: solid 2px var(--color-neutral-100);
+  border-bottom: solid 1px var(--color-neutral-100);
 }
 
 .light-text-color {
@@ -258,16 +355,8 @@ input {
   font-weight: var(--bold);
 }
 
-.mb1 {
-  margin-bottom: 1em;
-}
-
 .block {
   display: block;
-}
-
-.spacer {
-  height: 50px;
 }
 
 .flex {
@@ -286,13 +375,29 @@ input {
   flex-wrap: wrap;
 }
 
+.flex-space-between {
+  justify-content: space-between;
+}
+
+.mb-1 {
+  margin-bottom: 1em;
+}
+
+.mb-3 {
+  margin-bottom: 3em;
+}
+
+.mt-2 {
+  margin-top: 2em;
+}
+
+.p-half {
+  padding: 0.5em;
+}
+
 /*
  * Anchors/Links
  *
- * How about we just make links all have an underline?
- * I mean, if you're going to use a link and not
- * underline it, you better know your context and
- * have a good reason to do so.
  */
 
 .active-link {
@@ -336,6 +441,8 @@ h2,
 .section-heading {
   font-size: var(--text-large);
   font-weight: var(--bold);
+  padding-top: 0;
+  margin-top: 0;
 }
 
 h3,
@@ -346,7 +453,8 @@ h3,
   font-size: 14px;
   font-weight: var(--bold);
   font-family: var(--font-base-family);
-  padding-top: var(--space-large);
+  padding-top: var(--space-medium);
+  margin-top: 0;
 }
 
 .collection-heading {
@@ -360,6 +468,9 @@ h3,
 .collection-heading--small {
   font-size: 20px;
   font-weight: var(--bold);
+  font-family: var(--font-base-family);
+  color: var(--color-neutral-400);
+  line-height: 1.1;
 }
 
 /*
@@ -400,6 +511,10 @@ button {
 
 .button--small {
   padding: var(--space-small);
+}
+
+.button--large {
+  padding: var(--space-small) var(--space-xxx-large);
 }
 
 .button:focus {
@@ -481,4 +596,23 @@ button {
 
 .main-panel {
   width: 70vw;
+}
+
+/*
+* Media
+*
+*/
+
+@media (prefers-reduced-motion: reduce) {
+  *,
+  ::before,
+  ::after {
+    animation-delay: -1ms !important;
+    animation-duration: 1ms !important;
+    animation-iteration-count: 1 !important;
+    background-attachment: initial !important;
+    scroll-behavior: auto !important;
+    transition-duration: 0s !important;
+    transition-delay: 0s !important;
+  }
 }
