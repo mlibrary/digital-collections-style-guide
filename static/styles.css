@@ -259,11 +259,29 @@ input[type="checkbox"] {
 .gallery-view {
   display: flex;
   flex-flow: row wrap;
-  padding: var(--space-xx-large) 0;
 }
 
 .card {
-  width: calc(100% / 4 - 2px);
+  width: calc(25% - 16px);
+  margin: 0 0.5em;
+}
+
+/** Was going to use clamp() but no IE 11 support) **/
+
+@media (min-width: 600px) and (max-width: 1000px) {
+  .card {
+    width: 50%;
+  }
+}
+
+@media screen and (max-width: 600px) {
+  .card {
+    width: 100%;
+  }
+}
+
+.card__image {
+  padding: 0;
 }
 
 .card__heading {
@@ -271,10 +289,7 @@ input[type="checkbox"] {
   font-weight: var(--semibold);
   color: var(--base-text-color);
   margin-top: 0;
-}
-
-.card__image {
-  padding: 0;
+  width: max(25ch);
 }
 
 /** SIDE PANEL BOX **/
@@ -366,6 +381,10 @@ details > div {
 
 .mb-1 {
   margin-bottom: 1em;
+}
+
+.mb-3 {
+  margin-bottom: 3em;
 }
 
 .mt-2 {
@@ -577,4 +596,23 @@ button {
 
 .main-panel {
   width: 70vw;
+}
+
+/*
+* Media
+*
+*/
+
+@media (prefers-reduced-motion: reduce) {
+  *,
+  ::before,
+  ::after {
+    animation-delay: -1ms !important;
+    animation-duration: 1ms !important;
+    animation-iteration-count: 1 !important;
+    background-attachment: initial !important;
+    scroll-behavior: auto !important;
+    transition-duration: 0s !important;
+    transition-delay: 0s !important;
+  }
 }
