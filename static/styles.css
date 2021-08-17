@@ -7,7 +7,7 @@
   --base-text-color: var(--color-neutral-400);
   --light-text-color: var(--color-neutral-300);
   --viewport-margin: var(--space-medium);
-  --card-min-width: 320px;
+  --material: "Material Icons";
 }
 
 @media (min-width: 720px) {
@@ -30,6 +30,10 @@ html {
   box-sizing: inherit;
 }
 
+/*
+ * Globals 
+ *
+ */
 body {
   margin: 0;
   color: var(--base-text-color);
@@ -37,15 +41,6 @@ body {
   font-family: var(--font-base-family);
   line-height: var(--line-height-default);
 }
-
-main {
-  padding-bottom: 5em;
-}
-
-/*
- * Globals 
- *
- */
 
 ol,
 ul {
@@ -64,16 +59,18 @@ a {
 }
 
 a:hover {
-  text-decoration-thickness: 2px;
+  text-decoration-thickness: 2px; /** TODO: HOVE **/
 }
 
 :focus {
-  border: solid 2px var(--color-indigo-400);
+  border: solid 2px var(--color-indigo-400); /** TODO: FOCUS **/
 }
 
 address {
   font-style: normal;
 }
+
+/** Details **/
 
 details > summary {
   list-style: none;
@@ -133,11 +130,19 @@ details > summary::-webkit-details-marker {
   min-width: 60%;
 }
 
+.input-group button {
+  border-radius: 0 2px 2px 0;
+}
+
+.input-group.right input {
+  border-radius: 4px 0 0 4px;
+}
+
 input {
   font-size: 1rem;
   font-family: var(--font-base-family);
   margin: 0;
-  border: solid 1px var(--color-neutral-300);
+  border: solid 1px var(--color-neutral-200);
   box-shadow: inset 0 1px 4px rgb(0 0 0 / 10%);
   border-radius: 4px;
   padding: 0.5rem 0.75rem;
@@ -182,13 +187,23 @@ input[type="checkbox"] {
   justify-content: space-between;
 }
 
+@media screen and (max-width: 600px) {
+  .breadcrumb {
+    flex-flow: column;
+  }
+}
+
 .breadcrumb li {
   display: inline;
   padding: var(--space-xx-small);
 }
 
+.breadcrumb li:first-child {
+  padding-left: 0;
+}
+
 .breadcrumb li:not(:last-child):after {
-  font-family: "Material Icons";
+  font-family: var(--material);
   content: "\e315";
   vertical-align: bottom;
   padding-left: 0.25em;
@@ -378,14 +393,14 @@ details > div {
 }
 
 a[class*="previous"]::before {
-  font-family: "Material Icons";
+  font-family: var(--material);
   content: "\e408";
   color: inherit;
   vertical-align: middle;
 }
 
 a[class*="next"]::after {
-  font-family: "Material Icons";
+  font-family: var(--material);
   content: "\e409";
   color: inherit;
   vertical-align: middle;
@@ -577,6 +592,7 @@ button {
   border-radius: var(--radius-default);
   align-items: center;
   min-height: 2.5rem;
+  margin: 0; /** must remove margin for Safari */
 }
 
 .button--small {
@@ -604,7 +620,7 @@ button {
 .button--secondary {
   background: var(--color-neutral-100);
   border: solid 1px var(--color-neutral-100);
-  border-radius: 0 2px 2px 0;
+  border-radius: 2px;
   color: var(--color-neutral-400);
 }
 

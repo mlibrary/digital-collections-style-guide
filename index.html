@@ -78,7 +78,7 @@
 
       <div class="[ flex flex-flow-rw ]">
         <div class="side-panel">
-          <fieldset class="[ input-group ] [ no-border ]">
+          <fieldset class="[ input-group right ] [ no-border ]">
             <legend class="visually-hidden">Search within collection</legend>
 
             <div class="[ flex flex-end ]">
@@ -556,7 +556,9 @@
             </nav>
           </div>
 
-          <fieldset class="[ results-search ] [ no-border ]">
+          <fieldset
+            class="[ input-group right ][ results-search ] [ no-border ]"
+          >
             <legend class="visually-hidden">Search</legend>
             <div class="[ search-container ] [ flex ]">
               <label for="search-select" class="visually-hidden"
@@ -571,11 +573,9 @@
                 <option value="author">Author</option>
               </select>
 
-              <div class="[ border ]">
-                <label for="search-collection" class="visually-hidden">
-                  <span>Search</span>
-                </label>
-              </div>
+              <label for="search-collection" class="visually-hidden">
+                <span>Search</span>
+              </label>
 
               <input
                 id="search-collection"
