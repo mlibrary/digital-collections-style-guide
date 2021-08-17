@@ -252,7 +252,7 @@
       </section>
 
       <div class="[ breadcrumb ]">
-        <nav aria-label="Breadcrumb">
+        <nav aria-label="breadcrumb">
           <ol>
             <li>
               <a href="#"> Saline Historic Homes </a>
@@ -810,6 +810,107 @@
       </section>
 
       <!-- End Browse -->
+
+      <nav
+        aria-label="Result navigation"
+        class="[ flex flex-space-between flex-align-center ]"
+      >
+        <div class="pagination__group">
+          <ul class="pagination">
+            <li>
+              <a
+                class="pagination-link previous"
+                href="#"
+                aria-label="Previous"
+              >
+                Previous
+              </a>
+            </li>
+            <li>
+              <a class="pagination-link next" href="#" aria-label="Next">
+                Next
+              </a>
+            </li>
+          </ul>
+        </div>
+
+        <div class="pagination__group">
+          <label for="results-pagination">Go to page:</label>
+          <input
+            type="number"
+            id="results-pagination"
+            name="page"
+            min="1"
+            max="100"
+          />
+          <span>of 105</span>
+
+          <button type="submit" class="[ button button--secondary ] [ flex ]">
+            Go
+          </button>
+        </div>
+      </nav>
+
+      <!-- Testing pagination-->
+      <nav
+        aria-label="Result navigation"
+        class="[ flex flex-space-between flex-align-center ]"
+      >
+        <div class="pagination__group">
+          <ul class="pagination">
+            <li class="pagination__item">
+              <a class="page-link" href="#" aria-label="Previous"> Previous </a>
+            </li>
+            <li class="pagination__item">
+              <a class="page-link" href="#" aria-label="Next"> Next </a>
+            </li>
+          </ul>
+        </div>
+
+        <div class="pagination__group">
+          <label for="results-pagination">Go to page:</label>
+          <input
+            type="number"
+            id="results-pagination"
+            name="page"
+            min="1"
+            max="100"
+          />
+          <span>of 105</span>
+
+          <button type="submit" class="[ button button--secondary ] [ flex ]">
+            Go
+          </button>
+        </div>
+      </nav>
+
+      <!-- More Pagination-->
+      <nav aria-label="Result navigation" class="[ flex flex-space-between ]">
+        <div class="pagination__group">
+          <ul class="pagination">
+            <li class="pagination__item">
+              <a class="page-link" href="#" aria-label="Previous"> Previous </a>
+            </li>
+            <li class="pagination__item">
+              <a class="page-link" href="#" aria-label="Next"> Next </a>
+            </li>
+          </ul>
+        </div>
+
+        <div class="pagination__group">
+          <ul class="pagination">
+            <li class="pagination__item">
+              <a class="page-link" href="#">1</a>
+            </li>
+            <li class="pagination__item">
+              <a class="page-link" href="#">2</a>
+            </li>
+            <li class="pagination__item">
+              <a class="page-link" href="#">3</a>
+            </li>
+          </ul>
+        </div>
+      </nav>
       <br />
     </main>
   </body>

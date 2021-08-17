@@ -325,6 +325,45 @@ details > div {
   color: var(--color-neutral-300);
 }
 
+/** Pagination **/
+
+.pagination li {
+  display: inline-block;
+}
+
+.pagination__item a {
+  border: solid 1px var(--color-teal-400);
+  border-radius: 4px;
+  color: var(--color-teal-400);
+  padding: 0.5em 1em;
+  margin: 0.25em;
+  text-decoration: none;
+}
+
+.pagination__item a:hover {
+  background: var(--color-teal-500);
+  color: white;
+}
+
+.pagination-link {
+  text-decoration: none;
+  padding: 0 1em;
+}
+
+a[class*="previous"]::before {
+  font-family: "Material Icons";
+  content: "\e408";
+  color: var(--color-teal-400);
+  vertical-align: sub;
+}
+
+a[class*="next"]::after {
+  font-family: "Material Icons";
+  content: "\e409";
+  color: var(--color-teal-400);
+  vertical-align: sub;
+}
+
 /*
  * Utilities
  *
@@ -377,6 +416,10 @@ details > div {
 
 .flex-space-between {
   justify-content: space-between;
+}
+
+.flex-align-center {
+  align-items: center;
 }
 
 .mb-1 {
