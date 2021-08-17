@@ -207,6 +207,7 @@ input[type="checkbox"] {
   border-bottom: 1px solid var(--color-neutral-100);
   color: var(--color-neutral-400);
   text-decoration: none;
+  margin-bottom: 0.5em;
 }
 
 .results-list--small a {
@@ -223,6 +224,7 @@ input[type="checkbox"] {
   grid-template-columns: 9rem 1fr;
   column-gap: 0;
   width: 50vw;
+  margin-top: 0.25em;
 }
 
 .results dt {
@@ -243,15 +245,31 @@ input[type="checkbox"] {
   text-decoration: none;
 }
 
+.results-list__content h4 {
+  display: inline;
+  font-size: var(--text-small);
+  font-weight: var(--semibold);
+  color: var(--base-text-color);
+  box-shadow: inset 0 -1px #1d7491;
+  margin-top: 0.5em;
+}
+
+.results-list__content h4:hover {
+  box-shadow: inset 0 -2px #1d7491;
+  background: var(--color-maize-300);
+  transition: background 0.5s;
+}
+
 .results-list__image {
   width: 140px;
-  height: 140px;
-  padding: var(--space-medium);
+  height: 120px;
+  padding: 0 var(--space-medium);
   padding-left: 0;
 }
 
 .filters {
   padding-top: var(--space-xxxx-large);
+  padding-right: 2em;
 }
 
 /** CARD **/
@@ -259,6 +277,14 @@ input[type="checkbox"] {
 .gallery-view {
   display: flex;
   flex-flow: row wrap;
+}
+
+@media screen and (max-width: 600px) {
+  .card {
+    margin-left: auto;
+    margin-right: auto;
+    padding: 0 5em;
+  }
 }
 
 .card {
@@ -297,11 +323,10 @@ input[type="checkbox"] {
 .side-panel__box {
   display: flex;
   flex-flow: column wrap;
-  width: 20vw;
+  max-width: 80%;
 }
 
 .side-panel__box--wrapper {
-  margin: 3em;
   padding: 1em;
 }
 
@@ -347,7 +372,11 @@ details > div {
 
 .pagination-link {
   text-decoration: none;
-  padding: 0 1em;
+  padding: 0.5em 1em;
+}
+
+.pagination-link:hover {
+  background-color: var(--color-maize-200);
 }
 
 a[class*="previous"]::before {
@@ -410,8 +439,8 @@ a[class*="next"]::after {
   align-items: center;
 }
 
-.flex-wrap {
-  flex-wrap: wrap;
+.flex-flow-rw {
+  flex-flow: row wrap;
 }
 
 .flex-space-between {
@@ -629,16 +658,40 @@ button {
 }
 
 /*
- * Layouts - Flex
+ * Layouts 
  *
  */
 
 .side-panel {
-  width: 30vw;
+  width: 22vw;
+}
+
+@media (min-width: 600px) and (max-width: 1000px) {
+  .side-panel {
+    width: 20%;
+  }
+}
+
+@media screen and (max-width: 600px) {
+  .side-panel {
+    width: 100%;
+  }
 }
 
 .main-panel {
-  width: 70vw;
+  width: 60vw;
+}
+
+@media (min-width: 600px) and (max-width: 1000px) {
+  .main-panel {
+    width: 80%;
+  }
+}
+
+@media screen and (max-width: 600px) {
+  .main-panel {
+    width: 100%;
+  }
 }
 
 /*
