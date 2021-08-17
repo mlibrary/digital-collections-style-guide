@@ -172,7 +172,7 @@ input[type="checkbox"] {
 /* Text Block/ prose */
 
 .text-block {
-  width: max(40vw); /* Set line length for readability */
+  width: max(75%); /* Set line length for readability */
 }
 
 /** Breadcrumb **/
@@ -663,7 +663,7 @@ button {
  */
 
 .side-panel {
-  width: 22vw;
+  width: 25%;
 }
 
 @media (min-width: 600px) and (max-width: 1000px) {
@@ -679,7 +679,7 @@ button {
 }
 
 .main-panel {
-  width: 60vw;
+  width: 70%;
 }
 
 @media (min-width: 600px) and (max-width: 1000px) {
