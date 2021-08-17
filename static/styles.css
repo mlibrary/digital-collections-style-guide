@@ -352,8 +352,15 @@ details > div {
 
 /** Pagination **/
 
+@media screen and (max-width: 600px) {
+  .pagination__row {
+    flex-flow: column;
+  }
+}
+
 .pagination li {
   display: inline-block;
+  margin: 0.5em 0;
 }
 
 .pagination__item a {
@@ -370,27 +377,18 @@ details > div {
   color: white;
 }
 
-.pagination-link {
-  text-decoration: none;
-  padding: 0.5em 1em;
-}
-
-.pagination-link:hover {
-  background-color: var(--color-maize-200);
-}
-
 a[class*="previous"]::before {
   font-family: "Material Icons";
   content: "\e408";
-  color: var(--color-teal-400);
-  vertical-align: sub;
+  color: inherit;
+  vertical-align: middle;
 }
 
 a[class*="next"]::after {
   font-family: "Material Icons";
   content: "\e409";
-  color: var(--color-teal-400);
-  vertical-align: sub;
+  color: inherit;
+  vertical-align: middle;
 }
 
 /*
