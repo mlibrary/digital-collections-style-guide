@@ -1,0 +1,19 @@
+<?xml version="1.0"?>
+
+<?CHUNK filename="entitiesdoctype.chnk" optional="1"?>
+<Top xmlns:dlxs="http://www.umdl.umich.edu/dlxs">
+
+ <!-- XSL fallback files -->
+  <XslFallbackFileList pipeline="qui">
+    <Filename>qui/qui.base.xsl</Filename>
+    <!-- <Filename>qui/social-links.xsl</Filename> -->
+    <Filename>qui/components/*.xsl</Filename>
+    <Filename>qui/qui.entry.xsl</Filename>
+  </XslFallbackFileList>
+
+  <XslFallbackFileList pipeline="qbat">
+    <Filename>qbat/qbat.base.xsl</Filename>
+    <Filename>qbat/qbat.entry.xsl</Filename>
+  </XslFallbackFileList>
+
+</Top>

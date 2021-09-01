@@ -35,3 +35,13 @@ window.addEventListener('DOMContentLoaded', (event) => {
     collapseDepth: 6,
   });
 })
+
+document.body.addEventListener('click', (event) => {
+  if ( event.target.nodeName == 'A' ) {
+    if ( event.target.dataset.available == 'false' ) {
+      event.preventDefault();
+      alert("This link is not available.");
+      return;
+    }
+  }
+})

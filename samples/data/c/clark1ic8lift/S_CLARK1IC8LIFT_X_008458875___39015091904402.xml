@@ -1,0 +1,1825 @@
+
+
+<!DOCTYPE Top><Top xmlns:dlxs="http://www.umdl.umich.edu/dlxs" identifier="S_CLARK1IC8LIFT_X_008458875___39015091904402">
+
+ <!-- XSL fallback files -->
+  <XslFallbackFileList>
+    <Filename>xsl2htmlutils.xsl</Filename>
+    <Filename>feedback.xsl</Filename>
+    <Filename>htmlhead.xsl</Filename>
+    <Filename>displayheader.xsl</Filename>
+    <Filename>entry_imagetools.xsl</Filename>
+    <Filename>fieldvalues.xsl</Filename>
+    <Filename>social.xsl</Filename>
+    <Filename>entry.xsl</Filename>
+    <Filename>panzoom.xsl</Filename>
+  </XslFallbackFileList>
+
+  <!--  <Filename>bbopenutils.xsl</Filename> -->
+
+  <!-- Custom OPTIONAL XML for top-level file entry.xml -->
+  <CustomXml/>
+
+<DlxsGlobals><CurrentCgi><Param name="sort">marc710</Param>
+<Param name="rgn1">marc710</Param>
+<Param name="select1">phrase</Param>
+<Param name="c">clark1ic8lift</Param>
+<Param name="q1">National%20Ocean%20Survey.</Param>
+<Param name="subview">detail</Param>
+<Param name="resnum">2</Param>
+<Param name="start">1</Param>
+<Param name="view">entry</Param>
+<Param name="lastview">reslist</Param>
+<Param name="lasttype">boolean</Param>
+<Param name="cc">clark1ic8lift</Param>
+<Param name="entryid">x-008458875</Param>
+<Param name="viewid">39015091904402</Param>
+<Param name="debug">xml</Param>
+<Param name="size">50</Param>
+<Param name="chaperone">S-CLARK1IC8LIFT-X-008458875 39015091904402</Param>
+</CurrentCgi>
+<CurrentUrl>https://roger.quod.lib.umich.edu/cgi/i/image/image-idx?sort=marc710;rgn1=marc710;select1=phrase;c=clark1ic8lift;q1=National%2520Ocean%2520Survey.;subview=detail;resnum=2;start=1;view=entry;lastview=reslist;lasttype=boolean;cc=clark1ic8lift;entryid=x-008458875;viewid=39015091904402;debug=xml;size=50;chaperone=S-CLARK1IC8LIFT-X-008458875%2039015091904402</CurrentUrl>
+<UserAgent>node-fetch/1.0 (+https://github.com/bitinn/node-fetch)</UserAgent>
+<ReferrerHref/>
+<Sid>2d3b2b6ab7209b69069e9d3eff839a83</Sid>
+
+<EffectiveLanguage>en</EffectiveLanguage>
+<LanguageOptions><OptionalLanguage>en</OptionalLanguage></LanguageOptions>
+<LangMap>
+  
+  <!-- bbopenutils.xsl which serves bbopen.xsl, bbname.xsl -->
+<!-- "items1" used by bbresults_nav.xsl SliceSummary -->
+<!-- "portfolio" used by bbresults_nav.xsl CollectionName -->
+<lookup id="bbopenutils">
+<item key="portfolio">portfolio</item>
+<item key="porthelp"><b>Help</b> For Using Portfolios</item>
+<item key="bbopenpageheader">Portfolios</item>
+<item key="bbnamepageheader">Add to a New
+or Existing Portfolio</item>
+<item key="yourport">your portfolios</item>
+<item key="pubport">all public portfolios</item>
+<item key="bbagname">portfolio name</item>
+<item key="action">action</item>
+<item key="items1">items</item>
+<item key="shared">public</item>
+<item key="username">owner(s)</item>
+<item key="open3">open</item>
+<item key="add3">add</item>
+<item key="savename">save name</item>
+<item key="saveowners">save owners</item>
+<item key="bbdel3">delete...</item>
+<item key="bbexportprep3">download...</item>
+<item key="viewable">viewable by public</item>
+<item key="instructionbbname">To create a <b>new</b> portfolio with the selected images, enter a name in the <b>text box</b> and click <b>Submit</b>.<br/>To <b>add</b> the selected images to an <b>existing</b> portfolio, find the portfolio name in the table below and click <b>add</b>.</item>
+<item key="0">no</item>
+<item key="1">yes</item>
+<item key="switch0">make public</item>
+<item key="switch1">make private</item>
+<item key="none present">None present.</item>
+</lookup>
+
+<!-- bbdel.xsl bbdelconf.xsl-->
+<lookup id="bbdel">
+<item key="successdel">Portfolio successfully deleted.</item>
+<item key="instructionbbdel">You may open a portfolio or close this window.</item>
+<item key="yes">Yes</item>
+<item key="no">No</item>
+<item key="instructionbbdelconf">Permanently delete portfolio?</item>
+<item key="name">Name of portfolio</item>
+</lookup>
+
+<!-- bbexport.xsl -->
+<lookup id="bbexport">
+<item key="exportfull-image">media</item>
+
+<item key="exportdescription">record</item>
+<item key="accessdenied">The media was not included due
+to a lack of access privileges. Sorry. You may view the record.</item>
+
+<item key="index">index</item>
+<item key="of"> of </item>
+<item key="viewonline">view online</item>
+<item key="exportPageTitle">export </item>
+<item key="guidelinesbuttontext">guidelines</item>
+<item key="guidelinesTitle">Guidelines For Use</item>
+<item key="portlastmod">portfolio last modified: </item>
+<item key="forhelp">For help or to request permission to publish: </item>
+
+</lookup>
+
+<!-- bbexportprep.xsl -->
+<lookup id="bbexportprep">
+<item key="returntoportfolios">return to the list of portfolios</item>
+<item key="morehelp">More Help</item>
+<item key="imagesize">image size</item>
+<item key="imagesizesmall">small</item>
+<item key="imagesizemedium">medium (presentation)</item>
+<item key="imagesizelarge">large</item>
+<item key="imagesizelargest">largest</item>
+<item key="download">download</item>
+<item key="whendone1P1">When done, all of the
+images (and/or other media) will reside on your computer for convenient
+use. HTML pages are also included for viewing records and easy
+navigation of images.</item>
+<item key="long">The download may take several minutes to complete.</item>
+<item key="portfoliodownloadsteps">Portfolio Download</item>
+<item key="bbexportpreppageheader">Portfolio Download</item>
+<item key="portfoliosdisabled">Portfolio functionality is
+turned off.</item>
+<item key="exportdisabled">Portfolio export functionality is turned
+off.</item>
+<item key="toomanyitemstodownload">Only the first $count items will be downloaded.</item>
+</lookup>
+
+<!-- displayheader_results.xsl -->
+<!-- <lookup id="displayheader_results_LEGACY">
+<item key="thumbnail">images with captions</item>
+<item key="thumbfull">images with record</item>
+<item key="reslist">captions only</item>
+<item key="bbthumbnail">images with captions</item>
+<item key="bbthumbfull">images with record</item>
+<item key="bbreslist">captions only</item>
+<item key="prep">prep tables in use</item>
+</lookup>
+ -->
+<lookup id="displayheader_results">
+<item key="thumbnail">grid</item>
+<item key="thumbfull">grid + details</item>
+<item key="reslist">list</item>
+<item key="icon-thumbnail">icon-th</item>
+<item key="icon-thumbfull">icon-picture</item>
+<item key="icon-reslist">icon-th-list</item>
+<item key="bbthumbnail">grid</item>
+<item key="bbthumbfull">grid + details</item>
+<item key="bbreslist">list</item>
+<item key="icon-bbthumbnail">icon-th</item>
+<item key="icon-bbthumbfull">icon-picture</item>
+<item key="icon-bbreslist">icon-th-list</item>
+<item key="prep">prep tables in use</item>
+</lookup>
+
+<!-- groups.xsl -->
+<lookup id="groups">
+<item key="groups">collection groups list</item>
+<item key="selectgroup">Select a collection group</item>
+<item key="instructiongroupspick">Collections are arranged into groups for searching. Click on a group name to search the collections in that group. A collection may include some content outside of the group's definition, and a collection could appear in more than one group. Click the title of a specific collection to search it alone. Sometimes it is advantageous to search a single collection. For example, search field and sorting options are often specific to the collection, allowing for a more refined search. </item>
+<item key="more">more</item>
+<item key="instructiongroupspick2">Some collections have a very narrow focus. Other collections are broader, and may encompass many sub-collections.  Occassionally an image appears in multiple collections, though generally there is a single authoritative source for each image.</item>
+<item key="collections">collections</item>
+<item key="media">images/media</item>
+<item key="records2">records</item>
+
+</lookup>
+
+
+<!-- searchutils.xsl -->
+<lookup id="searchutils">
+<item key="see">see search tips</item>
+
+<item key="instructioncollspick1">Select one or more databases to search. Click the database name to search it alone, often in more detail.</item>
+<item key="instructionsearch1">To search, enter a word or phrase in a box below and select a field from the menu.</item>
+<item key="instructionsearch2">It is not necessary to use more than one box.</item>
+<item key="instructionsearch3">You can search all the databases in this group, or use the <b>list of databases</b> to restrict your search to a subset.</item>
+<item key="newgroup">select a new group to search</item>
+<item key="in">in</item>
+<item key="rangehelp">e.g., 1954 to 1961, -825 to -800.</item>
+<item key="only">has digital media</item>
+<item key="PleaseSelectColl">Please select at least one database to search.</item>
+</lookup>
+
+<!-- browse.xsl, index.xsl -->
+<lookup id="browse">
+<item key="browse">Browse</item>
+</lookup>
+
+<!-- collinfo.xsl -->
+<!-- index.xsl -->
+<lookup id="index">
+<item key="home">Home</item>
+<item key="collinfo">database info</item>
+<item key="closewindow">CLOSE WINDOW</item>
+<item key="thiscoll">this collection</item>
+<!-- <item key="browseallimages">Browse all media</item>
+<item key="browseallrecords">Browse all records</item>
+<item key="browsesampleimages">Browse sample media</item>
+<item key="browsesamplerecords">Browse sample records</item>
+<item key="browsemediaaddsmods">Browse newest additions and updates</item>
+<item key="browsemostviewed">Browse most viewed</item> -->
+<item key="browseallimages">All media</item>
+<item key="browseallrecords">All records</item>
+<item key="browsesampleimages">Sample media</item>
+<item key="browsesamplerecords">Sample records</item>
+<item key="browsemediaaddsmods">Newest additions and updates</item>
+<item key="browsemostviewed">Most viewed</item>
+<item key="access">Collection Access</item>
+<item key="access1">Access to this collection is restricted to authorized users.</item>
+<item key="access2">This collection is open to the public. You may have
+additional privileges if you log in.</item>
+<item key="access3">You are an authorized user of this collection.</item>
+<item key="access4">Access restricted.</item>
+<item key="sendcomments">Send comments on this collection to</item>
+<item key="brief">Collection Size</item>
+<item key="searchmulti">Search Multiple Collections</item>
+<item key="selectagroup1">Select a group</item>
+<item key="selectagroup2">of collections to search simultaneously. Search this collection together with others.</item>
+<item key="numberof">Number of Images and Records Online</item>
+<item key="images">Online Images/Media</item>
+<item key="records">Records</item>
+</lookup>
+
+<!-- noresults.xsl -->
+<lookup id="noresults">
+<item key="noresults">No Results</item>
+<item key="type_ic_range">ranges from</item>
+<item key="type_ic_exact">is exactly</item>
+<item key="type_default">contains the term(s)</item>
+<item key="type_allmedia"> media was added or updated within </item>
+<item key="days"> day(s).</item>
+<item key="to">to</item>
+</lookup>
+
+<!-- results.xsl -->
+<lookup id="results">
+<item key="and">and</item>
+<item key="view">view</item>
+<item key="record">record</item>
+<item key="digitalformat">digital format</item>
+<item key="notavail">not available</item>
+<item key="portfolioempty">This portfolio has no items.</item>
+<item key="missing">no longer available</item>
+<item key="restricted">Restricted.</item>
+<item key="trytolocate">try to locate</item>
+<item key="notifymaintainer">notify maintainer</item>
+<item key="nosortvalue">no sort value</item>
+</lookup>
+
+
+<!-- thumbfull.xsl -->
+<lookup id="thumbfull">
+<item key="instructionthumbfullresults">Click on thumbnails to view larger images and full records. <br/>Click "descriptive info" link to view record data to the left.</item>
+<item key="descriptive">&lt;text</item>
+</lookup>
+
+<!-- reslist.xsl -->
+<lookup id="reslist">
+<item key="view4">view full record for <b>item</b></item>
+</lookup>
+
+<!-- displayheader.xsl -->
+<lookup id="displayheader">
+<item key="newsearch">advanced search</item>
+<item key="quicksearch">Quick Search</item>
+</lookup>
+
+<!-- results_nav.xsl -->
+<lookup id="results_nav">
+<item key="to1">to</item>
+<item key="of">of</item>
+<item key="hits">hits</item>
+
+<item key="login0">You are not logged in.</item>
+<item key="login1">You are logged in.</item>
+
+<item key="prev">previous</item>
+<item key="next">next</item>
+
+<item key="portfour">Portfolio storage is temporary.</item>
+<item key="portone">Portfolio storage is long term.</item>
+<item key="portthree">You do not own this portfolio.</item>
+<item key="porttwo">You do not own this portfolio.</item>
+
+</lookup>
+
+<!-- bbcustomorder.xsl -->
+<lookup id="bbcustomorder">
+<item key="instructionbbcustomorder">To change the position of any image record in this portfilio, select it's title in the list, and click an appropriate directional arrow to move it up or down.  When you are done, click the save custom order button to return to the previous display.</item>
+<item key="nocaption">no caption or caption too long.</item>
+</lookup>
+
+<!-- entry.xsl -->
+<lookup id="entry">
+<item key="bookmarkhelp">bookmark:</item>
+<item key="downloadmedia">download largest size</item>
+<item key="downloadmediacurrentsize">download current size</item>
+<item key="newwindow">new window</item>
+<item key="viewmediaonly">view media only</item>
+<item key="otherviewsnothumb">view</item>
+
+<item key="other">other views</item>
+<item key="other views">other views</item>
+<item key="other-views">other views</item>
+
+<item key="full image">full image</item>
+<item key="full-image">full-image</item>
+
+<item key="description">description</item>
+
+<item key="backtoresults">back to results</item>
+<item key="previtem">&lt;&lt; previous item</item>
+<item key="nextitem">next item >></item>
+<item key="addport">add to portfolio</item>
+<item key="removeport">remove from portfolio</item>
+<item key="relatedports">portfolio inclusions</item>
+
+<item key="feedbacklink">Problems/comments about this item?</item>
+<item key="feedbackreply">To request a reply, please provide your email address.</item>
+<item key="feedbackcomments">Comments?</item>
+<item key="feedbackusername">Include your user name?</item>
+<item key="feedback">Feedback</item>
+
+
+</lookup>
+
+<!-- entry_imagetools.xsl -->
+<lookup id="entry_imagetools">
+
+<item key="video.sense">view</item>
+<item key="video">video</item>
+<item key="video.icon">icon-film</item>
+
+<item key="audio.sense">listen to</item>
+<item key="audio">audio</item>
+<item key="audio.icon">icon-volume-down</item>
+
+<item key="svg.sense">view</item>
+<item key="svg">flash movie</item>
+<item key="svg.icon">icon-film</item>
+
+<item key="doc.sense">view</item>
+<item key="doc">related document</item>
+<item key="doc.icon">icon-file</item>
+
+<item key="pdf.sense">view</item>
+<item key="pdf">PDF document</item>
+<item key="pdf.icon">icon-file</item>
+
+<item key="url.sense">view</item>
+<item key="url">linked content in new window</item>
+<item key="url.icon">icon-share</item>
+
+<item key="image.sense">view</item>
+<item key="image">image</item>
+<item key="image.icon">icon-picture</item>
+
+<item key="size">size</item>
+
+<item key="nomedia">Sorry, digital media is not available for this item.</item>
+
+<item key="panzoomhelp">How to interact with this image...</item>
+<item key="tozoomin">zoom in: double-click</item>
+<item key="tozoomout">zoom out: shift-double-click</item>
+<item key="topan">pan: drag</item>
+<item key="zoom">zoom</item>
+<item key="sizes">image sizes</item>
+
+
+</lookup>
+
+
+
+<!-- tips.xsl -->
+
+<lookup id="searchtips">
+<item key="searchtips">search tips</item>
+<item key="instructionsearchtips"><p><b>Matching words:</b> The search
+engine attempts to match any word or phrase exactly as you put it in
+the box.</p><p> e.g.: <i>Picasso and Rembrandt</i> in a box will look
+for</p><p> "Picasso and Rembrandt"</p><p>and produced no
+results.</p><p><b>Punctuation: </b>All punctuation is treated as an
+empty space.</p><p><b>Case</b>: The search engine is not case
+sensitive.</p><p><b>Wildcards:</b> Use wildcard * to expand word
+stems. This is a good way to search for variations on a
+word.</p><p><b>Choose image collections</b>: Limit your search to only
+those collections you choose in the image collections list.</p></item>
+</lookup>
+
+<!-- results.xsl -->
+<lookup id="BbagOptionsMenu">
+<item key="bbom.check">check all</item>
+<item key="bbom.uncheck">uncheck all</item>
+<item key="bbom.bbname">add checked to portfolio...</item>
+<item key="bbom.remove">remove checked from portfolio</item>
+</lookup>
+
+<lookup id="viewinstruct">
+<item key="thumbnail1">Use checkboxes to select images for adding to a
+portfolio, then click the "add to portfolio" button. Click on
+thumbnails to view larger images and full records.</item>
+<item key="thumbnail0">Click on thumbnails to view larger images and full records.</item>
+<item key="thumbfull0">Click on thumbnails to view larger images and full records. Click "descriptive info" link to view record data in this space.</item>
+<item key="thumbfull1">Click on thumbnails to view larger images and full records. <br/>Click "descriptive info" link to view record data in this space.</item>
+<item key="reslist1">Use checkboxes to select records for adding to a portfolio, then click the "add to portfolio" button. Click "view full record" link the full record.</item>
+<item key="reslist0">Click "view full record" link the full record.</item>
+<item key="bbthumbnail1">Click on thumbnails to view larger images and full records.</item>
+<item key="bbthumbnail0">Click on thumbnails to view larger images and full records.</item>
+<item key="bbthumbfull0">Click on thumbnails to view larger images and full records. Click "descriptive info" link to view record data in this space.</item>
+<item key="bbthumbfull1">Click on the thumbnail image to display a
+large image. Click on the "descriptive info" link beneath any thumbnail image to see detailed record information in this space.</item>
+<item key="bbreslist1">Click "view full record" link the full record.</item>
+<item key="bbreslist0">Click "view full record" link the full record</item>
+<item key="bbcustomorder1">To change the position of any image record in this portfilio, select it's title in the list, and click an appropriate directional arrow to move it up or down.  When you are done, click the save custom order button to return to the previous display.</item>
+<item key="bbcustomorder0"/>
+<item key="bbexport1">The portfolio package is ready for download as a ZIP file.</item>
+
+<item key="medianodownload">sorry, media is not available for
+download.</item>
+<item key="bbexport0"/>
+</lookup>
+
+<lookup id="sort">
+<item key="sort">sort</item>
+<item key="sortnot2">too many results to sort</item>
+<item key="customize">customize order...</item>
+</lookup>
+
+<lookup id="misc">
+
+<!-- alt tags for graphics -->
+
+<!-- login/out -->
+<item key="login">login</item>
+<item key="logout">logout</item>
+
+<!-- open portfolio -->
+<item key="portfolios">portfolios</item>
+
+<!-- contact / help -->
+<item key="contact">contact</item>
+<item key="Contact">Contact</item>
+<item key="help">help</item>
+
+<!-- appears in "index", "searchutils"-->
+<item key="search2">Search</item>
+
+<item key="databases">Databases</item>
+<item key="collhome">collection home</item>
+
+<item key="close">close</item>
+
+<item key="multiple">Multiple Collections</item>
+
+
+</lookup>
+
+<lookup id="SearchFormOpsMenu">
+<item key="And">And</item>
+<item key="Or">Or</item>
+<item key="Not">Not</item>
+<item key="and not">And Not</item>
+</lookup>
+
+<lookup id="SearchFormSelMenu">
+<item key="ends">Ends with</item>
+<item key="contains">Contains</item>
+<item key="phrase">Contains the phrase</item>
+<item key="starts">Starts with</item>
+<item key="any">Contains any of these words</item>
+<item key="all">Contains all of these words</item>
+<item key="ic_exact">Exactly matches</item>
+<item key="regex">Matches</item>
+</lookup>
+
+
+<!-- moaaic-group, searchmaps.xsl -->
+<lookup id="searchmaps">
+<item key="searchmaps">Search for maps</item>
+<item key="instructionsearch1">Enter an exact word or phrase.</item>
+</lookup>
+
+<lookup id="NoResults">
+<item key="sorrynoresults">Sorry, no results were found when searching
+for items where...</item>
+<item key="pleasetry">Please try again.</item>
+<item key="mediaonly">Including an image or other media.</item>
+</lookup>
+
+</LangMap>
+
+<TemplatePath>/l1/dev/roger/web/i/image/entry.xml</TemplatePath>
+<TemplateName>entry</TemplateName>
+<XcollMode>singlecoll</XcollMode>
+
+<CurrentScriptName>/cgi/i/image/image-idx</CurrentScriptName>
+<ScriptName application="text">/cgi/t/text/text-idx</ScriptName>
+<ScriptName application="pageviewer">/cgi/t/text/pageviewer-idx</ScriptName>
+<ScriptName application="ww">/cgi/t/text/ww2-idx</ScriptName>
+<ScriptName application="findaid">/cgi/f/findaid/findaid-idx</ScriptName>
+<ScriptName application="image">/cgi/i/image/image-idx</ScriptName>
+
+
+
+<BookmarkableUrl/>
+<AuthenticationEnabled>1</AuthenticationEnabled>
+<UserAuthenticated>0</UserAuthenticated>
+<AuthenticatedUsername/>
+<SupportedAuthSystems><System>um</System></SupportedAuthSystems>
+<QuickBrowse/>
+<Feed>
+  <FeedLink type="short"/>
+  <FeedLink type="long"/>
+</Feed>
+<TaggingEnabled>0</TaggingEnabled>
+
+<EncodingType/>
+
+
+<HeadLinks>
+  <!-- <CssLink>//netdna.bootstrapcdn.com/twitter-bootstrap/2.3.2/css/bootstrap-combined.min.css</CssLink> -->
+  <CssLink>/i/image/bootstrap/css/bootstrap.min.css</CssLink>
+  <CssLink>/i/image/css/imageclass.css</CssLink>
+  <CssLink>/c/clark1ic8lift/css/imageclass-specific.css</CssLink>
+
+  <BootstrapLink>//ajax.googleapis.com/ajax/libs/jquery/1.9.1/jquery.min.js</BootstrapLink>
+  <BootstrapLink>/i/image/jquery/jquery-migrate-1.2.1.js</BootstrapLink>
+  <BootstrapLink>//netdna.bootstrapcdn.com/twitter-bootstrap/2.3.2/js/bootstrap.min.js</BootstrapLink>
+  <!-- <BootstrapLink>/i/image/bootstrap/js/bootstrap.js</BootstrapLink> -->
+  <JavaScriptUrl>/i/image/js/jquery.placeholder.js</JavaScriptUrl>
+
+  <ApiUrl>/cgi/i/image/api</ApiUrl>
+  <Timestamp>20180409</Timestamp>
+
+  <AssetDebug>yes</AssetDebug>
+
+
+</HeadLinks>
+</DlxsGlobals>
+
+<CollName><Full>UM Clark Library Maps (Uplifted)</Full><Brief>UM Clark Library Maps</Brief></CollName>
+<EntryId>008458875</EntryId>
+<RestrictStatus>access3</RestrictStatus>
+
+<AccessRestrictions>
+    <Status>authorized</Status>
+</AccessRestrictions>
+
+
+<EntryWindowName>S_CLARK1IC8LIFT_X_008458875___39015091904402</EntryWindowName>
+<ItemUrl>https://roger.quod.lib.umich.edu/cgi/i/image/image-idx?id=S-CLARK1IC8LIFT-X-008458875%5D39015091904402</ItemUrl><ItemUrlEncoded>https%3A%2F%2Froger.quod.lib.umich.edu%2Fcgi%2Fi%2Fimage%2Fimage-idx%3Fid%3DS-CLARK1IC8LIFT-X-008458875%5D39015091904402</ItemUrlEncoded><TitleForTagging>%5BWilkes%20Exploring%20Expedition%20maps%2C%201841%5D%20%2F%20by%20the%20U.S.%20Ex.%20Ex.%2C%20Charles%20Wilkes%2C%20Esqr.%2C%20Commander%20%3B%20U.S.%20Dept.%20of%20Commerce%2C%20National%20Oceanic%20and%20Atmospheric%20Administration%2C%20National%20Ocean%20Survey.</TitleForTagging>
+<Home>https://roger.quod.lib.umich.edu/cgi/i/image/image-idx?page=index;c=clark1ic8lift</Home>
+<Help>https://roger.quod.lib.umich.edu/cgi/i/image/image-idx?page=help;c=clark1ic8lift</Help>
+<!-- <JavaScriptUrl>/i/image/js/imageclass.js</JavaScriptUrl> -->
+<JavaScriptUrl>//www.google.com/recaptcha/api.js</JavaScriptUrl>
+<!-- <JavaScriptUrl>/i/image/js/feedback.js</JavaScriptUrl> -->
+<DivView><View name="full-image"><InitialStatus>visible</InitialStatus>
+<Visibility div="full-image">show</Visibility>
+<Visibility div="description">hide</Visibility>
+<Visibility div="other-views">hide</Visibility></View><View name="description"><InitialStatus>hidden</InitialStatus>
+<Visibility div="full-image">hide</Visibility>
+<Visibility div="description">show</Visibility>
+<Visibility div="other-views">hide</Visibility></View><View name="other-views"><InitialStatus>hidden</InitialStatus>
+<Visibility div="full-image">hide</Visibility>
+<Visibility div="description">hide</Visibility>
+<Visibility div="other-views">show</Visibility></View></DivView>
+<Next><Url index="2" name="S_CLARK1IC8LIFT_X_008458875___39015091904550">https://roger.quod.lib.umich.edu/cgi/i/image/image-idx?sort=marc710;rgn1=marc710;select1=phrase;c=clark1ic8lift;resnum=2;start=1;view=entry;lastview=reslist;lasttype=boolean;debug=xml;size=50;q1=National%2520Ocean%2520Survey.;cc=clark1ic8lift;entryid=x-008458875;viewid=39015091904550</Url></Next>
+<Prev><Url index="0" name="S_CLARK1IC8LIFT_X_008458875___39015091904253">https://roger.quod.lib.umich.edu/cgi/i/image/image-idx?sort=marc710;rgn1=marc710;select1=phrase;c=clark1ic8lift;resnum=2;start=1;view=entry;lastview=reslist;lasttype=boolean;debug=xml;size=50;q1=National%2520Ocean%2520Survey.;cc=clark1ic8lift;entryid=x-008458875;viewid=39015091904253</Url></Prev>
+<Self><Url index="1" name="S_CLARK1IC8LIFT_X_008458875___39015091904402">https://roger.quod.lib.umich.edu/cgi/i/image/image-idx?sort=marc710;rgn1=marc710;select1=phrase;c=clark1ic8lift;resnum=2;start=1;view=entry;lastview=reslist;lasttype=boolean;debug=xml;size=50;q1=National%2520Ocean%2520Survey.;cc=clark1ic8lift;entryid=x-008458875;viewid=39015091904402</Url></Self>
+<TotalResults>72</TotalResults>
+<ContactLink>'m'+'a'+'i'+'l'+'t'+'o'+':'+'c'+'l'+'a'+'r'+'k'+'1'+'i'+'c'+'-'+'h'+'e'+'l'+'p'+'@'+'u'+'m'+'i'+'c'+'h'+'.'+'e'+'d'+'u'</ContactLink>
+<ContactText>E-Mail Help</ContactText>
+<LoginLink><Url>https://roger.quod.lib.umich.edu/cgi/dlxslogin/go?target=https%3A%2F%2Froger.quod.lib.umich.edu%2Fcgi%2Fi%2Fimage%2Fimage-idx%3Fkey_authret%3D1630511353</Url><Mode>login</Mode></LoginLink>
+<SearchLink>https://roger.quod.lib.umich.edu/cgi/i/image/image-idx?sort=marc710;rgn1=marc710;select1=phrase;c=clark1ic8lift;debug=xml;size=50;chaperone=S-CLARK1IC8LIFT-X-008458875%2039015091904402;q1=National%2520Ocean%2520Survey.;page=search;view=reslist</SearchLink>
+<BackLink identifier="Q_CLARK1IC8LIFT_X_MARC710___NATIONAL_OCEAN_SURVEY___1">https://roger.quod.lib.umich.edu/cgi/i/image/image-idx?sort=marc710;rgn1=marc710;select1=phrase;c=clark1ic8lift;debug=xml;size=50;q1=National%2520Ocean%2520Survey.;view=reslist;type=boolean;start=1</BackLink>
+<Banner><Text>UM Clark Library Maps (Uplift)</Text></Banner>
+<BookBagForm action="add"><HiddenVars><Variable name="page">bbname</Variable>
+<Variable name="bbidno">S-CLARK1IC8LIFT-X-008458875]39015091904402</Variable>
+</HiddenVars><ActionAllowed>1</ActionAllowed></BookBagForm>
+<Url name="Thumb">data:image/jpeg;base64,/9j/4AAQSkZJRgABAQAAAQABAAD/2wBDAAgGBgcGBQgHBwcJCQgKDBQNDAsLDBkSEw8UHRofHh0a
+HBwgJC4nICIsIxwcKDcpLDAxNDQ0Hyc5PTgyPC4zNDL/2wBDAQkJCQwLDBgNDRgyIRwhMjIyMjIy
+MjIyMjIyMjIyMjIyMjIyMjIyMjIyMjIyMjIyMjIyMjIyMjIyMjIyMjIyMjL/wAARCABHAGQDASIA
+AhEBAxEB/8QAHwAAAQUBAQEBAQEAAAAAAAAAAAECAwQFBgcICQoL/8QAtRAAAgEDAwIEAwUFBAQA
+AAF9AQIDAAQRBRIhMUEGE1FhByJxFDKBkaEII0KxwRVS0fAkM2JyggkKFhcYGRolJicoKSo0NTY3
+ODk6Q0RFRkdISUpTVFVWV1hZWmNkZWZnaGlqc3R1dnd4eXqDhIWGh4iJipKTlJWWl5iZmqKjpKWm
+p6ipqrKztLW2t7i5usLDxMXGx8jJytLT1NXW19jZ2uHi4+Tl5ufo6erx8vP09fb3+Pn6/8QAHwEA
+AwEBAQEBAQEBAQAAAAAAAAECAwQFBgcICQoL/8QAtREAAgECBAQDBAcFBAQAAQJ3AAECAxEEBSEx
+BhJBUQdhcRMiMoEIFEKRobHBCSMzUvAVYnLRChYkNOEl8RcYGRomJygpKjU2Nzg5OkNERUZHSElK
+U1RVVldYWVpjZGVmZ2hpanN0dXZ3eHl6goOEhYaHiImKkpOUlZaXmJmaoqOkpaanqKmqsrO0tba3
+uLm6wsPExcbHyMnK0tPU1dbX2Nna4uPk5ebn6Onq8vP09fb3+Pn6/9oADAMBAAIRAxEAPwDa8N/D
+TwrqPhnSry4015Lm4tkkkP2mRQWKgk8Gtf8A4VJ4S/6BD/8AgZJ/jWr4K58H6D/15p/6CK3rjVNP
+swftN7bxbeoeQA/lUjON/wCFS+EMf8gZv/AyT/GgfCbwjn/kDN/4GSf412Flq9hqLslpdJI6jJUc
+HHrg9qzp3n1XXZNPiuZbe2tow0rxHDMxzgZ9Ov5UAczc/DTwVZqPN0c5IJCi8lJwO+M0y2+HfgSe
+QIdHmQs+xSbiXBOCcZ3e1dtpNpc28En2wrLOzEGTOd6j7v09ce9WprKKe2MJTYucqU4Kt6j3oA5D
+/hUngoj/AJBL/wDgTL/8VUf/AAqXwh/0BT/4GS/4112m3bziWCcfv4G2OR/F7/jV+gDgh8KPB56a
+LnHB/wBMl/xoPwn8If8AQE/8nJf8a7tRgn6+lHegDhP+FT+EP+gJ/wCTkv8AjUUnwp8IINx0YhR1
+/wBLl/xrv9vufzqC6/1DUgPmX4k6Jp+geMJbDTIPJthDGwTeW5I55JJorR+Mf/I/y/8AXvF/KiqQ
+HqGl6jNpfwv0q7t0L3As40jH+0wCj+ddTofhyw0i0iWO3ja5C/vLh1y7t3JY88msvwUm/wAEaCPW
+1j/9BrqVRB0GKkCnqmmR36xusrQ3ELZjmXqvqPoaXTLCLTbcoJBJK53SSt1c+9XPLXrtoEa47UAP
+X6UpIxUIbY5RcDPenhCvP3vagDGvpP7N16K+MTvBND5chRCdrA5BP4H9KvQazYXDlVnUEcENxVti
+SOAynNVp7S2uD+/iilOP40DGgCx9og5/fR/99is28162jdILRkuLqRwkaBuMnuSOwAJ/CnjRtOYD
+dYwsBz/qgc/UmpTb2NkVnNtbwlRtVhGA30GP5UAV2m13YxEFiCh6eY37z6ccfjUCz6rckyXEUFpC
+DgxZMjt+IwB+taJ1FmTfHY3DR9d2ByPpmmzXcMqmNCSWXcCBwR9aAPnr4y/8lAk/69ov5Gil+M3/
+ACP8n/XtF/WiqQHtHgk7fAvh8gZ/0RP/AEGupTGK5XwS2zwH4fOM/wCiJx/wGuiVpMAYA+tSBaP4
+1Gzc4Bx6n0pv7zHLAfhSIgdDh92epzQIVApOc4A/WnGRQcDJPoKasCAEs2cevapBGFPTA9qAGFS4
+yx2qBVJ2mM5ijmgjUtgbfmP5f41WubiK4uCRKXj6KAQFH+fU4otZTDcoAvyPhR3IJPqf8TTGXFvW
+Ea+VCzJ0Dscc++BUy2hklEt0wkYfdUDhfpVa3v4bfTy7H5UcxgDqTniok1a4uc/ZbQuP7wOR+fAp
+Aa5IVckgAD8q5GS7kGrJHExMU8zNgjjaFOT7HO2tcWF9eA/bLhkQ/wACmpJNPgtVklTcW8sIMnoM
+5/nQB8//ABk58fPz/wAu0f8AWim/GMZ8euf+naP+tFUgPaPBf/Ih+H+cYtU/9Brot7H7oBPtXJeG
+rma0+G+hTQWrXMi20YES9WyMcVYt7LXtduRNfStpmnrnZbwkiV/dj2pAWvEmqC202SyjmH225wka
+JyyqTgtx0GM1o+H7O3sdFhjtmDRnLjHQZOcD86k07RrDS0YW0OHb70jks7fUnmoy0ejugGRaMAvc
+7COh/GgDUXHYUpwTVT+0LJUD/a4MHvvHNVzqD3knk2HIH35ivC/T1NAhJ7WC3cusrB2JITAY/gD2
+quXneYOPOdkHyKIcFT6+ma1Le0SD5izSSHq7nJqxQBziaPc3U7SMi2qMSTklm5645wOp7VuZt7KJ
+EAWNBwABVimSKrqQwyKAKyX8TE7toUdwST+WKLl1ktWdTlSODSRWpEjF+V7dv60t66rCykgFgcD1
+oGfO3xi48eN/17R/1opfjJ/yPZ/69Y/60U0B0/h34t6DpPhnTNNuLXUTNawrGzxImCQMcZatL/hd
+3h/ta6v/AN8x/wDxVFFFgAfHDQO9pq3/AHzH/wDFUj/Gzw5Ku2Sx1Vl9GSM/+zUUUWAjHxi8J8f8
+SvUh/wBsov8A4qpf+F1+HFGI7XV0+iR//FUUUWAE+Nmgqfmi1dh6eXGP/Zqefjh4e/59NX/75j/+
+KooosAf8Lw8P/wDPnq/5R/8AxVRv8b9Bx8tlq2fcJ/8AFUUUWAB8cNBxzYasT/wD/wCKqGb416FI
+MCw1T8dn/wAVRRRYDzTx34ltfFfiP+0rSGaKPyVj2ygZyM+hPrRRRTGf/9k=
+</Url><Url name="ThumbLink" foo="bar">/cgi/i/image/api/tile/clark1ic8lift:008458875:39015091904402/full/!100,100/0/default.jpg</Url><ThumbInfo/>
+<OpenPortfolio><Url>https://roger.quod.lib.umich.edu/cgi/i/image/image-idx?page=bbopen</Url></OpenPortfolio>
+<MediaInfo><Initial>
+    <MediaLink>/cgi/i/image/api/image/clark1ic8lift:008458875:39015091904402/full/474,338/0/native.jpg</MediaLink>
+    <res>5</res>
+    <w>474</w>
+    <h>337</h>
+</Initial>
+<MediaHost>https://roger.quod.lib.umich.edu</MediaHost>
+<AuthCheck check="yes" allowed="yes">1: world access allowed</AuthCheck>
+<Debug/>
+<istruct_isentryid class="fieldsRef">S-CLARK1IC8LIFT-X-008458875]39015091904402</istruct_isentryid>
+<istruct_caption_barcode class="fieldsRef">39015091904402</istruct_caption_barcode>
+<m_searchable class="fieldsRef">1</m_searchable>
+<m_source class="fieldsRef">clark1ic</m_source>
+<istruct_mt class="fieldsRef">IMAGE:::DYNAMIC2</istruct_mt>
+<istruct_isentryidv class="fieldsRef">S-CLARK1IC8LIFT-X-008458875-2</istruct_isentryidv>
+<m_entryauth class="fieldsRef">WORLD</m_entryauth>
+<m_fn class="fieldsRef">39015091904402</m_fn>
+<istruct_y class="fieldsRef">1</istruct_y>
+<m_iid class="fieldsRef">39015091904402</m_iid>
+<m_id class="fieldsRef">008458875</m_id>
+<istruct_m class="fieldsRef">39015091904402</istruct_m>
+<istruct_stid class="fieldsRef">0</istruct_stid>
+<m_caption class="fieldsRef">39015091904402|||Sheet 2 of 24 (No. 137)</m_caption>
+<istruct_mo class="fieldsRef">TIF</istruct_mo>
+<istruct_stty class="fieldsRef">SUMM</istruct_stty>
+<m_flm class="fieldsRef">2015-01-23 13:47:08</m_flm>
+<istruct_caption class="fieldsRef">39015091904402|||Sheet 2 of 24 (No. 137)</istruct_caption>
+<istruct_caption_item_description class="fieldsRef">Sheet 2 of 24 (No. 137)</istruct_caption_item_description>
+<istruct_x class="fieldsRef">2</istruct_x>
+<istruct_me class="fieldsRef">JP2</istruct_me>
+<istruct_ms class="fieldsRef">P</istruct_ms>
+<ic_collid class="fieldsRef">clark1ic8lift</ic_collid>
+<istruct_face class="fieldsRef">UNSPEC</istruct_face>
+<size class="imgInfHashRef">10614172</size>
+<modified class="imgInfHashRef">2015-01-23 13:47:08</modified>
+<filename class="imgInfHashRef">c/clark1ic/pairtree_root/39/01/50/91/90/44/02/39015091904402/39015091904402.jp2</filename>
+<basename class="imgInfHashRef">39015091904402</basename>
+<loaded class="imgInfHashRef">2015-01-23 17:12:17</loaded>
+<ext class="imgInfHashRef">jp2</ext>
+<access class="imgInfHashRef">1</access>
+<width class="imgInfHashRef">15168</width>
+<use class="imgInfHashRef">access</use>
+<levels class="imgInfHashRef">6</levels>
+<collid class="imgInfHashRef">clark1ic</collid>
+<master class="imgInfHashRef">0</master>
+<type class="imgInfHashRef">image</type>
+<md5 class="imgInfHashRef">d74087596ea0e2d7b7b2447e441779f3</md5>
+<mimetype class="imgInfHashRef">image/jp2</mimetype>
+<u class="imgInfHashRef">1</u>
+<height class="imgInfHashRef">10800</height>
+<HighestQualityLevelAllowed>5</HighestQualityLevelAllowed>
+<Levels>6</Levels>
+<Zoomable>no</Zoomable>
+<Pan>no</Pan>
+<Type>image</Type>
+<Ext>jp2</Ext>
+<MimeType>image/jp2</MimeType>
+</MediaInfo>
+<ImageSizeTool><Level level="6"><Part name="Current">no</Part>
+<Part name="DownloadLink">https://roger.quod.lib.umich.edu/cgi/i/image/image-idx?sort=marc710;rgn1=marc710;select1=phrase;c=clark1ic8lift;q1=National%2520Ocean%2520Survey.;debug=xml;size=50;chaperone=S-CLARK1IC8LIFT-X-008458875%2039015091904402;evl=full-image;quality=6;view=entry;subview=download;cc=clark1ic8lift;entryid=x-008458875;viewid=39015091904402;start=1;resnum=2;lastview=reslist;lasttype=boolean</Part>
+<Part name="EntryLink">https://roger.quod.lib.umich.edu/cgi/i/image/image-idx?sort=marc710;rgn1=marc710;select1=phrase;c=clark1ic8lift;q1=National%2520Ocean%2520Survey.;debug=xml;size=50;chaperone=S-CLARK1IC8LIFT-X-008458875%2039015091904402;evl=full-image;quality=6;view=entry;subview=detail;cc=clark1ic8lift;entryid=x-008458875;viewid=39015091904402;start=1;resnum=2;lastview=reslist;lasttype=boolean</Part>
+<Part name="MediaLink">/cgi/i/image/api/image/clark1ic8lift:008458875:39015091904402/full/res:6/0/native.jpg</Part><LevelWidth>237</LevelWidth><LevelHeight>168</LevelHeight><LevelMaxDim>237</LevelMaxDim></Level><Level level="5"><Part name="Current">yes</Part>
+<Part name="DownloadLink">https://roger.quod.lib.umich.edu/cgi/i/image/image-idx?sort=marc710;rgn1=marc710;select1=phrase;c=clark1ic8lift;q1=National%2520Ocean%2520Survey.;debug=xml;size=50;chaperone=S-CLARK1IC8LIFT-X-008458875%2039015091904402;evl=full-image;quality=5;view=entry;subview=download;cc=clark1ic8lift;entryid=x-008458875;viewid=39015091904402;start=1;resnum=2;lastview=reslist;lasttype=boolean</Part>
+<Part name="EntryLink">https://roger.quod.lib.umich.edu/cgi/i/image/image-idx?sort=marc710;rgn1=marc710;select1=phrase;c=clark1ic8lift;q1=National%2520Ocean%2520Survey.;debug=xml;size=50;chaperone=S-CLARK1IC8LIFT-X-008458875%2039015091904402;evl=full-image;quality=5;view=entry;subview=detail;cc=clark1ic8lift;entryid=x-008458875;viewid=39015091904402;start=1;resnum=2;lastview=reslist;lasttype=boolean</Part>
+<Part name="MediaLink">/cgi/i/image/api/image/clark1ic8lift:008458875:39015091904402/full/res:5/0/native.jpg</Part><LevelWidth>474</LevelWidth><LevelHeight>337</LevelHeight><LevelMaxDim>474</LevelMaxDim></Level><Level level="4"><Part name="Current">no</Part>
+<Part name="DownloadLink">https://roger.quod.lib.umich.edu/cgi/i/image/image-idx?sort=marc710;rgn1=marc710;select1=phrase;c=clark1ic8lift;q1=National%2520Ocean%2520Survey.;debug=xml;size=50;chaperone=S-CLARK1IC8LIFT-X-008458875%2039015091904402;evl=full-image;quality=4;view=entry;subview=download;cc=clark1ic8lift;entryid=x-008458875;viewid=39015091904402;start=1;resnum=2;lastview=reslist;lasttype=boolean</Part>
+<Part name="EntryLink">https://roger.quod.lib.umich.edu/cgi/i/image/image-idx?sort=marc710;rgn1=marc710;select1=phrase;c=clark1ic8lift;q1=National%2520Ocean%2520Survey.;debug=xml;size=50;chaperone=S-CLARK1IC8LIFT-X-008458875%2039015091904402;evl=full-image;quality=4;view=entry;subview=detail;cc=clark1ic8lift;entryid=x-008458875;viewid=39015091904402;start=1;resnum=2;lastview=reslist;lasttype=boolean</Part>
+<Part name="MediaLink">/cgi/i/image/api/image/clark1ic8lift:008458875:39015091904402/full/res:4/0/native.jpg</Part><LevelWidth>948</LevelWidth><LevelHeight>675</LevelHeight><LevelMaxDim>948</LevelMaxDim></Level><Level level="3"><Part name="Current">no</Part>
+<Part name="DownloadLink">https://roger.quod.lib.umich.edu/cgi/i/image/image-idx?sort=marc710;rgn1=marc710;select1=phrase;c=clark1ic8lift;q1=National%2520Ocean%2520Survey.;debug=xml;size=50;chaperone=S-CLARK1IC8LIFT-X-008458875%2039015091904402;evl=full-image;quality=3;view=entry;subview=download;cc=clark1ic8lift;entryid=x-008458875;viewid=39015091904402;start=1;resnum=2;lastview=reslist;lasttype=boolean</Part>
+<Part name="EntryLink">https://roger.quod.lib.umich.edu/cgi/i/image/image-idx?sort=marc710;rgn1=marc710;select1=phrase;c=clark1ic8lift;q1=National%2520Ocean%2520Survey.;debug=xml;size=50;chaperone=S-CLARK1IC8LIFT-X-008458875%2039015091904402;evl=full-image;quality=3;view=entry;subview=detail;cc=clark1ic8lift;entryid=x-008458875;viewid=39015091904402;start=1;resnum=2;lastview=reslist;lasttype=boolean</Part>
+<Part name="MediaLink">/cgi/i/image/api/image/clark1ic8lift:008458875:39015091904402/full/res:3/0/native.jpg</Part><LevelWidth>1896</LevelWidth><LevelHeight>1350</LevelHeight><LevelMaxDim>1896</LevelMaxDim></Level><Level level="2"><Part name="Current">no</Part>
+<Part name="DownloadLink">https://roger.quod.lib.umich.edu/cgi/i/image/image-idx?sort=marc710;rgn1=marc710;select1=phrase;c=clark1ic8lift;q1=National%2520Ocean%2520Survey.;debug=xml;size=50;chaperone=S-CLARK1IC8LIFT-X-008458875%2039015091904402;evl=full-image;quality=2;view=entry;subview=download;cc=clark1ic8lift;entryid=x-008458875;viewid=39015091904402;start=1;resnum=2;lastview=reslist;lasttype=boolean</Part>
+<Part name="EntryLink">https://roger.quod.lib.umich.edu/cgi/i/image/image-idx?sort=marc710;rgn1=marc710;select1=phrase;c=clark1ic8lift;q1=National%2520Ocean%2520Survey.;debug=xml;size=50;chaperone=S-CLARK1IC8LIFT-X-008458875%2039015091904402;evl=full-image;quality=2;view=entry;subview=detail;cc=clark1ic8lift;entryid=x-008458875;viewid=39015091904402;start=1;resnum=2;lastview=reslist;lasttype=boolean</Part>
+<Part name="MediaLink">/cgi/i/image/api/image/clark1ic8lift:008458875:39015091904402/full/res:2/0/native.jpg</Part><LevelWidth>3792</LevelWidth><LevelHeight>2700</LevelHeight><LevelMaxDim>3792</LevelMaxDim></Level><Level level="1"><Part name="Current">no</Part>
+<Part name="DownloadLink">https://roger.quod.lib.umich.edu/cgi/i/image/image-idx?sort=marc710;rgn1=marc710;select1=phrase;c=clark1ic8lift;q1=National%2520Ocean%2520Survey.;debug=xml;size=50;chaperone=S-CLARK1IC8LIFT-X-008458875%2039015091904402;evl=full-image;quality=1;view=entry;subview=download;cc=clark1ic8lift;entryid=x-008458875;viewid=39015091904402;start=1;resnum=2;lastview=reslist;lasttype=boolean</Part>
+<Part name="EntryLink">https://roger.quod.lib.umich.edu/cgi/i/image/image-idx?sort=marc710;rgn1=marc710;select1=phrase;c=clark1ic8lift;q1=National%2520Ocean%2520Survey.;debug=xml;size=50;chaperone=S-CLARK1IC8LIFT-X-008458875%2039015091904402;evl=full-image;quality=1;view=entry;subview=detail;cc=clark1ic8lift;entryid=x-008458875;viewid=39015091904402;start=1;resnum=2;lastview=reslist;lasttype=boolean</Part>
+<Part name="MediaLink">/cgi/i/image/api/image/clark1ic8lift:008458875:39015091904402/full/res:1/0/native.jpg</Part><LevelWidth>7584</LevelWidth><LevelHeight>5400</LevelHeight><LevelMaxDim>7584</LevelMaxDim></Level><Level level="0"><Part name="Current">no</Part>
+<Part name="DownloadLink">https://roger.quod.lib.umich.edu/cgi/i/image/image-idx?sort=marc710;rgn1=marc710;select1=phrase;c=clark1ic8lift;q1=National%2520Ocean%2520Survey.;debug=xml;size=50;chaperone=S-CLARK1IC8LIFT-X-008458875%2039015091904402;evl=full-image;quality=0;view=entry;subview=download;cc=clark1ic8lift;entryid=x-008458875;viewid=39015091904402;start=1;resnum=2;lastview=reslist;lasttype=boolean</Part>
+<Part name="EntryLink">https://roger.quod.lib.umich.edu/cgi/i/image/image-idx?sort=marc710;rgn1=marc710;select1=phrase;c=clark1ic8lift;q1=National%2520Ocean%2520Survey.;debug=xml;size=50;chaperone=S-CLARK1IC8LIFT-X-008458875%2039015091904402;evl=full-image;quality=0;view=entry;subview=detail;cc=clark1ic8lift;entryid=x-008458875;viewid=39015091904402;start=1;resnum=2;lastview=reslist;lasttype=boolean</Part>
+<Part name="MediaLink">/cgi/i/image/api/image/clark1ic8lift:008458875:39015091904402/full/res:0/0/native.jpg</Part><LevelWidth>15168</LevelWidth><LevelHeight>10800</LevelHeight><LevelMaxDim>15168</LevelMaxDim></Level><MaxWidth>15168</MaxWidth><MaxHeight>10800</MaxHeight></ImageSizeTool>
+<RevertSizeTool><!-- cannot revert until image has been zoomed. --></RevertSizeTool>
+<MediaEquivsTool/>
+<Record name="entry"><Section name="default" class="default"><Field abbrev="marc245" searchfield="false" sortfield="false"><Values><Value>[Wilkes Exploring Expedition maps, 1841] / by the U.S. Ex. Ex., Charles Wilkes, Esqr., Commander ; U.S. Dept. of Commerce, National Oceanic and Atmospheric Administration, National Ocean Survey.</Value></Values><Label display="on">Title</Label></Field><Field abbrev="istruct_caption_item_description" searchfield="false" sortfield="false"><Values><Value>Sheet 2 of 24 (No. 137)</Value></Values><Label display="on">Item Description</Label></Field><Field abbrev="marc700" searchfield="false" sortfield="false"><Values><Value link="https://roger.quod.lib.umich.edu/cgi/i/image/image-idx?c=clark1ic8lift;type=boolean;view=reslist;rgn1=marc700;q1=Wilkes%252C%2520Charles%252C%25201798-1877.;select1=phrase" target="_blank">Wilkes, Charles, 1798-1877.</Value></Values><Label display="on">Added Entry - Personal Name</Label></Field><Field abbrev="marc710" searchfield="false" sortfield="true"><Values><Value link="https://roger.quod.lib.umich.edu/cgi/i/image/image-idx?c=clark1ic8lift;type=boolean;view=reslist;rgn1=marc710;q1=National%2520Ocean%2520Survey.;select1=phrase" target="_blank">National Ocean Survey.</Value></Values><Label display="on">Added Entry - Corporate Name</Label></Field><Field abbrev="marc260" searchfield="false" sortfield="false"><Values><Value>[Washington, D.C.] : National Ocean Survey,</Value></Values><Label display="on">Published</Label></Field><Field abbrev="marc300" searchfield="false" sortfield="false"><Values><Value>38 maps on 27 sheets ; 86 x 88 cm. or smaller.</Value></Values><Label display="on">Description</Label></Field><Field abbrev="marc500" searchfield="false" sortfield="false"><Values><Value>Relief shown by hachures; depths shown by soundings.</Value><Value>Binder's title.</Value><Value>Sheets numbered 135 to 161.</Value></Values><Label display="on">Note</Label></Field><Field abbrev="marc650" searchfield="false" sortfield="false"><Values><Value link="https://roger.quod.lib.umich.edu/cgi/i/image/image-idx?c=clark1ic8lift;type=boolean;view=reslist;rgn1=marc650;q1=Nautical%2520charts%2520Washington%2520%2528State%2529%2520Pacific%2520Coast.;select1=phrase" target="_blank">Nautical charts Washington (State) Pacific Coast.</Value><Value link="https://roger.quod.lib.umich.edu/cgi/i/image/image-idx?c=clark1ic8lift;type=boolean;view=reslist;rgn1=marc650;q1=Nautical%2520charts%2520Washington%2520%2528State%2529%2520Puget%2520Sound.;select1=phrase" target="_blank">Nautical charts Washington (State) Puget Sound.</Value><Value link="https://roger.quod.lib.umich.edu/cgi/i/image/image-idx?c=clark1ic8lift;type=boolean;view=reslist;rgn1=marc650;q1=Nautical%2520charts%2520Columbia%2520River.;select1=phrase" target="_blank">Nautical charts Columbia River.</Value></Values><Label display="on">Subject Added Entry - Topical Term</Label></Field><Field abbrev="marc651" searchfield="false" sortfield="false"><Values><Value link="https://roger.quod.lib.umich.edu/cgi/i/image/image-idx?c=clark1ic8lift;type=boolean;view=reslist;rgn1=marc651;q1=Northwest%252C%2520Pacific%2520Maps.;select1=phrase" target="_blank">Northwest, Pacific Maps.</Value><Value link="https://roger.quod.lib.umich.edu/cgi/i/image/image-idx?c=clark1ic8lift;type=boolean;view=reslist;rgn1=marc651;q1=Canada%252C%2520Western%2520Maps.;select1=phrase" target="_blank">Canada, Western Maps.</Value></Values><Label display="on">Subject Added Entry - Geographic Name</Label></Field><Field abbrev="marc255" searchfield="false" sortfield="false"><Values><Value>Scales differ. (W 134°--W 102°/N 55°--N 40°).</Value></Values><Label display="on">Map Data</Label></Field><Field abbrev="marc034" searchfield="false" sortfield="false"><Values><Value>a W1340000 W1020000 N0550000 N0400000</Value></Values><Label display="on">Coded Cartographic Mathematical Data</Label></Field><Field abbrev="marc590" searchfield="false" sortfield="false"><Values><Value>From the Detroit Public Library Map Collection, 2009.</Value></Values><Label display="on">Local note</Label></Field><Field abbrev="scan_date" searchfield="false" sortfield="false"><Values><Value>2014-11-21</Value></Values><Label display="on">Scan Date</Label></Field><Field abbrev="dlxs_ri" searchfield="false" sortfield="false"><Values><Value><p>The University of Michigan Library provides access to these materials for educational and research purposes. These materials are believed to be in the public domain in the United States; however, if you decide to use any of these materials, you are responsible for making your own legal assessment and securing any necessary permission. If you have questions about the collection, please contact <a href="mailto:clark1ic-help@umich.edu">Clark Library for Maps Digital Collections Help</a>. If you have concerns about the inclusion of an item in this collection, please contact <a href="mailto:LibraryIT-info@umich.edu">Library Information Technology</a>.</p><p>DPLA No Copyright - United States</p></Value></Values><Label display="on">Rights</Label></Field><Field abbrev="record_no" searchfield="false" sortfield="false"><Values><Value>008458875</Value></Values><Label display="on">Record No.</Label></Field></Section></Record>
+<Record name="special"><Section name="default" class="default"><Field abbrev="dlxs_ma" searchfield="false" sortfield="false"><Values><Value>[Wilkes Exploring Expedition maps, 1841] / by the U.S. Ex. Ex., Charles Wilkes, Esqr., Commander ; U.S. Dept. of Commerce, National Oceanic and Atmospheric Administration, National Ocean Survey.</Value></Values><Label display="on">Title</Label></Field><Field abbrev="dc_ti" searchfield="false" sortfield="false"><Values><Value>[Wilkes Exploring Expedition maps, 1841] / by the U.S. Ex. Ex., Charles Wilkes, Esqr., Commander ; U.S. Dept. of Commerce, National Oceanic and Atmospheric Administration, National Ocean Survey.</Value></Values><Label display="on">Title</Label></Field><Field abbrev="dc_su" searchfield="false" sortfield="false"><Values><Value>Nautical charts Washington (State) Pacific Coast.</Value><Value>Nautical charts Washington (State) Puget Sound.</Value><Value>Nautical charts Columbia River.</Value><Value>Northwest, Pacific Maps.</Value><Value>Canada, Western Maps.</Value></Values><Label display="on">Subject</Label></Field><Field abbrev="dc_de" searchfield="false" sortfield="false"><Values><Value>Relief shown by hachures; depths shown by soundings.</Value><Value>Binder's title.</Value><Value>Sheets numbered 135 to 161.</Value><Value>38 maps on 27 sheets ; 86 x 88 cm. or smaller.</Value></Values><Label display="on">Description</Label></Field><Field abbrev="dlxs_catalog" searchfield="false" sortfield="false"><Values><Value>008458875</Value></Values><Label display="on">dlxs_catalog</Label></Field></Section></Record>
+<MediaDownloadLink><URL name="mediadownloadlink">/cgi/i/image/api/image/clark1ic8lift:008458875:39015091904402/full/res:0/0/native.jpg?attachment=1</URL><Filename>39015091904402_clark1ic8lift.JPG</Filename></MediaDownloadLink>
+<MiradorConfig manifest-href="https://quod.lib.umich.edu/cgi/i/image/api/manifest/clark1ic:008458875:39015091904402" embed-href="https://quod.lib.umich.edu/cgi/i/image/api/embed/clark1ic:008458875:39015091904402" canvas-index="12" mode="book"/>
+
+<inserttextentryinfo><div><!-- entryinfo.txt is a file that is inserted into entry.xml by the
+middleware and a PI called CHUNK. It is optional at group and coll
+levels. It is a requirement to have this file (at the class level) as
+a placeholder. Otherwise, if there is not an entryinfo.txt file at the
+coll or group level, an assertion error will occur. Alternatively, the
+CHUNK PI could be removed from entry.tpl and bbentry.tpl. -->
+</div></inserttextentryinfo>
+<RelatedViewsMenu><Name>viewid</Name>
+<HiddenVars><Variable name="sort">marc710</Variable>
+<Variable name="rgn1">marc710</Variable>
+<Variable name="select1">phrase</Variable>
+<Variable name="c">clark1ic8lift</Variable>
+<Variable name="q1">National%20Ocean%20Survey.</Variable>
+<Variable name="subview">detail</Variable>
+<Variable name="resnum">2</Variable>
+<Variable name="start">1</Variable>
+<Variable name="view">entry</Variable>
+<Variable name="lastview">reslist</Variable>
+<Variable name="lasttype">boolean</Variable>
+<Variable name="cc">clark1ic8lift</Variable>
+<Variable name="entryid">x-008458875</Variable>
+<Variable name="debug">xml</Variable>
+<Variable name="size">50</Variable>
+<Variable name="chaperone">S-CLARK1IC8LIFT-X-008458875 39015091904402</Variable>
+</HiddenVars>
+<Instruct w="other">Related Views</Instruct>
+<Option index="0"><Label>39015091904253|||Sheet 1 of 24 (No. 136)</Label><Value>39015091904253</Value></Option><Option index="1"><Label>39015091904402|||Sheet 2 of 24 (No. 137)</Label><Value>39015091904402</Value><Focus>true</Focus></Option><Option index="2"><Label>39015091904550|||Sheet 3 of 24 (No. 138)</Label><Value>39015091904550</Value></Option><Option index="3"><Label>39015091904261|||Sheet 4 of 24 (No. 139)</Label><Value>39015091904261</Value></Option><Option index="4"><Label>39015091904410|||Sheet 5 of 24 (No. 141)</Label><Value>39015091904410</Value></Option><Option index="5"><Label>39015091904568|||Sheet 6 of 24 (No. 143)</Label><Value>39015091904568</Value></Option><Option index="6"><Label>39015091904279|||Sheet 7 of 24 (No. 144)</Label><Value>39015091904279</Value></Option><Option index="7"><Label>39015091904428|||Sheet 8 of 24 (No. 145)</Label><Value>39015091904428</Value></Option><Option index="8"><Label>39015091904576|||Sheet 9 of 24 (No. 146)</Label><Value>39015091904576</Value></Option><Option index="9"><Label>39015091904287|||Sheet 10 of 24 (No. 147)</Label><Value>39015091904287</Value></Option><Option index="10"><Label>39015091904436|||Sheet 11 of 24 (No. 148)</Label><Value>39015091904436</Value></Option><Option index="11"><Label>39015091904584|||Sheet 12 of 24 (No. 149)</Label><Value>39015091904584</Value></Option><Option index="12"><Label>39015091904295|||Sheet 13 of 24 (No. 150)</Label><Value>39015091904295</Value></Option><Option index="13"><Label>39015091904444|||Sheet 14 of 24 (No. 151)</Label><Value>39015091904444</Value></Option><Option index="14"><Label>39015091904592|||Sheet 15 of 24 (No. 152)</Label><Value>39015091904592</Value></Option><Option index="15"><Label>39015091914245|||Sheet 16 of 24 (No. 153)</Label><Value>39015091914245</Value></Option><Option index="16"><Label>39015091914393|||Sheet 17 of 24 (No. 154)</Label><Value>39015091914393</Value></Option><Option index="17"><Label>39015091914104|||Sheet 18 of 24 (No. 155)</Label><Value>39015091914104</Value></Option><Option index="18"><Label>39015091914252|||Sheet 19 of 24 (No. 156)</Label><Value>39015091914252</Value></Option><Option index="19"><Label>39015091914401|||Sheet 20 of 24 (No. 157)</Label><Value>39015091914401</Value></Option><Option index="20"><Label>39015091914112|||Sheet 21 of 24 (No. 158)</Label><Value>39015091914112</Value></Option><Option index="21"><Label>39015091914260|||Sheet 22 of 24 (No. 159)</Label><Value>39015091914260</Value></Option><Option index="22"><Label>39015091914419|||Sheet 23 of 24 (No. 160)</Label><Value>39015091914419</Value></Option><Option index="23"><Label>39015091914120|||Sheet 24 of 24 (No. 161)</Label><Value>39015091914120</Value></Option><Name>relview</Name><Default>39015091904402</Default></RelatedViewsMenu>
+<RelatedViews><View>
+<Name>unspecified | summary</Name>
+<Row y="1">
+<Column x="1" y="1" blank="no" thumb="yes"><Url name="EntryLink">https://roger.quod.lib.umich.edu/cgi/i/image/image-idx?sort=marc710;rgn1=marc710;select1=phrase;c=clark1ic8lift;q1=National%2520Ocean%2520Survey.;subview=detail;resnum=2;start=1;view=entry;lastview=reslist;lasttype=boolean;cc=clark1ic8lift;entryid=x-008458875;viewid=39015091904253;debug=xml;size=50;chaperone=S-CLARK1IC8LIFT-X-008458875%2039015091904402</Url><Url name="Thumb">data:image/jpeg;base64,/9j/4AAQSkZJRgABAQAAAQABAAD/2wBDAAgGBgcGBQgHBwcJCQgKDBQNDAsLDBkSEw8UHRofHh0a
+HBwgJC4nICIsIxwcKDcpLDAxNDQ0Hyc5PTgyPC4zNDL/2wBDAQkJCQwLDBgNDRgyIRwhMjIyMjIy
+MjIyMjIyMjIyMjIyMjIyMjIyMjIyMjIyMjIyMjIyMjIyMjIyMjIyMjIyMjL/wAARCABHAGQDASIA
+AhEBAxEB/8QAHwAAAQUBAQEBAQEAAAAAAAAAAAECAwQFBgcICQoL/8QAtRAAAgEDAwIEAwUFBAQA
+AAF9AQIDAAQRBRIhMUEGE1FhByJxFDKBkaEII0KxwRVS0fAkM2JyggkKFhcYGRolJicoKSo0NTY3
+ODk6Q0RFRkdISUpTVFVWV1hZWmNkZWZnaGlqc3R1dnd4eXqDhIWGh4iJipKTlJWWl5iZmqKjpKWm
+p6ipqrKztLW2t7i5usLDxMXGx8jJytLT1NXW19jZ2uHi4+Tl5ufo6erx8vP09fb3+Pn6/8QAHwEA
+AwEBAQEBAQEBAQAAAAAAAAECAwQFBgcICQoL/8QAtREAAgECBAQDBAcFBAQAAQJ3AAECAxEEBSEx
+BhJBUQdhcRMiMoEIFEKRobHBCSMzUvAVYnLRChYkNOEl8RcYGRomJygpKjU2Nzg5OkNERUZHSElK
+U1RVVldYWVpjZGVmZ2hpanN0dXZ3eHl6goOEhYaHiImKkpOUlZaXmJmaoqOkpaanqKmqsrO0tba3
+uLm6wsPExcbHyMnK0tPU1dbX2Nna4uPk5ebn6Onq8vP09fb3+Pn6/9oADAMBAAIRAxEAPwDo/BXh
+Xw/f+EdKmuNFspriS3V3kkiBLcnqfWuhPgjw4Bn/AIR/Sxjv5Iqr8OznwfpH/Xov8zV3xNdOIGtn
+t5RDw3mK3EmOq/Tp1rO+pRn2/h/wtduVtvD+myxj70q24CL+J6/hmmw6B4TuruSC20LS5hGuXlSF
+SinP3c+tWYLuPXZ7e2t42gsLdd80YAw56KuPTr+VbkENtbqRBCiAnJCgDmgDBPhLw4BkeHdOb/dt
+xTR4V8MEgHw/pwz624rpweRVae2IDuq5z6dqLgZP/CC+HG5GhaZj2hpR4E8O/wDQB0v/AL8VrWkw
+U7d2Rnn2q4XkIzEsbe5f/wCtRcDAHgTw5/0AdL/8B6X/AIQXw7/0AtL/APAYf41uFr3GQtuv1Yn+
+lSqzleShP+yeKVwOcbwH4cP/ADA9L/8AAb/69L/wgvhZWz/YFh/36Fbx+2HoYAPcGmYut+XaHy+4
+UHP86APnz4r6VY6X4vjt9PtIbaA2iN5cSBRnc3PH0oq18YCf+Ewtjnk2EZ5/3noq1sB6h8OOfB+k
+/wDXov8AM11l3axXVu0ciKxwdpZd204xmuW+G648GaOfW1/9mNdgwwDj0zUPcDltPtpNN1OW1EMr
+RSkbXCDbgAk5Pb0raRFcb8/N6ingDy8Z5PfPenLEAm5W2gc0ARfOgyxBGefWrUbbu3aoCu87WGD0
+HvTkLKcZAb36GmBS1SEwEXcak7Rh1B7etQ+FbhptMkVyS0czLz6df61rPsmiZHHDDBBrlLa5k0HV
+5EYEW7H94D2HrQB18hkUfKoI+tNjaRiMoAO5zTop7e8gWSGRZI26FWqC81Cz0q0eeeTAU4IXkknp
+x+FSAuo6lbaXa+dcMeeFRRlnPoBXOjW9U1PUoLeHTrm0tGky08iENtAJwcjAzwKk0i2n1fWH1u7V
+441YrbwuvIXHX9TXSMMgn8qYHz/8Yh/xV9r/ANeEX/oT0Uvxi58X2pPX+z4v/Qnoq1sB6r8OePBG
+ie9r/wCzGuraRMENkEe9cn8O+PAuhn/p1P8A6Ea6ZnGTu/DFQ9wGquwDnoOw70+PPznOAelRshZf
+vHB5+tKXkVOnX2oAfIMp6sDxiow3mfKw2mkErngMoP0pu0s25yWPr0piLCpuU44/3aq3ukW2oDFw
+Gb3zipRM6S7QBg9yetTB/wC8GHPPekMxV8J2YIMcs6YOQQ+MfpUdv4RtoL6OdpDJECWZJOSW7HNd
+DvOPun8aMb854HpRqA87GXrx7VDIeePu5weanX7uDVWV89M5PBoA8F+L3Pi21/68Iv8A0J6Ki+LT
+Z8V2v/XhH/6E1FWthHrPw9Xf4F0NScZtT/6Ea66NQi49BXI/DxgvgfQyxAH2U9f96ut3Nz8ox9ag
+ZHtjySD0PY05ljCZZR+JowfYg+1QSsxbahzg80xE5jQrgqKz7uVLbc3OQPudQa0c1UuY1ZyCOGU8
+f5+lMCK1mSeNWyAG6r6VbPyNnqv8q5QhxcHY7KM5GDXQafPJLBkkFgcHjg0MDQHzcg4pyj1P51AC
+OxKn07U8DC5Zs+nvUjJN6jvVV9vZsHPSsvVdfisHNvG0azEZJcgAD8aybbxc08qQskJYNtdvMA78
+Y5p2A8q+LP8AyNdt/wBeMf8A6E1FO+La/wDFWWuP+fCP/wBCeiqWwG54Z+Kuh6L4X03Tri21Bri2
+i2O0SIVPOeMtWt/wuzQs/wDHtquP9yP/AOKooo5UAo+Nmgf8+urf9+4v/iqUfGrw7n/j21Yf9s4v
+/iqKKOVAKPjT4d/546v/AN+4/wD4qkf4z+HGHEGrZ9TFH/8AFUUU7AQj4u+GS+57fUmP/XvF/wDF
+VNH8Z/DMYwlrqqj0EUQ/9moopWQCn41eHP8An01Y/wDAI/8A4qmH40+HipAs9VGf9mP/AOKooo5U
+BXn+LvhW6A+06VqEx6ZkjjP82qufil4QyNmiXiEdGEMXH/j1FFHKgOF8d+JbLxJrkN5YrMsSWyQk
+TKA2QWPYn1FFFFNID//Z
+</Url><Url name="ThumbLink" foo="bar">/cgi/i/image/api/tile/clark1ic8lift:008458875:39015091904253/full/!100,100/0/default.jpg</Url><Caption>39015091904253</Caption><Caption>Sheet 1 of 24 (No. 136)</Caption>
+
+<Type>image</Type><AuthCheck allowed="yes">1: world access allowed</AuthCheck><Url name="MediaLink">/cgi/i/image/api/image/clark1ic8lift:008458875:39015091904402/full/full/0/native.jpg</Url></Column>
+<Column x="2" y="1" blank="no" thumb="yes"><Focus>true</Focus><Url name="EntryLink">https://roger.quod.lib.umich.edu/cgi/i/image/image-idx?sort=marc710;rgn1=marc710;select1=phrase;c=clark1ic8lift;q1=National%2520Ocean%2520Survey.;subview=detail;resnum=2;start=1;view=entry;lastview=reslist;lasttype=boolean;cc=clark1ic8lift;entryid=x-008458875;viewid=39015091904402;debug=xml;size=50;chaperone=S-CLARK1IC8LIFT-X-008458875%2039015091904402</Url><Url name="Thumb">data:image/jpeg;base64,/9j/4AAQSkZJRgABAQAAAQABAAD/2wBDAAgGBgcGBQgHBwcJCQgKDBQNDAsLDBkSEw8UHRofHh0a
+HBwgJC4nICIsIxwcKDcpLDAxNDQ0Hyc5PTgyPC4zNDL/2wBDAQkJCQwLDBgNDRgyIRwhMjIyMjIy
+MjIyMjIyMjIyMjIyMjIyMjIyMjIyMjIyMjIyMjIyMjIyMjIyMjIyMjIyMjL/wAARCABHAGQDASIA
+AhEBAxEB/8QAHwAAAQUBAQEBAQEAAAAAAAAAAAECAwQFBgcICQoL/8QAtRAAAgEDAwIEAwUFBAQA
+AAF9AQIDAAQRBRIhMUEGE1FhByJxFDKBkaEII0KxwRVS0fAkM2JyggkKFhcYGRolJicoKSo0NTY3
+ODk6Q0RFRkdISUpTVFVWV1hZWmNkZWZnaGlqc3R1dnd4eXqDhIWGh4iJipKTlJWWl5iZmqKjpKWm
+p6ipqrKztLW2t7i5usLDxMXGx8jJytLT1NXW19jZ2uHi4+Tl5ufo6erx8vP09fb3+Pn6/8QAHwEA
+AwEBAQEBAQEBAQAAAAAAAAECAwQFBgcICQoL/8QAtREAAgECBAQDBAcFBAQAAQJ3AAECAxEEBSEx
+BhJBUQdhcRMiMoEIFEKRobHBCSMzUvAVYnLRChYkNOEl8RcYGRomJygpKjU2Nzg5OkNERUZHSElK
+U1RVVldYWVpjZGVmZ2hpanN0dXZ3eHl6goOEhYaHiImKkpOUlZaXmJmaoqOkpaanqKmqsrO0tba3
+uLm6wsPExcbHyMnK0tPU1dbX2Nna4uPk5ebn6Onq8vP09fb3+Pn6/9oADAMBAAIRAxEAPwDa8N/D
+TwrqPhnSry4015Lm4tkkkP2mRQWKgk8Gtf8A4VJ4S/6BD/8AgZJ/jWr4K58H6D/15p/6CK3rjVNP
+swftN7bxbeoeQA/lUjON/wCFS+EMf8gZv/AyT/GgfCbwjn/kDN/4GSf412Flq9hqLslpdJI6jJUc
+HHrg9qzp3n1XXZNPiuZbe2tow0rxHDMxzgZ9Ov5UAczc/DTwVZqPN0c5IJCi8lJwO+M0y2+HfgSe
+QIdHmQs+xSbiXBOCcZ3e1dtpNpc28En2wrLOzEGTOd6j7v09ce9WprKKe2MJTYucqU4Kt6j3oA5D
+/hUngoj/AJBL/wDgTL/8VUf/AAqXwh/0BT/4GS/4112m3bziWCcfv4G2OR/F7/jV+gDgh8KPB56a
+LnHB/wBMl/xoPwn8If8AQE/8nJf8a7tRgn6+lHegDhP+FT+EP+gJ/wCTkv8AjUUnwp8IINx0YhR1
+/wBLl/xrv9vufzqC6/1DUgPmX4k6Jp+geMJbDTIPJthDGwTeW5I55JJorR+Mf/I/y/8AXvF/KiqQ
+HqGl6jNpfwv0q7t0L3As40jH+0wCj+ddTofhyw0i0iWO3ja5C/vLh1y7t3JY88msvwUm/wAEaCPW
+1j/9BrqVRB0GKkCnqmmR36xusrQ3ELZjmXqvqPoaXTLCLTbcoJBJK53SSt1c+9XPLXrtoEa47UAP
+X6UpIxUIbY5RcDPenhCvP3vagDGvpP7N16K+MTvBND5chRCdrA5BP4H9KvQazYXDlVnUEcENxVti
+SOAynNVp7S2uD+/iilOP40DGgCx9og5/fR/99is28162jdILRkuLqRwkaBuMnuSOwAJ/CnjRtOYD
+dYwsBz/qgc/UmpTb2NkVnNtbwlRtVhGA30GP5UAV2m13YxEFiCh6eY37z6ccfjUCz6rckyXEUFpC
+DgxZMjt+IwB+taJ1FmTfHY3DR9d2ByPpmmzXcMqmNCSWXcCBwR9aAPnr4y/8lAk/69ov5Gil+M3/
+ACP8n/XtF/WiqQHtHgk7fAvh8gZ/0RP/AEGupTGK5XwS2zwH4fOM/wCiJx/wGuiVpMAYA+tSBaP4
+1Gzc4Bx6n0pv7zHLAfhSIgdDh92epzQIVApOc4A/WnGRQcDJPoKasCAEs2cevapBGFPTA9qAGFS4
+yx2qBVJ2mM5ijmgjUtgbfmP5f41WubiK4uCRKXj6KAQFH+fU4otZTDcoAvyPhR3IJPqf8TTGXFvW
+Ea+VCzJ0Dscc++BUy2hklEt0wkYfdUDhfpVa3v4bfTy7H5UcxgDqTniok1a4uc/ZbQuP7wOR+fAp
+Aa5IVckgAD8q5GS7kGrJHExMU8zNgjjaFOT7HO2tcWF9eA/bLhkQ/wACmpJNPgtVklTcW8sIMnoM
+5/nQB8//ABk58fPz/wAu0f8AWim/GMZ8euf+naP+tFUgPaPBf/Ih+H+cYtU/9Brot7H7oBPtXJeG
+rma0+G+hTQWrXMi20YES9WyMcVYt7LXtduRNfStpmnrnZbwkiV/dj2pAWvEmqC202SyjmH225wka
+JyyqTgtx0GM1o+H7O3sdFhjtmDRnLjHQZOcD86k07RrDS0YW0OHb70jks7fUnmoy0ejugGRaMAvc
+7COh/GgDUXHYUpwTVT+0LJUD/a4MHvvHNVzqD3knk2HIH35ivC/T1NAhJ7WC3cusrB2JITAY/gD2
+quXneYOPOdkHyKIcFT6+ma1Le0SD5izSSHq7nJqxQBziaPc3U7SMi2qMSTklm5645wOp7VuZt7KJ
+EAWNBwABVimSKrqQwyKAKyX8TE7toUdwST+WKLl1ktWdTlSODSRWpEjF+V7dv60t66rCykgFgcD1
+oGfO3xi48eN/17R/1opfjJ/yPZ/69Y/60U0B0/h34t6DpPhnTNNuLXUTNawrGzxImCQMcZatL/hd
+3h/ta6v/AN8x/wDxVFFFgAfHDQO9pq3/AHzH/wDFUj/Gzw5Ku2Sx1Vl9GSM/+zUUUWAjHxi8J8f8
+SvUh/wBsov8A4qpf+F1+HFGI7XV0+iR//FUUUWAE+Nmgqfmi1dh6eXGP/Zqefjh4e/59NX/75j/+
+KooosAf8Lw8P/wDPnq/5R/8AxVRv8b9Bx8tlq2fcJ/8AFUUUWAB8cNBxzYasT/wD/wCKqGb416FI
+MCw1T8dn/wAVRRRYDzTx34ltfFfiP+0rSGaKPyVj2ygZyM+hPrRRRTGf/9k=
+</Url><Url name="ThumbLink" foo="bar">/cgi/i/image/api/tile/clark1ic8lift:008458875:39015091904402/full/!100,100/0/default.jpg</Url><Caption>39015091904402</Caption><Caption>Sheet 2 of 24 (No. 137)</Caption>
+
+<Type>image</Type><AuthCheck allowed="yes">1: world access allowed</AuthCheck><Url name="MediaLink">/cgi/i/image/api/image/clark1ic8lift:008458875:39015091904402/full/full/0/native.jpg</Url></Column>
+<Column x="3" y="1" blank="no" thumb="yes"><Url name="EntryLink">https://roger.quod.lib.umich.edu/cgi/i/image/image-idx?sort=marc710;rgn1=marc710;select1=phrase;c=clark1ic8lift;q1=National%2520Ocean%2520Survey.;subview=detail;resnum=2;start=1;view=entry;lastview=reslist;lasttype=boolean;cc=clark1ic8lift;entryid=x-008458875;viewid=39015091904550;debug=xml;size=50;chaperone=S-CLARK1IC8LIFT-X-008458875%2039015091904402</Url><Url name="Thumb">data:image/jpeg;base64,/9j/4AAQSkZJRgABAQAAAQABAAD/2wBDAAgGBgcGBQgHBwcJCQgKDBQNDAsLDBkSEw8UHRofHh0a
+HBwgJC4nICIsIxwcKDcpLDAxNDQ0Hyc5PTgyPC4zNDL/2wBDAQkJCQwLDBgNDRgyIRwhMjIyMjIy
+MjIyMjIyMjIyMjIyMjIyMjIyMjIyMjIyMjIyMjIyMjIyMjIyMjIyMjIyMjL/wAARCABHAGQDASIA
+AhEBAxEB/8QAHwAAAQUBAQEBAQEAAAAAAAAAAAECAwQFBgcICQoL/8QAtRAAAgEDAwIEAwUFBAQA
+AAF9AQIDAAQRBRIhMUEGE1FhByJxFDKBkaEII0KxwRVS0fAkM2JyggkKFhcYGRolJicoKSo0NTY3
+ODk6Q0RFRkdISUpTVFVWV1hZWmNkZWZnaGlqc3R1dnd4eXqDhIWGh4iJipKTlJWWl5iZmqKjpKWm
+p6ipqrKztLW2t7i5usLDxMXGx8jJytLT1NXW19jZ2uHi4+Tl5ufo6erx8vP09fb3+Pn6/8QAHwEA
+AwEBAQEBAQEBAQAAAAAAAAECAwQFBgcICQoL/8QAtREAAgECBAQDBAcFBAQAAQJ3AAECAxEEBSEx
+BhJBUQdhcRMiMoEIFEKRobHBCSMzUvAVYnLRChYkNOEl8RcYGRomJygpKjU2Nzg5OkNERUZHSElK
+U1RVVldYWVpjZGVmZ2hpanN0dXZ3eHl6goOEhYaHiImKkpOUlZaXmJmaoqOkpaanqKmqsrO0tba3
+uLm6wsPExcbHyMnK0tPU1dbX2Nna4uPk5ebn6Onq8vP09fb3+Pn6/9oADAMBAAIRAxEAPwCh4F+H
+Gk+I/DkOpXs135skjpsicKoCn/dJzXVJ8GPDrciW/I97hR/7JU3wkP8AxRFn/wBfEv8AOuxvL14L
+0QB49rRklc/NntgUAcTF8GvDcqble+xkj/j4H/xFSD4K+HP799/4ED/4iu7t5JxboFiVVAA+bOas
+M1y0e1dqt/e9fwpAefD4K+G/717/AOBA/wDiaePgt4a9Lv8A8CP/ALGu7U3QGxpkz/tDBp6yTRPs
+JEo68dR9aAOBHwW8Nel0f+3j/wCxpT8FvDX926/8CP8A7Gu7/tF1umtzaylyoaPA4brnnoMY/UUx
+7q6EgR57SJz0jCtIf5j+VAHDj4LeGgel0frcf/Y07/hTPhj/AJ53H/gQf8K7NkuJ4n3X7tgcrbRq
+rf8Aj2T/ACoa1TYpeS/kLDtKy4+u0igDi/8AhTPhj/nncf8AgQf8KpyfCvwgkrRIt1K6/eEcxYL9
+SBgfjXoq6bbAg/vmxzted2H5E0TqkVuyoAqgEBQMYoA+ZvH2h2Xh3xdc6dYK4t40RlDtuPKgnn60
+VpfFv/koN3/1yi/9AFFAz0P4TyiLwNbO2cLNKT+tegw2+3LhAZJDmRs/56VwHwliSXwPaq67l+0y
+cV6I8ojTCFS3oWAxQIh+0kDaW2H0OAT+dJDFJOfMMp24OAcjB7UPds8othAbhnUsCCFAAPqevXpT
+kvHi+WWGaPthoS2PxXIoAsRSb8pIEz7dD9Kkdli6Iee6iqYw2Vht7iUM2SCnloP++sH8s1Kz6ika
+gWFu6j7yi4JbHtlQCfqaALHlyzMN5KJ6KeT9TTo7WCMgrDyDkE8nJ96gtrvIJRWkjBwRjDxnuCDV
+jzZZGBVPLTuX6n8KQA9vCzZaFSSeTgVDLEkKjYJMk/Koc809iDnN19cECoGmhjYYk3Pz87NkD/Pt
+TAeAIAdzkuecbiT9BUE6jy2eXAYqQi+n/wBepFbdzDFI7n/low2r/wDq9qHttkUksrF5dp57Lx0A
+oA+dfi7/AMlBusf88Yv/AEAUUfF7/koFz/1wi/8AQRRQM9H+EqyHwDb+WwV/tUoBIz2rtmSeGGGc
+4/dH94qrk4PUj19fzrivhIA/w+gUkj/S5eQcdq9FjIAHJzQIiSwRnSeOYdd6FV45649jV9w+z92V
+3f7XSs7yJbZy1nhVPJhP3WPt/dP6e1SrqtuMCXzIpO8bId34Y6/hmgBSLnzsMUyemNwH86uQibaf
+OKE542AjiqLXxkOLezkZ+fmmQxqPqSM/kKcLeaVf9JuJDn+CEmMD8Qc/rQA+50+GcmSZwpxgupKH
+HoSCDVTZp6yKEu/Mdf4ELSn8Rk0pgtftBjgtvPmHVpXLBPqWzz7CrRs5TCczsJMfLs+VR+Hf8aAI
+WuLT7z7lC/xNasoH4kcVbXa8KyCdDGRlW2jBFUo3dztkOWU9CcEHuPf8aljtrb+CIRtnPyfKc+4o
+AsKTIMpOCAccLUFyJDDL+86Ajp14pYFFszoejsWDE9z2pbk4t34/hNAHzj8XefH9xz/ywi/9Bopv
+xbyfHs5/6YRf+g0UxnpHwkIHw9j3JvH22TKgZzwK7638mWMvEXGOMbyMfhXA/CBgvgKIlsAXsmSe
+3y16A1rmQyQyGNj1xyD9RQInMUq4KSb8fwsBz+NM8wsxIHT+EjkexpgnuIcCWEuP78Z/pQ9zZSMP
+MK7h/fXBoESfaGJZVhcMP4iOKjSaaZXhQoZc/fHRB+vPXiop380BbOEvngtjA/Wr1rAII8kfvG5Y
+5zSGTW8CW8Sxr27nqT61NTVNKTQIhmtopvvL8394cGq6RyW7ElBKD/ED8w/PirmaQmgCrJPE6kOG
+APHzKRVW5aSJSAd0RUjLdR+IH860XAYYPINZ9yjwx/J80Z4K/wB0H0oGfPPxb/5Hyb/r3i/lRS/F
+3/ke5f8Ar3i/lRTGa3gX4i6P4a8LjTL6C9kmFw8uYUUrggDuR710o+NWgjpbaqf+AR//ABVFFAWH
+D426AP8Al01U/wDAI/8A4qj/AIXboBPNlqv/AHzH/wDFUUUBYePjf4exj7Jq4/4BH/8AFUp+N3h/
+HFtq/wD3xH/8VRRSCw1PjboYb5otWI9PKj/+KqQ/HDw8Olrq5/4BH/8AFUUUBYafjhoH/Pnq/wD3
+zH/8VTW+OOhdrLVvyj/+KooosFiP/hd+i97HVD/3wP8A2ao5vjZoroVWw1QZGMkp/jRRQFjzHxv4
+htvFHiNtStYZYojEke2XGcgexooopjP/2Q==
+</Url><Url name="ThumbLink" foo="bar">/cgi/i/image/api/tile/clark1ic8lift:008458875:39015091904550/full/!100,100/0/default.jpg</Url><Caption>39015091904550</Caption><Caption>Sheet 3 of 24 (No. 138)</Caption>
+
+<Type>image</Type><AuthCheck allowed="yes">1: world access allowed</AuthCheck><Url name="MediaLink">/cgi/i/image/api/image/clark1ic8lift:008458875:39015091904402/full/full/0/native.jpg</Url></Column>
+<Column x="4" y="1" blank="no" thumb="yes"><Url name="EntryLink">https://roger.quod.lib.umich.edu/cgi/i/image/image-idx?sort=marc710;rgn1=marc710;select1=phrase;c=clark1ic8lift;q1=National%2520Ocean%2520Survey.;subview=detail;resnum=2;start=1;view=entry;lastview=reslist;lasttype=boolean;cc=clark1ic8lift;entryid=x-008458875;viewid=39015091904261;debug=xml;size=50;chaperone=S-CLARK1IC8LIFT-X-008458875%2039015091904402</Url><Url name="Thumb">data:image/jpeg;base64,/9j/4AAQSkZJRgABAQAAAQABAAD/2wBDAAgGBgcGBQgHBwcJCQgKDBQNDAsLDBkSEw8UHRofHh0a
+HBwgJC4nICIsIxwcKDcpLDAxNDQ0Hyc5PTgyPC4zNDL/2wBDAQkJCQwLDBgNDRgyIRwhMjIyMjIy
+MjIyMjIyMjIyMjIyMjIyMjIyMjIyMjIyMjIyMjIyMjIyMjIyMjIyMjIyMjL/wAARCABGAGQDASIA
+AhEBAxEB/8QAHwAAAQUBAQEBAQEAAAAAAAAAAAECAwQFBgcICQoL/8QAtRAAAgEDAwIEAwUFBAQA
+AAF9AQIDAAQRBRIhMUEGE1FhByJxFDKBkaEII0KxwRVS0fAkM2JyggkKFhcYGRolJicoKSo0NTY3
+ODk6Q0RFRkdISUpTVFVWV1hZWmNkZWZnaGlqc3R1dnd4eXqDhIWGh4iJipKTlJWWl5iZmqKjpKWm
+p6ipqrKztLW2t7i5usLDxMXGx8jJytLT1NXW19jZ2uHi4+Tl5ufo6erx8vP09fb3+Pn6/8QAHwEA
+AwEBAQEBAQEBAQAAAAAAAAECAwQFBgcICQoL/8QAtREAAgECBAQDBAcFBAQAAQJ3AAECAxEEBSEx
+BhJBUQdhcRMiMoEIFEKRobHBCSMzUvAVYnLRChYkNOEl8RcYGRomJygpKjU2Nzg5OkNERUZHSElK
+U1RVVldYWVpjZGVmZ2hpanN0dXZ3eHl6goOEhYaHiImKkpOUlZaXmJmaoqOkpaanqKmqsrO0tba3
+uLm6wsPExcbHyMnK0tPU1dbX2Nna4uPk5ebn6Onq8vP09fb3+Pn6/9oADAMBAAIRAxEAPwC54E8E
++H9X8JaddXmmRTXMqOzyM7jOHYDofQV1C/DHwr/0Brf/AL+yf/FVU+Gk8cPgjSmkYKPLk5J6/vGr
+rpNRbeFjQLnpvBJP4dvx/KgDAHww8K/9Aa3/AO/kn/xVL/wrDwr/ANAa2/7+Sf8AxVdLBeyZHmwM
+E/vqDgfUdavK6SKGRgwPcGkBx3/CsPCv/QFtv++5P/iqX/hWPhUf8wW1/wC+5P8A4quy4XkkAe9R
+C7tizDz48r1G4cUAcmPhj4UP/MFtf++5P/iqT/hV/hT/AKAtt/33J/8AFV2SSRsoKupB5yDT+KAO
+L/4Vh4UH/MGtv++pP/iqP+FY+FP+gLbf99Sf/FV2ZFNkdIoy7sFUdST0oA4w/DPwrz/xJbX/AL6k
+/wDiqY/w18Kqpb+xLXgZ+/J/8VW9Abkys8ali2SS+QBzwT68Yqa4e5jTmSN1PBAjIx+OTQB81/EL
+TbPSfGd5Z2ECwWyJGVjUkgZQE9fc0Vb+KmP+E/vf+ucP/otaKBnqHw6MY8C6U0sbOAkmNqkkHzG6
+Y5FddaXw3MbbTZmhU43qFBY9+CQce9c58LAP+EI0on/nnJ/6Nau+VQFAUflQIzTqkQwpzbSHG0XS
+FA3sD0z+NTIizSAG3aJzyXQ4/Uda0QqsNrAEHsRVJtM8hvMsH8hgSfLOTE2evy9vqMfjQA8WUB+Z
+o95H/PQlv5057dJEKPHGyEY2lOlRqmozJ8zw25PXYu4/rxUg0y2KkzBpierSMSf/AK1ADE0+0RQg
+tYAgGABGBgUCyEY/0aR4uemdy5+h7fTFEelacScWxyf7wbA+melPXSYIwBDLcw46BZmI/Ikj9KAG
+lbzP+tiX/tmTn9ajkiJKyXl0nloc7duxc++Sas/YEbHnyyzgdFkIx+QAz+NPjsraF98cEat6hRmk
+BVM7OcQW8jrj75wo/Xn9Kika5KkG2Cg9SZBWiVAbcBg9zUc3+rb6UAfMnxV/5H+8/wCuUP8A6LWi
+l+Kv/I/Xf/XKH/0WtFNDPWvhapbwLpJEhT5Jc4A/56t61232mFOt8uP+A/4VwvwzjaX4f6OF2/dm
+yGPGPNb867WG2lTGJ+B0wDgfhnH6UCLUUsUhAS9Bz6bf8KseW/8Az3b8h/hUCIZIgkoWTHUlev4U
+MXtCGUl4SeVPJT3HqKBFpEYNkysw9CBTZraGcAyIGIGBmo0vYDnLEY7spANQyS3Fyf3DiGNTjcy5
+Lfh2oAdFp8Q3LJGCmeAf/wBdXAgWIInygDAx2qmkdzGCVuvMb0kUY/TpThLekf6qAH/fP+FAyx5b
+/wDPZvyH+FMdTGhZrhgoGSSB/hVSW6kVisk8UZx0QFmqLzkYhnhnki/vvyPy/wDrUADXzsco7FB1
+LADj16cfjSpOtzGwWZwwHKkD/ChoP3beQUaKQZKE8HPcGs+W0nhSN0I3qRkg8kd6TA8B+KeP+E8u
+v+uUP/oAopvxRB/4Tq6/65Rf+gCimhnrfwwWR/h/pIjcIds2SVzx5rdK7UWFu77pE81vVyW/Q8Vx
+nwsZV8BaRuIGVmAz6+a1d6nWmIgSxt04WN0UdNkhX+RoGl26klJLkMf4vtDn+ZNXBS4xQIpLa3kY
+IivFdcY/fx7j+YIpslvfNE6yeVOM5G1mjyPTHP8AOtEdKM0hmfBcIkISC2mOedhGMH6k1Ksd3P8A
+65lhjPVUOWP49vwq4KXNAiFIYoF/dxjJPJA5+tPJGOnHtTqaetAFF7Ro3LWzhc8lG5U/4VBLciIb
+Z0ZGPA43A/iK0z16VDN9w/SgZ8z/ABS48c3H/XGH/wBAFFO+KvHjmb/r3h/9AFFAzT8L/FKLw74c
+tNKbR2uGt9/70XOzO5y3TafWtpfjio/5gUv/AIGn/wCJoophYX/hemP+YDJ/4Gn/AOJpT8df+oDJ
+/wCBx/8AiKKKAsO/4XsMf8gGT/wN/wDsKQ/HUEY/sKUf9vv/ANhRRQFhsfxzZWy2jzMPT7X/APYV
+KfjunbQZf/A3/wCwoooCw3/hew/6AMn/AIG//YU1vjqx4GguPf7af/iKKKAsM/4Xm/8A0AmP/b6f
+/iaZJ8cZHBA0Ig+v20//ABNFFKwWPPPFOv8A/CTa2+pG2+z7o0Ty9+7G0Y64FFFFMZ//2Q==
+</Url><Url name="ThumbLink" foo="bar">/cgi/i/image/api/tile/clark1ic8lift:008458875:39015091904261/full/!100,100/0/default.jpg</Url><Caption>39015091904261</Caption><Caption>Sheet 4 of 24 (No. 139)</Caption>
+
+<Type>image</Type><AuthCheck allowed="yes">1: world access allowed</AuthCheck><Url name="MediaLink">/cgi/i/image/api/image/clark1ic8lift:008458875:39015091904402/full/full/0/native.jpg</Url></Column>
+<Column x="5" y="1" blank="no" thumb="yes"><Url name="EntryLink">https://roger.quod.lib.umich.edu/cgi/i/image/image-idx?sort=marc710;rgn1=marc710;select1=phrase;c=clark1ic8lift;q1=National%2520Ocean%2520Survey.;subview=detail;resnum=2;start=1;view=entry;lastview=reslist;lasttype=boolean;cc=clark1ic8lift;entryid=x-008458875;viewid=39015091904410;debug=xml;size=50;chaperone=S-CLARK1IC8LIFT-X-008458875%2039015091904402</Url><Url name="Thumb">data:image/jpeg;base64,/9j/4AAQSkZJRgABAQAAAQABAAD/2wBDAAgGBgcGBQgHBwcJCQgKDBQNDAsLDBkSEw8UHRofHh0a
+HBwgJC4nICIsIxwcKDcpLDAxNDQ0Hyc5PTgyPC4zNDL/2wBDAQkJCQwLDBgNDRgyIRwhMjIyMjIy
+MjIyMjIyMjIyMjIyMjIyMjIyMjIyMjIyMjIyMjIyMjIyMjIyMjIyMjIyMjL/wAARCABIAGQDASIA
+AhEBAxEB/8QAHwAAAQUBAQEBAQEAAAAAAAAAAAECAwQFBgcICQoL/8QAtRAAAgEDAwIEAwUFBAQA
+AAF9AQIDAAQRBRIhMUEGE1FhByJxFDKBkaEII0KxwRVS0fAkM2JyggkKFhcYGRolJicoKSo0NTY3
+ODk6Q0RFRkdISUpTVFVWV1hZWmNkZWZnaGlqc3R1dnd4eXqDhIWGh4iJipKTlJWWl5iZmqKjpKWm
+p6ipqrKztLW2t7i5usLDxMXGx8jJytLT1NXW19jZ2uHi4+Tl5ufo6erx8vP09fb3+Pn6/8QAHwEA
+AwEBAQEBAQEBAQAAAAAAAAECAwQFBgcICQoL/8QAtREAAgECBAQDBAcFBAQAAQJ3AAECAxEEBSEx
+BhJBUQdhcRMiMoEIFEKRobHBCSMzUvAVYnLRChYkNOEl8RcYGRomJygpKjU2Nzg5OkNERUZHSElK
+U1RVVldYWVpjZGVmZ2hpanN0dXZ3eHl6goOEhYaHiImKkpOUlZaXmJmaoqOkpaanqKmqsrO0tba3
+uLm6wsPExcbHyMnK0tPU1dbX2Nna4uPk5ebn6Onq8vP09fb3+Pn6/9oADAMBAAIRAxEAPwDpPCng
+zw5e+FNInn0e0knmtVd5HXljgf41uL4A8NAcaBp5+qmm+B5F/wCEO0QsRgWSDn14rqE8oRmQsdmM
+5LEjFZso53/hA/Df/Qu6d/3x/wDWo/4QTw1/0L2nf98f/Wre+024OUuFxnG1mwPzNOa5QHHGSMgb
+h/jQBz48CeGz18Pab/3x/wDWpB4C8Mgn/intO/75roo7hGPU59Ov8qeZEHJO0f7XH86YjnB4D8NZ
+/wCRd03/AL4/+tR/wgXhn/oXdO/74/8ArV06MrqCrBh6g0tIZzH/AAgfhkf8y7pv/fH/ANalXwL4
+ZdQw8PaYQRkHy/8A61dPimqMA8igDm/+EE8Mj/mXdM/791DJ4B8Mnk+H9O9eFIrqS6AcsPzqjPfo
+vyx/MTwD6/T1oA8s8W+GNEtdTt1ttLtoEa2VyqJxkluaK1PGxI1W0/680/m1FMDY8Bq0ngXRvmZS
+1t1XrjgV1EduluDLPOzr1zKRhf5Cuf8ABUHmeDNBRXeMfY1J2HGeBXUw6fBGwcl3bGP3jlv51IDG
+uwCQkE0meMqmAfxOBULXMUcrb7eWJsfeMeQR9RmtNlVkKMAVIwQRSEZWgDKM9vncsXncfejUMR+H
+WmPNb78NbSKw7HAP860pLaKZSroCPyqL+zbcHIEgz/tmmIqo1kTyXB7A7ufp60zdEzvHBFMxTqo2
+/wAzz3q8dLtmj2MHI92NIdKgDu6cM394Bh+tAyrGpZsC1kA9TID/ACNRM/lAFrZUGPm3TAEVoHS4
+8LsfaV6YjT/D6U0WM0RZo3hLHnDQgDOeTkUAVTH9qtw0LPCD1Dgn145/pUDMm/CzgkdQgJY/U1qv
+DcTbkdo0jIIJQHdj2PbvThBHDDsjUKoHAAoA8z8dHGr2f/Xmn/oTUUvjvH9r2f8A15p/6E1FNAdH
+4H3f8IboRUj/AI8l6/QV1CvLkD5K4/wkxXwJoJB4+xqSc44wK6OG8P2SOVTHICPvsdnPTnrz2qQN
+H99/sfrTWMwH8H61UiubuQZX7K/+yjn+eKk+1lMLcJ5RPQg5X86BFhPM3fNtx7UkplA/dKh453MR
+/Q0RsDzmpM0wKkEt0xYAIWXsXOP/AEGrgL7BkKHx0ByM01QAc08GgBmZvVPyNH7090/Wn/jTJJoo
+ImlmkWONRlmc4AHuaAA+bjrH+RrNl1aAsYo545ZM7SsQLH9KjuJW1kLBbGZbRsiaQoU3D0XPP4j8
+6tLBFZ2/lxrHHGo4CrigZ5x46b/ib2n/AF5p/wChNRUPjo/8Ti15/wCXNP8A0JqKYjpfCEZk8C6B
+thWVhZqQrYA7VuPp8zNHI7xORwqeX8q1leBOfBeg/wDXkP6V1WPl/H1pDMWYXVtNbtLFGCpJHkd8
+DkZx3/pWmGjuYwcZRh0Yf0qz1qnPFLFKZoBkEfNHwMn1HvQIrhLixmRbePzYGb5kJAKe4J7VZM92
+wwluqN/tvx+lNgvIZk3bsNnlTwR+FI+o2kbCNrhDL12Kct+Q5pgNkuLuEnM1qWAyUIIp8dxeXKho
+0SFPVjub8hx+tV7i8jeF2bTrmcDPBh6/nUySyQoFi0qdfQKYwB/49QBOI7jfk3OV9NmKglsbTerX
+JaV15G9ycn/d6fpxTbae+urIF7Uwv0O44z68Z4FXY7WJWDlcv6k55/z3oAYZ3ZGaNQqpwd1NaFz8
+8rbjt4H901bPQ1FL90/SkM8q8dDGsWv/AF6J/wChNRS+O8f2xaf9eaf+hNRVCNDwj4p0C08HaLDc
+a3YwTRWyq8bTDcp9CM8dK6AeOfDn/QwaZj/rqP8AGiijlGL/AMJz4c/6GHTP+/w/xpG8c+G/+hh0
+z/v6P8aKKOUCGXxd4VuM+brWkuSMZaQZx+dSQ+L/AAtbpth1rSEHokij+tFFFhCp470LzMf21peM
+9ftK/wCNTf8ACb+Hev8AwkGl/wDf9f8AGiiiwxf+E28Oj/mYdK/7/j/GmN458OqONf0wn084f40U
+UWAP+E58OFefEOmD280f41FL458O7T/xUOmn/toP8aKKOUDz3xl4g0i81W2e21K1mRbVULJICMgt
+xRRRTsB//9k=
+</Url><Url name="ThumbLink" foo="bar">/cgi/i/image/api/tile/clark1ic8lift:008458875:39015091904410/full/!100,100/0/default.jpg</Url><Caption>39015091904410</Caption><Caption>Sheet 5 of 24 (No. 141)</Caption>
+
+<Type>image</Type><AuthCheck allowed="yes">1: world access allowed</AuthCheck><Url name="MediaLink">/cgi/i/image/api/image/clark1ic8lift:008458875:39015091904402/full/full/0/native.jpg</Url></Column>
+<Column x="6" y="1" blank="no" thumb="yes"><Url name="EntryLink">https://roger.quod.lib.umich.edu/cgi/i/image/image-idx?sort=marc710;rgn1=marc710;select1=phrase;c=clark1ic8lift;q1=National%2520Ocean%2520Survey.;subview=detail;resnum=2;start=1;view=entry;lastview=reslist;lasttype=boolean;cc=clark1ic8lift;entryid=x-008458875;viewid=39015091904568;debug=xml;size=50;chaperone=S-CLARK1IC8LIFT-X-008458875%2039015091904402</Url><Url name="Thumb">data:image/jpeg;base64,/9j/4AAQSkZJRgABAQAAAQABAAD/2wBDAAgGBgcGBQgHBwcJCQgKDBQNDAsLDBkSEw8UHRofHh0a
+HBwgJC4nICIsIxwcKDcpLDAxNDQ0Hyc5PTgyPC4zNDL/2wBDAQkJCQwLDBgNDRgyIRwhMjIyMjIy
+MjIyMjIyMjIyMjIyMjIyMjIyMjIyMjIyMjIyMjIyMjIyMjIyMjIyMjIyMjL/wAARCABIAGQDASIA
+AhEBAxEB/8QAHwAAAQUBAQEBAQEAAAAAAAAAAAECAwQFBgcICQoL/8QAtRAAAgEDAwIEAwUFBAQA
+AAF9AQIDAAQRBRIhMUEGE1FhByJxFDKBkaEII0KxwRVS0fAkM2JyggkKFhcYGRolJicoKSo0NTY3
+ODk6Q0RFRkdISUpTVFVWV1hZWmNkZWZnaGlqc3R1dnd4eXqDhIWGh4iJipKTlJWWl5iZmqKjpKWm
+p6ipqrKztLW2t7i5usLDxMXGx8jJytLT1NXW19jZ2uHi4+Tl5ufo6erx8vP09fb3+Pn6/8QAHwEA
+AwEBAQEBAQEBAQAAAAAAAAECAwQFBgcICQoL/8QAtREAAgECBAQDBAcFBAQAAQJ3AAECAxEEBSEx
+BhJBUQdhcRMiMoEIFEKRobHBCSMzUvAVYnLRChYkNOEl8RcYGRomJygpKjU2Nzg5OkNERUZHSElK
+U1RVVldYWVpjZGVmZ2hpanN0dXZ3eHl6goOEhYaHiImKkpOUlZaXmJmaoqOkpaanqKmqsrO0tba3
+uLm6wsPExcbHyMnK0tPU1dbX2Nna4uPk5ebn6Onq8vP09fb3+Pn6/9oADAMBAAIRAxEAPwBfB3gD
+w5q3hHT9QvoJ2uJ924pIRkhmHT6Ct8fCzwl/z5Xn/f1qn+HX/Ih6J/vP/wChPXdKKQHAj4V+Ecf8
+eN3/AN/m/wAaB8K/CX/Phd/9/m/xrsdR1a304BDmSZvuxKRuPvVEa7OpLy2LLEOp3cigDnP+FV+E
+T/y43f8A3+b/ABpf+FWeER/y4XZ/7bN/jXd280VwN0TqykA8H1FSOyxjLsFGepNAHAf8Ks8I/wDQ
+Puv+/wA3+NKPhb4RH/MOuv8Av83+Nd9IXC5RQx9CcVEGuMcwKD/10/8ArUAcN/wq3wj/ANA25/7/
+ADf40v8Awq7wj/0DLn/v83+Nd/gkDIwaMcUAeft8L/CCjLabcAepnb/Gm/8ACsfB5240+cBiAD57
+Y/nXaauP+JZKBjJAxn61R0t2k0yMMMFJQo+mQaAPn3x/otloHi650/T4yluiRsqsxY5Kgnk0Vo/F
+s4+IV5/1yi/9AFFMZ6j8ORnwDon+8/8A6E9dzgKpY9AMmuK+GwB+H+iH/bk/9Ceur1lZTo9x5PD7
+f070hGBbyC7mmvHUFy5AwOnSrGdy8hufVaz/AA7L5tnOFHAkzz7j/wCtWwqt3/U0AQ2l1NZ3CWgY
+GKYnyyRyjY6VJJpOoXETyTyb26hC5yfpjgfrUGoRubUyKMtEwkXbyeDW/a6pZ3UatFcxEEDjdyKA
+Muy1M2ts0M0crunQgfofSqcWpak11MVEjRN90+WSi/Q9f6V0ci2bt5si25I53Nini6g3BRNDnsAw
+oAyYbTU7geZJO0WeisefyHFVdQtL22Uu0zOh4Lbj+tdKY9x/h4pwXjBAwfagDjpLnztOW3m8xpEO
+VIOfwPermm2t3FGjS5SEuNsZ69RzXSbcY2hR+FVrrO1On+sX+dAHzt8Xh/xcO8x/zyi/9AFFO+Lx
+x8Qrr/rjF/6AKKBnqfw1H/FvdEP+3J/6E9dtcRrLbtE/3HG0/jxXFfDTn4eaL/vyf+hvXbyYMRzn
+AoEcho9rHpWo3emzybWY+ZET0I6VtMjxkD16H1+lOmlt5rpHmtPNaPlWxyp/GrTzqygDPJ6ZzigC
+hJFIn3lGTVKTRtOmR3mtxGAMkxZUk/hiteVmjiZs56HntVKV5ZIwjFIt7YAztLH2zQBnjQdN8sPb
+wKcHAEhLfzpH0qJn+eN128bVIAHv0qzLeWltEYHuQzsw+WNSTkZ4q1bLd3j+XHG0EQUZklX5ufQd
+KAGLJeRFLa2nJRhwGIJXHv6e9Tlr/TpleR2mix82WJH59jWpbWVvaDEf3z95mOSTUssaTRsjchhg
+jPUUAU7PUo7rduHlEY+8eDmopb6OeZYovmAcZbt1HSq66K6zEs4K9M4ySPx49PyFWHtY7ZFK5LF1
+BJOe9AjwH4vA/wDCwbr/AK4xf+giim/Fxj/wn9zz/wAsYv8A0GimUeqfDP8A5J3o3+/J/wChvXdB
+scVwvw0/5J3o/tJJ/wChvXbq4ZQwOaCSlqc32KxeRD1O0DngmsrTrxyX8wg7cFsLjA7d/Wty9gFz
+ZyREAkjj61jQ2F9HGYGiymc7gRg/1zQMkvNWCCOC0UtK5+7t6e+BVQ+H9Q1aLzL26EZ/hG3PFbel
+WC2Nv8wBmf5nb39M1eLMOij86QHM6ZpOqWVxEGjhZEb75IJx3rqsmmKx5yMUoPegRVubVXYyLGGY
+jngf4VJb26xDO0BvoOPyFSsf9k/hQDjsaAHGqV59xf8Arov86tFqp3h+RP8AfX+dAHz38W8/8J9c
+f9cYv/QaKX4snPjyf/rhH/KimUegfD3xLoFj4B061vtYtba4jaQlGlAYZdscH2NdEPG/hgcf8JFb
+gf8AXRf8KKKBWHr458L4GfENt/39Wj/hN/C//Qy23/f1f8KKKAsL/wAJt4XP/MyWv/f1f8KD418M
+dvElr+My/wCFFFAWIT410IE7fEmn47ZlH+FTR+NfDYHz+JLMn2mWiikFgfxr4d42eI7L33TD/CnD
+xv4Z2jd4is898TLRRQFhD438L/8AQx2v/f0f4VWn8aeGXKbfEVmQGBIaQc/pRRQFjxj4l6hZ6n4y
+lubG5juIDDGBJG2QSBzRRRTGf//Z
+</Url><Url name="ThumbLink" foo="bar">/cgi/i/image/api/tile/clark1ic8lift:008458875:39015091904568/full/!100,100/0/default.jpg</Url><Caption>39015091904568</Caption><Caption>Sheet 6 of 24 (No. 143)</Caption>
+
+<Type>image</Type><AuthCheck allowed="yes">1: world access allowed</AuthCheck><Url name="MediaLink">/cgi/i/image/api/image/clark1ic8lift:008458875:39015091904402/full/full/0/native.jpg</Url></Column>
+<Column x="7" y="1" blank="no" thumb="yes"><Url name="EntryLink">https://roger.quod.lib.umich.edu/cgi/i/image/image-idx?sort=marc710;rgn1=marc710;select1=phrase;c=clark1ic8lift;q1=National%2520Ocean%2520Survey.;subview=detail;resnum=2;start=1;view=entry;lastview=reslist;lasttype=boolean;cc=clark1ic8lift;entryid=x-008458875;viewid=39015091904279;debug=xml;size=50;chaperone=S-CLARK1IC8LIFT-X-008458875%2039015091904402</Url><Url name="Thumb">data:image/jpeg;base64,/9j/4AAQSkZJRgABAQAAAQABAAD/2wBDAAgGBgcGBQgHBwcJCQgKDBQNDAsLDBkSEw8UHRofHh0a
+HBwgJC4nICIsIxwcKDcpLDAxNDQ0Hyc5PTgyPC4zNDL/2wBDAQkJCQwLDBgNDRgyIRwhMjIyMjIy
+MjIyMjIyMjIyMjIyMjIyMjIyMjIyMjIyMjIyMjIyMjIyMjIyMjIyMjIyMjL/wAARCABGAGQDASIA
+AhEBAxEB/8QAHwAAAQUBAQEBAQEAAAAAAAAAAAECAwQFBgcICQoL/8QAtRAAAgEDAwIEAwUFBAQA
+AAF9AQIDAAQRBRIhMUEGE1FhByJxFDKBkaEII0KxwRVS0fAkM2JyggkKFhcYGRolJicoKSo0NTY3
+ODk6Q0RFRkdISUpTVFVWV1hZWmNkZWZnaGlqc3R1dnd4eXqDhIWGh4iJipKTlJWWl5iZmqKjpKWm
+p6ipqrKztLW2t7i5usLDxMXGx8jJytLT1NXW19jZ2uHi4+Tl5ufo6erx8vP09fb3+Pn6/8QAHwEA
+AwEBAQEBAQEBAQAAAAAAAAECAwQFBgcICQoL/8QAtREAAgECBAQDBAcFBAQAAQJ3AAECAxEEBSEx
+BhJBUQdhcRMiMoEIFEKRobHBCSMzUvAVYnLRChYkNOEl8RcYGRomJygpKjU2Nzg5OkNERUZHSElK
+U1RVVldYWVpjZGVmZ2hpanN0dXZ3eHl6goOEhYaHiImKkpOUlZaXmJmaoqOkpaanqKmqsrO0tba3
+uLm6wsPExcbHyMnK0tPU1dbX2Nna4uPk5ebn6Onq8vP09fb3+Pn6/9oADAMBAAIRAxEAPwDT8IeE
+fDd54R0u6vtIglmlh3SSsWGTk8nFdOvw68KsARoFqQe4kaofhzz4N0kdf9G/9mNdLh9NnQqrtZyE
+7+RiJieD645rK+pRiD4ceFcf8i/a/wDfx6B8OvC2M/8ACP2n/fbV14HFJjHFMDkh8PPC3T/hH7P/
+AL6alPw88LdP+EesvwZq6wrSmgDkf+FdeFf+hfs/++mph+HPhfP/ACALT/vtq69gSPlIBxwSM1my
+LMWO+ONmzgnyTz+tMRiL8O/C3/Qv2f8A301Kfh34WH/Mv2f/AH01dPbCUpmUjJ6ALjH61OaQzj3+
+HvhUY3aBZjPT5mqtF4I8J+YVbw3CjZOBIHwceh6V190ZRLB5YON/zHtj6VRnhkuNQdZigSMCSIBQ
+SRjnkjjn09RQB4P8U9HsdL8VwwabaRWtu1mj+XGuBks2T+lFaHxhOPF9r/14R/8AoT0Va2EejfDY
+/wDFHaTn/n3/APZjXaTQfabd4SSoYYyK4jwF50fgLSpIF3SLbEhcZz8x7d66qz1cExrdARllzvwQ
+hPsT69ayQ2QtpupxagtxBNA0S/wOWBP1PPHt0qc6pdICJtJuhjqYyjrj881rY4zmk/hIx+feqAq2
+t5BexpJDKrB13AZ5x9Ksc46VVn0fT7kAyWkW7GAyjaw+hHNQtocUbxGzlltgpO7YxYsMdOTx1zQB
+oYyCMkH27VBJb72BYBhnkkD/AAqi02rWYZTafbEDsFcSAORyV4xj2NW4NQtbgsolVZE5eNuGXjPI
+oETopXOWJ+tPYHt0rObW7JQoiEs0jDKxxxHcV67sHt71KNTLxQypZXRjk3bv3eGjI9QeefagCy3J
+GKrz2+9hJvZXRSOCOQccHP0FQRrdXN350SPaQA/Msi5Mp+mfl+verxQrCQzFiF6+tAHgXxj/AORw
+tf8Arwj/APQnopfjFz4vtf8AsHx/+hPRVLYZ6V8OSqeBtHdj8otiT/30a63ToFGmxxsoKMCQuONp
+OQPyNch4AiWb4faSjAkG1bgd/mNdpYyNLZQOzZZo1JI7nFQBSuNOltpYbm0mumWN8vb+cSrr04z6
+ZzjPardnqEF6JPK3q0ZAdZFKkZ+tWs8YrOvtJgvHLu8qBgBIsbYEgByM0wNDHQA8U7vXP3Fvd6TG
+lxb37tbo4HkzYICkgdevHr2Fb6urAFSDkdjQIOMetZ97plvfvE0mRsbJ2nBPB4yPrV+o8AZAGM0A
+R29nb2+3y4lBRSqnHIBOcZ9Ksk0xee5HFKaAF7ZqF2Hlt9D1qYcqaqXUojRs56dqAPB/i/z4ttf+
+vCP/ANCeimfFw58WWp/6cI//AEJ6KtAenfDokeBNGxj/AI9m/wDQzXV6SSdIsyccwIf/AB2uT+Hi
+q/gbR0ZdwNqwI9fmNdRp8jR3FxZli6QhDGT1CkHg+uMHmoGaJxt6U08jrR24GKaWPpmgQ8qHUqyg
+qRgg96qf2VYA5W1jRj3jG0/pVoNz0NGfmFMCidLCf6u9vI1/u+buH/jwJpn2S/T/AFWpFvaaEN/L
+BrTJ46Uw/SgDKd9ehjASKynY9XBZcf8AAT1/MVXt7vVYEBubS9mkPLIoiK/gcggfXNboPHSlJ9qA
+MmHWb3y2M2h3YJ/1YjZWz9ckbagOm3V0Td3tzJFPnKRwN8ka/wB05+8fU+/FbueMYqvMyqp3cZ4G
+e5oA8D+LQ/4qu1/68I//AEJ6KX4t/wDI12n/AF4R/wDoT0VSA0/C3xQ0fRPDGn6fPaag09vGUZog
+m08k8ZatlPjNoCSNINP1QOwAZgI8kDp/F7miilZDJP8AhdehY/48tW/KP/4qm/8AC69D4/0LVfyj
+/wDiqKKLAOHxr0I9bPVfyj/+KpT8aNCK8WmrA/7sf/xVFFFgI1+M+kAgmDVCPTyo/wD4un/8Lp0P
+P/Hnqv8A3zH/APFUUU7CE/4XVoX/AD5ar+Uf/wAVTT8adFLA/Y9U2+m2PP8A6FRRSshin41aEP8A
+lx1X/wAh/wDxVQSfGfRJOPsGp+xOw4/WiiiwHnnjrxRZ+JNbgvLSGeONLZYtsoGcgsexPrRRRTA/
+/9k=
+</Url><Url name="ThumbLink" foo="bar">/cgi/i/image/api/tile/clark1ic8lift:008458875:39015091904279/full/!100,100/0/default.jpg</Url><Caption>39015091904279</Caption><Caption>Sheet 7 of 24 (No. 144)</Caption>
+
+<Type>image</Type><AuthCheck allowed="yes">1: world access allowed</AuthCheck><Url name="MediaLink">/cgi/i/image/api/image/clark1ic8lift:008458875:39015091904402/full/full/0/native.jpg</Url></Column>
+<Column x="8" y="1" blank="no" thumb="yes"><Url name="EntryLink">https://roger.quod.lib.umich.edu/cgi/i/image/image-idx?sort=marc710;rgn1=marc710;select1=phrase;c=clark1ic8lift;q1=National%2520Ocean%2520Survey.;subview=detail;resnum=2;start=1;view=entry;lastview=reslist;lasttype=boolean;cc=clark1ic8lift;entryid=x-008458875;viewid=39015091904428;debug=xml;size=50;chaperone=S-CLARK1IC8LIFT-X-008458875%2039015091904402</Url><Url name="Thumb">data:image/jpeg;base64,/9j/4AAQSkZJRgABAQAAAQABAAD/2wBDAAgGBgcGBQgHBwcJCQgKDBQNDAsLDBkSEw8UHRofHh0a
+HBwgJC4nICIsIxwcKDcpLDAxNDQ0Hyc5PTgyPC4zNDL/2wBDAQkJCQwLDBgNDRgyIRwhMjIyMjIy
+MjIyMjIyMjIyMjIyMjIyMjIyMjIyMjIyMjIyMjIyMjIyMjIyMjIyMjIyMjL/wAARCABGAGQDASIA
+AhEBAxEB/8QAHwAAAQUBAQEBAQEAAAAAAAAAAAECAwQFBgcICQoL/8QAtRAAAgEDAwIEAwUFBAQA
+AAF9AQIDAAQRBRIhMUEGE1FhByJxFDKBkaEII0KxwRVS0fAkM2JyggkKFhcYGRolJicoKSo0NTY3
+ODk6Q0RFRkdISUpTVFVWV1hZWmNkZWZnaGlqc3R1dnd4eXqDhIWGh4iJipKTlJWWl5iZmqKjpKWm
+p6ipqrKztLW2t7i5usLDxMXGx8jJytLT1NXW19jZ2uHi4+Tl5ufo6erx8vP09fb3+Pn6/8QAHwEA
+AwEBAQEBAQEBAQAAAAAAAAECAwQFBgcICQoL/8QAtREAAgECBAQDBAcFBAQAAQJ3AAECAxEEBSEx
+BhJBUQdhcRMiMoEIFEKRobHBCSMzUvAVYnLRChYkNOEl8RcYGRomJygpKjU2Nzg5OkNERUZHSElK
+U1RVVldYWVpjZGVmZ2hpanN0dXZ3eHl6goOEhYaHiImKkpOUlZaXmJmaoqOkpaanqKmqsrO0tba3
+uLm6wsPExcbHyMnK0tPU1dbX2Nna4uPk5ebn6Onq8vP09fb3+Pn6/9oADAMBAAIRAxEAPwDp/B3h
+jQrvwjpE0+i6fNNJah3klhGT7k4ret/CHhu5DNH4f0llVtu7yBg/TiqHguR18D6GIxl3tAg9s967
+NCsCxxHn5evrjFSMwD4I8PMCP+Ef0sYPaAf4U7/hB/DuP+QBpZ/7dx/hXQM4jUtjOXUfngVQjvpC
+8zclSw2qf4flBoAzv+EI8O/9C/pX/gOP8Kd/whPh4D/kX9K/8B1/wroIpFlXcp4yRT6AOc/4Qrw9
+/wBC/pP/AIDr/hR/whXh4/8AMvaT/wCA6/4V0fpQKAOcPgnw7/0L+lf+A4/wpP8AhCPD2P8AkX9K
+/wDAdf8ACukxzUck8MTqkkqIz/dDMAT9KAOePgnw9/0ANK/8B1/wqKbwZ4fjjZ/+Ee0o4H/PBf8A
+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
+n1ooooGf/9k=
+</Url><Url name="ThumbLink" foo="bar">/cgi/i/image/api/tile/clark1ic8lift:008458875:39015091904428/full/!100,100/0/default.jpg</Url><Caption>39015091904428</Caption><Caption>Sheet 8 of 24 (No. 145)</Caption>
+
+<Type>image</Type><AuthCheck allowed="yes">1: world access allowed</AuthCheck><Url name="MediaLink">/cgi/i/image/api/image/clark1ic8lift:008458875:39015091904402/full/full/0/native.jpg</Url></Column>
+<Column x="9" y="1" blank="no" thumb="yes"><Url name="EntryLink">https://roger.quod.lib.umich.edu/cgi/i/image/image-idx?sort=marc710;rgn1=marc710;select1=phrase;c=clark1ic8lift;q1=National%2520Ocean%2520Survey.;subview=detail;resnum=2;start=1;view=entry;lastview=reslist;lasttype=boolean;cc=clark1ic8lift;entryid=x-008458875;viewid=39015091904576;debug=xml;size=50;chaperone=S-CLARK1IC8LIFT-X-008458875%2039015091904402</Url><Url name="Thumb">data:image/jpeg;base64,/9j/4AAQSkZJRgABAQAAAQABAAD/2wBDAAgGBgcGBQgHBwcJCQgKDBQNDAsLDBkSEw8UHRofHh0a
+HBwgJC4nICIsIxwcKDcpLDAxNDQ0Hyc5PTgyPC4zNDL/2wBDAQkJCQwLDBgNDRgyIRwhMjIyMjIy
+MjIyMjIyMjIyMjIyMjIyMjIyMjIyMjIyMjIyMjIyMjIyMjIyMjIyMjIyMjL/wAARCABHAGQDASIA
+AhEBAxEB/8QAHwAAAQUBAQEBAQEAAAAAAAAAAAECAwQFBgcICQoL/8QAtRAAAgEDAwIEAwUFBAQA
+AAF9AQIDAAQRBRIhMUEGE1FhByJxFDKBkaEII0KxwRVS0fAkM2JyggkKFhcYGRolJicoKSo0NTY3
+ODk6Q0RFRkdISUpTVFVWV1hZWmNkZWZnaGlqc3R1dnd4eXqDhIWGh4iJipKTlJWWl5iZmqKjpKWm
+p6ipqrKztLW2t7i5usLDxMXGx8jJytLT1NXW19jZ2uHi4+Tl5ufo6erx8vP09fb3+Pn6/8QAHwEA
+AwEBAQEBAQEBAQAAAAAAAAECAwQFBgcICQoL/8QAtREAAgECBAQDBAcFBAQAAQJ3AAECAxEEBSEx
+BhJBUQdhcRMiMoEIFEKRobHBCSMzUvAVYnLRChYkNOEl8RcYGRomJygpKjU2Nzg5OkNERUZHSElK
+U1RVVldYWVpjZGVmZ2hpanN0dXZ3eHl6goOEhYaHiImKkpOUlZaXmJmaoqOkpaanqKmqsrO0tba3
+uLm6wsPExcbHyMnK0tPU1dbX2Nna4uPk5ebn6Onq8vP09fb3+Pn6/9oADAMBAAIRAxEAPwDrPDXh
+LQLvw5pUsui2EkslnE7u8IJYlRkmtn/hCPDYxu0HTOTj/UCl8Hkf8IzpH/XhD/6CK3HPm4beUjU/
+e9fpWZRi/wDCDeG/+gBpn/fgUf8ACD+HAP8AkAaZ/wCA4reWQREpK+BgEMf5VOORkHIoA5oeB/Dn
+T+wNL/8AAcUf8IP4c6f2Bpn/AIDiukA5oPTNAHNHwN4bHTQdN/78Cm/8IP4cB40HTP8AvwK6YMrj
+KsGHqDTWAHNMRzq+CPDn/QB0z/wHFPHgjw3/ANADS/8AwHFdAmCMg/lT+AOTSGc5/wAIR4c/6AOl
+/wDgMKiPgzw5C2/+wdMP/bsK3oLj92BIcsSRkfWi5I8piDwQf5UAfM/xJs4LHx3fw29vFbwgRlYo
+VCquY1zgD3zRVv4rjHxBvv8ArnF/6AKKtCPZ/CpJ8KaOoTezWMIC5wPu9/aujiVjuV5y4XlmCjAP
+YCsDwlhfCekEnGbCEZz0+UVtwtISkazAqT91WXj36f5NQMsYckeX5u4n+MZBGeakNui5MIEbeqjg
+/UUkszxRIDjzOAcAn8eKjhlE0rRMZs+4AA/KgCYJIesnPstDKXBRxwO+eDUNwkkB3Qxk/KcsCM/j
+Va5uD5Z+edX6qGIAPHXNAiwkMsauzXABYksdvGPUe9RSPEqkgSyDtvVio98mktEa5Rd0gITIOGyc
+fyNOa0uolPlSqyZ+6RjH55pgFtJmFZVT514cAYz71agZpoiHHIPUdDVHZLbAkhxuGCQQVA/TFS2+
+ofKqFQwxgbeCfwPb8aQDreFnQMcY3H+f/wBanXChYioHAU1ZimSdcoenUdwfeorlcxP9DQB82/Fg
+4+IV9/1zi/8AQBRTfim2/wAeXTHqYYc/98CirQHunhMmPwdozgbj/Z8PHr8orTh1IM6rHEFGOmcn
+8qy/C2B4M0M87vsEO0hc87RWtbFoZVeTLknZkrjaSegP+elQMtFLiWRGZVSNsggH5gMd+P5etMET
+27kllRc4Vie3oavA1VvFnIzFIQuMFQtAhfPhdMTlVHueDSMkfkFrQIu/gvGOaz0mjdgFkKEru+bg
+H8RjNXraRkumibBSQblYeo60wC0s/szbg55B3ZOeetWCAUYE8EmnHnPPQ1UuLsQ7kAJkP3eODzQB
+EBNbtjzcLngMPlb8e1QTNHHGzqxaT+OReQD9enXFTM88aeZMXZOpK4wBSG7kZSEkzGOdyLyfqTwK
+QFZZJGlefIjAGS6DnqOO4bPtWk242zFgwO0/exn9KyTMzzKU2iNcMqzKQMjvwcsc/wA60WvLeSB9
+txEx24+VweaAPnP4rqE+IF4o6CKIf+OCij4sE/8ACwb3/rnF/wCgCirWwHuHhfH/AAhei5zgafAx
+wcHgA10FncRzZjiiIjUfeyCM+nFYfhCNJPCeiB1VsafCRkZ/hFdMBgCpAXIK8euKUUh5FIDxQBHJ
+bQSuGkiVmAwMjpVA6cLQD7OJGjzkqD8yn1Bz6dq06XI4oAoQagjKFnYKenmHhWP49D7Glu4vMh3q
+MuhOPcd/8+1PuLC3nLPt2Skf6xeDn39fxqiWurFfmTcvouWX8O6/kRTAv27pdWoyOo2sPQ96ryWE
+UcfM0oUHgbjgfhTtM3Kj5AwSDkDHYD+n61ddRIhVuhGKQHPgZ3BZmXYxGVGVBxkYP0q3HDutpmng
+YSqPvMcgnHUCrMOmrHayws+4u5fcR3wAP5U9laOzKu28hOT60AfOHxX4+IF5/wBc4v8A0AUUvxY/
+5H+7/wCuUX/oAoqkB6b4b8feGrLw1pVvNqvlzw2kccifZ5GwQozyFxWx/wALM8LYx/bQ/wDASX/4
+miilYYv/AAs7wp0Otf8AkpL/APE00/E7wp21r/yUl/8AiaKKLAH/AAs/woeP7aH/AICS/wDxNO/4
+Wb4Ux/yGh/4CS/8AxNFFFgFHxL8LEca0v/gJL/8AE0h+I/hhv+Yyp/7dJf8A4miinYQg+JXhZTj+
+2V/8BJf/AImh/ib4XVcjWFP/AG6S/wDxNFFKwxv/AAtDwrjnWf8AyUl/+JqGT4oeE3VlOsHBGP8A
+j0l/+JooosB4t8RNVsta8Y3N7YS+bbPHGFfaVzhQDwQDRRRTA//Z
+</Url><Url name="ThumbLink" foo="bar">/cgi/i/image/api/tile/clark1ic8lift:008458875:39015091904576/full/!100,100/0/default.jpg</Url><Caption>39015091904576</Caption><Caption>Sheet 9 of 24 (No. 146)</Caption>
+
+<Type>image</Type><AuthCheck allowed="yes">1: world access allowed</AuthCheck><Url name="MediaLink">/cgi/i/image/api/image/clark1ic8lift:008458875:39015091904402/full/full/0/native.jpg</Url></Column>
+<Column x="10" y="1" blank="no" thumb="yes"><Url name="EntryLink">https://roger.quod.lib.umich.edu/cgi/i/image/image-idx?sort=marc710;rgn1=marc710;select1=phrase;c=clark1ic8lift;q1=National%2520Ocean%2520Survey.;subview=detail;resnum=2;start=1;view=entry;lastview=reslist;lasttype=boolean;cc=clark1ic8lift;entryid=x-008458875;viewid=39015091904287;debug=xml;size=50;chaperone=S-CLARK1IC8LIFT-X-008458875%2039015091904402</Url><Url name="Thumb">data:image/jpeg;base64,/9j/4AAQSkZJRgABAQAAAQABAAD/2wBDAAgGBgcGBQgHBwcJCQgKDBQNDAsLDBkSEw8UHRofHh0a
+HBwgJC4nICIsIxwcKDcpLDAxNDQ0Hyc5PTgyPC4zNDL/2wBDAQkJCQwLDBgNDRgyIRwhMjIyMjIy
+MjIyMjIyMjIyMjIyMjIyMjIyMjIyMjIyMjIyMjIyMjIyMjIyMjIyMjIyMjL/wAARCABHAGQDASIA
+AhEBAxEB/8QAHwAAAQUBAQEBAQEAAAAAAAAAAAECAwQFBgcICQoL/8QAtRAAAgEDAwIEAwUFBAQA
+AAF9AQIDAAQRBRIhMUEGE1FhByJxFDKBkaEII0KxwRVS0fAkM2JyggkKFhcYGRolJicoKSo0NTY3
+ODk6Q0RFRkdISUpTVFVWV1hZWmNkZWZnaGlqc3R1dnd4eXqDhIWGh4iJipKTlJWWl5iZmqKjpKWm
+p6ipqrKztLW2t7i5usLDxMXGx8jJytLT1NXW19jZ2uHi4+Tl5ufo6erx8vP09fb3+Pn6/8QAHwEA
+AwEBAQEBAQEBAQAAAAAAAAECAwQFBgcICQoL/8QAtREAAgECBAQDBAcFBAQAAQJ3AAECAxEEBSEx
+BhJBUQdhcRMiMoEIFEKRobHBCSMzUvAVYnLRChYkNOEl8RcYGRomJygpKjU2Nzg5OkNERUZHSElK
+U1RVVldYWVpjZGVmZ2hpanN0dXZ3eHl6goOEhYaHiImKkpOUlZaXmJmaoqOkpaanqKmqsrO0tba3
+uLm6wsPExcbHyMnK0tPU1dbX2Nna4uPk5ebn6Onq8vP09fb3+Pn6/9oADAMBAAIRAxEAPwDe8B+G
+dE1Dwbpc1zo9jPM8RZ5JIgWb5iOTiupXwV4d/wChf0v/AL8D/Csz4a8+CtH/AOvdv/QzXanCoWJw
+BWZRz3/CFeHv+hf0v/vwP8Ka3g3w6iMx8P6XhRk/uB/hWvb3skt35TRqFYErg5IA7n61NfOsdlKW
+I5UjkgZoAwIvCPhyTf8A8U7pg2ttOYF64B9Peg+EPDvneUfD+lhtu4fuV5H5f5zWhb3jJcSNIoET
+kH6L0DfljP8A+urlyNirOvPlcnHOUPUf1/CmBhp4R8OuzoPD+l5Q4OYF9M+nvTm8GeH8f8i/pf8A
+34X/AArYniO03KKQ6/eCn76jt9cdKe+FiMuMoBuyHPSgRhJ4Q8PMzr/wj2mZU4/1C+mfT3p//CHe
+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
+</Url><Url name="ThumbLink" foo="bar">/cgi/i/image/api/tile/clark1ic8lift:008458875:39015091904287/full/!100,100/0/default.jpg</Url><Caption>39015091904287</Caption><Caption>Sheet 10 of 24 (No. 147)</Caption>
+
+<Type>image</Type><AuthCheck allowed="yes">1: world access allowed</AuthCheck><Url name="MediaLink">/cgi/i/image/api/image/clark1ic8lift:008458875:39015091904402/full/full/0/native.jpg</Url></Column>
+<Column x="11" y="1" blank="no" thumb="yes"><Url name="EntryLink">https://roger.quod.lib.umich.edu/cgi/i/image/image-idx?sort=marc710;rgn1=marc710;select1=phrase;c=clark1ic8lift;q1=National%2520Ocean%2520Survey.;subview=detail;resnum=2;start=1;view=entry;lastview=reslist;lasttype=boolean;cc=clark1ic8lift;entryid=x-008458875;viewid=39015091904436;debug=xml;size=50;chaperone=S-CLARK1IC8LIFT-X-008458875%2039015091904402</Url><Url name="Thumb">data:image/jpeg;base64,/9j/4AAQSkZJRgABAQAAAQABAAD/2wBDAAgGBgcGBQgHBwcJCQgKDBQNDAsLDBkSEw8UHRofHh0a
+HBwgJC4nICIsIxwcKDcpLDAxNDQ0Hyc5PTgyPC4zNDL/2wBDAQkJCQwLDBgNDRgyIRwhMjIyMjIy
+MjIyMjIyMjIyMjIyMjIyMjIyMjIyMjIyMjIyMjIyMjIyMjIyMjIyMjIyMjL/wAARCABJAGQDASIA
+AhEBAxEB/8QAHwAAAQUBAQEBAQEAAAAAAAAAAAECAwQFBgcICQoL/8QAtRAAAgEDAwIEAwUFBAQA
+AAF9AQIDAAQRBRIhMUEGE1FhByJxFDKBkaEII0KxwRVS0fAkM2JyggkKFhcYGRolJicoKSo0NTY3
+ODk6Q0RFRkdISUpTVFVWV1hZWmNkZWZnaGlqc3R1dnd4eXqDhIWGh4iJipKTlJWWl5iZmqKjpKWm
+p6ipqrKztLW2t7i5usLDxMXGx8jJytLT1NXW19jZ2uHi4+Tl5ufo6erx8vP09fb3+Pn6/8QAHwEA
+AwEBAQEBAQEBAQAAAAAAAAECAwQFBgcICQoL/8QAtREAAgECBAQDBAcFBAQAAQJ3AAECAxEEBSEx
+BhJBUQdhcRMiMoEIFEKRobHBCSMzUvAVYnLRChYkNOEl8RcYGRomJygpKjU2Nzg5OkNERUZHSElK
+U1RVVldYWVpjZGVmZ2hpanN0dXZ3eHl6goOEhYaHiImKkpOUlZaXmJmaoqOkpaanqKmqsrO0tba3
+uLm6wsPExcbHyMnK0tPU1dbX2Nna4uPk5ebn6Onq8vP09fb3+Pn6/9oADAMBAAIRAxEAPwBPA/gD
+w5rXhG11LUY5jPKzhispAOGIHH0FdGPhZ4Mz/qbj/v8ANR8MjnwBpn/XaT/0Jq9CRFP8I/KkBwA+
+Fngsf8sLg/8AbZ6X/hV3gof8u03/AH+euy1XU7LSrctcyiNm4QKAWJ9h3rKOu394fL07RbksV/1t
+wvlqPfnr+FAGH/wq/wAFf8+kv/f56UfDDwV/z6S/9/pK2p/DF1fg3N1qT/a1UbBGuI0PoB1p+leJ
+IQps9VKwX0TbGUr973oAwx8MfBJJ/wBDlOOD++k/xpw+GPgj/nxk/wC/sn+NdtbKPOueB/rOP++R
+U7mOJGkkZVRRks3AAoA4T/hWXgkf8w+T/v7L/jR/wrTwT/0Dn/7+y/412yXMVxEJLZ45lJx8jD1q
+YrgEkdvSgDg/+FaeCv8AoHP/AN/Zf8akh+GvggN82llv96WXH867A3cAYgsc+m0/4UszAwbwMcjq
+Md6APnD4q6NYaB4xFlpdqttbfZkfYpJ5JOTyT6UVr/Gtc+PEOM5so/8A0JqKYztvhkG/4V9p+3G7
+zpMZ6Z3NXTS6xrEUotE0gtcscCTf+6x67v6da5z4Xc/D/T/+vh//AEI16KBkYIFSIwLHw3sv11TU
+5zdagAcEH93H7KP6/wAq0dQ1K30yEPKSXbhIk5Zj7DvU1+1zDaSyWcImnVTsjJA3H6msXwssLzXE
+t0kg1UnMqzJtZR/s/wCz9KYDhqmv3ET+RoXlu33GmnGBz1I4P60tt4durm+hvNXuIZmj+YJHGByf
+U45xW3eWpnTcOGXoBgZ/GiytfIUk/ePUdcfjQAtsv7+6/wCuv/soplzp8d2w80uFU5wh25+pFPt/
+9fdD/pr/AOyiqGv3VzZ2bypOkMYHXZlifbt+lAF+K1gtYgsMaxqo4xUdtqVte3MsFuxl8riRgPlU
++mfWq+kJcx6RG99KZpZB5jbgPlB5A49Ko6DdQNqupJ5ZikaQEIwIyAOuPfr+NAGs1pD524FQB/CA
+KLpQLVsdABirZwf4RVa8/wCPZ+O1Ajw/4xx7/GkJ/wCnJP8A0J6Km+Lp/wCKwh4H/Hmn/oT0UFHU
+/C9ivw6siASRcvwP9413izzN/wAurH8v8a4H4XAN8O7QHkG5cf8Aj1dZp8lxpmo/2XK6vAVL27MO
+cZ+7n2/lQI0xLMOPsr/if/r08SzdfsrA+vFSPcGNHfaTtGdo70lpdQ3kUdzC5ZHTjqB+R70CAyTN
+1tSaRZZlHy2xFJc2vm5dMbuuBjn8afbW4jALAb/w4/GgBtmzNJcll2nzOn/ARVfXrCXUNNeGNgD1
+wR1qzAcXF1/10H/oIqxu5oAoabqkF8pjUbJYlXzIz/Dn/wDVUWrWBu7YyRYS6i5jcdQfT6GlvtKE
+t0t5aym3uVzl1AO4ehB4rO0m8uV1e6sbyd5G2iRCwAPYEccY6frQMuaXq5n22t5G0F4ByjDG73FX
+b0kWsn0qh4gXZYpcxkCa3kV0J9M4I/I1auJfN04yEEFo849OKBHjfxcBPi+H/rzT/wBCeinfFc7v
+FkJ/6dE/9CeimM6P4WN/xb61/wCvpv8A0Kus8QO9tZxajGwElq+4AjIIPBH61yPws/5J/b/9fbf+
+hCvQZ44LmFoZkWSN+GVhkGkBhr4w0owB97+aVzs2HP59P1pLHxNOSs9xYmOwdyolXJKe5GOQT/Op
+rfwto0FwJkt9zL0DHIFbaBFQIqgKBgACmISyvkv7NLq2b93JkqWGO+OnarSFs/MQfpXMaTewaSZ9
+MviLcJK7wM4wroTng9M5J4rZttStLuQxQXMMsijcVjcHAoAngP8ApFz/AL4/9BFSs756Lj61Vt2/
+0i5/3x/IVOD1oAfng5ODWDqEyHXbNrR1e7ztZRyPL/iyfp+uKPEIvZfIggjma3ckzGDG7jtz0qjZ
+vFp4V7XQ7wS4wxI5I+pPNAGpr9xixEBQk3LrFx25z/SrN3+7011J5EZH6VShjnv9Rjup7aSGGNQU
+SRgefXAq5f8A/HnN/uH+VAHkPxRO7xTCf+nRf/Qnop3xMAPieL/r1X/0JqKBmv8AC29s08CxwzXt
+vA4uXbEkig9QehIrtf7Xsk/5jFhj/rov/wAVXyqOtL3oGfVZ1rT/APoNaf8A9/V/+KpBrWn5x/be
+nAf9dk/+Kr5VFB6UCsfVZ1jSyctremHHTMqf/FVVnv8ARpJUl/tfTPNTO11uFRh+IbNfLy07vQFj
+6eTXbVHYjWNK+Y5JN0vpj+9Vldf0z+LX9LB/67p/8VXyx2o70BY+pZPEelqMrr2mt9LhB/7NQviX
+SNuX1/TFPp9oT/4qvlqigLH1GfEujD/mY9N/7/p/8VVa58S6NJGUXxBpjbhg5uEHH518y9qQ9KAs
+eq/ELVdPvPEMUttfW0yfZlG6OVWGdzelFeVUUDP/2Q==
+</Url><Url name="ThumbLink" foo="bar">/cgi/i/image/api/tile/clark1ic8lift:008458875:39015091904436/full/!100,100/0/default.jpg</Url><Caption>39015091904436</Caption><Caption>Sheet 11 of 24 (No. 148)</Caption>
+
+<Type>image</Type><AuthCheck allowed="yes">1: world access allowed</AuthCheck><Url name="MediaLink">/cgi/i/image/api/image/clark1ic8lift:008458875:39015091904402/full/full/0/native.jpg</Url></Column>
+<Column x="12" y="1" blank="no" thumb="yes"><Url name="EntryLink">https://roger.quod.lib.umich.edu/cgi/i/image/image-idx?sort=marc710;rgn1=marc710;select1=phrase;c=clark1ic8lift;q1=National%2520Ocean%2520Survey.;subview=detail;resnum=2;start=1;view=entry;lastview=reslist;lasttype=boolean;cc=clark1ic8lift;entryid=x-008458875;viewid=39015091904584;debug=xml;size=50;chaperone=S-CLARK1IC8LIFT-X-008458875%2039015091904402</Url><Url name="Thumb">data:image/jpeg;base64,/9j/4AAQSkZJRgABAQAAAQABAAD/2wBDAAgGBgcGBQgHBwcJCQgKDBQNDAsLDBkSEw8UHRofHh0a
+HBwgJC4nICIsIxwcKDcpLDAxNDQ0Hyc5PTgyPC4zNDL/2wBDAQkJCQwLDBgNDRgyIRwhMjIyMjIy
+MjIyMjIyMjIyMjIyMjIyMjIyMjIyMjIyMjIyMjIyMjIyMjIyMjIyMjIyMjL/wAARCABIAGQDASIA
+AhEBAxEB/8QAHwAAAQUBAQEBAQEAAAAAAAAAAAECAwQFBgcICQoL/8QAtRAAAgEDAwIEAwUFBAQA
+AAF9AQIDAAQRBRIhMUEGE1FhByJxFDKBkaEII0KxwRVS0fAkM2JyggkKFhcYGRolJicoKSo0NTY3
+ODk6Q0RFRkdISUpTVFVWV1hZWmNkZWZnaGlqc3R1dnd4eXqDhIWGh4iJipKTlJWWl5iZmqKjpKWm
+p6ipqrKztLW2t7i5usLDxMXGx8jJytLT1NXW19jZ2uHi4+Tl5ufo6erx8vP09fb3+Pn6/8QAHwEA
+AwEBAQEBAQEBAQAAAAAAAAECAwQFBgcICQoL/8QAtREAAgECBAQDBAcFBAQAAQJ3AAECAxEEBSEx
+BhJBUQdhcRMiMoEIFEKRobHBCSMzUvAVYnLRChYkNOEl8RcYGRomJygpKjU2Nzg5OkNERUZHSElK
+U1RVVldYWVpjZGVmZ2hpanN0dXZ3eHl6goOEhYaHiImKkpOUlZaXmJmaoqOkpaanqKmqsrO0tba3
+uLm6wsPExcbHyMnK0tPU1dbX2Nna4uPk5ebn6Onq8vP09fb3+Pn6/9oADAMBAAIRAxEAPwCz4P8A
+AfhrVPCOmXt5p7y3VxGxdlmYZwxHTOPSt4fC3wkf+YTcf+BB/wDiqsfDv/kSdD/64v8A+hGu1RaQ
+HCf8Kr8Jf9Aq4/8AAg//ABVH/Cq/CX/QKuf+/wCf/iq9AApGwqluTgZ4FAHA/wDCq/CX/QKuP/Ag
+/wDxVH/CqvCP/QKuf/Ag/wDxVd8vzKGGcHnkUpWgDgP+FVeEv+gVcf8AgQf/AIqj/hVfhL/oFXH/
+AIEH/wCKrvyKNtAHn/8Awqzwl/0Crj/wIP8A8VTf+FX+Dy5QaZcFh1AuDx/49XeyKxibYPmwcDPe
+qOmQSbpZ3XYzhVPQ5Izz+tAHIn4V+Ev+gXcf9/z/APFVJD8LfB4cb9JmOSB81w39GruN3YAt7imy
+8bD/ALa/zFAHzH8Q9Js9E8cahp+nwiG1i8vYm4nGY1J5PPUmitD4tjb8SdS91hP/AJDWigZ638O1
+z4I0I/8ATJ//AEI126LxXG/Dof8AFDaCf+mT/wDoRrs8soyAD9TSEPC8UbaFLEc4HtSMeOuDQAYA
+NOIFMBOMAZ9xTlY85X9aYBto20rHJHHH1pSCOccUAM2CmiNY0POQck5qQsBxXOardy6pcvptrnyg
+cSup+8f7o/rQBX1rXpo7oQ6dsZY8eY/XJz90VuFxJbwyDOGKn9RWfa+GLeCaOZgvyc7FXjNalwNq
+pgcb1/nQB86/F4f8XFvf+uUP/oAopfi7/wAlEveP+WUX/oAooGevfDkf8UJoH/XJ/wD0Jq6i4uWj
+l+UDC1y/w4P/ABQegH/pm/8A6G1dJNtV3jZgCTvUmkIml1GKHaWDHcMjFKmpWzHDMV+tYGqztFCW
+CAqB8p8wD9DWSqXrs8bzgSFN+B24pgdmdQt92ApI7ECpzcW+R+8wfc1yH2bUbeKOV52YPwqhMnP8
+6pSXl6rxl2c/MCxWMHt0xQB6AVyoIJIwOc0oBC/ez9a49PE2pWblL2zk8rGA5Tbj09jWvpfiK11M
+lVDIRyM9KALWs3BttPdkOJZBsTnoT3/CnaRpyWFkiDlyMsT1zWRr1hqWoTRS2jRlAMAM2Nvv71Tn
+u/EOhGKW4lS7gON21eg9O2O/NAHYn61UuuFT/fX+Yp9peR3tpHcRn5XXPXOPaobx8Kn++v8AMUCP
+nj4uc/ES9/65Rf8AoAopvxZbPxBvD/0zi/8AQBRTKPX/AIcHHgHQf9x//Q2rqr2B5oiYiolA+XIr
+kvh223wBoR9Ek/8AQ2rsVfeoYZGRkcUhFOLRrRoQLqNZ5cEMxz3OfWrQt7O2O7y1BYbc4JyBTkZs
+nLEjP92nSAyRlRjn+8MigQxrq0c7GdT7FTT4lgI3xKnPcCs8W8jXQjMfyqPvFOO/vWkvyqo44Hbi
+gB0kcc0ZSRFdD1VhkVzr6C2mC4l0xEfdl1jIxg5zge1dHnikJoAydM1a31CFdjGOZcq8EmAykdeP
+rVq9hW8s3t3wPMGM+n0rK1LQ7k6sNT0udYbllKuH+6ffGKhF54htsrd6fHcxg8tE3zfl/wDWoGUo
+21Tww0i/8fVoxJAPAQ+3FXtP1wazC5MPkvHIgxuzkZ69Kj/4SzT1ikS8hkjkBKmFhmszQbqK71e+
+aEbYl8vaAeuWpgeS/FYH/hP7z/rnF/6AKKf8Vjjx9d/9cov/AEAUUDO28GePvDOl+DdMsL6/kiur
+dWDqsTHGWY9QMdDW9/ws/wAID/mLTf8Afl//AImiilYBR8TvCB/5i83/AH5f/wCJpw+Jvg/vrE3/
+AH5f/wCJoophYX/hZng7/oMzf9+X/wDiabJ8S/CJB2a5IvHGbdz/AOy0UUhWIl+JPhcMCdfcjuPs
+z/4VMPid4PA51mY/SB//AImiimFhG+J/hDb8urzZ94X/APiaRfih4Rx82rS59oZP/iaKKAsRS/Ef
+wTKcvqEjHGMmBzx/3zUI+Ivg6MosOpyRorA7Rbvg4/4DRRQB5R8QdWsdc8X3N/p83m27xxhX2leQ
+oB4NFFFAz//Z
+</Url><Url name="ThumbLink" foo="bar">/cgi/i/image/api/tile/clark1ic8lift:008458875:39015091904584/full/!100,100/0/default.jpg</Url><Caption>39015091904584</Caption><Caption>Sheet 12 of 24 (No. 149)</Caption>
+
+<Type>image</Type><AuthCheck allowed="yes">1: world access allowed</AuthCheck><Url name="MediaLink">/cgi/i/image/api/image/clark1ic8lift:008458875:39015091904402/full/full/0/native.jpg</Url></Column>
+<Column x="13" y="1" blank="no" thumb="yes"><Url name="EntryLink">https://roger.quod.lib.umich.edu/cgi/i/image/image-idx?sort=marc710;rgn1=marc710;select1=phrase;c=clark1ic8lift;q1=National%2520Ocean%2520Survey.;subview=detail;resnum=2;start=1;view=entry;lastview=reslist;lasttype=boolean;cc=clark1ic8lift;entryid=x-008458875;viewid=39015091904295;debug=xml;size=50;chaperone=S-CLARK1IC8LIFT-X-008458875%2039015091904402</Url><Url name="Thumb">data:image/jpeg;base64,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
+M4PAHqaKKKAP/9k=
+</Url><Url name="ThumbLink" foo="bar">/cgi/i/image/api/tile/clark1ic8lift:008458875:39015091904295/full/!100,100/0/default.jpg</Url><Caption>39015091904295</Caption><Caption>Sheet 13 of 24 (No. 150)</Caption>
+
+<Type>image</Type><AuthCheck allowed="yes">1: world access allowed</AuthCheck><Url name="MediaLink">/cgi/i/image/api/image/clark1ic8lift:008458875:39015091904402/full/full/0/native.jpg</Url></Column>
+<Column x="14" y="1" blank="no" thumb="yes"><Url name="EntryLink">https://roger.quod.lib.umich.edu/cgi/i/image/image-idx?sort=marc710;rgn1=marc710;select1=phrase;c=clark1ic8lift;q1=National%2520Ocean%2520Survey.;subview=detail;resnum=2;start=1;view=entry;lastview=reslist;lasttype=boolean;cc=clark1ic8lift;entryid=x-008458875;viewid=39015091904444;debug=xml;size=50;chaperone=S-CLARK1IC8LIFT-X-008458875%2039015091904402</Url><Url name="Thumb">data:image/jpeg;base64,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
+1/44uri0uIriFoowJInDKflHcUVx9FMD/9k=
+</Url><Url name="ThumbLink" foo="bar">/cgi/i/image/api/tile/clark1ic8lift:008458875:39015091904444/full/!100,100/0/default.jpg</Url><Caption>39015091904444</Caption><Caption>Sheet 14 of 24 (No. 151)</Caption>
+
+<Type>image</Type><AuthCheck allowed="yes">1: world access allowed</AuthCheck><Url name="MediaLink">/cgi/i/image/api/image/clark1ic8lift:008458875:39015091904402/full/full/0/native.jpg</Url></Column>
+<Column x="15" y="1" blank="no" thumb="yes"><Url name="EntryLink">https://roger.quod.lib.umich.edu/cgi/i/image/image-idx?sort=marc710;rgn1=marc710;select1=phrase;c=clark1ic8lift;q1=National%2520Ocean%2520Survey.;subview=detail;resnum=2;start=1;view=entry;lastview=reslist;lasttype=boolean;cc=clark1ic8lift;entryid=x-008458875;viewid=39015091904592;debug=xml;size=50;chaperone=S-CLARK1IC8LIFT-X-008458875%2039015091904402</Url><Url name="Thumb">data:image/jpeg;base64,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
+</Url><Url name="ThumbLink" foo="bar">/cgi/i/image/api/tile/clark1ic8lift:008458875:39015091904592/full/!100,100/0/default.jpg</Url><Caption>39015091904592</Caption><Caption>Sheet 15 of 24 (No. 152)</Caption>
+
+<Type>image</Type><AuthCheck allowed="yes">1: world access allowed</AuthCheck><Url name="MediaLink">/cgi/i/image/api/image/clark1ic8lift:008458875:39015091904402/full/full/0/native.jpg</Url></Column>
+<Column x="16" y="1" blank="no" thumb="yes"><Url name="EntryLink">https://roger.quod.lib.umich.edu/cgi/i/image/image-idx?sort=marc710;rgn1=marc710;select1=phrase;c=clark1ic8lift;q1=National%2520Ocean%2520Survey.;subview=detail;resnum=2;start=1;view=entry;lastview=reslist;lasttype=boolean;cc=clark1ic8lift;entryid=x-008458875;viewid=39015091914245;debug=xml;size=50;chaperone=S-CLARK1IC8LIFT-X-008458875%2039015091904402</Url><Url name="Thumb">data:image/jpeg;base64,/9j/4AAQSkZJRgABAQAAAQABAAD/2wBDAAgGBgcGBQgHBwcJCQgKDBQNDAsLDBkSEw8UHRofHh0a
+HBwgJC4nICIsIxwcKDcpLDAxNDQ0Hyc5PTgyPC4zNDL/2wBDAQkJCQwLDBgNDRgyIRwhMjIyMjIy
+MjIyMjIyMjIyMjIyMjIyMjIyMjIyMjIyMjIyMjIyMjIyMjIyMjIyMjIyMjL/wAARCABIAGQDASIA
+AhEBAxEB/8QAHwAAAQUBAQEBAQEAAAAAAAAAAAECAwQFBgcICQoL/8QAtRAAAgEDAwIEAwUFBAQA
+AAF9AQIDAAQRBRIhMUEGE1FhByJxFDKBkaEII0KxwRVS0fAkM2JyggkKFhcYGRolJicoKSo0NTY3
+ODk6Q0RFRkdISUpTVFVWV1hZWmNkZWZnaGlqc3R1dnd4eXqDhIWGh4iJipKTlJWWl5iZmqKjpKWm
+p6ipqrKztLW2t7i5usLDxMXGx8jJytLT1NXW19jZ2uHi4+Tl5ufo6erx8vP09fb3+Pn6/8QAHwEA
+AwEBAQEBAQEBAQAAAAAAAAECAwQFBgcICQoL/8QAtREAAgECBAQDBAcFBAQAAQJ3AAECAxEEBSEx
+BhJBUQdhcRMiMoEIFEKRobHBCSMzUvAVYnLRChYkNOEl8RcYGRomJygpKjU2Nzg5OkNERUZHSElK
+U1RVVldYWVpjZGVmZ2hpanN0dXZ3eHl6goOEhYaHiImKkpOUlZaXmJmaoqOkpaanqKmqsrO0tba3
+uLm6wsPExcbHyMnK0tPU1dbX2Nna4uPk5ebn6Onq8vP09fb3+Pn6/9oADAMBAAIRAxEAPwDO+HPg
+bRPEvhye+1JJjLHcvGDHIV+UKp6fia7FfhD4Sb+DUB/20P8AhVL4OD/ihr0/9Pcv/otK9NZpY1Uo
+oK45z2/WkM4MfB7wj3XUP+/h/wDiaP8AhUHhAfwah/38P/xNehW7vIu9wAvrj/69Zs2syNOyWVv5
+6pjLk4B9gaQHIf8ACovB/wDzzvv+/jf4Uo+EXg//AJ5Xv/fxv8K7C31tJ7mOKSCaDcdoLgbS2M4z
+WxjigDzcfCTwdnHlXuR/00f/AApw+Efg7/njef8Afx/8K9AQf6VJ/ur/AFqwBQB5x/wqPwb/AM8L
+z/v4/wDhR/wqPwd/zwvP+/j/AOFejEUke5kyy7T6UAedf8Kj8Hf88Lz/AL+P/hTovhJ4MVvmtrtu
+ejSOP6V6IRzUM3CZ9x/OgD5Z+IekWnh7xtfabYx+XbRiMou4nGUB6n3JorU+MiY+JN8f70UJ/wDH
+BRTA9A+Di/8AFBXh/wCnuX/0Wleoqv7sDIHHevM/g1z8Prz/AK+5f/RaV6lGOB9KQGfq0pg0mbDD
+LgRqRxjPH9amsbNbW0REAzj8hVbV3a5kt9OjhkzLKGdyMBVUgkg1rkYXgZ+tAGfqVoLvT5o9o343
+IfRhyP5VLp1x9t06C4wQXXkH1qzKJBE3lKpfHAY4H8qp6NBPb6ckNxGEZCe4Oc89vrQBPEv+ly/R
+f61Y21DH/wAfcv0X+tU7zWfsN/DbS277JiQsg56deKANLFIoFOByuc8UqgkUgGMtV7kYi/Efzq0x
+wCWIAHesebU1upxDZqJo1cebMD8q89Ae5oA8C+M6/wDFw5jjrbRfyop3xn/5KDL/ANe0X8jRVAd3
+8Ggf+FfXn/X3L/6LSvTE+0YH3MV5p8GT/wAW9vP+vyX/ANFpXpE0TyIrIzcDopIJ/WkBZHn/AOxT
+XeaNSzFAB3JptsromXY5I6Enj9a4/wAS+KTbRlYZVPzFdmDkNng56YoA2pvFVrDIyMxJB7LWnaXc
+13bJPGoCOMjcMHFcJ4M0pdVvbjU79/OSJ8RoR8rEjqR+RAr0RVUOWHXAHWgCODf9olL4BwOlZ9r5
+epazPd/K8MCiCPuCerEfoPwqPXdQNhY3bxyBZ3ULF67jVzS4EtNOigjyAi8k9Se5oAvjjgdKUMqr
+zgD1NZ97rFpZ/u94luG4SGP5mY/TtVf7FqGpoBqMiwW5GTb27HJ9mb0+lIBot49ena4ldmsEJSOM
+MQJSOrH1GeB9KvzxpFbqkaKiBgAqjAHNWURIoljjUKijAA6AVVvD+6H+8P50AfO/xk5+IEv/AF7R
+fyNFM+MTZ8fy/wDXvH/I0VSA7/4NHHw9vP8Ar8l/9FpXpmQVGQTxXmfwa/5J7ef9fsv/AKAlelxv
+uGMHikIJJkgt5JH+RApJJNefaZoh8TXk80ny2SSkE55Y+g/xrvb+zW/sZLZmKhxjI7Vz1jo2paWn
+2SCdjARnIOOSeaBlnS7+w0l49IRWVy+1WwMMc+v6V0inHFeZeKPKtdYsbazl/exsDI45KnIxivS1
+4GMk+9AHLeJPs/8Aa0L3H8Kjy/lyN2arvq19qzNbaZbsxH8RYbQPU/4V1DQQ3M8qTxJIvBw6g1Yg
+t4LZSsEKRg8kIoGaAKmjaVFplqAQHuH+aWUjlj9fSrN1NLFgoy4PYoT+uanzTHIZSD075FAEEE8s
+/JZdvfEZGfxzTb0/uR/vD+dSRYjTaAAuP4QaivP9SP8AeH86APnX4vc+PZv+uEf8qKPi5/yPs3/X
+CP8AlRVAb3w18d6D4c8KTafqk0qzPdPJtSMt8pVR1H0Ndd/wtnwgP+Xu7/79vRRSsA9fix4QP/L7
+df8Aft6cPit4OPBv7n/v09FFFgK5+IvgAtu81s+v2U/4VYb4reEP4dTuB9YHNFFFgIl+KfhUNn+1
+Zuev+jvU4+LHhAddSuSfaBv8KKKLAL/wtrweP+Yhdn/ti3+FRt8WvChb5dRuAPe3aiiiwDj8WfB/
+/QQu/wDvw3+FQTfFbwm5ULqF1gMCQYDz+lFFFgPI/iFrdl4g8WS3+nyM9u0SKCylTkDng0UUUwP/
+2Q==
+</Url><Url name="ThumbLink" foo="bar">/cgi/i/image/api/tile/clark1ic8lift:008458875:39015091914245/full/!100,100/0/default.jpg</Url><Caption>39015091914245</Caption><Caption>Sheet 16 of 24 (No. 153)</Caption>
+
+<Type>image</Type><AuthCheck allowed="yes">1: world access allowed</AuthCheck><Url name="MediaLink">/cgi/i/image/api/image/clark1ic8lift:008458875:39015091904402/full/full/0/native.jpg</Url></Column>
+<Column x="17" y="1" blank="no" thumb="yes"><Url name="EntryLink">https://roger.quod.lib.umich.edu/cgi/i/image/image-idx?sort=marc710;rgn1=marc710;select1=phrase;c=clark1ic8lift;q1=National%2520Ocean%2520Survey.;subview=detail;resnum=2;start=1;view=entry;lastview=reslist;lasttype=boolean;cc=clark1ic8lift;entryid=x-008458875;viewid=39015091914393;debug=xml;size=50;chaperone=S-CLARK1IC8LIFT-X-008458875%2039015091904402</Url><Url name="Thumb">data:image/jpeg;base64,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
+</Url><Url name="ThumbLink" foo="bar">/cgi/i/image/api/tile/clark1ic8lift:008458875:39015091914393/full/!100,100/0/default.jpg</Url><Caption>39015091914393</Caption><Caption>Sheet 17 of 24 (No. 154)</Caption>
+
+<Type>image</Type><AuthCheck allowed="yes">1: world access allowed</AuthCheck><Url name="MediaLink">/cgi/i/image/api/image/clark1ic8lift:008458875:39015091904402/full/full/0/native.jpg</Url></Column>
+<Column x="18" y="1" blank="no" thumb="yes"><Url name="EntryLink">https://roger.quod.lib.umich.edu/cgi/i/image/image-idx?sort=marc710;rgn1=marc710;select1=phrase;c=clark1ic8lift;q1=National%2520Ocean%2520Survey.;subview=detail;resnum=2;start=1;view=entry;lastview=reslist;lasttype=boolean;cc=clark1ic8lift;entryid=x-008458875;viewid=39015091914104;debug=xml;size=50;chaperone=S-CLARK1IC8LIFT-X-008458875%2039015091904402</Url><Url name="Thumb">data:image/jpeg;base64,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
+9d1/R5NNvBaC3kKk+XFtPByO/rRRRQM//9k=
+</Url><Url name="ThumbLink" foo="bar">/cgi/i/image/api/tile/clark1ic8lift:008458875:39015091914104/full/!100,100/0/default.jpg</Url><Caption>39015091914104</Caption><Caption>Sheet 18 of 24 (No. 155)</Caption>
+
+<Type>image</Type><AuthCheck allowed="yes">1: world access allowed</AuthCheck><Url name="MediaLink">/cgi/i/image/api/image/clark1ic8lift:008458875:39015091904402/full/full/0/native.jpg</Url></Column>
+<Column x="19" y="1" blank="no" thumb="yes"><Url name="EntryLink">https://roger.quod.lib.umich.edu/cgi/i/image/image-idx?sort=marc710;rgn1=marc710;select1=phrase;c=clark1ic8lift;q1=National%2520Ocean%2520Survey.;subview=detail;resnum=2;start=1;view=entry;lastview=reslist;lasttype=boolean;cc=clark1ic8lift;entryid=x-008458875;viewid=39015091914252;debug=xml;size=50;chaperone=S-CLARK1IC8LIFT-X-008458875%2039015091904402</Url><Url name="Thumb">data:image/jpeg;base64,/9j/4AAQSkZJRgABAQAAAQABAAD/2wBDAAgGBgcGBQgHBwcJCQgKDBQNDAsLDBkSEw8UHRofHh0a
+HBwgJC4nICIsIxwcKDcpLDAxNDQ0Hyc5PTgyPC4zNDL/2wBDAQkJCQwLDBgNDRgyIRwhMjIyMjIy
+MjIyMjIyMjIyMjIyMjIyMjIyMjIyMjIyMjIyMjIyMjIyMjIyMjIyMjIyMjL/wAARCABHAGQDASIA
+AhEBAxEB/8QAHwAAAQUBAQEBAQEAAAAAAAAAAAECAwQFBgcICQoL/8QAtRAAAgEDAwIEAwUFBAQA
+AAF9AQIDAAQRBRIhMUEGE1FhByJxFDKBkaEII0KxwRVS0fAkM2JyggkKFhcYGRolJicoKSo0NTY3
+ODk6Q0RFRkdISUpTVFVWV1hZWmNkZWZnaGlqc3R1dnd4eXqDhIWGh4iJipKTlJWWl5iZmqKjpKWm
+p6ipqrKztLW2t7i5usLDxMXGx8jJytLT1NXW19jZ2uHi4+Tl5ufo6erx8vP09fb3+Pn6/8QAHwEA
+AwEBAQEBAQEBAQAAAAAAAAECAwQFBgcICQoL/8QAtREAAgECBAQDBAcFBAQAAQJ3AAECAxEEBSEx
+BhJBUQdhcRMiMoEIFEKRobHBCSMzUvAVYnLRChYkNOEl8RcYGRomJygpKjU2Nzg5OkNERUZHSElK
+U1RVVldYWVpjZGVmZ2hpanN0dXZ3eHl6goOEhYaHiImKkpOUlZaXmJmaoqOkpaanqKmqsrO0tba3
+uLm6wsPExcbHyMnK0tPU1dbX2Nna4uPk5ebn6Onq8vP09fb3+Pn6/9oADAMBAAIRAxEAPwCXwF4H
+8N6t4Ms9Q1HT/OuJGcMwkcZw5A4B9q6cfDXwbj/kDSf9/JP/AIqovhnGH+HWmhuhlcH/AL7auw02
+Py5byMu52zfKruWIXauOvbOaQHLf8K18G/8AQFk/7+Sf40v/AArXwZ/0BZP+/kn/AMVXboM5yQea
+edvqKAOF/wCFa+DP+gLJ/wB/JP8A4qlHw08Gf9AST/v5J/8AFV2sssUCF5ZFRR3Y4p6SRtGJVZSh
+GQ3bFAHD/wDCtPBg/wCYJJ/38k/+Ko/4Vp4M/wCgJJ/38k/+KrqodWWe4MQt5ACu9ZONrJnGfWhN
+asJiixTFi+dp2MAcdecY7GgDlh8M/Bv/AEBJP+/sn/xVH/CsvB3/AEBH/wC/sn/xVdFpOoSzzOly
+oQz5mtufvR9APr0P41qzs0cEjqMsqEgepxQBw/8AwrPwd/0BJP8Av7J/8VTD8NvBiZL6M4A6/vZP
+/iq6jTRdMu+d5DHtHEqjLHuR3A+tJ9uSfOyGTy2OElC/K2D/AJ56UAfN/wAQdKsdH8aXtlp0Pk2q
+LGUTJOMopPXnqTRWj8WMf8LF1HH92L/0WtFMZ6r8MP8AknWmf9dn/wDQ2rsxEDqckmQSIVXA6jk9
+f8+tcb8L/wDknGmH/ps//ow118++C7eVeTKiqDtzjGf8aQi3GoG7Cgc1StbOOdXkuVeYmRgokJKg
+AkDA6dKgurhwY47heA2SqsVEox2Prn+EmrSakyIAumXSxgYH3Pw43UAWItPtI3DrbIG7EjOPp6UP
+YQSFlYuImPzRg4U1HFqRa6jhmtJYRLxGzFTk4zyAeOBV+SWOFC8jqijkljgUCKF/aZ8m4hVt8RwV
+T+JO4/kfwqBLRIdJtI58pIo+4oyxYg5AA78mrsl9ZRkZuYgx5ADAk/gOtULu4UzpcRJI7AYKNAwJ
+Hqpxwf50DFSCWWeC4nKxQ2+TFEnPGMfM30PQfrUg1myIBa4SMn/nodo/M1UitInmWG8eZWOfKbeQ
+pz29jW2sEaQiIICg7EZoAoXbytbs0UigtgI3UEkgDHrT5LdbawSFM7IwqjPoMVKthDG6lN4UHIj3
+HaD9KZesRbPz6fzoEfOnxY/5KLqP+7F/6LWimfFRt/xAvm9Y4j/5DWimUesfC4/8W300f9Nn/wDR
+hrvuGGCARXA/C7/knGnf9dn/APRhrvu1IQSRxyxNG6gowwRVCNJI7sxi5E6gdHXlf+BDg/zqWW6w
+jbnVQOoIIP4VFHBcyHKu0UTjIZcbl/MH+VMRZmtY7hVVgdw5VwcFD6g9qryRxW8RlnmeQgABpSWw
+T2C9O/pUo0yHAEk9xIep3TMM/gMCpY7aKKLdCpc4ypeQtn8TmgCpB9qCiT+zowG6BJNrKM8ZGP60
+/wA6/csDp+1iRgmYY/H2+laIyBUc9xFbJvmcKvQd8n2HegDMu7hY4jHf2+yMkLubDRkk8fN1H1IF
+Sxyy2CKxlM9oOpYfPGPXP8QH5/Wqk6tqN750sDLCgVIFnUcuScsF+mOvvVwR+Ys1pcEtjjA4yh6f
+1H4UDNE+orP1H/j1k47VNZSM1t5b53xMUbJ546fpg1Hfj/RZPpQI+bPiZ/yPF3n/AJ5xf+gLRU3x
+TXb4/vR6RxD/AMcWigo9X+F//JOdP/67N/6MNd8PrXA/C7/knGnf9dm/9GGu+AoEOoz60uKQ0CKU
+0rfb1XHAUj65AptpO6xRoFLIVP4cLj+tW3h3SrJn7oIxj1ot4BDAqEAsBgn8B/hQAtxcLb2klw/R
+ELY/DpWbJHf+fDPJi5df+WafIqcHJ5PJ5AqWSG3ubyZbyNHKsDGH7LgdPxzUtyWjCzJOECZ+UjcH
+46YoAr2/nG6jcwgszE7nbcyD09qt3kUgdbmEFmUbXjGPnX/EdfzqW3gSNA2wCVhlmxySeTU/egDM
+ik2XjSo++OZgHDKQynHH4f41LfDNs/0qeW3jkdXbIKnPHGfrVe9kXynjBO7bnpQB86/Fb/koN9/u
+Rf8AoC0U74sjHxCvv+ucX/oAooKOq8DfETw5oXg610vUZLpbiN2ZvKiyOWJHOa6L/hbvhIdLjUf+
+/P8A9eiigLCj4v8AhMf8t9QP/bD/AOyoPxh8J9PN1H6+T/8AXoooCwn/AAuDwmTzLqf/AH5H+NOH
+xe8I/wDPxqQ+sP8A9eiigLCSfFbwZMMST3zD/at802L4oeCITmOW9UjuLeiigLE//C3PCH/P3qH/
+AH5NRv8AFzwnnKXV/wDjCf8AGiigLC/8Ld8I4/4+NRJ/64//AF6hb4t+EnJUyaiQfWL/AOvRRQFj
+yXx9rdn4g8XXOpWDO1vIkYUuu05CgHj8KKKKBn//2Q==
+</Url><Url name="ThumbLink" foo="bar">/cgi/i/image/api/tile/clark1ic8lift:008458875:39015091914252/full/!100,100/0/default.jpg</Url><Caption>39015091914252</Caption><Caption>Sheet 19 of 24 (No. 156)</Caption>
+
+<Type>image</Type><AuthCheck allowed="yes">1: world access allowed</AuthCheck><Url name="MediaLink">/cgi/i/image/api/image/clark1ic8lift:008458875:39015091904402/full/full/0/native.jpg</Url></Column>
+<Column x="20" y="1" blank="no" thumb="yes"><Url name="EntryLink">https://roger.quod.lib.umich.edu/cgi/i/image/image-idx?sort=marc710;rgn1=marc710;select1=phrase;c=clark1ic8lift;q1=National%2520Ocean%2520Survey.;subview=detail;resnum=2;start=1;view=entry;lastview=reslist;lasttype=boolean;cc=clark1ic8lift;entryid=x-008458875;viewid=39015091914401;debug=xml;size=50;chaperone=S-CLARK1IC8LIFT-X-008458875%2039015091904402</Url><Url name="Thumb">data:image/jpeg;base64,/9j/4AAQSkZJRgABAQAAAQABAAD/2wBDAAgGBgcGBQgHBwcJCQgKDBQNDAsLDBkSEw8UHRofHh0a
+HBwgJC4nICIsIxwcKDcpLDAxNDQ0Hyc5PTgyPC4zNDL/2wBDAQkJCQwLDBgNDRgyIRwhMjIyMjIy
+MjIyMjIyMjIyMjIyMjIyMjIyMjIyMjIyMjIyMjIyMjIyMjIyMjIyMjIyMjL/wAARCABkAEgDASIA
+AhEBAxEB/8QAHwAAAQUBAQEBAQEAAAAAAAAAAAECAwQFBgcICQoL/8QAtRAAAgEDAwIEAwUFBAQA
+AAF9AQIDAAQRBRIhMUEGE1FhByJxFDKBkaEII0KxwRVS0fAkM2JyggkKFhcYGRolJicoKSo0NTY3
+ODk6Q0RFRkdISUpTVFVWV1hZWmNkZWZnaGlqc3R1dnd4eXqDhIWGh4iJipKTlJWWl5iZmqKjpKWm
+p6ipqrKztLW2t7i5usLDxMXGx8jJytLT1NXW19jZ2uHi4+Tl5ufo6erx8vP09fb3+Pn6/8QAHwEA
+AwEBAQEBAQEBAQAAAAAAAAECAwQFBgcICQoL/8QAtREAAgECBAQDBAcFBAQAAQJ3AAECAxEEBSEx
+BhJBUQdhcRMiMoEIFEKRobHBCSMzUvAVYnLRChYkNOEl8RcYGRomJygpKjU2Nzg5OkNERUZHSElK
+U1RVVldYWVpjZGVmZ2hpanN0dXZ3eHl6goOEhYaHiImKkpOUlZaXmJmaoqOkpaanqKmqsrO0tba3
+uLm6wsPExcbHyMnK0tPU1dbX2Nna4uPk5ebn6Onq8vP09fb3+Pn6/9oADAMBAAIRAxEAPwC/8P8A
+wn4f1PwLZXl/pFvc3MjupdiVJ+cgcj2rqB8OfCx5PhuH/wACH/xrP+GH/JP9NH/TV/8A0Y1ehgKw
++YD8aQHGj4deFCePDUJ/7eG/+KpT8OvCv/Qsxf8Af9v/AIqulvdTsdNtZriSWIeUhYqrDccdgKl0
+65e+063u3j8szIJAmc7QeRn3xQByB+HnhPzRH/wjSbiN3+vb/wCKqnY+DfA2qGYWmhrI0LlJVEzq
+yMOxBYGu1uryC31W2t5JAstxG4jU/wAWMEjP0rmdXt5/DviN/EkCl7G4CR3saD5kxxvx3HTP0oAj
+/wCFb+Ex/wAy4f8Av+3/AMVQfhz4TA/5Fv8A8jN/8VXVvdC5sUuLN96ONyuu0jH4mqdvdXM9xhZR
+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
+VtOn0+9vkktp12uogRcjOeoFFFFAH//Z
+</Url><Url name="ThumbLink" foo="bar">/cgi/i/image/api/tile/clark1ic8lift:008458875:39015091914401/full/!100,100/0/default.jpg</Url><Caption>39015091914401</Caption><Caption>Sheet 20 of 24 (No. 157)</Caption>
+
+<Type>image</Type><AuthCheck allowed="yes">1: world access allowed</AuthCheck><Url name="MediaLink">/cgi/i/image/api/image/clark1ic8lift:008458875:39015091904402/full/full/0/native.jpg</Url></Column>
+<Column x="21" y="1" blank="no" thumb="yes"><Url name="EntryLink">https://roger.quod.lib.umich.edu/cgi/i/image/image-idx?sort=marc710;rgn1=marc710;select1=phrase;c=clark1ic8lift;q1=National%2520Ocean%2520Survey.;subview=detail;resnum=2;start=1;view=entry;lastview=reslist;lasttype=boolean;cc=clark1ic8lift;entryid=x-008458875;viewid=39015091914112;debug=xml;size=50;chaperone=S-CLARK1IC8LIFT-X-008458875%2039015091904402</Url><Url name="Thumb">data:image/jpeg;base64,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
+am3uEKOEgCnHsa4iiigZ/9k=
+</Url><Url name="ThumbLink" foo="bar">/cgi/i/image/api/tile/clark1ic8lift:008458875:39015091914112/full/!100,100/0/default.jpg</Url><Caption>39015091914112</Caption><Caption>Sheet 21 of 24 (No. 158)</Caption>
+
+<Type>image</Type><AuthCheck allowed="yes">1: world access allowed</AuthCheck><Url name="MediaLink">/cgi/i/image/api/image/clark1ic8lift:008458875:39015091904402/full/full/0/native.jpg</Url></Column>
+<Column x="22" y="1" blank="no" thumb="yes"><Url name="EntryLink">https://roger.quod.lib.umich.edu/cgi/i/image/image-idx?sort=marc710;rgn1=marc710;select1=phrase;c=clark1ic8lift;q1=National%2520Ocean%2520Survey.;subview=detail;resnum=2;start=1;view=entry;lastview=reslist;lasttype=boolean;cc=clark1ic8lift;entryid=x-008458875;viewid=39015091914260;debug=xml;size=50;chaperone=S-CLARK1IC8LIFT-X-008458875%2039015091904402</Url><Url name="Thumb">data:image/jpeg;base64,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
+TkCiiikB/9k=
+</Url><Url name="ThumbLink" foo="bar">/cgi/i/image/api/tile/clark1ic8lift:008458875:39015091914260/full/!100,100/0/default.jpg</Url><Caption>39015091914260</Caption><Caption>Sheet 22 of 24 (No. 159)</Caption>
+
+<Type>image</Type><AuthCheck allowed="yes">1: world access allowed</AuthCheck><Url name="MediaLink">/cgi/i/image/api/image/clark1ic8lift:008458875:39015091904402/full/full/0/native.jpg</Url></Column>
+<Column x="23" y="1" blank="no" thumb="yes"><Url name="EntryLink">https://roger.quod.lib.umich.edu/cgi/i/image/image-idx?sort=marc710;rgn1=marc710;select1=phrase;c=clark1ic8lift;q1=National%2520Ocean%2520Survey.;subview=detail;resnum=2;start=1;view=entry;lastview=reslist;lasttype=boolean;cc=clark1ic8lift;entryid=x-008458875;viewid=39015091914419;debug=xml;size=50;chaperone=S-CLARK1IC8LIFT-X-008458875%2039015091904402</Url><Url name="Thumb">data:image/jpeg;base64,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
+</Url><Url name="ThumbLink" foo="bar">/cgi/i/image/api/tile/clark1ic8lift:008458875:39015091914419/full/!100,100/0/default.jpg</Url><Caption>39015091914419</Caption><Caption>Sheet 23 of 24 (No. 160)</Caption>
+
+<Type>image</Type><AuthCheck allowed="yes">1: world access allowed</AuthCheck><Url name="MediaLink">/cgi/i/image/api/image/clark1ic8lift:008458875:39015091904402/full/full/0/native.jpg</Url></Column>
+<Column x="24" y="1" blank="no" thumb="yes"><Url name="EntryLink">https://roger.quod.lib.umich.edu/cgi/i/image/image-idx?sort=marc710;rgn1=marc710;select1=phrase;c=clark1ic8lift;q1=National%2520Ocean%2520Survey.;subview=detail;resnum=2;start=1;view=entry;lastview=reslist;lasttype=boolean;cc=clark1ic8lift;entryid=x-008458875;viewid=39015091914120;debug=xml;size=50;chaperone=S-CLARK1IC8LIFT-X-008458875%2039015091904402</Url><Url name="Thumb">data:image/jpeg;base64,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
+uhVtRjwRg/6PH/hXIfaJf736CiimB//Z
+</Url><Url name="ThumbLink" foo="bar">/cgi/i/image/api/tile/clark1ic8lift:008458875:39015091914120/full/!100,100/0/default.jpg</Url><Caption>39015091914120</Caption><Caption>Sheet 24 of 24 (No. 161)</Caption>
+
+<Type>image</Type><AuthCheck allowed="yes">1: world access allowed</AuthCheck><Url name="MediaLink">/cgi/i/image/api/image/clark1ic8lift:008458875:39015091904402/full/full/0/native.jpg</Url></Column>
+</Row>
+
+</View>
+</RelatedViews>
+
+<Portfolios type="private"/>
+<Portfolios type="public"/>
+
+<ExtraIECSS test="lt IE 10">/i/image/vendor/Leaflet.Pancontrol/src/L.Control.Pan.ie.css</ExtraIECSS>
+<ExtraIECSS test="lt IE 10">/i/image/css/ie.css</ExtraIECSS>
+<ExtraIECSS test="lt IE 8">/i/image/css/ie7.css</ExtraIECSS>
+
+<Assets>
+    <script type="text/javascript" src="js/_entry.js" timestamp="1586292740">
+        <script type="text/javascript" src="vendor/jquery.sticky-kit.js" timestamp="1586292740"/>
+        <script type="text/javascript" src="vendor/Rubberband/jquery.bp.rubberband.js" timestamp="1586292740"/>
+        <script type="text/javascript" src="js/imageclass.js" timestamp="1586292740"/>
+        <script type="text/javascript" src="js/jquery_cookie.js" timestamp="1586292740"/>
+        <script type="text/javascript" src="js/feedback.js" timestamp="1586292740"/>
+        <script type="text/javascript" src="bootstrap/js/bootbox.js" timestamp="1586292740"/>
+        <script type="text/javascript" src="js/jquery.trap.min.js" timestamp="1586292740"/>
+        <script type="text/javascript" src="vendor/Leaflet-1.5.1/leaflet-src.js" timestamp="1586292740"/>
+        <script type="text/javascript" src="vendor/Leaflet.Pancontrol/src/L.Control.Pan.js" timestamp="1586292740"/>
+        <script type="text/javascript" src="vendor/Leaflet.contextmenu/dist/leaflet.contextmenu.js" timestamp="1586292740"/>
+        <script type="text/javascript" src="vendor/strftime-min.js" timestamp="1586292740"/>
+        <script type="text/javascript" src="vendor/Leaflet-IIIF-UM/leaflet-iiif.js" timestamp="1586292740"/>
+        <script type="text/javascript" src="js/image_viewer.js" timestamp="1586292740"/>
+        <script type="text/javascript" src="js/entry.js" timestamp="1586292740"/>
+    </script>
+    <link rel="stylesheet" type="text/css" href="css/_entry.css" timestamp="1586292740">
+        <link rel="stylesheet" type="text/css" href="css/entry.css" timestamp="1586292740"/>
+        <link rel="stylesheet" type="text/css" href="vendor/Leaflet-1.5.1/leaflet.css" timestamp="1586292740"/>
+        <link rel="stylesheet" type="text/css" href="vendor/Leaflet.Pancontrol/src/L.Control.Pan.css" timestamp="1586292740"/>
+        <link rel="stylesheet" type="text/css" href="vendor/Leaflet.contextmenu/dist/leaflet.contextmenu.css" timestamp="1586292740"/>
+    </link>
+</Assets>
+
+<!-- CHUNK filename="entry.assets.chnk" optional="0" -->
+
+<CollName><Full>UM Clark Library Maps (Uplifted)</Full><Brief>UM Clark Library Maps</Brief></CollName>
+
+
+
+</Top>
