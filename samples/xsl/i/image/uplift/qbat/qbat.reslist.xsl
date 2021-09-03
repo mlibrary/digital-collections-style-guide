@@ -4,6 +4,7 @@
   <xsl:template name="build-extra-styles">
     <xsl:comment>DUBIOUS EXCEPTIONS</xsl:comment>
     <link rel="stylesheet" href="/samples/styles/entry.css" />
+    <script src="/samples/js/base.js"></script>
   </xsl:template>
 
   <xsl:template match="qui:main">
@@ -160,7 +161,25 @@
 
   <xsl:template match="qui:section" mode="result">
     <section class="[ results-list--small ]">
-      <a class="[ flex ]" href="{qui:link[@rel='result']/@href}">
+      <xsl:variable name="link" select="qui:link[@rel='result']" />
+      <a class="[ flex ]">
+        <xsl:attribute name="href">
+          <xsl:choose>
+            <xsl:when test="normalize-space($link/@identifier)">
+              <xsl:text>../</xsl:text>
+              <xsl:value-of select="$link/@identifier" />
+              <xsl:text>/</xsl:text>
+            </xsl:when>
+            <xsl:otherwise><xsl:value-of select="$link/@href" /></xsl:otherwise>
+          </xsl:choose>
+        </xsl:attribute>
+        <xsl:attribute name="data-available">
+          <xsl:choose>
+            <xsl:when test="$possible-identifiers[. = $link/@identifier]">true</xsl:when>
+            <xsl:otherwise>false</xsl:otherwise>
+          </xsl:choose>
+        </xsl:attribute>
+
         <img class="[ results-list__image ]" src="{qui:link[@rel='iiif']/@href}/full/!140,140/0/native.jpg" alt="{ItemDescription}" />
         <div class="[ results-list__content ]">
           <h4><xsl:apply-templates select="qui:title" /></h4>

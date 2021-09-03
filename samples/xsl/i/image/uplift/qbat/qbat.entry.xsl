@@ -11,6 +11,7 @@
     <script src="https://cdnjs.cloudflare.com/ajax/libs/tocbot/4.11.1/tocbot.js"></script>
 
     <link rel="stylesheet" href="/samples/styles/entry.css" />
+    <script src="/samples/js/base.js"></script>
     <script src="/samples/js/entry.js"></script>
   </xsl:template>
 
@@ -113,7 +114,7 @@
       <a href="qui:link[@rel='back']/@href">Back to search results</a>
     </section>
   </xsl:template>
-  
+
   <xsl:template name="build-breadcrumbs-extra-nav">
     <xsl:apply-templates select="qui:nav[@role='results']" mode="pagination-link" />
   </xsl:template>
