@@ -84,6 +84,13 @@ while ( queue.length ) {
     }
     xmlDoc.documentElement.setAttribute('identifier', identifier);
 
+    const valueEls = xpath.select("//Value|//Param", xmlDoc);
+    valueEls.forEach((valueEl) => {
+      if ( valueEl.textContent.indexOf('%') > -1 ) {
+        valueEl.textContent = unescape(valueEl.textContent);
+      }
+    })
+
     if ( collid.indexOf('8lift') > -1 ) {
       // update the MiradorConfig
       const miradorConfigEl = xpath.select("//MiradorConfig", xmlDoc);

@@ -3,11 +3,6 @@
   <xsl:param name="prototype">stacked</xsl:param>
 
   <xsl:template name="build-extra-scripts">
-    <script src="https://unpkg.com/mirador@latest/dist/mirador.min.js"></script>
-    <xsl:if test="false()">
-      <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.1/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-+0n0xVW2eSR5OomGNYDnhzAbDsOXxcvSN1TPprVMTNDbiYZCxYbOOl7+AMvyTG2x" crossorigin="anonymous" />
-      <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.1/dist/js/bootstrap.bundle.min.js" integrity="sha384-gtEjrD/SeCtmISkJkNUaaKMoLD0//ElJ19smozuHV6z3Iehds+3Ulb9Bn9Plx0x4" crossorigin="anonymous"></script>
-    </xsl:if>
 
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@shoelace-style/shoelace@2.0.0-beta.43/dist/themes/base.css" />
     <script type="module" src="https://cdn.jsdelivr.net/npm/@shoelace-style/shoelace@2.0.0-beta.43/dist/shoelace.js"></script>
@@ -118,46 +113,9 @@
       <a href="qui:link[@rel='back']/@href">Back to search results</a>
     </section>
   </xsl:template>
-
-  <xsl:template name="build-breadcrumbs">
-    <div class="[ breadcrumb ]">
-      <nav aria-label="Breadcrumb">
-        <ol>
-          <xsl:for-each select="qui:nav[@role='breadcrumb']/qui:link">
-            <li>
-              <xsl:apply-templates select=".">
-                <xsl:with-param name="attributes">
-                  <xsl:if test="position() = last()">
-                    <qui:attribute name="aria-current">page</qui:attribute>
-                  </xsl:if>
-                </xsl:with-param>
-              </xsl:apply-templates>
-
-              <xsl:if test="false()">
-              <a>
-                <!-- how to pass aria attributes to generic qui:link handler? -->
-                <xsl:attribute name="href">
-                  <xsl:choose>
-                    <xsl:when test="normalize-space(@identifier)">
-                      <xsl:text>../</xsl:text>
-                      <xsl:value-of select="@identifier" />
-                      <xsl:text>/</xsl:text>
-                    </xsl:when>
-                    <xsl:otherwise><xsl:value-of select="@href" /></xsl:otherwise>
-                  </xsl:choose>
-                </xsl:attribute>
-                <xsl:if test="position() = last()">
-                  <xsl:attribute name="aria-current">page</xsl:attribute>
-                </xsl:if>
-                <xsl:value-of select="." />
-              </a>
-            </xsl:if>
-            </li>
-          </xsl:for-each>
-        </ol>
-      </nav>
-      <xsl:apply-templates select="qui:nav[@role='results']" mode="pagination-link" />
-    </div>
+  
+  <xsl:template name="build-breadcrumbs-extra-nav">
+    <xsl:apply-templates select="qui:nav[@role='results']" mode="pagination-link" />
   </xsl:template>
 
   <xsl:template match="qui:nav[@role='results']" mode="pagination-link">

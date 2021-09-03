@@ -1,8 +1,17 @@
 <xsl:stylesheet version="1.0" xmlns="http://www.w3.org/1999/xhtml" xmlns:xsl="http://www.w3.org/1999/XSL/Transform" xmlns:dlxs="http://dlxs.org" xmlns:qui="http://dlxs.org/quombat/ui" xmlns:exsl="http://exslt.org/common" xmlns:str="http://exslt.org/strings" extension-element-prefixes="exsl str">
 
-  <xsl:import href="str.split.function.xsl" />
-
   <xsl:output method="xml" version="1.0" encoding="utf-8" indent="yes" />
+
+  <xsl:template name="get-head-title">
+    <qui:values>
+      <qui:value>
+        <xsl:call-template name="get-title" />
+      </qui:value>
+      <qui:value>
+        <xsl:call-template name="get-collection-title" />
+      </qui:value>
+    </qui:values>
+  </xsl:template>
 
   <xsl:template name="build-body-main">
     <xsl:call-template name="build-results-navigation" />
@@ -20,7 +29,7 @@
       <qui:link href="{/Top/Home}">
         <xsl:value-of select="/Top/Banner/Text" />
       </qui:link>
-      <qui:link href="{/Top/CurrentUrl}">
+      <qui:link href="{/Top//CurrentUrl}" identifier="{/Top/@identifier}">
         <xsl:call-template name="get-title" />
       </qui:link>
     </qui:nav>
@@ -30,16 +39,56 @@
 
   <xsl:template name="build-results-navigation">
     <!-- do we have M/N available in the PI handler? -->
+    <xsl:variable name="total" select="//TotalResults" />
     <xsl:variable name="sz" select="//Param[@name='size']" />
-    <xsl:variable name="end-1" select="//Fisheye/Url[@class='active']/@name + $sz - 1" />
+    <xsl:variable name="end-1">
+      <xsl:choose>
+        <xsl:when test="$total &lt;= $sz">
+          <xsl:value-of select="$total" />
+        </xsl:when>
+        <xsl:otherwise>
+          <xsl:value-of select="//Fisheye/Url[@class='active']/@name + $sz - 1" />
+        </xsl:otherwise>
+      </xsl:choose>
+    </xsl:variable>
     <xsl:variable name="end">
       <xsl:choose>
         <xsl:when test="$end-1 &gt; //TotalResults"><xsl:value-of select="//TotalResults" /></xsl:when>
         <xsl:otherwise><xsl:value-of select="$end-1" /></xsl:otherwise>
       </xsl:choose>
     </xsl:variable>
+    <xsl:variable name="max">
+      <xsl:choose>
+        <xsl:when test="$total &lt;= $sz">
+          <xsl:value-of select="1" />
+        </xsl:when>
+        <xsl:otherwise>
+          <xsl:value-of select="count(//Fisheye/Url)" />
+        </xsl:otherwise>
+      </xsl:choose>
+    </xsl:variable>
+    <xsl:variable name="current">
+      <xsl:choose>
+        <xsl:when test="$total &lt;= $sz">
+          <xsl:value-of select="1" />
+        </xsl:when>
+        <xsl:otherwise>
+          <xsl:value-of select="count(//Fisheye/Url[@class='active']/preceeding-sibling) + 1" />
+        </xsl:otherwise>
+      </xsl:choose>
+    </xsl:variable>
+    <xsl:variable name="start">
+      <xsl:choose>
+        <xsl:when test="$total &lt;= $sz">
+          <xsl:value-of select="1" />
+        </xsl:when>
+        <xsl:otherwise>
+          <xsl:value-of select="//Fisheye/Url[@class='active']/@name" />
+        </xsl:otherwise>
+      </xsl:choose>
+    </xsl:variable>
     <xsl:variable name="tmp-xml">
-      <qui:nav role="results" total="{//TotalResults}" size="{$sz}" min="1" max="{count(//Fisheye/Url)}" current="{count(//Fisheye/Url[@class='active']/preceeding-sibling) + 1}" start="{//Fisheye/Url[@class='active']/@name}" end="{$end}">
+      <qui:nav role="results" total="{//TotalResults}" size="{$sz}" min="1" max="{$max}" current="{$current}" start="{$start}" end="{$end}">
         <xsl:call-template name="build-results-navigation-link">
           <xsl:with-param name="rel">next</xsl:with-param>
           <xsl:with-param name="href" select="/Top/Next/Url" />
@@ -74,11 +123,18 @@
         <xsl:for-each select="$q/Rgn/Option">
           <xsl:variable name="value" select="Value" />
           <xsl:if test="$q/Sel[@abbr=$value][Option/Value='all']">
-            <qui:option value="{Value}"><xsl:value-of select="Label" /></qui:option>
+            <qui:option value="{Value}">
+              <xsl:message><xsl:value-of select="Value" /> :: <xsl:value-of select="Focus" /></xsl:message>
+              <xsl:if test="normalize-space(Focus) = 'true'">
+                <xsl:attribute name="selected">selected</xsl:attribute>
+              </xsl:if>
+              <xsl:value-of select="Label" />
+            </qui:option>
           </xsl:if>
         </xsl:for-each>
       </qui:select>
       <qui:hidden-input name="select1" value="all" />
+      <qui:input name="q1" value="{$q/Value}" />
     </qui:form>
     <xsl:apply-templates select="//Facets" />
     <qui:block slot="results">
@@ -88,7 +144,7 @@
 
   <xsl:template match="Results/Result">
     <qui:section>
-      <qui:link rel="result" href="{Url[@name='EntryLink']}" />
+      <qui:link rel="result" href="{Url[@name='EntryLink']}" identifier="{.//EntryWindowName}" />
       <xsl:apply-templates select="MediaInfo" mode="iiif-link" />
       <qui:title>
         <qui:values>

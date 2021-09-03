@@ -3,65 +3,14 @@
 
   <xsl:template name="build-extra-styles">
     <xsl:comment>DUBIOUS EXCEPTIONS</xsl:comment>
-    <style>
-      .pagination {
-        display: flex;
-        align-items: center;
-        justify-content: space-between;
-        margin-top: 1rem;
-      }
-
-      .pagination__links {
-        display: flex;
-        align-items: center;
-        gap: 1rem;
-      }
-
-      .pagination__form {
-        display: flex;
-        align-items: center;
-        gap: 0.5rem;
-      }
-
-      .pagination__input {
-        padding: 0.5rem;
-        max-width: 8ch;
-      }
-
-      .gap-sm {
-        gap: 8px;
-      }
-
-      .filter__link {
-        text-decoration: none;
-        justify-content: space-between;
-        margin-bottom: var(--space-x-small);
-      }
-
-      .filter__link:hover span.value {
-        text-decoration: underline;
-      }
-
-      .filter__button {
-        background: #fff;
-        font-size: 0.875rem;
-        padding: var(--space-x-small);
-        color: var(--color-neutral-500);
-        font-weight: normal;
-      }
-
-
-      span.count {
-        color: #000;
-      }
-    </style>
+    <link rel="stylesheet" href="/samples/styles/entry.css" />
   </xsl:template>
 
   <xsl:template match="qui:main">
 
     <xsl:call-template name="build-collection-heading" />
 
-    <div class="flex">
+    <div class="[ flex flex-flow-rw ]">
       <div class="side-panel">
         <xsl:call-template name="build-filters-panel" />
       </div>
@@ -76,73 +25,58 @@
 
   </xsl:template>
 
-  <xsl:template name="build-breadcrumbs">
-    <section class="[ breadcrumb ]">
-      <nav aria-label="Breadcrumb">
-        <ol>
-          <xsl:for-each select="qui:nav[@role='breadcrumb']/qui:link">
-            <li>
-              <xsl:choose>
-                <xsl:when test="./@href=''">
-                  <span>
-                    <xsl:if test="position() = last()">
-                      <xsl:attribute name="aria-current">page</xsl:attribute>
-                    </xsl:if>
-                    <xsl:value-of select="." />
-                  </span>
-                </xsl:when>
-                <xsl:when test="./@href">
-                  <a href="{@href}">
-                    <xsl:if test="position() = last()">
-                      <xsl:attribute name="aria-current">page</xsl:attribute>
-                    </xsl:if>
-                    <xsl:value-of select="." />
-                  </a>
-                </xsl:when>
-                <xsl:otherwise></xsl:otherwise>
-              </xsl:choose>
-              <xsl:if test="position() &lt; last()">
-                <svg height="18px" viewBox="0 0 20 20" width="12px" fill="#06080a" aria-hidden="true">
-                  <g>
-                    <g>
-                      <rect fill="none" height="20" width="20" />
-                    </g>
-                  </g>
-                  <g>
-                    <polygon points="4.59,16.59 6,18 14,10 6,2 4.59,3.41 11.17,10" />
-                  </g>
-                </svg>
-              </xsl:if>
-            </li>
-          </xsl:for-each>
-        </ol>
-      </nav>
-    </section>
-  </xsl:template>
-
   <xsl:template name="build-search-form">
     <xsl:variable name="form" select="//qui:form[@id='collection-search']" />
-    <fieldset class="[ results-search ][ no-border ]">
+    <fieldset class="[ input-group right ][ results-search ] [ no-border ]">
       <legend class="visually-hidden">Search</legend>
       <div class="[ search-container ] [ flex ]">
-        <select class="[ dropdown select ] [ bold no-border ]">
+        <label for="search-select" class="visually-hidden"
+          >Select a search filter:</label
+        >
+        <select id="search-select" class="[ dropdown dropdown--neutral select ] [ bold no-border ]">
           <xsl:for-each select="$form/qui:select/qui:option">
-            <option value="{@value}"><xsl:value-of select="." /></option>
+            <option value="{@value}">
+              <xsl:if test="@selected = 'selected'">
+                <xsl:attribute name="selected">selected</xsl:attribute>
+              </xsl:if>
+              <xsl:value-of select="." />
+            </option>
           </xsl:for-each>
         </select>
-        <div class="[ border ]">
-          <label class="visually-hidden" for="search-collection">
-            <span>Search</span>
-          </label>
-        </div>
+
+        <label for="search-collection" class="visually-hidden">
+          <span>Search</span>
+        </label>
+
+        <input
+          id="search-collection"
+          type="search"
+          name="query"
+          placeholder=""
+          value="{$form/qui:input[@name='q1']/@value}"
+        />
         <xsl:apply-templates select="$form/qui:hidden-input" />
-        <input id="search-collection" class="results-search_input" type="search" name="query" placeholder="" />
         <div class="flex">
-          <button class="[ button button--primary button--small ]" type="submit" aria-label="Search">
-            <svg width="20px" height="20px" viewBox="0 0 24 24" class="button-icon" aria-hidden="true">
-              <path d="M15.5 14h-.79l-.28-.27C15.41 12.59 16 11.11 16 9.5 16 5.91 13.09 3 9.5 3S3 5.91 3 9.5 5.91 16 9.5 16c1.61 0 3.09-.59 4.23-1.57l.27.28v.79l5 4.99L20.49 19l-4.99-5zm-6 0C7.01 14 5 11.99 5 9.5S7.01 5 9.5 5 14 7.01 14 9.5 11.99 14 9.5 14z"></path>
+          <button
+            class="[ button button--cta ]"
+            type="submit"
+            aria-label="Search"
+          >
+            <svg
+              xmlns="http://www.w3.org/2000/svg"
+              width="24px"
+              height="24px"
+              viewBox="0 0 24 24"
+              aria-hidden="true"
+              focusable="false"
+              role="img"
+            >
+              <path
+                d="M15.5 14h-.79l-.28-.27C15.41 12.59 16 11.11 16 9.5 16 5.91 13.09 3 9.5 3S3 5.91 3 9.5 5.91 16 9.5 16c1.61 0 3.09-.59 4.23-1.57l.27.28v.79l5 4.99L20.49 19l-4.99-5zm-6 0C7.01 14 5 11.99 5 9.5S7.01 5 9.5 5 14 7.01 14 9.5 11.99 14 9.5 14z"
+              ></path>
             </svg>
-            <span class="visually-hidden" style="border: 0px; clip: rect(0px, 0px, 0px, 0px); height: 1px; margin: -1px; overflow: hidden; padding: 0px; position: absolute; width: 1px; white-space: nowrap; overflow-wrap: normal;">Submit</span>
+
+            <span class="visually-hidden">Submit</span>
           </button>
         </div>
       </div>
@@ -189,38 +123,38 @@
   <xsl:template name="build-filters-panel">
     <xsl:variable name="filters" select="//qui:filters-panel" />
     <xsl:if test="$filters//qui:field">
-      <section class="[ filters ]" aria-labelledby="filters-heading">
-        <h2 id="filters-heading" class="visually-hidden">Filters</h2>
-        <div class="[ border-bottom ]">
-          <p class="[ bold ]">Filters</p>
-          <xsl:for-each select="$filters//qui:field">
-            <div class="[ border-bottom ]">
-              <p><xsl:value-of select="qui:label" /></p>
-              <ul>
-                <xsl:for-each select="qui:values/qui:value[position() &lt;= 10]">
-                  <li>
-                    <a href="#" class="[ flex filter__link ]">
-                      <span class="value"><xsl:value-of select="." /></span>
-                      <span class="count"><xsl:value-of select="@count" /></span>
-                    </a>
-                  </li>
-                </xsl:for-each>
-              </ul>
-              <xsl:if test="count(qui:values/qui:value) &gt; 10">
-                <p>
-                  <button class="[ button filter__button ]">
-                    <xsl:text>Show all </xsl:text>
-                    <xsl:value-of select="count(qui:values/qui:value)" />
-                    <xsl:text> </xsl:text>
-                    <xsl:value-of select="qui:label" />
-                    <xsl:text> filters</xsl:text>
-                  </button>
-                </p>
-              </xsl:if>
-            </div>
-          </xsl:for-each>
-        </div>
-      </section>
+      <h3 class="[ mt-2 ]">Filters</h3>
+      <div class="[ side-panel__box ]">
+        <xsl:for-each select="$filters//qui:field">
+          <details>
+            <summary><xsl:value-of select="qui:label" /></summary>
+            <xsl:for-each select="qui:values/qui:value[position() &lt;= 10]">
+              <div>
+                <input type="checkbox" id="{ @key }-{ position() }" name="{@key}" value="{ . }" />
+                <label for="{ @key }-{ position() }">
+                  <xsl:value-of select="." /><xsl:text> </xsl:text>
+                  <span class="filters__count">
+                    <xsl:text>(</xsl:text>
+                    <xsl:value-of select="@count" />
+                    <xsl:text>)</xsl:text>
+                  </span>
+                </label>
+              </div>
+            </xsl:for-each>
+            <xsl:if test="count(qui:values/qui:value) &gt; 10">
+              <p>
+                <button class="[ button filter__button ]">
+                  <xsl:text>Show all </xsl:text>
+                  <xsl:value-of select="count(qui:values/qui:value)" />
+                  <xsl:text> </xsl:text>
+                  <xsl:value-of select="qui:label" />
+                  <xsl:text> filters</xsl:text>
+                </button>
+              </p>
+            </xsl:if>
+          </details>
+        </xsl:for-each>
+      </div>
     </xsl:if>
   </xsl:template>
 

@@ -24,7 +24,7 @@
 <Param name="rgn1">marc710</Param>
 <Param name="select1">phrase</Param>
 <Param name="c">clark1ic8lift</Param>
-<Param name="q1">National%20Ocean%20Survey.</Param>
+<Param name="q1">National Ocean Survey.</Param>
 <Param name="subview">detail</Param>
 <Param name="resnum">4</Param>
 <Param name="start">1</Param>
@@ -41,7 +41,7 @@
 <CurrentUrl>https://roger.quod.lib.umich.edu/cgi/i/image/image-idx?sort=marc710;rgn1=marc710;select1=phrase;c=clark1ic8lift;q1=National%2520Ocean%2520Survey.;subview=detail;resnum=4;start=1;view=entry;lastview=reslist;lasttype=boolean;cc=clark1ic8lift;entryid=x-008458875;viewid=39015091904261;debug=xml;size=50;chaperone=S-CLARK1IC8LIFT-X-008458875%2039015091904261</CurrentUrl>
 <UserAgent>node-fetch/1.0 (+https://github.com/bitinn/node-fetch)</UserAgent>
 <ReferrerHref/>
-<Sid>a50ebc3c728f4c1197e8293913c62012</Sid>
+<Sid>20bb21dd9fbf9be5540b9dbd10927d40</Sid>
 
 <EffectiveLanguage>en</EffectiveLanguage>
 <LanguageOptions><OptionalLanguage>en</OptionalLanguage></LanguageOptions>
@@ -576,7 +576,7 @@ for items where...</item>
 <TotalResults>72</TotalResults>
 <ContactLink>'m'+'a'+'i'+'l'+'t'+'o'+':'+'c'+'l'+'a'+'r'+'k'+'1'+'i'+'c'+'-'+'h'+'e'+'l'+'p'+'@'+'u'+'m'+'i'+'c'+'h'+'.'+'e'+'d'+'u'</ContactLink>
 <ContactText>E-Mail Help</ContactText>
-<LoginLink><Url>https://roger.quod.lib.umich.edu/cgi/dlxslogin/go?target=https%3A%2F%2Froger.quod.lib.umich.edu%2Fcgi%2Fi%2Fimage%2Fimage-idx%3Fkey_authret%3D1630511355</Url><Mode>login</Mode></LoginLink>
+<LoginLink><Url>https://roger.quod.lib.umich.edu/cgi/dlxslogin/go?target=https%3A%2F%2Froger.quod.lib.umich.edu%2Fcgi%2Fi%2Fimage%2Fimage-idx%3Fkey_authret%3D1630683860</Url><Mode>login</Mode></LoginLink>
 <SearchLink>https://roger.quod.lib.umich.edu/cgi/i/image/image-idx?sort=marc710;rgn1=marc710;select1=phrase;c=clark1ic8lift;debug=xml;size=50;chaperone=S-CLARK1IC8LIFT-X-008458875%2039015091904261;q1=National%2520Ocean%2520Survey.;page=search;view=reslist</SearchLink>
 <BackLink identifier="Q_CLARK1IC8LIFT_X_MARC710___NATIONAL_OCEAN_SURVEY___1">https://roger.quod.lib.umich.edu/cgi/i/image/image-idx?sort=marc710;rgn1=marc710;select1=phrase;c=clark1ic8lift;debug=xml;size=50;q1=National%2520Ocean%2520Survey.;view=reslist;type=boolean;start=1</BackLink>
 <Banner><Text>UM Clark Library Maps (Uplift)</Text></Banner>
@@ -631,49 +631,49 @@ KfjunbQZf/A3/wCwoooCw3/hew/6AMn/AIG//YU1vjqx4GguPf7af/iKKKAsM/4Xm/8A0AmP/b6f
     <h>329</h>
 </Initial>
 <MediaHost>https://roger.quod.lib.umich.edu</MediaHost>
-<AuthCheck allowed="yes" check="yes">1: world access allowed</AuthCheck>
+<AuthCheck check="yes" allowed="yes">1: world access allowed</AuthCheck>
 <Debug/>
+<istruct_isentryidv class="fieldsRef">S-CLARK1IC8LIFT-X-008458875-4</istruct_isentryidv>
+<m_source class="fieldsRef">clark1ic</m_source>
+<istruct_mo class="fieldsRef">TIF</istruct_mo>
+<m_caption class="fieldsRef">39015091904261|||Sheet 4 of 24 (No. 139)</m_caption>
+<istruct_x class="fieldsRef">4</istruct_x>
+<istruct_ms class="fieldsRef">P</istruct_ms>
+<m_fn class="fieldsRef">39015091904261</m_fn>
+<istruct_caption_barcode class="fieldsRef">39015091904261</istruct_caption_barcode>
+<istruct_m class="fieldsRef">39015091904261</istruct_m>
+<m_id class="fieldsRef">008458875</m_id>
+<m_entryauth class="fieldsRef">WORLD</m_entryauth>
+<m_flm class="fieldsRef">2015-01-23 14:56:04</m_flm>
+<ic_collid class="fieldsRef">clark1ic8lift</ic_collid>
+<istruct_isentryid class="fieldsRef">S-CLARK1IC8LIFT-X-008458875]39015091904261</istruct_isentryid>
 <istruct_mt class="fieldsRef">IMAGE:::DYNAMIC2</istruct_mt>
+<istruct_y class="fieldsRef">1</istruct_y>
 <istruct_stid class="fieldsRef">0</istruct_stid>
+<m_iid class="fieldsRef">39015091904261</m_iid>
+<istruct_stty class="fieldsRef">SUMM</istruct_stty>
 <istruct_caption class="fieldsRef">39015091904261|||Sheet 4 of 24 (No. 139)</istruct_caption>
 <istruct_face class="fieldsRef">UNSPEC</istruct_face>
-<istruct_ms class="fieldsRef">P</istruct_ms>
 <m_searchable class="fieldsRef">1</m_searchable>
-<istruct_m class="fieldsRef">39015091904261</istruct_m>
-<istruct_isentryidv class="fieldsRef">S-CLARK1IC8LIFT-X-008458875-4</istruct_isentryidv>
-<m_iid class="fieldsRef">39015091904261</m_iid>
-<m_fn class="fieldsRef">39015091904261</m_fn>
-<m_entryauth class="fieldsRef">WORLD</m_entryauth>
-<istruct_mo class="fieldsRef">TIF</istruct_mo>
-<istruct_caption_barcode class="fieldsRef">39015091904261</istruct_caption_barcode>
-<m_flm class="fieldsRef">2015-01-23 14:56:04</m_flm>
 <istruct_me class="fieldsRef">JP2</istruct_me>
-<m_caption class="fieldsRef">39015091904261|||Sheet 4 of 24 (No. 139)</m_caption>
-<m_id class="fieldsRef">008458875</m_id>
-<m_source class="fieldsRef">clark1ic</m_source>
-<istruct_y class="fieldsRef">1</istruct_y>
-<ic_collid class="fieldsRef">clark1ic8lift</ic_collid>
-<istruct_x class="fieldsRef">4</istruct_x>
-<istruct_stty class="fieldsRef">SUMM</istruct_stty>
-<istruct_isentryid class="fieldsRef">S-CLARK1IC8LIFT-X-008458875]39015091904261</istruct_isentryid>
 <istruct_caption_item_description class="fieldsRef">Sheet 4 of 24 (No. 139)</istruct_caption_item_description>
+<filename class="imgInfHashRef">c/clark1ic/pairtree_root/39/01/50/91/90/42/61/39015091904261/39015091904261.jp2</filename>
+<height class="imgInfHashRef">10552</height>
+<loaded class="imgInfHashRef">2015-01-23 17:12:20</loaded>
 <basename class="imgInfHashRef">39015091904261</basename>
+<master class="imgInfHashRef">0</master>
+<width class="imgInfHashRef">15064</width>
+<collid class="imgInfHashRef">clark1ic</collid>
+<levels class="imgInfHashRef">6</levels>
+<size class="imgInfHashRef">8430315</size>
 <md5 class="imgInfHashRef">57dbeab9df0da013dc57dafe239c80a2</md5>
 <u class="imgInfHashRef">1</u>
-<width class="imgInfHashRef">15064</width>
-<access class="imgInfHashRef">1</access>
-<levels class="imgInfHashRef">6</levels>
-<use class="imgInfHashRef">access</use>
 <ext class="imgInfHashRef">jp2</ext>
-<height class="imgInfHashRef">10552</height>
-<filename class="imgInfHashRef">c/clark1ic/pairtree_root/39/01/50/91/90/42/61/39015091904261/39015091904261.jp2</filename>
-<modified class="imgInfHashRef">2015-01-23 14:56:04</modified>
 <mimetype class="imgInfHashRef">image/jp2</mimetype>
-<loaded class="imgInfHashRef">2015-01-23 17:12:20</loaded>
-<size class="imgInfHashRef">8430315</size>
-<master class="imgInfHashRef">0</master>
-<collid class="imgInfHashRef">clark1ic</collid>
 <type class="imgInfHashRef">image</type>
+<access class="imgInfHashRef">1</access>
+<use class="imgInfHashRef">access</use>
+<modified class="imgInfHashRef">2015-01-23 14:56:04</modified>
 <HighestQualityLevelAllowed>5</HighestQualityLevelAllowed>
 <Levels>6</Levels>
 <Zoomable>no</Zoomable>

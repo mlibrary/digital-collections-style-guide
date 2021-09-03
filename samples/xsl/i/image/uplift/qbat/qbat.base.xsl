@@ -83,6 +83,49 @@
     <xsl:text>University of Michigan Library Digital Collections</xsl:text>
   </xsl:template>
 
+  <xsl:template name="build-breadcrumbs">
+    <div class="[ breadcrumb ]">
+      <nav aria-label="Breadcrumb">
+        <ol>
+          <xsl:for-each select="qui:nav[@role='breadcrumb']/qui:link">
+            <li>
+              <xsl:apply-templates select=".">
+                <xsl:with-param name="attributes">
+                  <xsl:if test="position() = last()">
+                    <qui:attribute name="aria-current">page</qui:attribute>
+                  </xsl:if>
+                </xsl:with-param>
+              </xsl:apply-templates>
+
+              <xsl:if test="false()">
+              <a>
+                <!-- how to pass aria attributes to generic qui:link handler? -->
+                <xsl:attribute name="href">
+                  <xsl:choose>
+                    <xsl:when test="normalize-space(@identifier)">
+                      <xsl:text>../</xsl:text>
+                      <xsl:value-of select="@identifier" />
+                      <xsl:text>/</xsl:text>
+                    </xsl:when>
+                    <xsl:otherwise><xsl:value-of select="@href" /></xsl:otherwise>
+                  </xsl:choose>
+                </xsl:attribute>
+                <xsl:if test="position() = last()">
+                  <xsl:attribute name="aria-current">page</xsl:attribute>
+                </xsl:if>
+                <xsl:value-of select="." />
+              </a>
+            </xsl:if>
+            </li>
+          </xsl:for-each>
+        </ol>
+      </nav>
+      <xsl:call-template name="build-breadcrumbs-extra-nav" />
+    </div>
+  </xsl:template>
+
+  <xsl:template name="build-breadcrumbs-extra-nav"></xsl:template>
+
   <xsl:template match="qui:block">
     <xsl:apply-templates select="." mode="copy-guts" />
   </xsl:template>
