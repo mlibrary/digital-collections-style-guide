@@ -43,7 +43,7 @@ if (!fs.existsSync(targetFilePath)) {
 if ( argv.collid ) {
   targetFilePath += `${argv.collid.substr(0, 1)}/${argv.collid}/`;
 }
-await $`find ${targetFilePath} -type f | xargs rm`;
+await $`find ${targetFilePath} -type f | xargs rm -f`;
 
 let dataFilenames = [...getAllFilesSync(dataFilePath)];
 for(let i = 0; i < dataFilenames.length; i++) {
