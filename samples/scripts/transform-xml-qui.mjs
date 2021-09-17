@@ -37,6 +37,9 @@ console.log("=>", dataFilePath);
 
 // clear out the target path
 let targetFilePath = `${rootPath}/samples/qui/`;
+if (!fs.existsSync(targetFilePath)) {
+  fs.mkdirSync(targetFilePath);
+}
 if ( argv.collid ) {
   targetFilePath += `${argv.collid.substr(0, 1)}/${argv.collid}/`;
 }
