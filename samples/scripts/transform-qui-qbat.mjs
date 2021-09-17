@@ -42,6 +42,13 @@ if ( argv.collid ) {
 }
 console.log("=>", dataFilePath);
 
+// clear out the target path
+let targetFilePath = `${rootPath}/samples/qbat/`;
+if ( argv.collid ) {
+  targetFilePath += `${argv.collid.substr(0, 1)}/${argv.collid}/`;
+}
+await $`find ${targetFilePath} -type f | xargs rm`;
+
 let dataFilenames = [...getAllFilesSync(dataFilePath)];
 for(let i = 0; i < dataFilenames.length; i++) {
   let dataFilename = dataFilenames[i];
