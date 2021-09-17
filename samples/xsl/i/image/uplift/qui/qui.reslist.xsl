@@ -72,14 +72,15 @@
     </xsl:variable>
     <xsl:variable name="current">
       <xsl:choose>
-        <xsl:when test="$total &lt;= $sz">
+        <xsl:when test="count(//Fisheye/Url) = 0">
           <xsl:value-of select="1" />
         </xsl:when>
         <xsl:otherwise>
-          <xsl:value-of select="count(//Fisheye/Url[@class='active']/preceeding-sibling) + 1" />
+          <xsl:value-of select="count(//Fisheye/Url[@class='active']//preceding-sibling::Url) + 1" />
         </xsl:otherwise>
       </xsl:choose>
     </xsl:variable>
+    <xsl:message>FISHEYE: <xsl:value-of select="count(//Fisheye/Url)" /> :: <xsl:value-of select="count(//Fisheye/Url[@class='active']//preceding-sibling::Url)" /> :: <xsl:value-of select="$current" /></xsl:message>
     <xsl:variable name="start">
       <xsl:choose>
         <xsl:when test="$total &lt;= $sz">
