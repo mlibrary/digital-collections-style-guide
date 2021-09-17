@@ -35,7 +35,10 @@
     </qui:nav>
   </xsl:template>
 
-  <xsl:template name="get-title">Search Results</xsl:template>
+  <xsl:template name="get-title">
+    <xsl:value-of select="//Param[@name='q1']" />
+    <xsl:text> | Search Results</xsl:text>
+  </xsl:template>
 
   <xsl:template name="build-results-navigation">
     <!-- do we have M/N available in the PI handler? -->
@@ -91,10 +94,14 @@
       <qui:nav role="results" total="{//TotalResults}" size="{$sz}" min="1" max="{$max}" current="{$current}" start="{$start}" end="{$end}">
         <xsl:call-template name="build-results-navigation-link">
           <xsl:with-param name="rel">next</xsl:with-param>
+          <xsl:with-param name="identifier" select="/Top/Next/@identifier" />
+          <xsl:with-param name="marker" select="/Top/Next/@marker" />
           <xsl:with-param name="href" select="/Top/Next/Url" />
         </xsl:call-template>
         <xsl:call-template name="build-results-navigation-link">
           <xsl:with-param name="rel">previous</xsl:with-param>
+          <xsl:with-param name="identifier" select="/Top/Prev/@identifier" />
+          <xsl:with-param name="marker" select="/Top/Prev/@marker" />
           <xsl:with-param name="href" select="/Top/Prev/Url" />
         </xsl:call-template>
       </qui:nav>
@@ -110,9 +117,19 @@
 
   <xsl:template name="build-results-navigation-link">
     <xsl:param name="rel" />
+    <xsl:param name="identifier" />
+    <xsl:param name="marker" />
     <xsl:param name="href" />
     <xsl:if test="normalize-space($href)">
-      <qui:link rel="{$rel}" href="{$href}" />
+      <xsl:message>NAVIGATION: <xsl:value-of select="$identifier" /></xsl:message>
+      <qui:link rel="{$rel}" href="{$href}">
+        <xsl:if test="normalize-space($identifier)">
+          <xsl:attribute name="identifier"><xsl:value-of select="$identifier" /></xsl:attribute>
+        </xsl:if>
+        <xsl:if test="normalize-space($marker)">
+          <xsl:attribute name="marker"><xsl:value-of select="$marker" /></xsl:attribute>
+        </xsl:if>
+      </qui:link>
     </xsl:if>
   </xsl:template>
 
@@ -144,7 +161,7 @@
 
   <xsl:template match="Results/Result">
     <qui:section>
-      <qui:link rel="result" href="{Url[@name='EntryLink']}" identifier="{.//EntryWindowName}" />
+      <qui:link rel="result" href="{Url[@name='EntryLink']}" identifier="{.//EntryWindowName}" marker="{@marker}" />
       <xsl:apply-templates select="MediaInfo" mode="iiif-link" />
       <qui:title>
         <qui:values>

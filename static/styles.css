@@ -406,6 +406,10 @@ a[class*="next"]::after {
   vertical-align: middle;
 }
 
+#results-pagination {
+  width: 8ch;
+}
+
 /*
  * Utilities
  *
@@ -725,4 +729,11 @@ button {
     transition-duration: 0s !important;
     transition-delay: 0s !important;
   }
+}
+
+/*
+ * Preview
+ */
+html[data-preview-links="true"] a:not([data-available="true"]) {
+  opacity: 0.25;
 }

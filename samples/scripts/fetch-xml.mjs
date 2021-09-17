@@ -10,6 +10,8 @@ import fs from "fs";
 import { DOMParser, XMLSerializer } from "@xmldom/xmldom";
 import xpath from "xpath";
 
+import md5 from 'md5';
+
 const argv = yargs(hideBin(process.argv)).argv;
 
 const moduleURL = new URL(import.meta.url);
@@ -21,8 +23,7 @@ collidMap['/c/clark1ic'] = '/c/clark1ic8lift';
 
 const queue = [ ...argv._.map((v) => [ v, null ]) ];
 
-while ( queue.length ) {
-  let [ href, backIdentifier ] = queue.shift();
+const hrefToUrl = function(href) {
   let url = new URL(href.replace(/\;/g, "&"));
   if ( ! url.searchParams.has('debug') ) {
     url.searchParams.set('debug', 'xml');
@@ -38,7 +39,26 @@ while ( queue.length ) {
   if ( argv.dev && url.hostname.indexOf('roger.') < 0 ) {
     url.hostname = `roger.${url.hostname}`;
   }
+  return url;
+}
 
+const urlToIdentifier = function(collid, url) {
+  let tmp = [url.searchParams.get("rgn1")];
+  tmp.push(
+    unescape(url.searchParams.get("q1"))
+      .replace(/\s+/g, "_")
+      .replace(/[^\w_]/g, "")
+  );
+  tmp.push(url.searchParams.get("start") || 1);
+  let identifier = `q_${collid}_x_${tmp.join("___")}`.toUpperCase();
+  return identifier;
+}
+
+let numPagesFollowed = 0;
+while ( queue.length ) {
+  let [ href, backIdentifier, marker ] = queue.shift();
+
+  let url = hrefToUrl(href);
   href = url.toString();
   const resp = await fetch(href);
   if ( resp.ok ) {
@@ -62,25 +82,54 @@ while ( queue.length ) {
     if ( view == 'entry' ) {
       // this is an entry!
       identifier = xpath.select("string(//EntryWindowName)", xmlDoc);
+      if ( marker ) {
+        identifier += `__xz${marker}`;
+        // console.log("WTF", identifier); process.exit();
+      }
       if ( backIdentifier ) {
         const backEl = xpath.select('//BackLink', xmlDoc);
         backEl[0].setAttribute('identifier', backIdentifier);
       }
     } else if ( view == 'thumbnail' || view == 'reslist' ) {
       // search results! make an identifier
-      let tmp = [url.searchParams.get('rgn1')];
-      tmp.push(unescape(url.searchParams.get('q1')).replace(/\s+/g, '_').replace(/[^\w_]/g, ''));
-      tmp.push(url.searchParams.get('start') || 1);
-      identifier = `q_${collid}_x_${tmp.join('___')}`.toUpperCase();
+      identifier = urlToIdentifier(collid, url);
+
+      // let marker_ = Date.now();
+      let marker_ = md5(identifier);
 
       // and gather 5 <Result> elements to add to the queue
       const resultEls = xpath.select('//Results[@name="full"]/Result', xmlDoc);
+      console.log(":::", resultEls.length);
       let N = resultEls.length > 5 ? 5 : resultEls.length;
-      for(let i = 1; i <= N; i++) {
-        let resultEl = resultEls[i - 0];
+      for(let i = 0; i < N; i++) {
+        let resultEl = resultEls[i];
+        if ( ! resultEl ) { break; }
+        resultEl.setAttribute('marker', marker_);
         let entryHref = xpath.select('string(.//Url[@name="EntryLink"])', resultEl);
-        queue.push([ entryHref, identifier ]);
-      } 
+        queue.push([entryHref, identifier, marker_]);
+      }
+      let paginationUrl; let paginationIdentifier; let paginationEl;
+      paginationEl = xpath.select('//Prev/Url', xmlDoc)[0];
+      if ( paginationEl ) {
+        paginationUrl = hrefToUrl(paginationEl.textContent);
+        paginationIdentifier = urlToIdentifier(collid, paginationUrl);
+        paginationEl.parentNode.setAttribute('identifier', paginationIdentifier);
+
+        // --- do not add to queue; this should match the original download
+        // queue.push(paginationUrl.toString());
+      }
+
+      paginationEl = xpath.select("//Next/Url", xmlDoc)[0];
+      if (paginationEl && numPagesFollowed <= 5) {
+        paginationUrl = hrefToUrl(paginationEl.textContent);
+        paginationIdentifier = urlToIdentifier(collid, paginationUrl);
+        paginationEl.parentNode.setAttribute(
+          "identifier",
+          paginationIdentifier
+        );
+        queue.push([paginationUrl.toString()]);
+        numPagesFollowed += 1;
+      }
     }
     xmlDoc.documentElement.setAttribute('identifier', identifier);
 
@@ -106,9 +155,11 @@ while ( queue.length ) {
       }
     }
 
-    console.log("==>", identifier);
+    console.log("==>", identifier, marker);
+    let outputFilename = identifier;
+    // if ( marker ) { outputFilename += (  '__xz' + marker ); }
     fs.writeFileSync(
-      path.join(collidPath, `${identifier}.xml`),
+      path.join(collidPath, `${outputFilename}.xml`),
       new XMLSerializer().serializeToString(xmlDoc)
     );
 

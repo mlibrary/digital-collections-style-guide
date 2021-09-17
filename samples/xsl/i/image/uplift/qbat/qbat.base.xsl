@@ -54,6 +54,8 @@
       <script type="module" src="https://unpkg.com/@umich-lib/components@v1/dist/umich-lib/umich-lib.esm.js"></script>
       <script nomodule="" src="https://unpkg.com/@umich-lib/components@v1/dist/umich-lib/umich-lib.js"></script>
 
+      <link href="data:image/x-icon;base64,AAABAAEAEBAAAAAAAABoBQAAFgAAACgAAAAQAAAAIAAAAAEACAAAAAAAAAEAAAAAAAAAAAAAAAEAAAAAAAAAAAAAAOX/AD09PQA0a5EAuwD/AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAICAgACAgACAgIAAAAAAAIDAwMCAgICAwMDAgAAAAIDAwMDAgICAgMDAwMCAAACAwMDAgICAgICAwMDAgAAAgMDAwICAgICAgMDAwIAAAIBAwMCAgICAgIDAwECAAACAQEBAQICAgIBAQEBAgAAAgEBAgEBAgIBAQIBAQIAAAACAQEBAQEBAQEBAQIAAAAAAgEBAQEBAQEBAQECAAAAAAICAQEBAQEBAQECAgAAAAACBAIBAQEBAQECBAIAAAAAAAICAgICAgICAgIAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAP//AADiRwAAwAMAAIABAACAAQAAgAEAAIABAACAAQAAgAEAAMADAADAAwAAwAMAAMADAADgBwAA//8AAP//AAA=" rel="icon" type="image/x-icon" />
+
       <xsl:call-template name="build-extra-scripts" />
       <xsl:call-template name="build-extra-styles" />
 
@@ -61,7 +63,7 @@
   </xsl:template>
 
   <xsl:template match="qui:m-website-header">
-    <m-website-header name="{@name}">
+    <m-website-header name="{@name}" to="/samples/">
       <xsl:apply-templates select="qui:nav" />
     </m-website-header>
   </xsl:template>
@@ -151,21 +153,39 @@
     </a>
   </xsl:template>
 
+  <xsl:template name="build-href-or-identifier">
+    <!-- <xsl:variable name="identifier" select="@identifier" /> -->
+    <xsl:variable name="identifier">
+      <xsl:value-of select="@identifier" />
+      <xsl:if test="normalize-space(@marker)">
+        <xsl:text>__xz</xsl:text>
+        <xsl:value-of select="@marker" />
+      </xsl:if>
+    </xsl:variable>
+<xsl:message>BUILD HREF : <xsl:value-of select="$identifier" /> : <xsl:value-of select="@marker" /></xsl:message>    
+    <xsl:attribute name="href">
+      <xsl:choose>
+        <xsl:when test="normalize-space($identifier)">
+          <xsl:text>../</xsl:text>
+          <xsl:value-of select="$identifier" />
+          <xsl:text>/</xsl:text>
+        </xsl:when>
+        <xsl:otherwise><xsl:value-of select="@href" /></xsl:otherwise>
+      </xsl:choose>
+    </xsl:attribute>
+    <xsl:attribute name="data-available">
+      <xsl:choose>
+        <xsl:when test="$possible-identifiers[. = $identifier]">true</xsl:when>
+        <xsl:otherwise>false</xsl:otherwise>
+      </xsl:choose>
+    </xsl:attribute>
+  </xsl:template>
+
   <xsl:template match="qui:link">
     <xsl:param name="class" />
     <xsl:param name="attributes" />
-    <xsl:variable name="identifier" select="@identifier" />
     <a>
-      <xsl:attribute name="href">
-        <xsl:choose>
-          <xsl:when test="normalize-space(@identifier)">
-            <xsl:text>../</xsl:text>
-            <xsl:value-of select="@identifier" />
-            <xsl:text>/</xsl:text>
-          </xsl:when>
-          <xsl:otherwise><xsl:value-of select="@href" /></xsl:otherwise>
-        </xsl:choose>
-      </xsl:attribute>
+      <xsl:call-template name="build-href-or-identifier" />
       <xsl:if test="normalize-space($class)">
         <xsl:attribute name="class"><xsl:value-of select="$class" /></xsl:attribute>
       </xsl:if>
@@ -174,12 +194,6 @@
           <xsl:attribute name="{@name}"><xsl:value-of select="." /></xsl:attribute>
         </xsl:for-each>
       </xsl:if>
-      <xsl:attribute name="data-available">
-        <xsl:choose>
-          <xsl:when test="$possible-identifiers[. = $identifier]">true</xsl:when>
-          <xsl:otherwise>false</xsl:otherwise>
-        </xsl:choose>
-      </xsl:attribute>
 
       <xsl:choose>
         <xsl:when test="@rel = 'next'">Next</xsl:when>

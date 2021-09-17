@@ -103,22 +103,41 @@
 
   <xsl:template name="build-results-pagination">
     <xsl:variable name="nav" select="//qui:main/qui:nav[@role='results']" />
-    <xsl:if test="$nav/qui:link">
-      <div class="[ pagination ]">
-        <div class="[ pagination__links ]">
-          <xsl:apply-templates select="$nav/qui:link[@rel='previous']" />
-          <xsl:apply-templates select="$nav/qui:link[@rel='next']" />
-        </div>
-        <div class="[ pagination__form ]">
-          <form>
-            <span>Go to page </span>
-            <input class="[ pagination__input ]" type="number" min="1" max="{$nav/@max}" value="{$nav/@current}" />
-            <span> of <xsl:value-of select="$nav/@max" /></span>
-            <button class="[ button button__small ]">Go</button>
-          </form>
-        </div>
+    <nav aria-label="Result navigation" class="[ pagination__row ][ flex flex-space-between flex-align-center ]">
+      <div class="pagination__group">
+        <xsl:if test="$nav/qui:link">
+          <ul class="pagination">
+            <xsl:if test="$nav/qui:link[@rel='previous']">
+              <li class="pagination__item">
+                <xsl:apply-templates select="$nav/qui:link[@rel='previous']" />
+              </li>
+            </xsl:if>
+            <xsl:if test="$nav/qui:link[@rel='next']">
+              <li class="pagination__item">
+                <xsl:apply-templates select="$nav/qui:link[@rel='next']" />
+              </li>
+            </xsl:if>
+          </ul>
+        </xsl:if>
       </div>
-    </xsl:if>
+      <div class="pagination__group">
+        <label for="results-pagination">Go to page:</label>
+        <input
+          type="number"
+          id="results-pagination"
+          name="page"
+          min="1"
+          max="{$nav/@max}"
+          style="width: {$nav/@max + 4}ch"
+          value="{$nav/@current}"
+        />
+        <span>of <xsl:value-of select="$nav/@max" /></span>
+
+        <button type="submit" class="[ button button--secondary ] [ flex ]">
+          Go
+        </button>
+      </div>
+    </nav>
   </xsl:template>
 
   <xsl:template name="build-filters-panel">
@@ -161,23 +180,17 @@
 
   <xsl:template match="qui:section" mode="result">
     <section class="[ results-list--small ]">
-      <xsl:variable name="link" select="qui:link[@rel='result']" />
+      <!-- <xsl:variable name="link" select="qui:link[@rel='result']" /> -->
+      <xsl:variable name="link-tmp">
+        <xsl:apply-templates select="qui:link[@rel='result']" />
+      </xsl:variable>
+      <xsl:variable name="link" select="exsl:node-set($link-tmp)" />
       <a class="[ flex ]">
         <xsl:attribute name="href">
-          <xsl:choose>
-            <xsl:when test="normalize-space($link/@identifier)">
-              <xsl:text>../</xsl:text>
-              <xsl:value-of select="$link/@identifier" />
-              <xsl:text>/</xsl:text>
-            </xsl:when>
-            <xsl:otherwise><xsl:value-of select="$link/@href" /></xsl:otherwise>
-          </xsl:choose>
+          <xsl:value-of select="$link//@href" />
         </xsl:attribute>
         <xsl:attribute name="data-available">
-          <xsl:choose>
-            <xsl:when test="$possible-identifiers[. = $link/@identifier]">true</xsl:when>
-            <xsl:otherwise>false</xsl:otherwise>
-          </xsl:choose>
+          <xsl:value-of select="$link//@data-available" />
         </xsl:attribute>
 
         <img class="[ results-list__image ]" src="{qui:link[@rel='iiif']/@href}/full/!140,140/0/native.jpg" alt="{ItemDescription}" />
@@ -201,7 +214,8 @@
   </xsl:template>
 
   <xsl:template match="qui:link[@rel='previous']" priority="100">
-    <a href="{@href}">
+    <a>
+      <xsl:call-template name="build-href-or-identifier" />
       <svg
           height="18px"
           viewBox="0 0 20 20"
@@ -224,7 +238,8 @@
   </xsl:template>
 
   <xsl:template match="qui:link[@rel='next']" priority="100">
-    <a href="{@href}">
+    <a>
+      <xsl:call-template name="build-href-or-identifier" />
       <span>Next</span>
       <svg
           height="18px"

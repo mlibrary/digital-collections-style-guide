@@ -8,6 +8,7 @@
     "@umich-lib/components": "^1",
     "@xmldom/xmldom": "^0.7.2",
     "get-all-files": "^4.0.0",
+    "md5": "^2.3.0",
     "xpath": "^0.0.32",
     "yargs": "^17.1.1",
     "zx": "^3.1.0"

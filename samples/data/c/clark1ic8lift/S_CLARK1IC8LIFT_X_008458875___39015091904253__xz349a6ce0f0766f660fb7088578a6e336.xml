@@ -1,6 +1,6 @@
 
 
-<!DOCTYPE Top><Top xmlns:dlxs="http://www.umdl.umich.edu/dlxs" identifier="S_CLARK1IC8LIFT_X_008458875___39015091904410">
+<!DOCTYPE Top><Top xmlns:dlxs="http://www.umdl.umich.edu/dlxs" identifier="S_CLARK1IC8LIFT_X_008458875___39015091904253__xz349a6ce0f0766f660fb7088578a6e336">
 
  <!-- XSL fallback files -->
   <XslFallbackFileList>
@@ -26,22 +26,22 @@
 <Param name="c">clark1ic8lift</Param>
 <Param name="q1">National Ocean Survey.</Param>
 <Param name="subview">detail</Param>
-<Param name="resnum">5</Param>
+<Param name="resnum">1</Param>
 <Param name="start">1</Param>
 <Param name="view">entry</Param>
 <Param name="lastview">reslist</Param>
 <Param name="lasttype">boolean</Param>
 <Param name="cc">clark1ic8lift</Param>
 <Param name="entryid">x-008458875</Param>
-<Param name="viewid">39015091904410</Param>
+<Param name="viewid">39015091904253</Param>
 <Param name="debug">xml</Param>
 <Param name="size">50</Param>
-<Param name="chaperone">S-CLARK1IC8LIFT-X-008458875 39015091904410</Param>
+<Param name="chaperone">S-CLARK1IC8LIFT-X-008458875 39015091904253</Param>
 </CurrentCgi>
-<CurrentUrl>https://roger.quod.lib.umich.edu/cgi/i/image/image-idx?sort=marc710;rgn1=marc710;select1=phrase;c=clark1ic8lift;q1=National%2520Ocean%2520Survey.;subview=detail;resnum=5;start=1;view=entry;lastview=reslist;lasttype=boolean;cc=clark1ic8lift;entryid=x-008458875;viewid=39015091904410;debug=xml;size=50;chaperone=S-CLARK1IC8LIFT-X-008458875%2039015091904410</CurrentUrl>
+<CurrentUrl>https://roger.quod.lib.umich.edu/cgi/i/image/image-idx?sort=marc710;rgn1=marc710;select1=phrase;c=clark1ic8lift;q1=National%2520Ocean%2520Survey.;subview=detail;resnum=1;start=1;view=entry;lastview=reslist;lasttype=boolean;cc=clark1ic8lift;entryid=x-008458875;viewid=39015091904253;debug=xml;size=50;chaperone=S-CLARK1IC8LIFT-X-008458875%2039015091904253</CurrentUrl>
 <UserAgent>node-fetch/1.0 (+https://github.com/bitinn/node-fetch)</UserAgent>
 <ReferrerHref/>
-<Sid>845ff3f052704f4e2eb635f4e0f07d32</Sid>
+<Sid>cb2c88d1117459f09900179dcc91657a</Sid>
 
 <EffectiveLanguage>en</EffectiveLanguage>
 <LanguageOptions><OptionalLanguage>en</OptionalLanguage></LanguageOptions>
@@ -553,8 +553,8 @@ for items where...</item>
 </AccessRestrictions>
 
 
-<EntryWindowName>S_CLARK1IC8LIFT_X_008458875___39015091904410</EntryWindowName>
-<ItemUrl>https://roger.quod.lib.umich.edu/cgi/i/image/image-idx?id=S-CLARK1IC8LIFT-X-008458875%5D39015091904410</ItemUrl><ItemUrlEncoded>https%3A%2F%2Froger.quod.lib.umich.edu%2Fcgi%2Fi%2Fimage%2Fimage-idx%3Fid%3DS-CLARK1IC8LIFT-X-008458875%5D39015091904410</ItemUrlEncoded><TitleForTagging>%5BWilkes%20Exploring%20Expedition%20maps%2C%201841%5D%20%2F%20by%20the%20U.S.%20Ex.%20Ex.%2C%20Charles%20Wilkes%2C%20Esqr.%2C%20Commander%20%3B%20U.S.%20Dept.%20of%20Commerce%2C%20National%20Oceanic%20and%20Atmospheric%20Administration%2C%20National%20Ocean%20Survey.</TitleForTagging>
+<EntryWindowName>S_CLARK1IC8LIFT_X_008458875___39015091904253</EntryWindowName>
+<ItemUrl>https://roger.quod.lib.umich.edu/cgi/i/image/image-idx?id=S-CLARK1IC8LIFT-X-008458875%5D39015091904253</ItemUrl><ItemUrlEncoded>https%3A%2F%2Froger.quod.lib.umich.edu%2Fcgi%2Fi%2Fimage%2Fimage-idx%3Fid%3DS-CLARK1IC8LIFT-X-008458875%5D39015091904253</ItemUrlEncoded><TitleForTagging>%5BWilkes%20Exploring%20Expedition%20maps%2C%201841%5D%20%2F%20by%20the%20U.S.%20Ex.%20Ex.%2C%20Charles%20Wilkes%2C%20Esqr.%2C%20Commander%20%3B%20U.S.%20Dept.%20of%20Commerce%2C%20National%20Oceanic%20and%20Atmospheric%20Administration%2C%20National%20Ocean%20Survey.</TitleForTagging>
 <Home>https://roger.quod.lib.umich.edu/cgi/i/image/image-idx?page=index;c=clark1ic8lift</Home>
 <Help>https://roger.quod.lib.umich.edu/cgi/i/image/image-idx?page=help;c=clark1ic8lift</Help>
 <!-- <JavaScriptUrl>/i/image/js/imageclass.js</JavaScriptUrl> -->
@@ -570,22 +570,22 @@ for items where...</item>
 <Visibility div="full-image">hide</Visibility>
 <Visibility div="description">hide</Visibility>
 <Visibility div="other-views">show</Visibility></View></DivView>
-<Next><Url index="5" name="S_CLARK1IC8LIFT_X_008458875___39015091904568">https://roger.quod.lib.umich.edu/cgi/i/image/image-idx?sort=marc710;rgn1=marc710;select1=phrase;c=clark1ic8lift;resnum=5;start=1;view=entry;lastview=reslist;lasttype=boolean;debug=xml;size=50;q1=National%2520Ocean%2520Survey.;cc=clark1ic8lift;entryid=x-008458875;viewid=39015091904568</Url></Next>
-<Prev><Url index="3" name="S_CLARK1IC8LIFT_X_008458875___39015091904261">https://roger.quod.lib.umich.edu/cgi/i/image/image-idx?sort=marc710;rgn1=marc710;select1=phrase;c=clark1ic8lift;resnum=5;start=1;view=entry;lastview=reslist;lasttype=boolean;debug=xml;size=50;q1=National%2520Ocean%2520Survey.;cc=clark1ic8lift;entryid=x-008458875;viewid=39015091904261</Url></Prev>
-<Self><Url index="4" name="S_CLARK1IC8LIFT_X_008458875___39015091904410">https://roger.quod.lib.umich.edu/cgi/i/image/image-idx?sort=marc710;rgn1=marc710;select1=phrase;c=clark1ic8lift;resnum=5;start=1;view=entry;lastview=reslist;lasttype=boolean;debug=xml;size=50;q1=National%2520Ocean%2520Survey.;cc=clark1ic8lift;entryid=x-008458875;viewid=39015091904410</Url></Self>
+<Next><Url index="1" name="S_CLARK1IC8LIFT_X_008458875___39015091904402">https://roger.quod.lib.umich.edu/cgi/i/image/image-idx?sort=marc710;rgn1=marc710;select1=phrase;c=clark1ic8lift;resnum=1;start=1;view=entry;lastview=reslist;lasttype=boolean;debug=xml;size=50;q1=National%2520Ocean%2520Survey.;cc=clark1ic8lift;entryid=x-008458875;viewid=39015091904402</Url></Next>
+<Prev><Url index="23" name="S_CLARK1IC8LIFT_X_008458875___39015091914120">https://roger.quod.lib.umich.edu/cgi/i/image/image-idx?sort=marc710;rgn1=marc710;select1=phrase;c=clark1ic8lift;resnum=1;start=1;view=entry;lastview=reslist;lasttype=boolean;debug=xml;size=50;q1=National%2520Ocean%2520Survey.;cc=clark1ic8lift;entryid=x-008458875;viewid=39015091914120</Url></Prev>
+<Self><Url index="0" name="S_CLARK1IC8LIFT_X_008458875___39015091904253">https://roger.quod.lib.umich.edu/cgi/i/image/image-idx?sort=marc710;rgn1=marc710;select1=phrase;c=clark1ic8lift;resnum=1;start=1;view=entry;lastview=reslist;lasttype=boolean;debug=xml;size=50;q1=National%2520Ocean%2520Survey.;cc=clark1ic8lift;entryid=x-008458875;viewid=39015091904253</Url></Self>
 <TotalResults>72</TotalResults>
 <ContactLink>'m'+'a'+'i'+'l'+'t'+'o'+':'+'c'+'l'+'a'+'r'+'k'+'1'+'i'+'c'+'-'+'h'+'e'+'l'+'p'+'@'+'u'+'m'+'i'+'c'+'h'+'.'+'e'+'d'+'u'</ContactLink>
 <ContactText>E-Mail Help</ContactText>
-<LoginLink><Url>https://roger.quod.lib.umich.edu/cgi/dlxslogin/go?target=https%3A%2F%2Froger.quod.lib.umich.edu%2Fcgi%2Fi%2Fimage%2Fimage-idx%3Fkey_authret%3D1630683861</Url><Mode>login</Mode></LoginLink>
-<SearchLink>https://roger.quod.lib.umich.edu/cgi/i/image/image-idx?sort=marc710;rgn1=marc710;select1=phrase;c=clark1ic8lift;debug=xml;size=50;chaperone=S-CLARK1IC8LIFT-X-008458875%2039015091904410;q1=National%2520Ocean%2520Survey.;page=search;view=reslist</SearchLink>
+<LoginLink><Url>https://roger.quod.lib.umich.edu/cgi/dlxslogin/go?target=https%3A%2F%2Froger.quod.lib.umich.edu%2Fcgi%2Fi%2Fimage%2Fimage-idx%3Fkey_authret%3D1631915768</Url><Mode>login</Mode></LoginLink>
+<SearchLink>https://roger.quod.lib.umich.edu/cgi/i/image/image-idx?sort=marc710;rgn1=marc710;select1=phrase;c=clark1ic8lift;debug=xml;size=50;chaperone=S-CLARK1IC8LIFT-X-008458875%2039015091904253;q1=National%2520Ocean%2520Survey.;page=search;view=reslist</SearchLink>
 <BackLink identifier="Q_CLARK1IC8LIFT_X_MARC710___NATIONAL_OCEAN_SURVEY___1">https://roger.quod.lib.umich.edu/cgi/i/image/image-idx?sort=marc710;rgn1=marc710;select1=phrase;c=clark1ic8lift;debug=xml;size=50;q1=National%2520Ocean%2520Survey.;view=reslist;type=boolean;start=1</BackLink>
 <Banner><Text>UM Clark Library Maps (Uplift)</Text></Banner>
 <BookBagForm action="add"><HiddenVars><Variable name="page">bbname</Variable>
-<Variable name="bbidno">S-CLARK1IC8LIFT-X-008458875]39015091904410</Variable>
+<Variable name="bbidno">S-CLARK1IC8LIFT-X-008458875]39015091904253</Variable>
 </HiddenVars><ActionAllowed>1</ActionAllowed></BookBagForm>
 <Url name="Thumb">data:image/jpeg;base64,/9j/4AAQSkZJRgABAQAAAQABAAD/2wBDAAgGBgcGBQgHBwcJCQgKDBQNDAsLDBkSEw8UHRofHh0a
 HBwgJC4nICIsIxwcKDcpLDAxNDQ0Hyc5PTgyPC4zNDL/2wBDAQkJCQwLDBgNDRgyIRwhMjIyMjIy
-MjIyMjIyMjIyMjIyMjIyMjIyMjIyMjIyMjIyMjIyMjIyMjIyMjIyMjIyMjL/wAARCABIAGQDASIA
+MjIyMjIyMjIyMjIyMjIyMjIyMjIyMjIyMjIyMjIyMjIyMjIyMjIyMjIyMjL/wAARCABHAGQDASIA
 AhEBAxEB/8QAHwAAAQUBAQEBAQEAAAAAAAAAAAECAwQFBgcICQoL/8QAtRAAAgEDAwIEAwUFBAQA
 AAF9AQIDAAQRBRIhMUEGE1FhByJxFDKBkaEII0KxwRVS0fAkM2JyggkKFhcYGRolJicoKSo0NTY3
 ODk6Q0RFRkdISUpTVFVWV1hZWmNkZWZnaGlqc3R1dnd4eXqDhIWGh4iJipKTlJWWl5iZmqKjpKWm
@@ -593,87 +593,86 @@ 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
-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
-xRRRTsB//9k=
-</Url><Url name="ThumbLink" foo="bar">/cgi/i/image/api/tile/clark1ic8lift:008458875:39015091904410/full/!100,100/0/default.jpg</Url><ThumbInfo/>
+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
+TKA2QWPYn1FFFFNID//Z
+</Url><Url name="ThumbLink" foo="bar">/cgi/i/image/api/tile/clark1ic8lift:008458875:39015091904253/full/!100,100/0/default.jpg</Url><ThumbInfo/>
 <OpenPortfolio><Url>https://roger.quod.lib.umich.edu/cgi/i/image/image-idx?page=bbopen</Url></OpenPortfolio>
 <MediaInfo><Initial>
-    <MediaLink>/cgi/i/image/api/image/clark1ic8lift:008458875:39015091904410/full/464,334/0/native.jpg</MediaLink>
+    <MediaLink>/cgi/i/image/api/image/clark1ic8lift:008458875:39015091904253/full/474,338/0/native.jpg</MediaLink>
     <res>5</res>
-    <w>463</w>
-    <h>334</h>
+    <w>473</w>
+    <h>337</h>
 </Initial>
 <MediaHost>https://roger.quod.lib.umich.edu</MediaHost>
-<AuthCheck allowed="yes" check="yes">1: world access allowed</AuthCheck>
+<AuthCheck check="yes" allowed="yes">1: world access allowed</AuthCheck>
 <Debug/>
-<istruct_y class="fieldsRef">1</istruct_y>
-<istruct_isentryidv class="fieldsRef">S-CLARK1IC8LIFT-X-008458875-5</istruct_isentryidv>
-<istruct_mt class="fieldsRef">IMAGE:::DYNAMIC2</istruct_mt>
-<istruct_face class="fieldsRef">UNSPEC</istruct_face>
-<m_flm class="fieldsRef">2015-01-23 14:22:35</m_flm>
-<m_fn class="fieldsRef">39015091904410</m_fn>
-<m_iid class="fieldsRef">39015091904410</m_iid>
 <istruct_stty class="fieldsRef">SUMM</istruct_stty>
-<istruct_ms class="fieldsRef">P</istruct_ms>
-<m_caption class="fieldsRef">39015091904410|||Sheet 5 of 24 (No. 141)</m_caption>
-<istruct_caption_barcode class="fieldsRef">39015091904410</istruct_caption_barcode>
-<m_id class="fieldsRef">008458875</m_id>
-<istruct_me class="fieldsRef">JP2</istruct_me>
-<istruct_caption_item_description class="fieldsRef">Sheet 5 of 24 (No. 141)</istruct_caption_item_description>
+<istruct_isentryid class="fieldsRef">S-CLARK1IC8LIFT-X-008458875]39015091904253</istruct_isentryid>
+<istruct_caption class="fieldsRef">39015091904253|||Sheet 1 of 24 (No. 136)</istruct_caption>
 <m_searchable class="fieldsRef">1</m_searchable>
-<istruct_stid class="fieldsRef">0</istruct_stid>
-<ic_collid class="fieldsRef">clark1ic8lift</ic_collid>
-<istruct_isentryid class="fieldsRef">S-CLARK1IC8LIFT-X-008458875]39015091904410</istruct_isentryid>
+<istruct_y class="fieldsRef">1</istruct_y>
 <m_source class="fieldsRef">clark1ic</m_source>
-<m_entryauth class="fieldsRef">WORLD</m_entryauth>
-<istruct_x class="fieldsRef">5</istruct_x>
-<istruct_m class="fieldsRef">39015091904410</istruct_m>
-<istruct_caption class="fieldsRef">39015091904410|||Sheet 5 of 24 (No. 141)</istruct_caption>
+<istruct_x class="fieldsRef">1</istruct_x>
+<istruct_isentryidv class="fieldsRef">S-CLARK1IC8LIFT-X-008458875-1</istruct_isentryidv>
+<istruct_me class="fieldsRef">JP2</istruct_me>
+<istruct_stid class="fieldsRef">0</istruct_stid>
+<m_fn class="fieldsRef">39015091904253</m_fn>
 <istruct_mo class="fieldsRef">TIF</istruct_mo>
-<height class="imgInfHashRef">10688</height>
-<u class="imgInfHashRef">1</u>
-<ext class="imgInfHashRef">jp2</ext>
-<md5 class="imgInfHashRef">2c21a2e9190f0e32cb3404849967b2fd</md5>
-<levels class="imgInfHashRef">6</levels>
-<access class="imgInfHashRef">1</access>
-<use class="imgInfHashRef">access</use>
-<mimetype class="imgInfHashRef">image/jp2</mimetype>
-<width class="imgInfHashRef">14840</width>
-<modified class="imgInfHashRef">2015-01-23 14:22:35</modified>
-<filename class="imgInfHashRef">c/clark1ic/pairtree_root/39/01/50/91/90/44/10/39015091904410/39015091904410.jp2</filename>
-<size class="imgInfHashRef">8664562</size>
-<collid class="imgInfHashRef">clark1ic</collid>
-<loaded class="imgInfHashRef">2015-01-23 17:12:15</loaded>
-<master class="imgInfHashRef">0</master>
+<m_flm class="fieldsRef">2015-01-23 13:52:29</m_flm>
+<istruct_caption_item_description class="fieldsRef">Sheet 1 of 24 (No. 136)</istruct_caption_item_description>
+<m_entryauth class="fieldsRef">WORLD</m_entryauth>
+<istruct_mt class="fieldsRef">IMAGE:::DYNAMIC2</istruct_mt>
+<ic_collid class="fieldsRef">clark1ic8lift</ic_collid>
+<m_caption class="fieldsRef">39015091904253|||Sheet 1 of 24 (No. 136)</m_caption>
+<istruct_m class="fieldsRef">39015091904253</istruct_m>
+<istruct_face class="fieldsRef">UNSPEC</istruct_face>
+<m_id class="fieldsRef">008458875</m_id>
+<m_iid class="fieldsRef">39015091904253</m_iid>
+<istruct_caption_barcode class="fieldsRef">39015091904253</istruct_caption_barcode>
+<istruct_ms class="fieldsRef">P</istruct_ms>
 <type class="imgInfHashRef">image</type>
-<basename class="imgInfHashRef">39015091904410</basename>
+<filename class="imgInfHashRef">c/clark1ic/pairtree_root/39/01/50/91/90/42/53/39015091904253/39015091904253.jp2</filename>
+<master class="imgInfHashRef">0</master>
+<access class="imgInfHashRef">1</access>
+<md5 class="imgInfHashRef">0f566ceeda33e49368766cedfb4fbca4</md5>
+<use class="imgInfHashRef">access</use>
+<basename class="imgInfHashRef">39015091904253</basename>
+<levels class="imgInfHashRef">6</levels>
+<height class="imgInfHashRef">10800</height>
+<width class="imgInfHashRef">15152</width>
+<ext class="imgInfHashRef">jp2</ext>
+<modified class="imgInfHashRef">2015-01-23 13:52:29</modified>
+<u class="imgInfHashRef">1</u>
+<collid class="imgInfHashRef">clark1ic</collid>
+<mimetype class="imgInfHashRef">image/jp2</mimetype>
+<size class="imgInfHashRef">12943427</size>
+<loaded class="imgInfHashRef">2015-01-23 17:12:12</loaded>
 <HighestQualityLevelAllowed>5</HighestQualityLevelAllowed>
 <Levels>6</Levels>
 <Zoomable>no</Zoomable>
@@ -683,33 +682,33 @@ xRRRTsB//9k=
 <MimeType>image/jp2</MimeType>
 </MediaInfo>
 <ImageSizeTool><Level level="6"><Part name="Current">no</Part>
-<Part name="DownloadLink">https://roger.quod.lib.umich.edu/cgi/i/image/image-idx?sort=marc710;rgn1=marc710;select1=phrase;c=clark1ic8lift;q1=National%2520Ocean%2520Survey.;debug=xml;size=50;chaperone=S-CLARK1IC8LIFT-X-008458875%2039015091904410;evl=full-image;quality=6;view=entry;subview=download;cc=clark1ic8lift;entryid=x-008458875;viewid=39015091904410;start=1;resnum=5;lastview=reslist;lasttype=boolean</Part>
-<Part name="EntryLink">https://roger.quod.lib.umich.edu/cgi/i/image/image-idx?sort=marc710;rgn1=marc710;select1=phrase;c=clark1ic8lift;q1=National%2520Ocean%2520Survey.;debug=xml;size=50;chaperone=S-CLARK1IC8LIFT-X-008458875%2039015091904410;evl=full-image;quality=6;view=entry;subview=detail;cc=clark1ic8lift;entryid=x-008458875;viewid=39015091904410;start=1;resnum=5;lastview=reslist;lasttype=boolean</Part>
-<Part name="MediaLink">/cgi/i/image/api/image/clark1ic8lift:008458875:39015091904410/full/res:6/0/native.jpg</Part><LevelWidth>231</LevelWidth><LevelHeight>167</LevelHeight><LevelMaxDim>231</LevelMaxDim></Level><Level level="5"><Part name="Current">yes</Part>
-<Part name="DownloadLink">https://roger.quod.lib.umich.edu/cgi/i/image/image-idx?sort=marc710;rgn1=marc710;select1=phrase;c=clark1ic8lift;q1=National%2520Ocean%2520Survey.;debug=xml;size=50;chaperone=S-CLARK1IC8LIFT-X-008458875%2039015091904410;evl=full-image;quality=5;view=entry;subview=download;cc=clark1ic8lift;entryid=x-008458875;viewid=39015091904410;start=1;resnum=5;lastview=reslist;lasttype=boolean</Part>
-<Part name="EntryLink">https://roger.quod.lib.umich.edu/cgi/i/image/image-idx?sort=marc710;rgn1=marc710;select1=phrase;c=clark1ic8lift;q1=National%2520Ocean%2520Survey.;debug=xml;size=50;chaperone=S-CLARK1IC8LIFT-X-008458875%2039015091904410;evl=full-image;quality=5;view=entry;subview=detail;cc=clark1ic8lift;entryid=x-008458875;viewid=39015091904410;start=1;resnum=5;lastview=reslist;lasttype=boolean</Part>
-<Part name="MediaLink">/cgi/i/image/api/image/clark1ic8lift:008458875:39015091904410/full/res:5/0/native.jpg</Part><LevelWidth>463</LevelWidth><LevelHeight>334</LevelHeight><LevelMaxDim>463</LevelMaxDim></Level><Level level="4"><Part name="Current">no</Part>
-<Part name="DownloadLink">https://roger.quod.lib.umich.edu/cgi/i/image/image-idx?sort=marc710;rgn1=marc710;select1=phrase;c=clark1ic8lift;q1=National%2520Ocean%2520Survey.;debug=xml;size=50;chaperone=S-CLARK1IC8LIFT-X-008458875%2039015091904410;evl=full-image;quality=4;view=entry;subview=download;cc=clark1ic8lift;entryid=x-008458875;viewid=39015091904410;start=1;resnum=5;lastview=reslist;lasttype=boolean</Part>
-<Part name="EntryLink">https://roger.quod.lib.umich.edu/cgi/i/image/image-idx?sort=marc710;rgn1=marc710;select1=phrase;c=clark1ic8lift;q1=National%2520Ocean%2520Survey.;debug=xml;size=50;chaperone=S-CLARK1IC8LIFT-X-008458875%2039015091904410;evl=full-image;quality=4;view=entry;subview=detail;cc=clark1ic8lift;entryid=x-008458875;viewid=39015091904410;start=1;resnum=5;lastview=reslist;lasttype=boolean</Part>
-<Part name="MediaLink">/cgi/i/image/api/image/clark1ic8lift:008458875:39015091904410/full/res:4/0/native.jpg</Part><LevelWidth>927</LevelWidth><LevelHeight>668</LevelHeight><LevelMaxDim>927</LevelMaxDim></Level><Level level="3"><Part name="Current">no</Part>
-<Part name="DownloadLink">https://roger.quod.lib.umich.edu/cgi/i/image/image-idx?sort=marc710;rgn1=marc710;select1=phrase;c=clark1ic8lift;q1=National%2520Ocean%2520Survey.;debug=xml;size=50;chaperone=S-CLARK1IC8LIFT-X-008458875%2039015091904410;evl=full-image;quality=3;view=entry;subview=download;cc=clark1ic8lift;entryid=x-008458875;viewid=39015091904410;start=1;resnum=5;lastview=reslist;lasttype=boolean</Part>
-<Part name="EntryLink">https://roger.quod.lib.umich.edu/cgi/i/image/image-idx?sort=marc710;rgn1=marc710;select1=phrase;c=clark1ic8lift;q1=National%2520Ocean%2520Survey.;debug=xml;size=50;chaperone=S-CLARK1IC8LIFT-X-008458875%2039015091904410;evl=full-image;quality=3;view=entry;subview=detail;cc=clark1ic8lift;entryid=x-008458875;viewid=39015091904410;start=1;resnum=5;lastview=reslist;lasttype=boolean</Part>
-<Part name="MediaLink">/cgi/i/image/api/image/clark1ic8lift:008458875:39015091904410/full/res:3/0/native.jpg</Part><LevelWidth>1855</LevelWidth><LevelHeight>1336</LevelHeight><LevelMaxDim>1855</LevelMaxDim></Level><Level level="2"><Part name="Current">no</Part>
-<Part name="DownloadLink">https://roger.quod.lib.umich.edu/cgi/i/image/image-idx?sort=marc710;rgn1=marc710;select1=phrase;c=clark1ic8lift;q1=National%2520Ocean%2520Survey.;debug=xml;size=50;chaperone=S-CLARK1IC8LIFT-X-008458875%2039015091904410;evl=full-image;quality=2;view=entry;subview=download;cc=clark1ic8lift;entryid=x-008458875;viewid=39015091904410;start=1;resnum=5;lastview=reslist;lasttype=boolean</Part>
-<Part name="EntryLink">https://roger.quod.lib.umich.edu/cgi/i/image/image-idx?sort=marc710;rgn1=marc710;select1=phrase;c=clark1ic8lift;q1=National%2520Ocean%2520Survey.;debug=xml;size=50;chaperone=S-CLARK1IC8LIFT-X-008458875%2039015091904410;evl=full-image;quality=2;view=entry;subview=detail;cc=clark1ic8lift;entryid=x-008458875;viewid=39015091904410;start=1;resnum=5;lastview=reslist;lasttype=boolean</Part>
-<Part name="MediaLink">/cgi/i/image/api/image/clark1ic8lift:008458875:39015091904410/full/res:2/0/native.jpg</Part><LevelWidth>3710</LevelWidth><LevelHeight>2672</LevelHeight><LevelMaxDim>3710</LevelMaxDim></Level><Level level="1"><Part name="Current">no</Part>
-<Part name="DownloadLink">https://roger.quod.lib.umich.edu/cgi/i/image/image-idx?sort=marc710;rgn1=marc710;select1=phrase;c=clark1ic8lift;q1=National%2520Ocean%2520Survey.;debug=xml;size=50;chaperone=S-CLARK1IC8LIFT-X-008458875%2039015091904410;evl=full-image;quality=1;view=entry;subview=download;cc=clark1ic8lift;entryid=x-008458875;viewid=39015091904410;start=1;resnum=5;lastview=reslist;lasttype=boolean</Part>
-<Part name="EntryLink">https://roger.quod.lib.umich.edu/cgi/i/image/image-idx?sort=marc710;rgn1=marc710;select1=phrase;c=clark1ic8lift;q1=National%2520Ocean%2520Survey.;debug=xml;size=50;chaperone=S-CLARK1IC8LIFT-X-008458875%2039015091904410;evl=full-image;quality=1;view=entry;subview=detail;cc=clark1ic8lift;entryid=x-008458875;viewid=39015091904410;start=1;resnum=5;lastview=reslist;lasttype=boolean</Part>
-<Part name="MediaLink">/cgi/i/image/api/image/clark1ic8lift:008458875:39015091904410/full/res:1/0/native.jpg</Part><LevelWidth>7420</LevelWidth><LevelHeight>5344</LevelHeight><LevelMaxDim>7420</LevelMaxDim></Level><Level level="0"><Part name="Current">no</Part>
-<Part name="DownloadLink">https://roger.quod.lib.umich.edu/cgi/i/image/image-idx?sort=marc710;rgn1=marc710;select1=phrase;c=clark1ic8lift;q1=National%2520Ocean%2520Survey.;debug=xml;size=50;chaperone=S-CLARK1IC8LIFT-X-008458875%2039015091904410;evl=full-image;quality=0;view=entry;subview=download;cc=clark1ic8lift;entryid=x-008458875;viewid=39015091904410;start=1;resnum=5;lastview=reslist;lasttype=boolean</Part>
-<Part name="EntryLink">https://roger.quod.lib.umich.edu/cgi/i/image/image-idx?sort=marc710;rgn1=marc710;select1=phrase;c=clark1ic8lift;q1=National%2520Ocean%2520Survey.;debug=xml;size=50;chaperone=S-CLARK1IC8LIFT-X-008458875%2039015091904410;evl=full-image;quality=0;view=entry;subview=detail;cc=clark1ic8lift;entryid=x-008458875;viewid=39015091904410;start=1;resnum=5;lastview=reslist;lasttype=boolean</Part>
-<Part name="MediaLink">/cgi/i/image/api/image/clark1ic8lift:008458875:39015091904410/full/res:0/0/native.jpg</Part><LevelWidth>14840</LevelWidth><LevelHeight>10688</LevelHeight><LevelMaxDim>14840</LevelMaxDim></Level><MaxWidth>14840</MaxWidth><MaxHeight>10688</MaxHeight></ImageSizeTool>
+<Part name="DownloadLink">https://roger.quod.lib.umich.edu/cgi/i/image/image-idx?sort=marc710;rgn1=marc710;select1=phrase;c=clark1ic8lift;q1=National%2520Ocean%2520Survey.;debug=xml;size=50;chaperone=S-CLARK1IC8LIFT-X-008458875%2039015091904253;evl=full-image;quality=6;view=entry;subview=download;cc=clark1ic8lift;entryid=x-008458875;viewid=39015091904253;start=1;resnum=1;lastview=reslist;lasttype=boolean</Part>
+<Part name="EntryLink">https://roger.quod.lib.umich.edu/cgi/i/image/image-idx?sort=marc710;rgn1=marc710;select1=phrase;c=clark1ic8lift;q1=National%2520Ocean%2520Survey.;debug=xml;size=50;chaperone=S-CLARK1IC8LIFT-X-008458875%2039015091904253;evl=full-image;quality=6;view=entry;subview=detail;cc=clark1ic8lift;entryid=x-008458875;viewid=39015091904253;start=1;resnum=1;lastview=reslist;lasttype=boolean</Part>
+<Part name="MediaLink">/cgi/i/image/api/image/clark1ic8lift:008458875:39015091904253/full/res:6/0/native.jpg</Part><LevelWidth>236</LevelWidth><LevelHeight>168</LevelHeight><LevelMaxDim>236</LevelMaxDim></Level><Level level="5"><Part name="Current">yes</Part>
+<Part name="DownloadLink">https://roger.quod.lib.umich.edu/cgi/i/image/image-idx?sort=marc710;rgn1=marc710;select1=phrase;c=clark1ic8lift;q1=National%2520Ocean%2520Survey.;debug=xml;size=50;chaperone=S-CLARK1IC8LIFT-X-008458875%2039015091904253;evl=full-image;quality=5;view=entry;subview=download;cc=clark1ic8lift;entryid=x-008458875;viewid=39015091904253;start=1;resnum=1;lastview=reslist;lasttype=boolean</Part>
+<Part name="EntryLink">https://roger.quod.lib.umich.edu/cgi/i/image/image-idx?sort=marc710;rgn1=marc710;select1=phrase;c=clark1ic8lift;q1=National%2520Ocean%2520Survey.;debug=xml;size=50;chaperone=S-CLARK1IC8LIFT-X-008458875%2039015091904253;evl=full-image;quality=5;view=entry;subview=detail;cc=clark1ic8lift;entryid=x-008458875;viewid=39015091904253;start=1;resnum=1;lastview=reslist;lasttype=boolean</Part>
+<Part name="MediaLink">/cgi/i/image/api/image/clark1ic8lift:008458875:39015091904253/full/res:5/0/native.jpg</Part><LevelWidth>473</LevelWidth><LevelHeight>337</LevelHeight><LevelMaxDim>473</LevelMaxDim></Level><Level level="4"><Part name="Current">no</Part>
+<Part name="DownloadLink">https://roger.quod.lib.umich.edu/cgi/i/image/image-idx?sort=marc710;rgn1=marc710;select1=phrase;c=clark1ic8lift;q1=National%2520Ocean%2520Survey.;debug=xml;size=50;chaperone=S-CLARK1IC8LIFT-X-008458875%2039015091904253;evl=full-image;quality=4;view=entry;subview=download;cc=clark1ic8lift;entryid=x-008458875;viewid=39015091904253;start=1;resnum=1;lastview=reslist;lasttype=boolean</Part>
+<Part name="EntryLink">https://roger.quod.lib.umich.edu/cgi/i/image/image-idx?sort=marc710;rgn1=marc710;select1=phrase;c=clark1ic8lift;q1=National%2520Ocean%2520Survey.;debug=xml;size=50;chaperone=S-CLARK1IC8LIFT-X-008458875%2039015091904253;evl=full-image;quality=4;view=entry;subview=detail;cc=clark1ic8lift;entryid=x-008458875;viewid=39015091904253;start=1;resnum=1;lastview=reslist;lasttype=boolean</Part>
+<Part name="MediaLink">/cgi/i/image/api/image/clark1ic8lift:008458875:39015091904253/full/res:4/0/native.jpg</Part><LevelWidth>947</LevelWidth><LevelHeight>675</LevelHeight><LevelMaxDim>947</LevelMaxDim></Level><Level level="3"><Part name="Current">no</Part>
+<Part name="DownloadLink">https://roger.quod.lib.umich.edu/cgi/i/image/image-idx?sort=marc710;rgn1=marc710;select1=phrase;c=clark1ic8lift;q1=National%2520Ocean%2520Survey.;debug=xml;size=50;chaperone=S-CLARK1IC8LIFT-X-008458875%2039015091904253;evl=full-image;quality=3;view=entry;subview=download;cc=clark1ic8lift;entryid=x-008458875;viewid=39015091904253;start=1;resnum=1;lastview=reslist;lasttype=boolean</Part>
+<Part name="EntryLink">https://roger.quod.lib.umich.edu/cgi/i/image/image-idx?sort=marc710;rgn1=marc710;select1=phrase;c=clark1ic8lift;q1=National%2520Ocean%2520Survey.;debug=xml;size=50;chaperone=S-CLARK1IC8LIFT-X-008458875%2039015091904253;evl=full-image;quality=3;view=entry;subview=detail;cc=clark1ic8lift;entryid=x-008458875;viewid=39015091904253;start=1;resnum=1;lastview=reslist;lasttype=boolean</Part>
+<Part name="MediaLink">/cgi/i/image/api/image/clark1ic8lift:008458875:39015091904253/full/res:3/0/native.jpg</Part><LevelWidth>1894</LevelWidth><LevelHeight>1350</LevelHeight><LevelMaxDim>1894</LevelMaxDim></Level><Level level="2"><Part name="Current">no</Part>
+<Part name="DownloadLink">https://roger.quod.lib.umich.edu/cgi/i/image/image-idx?sort=marc710;rgn1=marc710;select1=phrase;c=clark1ic8lift;q1=National%2520Ocean%2520Survey.;debug=xml;size=50;chaperone=S-CLARK1IC8LIFT-X-008458875%2039015091904253;evl=full-image;quality=2;view=entry;subview=download;cc=clark1ic8lift;entryid=x-008458875;viewid=39015091904253;start=1;resnum=1;lastview=reslist;lasttype=boolean</Part>
+<Part name="EntryLink">https://roger.quod.lib.umich.edu/cgi/i/image/image-idx?sort=marc710;rgn1=marc710;select1=phrase;c=clark1ic8lift;q1=National%2520Ocean%2520Survey.;debug=xml;size=50;chaperone=S-CLARK1IC8LIFT-X-008458875%2039015091904253;evl=full-image;quality=2;view=entry;subview=detail;cc=clark1ic8lift;entryid=x-008458875;viewid=39015091904253;start=1;resnum=1;lastview=reslist;lasttype=boolean</Part>
+<Part name="MediaLink">/cgi/i/image/api/image/clark1ic8lift:008458875:39015091904253/full/res:2/0/native.jpg</Part><LevelWidth>3788</LevelWidth><LevelHeight>2700</LevelHeight><LevelMaxDim>3788</LevelMaxDim></Level><Level level="1"><Part name="Current">no</Part>
+<Part name="DownloadLink">https://roger.quod.lib.umich.edu/cgi/i/image/image-idx?sort=marc710;rgn1=marc710;select1=phrase;c=clark1ic8lift;q1=National%2520Ocean%2520Survey.;debug=xml;size=50;chaperone=S-CLARK1IC8LIFT-X-008458875%2039015091904253;evl=full-image;quality=1;view=entry;subview=download;cc=clark1ic8lift;entryid=x-008458875;viewid=39015091904253;start=1;resnum=1;lastview=reslist;lasttype=boolean</Part>
+<Part name="EntryLink">https://roger.quod.lib.umich.edu/cgi/i/image/image-idx?sort=marc710;rgn1=marc710;select1=phrase;c=clark1ic8lift;q1=National%2520Ocean%2520Survey.;debug=xml;size=50;chaperone=S-CLARK1IC8LIFT-X-008458875%2039015091904253;evl=full-image;quality=1;view=entry;subview=detail;cc=clark1ic8lift;entryid=x-008458875;viewid=39015091904253;start=1;resnum=1;lastview=reslist;lasttype=boolean</Part>
+<Part name="MediaLink">/cgi/i/image/api/image/clark1ic8lift:008458875:39015091904253/full/res:1/0/native.jpg</Part><LevelWidth>7576</LevelWidth><LevelHeight>5400</LevelHeight><LevelMaxDim>7576</LevelMaxDim></Level><Level level="0"><Part name="Current">no</Part>
+<Part name="DownloadLink">https://roger.quod.lib.umich.edu/cgi/i/image/image-idx?sort=marc710;rgn1=marc710;select1=phrase;c=clark1ic8lift;q1=National%2520Ocean%2520Survey.;debug=xml;size=50;chaperone=S-CLARK1IC8LIFT-X-008458875%2039015091904253;evl=full-image;quality=0;view=entry;subview=download;cc=clark1ic8lift;entryid=x-008458875;viewid=39015091904253;start=1;resnum=1;lastview=reslist;lasttype=boolean</Part>
+<Part name="EntryLink">https://roger.quod.lib.umich.edu/cgi/i/image/image-idx?sort=marc710;rgn1=marc710;select1=phrase;c=clark1ic8lift;q1=National%2520Ocean%2520Survey.;debug=xml;size=50;chaperone=S-CLARK1IC8LIFT-X-008458875%2039015091904253;evl=full-image;quality=0;view=entry;subview=detail;cc=clark1ic8lift;entryid=x-008458875;viewid=39015091904253;start=1;resnum=1;lastview=reslist;lasttype=boolean</Part>
+<Part name="MediaLink">/cgi/i/image/api/image/clark1ic8lift:008458875:39015091904253/full/res:0/0/native.jpg</Part><LevelWidth>15152</LevelWidth><LevelHeight>10800</LevelHeight><LevelMaxDim>15152</LevelMaxDim></Level><MaxWidth>15152</MaxWidth><MaxHeight>10800</MaxHeight></ImageSizeTool>
 <RevertSizeTool><!-- cannot revert until image has been zoomed. --></RevertSizeTool>
 <MediaEquivsTool/>
-<Record name="entry"><Section name="default" class="default"><Field abbrev="marc245" searchfield="false" sortfield="false"><Values><Value>[Wilkes Exploring Expedition maps, 1841] / by the U.S. Ex. Ex., Charles Wilkes, Esqr., Commander ; U.S. Dept. of Commerce, National Oceanic and Atmospheric Administration, National Ocean Survey.</Value></Values><Label display="on">Title</Label></Field><Field abbrev="istruct_caption_item_description" searchfield="false" sortfield="false"><Values><Value>Sheet 5 of 24 (No. 141)</Value></Values><Label display="on">Item Description</Label></Field><Field abbrev="marc700" searchfield="false" sortfield="false"><Values><Value link="https://roger.quod.lib.umich.edu/cgi/i/image/image-idx?c=clark1ic8lift;type=boolean;view=reslist;rgn1=marc700;q1=Wilkes%252C%2520Charles%252C%25201798-1877.;select1=phrase" target="_blank">Wilkes, Charles, 1798-1877.</Value></Values><Label display="on">Added Entry - Personal Name</Label></Field><Field abbrev="marc710" searchfield="false" sortfield="true"><Values><Value link="https://roger.quod.lib.umich.edu/cgi/i/image/image-idx?c=clark1ic8lift;type=boolean;view=reslist;rgn1=marc710;q1=National%2520Ocean%2520Survey.;select1=phrase" target="_blank">National Ocean Survey.</Value></Values><Label display="on">Added Entry - Corporate Name</Label></Field><Field abbrev="marc260" searchfield="false" sortfield="false"><Values><Value>[Washington, D.C.] : National Ocean Survey,</Value></Values><Label display="on">Published</Label></Field><Field abbrev="marc300" searchfield="false" sortfield="false"><Values><Value>38 maps on 27 sheets ; 86 x 88 cm. or smaller.</Value></Values><Label display="on">Description</Label></Field><Field abbrev="marc500" searchfield="false" sortfield="false"><Values><Value>Relief shown by hachures; depths shown by soundings.</Value><Value>Binder's title.</Value><Value>Sheets numbered 135 to 161.</Value></Values><Label display="on">Note</Label></Field><Field abbrev="marc650" searchfield="false" sortfield="false"><Values><Value link="https://roger.quod.lib.umich.edu/cgi/i/image/image-idx?c=clark1ic8lift;type=boolean;view=reslist;rgn1=marc650;q1=Nautical%2520charts%2520Washington%2520%2528State%2529%2520Pacific%2520Coast.;select1=phrase" target="_blank">Nautical charts Washington (State) Pacific Coast.</Value><Value link="https://roger.quod.lib.umich.edu/cgi/i/image/image-idx?c=clark1ic8lift;type=boolean;view=reslist;rgn1=marc650;q1=Nautical%2520charts%2520Washington%2520%2528State%2529%2520Puget%2520Sound.;select1=phrase" target="_blank">Nautical charts Washington (State) Puget Sound.</Value><Value link="https://roger.quod.lib.umich.edu/cgi/i/image/image-idx?c=clark1ic8lift;type=boolean;view=reslist;rgn1=marc650;q1=Nautical%2520charts%2520Columbia%2520River.;select1=phrase" target="_blank">Nautical charts Columbia River.</Value></Values><Label display="on">Subject Added Entry - Topical Term</Label></Field><Field abbrev="marc651" searchfield="false" sortfield="false"><Values><Value link="https://roger.quod.lib.umich.edu/cgi/i/image/image-idx?c=clark1ic8lift;type=boolean;view=reslist;rgn1=marc651;q1=Northwest%252C%2520Pacific%2520Maps.;select1=phrase" target="_blank">Northwest, Pacific Maps.</Value><Value link="https://roger.quod.lib.umich.edu/cgi/i/image/image-idx?c=clark1ic8lift;type=boolean;view=reslist;rgn1=marc651;q1=Canada%252C%2520Western%2520Maps.;select1=phrase" target="_blank">Canada, Western Maps.</Value></Values><Label display="on">Subject Added Entry - Geographic Name</Label></Field><Field abbrev="marc255" searchfield="false" sortfield="false"><Values><Value>Scales differ. (W 134°--W 102°/N 55°--N 40°).</Value></Values><Label display="on">Map Data</Label></Field><Field abbrev="marc034" searchfield="false" sortfield="false"><Values><Value>a W1340000 W1020000 N0550000 N0400000</Value></Values><Label display="on">Coded Cartographic Mathematical Data</Label></Field><Field abbrev="marc590" searchfield="false" sortfield="false"><Values><Value>From the Detroit Public Library Map Collection, 2009.</Value></Values><Label display="on">Local note</Label></Field><Field abbrev="scan_date" searchfield="false" sortfield="false"><Values><Value>2014-11-21</Value></Values><Label display="on">Scan Date</Label></Field><Field abbrev="dlxs_ri" searchfield="false" sortfield="false"><Values><Value><p>The University of Michigan Library provides access to these materials for educational and research purposes. These materials are believed to be in the public domain in the United States; however, if you decide to use any of these materials, you are responsible for making your own legal assessment and securing any necessary permission. If you have questions about the collection, please contact <a href="mailto:clark1ic-help@umich.edu">Clark Library for Maps Digital Collections Help</a>. If you have concerns about the inclusion of an item in this collection, please contact <a href="mailto:LibraryIT-info@umich.edu">Library Information Technology</a>.</p><p>DPLA No Copyright - United States</p></Value></Values><Label display="on">Rights</Label></Field><Field abbrev="record_no" searchfield="false" sortfield="false"><Values><Value>008458875</Value></Values><Label display="on">Record No.</Label></Field></Section></Record>
+<Record name="entry"><Section name="default" class="default"><Field abbrev="marc245" searchfield="false" sortfield="false"><Values><Value>[Wilkes Exploring Expedition maps, 1841] / by the U.S. Ex. Ex., Charles Wilkes, Esqr., Commander ; U.S. Dept. of Commerce, National Oceanic and Atmospheric Administration, National Ocean Survey.</Value></Values><Label display="on">Title</Label></Field><Field abbrev="istruct_caption_item_description" searchfield="false" sortfield="false"><Values><Value>Sheet 1 of 24 (No. 136)</Value></Values><Label display="on">Item Description</Label></Field><Field abbrev="marc700" searchfield="false" sortfield="false"><Values><Value link="https://roger.quod.lib.umich.edu/cgi/i/image/image-idx?c=clark1ic8lift;type=boolean;view=reslist;rgn1=marc700;q1=Wilkes%252C%2520Charles%252C%25201798-1877.;select1=phrase" target="_blank">Wilkes, Charles, 1798-1877.</Value></Values><Label display="on">Added Entry - Personal Name</Label></Field><Field abbrev="marc710" searchfield="false" sortfield="true"><Values><Value link="https://roger.quod.lib.umich.edu/cgi/i/image/image-idx?c=clark1ic8lift;type=boolean;view=reslist;rgn1=marc710;q1=National%2520Ocean%2520Survey.;select1=phrase" target="_blank">National Ocean Survey.</Value></Values><Label display="on">Added Entry - Corporate Name</Label></Field><Field abbrev="marc260" searchfield="false" sortfield="false"><Values><Value>[Washington, D.C.] : National Ocean Survey,</Value></Values><Label display="on">Published</Label></Field><Field abbrev="marc300" searchfield="false" sortfield="false"><Values><Value>38 maps on 27 sheets ; 86 x 88 cm. or smaller.</Value></Values><Label display="on">Description</Label></Field><Field abbrev="marc500" searchfield="false" sortfield="false"><Values><Value>Relief shown by hachures; depths shown by soundings.</Value><Value>Binder's title.</Value><Value>Sheets numbered 135 to 161.</Value></Values><Label display="on">Note</Label></Field><Field abbrev="marc650" searchfield="false" sortfield="false"><Values><Value link="https://roger.quod.lib.umich.edu/cgi/i/image/image-idx?c=clark1ic8lift;type=boolean;view=reslist;rgn1=marc650;q1=Nautical%2520charts%2520Washington%2520%2528State%2529%2520Pacific%2520Coast.;select1=phrase" target="_blank">Nautical charts Washington (State) Pacific Coast.</Value><Value link="https://roger.quod.lib.umich.edu/cgi/i/image/image-idx?c=clark1ic8lift;type=boolean;view=reslist;rgn1=marc650;q1=Nautical%2520charts%2520Washington%2520%2528State%2529%2520Puget%2520Sound.;select1=phrase" target="_blank">Nautical charts Washington (State) Puget Sound.</Value><Value link="https://roger.quod.lib.umich.edu/cgi/i/image/image-idx?c=clark1ic8lift;type=boolean;view=reslist;rgn1=marc650;q1=Nautical%2520charts%2520Columbia%2520River.;select1=phrase" target="_blank">Nautical charts Columbia River.</Value></Values><Label display="on">Subject Added Entry - Topical Term</Label></Field><Field abbrev="marc651" searchfield="false" sortfield="false"><Values><Value link="https://roger.quod.lib.umich.edu/cgi/i/image/image-idx?c=clark1ic8lift;type=boolean;view=reslist;rgn1=marc651;q1=Northwest%252C%2520Pacific%2520Maps.;select1=phrase" target="_blank">Northwest, Pacific Maps.</Value><Value link="https://roger.quod.lib.umich.edu/cgi/i/image/image-idx?c=clark1ic8lift;type=boolean;view=reslist;rgn1=marc651;q1=Canada%252C%2520Western%2520Maps.;select1=phrase" target="_blank">Canada, Western Maps.</Value></Values><Label display="on">Subject Added Entry - Geographic Name</Label></Field><Field abbrev="marc255" searchfield="false" sortfield="false"><Values><Value>Scales differ. (W 134°--W 102°/N 55°--N 40°).</Value></Values><Label display="on">Map Data</Label></Field><Field abbrev="marc034" searchfield="false" sortfield="false"><Values><Value>a W1340000 W1020000 N0550000 N0400000</Value></Values><Label display="on">Coded Cartographic Mathematical Data</Label></Field><Field abbrev="marc590" searchfield="false" sortfield="false"><Values><Value>From the Detroit Public Library Map Collection, 2009.</Value></Values><Label display="on">Local note</Label></Field><Field abbrev="scan_date" searchfield="false" sortfield="false"><Values><Value>2014-11-21</Value></Values><Label display="on">Scan Date</Label></Field><Field abbrev="dlxs_ri" searchfield="false" sortfield="false"><Values><Value><p>The University of Michigan Library provides access to these materials for educational and research purposes. These materials are believed to be in the public domain in the United States; however, if you decide to use any of these materials, you are responsible for making your own legal assessment and securing any necessary permission. If you have questions about the collection, please contact <a href="mailto:clark1ic-help@umich.edu">Clark Library for Maps Digital Collections Help</a>. If you have concerns about the inclusion of an item in this collection, please contact <a href="mailto:LibraryIT-info@umich.edu">Library Information Technology</a>.</p><p>DPLA No Copyright - United States</p></Value></Values><Label display="on">Rights</Label></Field><Field abbrev="record_no" searchfield="false" sortfield="false"><Values><Value>008458875</Value></Values><Label display="on">Record No.</Label></Field></Section></Record>
 <Record name="special"><Section name="default" class="default"><Field abbrev="dlxs_ma" searchfield="false" sortfield="false"><Values><Value>[Wilkes Exploring Expedition maps, 1841] / by the U.S. Ex. Ex., Charles Wilkes, Esqr., Commander ; U.S. Dept. of Commerce, National Oceanic and Atmospheric Administration, National Ocean Survey.</Value></Values><Label display="on">Title</Label></Field><Field abbrev="dc_ti" searchfield="false" sortfield="false"><Values><Value>[Wilkes Exploring Expedition maps, 1841] / by the U.S. Ex. Ex., Charles Wilkes, Esqr., Commander ; U.S. Dept. of Commerce, National Oceanic and Atmospheric Administration, National Ocean Survey.</Value></Values><Label display="on">Title</Label></Field><Field abbrev="dc_su" searchfield="false" sortfield="false"><Values><Value>Nautical charts Washington (State) Pacific Coast.</Value><Value>Nautical charts Washington (State) Puget Sound.</Value><Value>Nautical charts Columbia River.</Value><Value>Northwest, Pacific Maps.</Value><Value>Canada, Western Maps.</Value></Values><Label display="on">Subject</Label></Field><Field abbrev="dc_de" searchfield="false" sortfield="false"><Values><Value>Relief shown by hachures; depths shown by soundings.</Value><Value>Binder's title.</Value><Value>Sheets numbered 135 to 161.</Value><Value>38 maps on 27 sheets ; 86 x 88 cm. or smaller.</Value></Values><Label display="on">Description</Label></Field><Field abbrev="dlxs_catalog" searchfield="false" sortfield="false"><Values><Value>008458875</Value></Values><Label display="on">dlxs_catalog</Label></Field></Section></Record>
-<MediaDownloadLink><URL name="mediadownloadlink">/cgi/i/image/api/image/clark1ic8lift:008458875:39015091904410/full/res:0/0/native.jpg?attachment=1</URL><Filename>39015091904410_clark1ic8lift.JPG</Filename></MediaDownloadLink>
-<MiradorConfig manifest-href="https://quod.lib.umich.edu/cgi/i/image/api/manifest/clark1ic:008458875:39015091904410" embed-href="https://quod.lib.umich.edu/cgi/i/image/api/embed/clark1ic:008458875:39015091904410" canvas-index="20" mode="book"/>
+<MediaDownloadLink><URL name="mediadownloadlink">/cgi/i/image/api/image/clark1ic8lift:008458875:39015091904253/full/res:0/0/native.jpg?attachment=1</URL><Filename>39015091904253_clark1ic8lift.JPG</Filename></MediaDownloadLink>
+<MiradorConfig manifest-href="https://quod.lib.umich.edu/cgi/i/image/api/manifest/clark1ic:008458875:39015091904253" embed-href="https://quod.lib.umich.edu/cgi/i/image/api/embed/clark1ic:008458875:39015091904253" canvas-index="1" mode="book"/>
 
 <inserttextentryinfo><div><!-- entryinfo.txt is a file that is inserted into entry.xml by the
 middleware and a PI called CHUNK. It is optional at group and coll
@@ -725,7 +724,7 @@ CHUNK PI could be removed from entry.tpl and bbentry.tpl. -->
 <Variable name="c">clark1ic8lift</Variable>
 <Variable name="q1">National%20Ocean%20Survey.</Variable>
 <Variable name="subview">detail</Variable>
-<Variable name="resnum">5</Variable>
+<Variable name="resnum">1</Variable>
 <Variable name="start">1</Variable>
 <Variable name="view">entry</Variable>
 <Variable name="lastview">reslist</Variable>
@@ -734,14 +733,14 @@ CHUNK PI could be removed from entry.tpl and bbentry.tpl. -->
 <Variable name="entryid">x-008458875</Variable>
 <Variable name="debug">xml</Variable>
 <Variable name="size">50</Variable>
-<Variable name="chaperone">S-CLARK1IC8LIFT-X-008458875 39015091904410</Variable>
+<Variable name="chaperone">S-CLARK1IC8LIFT-X-008458875 39015091904253</Variable>
 </HiddenVars>
 <Instruct w="other">Related Views</Instruct>
-<Option index="0"><Label>39015091904253|||Sheet 1 of 24 (No. 136)</Label><Value>39015091904253</Value></Option><Option index="1"><Label>39015091904402|||Sheet 2 of 24 (No. 137)</Label><Value>39015091904402</Value></Option><Option index="2"><Label>39015091904550|||Sheet 3 of 24 (No. 138)</Label><Value>39015091904550</Value></Option><Option index="3"><Label>39015091904261|||Sheet 4 of 24 (No. 139)</Label><Value>39015091904261</Value></Option><Option index="4"><Label>39015091904410|||Sheet 5 of 24 (No. 141)</Label><Value>39015091904410</Value><Focus>true</Focus></Option><Option index="5"><Label>39015091904568|||Sheet 6 of 24 (No. 143)</Label><Value>39015091904568</Value></Option><Option index="6"><Label>39015091904279|||Sheet 7 of 24 (No. 144)</Label><Value>39015091904279</Value></Option><Option index="7"><Label>39015091904428|||Sheet 8 of 24 (No. 145)</Label><Value>39015091904428</Value></Option><Option index="8"><Label>39015091904576|||Sheet 9 of 24 (No. 146)</Label><Value>39015091904576</Value></Option><Option index="9"><Label>39015091904287|||Sheet 10 of 24 (No. 147)</Label><Value>39015091904287</Value></Option><Option index="10"><Label>39015091904436|||Sheet 11 of 24 (No. 148)</Label><Value>39015091904436</Value></Option><Option index="11"><Label>39015091904584|||Sheet 12 of 24 (No. 149)</Label><Value>39015091904584</Value></Option><Option index="12"><Label>39015091904295|||Sheet 13 of 24 (No. 150)</Label><Value>39015091904295</Value></Option><Option index="13"><Label>39015091904444|||Sheet 14 of 24 (No. 151)</Label><Value>39015091904444</Value></Option><Option index="14"><Label>39015091904592|||Sheet 15 of 24 (No. 152)</Label><Value>39015091904592</Value></Option><Option index="15"><Label>39015091914245|||Sheet 16 of 24 (No. 153)</Label><Value>39015091914245</Value></Option><Option index="16"><Label>39015091914393|||Sheet 17 of 24 (No. 154)</Label><Value>39015091914393</Value></Option><Option index="17"><Label>39015091914104|||Sheet 18 of 24 (No. 155)</Label><Value>39015091914104</Value></Option><Option index="18"><Label>39015091914252|||Sheet 19 of 24 (No. 156)</Label><Value>39015091914252</Value></Option><Option index="19"><Label>39015091914401|||Sheet 20 of 24 (No. 157)</Label><Value>39015091914401</Value></Option><Option index="20"><Label>39015091914112|||Sheet 21 of 24 (No. 158)</Label><Value>39015091914112</Value></Option><Option index="21"><Label>39015091914260|||Sheet 22 of 24 (No. 159)</Label><Value>39015091914260</Value></Option><Option index="22"><Label>39015091914419|||Sheet 23 of 24 (No. 160)</Label><Value>39015091914419</Value></Option><Option index="23"><Label>39015091914120|||Sheet 24 of 24 (No. 161)</Label><Value>39015091914120</Value></Option><Name>relview</Name><Default>39015091904410</Default></RelatedViewsMenu>
+<Option index="0"><Label>39015091904253|||Sheet 1 of 24 (No. 136)</Label><Value>39015091904253</Value><Focus>true</Focus></Option><Option index="1"><Label>39015091904402|||Sheet 2 of 24 (No. 137)</Label><Value>39015091904402</Value></Option><Option index="2"><Label>39015091904550|||Sheet 3 of 24 (No. 138)</Label><Value>39015091904550</Value></Option><Option index="3"><Label>39015091904261|||Sheet 4 of 24 (No. 139)</Label><Value>39015091904261</Value></Option><Option index="4"><Label>39015091904410|||Sheet 5 of 24 (No. 141)</Label><Value>39015091904410</Value></Option><Option index="5"><Label>39015091904568|||Sheet 6 of 24 (No. 143)</Label><Value>39015091904568</Value></Option><Option index="6"><Label>39015091904279|||Sheet 7 of 24 (No. 144)</Label><Value>39015091904279</Value></Option><Option index="7"><Label>39015091904428|||Sheet 8 of 24 (No. 145)</Label><Value>39015091904428</Value></Option><Option index="8"><Label>39015091904576|||Sheet 9 of 24 (No. 146)</Label><Value>39015091904576</Value></Option><Option index="9"><Label>39015091904287|||Sheet 10 of 24 (No. 147)</Label><Value>39015091904287</Value></Option><Option index="10"><Label>39015091904436|||Sheet 11 of 24 (No. 148)</Label><Value>39015091904436</Value></Option><Option index="11"><Label>39015091904584|||Sheet 12 of 24 (No. 149)</Label><Value>39015091904584</Value></Option><Option index="12"><Label>39015091904295|||Sheet 13 of 24 (No. 150)</Label><Value>39015091904295</Value></Option><Option index="13"><Label>39015091904444|||Sheet 14 of 24 (No. 151)</Label><Value>39015091904444</Value></Option><Option index="14"><Label>39015091904592|||Sheet 15 of 24 (No. 152)</Label><Value>39015091904592</Value></Option><Option index="15"><Label>39015091914245|||Sheet 16 of 24 (No. 153)</Label><Value>39015091914245</Value></Option><Option index="16"><Label>39015091914393|||Sheet 17 of 24 (No. 154)</Label><Value>39015091914393</Value></Option><Option index="17"><Label>39015091914104|||Sheet 18 of 24 (No. 155)</Label><Value>39015091914104</Value></Option><Option index="18"><Label>39015091914252|||Sheet 19 of 24 (No. 156)</Label><Value>39015091914252</Value></Option><Option index="19"><Label>39015091914401|||Sheet 20 of 24 (No. 157)</Label><Value>39015091914401</Value></Option><Option index="20"><Label>39015091914112|||Sheet 21 of 24 (No. 158)</Label><Value>39015091914112</Value></Option><Option index="21"><Label>39015091914260|||Sheet 22 of 24 (No. 159)</Label><Value>39015091914260</Value></Option><Option index="22"><Label>39015091914419|||Sheet 23 of 24 (No. 160)</Label><Value>39015091914419</Value></Option><Option index="23"><Label>39015091914120|||Sheet 24 of 24 (No. 161)</Label><Value>39015091914120</Value></Option><Name>relview</Name><Default>39015091904253</Default></RelatedViewsMenu>
 <RelatedViews><View>
 <Name>unspecified | summary</Name>
 <Row y="1">
-<Column x="1" y="1" blank="no" thumb="yes"><Url name="EntryLink">https://roger.quod.lib.umich.edu/cgi/i/image/image-idx?sort=marc710;rgn1=marc710;select1=phrase;c=clark1ic8lift;q1=National%2520Ocean%2520Survey.;subview=detail;resnum=5;start=1;view=entry;lastview=reslist;lasttype=boolean;cc=clark1ic8lift;entryid=x-008458875;viewid=39015091904253;debug=xml;size=50;chaperone=S-CLARK1IC8LIFT-X-008458875%2039015091904410</Url><Url name="Thumb">data:image/jpeg;base64,/9j/4AAQSkZJRgABAQAAAQABAAD/2wBDAAgGBgcGBQgHBwcJCQgKDBQNDAsLDBkSEw8UHRofHh0a
+<Column x="1" y="1" blank="no" thumb="yes"><Focus>true</Focus><Url name="EntryLink">https://roger.quod.lib.umich.edu/cgi/i/image/image-idx?sort=marc710;rgn1=marc710;select1=phrase;c=clark1ic8lift;q1=National%2520Ocean%2520Survey.;subview=detail;resnum=1;start=1;view=entry;lastview=reslist;lasttype=boolean;cc=clark1ic8lift;entryid=x-008458875;viewid=39015091904253;debug=xml;size=50;chaperone=S-CLARK1IC8LIFT-X-008458875%2039015091904253</Url><Url name="Thumb">data:image/jpeg;base64,/9j/4AAQSkZJRgABAQAAAQABAAD/2wBDAAgGBgcGBQgHBwcJCQgKDBQNDAsLDBkSEw8UHRofHh0a
 HBwgJC4nICIsIxwcKDcpLDAxNDQ0Hyc5PTgyPC4zNDL/2wBDAQkJCQwLDBgNDRgyIRwhMjIyMjIy
 MjIyMjIyMjIyMjIyMjIyMjIyMjIyMjIyMjIyMjIyMjIyMjIyMjIyMjIyMjL/wAARCABHAGQDASIA
 AhEBAxEB/8QAHwAAAQUBAQEBAQEAAAAAAAAAAAECAwQFBgcICQoL/8QAtRAAAgEDAwIEAwUFBAQA
@@ -781,8 +780,8 @@ BXn+LvhW6A+06VqEx6ZkjjP82qufil4QyNmiXiEdGEMXH/j1FFHKgOF8d+JbLxJrkN5YrMsSWyQk
 TKA2QWPYn1FFFFNID//Z
 </Url><Url name="ThumbLink" foo="bar">/cgi/i/image/api/tile/clark1ic8lift:008458875:39015091904253/full/!100,100/0/default.jpg</Url><Caption>39015091904253</Caption><Caption>Sheet 1 of 24 (No. 136)</Caption>
 
-<Type>image</Type><AuthCheck allowed="yes">1: world access allowed</AuthCheck><Url name="MediaLink">/cgi/i/image/api/image/clark1ic8lift:008458875:39015091904410/full/full/0/native.jpg</Url></Column>
-<Column x="2" y="1" blank="no" thumb="yes"><Url name="EntryLink">https://roger.quod.lib.umich.edu/cgi/i/image/image-idx?sort=marc710;rgn1=marc710;select1=phrase;c=clark1ic8lift;q1=National%2520Ocean%2520Survey.;subview=detail;resnum=5;start=1;view=entry;lastview=reslist;lasttype=boolean;cc=clark1ic8lift;entryid=x-008458875;viewid=39015091904402;debug=xml;size=50;chaperone=S-CLARK1IC8LIFT-X-008458875%2039015091904410</Url><Url name="Thumb">data:image/jpeg;base64,/9j/4AAQSkZJRgABAQAAAQABAAD/2wBDAAgGBgcGBQgHBwcJCQgKDBQNDAsLDBkSEw8UHRofHh0a
+<Type>image</Type><AuthCheck allowed="yes">1: world access allowed</AuthCheck><Url name="MediaLink">/cgi/i/image/api/image/clark1ic8lift:008458875:39015091904253/full/full/0/native.jpg</Url></Column>
+<Column x="2" y="1" blank="no" thumb="yes"><Url name="EntryLink">https://roger.quod.lib.umich.edu/cgi/i/image/image-idx?sort=marc710;rgn1=marc710;select1=phrase;c=clark1ic8lift;q1=National%2520Ocean%2520Survey.;subview=detail;resnum=1;start=1;view=entry;lastview=reslist;lasttype=boolean;cc=clark1ic8lift;entryid=x-008458875;viewid=39015091904402;debug=xml;size=50;chaperone=S-CLARK1IC8LIFT-X-008458875%2039015091904253</Url><Url name="Thumb">data:image/jpeg;base64,/9j/4AAQSkZJRgABAQAAAQABAAD/2wBDAAgGBgcGBQgHBwcJCQgKDBQNDAsLDBkSEw8UHRofHh0a
 HBwgJC4nICIsIxwcKDcpLDAxNDQ0Hyc5PTgyPC4zNDL/2wBDAQkJCQwLDBgNDRgyIRwhMjIyMjIy
 MjIyMjIyMjIyMjIyMjIyMjIyMjIyMjIyMjIyMjIyMjIyMjIyMjIyMjIyMjL/wAARCABHAGQDASIA
 AhEBAxEB/8QAHwAAAQUBAQEBAQEAAAAAAAAAAAECAwQFBgcICQoL/8QAtRAAAgEDAwIEAwUFBAQA
@@ -824,8 +823,8 @@ KooosAf8Lw8P/wDPnq/5R/8AxVRv8b9Bx8tlq2fcJ/8AFUUUWAB8cNBxzYasT/wD/wCKqGb416FI
 MCw1T8dn/wAVRRRYDzTx34ltfFfiP+0rSGaKPyVj2ygZyM+hPrRRRTGf/9k=
 </Url><Url name="ThumbLink" foo="bar">/cgi/i/image/api/tile/clark1ic8lift:008458875:39015091904402/full/!100,100/0/default.jpg</Url><Caption>39015091904402</Caption><Caption>Sheet 2 of 24 (No. 137)</Caption>
 
-<Type>image</Type><AuthCheck allowed="yes">1: world access allowed</AuthCheck><Url name="MediaLink">/cgi/i/image/api/image/clark1ic8lift:008458875:39015091904410/full/full/0/native.jpg</Url></Column>
-<Column x="3" y="1" blank="no" thumb="yes"><Url name="EntryLink">https://roger.quod.lib.umich.edu/cgi/i/image/image-idx?sort=marc710;rgn1=marc710;select1=phrase;c=clark1ic8lift;q1=National%2520Ocean%2520Survey.;subview=detail;resnum=5;start=1;view=entry;lastview=reslist;lasttype=boolean;cc=clark1ic8lift;entryid=x-008458875;viewid=39015091904550;debug=xml;size=50;chaperone=S-CLARK1IC8LIFT-X-008458875%2039015091904410</Url><Url name="Thumb">data:image/jpeg;base64,/9j/4AAQSkZJRgABAQAAAQABAAD/2wBDAAgGBgcGBQgHBwcJCQgKDBQNDAsLDBkSEw8UHRofHh0a
+<Type>image</Type><AuthCheck allowed="yes">1: world access allowed</AuthCheck><Url name="MediaLink">/cgi/i/image/api/image/clark1ic8lift:008458875:39015091904253/full/full/0/native.jpg</Url></Column>
+<Column x="3" y="1" blank="no" thumb="yes"><Url name="EntryLink">https://roger.quod.lib.umich.edu/cgi/i/image/image-idx?sort=marc710;rgn1=marc710;select1=phrase;c=clark1ic8lift;q1=National%2520Ocean%2520Survey.;subview=detail;resnum=1;start=1;view=entry;lastview=reslist;lasttype=boolean;cc=clark1ic8lift;entryid=x-008458875;viewid=39015091904550;debug=xml;size=50;chaperone=S-CLARK1IC8LIFT-X-008458875%2039015091904253</Url><Url name="Thumb">data:image/jpeg;base64,/9j/4AAQSkZJRgABAQAAAQABAAD/2wBDAAgGBgcGBQgHBwcJCQgKDBQNDAsLDBkSEw8UHRofHh0a
 HBwgJC4nICIsIxwcKDcpLDAxNDQ0Hyc5PTgyPC4zNDL/2wBDAQkJCQwLDBgNDRgyIRwhMjIyMjIy
 MjIyMjIyMjIyMjIyMjIyMjIyMjIyMjIyMjIyMjIyMjIyMjIyMjIyMjIyMjL/wAARCABHAGQDASIA
 AhEBAxEB/8QAHwAAAQUBAQEBAQEAAAAAAAAAAAECAwQFBgcICQoL/8QAtRAAAgEDAwIEAwUFBAQA
@@ -868,8 +867,8 @@ zH/8VTW+OOhdrLVvyj/+KooosFiP/hd+i97HVD/3wP8A2ao5vjZoroVWw1QZGMkp/jRRQFjzHxv4
 htvFHiNtStYZYojEke2XGcgexooopjP/2Q==
 </Url><Url name="ThumbLink" foo="bar">/cgi/i/image/api/tile/clark1ic8lift:008458875:39015091904550/full/!100,100/0/default.jpg</Url><Caption>39015091904550</Caption><Caption>Sheet 3 of 24 (No. 138)</Caption>
 
-<Type>image</Type><AuthCheck allowed="yes">1: world access allowed</AuthCheck><Url name="MediaLink">/cgi/i/image/api/image/clark1ic8lift:008458875:39015091904410/full/full/0/native.jpg</Url></Column>
-<Column x="4" y="1" blank="no" thumb="yes"><Url name="EntryLink">https://roger.quod.lib.umich.edu/cgi/i/image/image-idx?sort=marc710;rgn1=marc710;select1=phrase;c=clark1ic8lift;q1=National%2520Ocean%2520Survey.;subview=detail;resnum=5;start=1;view=entry;lastview=reslist;lasttype=boolean;cc=clark1ic8lift;entryid=x-008458875;viewid=39015091904261;debug=xml;size=50;chaperone=S-CLARK1IC8LIFT-X-008458875%2039015091904410</Url><Url name="Thumb">data:image/jpeg;base64,/9j/4AAQSkZJRgABAQAAAQABAAD/2wBDAAgGBgcGBQgHBwcJCQgKDBQNDAsLDBkSEw8UHRofHh0a
+<Type>image</Type><AuthCheck allowed="yes">1: world access allowed</AuthCheck><Url name="MediaLink">/cgi/i/image/api/image/clark1ic8lift:008458875:39015091904253/full/full/0/native.jpg</Url></Column>
+<Column x="4" y="1" blank="no" thumb="yes"><Url name="EntryLink">https://roger.quod.lib.umich.edu/cgi/i/image/image-idx?sort=marc710;rgn1=marc710;select1=phrase;c=clark1ic8lift;q1=National%2520Ocean%2520Survey.;subview=detail;resnum=1;start=1;view=entry;lastview=reslist;lasttype=boolean;cc=clark1ic8lift;entryid=x-008458875;viewid=39015091904261;debug=xml;size=50;chaperone=S-CLARK1IC8LIFT-X-008458875%2039015091904253</Url><Url name="Thumb">data:image/jpeg;base64,/9j/4AAQSkZJRgABAQAAAQABAAD/2wBDAAgGBgcGBQgHBwcJCQgKDBQNDAsLDBkSEw8UHRofHh0a
 HBwgJC4nICIsIxwcKDcpLDAxNDQ0Hyc5PTgyPC4zNDL/2wBDAQkJCQwLDBgNDRgyIRwhMjIyMjIy
 MjIyMjIyMjIyMjIyMjIyMjIyMjIyMjIyMjIyMjIyMjIyMjIyMjIyMjIyMjL/wAARCABGAGQDASIA
 AhEBAxEB/8QAHwAAAQUBAQEBAQEAAAAAAAAAAAECAwQFBgcICQoL/8QAtRAAAgEDAwIEAwUFBAQA
@@ -910,8 +909,8 @@ KfjunbQZf/A3/wCwoooCw3/hew/6AMn/AIG//YU1vjqx4GguPf7af/iKKKAsM/4Xm/8A0AmP/b6f
 /iaZJ8cZHBA0Ig+v20//ABNFFKwWPPPFOv8A/CTa2+pG2+z7o0Ty9+7G0Y64FFFFMZ//2Q==
 </Url><Url name="ThumbLink" foo="bar">/cgi/i/image/api/tile/clark1ic8lift:008458875:39015091904261/full/!100,100/0/default.jpg</Url><Caption>39015091904261</Caption><Caption>Sheet 4 of 24 (No. 139)</Caption>
 
-<Type>image</Type><AuthCheck allowed="yes">1: world access allowed</AuthCheck><Url name="MediaLink">/cgi/i/image/api/image/clark1ic8lift:008458875:39015091904410/full/full/0/native.jpg</Url></Column>
-<Column x="5" y="1" blank="no" thumb="yes"><Focus>true</Focus><Url name="EntryLink">https://roger.quod.lib.umich.edu/cgi/i/image/image-idx?sort=marc710;rgn1=marc710;select1=phrase;c=clark1ic8lift;q1=National%2520Ocean%2520Survey.;subview=detail;resnum=5;start=1;view=entry;lastview=reslist;lasttype=boolean;cc=clark1ic8lift;entryid=x-008458875;viewid=39015091904410;debug=xml;size=50;chaperone=S-CLARK1IC8LIFT-X-008458875%2039015091904410</Url><Url name="Thumb">data:image/jpeg;base64,/9j/4AAQSkZJRgABAQAAAQABAAD/2wBDAAgGBgcGBQgHBwcJCQgKDBQNDAsLDBkSEw8UHRofHh0a
+<Type>image</Type><AuthCheck allowed="yes">1: world access allowed</AuthCheck><Url name="MediaLink">/cgi/i/image/api/image/clark1ic8lift:008458875:39015091904253/full/full/0/native.jpg</Url></Column>
+<Column x="5" y="1" blank="no" thumb="yes"><Url name="EntryLink">https://roger.quod.lib.umich.edu/cgi/i/image/image-idx?sort=marc710;rgn1=marc710;select1=phrase;c=clark1ic8lift;q1=National%2520Ocean%2520Survey.;subview=detail;resnum=1;start=1;view=entry;lastview=reslist;lasttype=boolean;cc=clark1ic8lift;entryid=x-008458875;viewid=39015091904410;debug=xml;size=50;chaperone=S-CLARK1IC8LIFT-X-008458875%2039015091904253</Url><Url name="Thumb">data:image/jpeg;base64,/9j/4AAQSkZJRgABAQAAAQABAAD/2wBDAAgGBgcGBQgHBwcJCQgKDBQNDAsLDBkSEw8UHRofHh0a
 HBwgJC4nICIsIxwcKDcpLDAxNDQ0Hyc5PTgyPC4zNDL/2wBDAQkJCQwLDBgNDRgyIRwhMjIyMjIy
 MjIyMjIyMjIyMjIyMjIyMjIyMjIyMjIyMjIyMjIyMjIyMjIyMjIyMjIyMjL/wAARCABIAGQDASIA
 AhEBAxEB/8QAHwAAAQUBAQEBAQEAAAAAAAAAAAECAwQFBgcICQoL/8QAtRAAAgEDAwIEAwUFBAQA
@@ -952,8 +951,8 @@ UWAP+E58OFefEOmD280f41FL458O7T/xUOmn/toP8aKKOUDz3xl4g0i81W2e21K1mRbVULJICMgt
 xRRRTsB//9k=
 </Url><Url name="ThumbLink" foo="bar">/cgi/i/image/api/tile/clark1ic8lift:008458875:39015091904410/full/!100,100/0/default.jpg</Url><Caption>39015091904410</Caption><Caption>Sheet 5 of 24 (No. 141)</Caption>
 
-<Type>image</Type><AuthCheck allowed="yes">1: world access allowed</AuthCheck><Url name="MediaLink">/cgi/i/image/api/image/clark1ic8lift:008458875:39015091904410/full/full/0/native.jpg</Url></Column>
-<Column x="6" y="1" blank="no" thumb="yes"><Url name="EntryLink">https://roger.quod.lib.umich.edu/cgi/i/image/image-idx?sort=marc710;rgn1=marc710;select1=phrase;c=clark1ic8lift;q1=National%2520Ocean%2520Survey.;subview=detail;resnum=5;start=1;view=entry;lastview=reslist;lasttype=boolean;cc=clark1ic8lift;entryid=x-008458875;viewid=39015091904568;debug=xml;size=50;chaperone=S-CLARK1IC8LIFT-X-008458875%2039015091904410</Url><Url name="Thumb">data:image/jpeg;base64,/9j/4AAQSkZJRgABAQAAAQABAAD/2wBDAAgGBgcGBQgHBwcJCQgKDBQNDAsLDBkSEw8UHRofHh0a
+<Type>image</Type><AuthCheck allowed="yes">1: world access allowed</AuthCheck><Url name="MediaLink">/cgi/i/image/api/image/clark1ic8lift:008458875:39015091904253/full/full/0/native.jpg</Url></Column>
+<Column x="6" y="1" blank="no" thumb="yes"><Url name="EntryLink">https://roger.quod.lib.umich.edu/cgi/i/image/image-idx?sort=marc710;rgn1=marc710;select1=phrase;c=clark1ic8lift;q1=National%2520Ocean%2520Survey.;subview=detail;resnum=1;start=1;view=entry;lastview=reslist;lasttype=boolean;cc=clark1ic8lift;entryid=x-008458875;viewid=39015091904568;debug=xml;size=50;chaperone=S-CLARK1IC8LIFT-X-008458875%2039015091904253</Url><Url name="Thumb">data:image/jpeg;base64,/9j/4AAQSkZJRgABAQAAAQABAAD/2wBDAAgGBgcGBQgHBwcJCQgKDBQNDAsLDBkSEw8UHRofHh0a
 HBwgJC4nICIsIxwcKDcpLDAxNDQ0Hyc5PTgyPC4zNDL/2wBDAQkJCQwLDBgNDRgyIRwhMjIyMjIy
 MjIyMjIyMjIyMjIyMjIyMjIyMjIyMjIyMjIyMjIyMjIyMjIyMjIyMjIyMjL/wAARCABIAGQDASIA
 AhEBAxEB/8QAHwAAAQUBAQEBAQEAAAAAAAAAAAECAwQFBgcICQoL/8QAtRAAAgEDAwIEAwUFBAQA
@@ -994,8 +993,8 @@ xv4Z2jd4is898TLRRQFhD438L/8AQx2v/f0f4VWn8aeGXKbfEVmQGBIaQc/pRRQFjxj4l6hZ6n4y
 lubG5juIDDGBJG2QSBzRRRTGf//Z
 </Url><Url name="ThumbLink" foo="bar">/cgi/i/image/api/tile/clark1ic8lift:008458875:39015091904568/full/!100,100/0/default.jpg</Url><Caption>39015091904568</Caption><Caption>Sheet 6 of 24 (No. 143)</Caption>
 
-<Type>image</Type><AuthCheck allowed="yes">1: world access allowed</AuthCheck><Url name="MediaLink">/cgi/i/image/api/image/clark1ic8lift:008458875:39015091904410/full/full/0/native.jpg</Url></Column>
-<Column x="7" y="1" blank="no" thumb="yes"><Url name="EntryLink">https://roger.quod.lib.umich.edu/cgi/i/image/image-idx?sort=marc710;rgn1=marc710;select1=phrase;c=clark1ic8lift;q1=National%2520Ocean%2520Survey.;subview=detail;resnum=5;start=1;view=entry;lastview=reslist;lasttype=boolean;cc=clark1ic8lift;entryid=x-008458875;viewid=39015091904279;debug=xml;size=50;chaperone=S-CLARK1IC8LIFT-X-008458875%2039015091904410</Url><Url name="Thumb">data:image/jpeg;base64,/9j/4AAQSkZJRgABAQAAAQABAAD/2wBDAAgGBgcGBQgHBwcJCQgKDBQNDAsLDBkSEw8UHRofHh0a
+<Type>image</Type><AuthCheck allowed="yes">1: world access allowed</AuthCheck><Url name="MediaLink">/cgi/i/image/api/image/clark1ic8lift:008458875:39015091904253/full/full/0/native.jpg</Url></Column>
+<Column x="7" y="1" blank="no" thumb="yes"><Url name="EntryLink">https://roger.quod.lib.umich.edu/cgi/i/image/image-idx?sort=marc710;rgn1=marc710;select1=phrase;c=clark1ic8lift;q1=National%2520Ocean%2520Survey.;subview=detail;resnum=1;start=1;view=entry;lastview=reslist;lasttype=boolean;cc=clark1ic8lift;entryid=x-008458875;viewid=39015091904279;debug=xml;size=50;chaperone=S-CLARK1IC8LIFT-X-008458875%2039015091904253</Url><Url name="Thumb">data:image/jpeg;base64,/9j/4AAQSkZJRgABAQAAAQABAAD/2wBDAAgGBgcGBQgHBwcJCQgKDBQNDAsLDBkSEw8UHRofHh0a
 HBwgJC4nICIsIxwcKDcpLDAxNDQ0Hyc5PTgyPC4zNDL/2wBDAQkJCQwLDBgNDRgyIRwhMjIyMjIy
 MjIyMjIyMjIyMjIyMjIyMjIyMjIyMjIyMjIyMjIyMjIyMjIyMjIyMjIyMjL/wAARCABGAGQDASIA
 AhEBAxEB/8QAHwAAAQUBAQEBAQEAAAAAAAAAAAECAwQFBgcICQoL/8QAtRAAAgEDAwIEAwUFBAQA
@@ -1036,8 +1035,8 @@ lx1X/wAh/wDxVQSfGfRJOPsGp+xOw4/WiiiwHnnjrxRZ+JNbgvLSGeONLZYtsoGcgsexPrRRRTA/
 /9k=
 </Url><Url name="ThumbLink" foo="bar">/cgi/i/image/api/tile/clark1ic8lift:008458875:39015091904279/full/!100,100/0/default.jpg</Url><Caption>39015091904279</Caption><Caption>Sheet 7 of 24 (No. 144)</Caption>
 
-<Type>image</Type><AuthCheck allowed="yes">1: world access allowed</AuthCheck><Url name="MediaLink">/cgi/i/image/api/image/clark1ic8lift:008458875:39015091904410/full/full/0/native.jpg</Url></Column>
-<Column x="8" y="1" blank="no" thumb="yes"><Url name="EntryLink">https://roger.quod.lib.umich.edu/cgi/i/image/image-idx?sort=marc710;rgn1=marc710;select1=phrase;c=clark1ic8lift;q1=National%2520Ocean%2520Survey.;subview=detail;resnum=5;start=1;view=entry;lastview=reslist;lasttype=boolean;cc=clark1ic8lift;entryid=x-008458875;viewid=39015091904428;debug=xml;size=50;chaperone=S-CLARK1IC8LIFT-X-008458875%2039015091904410</Url><Url name="Thumb">data:image/jpeg;base64,/9j/4AAQSkZJRgABAQAAAQABAAD/2wBDAAgGBgcGBQgHBwcJCQgKDBQNDAsLDBkSEw8UHRofHh0a
+<Type>image</Type><AuthCheck allowed="yes">1: world access allowed</AuthCheck><Url name="MediaLink">/cgi/i/image/api/image/clark1ic8lift:008458875:39015091904253/full/full/0/native.jpg</Url></Column>
+<Column x="8" y="1" blank="no" thumb="yes"><Url name="EntryLink">https://roger.quod.lib.umich.edu/cgi/i/image/image-idx?sort=marc710;rgn1=marc710;select1=phrase;c=clark1ic8lift;q1=National%2520Ocean%2520Survey.;subview=detail;resnum=1;start=1;view=entry;lastview=reslist;lasttype=boolean;cc=clark1ic8lift;entryid=x-008458875;viewid=39015091904428;debug=xml;size=50;chaperone=S-CLARK1IC8LIFT-X-008458875%2039015091904253</Url><Url name="Thumb">data:image/jpeg;base64,/9j/4AAQSkZJRgABAQAAAQABAAD/2wBDAAgGBgcGBQgHBwcJCQgKDBQNDAsLDBkSEw8UHRofHh0a
 HBwgJC4nICIsIxwcKDcpLDAxNDQ0Hyc5PTgyPC4zNDL/2wBDAQkJCQwLDBgNDRgyIRwhMjIyMjIy
 MjIyMjIyMjIyMjIyMjIyMjIyMjIyMjIyMjIyMjIyMjIyMjIyMjIyMjIyMjL/wAARCABGAGQDASIA
 AhEBAxEB/8QAHwAAAQUBAQEBAQEAAAAAAAAAAAECAwQFBgcICQoL/8QAtRAAAgEDAwIEAwUFBAQA
@@ -1083,8 +1082,8 @@ Gn4yaD/z7at/37i/+KqKT4waBIMNa6qf+2cX/wAVRRRYDy74ieI7TxL4lW/tIpo4hbpHiYANkFvQ
 n1ooooGf/9k=
 </Url><Url name="ThumbLink" foo="bar">/cgi/i/image/api/tile/clark1ic8lift:008458875:39015091904428/full/!100,100/0/default.jpg</Url><Caption>39015091904428</Caption><Caption>Sheet 8 of 24 (No. 145)</Caption>
 
-<Type>image</Type><AuthCheck allowed="yes">1: world access allowed</AuthCheck><Url name="MediaLink">/cgi/i/image/api/image/clark1ic8lift:008458875:39015091904410/full/full/0/native.jpg</Url></Column>
-<Column x="9" y="1" blank="no" thumb="yes"><Url name="EntryLink">https://roger.quod.lib.umich.edu/cgi/i/image/image-idx?sort=marc710;rgn1=marc710;select1=phrase;c=clark1ic8lift;q1=National%2520Ocean%2520Survey.;subview=detail;resnum=5;start=1;view=entry;lastview=reslist;lasttype=boolean;cc=clark1ic8lift;entryid=x-008458875;viewid=39015091904576;debug=xml;size=50;chaperone=S-CLARK1IC8LIFT-X-008458875%2039015091904410</Url><Url name="Thumb">data:image/jpeg;base64,/9j/4AAQSkZJRgABAQAAAQABAAD/2wBDAAgGBgcGBQgHBwcJCQgKDBQNDAsLDBkSEw8UHRofHh0a
+<Type>image</Type><AuthCheck allowed="yes">1: world access allowed</AuthCheck><Url name="MediaLink">/cgi/i/image/api/image/clark1ic8lift:008458875:39015091904253/full/full/0/native.jpg</Url></Column>
+<Column x="9" y="1" blank="no" thumb="yes"><Url name="EntryLink">https://roger.quod.lib.umich.edu/cgi/i/image/image-idx?sort=marc710;rgn1=marc710;select1=phrase;c=clark1ic8lift;q1=National%2520Ocean%2520Survey.;subview=detail;resnum=1;start=1;view=entry;lastview=reslist;lasttype=boolean;cc=clark1ic8lift;entryid=x-008458875;viewid=39015091904576;debug=xml;size=50;chaperone=S-CLARK1IC8LIFT-X-008458875%2039015091904253</Url><Url name="Thumb">data:image/jpeg;base64,/9j/4AAQSkZJRgABAQAAAQABAAD/2wBDAAgGBgcGBQgHBwcJCQgKDBQNDAsLDBkSEw8UHRofHh0a
 HBwgJC4nICIsIxwcKDcpLDAxNDQ0Hyc5PTgyPC4zNDL/2wBDAQkJCQwLDBgNDRgyIRwhMjIyMjIy
 MjIyMjIyMjIyMjIyMjIyMjIyMjIyMjIyMjIyMjIyMjIyMjIyMjIyMjIyMjL/wAARCABHAGQDASIA
 AhEBAxEB/8QAHwAAAQUBAQEBAQEAAAAAAAAAAAECAwQFBgcICQoL/8QAtRAAAgEDAwIEAwUFBAQA
@@ -1125,8 +1124,8 @@ Wb4Ux/yGh/4CS/8AxNFFFgFHxL8LEca0v/gJL/8AE0h+I/hhv+Yyp/7dJf8A4miinYQg+JXhZTj+
 j0l/+JooosB4t8RNVsta8Y3N7YS+bbPHGFfaVzhQDwQDRRRTA//Z
 </Url><Url name="ThumbLink" foo="bar">/cgi/i/image/api/tile/clark1ic8lift:008458875:39015091904576/full/!100,100/0/default.jpg</Url><Caption>39015091904576</Caption><Caption>Sheet 9 of 24 (No. 146)</Caption>
 
-<Type>image</Type><AuthCheck allowed="yes">1: world access allowed</AuthCheck><Url name="MediaLink">/cgi/i/image/api/image/clark1ic8lift:008458875:39015091904410/full/full/0/native.jpg</Url></Column>
-<Column x="10" y="1" blank="no" thumb="yes"><Url name="EntryLink">https://roger.quod.lib.umich.edu/cgi/i/image/image-idx?sort=marc710;rgn1=marc710;select1=phrase;c=clark1ic8lift;q1=National%2520Ocean%2520Survey.;subview=detail;resnum=5;start=1;view=entry;lastview=reslist;lasttype=boolean;cc=clark1ic8lift;entryid=x-008458875;viewid=39015091904287;debug=xml;size=50;chaperone=S-CLARK1IC8LIFT-X-008458875%2039015091904410</Url><Url name="Thumb">data:image/jpeg;base64,/9j/4AAQSkZJRgABAQAAAQABAAD/2wBDAAgGBgcGBQgHBwcJCQgKDBQNDAsLDBkSEw8UHRofHh0a
+<Type>image</Type><AuthCheck allowed="yes">1: world access allowed</AuthCheck><Url name="MediaLink">/cgi/i/image/api/image/clark1ic8lift:008458875:39015091904253/full/full/0/native.jpg</Url></Column>
+<Column x="10" y="1" blank="no" thumb="yes"><Url name="EntryLink">https://roger.quod.lib.umich.edu/cgi/i/image/image-idx?sort=marc710;rgn1=marc710;select1=phrase;c=clark1ic8lift;q1=National%2520Ocean%2520Survey.;subview=detail;resnum=1;start=1;view=entry;lastview=reslist;lasttype=boolean;cc=clark1ic8lift;entryid=x-008458875;viewid=39015091904287;debug=xml;size=50;chaperone=S-CLARK1IC8LIFT-X-008458875%2039015091904253</Url><Url name="Thumb">data:image/jpeg;base64,/9j/4AAQSkZJRgABAQAAAQABAAD/2wBDAAgGBgcGBQgHBwcJCQgKDBQNDAsLDBkSEw8UHRofHh0a
 HBwgJC4nICIsIxwcKDcpLDAxNDQ0Hyc5PTgyPC4zNDL/2wBDAQkJCQwLDBgNDRgyIRwhMjIyMjIy
 MjIyMjIyMjIyMjIyMjIyMjIyMjIyMjIyMjIyMjIyMjIyMjIyMjIyMjIyMjL/wAARCABHAGQDASIA
 AhEBAxEB/8QAHwAAAQUBAQEBAQEAAAAAAAAAAAECAwQFBgcICQoL/8QAtRAAAgEDAwIEAwUFBAQA
@@ -1170,8 +1169,8 @@ KKKLANHxN8LAf8hlf/AOX/CgfE/wx/FrCD6Wkx/9looosAh+KHhX/oMj/wAA5f8ACoZvih4WKEDW
 ASR/z6S/4UUUWA8h+JOs6frnieO702486AWqR7yjLyC2eCAe9FFFMR//2Q==
 </Url><Url name="ThumbLink" foo="bar">/cgi/i/image/api/tile/clark1ic8lift:008458875:39015091904287/full/!100,100/0/default.jpg</Url><Caption>39015091904287</Caption><Caption>Sheet 10 of 24 (No. 147)</Caption>
 
-<Type>image</Type><AuthCheck allowed="yes">1: world access allowed</AuthCheck><Url name="MediaLink">/cgi/i/image/api/image/clark1ic8lift:008458875:39015091904410/full/full/0/native.jpg</Url></Column>
-<Column x="11" y="1" blank="no" thumb="yes"><Url name="EntryLink">https://roger.quod.lib.umich.edu/cgi/i/image/image-idx?sort=marc710;rgn1=marc710;select1=phrase;c=clark1ic8lift;q1=National%2520Ocean%2520Survey.;subview=detail;resnum=5;start=1;view=entry;lastview=reslist;lasttype=boolean;cc=clark1ic8lift;entryid=x-008458875;viewid=39015091904436;debug=xml;size=50;chaperone=S-CLARK1IC8LIFT-X-008458875%2039015091904410</Url><Url name="Thumb">data:image/jpeg;base64,/9j/4AAQSkZJRgABAQAAAQABAAD/2wBDAAgGBgcGBQgHBwcJCQgKDBQNDAsLDBkSEw8UHRofHh0a
+<Type>image</Type><AuthCheck allowed="yes">1: world access allowed</AuthCheck><Url name="MediaLink">/cgi/i/image/api/image/clark1ic8lift:008458875:39015091904253/full/full/0/native.jpg</Url></Column>
+<Column x="11" y="1" blank="no" thumb="yes"><Url name="EntryLink">https://roger.quod.lib.umich.edu/cgi/i/image/image-idx?sort=marc710;rgn1=marc710;select1=phrase;c=clark1ic8lift;q1=National%2520Ocean%2520Survey.;subview=detail;resnum=1;start=1;view=entry;lastview=reslist;lasttype=boolean;cc=clark1ic8lift;entryid=x-008458875;viewid=39015091904436;debug=xml;size=50;chaperone=S-CLARK1IC8LIFT-X-008458875%2039015091904253</Url><Url name="Thumb">data:image/jpeg;base64,/9j/4AAQSkZJRgABAQAAAQABAAD/2wBDAAgGBgcGBQgHBwcJCQgKDBQNDAsLDBkSEw8UHRofHh0a
 HBwgJC4nICIsIxwcKDcpLDAxNDQ0Hyc5PTgyPC4zNDL/2wBDAQkJCQwLDBgNDRgyIRwhMjIyMjIy
 MjIyMjIyMjIyMjIyMjIyMjIyMjIyMjIyMjIyMjIyMjIyMjIyMjIyMjIyMjL/wAARCABJAGQDASIA
 AhEBAxEB/8QAHwAAAQUBAQEBAQEAAAAAAAAAAAECAwQFBgcICQoL/8QAtRAAAgEDAwIEAwUFBAQA
@@ -1216,8 +1215,8 @@ SNuX1/TFPp9oT/4qvlqigLH1GfEujD/mY9N/7/p/8VVa58S6NJGUXxBpjbhg5uEHH518y9qQ9KAs
 eq/ELVdPvPEMUttfW0yfZlG6OVWGdzelFeVUUDP/2Q==
 </Url><Url name="ThumbLink" foo="bar">/cgi/i/image/api/tile/clark1ic8lift:008458875:39015091904436/full/!100,100/0/default.jpg</Url><Caption>39015091904436</Caption><Caption>Sheet 11 of 24 (No. 148)</Caption>
 
-<Type>image</Type><AuthCheck allowed="yes">1: world access allowed</AuthCheck><Url name="MediaLink">/cgi/i/image/api/image/clark1ic8lift:008458875:39015091904410/full/full/0/native.jpg</Url></Column>
-<Column x="12" y="1" blank="no" thumb="yes"><Url name="EntryLink">https://roger.quod.lib.umich.edu/cgi/i/image/image-idx?sort=marc710;rgn1=marc710;select1=phrase;c=clark1ic8lift;q1=National%2520Ocean%2520Survey.;subview=detail;resnum=5;start=1;view=entry;lastview=reslist;lasttype=boolean;cc=clark1ic8lift;entryid=x-008458875;viewid=39015091904584;debug=xml;size=50;chaperone=S-CLARK1IC8LIFT-X-008458875%2039015091904410</Url><Url name="Thumb">data:image/jpeg;base64,/9j/4AAQSkZJRgABAQAAAQABAAD/2wBDAAgGBgcGBQgHBwcJCQgKDBQNDAsLDBkSEw8UHRofHh0a
+<Type>image</Type><AuthCheck allowed="yes">1: world access allowed</AuthCheck><Url name="MediaLink">/cgi/i/image/api/image/clark1ic8lift:008458875:39015091904253/full/full/0/native.jpg</Url></Column>
+<Column x="12" y="1" blank="no" thumb="yes"><Url name="EntryLink">https://roger.quod.lib.umich.edu/cgi/i/image/image-idx?sort=marc710;rgn1=marc710;select1=phrase;c=clark1ic8lift;q1=National%2520Ocean%2520Survey.;subview=detail;resnum=1;start=1;view=entry;lastview=reslist;lasttype=boolean;cc=clark1ic8lift;entryid=x-008458875;viewid=39015091904584;debug=xml;size=50;chaperone=S-CLARK1IC8LIFT-X-008458875%2039015091904253</Url><Url name="Thumb">data:image/jpeg;base64,/9j/4AAQSkZJRgABAQAAAQABAAD/2wBDAAgGBgcGBQgHBwcJCQgKDBQNDAsLDBkSEw8UHRofHh0a
 HBwgJC4nICIsIxwcKDcpLDAxNDQ0Hyc5PTgyPC4zNDL/2wBDAQkJCQwLDBgNDRgyIRwhMjIyMjIy
 MjIyMjIyMjIyMjIyMjIyMjIyMjIyMjIyMjIyMjIyMjIyMjIyMjIyMjIyMjL/wAARCABIAGQDASIA
 AhEBAxEB/8QAHwAAAQUBAQEBAQEAAAAAAAAAAAECAwQFBgcICQoL/8QAtRAAAgEDAwIEAwUFBAQA
@@ -1257,8 +1256,8 @@ wTKcvqEjHGMmBzx/3zUI+Ivg6MosOpyRorA7Rbvg4/4DRRQB5R8QdWsdc8X3N/p83m27xxhX2leQ
 oB4NFFFAz//Z
 </Url><Url name="ThumbLink" foo="bar">/cgi/i/image/api/tile/clark1ic8lift:008458875:39015091904584/full/!100,100/0/default.jpg</Url><Caption>39015091904584</Caption><Caption>Sheet 12 of 24 (No. 149)</Caption>
 
-<Type>image</Type><AuthCheck allowed="yes">1: world access allowed</AuthCheck><Url name="MediaLink">/cgi/i/image/api/image/clark1ic8lift:008458875:39015091904410/full/full/0/native.jpg</Url></Column>
-<Column x="13" y="1" blank="no" thumb="yes"><Url name="EntryLink">https://roger.quod.lib.umich.edu/cgi/i/image/image-idx?sort=marc710;rgn1=marc710;select1=phrase;c=clark1ic8lift;q1=National%2520Ocean%2520Survey.;subview=detail;resnum=5;start=1;view=entry;lastview=reslist;lasttype=boolean;cc=clark1ic8lift;entryid=x-008458875;viewid=39015091904295;debug=xml;size=50;chaperone=S-CLARK1IC8LIFT-X-008458875%2039015091904410</Url><Url name="Thumb">data:image/jpeg;base64,/9j/4AAQSkZJRgABAQAAAQABAAD/2wBDAAgGBgcGBQgHBwcJCQgKDBQNDAsLDBkSEw8UHRofHh0a
+<Type>image</Type><AuthCheck allowed="yes">1: world access allowed</AuthCheck><Url name="MediaLink">/cgi/i/image/api/image/clark1ic8lift:008458875:39015091904253/full/full/0/native.jpg</Url></Column>
+<Column x="13" y="1" blank="no" thumb="yes"><Url name="EntryLink">https://roger.quod.lib.umich.edu/cgi/i/image/image-idx?sort=marc710;rgn1=marc710;select1=phrase;c=clark1ic8lift;q1=National%2520Ocean%2520Survey.;subview=detail;resnum=1;start=1;view=entry;lastview=reslist;lasttype=boolean;cc=clark1ic8lift;entryid=x-008458875;viewid=39015091904295;debug=xml;size=50;chaperone=S-CLARK1IC8LIFT-X-008458875%2039015091904253</Url><Url name="Thumb">data:image/jpeg;base64,/9j/4AAQSkZJRgABAQAAAQABAAD/2wBDAAgGBgcGBQgHBwcJCQgKDBQNDAsLDBkSEw8UHRofHh0a
 HBwgJC4nICIsIxwcKDcpLDAxNDQ0Hyc5PTgyPC4zNDL/2wBDAQkJCQwLDBgNDRgyIRwhMjIyMjIy
 MjIyMjIyMjIyMjIyMjIyMjIyMjIyMjIyMjIyMjIyMjIyMjIyMjIyMjIyMjL/wAARCABkAEcDASIA
 AhEBAxEB/8QAHwAAAQUBAQEBAQEAAAAAAAAAAAECAwQFBgcICQoL/8QAtRAAAgEDAwIEAwUFBAQA
@@ -1297,8 +1296,8 @@ a3jQ/wDMZb/vzH/8TSf8LU8Zn/mNP/36j/8AiaKKAEPxQ8Ynn+2X/wC/Sf8AxNH/AAtHxl/0G5P+
 M4PAHqaKKKAP/9k=
 </Url><Url name="ThumbLink" foo="bar">/cgi/i/image/api/tile/clark1ic8lift:008458875:39015091904295/full/!100,100/0/default.jpg</Url><Caption>39015091904295</Caption><Caption>Sheet 13 of 24 (No. 150)</Caption>
 
-<Type>image</Type><AuthCheck allowed="yes">1: world access allowed</AuthCheck><Url name="MediaLink">/cgi/i/image/api/image/clark1ic8lift:008458875:39015091904410/full/full/0/native.jpg</Url></Column>
-<Column x="14" y="1" blank="no" thumb="yes"><Url name="EntryLink">https://roger.quod.lib.umich.edu/cgi/i/image/image-idx?sort=marc710;rgn1=marc710;select1=phrase;c=clark1ic8lift;q1=National%2520Ocean%2520Survey.;subview=detail;resnum=5;start=1;view=entry;lastview=reslist;lasttype=boolean;cc=clark1ic8lift;entryid=x-008458875;viewid=39015091904444;debug=xml;size=50;chaperone=S-CLARK1IC8LIFT-X-008458875%2039015091904410</Url><Url name="Thumb">data:image/jpeg;base64,/9j/4AAQSkZJRgABAQAAAQABAAD/2wBDAAgGBgcGBQgHBwcJCQgKDBQNDAsLDBkSEw8UHRofHh0a
+<Type>image</Type><AuthCheck allowed="yes">1: world access allowed</AuthCheck><Url name="MediaLink">/cgi/i/image/api/image/clark1ic8lift:008458875:39015091904253/full/full/0/native.jpg</Url></Column>
+<Column x="14" y="1" blank="no" thumb="yes"><Url name="EntryLink">https://roger.quod.lib.umich.edu/cgi/i/image/image-idx?sort=marc710;rgn1=marc710;select1=phrase;c=clark1ic8lift;q1=National%2520Ocean%2520Survey.;subview=detail;resnum=1;start=1;view=entry;lastview=reslist;lasttype=boolean;cc=clark1ic8lift;entryid=x-008458875;viewid=39015091904444;debug=xml;size=50;chaperone=S-CLARK1IC8LIFT-X-008458875%2039015091904253</Url><Url name="Thumb">data:image/jpeg;base64,/9j/4AAQSkZJRgABAQAAAQABAAD/2wBDAAgGBgcGBQgHBwcJCQgKDBQNDAsLDBkSEw8UHRofHh0a
 HBwgJC4nICIsIxwcKDcpLDAxNDQ0Hyc5PTgyPC4zNDL/2wBDAQkJCQwLDBgNDRgyIRwhMjIyMjIy
 MjIyMjIyMjIyMjIyMjIyMjIyMjIyMjIyMjIyMjIyMjIyMjIyMjIyMjIyMjL/wAARCABJAGQDASIA
 AhEBAxEB/8QAHwAAAQUBAQEBAQEAAAAAAAAAAAECAwQFBgcICQoL/8QAtRAAAgEDAwIEAwUFBAQA
@@ -1337,8 +1336,8 @@ fD5+94msV+lxGa+VqO1FgPqo+L/Dn/Q0WX/f9Kqz+KtAlZAviXT2UMpIadOcHNfL9FFgOv8AiddW
 1/44uri0uIriFoowJInDKflHcUVx9FMD/9k=
 </Url><Url name="ThumbLink" foo="bar">/cgi/i/image/api/tile/clark1ic8lift:008458875:39015091904444/full/!100,100/0/default.jpg</Url><Caption>39015091904444</Caption><Caption>Sheet 14 of 24 (No. 151)</Caption>
 
-<Type>image</Type><AuthCheck allowed="yes">1: world access allowed</AuthCheck><Url name="MediaLink">/cgi/i/image/api/image/clark1ic8lift:008458875:39015091904410/full/full/0/native.jpg</Url></Column>
-<Column x="15" y="1" blank="no" thumb="yes"><Url name="EntryLink">https://roger.quod.lib.umich.edu/cgi/i/image/image-idx?sort=marc710;rgn1=marc710;select1=phrase;c=clark1ic8lift;q1=National%2520Ocean%2520Survey.;subview=detail;resnum=5;start=1;view=entry;lastview=reslist;lasttype=boolean;cc=clark1ic8lift;entryid=x-008458875;viewid=39015091904592;debug=xml;size=50;chaperone=S-CLARK1IC8LIFT-X-008458875%2039015091904410</Url><Url name="Thumb">data:image/jpeg;base64,/9j/4AAQSkZJRgABAQAAAQABAAD/2wBDAAgGBgcGBQgHBwcJCQgKDBQNDAsLDBkSEw8UHRofHh0a
+<Type>image</Type><AuthCheck allowed="yes">1: world access allowed</AuthCheck><Url name="MediaLink">/cgi/i/image/api/image/clark1ic8lift:008458875:39015091904253/full/full/0/native.jpg</Url></Column>
+<Column x="15" y="1" blank="no" thumb="yes"><Url name="EntryLink">https://roger.quod.lib.umich.edu/cgi/i/image/image-idx?sort=marc710;rgn1=marc710;select1=phrase;c=clark1ic8lift;q1=National%2520Ocean%2520Survey.;subview=detail;resnum=1;start=1;view=entry;lastview=reslist;lasttype=boolean;cc=clark1ic8lift;entryid=x-008458875;viewid=39015091904592;debug=xml;size=50;chaperone=S-CLARK1IC8LIFT-X-008458875%2039015091904253</Url><Url name="Thumb">data:image/jpeg;base64,/9j/4AAQSkZJRgABAQAAAQABAAD/2wBDAAgGBgcGBQgHBwcJCQgKDBQNDAsLDBkSEw8UHRofHh0a
 HBwgJC4nICIsIxwcKDcpLDAxNDQ0Hyc5PTgyPC4zNDL/2wBDAQkJCQwLDBgNDRgyIRwhMjIyMjIy
 MjIyMjIyMjIyMjIyMjIyMjIyMjIyMjIyMjIyMjIyMjIyMjIyMjIyMjIyMjL/wAARCABJAGQDASIA
 AhEBAxEB/8QAHwAAAQUBAQEBAQEAAAAAAAAAAAECAwQFBgcICQoL/8QAtRAAAgEDAwIEAwUFBAQA
@@ -1379,8 +1378,8 @@ obxp4bC/L4ntSfeZP8Kavjbw2R8/ia1H0mQ/+y18sGjvRYD6nbxt4Yx/yM9v/wB/U/wqpL4w8OSy
 Jt8S2hUMCweVecc+gr5jpO1FgOq+Il5bX/jnULmznjngfy9skbBlPyKOoorlqKYH/9k=
 </Url><Url name="ThumbLink" foo="bar">/cgi/i/image/api/tile/clark1ic8lift:008458875:39015091904592/full/!100,100/0/default.jpg</Url><Caption>39015091904592</Caption><Caption>Sheet 15 of 24 (No. 152)</Caption>
 
-<Type>image</Type><AuthCheck allowed="yes">1: world access allowed</AuthCheck><Url name="MediaLink">/cgi/i/image/api/image/clark1ic8lift:008458875:39015091904410/full/full/0/native.jpg</Url></Column>
-<Column x="16" y="1" blank="no" thumb="yes"><Url name="EntryLink">https://roger.quod.lib.umich.edu/cgi/i/image/image-idx?sort=marc710;rgn1=marc710;select1=phrase;c=clark1ic8lift;q1=National%2520Ocean%2520Survey.;subview=detail;resnum=5;start=1;view=entry;lastview=reslist;lasttype=boolean;cc=clark1ic8lift;entryid=x-008458875;viewid=39015091914245;debug=xml;size=50;chaperone=S-CLARK1IC8LIFT-X-008458875%2039015091904410</Url><Url name="Thumb">data:image/jpeg;base64,/9j/4AAQSkZJRgABAQAAAQABAAD/2wBDAAgGBgcGBQgHBwcJCQgKDBQNDAsLDBkSEw8UHRofHh0a
+<Type>image</Type><AuthCheck allowed="yes">1: world access allowed</AuthCheck><Url name="MediaLink">/cgi/i/image/api/image/clark1ic8lift:008458875:39015091904253/full/full/0/native.jpg</Url></Column>
+<Column x="16" y="1" blank="no" thumb="yes"><Url name="EntryLink">https://roger.quod.lib.umich.edu/cgi/i/image/image-idx?sort=marc710;rgn1=marc710;select1=phrase;c=clark1ic8lift;q1=National%2520Ocean%2520Survey.;subview=detail;resnum=1;start=1;view=entry;lastview=reslist;lasttype=boolean;cc=clark1ic8lift;entryid=x-008458875;viewid=39015091914245;debug=xml;size=50;chaperone=S-CLARK1IC8LIFT-X-008458875%2039015091904253</Url><Url name="Thumb">data:image/jpeg;base64,/9j/4AAQSkZJRgABAQAAAQABAAD/2wBDAAgGBgcGBQgHBwcJCQgKDBQNDAsLDBkSEw8UHRofHh0a
 HBwgJC4nICIsIxwcKDcpLDAxNDQ0Hyc5PTgyPC4zNDL/2wBDAQkJCQwLDBgNDRgyIRwhMjIyMjIy
 MjIyMjIyMjIyMjIyMjIyMjIyMjIyMjIyMjIyMjIyMjIyMjIyMjIyMjIyMjL/wAARCABIAGQDASIA
 AhEBAxEB/8QAHwAAAQUBAQEBAQEAAAAAAAAAAAECAwQFBgcICQoL/8QAtRAAAgEDAwIEAwUFBAQA
@@ -1421,8 +1420,8 @@ Zuev+jvU4+LHhAddSuSfaBv8KKKLAL/wtrweP+Yhdn/ti3+FRt8WvChb5dRuAPe3aiiiwDj8WfB/
 2Q==
 </Url><Url name="ThumbLink" foo="bar">/cgi/i/image/api/tile/clark1ic8lift:008458875:39015091914245/full/!100,100/0/default.jpg</Url><Caption>39015091914245</Caption><Caption>Sheet 16 of 24 (No. 153)</Caption>
 
-<Type>image</Type><AuthCheck allowed="yes">1: world access allowed</AuthCheck><Url name="MediaLink">/cgi/i/image/api/image/clark1ic8lift:008458875:39015091904410/full/full/0/native.jpg</Url></Column>
-<Column x="17" y="1" blank="no" thumb="yes"><Url name="EntryLink">https://roger.quod.lib.umich.edu/cgi/i/image/image-idx?sort=marc710;rgn1=marc710;select1=phrase;c=clark1ic8lift;q1=National%2520Ocean%2520Survey.;subview=detail;resnum=5;start=1;view=entry;lastview=reslist;lasttype=boolean;cc=clark1ic8lift;entryid=x-008458875;viewid=39015091914393;debug=xml;size=50;chaperone=S-CLARK1IC8LIFT-X-008458875%2039015091904410</Url><Url name="Thumb">data:image/jpeg;base64,/9j/4AAQSkZJRgABAQAAAQABAAD/2wBDAAgGBgcGBQgHBwcJCQgKDBQNDAsLDBkSEw8UHRofHh0a
+<Type>image</Type><AuthCheck allowed="yes">1: world access allowed</AuthCheck><Url name="MediaLink">/cgi/i/image/api/image/clark1ic8lift:008458875:39015091904253/full/full/0/native.jpg</Url></Column>
+<Column x="17" y="1" blank="no" thumb="yes"><Url name="EntryLink">https://roger.quod.lib.umich.edu/cgi/i/image/image-idx?sort=marc710;rgn1=marc710;select1=phrase;c=clark1ic8lift;q1=National%2520Ocean%2520Survey.;subview=detail;resnum=1;start=1;view=entry;lastview=reslist;lasttype=boolean;cc=clark1ic8lift;entryid=x-008458875;viewid=39015091914393;debug=xml;size=50;chaperone=S-CLARK1IC8LIFT-X-008458875%2039015091904253</Url><Url name="Thumb">data:image/jpeg;base64,/9j/4AAQSkZJRgABAQAAAQABAAD/2wBDAAgGBgcGBQgHBwcJCQgKDBQNDAsLDBkSEw8UHRofHh0a
 HBwgJC4nICIsIxwcKDcpLDAxNDQ0Hyc5PTgyPC4zNDL/2wBDAQkJCQwLDBgNDRgyIRwhMjIyMjIy
 MjIyMjIyMjIyMjIyMjIyMjIyMjIyMjIyMjIyMjIyMjIyMjIyMjIyMjIyMjL/wAARCABJAGQDASIA
 AhEBAxEB/8QAHwAAAQUBAQEBAQEAAAAAAAAAAAECAwQFBgcICQoL/8QAtRAAAgEDAwIEAwUFBAQA
@@ -1464,8 +1463,8 @@ PDI/5ma2/wC/q/4UxvG3hwNgeIrUj185f/ia+X6SgLH1D/wmXhZIwi+I7YKBgKHXH8qq/wDCYeGI
 yiReILQRhtxXeuD37D1r5ppO9AWOt+JOoWmqeNru6sbiOeBkjCyRnIOEANFckKKBn//Z
 </Url><Url name="ThumbLink" foo="bar">/cgi/i/image/api/tile/clark1ic8lift:008458875:39015091914393/full/!100,100/0/default.jpg</Url><Caption>39015091914393</Caption><Caption>Sheet 17 of 24 (No. 154)</Caption>
 
-<Type>image</Type><AuthCheck allowed="yes">1: world access allowed</AuthCheck><Url name="MediaLink">/cgi/i/image/api/image/clark1ic8lift:008458875:39015091904410/full/full/0/native.jpg</Url></Column>
-<Column x="18" y="1" blank="no" thumb="yes"><Url name="EntryLink">https://roger.quod.lib.umich.edu/cgi/i/image/image-idx?sort=marc710;rgn1=marc710;select1=phrase;c=clark1ic8lift;q1=National%2520Ocean%2520Survey.;subview=detail;resnum=5;start=1;view=entry;lastview=reslist;lasttype=boolean;cc=clark1ic8lift;entryid=x-008458875;viewid=39015091914104;debug=xml;size=50;chaperone=S-CLARK1IC8LIFT-X-008458875%2039015091904410</Url><Url name="Thumb">data:image/jpeg;base64,/9j/4AAQSkZJRgABAQAAAQABAAD/2wBDAAgGBgcGBQgHBwcJCQgKDBQNDAsLDBkSEw8UHRofHh0a
+<Type>image</Type><AuthCheck allowed="yes">1: world access allowed</AuthCheck><Url name="MediaLink">/cgi/i/image/api/image/clark1ic8lift:008458875:39015091904253/full/full/0/native.jpg</Url></Column>
+<Column x="18" y="1" blank="no" thumb="yes"><Url name="EntryLink">https://roger.quod.lib.umich.edu/cgi/i/image/image-idx?sort=marc710;rgn1=marc710;select1=phrase;c=clark1ic8lift;q1=National%2520Ocean%2520Survey.;subview=detail;resnum=1;start=1;view=entry;lastview=reslist;lasttype=boolean;cc=clark1ic8lift;entryid=x-008458875;viewid=39015091914104;debug=xml;size=50;chaperone=S-CLARK1IC8LIFT-X-008458875%2039015091904253</Url><Url name="Thumb">data:image/jpeg;base64,/9j/4AAQSkZJRgABAQAAAQABAAD/2wBDAAgGBgcGBQgHBwcJCQgKDBQNDAsLDBkSEw8UHRofHh0a
 HBwgJC4nICIsIxwcKDcpLDAxNDQ0Hyc5PTgyPC4zNDL/2wBDAQkJCQwLDBgNDRgyIRwhMjIyMjIy
 MjIyMjIyMjIyMjIyMjIyMjIyMjIyMjIyMjIyMjIyMjIyMjIyMjIyMjIyMjL/wAARCABkAEcDASIA
 AhEBAxEB/8QAHwAAAQUBAQEBAQEAAAAAAAAAAAECAwQFBgcICQoL/8QAtRAAAgEDAwIEAwUFBAQA
@@ -1508,8 +1507,8 @@ rOd9j/4CrUqfGXxap4ls/wDwHFFFAD/+FzeLCfvWX/gP/wDXoPxk8VN1+wn/ALYf/XoooCxl658R
 9d1/R5NNvBaC3kKk+XFtPByO/rRRRQM//9k=
 </Url><Url name="ThumbLink" foo="bar">/cgi/i/image/api/tile/clark1ic8lift:008458875:39015091914104/full/!100,100/0/default.jpg</Url><Caption>39015091914104</Caption><Caption>Sheet 18 of 24 (No. 155)</Caption>
 
-<Type>image</Type><AuthCheck allowed="yes">1: world access allowed</AuthCheck><Url name="MediaLink">/cgi/i/image/api/image/clark1ic8lift:008458875:39015091904410/full/full/0/native.jpg</Url></Column>
-<Column x="19" y="1" blank="no" thumb="yes"><Url name="EntryLink">https://roger.quod.lib.umich.edu/cgi/i/image/image-idx?sort=marc710;rgn1=marc710;select1=phrase;c=clark1ic8lift;q1=National%2520Ocean%2520Survey.;subview=detail;resnum=5;start=1;view=entry;lastview=reslist;lasttype=boolean;cc=clark1ic8lift;entryid=x-008458875;viewid=39015091914252;debug=xml;size=50;chaperone=S-CLARK1IC8LIFT-X-008458875%2039015091904410</Url><Url name="Thumb">data:image/jpeg;base64,/9j/4AAQSkZJRgABAQAAAQABAAD/2wBDAAgGBgcGBQgHBwcJCQgKDBQNDAsLDBkSEw8UHRofHh0a
+<Type>image</Type><AuthCheck allowed="yes">1: world access allowed</AuthCheck><Url name="MediaLink">/cgi/i/image/api/image/clark1ic8lift:008458875:39015091904253/full/full/0/native.jpg</Url></Column>
+<Column x="19" y="1" blank="no" thumb="yes"><Url name="EntryLink">https://roger.quod.lib.umich.edu/cgi/i/image/image-idx?sort=marc710;rgn1=marc710;select1=phrase;c=clark1ic8lift;q1=National%2520Ocean%2520Survey.;subview=detail;resnum=1;start=1;view=entry;lastview=reslist;lasttype=boolean;cc=clark1ic8lift;entryid=x-008458875;viewid=39015091914252;debug=xml;size=50;chaperone=S-CLARK1IC8LIFT-X-008458875%2039015091904253</Url><Url name="Thumb">data:image/jpeg;base64,/9j/4AAQSkZJRgABAQAAAQABAAD/2wBDAAgGBgcGBQgHBwcJCQgKDBQNDAsLDBkSEw8UHRofHh0a
 HBwgJC4nICIsIxwcKDcpLDAxNDQ0Hyc5PTgyPC4zNDL/2wBDAQkJCQwLDBgNDRgyIRwhMjIyMjIy
 MjIyMjIyMjIyMjIyMjIyMjIyMjIyMjIyMjIyMjIyMjIyMjIyMjIyMjIyMjL/wAARCABHAGQDASIA
 AhEBAxEB/8QAHwAAAQUBAQEBAQEAAAAAAAAAAAECAwQFBgcICQoL/8QAtRAAAgEDAwIEAwUFBAQA
@@ -1553,8 +1552,8 @@ AH5NRv8AFzwnnKXV/wDjCf8AGiigLC/8Ld8I4/4+NRJ/64//AF6hb4t+EnJUyaiQfWL/AOvRRQFj
 yXx9rdn4g8XXOpWDO1vIkYUuu05CgHj8KKKKBn//2Q==
 </Url><Url name="ThumbLink" foo="bar">/cgi/i/image/api/tile/clark1ic8lift:008458875:39015091914252/full/!100,100/0/default.jpg</Url><Caption>39015091914252</Caption><Caption>Sheet 19 of 24 (No. 156)</Caption>
 
-<Type>image</Type><AuthCheck allowed="yes">1: world access allowed</AuthCheck><Url name="MediaLink">/cgi/i/image/api/image/clark1ic8lift:008458875:39015091904410/full/full/0/native.jpg</Url></Column>
-<Column x="20" y="1" blank="no" thumb="yes"><Url name="EntryLink">https://roger.quod.lib.umich.edu/cgi/i/image/image-idx?sort=marc710;rgn1=marc710;select1=phrase;c=clark1ic8lift;q1=National%2520Ocean%2520Survey.;subview=detail;resnum=5;start=1;view=entry;lastview=reslist;lasttype=boolean;cc=clark1ic8lift;entryid=x-008458875;viewid=39015091914401;debug=xml;size=50;chaperone=S-CLARK1IC8LIFT-X-008458875%2039015091904410</Url><Url name="Thumb">data:image/jpeg;base64,/9j/4AAQSkZJRgABAQAAAQABAAD/2wBDAAgGBgcGBQgHBwcJCQgKDBQNDAsLDBkSEw8UHRofHh0a
+<Type>image</Type><AuthCheck allowed="yes">1: world access allowed</AuthCheck><Url name="MediaLink">/cgi/i/image/api/image/clark1ic8lift:008458875:39015091904253/full/full/0/native.jpg</Url></Column>
+<Column x="20" y="1" blank="no" thumb="yes"><Url name="EntryLink">https://roger.quod.lib.umich.edu/cgi/i/image/image-idx?sort=marc710;rgn1=marc710;select1=phrase;c=clark1ic8lift;q1=National%2520Ocean%2520Survey.;subview=detail;resnum=1;start=1;view=entry;lastview=reslist;lasttype=boolean;cc=clark1ic8lift;entryid=x-008458875;viewid=39015091914401;debug=xml;size=50;chaperone=S-CLARK1IC8LIFT-X-008458875%2039015091904253</Url><Url name="Thumb">data:image/jpeg;base64,/9j/4AAQSkZJRgABAQAAAQABAAD/2wBDAAgGBgcGBQgHBwcJCQgKDBQNDAsLDBkSEw8UHRofHh0a
 HBwgJC4nICIsIxwcKDcpLDAxNDQ0Hyc5PTgyPC4zNDL/2wBDAQkJCQwLDBgNDRgyIRwhMjIyMjIy
 MjIyMjIyMjIyMjIyMjIyMjIyMjIyMjIyMjIyMjIyMjIyMjIyMjIyMjIyMjL/wAARCABkAEgDASIA
 AhEBAxEB/8QAHwAAAQUBAQEBAQEAAAAAAAAAAAECAwQFBgcICQoL/8QAtRAAAgEDAwIEAwUFBAQA
@@ -1602,8 +1601,8 @@ AIW74zB41GL/AMBo/wDCiimAf8Le8Zn/AJiUX/gNH/hTT8W/GTDB1KPH/XtH/wDE0UUAUdS+Ivib
 VtOn0+9vkktp12uogRcjOeoFFFFAH//Z
 </Url><Url name="ThumbLink" foo="bar">/cgi/i/image/api/tile/clark1ic8lift:008458875:39015091914401/full/!100,100/0/default.jpg</Url><Caption>39015091914401</Caption><Caption>Sheet 20 of 24 (No. 157)</Caption>
 
-<Type>image</Type><AuthCheck allowed="yes">1: world access allowed</AuthCheck><Url name="MediaLink">/cgi/i/image/api/image/clark1ic8lift:008458875:39015091904410/full/full/0/native.jpg</Url></Column>
-<Column x="21" y="1" blank="no" thumb="yes"><Url name="EntryLink">https://roger.quod.lib.umich.edu/cgi/i/image/image-idx?sort=marc710;rgn1=marc710;select1=phrase;c=clark1ic8lift;q1=National%2520Ocean%2520Survey.;subview=detail;resnum=5;start=1;view=entry;lastview=reslist;lasttype=boolean;cc=clark1ic8lift;entryid=x-008458875;viewid=39015091914112;debug=xml;size=50;chaperone=S-CLARK1IC8LIFT-X-008458875%2039015091904410</Url><Url name="Thumb">data:image/jpeg;base64,/9j/4AAQSkZJRgABAQAAAQABAAD/2wBDAAgGBgcGBQgHBwcJCQgKDBQNDAsLDBkSEw8UHRofHh0a
+<Type>image</Type><AuthCheck allowed="yes">1: world access allowed</AuthCheck><Url name="MediaLink">/cgi/i/image/api/image/clark1ic8lift:008458875:39015091904253/full/full/0/native.jpg</Url></Column>
+<Column x="21" y="1" blank="no" thumb="yes"><Url name="EntryLink">https://roger.quod.lib.umich.edu/cgi/i/image/image-idx?sort=marc710;rgn1=marc710;select1=phrase;c=clark1ic8lift;q1=National%2520Ocean%2520Survey.;subview=detail;resnum=1;start=1;view=entry;lastview=reslist;lasttype=boolean;cc=clark1ic8lift;entryid=x-008458875;viewid=39015091914112;debug=xml;size=50;chaperone=S-CLARK1IC8LIFT-X-008458875%2039015091904253</Url><Url name="Thumb">data:image/jpeg;base64,/9j/4AAQSkZJRgABAQAAAQABAAD/2wBDAAgGBgcGBQgHBwcJCQgKDBQNDAsLDBkSEw8UHRofHh0a
 HBwgJC4nICIsIxwcKDcpLDAxNDQ0Hyc5PTgyPC4zNDL/2wBDAQkJCQwLDBgNDRgyIRwhMjIyMjIy
 MjIyMjIyMjIyMjIyMjIyMjIyMjIyMjIyMjIyMjIyMjIyMjIyMjIyMjIyMjL/wAARCABkAEkDASIA
 AhEBAxEB/8QAHwAAAQUBAQEBAQEAAAAAAAAAAAECAwQFBgcICQoL/8QAtRAAAgEDAwIEAwUFBAQA
@@ -1648,8 +1647,8 @@ R/4VIPjF4xU8Xlt/4DJ/hRRQA7/hcvjH/n6tT/27LSn4z+MCOZ7M/W2WiigClqvxT8S6vpVxp11J
 am3uEKOEgCnHsa4iiigZ/9k=
 </Url><Url name="ThumbLink" foo="bar">/cgi/i/image/api/tile/clark1ic8lift:008458875:39015091914112/full/!100,100/0/default.jpg</Url><Caption>39015091914112</Caption><Caption>Sheet 21 of 24 (No. 158)</Caption>
 
-<Type>image</Type><AuthCheck allowed="yes">1: world access allowed</AuthCheck><Url name="MediaLink">/cgi/i/image/api/image/clark1ic8lift:008458875:39015091904410/full/full/0/native.jpg</Url></Column>
-<Column x="22" y="1" blank="no" thumb="yes"><Url name="EntryLink">https://roger.quod.lib.umich.edu/cgi/i/image/image-idx?sort=marc710;rgn1=marc710;select1=phrase;c=clark1ic8lift;q1=National%2520Ocean%2520Survey.;subview=detail;resnum=5;start=1;view=entry;lastview=reslist;lasttype=boolean;cc=clark1ic8lift;entryid=x-008458875;viewid=39015091914260;debug=xml;size=50;chaperone=S-CLARK1IC8LIFT-X-008458875%2039015091904410</Url><Url name="Thumb">data:image/jpeg;base64,/9j/4AAQSkZJRgABAQAAAQABAAD/2wBDAAgGBgcGBQgHBwcJCQgKDBQNDAsLDBkSEw8UHRofHh0a
+<Type>image</Type><AuthCheck allowed="yes">1: world access allowed</AuthCheck><Url name="MediaLink">/cgi/i/image/api/image/clark1ic8lift:008458875:39015091904253/full/full/0/native.jpg</Url></Column>
+<Column x="22" y="1" blank="no" thumb="yes"><Url name="EntryLink">https://roger.quod.lib.umich.edu/cgi/i/image/image-idx?sort=marc710;rgn1=marc710;select1=phrase;c=clark1ic8lift;q1=National%2520Ocean%2520Survey.;subview=detail;resnum=1;start=1;view=entry;lastview=reslist;lasttype=boolean;cc=clark1ic8lift;entryid=x-008458875;viewid=39015091914260;debug=xml;size=50;chaperone=S-CLARK1IC8LIFT-X-008458875%2039015091904253</Url><Url name="Thumb">data:image/jpeg;base64,/9j/4AAQSkZJRgABAQAAAQABAAD/2wBDAAgGBgcGBQgHBwcJCQgKDBQNDAsLDBkSEw8UHRofHh0a
 HBwgJC4nICIsIxwcKDcpLDAxNDQ0Hyc5PTgyPC4zNDL/2wBDAQkJCQwLDBgNDRgyIRwhMjIyMjIy
 MjIyMjIyMjIyMjIyMjIyMjIyMjIyMjIyMjIyMjIyMjIyMjIyMjIyMjIyMjL/wAARCABkAEcDASIA
 AhEBAxEB/8QAHwAAAQUBAQEBAQEAAAAAAAAAAAECAwQFBgcICQoL/8QAtRAAAgEDAwIEAwUFBAQA
@@ -1690,8 +1689,8 @@ NH/hRRTAP+FveMv+gjD/AOA0f+FIfi54xYYOoQ/+A0f+FFFAGVrfjvxD4h042GpXiS25cPtWFF5H
 TkCiiikB/9k=
 </Url><Url name="ThumbLink" foo="bar">/cgi/i/image/api/tile/clark1ic8lift:008458875:39015091914260/full/!100,100/0/default.jpg</Url><Caption>39015091914260</Caption><Caption>Sheet 22 of 24 (No. 159)</Caption>
 
-<Type>image</Type><AuthCheck allowed="yes">1: world access allowed</AuthCheck><Url name="MediaLink">/cgi/i/image/api/image/clark1ic8lift:008458875:39015091904410/full/full/0/native.jpg</Url></Column>
-<Column x="23" y="1" blank="no" thumb="yes"><Url name="EntryLink">https://roger.quod.lib.umich.edu/cgi/i/image/image-idx?sort=marc710;rgn1=marc710;select1=phrase;c=clark1ic8lift;q1=National%2520Ocean%2520Survey.;subview=detail;resnum=5;start=1;view=entry;lastview=reslist;lasttype=boolean;cc=clark1ic8lift;entryid=x-008458875;viewid=39015091914419;debug=xml;size=50;chaperone=S-CLARK1IC8LIFT-X-008458875%2039015091904410</Url><Url name="Thumb">data:image/jpeg;base64,/9j/4AAQSkZJRgABAQAAAQABAAD/2wBDAAgGBgcGBQgHBwcJCQgKDBQNDAsLDBkSEw8UHRofHh0a
+<Type>image</Type><AuthCheck allowed="yes">1: world access allowed</AuthCheck><Url name="MediaLink">/cgi/i/image/api/image/clark1ic8lift:008458875:39015091904253/full/full/0/native.jpg</Url></Column>
+<Column x="23" y="1" blank="no" thumb="yes"><Url name="EntryLink">https://roger.quod.lib.umich.edu/cgi/i/image/image-idx?sort=marc710;rgn1=marc710;select1=phrase;c=clark1ic8lift;q1=National%2520Ocean%2520Survey.;subview=detail;resnum=1;start=1;view=entry;lastview=reslist;lasttype=boolean;cc=clark1ic8lift;entryid=x-008458875;viewid=39015091914419;debug=xml;size=50;chaperone=S-CLARK1IC8LIFT-X-008458875%2039015091904253</Url><Url name="Thumb">data:image/jpeg;base64,/9j/4AAQSkZJRgABAQAAAQABAAD/2wBDAAgGBgcGBQgHBwcJCQgKDBQNDAsLDBkSEw8UHRofHh0a
 HBwgJC4nICIsIxwcKDcpLDAxNDQ0Hyc5PTgyPC4zNDL/2wBDAQkJCQwLDBgNDRgyIRwhMjIyMjIy
 MjIyMjIyMjIyMjIyMjIyMjIyMjIyMjIyMjIyMjIyMjIyMjIyMjIyMjIyMjL/wAARCABkAEcDASIA
 AhEBAxEB/8QAHwAAAQUBAQEBAQEAAAAAAAAAAAECAwQFBgcICQoL/8QAtRAAAgEDAwIEAwUFBAQA
@@ -1736,8 +1735,8 @@ fx94k0HTUsNN1AQ2yElU8lG5JyeSM1oj4teNB/zFl/8AAeP/AOJoooGPHxc8aD/mKJ/4DR//ABNL
 fb4P/AZP8KD8YfGJHN7bn62qf4UUUCMjxB4/17xPpyWGpzQvAkgkASFUO4Ajt9TRRRTGf//Z
 </Url><Url name="ThumbLink" foo="bar">/cgi/i/image/api/tile/clark1ic8lift:008458875:39015091914419/full/!100,100/0/default.jpg</Url><Caption>39015091914419</Caption><Caption>Sheet 23 of 24 (No. 160)</Caption>
 
-<Type>image</Type><AuthCheck allowed="yes">1: world access allowed</AuthCheck><Url name="MediaLink">/cgi/i/image/api/image/clark1ic8lift:008458875:39015091904410/full/full/0/native.jpg</Url></Column>
-<Column x="24" y="1" blank="no" thumb="yes"><Url name="EntryLink">https://roger.quod.lib.umich.edu/cgi/i/image/image-idx?sort=marc710;rgn1=marc710;select1=phrase;c=clark1ic8lift;q1=National%2520Ocean%2520Survey.;subview=detail;resnum=5;start=1;view=entry;lastview=reslist;lasttype=boolean;cc=clark1ic8lift;entryid=x-008458875;viewid=39015091914120;debug=xml;size=50;chaperone=S-CLARK1IC8LIFT-X-008458875%2039015091904410</Url><Url name="Thumb">data:image/jpeg;base64,/9j/4AAQSkZJRgABAQAAAQABAAD/2wBDAAgGBgcGBQgHBwcJCQgKDBQNDAsLDBkSEw8UHRofHh0a
+<Type>image</Type><AuthCheck allowed="yes">1: world access allowed</AuthCheck><Url name="MediaLink">/cgi/i/image/api/image/clark1ic8lift:008458875:39015091904253/full/full/0/native.jpg</Url></Column>
+<Column x="24" y="1" blank="no" thumb="yes"><Url name="EntryLink">https://roger.quod.lib.umich.edu/cgi/i/image/image-idx?sort=marc710;rgn1=marc710;select1=phrase;c=clark1ic8lift;q1=National%2520Ocean%2520Survey.;subview=detail;resnum=1;start=1;view=entry;lastview=reslist;lasttype=boolean;cc=clark1ic8lift;entryid=x-008458875;viewid=39015091914120;debug=xml;size=50;chaperone=S-CLARK1IC8LIFT-X-008458875%2039015091904253</Url><Url name="Thumb">data:image/jpeg;base64,/9j/4AAQSkZJRgABAQAAAQABAAD/2wBDAAgGBgcGBQgHBwcJCQgKDBQNDAsLDBkSEw8UHRofHh0a
 HBwgJC4nICIsIxwcKDcpLDAxNDQ0Hyc5PTgyPC4zNDL/2wBDAQkJCQwLDBgNDRgyIRwhMjIyMjIy
 MjIyMjIyMjIyMjIyMjIyMjIyMjIyMjIyMjIyMjIyMjIyMjIyMjIyMjIyMjL/wAARCABkAEkDASIA
 AhEBAxEB/8QAHwAAAQUBAQEBAQEAAAAAAAAAAAECAwQFBgcICQoL/8QAtRAAAgEDAwIEAwUFBAQA
@@ -1777,7 +1776,7 @@ L/wtjxiP+Ymn/gPH/wDE0UUAA+LPjIf8xNP/AAGj/wDiaD8WfGP/AEE0/wDAaP8A+JoooAY/xW8X
 uhVtRjwRg/6PH/hXIfaJf736CiimB//Z
 </Url><Url name="ThumbLink" foo="bar">/cgi/i/image/api/tile/clark1ic8lift:008458875:39015091914120/full/!100,100/0/default.jpg</Url><Caption>39015091914120</Caption><Caption>Sheet 24 of 24 (No. 161)</Caption>
 
-<Type>image</Type><AuthCheck allowed="yes">1: world access allowed</AuthCheck><Url name="MediaLink">/cgi/i/image/api/image/clark1ic8lift:008458875:39015091904410/full/full/0/native.jpg</Url></Column>
+<Type>image</Type><AuthCheck allowed="yes">1: world access allowed</AuthCheck><Url name="MediaLink">/cgi/i/image/api/image/clark1ic8lift:008458875:39015091904253/full/full/0/native.jpg</Url></Column>
 </Row>
 
 </View>
