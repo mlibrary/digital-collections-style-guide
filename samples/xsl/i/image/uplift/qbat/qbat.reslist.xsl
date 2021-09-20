@@ -3,7 +3,7 @@
 
   <xsl:template name="build-extra-styles">
     <xsl:comment>DUBIOUS EXCEPTIONS</xsl:comment>
-    <link rel="stylesheet" href="/samples/styles/entry.css" />
+    <link rel="stylesheet" href="/samples/styles/reslist.css" />
     <script src="/samples/js/base.js"></script>
   </xsl:template>
 
@@ -103,41 +103,43 @@
 
   <xsl:template name="build-results-pagination">
     <xsl:variable name="nav" select="//qui:main/qui:nav[@role='results']" />
-    <nav aria-label="Result navigation" class="[ pagination__row ][ flex flex-space-between flex-align-center ]">
-      <div class="pagination__group">
-        <xsl:if test="$nav/qui:link">
-          <ul class="pagination">
-            <xsl:if test="$nav/qui:link[@rel='previous']">
-              <li class="pagination__item">
-                <xsl:apply-templates select="$nav/qui:link[@rel='previous']" />
-              </li>
-            </xsl:if>
-            <xsl:if test="$nav/qui:link[@rel='next']">
-              <li class="pagination__item">
-                <xsl:apply-templates select="$nav/qui:link[@rel='next']" />
-              </li>
-            </xsl:if>
-          </ul>
-        </xsl:if>
-      </div>
-      <div class="pagination__group">
-        <label for="results-pagination">Go to page:</label>
-        <input
-          type="number"
-          id="results-pagination"
-          name="page"
-          min="1"
-          max="{$nav/@max}"
-          style="width: {$nav/@max + 4}ch"
-          value="{$nav/@current}"
-        />
-        <span>of <xsl:value-of select="$nav/@max" /></span>
+    <xsl:if test="$nav/@min &lt; $nav/@max">
+      <nav aria-label="Result navigation" class="[ pagination__row ][ flex flex-space-between flex-align-center ]">
+        <div class="pagination__group">
+          <xsl:if test="$nav/qui:link">
+            <ul class="pagination">
+              <xsl:if test="$nav/qui:link[@rel='previous']">
+                <li class="pagination__item">
+                  <xsl:apply-templates select="$nav/qui:link[@rel='previous']" />
+                </li>
+              </xsl:if>
+              <xsl:if test="$nav/qui:link[@rel='next']">
+                <li class="pagination__item">
+                  <xsl:apply-templates select="$nav/qui:link[@rel='next']" />
+                </li>
+              </xsl:if>
+            </ul>
+          </xsl:if>
+        </div>
+        <div class="pagination__group">
+          <label for="results-pagination">Go to page:</label>
+          <input
+            type="number"
+            id="results-pagination"
+            name="page"
+            min="1"
+            max="{$nav/@max}"
+            style="width: {$nav/@max + 4}ch"
+            value="{$nav/@current}"
+          />
+          <span>of <xsl:value-of select="$nav/@max" /></span>
 
-        <button type="submit" class="[ button button--secondary ] [ flex ]">
-          Go
-        </button>
-      </div>
-    </nav>
+          <button type="submit" class="[ button button--secondary ] [ flex ]">
+            Go
+          </button>
+        </div>
+      </nav>
+    </xsl:if>
   </xsl:template>
 
   <xsl:template name="build-filters-panel">
@@ -149,7 +151,7 @@
           <details>
             <summary><xsl:value-of select="qui:label" /></summary>
             <xsl:for-each select="qui:values/qui:value[position() &lt;= 10]">
-              <div>
+              <div class="[ flex ][ gap-0_5 ]">
                 <input type="checkbox" id="{ @key }-{ position() }" name="{@key}" value="{ . }" />
                 <label for="{ @key }-{ position() }">
                   <xsl:value-of select="." /><xsl:text> </xsl:text>
@@ -193,7 +195,15 @@
           <xsl:value-of select="$link//@data-available" />
         </xsl:attribute>
 
-        <img class="[ results-list__image ]" src="{qui:link[@rel='iiif']/@href}/full/!140,140/0/native.jpg" alt="{ItemDescription}" />
+        <xsl:choose>
+          <xsl:when test="qui:link[@rel='iiif']">
+            <img class="[ results-list__image ]" src="{qui:link[@rel='iiif']/@href}/full/!140,140/0/native.jpg" alt="{ItemDescription}" />
+          </xsl:when>
+          <xsl:otherwise>
+            <div class="[ results-list__blank ]" aria-hidden="true">
+            </div>
+          </xsl:otherwise>
+        </xsl:choose>
         <div class="[ results-list__content ]">
           <h4><xsl:apply-templates select="qui:title" /></h4>
           <dl class="[ results ]">

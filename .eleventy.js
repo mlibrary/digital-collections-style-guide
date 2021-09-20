@@ -7,7 +7,7 @@ module.exports = function (eleventyConfig) {
   eleventyConfig.addPassthroughCopy("static");
 
   eleventyConfig.addPassthroughCopy('samples/qui');
-  eleventyConfig.addPassthroughCopy('samples/xml');
+  eleventyConfig.addPassthroughCopy('samples/data');
   eleventyConfig.addPassthroughCopy('samples/js');
   eleventyConfig.addPassthroughCopy('samples/styles');
   eleventyConfig.addPassthroughCopy('samples/xsl/i/image/debug.qui.xsl');

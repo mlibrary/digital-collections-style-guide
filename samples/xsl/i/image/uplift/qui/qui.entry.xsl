@@ -64,14 +64,16 @@
     <xsl:param name="rel" />
     <xsl:param name="href" />
     <xsl:if test="normalize-space($href)">
-      <qui:link rel="{$rel}" href="{$href}" identifier="{$href/@identifier|$href/@name}" />
+      <qui:link rel="{$rel}" href="{$href}" identifier="{$href/@identifier|$href/@name}" marker="{$href/@marker}" />
     </xsl:if>
   </xsl:template>
 
   <xsl:template name="build-asset-viewer-configuration">
     <xsl:variable name="config" select="//MiradorConfig" />
     <xsl:variable name="publisher" select="//Publisher/Value" />
-    <qui:viewer embed-href="{$config/@embed-href}" manifest-id="{$config/@manifest-href}" canvas-index="{$config/@canvas-index}" mode="{$config/@mode}" auth-check="{//MediaInfo/AuthCheck/@allowed}" mimetype="{//MediaInfo/mimetype}" width="{//MediaInfo/width}" height="{//MediaInfo/height}" levels="{//MediaInfo/Levels}" collid="{//MediaInfo/ic_collid}" m_id="{//MediaInfo/m_id}" m_iid="{//MediaInfo/m_iid}" />
+    <xsl:if test="//MediaInfo/istruct_ms = 'P'">
+      <qui:viewer embed-href="{$config/@embed-href}" manifest-id="{$config/@manifest-href}" canvas-index="{$config/@canvas-index}" mode="{$config/@mode}" auth-check="{//MediaInfo/AuthCheck/@allowed}" mimetype="{//MediaInfo/mimetype}" width="{//MediaInfo/width}" height="{//MediaInfo/height}" levels="{//MediaInfo/Levels}" collid="{//MediaInfo/ic_collid}" m_id="{//MediaInfo/m_id}" m_iid="{//MediaInfo/m_iid}" />
+    </xsl:if>
   </xsl:template>
 
   <xsl:template name="build-record">
@@ -114,16 +116,18 @@
         </qui:values>
       </qui:field>
 
-      <qui:field key="image_size">
-        <qui:label>Image Size</qui:label>
-        <qui:values>
-          <qui:value>
-            <xsl:value-of select="/Top/MediaInfo/width" />
-            <xsl:text> x </xsl:text>
-            <xsl:value-of select="/Top/MediaInfo/height" />
-          </qui:value>
-        </qui:values>
-      </qui:field>
+      <xsl:if test="normalize-space(//MediaInfo/istruct_ms) = 'P'">
+        <qui:field key="image_size">
+          <qui:label>Image Size</qui:label>
+          <qui:values>
+            <qui:value>
+              <xsl:value-of select="/Top/MediaInfo/width" />
+              <xsl:text> x </xsl:text>
+              <xsl:value-of select="/Top/MediaInfo/height" />
+            </qui:value>
+          </qui:values>
+        </qui:field>
+      </xsl:if>
 
       <qui:field key="m_id">
         <qui:label>Record</qui:label>
@@ -251,11 +255,13 @@
   <xsl:template name="build-action-panel">
     <qui:block slot="actions">
       <!-- download options -->
-      <qui:download-options>
-        <xsl:for-each select="//ImageSizeTool/Level">
-          <qui:download-item height="{LevelHeight}" width="{LevelWidth}" href="{Part[@name='MediaLink']}"></qui:download-item>
-        </xsl:for-each>
-      </qui:download-options>
+      <xsl:if test="//MediaInfo/istruct_ms = 'P'">
+        <qui:download-options>
+          <xsl:for-each select="//ImageSizeTool/Level">
+            <qui:download-item height="{LevelHeight}" width="{LevelWidth}" href="{Part[@name='MediaLink']}"></qui:download-item>
+          </xsl:for-each>
+        </qui:download-options>
+      </xsl:if>
 
       <xsl:call-template name="build-action-panel-portfolio" />
 
@@ -334,7 +340,9 @@
   </xsl:template>
 
   <xsl:template name="build-action-panel-iiif-link">
-    <qui:link rel="iiif-manifest" href="{//MiradorConfig/@manifest-id}" />
+    <xsl:if test="normalize-space(//MiradorConfig/@manifest-id)">
+      <qui:link rel="iiif-manifest" href="{//MiradorConfig/@manifest-id}" />
+    </xsl:if>
   </xsl:template>
 
   <xsl:template name="get-canonical-link">

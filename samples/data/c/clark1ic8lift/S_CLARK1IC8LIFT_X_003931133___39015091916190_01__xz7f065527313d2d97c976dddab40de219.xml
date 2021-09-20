@@ -1,6 +1,6 @@
 
 
-<!DOCTYPE Top><Top xmlns:dlxs="http://www.umdl.umich.edu/dlxs" identifier="S_CLARK1IC8LIFT_X_000080677___39015091898760__xz2603b7ecc2cbc4a675507d1acb8dd3da">
+<!DOCTYPE Top><Top xmlns:dlxs="http://www.umdl.umich.edu/dlxs" identifier="S_CLARK1IC8LIFT_X_003931133___39015091916190_01__xz7f065527313d2d97c976dddab40de219">
 
  <!-- XSL fallback files -->
   <XslFallbackFileList>
@@ -26,22 +26,22 @@
 <Param name="c">clark1ic8lift</Param>
 <Param name="q1">detroit</Param>
 <Param name="subview">detail</Param>
-<Param name="resnum">5</Param>
-<Param name="start">1</Param>
+<Param name="resnum">54</Param>
+<Param name="start">51</Param>
 <Param name="view">entry</Param>
 <Param name="lastview">reslist</Param>
 <Param name="lasttype">boolean</Param>
 <Param name="cc">clark1ic8lift</Param>
-<Param name="entryid">x-000080677</Param>
-<Param name="viewid">39015091898760</Param>
+<Param name="entryid">x-003931133</Param>
+<Param name="viewid">39015091916190_01</Param>
 <Param name="debug">xml</Param>
 <Param name="size">50</Param>
-<Param name="chaperone">S-CLARK1IC8LIFT-X-000080677 39015091898760</Param>
+<Param name="chaperone">S-CLARK1IC8LIFT-X-003931133 39015091916190_01</Param>
 </CurrentCgi>
-<CurrentUrl>https://roger.quod.lib.umich.edu/cgi/i/image/image-idx?from=index;med=1;rgn1=ic_all;c=clark1ic8lift;q1=detroit;subview=detail;resnum=5;start=1;view=entry;lastview=reslist;lasttype=boolean;cc=clark1ic8lift;entryid=x-000080677;viewid=39015091898760;debug=xml;size=50;chaperone=S-CLARK1IC8LIFT-X-000080677%2039015091898760</CurrentUrl>
+<CurrentUrl>https://roger.quod.lib.umich.edu/cgi/i/image/image-idx?from=index;med=1;rgn1=ic_all;c=clark1ic8lift;q1=detroit;subview=detail;resnum=54;start=51;view=entry;lastview=reslist;lasttype=boolean;cc=clark1ic8lift;entryid=x-003931133;viewid=39015091916190_01;debug=xml;size=50;chaperone=S-CLARK1IC8LIFT-X-003931133%2039015091916190_01</CurrentUrl>
 <UserAgent>node-fetch/1.0 (+https://github.com/bitinn/node-fetch)</UserAgent>
 <ReferrerHref/>
-<Sid>47080bac6da934a6bc4b3f22a15f7ffa</Sid>
+<Sid>3d07ed0d0e4584eb924214bb1afac796</Sid>
 
 <EffectiveLanguage>en</EffectiveLanguage>
 <LanguageOptions><OptionalLanguage>en</OptionalLanguage></LanguageOptions>
@@ -545,7 +545,7 @@ for items where...</item>
 </DlxsGlobals>
 
 <CollName><Full>UM Clark Library Maps (Uplifted)</Full><Brief>UM Clark Library Maps</Brief></CollName>
-<EntryId>000080677</EntryId>
+<EntryId>003931133</EntryId>
 <RestrictStatus>access3</RestrictStatus>
 
 <AccessRestrictions>
@@ -553,8 +553,8 @@ for items where...</item>
 </AccessRestrictions>
 
 
-<EntryWindowName>S_CLARK1IC8LIFT_X_000080677___39015091898760</EntryWindowName>
-<ItemUrl>https://roger.quod.lib.umich.edu/cgi/i/image/image-idx?id=S-CLARK1IC8LIFT-X-000080677%5D39015091898760</ItemUrl><ItemUrlEncoded>https%3A%2F%2Froger.quod.lib.umich.edu%2Fcgi%2Fi%2Fimage%2Fimage-idx%3Fid%3DS-CLARK1IC8LIFT-X-000080677%5D39015091898760</ItemUrlEncoded><TitleForTagging>Map%20of%20Michigan%2C%20exhibiting%20the%20counties%20and%2C%20by%20reference%20to%20the%20accompanying%20pamphlet%2C%20showing%20the%20locality%20of%20the%20lands%20of%20the%20St.%20Marys%20Falls%20Ship%20Canal%20Co.</TitleForTagging>
+<EntryWindowName>S_CLARK1IC8LIFT_X_003931133___39015091916190_01</EntryWindowName>
+<ItemUrl>https://roger.quod.lib.umich.edu/cgi/i/image/image-idx?id=S-CLARK1IC8LIFT-X-003931133%5D39015091916190_01</ItemUrl><ItemUrlEncoded>https%3A%2F%2Froger.quod.lib.umich.edu%2Fcgi%2Fi%2Fimage%2Fimage-idx%3Fid%3DS-CLARK1IC8LIFT-X-003931133%5D39015091916190_01</ItemUrlEncoded><TitleForTagging>Map%20of%20the%20states%20of%20Ohio%2C%20Indiana%20and%20Illinois%20with%20the%20settled%20part%20of%20Michigan%20%2F%20engraved%20by%20J.%20H.%20Young.</TitleForTagging>
 <Home>https://roger.quod.lib.umich.edu/cgi/i/image/image-idx?page=index;c=clark1ic8lift</Home>
 <Help>https://roger.quod.lib.umich.edu/cgi/i/image/image-idx?page=help;c=clark1ic8lift</Help>
 <!-- <JavaScriptUrl>/i/image/js/imageclass.js</JavaScriptUrl> -->
@@ -570,22 +570,22 @@ for items where...</item>
 <Visibility div="full-image">hide</Visibility>
 <Visibility div="description">hide</Visibility>
 <Visibility div="other-views">show</Visibility></View></DivView>
-<Next><Url index="5" name="S_CLARK1IC8LIFT_X_000081015___39015091880156">https://roger.quod.lib.umich.edu/cgi/i/image/image-idx?from=index;med=1;rgn1=ic_all;c=clark1ic8lift;resnum=5;start=1;view=entry;lastview=reslist;lasttype=boolean;debug=xml;size=50;q1=detroit;cc=clark1ic8lift;entryid=x-000081015;viewid=39015091880156</Url></Next>
-<Prev><Url index="3" name="S_CLARK1IC8LIFT_X_000080675___39015091880008">https://roger.quod.lib.umich.edu/cgi/i/image/image-idx?from=index;med=1;rgn1=ic_all;c=clark1ic8lift;resnum=5;start=1;view=entry;lastview=reslist;lasttype=boolean;debug=xml;size=50;q1=detroit;cc=clark1ic8lift;entryid=x-000080675;viewid=39015091880008</Url></Prev>
-<Self><Url index="4" name="S_CLARK1IC8LIFT_X_000080677___39015091898760">https://roger.quod.lib.umich.edu/cgi/i/image/image-idx?from=index;med=1;rgn1=ic_all;c=clark1ic8lift;resnum=5;start=1;view=entry;lastview=reslist;lasttype=boolean;debug=xml;size=50;q1=detroit;cc=clark1ic8lift;entryid=x-000080677;viewid=39015091898760</Url></Self>
+<Next><Url index="54" name="S_CLARK1IC8LIFT_X_003931133___39015091916190_02">https://roger.quod.lib.umich.edu/cgi/i/image/image-idx?from=index;med=1;rgn1=ic_all;c=clark1ic8lift;resnum=54;start=51;view=entry;lastview=reslist;lasttype=boolean;debug=xml;size=50;q1=detroit;cc=clark1ic8lift;entryid=x-003931133;viewid=39015091916190_02</Url></Next>
+<Prev><Url index="52" name="S_CLARK1IC8LIFT_X_003930823___39015091898943">https://roger.quod.lib.umich.edu/cgi/i/image/image-idx?from=index;med=1;rgn1=ic_all;c=clark1ic8lift;resnum=54;start=51;view=entry;lastview=reslist;lasttype=boolean;debug=xml;size=50;q1=detroit;cc=clark1ic8lift;entryid=x-003930823;viewid=39015091898943</Url></Prev>
+<Self><Url index="53" name="S_CLARK1IC8LIFT_X_003931133___39015091916190_01">https://roger.quod.lib.umich.edu/cgi/i/image/image-idx?from=index;med=1;rgn1=ic_all;c=clark1ic8lift;resnum=54;start=51;view=entry;lastview=reslist;lasttype=boolean;debug=xml;size=50;q1=detroit;cc=clark1ic8lift;entryid=x-003931133;viewid=39015091916190_01</Url></Self>
 <TotalResults>456</TotalResults>
 <ContactLink>'m'+'a'+'i'+'l'+'t'+'o'+':'+'c'+'l'+'a'+'r'+'k'+'1'+'i'+'c'+'-'+'h'+'e'+'l'+'p'+'@'+'u'+'m'+'i'+'c'+'h'+'.'+'e'+'d'+'u'</ContactLink>
 <ContactText>E-Mail Help</ContactText>
-<LoginLink><Url>https://roger.quod.lib.umich.edu/cgi/dlxslogin/go?target=https%3A%2F%2Froger.quod.lib.umich.edu%2Fcgi%2Fi%2Fimage%2Fimage-idx%3Fkey_authret%3D1631913840</Url><Mode>login</Mode></LoginLink>
-<SearchLink>https://roger.quod.lib.umich.edu/cgi/i/image/image-idx?from=index;med=1;rgn1=ic_all;c=clark1ic8lift;debug=xml;size=50;chaperone=S-CLARK1IC8LIFT-X-000080677%2039015091898760;q1=detroit;page=search;view=reslist</SearchLink>
-<BackLink identifier="Q_CLARK1IC8LIFT_X_IC_ALL___DETROIT___1">https://roger.quod.lib.umich.edu/cgi/i/image/image-idx?from=index;med=1;rgn1=ic_all;c=clark1ic8lift;debug=xml;size=50;q1=detroit;view=reslist;type=boolean;start=1</BackLink>
+<LoginLink><Url>https://roger.quod.lib.umich.edu/cgi/dlxslogin/go?target=https%3A%2F%2Froger.quod.lib.umich.edu%2Fcgi%2Fi%2Fimage%2Fimage-idx%3Fkey_authret%3D1632162993</Url><Mode>login</Mode></LoginLink>
+<SearchLink>https://roger.quod.lib.umich.edu/cgi/i/image/image-idx?from=index;med=1;rgn1=ic_all;c=clark1ic8lift;debug=xml;size=50;chaperone=S-CLARK1IC8LIFT-X-003931133%2039015091916190_01;q1=detroit;page=search;view=reslist</SearchLink>
+<BackLink identifier="Q_CLARK1IC8LIFT_X_IC_ALL___DETROIT___0051">https://roger.quod.lib.umich.edu/cgi/i/image/image-idx?from=index;med=1;rgn1=ic_all;c=clark1ic8lift;debug=xml;size=50;q1=detroit;view=reslist;type=boolean;start=51</BackLink>
 <Banner><Text>UM Clark Library Maps (Uplift)</Text></Banner>
 <BookBagForm action="add"><HiddenVars><Variable name="page">bbname</Variable>
-<Variable name="bbidno">S-CLARK1IC8LIFT-X-000080677]39015091898760</Variable>
+<Variable name="bbidno">S-CLARK1IC8LIFT-X-003931133]39015091916190_01</Variable>
 </HiddenVars><ActionAllowed>1</ActionAllowed></BookBagForm>
 <Url name="Thumb">data:image/jpeg;base64,/9j/4AAQSkZJRgABAQAAAQABAAD/2wBDAAgGBgcGBQgHBwcJCQgKDBQNDAsLDBkSEw8UHRofHh0a
 HBwgJC4nICIsIxwcKDcpLDAxNDQ0Hyc5PTgyPC4zNDL/2wBDAQkJCQwLDBgNDRgyIRwhMjIyMjIy
-MjIyMjIyMjIyMjIyMjIyMjIyMjIyMjIyMjIyMjIyMjIyMjIyMjIyMjIyMjL/wAARCABkAFkDASIA
+MjIyMjIyMjIyMjIyMjIyMjIyMjIyMjIyMjIyMjIyMjIyMjIyMjIyMjIyMjL/wAARCABVAGQDASIA
 AhEBAxEB/8QAHwAAAQUBAQEBAQEAAAAAAAAAAAECAwQFBgcICQoL/8QAtRAAAgEDAwIEAwUFBAQA
 AAF9AQIDAAQRBRIhMUEGE1FhByJxFDKBkaEII0KxwRVS0fAkM2JyggkKFhcYGRolJicoKSo0NTY3
 ODk6Q0RFRkdISUpTVFVWV1hZWmNkZWZnaGlqc3R1dnd4eXqDhIWGh4iJipKTlJWWl5iZmqKjpKWm
@@ -593,125 +593,109 @@ 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
-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
-ooA//9k=
-</Url><Url name="ThumbLink" foo="bar">/cgi/i/image/api/tile/clark1ic8lift:000080677:39015091898760/full/!100,100/0/default.jpg</Url><ThumbInfo/>
+uLm6wsPExcbHyMnK0tPU1dbX2Nna4uPk5ebn6Onq8vP09fb3+Pn6/9oADAMBAAIRAxEAPwDyIClA
+PoaBW5PcSQpbiMgfuV7A1E58pvRpe0drmEByeKcFY9FJx7VrC/uP74H0UUo1G5Gf3pA78Cs/avsd
+H1J9zI/CmkZOcVr/AG+4P8YP4CrFrcPICzsPlIA4x60e1fYTwbXU5+nL1ropJ5I7JGjwG3cnHWqf
+2+fuw/Kn7XyEsG2r3MmTtTexrY+3T+o/IUhv524yv/fIo9q+w3g5LqY469aWtq3uZJLmNTt5YD7o
+rMuzm9n6f6xsY+tVGfM7GNai6drshopaK0MAFa92fltv+uK1kVr3a5W3/wCuC9/asavQ7MF8TKwP
+NOPPFMAOafkAdKzPRG8A84x7VdsVDxzDPdT/ADqiTk9O9XtPJ8qYD/ZP60nsTJ6El18unxY/v8Vm
+5rQu+dOi/wB81nHIUn0oQRaSHckfSkIxjNKHONp6daaaYN6k9nxewn/bFZ8/NzNn/no386v2gBu4
+s/3x/OqVyMXc49JG/maul8TOPG9CKiiitzgCtW7J222OP3C1lVqXfMdoR/zwWsavQ7MF8TIFz370
+45IAzTV9OMU8gr0rM9BsYR0yau6d/wAthx90fzql3zVzTjkzDP8AB/UUpbES2Jplzp0f/XT+lTTy
+tJctDGiqkZwx4yfpmo5sjTIyenmH+VLJqFnI5byWDnqdoOf1qGJII8higUZGOuDnJ9c0SNICSilT
+g8cMD+FQfbIdwPy56D9wP8acLuA43qPwiA/rRZ9hK5I0y3EcEixhHEwDYrDuv+Pyf/rq38zWwbqB
+2t4oUddsgJzWPc8Xc/8A10b+ZrajuzlxeyIqKTmiug4ha1Lkgw2n/XBayzWrdZMVmf8ApgtY1eh1
+4P4mVgeTS8kYFBpucHisz0Wxw681d0378x7bMfrVEMT0OPxq5YMd8vcbc4NJrQmT0J52xpicf8tD
+/Ks4Ju5q5O+dMQbh/rP6VUXJHymhIUXoDLt5IFMPTJFObjvTD3qinqS2+Tcwgjq4/nVW5GLycf8A
+TRv51btiFuYCOSHHH41Uujm8nP8A00b+dVS+I48bsiL8KKSitzgA9K25kd4bYpGzAQKCQOOlYhpR
+NIowJHA9AxqJw5rG1Gr7N3saTW0pJPlN+R4ppt5eP3bflVLzZf8Anq//AH0aQzzf89pP++zUezfc
+6frt/sl77NLt4jf8qs2EMiGZmQjCZ5FZAmm6+bJ/30aX7RPnPnyf99mj2T7kvF3WxrSxMdPAVWJ8
+z+lVltpyufKbHriqS3VxkATyYH+0aeb266faZcf7xo9mwji0lsWvsk//ADxf8qababP+qkA/3aq/
+bLkn/Xyf99GnC8usf8fEv/fRo9nIbxmuxoWtnN9rgJRsbxkgdKzbvi9nH/TRv5077ddjpcy/99mq
+7MzSFmJLMcknvVQg4u7Ma9f2ttBaKU0Voc400g5IoooAfTaKKADtQKKKAFToT60h60UUAJ3p4ooo
+ADTP4hRRQA49aKKKBH//2Q==
+</Url><Url name="ThumbLink" foo="bar">/cgi/i/image/api/tile/clark1ic8lift:003931133:39015091916190_01/full/!100,100/0/default.jpg</Url><ThumbInfo/>
 <OpenPortfolio><Url>https://roger.quod.lib.umich.edu/cgi/i/image/image-idx?page=bbopen</Url></OpenPortfolio>
 <MediaInfo><Initial>
-    <MediaLink>/cgi/i/image/api/image/clark1ic8lift:000080677:39015091898760/full/416,467/0/native.jpg</MediaLink>
-    <res>4</res>
-    <w>416</w>
-    <h>466</h>
+    <MediaLink>/cgi/i/image/api/image/clark1ic8lift:003931133:39015091916190_01/full/412,350/0/native.jpg</MediaLink>
+    <res>3</res>
+    <w>412</w>
+    <h>350</h>
 </Initial>
 <MediaHost>https://roger.quod.lib.umich.edu</MediaHost>
 <AuthCheck check="yes" allowed="yes">1: world access allowed</AuthCheck>
 <Debug/>
-<m_entryauth class="fieldsRef">WORLD</m_entryauth>
-<istruct_mo class="fieldsRef">TIF</istruct_mo>
-<m_searchable class="fieldsRef">1</m_searchable>
-<istruct_ms class="fieldsRef">P</istruct_ms>
-<m_caption class="fieldsRef">39015091898760|||</m_caption>
-<m_flm class="fieldsRef">2015-01-23 15:32:02</m_flm>
-<m_iid class="fieldsRef">39015091898760</m_iid>
-<istruct_x class="fieldsRef">1</istruct_x>
-<istruct_m class="fieldsRef">39015091898760</istruct_m>
-<istruct_stid class="fieldsRef">0</istruct_stid>
-<istruct_isentryid class="fieldsRef">S-CLARK1IC8LIFT-X-000080677]39015091898760</istruct_isentryid>
-<m_source class="fieldsRef">clark1ic</m_source>
-<istruct_caption class="fieldsRef">39015091898760|||</istruct_caption>
 <ic_collid class="fieldsRef">clark1ic8lift</ic_collid>
-<istruct_caption_item_description class="fieldsRef"/>
-<istruct_mt class="fieldsRef">IMAGE:::DYNAMIC2</istruct_mt>
+<istruct_caption_item_description class="fieldsRef">Cover</istruct_caption_item_description>
+<m_searchable class="fieldsRef">1</m_searchable>
+<m_caption class="fieldsRef">39015091916190|||Cover</m_caption>
+<m_entryauth class="fieldsRef">WORLD</m_entryauth>
+<istruct_caption_barcode class="fieldsRef">39015091916190</istruct_caption_barcode>
+<istruct_stid class="fieldsRef">0</istruct_stid>
+<istruct_x class="fieldsRef">1</istruct_x>
+<istruct_m class="fieldsRef">39015091916190_01</istruct_m>
+<istruct_caption class="fieldsRef">39015091916190|||Cover</istruct_caption>
+<istruct_mo class="fieldsRef">TIF</istruct_mo>
 <istruct_face class="fieldsRef">UNSPEC</istruct_face>
-<m_fn class="fieldsRef">39015091898760</m_fn>
-<istruct_me class="fieldsRef">JP2</istruct_me>
+<m_fn class="fieldsRef">39015091916190_01</m_fn>
 <istruct_stty class="fieldsRef">SUMM</istruct_stty>
-<m_id class="fieldsRef">000080677</m_id>
-<istruct_isentryidv class="fieldsRef">S-CLARK1IC8LIFT-X-000080677-1</istruct_isentryidv>
-<istruct_caption_barcode class="fieldsRef">39015091898760</istruct_caption_barcode>
+<m_flm class="fieldsRef">2015-02-27 10:18:13</m_flm>
+<istruct_mt class="fieldsRef">IMAGE:::DYNAMIC2</istruct_mt>
+<m_iid class="fieldsRef">39015091916190_01</m_iid>
+<m_source class="fieldsRef">clark1ic</m_source>
+<istruct_isentryidv class="fieldsRef">S-CLARK1IC8LIFT-X-003931133-1</istruct_isentryidv>
+<istruct_me class="fieldsRef">JP2</istruct_me>
 <istruct_y class="fieldsRef">1</istruct_y>
-<size class="imgInfHashRef">3019095</size>
-<levels class="imgInfHashRef">5</levels>
-<u class="imgInfHashRef">1</u>
-<mimetype class="imgInfHashRef">image/jp2</mimetype>
-<basename class="imgInfHashRef">39015091898760</basename>
-<height class="imgInfHashRef">7464</height>
-<md5 class="imgInfHashRef">dbb5dde8ae0645484f4ed73bb426ace7</md5>
-<modified class="imgInfHashRef">2015-01-23 15:32:02</modified>
-<filename class="imgInfHashRef">c/clark1ic/pairtree_root/39/01/50/91/89/87/60/39015091898760/39015091898760.jp2</filename>
-<type class="imgInfHashRef">image</type>
-<collid class="imgInfHashRef">clark1ic</collid>
-<loaded class="imgInfHashRef">2015-01-23 17:12:18</loaded>
-<master class="imgInfHashRef">0</master>
-<access class="imgInfHashRef">1</access>
-<width class="imgInfHashRef">6656</width>
-<use class="imgInfHashRef">access</use>
+<istruct_isentryid class="fieldsRef">S-CLARK1IC8LIFT-X-003931133]39015091916190_01</istruct_isentryid>
+<istruct_ms class="fieldsRef">P</istruct_ms>
+<m_id class="fieldsRef">003931133</m_id>
+<filename class="imgInfHashRef">c/clark1ic/pairtree_root/39/01/50/91/91/61/90/_0/1/39015091916190_01/39015091916190_01.jp2</filename>
+<loaded class="imgInfHashRef">2015-02-27 14:16:19</loaded>
+<modified class="imgInfHashRef">2015-02-27 10:18:13</modified>
 <ext class="imgInfHashRef">jp2</ext>
-<HighestQualityLevelAllowed>4</HighestQualityLevelAllowed>
-<Levels>5</Levels>
+<u class="imgInfHashRef">1</u>
+<collid class="imgInfHashRef">clark1ic</collid>
+<mimetype class="imgInfHashRef">image/jp2</mimetype>
+<height class="imgInfHashRef">2800</height>
+<width class="imgInfHashRef">3296</width>
+<md5 class="imgInfHashRef">20ada13d783c6514c5c64a14fd5becb3</md5>
+<type class="imgInfHashRef">image</type>
+<basename class="imgInfHashRef">39015091916190_01</basename>
+<size class="imgInfHashRef">633725</size>
+<use class="imgInfHashRef">access</use>
+<access class="imgInfHashRef">1</access>
+<master class="imgInfHashRef">0</master>
+<levels class="imgInfHashRef">4</levels>
+<HighestQualityLevelAllowed>3</HighestQualityLevelAllowed>
+<Levels>4</Levels>
 <Zoomable>no</Zoomable>
 <Pan>no</Pan>
 <Type>image</Type>
 <Ext>jp2</Ext>
 <MimeType>image/jp2</MimeType>
 </MediaInfo>
-<ImageSizeTool><Level level="5"><Part name="Current">no</Part>
-<Part name="DownloadLink">https://roger.quod.lib.umich.edu/cgi/i/image/image-idx?from=index;med=1;rgn1=ic_all;c=clark1ic8lift;q1=detroit;debug=xml;size=50;chaperone=S-CLARK1IC8LIFT-X-000080677%2039015091898760;evl=full-image;quality=5;view=entry;subview=download;cc=clark1ic8lift;entryid=x-000080677;viewid=39015091898760;start=1;resnum=5;lastview=reslist;lasttype=boolean</Part>
-<Part name="EntryLink">https://roger.quod.lib.umich.edu/cgi/i/image/image-idx?from=index;med=1;rgn1=ic_all;c=clark1ic8lift;q1=detroit;debug=xml;size=50;chaperone=S-CLARK1IC8LIFT-X-000080677%2039015091898760;evl=full-image;quality=5;view=entry;subview=detail;cc=clark1ic8lift;entryid=x-000080677;viewid=39015091898760;start=1;resnum=5;lastview=reslist;lasttype=boolean</Part>
-<Part name="MediaLink">/cgi/i/image/api/image/clark1ic8lift:000080677:39015091898760/full/res:5/0/native.jpg</Part><LevelWidth>208</LevelWidth><LevelHeight>233</LevelHeight><LevelMaxDim>233</LevelMaxDim></Level><Level level="4"><Part name="Current">yes</Part>
-<Part name="DownloadLink">https://roger.quod.lib.umich.edu/cgi/i/image/image-idx?from=index;med=1;rgn1=ic_all;c=clark1ic8lift;q1=detroit;debug=xml;size=50;chaperone=S-CLARK1IC8LIFT-X-000080677%2039015091898760;evl=full-image;quality=4;view=entry;subview=download;cc=clark1ic8lift;entryid=x-000080677;viewid=39015091898760;start=1;resnum=5;lastview=reslist;lasttype=boolean</Part>
-<Part name="EntryLink">https://roger.quod.lib.umich.edu/cgi/i/image/image-idx?from=index;med=1;rgn1=ic_all;c=clark1ic8lift;q1=detroit;debug=xml;size=50;chaperone=S-CLARK1IC8LIFT-X-000080677%2039015091898760;evl=full-image;quality=4;view=entry;subview=detail;cc=clark1ic8lift;entryid=x-000080677;viewid=39015091898760;start=1;resnum=5;lastview=reslist;lasttype=boolean</Part>
-<Part name="MediaLink">/cgi/i/image/api/image/clark1ic8lift:000080677:39015091898760/full/res:4/0/native.jpg</Part><LevelWidth>416</LevelWidth><LevelHeight>466</LevelHeight><LevelMaxDim>466</LevelMaxDim></Level><Level level="3"><Part name="Current">no</Part>
-<Part name="DownloadLink">https://roger.quod.lib.umich.edu/cgi/i/image/image-idx?from=index;med=1;rgn1=ic_all;c=clark1ic8lift;q1=detroit;debug=xml;size=50;chaperone=S-CLARK1IC8LIFT-X-000080677%2039015091898760;evl=full-image;quality=3;view=entry;subview=download;cc=clark1ic8lift;entryid=x-000080677;viewid=39015091898760;start=1;resnum=5;lastview=reslist;lasttype=boolean</Part>
-<Part name="EntryLink">https://roger.quod.lib.umich.edu/cgi/i/image/image-idx?from=index;med=1;rgn1=ic_all;c=clark1ic8lift;q1=detroit;debug=xml;size=50;chaperone=S-CLARK1IC8LIFT-X-000080677%2039015091898760;evl=full-image;quality=3;view=entry;subview=detail;cc=clark1ic8lift;entryid=x-000080677;viewid=39015091898760;start=1;resnum=5;lastview=reslist;lasttype=boolean</Part>
-<Part name="MediaLink">/cgi/i/image/api/image/clark1ic8lift:000080677:39015091898760/full/res:3/0/native.jpg</Part><LevelWidth>832</LevelWidth><LevelHeight>933</LevelHeight><LevelMaxDim>933</LevelMaxDim></Level><Level level="2"><Part name="Current">no</Part>
-<Part name="DownloadLink">https://roger.quod.lib.umich.edu/cgi/i/image/image-idx?from=index;med=1;rgn1=ic_all;c=clark1ic8lift;q1=detroit;debug=xml;size=50;chaperone=S-CLARK1IC8LIFT-X-000080677%2039015091898760;evl=full-image;quality=2;view=entry;subview=download;cc=clark1ic8lift;entryid=x-000080677;viewid=39015091898760;start=1;resnum=5;lastview=reslist;lasttype=boolean</Part>
-<Part name="EntryLink">https://roger.quod.lib.umich.edu/cgi/i/image/image-idx?from=index;med=1;rgn1=ic_all;c=clark1ic8lift;q1=detroit;debug=xml;size=50;chaperone=S-CLARK1IC8LIFT-X-000080677%2039015091898760;evl=full-image;quality=2;view=entry;subview=detail;cc=clark1ic8lift;entryid=x-000080677;viewid=39015091898760;start=1;resnum=5;lastview=reslist;lasttype=boolean</Part>
-<Part name="MediaLink">/cgi/i/image/api/image/clark1ic8lift:000080677:39015091898760/full/res:2/0/native.jpg</Part><LevelWidth>1664</LevelWidth><LevelHeight>1866</LevelHeight><LevelMaxDim>1866</LevelMaxDim></Level><Level level="1"><Part name="Current">no</Part>
-<Part name="DownloadLink">https://roger.quod.lib.umich.edu/cgi/i/image/image-idx?from=index;med=1;rgn1=ic_all;c=clark1ic8lift;q1=detroit;debug=xml;size=50;chaperone=S-CLARK1IC8LIFT-X-000080677%2039015091898760;evl=full-image;quality=1;view=entry;subview=download;cc=clark1ic8lift;entryid=x-000080677;viewid=39015091898760;start=1;resnum=5;lastview=reslist;lasttype=boolean</Part>
-<Part name="EntryLink">https://roger.quod.lib.umich.edu/cgi/i/image/image-idx?from=index;med=1;rgn1=ic_all;c=clark1ic8lift;q1=detroit;debug=xml;size=50;chaperone=S-CLARK1IC8LIFT-X-000080677%2039015091898760;evl=full-image;quality=1;view=entry;subview=detail;cc=clark1ic8lift;entryid=x-000080677;viewid=39015091898760;start=1;resnum=5;lastview=reslist;lasttype=boolean</Part>
-<Part name="MediaLink">/cgi/i/image/api/image/clark1ic8lift:000080677:39015091898760/full/res:1/0/native.jpg</Part><LevelWidth>3328</LevelWidth><LevelHeight>3732</LevelHeight><LevelMaxDim>3732</LevelMaxDim></Level><Level level="0"><Part name="Current">no</Part>
-<Part name="DownloadLink">https://roger.quod.lib.umich.edu/cgi/i/image/image-idx?from=index;med=1;rgn1=ic_all;c=clark1ic8lift;q1=detroit;debug=xml;size=50;chaperone=S-CLARK1IC8LIFT-X-000080677%2039015091898760;evl=full-image;quality=0;view=entry;subview=download;cc=clark1ic8lift;entryid=x-000080677;viewid=39015091898760;start=1;resnum=5;lastview=reslist;lasttype=boolean</Part>
-<Part name="EntryLink">https://roger.quod.lib.umich.edu/cgi/i/image/image-idx?from=index;med=1;rgn1=ic_all;c=clark1ic8lift;q1=detroit;debug=xml;size=50;chaperone=S-CLARK1IC8LIFT-X-000080677%2039015091898760;evl=full-image;quality=0;view=entry;subview=detail;cc=clark1ic8lift;entryid=x-000080677;viewid=39015091898760;start=1;resnum=5;lastview=reslist;lasttype=boolean</Part>
-<Part name="MediaLink">/cgi/i/image/api/image/clark1ic8lift:000080677:39015091898760/full/res:0/0/native.jpg</Part><LevelWidth>6656</LevelWidth><LevelHeight>7464</LevelHeight><LevelMaxDim>7464</LevelMaxDim></Level><MaxWidth>6656</MaxWidth><MaxHeight>7464</MaxHeight></ImageSizeTool>
+<ImageSizeTool><Level level="4"><Part name="Current">no</Part>
+<Part name="DownloadLink">https://roger.quod.lib.umich.edu/cgi/i/image/image-idx?from=index;med=1;rgn1=ic_all;c=clark1ic8lift;q1=detroit;debug=xml;size=50;chaperone=S-CLARK1IC8LIFT-X-003931133%2039015091916190_01;evl=full-image;quality=4;view=entry;subview=download;cc=clark1ic8lift;entryid=x-003931133;viewid=39015091916190_01;start=51;resnum=54;lastview=reslist;lasttype=boolean</Part>
+<Part name="EntryLink">https://roger.quod.lib.umich.edu/cgi/i/image/image-idx?from=index;med=1;rgn1=ic_all;c=clark1ic8lift;q1=detroit;debug=xml;size=50;chaperone=S-CLARK1IC8LIFT-X-003931133%2039015091916190_01;evl=full-image;quality=4;view=entry;subview=detail;cc=clark1ic8lift;entryid=x-003931133;viewid=39015091916190_01;start=51;resnum=54;lastview=reslist;lasttype=boolean</Part>
+<Part name="MediaLink">/cgi/i/image/api/image/clark1ic8lift:003931133:39015091916190_01/full/res:4/0/native.jpg</Part><LevelWidth>206</LevelWidth><LevelHeight>175</LevelHeight><LevelMaxDim>206</LevelMaxDim></Level><Level level="3"><Part name="Current">yes</Part>
+<Part name="DownloadLink">https://roger.quod.lib.umich.edu/cgi/i/image/image-idx?from=index;med=1;rgn1=ic_all;c=clark1ic8lift;q1=detroit;debug=xml;size=50;chaperone=S-CLARK1IC8LIFT-X-003931133%2039015091916190_01;evl=full-image;quality=3;view=entry;subview=download;cc=clark1ic8lift;entryid=x-003931133;viewid=39015091916190_01;start=51;resnum=54;lastview=reslist;lasttype=boolean</Part>
+<Part name="EntryLink">https://roger.quod.lib.umich.edu/cgi/i/image/image-idx?from=index;med=1;rgn1=ic_all;c=clark1ic8lift;q1=detroit;debug=xml;size=50;chaperone=S-CLARK1IC8LIFT-X-003931133%2039015091916190_01;evl=full-image;quality=3;view=entry;subview=detail;cc=clark1ic8lift;entryid=x-003931133;viewid=39015091916190_01;start=51;resnum=54;lastview=reslist;lasttype=boolean</Part>
+<Part name="MediaLink">/cgi/i/image/api/image/clark1ic8lift:003931133:39015091916190_01/full/res:3/0/native.jpg</Part><LevelWidth>412</LevelWidth><LevelHeight>350</LevelHeight><LevelMaxDim>412</LevelMaxDim></Level><Level level="2"><Part name="Current">no</Part>
+<Part name="DownloadLink">https://roger.quod.lib.umich.edu/cgi/i/image/image-idx?from=index;med=1;rgn1=ic_all;c=clark1ic8lift;q1=detroit;debug=xml;size=50;chaperone=S-CLARK1IC8LIFT-X-003931133%2039015091916190_01;evl=full-image;quality=2;view=entry;subview=download;cc=clark1ic8lift;entryid=x-003931133;viewid=39015091916190_01;start=51;resnum=54;lastview=reslist;lasttype=boolean</Part>
+<Part name="EntryLink">https://roger.quod.lib.umich.edu/cgi/i/image/image-idx?from=index;med=1;rgn1=ic_all;c=clark1ic8lift;q1=detroit;debug=xml;size=50;chaperone=S-CLARK1IC8LIFT-X-003931133%2039015091916190_01;evl=full-image;quality=2;view=entry;subview=detail;cc=clark1ic8lift;entryid=x-003931133;viewid=39015091916190_01;start=51;resnum=54;lastview=reslist;lasttype=boolean</Part>
+<Part name="MediaLink">/cgi/i/image/api/image/clark1ic8lift:003931133:39015091916190_01/full/res:2/0/native.jpg</Part><LevelWidth>824</LevelWidth><LevelHeight>700</LevelHeight><LevelMaxDim>824</LevelMaxDim></Level><Level level="1"><Part name="Current">no</Part>
+<Part name="DownloadLink">https://roger.quod.lib.umich.edu/cgi/i/image/image-idx?from=index;med=1;rgn1=ic_all;c=clark1ic8lift;q1=detroit;debug=xml;size=50;chaperone=S-CLARK1IC8LIFT-X-003931133%2039015091916190_01;evl=full-image;quality=1;view=entry;subview=download;cc=clark1ic8lift;entryid=x-003931133;viewid=39015091916190_01;start=51;resnum=54;lastview=reslist;lasttype=boolean</Part>
+<Part name="EntryLink">https://roger.quod.lib.umich.edu/cgi/i/image/image-idx?from=index;med=1;rgn1=ic_all;c=clark1ic8lift;q1=detroit;debug=xml;size=50;chaperone=S-CLARK1IC8LIFT-X-003931133%2039015091916190_01;evl=full-image;quality=1;view=entry;subview=detail;cc=clark1ic8lift;entryid=x-003931133;viewid=39015091916190_01;start=51;resnum=54;lastview=reslist;lasttype=boolean</Part>
+<Part name="MediaLink">/cgi/i/image/api/image/clark1ic8lift:003931133:39015091916190_01/full/res:1/0/native.jpg</Part><LevelWidth>1648</LevelWidth><LevelHeight>1400</LevelHeight><LevelMaxDim>1648</LevelMaxDim></Level><Level level="0"><Part name="Current">no</Part>
+<Part name="DownloadLink">https://roger.quod.lib.umich.edu/cgi/i/image/image-idx?from=index;med=1;rgn1=ic_all;c=clark1ic8lift;q1=detroit;debug=xml;size=50;chaperone=S-CLARK1IC8LIFT-X-003931133%2039015091916190_01;evl=full-image;quality=0;view=entry;subview=download;cc=clark1ic8lift;entryid=x-003931133;viewid=39015091916190_01;start=51;resnum=54;lastview=reslist;lasttype=boolean</Part>
+<Part name="EntryLink">https://roger.quod.lib.umich.edu/cgi/i/image/image-idx?from=index;med=1;rgn1=ic_all;c=clark1ic8lift;q1=detroit;debug=xml;size=50;chaperone=S-CLARK1IC8LIFT-X-003931133%2039015091916190_01;evl=full-image;quality=0;view=entry;subview=detail;cc=clark1ic8lift;entryid=x-003931133;viewid=39015091916190_01;start=51;resnum=54;lastview=reslist;lasttype=boolean</Part>
+<Part name="MediaLink">/cgi/i/image/api/image/clark1ic8lift:003931133:39015091916190_01/full/res:0/0/native.jpg</Part><LevelWidth>3296</LevelWidth><LevelHeight>2800</LevelHeight><LevelMaxDim>3296</LevelMaxDim></Level><MaxWidth>3296</MaxWidth><MaxHeight>2800</MaxHeight></ImageSizeTool>
 <RevertSizeTool><!-- cannot revert until image has been zoomed. --></RevertSizeTool>
 <MediaEquivsTool/>
-<Record name="entry"><Section name="default" class="default"><Field abbrev="marc245" searchfield="false" sortfield="false"><Values><Value>Map of Michigan, exhibiting the counties and, by reference to the accompanying pamphlet, showing the locality of the lands of the St. Marys Falls Ship Canal Co.</Value></Values><Label display="on">Title</Label></Field><Field abbrev="marc260" searchfield="false" sortfield="false"><Values><Value>[Boston, Mass.] : L. H. Bradford &amp; Co.'s Lith.,</Value></Values><Label display="on">Published</Label></Field><Field abbrev="marc300" searchfield="false" sortfield="false"><Values><Value>1 map : encapsulated in Mylar with barrier sheet ; 30 x 32 cm</Value></Values><Label display="on">Description</Label></Field><Field abbrev="marc500" searchfield="true" sortfield="false"><Values><Value>From a pamphlet entitled: 560,000 acres pine lands in the state of Michigan. <Highlight searchfield="true" class="hilite1" seq="1">Detroit</Highlight> 1857.</Value><Value>Shows distance from Chicago to cities on Michigans west coast by steamboat.</Value><Value>Shows major cities and towns, railroads, and counties.</Value></Values><Label display="on">Note</Label></Field><Field abbrev="marc651" searchfield="false" sortfield="false"><Values><Value link="https://roger.quod.lib.umich.edu/cgi/i/image/image-idx?med=1;c=clark1ic8lift;type=boolean;view=reslist;rgn1=marc651;q1=Michigan%2520Maps.;select1=phrase" target="_blank">Michigan Maps.</Value></Values><Label display="on">Subject Added Entry - Geographic Name</Label></Field><Field abbrev="marc255" searchfield="false" sortfield="false"><Values><Value>Scale [ca. 1:405,520] (W 88°45'--W 84°00'/N 47°46'--N 41°00').</Value></Values><Label display="on">Map Data</Label></Field><Field abbrev="marc034" searchfield="false" sortfield="false"><Values><Value>a 405520 W0884500 W0840000 N0474600 N0410000</Value></Values><Label display="on">Coded Cartographic Mathematical Data</Label></Field><Field abbrev="scan_date" searchfield="false" sortfield="false"><Values><Value>2014-10-15</Value></Values><Label display="on">Scan Date</Label></Field><Field abbrev="dlxs_ri" searchfield="false" sortfield="false"><Values><Value><p>The University of Michigan Library provides access to these materials for educational and research purposes. These materials are believed to be in the public domain in the United States; however, if you decide to use any of these materials, you are responsible for making your own legal assessment and securing any necessary permission. If you have questions about the collection, please contact <a href="mailto:clark1ic-help@umich.edu">Clark Library for Maps Digital Collections Help</a>. If you have concerns about the inclusion of an item in this collection, please contact <a href="mailto:LibraryIT-info@umich.edu">Library Information Technology</a>.</p><p>DPLA No Copyright - United States</p></Value></Values><Label display="on">Rights</Label></Field><Field abbrev="record_no" searchfield="false" sortfield="false"><Values><Value>000080677</Value></Values><Label display="on">Record No.</Label></Field></Section></Record>
-<Record name="special"><Section name="default" class="default"><Field abbrev="dlxs_ma" searchfield="false" sortfield="false"><Values><Value>Map of Michigan, exhibiting the counties and, by reference to the accompanying pamphlet, showing the locality of the lands of the St. Marys Falls Ship Canal Co.</Value></Values><Label display="on">Title</Label></Field><Field abbrev="dc_ti" searchfield="false" sortfield="false"><Values><Value>Map of Michigan, exhibiting the counties and, by reference to the accompanying pamphlet, showing the locality of the lands of the St. Marys Falls Ship Canal Co.</Value></Values><Label display="on">Title</Label></Field><Field abbrev="dc_su" searchfield="false" sortfield="false"><Values><Value>Michigan Maps.</Value></Values><Label display="on">Subject</Label></Field><Field abbrev="dc_de" searchfield="false" sortfield="false"><Values><Value>From a pamphlet entitled: 560,000 acres pine lands in the state of Michigan. Detroit 1857.</Value><Value>Shows distance from Chicago to cities on Michigans west coast by steamboat.</Value><Value>Shows major cities and towns, railroads, and counties.</Value><Value>1 map : encapsulated in Mylar with barrier sheet ; 30 x 32 cm</Value></Values><Label display="on">Description</Label></Field><Field abbrev="dlxs_catalog" searchfield="false" sortfield="false"><Values><Value>000080677</Value></Values><Label display="on">dlxs_catalog</Label></Field></Section></Record>
-<MediaDownloadLink><URL name="mediadownloadlink">/cgi/i/image/api/image/clark1ic8lift:000080677:39015091898760/full/res:0/0/native.jpg?attachment=1</URL><Filename>39015091898760_clark1ic8lift.JPG</Filename></MediaDownloadLink>
-<MiradorConfig manifest-href="https://quod.lib.umich.edu/cgi/i/image/api/manifest/clark1ic:000080677:39015091898760" embed-href="https://quod.lib.umich.edu/cgi/i/image/api/embed/clark1ic:000080677:39015091898760" canvas-index="1" mode="single"/>
+<Record name="entry"><Section name="default" class="default"><Field abbrev="marc245" searchfield="false" sortfield="false"><Values><Value>Map of the states of Ohio, Indiana and Illinois with the settled part of Michigan / engraved by J. H. Young.</Value></Values><Label display="on">Title</Label></Field><Field abbrev="marc246" searchfield="false" sortfield="false"><Values><Value>Title on cover: Mitchell's map of Ohio, Indiana, Illinois &amp; Michigan MiU</Value></Values><Label display="on">Varying Form of Title</Label></Field><Field abbrev="istruct_caption_item_description" searchfield="false" sortfield="false"><Values><Value>Cover</Value></Values><Label display="on">Item Description</Label></Field><Field abbrev="marc100" searchfield="false" sortfield="false"><Values><Value link="https://roger.quod.lib.umich.edu/cgi/i/image/image-idx?med=1;c=clark1ic8lift;type=boolean;view=reslist;rgn1=marc100;q1=Young%252C%2520J.%2520H.%2520%2528James%2520Hamilton%2529;select1=phrase" target="_blank">Young, J. H. (James Hamilton)</Value></Values><Label display="on">Main Entry - Personal Name</Label></Field><Field abbrev="marc700" searchfield="false" sortfield="false"><Values><Value link="https://roger.quod.lib.umich.edu/cgi/i/image/image-idx?med=1;c=clark1ic8lift;type=boolean;view=reslist;rgn1=marc700;q1=Mitchell%252C%2520S.%2520Augustus%2520%2528Samuel%2520Augustus%2529%252C%25201792-1868.;select1=phrase" target="_blank">Mitchell, S. Augustus (Samuel Augustus), 1792-1868.</Value></Values><Label display="on">Added Entry - Personal Name</Label></Field><Field abbrev="marc710" searchfield="false" sortfield="false"><Values><Value link="https://roger.quod.lib.umich.edu/cgi/i/image/image-idx?med=1;c=clark1ic8lift;type=boolean;view=reslist;rgn1=marc710;q1=Mitchell%2520%2526amp%253B%2520Hinman.;select1=phrase" target="_blank">Mitchell &amp; Hinman.</Value></Values><Label display="on">Added Entry - Corporate Name</Label></Field><Field abbrev="marc260" searchfield="false" sortfield="false"><Values><Value>Philadelphia : S. Augustus Mitchell,</Value></Values><Label display="on">Published</Label></Field><Field abbrev="marc300" searchfield="false" sortfield="false"><Values><Value>1 map : hand col. ; 42 x 54 cm</Value></Values><Label display="on">Description</Label></Field><Field abbrev="marc500" searchfield="true" sortfield="false"><Values><Value>Relief shown by hachures.</Value><Value>Prime meridian: Washington.</Value><Value>"Sold by Mitchell &amp; Hinman."</Value><Value>Insets: Vicinity of <Highlight searchfield="true" class="hilite1" seq="1">Detroit</Highlight> -- Vicinity of Cincinnati -- Falls of Ohio -- Lead region east of the Mississippi River.</Value><Value>Includes table of steamboat routes.</Value></Values><Label display="on">Note</Label></Field><Field abbrev="marc651" searchfield="false" sortfield="false"><Values><Value link="https://roger.quod.lib.umich.edu/cgi/i/image/image-idx?med=1;c=clark1ic8lift;type=boolean;view=reslist;rgn1=marc651;q1=Northwest%252C%2520Old%2520Maps.;select1=phrase" target="_blank">Northwest, Old Maps.</Value></Values><Label display="on">Subject Added Entry - Geographic Name</Label></Field><Field abbrev="marc255" searchfield="false" sortfield="false"><Values><Value>Scale [ca. 1:2,000,000] (W 92°--W 80°/N 44°--N 37°).</Value></Values><Label display="on">Map Data</Label></Field><Field abbrev="marc034" searchfield="false" sortfield="false"><Values><Value>a 2000000 W0920000 W0800000 N0440000 N0370000</Value></Values><Label display="on">Coded Cartographic Mathematical Data</Label></Field><Field abbrev="marc590" searchfield="false" sortfield="false"><Values><Value>MAP: cover attached to map, includes index with populations of towns.</Value><Value>MAP: Gift of Ann Peters, September 26, 2007.</Value></Values><Label display="on">Local note</Label></Field><Field abbrev="scan_date" searchfield="false" sortfield="false"><Values><Value>2013-10-02</Value></Values><Label display="on">Scan Date</Label></Field><Field abbrev="dlxs_ri" searchfield="false" sortfield="false"><Values><Value><p>The University of Michigan Library provides access to these materials for educational and research purposes. These materials are believed to be in the public domain in the United States; however, if you decide to use any of these materials, you are responsible for making your own legal assessment and securing any necessary permission. If you have questions about the collection, please contact <a href="mailto:clark1ic-help@umich.edu">Clark Library for Maps Digital Collections Help</a>. If you have concerns about the inclusion of an item in this collection, please contact <a href="mailto:LibraryIT-info@umich.edu">Library Information Technology</a>.</p><p>DPLA No Copyright - United States</p></Value></Values><Label display="on">Rights</Label></Field><Field abbrev="record_no" searchfield="false" sortfield="false"><Values><Value>003931133</Value></Values><Label display="on">Record No.</Label></Field></Section></Record>
+<Record name="special"><Section name="default" class="default"><Field abbrev="dlxs_ma" searchfield="false" sortfield="false"><Values><Value>Map of the states of Ohio, Indiana and Illinois with the settled part of Michigan / engraved by J. H. Young.</Value></Values><Label display="on">Title</Label></Field><Field abbrev="dc_ti" searchfield="false" sortfield="false"><Values><Value>Map of the states of Ohio, Indiana and Illinois with the settled part of Michigan / engraved by J. H. Young.</Value></Values><Label display="on">Title</Label></Field><Field abbrev="dc_su" searchfield="false" sortfield="false"><Values><Value>Northwest, Old Maps.</Value></Values><Label display="on">Subject</Label></Field><Field abbrev="dc_de" searchfield="false" sortfield="false"><Values><Value>Relief shown by hachures.</Value><Value>Prime meridian: Washington.</Value><Value>"Sold by Mitchell &amp; Hinman."</Value><Value>Insets: Vicinity of Detroit -- Vicinity of Cincinnati -- Falls of Ohio -- Lead region east of the Mississippi River.</Value><Value>Includes table of steamboat routes.</Value><Value>1 map : hand col. ; 42 x 54 cm</Value></Values><Label display="on">Description</Label></Field><Field abbrev="dlxs_catalog" searchfield="false" sortfield="false"><Values><Value>003931133</Value></Values><Label display="on">dlxs_catalog</Label></Field></Section></Record>
+<MediaDownloadLink><URL name="mediadownloadlink">/cgi/i/image/api/image/clark1ic8lift:003931133:39015091916190_01/full/res:0/0/native.jpg?attachment=1</URL><Filename>39015091916190_01_clark1ic8lift.JPG</Filename></MediaDownloadLink>
+<MiradorConfig manifest-href="https://quod.lib.umich.edu/cgi/i/image/api/manifest/clark1ic:003931133:39015091916190_01" embed-href="https://quod.lib.umich.edu/cgi/i/image/api/embed/clark1ic:003931133:39015091916190_01" canvas-index="1" mode="book"/>
 
 <inserttextentryinfo><div><!-- entryinfo.txt is a file that is inserted into entry.xml by the
 middleware and a PI called CHUNK. It is optional at group and coll
@@ -720,13 +704,32 @@ a placeholder. Otherwise, if there is not an entryinfo.txt file at the
 coll or group level, an assertion error will occur. Alternatively, the
 CHUNK PI could be removed from entry.tpl and bbentry.tpl. -->
 </div></inserttextentryinfo>
-
+<RelatedViewsMenu><Name>viewid</Name>
+<HiddenVars><Variable name="from">index</Variable>
+<Variable name="med">1</Variable>
+<Variable name="rgn1">ic_all</Variable>
+<Variable name="c">clark1ic8lift</Variable>
+<Variable name="q1">detroit</Variable>
+<Variable name="subview">detail</Variable>
+<Variable name="resnum">54</Variable>
+<Variable name="start">51</Variable>
+<Variable name="view">entry</Variable>
+<Variable name="lastview">reslist</Variable>
+<Variable name="lasttype">boolean</Variable>
+<Variable name="cc">clark1ic8lift</Variable>
+<Variable name="entryid">x-003931133</Variable>
+<Variable name="debug">xml</Variable>
+<Variable name="size">50</Variable>
+<Variable name="chaperone">S-CLARK1IC8LIFT-X-003931133 39015091916190_01</Variable>
+</HiddenVars>
+<Instruct w="other">Related Views</Instruct>
+<Option index="0"><Label>39015091916190|||Cover</Label><Value>39015091916190_01</Value><Focus>true</Focus></Option><Option index="1"><Label>39015091916190|||Map</Label><Value>39015091916190_02</Value></Option><Name>relview</Name><Default>39015091916190_01</Default></RelatedViewsMenu>
 <RelatedViews><View>
 <Name>unspecified | summary</Name>
 <Row y="1">
-<Column x="1" y="1" blank="no" thumb="yes"><Focus>true</Focus><Url name="EntryLink">https://roger.quod.lib.umich.edu/cgi/i/image/image-idx?from=index;med=1;rgn1=ic_all;c=clark1ic8lift;q1=detroit;subview=detail;resnum=5;start=1;view=entry;lastview=reslist;lasttype=boolean;cc=clark1ic8lift;entryid=x-000080677;viewid=39015091898760;debug=xml;size=50;chaperone=S-CLARK1IC8LIFT-X-000080677%2039015091898760</Url><Url name="Thumb">data:image/jpeg;base64,/9j/4AAQSkZJRgABAQAAAQABAAD/2wBDAAgGBgcGBQgHBwcJCQgKDBQNDAsLDBkSEw8UHRofHh0a
+<Column x="1" y="1" blank="no" thumb="yes"><Focus>true</Focus><Url name="EntryLink">https://roger.quod.lib.umich.edu/cgi/i/image/image-idx?from=index;med=1;rgn1=ic_all;c=clark1ic8lift;q1=detroit;subview=detail;resnum=54;start=51;view=entry;lastview=reslist;lasttype=boolean;cc=clark1ic8lift;entryid=x-003931133;viewid=39015091916190_01;debug=xml;size=50;chaperone=S-CLARK1IC8LIFT-X-003931133%2039015091916190_01</Url><Url name="Thumb">data:image/jpeg;base64,/9j/4AAQSkZJRgABAQAAAQABAAD/2wBDAAgGBgcGBQgHBwcJCQgKDBQNDAsLDBkSEw8UHRofHh0a
 HBwgJC4nICIsIxwcKDcpLDAxNDQ0Hyc5PTgyPC4zNDL/2wBDAQkJCQwLDBgNDRgyIRwhMjIyMjIy
-MjIyMjIyMjIyMjIyMjIyMjIyMjIyMjIyMjIyMjIyMjIyMjIyMjIyMjIyMjL/wAARCABkAFkDASIA
+MjIyMjIyMjIyMjIyMjIyMjIyMjIyMjIyMjIyMjIyMjIyMjIyMjIyMjIyMjL/wAARCABVAGQDASIA
 AhEBAxEB/8QAHwAAAQUBAQEBAQEAAAAAAAAAAAECAwQFBgcICQoL/8QAtRAAAgEDAwIEAwUFBAQA
 AAF9AQIDAAQRBRIhMUEGE1FhByJxFDKBkaEII0KxwRVS0fAkM2JyggkKFhcYGRolJicoKSo0NTY3
 ODk6Q0RFRkdISUpTVFVWV1hZWmNkZWZnaGlqc3R1dnd4eXqDhIWGh4iJipKTlJWWl5iZmqKjpKWm
@@ -734,43 +737,68 @@ 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
-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
-ooA//9k=
-</Url><Url name="ThumbLink" foo="bar">/cgi/i/image/api/tile/clark1ic8lift:000080677:39015091898760/full/!100,100/0/default.jpg</Url><Caption>39015091898760</Caption>
+uLm6wsPExcbHyMnK0tPU1dbX2Nna4uPk5ebn6Onq8vP09fb3+Pn6/9oADAMBAAIRAxEAPwDyIClA
+PoaBW5PcSQpbiMgfuV7A1E58pvRpe0drmEByeKcFY9FJx7VrC/uP74H0UUo1G5Gf3pA78Cs/avsd
+H1J9zI/CmkZOcVr/AG+4P8YP4CrFrcPICzsPlIA4x60e1fYTwbXU5+nL1ropJ5I7JGjwG3cnHWqf
+2+fuw/Kn7XyEsG2r3MmTtTexrY+3T+o/IUhv524yv/fIo9q+w3g5LqY469aWtq3uZJLmNTt5YD7o
+rMuzm9n6f6xsY+tVGfM7GNai6drshopaK0MAFa92fltv+uK1kVr3a5W3/wCuC9/asavQ7MF8TKwP
+NOPPFMAOafkAdKzPRG8A84x7VdsVDxzDPdT/ADqiTk9O9XtPJ8qYD/ZP60nsTJ6El18unxY/v8Vm
+5rQu+dOi/wB81nHIUn0oQRaSHckfSkIxjNKHONp6daaaYN6k9nxewn/bFZ8/NzNn/no386v2gBu4
+s/3x/OqVyMXc49JG/maul8TOPG9CKiiitzgCtW7J222OP3C1lVqXfMdoR/zwWsavQ7MF8TIFz370
+45IAzTV9OMU8gr0rM9BsYR0yau6d/wAthx90fzql3zVzTjkzDP8AB/UUpbES2Jplzp0f/XT+lTTy
+tJctDGiqkZwx4yfpmo5sjTIyenmH+VLJqFnI5byWDnqdoOf1qGJII8higUZGOuDnJ9c0SNICSilT
+g8cMD+FQfbIdwPy56D9wP8acLuA43qPwiA/rRZ9hK5I0y3EcEixhHEwDYrDuv+Pyf/rq38zWwbqB
+2t4oUddsgJzWPc8Xc/8A10b+ZrajuzlxeyIqKTmiug4ha1Lkgw2n/XBayzWrdZMVmf8ApgtY1eh1
+4P4mVgeTS8kYFBpucHisz0Wxw681d0378x7bMfrVEMT0OPxq5YMd8vcbc4NJrQmT0J52xpicf8tD
+/Ks4Ju5q5O+dMQbh/rP6VUXJHymhIUXoDLt5IFMPTJFObjvTD3qinqS2+Tcwgjq4/nVW5GLycf8A
+TRv51btiFuYCOSHHH41Uujm8nP8A00b+dVS+I48bsiL8KKSitzgA9K25kd4bYpGzAQKCQOOlYhpR
+NIowJHA9AxqJw5rG1Gr7N3saTW0pJPlN+R4ppt5eP3bflVLzZf8Anq//AH0aQzzf89pP++zUezfc
+6frt/sl77NLt4jf8qs2EMiGZmQjCZ5FZAmm6+bJ/30aX7RPnPnyf99mj2T7kvF3WxrSxMdPAVWJ8
+z+lVltpyufKbHriqS3VxkATyYH+0aeb266faZcf7xo9mwji0lsWvsk//ADxf8qababP+qkA/3aq/
+bLkn/Xyf99GnC8usf8fEv/fRo9nIbxmuxoWtnN9rgJRsbxkgdKzbvi9nH/TRv5077ddjpcy/99mq
+7MzSFmJLMcknvVQg4u7Ma9f2ttBaKU0Voc400g5IoooAfTaKKADtQKKKAFToT60h60UUAJ3p4ooo
+ADTP4hRRQA49aKKKBH//2Q==
+</Url><Url name="ThumbLink" foo="bar">/cgi/i/image/api/tile/clark1ic8lift:003931133:39015091916190_01/full/!100,100/0/default.jpg</Url><Caption>39015091916190</Caption><Caption>Cover</Caption>
 
-<Type>image</Type><AuthCheck allowed="yes">1: world access allowed</AuthCheck><Url name="MediaLink">/cgi/i/image/api/image/clark1ic8lift:000080677:39015091898760/full/full/0/native.jpg</Url></Column>
+<Type>image</Type><AuthCheck allowed="yes">1: world access allowed</AuthCheck><Url name="MediaLink">/cgi/i/image/api/image/clark1ic8lift:003931133:39015091916190_01/full/full/0/native.jpg</Url></Column>
+<Column x="2" y="1" blank="no" thumb="yes"><Url name="EntryLink">https://roger.quod.lib.umich.edu/cgi/i/image/image-idx?from=index;med=1;rgn1=ic_all;c=clark1ic8lift;q1=detroit;subview=detail;resnum=54;start=51;view=entry;lastview=reslist;lasttype=boolean;cc=clark1ic8lift;entryid=x-003931133;viewid=39015091916190_02;debug=xml;size=50;chaperone=S-CLARK1IC8LIFT-X-003931133%2039015091916190_01</Url><Url name="Thumb">data:image/jpeg;base64,/9j/4AAQSkZJRgABAQAAAQABAAD/2wBDAAgGBgcGBQgHBwcJCQgKDBQNDAsLDBkSEw8UHRofHh0a
+HBwgJC4nICIsIxwcKDcpLDAxNDQ0Hyc5PTgyPC4zNDL/2wBDAQkJCQwLDBgNDRgyIRwhMjIyMjIy
+MjIyMjIyMjIyMjIyMjIyMjIyMjIyMjIyMjIyMjIyMjIyMjIyMjIyMjIyMjL/wAARCABIAGQDASIA
+AhEBAxEB/8QAHwAAAQUBAQEBAQEAAAAAAAAAAAECAwQFBgcICQoL/8QAtRAAAgEDAwIEAwUFBAQA
+AAF9AQIDAAQRBRIhMUEGE1FhByJxFDKBkaEII0KxwRVS0fAkM2JyggkKFhcYGRolJicoKSo0NTY3
+ODk6Q0RFRkdISUpTVFVWV1hZWmNkZWZnaGlqc3R1dnd4eXqDhIWGh4iJipKTlJWWl5iZmqKjpKWm
+p6ipqrKztLW2t7i5usLDxMXGx8jJytLT1NXW19jZ2uHi4+Tl5ufo6erx8vP09fb3+Pn6/8QAHwEA
+AwEBAQEBAQEBAQAAAAAAAAECAwQFBgcICQoL/8QAtREAAgECBAQDBAcFBAQAAQJ3AAECAxEEBSEx
+BhJBUQdhcRMiMoEIFEKRobHBCSMzUvAVYnLRChYkNOEl8RcYGRomJygpKjU2Nzg5OkNERUZHSElK
+U1RVVldYWVpjZGVmZ2hpanN0dXZ3eHl6goOEhYaHiImKkpOUlZaXmJmaoqOkpaanqKmqsrO0tba3
+uLm6wsPExcbHyMnK0tPU1dbX2Nna4uPk5ebn6Onq8vP09fb3+Pn6/9oADAMBAAIRAxEAPwDyLNTW
+kYmu4o2+6zAGoQKs6cCdRgA67xSlsylubKaVYs+MSH/gWP6VaXw/anOYZfwk/wDrU6NcFvat9wd3
+C+pJ/GuKVSS6nTGMX0Oek8PWqlB5Uoyf+eg/wpP7D07H3Zv+/o/wrYmZjKijsapsxB56UvaT7inG
+K2RUXQdMccmZSD/z0B/pSP4fskAO24Kt0O8f4VaGRFuzycmtEzZRYuzcD0odSa6gox7GDJ4fs0UE
+LcD6uP8A4mmf2HZbC37/ANv3g/wro7zc8W0E/gOtUGidVztKjHpT9rLuDjFO1jM/sC1O04uOf+mi
+/wCFPHh+zBO/7QB3+df8K24iiwqHbBA7fSlmwbEuSS5FHtJdw5InA3kSW99PDGSUjkZVz1wDRTtT
+41S6/wCurfzortjsjne5X71b0wZ1KAf7YqpVvTf+Qlb/AO+KUvhYR3R0oT7xye3f2ro3XCDC/Nzz
+XODC7uetbUtz5YPBLYJrgludUSqku6fdtIYHoajltXRWc44Gam8zzGRjkZp1xLGymLftYjGPXil1
+G0mtSoiq+0EkDPOPSrSlg42j91t+9nmoWtZoIN6Hc+cYAzUjJtCFpSDnCr0yaYtUATfKJUbI54NT
+2+4yYmjzGDkEdPxqrM7rsQEKWbqKTy7hoz8xZcZ4aiwr62JrmeASYVS6nk/Nxmq7SyyI/URjqB0F
+ChEVGmVuTjBq9dkC0dVGFyMAdKAPP9TA/tS6/wCurfzop2p/8hS7/wCuzfzor0I7I5nubGmeFxqO
+nR3QuihfdldmcY/GtCDwj9juoZjdbtjjjZ17+tavhJQdBhyoOd/X61rXUZCqCc5YcA+1ckqkuZq5
+uorlvY5jyhhs9Per0rNumyuRHwM96q4+VjmtG8jkjk3HDIw6Ed6ye5SM1piWRVwDwcA1Kbbe4nZx
+weneoY4BHeeezDBOMdKuTA5YMTg4Cj1oC13qSNOHl2nMcWflbIyahcQLu/eFvn6kd/amNmJAuCVT
+kswz+VRs+8LIcmM469qLBfUsoQ67UJ2jgl+9My0MhO8bMcJ6U1BuUoWLIxypHG3FKqgMGYAtg5f0
+oENC5m+clgxyoI6VbvSfshB7EfzpLeKR2BYggng0/UVxbE/7QFHUroefan/yFbv/AK7P/M0U3Ued
+Tuj/ANNn/maK9COyOV7naeG9WsLXRYYp7qKOQb8qW55rVk1nT5yiRXkTszjCq2T09K8vq5pX/ITt
+/wDerGVFayuaKp0sdta2ct0rMpAU9Mg/4Vf1FgYdrDaSO3rVSzRls4nQncR0PenNcKyuPLdmAwcj
+pXL1NtEUURFVPMZmUN9amuGWUgL1H3X9KfNEIpoginDcmpIoEdQzJwx4FAEGZCxXJ4GASOCamjCx
+Sr5u7cuDx3qV0MRXyk3HHIz0qKUOVZmLB9vH9BQDRYmjjJ8wDbjsCOah8p/PTYBs6tUe+QKctJu7
+/JV2DIMZY8nGfyoYIGlC7fLG1c8A1FfzK9ntAOdw/nViaMPKGI/IVX1HizUD++OlCBnnN8c39wfW
+Vv50Ut4P9Nn/AOujfzor0Fscj3ID1qxZTrb3sUzglUbJx1xRRQ1fQEdANftUACTXCgdB5Q4/8ep5
+8QWpZm+0S7mGD+5HP60UVn7GJftJCf8ACQ2xdczznb0Pkj/GpP8AhI7XPy3M4H/XEf40UUexiHtJ
+Cr4is1P/AB8SH1zFimt4htCSRcSA9v3WaKKXsYj9pIeniG1Awbtxzn/VUo8RWq4xePx0/c0UU/Yx
+F7SQf8JFbF8/a2H1iNK/iCykXbJdMy9cCIjmiil7GI/aM5KdxJcSuvRnJH50UUVsZn//2Q==
+</Url><Url name="ThumbLink" foo="bar">/cgi/i/image/api/tile/clark1ic8lift:003931133:39015091916190_02/full/!100,100/0/default.jpg</Url><Caption>39015091916190</Caption><Caption>Map</Caption>
+
+<Type>image</Type><AuthCheck allowed="yes">1: world access allowed</AuthCheck><Url name="MediaLink">/cgi/i/image/api/image/clark1ic8lift:003931133:39015091916190_01/full/full/0/native.jpg</Url></Column>
 </Row>
 
 </View>

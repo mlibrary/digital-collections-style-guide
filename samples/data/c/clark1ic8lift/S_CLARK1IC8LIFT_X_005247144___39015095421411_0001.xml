@@ -32,7 +32,7 @@
 <CurrentUrl>https://roger.quod.lib.umich.edu/cgi/i/image/image-idx?cc=clark1ic8lift;entryid=x-005247144;viewid=39015095421411_0001;view=entry;c=clark1ic8lift;debug=xml;size=50;chaperone=S-CLARK1IC8LIFT-X-005247144%2039015095421411_0001</CurrentUrl>
 <UserAgent>node-fetch/1.0 (+https://github.com/bitinn/node-fetch)</UserAgent>
 <ReferrerHref/>
-<Sid>39b220ec3d7a3114f7b3a038b457de77</Sid>
+<Sid>95ae7d6df0a1b8bd0cb6164fb8753f3b</Sid>
 
 <EffectiveLanguage>en</EffectiveLanguage>
 <LanguageOptions><OptionalLanguage>en</OptionalLanguage></LanguageOptions>
@@ -567,7 +567,7 @@ for items where...</item>
 <TotalResults>0</TotalResults>
 <ContactLink>'m'+'a'+'i'+'l'+'t'+'o'+':'+'c'+'l'+'a'+'r'+'k'+'1'+'i'+'c'+'-'+'h'+'e'+'l'+'p'+'@'+'u'+'m'+'i'+'c'+'h'+'.'+'e'+'d'+'u'</ContactLink>
 <ContactText>E-Mail Help</ContactText>
-<LoginLink><Url>https://roger.quod.lib.umich.edu/cgi/dlxslogin/go?target=https%3A%2F%2Froger.quod.lib.umich.edu%2Fcgi%2Fi%2Fimage%2Fimage-idx%3Fkey_authret%3D1631915788</Url><Mode>login</Mode></LoginLink>
+<LoginLink><Url>https://roger.quod.lib.umich.edu/cgi/dlxslogin/go?target=https%3A%2F%2Froger.quod.lib.umich.edu%2Fcgi%2Fi%2Fimage%2Fimage-idx%3Fkey_authret%3D1632165167</Url><Mode>login</Mode></LoginLink>
 <SearchLink>https://roger.quod.lib.umich.edu/cgi/i/image/image-idx?c=clark1ic8lift;debug=xml;size=50;chaperone=S-CLARK1IC8LIFT-X-005247144%2039015095421411_0001;page=search</SearchLink>
 <BackLink/>
 <Banner><Text>UM Clark Library Maps (Uplift)</Text></Banner>
@@ -625,47 +625,47 @@ iGS9AO1HQHHHNFFAFC//ANZF/wBc/wCpooorojsc8tz/2Q==
 <MediaHost>https://roger.quod.lib.umich.edu</MediaHost>
 <AuthCheck allowed="yes" check="yes">1: world access allowed</AuthCheck>
 <Debug/>
-<istruct_y class="fieldsRef">1</istruct_y>
-<istruct_mo class="fieldsRef">TIF</istruct_mo>
-<istruct_x class="fieldsRef">1</istruct_x>
-<istruct_stid class="fieldsRef">0</istruct_stid>
 <istruct_mt class="fieldsRef">IMAGE:::DYNAMIC2</istruct_mt>
+<m_source class="fieldsRef">clark1ic</m_source>
+<m_searchable class="fieldsRef">1</m_searchable>
+<istruct_caption_barcode class="fieldsRef">39015095421411</istruct_caption_barcode>
+<istruct_face class="fieldsRef">UNSPEC</istruct_face>
+<istruct_me class="fieldsRef">JP2</istruct_me>
+<istruct_isentryidv class="fieldsRef">S-CLARK1IC8LIFT-X-005247144-1</istruct_isentryidv>
+<ic_collid class="fieldsRef">clark1ic8lift</ic_collid>
+<istruct_ms class="fieldsRef">P</istruct_ms>
+<m_flm class="fieldsRef">2020-05-12 12:02:38</m_flm>
+<m_fn class="fieldsRef">39015095421411_0001</m_fn>
+<istruct_mo class="fieldsRef">TIF</istruct_mo>
+<m_entryauth class="fieldsRef">WORLD</m_entryauth>
 <m_iid class="fieldsRef">39015095421411_0001</m_iid>
 <m_id class="fieldsRef">005247144</m_id>
-<istruct_face class="fieldsRef">UNSPEC</istruct_face>
-<istruct_caption class="fieldsRef">39015095421411|||</istruct_caption>
-<istruct_isentryidv class="fieldsRef">S-CLARK1IC8LIFT-X-005247144-1</istruct_isentryidv>
-<istruct_isentryid class="fieldsRef">S-CLARK1IC8LIFT-X-005247144]39015095421411_0001</istruct_isentryid>
-<m_entryauth class="fieldsRef">WORLD</m_entryauth>
-<istruct_me class="fieldsRef">JP2</istruct_me>
-<istruct_stty class="fieldsRef">SUMM</istruct_stty>
-<m_flm class="fieldsRef">2020-05-12 12:02:38</m_flm>
-<m_searchable class="fieldsRef">1</m_searchable>
-<istruct_caption_item_description class="fieldsRef"/>
-<m_source class="fieldsRef">clark1ic</m_source>
-<istruct_caption_barcode class="fieldsRef">39015095421411</istruct_caption_barcode>
-<m_caption class="fieldsRef">39015095421411|||</m_caption>
 <istruct_m class="fieldsRef">39015095421411_0001</istruct_m>
-<istruct_ms class="fieldsRef">P</istruct_ms>
-<m_fn class="fieldsRef">39015095421411_0001</m_fn>
-<ic_collid class="fieldsRef">clark1ic8lift</ic_collid>
-<type class="imgInfHashRef">image</type>
-<master class="imgInfHashRef">0</master>
-<modified class="imgInfHashRef">2020-05-12 12:02:38</modified>
-<mimetype class="imgInfHashRef">image/jp2</mimetype>
-<access class="imgInfHashRef">1</access>
-<loaded class="imgInfHashRef">2020-05-12 12:12:04</loaded>
-<ext class="imgInfHashRef">jp2</ext>
-<width class="imgInfHashRef">20276</width>
+<istruct_y class="fieldsRef">1</istruct_y>
+<istruct_caption_item_description class="fieldsRef"/>
+<istruct_isentryid class="fieldsRef">S-CLARK1IC8LIFT-X-005247144]39015095421411_0001</istruct_isentryid>
+<istruct_stty class="fieldsRef">SUMM</istruct_stty>
+<istruct_x class="fieldsRef">1</istruct_x>
+<istruct_caption class="fieldsRef">39015095421411|||</istruct_caption>
+<istruct_stid class="fieldsRef">0</istruct_stid>
+<m_caption class="fieldsRef">39015095421411|||</m_caption>
+<u class="imgInfHashRef">1</u>
 <height class="imgInfHashRef">16572</height>
 <collid class="imgInfHashRef">clark1ic</collid>
+<levels class="imgInfHashRef">7</levels>
 <md5 class="imgInfHashRef">ea17755bb6d2fa8de9fcded28a276585</md5>
 <basename class="imgInfHashRef">39015095421411_0001</basename>
+<modified class="imgInfHashRef">2020-05-12 12:02:38</modified>
+<loaded class="imgInfHashRef">2020-05-12 12:12:04</loaded>
+<ext class="imgInfHashRef">jp2</ext>
+<master class="imgInfHashRef">0</master>
 <use class="imgInfHashRef">access</use>
 <filename class="imgInfHashRef">c/clark1ic/pairtree_root/39/01/50/95/42/14/11/_0/00/1/39015095421411_0001/39015095421411_0001.jp2</filename>
-<u class="imgInfHashRef">1</u>
+<access class="imgInfHashRef">1</access>
+<type class="imgInfHashRef">image</type>
+<mimetype class="imgInfHashRef">image/jp2</mimetype>
+<width class="imgInfHashRef">20276</width>
 <size class="imgInfHashRef">31167475</size>
-<levels class="imgInfHashRef">7</levels>
 <HighestQualityLevelAllowed>6</HighestQualityLevelAllowed>
 <Levels>7</Levels>
 <Zoomable>no</Zoomable>

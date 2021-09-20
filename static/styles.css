@@ -74,6 +74,8 @@ address {
 
 details > summary {
   list-style: none;
+  display: flex;
+  justify-content: space-between;
 }
 
 details[open] {
@@ -96,6 +98,10 @@ details[open] > summary::after {
 /* Removes the default arrow on Chrome */
 details > summary::-webkit-details-marker {
   display: none;
+}
+
+details input[type="checkbox"] {
+  flex-shrink: 0;
 }
 
 /* Forms, Selects & Inputs */
@@ -278,8 +284,34 @@ input[type="checkbox"] {
 .results-list__image {
   width: 140px;
   height: 120px;
-  padding: 0 var(--space-medium);
-  padding-left: 0;
+  /* padding: 0 var(--space-medium);
+  padding-left: 0; */
+  padding: 0;
+  margin-right: 1rem;
+}
+
+.results-list__blank {
+  width: 140px;
+  height: 120px;
+  /* padding: 0 var(--space-medium);
+  padding-left: 0; */
+  padding: 0;
+  margin-right: 1rem;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  border: 1px solid rgba(0,0,0,0.25);
+}
+
+.results-list__blank::after {
+  font-family: var(--material);
+  font-size: var(--text-xxx-large);
+  content: "\e871";
+  content: "\e0ee";
+  color: inherit;
+  vertical-align: middle;
+  opacity: 0.4;
+  line-height: 1;
 }
 
 .filters {
@@ -480,9 +512,22 @@ a[class*="next"]::after {
   margin-top: 2em;
 }
 
+.ml-2 {
+  margin-left: 2em;
+}
+
 .p-half {
   padding: 0.5em;
 }
+
+.gap-0_5 {
+  gap: 0.5em;
+}
+
+.nowrap {
+  white-space: nowrap;
+}
+
 
 /*
  * Anchors/Links
@@ -736,4 +781,20 @@ button {
  */
 html[data-preview-links="true"] a:not([data-available="true"]) {
   opacity: 0.25;
+}
+
+html[data-preview-links="true"] a.toc-link {
+  opacity: 1.0;
+}
+
+/*
+ * Jitter
+ */
+
+m-universal-header:not(.hydrated) {
+  height: 3.59rem;
+}
+
+m-website-header:not(.hydrated) {
+  height: 4.125rem;
 }

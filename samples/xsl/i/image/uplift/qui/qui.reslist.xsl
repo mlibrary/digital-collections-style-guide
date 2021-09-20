@@ -2,6 +2,56 @@
 
   <xsl:output method="xml" version="1.0" encoding="utf-8" indent="yes" />
 
+  <!-- globals -->
+  <xsl:variable name="total" select="//TotalResults" />
+  <xsl:variable name="sz" select="//Param[@name='size']" />
+  <xsl:variable name="end-1">
+    <xsl:choose>
+      <xsl:when test="$total &lt;= $sz">
+        <xsl:value-of select="$total" />
+      </xsl:when>
+      <xsl:otherwise>
+        <xsl:value-of select="//Fisheye/Url[@class='active']/@name + $sz - 1" />
+      </xsl:otherwise>
+    </xsl:choose>
+  </xsl:variable>
+  <xsl:variable name="end">
+    <xsl:choose>
+      <xsl:when test="$end-1 &gt; //TotalResults"><xsl:value-of select="//TotalResults" /></xsl:when>
+      <xsl:otherwise><xsl:value-of select="$end-1" /></xsl:otherwise>
+    </xsl:choose>
+  </xsl:variable>
+  <xsl:variable name="max">
+    <xsl:choose>
+      <xsl:when test="$total &lt;= $sz">
+        <xsl:value-of select="1" />
+      </xsl:when>
+      <xsl:otherwise>
+        <xsl:value-of select="count(//Fisheye/Url)" />
+      </xsl:otherwise>
+    </xsl:choose>
+  </xsl:variable>
+  <xsl:variable name="current">
+    <xsl:choose>
+      <xsl:when test="count(//Fisheye/Url) = 0">
+        <xsl:value-of select="1" />
+      </xsl:when>
+      <xsl:otherwise>
+        <xsl:value-of select="count(//Fisheye/Url[@class='active']//preceding-sibling::Url) + 1" />
+      </xsl:otherwise>
+    </xsl:choose>
+  </xsl:variable>
+  <xsl:variable name="start">
+    <xsl:choose>
+      <xsl:when test="$total &lt;= $sz">
+        <xsl:value-of select="1" />
+      </xsl:when>
+      <xsl:otherwise>
+        <xsl:value-of select="//Fisheye/Url[@class='active']/@name" />
+      </xsl:otherwise>
+    </xsl:choose>
+  </xsl:variable>
+
   <xsl:template name="get-head-title">
     <qui:values>
       <qui:value>
@@ -30,67 +80,23 @@
         <xsl:value-of select="/Top/Banner/Text" />
       </qui:link>
       <qui:link href="{/Top//CurrentUrl}" identifier="{/Top/@identifier}">
-        <xsl:call-template name="get-title" />
+        <!-- <xsl:call-template name="get-title" /> -->
+        Search Results
       </qui:link>
     </qui:nav>
   </xsl:template>
 
   <xsl:template name="get-title">
     <xsl:value-of select="//Param[@name='q1']" />
+    <xsl:text> | </xsl:text>
+    <xsl:value-of select="$start" />
+    <xsl:text>-</xsl:text>
+    <xsl:value-of select="$end" />
     <xsl:text> | Search Results</xsl:text>
   </xsl:template>
 
   <xsl:template name="build-results-navigation">
     <!-- do we have M/N available in the PI handler? -->
-    <xsl:variable name="total" select="//TotalResults" />
-    <xsl:variable name="sz" select="//Param[@name='size']" />
-    <xsl:variable name="end-1">
-      <xsl:choose>
-        <xsl:when test="$total &lt;= $sz">
-          <xsl:value-of select="$total" />
-        </xsl:when>
-        <xsl:otherwise>
-          <xsl:value-of select="//Fisheye/Url[@class='active']/@name + $sz - 1" />
-        </xsl:otherwise>
-      </xsl:choose>
-    </xsl:variable>
-    <xsl:variable name="end">
-      <xsl:choose>
-        <xsl:when test="$end-1 &gt; //TotalResults"><xsl:value-of select="//TotalResults" /></xsl:when>
-        <xsl:otherwise><xsl:value-of select="$end-1" /></xsl:otherwise>
-      </xsl:choose>
-    </xsl:variable>
-    <xsl:variable name="max">
-      <xsl:choose>
-        <xsl:when test="$total &lt;= $sz">
-          <xsl:value-of select="1" />
-        </xsl:when>
-        <xsl:otherwise>
-          <xsl:value-of select="count(//Fisheye/Url)" />
-        </xsl:otherwise>
-      </xsl:choose>
-    </xsl:variable>
-    <xsl:variable name="current">
-      <xsl:choose>
-        <xsl:when test="count(//Fisheye/Url) = 0">
-          <xsl:value-of select="1" />
-        </xsl:when>
-        <xsl:otherwise>
-          <xsl:value-of select="count(//Fisheye/Url[@class='active']//preceding-sibling::Url) + 1" />
-        </xsl:otherwise>
-      </xsl:choose>
-    </xsl:variable>
-    <xsl:message>FISHEYE: <xsl:value-of select="count(//Fisheye/Url)" /> :: <xsl:value-of select="count(//Fisheye/Url[@class='active']//preceding-sibling::Url)" /> :: <xsl:value-of select="$current" /></xsl:message>
-    <xsl:variable name="start">
-      <xsl:choose>
-        <xsl:when test="$total &lt;= $sz">
-          <xsl:value-of select="1" />
-        </xsl:when>
-        <xsl:otherwise>
-          <xsl:value-of select="//Fisheye/Url[@class='active']/@name" />
-        </xsl:otherwise>
-      </xsl:choose>
-    </xsl:variable>
     <xsl:variable name="tmp-xml">
       <qui:nav role="results" total="{//TotalResults}" size="{$sz}" min="1" max="{$max}" current="{$current}" start="{$start}" end="{$end}">
         <xsl:call-template name="build-results-navigation-link">
@@ -203,7 +209,9 @@
     <xsl:variable name="collid" select="collid" />
     <xsl:variable name="m_id" select="m_id" />
     <xsl:variable name="m_iid" select="m_iid" />
-    <qui:link rel="iiif" href="https://quod.lib.umich.edu/cgi/i/image/api/image/{$collid}:{$m_id}:{$m_iid}" />
+    <xsl:if test="normalize-space(istruct_ms) = 'P'">
+      <qui:link rel="iiif" href="https://quod.lib.umich.edu/cgi/i/image/api/image/{$collid}:{$m_id}:{$m_iid}" />
+    </xsl:if>
   </xsl:template>
 
 </xsl:stylesheet>

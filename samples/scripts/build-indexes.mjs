@@ -35,6 +35,7 @@ const qbatPath = path.join(
 // gather all possible HTML files
 let manifest = {};
 const possibles = fg.sync(path.join(qbatPath, '*', '*', '*.html'));
+possibles.sort();
 for(let i = 0; i < possibles.length; i++) {
   let qbat_filename = possibles[i];
   const basename = path.basename(qbat_filename, ".html");
@@ -46,7 +47,7 @@ for(let i = 0; i < possibles.length; i++) {
   let xmlDoc = new DOMParser().parseFromString(xmlData, 'text/xml');
   let title = select("string(//xhtml:head/xhtml:title)", xmlDoc);
   let tmp = title.split(' | ');
-  console.log(title, tmp);
+  // console.log(title, tmp);
   tmp.pop();
   if ( tmp.length > 1 ) { tmp.pop(); }
   title = tmp.join(' | ');
@@ -83,6 +84,10 @@ let html = `<html lang="en">
   td, th {
     padding: 0.5em;
     border-bottom: 1px solid #f1f1f1; }
+  
+  td.title {
+    width: 75%;
+  }
   </style>
   <script
     type="module"
@@ -106,7 +111,8 @@ let html = `<html lang="en">
 `;
 
 Object.keys(manifest).forEach((collid) => {
-  let section = `<section><h2>Collection: ${collid}<h2>`;
+  console.log("===>", collid);
+  let section = `<section class="[ border-bottom mb-3 ]"><h2>Collection: ${collid}</h2>`;
   section += `<table>
     <thead>
       <tr>
@@ -124,7 +130,7 @@ Object.keys(manifest).forEach((collid) => {
       let collid_path = `${collid[0]}/${collid}`;
       let view = basename.match(/^S_/) ? 'entry' : 'results';
       section += `<tr>`;
-      section += `<td>${title}</td>`;
+      section += `<td class="title">${title}</td>`;
       section += `<td>${view}</td>`;
       section += `<td><a href="/samples/data/${collid_path}/${basename}.xml">XML</a></td>`;
       section += `<td><a href="/samples/qui/${collid_path}/${basename}.xml">QUI</a></td>`;
@@ -132,7 +138,7 @@ Object.keys(manifest).forEach((collid) => {
       section += `</tr>`;
     })
 
-    section += `</tbody></section>`;
+    section += `</tbody></table></section>`;
     html += section;
 })
 

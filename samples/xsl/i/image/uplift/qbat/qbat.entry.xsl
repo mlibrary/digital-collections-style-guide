@@ -203,24 +203,28 @@
       <xsl:text>&quot;</xsl:text>
     </xsl:variable>
     <xsl:variable name="viewer" select="//qui:viewer" />
-    <iframe 
-      id="viewer" 
-      class="[ viewer ]" 
-      allow="fullscreen" 
-      title="{$title}"
-      src="{ $viewer/@embed-href }"></iframe>
+    <xsl:if test="$viewer">
+      <iframe 
+        id="viewer" 
+        class="[ viewer ]" 
+        allow="fullscreen" 
+        title="{$title}"
+        src="{ $viewer/@embed-href }"></iframe>
+    </xsl:if>
   </xsl:template>
 
   <xsl:template name="build-asset-viewer--inline">
     <xsl:variable name="viewer" select="//qui:viewer" />
-    <div 
-      id="viewer"
-      class="viewer"
-      data-manifest-id="{$viewer/@manifest-id}" 
-      data-canvas-index="{$viewer/@canvas-index}"
-      data-provider="{$viewer/@provider}"
-      data-mode="{$viewer/@mode}">
-    </div>
+    <xsl:if test="$viewer">
+      <div 
+        id="viewer"
+        class="viewer"
+        data-manifest-id="{$viewer/@manifest-id}" 
+        data-canvas-index="{$viewer/@canvas-index}"
+        data-provider="{$viewer/@provider}"
+        data-mode="{$viewer/@mode}">
+      </div>
+    </xsl:if>
   </xsl:template>
 
   <xsl:template match="qui:block[@slot='actions']">
@@ -241,18 +245,20 @@
   </xsl:template>
 
   <xsl:template name="build-download-action-shoelace">
-    <sl-dropdown id="dropdown-action">
-      <sl-button slot="trigger" caret="caret" class="primary">Download</sl-button>
-      <sl-menu>
-        <xsl:for-each select="qui:download-options/qui:download-item">
-          <sl-menu-item data-href="{@href}">
-            <xsl:value-of select="@width" />
-            <xsl:text> x </xsl:text>
-            <xsl:value-of select="@height" />
-          </sl-menu-item>
-        </xsl:for-each>
-      </sl-menu>
-    </sl-dropdown>
+    <xsl:if test="qui:download-options/qui:download-item">
+      <sl-dropdown id="dropdown-action">
+        <sl-button slot="trigger" caret="caret" class="primary">Download</sl-button>
+        <sl-menu>
+          <xsl:for-each select="qui:download-options/qui:download-item">
+            <sl-menu-item data-href="{@href}">
+              <xsl:value-of select="@width" />
+              <xsl:text> x </xsl:text>
+              <xsl:value-of select="@height" />
+            </sl-menu-item>
+          </xsl:for-each>
+        </sl-menu>
+      </sl-dropdown>
+    </xsl:if>
   </xsl:template>
 
   <xsl:template name="build-download-action-html">
@@ -323,15 +329,20 @@
 
       <xsl:call-template name="build-panel-portfolios-dl" />
 
+      <xsl:call-template name="build-panel-iiif-manifest" />
+    </section>
+  </xsl:template>
+
+  <xsl:template name="build-panel-iiif-manifest">
+    <xsl:if test="//qui:viewer/@manifest-id">
       <h3>IIIF</h3>
       <dl class="record">
         <dt>Manifest</dt>
         <dd>
           <input type="text" value="{//qui:viewer/@manifest-id}" />
         </dd>
-
       </dl>
-    </section>
+    </xsl:if>
   </xsl:template>
 
   <xsl:template match="qui:field[@component='catalog-link']" mode="dl">

@@ -49,7 +49,8 @@ const urlToIdentifier = function(collid, url) {
       .replace(/\s+/g, "_")
       .replace(/[^\w_]/g, "")
   );
-  tmp.push(url.searchParams.get("start") || 1);
+  let start = url.searchParams.get("start") || '1';
+  tmp.push(start.padStart(4, '0'));
   let identifier = `q_${collid}_x_${tmp.join("___")}`.toUpperCase();
   return identifier;
 }
@@ -89,6 +90,22 @@ while ( queue.length ) {
       if ( backIdentifier ) {
         const backEl = xpath.select('//BackLink', xmlDoc);
         backEl[0].setAttribute('identifier', backIdentifier);
+      }
+
+      if ( marker ) {
+        let paginationUrl;
+        let paginationIdentifier;
+        let paginationEl;
+        paginationEl = xpath.select("//Prev/Url", xmlDoc)[0];
+        if (paginationEl) {
+          paginationEl.setAttribute('marker', marker);
+        }
+
+        paginationEl = xpath.select("//Next/Url", xmlDoc)[0];
+        if (paginationEl) {
+          paginationEl.setAttribute("marker", marker);
+        }
+
       }
     } else if ( view == 'thumbnail' || view == 'reslist' ) {
       // search results! make an identifier

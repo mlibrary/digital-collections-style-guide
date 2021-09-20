@@ -44,11 +44,11 @@ console.log("=>", dataFilePath);
 
 // clear out the target path
 let targetFilePath = `${rootPath}/samples/qbat/`;
-if (!fs.existsSync(targetFilePath)) {
-  fs.mkdirSync(targetFilePath);
-}
 if ( argv.collid ) {
   targetFilePath += `${argv.collid.substr(0, 1)}/${argv.collid}/`;
+}
+if (!fs.existsSync(targetFilePath)) {
+  fs.mkdirSync(targetFilePath, { recursive: true, mode: 0o775 });
 }
 await $`find ${targetFilePath} -type f | xargs rm -f`;
 
