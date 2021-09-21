@@ -1,0 +1,810 @@
+
+
+<!DOCTYPE Top><Top xmlns:dlxs="http://www.umdl.umich.edu/dlxs" identifier="S_CLARK1IC8LIFT_X_003929050___39015091884331__xz7f065527313d2d97c976dddab40de219">
+
+ <!-- XSL fallback files -->
+  <XslFallbackFileList>
+    <Filename>xsl2htmlutils.xsl</Filename>
+    <Filename>feedback.xsl</Filename>
+    <Filename>htmlhead.xsl</Filename>
+    <Filename>displayheader.xsl</Filename>
+    <Filename>entry_imagetools.xsl</Filename>
+    <Filename>fieldvalues.xsl</Filename>
+    <Filename>social.xsl</Filename>
+    <Filename>entry.xsl</Filename>
+    <Filename>panzoom.xsl</Filename>
+  </XslFallbackFileList>
+
+  <!--  <Filename>bbopenutils.xsl</Filename> -->
+
+  <!-- Custom OPTIONAL XML for top-level file entry.xml -->
+  <CustomXml/>
+
+<DlxsGlobals><CurrentCgi><Param name="from">index</Param>
+<Param name="med">1</Param>
+<Param name="rgn1">ic_all</Param>
+<Param name="c">clark1ic8lift</Param>
+<Param name="q1">detroit</Param>
+<Param name="subview">detail</Param>
+<Param name="resnum">51</Param>
+<Param name="start">51</Param>
+<Param name="view">entry</Param>
+<Param name="lastview">reslist</Param>
+<Param name="lasttype">boolean</Param>
+<Param name="cc">clark1ic8lift</Param>
+<Param name="entryid">x-003929050</Param>
+<Param name="viewid">39015091884331</Param>
+<Param name="debug">xml</Param>
+<Param name="size">50</Param>
+<Param name="chaperone">S-CLARK1IC8LIFT-X-003929050 39015091884331</Param>
+</CurrentCgi>
+<CurrentUrl>https://roger.quod.lib.umich.edu/cgi/i/image/image-idx?from=index;med=1;rgn1=ic_all;c=clark1ic8lift;q1=detroit;subview=detail;resnum=51;start=51;view=entry;lastview=reslist;lasttype=boolean;cc=clark1ic8lift;entryid=x-003929050;viewid=39015091884331;debug=xml;size=50;chaperone=S-CLARK1IC8LIFT-X-003929050%2039015091884331</CurrentUrl>
+<UserAgent>node-fetch/1.0 (+https://github.com/bitinn/node-fetch)</UserAgent>
+<ReferrerHref/>
+<Sid>e46052bb341e4ddf89cbb6a560776b44</Sid>
+
+<EffectiveLanguage>en</EffectiveLanguage>
+<LanguageOptions><OptionalLanguage>en</OptionalLanguage></LanguageOptions>
+<LangMap>
+  
+  <!-- bbopenutils.xsl which serves bbopen.xsl, bbname.xsl -->
+<!-- "items1" used by bbresults_nav.xsl SliceSummary -->
+<!-- "portfolio" used by bbresults_nav.xsl CollectionName -->
+<lookup id="bbopenutils">
+<item key="portfolio">portfolio</item>
+<item key="porthelp"><b>Help</b> For Using Portfolios</item>
+<item key="bbopenpageheader">Portfolios</item>
+<item key="bbnamepageheader">Add to a New
+or Existing Portfolio</item>
+<item key="yourport">your portfolios</item>
+<item key="pubport">all public portfolios</item>
+<item key="bbagname">portfolio name</item>
+<item key="action">action</item>
+<item key="items1">items</item>
+<item key="shared">public</item>
+<item key="username">owner(s)</item>
+<item key="open3">open</item>
+<item key="add3">add</item>
+<item key="savename">save name</item>
+<item key="saveowners">save owners</item>
+<item key="bbdel3">delete...</item>
+<item key="bbexportprep3">download...</item>
+<item key="viewable">viewable by public</item>
+<item key="instructionbbname">To create a <b>new</b> portfolio with the selected images, enter a name in the <b>text box</b> and click <b>Submit</b>.<br/>To <b>add</b> the selected images to an <b>existing</b> portfolio, find the portfolio name in the table below and click <b>add</b>.</item>
+<item key="0">no</item>
+<item key="1">yes</item>
+<item key="switch0">make public</item>
+<item key="switch1">make private</item>
+<item key="none present">None present.</item>
+</lookup>
+
+<!-- bbdel.xsl bbdelconf.xsl-->
+<lookup id="bbdel">
+<item key="successdel">Portfolio successfully deleted.</item>
+<item key="instructionbbdel">You may open a portfolio or close this window.</item>
+<item key="yes">Yes</item>
+<item key="no">No</item>
+<item key="instructionbbdelconf">Permanently delete portfolio?</item>
+<item key="name">Name of portfolio</item>
+</lookup>
+
+<!-- bbexport.xsl -->
+<lookup id="bbexport">
+<item key="exportfull-image">media</item>
+
+<item key="exportdescription">record</item>
+<item key="accessdenied">The media was not included due
+to a lack of access privileges. Sorry. You may view the record.</item>
+
+<item key="index">index</item>
+<item key="of"> of </item>
+<item key="viewonline">view online</item>
+<item key="exportPageTitle">export </item>
+<item key="guidelinesbuttontext">guidelines</item>
+<item key="guidelinesTitle">Guidelines For Use</item>
+<item key="portlastmod">portfolio last modified: </item>
+<item key="forhelp">For help or to request permission to publish: </item>
+
+</lookup>
+
+<!-- bbexportprep.xsl -->
+<lookup id="bbexportprep">
+<item key="returntoportfolios">return to the list of portfolios</item>
+<item key="morehelp">More Help</item>
+<item key="imagesize">image size</item>
+<item key="imagesizesmall">small</item>
+<item key="imagesizemedium">medium (presentation)</item>
+<item key="imagesizelarge">large</item>
+<item key="imagesizelargest">largest</item>
+<item key="download">download</item>
+<item key="whendone1P1">When done, all of the
+images (and/or other media) will reside on your computer for convenient
+use. HTML pages are also included for viewing records and easy
+navigation of images.</item>
+<item key="long">The download may take several minutes to complete.</item>
+<item key="portfoliodownloadsteps">Portfolio Download</item>
+<item key="bbexportpreppageheader">Portfolio Download</item>
+<item key="portfoliosdisabled">Portfolio functionality is
+turned off.</item>
+<item key="exportdisabled">Portfolio export functionality is turned
+off.</item>
+<item key="toomanyitemstodownload">Only the first $count items will be downloaded.</item>
+</lookup>
+
+<!-- displayheader_results.xsl -->
+<!-- <lookup id="displayheader_results_LEGACY">
+<item key="thumbnail">images with captions</item>
+<item key="thumbfull">images with record</item>
+<item key="reslist">captions only</item>
+<item key="bbthumbnail">images with captions</item>
+<item key="bbthumbfull">images with record</item>
+<item key="bbreslist">captions only</item>
+<item key="prep">prep tables in use</item>
+</lookup>
+ -->
+<lookup id="displayheader_results">
+<item key="thumbnail">grid</item>
+<item key="thumbfull">grid + details</item>
+<item key="reslist">list</item>
+<item key="icon-thumbnail">icon-th</item>
+<item key="icon-thumbfull">icon-picture</item>
+<item key="icon-reslist">icon-th-list</item>
+<item key="bbthumbnail">grid</item>
+<item key="bbthumbfull">grid + details</item>
+<item key="bbreslist">list</item>
+<item key="icon-bbthumbnail">icon-th</item>
+<item key="icon-bbthumbfull">icon-picture</item>
+<item key="icon-bbreslist">icon-th-list</item>
+<item key="prep">prep tables in use</item>
+</lookup>
+
+<!-- groups.xsl -->
+<lookup id="groups">
+<item key="groups">collection groups list</item>
+<item key="selectgroup">Select a collection group</item>
+<item key="instructiongroupspick">Collections are arranged into groups for searching. Click on a group name to search the collections in that group. A collection may include some content outside of the group's definition, and a collection could appear in more than one group. Click the title of a specific collection to search it alone. Sometimes it is advantageous to search a single collection. For example, search field and sorting options are often specific to the collection, allowing for a more refined search. </item>
+<item key="more">more</item>
+<item key="instructiongroupspick2">Some collections have a very narrow focus. Other collections are broader, and may encompass many sub-collections.  Occassionally an image appears in multiple collections, though generally there is a single authoritative source for each image.</item>
+<item key="collections">collections</item>
+<item key="media">images/media</item>
+<item key="records2">records</item>
+
+</lookup>
+
+
+<!-- searchutils.xsl -->
+<lookup id="searchutils">
+<item key="see">see search tips</item>
+
+<item key="instructioncollspick1">Select one or more databases to search. Click the database name to search it alone, often in more detail.</item>
+<item key="instructionsearch1">To search, enter a word or phrase in a box below and select a field from the menu.</item>
+<item key="instructionsearch2">It is not necessary to use more than one box.</item>
+<item key="instructionsearch3">You can search all the databases in this group, or use the <b>list of databases</b> to restrict your search to a subset.</item>
+<item key="newgroup">select a new group to search</item>
+<item key="in">in</item>
+<item key="rangehelp">e.g., 1954 to 1961, -825 to -800.</item>
+<item key="only">has digital media</item>
+<item key="PleaseSelectColl">Please select at least one database to search.</item>
+</lookup>
+
+<!-- browse.xsl, index.xsl -->
+<lookup id="browse">
+<item key="browse">Browse</item>
+</lookup>
+
+<!-- collinfo.xsl -->
+<!-- index.xsl -->
+<lookup id="index">
+<item key="home">Home</item>
+<item key="collinfo">database info</item>
+<item key="closewindow">CLOSE WINDOW</item>
+<item key="thiscoll">this collection</item>
+<!-- <item key="browseallimages">Browse all media</item>
+<item key="browseallrecords">Browse all records</item>
+<item key="browsesampleimages">Browse sample media</item>
+<item key="browsesamplerecords">Browse sample records</item>
+<item key="browsemediaaddsmods">Browse newest additions and updates</item>
+<item key="browsemostviewed">Browse most viewed</item> -->
+<item key="browseallimages">All media</item>
+<item key="browseallrecords">All records</item>
+<item key="browsesampleimages">Sample media</item>
+<item key="browsesamplerecords">Sample records</item>
+<item key="browsemediaaddsmods">Newest additions and updates</item>
+<item key="browsemostviewed">Most viewed</item>
+<item key="access">Collection Access</item>
+<item key="access1">Access to this collection is restricted to authorized users.</item>
+<item key="access2">This collection is open to the public. You may have
+additional privileges if you log in.</item>
+<item key="access3">You are an authorized user of this collection.</item>
+<item key="access4">Access restricted.</item>
+<item key="sendcomments">Send comments on this collection to</item>
+<item key="brief">Collection Size</item>
+<item key="searchmulti">Search Multiple Collections</item>
+<item key="selectagroup1">Select a group</item>
+<item key="selectagroup2">of collections to search simultaneously. Search this collection together with others.</item>
+<item key="numberof">Number of Images and Records Online</item>
+<item key="images">Online Images/Media</item>
+<item key="records">Records</item>
+</lookup>
+
+<!-- noresults.xsl -->
+<lookup id="noresults">
+<item key="noresults">No Results</item>
+<item key="type_ic_range">ranges from</item>
+<item key="type_ic_exact">is exactly</item>
+<item key="type_default">contains the term(s)</item>
+<item key="type_allmedia"> media was added or updated within </item>
+<item key="days"> day(s).</item>
+<item key="to">to</item>
+</lookup>
+
+<!-- results.xsl -->
+<lookup id="results">
+<item key="and">and</item>
+<item key="view">view</item>
+<item key="record">record</item>
+<item key="digitalformat">digital format</item>
+<item key="notavail">not available</item>
+<item key="portfolioempty">This portfolio has no items.</item>
+<item key="missing">no longer available</item>
+<item key="restricted">Restricted.</item>
+<item key="trytolocate">try to locate</item>
+<item key="notifymaintainer">notify maintainer</item>
+<item key="nosortvalue">no sort value</item>
+</lookup>
+
+
+<!-- thumbfull.xsl -->
+<lookup id="thumbfull">
+<item key="instructionthumbfullresults">Click on thumbnails to view larger images and full records. <br/>Click "descriptive info" link to view record data to the left.</item>
+<item key="descriptive">&lt;text</item>
+</lookup>
+
+<!-- reslist.xsl -->
+<lookup id="reslist">
+<item key="view4">view full record for <b>item</b></item>
+</lookup>
+
+<!-- displayheader.xsl -->
+<lookup id="displayheader">
+<item key="newsearch">advanced search</item>
+<item key="quicksearch">Quick Search</item>
+</lookup>
+
+<!-- results_nav.xsl -->
+<lookup id="results_nav">
+<item key="to1">to</item>
+<item key="of">of</item>
+<item key="hits">hits</item>
+
+<item key="login0">You are not logged in.</item>
+<item key="login1">You are logged in.</item>
+
+<item key="prev">previous</item>
+<item key="next">next</item>
+
+<item key="portfour">Portfolio storage is temporary.</item>
+<item key="portone">Portfolio storage is long term.</item>
+<item key="portthree">You do not own this portfolio.</item>
+<item key="porttwo">You do not own this portfolio.</item>
+
+</lookup>
+
+<!-- bbcustomorder.xsl -->
+<lookup id="bbcustomorder">
+<item key="instructionbbcustomorder">To change the position of any image record in this portfilio, select it's title in the list, and click an appropriate directional arrow to move it up or down.  When you are done, click the save custom order button to return to the previous display.</item>
+<item key="nocaption">no caption or caption too long.</item>
+</lookup>
+
+<!-- entry.xsl -->
+<lookup id="entry">
+<item key="bookmarkhelp">bookmark:</item>
+<item key="downloadmedia">download largest size</item>
+<item key="downloadmediacurrentsize">download current size</item>
+<item key="newwindow">new window</item>
+<item key="viewmediaonly">view media only</item>
+<item key="otherviewsnothumb">view</item>
+
+<item key="other">other views</item>
+<item key="other views">other views</item>
+<item key="other-views">other views</item>
+
+<item key="full image">full image</item>
+<item key="full-image">full-image</item>
+
+<item key="description">description</item>
+
+<item key="backtoresults">back to results</item>
+<item key="previtem">&lt;&lt; previous item</item>
+<item key="nextitem">next item >></item>
+<item key="addport">add to portfolio</item>
+<item key="removeport">remove from portfolio</item>
+<item key="relatedports">portfolio inclusions</item>
+
+<item key="feedbacklink">Problems/comments about this item?</item>
+<item key="feedbackreply">To request a reply, please provide your email address.</item>
+<item key="feedbackcomments">Comments?</item>
+<item key="feedbackusername">Include your user name?</item>
+<item key="feedback">Feedback</item>
+
+
+</lookup>
+
+<!-- entry_imagetools.xsl -->
+<lookup id="entry_imagetools">
+
+<item key="video.sense">view</item>
+<item key="video">video</item>
+<item key="video.icon">icon-film</item>
+
+<item key="audio.sense">listen to</item>
+<item key="audio">audio</item>
+<item key="audio.icon">icon-volume-down</item>
+
+<item key="svg.sense">view</item>
+<item key="svg">flash movie</item>
+<item key="svg.icon">icon-film</item>
+
+<item key="doc.sense">view</item>
+<item key="doc">related document</item>
+<item key="doc.icon">icon-file</item>
+
+<item key="pdf.sense">view</item>
+<item key="pdf">PDF document</item>
+<item key="pdf.icon">icon-file</item>
+
+<item key="url.sense">view</item>
+<item key="url">linked content in new window</item>
+<item key="url.icon">icon-share</item>
+
+<item key="image.sense">view</item>
+<item key="image">image</item>
+<item key="image.icon">icon-picture</item>
+
+<item key="size">size</item>
+
+<item key="nomedia">Sorry, digital media is not available for this item.</item>
+
+<item key="panzoomhelp">How to interact with this image...</item>
+<item key="tozoomin">zoom in: double-click</item>
+<item key="tozoomout">zoom out: shift-double-click</item>
+<item key="topan">pan: drag</item>
+<item key="zoom">zoom</item>
+<item key="sizes">image sizes</item>
+
+
+</lookup>
+
+
+
+<!-- tips.xsl -->
+
+<lookup id="searchtips">
+<item key="searchtips">search tips</item>
+<item key="instructionsearchtips"><p><b>Matching words:</b> The search
+engine attempts to match any word or phrase exactly as you put it in
+the box.</p><p> e.g.: <i>Picasso and Rembrandt</i> in a box will look
+for</p><p> "Picasso and Rembrandt"</p><p>and produced no
+results.</p><p><b>Punctuation: </b>All punctuation is treated as an
+empty space.</p><p><b>Case</b>: The search engine is not case
+sensitive.</p><p><b>Wildcards:</b> Use wildcard * to expand word
+stems. This is a good way to search for variations on a
+word.</p><p><b>Choose image collections</b>: Limit your search to only
+those collections you choose in the image collections list.</p></item>
+</lookup>
+
+<!-- results.xsl -->
+<lookup id="BbagOptionsMenu">
+<item key="bbom.check">check all</item>
+<item key="bbom.uncheck">uncheck all</item>
+<item key="bbom.bbname">add checked to portfolio...</item>
+<item key="bbom.remove">remove checked from portfolio</item>
+</lookup>
+
+<lookup id="viewinstruct">
+<item key="thumbnail1">Use checkboxes to select images for adding to a
+portfolio, then click the "add to portfolio" button. Click on
+thumbnails to view larger images and full records.</item>
+<item key="thumbnail0">Click on thumbnails to view larger images and full records.</item>
+<item key="thumbfull0">Click on thumbnails to view larger images and full records. Click "descriptive info" link to view record data in this space.</item>
+<item key="thumbfull1">Click on thumbnails to view larger images and full records. <br/>Click "descriptive info" link to view record data in this space.</item>
+<item key="reslist1">Use checkboxes to select records for adding to a portfolio, then click the "add to portfolio" button. Click "view full record" link the full record.</item>
+<item key="reslist0">Click "view full record" link the full record.</item>
+<item key="bbthumbnail1">Click on thumbnails to view larger images and full records.</item>
+<item key="bbthumbnail0">Click on thumbnails to view larger images and full records.</item>
+<item key="bbthumbfull0">Click on thumbnails to view larger images and full records. Click "descriptive info" link to view record data in this space.</item>
+<item key="bbthumbfull1">Click on the thumbnail image to display a
+large image. Click on the "descriptive info" link beneath any thumbnail image to see detailed record information in this space.</item>
+<item key="bbreslist1">Click "view full record" link the full record.</item>
+<item key="bbreslist0">Click "view full record" link the full record</item>
+<item key="bbcustomorder1">To change the position of any image record in this portfilio, select it's title in the list, and click an appropriate directional arrow to move it up or down.  When you are done, click the save custom order button to return to the previous display.</item>
+<item key="bbcustomorder0"/>
+<item key="bbexport1">The portfolio package is ready for download as a ZIP file.</item>
+
+<item key="medianodownload">sorry, media is not available for
+download.</item>
+<item key="bbexport0"/>
+</lookup>
+
+<lookup id="sort">
+<item key="sort">sort</item>
+<item key="sortnot2">too many results to sort</item>
+<item key="customize">customize order...</item>
+</lookup>
+
+<lookup id="misc">
+
+<!-- alt tags for graphics -->
+
+<!-- login/out -->
+<item key="login">login</item>
+<item key="logout">logout</item>
+
+<!-- open portfolio -->
+<item key="portfolios">portfolios</item>
+
+<!-- contact / help -->
+<item key="contact">contact</item>
+<item key="Contact">Contact</item>
+<item key="help">help</item>
+
+<!-- appears in "index", "searchutils"-->
+<item key="search2">Search</item>
+
+<item key="databases">Databases</item>
+<item key="collhome">collection home</item>
+
+<item key="close">close</item>
+
+<item key="multiple">Multiple Collections</item>
+
+
+</lookup>
+
+<lookup id="SearchFormOpsMenu">
+<item key="And">And</item>
+<item key="Or">Or</item>
+<item key="Not">Not</item>
+<item key="and not">And Not</item>
+</lookup>
+
+<lookup id="SearchFormSelMenu">
+<item key="ends">Ends with</item>
+<item key="contains">Contains</item>
+<item key="phrase">Contains the phrase</item>
+<item key="starts">Starts with</item>
+<item key="any">Contains any of these words</item>
+<item key="all">Contains all of these words</item>
+<item key="ic_exact">Exactly matches</item>
+<item key="regex">Matches</item>
+</lookup>
+
+
+<!-- moaaic-group, searchmaps.xsl -->
+<lookup id="searchmaps">
+<item key="searchmaps">Search for maps</item>
+<item key="instructionsearch1">Enter an exact word or phrase.</item>
+</lookup>
+
+<lookup id="NoResults">
+<item key="sorrynoresults">Sorry, no results were found when searching
+for items where...</item>
+<item key="pleasetry">Please try again.</item>
+<item key="mediaonly">Including an image or other media.</item>
+</lookup>
+
+</LangMap>
+
+<TemplatePath>/l1/dev/roger/web/i/image/entry.xml</TemplatePath>
+<TemplateName>entry</TemplateName>
+<XcollMode>singlecoll</XcollMode>
+
+<CurrentScriptName>/cgi/i/image/image-idx</CurrentScriptName>
+<ScriptName application="text">/cgi/t/text/text-idx</ScriptName>
+<ScriptName application="pageviewer">/cgi/t/text/pageviewer-idx</ScriptName>
+<ScriptName application="ww">/cgi/t/text/ww2-idx</ScriptName>
+<ScriptName application="findaid">/cgi/f/findaid/findaid-idx</ScriptName>
+<ScriptName application="image">/cgi/i/image/image-idx</ScriptName>
+
+
+
+<BookmarkableUrl/>
+<AuthenticationEnabled>1</AuthenticationEnabled>
+<UserAuthenticated>0</UserAuthenticated>
+<AuthenticatedUsername/>
+<SupportedAuthSystems><System>um</System></SupportedAuthSystems>
+<QuickBrowse/>
+<Feed>
+  <FeedLink type="short"/>
+  <FeedLink type="long"/>
+</Feed>
+<TaggingEnabled>0</TaggingEnabled>
+
+<EncodingType/>
+
+
+<HeadLinks>
+  <!-- <CssLink>//netdna.bootstrapcdn.com/twitter-bootstrap/2.3.2/css/bootstrap-combined.min.css</CssLink> -->
+  <CssLink>/i/image/bootstrap/css/bootstrap.min.css</CssLink>
+  <CssLink>/i/image/css/imageclass.css</CssLink>
+  <CssLink>/c/clark1ic8lift/css/imageclass-specific.css</CssLink>
+
+  <BootstrapLink>//ajax.googleapis.com/ajax/libs/jquery/1.9.1/jquery.min.js</BootstrapLink>
+  <BootstrapLink>/i/image/jquery/jquery-migrate-1.2.1.js</BootstrapLink>
+  <BootstrapLink>//netdna.bootstrapcdn.com/twitter-bootstrap/2.3.2/js/bootstrap.min.js</BootstrapLink>
+  <!-- <BootstrapLink>/i/image/bootstrap/js/bootstrap.js</BootstrapLink> -->
+  <JavaScriptUrl>/i/image/js/jquery.placeholder.js</JavaScriptUrl>
+
+  <ApiUrl>/cgi/i/image/api</ApiUrl>
+  <Timestamp>20180409</Timestamp>
+
+  <AssetDebug>yes</AssetDebug>
+
+
+</HeadLinks>
+</DlxsGlobals>
+
+<CollName><Full>UM Clark Library Maps (Uplifted)</Full><Brief>UM Clark Library Maps</Brief></CollName>
+<EntryId>003929050</EntryId>
+<RestrictStatus>access3</RestrictStatus>
+
+<AccessRestrictions>
+    <Status>authorized</Status>
+</AccessRestrictions>
+
+
+<EntryWindowName>S_CLARK1IC8LIFT_X_003929050___39015091884331</EntryWindowName>
+<ItemUrl>https://roger.quod.lib.umich.edu/cgi/i/image/image-idx?id=S-CLARK1IC8LIFT-X-003929050%5D39015091884331</ItemUrl><ItemUrlEncoded>https%3A%2F%2Froger.quod.lib.umich.edu%2Fcgi%2Fi%2Fimage%2Fimage-idx%3Fid%3DS-CLARK1IC8LIFT-X-003929050%5D39015091884331</ItemUrlEncoded><TitleForTagging>Pocket%20map%20of%20greater%20Detroit.</TitleForTagging>
+<Home>https://roger.quod.lib.umich.edu/cgi/i/image/image-idx?page=index;c=clark1ic8lift</Home>
+<Help>https://roger.quod.lib.umich.edu/cgi/i/image/image-idx?page=help;c=clark1ic8lift</Help>
+<!-- <JavaScriptUrl>/i/image/js/imageclass.js</JavaScriptUrl> -->
+<JavaScriptUrl>//www.google.com/recaptcha/api.js</JavaScriptUrl>
+<!-- <JavaScriptUrl>/i/image/js/feedback.js</JavaScriptUrl> -->
+<DivView><View name="full-image"><InitialStatus>visible</InitialStatus>
+<Visibility div="full-image">show</Visibility>
+<Visibility div="description">hide</Visibility>
+<Visibility div="other-views">hide</Visibility></View><View name="description"><InitialStatus>hidden</InitialStatus>
+<Visibility div="full-image">hide</Visibility>
+<Visibility div="description">show</Visibility>
+<Visibility div="other-views">hide</Visibility></View><View name="other-views"><InitialStatus>hidden</InitialStatus>
+<Visibility div="full-image">hide</Visibility>
+<Visibility div="description">hide</Visibility>
+<Visibility div="other-views">show</Visibility></View></DivView>
+<Next><Url index="51" name="S_CLARK1IC8LIFT_X_003929910___39015091900814">https://roger.quod.lib.umich.edu/cgi/i/image/image-idx?from=index;med=1;rgn1=ic_all;c=clark1ic8lift;resnum=51;start=51;view=entry;lastview=reslist;lasttype=boolean;debug=xml;size=50;q1=detroit;cc=clark1ic8lift;entryid=x-003929910;viewid=39015091900814</Url></Next>
+<Prev><Url index="49" name="S_CLARK1IC8LIFT_X_003929012___39015091196223_04">https://roger.quod.lib.umich.edu/cgi/i/image/image-idx?from=index;med=1;rgn1=ic_all;c=clark1ic8lift;resnum=51;start=51;view=entry;lastview=reslist;lasttype=boolean;debug=xml;size=50;q1=detroit;cc=clark1ic8lift;entryid=x-003929012;viewid=39015091196223_04</Url></Prev>
+<Self><Url index="50" name="S_CLARK1IC8LIFT_X_003929050___39015091884331">https://roger.quod.lib.umich.edu/cgi/i/image/image-idx?from=index;med=1;rgn1=ic_all;c=clark1ic8lift;resnum=51;start=51;view=entry;lastview=reslist;lasttype=boolean;debug=xml;size=50;q1=detroit;cc=clark1ic8lift;entryid=x-003929050;viewid=39015091884331</Url></Self>
+<TotalResults>456</TotalResults>
+<ContactLink>'m'+'a'+'i'+'l'+'t'+'o'+':'+'c'+'l'+'a'+'r'+'k'+'1'+'i'+'c'+'-'+'h'+'e'+'l'+'p'+'@'+'u'+'m'+'i'+'c'+'h'+'.'+'e'+'d'+'u'</ContactLink>
+<ContactText>E-Mail Help</ContactText>
+<LoginLink><Url>https://roger.quod.lib.umich.edu/cgi/dlxslogin/go?target=https%3A%2F%2Froger.quod.lib.umich.edu%2Fcgi%2Fi%2Fimage%2Fimage-idx%3Fkey_authret%3D1632162991</Url><Mode>login</Mode></LoginLink>
+<SearchLink>https://roger.quod.lib.umich.edu/cgi/i/image/image-idx?from=index;med=1;rgn1=ic_all;c=clark1ic8lift;debug=xml;size=50;chaperone=S-CLARK1IC8LIFT-X-003929050%2039015091884331;q1=detroit;page=search;view=reslist</SearchLink>
+<BackLink identifier="Q_CLARK1IC8LIFT_X_IC_ALL___DETROIT___0051">https://roger.quod.lib.umich.edu/cgi/i/image/image-idx?from=index;med=1;rgn1=ic_all;c=clark1ic8lift;debug=xml;size=50;q1=detroit;view=reslist;type=boolean;start=51</BackLink>
+<Banner><Text>UM Clark Library Maps (Uplift)</Text></Banner>
+<BookBagForm action="add"><HiddenVars><Variable name="page">bbname</Variable>
+<Variable name="bbidno">S-CLARK1IC8LIFT-X-003929050]39015091884331</Variable>
+</HiddenVars><ActionAllowed>1</ActionAllowed></BookBagForm>
+<Url name="Thumb">data:image/jpeg;base64,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
+</Url><Url name="ThumbLink" foo="bar">/cgi/i/image/api/tile/clark1ic8lift:003929050:39015091884331/full/!100,100/0/default.jpg</Url><ThumbInfo/>
+<OpenPortfolio><Url>https://roger.quod.lib.umich.edu/cgi/i/image/image-idx?page=bbopen</Url></OpenPortfolio>
+<MediaInfo><Initial>
+    <MediaLink>/cgi/i/image/api/image/clark1ic8lift:003929050:39015091884331/full/327,222/0/native.jpg</MediaLink>
+    <res>5</res>
+    <w>326</w>
+    <h>221</h>
+</Initial>
+<MediaHost>https://roger.quod.lib.umich.edu</MediaHost>
+<AuthCheck check="yes" allowed="yes">1: world access allowed</AuthCheck>
+<Debug/>
+<istruct_mo class="fieldsRef">TIF</istruct_mo>
+<ic_collid class="fieldsRef">clark1ic8lift</ic_collid>
+<istruct_caption_barcode class="fieldsRef">39015091884331</istruct_caption_barcode>
+<m_iid class="fieldsRef">39015091884331</m_iid>
+<m_source class="fieldsRef">clark1ic</m_source>
+<m_entryauth class="fieldsRef">WORLD</m_entryauth>
+<istruct_isentryid class="fieldsRef">S-CLARK1IC8LIFT-X-003929050]39015091884331</istruct_isentryid>
+<istruct_stid class="fieldsRef">0</istruct_stid>
+<istruct_ms class="fieldsRef">P</istruct_ms>
+<istruct_caption class="fieldsRef">39015091884331|||</istruct_caption>
+<m_flm class="fieldsRef">2016-03-01 13:33:24</m_flm>
+<istruct_mt class="fieldsRef">IMAGE:::DYNAMIC2</istruct_mt>
+<m_searchable class="fieldsRef">1</m_searchable>
+<m_caption class="fieldsRef">39015091884331|||</m_caption>
+<istruct_x class="fieldsRef">1</istruct_x>
+<m_fn class="fieldsRef">39015091884331</m_fn>
+<istruct_m class="fieldsRef">39015091884331</istruct_m>
+<m_id class="fieldsRef">003929050</m_id>
+<istruct_y class="fieldsRef">1</istruct_y>
+<istruct_stty class="fieldsRef">SUMM</istruct_stty>
+<istruct_me class="fieldsRef">JP2</istruct_me>
+<istruct_isentryidv class="fieldsRef">S-CLARK1IC8LIFT-X-003929050-1</istruct_isentryidv>
+<istruct_face class="fieldsRef">UNSPEC</istruct_face>
+<istruct_caption_item_description class="fieldsRef"/>
+<filename class="imgInfHashRef">c/clark1ic/pairtree_root/39/01/50/91/88/43/31/39015091884331/39015091884331.jp2</filename>
+<access class="imgInfHashRef">1</access>
+<modified class="imgInfHashRef">2016-03-01 13:33:24</modified>
+<type class="imgInfHashRef">image</type>
+<levels class="imgInfHashRef">6</levels>
+<size class="imgInfHashRef">6683660</size>
+<mimetype class="imgInfHashRef">image/jp2</mimetype>
+<height class="imgInfHashRef">7096</height>
+<u class="imgInfHashRef">1</u>
+<master class="imgInfHashRef">0</master>
+<ext class="imgInfHashRef">jp2</ext>
+<use class="imgInfHashRef">access</use>
+<collid class="imgInfHashRef">clark1ic</collid>
+<basename class="imgInfHashRef">39015091884331</basename>
+<width class="imgInfHashRef">10456</width>
+<loaded class="imgInfHashRef">2016-03-01 15:58:03</loaded>
+<md5 class="imgInfHashRef">cac0fc73326762bb78124047240828d6</md5>
+<HighestQualityLevelAllowed>5</HighestQualityLevelAllowed>
+<Levels>6</Levels>
+<Zoomable>no</Zoomable>
+<Pan>no</Pan>
+<Type>image</Type>
+<Ext>jp2</Ext>
+<MimeType>image/jp2</MimeType>
+</MediaInfo>
+<ImageSizeTool><Level level="6"><Part name="Current">no</Part>
+<Part name="DownloadLink">https://roger.quod.lib.umich.edu/cgi/i/image/image-idx?from=index;med=1;rgn1=ic_all;c=clark1ic8lift;q1=detroit;debug=xml;size=50;chaperone=S-CLARK1IC8LIFT-X-003929050%2039015091884331;evl=full-image;quality=6;view=entry;subview=download;cc=clark1ic8lift;entryid=x-003929050;viewid=39015091884331;start=51;resnum=51;lastview=reslist;lasttype=boolean</Part>
+<Part name="EntryLink">https://roger.quod.lib.umich.edu/cgi/i/image/image-idx?from=index;med=1;rgn1=ic_all;c=clark1ic8lift;q1=detroit;debug=xml;size=50;chaperone=S-CLARK1IC8LIFT-X-003929050%2039015091884331;evl=full-image;quality=6;view=entry;subview=detail;cc=clark1ic8lift;entryid=x-003929050;viewid=39015091884331;start=51;resnum=51;lastview=reslist;lasttype=boolean</Part>
+<Part name="MediaLink">/cgi/i/image/api/image/clark1ic8lift:003929050:39015091884331/full/res:6/0/native.jpg</Part><LevelWidth>163</LevelWidth><LevelHeight>110</LevelHeight><LevelMaxDim>163</LevelMaxDim></Level><Level level="5"><Part name="Current">yes</Part>
+<Part name="DownloadLink">https://roger.quod.lib.umich.edu/cgi/i/image/image-idx?from=index;med=1;rgn1=ic_all;c=clark1ic8lift;q1=detroit;debug=xml;size=50;chaperone=S-CLARK1IC8LIFT-X-003929050%2039015091884331;evl=full-image;quality=5;view=entry;subview=download;cc=clark1ic8lift;entryid=x-003929050;viewid=39015091884331;start=51;resnum=51;lastview=reslist;lasttype=boolean</Part>
+<Part name="EntryLink">https://roger.quod.lib.umich.edu/cgi/i/image/image-idx?from=index;med=1;rgn1=ic_all;c=clark1ic8lift;q1=detroit;debug=xml;size=50;chaperone=S-CLARK1IC8LIFT-X-003929050%2039015091884331;evl=full-image;quality=5;view=entry;subview=detail;cc=clark1ic8lift;entryid=x-003929050;viewid=39015091884331;start=51;resnum=51;lastview=reslist;lasttype=boolean</Part>
+<Part name="MediaLink">/cgi/i/image/api/image/clark1ic8lift:003929050:39015091884331/full/res:5/0/native.jpg</Part><LevelWidth>326</LevelWidth><LevelHeight>221</LevelHeight><LevelMaxDim>326</LevelMaxDim></Level><Level level="4"><Part name="Current">no</Part>
+<Part name="DownloadLink">https://roger.quod.lib.umich.edu/cgi/i/image/image-idx?from=index;med=1;rgn1=ic_all;c=clark1ic8lift;q1=detroit;debug=xml;size=50;chaperone=S-CLARK1IC8LIFT-X-003929050%2039015091884331;evl=full-image;quality=4;view=entry;subview=download;cc=clark1ic8lift;entryid=x-003929050;viewid=39015091884331;start=51;resnum=51;lastview=reslist;lasttype=boolean</Part>
+<Part name="EntryLink">https://roger.quod.lib.umich.edu/cgi/i/image/image-idx?from=index;med=1;rgn1=ic_all;c=clark1ic8lift;q1=detroit;debug=xml;size=50;chaperone=S-CLARK1IC8LIFT-X-003929050%2039015091884331;evl=full-image;quality=4;view=entry;subview=detail;cc=clark1ic8lift;entryid=x-003929050;viewid=39015091884331;start=51;resnum=51;lastview=reslist;lasttype=boolean</Part>
+<Part name="MediaLink">/cgi/i/image/api/image/clark1ic8lift:003929050:39015091884331/full/res:4/0/native.jpg</Part><LevelWidth>653</LevelWidth><LevelHeight>443</LevelHeight><LevelMaxDim>653</LevelMaxDim></Level><Level level="3"><Part name="Current">no</Part>
+<Part name="DownloadLink">https://roger.quod.lib.umich.edu/cgi/i/image/image-idx?from=index;med=1;rgn1=ic_all;c=clark1ic8lift;q1=detroit;debug=xml;size=50;chaperone=S-CLARK1IC8LIFT-X-003929050%2039015091884331;evl=full-image;quality=3;view=entry;subview=download;cc=clark1ic8lift;entryid=x-003929050;viewid=39015091884331;start=51;resnum=51;lastview=reslist;lasttype=boolean</Part>
+<Part name="EntryLink">https://roger.quod.lib.umich.edu/cgi/i/image/image-idx?from=index;med=1;rgn1=ic_all;c=clark1ic8lift;q1=detroit;debug=xml;size=50;chaperone=S-CLARK1IC8LIFT-X-003929050%2039015091884331;evl=full-image;quality=3;view=entry;subview=detail;cc=clark1ic8lift;entryid=x-003929050;viewid=39015091884331;start=51;resnum=51;lastview=reslist;lasttype=boolean</Part>
+<Part name="MediaLink">/cgi/i/image/api/image/clark1ic8lift:003929050:39015091884331/full/res:3/0/native.jpg</Part><LevelWidth>1307</LevelWidth><LevelHeight>887</LevelHeight><LevelMaxDim>1307</LevelMaxDim></Level><Level level="2"><Part name="Current">no</Part>
+<Part name="DownloadLink">https://roger.quod.lib.umich.edu/cgi/i/image/image-idx?from=index;med=1;rgn1=ic_all;c=clark1ic8lift;q1=detroit;debug=xml;size=50;chaperone=S-CLARK1IC8LIFT-X-003929050%2039015091884331;evl=full-image;quality=2;view=entry;subview=download;cc=clark1ic8lift;entryid=x-003929050;viewid=39015091884331;start=51;resnum=51;lastview=reslist;lasttype=boolean</Part>
+<Part name="EntryLink">https://roger.quod.lib.umich.edu/cgi/i/image/image-idx?from=index;med=1;rgn1=ic_all;c=clark1ic8lift;q1=detroit;debug=xml;size=50;chaperone=S-CLARK1IC8LIFT-X-003929050%2039015091884331;evl=full-image;quality=2;view=entry;subview=detail;cc=clark1ic8lift;entryid=x-003929050;viewid=39015091884331;start=51;resnum=51;lastview=reslist;lasttype=boolean</Part>
+<Part name="MediaLink">/cgi/i/image/api/image/clark1ic8lift:003929050:39015091884331/full/res:2/0/native.jpg</Part><LevelWidth>2614</LevelWidth><LevelHeight>1774</LevelHeight><LevelMaxDim>2614</LevelMaxDim></Level><Level level="1"><Part name="Current">no</Part>
+<Part name="DownloadLink">https://roger.quod.lib.umich.edu/cgi/i/image/image-idx?from=index;med=1;rgn1=ic_all;c=clark1ic8lift;q1=detroit;debug=xml;size=50;chaperone=S-CLARK1IC8LIFT-X-003929050%2039015091884331;evl=full-image;quality=1;view=entry;subview=download;cc=clark1ic8lift;entryid=x-003929050;viewid=39015091884331;start=51;resnum=51;lastview=reslist;lasttype=boolean</Part>
+<Part name="EntryLink">https://roger.quod.lib.umich.edu/cgi/i/image/image-idx?from=index;med=1;rgn1=ic_all;c=clark1ic8lift;q1=detroit;debug=xml;size=50;chaperone=S-CLARK1IC8LIFT-X-003929050%2039015091884331;evl=full-image;quality=1;view=entry;subview=detail;cc=clark1ic8lift;entryid=x-003929050;viewid=39015091884331;start=51;resnum=51;lastview=reslist;lasttype=boolean</Part>
+<Part name="MediaLink">/cgi/i/image/api/image/clark1ic8lift:003929050:39015091884331/full/res:1/0/native.jpg</Part><LevelWidth>5228</LevelWidth><LevelHeight>3548</LevelHeight><LevelMaxDim>5228</LevelMaxDim></Level><Level level="0"><Part name="Current">no</Part>
+<Part name="DownloadLink">https://roger.quod.lib.umich.edu/cgi/i/image/image-idx?from=index;med=1;rgn1=ic_all;c=clark1ic8lift;q1=detroit;debug=xml;size=50;chaperone=S-CLARK1IC8LIFT-X-003929050%2039015091884331;evl=full-image;quality=0;view=entry;subview=download;cc=clark1ic8lift;entryid=x-003929050;viewid=39015091884331;start=51;resnum=51;lastview=reslist;lasttype=boolean</Part>
+<Part name="EntryLink">https://roger.quod.lib.umich.edu/cgi/i/image/image-idx?from=index;med=1;rgn1=ic_all;c=clark1ic8lift;q1=detroit;debug=xml;size=50;chaperone=S-CLARK1IC8LIFT-X-003929050%2039015091884331;evl=full-image;quality=0;view=entry;subview=detail;cc=clark1ic8lift;entryid=x-003929050;viewid=39015091884331;start=51;resnum=51;lastview=reslist;lasttype=boolean</Part>
+<Part name="MediaLink">/cgi/i/image/api/image/clark1ic8lift:003929050:39015091884331/full/res:0/0/native.jpg</Part><LevelWidth>10456</LevelWidth><LevelHeight>7096</LevelHeight><LevelMaxDim>10456</LevelMaxDim></Level><MaxWidth>10456</MaxWidth><MaxHeight>7096</MaxHeight></ImageSizeTool>
+<RevertSizeTool><!-- cannot revert until image has been zoomed. --></RevertSizeTool>
+<MediaEquivsTool/>
+<Record name="entry"><Section name="default" class="default"><Field abbrev="marc245" searchfield="true" sortfield="false"><Values><Value>Pocket map of greater <Highlight searchfield="true" class="hilite1" seq="1">Detroit</Highlight>.</Value></Values><Label display="on">Title</Label></Field><Field abbrev="marc110" searchfield="false" sortfield="false"><Values><Value link="https://roger.quod.lib.umich.edu/cgi/i/image/image-idx?med=1;c=clark1ic8lift;type=boolean;view=reslist;rgn1=marc110;q1=Silas%2520Farmer%2520%2526amp%253B%2520Co.;select1=phrase" target="_blank">Silas Farmer &amp; Co.</Value></Values><Label display="on">Main Entry - Corporate Name</Label></Field><Field abbrev="marc700" searchfield="false" sortfield="false"><Values><Value link="https://roger.quod.lib.umich.edu/cgi/i/image/image-idx?med=1;c=clark1ic8lift;type=boolean;view=reslist;rgn1=marc700;q1=Farmer%252C%2520Arthur%2520John%252C%25201876-;select1=phrase" target="_blank">Farmer, Arthur John, 1876-</Value></Values><Label display="on">Added Entry - Personal Name</Label></Field><Field abbrev="marc260" searchfield="true" sortfield="false"><Values><Value>[<Highlight searchfield="true" class="hilite1" seq="1">Detroit</Highlight>, Mich.] : Silas Farmer &amp; Co.,</Value></Values><Label display="on">Published</Label></Field><Field abbrev="marc300" searchfield="false" sortfield="false"><Values><Value>1 map : col. ; 41 x 59 cm.</Value></Values><Label display="on">Description</Label></Field><Field abbrev="marc500" searchfield="true" sortfield="false"><Values><Value>Oriented with north to the upper right.</Value><Value>Shows street railroads.</Value><Value>"Copyright 1907 by A. J. Farmer."</Value><Value>Includes text explaining ward boundaries, advertisement, and ill.</Value><Value>Street index, advertisement, and "Map of that part of Fairview now annexed to <Highlight searchfield="true" class="hilite1" seq="1">Detroit</Highlight>" on verso.</Value></Values><Label display="on">Note</Label></Field><Field abbrev="marc650" searchfield="true" sortfield="false"><Values><Value link="https://roger.quod.lib.umich.edu/cgi/i/image/image-idx?med=1;c=clark1ic8lift;type=boolean;view=reslist;rgn1=marc650;q1=Election%2520districts%2520Michigan%2520Detroit%2520Maps.;select1=phrase" target="_blank">Election districts Michigan <Highlight searchfield="true" class="hilite1" seq="1">Detroit</Highlight> Maps.</Value><Value link="https://roger.quod.lib.umich.edu/cgi/i/image/image-idx?med=1;c=clark1ic8lift;type=boolean;view=reslist;rgn1=marc650;q1=Street-railroads%2520Michigan%2520Detroit%2520Maps.;select1=phrase" target="_blank">Street-railroads Michigan <Highlight searchfield="true" class="hilite1" seq="1">Detroit</Highlight> Maps.</Value></Values><Label display="on">Subject Added Entry - Topical Term</Label></Field><Field abbrev="marc651" searchfield="true" sortfield="false"><Values><Value link="https://roger.quod.lib.umich.edu/cgi/i/image/image-idx?med=1;c=clark1ic8lift;type=boolean;view=reslist;rgn1=marc651;q1=Detroit%2520%2528Mich.%2529%2520Maps.;select1=phrase" target="_blank"><Highlight searchfield="true" class="hilite1" seq="1">Detroit</Highlight> (Mich.) Maps.</Value><Value link="https://roger.quod.lib.umich.edu/cgi/i/image/image-idx?med=1;c=clark1ic8lift;type=boolean;view=reslist;rgn1=marc651;q1=Detroit%2520%2528Mich.%2529%2520Administrative%2520and%2520political%2520divisions%2520Maps.;select1=phrase" target="_blank"><Highlight searchfield="true" class="hilite1" seq="1">Detroit</Highlight> (Mich.) Administrative and political divisions Maps.</Value></Values><Label display="on">Subject Added Entry - Geographic Name</Label></Field><Field abbrev="marc255" searchfield="false" sortfield="false"><Values><Value>Scale [ca. 1:27,500] (W83°09'--W82°55'/N42°24'--N42°16').</Value></Values><Label display="on">Map Data</Label></Field><Field abbrev="marc034" searchfield="false" sortfield="false"><Values><Value>a 27500 W0830900 W0825500 N0422400 N0421600</Value></Values><Label display="on">Coded Cartographic Mathematical Data</Label></Field><Field abbrev="marc590" searchfield="true" sortfield="false"><Values><Value>MHC copy folded in cover 17 x 9 cm. Cover title: New map of greater <Highlight searchfield="true" class="hilite1" seq="1">Detroit</Highlight>.</Value><Value>CLMAP copy gift of Tom Beauvais, 2011. Cloth backing obscures verso.</Value></Values><Label display="on">Local note</Label></Field><Field abbrev="scan_date" searchfield="false" sortfield="false"><Values><Value>2013-06-17</Value></Values><Label display="on">Scan Date</Label></Field><Field abbrev="dlxs_ri" searchfield="false" sortfield="false"><Values><Value><p>The University of Michigan Library provides access to these materials for educational and research purposes. These materials are believed to be in the public domain in the United States; however, if you decide to use any of these materials, you are responsible for making your own legal assessment and securing any necessary permission. If you have questions about the collection, please contact <a href="mailto:clark1ic-help@umich.edu">Clark Library for Maps Digital Collections Help</a>. If you have concerns about the inclusion of an item in this collection, please contact <a href="mailto:LibraryIT-info@umich.edu">Library Information Technology</a>.</p><p>DPLA No Copyright - United States</p></Value></Values><Label display="on">Rights</Label></Field><Field abbrev="record_no" searchfield="false" sortfield="false"><Values><Value>003929050</Value></Values><Label display="on">Record No.</Label></Field></Section></Record>
+<Record name="special"><Section name="default" class="default"><Field abbrev="dlxs_ma" searchfield="false" sortfield="false"><Values><Value>Pocket map of greater Detroit.</Value></Values><Label display="on">Title</Label></Field><Field abbrev="dc_ti" searchfield="false" sortfield="false"><Values><Value>Pocket map of greater Detroit.</Value></Values><Label display="on">Title</Label></Field><Field abbrev="dc_su" searchfield="false" sortfield="false"><Values><Value>Election districts Michigan Detroit Maps.</Value><Value>Street-railroads Michigan Detroit Maps.</Value><Value>Detroit (Mich.) Maps.</Value><Value>Detroit (Mich.) Administrative and political divisions Maps.</Value></Values><Label display="on">Subject</Label></Field><Field abbrev="dc_de" searchfield="false" sortfield="false"><Values><Value>Oriented with north to the upper right.</Value><Value>Shows street railroads.</Value><Value>"Copyright 1907 by A. J. Farmer."</Value><Value>Includes text explaining ward boundaries, advertisement, and ill.</Value><Value>Street index, advertisement, and "Map of that part of Fairview now annexed to Detroit" on verso.</Value><Value>1 map : col. ; 41 x 59 cm.</Value></Values><Label display="on">Description</Label></Field><Field abbrev="dlxs_catalog" searchfield="false" sortfield="false"><Values><Value>003929050</Value></Values><Label display="on">dlxs_catalog</Label></Field></Section></Record>
+<MediaDownloadLink><URL name="mediadownloadlink">/cgi/i/image/api/image/clark1ic8lift:003929050:39015091884331/full/res:0/0/native.jpg?attachment=1</URL><Filename>39015091884331_clark1ic8lift.JPG</Filename></MediaDownloadLink>
+<MiradorConfig manifest-href="https://quod.lib.umich.edu/cgi/i/image/api/manifest/clark1ic:003929050:39015091884331" embed-href="https://quod.lib.umich.edu/cgi/i/image/api/embed/clark1ic:003929050:39015091884331" canvas-index="1" mode="single"/>
+
+<inserttextentryinfo><div><!-- entryinfo.txt is a file that is inserted into entry.xml by the
+middleware and a PI called CHUNK. It is optional at group and coll
+levels. It is a requirement to have this file (at the class level) as
+a placeholder. Otherwise, if there is not an entryinfo.txt file at the
+coll or group level, an assertion error will occur. Alternatively, the
+CHUNK PI could be removed from entry.tpl and bbentry.tpl. -->
+</div></inserttextentryinfo>
+
+<RelatedViews><View>
+<Name>unspecified | summary</Name>
+<Row y="1">
+<Column x="1" y="1" blank="no" thumb="yes"><Focus>true</Focus><Url name="EntryLink">https://roger.quod.lib.umich.edu/cgi/i/image/image-idx?from=index;med=1;rgn1=ic_all;c=clark1ic8lift;q1=detroit;subview=detail;resnum=51;start=51;view=entry;lastview=reslist;lasttype=boolean;cc=clark1ic8lift;entryid=x-003929050;viewid=39015091884331;debug=xml;size=50;chaperone=S-CLARK1IC8LIFT-X-003929050%2039015091884331</Url><Url name="Thumb">data:image/jpeg;base64,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
+</Url><Url name="ThumbLink" foo="bar">/cgi/i/image/api/tile/clark1ic8lift:003929050:39015091884331/full/!100,100/0/default.jpg</Url><Caption>39015091884331</Caption>
+
+<Type>image</Type><AuthCheck allowed="yes">1: world access allowed</AuthCheck><Url name="MediaLink">/cgi/i/image/api/image/clark1ic8lift:003929050:39015091884331/full/full/0/native.jpg</Url></Column>
+</Row>
+
+</View>
+</RelatedViews>
+
+<Portfolios type="private"/>
+<Portfolios type="public"/>
+
+<ExtraIECSS test="lt IE 10">/i/image/vendor/Leaflet.Pancontrol/src/L.Control.Pan.ie.css</ExtraIECSS>
+<ExtraIECSS test="lt IE 10">/i/image/css/ie.css</ExtraIECSS>
+<ExtraIECSS test="lt IE 8">/i/image/css/ie7.css</ExtraIECSS>
+
+<Assets>
+    <script type="text/javascript" src="js/_entry.js" timestamp="1586292740">
+        <script type="text/javascript" src="vendor/jquery.sticky-kit.js" timestamp="1586292740"/>
+        <script type="text/javascript" src="vendor/Rubberband/jquery.bp.rubberband.js" timestamp="1586292740"/>
+        <script type="text/javascript" src="js/imageclass.js" timestamp="1586292740"/>
+        <script type="text/javascript" src="js/jquery_cookie.js" timestamp="1586292740"/>
+        <script type="text/javascript" src="js/feedback.js" timestamp="1586292740"/>
+        <script type="text/javascript" src="bootstrap/js/bootbox.js" timestamp="1586292740"/>
+        <script type="text/javascript" src="js/jquery.trap.min.js" timestamp="1586292740"/>
+        <script type="text/javascript" src="vendor/Leaflet-1.5.1/leaflet-src.js" timestamp="1586292740"/>
+        <script type="text/javascript" src="vendor/Leaflet.Pancontrol/src/L.Control.Pan.js" timestamp="1586292740"/>
+        <script type="text/javascript" src="vendor/Leaflet.contextmenu/dist/leaflet.contextmenu.js" timestamp="1586292740"/>
+        <script type="text/javascript" src="vendor/strftime-min.js" timestamp="1586292740"/>
+        <script type="text/javascript" src="vendor/Leaflet-IIIF-UM/leaflet-iiif.js" timestamp="1586292740"/>
+        <script type="text/javascript" src="js/image_viewer.js" timestamp="1586292740"/>
+        <script type="text/javascript" src="js/entry.js" timestamp="1586292740"/>
+    </script>
+    <link rel="stylesheet" type="text/css" href="css/_entry.css" timestamp="1586292740">
+        <link rel="stylesheet" type="text/css" href="css/entry.css" timestamp="1586292740"/>
+        <link rel="stylesheet" type="text/css" href="vendor/Leaflet-1.5.1/leaflet.css" timestamp="1586292740"/>
+        <link rel="stylesheet" type="text/css" href="vendor/Leaflet.Pancontrol/src/L.Control.Pan.css" timestamp="1586292740"/>
+        <link rel="stylesheet" type="text/css" href="vendor/Leaflet.contextmenu/dist/leaflet.contextmenu.css" timestamp="1586292740"/>
+    </link>
+</Assets>
+
+<!-- CHUNK filename="entry.assets.chnk" optional="0" -->
+
+<CollName><Full>UM Clark Library Maps (Uplifted)</Full><Brief>UM Clark Library Maps</Brief></CollName>
+
+
+
+</Top>
