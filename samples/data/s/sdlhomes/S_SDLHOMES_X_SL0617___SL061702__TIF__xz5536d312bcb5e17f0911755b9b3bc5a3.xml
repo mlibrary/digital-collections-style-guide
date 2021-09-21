@@ -1,0 +1,888 @@
+
+
+<!DOCTYPE Top><Top xmlns:dlxs="http://www.umdl.umich.edu/dlxs" identifier="S_SDLHOMES_X_SL0617___SL061702__TIF__xz5536d312bcb5e17f0911755b9b3bc5a3">
+
+ <!-- XSL fallback files -->
+  <XslFallbackFileList>
+    <Filename>xsl2htmlutils.xsl</Filename>
+    <Filename>feedback.xsl</Filename>
+    <Filename>htmlhead.xsl</Filename>
+    <Filename>displayheader.xsl</Filename>
+    <Filename>entry_imagetools.xsl</Filename>
+    <Filename>fieldvalues.xsl</Filename>
+    <Filename>social.xsl</Filename>
+    <Filename>entry.xsl</Filename>
+    <Filename>panzoom.xsl</Filename>
+  </XslFallbackFileList>
+
+  <!--  <Filename>bbopenutils.xsl</Filename> -->
+
+  <!-- Custom OPTIONAL XML for top-level file entry.xml -->
+  <CustomXml/>
+
+<DlxsGlobals><CurrentCgi><Param name="fn1">sdlhomes_date_construction</Param>
+<Param name="fq1">1910 ca.</Param>
+<Param name="sort">sdlhomes_present_usage</Param>
+<Param name="rgn1">sdlhomes_present_usage</Param>
+<Param name="select1">phrase</Param>
+<Param name="c">sdlhomes</Param>
+<Param name="q1">Residence</Param>
+<Param name="subview">detail</Param>
+<Param name="resnum">5</Param>
+<Param name="start">1</Param>
+<Param name="view">entry</Param>
+<Param name="lastview">reslist</Param>
+<Param name="lasttype">boolean</Param>
+<Param name="cc">sdlhomes</Param>
+<Param name="entryid">x-sl0617</Param>
+<Param name="viewid">SL061702.TIF</Param>
+<Param name="debug">xml</Param>
+<Param name="size">50</Param>
+<Param name="chaperone">S-SDLHOMES-X-SL0617 SL061702.TIF</Param>
+</CurrentCgi>
+<CurrentUrl>https://roger.quod.lib.umich.edu/cgi/i/image/image-idx?fn1=sdlhomes_date_construction;fq1=1910%20ca.;sort=sdlhomes_present_usage;rgn1=sdlhomes_present_usage;select1=phrase;c=sdlhomes;q1=Residence;subview=detail;resnum=5;start=1;view=entry;lastview=reslist;lasttype=boolean;cc=sdlhomes;entryid=x-sl0617;viewid=SL061702.TIF;debug=xml;size=50;chaperone=S-SDLHOMES-X-SL0617%20SL061702.TIF</CurrentUrl>
+<UserAgent>node-fetch/1.0 (+https://github.com/bitinn/node-fetch)</UserAgent>
+<ReferrerHref/>
+<Sid>bcba4c82c63a615024d26cf4d988d7d1</Sid>
+
+<EffectiveLanguage>en</EffectiveLanguage>
+<LanguageOptions><OptionalLanguage>en</OptionalLanguage></LanguageOptions>
+<LangMap>
+  
+  <!-- bbopenutils.xsl which serves bbopen.xsl, bbname.xsl -->
+<!-- "items1" used by bbresults_nav.xsl SliceSummary -->
+<!-- "portfolio" used by bbresults_nav.xsl CollectionName -->
+<lookup id="bbopenutils">
+<item key="portfolio">portfolio</item>
+<item key="porthelp"><b>Help</b> For Using Portfolios</item>
+<item key="bbopenpageheader">Portfolios</item>
+<item key="bbnamepageheader">Add to a New
+or Existing Portfolio</item>
+<item key="yourport">your portfolios</item>
+<item key="pubport">all public portfolios</item>
+<item key="bbagname">portfolio name</item>
+<item key="action">action</item>
+<item key="items1">items</item>
+<item key="shared">public</item>
+<item key="username">owner(s)</item>
+<item key="open3">open</item>
+<item key="add3">add</item>
+<item key="savename">save name</item>
+<item key="saveowners">save owners</item>
+<item key="bbdel3">delete...</item>
+<item key="bbexportprep3">download...</item>
+<item key="viewable">viewable by public</item>
+<item key="instructionbbname">To create a <b>new</b> portfolio with the selected images, enter a name in the <b>text box</b> and click <b>Submit</b>.<br/>To <b>add</b> the selected images to an <b>existing</b> portfolio, find the portfolio name in the table below and click <b>add</b>.</item>
+<item key="0">no</item>
+<item key="1">yes</item>
+<item key="switch0">make public</item>
+<item key="switch1">make private</item>
+<item key="none present">None present.</item>
+</lookup>
+
+<!-- bbdel.xsl bbdelconf.xsl-->
+<lookup id="bbdel">
+<item key="successdel">Portfolio successfully deleted.</item>
+<item key="instructionbbdel">You may open a portfolio or close this window.</item>
+<item key="yes">Yes</item>
+<item key="no">No</item>
+<item key="instructionbbdelconf">Permanently delete portfolio?</item>
+<item key="name">Name of portfolio</item>
+</lookup>
+
+<!-- bbexport.xsl -->
+<lookup id="bbexport">
+<item key="exportfull-image">media</item>
+
+<item key="exportdescription">record</item>
+<item key="accessdenied">The media was not included due
+to a lack of access privileges. Sorry. You may view the record.</item>
+
+<item key="index">index</item>
+<item key="of"> of </item>
+<item key="viewonline">view online</item>
+<item key="exportPageTitle">export </item>
+<item key="guidelinesbuttontext">guidelines</item>
+<item key="guidelinesTitle">Guidelines For Use</item>
+<item key="portlastmod">portfolio last modified: </item>
+<item key="forhelp">For help or to request permission to publish: </item>
+
+</lookup>
+
+<!-- bbexportprep.xsl -->
+<lookup id="bbexportprep">
+<item key="returntoportfolios">return to the list of portfolios</item>
+<item key="morehelp">More Help</item>
+<item key="imagesize">image size</item>
+<item key="imagesizesmall">small</item>
+<item key="imagesizemedium">medium (presentation)</item>
+<item key="imagesizelarge">large</item>
+<item key="imagesizelargest">largest</item>
+<item key="download">download</item>
+<item key="whendone1P1">When done, all of the
+images (and/or other media) will reside on your computer for convenient
+use. HTML pages are also included for viewing records and easy
+navigation of images.</item>
+<item key="long">The download may take several minutes to complete.</item>
+<item key="portfoliodownloadsteps">Portfolio Download</item>
+<item key="bbexportpreppageheader">Portfolio Download</item>
+<item key="portfoliosdisabled">Portfolio functionality is
+turned off.</item>
+<item key="exportdisabled">Portfolio export functionality is turned
+off.</item>
+<item key="toomanyitemstodownload">Only the first $count items will be downloaded.</item>
+</lookup>
+
+<!-- displayheader_results.xsl -->
+<!-- <lookup id="displayheader_results_LEGACY">
+<item key="thumbnail">images with captions</item>
+<item key="thumbfull">images with record</item>
+<item key="reslist">captions only</item>
+<item key="bbthumbnail">images with captions</item>
+<item key="bbthumbfull">images with record</item>
+<item key="bbreslist">captions only</item>
+<item key="prep">prep tables in use</item>
+</lookup>
+ -->
+<lookup id="displayheader_results">
+<item key="thumbnail">grid</item>
+<item key="thumbfull">grid + details</item>
+<item key="reslist">list</item>
+<item key="icon-thumbnail">icon-th</item>
+<item key="icon-thumbfull">icon-picture</item>
+<item key="icon-reslist">icon-th-list</item>
+<item key="bbthumbnail">grid</item>
+<item key="bbthumbfull">grid + details</item>
+<item key="bbreslist">list</item>
+<item key="icon-bbthumbnail">icon-th</item>
+<item key="icon-bbthumbfull">icon-picture</item>
+<item key="icon-bbreslist">icon-th-list</item>
+<item key="prep">prep tables in use</item>
+</lookup>
+
+<!-- groups.xsl -->
+<lookup id="groups">
+<item key="groups">collection groups list</item>
+<item key="selectgroup">Select a collection group</item>
+<item key="instructiongroupspick">Collections are arranged into groups for searching. Click on a group name to search the collections in that group. A collection may include some content outside of the group's definition, and a collection could appear in more than one group. Click the title of a specific collection to search it alone. Sometimes it is advantageous to search a single collection. For example, search field and sorting options are often specific to the collection, allowing for a more refined search. </item>
+<item key="more">more</item>
+<item key="instructiongroupspick2">Some collections have a very narrow focus. Other collections are broader, and may encompass many sub-collections.  Occassionally an image appears in multiple collections, though generally there is a single authoritative source for each image.</item>
+<item key="collections">collections</item>
+<item key="media">images/media</item>
+<item key="records2">records</item>
+
+</lookup>
+
+
+<!-- searchutils.xsl -->
+<lookup id="searchutils">
+<item key="see">see search tips</item>
+
+<item key="instructioncollspick1">Select one or more databases to search. Click the database name to search it alone, often in more detail.</item>
+<item key="instructionsearch1">To search, enter a word or phrase in a box below and select a field from the menu.</item>
+<item key="instructionsearch2">It is not necessary to use more than one box.</item>
+<item key="instructionsearch3">You can search all the databases in this group, or use the <b>list of databases</b> to restrict your search to a subset.</item>
+<item key="newgroup">select a new group to search</item>
+<item key="in">in</item>
+<item key="rangehelp">e.g., 1954 to 1961, -825 to -800.</item>
+<item key="only">has digital media</item>
+<item key="PleaseSelectColl">Please select at least one database to search.</item>
+</lookup>
+
+<!-- browse.xsl, index.xsl -->
+<lookup id="browse">
+<item key="browse">Browse</item>
+</lookup>
+
+<!-- collinfo.xsl -->
+<!-- index.xsl -->
+<lookup id="index">
+<item key="home">Home</item>
+<item key="collinfo">database info</item>
+<item key="closewindow">CLOSE WINDOW</item>
+<item key="thiscoll">this collection</item>
+<!-- <item key="browseallimages">Browse all media</item>
+<item key="browseallrecords">Browse all records</item>
+<item key="browsesampleimages">Browse sample media</item>
+<item key="browsesamplerecords">Browse sample records</item>
+<item key="browsemediaaddsmods">Browse newest additions and updates</item>
+<item key="browsemostviewed">Browse most viewed</item> -->
+<item key="browseallimages">All media</item>
+<item key="browseallrecords">All records</item>
+<item key="browsesampleimages">Sample media</item>
+<item key="browsesamplerecords">Sample records</item>
+<item key="browsemediaaddsmods">Newest additions and updates</item>
+<item key="browsemostviewed">Most viewed</item>
+<item key="access">Collection Access</item>
+<item key="access1">Access to this collection is restricted to authorized users.</item>
+<item key="access2">This collection is open to the public. You may have
+additional privileges if you log in.</item>
+<item key="access3">You are an authorized user of this collection.</item>
+<item key="access4">Access restricted.</item>
+<item key="sendcomments">Send comments on this collection to</item>
+<item key="brief">Collection Size</item>
+<item key="searchmulti">Search Multiple Collections</item>
+<item key="selectagroup1">Select a group</item>
+<item key="selectagroup2">of collections to search simultaneously. Search this collection together with others.</item>
+<item key="numberof">Number of Images and Records Online</item>
+<item key="images">Online Images/Media</item>
+<item key="records">Records</item>
+</lookup>
+
+<!-- noresults.xsl -->
+<lookup id="noresults">
+<item key="noresults">No Results</item>
+<item key="type_ic_range">ranges from</item>
+<item key="type_ic_exact">is exactly</item>
+<item key="type_default">contains the term(s)</item>
+<item key="type_allmedia"> media was added or updated within </item>
+<item key="days"> day(s).</item>
+<item key="to">to</item>
+</lookup>
+
+<!-- results.xsl -->
+<lookup id="results">
+<item key="and">and</item>
+<item key="view">view</item>
+<item key="record">record</item>
+<item key="digitalformat">digital format</item>
+<item key="notavail">not available</item>
+<item key="portfolioempty">This portfolio has no items.</item>
+<item key="missing">no longer available</item>
+<item key="restricted">Restricted.</item>
+<item key="trytolocate">try to locate</item>
+<item key="notifymaintainer">notify maintainer</item>
+<item key="nosortvalue">no sort value</item>
+</lookup>
+
+
+<!-- thumbfull.xsl -->
+<lookup id="thumbfull">
+<item key="instructionthumbfullresults">Click on thumbnails to view larger images and full records. <br/>Click "descriptive info" link to view record data to the left.</item>
+<item key="descriptive">&lt;text</item>
+</lookup>
+
+<!-- reslist.xsl -->
+<lookup id="reslist">
+<item key="view4">view full record for <b>item</b></item>
+</lookup>
+
+<!-- displayheader.xsl -->
+<lookup id="displayheader">
+<item key="newsearch">advanced search</item>
+<item key="quicksearch">Quick Search</item>
+</lookup>
+
+<!-- results_nav.xsl -->
+<lookup id="results_nav">
+<item key="to1">to</item>
+<item key="of">of</item>
+<item key="hits">hits</item>
+
+<item key="login0">You are not logged in.</item>
+<item key="login1">You are logged in.</item>
+
+<item key="prev">previous</item>
+<item key="next">next</item>
+
+<item key="portfour">Portfolio storage is temporary.</item>
+<item key="portone">Portfolio storage is long term.</item>
+<item key="portthree">You do not own this portfolio.</item>
+<item key="porttwo">You do not own this portfolio.</item>
+
+</lookup>
+
+<!-- bbcustomorder.xsl -->
+<lookup id="bbcustomorder">
+<item key="instructionbbcustomorder">To change the position of any image record in this portfilio, select it's title in the list, and click an appropriate directional arrow to move it up or down.  When you are done, click the save custom order button to return to the previous display.</item>
+<item key="nocaption">no caption or caption too long.</item>
+</lookup>
+
+<!-- entry.xsl -->
+<lookup id="entry">
+<item key="bookmarkhelp">bookmark:</item>
+<item key="downloadmedia">download largest size</item>
+<item key="downloadmediacurrentsize">download current size</item>
+<item key="newwindow">new window</item>
+<item key="viewmediaonly">view media only</item>
+<item key="otherviewsnothumb">view</item>
+
+<item key="other">other views</item>
+<item key="other views">other views</item>
+<item key="other-views">other views</item>
+
+<item key="full image">full image</item>
+<item key="full-image">full-image</item>
+
+<item key="description">description</item>
+
+<item key="backtoresults">back to results</item>
+<item key="previtem">&lt;&lt; previous item</item>
+<item key="nextitem">next item >></item>
+<item key="addport">add to portfolio</item>
+<item key="removeport">remove from portfolio</item>
+<item key="relatedports">portfolio inclusions</item>
+
+<item key="feedbacklink">Problems/comments about this item?</item>
+<item key="feedbackreply">To request a reply, please provide your email address.</item>
+<item key="feedbackcomments">Comments?</item>
+<item key="feedbackusername">Include your user name?</item>
+<item key="feedback">Feedback</item>
+
+
+</lookup>
+
+<!-- entry_imagetools.xsl -->
+<lookup id="entry_imagetools">
+
+<item key="video.sense">view</item>
+<item key="video">video</item>
+<item key="video.icon">icon-film</item>
+
+<item key="audio.sense">listen to</item>
+<item key="audio">audio</item>
+<item key="audio.icon">icon-volume-down</item>
+
+<item key="svg.sense">view</item>
+<item key="svg">flash movie</item>
+<item key="svg.icon">icon-film</item>
+
+<item key="doc.sense">view</item>
+<item key="doc">related document</item>
+<item key="doc.icon">icon-file</item>
+
+<item key="pdf.sense">view</item>
+<item key="pdf">PDF document</item>
+<item key="pdf.icon">icon-file</item>
+
+<item key="url.sense">view</item>
+<item key="url">linked content in new window</item>
+<item key="url.icon">icon-share</item>
+
+<item key="image.sense">view</item>
+<item key="image">image</item>
+<item key="image.icon">icon-picture</item>
+
+<item key="size">size</item>
+
+<item key="nomedia">Sorry, digital media is not available for this item.</item>
+
+<item key="panzoomhelp">How to interact with this image...</item>
+<item key="tozoomin">zoom in: double-click</item>
+<item key="tozoomout">zoom out: shift-double-click</item>
+<item key="topan">pan: drag</item>
+<item key="zoom">zoom</item>
+<item key="sizes">image sizes</item>
+
+
+</lookup>
+
+
+
+<!-- tips.xsl -->
+
+<lookup id="searchtips">
+<item key="searchtips">search tips</item>
+<item key="instructionsearchtips"><p><b>Matching words:</b> The search
+engine attempts to match any word or phrase exactly as you put it in
+the box.</p><p> e.g.: <i>Picasso and Rembrandt</i> in a box will look
+for</p><p> "Picasso and Rembrandt"</p><p>and produced no
+results.</p><p><b>Punctuation: </b>All punctuation is treated as an
+empty space.</p><p><b>Case</b>: The search engine is not case
+sensitive.</p><p><b>Wildcards:</b> Use wildcard * to expand word
+stems. This is a good way to search for variations on a
+word.</p><p><b>Choose image collections</b>: Limit your search to only
+those collections you choose in the image collections list.</p></item>
+</lookup>
+
+<!-- results.xsl -->
+<lookup id="BbagOptionsMenu">
+<item key="bbom.check">check all</item>
+<item key="bbom.uncheck">uncheck all</item>
+<item key="bbom.bbname">add checked to portfolio...</item>
+<item key="bbom.remove">remove checked from portfolio</item>
+</lookup>
+
+<lookup id="viewinstruct">
+<item key="thumbnail1">Use checkboxes to select images for adding to a
+portfolio, then click the "add to portfolio" button. Click on
+thumbnails to view larger images and full records.</item>
+<item key="thumbnail0">Click on thumbnails to view larger images and full records.</item>
+<item key="thumbfull0">Click on thumbnails to view larger images and full records. Click "descriptive info" link to view record data in this space.</item>
+<item key="thumbfull1">Click on thumbnails to view larger images and full records. <br/>Click "descriptive info" link to view record data in this space.</item>
+<item key="reslist1">Use checkboxes to select records for adding to a portfolio, then click the "add to portfolio" button. Click "view full record" link the full record.</item>
+<item key="reslist0">Click "view full record" link the full record.</item>
+<item key="bbthumbnail1">Click on thumbnails to view larger images and full records.</item>
+<item key="bbthumbnail0">Click on thumbnails to view larger images and full records.</item>
+<item key="bbthumbfull0">Click on thumbnails to view larger images and full records. Click "descriptive info" link to view record data in this space.</item>
+<item key="bbthumbfull1">Click on the thumbnail image to display a
+large image. Click on the "descriptive info" link beneath any thumbnail image to see detailed record information in this space.</item>
+<item key="bbreslist1">Click "view full record" link the full record.</item>
+<item key="bbreslist0">Click "view full record" link the full record</item>
+<item key="bbcustomorder1">To change the position of any image record in this portfilio, select it's title in the list, and click an appropriate directional arrow to move it up or down.  When you are done, click the save custom order button to return to the previous display.</item>
+<item key="bbcustomorder0"/>
+<item key="bbexport1">The portfolio package is ready for download as a ZIP file.</item>
+
+<item key="medianodownload">sorry, media is not available for
+download.</item>
+<item key="bbexport0"/>
+</lookup>
+
+<lookup id="sort">
+<item key="sort">sort</item>
+<item key="sortnot2">too many results to sort</item>
+<item key="customize">customize order...</item>
+</lookup>
+
+<lookup id="misc">
+
+<!-- alt tags for graphics -->
+
+<!-- login/out -->
+<item key="login">login</item>
+<item key="logout">logout</item>
+
+<!-- open portfolio -->
+<item key="portfolios">portfolios</item>
+
+<!-- contact / help -->
+<item key="contact">contact</item>
+<item key="Contact">Contact</item>
+<item key="help">help</item>
+
+<!-- appears in "index", "searchutils"-->
+<item key="search2">Search</item>
+
+<item key="databases">Databases</item>
+<item key="collhome">collection home</item>
+
+<item key="close">close</item>
+
+<item key="multiple">Multiple Collections</item>
+
+
+</lookup>
+
+<lookup id="SearchFormOpsMenu">
+<item key="And">And</item>
+<item key="Or">Or</item>
+<item key="Not">Not</item>
+<item key="and not">And Not</item>
+</lookup>
+
+<lookup id="SearchFormSelMenu">
+<item key="ends">Ends with</item>
+<item key="contains">Contains</item>
+<item key="phrase">Contains the phrase</item>
+<item key="starts">Starts with</item>
+<item key="any">Contains any of these words</item>
+<item key="all">Contains all of these words</item>
+<item key="ic_exact">Exactly matches</item>
+<item key="regex">Matches</item>
+</lookup>
+
+
+<!-- moaaic-group, searchmaps.xsl -->
+<lookup id="searchmaps">
+<item key="searchmaps">Search for maps</item>
+<item key="instructionsearch1">Enter an exact word or phrase.</item>
+</lookup>
+
+<lookup id="NoResults">
+<item key="sorrynoresults">Sorry, no results were found when searching
+for items where...</item>
+<item key="pleasetry">Please try again.</item>
+<item key="mediaonly">Including an image or other media.</item>
+</lookup>
+
+</LangMap>
+
+<TemplatePath>/l1/dev/roger/web/i/image/entry.xml</TemplatePath>
+<TemplateName>entry</TemplateName>
+<XcollMode>singlecoll</XcollMode>
+
+<CurrentScriptName>/cgi/i/image/image-idx</CurrentScriptName>
+<ScriptName application="text">/cgi/t/text/text-idx</ScriptName>
+<ScriptName application="pageviewer">/cgi/t/text/pageviewer-idx</ScriptName>
+<ScriptName application="ww">/cgi/t/text/ww2-idx</ScriptName>
+<ScriptName application="findaid">/cgi/f/findaid/findaid-idx</ScriptName>
+<ScriptName application="image">/cgi/i/image/image-idx</ScriptName>
+
+
+
+<BookmarkableUrl/>
+<AuthenticationEnabled>1</AuthenticationEnabled>
+<UserAuthenticated>0</UserAuthenticated>
+<AuthenticatedUsername/>
+<SupportedAuthSystems><System>um</System></SupportedAuthSystems>
+<QuickBrowse/>
+<Feed>
+  <FeedLink type="short"/>
+  <FeedLink type="long"/>
+</Feed>
+<TaggingEnabled>0</TaggingEnabled>
+<CollGroupMembership>:localhist-ic:</CollGroupMembership>
+<EncodingType/>
+
+
+<HeadLinks>
+  <!-- <CssLink>//netdna.bootstrapcdn.com/twitter-bootstrap/2.3.2/css/bootstrap-combined.min.css</CssLink> -->
+  <CssLink><CssLink>/i/image/bootstrap/css/bootstrap.min.css</CssLink></CssLink>
+  <CssLink><CssLink>/i/image/css/imageclass.css</CssLink></CssLink>
+  <CssLink><CssLink>/i/image/css/imageclass-specific.css</CssLink>
+<CssLink>/s/sdlhomes/css/imageclass-specific.css</CssLink></CssLink>
+
+  <BootstrapLink>//ajax.googleapis.com/ajax/libs/jquery/1.9.1/jquery.min.js</BootstrapLink>
+  <BootstrapLink>/i/image/jquery/jquery-migrate-1.2.1.js</BootstrapLink>
+  <BootstrapLink>//netdna.bootstrapcdn.com/twitter-bootstrap/2.3.2/js/bootstrap.min.js</BootstrapLink>
+  <!-- <BootstrapLink>/i/image/bootstrap/js/bootstrap.js</BootstrapLink> -->
+  <JavaScriptUrl>/i/image/js/jquery.placeholder.js</JavaScriptUrl>
+
+  <ApiUrl>/cgi/i/image/api</ApiUrl>
+  <Timestamp>20180409</Timestamp>
+
+  <AssetDebug>yes</AssetDebug>
+
+
+</HeadLinks>
+</DlxsGlobals>
+
+<CollName><Full>Saline Historic Homes</Full><Brief>Saline Historic Homes</Brief></CollName>
+<EntryId>SL0617</EntryId>
+<RestrictStatus>access2</RestrictStatus>
+
+<AccessRestrictions>
+    <Status>public</Status>
+    <Public href="https://roger.quod.lib.umich.edu/cgi/i/image/image-idx?auth=world;sort=sdlhomes_photo_date;q1=sdlhomes;type=boolean;rgn1=ic_all;view=reslist;c=sdlhomes">416</Public>
+    <Authorized>0</Authorized>
+    <Restricted>0</Restricted>
+</AccessRestrictions>
+
+
+<EntryWindowName>S_SDLHOMES_X_SL0617___SL061702__TIF</EntryWindowName>
+<ItemUrl>https://roger.quod.lib.umich.edu/cgi/i/image/image-idx?id=S-SDLHOMES-X-SL0617%5DSL061702.TIF</ItemUrl><ItemUrlEncoded>https%3A%2F%2Froger.quod.lib.umich.edu%2Fcgi%2Fi%2Fimage%2Fimage-idx%3Fid%3DS-SDLHOMES-X-SL0617%5DSL061702.TIF</ItemUrlEncoded><TitleForTagging>204%20W.%20Henry</TitleForTagging>
+<Home>https://roger.quod.lib.umich.edu/cgi/i/image/image-idx?page=index;c=sdlhomes</Home>
+<Help>https://roger.quod.lib.umich.edu/cgi/i/image/image-idx?page=help;c=sdlhomes</Help>
+<!-- <JavaScriptUrl>/i/image/js/imageclass.js</JavaScriptUrl> -->
+<JavaScriptUrl>//www.google.com/recaptcha/api.js</JavaScriptUrl>
+<!-- <JavaScriptUrl>/i/image/js/feedback.js</JavaScriptUrl> -->
+<DivView><View name="full-image"><InitialStatus>visible</InitialStatus>
+<Visibility div="full-image">show</Visibility>
+<Visibility div="description">hide</Visibility>
+<Visibility div="other-views">hide</Visibility></View><View name="description"><InitialStatus>hidden</InitialStatus>
+<Visibility div="full-image">hide</Visibility>
+<Visibility div="description">show</Visibility>
+<Visibility div="other-views">hide</Visibility></View><View name="other-views"><InitialStatus>hidden</InitialStatus>
+<Visibility div="full-image">hide</Visibility>
+<Visibility div="description">hide</Visibility>
+<Visibility div="other-views">show</Visibility></View></DivView>
+<Next><Url index="5" name="S_SDLHOMES_X_SL0817___SL081701__TIF" marker="5536d312bcb5e17f0911755b9b3bc5a3">https://roger.quod.lib.umich.edu/cgi/i/image/image-idx?fn1=sdlhomes_date_construction;fq1=1910%20ca.;sort=sdlhomes_present_usage;rgn1=sdlhomes_present_usage;select1=phrase;c=sdlhomes;resnum=5;start=1;view=entry;lastview=reslist;lasttype=boolean;debug=xml;size=50;q1=Residence;cc=sdlhomes;entryid=x-sl0817;viewid=SL081701.TIF</Url></Next>
+<Prev><Url index="3" name="S_SDLHOMES_X_SL0617___SL061701__TIF" marker="5536d312bcb5e17f0911755b9b3bc5a3">https://roger.quod.lib.umich.edu/cgi/i/image/image-idx?fn1=sdlhomes_date_construction;fq1=1910%20ca.;sort=sdlhomes_present_usage;rgn1=sdlhomes_present_usage;select1=phrase;c=sdlhomes;resnum=5;start=1;view=entry;lastview=reslist;lasttype=boolean;debug=xml;size=50;q1=Residence;cc=sdlhomes;entryid=x-sl0617;viewid=SL061701.TIF</Url></Prev>
+<Self><Url index="4" name="S_SDLHOMES_X_SL0617___SL061702__TIF">https://roger.quod.lib.umich.edu/cgi/i/image/image-idx?fn1=sdlhomes_date_construction;fq1=1910%20ca.;sort=sdlhomes_present_usage;rgn1=sdlhomes_present_usage;select1=phrase;c=sdlhomes;resnum=5;start=1;view=entry;lastview=reslist;lasttype=boolean;debug=xml;size=50;q1=Residence;cc=sdlhomes;entryid=x-sl0617;viewid=SL061702.TIF</Url></Self>
+<TotalResults>10</TotalResults>
+<ContactLink>'m'+'a'+'i'+'l'+'t'+'o'+':'+'s'+'d'+'l'+'p'+'h'+'o'+'t'+'o'+'s'+'-'+'h'+'e'+'l'+'p'+'@'+'u'+'m'+'i'+'c'+'h'+'.'+'e'+'d'+'u'</ContactLink>
+<ContactText>E-mail Help</ContactText>
+<LoginLink><Url>https://roger.quod.lib.umich.edu/cgi/dlxslogin/go?target=https%3A%2F%2Froger.quod.lib.umich.edu%2Fcgi%2Fi%2Fimage%2Fimage-idx%3Fkey_authret%3D1632260769</Url><Mode>login</Mode></LoginLink>
+<SearchLink>https://roger.quod.lib.umich.edu/cgi/i/image/image-idx?fn1=sdlhomes_date_construction;fq1=1910%20ca.;sort=sdlhomes_present_usage;rgn1=sdlhomes_present_usage;select1=phrase;c=sdlhomes;debug=xml;size=50;chaperone=S-SDLHOMES-X-SL0617%20SL061702.TIF;q1=Residence;page=search;view=reslist</SearchLink>
+<BackLink identifier="Q_SDLHOMES_X_SDLHOMES_PRESENT_USAGE___RESIDENCE___0001">https://roger.quod.lib.umich.edu/cgi/i/image/image-idx?fn1=sdlhomes_date_construction;fq1=1910%20ca.;sort=sdlhomes_present_usage;rgn1=sdlhomes_present_usage;select1=phrase;c=sdlhomes;debug=xml;size=50;q1=Residence;view=reslist;type=boolean;start=1</BackLink>
+<Banner><Text>Saline Historic Homes</Text></Banner>
+<BookBagForm action="add"><HiddenVars><Variable name="page">bbname</Variable>
+<Variable name="bbidno">S-SDLHOMES-X-SL0617]SL061702.TIF</Variable>
+</HiddenVars><ActionAllowed>1</ActionAllowed></BookBagForm>
+<Url name="Thumb">data:image/jpeg;base64,/9j/4AAQSkZJRgABAQIATgBOAAD/2wBDAAgGBgcGBQgHBwcJCQgKDBQNDAsLDBkSEw8UHRofHh0a
+HBwgJC4nICIsIxwcKDcpLDAxNDQ0Hyc5PTgyPC4zNDL/2wBDAQkJCQwLDBgNDRgyIRwhMjIyMjIy
+MjIyMjIyMjIyMjIyMjIyMjIyMjIyMjIyMjIyMjIyMjIyMjIyMjIyMjIyMjL/wAARCABEAGQDASIA
+AhEBAxEB/8QAHAAAAgIDAQEAAAAAAAAAAAAAAAYEBQIDBwgB/8QAPxAAAgEDAgMGAgUHDQAAAAAA
+AQIDAAQRBSEGEjEHEyJBUWEUcSOBkbHBJDJCQ6HR8BUWMzdEVHJ0g7LC4fH/xAAYAQADAQEAAAAA
+AAAAAAAAAAABAgMABP/EAB0RAAICAwEBAQAAAAAAAAAAAAABAhESITEDUUH/2gAMAwEAAhEDEQA/
+AKPWeI+Im4m1u00/Xr3vVvZUW3M5jSJASAFYtgdAOm1LQ4x4o734ccR6scjmDd+SWP27DO3XfrUX
+jCXk4v4gQDdtRlyR1wGO3y3qsuFufhleVPolIK9AAcAYGOu2PlTaGoYl464mdxE2u30SN4SWuWLp
+jz2OfLp51qHG3E0ckjRcQalKkYVgWuHGRnrgnz9KV+8Ik7wOGIx161LVY57Nm/Xhs8qoACOnX7sV
+jUdv4N1ZNWtoGueJL9714TzW3xZ5epAf5kYOD88U1NDqVrYGPT9SuJZCFAe7lMmOUbkepbzrzdp0
+N6DzWokWaMEhk2PTP17b11TQNb+Ote9t7hopFPiVT5+uOgz1pJyx/DLzy4ybq3EXEWlSqr3M7OMt
+yq+centj93lSe3G+vPcPdXOpalFbn+ihhmIBPnsTkjpVnrtnLcuhkusRuSWZH3Aydwv3n3NVU2io
+NMSW1S2l72Vl5nmGR6eeAuMnoKhkMoMrbnjPXpIxLHxRqcTjJ5TM2G326Hb/ALFSouN9Wgu2Mmva
+nITg921yxCbZO4wM+1K0lpBGs9w93E/JkIqk+JidsbdMb59qxhlgilVZYlJyrFgSSuce9Ua1RqGy
+7461hLf6DW9SMjHC5uXIX7etQrfjfiEmQvxHqBboi/EONwP4+ylm+kIuWJb9LmAB6fxiosTqGIYj
+lwSQR19qMYaAen+yXUr3WOCviNQuZLidbqSPvJJC5IGMbnPrRULsPwOz4kfmm9lI+W1FMIzg/GLl
+eONcOSM383T/ABmqYsAoQO+MnJx0+qrrjaUS8ba2TGq4vZR4RjOGIzVL3K/DxuJB3jMQU5Tkehz5
+045geXAAq30LS7rXJn0+zVGnK8wB6hV3YjzqtggkuZ+7jj5n3JA8/Wujdn/D19Za7aahc2pjiZ5U
+WQuASQMFSp/D0zQlJIKKzR9M07Tr69TVJpntbIxs09sjJLv0TBI5dzudyMbU9a1pmncMQWl5ZRTi
+2nj5m3ByOoB26jIwep96whVLri2RHdpYmvj4GwVxzdMYp24n0yG90R+ccqweJeUDHUDHsKi3Y6VN
+HMRxRayxATWrwyDbxMFBX3IGwPoaj3WgNc6fJeRiEx3bErHDMGWMeXOw67jy6VX31qk3E5tweVfh
+i5x681V2r2K2OmyTxGOOXvgvM3TFIofB3L6V2oW+nwQyRrM0syN4Qi+AAerH132FUgkKygqSCpzz
+KcHPrTxqOi28eix3Ziyz2gd26ZbAwR9dJAhJkWNGB5wM4U5X2q0PhJm69mW5ZJ1BBYkMCck753+2
+ooAOQM58qkLGoQrljysGJxjY7UXKW4lJhcKjDKqzZI9iR5+dOgM9Fdhv9Xp/zsv/ABorPsR5P5hO
+UYspvpSCRgnZfKilJvpx3jiwto+INQeOOTmN5NJNJj1c7D296XVht1mVZjNHCduZF5yNvfH2Uw8V
+3c1xxdqlqocQC8kV5AhblPMcHbpWUNm1vEwL98O5ZQHOTzlcAgnoNztQycUWUb4LIl+Eu+eILtlc
+k7NThNxhr+jxWlvPpllDIo76CSSEs/KxzkHPQ+1JsVhK92kNx9GC3IzMdh9Yp57Q7VI7yxA6xWUM
+WxyMBc5rOrAiDF2haz8X3jm2RTksLeFY2LH9LmwTnND8V6heXiTXN3K4GB3RJIYZ3BJOd6SlIMq7
+eYqyi/OBouKQbsZb7U7a6vhcWlmmnTqpVisjyhgT08R2+qvllqVu19GurRi7tAxZ0t2CsdiBs3z9
+aW7iX8uiYHbJzXwS5uCaWmHR0riniDS+IYbSz043EQS2aLEsXKV9MeR296SNQsI7O0soyoIRsO4b
+kyfIk1stWMdleTI3K627EEeRrY+rXFtpNnLgTtcIVlSTBV/PcY3/AGYpVaZmkWuqSw3XBYtRZ/BS
+xSCSGJoge/AB5mEnVj6jyxXPyQ7DYZcZ2HQ+wq5s5JHnkuIoZGUKwYhi6qSD0zuPrqkZHjYjbwbZ
+9KpHolaPSfYapXs+Ibr8bKf9tFHYamOz0g/32b8KKzJvpzbVLW3g4n1SZIWDSXMokxIcOOc/++1V
+dxObWBnboNs4z126Vr4h4kWHiPVI1tiSt3KuS2M4c0vXutz3a8gRY022G+4NLhJsup0iNewS28x5
+5BkkkY9c0065xbY6zpgiEUyXKd0A0mCCqx8h3G+c70nSSSTOXdizHzrDlPpVMb6JZvURhgdt/ntW
+w3IVTjrUYFtvavpyRjHWmowd4zODgk1uibmmRQ6jmIGWOAPnWyw025urqMJbTSLzDm5NtvPenccP
+2mspGxs/hJox3bCCN5VYDGNlHz33yaSUkhkmyguZodLkmsLmeKXni5We1kEi4bfZqsntoDp0UKTc
+8Ma4OCA59MHy61Mk4NsYeaS4h4gdDjeLT+6UH5vg0ahplramB9Kg1BgOXwyplgAMHONs/I1CclxD
+JFFFFLa3URZsWhfAQjAI9NvOl2ZViunQ5ZVcjbYmn+CO7to3xapbo7kzCV8u3p8j91K+taZySXFy
+kqynn53AOcA9KPn6K6YJRo732Gb9nQ2/tk34UUdhoZezsBgR+WTHf6qKsyD6V+o9j/Dt7qV1dyXW
+pCSeV5HCypgFiSceDpWmHsU4YLeK51Q/66fglFFBvQyJ8XY7wnAxJiupTn9bNn8KlR9lPCY8PwLn
+nO5L9PlttRRXJKTvpREtOy3g6FQP5HjcqMZdiSfnvvUuLgLhaEHutEtFyN/Bn76KKtbATouGNFgQ
+pHp1sEznHdKRn7K3vp8MUHdW2bZSf1Kqv4UUUJcNbsgScPW86/S3V4/nvIP3VgOGLJWBWa5U58nH
+7qKK5qQ1s3W3DtrFcd6bi6kIOyvJkdPTFS30OwkVg0CEMdwVGPsxRRV4JUBtky0tYbSARQII0znl
+UAD9lFFFdC4RfT//2Q==
+</Url><Url name="ThumbLink" foo="bar">/cgi/i/image/api/tile/sdlhomes:SL0617:SL061702.TIF/full/!100,100/0/default.jpg</Url><ThumbInfo/>
+<OpenPortfolio><Url>https://roger.quod.lib.umich.edu/cgi/i/image/image-idx?page=bbopen</Url></OpenPortfolio>
+<MediaInfo><Initial>
+    <MediaLink>/cgi/i/image/api/image/sdlhomes:SL0617:SL061702.TIF/full/628,424/0/native.jpg</MediaLink>
+    <res>2</res>
+    <w>628</w>
+    <h>424</h>
+</Initial>
+<MediaHost>https://roger.quod.lib.umich.edu</MediaHost>
+<AuthCheck allowed="yes" check="yes">1: world access allowed</AuthCheck>
+<Debug/>
+<ic_collid class="fieldsRef">sdlhomes</ic_collid>
+<m_flm class="fieldsRef">2013-02-08 18:59:46</m_flm>
+<m_id class="fieldsRef">SL0617</m_id>
+<istruct_mt class="fieldsRef">IMAGE:::DYNAMIC2</istruct_mt>
+<m_entryauth class="fieldsRef">WORLD</m_entryauth>
+<m_iid class="fieldsRef">SL061702.TIF</m_iid>
+<istruct_face class="fieldsRef">UNSPEC</istruct_face>
+<istruct_isentryidv class="fieldsRef">S-SDLHOMES-X-SL0617-2</istruct_isentryidv>
+<m_searchable class="fieldsRef">1</m_searchable>
+<istruct_ms class="fieldsRef">P</istruct_ms>
+<istruct_stty class="fieldsRef">SUMM</istruct_stty>
+<istruct_x class="fieldsRef">2</istruct_x>
+<istruct_caption class="fieldsRef"/>
+<istruct_mo class="fieldsRef">TIF</istruct_mo>
+<istruct_m class="fieldsRef">SL061702</istruct_m>
+<istruct_y class="fieldsRef">1</istruct_y>
+<istruct_stid class="fieldsRef">0</istruct_stid>
+<m_fn class="fieldsRef">SL061702</m_fn>
+<istruct_isentryid class="fieldsRef">S-SDLHOMES-X-SL0617]SL061702.TIF</istruct_isentryid>
+<istruct_me class="fieldsRef">JP2</istruct_me>
+<m_caption class="fieldsRef"/>
+<filename class="imgInfHashRef">s/sdlhomes/pairtree_root/SL/06/17/02/SL061702/SL061702.jp2</filename>
+<md5 class="imgInfHashRef">005dadc60168f4d501b4490e7fb49b90</md5>
+<ext class="imgInfHashRef">jp2</ext>
+<access class="imgInfHashRef">1</access>
+<basename class="imgInfHashRef">SL061702</basename>
+<collid class="imgInfHashRef">sdlhomes</collid>
+<type class="imgInfHashRef">image</type>
+<width class="imgInfHashRef">2512</width>
+<mimetype class="imgInfHashRef">image/jp2</mimetype>
+<levels class="imgInfHashRef">4</levels>
+<height class="imgInfHashRef">1696</height>
+<modified class="imgInfHashRef">2013-02-08 18:59:46</modified>
+<master class="imgInfHashRef">0</master>
+<u class="imgInfHashRef">1</u>
+<loaded class="imgInfHashRef">2013-11-25 02:17:27</loaded>
+<use class="imgInfHashRef">access</use>
+<size class="imgInfHashRef">580462</size>
+<HighestQualityLevelAllowed>2</HighestQualityLevelAllowed>
+<Levels>4</Levels>
+<Zoomable>no</Zoomable>
+<Pan>no</Pan>
+<Type>image</Type>
+<Ext>jp2</Ext>
+<MimeType>image/jp2</MimeType>
+</MediaInfo>
+<ImageSizeTool><Level level="4"><Part name="Current">no</Part>
+<Part name="DownloadLink">https://roger.quod.lib.umich.edu/cgi/i/image/image-idx?fn1=sdlhomes_date_construction;fq1=1910%20ca.;sort=sdlhomes_present_usage;rgn1=sdlhomes_present_usage;select1=phrase;c=sdlhomes;q1=Residence;debug=xml;size=50;chaperone=S-SDLHOMES-X-SL0617%20SL061702.TIF;evl=full-image;quality=4;view=entry;subview=download;cc=sdlhomes;entryid=x-sl0617;viewid=SL061702.TIF;start=1;resnum=5;lastview=reslist;lasttype=boolean</Part>
+<Part name="EntryLink">https://roger.quod.lib.umich.edu/cgi/i/image/image-idx?fn1=sdlhomes_date_construction;fq1=1910%20ca.;sort=sdlhomes_present_usage;rgn1=sdlhomes_present_usage;select1=phrase;c=sdlhomes;q1=Residence;debug=xml;size=50;chaperone=S-SDLHOMES-X-SL0617%20SL061702.TIF;evl=full-image;quality=4;view=entry;subview=detail;cc=sdlhomes;entryid=x-sl0617;viewid=SL061702.TIF;start=1;resnum=5;lastview=reslist;lasttype=boolean</Part>
+<Part name="MediaLink">/cgi/i/image/api/image/sdlhomes:SL0617:SL061702.TIF/full/res:4/0/native.jpg</Part><LevelWidth>157</LevelWidth><LevelHeight>106</LevelHeight><LevelMaxDim>157</LevelMaxDim></Level><Level level="3"><Part name="Current">no</Part>
+<Part name="DownloadLink">https://roger.quod.lib.umich.edu/cgi/i/image/image-idx?fn1=sdlhomes_date_construction;fq1=1910%20ca.;sort=sdlhomes_present_usage;rgn1=sdlhomes_present_usage;select1=phrase;c=sdlhomes;q1=Residence;debug=xml;size=50;chaperone=S-SDLHOMES-X-SL0617%20SL061702.TIF;evl=full-image;quality=3;view=entry;subview=download;cc=sdlhomes;entryid=x-sl0617;viewid=SL061702.TIF;start=1;resnum=5;lastview=reslist;lasttype=boolean</Part>
+<Part name="EntryLink">https://roger.quod.lib.umich.edu/cgi/i/image/image-idx?fn1=sdlhomes_date_construction;fq1=1910%20ca.;sort=sdlhomes_present_usage;rgn1=sdlhomes_present_usage;select1=phrase;c=sdlhomes;q1=Residence;debug=xml;size=50;chaperone=S-SDLHOMES-X-SL0617%20SL061702.TIF;evl=full-image;quality=3;view=entry;subview=detail;cc=sdlhomes;entryid=x-sl0617;viewid=SL061702.TIF;start=1;resnum=5;lastview=reslist;lasttype=boolean</Part>
+<Part name="MediaLink">/cgi/i/image/api/image/sdlhomes:SL0617:SL061702.TIF/full/res:3/0/native.jpg</Part><LevelWidth>314</LevelWidth><LevelHeight>212</LevelHeight><LevelMaxDim>314</LevelMaxDim></Level><Level level="2"><Part name="Current">yes</Part>
+<Part name="DownloadLink">https://roger.quod.lib.umich.edu/cgi/i/image/image-idx?fn1=sdlhomes_date_construction;fq1=1910%20ca.;sort=sdlhomes_present_usage;rgn1=sdlhomes_present_usage;select1=phrase;c=sdlhomes;q1=Residence;debug=xml;size=50;chaperone=S-SDLHOMES-X-SL0617%20SL061702.TIF;evl=full-image;quality=2;view=entry;subview=download;cc=sdlhomes;entryid=x-sl0617;viewid=SL061702.TIF;start=1;resnum=5;lastview=reslist;lasttype=boolean</Part>
+<Part name="EntryLink">https://roger.quod.lib.umich.edu/cgi/i/image/image-idx?fn1=sdlhomes_date_construction;fq1=1910%20ca.;sort=sdlhomes_present_usage;rgn1=sdlhomes_present_usage;select1=phrase;c=sdlhomes;q1=Residence;debug=xml;size=50;chaperone=S-SDLHOMES-X-SL0617%20SL061702.TIF;evl=full-image;quality=2;view=entry;subview=detail;cc=sdlhomes;entryid=x-sl0617;viewid=SL061702.TIF;start=1;resnum=5;lastview=reslist;lasttype=boolean</Part>
+<Part name="MediaLink">/cgi/i/image/api/image/sdlhomes:SL0617:SL061702.TIF/full/res:2/0/native.jpg</Part><LevelWidth>628</LevelWidth><LevelHeight>424</LevelHeight><LevelMaxDim>628</LevelMaxDim></Level><Level level="1"><Part name="Current">no</Part>
+<Part name="DownloadLink">https://roger.quod.lib.umich.edu/cgi/i/image/image-idx?fn1=sdlhomes_date_construction;fq1=1910%20ca.;sort=sdlhomes_present_usage;rgn1=sdlhomes_present_usage;select1=phrase;c=sdlhomes;q1=Residence;debug=xml;size=50;chaperone=S-SDLHOMES-X-SL0617%20SL061702.TIF;evl=full-image;quality=1;view=entry;subview=download;cc=sdlhomes;entryid=x-sl0617;viewid=SL061702.TIF;start=1;resnum=5;lastview=reslist;lasttype=boolean</Part>
+<Part name="EntryLink">https://roger.quod.lib.umich.edu/cgi/i/image/image-idx?fn1=sdlhomes_date_construction;fq1=1910%20ca.;sort=sdlhomes_present_usage;rgn1=sdlhomes_present_usage;select1=phrase;c=sdlhomes;q1=Residence;debug=xml;size=50;chaperone=S-SDLHOMES-X-SL0617%20SL061702.TIF;evl=full-image;quality=1;view=entry;subview=detail;cc=sdlhomes;entryid=x-sl0617;viewid=SL061702.TIF;start=1;resnum=5;lastview=reslist;lasttype=boolean</Part>
+<Part name="MediaLink">/cgi/i/image/api/image/sdlhomes:SL0617:SL061702.TIF/full/res:1/0/native.jpg</Part><LevelWidth>1256</LevelWidth><LevelHeight>848</LevelHeight><LevelMaxDim>1256</LevelMaxDim></Level><Level level="0"><Part name="Current">no</Part>
+<Part name="DownloadLink">https://roger.quod.lib.umich.edu/cgi/i/image/image-idx?fn1=sdlhomes_date_construction;fq1=1910%20ca.;sort=sdlhomes_present_usage;rgn1=sdlhomes_present_usage;select1=phrase;c=sdlhomes;q1=Residence;debug=xml;size=50;chaperone=S-SDLHOMES-X-SL0617%20SL061702.TIF;evl=full-image;quality=0;view=entry;subview=download;cc=sdlhomes;entryid=x-sl0617;viewid=SL061702.TIF;start=1;resnum=5;lastview=reslist;lasttype=boolean</Part>
+<Part name="EntryLink">https://roger.quod.lib.umich.edu/cgi/i/image/image-idx?fn1=sdlhomes_date_construction;fq1=1910%20ca.;sort=sdlhomes_present_usage;rgn1=sdlhomes_present_usage;select1=phrase;c=sdlhomes;q1=Residence;debug=xml;size=50;chaperone=S-SDLHOMES-X-SL0617%20SL061702.TIF;evl=full-image;quality=0;view=entry;subview=detail;cc=sdlhomes;entryid=x-sl0617;viewid=SL061702.TIF;start=1;resnum=5;lastview=reslist;lasttype=boolean</Part>
+<Part name="MediaLink">/cgi/i/image/api/image/sdlhomes:SL0617:SL061702.TIF/full/res:0/0/native.jpg</Part><LevelWidth>2512</LevelWidth><LevelHeight>1696</LevelHeight><LevelMaxDim>2512</LevelMaxDim></Level><MaxWidth>2512</MaxWidth><MaxHeight>1696</MaxHeight></ImageSizeTool>
+<RevertSizeTool><!-- cannot revert until image has been zoomed. --></RevertSizeTool>
+<MediaEquivsTool/>
+<Record name="entry"><Section name="About this home" class="about_this_home"><Field abbrev="sdlhomes_usgs_map" searchfield="false" sortfield="false"><Values><Value>Saline Quadrangle</Value></Values><Label display="on">USGS Map</Label></Field><Field abbrev="sdlhomes_street_no" searchfield="false" sortfield="false"><Values><Value>204 W. Henry</Value></Values><Label display="on">Street and No.</Label></Field><Field abbrev="sdlhomes_municipal_unit" searchfield="false" sortfield="false"><Values><Value>Saline</Value></Values><Label display="on">Municipal Unit</Label></Field><Field abbrev="sdlhomes_county" searchfield="false" sortfield="false"><Values><Value>Washtenaw</Value></Values><Label display="on">County</Label></Field><Field abbrev="sdlhomes_orig_usage" searchfield="false" sortfield="false"><Values><Value link="https://roger.quod.lib.umich.edu/cgi/i/image/image-idx?c=sdlhomes;type=boolean;view=reslist;rgn1=sdlhomes_orig_usage;q1=Residence;select1=phrase" target="_blank">Residence</Value></Values><Label display="on">Original Usage</Label></Field><Field abbrev="sdlhomes_present_usage" searchfield="true" sortfield="true"><Values><Value link="https://roger.quod.lib.umich.edu/cgi/i/image/image-idx?c=sdlhomes;type=boolean;view=reslist;rgn1=sdlhomes_present_usage;q1=Residence;select1=phrase" target="_blank"><Highlight searchfield="true" class="hilite1" seq="1">Residence</Highlight></Value></Values><Label display="on">Present Usage</Label></Field><Field abbrev="sdlhomes_ownership" searchfield="false" sortfield="false"><Values><Value link="https://roger.quod.lib.umich.edu/cgi/i/image/image-idx?c=sdlhomes;type=boolean;view=reslist;rgn1=sdlhomes_ownership;q1=Armbruster%252C%2520Lee%2520and%2520Donna;select1=phrase" target="_blank">Armbruster, Lee and Donna</Value></Values><Label display="on">Ownership</Label></Field></Section><Section name="About this photograph" class="about_this_photograph"><Field abbrev="sdlhomes_photo_neg_no" searchfield="false" sortfield="false"><Values><Value>4:21</Value></Values><Label display="on">Photo Negative No.</Label></Field><Field abbrev="sdlhomes_photo_date" searchfield="false" sortfield="false"><Values><Value>January, 1994</Value></Values><Label display="on">Photo Date</Label></Field><Field abbrev="sdlhomes_photo_view" searchfield="false" sortfield="false"><Values><Value>South and east facades taken facing northwest</Value></Values><Label display="on">Photo View</Label></Field></Section><Section name="About the construction" class="about_the_construction"><Field abbrev="sdlhomes_desc" searchfield="false" sortfield="false"><Values><Value>Two story, cross gabled, vernacular, Queen Anne style house. Shingled returns on gables. Full width porch wraps around to entry door on east facade. Small peak on porch roof above entryway. Windows are one light over one. One story addition to west rear with an entry door. Concrete block foundation. One car, hipped roof garage with a clipped gable at rear.</Value></Values><Label display="on">Description</Label></Field><Field abbrev="sdlhomes_date_construction" searchfield="false" sortfield="false"><Values><Value link="https://roger.quod.lib.umich.edu/cgi/i/image/image-idx?c=sdlhomes;type=boolean;view=reslist;rgn1=sdlhomes_date_construction;q1=1910%2520ca.;select1=phrase" target="_blank">1910 ca.</Value></Values><Label display="on">Date Of Construction</Label></Field><Field abbrev="sdlhomes_context" searchfield="false" sortfield="false"><Values><Value>Anna Wolper owned the house 1914-1935. Other occupants: Ward Earnst 1941; Frank Karn 1947; John Schaffer; Leonard Morton.</Value></Values><Label display="on">Context</Label></Field><Field abbrev="sdlhomes_ref" searchfield="false" sortfield="false"><Values><Value>City Directories: 1878, 1894, 1899, 1912, 1914, 1916, 1920, 1926, 1941, 1945. Assessor's files: 1947 and current; U.S. Census: 1910, 1920. Sanborn Maps: 1888, 1893, 1899, 1912, 1921, 1929; Tax Rolls: 1931 and 1935.</Value></Values><Label display="on">Bibliographic Reference</Label></Field><Field abbrev="sdlhomes_form_source" searchfield="false" sortfield="false"><Values><Value>MICHIGAN DEPARTMENT OF STATE KG 187</Value></Values><Label display="on">Form Source</Label></Field></Section><Section name="About this record" class="about_this_record"><Field abbrev="sdlhomes_survey_dt" searchfield="false" sortfield="false"><Values><Value>May, 1994</Value></Values><Label display="on">Survey Date</Label></Field><Field abbrev="sdlhomes_surveyor" searchfield="false" sortfield="false"><Values><Value>K. Glynn &amp; S. Kosky</Value></Values><Label display="on">Surveyor</Label></Field><Field abbrev="sdlhomes_recorder_dt" searchfield="false" sortfield="false"><Values><Value>April, 1994</Value></Values><Label display="on">Recorder Date</Label></Field><Field abbrev="sdlhomes_card_no" searchfield="false" sortfield="false"><Values><Value>187</Value></Values><Label display="on">Card No.</Label></Field><Field abbrev="dlxs_ri" searchfield="false" sortfield="false"><Values><Value>The University of Michigan Library provides access to these materials for educational and research purposes. These materials may be under copyright. If you decide to use any of these materials, you are responsible for making your own legal assessment and securing any necessary permission. If you have questions about the collection, please contact <a href="mailto:sdlphotos-help@umich.edu">Saline Digital Collections help</a>. If you have concerns about the inclusion of an item in this collection, please contact <a href="mailto:LibraryIT-info@umich.edu">Library Information Technology</a>.</Value></Values><Label display="on">Copyright</Label></Field></Section></Record>
+<Record name="special"><Section name="default" class="default"><Field abbrev="dlxs_ma" searchfield="false" sortfield="false"><Values><Value>204 W. Henry</Value></Values><Label display="on">Title</Label></Field><Field abbrev="dc_ti" searchfield="false" sortfield="false"><Values><Value>204 W. Henry</Value></Values><Label display="on">Title</Label></Field><Field abbrev="dc_de" searchfield="false" sortfield="false"><Values><Value>South and east facades taken facing northwest</Value><Value>Two story, cross gabled, vernacular, Queen Anne style house. Shingled returns on gables. Full width porch wraps around to entry door on east facade. Small peak on porch roof above entryway. Windows are one light over one. One story addition to west rear with an entry door. Concrete block foundation. One car, hipped roof garage with a clipped gable at rear.</Value></Values><Label display="on">Description</Label></Field></Section></Record>
+<MediaDownloadLink><URL name="mediadownloadlink">/cgi/i/image/api/image/sdlhomes:SL0617:SL061702.TIF/full/res:0/0/native.jpg?attachment=1</URL><Filename>SL061702_sdlhomes.JPG</Filename></MediaDownloadLink>
+<MiradorConfig manifest-href="https://quod.lib.umich.edu/cgi/i/image/api/manifest/sdlhomes:SL0617:SL061702.TIF" embed-href="https://quod.lib.umich.edu/cgi/i/image/api/embed/sdlhomes:SL0617:SL061702.TIF" canvas-index="2" mode="multiple"/>
+
+<inserttextentryinfo><div><!-- entryinfo.txt is a file that is inserted into entry.xml by the
+middleware and a PI called CHUNK. It is optional at group and coll
+levels. It is a requirement to have this file (at the class level) as
+a placeholder. Otherwise, if there is not an entryinfo.txt file at the
+coll or group level, an assertion error will occur. Alternatively, the
+CHUNK PI could be removed from entry.tpl and bbentry.tpl. -->
+</div></inserttextentryinfo>
+<RelatedViewsMenu><Name>viewid</Name>
+<HiddenVars><Variable name="fn1">sdlhomes_date_construction</Variable>
+<Variable name="fq1">1910 ca.</Variable>
+<Variable name="sort">sdlhomes_present_usage</Variable>
+<Variable name="rgn1">sdlhomes_present_usage</Variable>
+<Variable name="select1">phrase</Variable>
+<Variable name="c">sdlhomes</Variable>
+<Variable name="q1">Residence</Variable>
+<Variable name="subview">detail</Variable>
+<Variable name="resnum">5</Variable>
+<Variable name="start">1</Variable>
+<Variable name="view">entry</Variable>
+<Variable name="lastview">reslist</Variable>
+<Variable name="lasttype">boolean</Variable>
+<Variable name="cc">sdlhomes</Variable>
+<Variable name="entryid">x-sl0617</Variable>
+<Variable name="debug">xml</Variable>
+<Variable name="size">50</Variable>
+<Variable name="chaperone">S-SDLHOMES-X-SL0617 SL061702.TIF</Variable>
+</HiddenVars>
+<Instruct w="other">Related Views</Instruct>
+<Option index="0"><Label>SL061701.TIF</Label><Value>SL061701.TIF</Value></Option><Option index="1"><Label>SL061702.TIF</Label><Value>SL061702.TIF</Value><Focus>true</Focus></Option><Name>relview</Name><Default>SL061702.TIF</Default></RelatedViewsMenu>
+<RelatedViews><View>
+<Name>unspecified | summary</Name>
+<Row y="1">
+<Column x="1" y="1" blank="no" thumb="yes"><Url name="EntryLink">https://roger.quod.lib.umich.edu/cgi/i/image/image-idx?fn1=sdlhomes_date_construction;fq1=1910%20ca.;sort=sdlhomes_present_usage;rgn1=sdlhomes_present_usage;select1=phrase;c=sdlhomes;q1=Residence;subview=detail;resnum=5;start=1;view=entry;lastview=reslist;lasttype=boolean;cc=sdlhomes;entryid=x-sl0617;viewid=SL061701.TIF;debug=xml;size=50;chaperone=S-SDLHOMES-X-SL0617%20SL061702.TIF</Url><Url name="Thumb">data:image/jpeg;base64,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
+SpTTBHTrZbS2MaF2yxYlgQc1KlSsj//Z
+</Url><Url name="ThumbLink" foo="bar">/cgi/i/image/api/tile/sdlhomes:SL0617:SL061701.TIF/full/!100,100/0/default.jpg</Url><Caption/>
+
+<Type>image</Type><AuthCheck allowed="yes">1: world access allowed</AuthCheck><Url name="MediaLink">/cgi/i/image/api/image/sdlhomes:SL0617:SL061702.TIF/full/full/0/native.jpg</Url></Column>
+<Column x="2" y="1" blank="no" thumb="yes"><Focus>true</Focus><Url name="EntryLink">https://roger.quod.lib.umich.edu/cgi/i/image/image-idx?fn1=sdlhomes_date_construction;fq1=1910%20ca.;sort=sdlhomes_present_usage;rgn1=sdlhomes_present_usage;select1=phrase;c=sdlhomes;q1=Residence;subview=detail;resnum=5;start=1;view=entry;lastview=reslist;lasttype=boolean;cc=sdlhomes;entryid=x-sl0617;viewid=SL061702.TIF;debug=xml;size=50;chaperone=S-SDLHOMES-X-SL0617%20SL061702.TIF</Url><Url name="Thumb">data:image/jpeg;base64,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
+UAD9lFFFdC4RfT//2Q==
+</Url><Url name="ThumbLink" foo="bar">/cgi/i/image/api/tile/sdlhomes:SL0617:SL061702.TIF/full/!100,100/0/default.jpg</Url><Caption/>
+
+<Type>image</Type><AuthCheck allowed="yes">1: world access allowed</AuthCheck><Url name="MediaLink">/cgi/i/image/api/image/sdlhomes:SL0617:SL061702.TIF/full/full/0/native.jpg</Url></Column>
+</Row>
+
+</View>
+</RelatedViews>
+
+<Portfolios type="private"/>
+<Portfolios type="public"/>
+
+<ExtraIECSS test="lt IE 10">/i/image/vendor/Leaflet.Pancontrol/src/L.Control.Pan.ie.css</ExtraIECSS>
+<ExtraIECSS test="lt IE 10">/i/image/css/ie.css</ExtraIECSS>
+<ExtraIECSS test="lt IE 8">/i/image/css/ie7.css</ExtraIECSS>
+
+<Assets>
+    <script type="text/javascript" src="js/_entry.js" timestamp="1586292740">
+        <script type="text/javascript" src="vendor/jquery.sticky-kit.js" timestamp="1586292740"/>
+        <script type="text/javascript" src="vendor/Rubberband/jquery.bp.rubberband.js" timestamp="1586292740"/>
+        <script type="text/javascript" src="js/imageclass.js" timestamp="1586292740"/>
+        <script type="text/javascript" src="js/jquery_cookie.js" timestamp="1586292740"/>
+        <script type="text/javascript" src="js/feedback.js" timestamp="1586292740"/>
+        <script type="text/javascript" src="bootstrap/js/bootbox.js" timestamp="1586292740"/>
+        <script type="text/javascript" src="js/jquery.trap.min.js" timestamp="1586292740"/>
+        <script type="text/javascript" src="vendor/Leaflet-1.5.1/leaflet-src.js" timestamp="1586292740"/>
+        <script type="text/javascript" src="vendor/Leaflet.Pancontrol/src/L.Control.Pan.js" timestamp="1586292740"/>
+        <script type="text/javascript" src="vendor/Leaflet.contextmenu/dist/leaflet.contextmenu.js" timestamp="1586292740"/>
+        <script type="text/javascript" src="vendor/strftime-min.js" timestamp="1586292740"/>
+        <script type="text/javascript" src="vendor/Leaflet-IIIF-UM/leaflet-iiif.js" timestamp="1586292740"/>
+        <script type="text/javascript" src="js/image_viewer.js" timestamp="1586292740"/>
+        <script type="text/javascript" src="js/entry.js" timestamp="1586292740"/>
+    </script>
+    <link rel="stylesheet" type="text/css" href="css/_entry.css" timestamp="1586292740">
+        <link rel="stylesheet" type="text/css" href="css/entry.css" timestamp="1586292740"/>
+        <link rel="stylesheet" type="text/css" href="vendor/Leaflet-1.5.1/leaflet.css" timestamp="1586292740"/>
+        <link rel="stylesheet" type="text/css" href="vendor/Leaflet.Pancontrol/src/L.Control.Pan.css" timestamp="1586292740"/>
+        <link rel="stylesheet" type="text/css" href="vendor/Leaflet.contextmenu/dist/leaflet.contextmenu.css" timestamp="1586292740"/>
+    </link>
+</Assets>
+
+<!-- CHUNK filename="entry.assets.chnk" optional="0" -->
+
+<CollName><Full>Saline Historic Homes</Full><Brief>Saline Historic Homes</Brief></CollName>
+
+
+
+</Top>
