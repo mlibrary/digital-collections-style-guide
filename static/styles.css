@@ -152,7 +152,6 @@ input {
   box-shadow: inset 0 1px 4px rgb(0 0 0 / 10%);
   border-radius: 4px;
   padding: 0.5rem 0.75rem;
-  appearance: textfield;
   font-family: inherit;
   box-sizing: border-box;
   height: 40px;
@@ -300,7 +299,7 @@ input[type="checkbox"] {
   display: flex;
   align-items: center;
   justify-content: center;
-  border: 1px solid rgba(0,0,0,0.25);
+  border: 1px solid rgba(0, 0, 0, 0.25);
 }
 
 .results-list__blank::after {
@@ -527,7 +526,6 @@ a[class*="next"]::after {
 .nowrap {
   white-space: nowrap;
 }
-
 
 /*
  * Anchors/Links
@@ -784,7 +782,7 @@ html[data-preview-links="true"] a:not([data-available="true"]) {
 }
 
 html[data-preview-links="true"] a.toc-link {
-  opacity: 1.0;
+  opacity: 1;
 }
 
 /*
