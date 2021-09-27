@@ -35,12 +35,16 @@ a[aria-current="page"] {
 sl-button::part(base) {
   outline: none;
   height: auto;
-  padding: var(--space-small) var(--space-large);
-  background: var(--color-blue-100);
-  color: var(--color-teal-400);
+  /* padding: var(--space-small) var(--space-large); */
+  /* background: var(--color-blue-100); */
+  /* color: var(--color-teal-400); */
+  min-height: 2.5rem;
+  align-items: center;
+  background: #eee;
+  color: initial;
   font-size: 1rem;
   line-height: 1.5;
-  font-weight: 700;
+  font-weight: var(--bold);
   font-family: var(--font-base-family);
   border: 2px outset var(--color-neutral-100);
   border-radius: var(--radius-default);
