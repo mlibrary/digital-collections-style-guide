@@ -148,11 +148,19 @@
       <h3 class="[ mt-2 ]">Filters</h3>
       <div class="[ side-panel__box ]">
         <xsl:for-each select="$filters//qui:field">
-          <details>
+          <xsl:variable name="key" select="@key" />
+          <details class="panel">
+            <xsl:if test="qui:values/qui:value[@selected='true']">
+              <xsl:attribute name="open">open</xsl:attribute>
+            </xsl:if>
             <summary><xsl:value-of select="qui:label" /></summary>
             <xsl:for-each select="qui:values/qui:value[position() &lt;= 10]">
               <div class="[ flex ][ gap-0_5 ]">
-                <input type="checkbox" id="{ @key }-{ position() }" name="{@key}" value="{ . }" />
+                <input type="checkbox" id="{ $key }-{ position() }" name="{$key}" value="{ . }" style="margin-top: 4px">
+                  <xsl:if test="@selected = 'true'">
+                    <xsl:attribute name="checked">checked</xsl:attribute>
+                  </xsl:if>
+                </input>
                 <label for="{ @key }-{ position() }">
                   <xsl:value-of select="." /><xsl:text> </xsl:text>
                   <span class="filters__count">
