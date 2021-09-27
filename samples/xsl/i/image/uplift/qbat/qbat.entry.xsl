@@ -247,7 +247,7 @@
   <xsl:template name="build-download-action-shoelace">
     <xsl:if test="qui:download-options/qui:download-item">
       <sl-dropdown id="dropdown-action">
-        <sl-button slot="trigger" caret="caret" class="primary">Download</sl-button>
+        <sl-button slot="trigger" caret="caret">Download</sl-button>
         <sl-menu>
           <xsl:for-each select="qui:download-options/qui:download-item">
             <sl-menu-item data-href="{@href}">
