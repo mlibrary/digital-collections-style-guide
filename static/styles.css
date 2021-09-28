@@ -63,7 +63,8 @@ a:hover {
 }
 
 :focus {
-  border: solid 2px var(--color-indigo-400); /** TODO: FOCUS **/
+  /** TODO: FOCUS **/
+  box-shadow: 0 0 0 2px var(--color-indigo-400);
 }
 
 address {
@@ -74,6 +75,11 @@ address {
 
 details > summary {
   list-style: none;
+  cursor: pointer;
+}
+
+/* is this CUBE? */
+details.panel > summary {
   display: flex;
   justify-content: space-between;
 }
