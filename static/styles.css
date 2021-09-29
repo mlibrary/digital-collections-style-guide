@@ -809,7 +809,6 @@ m-website-header:not(.hydrated) {
 */
 
 .footer {
-  /* options */
   background: var(--color-blue-400);
 }
 .footer ul {
