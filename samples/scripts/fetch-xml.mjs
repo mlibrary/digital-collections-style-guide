@@ -170,6 +170,14 @@ while ( queue.length ) {
           href.replace("8lift", "")
         );
       }
+
+      const icCollidEls = xpath.select("//Results/Result/MediaInfo/ic_collid");
+      if ( icCollidEls && icCollidEls.length > 0 ) {
+        for(let i = 0; i < icCollidEls.length; i++) {
+          let el = icCollidEls[i];
+          el.textContent = el.textContent.replace('8lift', '')
+        }
+      }
     }
 
     console.log("==>", identifier, marker);

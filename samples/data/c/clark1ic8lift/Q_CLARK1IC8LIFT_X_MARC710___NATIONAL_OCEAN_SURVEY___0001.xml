@@ -607,7 +607,7 @@ for items where...</item>
 <istruct_caption_item_description class="fieldsRef">Sheet 1 of 24 (No. 136)</istruct_caption_item_description>
 <istruct_mt class="fieldsRef">IMAGE:::DYNAMIC2</istruct_mt>
 <m_caption class="fieldsRef">39015091904253|||Sheet 1 of 24 (No. 136)</m_caption>
-<ic_collid class="fieldsRef">clark1ic8lift</ic_collid>
+<ic_collid class="fieldsRef">clark1ic</ic_collid>
 <istruct_isentryidv class="fieldsRef">S-CLARK1IC8LIFT-X-008458875-1</istruct_isentryidv>
 <istruct_face class="fieldsRef">UNSPEC</istruct_face>
 <istruct_x class="fieldsRef">1</istruct_x>
@@ -700,7 +700,7 @@ TKA2QWPYn1FFFFNID//Z
 <istruct_isentryidv class="fieldsRef">S-CLARK1IC8LIFT-X-008458875-2</istruct_isentryidv>
 <istruct_face class="fieldsRef">UNSPEC</istruct_face>
 <istruct_x class="fieldsRef">2</istruct_x>
-<ic_collid class="fieldsRef">clark1ic8lift</ic_collid>
+<ic_collid class="fieldsRef">clark1ic</ic_collid>
 <m_caption class="fieldsRef">39015091904402|||Sheet 2 of 24 (No. 137)</m_caption>
 <m_source class="fieldsRef">clark1ic</m_source>
 <m_fn class="fieldsRef">39015091904402</m_fn>
@@ -788,7 +788,7 @@ MCw1T8dn/wAVRRRYDzTx34ltfFfiP+0rSGaKPyVj2ygZyM+hPrRRRTGf/9k=
 <MediaHost>https://roger.quod.lib.umich.edu</MediaHost>
 <AuthCheck check="yes" allowed="yes">1: world access allowed</AuthCheck>
 <Debug/>
-<ic_collid class="fieldsRef">clark1ic8lift</ic_collid>
+<ic_collid class="fieldsRef">clark1ic</ic_collid>
 <m_caption class="fieldsRef">39015091904550|||Sheet 3 of 24 (No. 138)</m_caption>
 <istruct_caption_item_description class="fieldsRef">Sheet 3 of 24 (No. 138)</istruct_caption_item_description>
 <istruct_mt class="fieldsRef">IMAGE:::DYNAMIC2</istruct_mt>
@@ -899,7 +899,7 @@ htvFHiNtStYZYojEke2XGcgexooopjP/2Q==
 <istruct_caption_item_description class="fieldsRef">Sheet 4 of 24 (No. 139)</istruct_caption_item_description>
 <istruct_y class="fieldsRef">1</istruct_y>
 <istruct_m class="fieldsRef">39015091904261</istruct_m>
-<ic_collid class="fieldsRef">clark1ic8lift</ic_collid>
+<ic_collid class="fieldsRef">clark1ic</ic_collid>
 <m_caption class="fieldsRef">39015091904261|||Sheet 4 of 24 (No. 139)</m_caption>
 <istruct_caption_barcode class="fieldsRef">39015091904261</istruct_caption_barcode>
 <istruct_isentryidv class="fieldsRef">S-CLARK1IC8LIFT-X-008458875-4</istruct_isentryidv>
@@ -996,7 +996,7 @@ KfjunbQZf/A3/wCwoooCw3/hew/6AMn/AIG//YU1vjqx4GguPf7af/iKKKAsM/4Xm/8A0AmP/b6f
 <m_iid class="fieldsRef">39015091904410</m_iid>
 <istruct_m class="fieldsRef">39015091904410</istruct_m>
 <istruct_y class="fieldsRef">1</istruct_y>
-<ic_collid class="fieldsRef">clark1ic8lift</ic_collid>
+<ic_collid class="fieldsRef">clark1ic</ic_collid>
 <m_caption class="fieldsRef">39015091904410|||Sheet 5 of 24 (No. 141)</m_caption>
 <istruct_caption_barcode class="fieldsRef">39015091904410</istruct_caption_barcode>
 <istruct_x class="fieldsRef">5</istruct_x>
@@ -1093,7 +1093,7 @@ xRRRTsB//9k=
 <m_iid class="fieldsRef">39015091904568</m_iid>
 <istruct_m class="fieldsRef">39015091904568</istruct_m>
 <istruct_y class="fieldsRef">1</istruct_y>
-<ic_collid class="fieldsRef">clark1ic8lift</ic_collid>
+<ic_collid class="fieldsRef">clark1ic</ic_collid>
 <m_caption class="fieldsRef">39015091904568|||Sheet 6 of 24 (No. 143)</m_caption>
 <istruct_caption_barcode class="fieldsRef">39015091904568</istruct_caption_barcode>
 <istruct_x class="fieldsRef">6</istruct_x>
@@ -1188,7 +1188,7 @@ lubG5juIDDGBJG2QSBzRRRTGf//Z
 <istruct_face class="fieldsRef">UNSPEC</istruct_face>
 <istruct_x class="fieldsRef">7</istruct_x>
 <istruct_isentryidv class="fieldsRef">S-CLARK1IC8LIFT-X-008458875-7</istruct_isentryidv>
-<ic_collid class="fieldsRef">clark1ic8lift</ic_collid>
+<ic_collid class="fieldsRef">clark1ic</ic_collid>
 <m_caption class="fieldsRef">39015091904279|||Sheet 7 of 24 (No. 144)</m_caption>
 <istruct_mt class="fieldsRef">IMAGE:::DYNAMIC2</istruct_mt>
 <istruct_caption_item_description class="fieldsRef">Sheet 7 of 24 (No. 144)</istruct_caption_item_description>
@@ -1298,7 +1298,7 @@ lx1X/wAh/wDxVQSfGfRJOPsGp+xOw4/WiiiwHnnjrxRZ+JNbgvLSGeONLZYtsoGcgsexPrRRRTA/
 <istruct_caption_item_description class="fieldsRef">Sheet 8 of 24 (No. 145)</istruct_caption_item_description>
 <istruct_mt class="fieldsRef">IMAGE:::DYNAMIC2</istruct_mt>
 <m_caption class="fieldsRef">39015091904428|||Sheet 8 of 24 (No. 145)</m_caption>
-<ic_collid class="fieldsRef">clark1ic8lift</ic_collid>
+<ic_collid class="fieldsRef">clark1ic</ic_collid>
 <access class="imgInfHashRef">1</access>
 <type class="imgInfHashRef">image</type>
 <height class="imgInfHashRef">10624</height>
@@ -1387,7 +1387,7 @@ n1ooooGf/9k=
 <istruct_x class="fieldsRef">9</istruct_x>
 <istruct_face class="fieldsRef">UNSPEC</istruct_face>
 <istruct_isentryidv class="fieldsRef">S-CLARK1IC8LIFT-X-008458875-9</istruct_isentryidv>
-<ic_collid class="fieldsRef">clark1ic8lift</ic_collid>
+<ic_collid class="fieldsRef">clark1ic</ic_collid>
 <m_caption class="fieldsRef">39015091904576|||Sheet 9 of 24 (No. 146)</m_caption>
 <istruct_caption_item_description class="fieldsRef">Sheet 9 of 24 (No. 146)</istruct_caption_item_description>
 <istruct_mt class="fieldsRef">IMAGE:::DYNAMIC2</istruct_mt>
@@ -1486,7 +1486,7 @@ j0l/+JooosB4t8RNVsta8Y3N7YS+bbPHGFfaVzhQDwQDRRRTA//Z
 <m_source class="fieldsRef">clark1ic</m_source>
 <istruct_m class="fieldsRef">39015091904287</istruct_m>
 <istruct_y class="fieldsRef">1</istruct_y>
-<ic_collid class="fieldsRef">clark1ic8lift</ic_collid>
+<ic_collid class="fieldsRef">clark1ic</ic_collid>
 <m_caption class="fieldsRef">39015091904287|||Sheet 10 of 24 (No. 147)</m_caption>
 <istruct_caption_barcode class="fieldsRef">39015091904287</istruct_caption_barcode>
 <istruct_face class="fieldsRef">UNSPEC</istruct_face>
@@ -1584,7 +1584,7 @@ ASR/z6S/4UUUWA8h+JOs6frnieO702486AWqR7yjLyC2eCAe9FFFMR//2Q==
 <istruct_x class="fieldsRef">11</istruct_x>
 <istruct_face class="fieldsRef">UNSPEC</istruct_face>
 <istruct_isentryidv class="fieldsRef">S-CLARK1IC8LIFT-X-008458875-11</istruct_isentryidv>
-<ic_collid class="fieldsRef">clark1ic8lift</ic_collid>
+<ic_collid class="fieldsRef">clark1ic</ic_collid>
 <m_caption class="fieldsRef">39015091904436|||Sheet 11 of 24 (No. 148)</m_caption>
 <istruct_isentryid class="fieldsRef">S-CLARK1IC8LIFT-X-008458875]39015091904436</istruct_isentryid>
 <istruct_stid class="fieldsRef">0</istruct_stid>
@@ -1688,7 +1688,7 @@ eq/ELVdPvPEMUttfW0yfZlG6OVWGdzelFeVUUDP/2Q==
 <m_source class="fieldsRef">clark1ic</m_source>
 <m_fn class="fieldsRef">39015091904584</m_fn>
 <m_caption class="fieldsRef">39015091904584|||Sheet 12 of 24 (No. 149)</m_caption>
-<ic_collid class="fieldsRef">clark1ic8lift</ic_collid>
+<ic_collid class="fieldsRef">clark1ic</ic_collid>
 <istruct_face class="fieldsRef">UNSPEC</istruct_face>
 <istruct_x class="fieldsRef">12</istruct_x>
 <istruct_isentryidv class="fieldsRef">S-CLARK1IC8LIFT-X-008458875-12</istruct_isentryidv>
@@ -1772,7 +1772,7 @@ oB4NFFFAz//Z
 <AuthCheck check="yes" allowed="yes">1: world access allowed</AuthCheck>
 <Debug/>
 <m_caption class="fieldsRef">39015091904295|||Sheet 13 of 24 (No. 150)</m_caption>
-<ic_collid class="fieldsRef">clark1ic8lift</ic_collid>
+<ic_collid class="fieldsRef">clark1ic</ic_collid>
 <istruct_y class="fieldsRef">1</istruct_y>
 <istruct_m class="fieldsRef">39015091904295</istruct_m>
 <m_fn class="fieldsRef">39015091904295</m_fn>
@@ -1877,7 +1877,7 @@ M4PAHqaKKKAP/9k=
 <istruct_isentryidv class="fieldsRef">S-CLARK1IC8LIFT-X-008458875-14</istruct_isentryidv>
 <istruct_caption_barcode class="fieldsRef">39015091904444</istruct_caption_barcode>
 <m_caption class="fieldsRef">39015091904444|||Sheet 14 of 24 (No. 151)</m_caption>
-<ic_collid class="fieldsRef">clark1ic8lift</ic_collid>
+<ic_collid class="fieldsRef">clark1ic</ic_collid>
 <istruct_m class="fieldsRef">39015091904444</istruct_m>
 <istruct_y class="fieldsRef">1</istruct_y>
 <istruct_isentryid class="fieldsRef">S-CLARK1IC8LIFT-X-008458875]39015091904444</istruct_isentryid>
@@ -1984,7 +1984,7 @@ fD5+94msV+lxGa+VqO1FgPqo+L/Dn/Q0WX/f9Kqz+KtAlZAviXT2UMpIadOcHNfL9FFgOv8AiddW
 <istruct_stty class="fieldsRef">SUMM</istruct_stty>
 <m_iid class="fieldsRef">39015091904592</m_iid>
 <m_caption class="fieldsRef">39015091904592|||Sheet 15 of 24 (No. 152)</m_caption>
-<ic_collid class="fieldsRef">clark1ic8lift</ic_collid>
+<ic_collid class="fieldsRef">clark1ic</ic_collid>
 <loaded class="imgInfHashRef">2015-01-23 17:12:22</loaded>
 <width class="imgInfHashRef">10440</width>
 <u class="imgInfHashRef">1</u>
@@ -2070,7 +2070,7 @@ Jt8S2hUMCweVecc+gr5jpO1FgOq+Il5bX/jnULmznjngfy9skbBlPyKOoorlqKYH/9k=
 <istruct_mt class="fieldsRef">IMAGE:::DYNAMIC2</istruct_mt>
 <istruct_y class="fieldsRef">1</istruct_y>
 <istruct_m class="fieldsRef">39015091914245</istruct_m>
-<ic_collid class="fieldsRef">clark1ic8lift</ic_collid>
+<ic_collid class="fieldsRef">clark1ic</ic_collid>
 <m_caption class="fieldsRef">39015091914245|||Sheet 16 of 24 (No. 153)</m_caption>
 <istruct_caption_barcode class="fieldsRef">39015091914245</istruct_caption_barcode>
 <istruct_isentryidv class="fieldsRef">S-CLARK1IC8LIFT-X-008458875-16</istruct_isentryidv>
@@ -2178,7 +2178,7 @@ Zuev+jvU4+LHhAddSuSfaBv8KKKLAL/wtrweP+Yhdn/ti3+FRt8WvChb5dRuAPe3aiiiwDj8WfB/
 <m_source class="fieldsRef">clark1ic</m_source>
 <m_fn class="fieldsRef">39015091914393</m_fn>
 <m_caption class="fieldsRef">39015091914393|||Sheet 17 of 24 (No. 154)</m_caption>
-<ic_collid class="fieldsRef">clark1ic8lift</ic_collid>
+<ic_collid class="fieldsRef">clark1ic</ic_collid>
 <filename class="imgInfHashRef">c/clark1ic/pairtree_root/39/01/50/91/91/43/93/39015091914393/39015091914393.jp2</filename>
 <use class="imgInfHashRef">access</use>
 <width class="imgInfHashRef">10408</width>
@@ -2264,7 +2264,7 @@ yiReILQRhtxXeuD37D1r5ppO9AWOt+JOoWmqeNru6sbiOeBkjCyRnIOEANFckKKBn//Z
 <istruct_isentryidv class="fieldsRef">S-CLARK1IC8LIFT-X-008458875-18</istruct_isentryidv>
 <istruct_caption_barcode class="fieldsRef">39015091914104</istruct_caption_barcode>
 <m_caption class="fieldsRef">39015091914104|||Sheet 18 of 24 (No. 155)</m_caption>
-<ic_collid class="fieldsRef">clark1ic8lift</ic_collid>
+<ic_collid class="fieldsRef">clark1ic</ic_collid>
 <istruct_m class="fieldsRef">39015091914104</istruct_m>
 <istruct_y class="fieldsRef">1</istruct_y>
 <istruct_mo class="fieldsRef">TIF</istruct_mo>
@@ -2374,7 +2374,7 @@ rOd9j/4CrUqfGXxap4ls/wDwHFFFAD/+FzeLCfvWX/gP/wDXoPxk8VN1+wn/ALYf/XoooCxl658R
 <m_iid class="fieldsRef">39015091914252</m_iid>
 <istruct_m class="fieldsRef">39015091914252</istruct_m>
 <istruct_y class="fieldsRef">1</istruct_y>
-<ic_collid class="fieldsRef">clark1ic8lift</ic_collid>
+<ic_collid class="fieldsRef">clark1ic</ic_collid>
 <m_caption class="fieldsRef">39015091914252|||Sheet 19 of 24 (No. 156)</m_caption>
 <master class="imgInfHashRef">0</master>
 <size class="imgInfHashRef">5019381</size>
@@ -2475,7 +2475,7 @@ yXx9rdn4g8XXOpWDO1vIkYUuu05CgHj8KKKKBn//2Q==
 <istruct_stid class="fieldsRef">0</istruct_stid>
 <istruct_isentryid class="fieldsRef">S-CLARK1IC8LIFT-X-008458875]39015091914401</istruct_isentryid>
 <m_caption class="fieldsRef">39015091914401|||Sheet 20 of 24 (No. 157)</m_caption>
-<ic_collid class="fieldsRef">clark1ic8lift</ic_collid>
+<ic_collid class="fieldsRef">clark1ic</ic_collid>
 <master class="imgInfHashRef">0</master>
 <size class="imgInfHashRef">5114043</size>
 <basename class="imgInfHashRef">39015091914401</basename>
@@ -2578,7 +2578,7 @@ VtOn0+9vkktp12uogRcjOeoFFFFAH//Z
 <istruct_mt class="fieldsRef">IMAGE:::DYNAMIC2</istruct_mt>
 <istruct_y class="fieldsRef">1</istruct_y>
 <istruct_m class="fieldsRef">39015091914112</istruct_m>
-<ic_collid class="fieldsRef">clark1ic8lift</ic_collid>
+<ic_collid class="fieldsRef">clark1ic</ic_collid>
 <m_caption class="fieldsRef">39015091914112|||Sheet 21 of 24 (No. 158)</m_caption>
 <size class="imgInfHashRef">4706081</size>
 <master class="imgInfHashRef">0</master>
@@ -2679,7 +2679,7 @@ am3uEKOEgCnHsa4iiigZ/9k=
 <istruct_ms class="fieldsRef">P</istruct_ms>
 <istruct_y class="fieldsRef">1</istruct_y>
 <istruct_m class="fieldsRef">39015091914260</istruct_m>
-<ic_collid class="fieldsRef">clark1ic8lift</ic_collid>
+<ic_collid class="fieldsRef">clark1ic</ic_collid>
 <m_caption class="fieldsRef">39015091914260|||Sheet 22 of 24 (No. 159)</m_caption>
 <modified class="imgInfHashRef">2015-01-23 15:22:45</modified>
 <md5 class="imgInfHashRef">f498545410c0bd614bfdff31566d6aea</md5>
@@ -2777,7 +2777,7 @@ TkCiiikB/9k=
 <istruct_caption_item_description class="fieldsRef">Sheet 23 of 24 (No. 160)</istruct_caption_item_description>
 <istruct_mt class="fieldsRef">IMAGE:::DYNAMIC2</istruct_mt>
 <m_caption class="fieldsRef">39015091914419|||Sheet 23 of 24 (No. 160)</m_caption>
-<ic_collid class="fieldsRef">clark1ic8lift</ic_collid>
+<ic_collid class="fieldsRef">clark1ic</ic_collid>
 <access class="imgInfHashRef">1</access>
 <height class="imgInfHashRef">10440</height>
 <type class="imgInfHashRef">image</type>
@@ -2866,7 +2866,7 @@ fb4P/AZP8KD8YfGJHN7bn62qf4UUUCMjxB4/17xPpyWGpzQvAkgkASFUO4Ajt9TRRRTGf//Z
 <istruct_face class="fieldsRef">UNSPEC</istruct_face>
 <istruct_caption_barcode class="fieldsRef">39015091914120</istruct_caption_barcode>
 <m_caption class="fieldsRef">39015091914120|||Sheet 24 of 24 (No. 161)</m_caption>
-<ic_collid class="fieldsRef">clark1ic8lift</ic_collid>
+<ic_collid class="fieldsRef">clark1ic</ic_collid>
 <istruct_y class="fieldsRef">1</istruct_y>
 <istruct_m class="fieldsRef">39015091914120</istruct_m>
 <istruct_stty class="fieldsRef">SUMM</istruct_stty>

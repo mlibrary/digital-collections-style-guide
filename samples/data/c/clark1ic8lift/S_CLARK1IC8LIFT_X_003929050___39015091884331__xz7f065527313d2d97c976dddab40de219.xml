@@ -634,7 +634,7 @@ SfaZz1mk/wC+jRRQAn2ib/nq/wD30aYzM5yzFj6k0UUCG0UUUDP/2Q==
 <AuthCheck check="yes" allowed="yes">1: world access allowed</AuthCheck>
 <Debug/>
 <istruct_mo class="fieldsRef">TIF</istruct_mo>
-<ic_collid class="fieldsRef">clark1ic8lift</ic_collid>
+<ic_collid class="fieldsRef">clark1ic</ic_collid>
 <istruct_caption_barcode class="fieldsRef">39015091884331</istruct_caption_barcode>
 <m_iid class="fieldsRef">39015091884331</m_iid>
 <m_source class="fieldsRef">clark1ic</m_source>

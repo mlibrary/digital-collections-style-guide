@@ -634,7 +634,7 @@ MCw1T8dn/wAVRRRYDzTx34ltfFfiP+0rSGaKPyVj2ygZyM+hPrRRRTGf/9k=
 <MediaHost>https://roger.quod.lib.umich.edu</MediaHost>
 <AuthCheck allowed="yes" check="yes">1: world access allowed</AuthCheck>
 <Debug/>
-<ic_collid class="fieldsRef">clark1ic8lift</ic_collid>
+<ic_collid class="fieldsRef">clark1ic</ic_collid>
 <m_iid class="fieldsRef">39015091904402</m_iid>
 <istruct_m class="fieldsRef">39015091904402</istruct_m>
 <m_flm class="fieldsRef">2015-01-23 13:47:08</m_flm>

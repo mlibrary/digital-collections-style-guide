@@ -642,7 +642,7 @@ RR9Xj3F7Z9hjePdAHTUE/wC+W/wqvN4/0POFvcg9SEb/AAooo+rR7h7ZiR+PdARf+P3k9f3bf4UH
 <AuthCheck allowed="yes" check="yes">1: world access allowed</AuthCheck>
 <Debug/>
 <m_id class="fieldsRef">010591424</m_id>
-<ic_collid class="fieldsRef">clark1ic8lift</ic_collid>
+<ic_collid class="fieldsRef">clark1ic</ic_collid>
 <istruct_face class="fieldsRef">UNSPEC</istruct_face>
 <istruct_caption class="fieldsRef">39015091186299|||</istruct_caption>
 <istruct_caption_barcode class="fieldsRef">39015091186299</istruct_caption_barcode>

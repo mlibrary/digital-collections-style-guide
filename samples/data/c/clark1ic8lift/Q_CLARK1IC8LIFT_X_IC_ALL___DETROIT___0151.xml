@@ -601,7 +601,7 @@ for items where...</item>
 <istruct_face class="fieldsRef">UNSPEC</istruct_face>
 <m_entryauth class="fieldsRef">WORLD</m_entryauth>
 <m_iid class="fieldsRef">39015091903768</m_iid>
-<ic_collid class="fieldsRef">clark1ic8lift</ic_collid>
+<ic_collid class="fieldsRef">clark1ic</ic_collid>
 <m_fn class="fieldsRef">39015091903768</m_fn>
 <istruct_ms class="fieldsRef">P</istruct_ms>
 <istruct_stid class="fieldsRef">0</istruct_stid>
@@ -710,7 +710,7 @@ cqIe5//Z
 <istruct_ms class="fieldsRef">P</istruct_ms>
 <m_fn class="fieldsRef">39015091903776</m_fn>
 <m_iid class="fieldsRef">39015091903776</m_iid>
-<ic_collid class="fieldsRef">clark1ic8lift</ic_collid>
+<ic_collid class="fieldsRef">clark1ic</ic_collid>
 <m_id class="fieldsRef">008557708</m_id>
 <istruct_isentryid class="fieldsRef">S-CLARK1IC8LIFT-X-008557708]39015091903776</istruct_isentryid>
 <m_caption class="fieldsRef">39015091903776|||</m_caption>

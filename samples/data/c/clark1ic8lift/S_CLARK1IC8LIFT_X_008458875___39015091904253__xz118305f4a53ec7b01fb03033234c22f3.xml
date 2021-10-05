@@ -633,7 +633,7 @@ TKA2QWPYn1FFFFNID//Z
 <AuthCheck check="yes" allowed="yes">1: world access allowed</AuthCheck>
 <Debug/>
 <istruct_m class="fieldsRef">39015091904253</istruct_m>
-<ic_collid class="fieldsRef">clark1ic8lift</ic_collid>
+<ic_collid class="fieldsRef">clark1ic</ic_collid>
 <m_id class="fieldsRef">008458875</m_id>
 <istruct_mt class="fieldsRef">IMAGE:::DYNAMIC2</istruct_mt>
 <istruct_face class="fieldsRef">UNSPEC</istruct_face>

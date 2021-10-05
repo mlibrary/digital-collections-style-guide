@@ -629,7 +629,7 @@ F7SQf8JFbF8/a2H1iNK/iCykXbJdMy9cCIjmiil7GI/aM5KdxJcSuvRnJH50UUVsZn//2Q==
 <MediaHost>https://roger.quod.lib.umich.edu</MediaHost>
 <AuthCheck allowed="yes" check="yes">1: world access allowed</AuthCheck>
 <Debug/>
-<ic_collid class="fieldsRef">clark1ic8lift</ic_collid>
+<ic_collid class="fieldsRef">clark1ic</ic_collid>
 <m_id class="fieldsRef">003931133</m_id>
 <m_caption class="fieldsRef">39015091916190|||Map</m_caption>
 <istruct_caption_barcode class="fieldsRef">39015091916190</istruct_caption_barcode>

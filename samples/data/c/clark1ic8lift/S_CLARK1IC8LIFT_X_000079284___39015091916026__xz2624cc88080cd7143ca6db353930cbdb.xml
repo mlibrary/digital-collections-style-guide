@@ -632,7 +632,7 @@ RRQB/9k=
 <Debug/>
 <m_entryauth class="fieldsRef">WORLD</m_entryauth>
 <istruct_isentryidv class="fieldsRef">S-CLARK1IC8LIFT-X-000079284-1</istruct_isentryidv>
-<ic_collid class="fieldsRef">clark1ic8lift</ic_collid>
+<ic_collid class="fieldsRef">clark1ic</ic_collid>
 <m_id class="fieldsRef">000079284</m_id>
 <istruct_caption_item_description class="fieldsRef"/>
 <istruct_mo class="fieldsRef">TIF</istruct_mo>

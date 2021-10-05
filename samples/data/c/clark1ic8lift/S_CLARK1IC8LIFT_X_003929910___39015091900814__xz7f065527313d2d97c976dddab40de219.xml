@@ -640,7 +640,7 @@ Aj6f2p/dH5Vk3FjdzXErkx7WOFJbnb6dK+df+Fp+NM/8hx/+/EX/AMTS/wDC0vGn/Qbf/vxF/wDE
 <AuthCheck check="yes" allowed="yes">1: world access allowed</AuthCheck>
 <Debug/>
 <istruct_x class="fieldsRef">1</istruct_x>
-<ic_collid class="fieldsRef">clark1ic8lift</ic_collid>
+<ic_collid class="fieldsRef">clark1ic</ic_collid>
 <m_fn class="fieldsRef">39015091900814</m_fn>
 <istruct_caption class="fieldsRef">39015091900814|||</istruct_caption>
 <m_entryauth class="fieldsRef">WORLD</m_entryauth>

@@ -625,7 +625,7 @@ ADTP4hRRQA49aKKKBH//2Q==
 <MediaHost>https://roger.quod.lib.umich.edu</MediaHost>
 <AuthCheck check="yes" allowed="yes">1: world access allowed</AuthCheck>
 <Debug/>
-<ic_collid class="fieldsRef">clark1ic8lift</ic_collid>
+<ic_collid class="fieldsRef">clark1ic</ic_collid>
 <istruct_caption_item_description class="fieldsRef">Cover</istruct_caption_item_description>
 <m_searchable class="fieldsRef">1</m_searchable>
 <m_caption class="fieldsRef">39015091916190|||Cover</m_caption>
