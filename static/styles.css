@@ -861,7 +861,7 @@ m-website-header:not(.hydrated) {
   padding-left: 2em;
 }
 
-@media (min-width: 600px) and (max-width: 1200px) {
+@media screen and (max-width: 1200px) {
   .footer__policies {
     border-left: none;
     padding-left: 0;
