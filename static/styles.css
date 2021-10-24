@@ -168,8 +168,9 @@ input[type="search"] {
 }
 
 input[type="checkbox"] {
-  width: 20px;
-  height: 20px;
+  width: 18px;
+  height: 18px;
+  margin-right: 0.5em;
 }
 
 /*
@@ -714,10 +715,20 @@ button {
  */
 
 .record {
+  width: 65vw;
+}
+
+@media screen and (max-width: 600px) {
+  .record {
+    width: 90vw;
+  }
+}
+
+.record > div {
   display: grid;
   grid-template-columns: 12rem 1fr;
   column-gap: 0;
-  width: 50vw;
+  border-bottom: 1px solid var(--color-neutral-100);
 }
 
 .record dt {
@@ -726,7 +737,6 @@ button {
 
 .record dt,
 .record dd {
-  border-bottom: 1px solid var(--color-neutral-100);
   padding: var(--space-small) 0;
   margin-left: 0;
 }
@@ -740,8 +750,14 @@ button {
   grid-column: 2/3;
 }
 
-.record-container {
-  width: 50vw;
+/*
+* Actions
+*
+*/
+
+.actions {
+  padding-bottom: 2em;
+  border-bottom: 1px solid var(--color-neutral-100);
 }
 
 /*
@@ -786,6 +802,7 @@ button {
 *
 */
 
+/* This is the most extreme application so we many want to adjust it */
 @media (prefers-reduced-motion: reduce) {
   *,
   ::before,
