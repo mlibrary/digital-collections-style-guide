@@ -308,31 +308,31 @@
           <h1 class="collection-heading">409 N. Ann Arbor St.</h1>
 
           <section class="[ actions ] [ mb-3 ]">
-          <h3>Actions</h3>
-              <button class="button button--primary button--large">
-                Download
-                <svg
-                  xmlns="http://www.w3.org/2000/svg"
-                  height="24px"
-                  viewBox="0 0 24 24"
-                  width="24px"
-                  fill="#ffffff"
-                  focusable="false"
-                  aria-hidden="true"
-                >
-                  <path d="M24 24H0V0h24v24z" fill="none" opacity=".87" />
-                  <path
-                    d="M16.59 8.59L12 13.17 7.41 8.59 6 10l6 6 6-6-1.41-1.41z"
-                  />
-                </svg>
-              </button>
-              <button class="button button--secondary button--large">
-               Save to favorites
-              </button>
-              <button class="button button--secondary button--large">
-               Copy Link
-              </button>
-            </section>
+            <h3>Actions</h3>
+            <button class="button button--primary button--large">
+              Download
+              <svg
+                xmlns="http://www.w3.org/2000/svg"
+                height="24px"
+                viewBox="0 0 24 24"
+                width="24px"
+                fill="#ffffff"
+                focusable="false"
+                aria-hidden="true"
+              >
+                <path d="M24 24H0V0h24v24z" fill="none" opacity=".87" />
+                <path
+                  d="M16.59 8.59L12 13.17 7.41 8.59 6 10l6 6 6-6-1.41-1.41z"
+                />
+              </svg>
+            </button>
+            <button class="button button--secondary button--large">
+              Save to favorites
+            </button>
+            <button class="button button--secondary button--large">
+              Copy Link
+            </button>
+          </section>
 
           <section>
             <h3>About this home</h3>
@@ -460,97 +460,97 @@
           </section>
         </div>
 
-      <!-- End Item Page View -->
+        <!-- End Item Page View -->
 
-      <!-- Start Search Results View -->
+        <!-- Start Search Results View -->
 
-      <div class="[ flex flex-flow-rw ]">
-        <div class="side-panel">
-          <section class="[ filters__selected ]">
-            <h3 class="[ mt-2 ]">Current Filters</h3>
-            <div>
-              <input
-                type="checkbox"
-                id="file-type-image-selected"
-                name="image"
-                checked
-              />
-              <label for="file-type-image-selected">File type > Image</label>
-            </div>
-            <a href="#">Start Over</a>
-          </section>
-
-          <h3 class="[ mt-2 ]">Filters</h3>
-          <div class="[ side-panel__box ]">
-            <details>
-              <summary>File Type</summary>
-              <div>
-                <input type="checkbox" id="file-type-audio" name="audio" />
-                <label for="file-type-audio"
-                  >Audio <span class="filters__count">(2)</span></label
-                >
-              </div>
+        <div class="[ flex flex-flow-rw ]">
+          <div class="side-panel">
+            <section class="[ filters__selected ]">
+              <h3 class="[ mt-2 ]">Current Filters</h3>
               <div>
                 <input
                   type="checkbox"
-                  id="file-type-image"
+                  id="file-type-image-selected"
                   name="image"
                   checked
                 />
-                <label for="file-type-image"
-                  >Image <span class="filters__count">(24)</span></label
-                >
+                <label for="file-type-image-selected">File type > Image</label>
               </div>
-              <div>
-                <input type="checkbox" id="file-type-text" name="text" />
-                <label for="file-type-text"
-                  >Text <span class="filters__count">(5)</span></label
-                >
-              </div>
-              <div>
-                <input
-                  type="checkbox"
-                  id="file-type-video"
-                  name="video"
-                  checked
-                />
-                <label for="file-type-video"
-                  >Video <span class="filters__count">(1)</span></label
-                >
-              </div>
-            </details>
+              <a href="#">Start Over</a>
+            </section>
 
-            <details>
-              <summary>Subject</summary>
-            </details>
-
-            <details>
-              <summary>Genre</summary>
-            </details>
-
-            <details>
-              <summary>Date</summary>
-            </details>
-          </div>
-        </div>
-
-        <div class="main-panel">
-          <div class="[ breadcrumb ]">
-            <nav aria-label="Breadcrumb">
-              <ol>
-                <li>
-                  <a href="#">Bentley Image Bank</a>
-                </li>
-                <li>
-                  <a href="#" class="active-link" aria-current="page"
-                    >Search Results</a
+            <h3 class="[ mt-2 ]">Filters</h3>
+            <div class="[ side-panel__box ]">
+              <details>
+                <summary>File Type</summary>
+                <div>
+                  <input type="checkbox" id="file-type-audio" name="audio" />
+                  <label for="file-type-audio"
+                    >Audio <span class="filters__count">(2)</span></label
                   >
-                </li>
-              </ol>
-            </nav>
+                </div>
+                <div>
+                  <input
+                    type="checkbox"
+                    id="file-type-image"
+                    name="image"
+                    checked
+                  />
+                  <label for="file-type-image"
+                    >Image <span class="filters__count">(24)</span></label
+                  >
+                </div>
+                <div>
+                  <input type="checkbox" id="file-type-text" name="text" />
+                  <label for="file-type-text"
+                    >Text <span class="filters__count">(5)</span></label
+                  >
+                </div>
+                <div>
+                  <input
+                    type="checkbox"
+                    id="file-type-video"
+                    name="video"
+                    checked
+                  />
+                  <label for="file-type-video"
+                    >Video <span class="filters__count">(1)</span></label
+                  >
+                </div>
+              </details>
+
+              <details>
+                <summary>Subject</summary>
+              </details>
+
+              <details>
+                <summary>Genre</summary>
+              </details>
+
+              <details>
+                <summary>Date</summary>
+              </details>
+            </div>
           </div>
 
-          <!--<fieldset
+          <div class="main-panel">
+            <div class="[ breadcrumb ]">
+              <nav aria-label="Breadcrumb">
+                <ol>
+                  <li>
+                    <a href="#">Bentley Image Bank</a>
+                  </li>
+                  <li>
+                    <a href="#" class="active-link" aria-current="page"
+                      >Search Results</a
+                    >
+                  </li>
+                </ol>
+              </nav>
+            </div>
+
+            <!--<fieldset
             class="[ input-group right ][ results-search ] [ no-border ]"
           >
             <legend class="visually-hidden">Search</legend>
@@ -604,131 +604,134 @@
             </div>
           </fieldset> -->
 
-          <div
-            class="
-              [
-              search-results__edit
-              ]
-              [
-              flex flex-space-between flex-end
-              ]
-            "
-          >
-            <a href="#">Edit Search</a>
-            <a href="#">Advanced Search</a>
-          </div>
+            <div
+              class="
+                [
+                search-results__edit
+                ]
+                [
+                flex flex-space-between flex-end
+                ]
+              "
+            >
+              <a href="#">Edit Search</a>
+              <a href="#">Advanced Search</a>
+            </div>
 
-          <div>
-            <p>1 to 20 of 187 results</p>
-            <p>
-              Showing results for <span class="[ bold ]">“Ann Arbor”</span> in
-              <span class="[ bold ]">Coded Carographic Mathematical Data</span>
-              and <span class="[ bold ]">“Drowsy Parrot”</span> in
-              <span class="[ bold ]">Subject Added Entry - Topical Term</span>
-            </p>
-          </div>
-
-          <div class="[ search-results__tools ] [ mb-1 ]">
-            <div class="[ flex flex-align-center ]">
-              <input type="checkbox" id="add-portfolio" name="portfolio" />
-              <label for="add-portfolio" class="visually-hidden"
-                >Add to portfolio</label
-              >
-              <button
-                class="[ button button--secondary ] [ flex ]"
-                type="submit"
-                aria-label="Search"
-              >
-                <svg
-                  xmlns="http://www.w3.org/2000/svg"
-                  width="16"
-                  height="16"
-                  viewBox="0 0 24 24"
-                  fill="currentColor"
-                  aria-hidden="true"
-                  focusable="false"
-                  role="img"
+            <div>
+              <p>1 to 20 of 187 results</p>
+              <p>
+                Showing results for <span class="[ bold ]">“Ann Arbor”</span> in
+                <span class="[ bold ]"
+                  >Coded Carographic Mathematical Data</span
                 >
-                  <path d="M19 13h-6v6h-2v-6H5v-2h6V5h2v6h6v2z" />
-                </svg>
+                and <span class="[ bold ]">“Drowsy Parrot”</span> in
+                <span class="[ bold ]">Subject Added Entry - Topical Term</span>
+              </p>
+            </div>
 
-                <span>Add to portfolio</span>
-              </button>
+            <div class="[ search-results__tools ] [ mb-1 ]">
+              <div class="[ flex flex-align-center ]">
+                <input type="checkbox" id="add-portfolio" name="portfolio" />
+                <label for="add-portfolio" class="visually-hidden"
+                  >Add to portfolio</label
+                >
+                <button
+                  class="[ button button--secondary ] [ flex ]"
+                  type="submit"
+                  aria-label="Search"
+                >
+                  <svg
+                    xmlns="http://www.w3.org/2000/svg"
+                    width="16"
+                    height="16"
+                    viewBox="0 0 24 24"
+                    fill="currentColor"
+                    aria-hidden="true"
+                    focusable="false"
+                    role="img"
+                  >
+                    <path d="M19 13h-6v6h-2v-6H5v-2h6V5h2v6h6v2z" />
+                  </svg>
+
+                  <span>Add to portfolio</span>
+                </button>
+              </div>
+              <div class="select-group">
+                <label for="result-sort">Sort by:</label>
+                <select
+                  name="results"
+                  id="result-sort"
+                  class="[ dropdown select ]"
+                >
+                  <option value="relevance">Relevance</option>
+                </select>
+              </div>
             </div>
-            <div class="select-group">
-              <label for="result-sort">Sort by:</label>
-              <select
-                name="results"
-                id="result-sort"
-                class="[ dropdown select ]"
-              >
-                <option value="relevance">Relevance</option>
-              </select>
-            </div>
+
+            <section class="[ results-list--small ]">
+              <a href="#" class="[ flex ]">
+                <img
+                  class="[ results-list__image ]"
+                  src="static/img/test.png"
+                  alt="alt text"
+                />
+                <div class="[ results-list__content ]">
+                  <h4>101 N. Ann Arbor Street</h4>
+                  <dl class="[ results ]">
+                    <dt>Record ID:</dt>
+                    <dd>SL0101</dd>
+                    <dt>Historic Name:</dt>
+                    <dd>Saline Post Office</dd>
+                    <dt>Common Name:</dt>
+                    <dd>I'll Fix Dinner</dd>
+                  </dl>
+                </div>
+              </a>
+            </section>
+
+            <section class="[ results-list--small ]">
+              <a href="#" class="[ flex ]">
+                <img
+                  class="[ results-list__image ]"
+                  src="static/img/test.png"
+                  alt="alt text"
+                />
+                <div class="[ results-list__content ]">
+                  <h4>101 N. Ann Arbor Street</h4>
+                  <dl class="[ results ]">
+                    <dt>Record ID:</dt>
+                    <dd>SL0101</dd>
+                    <dt>Historic Name:</dt>
+                    <dd>Saline Post Office</dd>
+                    <dt>Common Name:</dt>
+                    <dd>I'll Fix Dinner</dd>
+                  </dl>
+                </div>
+              </a>
+            </section>
+
+            <section class="[ results-list--small ]">
+              <a href="#" class="[ flex ]">
+                <img
+                  class="[ results-list__image ]"
+                  src="static/img/test.png"
+                  alt="alt text"
+                />
+                <div class="[ results-list__content ]">
+                  <h4>101 N. Ann Arbor Street</h4>
+                  <dl class="[ results ]">
+                    <dt>Record ID:</dt>
+                    <dd>SL0101</dd>
+                    <dt>Historic Name:</dt>
+                    <dd>Saline Post Office</dd>
+                    <dt>Common Name:</dt>
+                    <dd>I'll Fix Dinner</dd>
+                  </dl>
+                </div>
+              </a>
+            </section>
           </div>
-
-          <section class="[ results-list--small ]">
-            <a href="#" class="[ flex ]">
-              <img
-                class="[ results-list__image ]"
-                src="static/img/test.png"
-                alt="alt text"
-              />
-              <div class="[ results-list__content ]">
-                <h4>101 N. Ann Arbor Street</h4>
-                <dl class="[ results ]">
-                  <dt>Record ID:</dt>
-                  <dd>SL0101</dd>
-                  <dt>Historic Name:</dt>
-                  <dd>Saline Post Office</dd>
-                  <dt>Common Name:</dt>
-                  <dd>I'll Fix Dinner</dd>
-                </dl>
-              </div>
-            </a>
-          </section>
-
-          <section class="[ results-list--small ]">
-            <a href="#" class="[ flex ]">
-              <img
-                class="[ results-list__image ]"
-                src="static/img/test.png"
-                alt="alt text"
-              />
-              <div class="[ results-list__content ]">
-                <h4>101 N. Ann Arbor Street</h4>
-                <dl class="[ results ]">
-                  <dt>Record ID:</dt>
-                  <dd>SL0101</dd>
-                  <dt>Historic Name:</dt>
-                  <dd>Saline Post Office</dd>
-                  <dt>Common Name:</dt>
-                  <dd>I'll Fix Dinner</dd>
-                </dl>
-              </div>
-            </a>
-          </section>
-
-          <section class="[ results-list--small ]">
-            <a href="#" class="[ flex ]">
-              <img
-                class="[ results-list__image ]"
-                src="static/img/test.png"
-                alt="alt text"
-              />
-              <div class="[ results-list__content ]">
-                <h4>101 N. Ann Arbor Street</h4>
-                <dl class="[ results ]">
-                  <dt>Record ID:</dt>
-                  <dd>SL0101</dd>
-                  <dt>Historic Name:</dt>
-                  <dd>Saline Post Office</dd>
-                  <dt>Common Name:</dt>
-                  <dd>I'll Fix Dinner</dd>
-                </dl>
-              </div>
-            </a>
-          </section>
         </div>
       </div>
 
