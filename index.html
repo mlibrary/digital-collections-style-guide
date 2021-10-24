@@ -486,6 +486,20 @@
 
       <div class="[ flex flex-flow-rw ]">
         <div class="side-panel">
+          <section class="[ filters__selected ]">
+            <h3 class="[ mt-2 ]">Current Filters</h3>
+            <div>
+              <input
+                type="checkbox"
+                id="file-type-image-selected"
+                name="image"
+                checked
+              />
+              <label for="file-type-image-selected">File type > Image</label>
+            </div>
+            <a href="#">Start Over</a>
+          </section>
+
           <h3 class="[ mt-2 ]">Filters</h3>
           <div class="[ side-panel__box ]">
             <details>
@@ -556,7 +570,7 @@
             </nav>
           </div>
 
-          <fieldset
+          <!--<fieldset
             class="[ input-group right ][ results-search ] [ no-border ]"
           >
             <legend class="visually-hidden">Search</legend>
@@ -608,12 +622,53 @@
                 </button>
               </div>
             </div>
-          </fieldset>
+          </fieldset> -->
 
-          <p>
-            Showing 1-20 of 187 results for
-            <span class="[ bold ]">“Ann Arbor”</span>
-          </p>
+          <div
+            class="
+              [
+              search-results__edit
+              ]
+              [
+              flex flex-space-between flex-end
+              ]
+            "
+          >
+            <a href="#">Edit Search</a>
+            <a href="#">Advanced Search</a>
+          </div>
+
+          <div
+            class="
+              [
+              search-results__terms
+              ][
+              flex flex-space-between flex-end
+              ]
+            "
+          >
+            <div>
+              <p>1 to 20 of 187 results</p>
+              <p>
+                Showing results for <span class="[ bold ]">“Ann Arbor”</span> in
+                <span class="[ bold ]"
+                  >Coded Carographic Mathematical Data</span
+                >
+                and <span class="[ bold ]">“Drowsy Parrot”</span> in
+                <span class="[ bold ]">Subject Added Entry - Topical Term</span>
+              </p>
+            </div>
+            <div class="select-group">
+              <label for="result-sort">Sort by:</label>
+              <select
+                name="results"
+                id="result-sort"
+                class="[ dropdown select ]"
+              >
+                <option value="relevance">Relevance</option>
+              </select>
+            </div>
+          </div>
 
           <section class="[ results-list--small ]">
             <a href="#" class="[ flex ]">

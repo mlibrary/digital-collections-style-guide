@@ -228,6 +228,15 @@ input[type="checkbox"] {
 }
 
 /** Results **/
+.search-results__edit {
+  background-color: var(--color-blue-100);
+  padding: var(--text-small);
+  border-radius: var(--radius-default);
+}
+
+.search-results__terms > div:first-child {
+  width: 70%;
+}
 
 .results-list--small {
   border-bottom: 1px solid var(--color-neutral-100);
@@ -400,6 +409,10 @@ details > div {
 
 .filters__count {
   color: var(--color-neutral-300);
+}
+
+.filters__selected > * + * {
+  padding: var(--space-small) 0;
 }
 
 /** Pagination **/
