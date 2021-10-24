@@ -638,25 +638,42 @@
             <a href="#">Advanced Search</a>
           </div>
 
-          <div
-            class="
-              [
-              search-results__terms
-              ][
-              flex flex-space-between flex-end
-              ]
-            "
-          >
+          <div>
+            <p>1 to 20 of 187 results</p>
+            <p>
+              Showing results for <span class="[ bold ]">“Ann Arbor”</span> in
+              <span class="[ bold ]">Coded Carographic Mathematical Data</span>
+              and <span class="[ bold ]">“Drowsy Parrot”</span> in
+              <span class="[ bold ]">Subject Added Entry - Topical Term</span>
+            </p>
+          </div>
+
+          <div class="[ search-results__tools ] [ mb-1 ]">
             <div>
-              <p>1 to 20 of 187 results</p>
-              <p>
-                Showing results for <span class="[ bold ]">“Ann Arbor”</span> in
-                <span class="[ bold ]"
-                  >Coded Carographic Mathematical Data</span
+              <input type="checkbox" id="add-portfolio" name="portfolio" />
+              <label for="add-portfolio" class="visually-hidden"
+                >Add to portfolio</label
+              >
+              <button
+                class="[ button button--secondary ] [ flex ]"
+                type="submit"
+                aria-label="Search"
+              >
+                <svg
+                  xmlns="http://www.w3.org/2000/svg"
+                  width="16"
+                  height="16"
+                  viewBox="0 0 24 24"
+                  fill="currentColor"
+                  aria-hidden="true"
+                  focusable="false"
+                  role="img"
                 >
-                and <span class="[ bold ]">“Drowsy Parrot”</span> in
-                <span class="[ bold ]">Subject Added Entry - Topical Term</span>
-              </p>
+                  <path d="M19 13h-6v6h-2v-6H5v-2h6V5h2v6h6v2z" />
+                </svg>
+
+                Add to Portfolio
+              </button>
             </div>
             <div class="select-group">
               <label for="result-sort">Sort by:</label>

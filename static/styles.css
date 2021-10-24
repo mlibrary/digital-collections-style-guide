@@ -234,8 +234,11 @@ input[type="checkbox"] {
   border-radius: var(--radius-default);
 }
 
-.search-results__terms > div:first-child {
-  width: 70%;
+.search-results__tools {
+  display: flex;
+  justify-content: space-between;
+  flex-flow: row wrap;
+  align-items: flex-start;
 }
 
 .results-list--small {
