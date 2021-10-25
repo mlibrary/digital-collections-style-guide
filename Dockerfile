@@ -2,6 +2,7 @@ FROM node:16.6
 ARG UNAME=app
 ARG UID=1000
 ARG GID=1000
+EXPOSE 5555
 
 LABEL maintainer="roger@umich.edu"
 
