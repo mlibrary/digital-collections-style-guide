@@ -19,7 +19,8 @@
     "develop": "npx @11ty/eleventy --serve",
     "start": "npm run develop",
     "build-xml": "./samples/scripts/transform-xml-qui.mjs && ./samples/scripts/transform-qui-qbat.mjs && ./samples/scripts/build-indexes.mjs",
-    "watch-xml": "find xml xsl qui -type f | entr -p ./scripts/transform-branch.sh /_"
+    "watch-xml": "find xml xsl qui -type f | entr -p ./scripts/transform-branch.sh /_",
+    "proxy": "./samples/scripts/serve.mjs"
   },
   "repository": {
     "type": "git",
@@ -30,5 +31,10 @@
   "bugs": {
     "url": "https://github.com/mlibrary/digital-collections-style-guide/issues"
   },
-  "homepage": "https://github.com/mlibrary/digital-collections-style-guide#readme"
+  "homepage": "https://github.com/mlibrary/digital-collections-style-guide#readme",
+  "dependencies": {
+    "colors": "^1.4.0",
+    "express": "^4.17.1",
+    "morgan": "^1.10.0"
+  }
 }

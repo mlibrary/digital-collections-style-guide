@@ -11,6 +11,8 @@
     version="5.0"
     />
 
+  <xsl:param name="use-local-identifiers">true</xsl:param>
+
   <xsl:param name="possible-identifiers" select="document($identifier-filename)//identifier" />
 
   <xsl:template match="qui:root">
@@ -165,7 +167,7 @@
 <xsl:message>BUILD HREF : <xsl:value-of select="$identifier" /> : <xsl:value-of select="@marker" /></xsl:message>    
     <xsl:attribute name="href">
       <xsl:choose>
-        <xsl:when test="normalize-space($identifier)">
+        <xsl:when test="$use-local-identifiers = 'true' and normalize-space($identifier)">
           <xsl:text>../</xsl:text>
           <xsl:value-of select="$identifier" />
           <xsl:text>/</xsl:text>

@@ -1,7 +1,8 @@
 window.addEventListener('DOMContentLoaded', (event) => {
+  const usingIdentifiers = document.querySelectorAll('[identifier]').length > 0;
   document.body.addEventListener("click", (event) => {
     const target = event.target.closest('a');
-    if (target && target.getAttribute("href")[0] != '#') {
+    if (usingIdentifiers && target && target.getAttribute("href")[0] != '#') {
       if (target.dataset.available != "true") {
         event.preventDefault();
         alert("This link is not available.");
