@@ -159,6 +159,7 @@
       </qui:select>
       <qui:hidden-input name="select1" value="all" />
       <qui:input name="q1" value="{$q/Value}" />
+      <xsl:apply-templates select="//Facets" mode="search-form" />
     </qui:form>
     <xsl:apply-templates select="//Facets" />
     <qui:block slot="results">
@@ -203,6 +204,16 @@
         </qui:field>
       </xsl:for-each>
     </qui:filters-panel>
+  </xsl:template>
+
+  <xsl:template match="Facets" mode="search-form">
+    <xsl:for-each select="Field">
+      <xsl:variable name="abbrev" select="@abbrev" />
+      <xsl:for-each select="Values/Value[@selected='true']">
+        <qui:hidden-input type="hidden" name="fn{position()}" value="{$abbrev}" data-role="facet" />
+        <qui:hidden-input type="hidden" name="fq{position()}" value="{.}" data-role="facet-value" data-facet-field="{$abbrev}" />
+      </xsl:for-each>
+    </xsl:for-each>
   </xsl:template>
 
   <xsl:template match="MediaInfo" mode="iiif-link">

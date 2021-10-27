@@ -1,6 +1,23 @@
 <?xml version="1.0" encoding="UTF-8" ?>
-<xsl:stylesheet version="1.0" xmlns:xhtml="http://dlxs.org/quombat/xhtml" xmlns:xsl="http://www.w3.org/1999/XSL/Transform" xmlns:dlxs="http://dlxs.org" xmlns:qbat="http://dlxs.org/quombat" xmlns:exsl="http://exslt.org/common" extension-element-prefixes="exsl" xmlns:qui="http://dlxs.org/quombat/ui">
+<xsl:stylesheet version="1.0" xmlns:xhtml="http://www.w3.org/1999/xhtml" xmlns:xsl="http://www.w3.org/1999/XSL/Transform" xmlns:dlxs="http://dlxs.org" xmlns:qbat="http://dlxs.org/quombat" xmlns:exsl="http://exslt.org/common" extension-element-prefixes="exsl" xmlns:qui="http://dlxs.org/quombat/ui">
 
+  <xsl:template name="build-body-main">
+    <qui:header role="main">
+      <xsl:call-template name="get-collection-title" />
+    </qui:header>
+    <qui:panel>
+      <xhtml:ul>
+        <xhtml:li>
+          <xhtml:a href="{//BrowseImages/Url}">Browse Images</xhtml:a>
+        </xhtml:li>
+        <xsl:if test="//BrowseRecords/Url">
+          <xhtml:li>
+            <xhtml:a href="{//BrowseRecords/Url}">Browse Records</xhtml:a>
+          </xhtml:li>
+        </xsl:if>
+      </xhtml:ul>
+    </qui:panel>
+  </xsl:template>
 
   <xsl:template name="build-thumbnail-list">
     <xsl:if test="//Snapshot">

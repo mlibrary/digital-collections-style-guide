@@ -18,6 +18,7 @@ import colors from 'colors';
 import express from "express";
 import http from "http";
 import morgan from "morgan";
+import serveStatic from 'serve-static';
 
 let logger;
 const log = console.log;
@@ -57,9 +58,10 @@ async function processDLXS(req, res) {
   let url = new URL(
     `https://roger.quod.lib.umich.edu${req.originalUrl.replace(/;/g, "&")}`
   );
-  if (!url.searchParams.has("debug")) {
-    url.searchParams.set("debug", "xml");
-  }
+
+  let debug = url.searchParams.get('debug');
+
+  url.searchParams.set("debug", "xml");
   if (url.searchParams.get("view") == "thumbnail") {
     url.searchParams.set("view", "reslist");
   }
@@ -76,7 +78,7 @@ async function processDLXS(req, res) {
       "string(//Param[@name='view']|//Param[@name='page'])",
       xmlDoc
     );
-    console.log("AHOY COLLID", collid, view);
+    console.log("AHOY COLLID", collid, view, debug);
 
     const valueEls = xpath.select("//Value|//Param", xmlDoc);
     valueEls.forEach((valueEl) => {
@@ -179,6 +181,12 @@ async function processDLXS(req, res) {
       new XMLSerializer().serializeToString(xmlDoc)
     );
 
+    if (debug == "xml") {
+      res.setHeader("Content-Type", "application/xml");
+      res.sendFile(inputFilename);
+      return;
+    }
+
     if (!fs.existsSync(path.dirname(quiCompiledFilename))) {
       fs.mkdirSync(path.dirname(quiCompiledFilename), {
         recursive: true,
@@ -199,12 +207,18 @@ async function processDLXS(req, res) {
       fs.createWriteStream(quiOutputFilename)
     );
 
+    if ( debug == "qui" ) {
+      res.setHeader('Content-Type', 'application/xml');
+      res.sendFile(quiOutputFilename);
+      return;
+    }
+
     const identifierFilename =
       "/Users/roger/Projects/quombat/uplift-proxy/__identifiers.xml";
     const output =
       await $`xsltproc --stringparam use-local-identifiers false --stringparam identifier-filename ${identifierFilename} ${qbatCompiledFilename} ${quiOutputFilename}`;
     const outputData = output.stdout
-      .replace(/https:\/\/roger.quod.lib.umich.edu/g, "http://localhost:5555")
+      .replace(/https:\/\/roger.quod.lib.umich.edu\//g, "/")
       .split("\n");
     outputData[0] = "<!DOCTYPE html>";
     res.send(outputData.join("\n"));
@@ -220,9 +234,16 @@ async function processDLXS(req, res) {
 
 function listen(options) {
   const app = express();
+
+  const staticServer = serveStatic(rootPath, {
+    index: ["index.html", "index.htm"],
+    // setHeaders: setHeaders,
+  });
+
   const server = http.createServer(app);
 
   app.use(allowCrossDomain);
+  app.use(staticServer);
   server.listen(options.port, options.address);
 
   app.get("/favicon.ico", function (req, res) {
@@ -235,17 +256,17 @@ function listen(options) {
     res.end(favicon);
   });
 
-  app.get("/static/(*)", function (req, res) {
-    res.sendFile(path.join(rootPath, req.originalUrl));
-  });
+  // app.get("/static/(*)", function (req, res) {
+  //   res.sendFile(path.join(rootPath, req.originalUrl));
+  // });
 
-  app.get("/samples/styles/(*)", function (req, res) {
-    res.sendFile(path.join(rootPath, req.originalUrl));
-  });
+  // app.get("/samples/styles/(*)", function (req, res) {
+  //   res.sendFile(path.join(rootPath, req.originalUrl));
+  // });
 
-  app.get("/samples/js/(*)", function (req, res) {
-    res.sendFile(path.join(rootPath, req.originalUrl));
-  });
+  // app.get("/samples/js/(*)", function (req, res) {
+  //   res.sendFile(path.join(rootPath, req.originalUrl));
+  // });
 
   app.get("/xsl/i/image/debug.qui.xsl", function (req, res) {
     res.sendFile(path.join(rootPath, "samples/xsl/i/image/debug.qui.xsl"));

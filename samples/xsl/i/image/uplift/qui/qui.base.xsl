@@ -5,7 +5,7 @@
     <xsl:processing-instruction name="xml-stylesheet">
       <xsl:text>type="text/xsl" href="../../../xsl/i/image/debug.qui.xsl"</xsl:text>
     </xsl:processing-instruction>
-    <qui:root view="{//Param[@name='view']|//Param[@name='page']}" collid="{//Param[@name='cc']}">
+    <qui:root view="{//Param[@name='view']|//Param[@name='page']}" collid="{//Param[@name='cc']|//Param[@name='c']}">
       <!-- fills html/head-->
       <qui:head>
         <xhtml:title>

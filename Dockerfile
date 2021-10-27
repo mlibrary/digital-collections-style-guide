@@ -16,6 +16,11 @@ RUN useradd -m -d /app -u ${UID} -g ${GID} -o -s /bin/bash ${UNAME}
 USER $UNAME
 
 WORKDIR /app
+RUN [ "/bin/date" ]
+RUN [ "/bin/ls", "/app" ]
 COPY package.json /app
+RUN [ "/usr/bin/find", "/app", "-type", "f" ]
+# RUN sleep 600
 RUN npm install
 COPY . /app
+CMD [ "npm", "run", "proxy" ]

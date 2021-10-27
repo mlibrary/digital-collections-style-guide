@@ -800,11 +800,17 @@ html[data-preview-links="true"] a.toc-link {
  */
 
 m-universal-header:not(.hydrated) {
+  display: block;
   height: 3.59rem;
 }
 
 m-website-header:not(.hydrated) {
   height: 4.125rem;
+  display: block;
+}
+
+m-website-header:not(.hydrated) nav {
+  display: none;
 }
 
 /*

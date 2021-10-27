@@ -164,7 +164,7 @@
         <xsl:value-of select="@marker" />
       </xsl:if>
     </xsl:variable>
-<xsl:message>BUILD HREF : <xsl:value-of select="$identifier" /> : <xsl:value-of select="@marker" /></xsl:message>    
+    <xsl:message>BUILD HREF : <xsl:value-of select="$identifier" /> : <xsl:value-of select="@marker" /></xsl:message>    
     <xsl:attribute name="href">
       <xsl:choose>
         <xsl:when test="$use-local-identifiers = 'true' and normalize-space($identifier)">
@@ -308,11 +308,19 @@
   </xsl:template>
 
   <xsl:template match="qui:hidden-input">
-    <input type="hidden" name="{@name}" value="{@value}" />
+    <!-- <input type="hidden" name="{@name}" value="{@value}">
+      <xsl:if test="@data-field">
+        <xsl:attribute name="data-field"><xsl:value-of select="@data-field" /></xsl:attribute>
+      </xsl:if>
+    </input> -->
+    <input type="hidden">
+      <xsl:apply-templates select="@*" mode="copy" />
+    </input>
   </xsl:template>
 
   <!-- UTILITY -->
   <xsl:template match="node()" mode="copy-guts">
+    <xsl:message>AHOY COPY GUTS: <xsl:value-of select="local-name()" /></xsl:message>
     <xsl:apply-templates select="*|text()" mode="copy" />
   </xsl:template>
 
@@ -331,8 +339,9 @@
     <a href="{@href}" ><xsl:apply-templates mode="copy" /></a>
   </xsl:template>
 
-  <xsl:template match="node()[namespace-uri() = 'http://www.w3.org/1999/xhtml']" mode="copy" priority="99">
-    <xsl:element name="{local-name()}" namespace="http://www.w3.org/1999/xhtml">
+  <xsl:template match="node()[namespace-uri() = 'http://www.w3.org/1999/xhtml']" mode="copy" priority="101">
+    <xsl:message>COPY XHTML <xsl:value-of select="local-name()" /></xsl:message>
+    <xsl:element name="{local-name()}" namespace="http://www.w3.org/1999/xhtml" data-copy="xhtml">
       <xsl:apply-templates select="*|@*|text()" mode="copy" />
     </xsl:element>
   </xsl:template>
@@ -344,6 +353,7 @@
   </xsl:template>
 
   <xsl:template match="@*|*|text()" mode="copy">
+    <xsl:message>COPY <xsl:value-of select="local-name()" /> :: <xsl:value-of select="namespace-uri()" /></xsl:message>
     <xsl:copy>
       <xsl:apply-templates select="@*|*|text()" mode="copy" />
     </xsl:copy>
