@@ -1,0 +1,25 @@
+# This is a basic workflow to help you get started with Actions
+
+name: Deploy main
+
+# Controls when the workflow will run
+on: workflow_dispatch
+
+
+# A workflow run is made up of one or more jobs that can run sequentially or in parallel
+jobs:
+  # This workflow contains a single job called "build"
+  build:
+    runs-on: ubuntu-latest
+    environment: preview
+    steps:
+    - name: Deploy to Preview
+      uses: mlibrary/deploy-to-kubernetes@v1
+      with:
+        github_username: ${{ github.actor }}
+        github_token: ${{ secrets.GITHUB_TOKEN }}
+        image: mlibrary/${{ secrets.IMAGE_NAME }}:48f4e59aec82469b12f5dbcc2bf3d50fb53c2a4a
+        cluster_ca: ${{ secrets.HATCHER_CLUSTER_CA }}
+        cluster_server: https://hatcher.kubernetes.lib.umich.edu
+        namespace_token: ${{ secrets.HATCHER_TOKEN }}
+        namespace: ${{ secrets.NAMESPACE }}
