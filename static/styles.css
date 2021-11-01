@@ -119,7 +119,7 @@ details input[type="checkbox"] {
 
 .select {
   min-width: 12ch;
-  padding-left: 1em;
+  padding: 0 1em;
   height: 40px;
 }
 
@@ -168,8 +168,9 @@ input[type="search"] {
 }
 
 input[type="checkbox"] {
-  width: 20px;
-  height: 20px;
+  width: 18px;
+  height: 18px;
+  margin-right: 0.5em;
 }
 
 /*
@@ -228,6 +229,18 @@ input[type="checkbox"] {
 }
 
 /** Results **/
+.search-results__edit {
+  background-color: var(--color-blue-100);
+  padding: var(--text-small);
+  border-radius: var(--radius-default);
+}
+
+.search-results__tools {
+  display: flex;
+  justify-content: space-between;
+  flex-flow: row wrap;
+  align-items: flex-start;
+}
 
 .results-list--small {
   border-bottom: 1px solid var(--color-neutral-100);
@@ -324,7 +337,10 @@ input[type="checkbox"] {
   padding-right: 2em;
 }
 
-/** CARD **/
+/* 
+*CARD 
+* A card can have an image, a heading, and a description. The entire card is a link.
+*/
 
 .gallery-view {
   display: flex;
@@ -344,11 +360,15 @@ input[type="checkbox"] {
   margin: 0 0.5em;
 }
 
-/** Was going to use clamp() but no IE 11 support) **/
-
-@media (min-width: 600px) and (max-width: 1000px) {
+@media (min-width: 950px) and (max-width: 1100px) {
   .card {
-    width: 50%;
+    width: calc(33% - 16px);
+  }
+}
+
+@media (min-width: 600px) and (max-width: 950px) {
+  .card {
+    width: calc(50% - 16px);
   }
 }
 
@@ -400,6 +420,10 @@ details > div {
 
 .filters__count {
   color: var(--color-neutral-300);
+}
+
+.filters__selected > * + * {
+  padding: var(--space-small) 0;
 }
 
 /** Pagination **/
@@ -677,7 +701,6 @@ button {
 .button--secondary {
   background: var(--color-neutral-100);
   border: solid 1px var(--color-neutral-100);
-  border-radius: 2px;
   color: var(--color-neutral-400);
 }
 
@@ -698,10 +721,20 @@ button {
  */
 
 .record {
+  width: 65vw;
+}
+
+@media screen and (max-width: 600px) {
+  .record {
+    width: 90vw;
+  }
+}
+
+.record > div {
   display: grid;
   grid-template-columns: 12rem 1fr;
   column-gap: 0;
-  width: 50vw;
+  border-bottom: 1px solid var(--color-neutral-100);
 }
 
 .record dt {
@@ -710,7 +743,6 @@ button {
 
 .record dt,
 .record dd {
-  border-bottom: 1px solid var(--color-neutral-100);
   padding: var(--space-small) 0;
   margin-left: 0;
 }
@@ -724,8 +756,14 @@ button {
   grid-column: 2/3;
 }
 
-.record-container {
-  width: 50vw;
+/*
+* Actions
+*
+*/
+
+.actions {
+  padding-bottom: 2em;
+  border-bottom: 1px solid var(--color-neutral-100);
 }
 
 /*
@@ -770,6 +808,7 @@ button {
 *
 */
 
+/* This is the most extreme application so we many want to adjust it */
 @media (prefers-reduced-motion: reduce) {
   *,
   ::before,
