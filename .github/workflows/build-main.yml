@@ -1,5 +1,7 @@
 name: Build latest from main and Auto-Deploy
 
+on: workflow_dispatch
+
 jobs:
   build:
     runs-on: ubuntu-latest
