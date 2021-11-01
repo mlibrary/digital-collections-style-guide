@@ -20,6 +20,10 @@
           <xsl:call-template name="build-body-main" />
         </qui:main>
         <qui:message>Message recived, La Jolla</qui:message>
+        <qui:footer>
+          <qui:link rel="help" href="{//Help}" />
+          <qui:link rel="collection-home" href="{//Home}" />
+        </qui:footer>
       </qui:body>
     </qui:root>
   </xsl:template>

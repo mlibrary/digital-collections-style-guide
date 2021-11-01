@@ -12,33 +12,40 @@ window.addEventListener('DOMContentLoaded', (event) => {
   });
 
   const $form = document.querySelector("form#collection-search");
-  const numFacets = $form.querySelectorAll('input[data-role="facet"]:checked').length;
-  document.querySelectorAll('input[data-action="facet"]').forEach((input) => {
-    input.addEventListener('change', (event) => {
-      if ( ! input.checked ) {
-        // remove the facet from the form
-        let fInput = $form.querySelector(`input[data-role="facet"][value="${input.name}"]`);
-        fInput.parentElement.removeChild(fInput);
-        fInput = $form.querySelector(`input[data-role="facet-value"][data-facet-field="${input.name}"][value="${input.value}"]`);
-        fInput.parentElement.removeChild(fInput);
-      } else {
-        // add the facet to the collection form
-        let fInput = document.createElement("input");
-        fInput.setAttribute("type", "hidden");
-        fInput.setAttribute("name", `fn${numFacets + 1}`);
-        fInput.setAttribute("value", input.name);
-        $form.appendChild(fInput);
+  if ( $form) {
+    const numFacets = $form.querySelectorAll(
+      'input[data-role="facet"]:checked'
+    ).length;
+    document.querySelectorAll('input[data-action="facet"]').forEach((input) => {
+      input.addEventListener("change", (event) => {
+        if (!input.checked) {
+          // remove the facet from the form
+          let fInput = $form.querySelector(
+            `input[data-role="facet"][value="${input.name}"]`
+          );
+          fInput.parentElement.removeChild(fInput);
+          fInput = $form.querySelector(
+            `input[data-role="facet-value"][data-facet-field="${input.name}"][value="${input.value}"]`
+          );
+          fInput.parentElement.removeChild(fInput);
+        } else {
+          // add the facet to the collection form
+          let fInput = document.createElement("input");
+          fInput.setAttribute("type", "hidden");
+          fInput.setAttribute("name", `fn${numFacets + 1}`);
+          fInput.setAttribute("value", input.name);
+          $form.appendChild(fInput);
 
-        fInput = document.createElement("input");
-        fInput.setAttribute("type", "hidden");
-        fInput.setAttribute("name", `fq${numFacets + 1}`);
-        fInput.setAttribute("value", input.value);
-        $form.appendChild(fInput);
-      }
-      $form.submit();
-    })
-  })
-
+          fInput = document.createElement("input");
+          fInput.setAttribute("type", "hidden");
+          fInput.setAttribute("name", `fq${numFacets + 1}`);
+          fInput.setAttribute("value", input.value);
+          $form.appendChild(fInput);
+        }
+        $form.submit();
+      });
+    });
+  }
 
   if ( usingIdentifiers ) {
     const button = document.createElement("button");

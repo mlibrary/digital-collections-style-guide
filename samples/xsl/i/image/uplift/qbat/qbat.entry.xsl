@@ -72,7 +72,7 @@
 
   <xsl:template name="build-main-sidebar">
     <div class="sidebar">
-      <section class="record-container">
+      <section>
         <xsl:apply-templates select="qui:block" />
       </section>
       <div>
@@ -96,7 +96,7 @@
   </xsl:template>
 
   <xsl:template name="build-page-heading">
-    <h1 class="collection-heading--small">
+    <h1 class="collection-heading">
       <xsl:value-of select="//qui:header[@role='main']" />
     </h1>
   </xsl:template>
@@ -302,14 +302,14 @@
   </xsl:template>
 
   <xsl:template match="qui:block[@slot='record']">
-    <section class="[ record-container ]">
+    <section>
       <h2 class="[ subtle-heading ][ text-black ]" id="details">About this Item</h2>
       <xsl:apply-templates select="qui:section" />
     </section>
   </xsl:template>
 
   <xsl:template match="qui:block[@slot='rights-statement']">
-    <section class="[ record-container ]">
+    <section>
       <h2 class="[ subtle-heading ][ text-black ]" id="rights-statement">Rights/Permissions</h2>
       <xsl:apply-templates mode="copy" />
     </section>
@@ -317,13 +317,15 @@
 
   <xsl:template name="build-panel-related-links">
     <xsl:variable name="block" select="//qui:block[@slot='special']" />
-    <section class="[ record-container ]">
+    <section>
       <h2 class="[ subtle-heading ][ text-black ]" id="related-links">Related Links</h2>
       <xsl:if test="$block/qui:field">
         <dl class="record">
-          <dt>More Item Details</dt>
-          <xsl:apply-templates select="$block/qui:field[@component='catalog-link']" mode="dl" />
-          <xsl:apply-templates select="$block/qui:field[@component='system-link']" mode="dl" />
+          <div>
+            <dt>More Item Details</dt>
+            <xsl:apply-templates select="$block/qui:field[@component='catalog-link']" mode="dl" />
+            <xsl:apply-templates select="$block/qui:field[@component='system-link']" mode="dl" />
+          </div>
         </dl>
       </xsl:if>
 
@@ -337,10 +339,12 @@
     <xsl:if test="//qui:viewer/@manifest-id">
       <h3>IIIF</h3>
       <dl class="record">
-        <dt>Manifest</dt>
-        <dd>
-          <input type="text" value="{//qui:viewer/@manifest-id}" />
-        </dd>
+        <div>
+          <dt>Manifest</dt>
+          <dd>
+            <input type="text" value="{//qui:viewer/@manifest-id}" />
+          </dd>
+        </div>
       </dl>
     </xsl:if>
   </xsl:template>
@@ -369,12 +373,16 @@
       <h3 id="portfolios">Portfolios</h3>
       <dl class="record">
         <xsl:if test="$private-list//qui:portfolio-link">
-          <dt>In your portfolios</dt>
-          <xsl:apply-templates select="$private-list" mode="dl" />
+          <div>
+            <dt>In your portfolios</dt>
+            <xsl:apply-templates select="$private-list" mode="dl" />
+          </div>
         </xsl:if>
         <xsl:if test="$public-list//qui:portfolio-link">
-          <dt id="public-list">In public portfolios</dt>
-          <xsl:apply-templates select="$public-list" mode="dl" />
+          <div>
+            <dt id="public-list">In public portfolios</dt>
+            <xsl:apply-templates select="$public-list" mode="dl" />
+          </div>
         </xsl:if>
       </dl>
 
@@ -441,12 +449,14 @@
 
       <h3 id="iiif-links">IIIF</h3>
       <dl class="record">
-        <dt>
-          Manifest Link
-        </dt>
-        <dd>
-          <input type="text" value="{//qui:viewer/@manifest-id}" />
-        </dd>
+        <div>
+          <dt>
+            Manifest Link
+          </dt>
+          <dd>
+            <input type="text" value="{//qui:viewer/@manifest-id}" />
+          </dd>
+        </div>
       </dl>
 
     </div>
@@ -535,17 +545,6 @@
     <dl class="record">
       <xsl:apply-templates />
     </dl>
-  </xsl:template>
-
-  <xsl:template match="qui:section" mode="v1">
-    <section class="record-container">
-      <xsl:if test="@name != 'default'">
-        <h3><xsl:value-of select="@name" /></h3>
-      </xsl:if>
-      <dl class="record">
-        <xsl:apply-templates />
-      </dl>
-    </section>
   </xsl:template>
 
   <xsl:template name="button">

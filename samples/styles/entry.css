@@ -83,7 +83,8 @@ ul.outline {
 }
 .toc>.toc-list {
  overflow:hidden;
- position:relative
+ position:relative;
+ padding-left: 1.5rem;
 }
 .toc>.toc-list li {
  list-style:none

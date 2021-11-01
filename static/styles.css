@@ -259,11 +259,15 @@ input[type="checkbox"] {
 }
 
 .results {
+  margin-top: 0.25em;
+}
+
+.results > div {
   display: grid;
   grid-template-columns: 9rem 1fr;
   column-gap: 0;
   width: 50vw;
-  margin-top: 0.25em;
+  /* border-bottom: 1px solid var(--color-neutral-100); */
 }
 
 .results dt {
@@ -274,6 +278,10 @@ input[type="checkbox"] {
 .results dd {
   padding: var(--space-xxx-small) 0;
   margin-left: 0;
+}
+
+.results dd {
+  padding-left: var(--space-small);
 }
 
 .results dd + dd {
@@ -721,12 +729,12 @@ button {
  */
 
 .record {
-  width: 65vw;
+  max-width: 65vw;
 }
 
 @media screen and (max-width: 600px) {
   .record {
-    width: 90vw;
+    max-width: 90vw;
   }
 }
 

@@ -181,7 +181,7 @@ async function processDLXS(req, res) {
       new XMLSerializer().serializeToString(xmlDoc)
     );
 
-    if (debug == "xml") {
+    if (debug == "dlxs") {
       res.setHeader("Content-Type", "application/xml");
       res.sendFile(inputFilename);
       return;
