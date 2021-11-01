@@ -424,6 +424,10 @@
     </xsl:attribute>
   </xsl:template>
 
+  <xsl:template match="qui:head/qui:link">
+    <link rel="{@rel}" href="{@href}" />
+  </xsl:template>
+
   <xsl:template match="qui:link">
     <xsl:param name="class" />
     <xsl:param name="attributes" />
