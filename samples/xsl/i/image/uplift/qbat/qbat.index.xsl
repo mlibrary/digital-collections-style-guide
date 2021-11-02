@@ -3,6 +3,8 @@
   <xsl:template match="qui:main">
     <xsl:call-template name="build-collection-heading" />
 
+    <xsl:call-template name="build-search-form" />
+
     <xsl:apply-templates select="qui:panel" mode="copy-guts" />
 
   </xsl:template>

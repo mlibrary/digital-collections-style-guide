@@ -40,6 +40,9 @@ const configPath = `${rootPath}/samples/xml/i/image/uplift/`;
 const imagePath = `${rootPath}/samples/xsl/i/image/uplift/`;
 const scriptName = path.basename(moduleURL.pathname);
 
+const argv = yargs(hideBin(process.argv)).argv;
+const dlxsBase = argv.proxy ? 'dcp-proto.kubernetes.lib.umich.edu' : 'roger.quod.lib.umich.edu';
+
 function start() {
   let addr = "0.0.0.0";
   let port = 5555;
@@ -56,12 +59,12 @@ function allowCrossDomain(req, res, next) {
 
 async function processDLXS(req, res) {
   let url = new URL(
-    `https://roger.quod.lib.umich.edu${req.originalUrl.replace(/;/g, "&")}`
+    `https://${dlxsBase}${req.originalUrl.replace(/;/g, "&")}`
   );
 
   let debug = url.searchParams.get('debug');
 
-  url.searchParams.set("debug", "xml");
+  url.searchParams.set("debug", 'xml');
   if (url.searchParams.get("view") == "thumbnail") {
     url.searchParams.set("view", "reslist");
   }
@@ -69,6 +72,10 @@ async function processDLXS(req, res) {
   res.setHeader("Content-Type", "text/html");
   if (resp.ok) {
     const xmlData = await resp.text();
+    if ( xmlData.indexOf('no hits. normally cgi redirects') > -1 ) {
+      throw new Error('Query has no results');
+    }
+    
     const xmlDoc = new DOMParser().parseFromString(xmlData, "text/xml");
     const collid = xpath.select(
       "string(//Param[@name='c']|//Param[@name='cc'])",
@@ -181,7 +188,7 @@ async function processDLXS(req, res) {
       new XMLSerializer().serializeToString(xmlDoc)
     );
 
-    if (debug == "dlxs") {
+    if (debug == "xml") {
       res.setHeader("Content-Type", "application/xml");
       res.sendFile(inputFilename);
       return;
@@ -219,6 +226,7 @@ async function processDLXS(req, res) {
       await $`xsltproc --stringparam use-local-identifiers false --stringparam identifier-filename ${identifierFilename} ${qbatCompiledFilename} ${quiOutputFilename}`;
     const outputData = output.stdout
       .replace(/https:\/\/roger.quod.lib.umich.edu\//g, "/")
+      .replace(/debug=xml/g, 'debug=noop')
       .split("\n");
     outputData[0] = "<!DOCTYPE html>";
     res.send(outputData.join("\n"));
@@ -232,6 +240,14 @@ async function processDLXS(req, res) {
   }
 }
 
+function handleError(req, res, error) {
+  let html = fs.readFileSync(`${rootPath}/samples/500.html`, 'utf8');
+  html = html.replace('<!-- URL -->', req.url);
+  html = html.replace('<!-- ERROR -->', error);
+  res.setHeader('Content-Type', 'text/html');
+  res.send(html);
+}
+
 function listen(options) {
   const app = express();
 
@@ -243,7 +259,6 @@ function listen(options) {
   const server = http.createServer(app);
 
   app.use(allowCrossDomain);
-  app.use(staticServer);
   server.listen(options.port, options.address);
 
   app.get("/favicon.ico", function (req, res) {
@@ -256,28 +271,38 @@ function listen(options) {
     res.end(favicon);
   });
 
-  // app.get("/static/(*)", function (req, res) {
-  //   res.sendFile(path.join(rootPath, req.originalUrl));
-  // });
-
-  // app.get("/samples/styles/(*)", function (req, res) {
-  //   res.sendFile(path.join(rootPath, req.originalUrl));
-  // });
-
-  // app.get("/samples/js/(*)", function (req, res) {
-  //   res.sendFile(path.join(rootPath, req.originalUrl));
-  // });
-
   app.get("/xsl/i/image/debug.qui.xsl", function (req, res) {
     res.sendFile(path.join(rootPath, "samples/xsl/i/image/debug.qui.xsl"));
   });
 
+  app.get('/', function(req, res) {
+    res.sendFile(path.join(rootPath, "samples/index.proxy.html"));
+  })
+
+  app.get("/index.html", function (req, res) {
+    res.sendFile(path.join(rootPath, "samples/index.proxy.html"));
+  });
+
+  app.use(staticServer);
+
   app.get("/cgi/*", async function (req, res) {
-    processDLXS(req, res);
+    try {
+      processDLXS(req, res).catch((error) => {
+        handleError(req, res, error);
+      })
+    } catch(error) {
+      handleError(req, res, error);
+    }
   });
 
   app.get("/[a-z]/:collid(*)", async function (req, res) {
-    processDLXS(req, res);
+    try {
+      processDLXS(req, res).catch((error) => {
+        handleError(req, res, error);
+      });
+    } catch (error) {
+      handleError(req, res, error);
+    }
   });
 
   if (!logger) app.use(morgan("dev"));

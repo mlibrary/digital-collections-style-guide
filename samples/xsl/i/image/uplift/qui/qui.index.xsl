@@ -5,6 +5,9 @@
     <qui:header role="main">
       <xsl:call-template name="get-collection-title" />
     </qui:header>
+
+    <xsl:call-template name="build-search-form" />
+
     <qui:panel>
       <xhtml:ul>
         <xhtml:li>
@@ -18,6 +21,40 @@
       </xhtml:ul>
     </qui:panel>
   </xsl:template>
+
+  <xsl:template name="build-search-form">
+    <xsl:variable name="q" select="//SearchForm/Q[@name='q1']" />
+    <qui:form id="collection-search">
+      <qui:select name="rgn1">
+        <xsl:for-each select="$q/Rgn/Option">
+          <xsl:variable name="value" select="Value" />
+          <xsl:if test="$q/Sel[@abbr=$value][Option/Value='all']">
+            <qui:option value="{Value}">
+              <xsl:message><xsl:value-of select="Value" /> :: <xsl:value-of select="Focus" /></xsl:message>
+              <xsl:if test="normalize-space(Focus) = 'true'">
+                <xsl:attribute name="selected">selected</xsl:attribute>
+              </xsl:if>
+              <xsl:value-of select="Label" />
+            </qui:option>
+          </xsl:if>
+        </xsl:for-each>
+      </qui:select>
+      <qui:hidden-input name="select1" value="all" />
+      <qui:input name="q1" value="{$q/Value}" />
+      <xsl:apply-templates select="//Facets" mode="search-form" />
+    </qui:form>
+  </xsl:template>
+
+  <xsl:template match="Facets" mode="search-form">
+    <xsl:for-each select="Field">
+      <xsl:variable name="abbrev" select="@abbrev" />
+      <xsl:for-each select="Values/Value[@selected='true']">
+        <qui:hidden-input type="hidden" name="fn{position()}" value="{$abbrev}" data-role="facet" />
+        <qui:hidden-input type="hidden" name="fq{position()}" value="{.}" data-role="facet-value" data-facet-field="{$abbrev}" />
+      </xsl:for-each>
+    </xsl:for-each>
+  </xsl:template>
+
 
   <xsl:template name="build-thumbnail-list">
     <xsl:if test="//Snapshot">
