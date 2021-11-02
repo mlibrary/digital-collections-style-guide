@@ -285,10 +285,10 @@
       <xsl:with-param name="label">
         <xsl:choose>
           <xsl:when test="qui:favorite-form/@checked='true'">
-            <xsl:text>Remove from favorites</xsl:text>
+            <xsl:text>Remove from portfolio</xsl:text>
           </xsl:when>
           <xsl:otherwise>
-            <xsl:text>Save to favorites</xsl:text>
+            <xsl:text>Save to portfolio</xsl:text>
           </xsl:otherwise>
         </xsl:choose>
       </xsl:with-param>
