@@ -1,6 +1,9 @@
 <?xml version="1.0" encoding="utf-8"?>
 <xsl:stylesheet version="1.0" xmlns="http://www.w3.org/1999/xhtml" xmlns:xsl="http://www.w3.org/1999/XSL/Transform" xmlns:qui="http://dlxs.org/quombat/ui" xmlns:xhtml="http://www.w3.org/1999/xhtml" xmlns:exsl="http://exslt.org/common" extension-element-prefixes="exsl">
 
+  <xsl:variable name="search-form" select="//qui:form[@id='collection-search']" />
+  <xsl:variable name="sort-options" select="//qui:form[@id='sort-options']" />
+
   <xsl:template name="build-extra-styles">
     <xsl:comment>DUBIOUS EXCEPTIONS</xsl:comment>
     <link rel="stylesheet" href="/samples/styles/reslist.css" />
@@ -19,6 +22,7 @@
         <xsl:call-template name="build-breadcrumbs" />
         <xsl:call-template name="build-search-form" />
         <xsl:call-template name="build-search-summary" />
+        <xsl:call-template name="build-search-tools" />
         <xsl:call-template name="build-results-list" />
         <xsl:call-template name="build-results-pagination" />
       </div>
@@ -29,14 +33,78 @@
   <xsl:template name="build-search-summary">
     <xsl:variable name="nav" select="//qui:nav[@role='results']" />
     <p>
-      <xsl:text>Showing </xsl:text>
       <xsl:value-of select="$nav/@start" />
-      <xsl:text>-</xsl:text>
+      <xsl:text> to </xsl:text>
       <xsl:value-of select="$nav/@end" />
       <xsl:text> of </xsl:text>
       <xsl:value-of select="$nav/@total" />
       <xsl:text> results</xsl:text>
     </p>
+    <p>
+      <!-- needs to address advanced search -->
+      <xsl:text>Showing results for </xsl:text>
+      <span class="[ bold ]">
+        <xsl:text>&quot;</xsl:text>
+        <xsl:value-of select="$search-form/qui:input[@name='q1']/@value" />
+        <xsl:text>&quot;</xsl:text>
+      </span>
+      <xsl:text> in </xsl:text>
+      <span class="[ bold ]">
+        <xsl:value-of select="$search-form/qui:select[@name='rgn1']/qui:option[@selected='selected']" />
+      </span>
+    </p>
+  </xsl:template>
+
+  <xsl:template name="build-search-tools">
+    <div class="[ search-results__tools ] [ mb-1 ]">
+      <div class="[ flex flex-align-center ]">
+          <input type="checkbox" id="add-portfolio" name="portfolio" />
+          <label for="add-portfolio" class="visually-hidden"
+            >Add to portfolio</label
+          >
+          <button
+            class="[ button button--secondary ] [ flex ]"
+            type="submit"
+            aria-label="Search"
+          >
+            <svg
+              xmlns="http://www.w3.org/2000/svg"
+              width="16"
+              height="16"
+              viewBox="0 0 24 24"
+              fill="currentColor"
+              aria-hidden="true"
+              focusable="false"
+              role="img"
+            >
+              <path d="M19 13h-6v6h-2v-6H5v-2h6V5h2v6h6v2z" />
+            </svg>
+
+            <span>Add to portfolio</span>
+          </button>
+      </div>
+      <xsl:if test="$sort-options//qui:option">
+        <div class="select-group">
+          <form>
+            <label for="result-sort">Sort by:</label>
+            <select
+              name="results"
+              id="result-sort"
+              class="[ dropdown select ]"
+            >
+              <xsl:for-each select="$sort-options//qui:option">
+                <option value="{@value}">
+                  <xsl:if test="@selected = 'selected'">
+                    <xsl:attribute name="selected">selected</xsl:attribute>
+                  </xsl:if>
+                  <xsl:value-of select="." />
+                </option>
+              </xsl:for-each>
+            </select>
+          </form>
+        </div>
+      </xsl:if>
+    </div>
   </xsl:template>
 
   <xsl:template name="build-results-list">
@@ -161,6 +229,7 @@
           </dl>
         </div>
       </a>
+      <input class="portfolio-selection" type="checkbox" name="box{generate-id(.)}" value="{@identifier}" />
     </section>
   </xsl:template>
 

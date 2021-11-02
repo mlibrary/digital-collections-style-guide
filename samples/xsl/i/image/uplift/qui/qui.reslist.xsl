@@ -162,6 +162,26 @@
       <xsl:apply-templates select="//Facets" mode="search-form" />
     </qui:form>
     <xsl:apply-templates select="//Facets" />
+    <qui:form id="sort-options">
+      <xsl:for-each select="//SortOptionsMenu/HiddenVars/Variable">
+        <qui:hidden-input name="{@name}" value="{.}" />
+      </xsl:for-each>
+      <qui:select name="sort">
+        <xsl:for-each select="//SortOptionsMenu/Option">
+          <qui:option index="{@index}" value="{Value}">
+            <xsl:if test="Focus = 'true'">
+              <xsl:attribute name="selected">selected</xsl:attribute>
+            </xsl:if>
+            <xsl:choose>
+              <xsl:when test="Value = 'none'">Relevance</xsl:when>
+              <xsl:otherwise>
+                <xsl:value-of select="Label" />
+              </xsl:otherwise>
+            </xsl:choose>
+          </qui:option>
+        </xsl:for-each>
+      </qui:select>
+    </qui:form>
     <qui:block slot="results">
       <xsl:apply-templates select="//Results/Result" />
     </qui:block>

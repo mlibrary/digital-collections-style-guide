@@ -247,6 +247,8 @@ input[type="checkbox"] {
   color: var(--color-neutral-400);
   text-decoration: none;
   margin-bottom: 0.5em;
+  display: flex;
+  gap: 0.5rem;
 }
 
 .results-list--small a {
@@ -256,6 +258,11 @@ input[type="checkbox"] {
 
 .results-list--small:last-child {
   border-bottom: 0;
+}
+
+.results-list--small input.portfolio-selection {
+  order: -1;
+  flex-shrink: 0;
 }
 
 .results {
