@@ -48,6 +48,11 @@ ul {
   padding: 0;
 }
 
+ul.list-bulleted {
+  list-style: initial;
+  padding: revert;
+}
+
 svg {
   display: inline-block;
   vertical-align: middle;

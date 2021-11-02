@@ -22,7 +22,9 @@
         <xsl:call-template name="build-breadcrumbs" />
         <xsl:call-template name="build-search-form" />
         <xsl:call-template name="build-search-summary" />
-        <xsl:call-template name="build-search-tools" />
+        <xsl:if test="//qui:nav[@role='results']/@total &gt; 0">
+          <xsl:call-template name="build-search-tools" />
+        </xsl:if>
         <xsl:call-template name="build-results-list" />
         <xsl:call-template name="build-results-pagination" />
       </div>
@@ -32,14 +34,24 @@
 
   <xsl:template name="build-search-summary">
     <xsl:variable name="nav" select="//qui:nav[@role='results']" />
-    <p>
-      <xsl:value-of select="$nav/@start" />
-      <xsl:text> to </xsl:text>
-      <xsl:value-of select="$nav/@end" />
-      <xsl:text> of </xsl:text>
-      <xsl:value-of select="$nav/@total" />
-      <xsl:text> results</xsl:text>
-    </p>
+    <xsl:choose>
+      <xsl:when test="$nav/@total = 0">
+        <p>
+          <span class="[ bold ]">No results</span>
+          <xsl:text> match your search.</xsl:text>
+        </p>
+      </xsl:when>
+      <xsl:otherwise>
+        <p>
+          <xsl:value-of select="$nav/@start" />
+          <xsl:text> to </xsl:text>
+          <xsl:value-of select="$nav/@end" />
+          <xsl:text> of </xsl:text>
+          <xsl:value-of select="$nav/@total" />
+          <xsl:text> results</xsl:text>
+        </p>
+      </xsl:otherwise>
+    </xsl:choose>
     <p>
       <!-- needs to address advanced search -->
       <xsl:text>Showing results for </xsl:text>
@@ -53,6 +65,10 @@
         <xsl:value-of select="$search-form/qui:select[@name='rgn1']/qui:option[@selected='selected']" />
       </span>
     </p>
+    <xsl:if test="$nav/@total = 0">
+      <xsl:call-template name="build-search-hints" />
+    </xsl:if>
+
   </xsl:template>
 
   <xsl:template name="build-search-tools">
@@ -291,5 +307,15 @@
 
 
   <xsl:template name="build-navigation"></xsl:template>
+
+  <xsl:template name="build-search-hints">
+    <h3>Other suggestions</h3>
+    <ul class="[ list-bulleted ]">
+      <li>Check your spelling.</li>
+      <li>Try more general keywords.</li>
+      <li>Try different keywords that mean the same thing.</li>
+      <li>Try searching in <strong>Anywhere in record</strong>.</li>
+    </ul>
+  </xsl:template>
 
 </xsl:stylesheet>

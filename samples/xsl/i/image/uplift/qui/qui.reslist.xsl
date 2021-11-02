@@ -183,8 +183,19 @@
       </qui:select>
     </qui:form>
     <qui:block slot="results">
-      <xsl:apply-templates select="//Results/Result" />
+      <xsl:choose>
+        <xsl:when test="//TotalResults = 0">
+          <xsl:call-template name="build-no-results" />
+        </xsl:when>
+        <xsl:otherwise>
+          <xsl:apply-templates select="//Results/Result" />
+        </xsl:otherwise>
+      </xsl:choose>
     </qui:block>
+  </xsl:template>
+
+  <xsl:template name="build-no-results">
+    <pre>BOO-YAH</pre>
   </xsl:template>
 
   <xsl:template match="Results/Result">
