@@ -311,6 +311,10 @@ function listen(options) {
 
   if (!logger) app.use(morgan("dev"));
 
+  if ( argv.proxy ) {
+    log("Fetching XML from KUBERNETES. Huzzah!".cyan);
+  }
+
   log(
     "Starting up Server, serving ".yellow +
       scriptName.green +
