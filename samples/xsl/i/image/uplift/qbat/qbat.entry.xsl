@@ -292,12 +292,27 @@
           </xsl:otherwise>
         </xsl:choose>
       </xsl:with-param>
+      <xsl:with-param name="classes">
+        <xsl:text>button--secondary</xsl:text>
+      </xsl:with-param>
+      <xsl:with-param name="icon">
+        <xsl:choose>
+          <xsl:when test="qui:favorite-form/@checked='true'">
+            <xsl:text>remove</xsl:text>
+          </xsl:when>
+          <xsl:otherwise>
+            <xsl:text>add</xsl:text>
+          </xsl:otherwise>
+        </xsl:choose>
+      </xsl:with-param>
     </xsl:call-template>
   </xsl:template>
 
   <xsl:template name="build-copy-link-action">
     <xsl:call-template name="button">
       <xsl:with-param name="label">Copy Link</xsl:with-param>
+      <xsl:with-param name="classes">button--secondary</xsl:with-param>
+      <xsl:with-param name="icon">link</xsl:with-param>
     </xsl:call-template>
   </xsl:template>
 
@@ -550,7 +565,13 @@
   <xsl:template name="button">
     <xsl:param name="label" />
     <xsl:param name="classes" />
-    <button class="button {$classes}"><xsl:value-of select="$label" /></button>
+    <xsl:param name="icon" />
+    <button class="button button--large {$classes}">
+      <xsl:value-of select="$label" />
+      <xsl:if test="normalize-space($icon)">
+        <span class="material-icons" aria-hidden="true"><xsl:value-of select="$icon" /></span>
+      </xsl:if>
+    </button>
   </xsl:template>
 
 </xsl:stylesheet>
