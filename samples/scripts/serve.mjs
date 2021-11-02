@@ -283,6 +283,10 @@ function listen(options) {
     res.sendFile(path.join(rootPath, "samples/index.proxy.html"));
   });
 
+  app.get('/samples/', function(req, res) {
+    res.sendFile(path.join(rootPath, "samples/index.proxy.html"));
+  });
+
   app.use(staticServer);
 
   app.get("/cgi/*", async function (req, res) {
