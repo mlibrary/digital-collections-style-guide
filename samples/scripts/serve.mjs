@@ -276,10 +276,12 @@ function listen(options) {
   });
 
   app.get('/', function(req, res) {
+    if ( req.query.guide !== undefined ) { return res.sendFile(path.join(rootPath, "index.html")); }
     res.sendFile(path.join(rootPath, "samples/index.proxy.html"));
   })
 
   app.get("/index.html", function (req, res) {
+    if ( req.query.guide !== undefined ) { return res.sendFile(path.join(rootPath, "index.html")); }
     res.sendFile(path.join(rootPath, "samples/index.proxy.html"));
   });
 
