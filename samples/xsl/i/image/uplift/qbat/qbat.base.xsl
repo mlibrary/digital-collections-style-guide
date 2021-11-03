@@ -441,6 +441,8 @@
           <xsl:attribute name="{@name}"><xsl:value-of select="." /></xsl:attribute>
         </xsl:for-each>
       </xsl:if>
+      <xsl:apply-templates select="@id" mode="copy" />
+      <xsl:apply-templates select="@*[starts-with(name(), 'data-')]" mode="copy" />
 
       <xsl:choose>
         <xsl:when test="@rel = 'next'">Next</xsl:when>

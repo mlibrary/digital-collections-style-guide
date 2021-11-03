@@ -286,7 +286,7 @@
     <xsl:if test="/Top/BookBagForm[ActionAllowed='1'][@action='add'] or /Top/Portfolios/Portfolio">
 
       <xsl:if test="/Top/BookBagForm[ActionAllowed='1'][@action='add']">
-        <xsl:variable name="has-favorited">false</xsl:variable>
+        <xsl:variable name="has-favorited" select="normalize-space(//Portfolios/Portfolio/Field[@name='action']/Action[@type='bbdel']/Url) != ''" />
         <xsl:variable name="bbaction">
           <xsl:choose>
             <xsl:when test="$has-favorited = 'true'">

@@ -19,6 +19,7 @@ import express from "express";
 import http from "http";
 import morgan from "morgan";
 import serveStatic from 'serve-static';
+import cookieParser from 'cookie-parser';
 
 let logger;
 const log = console.log;
@@ -68,7 +69,15 @@ async function processDLXS(req, res) {
   if (url.searchParams.get("view") == "thumbnail") {
     url.searchParams.set("view", "reslist");
   }
-  const resp = await fetch(url.toString());
+
+  const headers = {};
+  console.log("-- cookies", req.cookies);
+  if ( req.cookies.loggedIn == 'true' ) {
+    headers['X-DLXS-Auth'] = 'nala@monkey.nu';
+  }
+  const resp = await fetch(url.toString(), {
+    headers: headers
+  });
   res.setHeader("Content-Type", "text/html");
   if (resp.ok) {
     const xmlData = await resp.text();
@@ -250,6 +259,7 @@ function handleError(req, res, error) {
 
 function listen(options) {
   const app = express();
+  app.use(cookieParser());
 
   const staticServer = serveStatic(rootPath, {
     index: ["index.html", "index.htm"],

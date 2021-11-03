@@ -11,6 +11,19 @@ window.addEventListener('DOMContentLoaded', (event) => {
     }
   });
 
+  if ( location.hostname.indexOf('.netlify.app') < 0 ) {
+    // login trigger
+    const $actionLogin = document.querySelector('#action-login');
+    $actionLogin.addEventListener('click', (event) => {
+      event.preventDefault();
+      const loggedIn = ! ( $actionLogin.dataset.loggedIn == "true" );
+      // set the cookie
+      document.cookie = `loggedIn=${loggedIn}; path=/`;
+      // reload the page
+      location.reload();
+    })
+  }
+
   const $form = document.querySelector("form#collection-search");
   if ( $form) {
     const numFacets = $form.querySelectorAll(

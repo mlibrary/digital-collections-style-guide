@@ -40,12 +40,14 @@
   </xsl:template>
 
   <xsl:template name="build-login-link">
-    <qui:link href="{//LoginLink/Url}">
+    <qui:link href="{//LoginLink/Url}" id="action-login">
       <xsl:choose>
         <xsl:when test="//LoginLink/Mode = 'logout'">
+          <xsl:attribute name="data-logged-in">true</xsl:attribute>
           <xsl:text>Log out</xsl:text>
         </xsl:when>
         <xsl:otherwise>
+          <xsl:attribute name="data-logged-in">false</xsl:attribute>
           <xsl:text>Log in</xsl:text>
         </xsl:otherwise>
       </xsl:choose>

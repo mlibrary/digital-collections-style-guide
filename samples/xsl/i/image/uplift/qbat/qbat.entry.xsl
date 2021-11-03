@@ -234,7 +234,7 @@
         <xsl:call-template name="build-download-action" />
         <xsl:call-template name="build-favorite-action" />
         <xsl:call-template name="build-copy-link-action" />
-        <xsl:apply-templates select="." mode="extra" />
+        <!-- <xsl:apply-templates select="." mode="extra" /> -->
       </div>
     </div>
   </xsl:template>
