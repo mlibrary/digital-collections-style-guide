@@ -123,7 +123,7 @@ details input[type="checkbox"] {
 }
 
 .select {
-  min-width: 12ch;
+  min-width: 15ch;
   padding: 0 1em;
   height: 40px;
 }
@@ -143,7 +143,7 @@ details input[type="checkbox"] {
 }
 
 .input-group {
-  padding: 0 1.5em 0 0;
+  padding: 0 0.5em 0 0;
   min-width: 60%;
 }
 
@@ -234,6 +234,18 @@ input[type="checkbox"] {
 }
 
 /** Results **/
+
+.search {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: var(--text-xx-small) 0;
+}
+
+.search-container {
+  width: 80%;
+}
+
 .search-results__edit {
   background-color: var(--color-blue-100);
   padding: var(--text-small);
