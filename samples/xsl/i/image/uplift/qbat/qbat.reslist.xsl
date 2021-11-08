@@ -170,10 +170,10 @@
 
   <xsl:template name="build-filters-panel">
     <xsl:variable name="filters" select="//qui:filters-panel" />
-    <xsl:if test="$filters//qui:field">
+    <xsl:if test="$filters//qui:filter">
       <h3 class="[ mt-2 ]">Filters</h3>
       <div class="[ side-panel__box ]">
-        <xsl:for-each select="$filters//qui:field">
+        <xsl:for-each select="$filters//qui:filter">
           <xsl:variable name="key" select="@key" />
           <details class="panel">
             <xsl:if test="qui:values/qui:value[@selected='true']">

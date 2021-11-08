@@ -52,16 +52,6 @@
     </xsl:choose>
   </xsl:variable>
 
-  <xsl:template name="get-head-title">
-    <qui:values>
-      <qui:value>
-        <xsl:call-template name="get-title" />
-      </qui:value>
-      <qui:value>
-        <xsl:call-template name="get-collection-title" />
-      </qui:value>
-    </qui:values>
-  </xsl:template>
 
   <xsl:template name="build-body-main">
     <xsl:call-template name="build-results-navigation" />
@@ -74,18 +64,6 @@
     <qui:message>BOO-YAH-HAH</qui:message>
   </xsl:template>
 
-  <xsl:template name="build-breadcrumbs">
-    <qui:nav role="breadcrumb">
-      <qui:link href="{/Top/Home}">
-        <xsl:value-of select="/Top/Banner/Text" />
-      </qui:link>
-      <qui:link href="{/Top//CurrentUrl}" identifier="{/Top/@identifier}">
-        <!-- <xsl:call-template name="get-title" /> -->
-        Search Results
-      </qui:link>
-    </qui:nav>
-  </xsl:template>
-
   <xsl:template name="get-title">
     <xsl:value-of select="//Param[@name='q1']" />
     <xsl:text> | </xsl:text>
@@ -93,6 +71,10 @@
     <xsl:text>-</xsl:text>
     <xsl:value-of select="$end" />
     <xsl:text> | Search Results</xsl:text>
+  </xsl:template>
+
+  <xsl:template name="get-current-page-breadcrumb-label">
+    Search Results
   </xsl:template>
 
   <xsl:template name="build-results-navigation">
@@ -218,7 +200,7 @@
   <xsl:template match="Facets">
     <qui:filters-panel>
       <xsl:for-each select="Field">
-        <qui:field key="{@abbrev}">
+        <qui:filter key="{@abbrev}">
           <qui:label>
             <xsl:value-of select="Label" />
           </qui:label>
@@ -232,7 +214,7 @@
               </qui:value>
             </xsl:for-each>
           </qui:values>
-        </qui:field>
+        </qui:filter>
       </xsl:for-each>
     </qui:filters-panel>
   </xsl:template>

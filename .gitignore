@@ -2,6 +2,9 @@
 
 _site/
 
+# vscode
+.pls_cache
+
 # quombat xml/xsl
 samples/qbat
 samples/qui
