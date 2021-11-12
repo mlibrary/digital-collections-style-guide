@@ -88,22 +88,7 @@
       <xsl:apply-templates select="Label" />
     </qui:option>
   </xsl:template>
-
-  <xsl:template match="Label">
-    <xsl:param name="value" select="." />
-
-    <xsl:variable name="label" select="key('gui-txt', $value)" />
-    <xsl:choose>
-      <xsl:when test="normalize-space($label)">
-        <xsl:value-of select="$label" />
-      </xsl:when>
-      <xsl:otherwise>
-        <xsl:value-of select="normalize-space($value)" />
-      </xsl:otherwise>
-    </xsl:choose>
-
-  </xsl:template>
-
+  
   <xsl:template name="build-custom-search-options">
     <xsl:apply-templates select="CustomLimits" mode="copy-guts" />
   </xsl:template>

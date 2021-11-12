@@ -13,6 +13,7 @@
   <xsl:param name="use-local-identifiers">true</xsl:param>
 
   <xsl:param name="possible-identifiers" select="document($identifier-filename)//identifier" />
+  <xsl:variable name="collid" select="//qui:root/@collid" />
 
   <xsl:template match="qui:root">
     <html lang="en">
@@ -521,70 +522,6 @@
       <xsl:value-of select="//qui:header[@role='main']" />
     </h1>
   </xsl:template>
-
-  <xsl:template name="build-search-form">
-    <xsl:variable name="form" select="//qui:form[@id='collection-search']" />
-    <form id="collection-search" action="/cgi/i/image/image-idx" method="GET">
-      <fieldset class="[ input-group right ][ results-search ] [ no-border ]">
-        <legend class="visually-hidden">Search</legend>
-        <div class="[ search-container ] [ flex ]">
-          <label for="search-select" class="visually-hidden"
-            >Select a search filter:</label
-          >
-          <select name="rgn1" id="search-select" class="[ dropdown dropdown--neutral select ] [ bold no-border ]">
-            <xsl:for-each select="$form/qui:select/qui:option">
-              <option value="{@value}">
-                <xsl:if test="@selected = 'selected'">
-                  <xsl:attribute name="selected">selected</xsl:attribute>
-                </xsl:if>
-                <xsl:value-of select="." />
-              </option>
-            </xsl:for-each>
-          </select>
-
-          <label for="search-collection" class="visually-hidden">
-            <span>Search</span>
-          </label>
-
-          <input
-            id="search-collection"
-            type="search"
-            name="q1"
-            placeholder=""
-            value="{$form/qui:input[@name='q1']/@value}"
-          />
-          <div class="flex">
-            <button
-              class="[ button button--cta ]"
-              type="submit"
-              aria-label="Search"
-            >
-              <svg
-                xmlns="http://www.w3.org/2000/svg"
-                width="24px"
-                height="24px"
-                viewBox="0 0 24 24"
-                aria-hidden="true"
-                focusable="false"
-                role="img"
-              >
-                <path
-                  d="M15.5 14h-.79l-.28-.27C15.41 12.59 16 11.11 16 9.5 16 5.91 13.09 3 9.5 3S3 5.91 3 9.5 5.91 16 9.5 16c1.61 0 3.09-.59 4.23-1.57l.27.28v.79l5 4.99L20.49 19l-4.99-5zm-6 0C7.01 14 5 11.99 5 9.5S7.01 5 9.5 5 14 7.01 14 9.5 11.99 14 9.5 14z"
-                ></path>
-              </svg>
-
-              <span class="visually-hidden">Submit</span>
-            </button>
-          </div>
-        </div>
-        <xsl:apply-templates select="$form/qui:hidden-input" />
-        <input type="hidden" name="type" value="boolean" />
-        <input type="hidden" name="view" value="reslist" />
-        <input type="hidden" name="c" value="{//qui:root/@collid}" />
-      </fieldset>
-    </form>
-  </xsl:template>
-
 
   <!-- FIELDS -->
   <xsl:template match="qui:field[@component='catalog-link']" priority="99">

@@ -28,7 +28,8 @@
         </qui:link>
       </xsl:if>
       <qui:link href="{/Top//CurrentUrl}" identifier="{//EntryWindowName}" current="true">
-        <xsl:call-template name="get-record-title" />
+        <!-- <xsl:call-template name="get-record-title" /> -->
+        <xsl:text>Item View</xsl:text>
       </qui:link>
     </qui:nav>
   </xsl:template>

@@ -124,23 +124,18 @@
 
   <xsl:template name="build-results-list">
     <xsl:variable name="q" select="//SearchForm/Q[@name='q1']" />
-    <qui:form id="collection-search">
-      <qui:select name="rgn1">
-        <xsl:for-each select="$q/Rgn/Option">
-          <xsl:variable name="value" select="Value" />
-          <xsl:if test="$q/Sel[@abbr=$value][Option/Value='all']">
-            <qui:option value="{Value}">
-              <xsl:message><xsl:value-of select="Value" /> :: <xsl:value-of select="Focus" /></xsl:message>
-              <xsl:if test="normalize-space(Focus) = 'true'">
-                <xsl:attribute name="selected">selected</xsl:attribute>
-              </xsl:if>
-              <xsl:value-of select="Label" />
-            </qui:option>
-          </xsl:if>
-        </xsl:for-each>
-      </qui:select>
-      <qui:hidden-input name="select1" value="all" />
-      <qui:input name="q1" value="{$q/Value}" />
+    <xsl:variable name="is-advanced" select="//SearchForm/Advanced" />
+    <qui:form id="collection-search" data-advanced="{$is-advanced}" data-edit-action="{//SearchLink}">
+      <xsl:choose>
+        <xsl:when test="$is-advanced = 'true'">
+          <xsl:apply-templates select="//SearchForm/Q">
+            <xsl:with-param name="is-advanced" select="//SearchForm/Advanced" />
+          </xsl:apply-templates>
+        </xsl:when>
+        <xsl:otherwise>
+          <xsl:apply-templates select="//SearchForm/Q[1]" />
+        </xsl:otherwise>
+      </xsl:choose>
       <xsl:apply-templates select="//Facets" mode="search-form" />
     </qui:form>
     <xsl:apply-templates select="//Facets" />
@@ -180,6 +175,74 @@
     <pre>BOO-YAH</pre>
   </xsl:template>
 
+  <xsl:template match="Q">
+    <xsl:param name="is-advanced" />
+    <xsl:variable name="q" select="." />
+    <xsl:variable name="rgn">
+      <xsl:call-template name="get-selected-option">
+        <xsl:with-param name="options" select="Rgn" />
+      </xsl:call-template>
+    </xsl:variable>
+
+    <xsl:variable name="ops" select="preceding::Q[1]/Op" />
+    <xsl:variable name="op">
+      <xsl:call-template name="get-selected-option">
+        <xsl:with-param name="options" select="$ops" />
+      </xsl:call-template>
+    </xsl:variable>
+
+    <xsl:variable name="sel" select="Sel[@abbr=$rgn]" />
+
+    <xsl:variable name="select">
+      <xsl:call-template name="get-selected-option">
+        <xsl:with-param name="options" select="Sel[@abbr=$rgn]" />
+      </xsl:call-template>
+    </xsl:variable>
+
+    <qui:control slot="clause" data-name="{@name}">
+      <xsl:choose>
+        <xsl:when test="$is-advanced = 'true'">
+          <qui:input slot="rgn" type="hidden" name="{Rgn/@name}" value="{Rgn/Option[Value=$rgn]/Value}" label="{Rgn/Option[Value=$rgn]/Label}" />
+        </xsl:when>
+        <xsl:otherwise>
+          <!-- build the full region options to drive the basic search form -->
+          <qui:input slot="rgn" name="{Rgn/@name}" type="select">
+            <xsl:for-each select="Rgn/Option">
+              <xsl:variable name="value" select="Value" />
+              <qui:option value="{Value}">
+                <xsl:if test="Value = $rgn">
+                  <xsl:attribute name="selected">selected</xsl:attribute>
+                </xsl:if>
+                <xsl:value-of select="Label" />
+              </qui:option>
+            </xsl:for-each>
+          </qui:input>
+        </xsl:otherwise>
+      </xsl:choose>
+      <qui:input slot="select" type="hidden" name="{$sel/@name}" value="{$sel/Option[Value=$select]/Value}">
+        <xsl:attribute name="label">
+          <xsl:apply-templates select="$sel/Option[Value=$select]/Label" />
+        </xsl:attribute>
+      </qui:input>
+      <xsl:if test="$ops">
+        <qui:input slot="op" type="hidden" name="{$ops/@name}" value="{$op}" label="{$ops/Option[Value=$op]/Label}" />
+      </xsl:if>
+      <qui:input slot="q" type="text" name="{@name}" value="{Value}" />
+    </qui:control>
+  </xsl:template>
+
+  <xsl:template name="get-selected-option">
+    <xsl:param name="options" />
+    <xsl:choose>
+      <xsl:when test="$options/Option[Focus='true']">
+        <xsl:value-of select="$options/Option[Focus='true']/Value" />
+      </xsl:when>
+      <xsl:otherwise>
+        <xsl:value-of select="$options/Default" />
+      </xsl:otherwise>
+    </xsl:choose>
+  </xsl:template>
+
   <xsl:template match="Results/Result">
     <qui:section>
       <qui:link rel="result" href="{Url[@name='EntryLink']}" identifier="{.//EntryWindowName}" marker="{@marker}" />
@@ -199,6 +262,7 @@
 
   <xsl:template match="Facets">
     <qui:filters-panel>
+      <xsl:apply-templates select="//SearchForm/MediaOnly" />
       <xsl:for-each select="Field">
         <qui:filter key="{@abbrev}">
           <qui:label>
@@ -219,14 +283,41 @@
     </qui:filters-panel>
   </xsl:template>
 
+  <xsl:template match="MediaOnly">
+    <qui:filter key="med" arity="1">
+      <qui:label>Has digital media?</qui:label>
+      <qui:values>
+        <qui:value>
+          <xsl:if test="Focus = 'true'">
+            <xsl:attribute name="selected">true</xsl:attribute>
+          </xsl:if>
+          <xsl:text>1</xsl:text>
+        </qui:value>
+      </qui:values>
+    </qui:filter>
+  </xsl:template>
+
   <xsl:template match="Facets" mode="search-form">
+    <xsl:apply-templates select="//SearchForm/MediaOnly" mode="search-form" />
     <xsl:for-each select="Field">
       <xsl:variable name="abbrev" select="@abbrev" />
       <xsl:for-each select="Values/Value[@selected='true']">
-        <qui:hidden-input type="hidden" name="fn{position()}" value="{$abbrev}" data-role="facet" />
-        <qui:hidden-input type="hidden" name="fq{position()}" value="{.}" data-role="facet-value" data-facet-field="{$abbrev}" />
+        <xsl:variable name="fn" select="//Param[starts-with(@name, 'fn')][. = $abbrev]/@name" />
+        <xsl:variable name="fq" select="//Param[starts-with(@name, 'fq')][. = .]/@name" />
+        <qui:hidden-input type="hidden" name="{$fn}" value="{$abbrev}" data-role="facet" />
+        <qui:hidden-input type="hidden" name="{$fq}" value="{.}" data-role="facet-value" data-facet-field="{$abbrev}" />
       </xsl:for-each>
     </xsl:for-each>
+  </xsl:template>
+
+  <xsl:template match="MediaOnly" mode="search-form">
+    <qui:hidden-input type="hidden" name="med">
+      <xsl:attribute name="value">
+        <xsl:if test="Focus = 'true'">
+          <xsl:text>1</xsl:text>
+        </xsl:if>
+      </xsl:attribute>
+    </qui:hidden-input>
   </xsl:template>
 
   <xsl:template match="MediaInfo" mode="iiif-link">

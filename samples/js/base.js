@@ -31,8 +31,15 @@ window.addEventListener('DOMContentLoaded', (event) => {
     ).length;
     document.querySelectorAll('input[data-action="facet"]').forEach((input) => {
       input.addEventListener("change", (event) => {
-        if (!input.checked) {
+        if (!input.checked && input.name == 'med') {
+          let fInput = $form.querySelector('input[name="med"]');
+          if (fInput) {
+            fInput.parentElement.removeChild(fInput);
+          }
+        }
+        else if (!input.checked) {
           // remove the facet from the form
+
           let fInput = $form.querySelector(
             `input[data-role="facet"][value="${input.name}"]`
           );
@@ -43,17 +50,26 @@ window.addEventListener('DOMContentLoaded', (event) => {
           fInput.parentElement.removeChild(fInput);
         } else {
           // add the facet to the collection form
-          let fInput = document.createElement("input");
-          fInput.setAttribute("type", "hidden");
-          fInput.setAttribute("name", `fn${numFacets + 1}`);
-          fInput.setAttribute("value", input.name);
-          $form.appendChild(fInput);
+          if ( input.name == 'med' ) {
+            // special case
+            let fInput = document.createElement("input");
+            fInput.setAttribute("type", "hidden");
+            fInput.setAttribute("name", 'med');
+            fInput.setAttribute("value", input.value);
+            $form.appendChild(fInput);
+          } else {
+            let fInput = document.createElement("input");
+            fInput.setAttribute("type", "hidden");
+            fInput.setAttribute("name", `fn${numFacets + 1}`);
+            fInput.setAttribute("value", input.name);
+            $form.appendChild(fInput);
 
-          fInput = document.createElement("input");
-          fInput.setAttribute("type", "hidden");
-          fInput.setAttribute("name", `fq${numFacets + 1}`);
-          fInput.setAttribute("value", input.value);
-          $form.appendChild(fInput);
+            fInput = document.createElement("input");
+            fInput.setAttribute("type", "hidden");
+            fInput.setAttribute("name", `fq${numFacets + 1}`);
+            fInput.setAttribute("value", input.value);
+            $form.appendChild(fInput);            
+          }
         }
         $form.submit();
       });
