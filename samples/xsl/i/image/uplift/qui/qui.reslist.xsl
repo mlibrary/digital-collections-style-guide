@@ -126,6 +126,15 @@
     <xsl:variable name="q" select="//SearchForm/Q[@name='q1']" />
     <xsl:variable name="is-advanced" select="//SearchForm/Advanced" />
     <qui:form id="collection-search" data-advanced="{$is-advanced}" data-edit-action="{//SearchLink}">
+      <xsl:attribute name="data-has-query">
+        <xsl:choose>
+          <xsl:when test="//Facets/Value[@selected='true']">true</xsl:when>
+          <xsl:when test="//SearchForm/MediaOnly[Focus='true']">true</xsl:when>
+          <xsl:when test="count(//SearchForm/Q[normalize-space(Value)]) = 1 and //SearchForm/Q/Value = //SearchForm/HiddenVars/Variable[@name='c']">false</xsl:when>
+          <xsl:when test="normalize-space(//SearchForm/Q/Value)">true</xsl:when>
+          <xsl:otherwise>false</xsl:otherwise>
+        </xsl:choose>
+      </xsl:attribute>
       <xsl:choose>
         <xsl:when test="$is-advanced = 'true'">
           <xsl:apply-templates select="//SearchForm/Q">

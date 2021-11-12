@@ -45,13 +45,24 @@
           <span>Search</span>
         </label>
 
+        <xsl:variable name="q1" select="$form/qui:control/qui:input[@name='q1']/@value" />
         <input
           id="search-collection"
           type="search"
           name="q1"
           placeholder=""
-          value="{$form/qui:control/qui:input[@name='q1']/@value}"
-        />
+          data-value="{$q1}">
+          <xsl:attribute name="value">
+            <xsl:choose>
+              <xsl:when test="$q1 = $collid">
+                <xsl:text>*</xsl:text>
+              </xsl:when>
+              <xsl:otherwise>
+                <xsl:value-of select="$q1" />
+              </xsl:otherwise>
+            </xsl:choose>
+          </xsl:attribute>
+        </input>
         <div class="flex">
           <button
             class="[ button button--cta ]"

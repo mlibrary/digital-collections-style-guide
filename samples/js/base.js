@@ -27,7 +27,7 @@ window.addEventListener('DOMContentLoaded', (event) => {
   const $form = document.querySelector("form#collection-search");
   if ( $form) {
     const numFacets = $form.querySelectorAll(
-      'input[data-role="facet"]:checked'
+      'input[data-role="facet"][type="hidden"]'
     ).length;
     document.querySelectorAll('input[data-action="facet"]').forEach((input) => {
       input.addEventListener("change", (event) => {
@@ -75,6 +75,13 @@ window.addEventListener('DOMContentLoaded', (event) => {
       });
     });
   }
+
+  document.querySelectorAll('[data-action="expand-filter-list"]').forEach((button) => {
+    button.addEventListener('click', (event) => {
+      const details = button.closest('details');
+      details.dataset.listExpanded = !(details.dataset.listExpanded == 'true');
+    })
+  })
 
   if ( usingIdentifiers ) {
     const button = document.createElement("button");

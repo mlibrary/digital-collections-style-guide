@@ -8,4 +8,17 @@ select option {
   content: "\e315";
   vertical-align: bottom;
   color: var(--color-neutral-200);  
+  padding-left: 0.25rem;
+}
+
+details[data-list-expanded="false"] .filter-item:nth-child(n+10) {
+  display: none;
+}
+
+details[data-list-expanded="false"] span[data-expanded="true"] {
+  display: none;
+}
+
+details[data-list-expanded="true"] span[data-expanded="false"] {
+  display: none;
 }

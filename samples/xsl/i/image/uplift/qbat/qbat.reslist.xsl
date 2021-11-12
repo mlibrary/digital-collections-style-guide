@@ -64,9 +64,16 @@
           <xsl:text> </xsl:text>
         </xsl:if>
         <span class="[ bold ]">
-          <xsl:text>&quot;</xsl:text>
-          <xsl:value-of select="qui:input[@slot='q']/@value" />
-          <xsl:text>&quot;</xsl:text>
+          <xsl:choose>
+            <xsl:when test="qui:input[@slot='q']/@name = 'q1' and qui:input[@slot='q']/@value = $collid">
+              <xsl:text>*</xsl:text>
+            </xsl:when>
+            <xsl:otherwise>
+              <xsl:text>&quot;</xsl:text>
+              <xsl:value-of select="qui:input[@slot='q']/@value" />
+              <xsl:text>&quot;</xsl:text>
+            </xsl:otherwise>
+          </xsl:choose>
         </span>
         <xsl:text> in </xsl:text>
         <span class="[ bold ]">
@@ -189,35 +196,40 @@
     <xsl:variable name="filters" select="//qui:filters-panel" />
 
     <xsl:variable name="selected-filters" select="$filters//qui:filter[not(@arity)]//qui:value[@selected='true']" />
-    <xsl:if test="$selected-filters">
+    <xsl:if test="$search-form/@data-has-query = 'true'">
       <section class="[ filters__selected ]">
-        <h3 class="[ mt-2 ]">Current Filters</h3>
-        <xsl:for-each select="$selected-filters">
-          <xsl:variable name="filter" select="ancestor-or-self::qui:filter" />
-          <xsl:variable name="key" select="$filter/@key" />
-          <div>
-            <input type="checkbox" id="x-{$key}-{position()}" name="{$key}" value="{.}" data-action="facet" checked="checked" />
-            <label for="x-{$key}-{position()}">
-              <xsl:choose>
-                <xsl:when test="$filter/@arity = '1'">
-                  <span>
-                    <xsl:value-of select="$filter/qui:label" />
-                  </span>
-                </xsl:when>
-                <xsl:otherwise>
-                  <span class="separator">
-                    <xsl:value-of select="$filter/qui:label" />
-                  </span>
-                  <span>
-                    <xsl:value-of select="." />
-                  </span>
-                </xsl:otherwise>
-              </xsl:choose>
-            </label>
-          </div>
-        </xsl:for-each>
+        <xsl:if test="$selected-filters">
+          <h3 class="[ mt-2 ]">Current Filters</h3>
+          <xsl:for-each select="$selected-filters">
+            <xsl:variable name="filter" select="ancestor-or-self::qui:filter" />
+            <xsl:variable name="key" select="$filter/@key" />
+            <div>
+              <input type="checkbox" id="x-{$key}-{position()}" name="{$key}" value="{.}" data-action="facet" checked="checked" />
+              <label for="x-{$key}-{position()}">
+                <xsl:choose>
+                  <xsl:when test="$filter/@arity = '1'">
+                    <span>
+                      <xsl:value-of select="$filter/qui:label" />
+                    </span>
+                  </xsl:when>
+                  <xsl:otherwise>
+                    <span class="separator">
+                      <xsl:value-of select="$filter/qui:label" />
+                    </span>
+                    <span>
+                      <xsl:value-of select="." />
+                    </span>
+                  </xsl:otherwise>
+                </xsl:choose>
+              </label>
+            </div>
+          </xsl:for-each>
+        </xsl:if>
 
         <a>
+          <xsl:if test="not($selected-filters)">
+            <xsl:attribute name="class">mt-2 block</xsl:attribute>
+          </xsl:if>
           <xsl:attribute name="href">
             <xsl:choose>
               <xsl:when test="$search-form/@data-advanced = 'advanced'">
@@ -235,8 +247,7 @@
           </xsl:attribute>
           <xsl:text>Start Over</xsl:text>
         </a>
-      </section>
-      
+      </section>      
     </xsl:if>
 
     <xsl:if test="$filters//qui:filter">
@@ -279,15 +290,15 @@
 
   <xsl:template name="build-filter-panel">
     <xsl:variable name="key" select="@key" />
-    <details class="panel">
+    <details class="panel" data-list-expanded="false">
       <xsl:if test="qui:values/qui:value[@selected='true']">
         <xsl:attribute name="open">open</xsl:attribute>
       </xsl:if>
       <summary>
         <xsl:value-of select="qui:label" />
       </summary>
-      <xsl:for-each select="qui:values/qui:value[not(@selected)][position() &lt;= 10]">
-        <div class="[ flex ][ gap-0_5 ]">
+      <xsl:for-each select="qui:values/qui:value[not(@selected)]">
+        <div class="[ flex filter-item ][ gap-0_5 ]">
           <input type="checkbox" id="{ $key }-{ position() }" name="{$key}" value="{ . }" data-action="facet" style="margin-top: 4px">
             <xsl:if test="@selected = 'true'">
               <xsl:attribute name="checked">checked</xsl:attribute>
@@ -297,7 +308,7 @@
             <xsl:value-of select="." />
             <xsl:text></xsl:text>
             <span class="filters__count">
-              <xsl:text>(</xsl:text>
+              <xsl:text> (</xsl:text>
               <xsl:value-of select="@count" />
               <xsl:text>)</xsl:text>
             </span>
@@ -306,10 +317,15 @@
       </xsl:for-each>
       <xsl:if test="count(qui:values/qui:value) &gt; 10">
         <p>
-          <button class="[ button filter__button ]">
-            <xsl:text>Show all </xsl:text>
-            <xsl:value-of select="count(qui:values/qui:value)" />
-            <xsl:text> </xsl:text>
+          <button class="[ button filter__button ]" data-action="expand-filter-list">
+            <span data-expanded="true">
+              <xsl:text>Show fewer </xsl:text>
+            </span>
+            <span data-expanded="false">
+              <xsl:text>Show all </xsl:text>
+              <xsl:value-of select="count(qui:values/qui:value)" />
+              <xsl:text> </xsl:text>
+            </span>
             <xsl:value-of select="qui:label" />
             <xsl:text> filters</xsl:text>
           </button>
