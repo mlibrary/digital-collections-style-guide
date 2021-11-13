@@ -1,11 +1,14 @@
 <?xml version="1.0" encoding="UTF-8" ?>
 <xsl:stylesheet version="1.0" xmlns:xhtml="http://www.w3.org/1999/xhtml" xmlns:xsl="http://www.w3.org/1999/XSL/Transform" xmlns:dlxs="http://dlxs.org" xmlns:qbat="http://dlxs.org/quombat" xmlns:exsl="http://exslt.org/common" xmlns:qui="http://dlxs.org/quombat/ui" extension-element-prefixes="exsl" >
 
+  <xsl:variable name="collid" select="normalize-space((//Param[@name='cc']|//Param[@name='c'])[1])" />
+  <xsl:key match="/Top/DlxsGlobals/LangMap/lookup/item" name="gui-txt" use="@key"/>
+  
   <xsl:template match="Top">
     <xsl:processing-instruction name="xml-stylesheet">
       <xsl:text>type="text/xsl" href="../../../xsl/i/image/debug.qui.xsl"</xsl:text>
     </xsl:processing-instruction>
-    <qui:root view="{//Param[@name='view']|//Param[@name='page']}" collid="{//Param[@name='cc']|//Param[@name='c']}">
+    <qui:root view="{//Param[@name='view']|//Param[@name='page']}" collid="{$collid}">
       <!-- fills html/head-->
       <qui:head>
         <xhtml:title>
@@ -30,7 +33,7 @@
 
   <xsl:template name="build-site-header">
     <qui:m-website-header name="Digital Collections">
-      <qui:search-form collid="{//Param[@name='cc']}" value="{//Param[@name='q1']}" />
+      <qui:search-form collid="{$collid}" value="{//Param[@name='q1']}" />
       <qui:nav>
         <qui:link href="{//Help}">Help</qui:link>
         <qui:link href="{//OpenPortfolio/Url}">Portfolios</qui:link>
@@ -106,7 +109,7 @@
           <xsl:choose>
             <xsl:when test="Value = 'ic_all'"></xsl:when>
             <xsl:otherwise>
-              <qui:link href="/cgi/i/image/image-idx?c={//Param[@name='cc']};page=search;filter={Value}">
+              <qui:link href="/cgi/i/image/image-idx?cc={$collid};page=search;filter={Value}">
                 <xsl:value-of select="Label" />
               </qui:link>
             </xsl:otherwise>

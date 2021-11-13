@@ -27,12 +27,19 @@ window.addEventListener('DOMContentLoaded', (event) => {
   const $form = document.querySelector("form#collection-search");
   if ( $form) {
     const numFacets = $form.querySelectorAll(
-      'input[data-role="facet"]:checked'
+      'input[data-role="facet"][type="hidden"]'
     ).length;
     document.querySelectorAll('input[data-action="facet"]').forEach((input) => {
       input.addEventListener("change", (event) => {
-        if (!input.checked) {
+        if (!input.checked && input.name == 'med') {
+          let fInput = $form.querySelector('input[name="med"]');
+          if (fInput) {
+            fInput.parentElement.removeChild(fInput);
+          }
+        }
+        else if (!input.checked) {
           // remove the facet from the form
+
           let fInput = $form.querySelector(
             `input[data-role="facet"][value="${input.name}"]`
           );
@@ -43,22 +50,38 @@ window.addEventListener('DOMContentLoaded', (event) => {
           fInput.parentElement.removeChild(fInput);
         } else {
           // add the facet to the collection form
-          let fInput = document.createElement("input");
-          fInput.setAttribute("type", "hidden");
-          fInput.setAttribute("name", `fn${numFacets + 1}`);
-          fInput.setAttribute("value", input.name);
-          $form.appendChild(fInput);
+          if ( input.name == 'med' ) {
+            // special case
+            let fInput = document.createElement("input");
+            fInput.setAttribute("type", "hidden");
+            fInput.setAttribute("name", 'med');
+            fInput.setAttribute("value", input.value);
+            $form.appendChild(fInput);
+          } else {
+            let fInput = document.createElement("input");
+            fInput.setAttribute("type", "hidden");
+            fInput.setAttribute("name", `fn${numFacets + 1}`);
+            fInput.setAttribute("value", input.name);
+            $form.appendChild(fInput);
 
-          fInput = document.createElement("input");
-          fInput.setAttribute("type", "hidden");
-          fInput.setAttribute("name", `fq${numFacets + 1}`);
-          fInput.setAttribute("value", input.value);
-          $form.appendChild(fInput);
+            fInput = document.createElement("input");
+            fInput.setAttribute("type", "hidden");
+            fInput.setAttribute("name", `fq${numFacets + 1}`);
+            fInput.setAttribute("value", input.value);
+            $form.appendChild(fInput);            
+          }
         }
         $form.submit();
       });
     });
   }
+
+  document.querySelectorAll('[data-action="expand-filter-list"]').forEach((button) => {
+    button.addEventListener('click', (event) => {
+      const details = button.closest('details');
+      details.dataset.listExpanded = !(details.dataset.listExpanded == 'true');
+    })
+  })
 
   if ( usingIdentifiers ) {
     const button = document.createElement("button");

@@ -537,6 +537,10 @@ a[class*="next"]::after {
   font-weight: var(--bold);
 }
 
+.lowercase {
+  text-transform: lowercase;
+}
+
 .block {
   display: block;
 }

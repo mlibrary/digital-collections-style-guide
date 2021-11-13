@@ -28,7 +28,8 @@
         </qui:link>
       </xsl:if>
       <qui:link href="{/Top//CurrentUrl}" identifier="{//EntryWindowName}" current="true">
-        <xsl:call-template name="get-record-title" />
+        <!-- <xsl:call-template name="get-record-title" /> -->
+        <xsl:text>Item View</xsl:text>
       </qui:link>
     </qui:nav>
   </xsl:template>
@@ -109,7 +110,7 @@
         <qui:label>Collection</qui:label>
         <qui:values>
           <qui:value>
-            <qui:link href="/cgi/i/image/image-idx?c={//CurrentCgi/Param[@name='cc']}">
+            <qui:link href="/cgi/i/image/image-idx?cc={$collid}">
               <xsl:value-of select="//CollName/Full" />
             </qui:link>
           </qui:value>
