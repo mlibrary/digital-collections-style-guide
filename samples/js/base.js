@@ -76,6 +76,20 @@ window.addEventListener('DOMContentLoaded', (event) => {
     });
   }
 
+  const $resultSort = document.querySelector("select#result-sort");
+  if ( $resultSort ) {
+    $resultSort.addEventListener('change', (event) => {
+      const value = $resultSort.value;
+      const $form = $resultSort.closest("form");
+      const fInput = document.createElement('input');
+      fInput.setAttribute("type", "hidden");
+      fInput.setAttribute("name", 'sort');
+      fInput.setAttribute("value", value);
+      $form.appendChild(fInput);
+      $form.submit();     
+    })
+  }
+
   document.querySelectorAll('[data-action="expand-filter-list"]').forEach((button) => {
     button.addEventListener('click', (event) => {
       const details = button.closest('details');

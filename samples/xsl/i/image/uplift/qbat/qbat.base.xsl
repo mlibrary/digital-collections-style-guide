@@ -557,6 +557,8 @@
     </div>
   </xsl:template>
 
+  <xsl:template match="qui:hidden-input[@name='debug']" priority="100" />
+
   <xsl:template match="qui:hidden-input">
     <!-- <input type="hidden" name="{@name}" value="{@value}">
       <xsl:if test="@data-field">
