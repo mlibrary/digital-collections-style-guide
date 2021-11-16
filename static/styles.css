@@ -277,9 +277,9 @@ input[type="checkbox"] {
   border-bottom: 0;
 }
 
-.results-list--small input.portfolio-selection {
-  order: -1;
-  flex-shrink: 0;
+.results-list--small .portfolio-selection {
+    order: -1;
+    flex-shrink: 0;
 }
 
 .results {

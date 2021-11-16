@@ -366,7 +366,10 @@
           </dl>
         </div>
       </a>
-      <input class="portfolio-selection" type="checkbox" name="box{generate-id(.)}" value="{@identifier}" />
+      <label class="[ portfolio-selection ]">
+        <input type="checkbox" name="box{generate-id(.)}" value="{@identifier}" />
+        <span class="visually-hidden">Add item to portfolio</span>
+      </label>
     </section>
   </xsl:template>
 
