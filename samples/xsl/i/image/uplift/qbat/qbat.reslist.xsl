@@ -125,7 +125,7 @@
       </div>
       <xsl:if test="$sort-options//qui:option">
         <div class="select-group">
-          <form>
+          <form method="GET" action="/cgi/i/image/image-idx" autocomplete="off">
             <label for="result-sort">Sort by:</label>
             <select
               name="results"
@@ -141,6 +141,7 @@
                 </option>
               </xsl:for-each>
             </select>
+            <xsl:apply-templates select="$sort-options/qui:hidden-input" />
           </form>
         </div>
       </xsl:if>

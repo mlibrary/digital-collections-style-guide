@@ -159,7 +159,8 @@
               <xsl:attribute name="selected">selected</xsl:attribute>
             </xsl:if>
             <xsl:choose>
-              <xsl:when test="Value = 'none'">Relevance</xsl:when>
+              <xsl:when test="Value = 'none'">None</xsl:when>
+              <xsl:when test="Value = 'relevance'">Relevance</xsl:when>
               <xsl:otherwise>
                 <xsl:value-of select="Label" />
               </xsl:otherwise>
