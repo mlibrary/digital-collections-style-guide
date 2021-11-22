@@ -1,6 +1,10 @@
 <?xml version="1.0" encoding="UTF-8" ?>
 <xsl:stylesheet version="1.0" xmlns:xhtml="http://www.w3.org/1999/xhtml" xmlns:xsl="http://www.w3.org/1999/XSL/Transform" xmlns:dlxs="http://dlxs.org" xmlns:qbat="http://dlxs.org/quombat" xmlns:exsl="http://exslt.org/common" extension-element-prefixes="exsl" xmlns:qui="http://dlxs.org/quombat/ui">
 
+  <xsl:template name="get-title">
+    Index
+  </xsl:template>
+
   <xsl:template name="build-body-main">
     <qui:header role="main">
       <xsl:call-template name="get-collection-title" />
@@ -22,25 +26,29 @@
     </qui:panel>
   </xsl:template>
 
-  <xsl:template name="build-search-form">
+  <xsl:template name="build-search-form-XXX">
     <xsl:variable name="q" select="//SearchForm/Q[@name='q1']" />
-    <qui:form id="collection-search">
-      <qui:select name="rgn1">
-        <xsl:for-each select="$q/Rgn/Option">
-          <xsl:variable name="value" select="Value" />
-          <xsl:if test="$q/Sel[@abbr=$value][Option/Value='all']">
-            <qui:option value="{Value}">
-              <xsl:message><xsl:value-of select="Value" /> :: <xsl:value-of select="Focus" /></xsl:message>
-              <xsl:if test="normalize-space(Focus) = 'true'">
-                <xsl:attribute name="selected">selected</xsl:attribute>
-              </xsl:if>
-              <xsl:value-of select="Label" />
-            </qui:option>
-          </xsl:if>
-        </xsl:for-each>
-      </qui:select>
-      <qui:hidden-input name="select1" value="all" />
-      <qui:input name="q1" value="{$q/Value}" />
+    <xsl:variable name="is-advanced" select="//SearchForm/Advanced" />
+    <qui:form id="collection-search" data-advanced="{$is-advanced}" data-edit-action="{//SearchLink}">
+      <xsl:attribute name="data-has-query">
+        <xsl:choose>
+          <xsl:when test="//Facets/Value[@selected='true']">true</xsl:when>
+          <xsl:when test="//SearchForm/MediaOnly[Focus='true']">true</xsl:when>
+          <xsl:when test="count(//SearchForm/Q[normalize-space(Value)]) = 1 and //SearchForm/Q/Value = //SearchForm/HiddenVars/Variable[@name='c']">false</xsl:when>
+          <xsl:when test="normalize-space(//SearchForm/Q/Value)">true</xsl:when>
+          <xsl:otherwise>false</xsl:otherwise>
+        </xsl:choose>
+      </xsl:attribute>
+      <xsl:choose>
+        <xsl:when test="$is-advanced = 'true'">
+          <xsl:apply-templates select="//SearchForm/Q">
+            <xsl:with-param name="is-advanced" select="//SearchForm/Advanced" />
+          </xsl:apply-templates>
+        </xsl:when>
+        <xsl:otherwise>
+          <xsl:apply-templates select="//SearchForm/Q[1]" />
+        </xsl:otherwise>
+      </xsl:choose>
       <xsl:apply-templates select="//Facets" mode="search-form" />
     </qui:form>
   </xsl:template>

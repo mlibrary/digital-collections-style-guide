@@ -55,7 +55,7 @@
     <p>
       <!-- needs to address advanced search -->
       <xsl:text>Showing results for </xsl:text>
-      <xsl:for-each select="$search-form/qui:control[@slot='clause']">
+      <xsl:for-each select="$search-form/qui:control[@slot='clause'][normalize-space(qui:input[@slot='q']/@value)]">
         <xsl:if test="qui:input[@slot='op']">
           <xsl:text> </xsl:text>
           <span class="[ lowercase ]">
@@ -233,7 +233,7 @@
           </xsl:if>
           <xsl:attribute name="href">
             <xsl:choose>
-              <xsl:when test="$search-form/@data-advanced = 'advanced'">
+              <xsl:when test="$search-form/@data-advanced = 'true'">
                 <xsl:text>/cgi/i/image/image-idx?page=search;cc=</xsl:text>
                 <xsl:value-of select="$collid" />
               </xsl:when>

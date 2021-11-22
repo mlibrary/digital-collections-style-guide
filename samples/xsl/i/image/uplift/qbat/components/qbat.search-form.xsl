@@ -16,7 +16,7 @@
             <xsl:call-template name="build-basic-search-input" />
           </xsl:otherwise>
         </xsl:choose>
-        <div class="advanced-link"><a href="#">Advanced Search</a></div>
+        <div class="advanced-link"><a href="/cgi/i/image/image-idx?c={$collid};page=search">Advanced Search</a></div>
       </div>
     </form>
   </xsl:template>
