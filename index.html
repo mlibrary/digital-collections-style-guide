@@ -174,7 +174,7 @@
               fill="#106684"
               aria-hidden="true"
               focusable="false"
-              role="img"
+              role="presentation"
             >
               <path d="M0 0h24v24H0V0z" fill="none" />
               <path
@@ -278,7 +278,7 @@
               fill="#06080a"
               aria-hidden="true"
               focusable="false"
-              role="img"
+              role="presentation"
             >
               <g>
                 <g>
@@ -316,7 +316,6 @@
                 width="16"
                 height="16"
                 viewBox="0 0 24 24"
-                width="24px"
                 fill="#ffffff"
                 focusable="false"
                 aria-hidden="true"
@@ -588,19 +587,7 @@
                   <label for="search-select" class="visually-hidden"
                     >Select a search filter:</label
                   >
-                  <select
-                    id="search-select"
-                    class="
-                      [
-                      dropdown dropdown--neutral
-                      select
-                      ]
-                      [
-                      bold
-                      no-border
-                      ]
-                    "
-                  >
+                  <select id="search-select" class="[ dropdown--neutral ]">
                     <option value="keyword">Keyword</option>
                     <option value="title">Title</option>
                     <option value="author">Author</option>
@@ -696,11 +683,7 @@
               </div>
               <div class="select-group">
                 <label for="result-sort">Sort by:</label>
-                <select
-                  name="results"
-                  id="result-sort"
-                  class="[ dropdown select ]"
-                >
+                <select name="results" id="result-sort">
                   <option value="relevance">Relevance</option>
                 </select>
               </div>
@@ -797,7 +780,7 @@
 
         <div class="select-group">
           <label for="browse-sort">Sort by:</label>
-          <select name="browse" id="browse-sort" class="[ dropdown select ]">
+          <select name="browse" id="browse-sort">
             <option value="a-z">A-Z</option>
             <option value="Z-A">Z-A</option>
             <option value="newest">Newest</option>
@@ -981,7 +964,292 @@
         </div>
       </nav>
       <br />
+
+      <!-- Advanced Search -->
+
+      <h1>Advanced Search</h1>
+
+      <div class="advanced-search--form">
+        <h2>Search</h2>
+        <div class="message-callout">
+          <p>
+            To search, enter a word or phrase in a box below and select a field
+            from the menu. It is not necessary to use more than one box.
+          </p>
+        </div>
+        <form>
+        <div class="advanced-search--containers">
+         
+            <div class="field-groups">
+              <fieldset class="[ no-border ]">
+                <legend class="visually-hidden">Search</legend>
+
+                <label
+                  for="advanced-search-select-field1"
+                  class="visually-hidden"
+                  >Select a field:</label
+                >
+                <select
+                  id="advanced-search-select-field1"
+                  class="[ dropdown--neutral ]"
+                >
+                  <option value="keyword">Field</option>
+                  <option value="title">Title</option>
+                  <option value="author">Author</option>
+                </select>
+                <label
+                  for="advanced-search-select-contains1"
+                  class="visually-hidden"
+                  >Select a filter for contains:</label
+                >
+                <select
+                  id="advanced-search-select-contains1"
+                  class="[ dropdown--neutral ]"
+                >
+                  <option value="keyword">Contains</option>
+                  <option value="title">Title</option>
+                  <option value="author">Author</option>
+                </select>
+
+                <label for="advanced-search-input1" class="visually-hidden">
+                  <span>Search</span>
+                </label>
+
+                <input
+                  id="advanced-search-input1"
+                  type="search"
+                  name="query"
+                  placeholder="Enter search terms"
+                />
+              </fieldset>
+
+              <fieldset class="[ center-grid ][ no-border ]">
+                <legend class="visually-hidden">Radio operators</legend>
+                <label class="radio-buttons" for="and1"
+                  ><input
+                    type="radio"
+                    id="and1"
+                    name="and1"
+                    value="AND"
+                    checked=""
+                  /><span>AND</span></label
+                ><label class="radio-buttons" for="or1"
+                  ><input type="radio" id="or1" name="or1" value="OR" /><span
+                    >OR</span
+                  ></label
+                ><label class="radio-buttons" for="and-not-1"
+                  ><input
+                    type="radio"
+                    id="and-not-1"
+                    name="and-not-1"
+                    value="AND NOT"
+                  /><span>AND NOT</span></label
+                >
+              </fieldset>
+
+              <fieldset class="[ no-border ]">
+                <legend class="visually-hidden">Search</legend>
+
+                <label
+                  for="advanced-search-select-field2"
+                  class="visually-hidden"
+                  >Select a field:</label
+                >
+                <select
+                  id="advanced-search-select-field2"
+                  class="[ dropdown--neutral ]"
+                >
+                  <option value="keyword">Field</option>
+                  <option value="title">Title</option>
+                  <option value="author">Author</option>
+                </select>
+                <label
+                  for="advanced-search-select-contains2"
+                  class="visually-hidden"
+                  >Select a filter for contains:</label
+                >
+                <select
+                  id="advanced-search-select-contains2"
+                  class="[ dropdown--neutral ]"
+                >
+                  <option value="keyword">Contains</option>
+                  <option value="title">Title</option>
+                  <option value="author">Author</option>
+                </select>
+
+                <label for="advanced-search-input2" class="visually-hidden">
+                  <span>Search</span>
+                </label>
+
+                <input
+                  id="advanced-search-input2"
+                  type="search"
+                  name="query"
+                  placeholder="Enter search terms"
+                />
+                <a href="#">Clear</a>
+              </fieldset>
+
+              <fieldset class="[ center-grid ][ no-border ]">
+                <legend class="visually-hidden">Radio operators</legend>
+                <label class="radio-buttons" for="and2"
+                  ><input
+                    type="radio"
+                    id="and2"
+                    name="and2"
+                    value="AND"
+                    checked=""
+                  /><span>AND</span></label
+                ><label class="radio-buttons" for="or2"
+                  ><input type="radio" id="or2" name="or2" value="OR" /><span
+                    >OR</span
+                  ></label
+                ><label class="radio-buttons" for="and-not-2"
+                  ><input
+                    type="radio"
+                    id="and-not-2"
+                    name="and-not-2"
+                    value="AND NOT"
+                  /><span>AND NOT</span></label
+                >
+              </fieldset>
+
+              <fieldset class="[ no-border ]">
+                <legend class="visually-hidden">Search</legend>
+
+                <label
+                  for="advanced-search-select-field3"
+                  class="visually-hidden"
+                  >Select a field:</label
+                >
+                <select
+                  id="advanced-search-select-field3"
+                  class="[ dropdown--neutral ]"
+                >
+                  <option value="keyword">Field</option>
+                  <option value="title">Title</option>
+                  <option value="author">Author</option>
+                </select>
+                <label
+                  for="advanced-search-select-contains3"
+                  class="visually-hidden"
+                  >Select a filter for contains:</label
+                >
+                <select
+                  id="advanced-search-select-contains3"
+                  class="[ dropdown--neutral ]"
+                >
+                  <option value="keyword">Contains</option>
+                  <option value="title">Title</option>
+                  <option value="author">Author</option>
+                </select>
+
+                <label for="advanced-search-input3" class="visually-hidden">
+                  <span>Search</span>
+                </label>
+
+                <input
+                  id="advanced-search-input3"
+                  type="search"
+                  name="query"
+                  placeholder="Enter search terms"
+                />
+                <a href="#">Clear</a>
+              </fieldset>
+            </div>
+          
+        </div>
+
+        <h3>Additional Search Options</h3>
+        <div class="advanced-grid--columns">
+          <div class="advanced-search--containers">
+            <div>
+              <p class="bold">Limit Search to</p>
+              <div>
+                <input
+                  type="checkbox"
+                  id="digital-media"
+                  name="digital media"
+                  checked
+                />
+                <label for="digital-media">Has digital media</label>
+              </div>
+              <div>
+                <input type="checkbox" id="type-status" name="type status" />
+                <label for="type-status">Has type status</label>
+              </div>
+              <div class="[ flex flex-align-center ]">
+                <label for="collection-name">Collection name</label>
+                <select id="collection-name" class="[ dropdown--neutral ]">
+                  <option value="all">All</option>
+                  <option value="option2">Option 2</option>
+                  <option value="option3">Option 3</option>
+                </select>
+              </div>
+            </div>
+          </div>
+
+          <div class="advanced-search--containers">
+            <p class="bold">Date (Year)</p>
+            <p class="light-text-color">e.g. 1954 to 1961 or -825 to -800</p>
+            <fieldset class="[radios ][ no-border ]">
+              <legend class="visually-hidden">Operators for Date</legend>
+              <label class="radio-buttons" for="before1"
+                ><input
+                  type="radio"
+                  id="before1"
+                  name="before"
+                  value="BEFORE"
+                  checked=""
+                /><span>Before</span></label
+              ><label class="radio-buttons" for="after1"
+                ><input
+                  type="radio"
+                  id="after1"
+                  name="after"
+                  value="AFTER"
+                /><span>After</span></label
+              ><label class="radio-buttons" for="between1"
+                ><input
+                  type="radio"
+                  id="between1"
+                  name="between"
+                  value="BETWEEN"
+                /><span>Between</span></label
+              >
+              <label class="radio-buttons" for="in1"
+                ><input type="radio" id="in1" name="in" value="IN" /><span
+                  >In</span
+                ></label
+              >
+            </fieldset>
+          </div>
+        </div>
+        <button class="[ button button--cta ]">
+          <span>Advanced Search</span>
+          <svg
+            xmlns="http://www.w3.org/2000/svg"
+            width="16px"
+            height="16px"
+            viewBox="0 0 24 24"
+            aria-hidden="true"
+            fill="inherit"
+            focusable="false"
+            role="img"
+          >
+            <path
+              d="M15.5 14h-.79l-.28-.27C15.41 12.59 16 11.11 16 9.5 16 5.91 13.09 3 9.5 3S3 5.91 3 9.5 5.91 16 9.5 16c1.61 0 3.09-.59 4.23-1.57l.27.28v.79l5 4.99L20.49 19l-4.99-5zm-6 0C7.01 14 5 11.99 5 9.5S7.01 5 9.5 5 14 7.01 14 9.5 11.99 14 9.5 14z"
+            ></path>
+          </svg>
+        </button>
+        <button class="[ button button--secondary ]">
+          <span>Clear all</span>
+        </button>
+      </div>
+    </form>
     </main>
+
+    <!-- End Advanced Search -->
 
     <!-- Footer y'all-->
     <footer class="[ footer ]">
