@@ -9,7 +9,7 @@ window.addEventListener('DOMContentLoaded', (event) => {
   })
   
   $(".fieldset--clause--region select").on('change', (event) => {
-    let $clause = event.target.closest(".fieldset--clause");
+    let $clause = event.target.closest("fieldset");
     let rgn = event.target.value;
     console.log("--", rgn);
     let $select = $(`select[data-active="true"]`, $clause)[0];
@@ -22,7 +22,7 @@ window.addEventListener('DOMContentLoaded', (event) => {
 
   $(".fieldset--clause button[data-action='reset-clause']").on('click', (event) => {
     event.preventDefault();
-    let $clause = event.target.closest('.fieldset--clause');
+    let $clause = event.target.closest('fieldset');
     $("select,input", $clause).forEach((input) => {
       input.value = input.dataset.resetValue;
       input.checked = input.dataset.resetChecked;

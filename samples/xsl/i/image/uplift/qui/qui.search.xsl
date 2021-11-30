@@ -3,7 +3,7 @@
   <xsl:template name="build-body-main">
     <xsl:call-template name="build-breadcrumbs" />
     <qui:header role="main">
-      <xsl:call-template name="get-collection-title" />
+      <xsl:call-template name="get-title" />
     </qui:header>
     <xsl:apply-templates select="/Top/SearchForm" />
     <qui:message>BOO-YAH-NAH-NAH</qui:message>
@@ -18,6 +18,11 @@
   </xsl:template>
 
   <xsl:template match="SearchForm">
+    <qui:callout>
+      <xsl:value-of select="key('gui-txt', 'instructionsearch1')" />
+      <xsl:text> </xsl:text>
+      <xsl:value-of select="key('gui-txt', 'instructionsearch2')" />
+    </qui:callout>
     <qui:form id="collection-search" data-num-qs="{NumQs}">
       <xsl:apply-templates select="Q" />
       <qui:fieldset slot="limits">
