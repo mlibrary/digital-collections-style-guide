@@ -11,7 +11,7 @@ select option {
   padding-left: 0.25rem;
 }
 
-details[data-list-expanded="false"] .filter-item:nth-child(n+10) {
+details[data-list-expanded="false"] .filter-item:nth-of-type(n+11) {
   display: none;
 }
 

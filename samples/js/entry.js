@@ -1,6 +1,9 @@
+let srm;
+
 window.addEventListener('message', (event) => {
   if ( event.data.event == 'canvasChange' ) {
     const identifier = event.data.identifier;
+    const label = event.data.label;
     const section = document.querySelector('.main-panel > section');
     let alert = section.querySelector('.alert');
     if ( ! alert ) {
@@ -33,7 +36,9 @@ window.addEventListener('message', (event) => {
         for(let i = 0; i < newSections.length; i++) {
           sections[i].innerHTML = newSections[i].innerHTML;
         }
-        document.querySelector('h1').innerHTML = newDocument.querySelector('h1').innerHTML;
+
+        let newTitle = newDocument.querySelector('h1').innerHTML;
+        document.querySelector('h1').innerHTML = newTitle;
         document.title = newDocument.title;
 
         let paginationEl = document.querySelector('.breadcrumb .pagination');
@@ -45,6 +50,8 @@ window.addEventListener('message', (event) => {
         history.pushState({}, newDocument.title, `${url.pathname}?${url.searchParams.toString()}`);
 
         tocbot.refresh();
+
+        srm.say(`Viewing ${label || newTitle}`);
       })
     
   }
@@ -52,6 +59,8 @@ window.addEventListener('message', (event) => {
 })
 
 window.addEventListener('DOMContentLoaded', (event) => {
+
+  srm = ScreenReaderMessenger.getMessenger()
 
   var idx = 0;
   document.querySelectorAll('h2,h3,h4,h5').forEach((el) => {

@@ -93,7 +93,27 @@ window.addEventListener('DOMContentLoaded', (event) => {
   document.querySelectorAll('[data-action="expand-filter-list"]').forEach((button) => {
     button.addEventListener('click', (event) => {
       const details = button.closest('details');
-      details.dataset.listExpanded = !(details.dataset.listExpanded == 'true');
+      const loadStatus = button.dataset.loadStatus || false;
+      if ( ! loadStatus ) {
+        // load the complete set of filters
+        const nextUrl = location.href.replace(/;/g, '&') + '&tpl=listallfacets&&focus=' + details.dataset.key;
+        fetch(nextUrl)
+        .then((response) => {
+          return response.text();
+        })
+        .then((text) => {
+          const newDocument = new DOMParser().parseFromString(text, "text/html");
+          const parEl = button.parentElement;
+          const valueEls = newDocument.querySelectorAll('div[data-expandable-filter]');
+          valueEls.forEach((valueEl) => {
+            details.insertBefore(valueEl, parEl);
+          })
+          details.dataset.listExpanded = true;
+          button.dataset.loadStatus = true;
+        })
+      } else {
+        details.dataset.listExpanded = !(details.dataset.listExpanded == 'true');
+      }
     })
   })
 

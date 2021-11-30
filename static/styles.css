@@ -922,6 +922,11 @@ button {
  *
  */
 
+main {
+  /* avoid squishing main with the footer */
+  min-height: 65vh;
+}
+
 .side-panel {
   width: 25%;
 }

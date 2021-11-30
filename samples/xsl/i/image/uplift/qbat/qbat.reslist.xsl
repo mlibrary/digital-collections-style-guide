@@ -291,7 +291,8 @@
 
   <xsl:template name="build-filter-panel">
     <xsl:variable name="key" select="@key" />
-    <details class="panel" data-list-expanded="false">
+    <xsl:variable name="total" select="@data-total" />
+    <details class="panel" data-list-expanded="false" data-key="{@key}">
       <xsl:if test="qui:values/qui:value[@selected='true']">
         <xsl:attribute name="open">open</xsl:attribute>
       </xsl:if>
@@ -300,6 +301,7 @@
       </summary>
       <xsl:for-each select="qui:values/qui:value[not(@selected)]">
         <div class="[ flex filter-item ][ gap-0_5 ]">
+          <xsl:apply-templates select="@data-expandable-filter" mode="copy" />
           <input type="checkbox" id="{ $key }-{ position() }" name="{$key}" value="{ . }" data-action="facet" style="margin-top: 4px">
             <xsl:if test="@selected = 'true'">
               <xsl:attribute name="checked">checked</xsl:attribute>
@@ -316,7 +318,7 @@
           </label>
         </div>
       </xsl:for-each>
-      <xsl:if test="count(qui:values/qui:value) &gt; 10">
+      <xsl:if test="$total &gt; 10">
         <p>
           <button class="[ button filter__button ]" data-action="expand-filter-list">
             <span data-expanded="true">
@@ -324,7 +326,7 @@
             </span>
             <span data-expanded="false">
               <xsl:text>Show all </xsl:text>
-              <xsl:value-of select="count(qui:values/qui:value)" />
+              <xsl:value-of select="$total" />
               <xsl:text> </xsl:text>
             </span>
             <xsl:value-of select="qui:label" />
