@@ -132,12 +132,12 @@ a.toc-link {
  left:0;
  margin-top:-1px;
  position:absolute;
- width:2px;
+ width:3px;
  height: 100%;
  display: block;
 }
 .is-active-link::before {
- background-color:#54BC4B
+ background-color: var(--color-teal-400);
 }
 
 /* TOCBOT EXCEPTIONS */
