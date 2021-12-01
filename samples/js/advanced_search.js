@@ -33,7 +33,7 @@ window.addEventListener('DOMContentLoaded', (event) => {
     event.preventDefault();
     $inputs.forEach((input) => {
       input.value = input.dataset.resetValue;
-      input.checked = input.dataset.resetChecked;
+      input.checked = input.dataset.resetChecked == 'true';
     })
   })
   
