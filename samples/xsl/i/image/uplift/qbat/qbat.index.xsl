@@ -3,6 +3,12 @@
   <xsl:template match="qui:main">
     <xsl:call-template name="build-collection-heading" />
 
+    <div class="message-callout">
+      <p>
+        This collection index re-design is still under construction.
+      </p>
+    </div>
+
     <xsl:call-template name="build-search-form" />
 
     <xsl:apply-templates select="qui:panel" mode="copy-guts" />
