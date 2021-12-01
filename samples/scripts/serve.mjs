@@ -90,10 +90,20 @@ async function processDLXS(req, res) {
       "string(//Param[@name='c']|//Param[@name='cc'])",
       xmlDoc
     );
-    const view = xpath.select(
-      "string(//Param[@name='view']|//Param[@name='page'])",
-      xmlDoc
-    );
+
+    const possibleViews = [ 'tpl', 'page', 'view' ];
+    let view;
+    for(let i = 0; i < possibleViews.length; i++) {
+      let name = possibleViews[i];
+      view = xpath.select(`string(//Param[@name="${name}"])`, xmlDoc);
+      if ( view ) { break; }
+    }
+    // const viewParam = possibleViews.find((name) => xpath.select(`string(//Param[@name="${name}"])`, xmlDoc));
+    
+    // const view = xpath.select(
+    //   "string(//Param[@name='view']|//Param[@name='page'])",
+    //   xmlDoc
+    // );
     console.log("AHOY COLLID", collid, view, debug);
 
     const valueEls = xpath.select("//Value|//Param", xmlDoc);

@@ -922,6 +922,11 @@ button {
  *
  */
 
+main {
+  /* avoid squishing main with the footer */
+  min-height: 65vh;
+}
+
 .side-panel {
   width: 25%;
 }
@@ -940,6 +945,7 @@ button {
 
 .main-panel {
   width: 70%;
+  min-height: 60vh;
 }
 
 @media (min-width: 600px) and (max-width: 1000px) {

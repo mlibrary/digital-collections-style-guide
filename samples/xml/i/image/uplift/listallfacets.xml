@@ -3,19 +3,21 @@
 <?CHUNK filename="entitiesdoctype.chnk" optional="1"?>
 <Top xmlns:dlxs="http://www.umdl.umich.edu/dlxs">
 
- <!-- XSL fallback files -->
+  <!-- XSL fallback files -->
   <XslFallbackFileList pipeline="qui">
     <Filename>qui/qui.base.xsl</Filename>
     <Filename>../str.split.function.xsl</Filename>
     <!-- <Filename>qui/social-links.xsl</Filename> -->
     <Filename>qui/components/*.xsl</Filename>
-    <Filename>qui/qui.index.xsl</Filename>
+    <Filename>qui/qui.reslist.xsl</Filename>
+    <Filename>qui/qui.listallfacets.xsl</Filename>
   </XslFallbackFileList>
 
   <XslFallbackFileList pipeline="qbat">
     <Filename>qbat/qbat.base.xsl</Filename>
     <Filename>qbat/components/*.xsl</Filename>
-    <Filename>qbat/qbat.index.xsl</Filename>
+    <Filename>qbat/qbat.reslist.xsl</Filename>
+    <Filename>qbat/qbat.listallfacets.xsl</Filename>
   </XslFallbackFileList>
 
 </Top>

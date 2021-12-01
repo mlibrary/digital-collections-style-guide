@@ -3,7 +3,7 @@
   <xsl:template name="build-body-main">
     <xsl:call-template name="build-breadcrumbs" />
     <qui:header role="main">
-      <xsl:call-template name="get-collection-title" />
+      <xsl:call-template name="get-title" />
     </qui:header>
     <xsl:apply-templates select="/Top/SearchForm" />
     <qui:message>BOO-YAH-NAH-NAH</qui:message>
@@ -18,6 +18,11 @@
   </xsl:template>
 
   <xsl:template match="SearchForm">
+    <qui:callout>
+      <xsl:value-of select="key('gui-txt', 'instructionsearch1')" />
+      <xsl:text> </xsl:text>
+      <xsl:value-of select="key('gui-txt', 'instructionsearch2')" />
+    </qui:callout>
     <qui:form id="collection-search" data-num-qs="{NumQs}">
       <xsl:apply-templates select="Q" />
       <qui:fieldset slot="limits">
@@ -30,11 +35,22 @@
   </xsl:template>
 
   <xsl:template match="Q">
-    <xsl:variable name="current-field" select="Sel[Focus='true']/@abbr|Sel[1]/@abbr" />
+    <xsl:variable name="current-field">
+      <xsl:choose>
+        <xsl:when test="Rgn/Option[Focus='true']">
+          <xsl:value-of select="Rgn/Option[Focus='true']/Value" />
+        </xsl:when>
+        <xsl:otherwise>
+          <xsl:value-of select="Rgn/Default" />
+        </xsl:otherwise>
+      </xsl:choose>
+    </xsl:variable>
     <qui:fieldset id="{@name}-fieldset" slot="clause">
       <qui:input name="{@name}" slot="query" value="{Value}" />
-      <qui:select name="{Rgn/@name}" slot="field">
-        <xsl:apply-templates select="Rgn/Option" />
+      <qui:select name="{Rgn/@name}" slot="region">
+        <xsl:apply-templates select="Rgn/Option">
+          <xsl:with-param name="default" select="Rgn/Default" />
+        </xsl:apply-templates>
       </qui:select>
       <xsl:call-template name="build-operator-select" />
       <xsl:apply-templates select="Sel">
@@ -45,7 +61,7 @@
 
   <xsl:template match="Sel">
     <xsl:param name="current-field" />
-    <qui:select name="{@name}" data-field="{@abbr}" data-active="{@name = $current-field}">
+    <qui:select name="{@name}" data-field="{@abbr}" data-active="{@abbr = $current-field}" slot="select">
       <xsl:apply-templates select="Option" />
     </qui:select>
   </xsl:template>
@@ -75,15 +91,16 @@
   </xsl:template>
 
   <xsl:template match="Q/Op">
-    <qui:select name="{@name}">
+    <qui:select name="{@name}" slot="op">
       <xsl:apply-templates select="Option" />
     </qui:select>
   </xsl:template>
 
   <xsl:template match="Option">
+    <xsl:param name="default" />
     <qui:option value="{Value}">
-      <xsl:if test="Focus = 'true'">
-        <xsl:attribute name="selected">selected</xsl:attribute>
+      <xsl:if test="Focus = 'true' or Value = $default">
+        <xsl:attribute name="selected">true</xsl:attribute>
       </xsl:if>
       <xsl:apply-templates select="Label" />
     </qui:option>

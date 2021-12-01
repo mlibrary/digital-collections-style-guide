@@ -12,6 +12,7 @@
 
     <link rel="stylesheet" href="/samples/styles/entry.css" />
     <script src="/samples/js/base.js"></script>
+    <script src="/samples/js/sr-messaging.js"></script>
     <script src="/samples/js/entry.js"></script>
   </xsl:template>
 

@@ -55,7 +55,8 @@
     <p>
       <!-- needs to address advanced search -->
       <xsl:text>Showing results for </xsl:text>
-      <xsl:for-each select="$search-form/qui:control[@slot='clause']">
+      <xsl:for-each select="$search-form/qui:control[@slot='clause'][normalize-space(qui:input[@slot='q']/@value)]">
+        <xsl:variable name="select" select="qui:input[@slot='select']/@value" />
         <xsl:if test="qui:input[@slot='op']">
           <xsl:text> </xsl:text>
           <span class="[ lowercase ]">
@@ -63,6 +64,14 @@
           </span>
           <xsl:text> </xsl:text>
         </xsl:if>
+        <xsl:choose>
+          <xsl:when test="$select = 'all'"></xsl:when>
+          <xsl:when test="$select = 'any'"> any of </xsl:when>
+          <xsl:when test="$select = 'phrase'"> the phrase </xsl:when>
+          <xsl:when test="$select = 'ic_exact'"> the exact keyword </xsl:when>
+          <xsl:when test="$select = 'regex'"> the expression </xsl:when>
+          <xsl:otherwise></xsl:otherwise>
+        </xsl:choose>
         <span class="[ bold ]">
           <xsl:choose>
             <xsl:when test="qui:input[@slot='q']/@name = 'q1' and qui:input[@slot='q']/@value = $collid">
@@ -233,7 +242,7 @@
           </xsl:if>
           <xsl:attribute name="href">
             <xsl:choose>
-              <xsl:when test="$search-form/@data-advanced = 'advanced'">
+              <xsl:when test="$search-form/@data-advanced = 'true'">
                 <xsl:text>/cgi/i/image/image-idx?page=search;cc=</xsl:text>
                 <xsl:value-of select="$collid" />
               </xsl:when>
@@ -291,32 +300,36 @@
 
   <xsl:template name="build-filter-panel">
     <xsl:variable name="key" select="@key" />
-    <details class="panel" data-list-expanded="false">
+    <xsl:variable name="total" select="@data-total" />
+    <details class="panel" data-list-expanded="false" data-key="{@key}">
       <xsl:if test="qui:values/qui:value[@selected='true']">
         <xsl:attribute name="open">open</xsl:attribute>
       </xsl:if>
       <summary>
         <xsl:value-of select="qui:label" />
       </summary>
-      <xsl:for-each select="qui:values/qui:value[not(@selected)]">
-        <div class="[ flex filter-item ][ gap-0_5 ]">
-          <input type="checkbox" id="{ $key }-{ position() }" name="{$key}" value="{ . }" data-action="facet" style="margin-top: 4px">
-            <xsl:if test="@selected = 'true'">
-              <xsl:attribute name="checked">checked</xsl:attribute>
-            </xsl:if>
-          </input>
-          <label for="{ $key }-{ position() }">
-            <xsl:value-of select="." />
-            <xsl:text></xsl:text>
-            <span class="filters__count">
-              <xsl:text> (</xsl:text>
-              <xsl:value-of select="@count" />
-              <xsl:text>)</xsl:text>
-            </span>
-          </label>
-        </div>
-      </xsl:for-each>
-      <xsl:if test="count(qui:values/qui:value) &gt; 10">
+      <div class="filter-item--list">
+        <xsl:for-each select="qui:values/qui:value[not(@selected)]">
+          <div class="[ flex filter-item ][ gap-0_5 ]">
+            <xsl:apply-templates select="@data-expandable-filter" mode="copy" />
+            <input type="checkbox" id="{ $key }-{ position() }" name="{$key}" value="{ . }" data-action="facet" style="margin-top: 4px">
+              <xsl:if test="@selected = 'true'">
+                <xsl:attribute name="checked">checked</xsl:attribute>
+              </xsl:if>
+            </input>
+            <label for="{ $key }-{ position() }">
+              <xsl:value-of select="." />
+              <xsl:text></xsl:text>
+              <span class="filters__count">
+                <xsl:text> (</xsl:text>
+                <xsl:value-of select="@count" />
+                <xsl:text>)</xsl:text>
+              </span>
+            </label>
+          </div>
+        </xsl:for-each>
+      </div>
+      <xsl:if test="$total &gt; 10">
         <p>
           <button class="[ button filter__button ]" data-action="expand-filter-list">
             <span data-expanded="true">
@@ -324,7 +337,7 @@
             </span>
             <span data-expanded="false">
               <xsl:text>Show all </xsl:text>
-              <xsl:value-of select="count(qui:values/qui:value)" />
+              <xsl:value-of select="$total" />
               <xsl:text> </xsl:text>
             </span>
             <xsl:value-of select="qui:label" />

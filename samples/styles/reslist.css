@@ -11,7 +11,11 @@ select option {
   padding-left: 0.25rem;
 }
 
-details[data-list-expanded="false"] .filter-item:nth-child(n+10) {
+.side-panel__box > details {
+  max-width: 100%;
+}
+
+details[data-list-expanded="false"] .filter-item:nth-of-type(n+11) {
   display: none;
 }
 
@@ -21,4 +25,8 @@ details[data-list-expanded="false"] span[data-expanded="true"] {
 
 details[data-list-expanded="true"] span[data-expanded="false"] {
   display: none;
+}
+
+.filter-item--list {
+  overflow: auto;
 }
