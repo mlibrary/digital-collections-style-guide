@@ -91,7 +91,7 @@ async function processDLXS(req, res) {
       xmlDoc
     );
 
-    const possibleViews = [ 'tpl', 'view', 'page' ];
+    const possibleViews = [ 'tpl', 'page', 'view' ];
     let view;
     for(let i = 0; i < possibleViews.length; i++) {
       let name = possibleViews[i];
