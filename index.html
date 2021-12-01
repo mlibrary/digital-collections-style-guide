@@ -978,187 +978,104 @@
           </p>
         </div>
         <form>
-        <div class="advanced-search--containers">
-         
+          <div class="advanced-search--containers">
             <div class="field-groups">
-              <fieldset class="[ no-border ]">
+              <fieldset class="[ no-border ][ fieldset--grid ]">
                 <legend class="visually-hidden">Search</legend>
-
-                <label
-                  for="advanced-search-select-field1"
-                  class="visually-hidden"
-                  >Select a field:</label
-                >
-                <select
-                  id="advanced-search-select-field1"
-                  class="[ dropdown--neutral ]"
-                >
-                  <option value="keyword">Field</option>
-                  <option value="title">Title</option>
-                  <option value="author">Author</option>
-                </select>
-                <label
-                  for="advanced-search-select-contains1"
-                  class="visually-hidden"
-                  >Select a filter for contains:</label
-                >
-                <select
-                  id="advanced-search-select-contains1"
-                  class="[ dropdown--neutral ]"
-                >
-                  <option value="keyword">Contains</option>
-                  <option value="title">Title</option>
-                  <option value="author">Author</option>
-                </select>
-
-                <label for="advanced-search-input1" class="visually-hidden">
-                  <span>Search</span>
-                </label>
-
-                <input
-                  id="advanced-search-input1"
-                  type="search"
-                  name="query"
-                  placeholder="Enter search terms"
-                />
+                <div class="[ fieldset--clause--region ]">
+                  <label for="rgn1-1" class="visually-hidden">Select a field:</label>
+                  <select class="[ dropdown--neutral ]" name="rgn1" id="rgn1-1" autocomplete="off" data-reset-value="ic_all" data-reset-checked="undefined">
+                    <option value="ic_all" selected="true">Anywhere in record</option>
+                    <option value="marc245">Title</option>
+                    <option value="marc246">Varying Form of Title</option>
+                    <option value="istruct_caption_item_description">Item Description</option>
+                    <option value="marc100">Main Entry - Personal Name</option>
+                    <option value="marc110">Main Entry - Corporate Name</option>
+                    <option value="marc700">Added Entry - Personal Name</option>
+                    <option value="marc710">Added Entry - Corporate Name</option>
+                    <option value="marc260">Published</option>
+                    <option value="marc300">Description</option>
+                    <option value="marc500">Note</option>
+                    <option value="marc650">Subject Added Entry - Topical Term</option>
+                    <option value="marc651">Subject Added Entry - Geographic Name</option>
+                    <option value="marc255">Map Data</option>
+                    <option value="marc034">Coded Cartographic Mathematical Data</option>
+                    <option value="marc590">Local note</option>
+                    <option value="scan_date">Scan Date</option>
+                    <option value="dc_ri">Rights</option>
+                    <option value="record_no">Record No.</option>
+                  </select>
+                </div>
+                <div class="[ fieldset--clause--select ]">
+                  <label for="select1-1" class="visually-hidden" data-active="true">Select a comparison operator:</label>
+                  <select class="[ dropdown--neutral ]" name="select1" id="select1-1" autocomplete="off" data-field="ic_all" data-active="true" data-reset-value="all" data-reset-checked="undefined">
+                    <option value="all">Contains all of these words</option>
+                  </select>
+                </div>
+                <div class="[ fieldset--clause--query ]">
+                  <label for="q1" class="visually-hidden">Search</label>
+                  <input name="q1" id="q1" value="" type="search" autocomplete="off" placeholder="Enter search terms" data-reset-value="" data-reset-checked="false">
+                </div>
+                <div></div>
               </fieldset>
-
-              <fieldset class="[ center-grid ][ no-border ]">
+              <fieldset class="[ center-grid ][ no-border ][ fieldset--clause--operator ]">
                 <legend class="visually-hidden">Radio operators</legend>
-                <label class="radio-buttons" for="and1"
-                  ><input
-                    type="radio"
-                    id="and1"
-                    name="and1"
-                    value="AND"
-                    checked=""
-                  /><span>AND</span></label
-                ><label class="radio-buttons" for="or1"
-                  ><input type="radio" id="or1" name="or1" value="OR" /><span
-                    >OR</span
-                  ></label
-                ><label class="radio-buttons" for="and-not-1"
-                  ><input
-                    type="radio"
-                    id="and-not-1"
-                    name="and-not-1"
-                    value="AND NOT"
-                  /><span>AND NOT</span></label
-                >
-              </fieldset>
-
-              <fieldset class="[ no-border ]">
-                <legend class="visually-hidden">Search</legend>
-
-                <label
-                  for="advanced-search-select-field2"
-                  class="visually-hidden"
-                  >Select a field:</label
-                >
-                <select
-                  id="advanced-search-select-field2"
-                  class="[ dropdown--neutral ]"
-                >
-                  <option value="keyword">Field</option>
-                  <option value="title">Title</option>
-                  <option value="author">Author</option>
-                </select>
-                <label
-                  for="advanced-search-select-contains2"
-                  class="visually-hidden"
-                  >Select a filter for contains:</label
-                >
-                <select
-                  id="advanced-search-select-contains2"
-                  class="[ dropdown--neutral ]"
-                >
-                  <option value="keyword">Contains</option>
-                  <option value="title">Title</option>
-                  <option value="author">Author</option>
-                </select>
-
-                <label for="advanced-search-input2" class="visually-hidden">
-                  <span>Search</span>
+                <label class="radio-buttons" for="op1-1-And">
+                  <input type="radio" id="op1-1-And" name="op1-1" value="And" checked="checked" data-reset-value="And" data-reset-checked="false">
+                  <span>And</span>
                 </label>
-
-                <input
-                  id="advanced-search-input2"
-                  type="search"
-                  name="query"
-                  placeholder="Enter search terms"
-                />
-                <a href="#">Clear</a>
-              </fieldset>
-
-              <fieldset class="[ center-grid ][ no-border ]">
-                <legend class="visually-hidden">Radio operators</legend>
-                <label class="radio-buttons" for="and2"
-                  ><input
-                    type="radio"
-                    id="and2"
-                    name="and2"
-                    value="AND"
-                    checked=""
-                  /><span>AND</span></label
-                ><label class="radio-buttons" for="or2"
-                  ><input type="radio" id="or2" name="or2" value="OR" /><span
-                    >OR</span
-                  ></label
-                ><label class="radio-buttons" for="and-not-2"
-                  ><input
-                    type="radio"
-                    id="and-not-2"
-                    name="and-not-2"
-                    value="AND NOT"
-                  /><span>AND NOT</span></label
-                >
-              </fieldset>
-
-              <fieldset class="[ no-border ]">
-                <legend class="visually-hidden">Search</legend>
-
-                <label
-                  for="advanced-search-select-field3"
-                  class="visually-hidden"
-                  >Select a field:</label
-                >
-                <select
-                  id="advanced-search-select-field3"
-                  class="[ dropdown--neutral ]"
-                >
-                  <option value="keyword">Field</option>
-                  <option value="title">Title</option>
-                  <option value="author">Author</option>
-                </select>
-                <label
-                  for="advanced-search-select-contains3"
-                  class="visually-hidden"
-                  >Select a filter for contains:</label
-                >
-                <select
-                  id="advanced-search-select-contains3"
-                  class="[ dropdown--neutral ]"
-                >
-                  <option value="keyword">Contains</option>
-                  <option value="title">Title</option>
-                  <option value="author">Author</option>
-                </select>
-
-                <label for="advanced-search-input3" class="visually-hidden">
-                  <span>Search</span>
+                <label class="radio-buttons" for="op1-1-Or">
+                  <input type="radio" id="op1-1-Or" name="op1-1" value="Or" data-reset-value="Or" data-reset-checked="false">
+                  <span>Or</span>
                 </label>
-
-                <input
-                  id="advanced-search-input3"
-                  type="search"
-                  name="query"
-                  placeholder="Enter search terms"
-                />
-                <a href="#">Clear</a>
+                <label class="radio-buttons" for="op1-1-Not">
+                  <input type="radio" id="op1-1-Not" name="op1-1" value="Not" data-reset-value="Not" data-reset-checked="false">
+                  <span>Not</span>
+                </label>
+              </fieldset>
+              <fieldset class="[ no-border ][ fieldset--grid ]">
+                <legend class="visually-hidden">Search</legend>
+                <div class="[ fieldset--clause--region ]">
+                  <label for="rgn2-1" class="visually-hidden">Select a field:</label>
+                  <select class="[ dropdown--neutral ]" name="rgn2" id="rgn2-1" autocomplete="off" data-reset-value="ic_all" data-reset-checked="undefined">
+                    <option value="ic_all">Anywhere in record</option>
+                    <option value="marc245">Title</option>
+                    <option value="marc246" selected="true">Varying Form of Title</option>
+                    <option value="istruct_caption_item_description">Item Description</option>
+                    <option value="marc100">Main Entry - Personal Name</option>
+                    <option value="marc110">Main Entry - Corporate Name</option>
+                    <option value="marc700">Added Entry - Personal Name</option>
+                    <option value="marc710">Added Entry - Corporate Name</option>
+                    <option value="marc260">Published</option>
+                    <option value="marc300">Description</option>
+                    <option value="marc500">Note</option>
+                    <option value="marc650">Subject Added Entry - Topical Term</option>
+                    <option value="marc651">Subject Added Entry - Geographic Name</option>
+                    <option value="marc255">Map Data</option>
+                    <option value="marc034">Coded Cartographic Mathematical Data</option>
+                    <option value="marc590">Local note</option>
+                    <option value="scan_date">Scan Date</option>
+                    <option value="dc_ri">Rights</option>
+                    <option value="record_no">Record No.</option>
+                  </select>
+                </div>
+                <div class="[ fieldset--clause--select ]">
+                  <label for="select2-3" class="visually-hidden" data-active="true">Select a comparison operator:</label>
+                  <select class="[ dropdown--neutral ]" name="select2" id="select2-3" autocomplete="off" data-field="marc246" data-active="true" data-reset-value="all" data-reset-checked="undefined">
+                    <option value="all">Contains all of these words</option>
+                    <option value="any">Contains any of these words</option>
+                    <option value="phrase">Contains the phrase</option>
+                    <option value="ic_exact">Exactly matches</option>
+                  </select>
+                </div>
+                <div class="[ fieldset--clause--query ]">
+                  <label for="q2" class="visually-hidden">Search</label>
+                  <input name="q2" id="q2" value="" type="search" autocomplete="off" placeholder="Enter search terms" data-reset-value="" data-reset-checked="false">
+                </div>
+                <button class="[ button button--secondary ]" data-action="reset-clause">Clear</button>
               </fieldset>
             </div>
-          
-        </div>
+          </div>
 
         <h3>Additional Search Options</h3>
         <div class="advanced-grid--columns">

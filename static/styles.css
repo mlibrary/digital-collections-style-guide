@@ -281,7 +281,56 @@ label {
   grid-template-columns: minmax(380px, 1fr);
   gap: 1rem;
   justify-content: center;
-  padding: 1.5rem 0;
+  padding: 2rem 4.5vw;
+}
+
+.fieldset--clause--select label[data-active="false"] {
+  display: none;
+}
+
+.fieldset--clause--select select[data-active="false"] {
+  display: none;
+}
+
+fieldset.fieldset--grid--v1 {
+  display: grid;
+  grid-template-columns: repeat(2, minmax(20%, auto)) 40% 40px;
+  grid-column-gap: 0.5rem;
+}
+
+fieldset.fieldset--grid {
+  display: grid;
+  grid-template-columns: 1fr 1fr 6rem;
+  grid-template-areas: "rgn select ." "q q clear";
+  grid-column-gap: 0.5rem;
+  grid-row-gap: 0.5rem;
+}
+
+fieldset.fieldset--grid .fieldset--clause--region {
+  grid-area: rgn;
+}
+fieldset.fieldset--grid .fieldset--clause--region select {
+  width: 100%;
+}
+fieldset.fieldset--grid .fieldset--clause--select {
+  grid-area: select;
+}
+fieldset.fieldset--grid .fieldset--clause--select select {
+  width: 100%;
+}
+fieldset.fieldset--grid .fieldset--clause--query {
+  grid-area: q;
+}
+fieldset.fieldset--grid button[data-action="reset-clause"] {
+  grid-area: clear;
+}
+
+.fieldset--clause--query input[type="search"] {
+  width: 100%;
+}
+
+.fieldset--clause--operator label {
+  text-transform: uppercase;
 }
 
 /** Lists **/
@@ -811,6 +860,10 @@ button {
 .button-icon {
   bottom: 0.25em;
   position: relative;
+}
+
+.button + .button {
+  margin-left: 0.5em;
 }
 
 /*
