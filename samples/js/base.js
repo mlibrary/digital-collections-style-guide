@@ -102,11 +102,12 @@ window.addEventListener('DOMContentLoaded', (event) => {
           return response.text();
         })
         .then((text) => {
+          const filtersListEl = details.querySelector('.filter-item--list');
           const newDocument = new DOMParser().parseFromString(text, "text/html");
-          const parEl = button.parentElement;
           const valueEls = newDocument.querySelectorAll('div[data-expandable-filter]');
+          filtersListEl.style.height = `${filtersListEl.offsetHeight}px`;
           valueEls.forEach((valueEl) => {
-            details.insertBefore(valueEl, parEl);
+            filtersListEl.appendChild(valueEl);
           })
           details.dataset.listExpanded = true;
           button.dataset.loadStatus = true;

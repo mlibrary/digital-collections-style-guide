@@ -308,25 +308,27 @@
       <summary>
         <xsl:value-of select="qui:label" />
       </summary>
-      <xsl:for-each select="qui:values/qui:value[not(@selected)]">
-        <div class="[ flex filter-item ][ gap-0_5 ]">
-          <xsl:apply-templates select="@data-expandable-filter" mode="copy" />
-          <input type="checkbox" id="{ $key }-{ position() }" name="{$key}" value="{ . }" data-action="facet" style="margin-top: 4px">
-            <xsl:if test="@selected = 'true'">
-              <xsl:attribute name="checked">checked</xsl:attribute>
-            </xsl:if>
-          </input>
-          <label for="{ $key }-{ position() }">
-            <xsl:value-of select="." />
-            <xsl:text></xsl:text>
-            <span class="filters__count">
-              <xsl:text> (</xsl:text>
-              <xsl:value-of select="@count" />
-              <xsl:text>)</xsl:text>
-            </span>
-          </label>
-        </div>
-      </xsl:for-each>
+      <div class="filter-item--list">
+        <xsl:for-each select="qui:values/qui:value[not(@selected)]">
+          <div class="[ flex filter-item ][ gap-0_5 ]">
+            <xsl:apply-templates select="@data-expandable-filter" mode="copy" />
+            <input type="checkbox" id="{ $key }-{ position() }" name="{$key}" value="{ . }" data-action="facet" style="margin-top: 4px">
+              <xsl:if test="@selected = 'true'">
+                <xsl:attribute name="checked">checked</xsl:attribute>
+              </xsl:if>
+            </input>
+            <label for="{ $key }-{ position() }">
+              <xsl:value-of select="." />
+              <xsl:text></xsl:text>
+              <span class="filters__count">
+                <xsl:text> (</xsl:text>
+                <xsl:value-of select="@count" />
+                <xsl:text>)</xsl:text>
+              </span>
+            </label>
+          </div>
+        </xsl:for-each>
+      </div>
       <xsl:if test="$total &gt; 10">
         <p>
           <button class="[ button filter__button ]" data-action="expand-filter-list">
