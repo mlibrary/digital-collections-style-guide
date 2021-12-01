@@ -56,6 +56,7 @@
       <!-- needs to address advanced search -->
       <xsl:text>Showing results for </xsl:text>
       <xsl:for-each select="$search-form/qui:control[@slot='clause'][normalize-space(qui:input[@slot='q']/@value)]">
+        <xsl:variable name="select" select="qui:input[@slot='select']/@value" />
         <xsl:if test="qui:input[@slot='op']">
           <xsl:text> </xsl:text>
           <span class="[ lowercase ]">
@@ -63,6 +64,14 @@
           </span>
           <xsl:text> </xsl:text>
         </xsl:if>
+        <xsl:choose>
+          <xsl:when test="$select = 'all'"></xsl:when>
+          <xsl:when test="$select = 'any'"> any of </xsl:when>
+          <xsl:when test="$select = 'phrase'"> the phrase </xsl:when>
+          <xsl:when test="$select = 'ic_exact'"> the exact keyword </xsl:when>
+          <xsl:when test="$select = 'regex'"> the expression </xsl:when>
+          <xsl:otherwise></xsl:otherwise>
+        </xsl:choose>
         <span class="[ bold ]">
           <xsl:choose>
             <xsl:when test="qui:input[@slot='q']/@name = 'q1' and qui:input[@slot='q']/@value = $collid">
