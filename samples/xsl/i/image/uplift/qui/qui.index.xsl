@@ -12,6 +12,10 @@
 
     <xsl:call-template name="build-search-form" />
 
+    <xsl:if test="//HeroImage/@identifier">
+      <qui:hero-image identifier="{//HeroImage/@identifier}" />
+    </xsl:if>
+
     <qui:panel>
       <xhtml:ul>
         <xhtml:li>

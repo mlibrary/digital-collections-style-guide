@@ -131,6 +131,12 @@ async function processDLXS(req, res) {
         );
       }
 
+      const heroEl = xpath.select('//HeroImage', xmlDoc);
+      if ( heroEl && heroEl[0] ) {
+        let href = heroEl[0].getAttribute('identifier');
+        heroEl[0].setAttribute('identifier', href.replace('8lift', ''));
+      }
+
       const icCollidEls = xpath.select(
         "//Results/Result/MediaInfo/ic_collid",
         xmlDoc
