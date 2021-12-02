@@ -18,6 +18,7 @@
         </xsl:choose>
         <div class="advanced-link"><a href="/cgi/i/image/image-idx?c={$collid};page=search">Advanced Search</a></div>
       </div>
+      <xsl:call-template name="build-search-additional-fields" />
     </form>
   </xsl:template>
 
@@ -99,5 +100,7 @@
       <a href="{@data-edit-action}">Edit Search</a>
     </div>
   </xsl:template>
+
+  <xsl:template name="build-search-additional-fields" />
 
 </xsl:stylesheet>

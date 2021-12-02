@@ -478,7 +478,7 @@
   </xsl:template>
 
   <xsl:template match="qui:panel">
-    <div class="[ border-bottom ]">
+    <div class="[ border-bottom ][ pr-1 ]">
       <xsl:apply-templates />
     </div>
   </xsl:template>
@@ -490,7 +490,7 @@
   </xsl:template>
 
   <xsl:template match="qui:panel/qui:nav">
-    <ul>
+    <ul class="nav">
       <xsl:for-each select="qui:link">
         <li class="py-1">
           <a href="{@href}" class="text-teal-400 underline">
@@ -602,6 +602,23 @@
     <xsl:element name="{name()}" namespace="http://www.w3.org/1999/xhtml">
       <xsl:apply-templates select="*|@*|text()" mode="copy" />
     </xsl:element>
+  </xsl:template>
+
+  <xsl:template match="text()" mode="copy" priority="25">
+    <xsl:if test="normalize-space(.)">
+      <xsl:variable name="x" select="substring(normalize-space(.), 1, 1)" />
+      <xsl:if test="position() &gt; 1">
+        <xsl:choose>
+          <xsl:when test="$x = '.' or $x = ';' or $x = ':' or $x = ')'">
+          </xsl:when>
+          <xsl:otherwise><xsl:text> </xsl:text></xsl:otherwise>
+        </xsl:choose>
+      </xsl:if>
+      <xsl:value-of select="normalize-space(.)" />
+      <xsl:if test="position() &lt; last()">
+        <xsl:text> </xsl:text>
+      </xsl:if>
+    </xsl:if>
   </xsl:template>
 
   <xsl:template match="@*|*|text()" mode="copy">
