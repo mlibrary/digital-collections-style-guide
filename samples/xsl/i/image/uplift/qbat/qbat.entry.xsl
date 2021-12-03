@@ -31,7 +31,13 @@
 
     <div class="[ flex flex-flow-rw ]">
 
-      <div class="[ aside ]"><div class="toc js-toc"></div></div>
+      <!-- <div class="[ aside ]"><div class="toc js-toc"></div></div> -->
+      <div class="[ aside ]">
+        <nav class="[ page-index ]" aria-labelledby="page-index-label">
+          <div id="page-index-label" class="[ subtle-heading ][ mb-1 ]">Page Index</div>
+          <div class="toc js-toc"></div>
+        </nav>
+      </div>
 
       <div class="[ main-panel ]">
 

@@ -149,7 +149,7 @@ a.toc-link {
   width: 13rem;
 }
 
-.js-toc {
+nav.page-index {
   position: sticky;
   top: 1rem;
 }
