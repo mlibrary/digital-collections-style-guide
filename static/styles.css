@@ -700,6 +700,10 @@ a[class*="next"]::after {
   padding: 0.5em;
 }
 
+.pr-1 {
+  padding-right: 1rem;
+}
+
 .gap-0_5 {
   gap: 0.5em;
 }
@@ -945,7 +949,7 @@ main {
 
 .main-panel {
   width: 70%;
-  min-height: 60vh;
+  /* min-height: 60vh; */
 }
 
 @media (min-width: 600px) and (max-width: 1000px) {
