@@ -123,6 +123,7 @@
               <xsl:value-of select="$total" />
               <xsl:text></xsl:text>
             </span>
+            <xsl:text> </xsl:text>
             <xsl:value-of select="qui:label" />
             <xsl:text> filters</xsl:text>
           </button>

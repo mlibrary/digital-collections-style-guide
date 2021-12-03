@@ -44,6 +44,10 @@
       button[data-action="expand-filter-list"] {
         display: none;
       }
+
+      section.filters__selected {
+        display: none;
+      }
       
     </style>
   </xsl:template>
