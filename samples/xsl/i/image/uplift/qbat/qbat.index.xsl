@@ -40,6 +40,10 @@
       ul.nav li {
         margin-bottom: 0.25rem;
       }
+
+      button[data-action="expand-filter-list"] {
+        display: none;
+      }
       
     </style>
   </xsl:template>
