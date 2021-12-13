@@ -78,7 +78,7 @@ async function processDLXS(req, res) {
   const resp = await fetch(url.toString(), {
     headers: headers
   });
-  res.setHeader("Content-Type", "text/html");
+  res.setHeader("Content-Type", "text/html; charset=UTF-8");
   if (resp.ok) {
     const xmlData = await resp.text();
     if ( xmlData.indexOf('no hits. normally cgi redirects') > -1 ) {
@@ -164,6 +164,7 @@ async function processDLXS(req, res) {
     const qbatCompiledFilename = `${baseFilename}.${view}.qbat.xsl`;
     const inputFilename = `${baseFilename}.input.xml`;
     const quiOutputFilename = `${baseFilename}.qui.xml`;
+    const qbatOutputFilename = `${baseFilename}.qbat.html`;
     const viewXmlData = fs.readFileSync(viewFilename, "utf8");
     const viewDoc = new DOMParser().parseFromString(viewXmlData, "text/xml");
     const fallbackFilenames = xpath.select(
@@ -247,8 +248,19 @@ async function processDLXS(req, res) {
 
     const identifierFilename =
       "/Users/roger/Projects/quombat/uplift-proxy/__identifiers.xml";
-    const output =
-      await $`xsltproc --stringparam use-local-identifiers false --stringparam identifier-filename ${identifierFilename} ${qbatCompiledFilename} ${quiOutputFilename}`;
+    
+    // const output =
+    //   await $`xsltproc --stringparam use-local-identifiers false --stringparam identifier-filename ${identifierFilename} ${qbatCompiledFilename} ${quiOutputFilename}`;
+
+    // weird bug: "output = await..." results in strange encoding issues
+    // writing to a file and re-reading it do not
+    await $`xsltproc --stringparam use-local-identifiers false --stringparam identifier-filename ${identifierFilename} ${qbatCompiledFilename} ${quiOutputFilename}`.pipe(
+      fs.createWriteStream(qbatOutputFilename)
+    )
+
+    const output = {};
+    output.stdout = fs.readFileSync(qbatOutputFilename, "utf8");
+
     const outputData = output.stdout
       .replace(/https:\/\/roger.quod.lib.umich.edu\//g, "/")
       .replace(/debug=xml/g, 'debug=noop')
@@ -256,10 +268,14 @@ async function processDLXS(req, res) {
     outputData[0] = "<!DOCTYPE html>";
     res.send(outputData.join("\n"));
 
+
+    fs.writeFileSync("/tmp/output.html", output.stdout);
+    
     fs.unlinkSync(inputFilename);
     fs.unlinkSync(quiOutputFilename);
     fs.unlinkSync(qbatCompiledFilename);
     fs.unlinkSync(quiCompiledFilename);
+    fs.unlinkSync(qbatOutputFilename);
   } else {
     res.send("OOPS");
   }
