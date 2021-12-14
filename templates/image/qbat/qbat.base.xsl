@@ -10,13 +10,12 @@
     version="5.0"
     />
 
-  <xsl:param name="use-local-identifiers">true</xsl:param>
+  <xsl:param name="docroot">/digital-collections-style-guide/</xsl:param>
 
-  <xsl:param name="possible-identifiers" select="document($identifier-filename)//identifier" />
   <xsl:variable name="collid" select="//qui:root/@collid" />
 
   <xsl:template match="qui:root">
-    <html lang="en">
+    <html lang="en" data-root="{$docroot}">
       <xsl:apply-templates select="qui:head" />
       <body class="[ font-base-family ]">
         <div class="border-bottom">
@@ -48,7 +47,7 @@
         href="https://fonts.googleapis.com/icon?family=Material+Icons"
       />
       <link href="https://unpkg.com/@umich-lib/css@v1/dist/umich-lib.css"  rel="stylesheet"/>
-      <link href="../../../../../static/styles.css" rel="stylesheet" />
+      <link href="{$docroot}styles/styles.css" rel="stylesheet" />
 
       <script type="module" src="https://unpkg.com/@umich-lib/components@v1/dist/umich-lib/umich-lib.esm.js"></script>
       <script nomodule="" src="https://unpkg.com/@umich-lib/components@v1/dist/umich-lib/umich-lib.js"></script>
@@ -406,22 +405,8 @@
         <xsl:value-of select="@marker" />
       </xsl:if>
     </xsl:variable>
-    <xsl:message>BUILD HREF : <xsl:value-of select="$identifier" /> : <xsl:value-of select="@marker" /></xsl:message>    
     <xsl:attribute name="href">
-      <xsl:choose>
-        <xsl:when test="$use-local-identifiers = 'true' and normalize-space($identifier)">
-          <xsl:text>../</xsl:text>
-          <xsl:value-of select="$identifier" />
-          <xsl:text>/</xsl:text>
-        </xsl:when>
-        <xsl:otherwise><xsl:value-of select="@href" /></xsl:otherwise>
-      </xsl:choose>
-    </xsl:attribute>
-    <xsl:attribute name="data-available">
-      <xsl:choose>
-        <xsl:when test="$possible-identifiers[. = $identifier]">true</xsl:when>
-        <xsl:otherwise>false</xsl:otherwise>
-      </xsl:choose>
+      <xsl:value-of select="@href" />
     </xsl:attribute>
   </xsl:template>
 
@@ -572,7 +557,7 @@
 
   <!-- UTILITY -->
   <xsl:template match="node()" mode="copy-guts">
-    <xsl:message>AHOY COPY GUTS: <xsl:value-of select="local-name()" /></xsl:message>
+    <!-- <xsl:message>AHOY COPY GUTS: <xsl:value-of select="local-name()" /></xsl:message> -->
     <xsl:apply-templates select="*|text()" mode="copy" />
   </xsl:template>
 
@@ -592,7 +577,7 @@
   </xsl:template>
 
   <xsl:template match="node()[namespace-uri() = 'http://www.w3.org/1999/xhtml']" mode="copy" priority="101">
-    <xsl:message>COPY XHTML <xsl:value-of select="local-name()" /></xsl:message>
+    <!-- <xsl:message>COPY XHTML <xsl:value-of select="local-name()" /></xsl:message> -->
     <xsl:element name="{local-name()}" namespace="http://www.w3.org/1999/xhtml" data-copy="xhtml">
       <xsl:apply-templates select="*|@*|text()" mode="copy" />
     </xsl:element>
@@ -622,7 +607,7 @@
   </xsl:template>
 
   <xsl:template match="@*|*|text()" mode="copy">
-    <xsl:message>COPY <xsl:value-of select="local-name()" /> :: <xsl:value-of select="namespace-uri()" /></xsl:message>
+    <!-- <xsl:message>COPY <xsl:value-of select="local-name()" /> :: <xsl:value-of select="namespace-uri()" /></xsl:message> -->
     <xsl:copy>
       <xsl:apply-templates select="@*|*|text()" mode="copy" />
     </xsl:copy>

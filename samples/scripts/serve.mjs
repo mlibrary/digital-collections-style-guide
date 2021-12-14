@@ -37,8 +37,8 @@ const xsltBase = `<?xml version="1.0" encoding="UTF-8" ?>
 
 const moduleURL = new URL(import.meta.url);
 const rootPath = path.resolve(path.dirname(moduleURL.pathname) + "/../../");
-const configPath = `${rootPath}/samples/xml/i/image/uplift/`;
-const imagePath = `${rootPath}/samples/xsl/i/image/uplift/`;
+const configPath = `${rootPath}/templates/image/`;
+const imagePath = `${rootPath}/templates/image/`;
 const scriptName = path.basename(moduleURL.pathname);
 
 const argv = yargs(hideBin(process.argv)).argv;
@@ -245,16 +245,13 @@ async function processDLXS(req, res) {
       res.sendFile(quiOutputFilename);
       return;
     }
-
-    const identifierFilename =
-      "/Users/roger/Projects/quombat/uplift-proxy/__identifiers.xml";
     
     // const output =
     //   await $`xsltproc --stringparam use-local-identifiers false --stringparam identifier-filename ${identifierFilename} ${qbatCompiledFilename} ${quiOutputFilename}`;
 
     // weird bug: "output = await..." results in strange encoding issues
     // writing to a file and re-reading it do not
-    await $`xsltproc --stringparam use-local-identifiers false --stringparam identifier-filename ${identifierFilename} ${qbatCompiledFilename} ${quiOutputFilename}`.pipe(
+    await $`xsltproc ${qbatCompiledFilename} ${quiOutputFilename}`.pipe(
       fs.createWriteStream(qbatOutputFilename)
     )
 
@@ -313,8 +310,8 @@ function listen(options) {
     res.end(favicon);
   });
 
-  app.get("/xsl/i/image/debug.qui.xsl", function (req, res) {
-    res.sendFile(path.join(rootPath, "samples/xsl/i/image/debug.qui.xsl"));
+  app.get("/templates/debug.qui.xsl", function (req, res) {
+    res.sendFile(path.join(rootPath, "templates/debug.qui.xsl"));
   });
 
   app.get('/', function(req, res) {
@@ -330,6 +327,11 @@ function listen(options) {
   app.get('/samples/', function(req, res) {
     res.sendFile(path.join(rootPath, "samples/index.proxy.html"));
   });
+
+  app.get('/digital-collections-style-guide/*', function(req, res) {
+    let pathInfo = req.path.replace('/digital-collections-style-guide/', '/');
+    res.sendFile(path.join(rootPath, pathInfo));
+  })
 
   app.use(staticServer);
 

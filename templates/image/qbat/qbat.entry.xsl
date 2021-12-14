@@ -10,10 +10,10 @@
     <!-- <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/tocbot/4.11.1/tocbot.css" /> -->
     <script src="https://cdnjs.cloudflare.com/ajax/libs/tocbot/4.11.1/tocbot.js"></script>
 
-    <link rel="stylesheet" href="/samples/styles/entry.css" />
-    <script src="/samples/js/base.js"></script>
-    <script src="/samples/js/sr-messaging.js"></script>
-    <script src="/samples/js/entry.js"></script>
+    <link rel="stylesheet" href="{$docroot}styles/image/entry.css" />
+    <script src="{$docroot}js/sr-messaging.js"></script>
+    <script src="{$docroot}js/image/base.js"></script>
+    <script src="{$docroot}js/image/entry.js"></script>
   </xsl:template>
 
   <xsl:template name="build-extra-styles">

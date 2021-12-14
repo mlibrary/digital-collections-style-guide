@@ -5,10 +5,10 @@
 
   <xsl:template name="build-extra-styles">
     <xsl:comment>DUBIOUS EXCEPTIONS</xsl:comment>
-    <link rel="stylesheet" href="/samples/styles/advanced_search.css" />
-    <script src="/samples/js/base.js"></script>
+    <link rel="stylesheet" href="{$docroot}styles/advanced_search.css" />
+    <script src="{$docroot}js/image/base.js"></script>
     <script src="https://unpkg.com/blingblingjs@2.1.1/dist/index.js"></script>
-    <script src="/samples/js/advanced_search.js"></script>
+    <script src="{$docroot}js/image/advanced_search.js"></script>
   </xsl:template>
     
   <xsl:template match="qui:main">

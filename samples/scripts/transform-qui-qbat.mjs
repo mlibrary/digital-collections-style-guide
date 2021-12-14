@@ -31,8 +31,8 @@ const moduleURL = new URL(import.meta.url);
 const rootPath = path.resolve(path.dirname(moduleURL.pathname) + "/../../");
 console.log(rootPath);
 
-const configPath = `${rootPath}/samples/xml/i/image/uplift/`;
-const imagePath = `${rootPath}/samples/xsl/i/image/uplift/`;
+const configPath = `${rootPath}/templates/image/`;
+const imagePath = `${rootPath}/templates/image/`;
 
 await $`date`;
 
@@ -77,10 +77,10 @@ for(let i = 0; i < dataFilenames.length; i++) {
         const possibles = fg.sync(
           path.join(xslPath, fallbackFilename.textContent)
         );
-        console.log("??", path.join(xslPath, fallbackFilename.textContent), possibles);
+        // console.log("??", path.join(xslPath, fallbackFilename.textContent), possibles);
         possibles.forEach((filename) => {
           const importEl = xsltDoc.createElement("xsl:import");
-          console.log(filename);
+          // console.log(filename);
           importEl.setAttribute("href", filename);
           xsltDoc.documentElement.appendChild(importEl);
         });
@@ -119,18 +119,17 @@ for(let i = 0; i < dataFilenames.length; i++) {
       });
     }
 
-    let identifierFilename = path.dirname(dataFilename) + "/__identifiers.xml";
-    console.log("<=", identifierFilename);
-    if ( ! fs.existsSync(identifierFilename) ) {
-      identifierFilename = path.join(rootPath, 'samples', 'qui', 'noop.xml');
-    }
+    // let identifierFilename = path.dirname(dataFilename) + "/__identifiers.xml";
+    // console.log("<=", identifierFilename);
+    // if ( ! fs.existsSync(identifierFilename) ) {
+    //   identifierFilename = path.join(rootPath, 'samples', 'qui', 'noop.xml');
+    // }
 
-    await $`xsltproc --stringparam identifier-filename ${identifierFilename} ${compiledFilename} ${dataFilename}`
+    // --stringparam identifier-filename ${identifierFilename} 
+    await $`xsltproc --stringparam docroot / ${compiledFilename} ${dataFilename}`
       .pipe(fs.createWriteStream(outputFilename));
   }
 
 };
-
-let qbatFilenames = fg.sync(path.join(rootPath, 'samples', 'qbat', '*', '*', '*.xml'))
 
 console.log('-30-');

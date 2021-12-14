@@ -22,10 +22,10 @@ const xsltBase = `<?xml version="1.0" encoding="UTF-8" ?>
 
 const moduleURL = new URL(import.meta.url);
 const rootPath = path.resolve(path.dirname(moduleURL.pathname) + "/../../");
-console.log(rootPath);
+// console.log(rootPath);
 
-const configPath = `${rootPath}/samples/xml/i/image/uplift/`;
-const imagePath = `${rootPath}/samples/xsl/i/image/uplift/`;
+const configPath = `${rootPath}/templates/image/`;
+const imagePath = `${rootPath}/templates/image/`;
 
 await $`date`;
 
@@ -33,7 +33,7 @@ let dataFilePath = `${rootPath}/samples/data/`;
 if ( argv.collid ) {
   dataFilePath += `${argv.collid.substr(0, 1)}/${argv.collid}/`;
 }
-console.log("=>", dataFilePath);
+// console.log("=>", dataFilePath);
 
 // clear out the target path
 let targetFilePath = `${rootPath}/samples/qui/`;
@@ -67,13 +67,13 @@ for(let i = 0; i < dataFilenames.length; i++) {
     const xsltDoc = new DOMParser().parseFromString(xsltBase, "text/xml");
     fallbackFilenames.forEach((fallbackFilename) => {
       [ imagePath, collidPath ].forEach((xslPath) => {
-        console.log("==>", fallbackFilename.textContent)
+        // console.log("==>", fallbackFilename.textContent)
         const possibles = fg.sync(
           path.join(xslPath, fallbackFilename.textContent)
         );
         possibles.forEach((filename) => {
           const importEl = xsltDoc.createElement("xsl:import");
-          console.log(filename);
+          // console.log(filename);
           importEl.setAttribute("href", filename);
           xsltDoc.documentElement.appendChild(importEl);
         })
@@ -125,15 +125,15 @@ for(let i = 0; i < quiFilenames.length; i++) {
   // const xmlDoc = new DOMParser().parseFromString(xmlData, "text/xml");
 }
 
-console.log(identifierMap);
-Object.keys(identifierMap).forEach((key) => {
-  let identifiers = identifierMap[key];
-  let xmlData = `<root>${identifiers.map((v) => `<identifier>${v}</identifier>`).join("\n")}</root>`;
-  fs.writeFileSync(
-    `${key}/__identifiers.xml`,
-    xmlData
-  );
-})
+// console.log(identifierMap);
+// Object.keys(identifierMap).forEach((key) => {
+//   let identifiers = identifierMap[key];
+//   let xmlData = `<root>${identifiers.map((v) => `<identifier>${v}</identifier>`).join("\n")}</root>`;
+//   fs.writeFileSync(
+//     `${key}/__identifiers.xml`,
+//     xmlData
+//   );
+// })
 
 
 
