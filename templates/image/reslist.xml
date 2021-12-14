@@ -6,8 +6,7 @@
  <!-- XSL fallback files -->
   <XslFallbackFileList pipeline="qui">
     <Filename>qui/qui.base.xsl</Filename>
-    <Filename>../str.split.function.xsl</Filename>
-    <!-- <Filename>qui/social-links.xsl</Filename> -->
+    <Filename>../vendor/str.split.function.xsl</Filename>
     <Filename>qui/components/*.xsl</Filename>
     <Filename>qui/qui.reslist.xsl</Filename>
   </XslFallbackFileList>

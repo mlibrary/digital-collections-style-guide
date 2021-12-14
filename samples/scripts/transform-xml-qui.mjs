@@ -59,7 +59,7 @@ for(let i = 0; i < dataFilenames.length; i++) {
   
   const viewFilename = path.join(configPath, `${view}.xml`);
   if ( fs.existsSync(viewFilename) ) {
-    const compiledFilename = `/tmp/${view}.xsl`;
+    const compiledFilename = `/tmp/${view}.qui.xsl`;
     const viewXmlData = fs.readFileSync(viewFilename, "utf8");
     const viewDoc = new DOMParser().parseFromString(viewXmlData, "text/xml");
     const fallbackFilenames = xpath.select("//XslFallbackFileList[@pipeline='qui']/Filename", viewDoc);
@@ -113,17 +113,17 @@ for(let i = 0; i < dataFilenames.length; i++) {
 
 };
 
-let quiFilenames = fg.sync(path.join(rootPath, 'samples', 'qui', '*', '*', '*.xml'))
-let identifierMap = {};
-for(let i = 0; i < quiFilenames.length; i++) {
-  let quiFilename = quiFilenames[i];
-  let key = path.dirname(quiFilename);
-  let identifier = path.basename(quiFilename, '.xml');
-  if ( identifierMap[key] === undefined ) { identifierMap[key] = []; }
-  identifierMap[key].push(identifier);
-  // const xmlData = fs.readFileSync(dataFilename, "utf8");
-  // const xmlDoc = new DOMParser().parseFromString(xmlData, "text/xml");
-}
+// let quiFilenames = fg.sync(path.join(rootPath, 'samples', 'qui', '*', '*', '*.xml'))
+// let identifierMap = {};
+// for(let i = 0; i < quiFilenames.length; i++) {
+//   let quiFilename = quiFilenames[i];
+//   let key = path.dirname(quiFilename);
+//   let identifier = path.basename(quiFilename, '.xml');
+//   if ( identifierMap[key] === undefined ) { identifierMap[key] = []; }
+//   identifierMap[key].push(identifier);
+//   // const xmlData = fs.readFileSync(dataFilename, "utf8");
+//   // const xmlDoc = new DOMParser().parseFromString(xmlData, "text/xml");
+// }
 
 // console.log(identifierMap);
 // Object.keys(identifierMap).forEach((key) => {
