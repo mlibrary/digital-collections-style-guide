@@ -19,7 +19,6 @@
     "develop": "npx @11ty/eleventy --serve",
     "start": "npm run develop",
     "build-xml": "./samples/scripts/transform-xml-qui.mjs && ./samples/scripts/transform-qui-qbat.mjs && ./samples/scripts/build-indexes.mjs",
-    "watch-xml": "find xml xsl qui -type f | entr -p ./scripts/transform-branch.sh /_",
     "proxy": "./samples/scripts/serve.mjs"
   },
   "repository": {
