@@ -126,7 +126,7 @@ for(let i = 0; i < dataFilenames.length; i++) {
     // }
 
     // --stringparam identifier-filename ${identifierFilename} 
-    await $`xsltproc ${compiledFilename} ${dataFilename}`
+    await $`xsltproc --stringparam docroot / ${compiledFilename} ${dataFilename}`
       .pipe(fs.createWriteStream(outputFilename));
   }
 
