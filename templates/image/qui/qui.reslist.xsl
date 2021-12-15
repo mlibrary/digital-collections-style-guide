@@ -212,7 +212,7 @@
       <qui:label>Has digital media?</qui:label>
       <qui:values>
         <qui:value>
-          <xsl:if test="Focus = 'true'">
+          <xsl:if test="//Param[@name='med'] = 1">
             <xsl:attribute name="selected">true</xsl:attribute>
           </xsl:if>
           <xsl:text>1</xsl:text>
