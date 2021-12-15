@@ -19,4 +19,12 @@
     <Filename>qbat/qbat.listallfacets.xsl</Filename>
   </XslFallbackFileList>
 
+  <DlxsGlobals>
+    <?CHUNK filename="dlxsclassglobals.xml"?>
+  </DlxsGlobals>
+
+  <Facets>
+    <?RESULTS_FACETS_XML mode="focus"?>
+  </Facets>
+
 </Top>

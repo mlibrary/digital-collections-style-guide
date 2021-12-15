@@ -17,4 +17,23 @@
     <Filename>qbat/qbat.reslist.xsl</Filename>
   </XslFallbackFileList>
 
+  <!-- Custom OPTIONAL XML for top-level file reslist.xml<2> -->
+  <CustomXml>
+    <?CHUNK filename="reslistextra.xml" optional="1"?>
+  </CustomXml>
+
+  <ExtraIECSS test="lt IE 10">
+    <?FBFILE_XML file="css/ie.css"?>
+  </ExtraIECSS>
+
+  <?CHUNK filename="results_chunk.xml"?>
+  <?CHUNK filename="reslist.assets.chnk"?>
+
+  <SearchForm>
+    <?SEARCHFORM_XML ?>
+  </SearchForm>
+  <Facets>
+    <?RESULTS_FACETS_XML ?>
+  </Facets>
+  
 </Top>

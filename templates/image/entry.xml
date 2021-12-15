@@ -3,7 +3,7 @@
 <?CHUNK filename="entitiesdoctype.chnk" optional="1"?>
 <Top xmlns:dlxs="http://www.umdl.umich.edu/dlxs">
 
- <!-- XSL fallback files -->
+  <!-- XSL fallback files -->
   <XslFallbackFileList pipeline="qui">
     <Filename>qui/qui.base.xsl</Filename>
     <!-- <Filename>qui/social-links.xsl</Filename> -->
@@ -15,5 +15,105 @@
     <Filename>qbat/qbat.base.xsl</Filename>
     <Filename>qbat/qbat.entry.xsl</Filename>
   </XslFallbackFileList>
+
+  <CustomXml>
+    <?CHUNK filename="entryextra.xml" optional="1"?>
+  </CustomXml>
+
+  <DlxsGlobals>
+    <?CHUNK filename="dlxsclassglobals.xml"?>
+  </DlxsGlobals>
+
+  <CollName>
+    <?COLLNAME_XML ?>
+  </CollName>
+  <EntryId>
+    <?ENTRYID_XML ?>
+  </EntryId>
+  <RestrictStatus>
+    <?RESTRICTSTATUS_XML ?>
+  </RestrictStatus>
+
+  <?ACCESS_RESTRICTIONS_XML ?>
+
+  <?ENTRYWINDOWNAME_XML ?>
+  <?ITEMURL_XML ?>
+  <Home>
+    <?HOME_XML ?>
+  </Home>
+  <Help>
+    <?HELP_XML ?>
+  </Help>
+  <!-- <JavaScriptUrl><?JAVASCRIPTURL_XML?></JavaScriptUrl> -->
+  <JavaScriptUrl>//www.google.com/recaptcha/api.js</JavaScriptUrl>
+  <!-- <JavaScriptUrl>/i/image/js/feedback.js</JavaScriptUrl> -->
+  <DivView>
+    <?DIVBUTTONS_XML ?>
+  </DivView>
+  <Next>
+    <?NEXTENTRY_XML ?>
+  </Next>
+  <Prev>
+    <?PREVENTRY_XML ?>
+  </Prev>
+  <Self>
+    <?SELFENTRY_XML ?>
+  </Self>
+  <TotalResults>
+    <?TOTALRESULTS_XML ?>
+  </TotalResults>
+  <ContactLink>
+    <?CONTACT_XML type="link"?>
+  </ContactLink>
+  <ContactText>
+    <?CONTACT_XML type="text"?>
+  </ContactText>
+  <LoginLink>
+    <?LOGINLINK_XML ?>
+  </LoginLink>
+  <SearchLink>
+    <?SEARCHLINK_XML ?>
+  </SearchLink>
+  <BackLink>
+    <?BACKLINK_XML ?>
+  </BackLink>
+  <Banner>
+    <?BANNER_XML ?>
+  </Banner>
+  <BookBagForm action="add">
+    <?BBACTIONFORM_XML action="add"?>
+  </BookBagForm>
+  <?THUMBURL_XML ?>
+  <OpenPortfolio>
+    <?OPENPORTFOLIO_XML ?>
+  </OpenPortfolio>
+  <MediaInfo>
+    <?MEDIAINFO_XML ?>
+  </MediaInfo>
+  <ImageSizeTool>
+    <?IMAGESIZETOOL_XML ?>
+  </ImageSizeTool>
+  <RevertSizeTool>
+    <?REVERTSIZETOOL_XML ?>
+  </RevertSizeTool>
+  <MediaEquivsTool>
+    <?MEDIAEQUIVSTOOL_XML ?>
+  </MediaEquivsTool>
+  <?RECORDFILT_XML name="entry"?>
+  <?RECORDFILT_XML name="special" fields="dlxs_ma|dc_ti|dc_su|dc_de|dlxs_catalog|dlxs_hathitrust|dlxs_findaid"?>
+  <MediaDownloadLink>
+    <?MEDIADOWNLOADLINK_XML ?>
+  </MediaDownloadLink>
+  <?MIRADOR_CONFIG_XML ?>
+
+  <inserttextentryinfo>
+    <?CHUNK filename="entryinfo.txt"?>
+  </inserttextentryinfo>
+  <?RELATEDVIEWSMENU_XML ?>
+  <RelatedViews>
+    <?RELATEDVIEWS_XML ?>
+  </RelatedViews>
+
+  <?CHUNK filename="entry.chnk" optional="0"?>
 
 </Top>
