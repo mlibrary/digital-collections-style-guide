@@ -875,7 +875,7 @@ button {
  *
  */
 
-.record {
+dl.record {
   max-width: 65vw;
   display: block;
 }
