@@ -877,6 +877,7 @@ button {
 
 .record {
   max-width: 65vw;
+  display: block;
 }
 
 @media screen and (max-width: 600px) {
