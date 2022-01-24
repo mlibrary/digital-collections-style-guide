@@ -1,3 +1,8 @@
+div.border-bottom + main.viewport-container {
+  /* because the nav has padding */
+  margin-top: 0; 
+}
+
 a[aria-current="page"] {
   color: black;
   text-decoration: none;;
