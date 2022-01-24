@@ -5,6 +5,7 @@
   <xsl:template name="build-extra-styles">
     <xsl:comment>DUBIOUS EXCEPTIONS</xsl:comment>
     <style>
+
       .hero--banner {
         width: 100%;
         height: 400px;
@@ -14,6 +15,12 @@
         background-color: #666;
         background-image: var(--background-src);
         position: relative;
+      }
+
+      @media screen and (max-height: 800px) {
+        .hero--banner {
+          height: 200px;
+        }
       }
 
       .hero--banner .collection-title {
