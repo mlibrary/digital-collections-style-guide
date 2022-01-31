@@ -4,11 +4,15 @@
 
   <xsl:template name="build-extra-scripts">
 
-    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@shoelace-style/shoelace@2.0.0-beta.43/dist/themes/base.css" />
-    <script type="module" src="https://cdn.jsdelivr.net/npm/@shoelace-style/shoelace@2.0.0-beta.43/dist/shoelace.js"></script>
+    <!-- <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@shoelace-style/shoelace@2.0.0-beta.43/dist/themes/base.css" />
+    <script type="module" src="https://cdn.jsdelivr.net/npm/@shoelace-style/shoelace@2.0.0-beta.43/dist/shoelace.js"></script> -->
+
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@shoelace-style/shoelace@2.0.0-beta.64/dist/themes/light.css" />
+    <script type="module" src="https://cdn.jsdelivr.net/npm/@shoelace-style/shoelace@2.0.0-beta.64/dist/shoelace.js"></script>
 
     <!-- <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/tocbot/4.11.1/tocbot.css" /> -->
     <script src="https://cdnjs.cloudflare.com/ajax/libs/tocbot/4.11.1/tocbot.js"></script>
+    <script src="https://unpkg.com/container-query-polyfill/cqfill.iife.min.js"></script>
 
     <link rel="stylesheet" href="{$docroot}styles/image/entry.css" />
     <script src="{$docroot}js/sr-messaging.js"></script>
@@ -23,13 +27,19 @@
     </style>
   </xsl:template>
 
+  <xsl:template name="build-extra-main-class">
+    <xsl:text>[ mt-0 ]</xsl:text>
+  </xsl:template>
+
   <xsl:template match="qui:main">
 
     <xsl:call-template name="build-navigation" />
 
+    <xsl:call-template name="build-page-heading" />
+
     <xsl:call-template name="build-asset-viewer" />
 
-    <div class="[ flex flex-flow-rw ]">
+    <div class="[ flex flex-flow-rw ][ aside--wrap ]">
 
       <!-- <div class="[ aside ]"><div class="toc js-toc"></div></div> -->
       <div class="[ aside ]">
@@ -40,9 +50,6 @@
       </div>
 
       <div class="[ main-panel ]">
-
-        <xsl:call-template name="build-page-heading" />
-
 
         <xsl:call-template name="build-main-stacked"></xsl:call-template>
       
@@ -103,7 +110,7 @@
   </xsl:template>
 
   <xsl:template name="build-page-heading">
-    <h1 class="collection-heading">
+    <h1 class="collection-heading--small">
       <xsl:value-of select="//qui:header[@role='main']" />
     </h1>
   </xsl:template>
@@ -235,7 +242,7 @@
   </xsl:template>
 
   <xsl:template match="qui:block[@slot='actions']">
-    <div class="[ actions ]">
+    <div class="[ actions ][ actions--toolbar-wrap ]">
       <h2 class="[ subtle-heading ][ text-black ]">Actions</h2>
       <div class="[ toolbar ]">
         <xsl:call-template name="build-download-action" />
@@ -324,7 +331,7 @@
   </xsl:template>
 
   <xsl:template match="qui:block[@slot='record']">
-    <section>
+    <section class="[ records ]">
       <h2 class="[ subtle-heading ][ text-black ]" id="details">About this Item</h2>
       <xsl:apply-templates select="qui:section" />
     </section>
@@ -339,7 +346,7 @@
 
   <xsl:template name="build-panel-related-links">
     <xsl:variable name="block" select="//qui:block[@slot='special']" />
-    <section>
+    <section class="[ records ]">
       <h2 class="[ subtle-heading ][ text-black ]" id="related-links">Related Links</h2>
       <xsl:if test="$block/qui:field">
         <dl class="record">

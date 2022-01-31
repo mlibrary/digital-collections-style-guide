@@ -23,7 +23,11 @@
           <xsl:apply-templates select="//qui:m-website-header" />
         </div>
 
-        <main class="viewport-container">
+        <main>
+          <xsl:attribute name="class">
+            <xsl:text>[ viewport-container ]</xsl:text>
+            <xsl:call-template name="build-extra-main-class" />
+          </xsl:attribute>
           <xsl:apply-templates select="//qui:main" />
         </main>
 
@@ -31,6 +35,8 @@
       </body>
     </html>
   </xsl:template>
+
+  <xsl:template name="build-extra-main-class" />
 
   <xsl:template name="build-extra-scripts" />
   <xsl:template name="build-extra-styles" />
@@ -84,7 +90,8 @@
   </xsl:template>
 
   <xsl:template name="build-breadcrumbs">
-    <div class="[ breadcrumb ]">
+    <xsl:param name="classes" />
+    <div class="[ breadcrumb ][ {$classes} ]">
       <nav aria-label="Breadcrumb">
         <ol>
           <xsl:for-each select="qui:nav[@role='breadcrumb']/qui:link">
@@ -127,7 +134,7 @@
   <xsl:template name="build-breadcrumbs-extra-nav"></xsl:template>
 
   <xsl:template name="build-footer">
-    <footer class="[ footer ]">
+    <footer class="[ footer ][ mt-2 ]">
       <div class="viewport-container">
         <div class="[ footer__content ]">
           <section>

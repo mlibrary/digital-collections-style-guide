@@ -688,6 +688,10 @@ a[class*="next"]::after {
   margin-bottom: 3em;
 }
 
+.mt-0 {
+  margin-top: 0;
+}
+
 .mt-2 {
   margin-top: 2em;
 }
@@ -875,9 +879,23 @@ button {
  *
  */
 
+/* section.records {
+  container-type: inline-size;
+  container-name: section--records-wrap;
+}
+
+@container section--records-wrap ( max-width: 600px ) {
+  dl.record {
+    max-width: none;
+    width: 100%;
+  }
+} */
+
 dl.record {
-  max-width: 65vw;
+  /* max-width: 65vw; */
+  max-width: 65ch;
   display: block;
+  width: 100%;
 }
 
 @media screen and (max-width: 600px) {

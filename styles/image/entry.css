@@ -1,7 +1,3 @@
-div.border-bottom + main.viewport-container {
-  /* because the nav has padding */
-  margin-top: 0; 
-}
 
 a[aria-current="page"] {
   color: black;
@@ -25,6 +21,10 @@ a[aria-current="page"] {
   display: flex;
   align-items: center;
   gap: 0.5rem;
+}
+
+.toolbar button {
+  white-space: nowrap;
 }
 
 .button.small {
@@ -61,12 +61,21 @@ sl-button::part(base) {
   color: #fff;
 }
 
+/* :not(.button--disabled) */
+sl-button::part(base):focus, sl-button::part(base):hover {
+  box-shadow: 0 0 0 2px #fff,0 0 0 3px var(--color-neutral-400);
+}
+
 sl-button::part(label) {
   padding-right: 0 0.25rem;
 }
 
 sl-button::part(caret) {
   margin-top: 4px;
+}
+
+sl-menu-item::part(base):hover {
+  background: var(--color-teal-500);
 }
 
 ul.outline li ul {
@@ -79,6 +88,30 @@ ul.outline {
 .actions {
   margin-bottom: 1rem;
 }
+
+/* .actions--toolbar-wrap {
+  container-type: inline-size;
+  container-name: actions--toolbar-wrap;
+} */
+
+sl-button[slot="trigger"] {
+  width: 100%;
+  background: orange;
+}
+
+/* @container actions--toolbar-wrap (max-width: 660px) {
+  .toolbar {
+    flex-direction: column; 
+  }
+
+  sl-dropdown {
+    width: 90%;
+  }
+
+  button {
+    width: 90%;
+  }
+} */
 
 .text-black {
   color: #000;
@@ -154,9 +187,45 @@ a.toc-link {
   width: 13rem;
 }
 
+.aside--wrap {
+  container-type: inline-size;
+  container-name: aside--wrap;
+}
+
+@container aside--wrap (max-width: 920px ) {
+
+  .aside {
+    order: 0;
+    width: 80%;
+  }
+
+  .main-panel {
+    width: 90%;
+  }
+
+  nav.page-index {
+    position: static;
+  }
+}
+
+@container aside--wrap (max-width: 670px ) {
+  .toolbar {
+    flex-direction: column; 
+  }
+
+  sl-dropdown {
+    width: 90%;
+  }
+
+  button {
+    width: 90%;
+  }
+}
+
 nav.page-index {
   position: sticky;
   top: 1rem;
+  margin-left: 1rem;
 }
   
 
@@ -175,4 +244,10 @@ a.is-active-link {
 
 .container {
   position: relative;
+}
+
+dl.record input[type="text"] {
+  padding: 0.5rem;
+  width: 100%;
+  max-width: 65ch;
 }
