@@ -4,58 +4,9 @@
 
   <xsl:template name="build-extra-styles">
     <xsl:comment>DUBIOUS EXCEPTIONS</xsl:comment>
+    <link rel="stylesheet" href="{$docroot}styles/image/index.css" />
+
     <style>
-
-      .hero--banner {
-        width: 100%;
-        height: 400px;
-        background-position: 0px center;
-        background-repeat: no-repeat;
-        background-size: cover;
-        background-color: #666;
-        background-image: var(--background-src);
-        position: relative;
-      }
-
-      @media screen and (max-height: 800px) {
-        .hero--banner {
-          height: 200px;
-        }
-      }
-
-      .hero--banner .collection-title {
-        position: absolute;
-        height: 100%;
-        width: 100%;
-        top: 0;
-        bottom: 0;
-        left: 0;
-        right: 0;
-        padding: 2rem;
-        display: flex;
-        flex-direction: row;
-        align-items: flex-end;
-        background: linear-gradient(0deg, #00000088 30%, #ffffff44 100%);
-      }
-  
-      .hero--banner .collection-heading {
-        display: block;
-        color: white;
-        text-shadow: 0 2px 3px rgba(0, 0, 0, 0.3);
-      }
-
-      ul.nav li {
-        margin-bottom: 0.25rem;
-      }
-
-      button[data-action="expand-filter-list"] {
-        display: none;
-      }
-
-      section.filters__selected {
-        display: none;
-      }
-      
     </style>
   </xsl:template>
 
@@ -69,13 +20,13 @@
       </xsl:otherwise>
     </xsl:choose>
 
-    <div class="message-callout">
+    <!-- <div class="message-callout">
       <p>
         This collection index re-design is still under construction.
       </p>
-    </div>
+    </div> -->
 
-    <div class="[ flex flex-flow-rw ]">
+    <div class="[ flex flex-flow-row flex-gap-1 ]">
       <div class="side-panel">
         <xsl:apply-templates select="//qui:panel[@slot='browse']" />
         <xsl:apply-templates select="//qui:panel[@slot='custom']" />
@@ -84,6 +35,9 @@
         <xsl:apply-templates select="//qui:panel[@slot='access-restrictions']" />
       </div>
       <div class="main-panel">
+        <xsl:apply-templates select="//qui:panel[@slot='browse']">
+          <xsl:with-param name="classes">[ viewport-narrow ]</xsl:with-param>
+        </xsl:apply-templates>
         <xsl:call-template name="build-search-form" />
         <div class="text-block">
           <xsl:apply-templates select="//qui:block[@slot='information']" />
@@ -142,11 +96,12 @@
   </xsl:template>
 
   <xsl:template match="qui:panel[@slot='browse']" priority="100">
-    <div class="[ link-box ][ flex flex-center ]">
-      <svg xmlns="http://www.w3.org/2000/svg" height="16px" viewBox="0 0 24 24" width="16px" fill="#106684" aria-hidden="true" focusable="false" role="presentation">
+    <xsl:param name="classes" />
+    <div class="[ link-box ][ flex flex-center ]{$classes}">
+      <!-- <svg xmlns="http://www.w3.org/2000/svg" height="16px" viewBox="0 0 24 24" width="16px" fill="#106684" aria-hidden="true" focusable="false" role="presentation">
         <path d="M0 0h24v24H0V0z" fill="none" />
         <path d="M19 19H5V5h7V3H5c-1.11 0-2 .9-2 2v14c0 1.1.89 2 2 2h14c1.1 0 2-.9 2-2v-7h-2v7zM14 3v2h3.59l-9.83 9.83 1.41 1.41L19 6.41V10h2V3h-7z" />
-      </svg>
+      </svg> -->
       <xsl:variable name="link" select="qui:link[@rel='browse-items']" />
       <a href="{$link/@href}">
         <xsl:text>Browse </xsl:text>

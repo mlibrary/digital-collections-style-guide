@@ -142,7 +142,12 @@ select {
   max-width: 100%;
   background-color: #fff;
   border: solid 1px var(--color-neutral-200);
+  text-overflow: ellipsis;
   /*-webkit-appearance: unset; */
+}
+
+.select:focus, select:focus {
+  box-shadow: 0 0 0 2px var(--color-indigo-400);
 }
 
 .dropdown--neutral {
@@ -475,6 +480,10 @@ fieldset.fieldset--grid button[data-action="reset-clause"] {
   padding-right: 2em;
 }
 
+.filter-item--list a {
+  word-break: break-word;
+}
+
 /* 
 *CARD 
 * A card can have an image, a heading, and a description. The entire card is a link.
@@ -667,12 +676,20 @@ a[class*="next"]::after {
   flex-flow: row wrap;
 }
 
+.flex-flow-row {
+  flex-flow: row;
+}
+
 .flex-space-between {
   justify-content: space-between;
 }
 
 .flex-align-center {
   align-items: center;
+}
+
+.flex-gap-1 {
+  gap: 1rem;
 }
 
 .center-grid {
