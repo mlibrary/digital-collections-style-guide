@@ -69,7 +69,9 @@ window.addEventListener('DOMContentLoaded', (event) => {
       el.setAttribute('id', `h${idx}`);
     }
   })
-  
+
+  const pageIndexDropdown = document.querySelector('#action-page-index');
+
   tocbot.init({
     // Where to render the table of contents.
     tocSelector: '.js-toc',
@@ -80,5 +82,44 @@ window.addEventListener('DOMContentLoaded', (event) => {
     // For headings inside relative or absolute positioned containers within content.
     hasInnerContainers: true,
     collapseDepth: 6,
+    scrollSmooth: false,
+    // scrollEndCallback: function(event) {
+    //   pageIndexDropdown.value = document.querySelector('.is-active-link').getAttribute('href');
+    // },
   });
+
+  // seriously, do all my projects end up like this?
+  let originalUpdateToc = tocbot._buildHtml.updateToc;
+  tocbot._buildHtml.updateToc = function(headingsArray) {
+    originalUpdateToc(headingsArray);
+    let activeLink = document.querySelector('.is-active-link').getAttribute("href");
+    if ( pageIndexDropdown.value != activeLink ) {
+      pageIndexDropdown.value = activeLink;
+    }
+  }
+
+  setTimeout(() => {
+    document.querySelectorAll('.toc-list-item').forEach((li) => {
+      const link = li.querySelector('.toc-link');
+      let menuItem = document.createElement('option');
+      menuItem.textContent = link.textContent;
+      pageIndexDropdown.appendChild(menuItem);
+      menuItem.value = link.getAttribute('href');
+      if ( link.classList.contains('is-active-link') ) {
+        pageIndexDropdown.value = menuItem.value;
+      }
+    })
+  }, 0);
+
+  pageIndexDropdown.addEventListener('change', (event) => {
+    const target = document.querySelector(pageIndexDropdown.value);
+    pageIndexDropdown.blur();
+    target.focus();
+    console.log("-- page index dropdown", target, event);
+    setTimeout(() => {
+      target.scrollIntoView();
+    }, 0);
+  })
+
 })
+

@@ -1,3 +1,10 @@
+#viewer-heading {
+  scroll-margin-top: 2.5rem;
+}
+
+#action-page-index {
+  display: none;;
+}
 
 a[aria-current="page"] {
   color: black;
@@ -196,15 +203,43 @@ a.toc-link {
 
   .aside {
     order: 0;
-    width: 80%;
+    width: 100%;
+    background: #fff;
+    position: sticky;
+    top: 0rem;
+    z-index: 1000;
+    filter: drop-shadow(10px 10px 4px #ddd);
+    margin: 0 auto;
   }
 
   .main-panel {
     width: 90%;
   }
 
+  .main-panel h2, .main-panel h3 {
+    scroll-margin-top: 4rem;
+  }
+
   nav.page-index {
     position: static;
+    display: flex;
+    gap: 0.5rem;
+    width: 80%;
+    align-items: center;
+    margin: 0.5rem auto;
+  }
+
+  nav.page-index h2 {
+    padding: 0;
+  }
+
+  nav.page-index .toc {
+    display: none;
+  }
+
+  nav.page-index #action-page-index {
+    display: block;
+    flex-grow: 1;
   }
 }
 

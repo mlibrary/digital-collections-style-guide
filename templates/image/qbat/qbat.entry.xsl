@@ -41,11 +41,12 @@
 
     <div class="[ flex flex-flow-rw ][ aside--wrap ]">
 
-      <!-- <div class="[ aside ]"><div class="toc js-toc"></div></div> -->
       <div class="[ aside ]">
-        <nav class="[ page-index ]" aria-labelledby="page-index-label">
-          <div id="page-index-label" class="[ subtle-heading ][ mb-1 ]">Page Index</div>
+        <nav class="[ page-index ]" xx-aria-labelledby="page-index-label">
+          <h2 id="page-index-label" class="[ subtle-heading ][ text-black js-toc-ignore ]">Page Index</h2>
+          <!-- <div id="page-index-label" class="[ subtle-heading ][ mb-1 ]">Page Index</div> -->
           <div class="toc js-toc"></div>
+          <select id="action-page-index"></select>
         </nav>
       </div>
 
@@ -56,45 +57,6 @@
       </div>
     </div>
 
-
-
-    <!-- <div class="[ flex flex-flow-rw ]">
-
-      <div class="[ side-panel ]">
-        <div class="toc js-toc"></div>
-      </div>
-
-      <div class="[ container ]">
-        <xsl:choose>
-          <xsl:when test="$prototype = 'sidebar'">
-            <xsl:call-template name="build-main-sidebar" />
-          </xsl:when>
-          <xsl:when test="$prototype = 'stacked'">
-            <xsl:call-template name="build-main-stacked"></xsl:call-template>
-          </xsl:when>
-          <xsl:otherwise>
-            <pre>TBD</pre>
-          </xsl:otherwise>
-        </xsl:choose>
-      </div>
-
-    </div> -->
-
-
-
-  </xsl:template>
-
-  <xsl:template name="build-main-sidebar">
-    <div class="sidebar">
-      <section>
-        <xsl:apply-templates select="qui:block" />
-      </section>
-      <div>
-        <section class="action-panel">
-          <xsl:apply-templates select="qui:panel" />
-        </section>
-      </div>
-    </div>
   </xsl:template>
 
   <xsl:template name="build-main-stacked">
@@ -212,12 +174,13 @@
 
   <xsl:template name="build-asset-viewer">
     <xsl:variable name="title">
-      <xsl:text>Image viewer for &quot;</xsl:text>
+      <xsl:text>Viewer for &quot;</xsl:text>
       <xsl:value-of select="//qui:header[@role='main']" />
       <xsl:text>&quot;</xsl:text>
     </xsl:variable>
     <xsl:variable name="viewer" select="//qui:viewer" />
     <xsl:if test="$viewer">
+      <h2 id="viewer-heading" class="visually-hidden">Viewer</h2>
       <iframe 
         id="viewer" 
         class="[ viewer ]" 
