@@ -273,6 +273,29 @@ label {
   padding: 1rem;
   background-color: #f9f9f9;
   border: solid 1px var(--color-neutral-100);
+
+  container-type: inline-size;
+  container-name: field-groups;
+
+}
+
+@container field-groups ( max-width: 720px ) {
+  .field-groups {
+    padding: 2rem 0;
+  }
+}
+
+@container field-groups ( max-width: 625px ) {
+  
+  fieldset.fieldset--grid {
+    grid-template-columns: 1fr 6rem;
+    grid-template-areas:
+      "rgn ."
+      "select ."
+      "q clear";
+
+  }
+
 }
 
 .advanced-grid--columns {
@@ -287,6 +310,7 @@ label {
   gap: 1rem;
   justify-content: center;
   padding: 2rem 4.5vw;
+
 }
 
 .fieldset--clause--select label[data-active="false"] {

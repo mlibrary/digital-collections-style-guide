@@ -12,7 +12,6 @@
 
     <!-- <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/tocbot/4.11.1/tocbot.css" /> -->
     <script src="https://cdnjs.cloudflare.com/ajax/libs/tocbot/4.11.1/tocbot.js"></script>
-    <script src="https://unpkg.com/container-query-polyfill/cqfill.iife.min.js"></script>
 
     <link rel="stylesheet" href="{$docroot}styles/image/entry.css" />
     <script src="{$docroot}js/sr-messaging.js"></script>
