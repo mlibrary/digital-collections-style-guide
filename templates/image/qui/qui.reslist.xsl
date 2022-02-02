@@ -185,6 +185,7 @@
     <qui:filters-panel>
       <xsl:apply-templates select="//SearchForm/MediaOnly" />
       <xsl:for-each select="Field">
+        <xsl:variable name="m" select="position()" />
         <qui:filter key="{@abbrev}" data-total="{@total}">
           <qui:label>
             <xsl:value-of select="Label" />
@@ -194,6 +195,10 @@
               <qui:value count="{@count}">
                 <xsl:if test="@selected">
                   <xsl:attribute name="selected"><xsl:value-of select="@selected" /></xsl:attribute>
+                  <xsl:variable name="n" select="count(preceding-sibling::Value[@selected='true']) + 1" />
+                  <xsl:attribute name="num">
+                    <xsl:value-of select="concat($m, $n)" />
+                  </xsl:attribute>
                 </xsl:if>
                 <xsl:if test="10 &lt; position()">
                   <xsl:attribute name="data-expandable-filter">true</xsl:attribute>

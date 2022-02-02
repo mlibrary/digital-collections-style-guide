@@ -29,14 +29,21 @@ window.addEventListener('DOMContentLoaded', (event) => {
         else if (!input.checked) {
           // remove the facet from the form
 
-          let fInput = $form.querySelector(
-            `input[data-role="facet"][value="${input.name}"]`
-          );
+          // let fInput = $form.querySelector(
+          //   `input[data-role="facet"][name="${input.name}"]`
+          // );
+          // fInput.parentElement.removeChild(fInput);
+          // fInput = $form.querySelector(
+          //   `input[data-role="facet-value"][data-facet-field="${input.name}"][value="${input.value}"]`
+          // );
+          // fInput.parentElement.removeChild(fInput);
+
+          let num = input.dataset.num;
+          let fInput = $form.querySelector(`input[name="fn${num}"]`);
           fInput.parentElement.removeChild(fInput);
-          fInput = $form.querySelector(
-            `input[data-role="facet-value"][data-facet-field="${input.name}"][value="${input.value}"]`
-          );
+          fInput = $form.querySelector(`input[name="fq${num}"]`);
           fInput.parentElement.removeChild(fInput);
+
         } else {
           // add the facet to the collection form
           if ( input.name == 'med' ) {
@@ -47,6 +54,7 @@ window.addEventListener('DOMContentLoaded', (event) => {
             fInput.setAttribute("value", input.value);
             $form.appendChild(fInput);
           } else {
+            console.log("-- click", numFacets, input.name, input.value);
             let fInput = document.createElement("input");
             fInput.setAttribute("type", "hidden");
             fInput.setAttribute("name", `fn${numFacets + 1}`);

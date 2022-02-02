@@ -8,7 +8,7 @@
   
   <xsl:template match="Top">
     <xsl:processing-instruction name="xml-stylesheet">
-      <xsl:value-of select="concat('type=&quot;text/xsl&quot; href=&quot;', $docroot, '&quot;/templates/debug.qui.xsl&quot;')" />
+      <xsl:value-of select="concat('type=&quot;text/xsl&quot; href=&quot;', $docroot, '/templates/debug.qui.xsl&quot;')" />
     </xsl:processing-instruction>
     <qui:root view="{//Param[@name='view']|//Param[@name='page']}" collid="{$collid}">
       <!-- fills html/head-->

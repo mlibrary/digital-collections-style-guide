@@ -98,10 +98,16 @@
   <xsl:template match="Facets" mode="search-form">
     <xsl:apply-templates select="//SearchForm/MediaOnly" mode="search-form" />
     <xsl:for-each select="Field">
+      <xsl:variable name="m" select="position()" />
       <xsl:variable name="abbrev" select="@abbrev" />
       <xsl:for-each select="Values/Value[@selected='true']">
-        <xsl:variable name="fn" select="//Param[starts-with(@name, 'fn')][. = $abbrev]/@name" />
-        <xsl:variable name="fq" select="//Param[starts-with(@name, 'fq')][. = .]/@name" />
+        <xsl:variable name="n" select="position()" />
+        <!-- <xsl:variable name="fn" select="//Param[starts-with(@name, 'fn')][. = $abbrev]/@name" />
+        <xsl:variable name="fq" select="//Param[starts-with(@name, 'fq')][. = .]/@name" /> -->
+        <xsl:variable name="fn"><xsl:value-of select="concat('fn', $m, $n)" /></xsl:variable>
+        <xsl:variable name="fq">
+          <xsl:value-of select="concat('fq', $m, $n)" />
+        </xsl:variable>
         <qui:hidden-input type="hidden" name="{$fn}" value="{$abbrev}" data-role="facet" />
         <qui:hidden-input type="hidden" name="{$fq}" value="{.}" data-role="facet-value" data-facet-field="{$abbrev}" />
       </xsl:for-each>

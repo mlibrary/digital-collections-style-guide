@@ -13,7 +13,7 @@
             <xsl:variable name="filter" select="ancestor-or-self::qui:filter" />
             <xsl:variable name="key" select="$filter/@key" />
             <div>
-              <input type="checkbox" id="x-{$key}-{position()}" name="{$key}" value="{.}" data-action="facet" checked="checked" />
+              <input type="checkbox" id="x-{$key}-{position()}" name="{$key}" value="{.}" data-action="facet" data-num="{@num}" autocomplete="off" checked="checked" />
               <label for="x-{$key}-{position()}">
                 <xsl:choose>
                   <xsl:when test="$filter/@arity = '1'">
@@ -84,7 +84,7 @@
     <xsl:if test="true() or not($value/@selected = 'true')">
       <div class="panel" style="padding: 1rem 0">
         <div class="[ flex ][ gap-0_5 ]">
-          <input type="checkbox" id="{ $key }-1" name="{$key}" value="{ normalize-space($value) }" data-action="facet" style="margin-top: 4px">
+          <input type="checkbox" id="{ $key }-1" name="{$key}" value="{ normalize-space($value) }" data-action="facet" autocomplete="off" style="margin-top: 4px">
             <xsl:if test="$value/@selected = 'true'">
               <xsl:attribute name="checked">checked</xsl:attribute>
             </xsl:if>
@@ -145,7 +145,7 @@
     <xsl:param name="key" />
     <div class="[ flex filter-item ][ gap-0_5 ]">
       <xsl:apply-templates select="@data-expandable-filter" mode="copy" />
-      <input type="checkbox" id="{ $key }-{ position() }" name="{$key}" value="{ . }" data-action="facet" style="margin-top: 4px">
+      <input type="checkbox" id="{ $key }-{ position() }" name="{$key}" value="{ . }" data-action="facet" autocomplete="off" style="margin-top: 4px">
         <xsl:if test="@selected = 'true'">
           <xsl:attribute name="checked">checked</xsl:attribute>
         </xsl:if>

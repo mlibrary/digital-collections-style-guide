@@ -236,9 +236,15 @@ async function processDLXS(req, res) {
       new XMLSerializer().serializeToString(qbatXsltDoc)
     );
 
-    await $`xsltproc ${quiCompiledFilename} ${inputFilename}`.pipe(
-      fs.createWriteStream(quiOutputFilename)
-    );
+    if ( debug == 'qui' ) {
+      await $`xsltproc --stringparam docroot "" ${quiCompiledFilename} ${inputFilename}`.pipe(
+        fs.createWriteStream(quiOutputFilename)
+      );
+    } else {
+      await $`xsltproc ${quiCompiledFilename} ${inputFilename}`.pipe(
+        fs.createWriteStream(quiOutputFilename)
+      );
+    }
 
     if ( debug == "qui" ) {
       res.setHeader('Content-Type', 'application/xml');
