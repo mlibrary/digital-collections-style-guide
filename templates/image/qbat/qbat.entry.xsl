@@ -4,8 +4,11 @@
 
   <xsl:template name="build-extra-scripts">
 
-    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@shoelace-style/shoelace@2.0.0-beta.43/dist/themes/base.css" />
-    <script type="module" src="https://cdn.jsdelivr.net/npm/@shoelace-style/shoelace@2.0.0-beta.43/dist/shoelace.js"></script>
+    <!-- <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@shoelace-style/shoelace@2.0.0-beta.43/dist/themes/base.css" />
+    <script type="module" src="https://cdn.jsdelivr.net/npm/@shoelace-style/shoelace@2.0.0-beta.43/dist/shoelace.js"></script> -->
+
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@shoelace-style/shoelace@2.0.0-beta.64/dist/themes/light.css" />
+    <script type="module" src="https://cdn.jsdelivr.net/npm/@shoelace-style/shoelace@2.0.0-beta.64/dist/shoelace.js"></script>
 
     <!-- <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/tocbot/4.11.1/tocbot.css" /> -->
     <script src="https://cdnjs.cloudflare.com/ajax/libs/tocbot/4.11.1/tocbot.js"></script>
@@ -23,71 +26,36 @@
     </style>
   </xsl:template>
 
+  <xsl:template name="build-extra-main-class">
+    <xsl:text>[ mt-0 ]</xsl:text>
+  </xsl:template>
+
   <xsl:template match="qui:main">
 
     <xsl:call-template name="build-navigation" />
 
+    <xsl:call-template name="build-page-heading" />
+
     <xsl:call-template name="build-asset-viewer" />
 
-    <div class="[ flex flex-flow-rw ]">
+    <div class="[ flex flex-flow-rw ][ aside--wrap ]">
 
-      <!-- <div class="[ aside ]"><div class="toc js-toc"></div></div> -->
       <div class="[ aside ]">
-        <nav class="[ page-index ]" aria-labelledby="page-index-label">
-          <div id="page-index-label" class="[ subtle-heading ][ mb-1 ]">Page Index</div>
+        <nav class="[ page-index ]" xx-aria-labelledby="page-index-label">
+          <h2 id="page-index-label" class="[ subtle-heading ][ text-black js-toc-ignore ]">Page Index</h2>
+          <!-- <div id="page-index-label" class="[ subtle-heading ][ mb-1 ]">Page Index</div> -->
           <div class="toc js-toc"></div>
+          <select id="action-page-index"></select>
         </nav>
       </div>
 
       <div class="[ main-panel ]">
-
-        <xsl:call-template name="build-page-heading" />
-
 
         <xsl:call-template name="build-main-stacked"></xsl:call-template>
       
       </div>
     </div>
 
-
-
-    <!-- <div class="[ flex flex-flow-rw ]">
-
-      <div class="[ side-panel ]">
-        <div class="toc js-toc"></div>
-      </div>
-
-      <div class="[ container ]">
-        <xsl:choose>
-          <xsl:when test="$prototype = 'sidebar'">
-            <xsl:call-template name="build-main-sidebar" />
-          </xsl:when>
-          <xsl:when test="$prototype = 'stacked'">
-            <xsl:call-template name="build-main-stacked"></xsl:call-template>
-          </xsl:when>
-          <xsl:otherwise>
-            <pre>TBD</pre>
-          </xsl:otherwise>
-        </xsl:choose>
-      </div>
-
-    </div> -->
-
-
-
-  </xsl:template>
-
-  <xsl:template name="build-main-sidebar">
-    <div class="sidebar">
-      <section>
-        <xsl:apply-templates select="qui:block" />
-      </section>
-      <div>
-        <section class="action-panel">
-          <xsl:apply-templates select="qui:panel" />
-        </section>
-      </div>
-    </div>
   </xsl:template>
 
   <xsl:template name="build-main-stacked">
@@ -103,7 +71,7 @@
   </xsl:template>
 
   <xsl:template name="build-page-heading">
-    <h1 class="collection-heading">
+    <h1 class="collection-heading--small">
       <xsl:value-of select="//qui:header[@role='main']" />
     </h1>
   </xsl:template>
@@ -205,12 +173,13 @@
 
   <xsl:template name="build-asset-viewer">
     <xsl:variable name="title">
-      <xsl:text>Image viewer for &quot;</xsl:text>
+      <xsl:text>Viewer for &quot;</xsl:text>
       <xsl:value-of select="//qui:header[@role='main']" />
       <xsl:text>&quot;</xsl:text>
     </xsl:variable>
     <xsl:variable name="viewer" select="//qui:viewer" />
     <xsl:if test="$viewer">
+      <h2 id="viewer-heading" class="visually-hidden">Viewer</h2>
       <iframe 
         id="viewer" 
         class="[ viewer ]" 
@@ -235,7 +204,7 @@
   </xsl:template>
 
   <xsl:template match="qui:block[@slot='actions']">
-    <div class="[ actions ]">
+    <div class="[ actions ][ actions--toolbar-wrap ]">
       <h2 class="[ subtle-heading ][ text-black ]">Actions</h2>
       <div class="[ toolbar ]">
         <xsl:call-template name="build-download-action" />
@@ -324,7 +293,7 @@
   </xsl:template>
 
   <xsl:template match="qui:block[@slot='record']">
-    <section>
+    <section class="[ records ]">
       <h2 class="[ subtle-heading ][ text-black ]" id="details">About this Item</h2>
       <xsl:apply-templates select="qui:section" />
     </section>
@@ -339,7 +308,7 @@
 
   <xsl:template name="build-panel-related-links">
     <xsl:variable name="block" select="//qui:block[@slot='special']" />
-    <section>
+    <section class="[ records ]">
       <h2 class="[ subtle-heading ][ text-black ]" id="related-links">Related Links</h2>
       <xsl:if test="$block/qui:field">
         <dl class="record">

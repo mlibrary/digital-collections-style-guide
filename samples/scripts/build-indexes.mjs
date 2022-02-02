@@ -129,6 +129,7 @@ Object.keys(manifest).forEach((collid) => {
       let [ title, basename ] = tuple;
       let collid_path = `${collid[0]}/${collid}`;
       let view = basename.match(/^S_/) ? 'entry' : 'results';
+      if ( basename.match(/_INDEX$/) ) { view = 'index'; }
       section += `<tr>`;
       section += `<td class="title">${title}</td>`;
       section += `<td>${view}</td>`;

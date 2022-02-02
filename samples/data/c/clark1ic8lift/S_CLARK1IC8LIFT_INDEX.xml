@@ -1,0 +1,1429 @@
+
+<Top xmlns:dlxs="http://www.umdl.umich.edu/dlxs" identifier="S_CLARK1IC8LIFT_INDEX">
+
+  <!-- XSL fallback files -->
+  <XslFallbackFileList>
+    <Filename>xsl2htmlutils.xsl</Filename>
+    <Filename>htmlhead.xsl</Filename>
+    <Filename>displayheader.xsl</Filename>
+    <Filename>browseoptions.xsl</Filename>
+    <Filename>search.xsl</Filename>
+    <Filename>fieldvalues.xsl</Filename>
+    <Filename>index.xsl</Filename>
+  </XslFallbackFileList>  
+
+
+  <!-- Custom OPTIONAL XML for top-level file index.xml<2> -->
+  <CustomXml/>
+
+  <DlxsGlobals><CurrentCgi><Param name="cc">clark1ic8lift</Param>
+<Param name="page">index</Param>
+<Param name="c">clark1ic8lift</Param>
+<Param name="debug">xml</Param>
+</CurrentCgi>
+<CurrentUrl>https://roger.quod.lib.umich.edu/cgi/i/image/image-idx?cc=clark1ic8lift;page=index;c=clark1ic8lift;debug=xml</CurrentUrl>
+<UserAgent>node-fetch/1.0 (+https://github.com/bitinn/node-fetch)</UserAgent>
+<ReferrerHref/>
+<Sid>ecd3925087fff76e6ba934b70c66c9be</Sid>
+
+<EffectiveLanguage>en</EffectiveLanguage>
+<LanguageOptions><OptionalLanguage>en</OptionalLanguage></LanguageOptions>
+<LangMap>
+  
+  <!-- bbopenutils.xsl which serves bbopen.xsl, bbname.xsl -->
+<!-- "items1" used by bbresults_nav.xsl SliceSummary -->
+<!-- "portfolio" used by bbresults_nav.xsl CollectionName -->
+<lookup id="bbopenutils">
+<item key="portfolio">portfolio</item>
+<item key="porthelp"><b>Help</b> For Using Portfolios</item>
+<item key="bbopenpageheader">Portfolios</item>
+<item key="bbnamepageheader">Add to a New
+or Existing Portfolio</item>
+<item key="yourport">your portfolios</item>
+<item key="pubport">all public portfolios</item>
+<item key="bbagname">portfolio name</item>
+<item key="action">action</item>
+<item key="items1">items</item>
+<item key="shared">public</item>
+<item key="username">owner(s)</item>
+<item key="open3">open</item>
+<item key="add3">add</item>
+<item key="savename">save name</item>
+<item key="saveowners">save owners</item>
+<item key="bbdel3">delete...</item>
+<item key="bbexportprep3">download...</item>
+<item key="viewable">viewable by public</item>
+<item key="instructionbbname">To create a <b>new</b> portfolio with the selected images, enter a name in the <b>text box</b> and click <b>Submit</b>.<br/>To <b>add</b> the selected images to an <b>existing</b> portfolio, find the portfolio name in the table below and click <b>add</b>.</item>
+<item key="0">no</item>
+<item key="1">yes</item>
+<item key="switch0">make public</item>
+<item key="switch1">make private</item>
+<item key="none present">None present.</item>
+</lookup>
+
+<!-- bbdel.xsl bbdelconf.xsl-->
+<lookup id="bbdel">
+<item key="successdel">Portfolio successfully deleted.</item>
+<item key="instructionbbdel">You may open a portfolio or close this window.</item>
+<item key="yes">Yes</item>
+<item key="no">No</item>
+<item key="instructionbbdelconf">Permanently delete portfolio?</item>
+<item key="name">Name of portfolio</item>
+</lookup>
+
+<!-- bbexport.xsl -->
+<lookup id="bbexport">
+<item key="exportfull-image">media</item>
+
+<item key="exportdescription">record</item>
+<item key="accessdenied">The media was not included due
+to a lack of access privileges. Sorry. You may view the record.</item>
+
+<item key="index">index</item>
+<item key="of"> of </item>
+<item key="viewonline">view online</item>
+<item key="exportPageTitle">export </item>
+<item key="guidelinesbuttontext">guidelines</item>
+<item key="guidelinesTitle">Guidelines For Use</item>
+<item key="portlastmod">portfolio last modified: </item>
+<item key="forhelp">For help or to request permission to publish: </item>
+
+</lookup>
+
+<!-- bbexportprep.xsl -->
+<lookup id="bbexportprep">
+<item key="returntoportfolios">return to the list of portfolios</item>
+<item key="morehelp">More Help</item>
+<item key="imagesize">image size</item>
+<item key="imagesizesmall">small</item>
+<item key="imagesizemedium">medium (presentation)</item>
+<item key="imagesizelarge">large</item>
+<item key="imagesizelargest">largest</item>
+<item key="download">download</item>
+<item key="whendone1P1">When done, all of the
+images (and/or other media) will reside on your computer for convenient
+use. HTML pages are also included for viewing records and easy
+navigation of images.</item>
+<item key="long">The download may take several minutes to complete.</item>
+<item key="portfoliodownloadsteps">Portfolio Download</item>
+<item key="bbexportpreppageheader">Portfolio Download</item>
+<item key="portfoliosdisabled">Portfolio functionality is
+turned off.</item>
+<item key="exportdisabled">Portfolio export functionality is turned
+off.</item>
+<item key="toomanyitemstodownload">Only the first $count items will be downloaded.</item>
+</lookup>
+
+<!-- displayheader_results.xsl -->
+<!-- <lookup id="displayheader_results_LEGACY">
+<item key="thumbnail">images with captions</item>
+<item key="thumbfull">images with record</item>
+<item key="reslist">captions only</item>
+<item key="bbthumbnail">images with captions</item>
+<item key="bbthumbfull">images with record</item>
+<item key="bbreslist">captions only</item>
+<item key="prep">prep tables in use</item>
+</lookup>
+ -->
+<lookup id="displayheader_results">
+<item key="thumbnail">grid</item>
+<item key="thumbfull">grid + details</item>
+<item key="reslist">list</item>
+<item key="icon-thumbnail">icon-th</item>
+<item key="icon-thumbfull">icon-picture</item>
+<item key="icon-reslist">icon-th-list</item>
+<item key="bbthumbnail">grid</item>
+<item key="bbthumbfull">grid + details</item>
+<item key="bbreslist">list</item>
+<item key="icon-bbthumbnail">icon-th</item>
+<item key="icon-bbthumbfull">icon-picture</item>
+<item key="icon-bbreslist">icon-th-list</item>
+<item key="prep">prep tables in use</item>
+</lookup>
+
+<!-- groups.xsl -->
+<lookup id="groups">
+<item key="groups">collection groups list</item>
+<item key="selectgroup">Select a collection group</item>
+<item key="instructiongroupspick">Collections are arranged into groups for searching. Click on a group name to search the collections in that group. A collection may include some content outside of the group's definition, and a collection could appear in more than one group. Click the title of a specific collection to search it alone. Sometimes it is advantageous to search a single collection. For example, search field and sorting options are often specific to the collection, allowing for a more refined search. </item>
+<item key="more">more</item>
+<item key="instructiongroupspick2">Some collections have a very narrow focus. Other collections are broader, and may encompass many sub-collections.  Occassionally an image appears in multiple collections, though generally there is a single authoritative source for each image.</item>
+<item key="collections">collections</item>
+<item key="media">images/media</item>
+<item key="records2">records</item>
+
+</lookup>
+
+
+<!-- searchutils.xsl -->
+<lookup id="searchutils">
+<item key="see">see search tips</item>
+
+<item key="instructioncollspick1">Select one or more databases to search. Click the database name to search it alone, often in more detail.</item>
+<item key="instructionsearch1">To search, enter a word or phrase in a box below and select a field from the menu.</item>
+<item key="instructionsearch2">It is not necessary to use more than one box.</item>
+<item key="instructionsearch3">You can search all the databases in this group, or use the <b>list of databases</b> to restrict your search to a subset.</item>
+<item key="newgroup">select a new group to search</item>
+<item key="in">in</item>
+<item key="rangehelp">e.g., 1954 to 1961, -825 to -800.</item>
+<item key="only">Has digital media</item>
+<item key="PleaseSelectColl">Please select at least one database to search.</item>
+</lookup>
+
+<!-- browse.xsl, index.xsl -->
+<lookup id="browse">
+<item key="browse">Browse</item>
+</lookup>
+
+<!-- collinfo.xsl -->
+<!-- index.xsl -->
+<lookup id="index">
+<item key="home">Home</item>
+<item key="collinfo">database info</item>
+<item key="closewindow">CLOSE WINDOW</item>
+<item key="thiscoll">this collection</item>
+<!-- <item key="browseallimages">Browse all media</item>
+<item key="browseallrecords">Browse all records</item>
+<item key="browsesampleimages">Browse sample media</item>
+<item key="browsesamplerecords">Browse sample records</item>
+<item key="browsemediaaddsmods">Browse newest additions and updates</item>
+<item key="browsemostviewed">Browse most viewed</item> -->
+<item key="browseallimages">All media</item>
+<item key="browseallrecords">All records</item>
+<item key="browsesampleimages">Sample media</item>
+<item key="browsesamplerecords">Sample records</item>
+<item key="browsemediaaddsmods">Newest additions and updates</item>
+<item key="browsemostviewed">Most viewed</item>
+<item key="access">Collection Access</item>
+<item key="access1">Access to this collection is restricted to authorized users.</item>
+<item key="access2">This collection is open to the public. You may have
+additional privileges if you log in.</item>
+<item key="access3">You are an authorized user of this collection.</item>
+<item key="access4">Access restricted.</item>
+<item key="sendcomments">Send comments on this collection to</item>
+<item key="brief">Collection Size</item>
+<item key="searchmulti">Search Multiple Collections</item>
+<item key="selectagroup1">Select a group</item>
+<item key="selectagroup2">of collections to search simultaneously. Search this collection together with others.</item>
+<item key="numberof">Number of Images and Records Online</item>
+<item key="images">Online Images/Media</item>
+<item key="records">Records</item>
+</lookup>
+
+<!-- noresults.xsl -->
+<lookup id="noresults">
+<item key="noresults">No Results</item>
+<item key="type_ic_range">ranges from</item>
+<item key="type_ic_exact">is exactly</item>
+<item key="type_default">contains the term(s)</item>
+<item key="type_allmedia"> media was added or updated within </item>
+<item key="days"> day(s).</item>
+<item key="to">to</item>
+</lookup>
+
+<!-- results.xsl -->
+<lookup id="results">
+<item key="and">and</item>
+<item key="view">view</item>
+<item key="record">record</item>
+<item key="digitalformat">digital format</item>
+<item key="notavail">not available</item>
+<item key="portfolioempty">This portfolio has no items.</item>
+<item key="missing">no longer available</item>
+<item key="restricted">Restricted.</item>
+<item key="trytolocate">try to locate</item>
+<item key="notifymaintainer">notify maintainer</item>
+<item key="nosortvalue">no sort value</item>
+</lookup>
+
+
+<!-- thumbfull.xsl -->
+<lookup id="thumbfull">
+<item key="instructionthumbfullresults">Click on thumbnails to view larger images and full records. <br/>Click "descriptive info" link to view record data to the left.</item>
+<item key="descriptive">&lt;text</item>
+</lookup>
+
+<!-- reslist.xsl -->
+<lookup id="reslist">
+<item key="view4">view full record for <b>item</b></item>
+</lookup>
+
+<!-- displayheader.xsl -->
+<lookup id="displayheader">
+<item key="newsearch">advanced search</item>
+<item key="quicksearch">Quick Search</item>
+</lookup>
+
+<!-- results_nav.xsl -->
+<lookup id="results_nav">
+<item key="to1">to</item>
+<item key="of">of</item>
+<item key="hits">hits</item>
+
+<item key="login0">You are not logged in.</item>
+<item key="login1">You are logged in.</item>
+
+<item key="prev">previous</item>
+<item key="next">next</item>
+
+<item key="portfour">Portfolio storage is temporary.</item>
+<item key="portone">Portfolio storage is long term.</item>
+<item key="portthree">You do not own this portfolio.</item>
+<item key="porttwo">You do not own this portfolio.</item>
+
+</lookup>
+
+<!-- bbcustomorder.xsl -->
+<lookup id="bbcustomorder">
+<item key="instructionbbcustomorder">To change the position of any image record in this portfilio, select it's title in the list, and click an appropriate directional arrow to move it up or down.  When you are done, click the save custom order button to return to the previous display.</item>
+<item key="nocaption">no caption or caption too long.</item>
+</lookup>
+
+<!-- entry.xsl -->
+<lookup id="entry">
+<item key="bookmarkhelp">bookmark:</item>
+<item key="downloadmedia">download largest size</item>
+<item key="downloadmediacurrentsize">download current size</item>
+<item key="newwindow">new window</item>
+<item key="viewmediaonly">view media only</item>
+<item key="otherviewsnothumb">view</item>
+
+<item key="other">other views</item>
+<item key="other views">other views</item>
+<item key="other-views">other views</item>
+
+<item key="full image">full image</item>
+<item key="full-image">full-image</item>
+
+<item key="description">description</item>
+
+<item key="backtoresults">back to results</item>
+<item key="previtem">&lt;&lt; previous item</item>
+<item key="nextitem">next item >></item>
+<item key="addport">add to portfolio</item>
+<item key="removeport">remove from portfolio</item>
+<item key="relatedports">portfolio inclusions</item>
+
+<item key="feedbacklink">Problems/comments about this item?</item>
+<item key="feedbackreply">To request a reply, please provide your email address.</item>
+<item key="feedbackcomments">Comments?</item>
+<item key="feedbackusername">Include your user name?</item>
+<item key="feedback">Feedback</item>
+
+
+</lookup>
+
+<!-- entry_imagetools.xsl -->
+<lookup id="entry_imagetools">
+
+<item key="video.sense">view</item>
+<item key="video">video</item>
+<item key="video.icon">icon-film</item>
+
+<item key="audio.sense">listen to</item>
+<item key="audio">audio</item>
+<item key="audio.icon">icon-volume-down</item>
+
+<item key="svg.sense">view</item>
+<item key="svg">flash movie</item>
+<item key="svg.icon">icon-film</item>
+
+<item key="doc.sense">view</item>
+<item key="doc">related document</item>
+<item key="doc.icon">icon-file</item>
+
+<item key="pdf.sense">view</item>
+<item key="pdf">PDF document</item>
+<item key="pdf.icon">icon-file</item>
+
+<item key="url.sense">view</item>
+<item key="url">linked content in new window</item>
+<item key="url.icon">icon-share</item>
+
+<item key="image.sense">view</item>
+<item key="image">image</item>
+<item key="image.icon">icon-picture</item>
+
+<item key="size">size</item>
+
+<item key="nomedia">Sorry, digital media is not available for this item.</item>
+
+<item key="panzoomhelp">How to interact with this image...</item>
+<item key="tozoomin">zoom in: double-click</item>
+<item key="tozoomout">zoom out: shift-double-click</item>
+<item key="topan">pan: drag</item>
+<item key="zoom">zoom</item>
+<item key="sizes">image sizes</item>
+
+
+</lookup>
+
+
+
+<!-- tips.xsl -->
+
+<lookup id="searchtips">
+<item key="searchtips">search tips</item>
+<item key="instructionsearchtips"><p><b>Matching words:</b> The search
+engine attempts to match any word or phrase exactly as you put it in
+the box.</p><p> e.g.: <i>Picasso and Rembrandt</i> in a box will look
+for</p><p> "Picasso and Rembrandt"</p><p>and produced no
+results.</p><p><b>Punctuation: </b>All punctuation is treated as an
+empty space.</p><p><b>Case</b>: The search engine is not case
+sensitive.</p><p><b>Wildcards:</b> Use wildcard * to expand word
+stems. This is a good way to search for variations on a
+word.</p><p><b>Choose image collections</b>: Limit your search to only
+those collections you choose in the image collections list.</p></item>
+</lookup>
+
+<!-- results.xsl -->
+<lookup id="BbagOptionsMenu">
+<item key="bbom.check">check all</item>
+<item key="bbom.uncheck">uncheck all</item>
+<item key="bbom.bbname">add checked to portfolio...</item>
+<item key="bbom.remove">remove checked from portfolio</item>
+</lookup>
+
+<lookup id="viewinstruct">
+<item key="thumbnail1">Use checkboxes to select images for adding to a
+portfolio, then click the "add to portfolio" button. Click on
+thumbnails to view larger images and full records.</item>
+<item key="thumbnail0">Click on thumbnails to view larger images and full records.</item>
+<item key="thumbfull0">Click on thumbnails to view larger images and full records. Click "descriptive info" link to view record data in this space.</item>
+<item key="thumbfull1">Click on thumbnails to view larger images and full records. <br/>Click "descriptive info" link to view record data in this space.</item>
+<item key="reslist1">Use checkboxes to select records for adding to a portfolio, then click the "add to portfolio" button. Click "view full record" link the full record.</item>
+<item key="reslist0">Click "view full record" link the full record.</item>
+<item key="bbthumbnail1">Click on thumbnails to view larger images and full records.</item>
+<item key="bbthumbnail0">Click on thumbnails to view larger images and full records.</item>
+<item key="bbthumbfull0">Click on thumbnails to view larger images and full records. Click "descriptive info" link to view record data in this space.</item>
+<item key="bbthumbfull1">Click on the thumbnail image to display a
+large image. Click on the "descriptive info" link beneath any thumbnail image to see detailed record information in this space.</item>
+<item key="bbreslist1">Click "view full record" link the full record.</item>
+<item key="bbreslist0">Click "view full record" link the full record</item>
+<item key="bbcustomorder1">To change the position of any image record in this portfilio, select it's title in the list, and click an appropriate directional arrow to move it up or down.  When you are done, click the save custom order button to return to the previous display.</item>
+<item key="bbcustomorder0"/>
+<item key="bbexport1">The portfolio package is ready for download as a ZIP file.</item>
+
+<item key="medianodownload">sorry, media is not available for
+download.</item>
+<item key="bbexport0"/>
+</lookup>
+
+<lookup id="sort">
+<item key="sort">sort</item>
+<item key="sortnot2">too many results to sort</item>
+<item key="customize">customize order...</item>
+</lookup>
+
+<lookup id="misc">
+
+<!-- alt tags for graphics -->
+
+<!-- login/out -->
+<item key="login">login</item>
+<item key="logout">logout</item>
+
+<!-- open portfolio -->
+<item key="portfolios">portfolios</item>
+
+<!-- contact / help -->
+<item key="contact">contact</item>
+<item key="Contact">Contact</item>
+<item key="help">help</item>
+
+<!-- appears in "index", "searchutils"-->
+<item key="search2">Search</item>
+
+<item key="databases">Databases</item>
+<item key="collhome">collection home</item>
+
+<item key="close">close</item>
+
+<item key="multiple">Multiple Collections</item>
+
+
+</lookup>
+
+<lookup id="SearchFormOpsMenu">
+<item key="And">And</item>
+<item key="Or">Or</item>
+<item key="Not">Not</item>
+<item key="and not">And Not</item>
+</lookup>
+
+<lookup id="SearchFormSelMenu">
+<item key="ends">Ends with</item>
+<item key="contains">Contains</item>
+<item key="phrase">Contains the phrase</item>
+<item key="starts">Starts with</item>
+<item key="any">Contains any of these words</item>
+<item key="all">Contains all of these words</item>
+<item key="ic_exact">Exactly matches</item>
+<item key="regex">Matches</item>
+</lookup>
+
+<!--
+<lookup id="SearchFormSelMenu">
+<item key="ends">ends with</item>
+<item key="contains">contains</item>
+<item key="phrase">the phrase</item>
+<item key="starts">starts with</item>
+<item key="any">any of these words</item>
+<item key="all">all of these words</item>
+<item key="ic_exact">exactly matches</item>
+<item key="regex">matches</item>
+</lookup>
+-->
+
+<!-- moaaic-group, searchmaps.xsl -->
+<lookup id="searchmaps">
+<item key="searchmaps">Search for maps</item>
+<item key="instructionsearch1">Enter an exact word or phrase.</item>
+</lookup>
+
+<lookup id="NoResults">
+<item key="sorrynoresults">Sorry, no results were found when searching
+for items where...</item>
+<item key="pleasetry">Please try again.</item>
+<item key="mediaonly">Including an image or other media.</item>
+</lookup>
+
+</LangMap>
+
+<TemplatePath>/l1/dev/roger/web/i/image/index.xml</TemplatePath>
+<TemplateName>index</TemplateName>
+<XcollMode>singlecoll</XcollMode>
+
+<CurrentScriptName>/cgi/i/image/image-idx</CurrentScriptName>
+<ScriptName application="text">/cgi/t/text/text-idx</ScriptName>
+<ScriptName application="pageviewer">/cgi/t/text/pageviewer-idx</ScriptName>
+<ScriptName application="ww">/cgi/t/text/ww2-idx</ScriptName>
+<ScriptName application="findaid">/cgi/f/findaid/findaid-idx</ScriptName>
+<ScriptName application="image">/cgi/i/image/image-idx</ScriptName>
+
+
+
+<BookmarkableUrl/>
+<AuthenticationEnabled>1</AuthenticationEnabled>
+<UserAuthenticated>0</UserAuthenticated>
+<AuthenticatedUsername/>
+<SupportedAuthSystems><System>um</System></SupportedAuthSystems>
+<QuickBrowse/>
+<Feed>
+  <FeedLink type="short"/>
+  <FeedLink type="long"/>
+</Feed>
+<TaggingEnabled>0</TaggingEnabled>
+
+<EncodingType/>
+
+
+<HeadLinks>
+  <!-- <CssLink>//netdna.bootstrapcdn.com/twitter-bootstrap/2.3.2/css/bootstrap-combined.min.css</CssLink> -->
+  <CssLink>/i/image/bootstrap/css/bootstrap.min.css</CssLink>
+  <CssLink>/i/image/css/imageclass.css</CssLink>
+  <CssLink>/c/clark1ic8lift/css/imageclass-specific.css</CssLink>
+
+  <BootstrapLink>//ajax.googleapis.com/ajax/libs/jquery/1.9.1/jquery.min.js</BootstrapLink>
+  <BootstrapLink>/i/image/jquery/jquery-migrate-1.2.1.js</BootstrapLink>
+  <BootstrapLink>//netdna.bootstrapcdn.com/twitter-bootstrap/2.3.2/js/bootstrap.min.js</BootstrapLink>
+  <!-- <BootstrapLink>/i/image/bootstrap/js/bootstrap.js</BootstrapLink> -->
+  <JavaScriptUrl>/i/image/js/jquery.placeholder.js</JavaScriptUrl>
+
+  <ApiUrl>/cgi/i/image/api</ApiUrl>
+  <Timestamp>20180409</Timestamp>
+
+  <AssetDebug>yes</AssetDebug>
+
+
+</HeadLinks>
+</DlxsGlobals>
+
+  <ExtraCSS>/i/image/css/index.css</ExtraCSS>
+
+
+  <CollName><Full>U-M Clark Library Maps+</Full><Brief>U-M Clark Library Maps</Brief></CollName>
+
+  <JavaScriptUrl>/i/image/js/imageclass.js</JavaScriptUrl>
+  <ContactLink>'m'+'a'+'i'+'l'+'t'+'o'+':'+'c'+'l'+'a'+'r'+'k'+'1'+'i'+'c'+'-'+'h'+'e'+'l'+'p'+'@'+'u'+'m'+'i'+'c'+'h'+'.'+'e'+'d'+'u'</ContactLink>
+  <ContactText>E-Mail Help</ContactText>
+  <LoginLink><Url>https://roger.quod.lib.umich.edu/cgi/dlxslogin/go?target=https%3A%2F%2Froger.quod.lib.umich.edu%2Fcgi%2Fi%2Fimage%2Fimage-idx%3Fkey_authret%3D1643811213</Url><Mode>login</Mode></LoginLink>
+
+  <TipsUrl>https://roger.quod.lib.umich.edu/cgi/i/image/image-idx?page=tips;c=clark1ic8lift</TipsUrl>
+  <SortOptionsMenu><HiddenVars><Variable name="cc">clark1ic8lift</Variable>
+<Variable name="page">index</Variable>
+<Variable name="c">clark1ic8lift</Variable>
+<Variable name="debug">xml</Variable>
+</HiddenVars><TotalResults/><SortThresshold>10000</SortThresshold><ThresholdExceeded>false</ThresholdExceeded><Option index="0"><Label>(None)</Label><Value>none</Value><Focus>true</Focus></Option><Option index="1"><Label>relevance</Label><Value>relevance</Value></Option><Option index="2"><Label>Title</Label><Value>title</Value></Option><Option index="3"><Label>Published</Label><Value>marc260</Value></Option><Option index="4"><Label>Scan Date</Label><Value>scan_date</Value></Option><Option index="5"><Label>Record No.</Label><Value>record_no</Value></Option><Name>sort</Name><Default>none</Default></SortOptionsMenu>
+
+  <Home>https://roger.quod.lib.umich.edu/cgi/i/image/image-idx?page=index;c=clark1ic8lift</Home>
+  <Help>https://roger.quod.lib.umich.edu/cgi/i/image/image-idx?page=help;c=clark1ic8lift</Help>
+  <Banner><Text>U-M Clark Library Maps+</Text></Banner>
+  <OpenPortfolio><Url>https://roger.quod.lib.umich.edu/cgi/i/image/image-idx?page=bbopen</Url></OpenPortfolio>
+  <SearchLink>https://roger.quod.lib.umich.edu/cgi/i/image/image-idx?c=clark1ic8lift;debug=xml;page=search</SearchLink>
+  <BrowseImages><Url>https://roger.quod.lib.umich.edu/cgi/i/image/image-idx?sort=relevance;q1=clark1ic8lift;type=boolean;rgn1=ic_all;med=1;view=thumbnail;c=clark1ic8lift</Url><Type>browseallimages</Type></BrowseImages>
+  <BrowseRecords><!-- brwsrec not enabled in colldb -->
+</BrowseRecords>
+  <BrowseMediaAddsMods><Url>https://roger.quod.lib.umich.edu/cgi/i/image/image-idx?sort=m_flm;type=allmedia;view=thumbnail;c=clark1ic8lift</Url><Type>browsemediaaddsmods</Type></BrowseMediaAddsMods>
+  <BrowseMostViewed><Url>https://roger.quod.lib.umich.edu/cgi/i/image/image-idx?sort=mostviewed;type=mostviewed;view=thumbnail;c=clark1ic8lift</Url><Type>browsemostviewed</Type></BrowseMostViewed>
+
+
+  <BrowseOptions><Field abbrev="marc100"><Label>Main Entry - Personal Name</Label><Url>https://roger.quod.lib.umich.edu/cgi/i/image/image-idx?c=clark1ic8lift;cc=clark1ic8lift;page=browse;key=marc100</Url></Field><Field abbrev="marc110"><Label>Main Entry - Corporate Name</Label><Url>https://roger.quod.lib.umich.edu/cgi/i/image/image-idx?c=clark1ic8lift;cc=clark1ic8lift;page=browse;key=marc110</Url></Field><Field abbrev="marc700"><Label>Added Entry - Personal Name</Label><Url>https://roger.quod.lib.umich.edu/cgi/i/image/image-idx?c=clark1ic8lift;cc=clark1ic8lift;page=browse;key=marc700</Url></Field><Field abbrev="marc710"><Label>Added Entry - Corporate Name</Label><Url>https://roger.quod.lib.umich.edu/cgi/i/image/image-idx?c=clark1ic8lift;cc=clark1ic8lift;page=browse;key=marc710</Url></Field><Field abbrev="marc650"><Label>Subject Added Entry - Topical Term</Label><Url>https://roger.quod.lib.umich.edu/cgi/i/image/image-idx?c=clark1ic8lift;cc=clark1ic8lift;page=browse;key=marc650</Url></Field><Field abbrev="marc651"><Label>Subject Added Entry - Geographic Name</Label><Url>https://roger.quod.lib.umich.edu/cgi/i/image/image-idx?c=clark1ic8lift;cc=clark1ic8lift;page=browse;key=marc651</Url></Field></BrowseOptions>
+
+
+  <RestrictStatus>access3</RestrictStatus>
+  <AccessRestrictions>
+    <Status>authorized</Status>
+</AccessRestrictions>
+
+
+  <CollInfoLink>https://roger.quod.lib.umich.edu/cgi/i/image/image-idx?page=collinfo;c=clark1ic8lift</CollInfoLink>
+
+  <SearchForm><NumQs>4</NumQs><Q name="q1"><Value/><Rgn name="rgn1"><Option index="0"><Label>Anywhere in record</Label><Value>ic_all</Value><Focus>true</Focus></Option><Option index="1"><Label>Title</Label><Value>marc245</Value></Option><Option index="2"><Label>Varying Form of Title</Label><Value>marc246</Value></Option><Option index="3"><Label>Item Description</Label><Value>istruct_caption_item_description</Value></Option><Option index="4"><Label>Main Entry - Personal Name</Label><Value>marc100</Value></Option><Option index="5"><Label>Main Entry - Corporate Name</Label><Value>marc110</Value></Option><Option index="6"><Label>Added Entry - Personal Name</Label><Value>marc700</Value></Option><Option index="7"><Label>Added Entry - Corporate Name</Label><Value>marc710</Value></Option><Option index="8"><Label>Published</Label><Value>marc260</Value></Option><Option index="9"><Label>Description</Label><Value>marc300</Value></Option><Option index="10"><Label>Note</Label><Value>marc500</Value></Option><Option index="11"><Label>Subject Added Entry - Topical Term</Label><Value>marc650</Value></Option><Option index="12"><Label>Subject Added Entry - Geographic Name</Label><Value>marc651</Value></Option><Option index="13"><Label>Map Data</Label><Value>marc255</Value></Option><Option index="14"><Label>Coded Cartographic Mathematical Data</Label><Value>marc034</Value></Option><Option index="15"><Label>Local note</Label><Value>marc590</Value></Option><Option index="16"><Label>Scan Date</Label><Value>scan_date</Value></Option><Option index="17"><Label>Rights</Label><Value>dc_ri</Value></Option><Option index="18"><Label>Record No.</Label><Value>record_no</Value></Option><Name>rgn1</Name><Default>ic_all</Default></Rgn><Op name="op2"><Option index="0"><Label>And</Label><Value>And</Value><Focus>true</Focus></Option><Option index="1"><Label>Or</Label><Value>Or</Value></Option><Option index="2"><Label>Not</Label><Value>Not</Value></Option><Name>op2</Name><Default>And</Default></Op><Sel name="select1" abbr="ic_all"><Option index="0"><Label>all</Label><Value>all</Value></Option><Name>select1</Name><Default/></Sel><Sel name="select1" abbr="marc245"><Option index="0"><Label>all</Label><Value>all</Value></Option><Option index="1"><Label>any</Label><Value>any</Value></Option><Option index="2"><Label>phrase</Label><Value>phrase</Value></Option><Option index="3"><Label>ic_exact</Label><Value>ic_exact</Value></Option><Name>select1</Name><Default/></Sel><Sel name="select1" abbr="marc246"><Option index="0"><Label>all</Label><Value>all</Value></Option><Option index="1"><Label>any</Label><Value>any</Value></Option><Option index="2"><Label>phrase</Label><Value>phrase</Value></Option><Option index="3"><Label>ic_exact</Label><Value>ic_exact</Value></Option><Name>select1</Name><Default/></Sel><Sel name="select1" abbr="istruct_caption_item_description"><Option index="0"><Label>all</Label><Value>all</Value></Option><Option index="1"><Label>any</Label><Value>any</Value></Option><Option index="2"><Label>phrase</Label><Value>phrase</Value></Option><Option index="3"><Label>ic_exact</Label><Value>ic_exact</Value></Option><Name>select1</Name><Default/></Sel><Sel name="select1" abbr="marc100"><Option index="0"><Label>all</Label><Value>all</Value></Option><Option index="1"><Label>any</Label><Value>any</Value></Option><Option index="2"><Label>phrase</Label><Value>phrase</Value></Option><Option index="3"><Label>ic_exact</Label><Value>ic_exact</Value></Option><Name>select1</Name><Default/></Sel><Sel name="select1" abbr="marc110"><Option index="0"><Label>all</Label><Value>all</Value></Option><Option index="1"><Label>any</Label><Value>any</Value></Option><Option index="2"><Label>phrase</Label><Value>phrase</Value></Option><Option index="3"><Label>ic_exact</Label><Value>ic_exact</Value></Option><Name>select1</Name><Default/></Sel><Sel name="select1" abbr="marc700"><Option index="0"><Label>all</Label><Value>all</Value></Option><Option index="1"><Label>any</Label><Value>any</Value></Option><Option index="2"><Label>phrase</Label><Value>phrase</Value></Option><Option index="3"><Label>ic_exact</Label><Value>ic_exact</Value></Option><Name>select1</Name><Default/></Sel><Sel name="select1" abbr="marc710"><Option index="0"><Label>all</Label><Value>all</Value></Option><Option index="1"><Label>any</Label><Value>any</Value></Option><Option index="2"><Label>phrase</Label><Value>phrase</Value></Option><Option index="3"><Label>ic_exact</Label><Value>ic_exact</Value></Option><Name>select1</Name><Default/></Sel><Sel name="select1" abbr="marc260"><Option index="0"><Label>all</Label><Value>all</Value></Option><Option index="1"><Label>any</Label><Value>any</Value></Option><Option index="2"><Label>phrase</Label><Value>phrase</Value></Option><Option index="3"><Label>ic_exact</Label><Value>ic_exact</Value></Option><Name>select1</Name><Default/></Sel><Sel name="select1" abbr="marc300"><Option index="0"><Label>all</Label><Value>all</Value></Option><Option index="1"><Label>any</Label><Value>any</Value></Option><Option index="2"><Label>phrase</Label><Value>phrase</Value></Option><Option index="3"><Label>ic_exact</Label><Value>ic_exact</Value></Option><Name>select1</Name><Default/></Sel><Sel name="select1" abbr="marc500"><Option index="0"><Label>all</Label><Value>all</Value></Option><Option index="1"><Label>any</Label><Value>any</Value></Option><Option index="2"><Label>phrase</Label><Value>phrase</Value></Option><Option index="3"><Label>ic_exact</Label><Value>ic_exact</Value></Option><Name>select1</Name><Default/></Sel><Sel name="select1" abbr="marc650"><Option index="0"><Label>all</Label><Value>all</Value></Option><Option index="1"><Label>any</Label><Value>any</Value></Option><Option index="2"><Label>phrase</Label><Value>phrase</Value></Option><Option index="3"><Label>ic_exact</Label><Value>ic_exact</Value></Option><Name>select1</Name><Default/></Sel><Sel name="select1" abbr="marc651"><Option index="0"><Label>all</Label><Value>all</Value></Option><Option index="1"><Label>any</Label><Value>any</Value></Option><Option index="2"><Label>phrase</Label><Value>phrase</Value></Option><Option index="3"><Label>ic_exact</Label><Value>ic_exact</Value></Option><Name>select1</Name><Default/></Sel><Sel name="select1" abbr="marc255"><Option index="0"><Label>all</Label><Value>all</Value></Option><Option index="1"><Label>any</Label><Value>any</Value></Option><Option index="2"><Label>phrase</Label><Value>phrase</Value></Option><Option index="3"><Label>ic_exact</Label><Value>ic_exact</Value></Option><Name>select1</Name><Default/></Sel><Sel name="select1" abbr="marc034"><Option index="0"><Label>all</Label><Value>all</Value></Option><Option index="1"><Label>any</Label><Value>any</Value></Option><Option index="2"><Label>phrase</Label><Value>phrase</Value></Option><Option index="3"><Label>ic_exact</Label><Value>ic_exact</Value></Option><Name>select1</Name><Default/></Sel><Sel name="select1" abbr="marc590"><Option index="0"><Label>all</Label><Value>all</Value></Option><Option index="1"><Label>any</Label><Value>any</Value></Option><Option index="2"><Label>phrase</Label><Value>phrase</Value></Option><Option index="3"><Label>ic_exact</Label><Value>ic_exact</Value></Option><Name>select1</Name><Default/></Sel><Sel name="select1" abbr="scan_date"><Option index="0"><Label>all</Label><Value>all</Value></Option><Option index="1"><Label>any</Label><Value>any</Value></Option><Option index="2"><Label>phrase</Label><Value>phrase</Value></Option><Option index="3"><Label>ic_exact</Label><Value>ic_exact</Value></Option><Name>select1</Name><Default/></Sel><Sel name="select1" abbr="dc_ri"><Option index="0"><Label>all</Label><Value>all</Value></Option><Option index="1"><Label>any</Label><Value>any</Value></Option><Option index="2"><Label>phrase</Label><Value>phrase</Value></Option><Option index="3"><Label>ic_exact</Label><Value>ic_exact</Value></Option><Name>select1</Name><Default/></Sel><Sel name="select1" abbr="record_no"><Option index="0"><Label>all</Label><Value>all</Value></Option><Option index="1"><Label>any</Label><Value>any</Value></Option><Option index="2"><Label>phrase</Label><Value>phrase</Value></Option><Option index="3"><Label>ic_exact</Label><Value>ic_exact</Value></Option><Name>select1</Name><Default/></Sel></Q><Q name="q2"><Value/><Rgn name="rgn2"><Option index="0"><Label>Anywhere in record</Label><Value>ic_all</Value><Focus>true</Focus></Option><Option index="1"><Label>Title</Label><Value>marc245</Value></Option><Option index="2"><Label>Varying Form of Title</Label><Value>marc246</Value></Option><Option index="3"><Label>Item Description</Label><Value>istruct_caption_item_description</Value></Option><Option index="4"><Label>Main Entry - Personal Name</Label><Value>marc100</Value></Option><Option index="5"><Label>Main Entry - Corporate Name</Label><Value>marc110</Value></Option><Option index="6"><Label>Added Entry - Personal Name</Label><Value>marc700</Value></Option><Option index="7"><Label>Added Entry - Corporate Name</Label><Value>marc710</Value></Option><Option index="8"><Label>Published</Label><Value>marc260</Value></Option><Option index="9"><Label>Description</Label><Value>marc300</Value></Option><Option index="10"><Label>Note</Label><Value>marc500</Value></Option><Option index="11"><Label>Subject Added Entry - Topical Term</Label><Value>marc650</Value></Option><Option index="12"><Label>Subject Added Entry - Geographic Name</Label><Value>marc651</Value></Option><Option index="13"><Label>Map Data</Label><Value>marc255</Value></Option><Option index="14"><Label>Coded Cartographic Mathematical Data</Label><Value>marc034</Value></Option><Option index="15"><Label>Local note</Label><Value>marc590</Value></Option><Option index="16"><Label>Scan Date</Label><Value>scan_date</Value></Option><Option index="17"><Label>Rights</Label><Value>dc_ri</Value></Option><Option index="18"><Label>Record No.</Label><Value>record_no</Value></Option><Name>rgn2</Name><Default>ic_all</Default></Rgn><Op name="op3"><Option index="0"><Label>And</Label><Value>And</Value><Focus>true</Focus></Option><Option index="1"><Label>Or</Label><Value>Or</Value></Option><Option index="2"><Label>Not</Label><Value>Not</Value></Option><Name>op3</Name><Default>And</Default></Op><Sel name="select2" abbr="ic_all"><Option index="0"><Label>all</Label><Value>all</Value></Option><Name>select2</Name><Default/></Sel><Sel name="select2" abbr="marc245"><Option index="0"><Label>all</Label><Value>all</Value></Option><Option index="1"><Label>any</Label><Value>any</Value></Option><Option index="2"><Label>phrase</Label><Value>phrase</Value></Option><Option index="3"><Label>ic_exact</Label><Value>ic_exact</Value></Option><Name>select2</Name><Default/></Sel><Sel name="select2" abbr="marc246"><Option index="0"><Label>all</Label><Value>all</Value></Option><Option index="1"><Label>any</Label><Value>any</Value></Option><Option index="2"><Label>phrase</Label><Value>phrase</Value></Option><Option index="3"><Label>ic_exact</Label><Value>ic_exact</Value></Option><Name>select2</Name><Default/></Sel><Sel name="select2" abbr="istruct_caption_item_description"><Option index="0"><Label>all</Label><Value>all</Value></Option><Option index="1"><Label>any</Label><Value>any</Value></Option><Option index="2"><Label>phrase</Label><Value>phrase</Value></Option><Option index="3"><Label>ic_exact</Label><Value>ic_exact</Value></Option><Name>select2</Name><Default/></Sel><Sel name="select2" abbr="marc100"><Option index="0"><Label>all</Label><Value>all</Value></Option><Option index="1"><Label>any</Label><Value>any</Value></Option><Option index="2"><Label>phrase</Label><Value>phrase</Value></Option><Option index="3"><Label>ic_exact</Label><Value>ic_exact</Value></Option><Name>select2</Name><Default/></Sel><Sel name="select2" abbr="marc110"><Option index="0"><Label>all</Label><Value>all</Value></Option><Option index="1"><Label>any</Label><Value>any</Value></Option><Option index="2"><Label>phrase</Label><Value>phrase</Value></Option><Option index="3"><Label>ic_exact</Label><Value>ic_exact</Value></Option><Name>select2</Name><Default/></Sel><Sel name="select2" abbr="marc700"><Option index="0"><Label>all</Label><Value>all</Value></Option><Option index="1"><Label>any</Label><Value>any</Value></Option><Option index="2"><Label>phrase</Label><Value>phrase</Value></Option><Option index="3"><Label>ic_exact</Label><Value>ic_exact</Value></Option><Name>select2</Name><Default/></Sel><Sel name="select2" abbr="marc710"><Option index="0"><Label>all</Label><Value>all</Value></Option><Option index="1"><Label>any</Label><Value>any</Value></Option><Option index="2"><Label>phrase</Label><Value>phrase</Value></Option><Option index="3"><Label>ic_exact</Label><Value>ic_exact</Value></Option><Name>select2</Name><Default/></Sel><Sel name="select2" abbr="marc260"><Option index="0"><Label>all</Label><Value>all</Value></Option><Option index="1"><Label>any</Label><Value>any</Value></Option><Option index="2"><Label>phrase</Label><Value>phrase</Value></Option><Option index="3"><Label>ic_exact</Label><Value>ic_exact</Value></Option><Name>select2</Name><Default/></Sel><Sel name="select2" abbr="marc300"><Option index="0"><Label>all</Label><Value>all</Value></Option><Option index="1"><Label>any</Label><Value>any</Value></Option><Option index="2"><Label>phrase</Label><Value>phrase</Value></Option><Option index="3"><Label>ic_exact</Label><Value>ic_exact</Value></Option><Name>select2</Name><Default/></Sel><Sel name="select2" abbr="marc500"><Option index="0"><Label>all</Label><Value>all</Value></Option><Option index="1"><Label>any</Label><Value>any</Value></Option><Option index="2"><Label>phrase</Label><Value>phrase</Value></Option><Option index="3"><Label>ic_exact</Label><Value>ic_exact</Value></Option><Name>select2</Name><Default/></Sel><Sel name="select2" abbr="marc650"><Option index="0"><Label>all</Label><Value>all</Value></Option><Option index="1"><Label>any</Label><Value>any</Value></Option><Option index="2"><Label>phrase</Label><Value>phrase</Value></Option><Option index="3"><Label>ic_exact</Label><Value>ic_exact</Value></Option><Name>select2</Name><Default/></Sel><Sel name="select2" abbr="marc651"><Option index="0"><Label>all</Label><Value>all</Value></Option><Option index="1"><Label>any</Label><Value>any</Value></Option><Option index="2"><Label>phrase</Label><Value>phrase</Value></Option><Option index="3"><Label>ic_exact</Label><Value>ic_exact</Value></Option><Name>select2</Name><Default/></Sel><Sel name="select2" abbr="marc255"><Option index="0"><Label>all</Label><Value>all</Value></Option><Option index="1"><Label>any</Label><Value>any</Value></Option><Option index="2"><Label>phrase</Label><Value>phrase</Value></Option><Option index="3"><Label>ic_exact</Label><Value>ic_exact</Value></Option><Name>select2</Name><Default/></Sel><Sel name="select2" abbr="marc034"><Option index="0"><Label>all</Label><Value>all</Value></Option><Option index="1"><Label>any</Label><Value>any</Value></Option><Option index="2"><Label>phrase</Label><Value>phrase</Value></Option><Option index="3"><Label>ic_exact</Label><Value>ic_exact</Value></Option><Name>select2</Name><Default/></Sel><Sel name="select2" abbr="marc590"><Option index="0"><Label>all</Label><Value>all</Value></Option><Option index="1"><Label>any</Label><Value>any</Value></Option><Option index="2"><Label>phrase</Label><Value>phrase</Value></Option><Option index="3"><Label>ic_exact</Label><Value>ic_exact</Value></Option><Name>select2</Name><Default/></Sel><Sel name="select2" abbr="scan_date"><Option index="0"><Label>all</Label><Value>all</Value></Option><Option index="1"><Label>any</Label><Value>any</Value></Option><Option index="2"><Label>phrase</Label><Value>phrase</Value></Option><Option index="3"><Label>ic_exact</Label><Value>ic_exact</Value></Option><Name>select2</Name><Default/></Sel><Sel name="select2" abbr="dc_ri"><Option index="0"><Label>all</Label><Value>all</Value></Option><Option index="1"><Label>any</Label><Value>any</Value></Option><Option index="2"><Label>phrase</Label><Value>phrase</Value></Option><Option index="3"><Label>ic_exact</Label><Value>ic_exact</Value></Option><Name>select2</Name><Default/></Sel><Sel name="select2" abbr="record_no"><Option index="0"><Label>all</Label><Value>all</Value></Option><Option index="1"><Label>any</Label><Value>any</Value></Option><Option index="2"><Label>phrase</Label><Value>phrase</Value></Option><Option index="3"><Label>ic_exact</Label><Value>ic_exact</Value></Option><Name>select2</Name><Default/></Sel></Q><Q name="q3"><Value/><Rgn name="rgn3"><Option index="0"><Label>Anywhere in record</Label><Value>ic_all</Value><Focus>true</Focus></Option><Option index="1"><Label>Title</Label><Value>marc245</Value></Option><Option index="2"><Label>Varying Form of Title</Label><Value>marc246</Value></Option><Option index="3"><Label>Item Description</Label><Value>istruct_caption_item_description</Value></Option><Option index="4"><Label>Main Entry - Personal Name</Label><Value>marc100</Value></Option><Option index="5"><Label>Main Entry - Corporate Name</Label><Value>marc110</Value></Option><Option index="6"><Label>Added Entry - Personal Name</Label><Value>marc700</Value></Option><Option index="7"><Label>Added Entry - Corporate Name</Label><Value>marc710</Value></Option><Option index="8"><Label>Published</Label><Value>marc260</Value></Option><Option index="9"><Label>Description</Label><Value>marc300</Value></Option><Option index="10"><Label>Note</Label><Value>marc500</Value></Option><Option index="11"><Label>Subject Added Entry - Topical Term</Label><Value>marc650</Value></Option><Option index="12"><Label>Subject Added Entry - Geographic Name</Label><Value>marc651</Value></Option><Option index="13"><Label>Map Data</Label><Value>marc255</Value></Option><Option index="14"><Label>Coded Cartographic Mathematical Data</Label><Value>marc034</Value></Option><Option index="15"><Label>Local note</Label><Value>marc590</Value></Option><Option index="16"><Label>Scan Date</Label><Value>scan_date</Value></Option><Option index="17"><Label>Rights</Label><Value>dc_ri</Value></Option><Option index="18"><Label>Record No.</Label><Value>record_no</Value></Option><Name>rgn3</Name><Default>ic_all</Default></Rgn><Op name="op4"><Option index="0"><Label>And</Label><Value>And</Value><Focus>true</Focus></Option><Option index="1"><Label>Or</Label><Value>Or</Value></Option><Option index="2"><Label>Not</Label><Value>Not</Value></Option><Name>op4</Name><Default>And</Default></Op><Sel name="select3" abbr="ic_all"><Option index="0"><Label>all</Label><Value>all</Value></Option><Name>select3</Name><Default/></Sel><Sel name="select3" abbr="marc245"><Option index="0"><Label>all</Label><Value>all</Value></Option><Option index="1"><Label>any</Label><Value>any</Value></Option><Option index="2"><Label>phrase</Label><Value>phrase</Value></Option><Option index="3"><Label>ic_exact</Label><Value>ic_exact</Value></Option><Name>select3</Name><Default/></Sel><Sel name="select3" abbr="marc246"><Option index="0"><Label>all</Label><Value>all</Value></Option><Option index="1"><Label>any</Label><Value>any</Value></Option><Option index="2"><Label>phrase</Label><Value>phrase</Value></Option><Option index="3"><Label>ic_exact</Label><Value>ic_exact</Value></Option><Name>select3</Name><Default/></Sel><Sel name="select3" abbr="istruct_caption_item_description"><Option index="0"><Label>all</Label><Value>all</Value></Option><Option index="1"><Label>any</Label><Value>any</Value></Option><Option index="2"><Label>phrase</Label><Value>phrase</Value></Option><Option index="3"><Label>ic_exact</Label><Value>ic_exact</Value></Option><Name>select3</Name><Default/></Sel><Sel name="select3" abbr="marc100"><Option index="0"><Label>all</Label><Value>all</Value></Option><Option index="1"><Label>any</Label><Value>any</Value></Option><Option index="2"><Label>phrase</Label><Value>phrase</Value></Option><Option index="3"><Label>ic_exact</Label><Value>ic_exact</Value></Option><Name>select3</Name><Default/></Sel><Sel name="select3" abbr="marc110"><Option index="0"><Label>all</Label><Value>all</Value></Option><Option index="1"><Label>any</Label><Value>any</Value></Option><Option index="2"><Label>phrase</Label><Value>phrase</Value></Option><Option index="3"><Label>ic_exact</Label><Value>ic_exact</Value></Option><Name>select3</Name><Default/></Sel><Sel name="select3" abbr="marc700"><Option index="0"><Label>all</Label><Value>all</Value></Option><Option index="1"><Label>any</Label><Value>any</Value></Option><Option index="2"><Label>phrase</Label><Value>phrase</Value></Option><Option index="3"><Label>ic_exact</Label><Value>ic_exact</Value></Option><Name>select3</Name><Default/></Sel><Sel name="select3" abbr="marc710"><Option index="0"><Label>all</Label><Value>all</Value></Option><Option index="1"><Label>any</Label><Value>any</Value></Option><Option index="2"><Label>phrase</Label><Value>phrase</Value></Option><Option index="3"><Label>ic_exact</Label><Value>ic_exact</Value></Option><Name>select3</Name><Default/></Sel><Sel name="select3" abbr="marc260"><Option index="0"><Label>all</Label><Value>all</Value></Option><Option index="1"><Label>any</Label><Value>any</Value></Option><Option index="2"><Label>phrase</Label><Value>phrase</Value></Option><Option index="3"><Label>ic_exact</Label><Value>ic_exact</Value></Option><Name>select3</Name><Default/></Sel><Sel name="select3" abbr="marc300"><Option index="0"><Label>all</Label><Value>all</Value></Option><Option index="1"><Label>any</Label><Value>any</Value></Option><Option index="2"><Label>phrase</Label><Value>phrase</Value></Option><Option index="3"><Label>ic_exact</Label><Value>ic_exact</Value></Option><Name>select3</Name><Default/></Sel><Sel name="select3" abbr="marc500"><Option index="0"><Label>all</Label><Value>all</Value></Option><Option index="1"><Label>any</Label><Value>any</Value></Option><Option index="2"><Label>phrase</Label><Value>phrase</Value></Option><Option index="3"><Label>ic_exact</Label><Value>ic_exact</Value></Option><Name>select3</Name><Default/></Sel><Sel name="select3" abbr="marc650"><Option index="0"><Label>all</Label><Value>all</Value></Option><Option index="1"><Label>any</Label><Value>any</Value></Option><Option index="2"><Label>phrase</Label><Value>phrase</Value></Option><Option index="3"><Label>ic_exact</Label><Value>ic_exact</Value></Option><Name>select3</Name><Default/></Sel><Sel name="select3" abbr="marc651"><Option index="0"><Label>all</Label><Value>all</Value></Option><Option index="1"><Label>any</Label><Value>any</Value></Option><Option index="2"><Label>phrase</Label><Value>phrase</Value></Option><Option index="3"><Label>ic_exact</Label><Value>ic_exact</Value></Option><Name>select3</Name><Default/></Sel><Sel name="select3" abbr="marc255"><Option index="0"><Label>all</Label><Value>all</Value></Option><Option index="1"><Label>any</Label><Value>any</Value></Option><Option index="2"><Label>phrase</Label><Value>phrase</Value></Option><Option index="3"><Label>ic_exact</Label><Value>ic_exact</Value></Option><Name>select3</Name><Default/></Sel><Sel name="select3" abbr="marc034"><Option index="0"><Label>all</Label><Value>all</Value></Option><Option index="1"><Label>any</Label><Value>any</Value></Option><Option index="2"><Label>phrase</Label><Value>phrase</Value></Option><Option index="3"><Label>ic_exact</Label><Value>ic_exact</Value></Option><Name>select3</Name><Default/></Sel><Sel name="select3" abbr="marc590"><Option index="0"><Label>all</Label><Value>all</Value></Option><Option index="1"><Label>any</Label><Value>any</Value></Option><Option index="2"><Label>phrase</Label><Value>phrase</Value></Option><Option index="3"><Label>ic_exact</Label><Value>ic_exact</Value></Option><Name>select3</Name><Default/></Sel><Sel name="select3" abbr="scan_date"><Option index="0"><Label>all</Label><Value>all</Value></Option><Option index="1"><Label>any</Label><Value>any</Value></Option><Option index="2"><Label>phrase</Label><Value>phrase</Value></Option><Option index="3"><Label>ic_exact</Label><Value>ic_exact</Value></Option><Name>select3</Name><Default/></Sel><Sel name="select3" abbr="dc_ri"><Option index="0"><Label>all</Label><Value>all</Value></Option><Option index="1"><Label>any</Label><Value>any</Value></Option><Option index="2"><Label>phrase</Label><Value>phrase</Value></Option><Option index="3"><Label>ic_exact</Label><Value>ic_exact</Value></Option><Name>select3</Name><Default/></Sel><Sel name="select3" abbr="record_no"><Option index="0"><Label>all</Label><Value>all</Value></Option><Option index="1"><Label>any</Label><Value>any</Value></Option><Option index="2"><Label>phrase</Label><Value>phrase</Value></Option><Option index="3"><Label>ic_exact</Label><Value>ic_exact</Value></Option><Name>select3</Name><Default/></Sel></Q><Q name="q4"><Value/><Rgn name="rgn4"><Option index="0"><Label>Anywhere in record</Label><Value>ic_all</Value><Focus>true</Focus></Option><Option index="1"><Label>Title</Label><Value>marc245</Value></Option><Option index="2"><Label>Varying Form of Title</Label><Value>marc246</Value></Option><Option index="3"><Label>Item Description</Label><Value>istruct_caption_item_description</Value></Option><Option index="4"><Label>Main Entry - Personal Name</Label><Value>marc100</Value></Option><Option index="5"><Label>Main Entry - Corporate Name</Label><Value>marc110</Value></Option><Option index="6"><Label>Added Entry - Personal Name</Label><Value>marc700</Value></Option><Option index="7"><Label>Added Entry - Corporate Name</Label><Value>marc710</Value></Option><Option index="8"><Label>Published</Label><Value>marc260</Value></Option><Option index="9"><Label>Description</Label><Value>marc300</Value></Option><Option index="10"><Label>Note</Label><Value>marc500</Value></Option><Option index="11"><Label>Subject Added Entry - Topical Term</Label><Value>marc650</Value></Option><Option index="12"><Label>Subject Added Entry - Geographic Name</Label><Value>marc651</Value></Option><Option index="13"><Label>Map Data</Label><Value>marc255</Value></Option><Option index="14"><Label>Coded Cartographic Mathematical Data</Label><Value>marc034</Value></Option><Option index="15"><Label>Local note</Label><Value>marc590</Value></Option><Option index="16"><Label>Scan Date</Label><Value>scan_date</Value></Option><Option index="17"><Label>Rights</Label><Value>dc_ri</Value></Option><Option index="18"><Label>Record No.</Label><Value>record_no</Value></Option><Name>rgn4</Name><Default>ic_all</Default></Rgn><Sel name="select4" abbr="ic_all"><Option index="0"><Label>all</Label><Value>all</Value></Option><Name>select4</Name><Default/></Sel><Sel name="select4" abbr="marc245"><Option index="0"><Label>all</Label><Value>all</Value></Option><Option index="1"><Label>any</Label><Value>any</Value></Option><Option index="2"><Label>phrase</Label><Value>phrase</Value></Option><Option index="3"><Label>ic_exact</Label><Value>ic_exact</Value></Option><Name>select4</Name><Default/></Sel><Sel name="select4" abbr="marc246"><Option index="0"><Label>all</Label><Value>all</Value></Option><Option index="1"><Label>any</Label><Value>any</Value></Option><Option index="2"><Label>phrase</Label><Value>phrase</Value></Option><Option index="3"><Label>ic_exact</Label><Value>ic_exact</Value></Option><Name>select4</Name><Default/></Sel><Sel name="select4" abbr="istruct_caption_item_description"><Option index="0"><Label>all</Label><Value>all</Value></Option><Option index="1"><Label>any</Label><Value>any</Value></Option><Option index="2"><Label>phrase</Label><Value>phrase</Value></Option><Option index="3"><Label>ic_exact</Label><Value>ic_exact</Value></Option><Name>select4</Name><Default/></Sel><Sel name="select4" abbr="marc100"><Option index="0"><Label>all</Label><Value>all</Value></Option><Option index="1"><Label>any</Label><Value>any</Value></Option><Option index="2"><Label>phrase</Label><Value>phrase</Value></Option><Option index="3"><Label>ic_exact</Label><Value>ic_exact</Value></Option><Name>select4</Name><Default/></Sel><Sel name="select4" abbr="marc110"><Option index="0"><Label>all</Label><Value>all</Value></Option><Option index="1"><Label>any</Label><Value>any</Value></Option><Option index="2"><Label>phrase</Label><Value>phrase</Value></Option><Option index="3"><Label>ic_exact</Label><Value>ic_exact</Value></Option><Name>select4</Name><Default/></Sel><Sel name="select4" abbr="marc700"><Option index="0"><Label>all</Label><Value>all</Value></Option><Option index="1"><Label>any</Label><Value>any</Value></Option><Option index="2"><Label>phrase</Label><Value>phrase</Value></Option><Option index="3"><Label>ic_exact</Label><Value>ic_exact</Value></Option><Name>select4</Name><Default/></Sel><Sel name="select4" abbr="marc710"><Option index="0"><Label>all</Label><Value>all</Value></Option><Option index="1"><Label>any</Label><Value>any</Value></Option><Option index="2"><Label>phrase</Label><Value>phrase</Value></Option><Option index="3"><Label>ic_exact</Label><Value>ic_exact</Value></Option><Name>select4</Name><Default/></Sel><Sel name="select4" abbr="marc260"><Option index="0"><Label>all</Label><Value>all</Value></Option><Option index="1"><Label>any</Label><Value>any</Value></Option><Option index="2"><Label>phrase</Label><Value>phrase</Value></Option><Option index="3"><Label>ic_exact</Label><Value>ic_exact</Value></Option><Name>select4</Name><Default/></Sel><Sel name="select4" abbr="marc300"><Option index="0"><Label>all</Label><Value>all</Value></Option><Option index="1"><Label>any</Label><Value>any</Value></Option><Option index="2"><Label>phrase</Label><Value>phrase</Value></Option><Option index="3"><Label>ic_exact</Label><Value>ic_exact</Value></Option><Name>select4</Name><Default/></Sel><Sel name="select4" abbr="marc500"><Option index="0"><Label>all</Label><Value>all</Value></Option><Option index="1"><Label>any</Label><Value>any</Value></Option><Option index="2"><Label>phrase</Label><Value>phrase</Value></Option><Option index="3"><Label>ic_exact</Label><Value>ic_exact</Value></Option><Name>select4</Name><Default/></Sel><Sel name="select4" abbr="marc650"><Option index="0"><Label>all</Label><Value>all</Value></Option><Option index="1"><Label>any</Label><Value>any</Value></Option><Option index="2"><Label>phrase</Label><Value>phrase</Value></Option><Option index="3"><Label>ic_exact</Label><Value>ic_exact</Value></Option><Name>select4</Name><Default/></Sel><Sel name="select4" abbr="marc651"><Option index="0"><Label>all</Label><Value>all</Value></Option><Option index="1"><Label>any</Label><Value>any</Value></Option><Option index="2"><Label>phrase</Label><Value>phrase</Value></Option><Option index="3"><Label>ic_exact</Label><Value>ic_exact</Value></Option><Name>select4</Name><Default/></Sel><Sel name="select4" abbr="marc255"><Option index="0"><Label>all</Label><Value>all</Value></Option><Option index="1"><Label>any</Label><Value>any</Value></Option><Option index="2"><Label>phrase</Label><Value>phrase</Value></Option><Option index="3"><Label>ic_exact</Label><Value>ic_exact</Value></Option><Name>select4</Name><Default/></Sel><Sel name="select4" abbr="marc034"><Option index="0"><Label>all</Label><Value>all</Value></Option><Option index="1"><Label>any</Label><Value>any</Value></Option><Option index="2"><Label>phrase</Label><Value>phrase</Value></Option><Option index="3"><Label>ic_exact</Label><Value>ic_exact</Value></Option><Name>select4</Name><Default/></Sel><Sel name="select4" abbr="marc590"><Option index="0"><Label>all</Label><Value>all</Value></Option><Option index="1"><Label>any</Label><Value>any</Value></Option><Option index="2"><Label>phrase</Label><Value>phrase</Value></Option><Option index="3"><Label>ic_exact</Label><Value>ic_exact</Value></Option><Name>select4</Name><Default/></Sel><Sel name="select4" abbr="scan_date"><Option index="0"><Label>all</Label><Value>all</Value></Option><Option index="1"><Label>any</Label><Value>any</Value></Option><Option index="2"><Label>phrase</Label><Value>phrase</Value></Option><Option index="3"><Label>ic_exact</Label><Value>ic_exact</Value></Option><Name>select4</Name><Default/></Sel><Sel name="select4" abbr="dc_ri"><Option index="0"><Label>all</Label><Value>all</Value></Option><Option index="1"><Label>any</Label><Value>any</Value></Option><Option index="2"><Label>phrase</Label><Value>phrase</Value></Option><Option index="3"><Label>ic_exact</Label><Value>ic_exact</Value></Option><Name>select4</Name><Default/></Sel><Sel name="select4" abbr="record_no"><Option index="0"><Label>all</Label><Value>all</Value></Option><Option index="1"><Label>any</Label><Value>any</Value></Option><Option index="2"><Label>phrase</Label><Value>phrase</Value></Option><Option index="3"><Label>ic_exact</Label><Value>ic_exact</Value></Option><Name>select4</Name><Default/></Sel></Q><HiddenVars><Variable name="type">boolean</Variable>
+<Variable name="c">clark1ic8lift</Variable>
+</HiddenVars><MediaOnly><Visible>true</Visible></MediaOnly><ResultsViewOptions><Option index="0"><Label>thumbnail</Label><Value>thumbnail</Value><Focus>true</Focus></Option><Option index="1"><Label>thumbfull</Label><Value>thumbfull</Value></Option><Option index="2"><Label>reslist</Label><Value>reslist</Value></Option><Name>view</Name><Default>thumbnail</Default></ResultsViewOptions><Advanced>false</Advanced></SearchForm>
+  <Facets><Delta label="SQL">0</Delta>
+<Delta label="facets">0</Delta>
+<Query>SELECT istruct_isentryid FROM clark1ic8lift_media</Query>
+<Query>SELECT istruct_isentryid FROM clark1ic8lift_media</Query>
+<Query>SELECT SQL_CALC_FOUND_ROWS b.field, b.value, COUNT(b.value) AS total FROM ItemBrowse b,
+( SELECT istruct_isentryid FROM clark1ic8lift_media ) a WHERE b.field = ? AND b.collid = ? AND a.istruct_isentryid = b.idno 
+GROUP BY b.field, b.value
+ORDER BY b.field, total DESC, b.value
+ LIMIT 10</Query>
+<Debug>$VAR1 = undef;
+</Debug>
+<Field total="50" abbrev="marc100" actual_total="470">
+    <Label>Main Entry - Personal Name</Label>
+    <Values>
+        <Value count="169">Jansson, Jan, 1588-1664.</Value>
+        <Value count="34">Hondius, Hendrik, 1597-1651.</Value>
+        <Value count="25">Hondius, Jodocus, 1594 or 1595-1629.</Value>
+        <Value count="22">L'Isle, Guillaume de, 1675-1726.</Value>
+        <Value count="15">Farmer, John, 1798-1859.</Value>
+        <Value count="15">Ochikochi Dōin, active 17th century.</Value>
+        <Value count="15">Owen, David Dale, 1807-1860.</Value>
+        <Value count="14">Blaeu, Willem Janszoon, 1571-1638.</Value>
+        <Value count="13">Mitchell, S. Augustus (Samuel Augustus), 1792-1868.</Value>
+        <Value count="11">01 Sagano, Hikotarō. http://id.loc.gov/authorities/names/n88091520</Value>
+    </Values>
+</Field>
+<Field actual_total="508" total="50" abbrev="marc700">
+    <Label>Added Entry - Personal Name</Label>
+    <Values>
+        <Value count="238">Vignaud, Henry, 1830-1922, former owner.</Value>
+        <Value count="127">Jansson, Jan, 1588-1664. Appendix Atlas.</Value>
+        <Value count="71">Dahl, James, former owner.</Value>
+        <Value count="48">Vignaud, Henry, 1830-1922, former owner, Composite Atlas of France.</Value>
+        <Value count="43">Jansson, Jan, 1588-1664. Appendix Atlas of the British Isles and Northern Europe.</Value>
+        <Value count="41">Hondius, Hendrik, 1597-1651. Appendix Atlas of the British Isles and Northern Europe.</Value>
+        <Value count="33">Jansson, Jan, 1588-1664. Atlantis Maioris Appendix, 1630.</Value>
+        <Value count="33">Suharaya, Mohē, 1731-1782.</Value>
+        <Value count="32">Hondius, Jodocus, 1594 or 1595-1629, cartographer.</Value>
+        <Value count="28">Hondius, Hendrik, 1597-1651, cartographer.</Value>
+    </Values>
+</Field>
+<Field actual_total="948" abbrev="marc651" total="50">
+    <Label>Subject Added Entry - Geographic Name</Label>
+    <Values>
+        <Value count="109">Michigan Maps.</Value>
+        <Value count="67">North America Maps Early works to 1800.</Value>
+        <Value count="48">Detroit (Mich.) Maps.</Value>
+        <Value count="47">Ann Arbor (Mich.) Maps.</Value>
+        <Value count="38">Tokyo (Japan) Maps.</Value>
+        <Value count="34">United States Maps.</Value>
+        <Value count="32">England Maps Early works to 1800.</Value>
+        <Value count="30">Africa Maps Early works to 1800.</Value>
+        <Value count="29">Kyoto (Japan) Maps.</Value>
+        <Value count="28">France Maps Early works to 1800.</Value>
+    </Values>
+</Field>
+<Field abbrev="marc710" total="50" actual_total="164">
+    <Label>Added Entry - Corporate Name</Label>
+    <Values>
+        <Value count="24">National Ocean Survey.</Value>
+        <Value count="17">United States. Army. Corps of Topographical Engineers.</Value>
+        <Value count="15">Geological Survey of Canada.</Value>
+        <Value count="12">Geological Survey (U.S.)</Value>
+        <Value count="12">U.S. Coast and Geodetic Survey.</Value>
+        <Value count="11">United States. Army. Corps of Engineers.</Value>
+        <Value count="9">Beck &amp; Pauli, lithographer.</Value>
+        <Value count="8">Simpkin, Marshall and Co.</Value>
+        <Value count="7">Fenner, Sears &amp; Co.</Value>
+        <Value count="6">A. Hoen &amp; Co.</Value>
+    </Values>
+</Field>
+<Field abbrev="marc110" total="50" actual_total="140">
+    <Label>Main Entry - Corporate Name</Label>
+    <Values>
+        <Value count="23">Rand McNally and Company.</Value>
+        <Value count="20">Geological Survey (U.S.)</Value>
+        <Value count="10">Silas Farmer &amp; Co.</Value>
+        <Value count="7">Century Company.</Value>
+        <Value count="7">Japan. Rikugun. Sanbō Honbu http://id.loc.gov/authorities/names/n81008134</Value>
+        <Value count="6">C. &amp; J. Greenwood.</Value>
+        <Value count="6">Geological Survey of Canada.</Value>
+        <Value count="5">G.W. &amp; C.B. Colton &amp; Co.</Value>
+        <Value count="5">Society for the Diffusion of Useful Knowledge (Great Britain)</Value>
+        <Value count="5">United States. Army. Corps of Engineers.</Value>
+    </Values>
+</Field>
+<Field actual_total="347" abbrev="marc650" total="50">
+    <Label>Subject Added Entry - Topical Term</Label>
+    <Values>
+        <Value count="24">Nautical charts Columbia River.</Value>
+        <Value count="24">Nautical charts Washington (State) Pacific Coast.</Value>
+        <Value count="24">Nautical charts Washington (State) Puget Sound.</Value>
+        <Value count="23">World maps Early works to 1800.</Value>
+        <Value count="22">Daimyo Japan Tokyo Maps Early works to 1800.</Value>
+        <Value count="22">Land use, Urban Japan Tokyo Maps Early works to 1800.</Value>
+        <Value count="22">Real property Japan Tokyo Maps Early works to 1800.</Value>
+        <Value count="17">Railroads Michigan Maps.</Value>
+        <Value count="16">Geology Wisconsin Maps.</Value>
+        <Value count="15">Geology Iowa Maps.</Value>
+    </Values>
+</Field>
+<Delta label="xml">0</Delta>
+</Facets>
+
+  <GroupsLink>https://roger.quod.lib.umich.edu/cgi/i/image/image-idx?page=groups</GroupsLink>
+  <Groups/>
+
+
+  <Stats>
+    <Records>86</Records>
+    <Images>104</Images>
+    <Items>1,735</Items>
+  </Stats>
+
+
+  <InsertTextInfo><div>
+  <p>
+    This collection contains images of maps from the <a href="http://www.lib.umich.edu/clark-library">Stephen S. Clark Library for Maps, Government Information and Data Services' map collection</a>. The images in this collection are in the public domain but please attribute access and use of these digitized maps to the Stephen S. Clark Library, University of Michigan Library. The print map collection from which these maps originate contains over 400,000 maps and is the principal collection for cartographic materials at the University of Michigan. We house the largest collection of printed maps in the state of Michigan, and one of the largest at an academic institution.
+  </p>
+</div>
+<div id="useguidelines">
+  <p>
+    The University of Michigan Library provides access to these materials for educational and research purposes. These materials may be under copyright. If you decide to use any of these materials, you are responsible for making your own legal assessment and securing any necessary permission. If you have questions about the collection, please contact <a href="mailto:clark1ic-help@umich.edu">Clark Library for Maps Digital Collections Help</a>. If you have concerns about the inclusion of an item in this collection, please contact <a href="mailto:LibraryIT-info@umich.edu">Library Information Technology</a>.
+  </p>
+</div></InsertTextInfo>
+  <InsertTextInfo2><div>
+<!-- Copy this file (info2.txt) to a collection specific web
+directory and  fill it with a description of the collection. It will
+then appear in the page=index view for the collection. -->
+</div>
+</InsertTextInfo2>
+  <InsertTextFieldInfo><div><!-- Copy this file (fieldinfo.txt) to a collection specific web directory and  fill it with field definitions and any other information that would help the user understand the fields and it will be inserted in to the collinfo view (collinfo.tpl) --></div></InsertTextFieldInfo>
+  <Subtitle/>
+
+  <qui:block slot="information" xmlns="http://www.w3.org/1999/xhtml/" xmlns:qui="http://dlxs.org/quombat/ui">
+  <p>
+    This collection contains images of maps from the
+    <a href="https://www.lib.umich.edu/locations-and-hours/clark-library">Stephen S. Clark Library for Maps, Government Information and Data Services' map collection</a>. 
+    The images in this collection are in the public domain 
+    but please attribute access and use of these digitized maps 
+    to the Stephen S. Clark Library, University of Michigan Library. 
+  </p>
+  <p>
+    The print map collection from which these maps originate contains over 400,000 maps 
+    and is the principal collection for cartographic materials at the University of Michigan. 
+    We house the largest collection of printed maps in the state of Michigan, 
+    and one of the largest at an academic institution.
+  </p>
+</qui:block>
+  <qui:block slot="copyright" xmlns="http://www.w3.org/1999/xhtml/" xmlns:qui="http://dlxs.org/quombat/ui">
+  <p>
+    The University of Michigan Library provides access to these materials for educational and research purposes. 
+    These materials may be under copyright. If you decide to use any of these materials, 
+    you are responsible for making your own legal assessment and securing any necessary permission. 
+    If you have questions about the collection, please contact
+    <a href="mailto:clark1ic-help@umich.edu">Clark Library for Maps Digital Collections Help</a>. 
+    If you have concerns about the inclusion of an item in this collection, please contact
+    <a href="mailto:LibraryIT-info@umich.edu">Library Information Technology</a>.
+  </p>
+</qui:block>
+  
+  
+  
+  <HeroImage identifier="clark1ic8lift:004172308:39015091903933">
+    <Debug>SELECT m_id, m_iid, basename FROM clark1ic8lift_media, ImageClassAsset
+WHERE m_searchable = 1 AND m_fn = basename AND type = 'image' AND width > height AND access = 1 
+AND collid = COALESCE(m_source, 'clark1ic8lift')
+ORDER BY RAND()
+LIMIT 1
+</Debug>
+    <Url>data:image/jpeg;base64,/9j/4AAQSkZJRgABAQAAAQABAAD/2wBDAAgGBgcGBQgHBwcJCQgKDBQNDAsLDBkSEw8UHRofHh0a
+HBwgJC4nICIsIxwcKDcpLDAxNDQ0Hyc5PTgyPC4zNDL/2wBDAQkJCQwLDBgNDRgyIRwhMjIyMjIy
+MjIyMjIyMjIyMjIyMjIyMjIyMjIyMjIyMjIyMjIyMjIyMjIyMjIyMjIyMjL/wAARCABMAGQDASIA
+AhEBAxEB/8QAHwAAAQUBAQEBAQEAAAAAAAAAAAECAwQFBgcICQoL/8QAtRAAAgEDAwIEAwUFBAQA
+AAF9AQIDAAQRBRIhMUEGE1FhByJxFDKBkaEII0KxwRVS0fAkM2JyggkKFhcYGRolJicoKSo0NTY3
+ODk6Q0RFRkdISUpTVFVWV1hZWmNkZWZnaGlqc3R1dnd4eXqDhIWGh4iJipKTlJWWl5iZmqKjpKWm
+p6ipqrKztLW2t7i5usLDxMXGx8jJytLT1NXW19jZ2uHi4+Tl5ufo6erx8vP09fb3+Pn6/8QAHwEA
+AwEBAQEBAQEBAQAAAAAAAAECAwQFBgcICQoL/8QAtREAAgECBAQDBAcFBAQAAQJ3AAECAxEEBSEx
+BhJBUQdhcRMiMoEIFEKRobHBCSMzUvAVYnLRChYkNOEl8RcYGRomJygpKjU2Nzg5OkNERUZHSElK
+U1RVVldYWVpjZGVmZ2hpanN0dXZ3eHl6goOEhYaHiImKkpOUlZaXmJmaoqOkpaanqKmqsrO0tba3
+uLm6wsPExcbHyMnK0tPU1dbX2Nna4uPk5ebn6Onq8vP09fb3+Pn6/9oADAMBAAIRAxEAPwDtdA0X
+Rx4a0mSXSbSWSW2jyTAhJOzJJJq//Z/hzJB0awyvUeVDx+tQWTeV4H0eQHlbWI9cf8s6x5I5DJJP
+CCYXy5PUc9RXFKTTNrm8LHw0R/yB9P8A+/cP+NP/ALL8Onn+xLHgZ/1UP+Nci6PJIwh3Mp6egHrU
+1tK0cYSRmTachiCDxxgGp52B0yWXhkqWXSLAgDJIih/xolsvDShN+k2KhhlcxQ8/rWCDFE22CTeZ
+euCOAe2K1LVP9Ckj8mET8rGHOVLdenOOlCk2JMtxaJoUq74dFtCp5ysMX+NK2neHolYy6TaAL97M
+UXH61lm41OKGCfYwKttlhIA3H29qo3+ordqyR2rK+/5mLc5//VRzFG+Lbwvjd/ZVhj18qH/GrC6Z
+oDgFdEsmB6YhiOf1rkjFdRIiSQvtLAgbcg1vi8ggkRFnC7OCCARnHTj60KTBF06PoWD/AMSKz/78
+RVTGj6HLKE/sa0Uk4/1Ef9KkmvYRbtK8isoBI288+1UtJv1vLwxxr5bKc59eDQ2UcF8QtLsrPxDD
+HbWcESG2ViscYUE7m54+lFXfiWf+Kkgz/wA+i/8AoT0V0wfuoze53Fkok8BaQpdUBtYsseg/d1m2
+Mz2sDfM2W4jZhwRnn86v2f8AyIOk9/8ARIv/AEXVK3WNoHS4PJUeXjsa5pvUClqMbplwS4yTnjn/
+AAqlGQVw4yRjbk/drftYIkhaSUiTJGI9+AQB3FQ3mlK08cunyhkbJb5sbf8AOfrUBuUJWiktcA4Y
+HO5uD/jirJctLGkLeTjjcG4bAHp+P51nambuGFEYhiRlB1wCf/rVWkNxBpqPKVjd3PlqckYx69qQ
+WOmF5Fc20LO++dCQyJ8u70yPSqNvf2aPvhupIm3n/Wxbhj1/Os3R9Rt7dA8yEszBSCMlRnk0k09t
+BqDNCwMbsyruqrlLY1b+4up1837ZHLbBcfIMDPoR2NZ0eWwR6/rWdbXoMrEugG4qyMfv/hWrA6Kw
+mTAO75Vxk47ZpMGMAcRNghiD61o+FUYagWZgxPX8jUSC0l5e4jjkbqApxn1rS0HT3s78O8iOrHAK
+57A00JXucf8AE3/kZYP+vRf/AEN6KZ8T/wDkZ4Mf8+i/+hvRXXD4UTLc7uwDnwNo3lgl/skWABnJ
+8uqm8l97IBk5Me04zir+lKX8EaKFJ3fZYgMHH/LOqF9K8TkOsMm/BLoep71y1NwauRNKYY0uGDBF
+Ubip3c9KtR3sUDrDgtK6F2OzaAB3x9OKS1+yTSbI5iileAV6/wCTWhqdoNQsJLcoVO3Cydx1/SpR
+STMXVZYNqSpAryMgCsGwFA68Z6is3UQLm/WNSWjIXEeOgPXHvWmJra3t1tZwLlkGCQPlH0z6Vajh
+0+dfP8r/AFargt0U9qBnOQaQkErTzylEHABTIOOvNY9/bXElwxERCjlccn611N9f28ds8ElqxQvn
+G4LtPT9aqXGq2Z05JYoFEvCjDZOB7UCexzEdvHbvuugwIwQo7/WtG41SAQKISDKDypUjI+tUruaS
+6cNIQSBgYAHGaqzRuHAcEH3HNVa5mpdjVttZhk3G4AU9E4JH410vhK6eS5eEsxRTuC9hwelc6fDi
+Sx7o58ZXIXGee9b3gqyntb51mYMmMKe/Q0lboWmc58SXEviSFvLZf9FUYYf7b0U74lCT/hJo/MYN
+/ow247De+KK64fCiXud3pxJ8CaPhdx+yxcev7useQb5wEUBHHKk9D3H1rZ0tQ3gjRlOcfZounH/L
+OqMlv5U4Ik6NjOR1rmnuVexmNFLA7Kq/NESSScHFVpvEd3DO0codoD8u7JI6dK6a7hhmQSuyeY52
+k+/SuM1bdE6wZHXnGMYqLajbEvJZXh+0wuPLP3gP6UW+rqsQRsqehJ6H1pbBJLNWMsZW3mG4Mei/
+X8qvLoLahvns+FHLbulOxHM3sYVzcyzy+XuLr1z6jOaRQCc7MHvWqNN1DT7W4uYwNgDRylSMgZ/P
+8qznjxCrrICxyGTHI96Zm2VrgcfKvT0qSKfzkCPIEcY8tsn5T6E+lRu2Th+/ao92DhRuPTGKY0zo
+VvNRgtJTcRKzRj5Xx1H4VpeDdQN1qLDyyoxn9DWbpV7cXFtsmKgKuFVl5YfWtzw3FHHfEqAOOw6d
+ak0icz8SznxJB/16r/6G9FJ8RhnxFD/16r/6E9FdcPhQPc7vSo5JfBmjJEuT9kjzkEgfu8dqkttM
+dGAnUvGOwR/8K8l0/wCJ2vWGn21rDHZGOGJY13RsTgDAz81Wj8XPEY/5ZWH/AH6b/wCKrJwux6Hp
+91pMcpJiidS2STtcY+nFc3ceDbxnzFJuOeTIr8/+O1yi/F3xH/zxsP8Av03/AMVTh8XfEef9Tp//
+AH6b/wCKo9mDsztLPw5fhQt4+8KNoIR2BXOdpBX/ADmty2tLi1VkihRY8cKI3GT/AN89K8zX4t+I
+eT5Gn/8Afp//AIqpR8WfEB/5d9P/AO/T/wDxVHIJJI6jVfDt/dzo8bszEfOHD4BzxgbemKpf8Ifq
+hySFBIx0f/4msNfinr0jktBYf9+3/wDiqmPxW15FwLfT+PWN/wD4qlyCcVuayeDtQjIPlxt2YEPy
+P++eKni8GSLciUgrggjCv2/4DXON8WvEA/5d9P8A+/T/APxdIfi14g/599P/AO/T/wDxdP2Y9Dpr
+/wANahJfxXNuEURrjJR+ev8As1qaNp9zbSh5U+Zhg4VsDg9yK4M/FjX2HNvp/wD36f8A+Kpv/C0t
+d2kC3sP+/b//ABVT7Masi78RufEUP/Xqv/oTUVxuu+Kb/WL5Li5SAOsYQbFIGMk9yfWiuiK0E3qf
+/9k=
+</Url>
+</HeroImage>
+
+  <Snapshots><Snapshot href="/cgi/i/image/image-idx?c=clark1ic8lift;entryid=x-004204102;viewid=39015091191562_02">
+    <Thumbnail src="data:image/jpeg;base64,/9j/4AAQSkZJRgABAQAAAQABAAD/2wBDAAgGBgcGBQgHBwcJCQgKDBQNDAsLDBkSEw8UHRofHh0a
+HBwgJC4nICIsIxwcKDcpLDAxNDQ0Hyc5PTgyPC4zNDL/2wBDAQkJCQwLDBgNDRgyIRwhMjIyMjIy
+MjIyMjIyMjIyMjIyMjIyMjIyMjIyMjIyMjIyMjIyMjIyMjIyMjIyMjIyMjL/wAARCABSAGQDASIA
+AhEBAxEB/8QAHwAAAQUBAQEBAQEAAAAAAAAAAAECAwQFBgcICQoL/8QAtRAAAgEDAwIEAwUFBAQA
+AAF9AQIDAAQRBRIhMUEGE1FhByJxFDKBkaEII0KxwRVS0fAkM2JyggkKFhcYGRolJicoKSo0NTY3
+ODk6Q0RFRkdISUpTVFVWV1hZWmNkZWZnaGlqc3R1dnd4eXqDhIWGh4iJipKTlJWWl5iZmqKjpKWm
+p6ipqrKztLW2t7i5usLDxMXGx8jJytLT1NXW19jZ2uHi4+Tl5ufo6erx8vP09fb3+Pn6/8QAHwEA
+AwEBAQEBAQEBAQAAAAAAAAECAwQFBgcICQoL/8QAtREAAgECBAQDBAcFBAQAAQJ3AAECAxEEBSEx
+BhJBUQdhcRMiMoEIFEKRobHBCSMzUvAVYnLRChYkNOEl8RcYGRomJygpKjU2Nzg5OkNERUZHSElK
+U1RVVldYWVpjZGVmZ2hpanN0dXZ3eHl6goOEhYaHiImKkpOUlZaXmJmaoqOkpaanqKmqsrO0tba3
+uLm6wsPExcbHyMnK0tPU1dbX2Nna4uPk5ebn6Onq8vP09fb3+Pn6/9oADAMBAAIRAxEAPwDnNA8E
+2mr6XDdtLLucfMFYYB/Kttfhlp3Uz3HX+8P8K1/BI/4pOy/3T/M10ig81ySlK71N0lY4g/DHSy+f
+OuAv93eP8KlX4a6Mv3vObvzIa7TBoIODS5pdwsuxx/8AwrnRP+ecvr/rDSN8OdGP3YnB/wCurV2W
+3P5UFcYyaLy7hp2ONHw50cRDMRznk+Y1Knw60M/fhf8ACVq7Hyx5fX+KkCYxzQ3LuGnY48/DjQj0
+jmH/AG1NA+HGggY8uYn18012GzpzSEDH40c0u4aHGN8N9EPQTr9JKik+G2keW2x7gN2Jf/61dtjg
+545pjA5PNHNLuFl2PG/Efhq30nVBbwSyFDGH+fBPUj+lFbPjrI19f+uC/wA2oraLdiGlc6zwT/yK
+Vj/uH/0I10y/drlfAUgk8H2f+zvU/gxrqlHFYy3Za2HZpN/XjtQe/wBKBj9KQDlfPY0cNj2o4/Sm
+nORj0piHgqsYH+1QDnGBmkIxGv8AvH+VC8YoYCMCQMetMCN7dalDBqCBQMgKtz0601gQDU5HWopB
+1pAeV+Pnx4iUf9MF/maKr/EJyPE5HpCn9aK6IL3UZy3O08AqB4QtNoxneT7nca6kZ5rlvATf8Uda
+e2//ANDNdRuIzxxWEt2Wth+CT+FOx/Kow43HI4xTi4HbtQMXGMZ9KcOSB7UwPk/hTxj5eKBAMlQO
+2aVV4wKUNhB9aRTgUMBMcfjSHgZHrSFj+tJyQQPWkMcTkHmon4p7EYPIpjHrQB498QX/AOKpcekS
+f1oqP4gtnxZN/wBc0/lRXTD4UZy3O78Ac+D7Xr1f/wBDNdRnk56VyPw8b/ik418xWIkf5R1Xnof5
+/jXW84PTpWEt2Wth/Hp2pcAjPtTcjvjpTgP5UgEGAVIzjFSK2cdajGAVBPanjGV5pgPP+qTjuaYG
+Axx3qQn9yh/2jUYbj8aAEOCv49qUnnrScAZ96jYlt3I4NIBzHlhio3Yc4prb/m5FMbPNAHj3j5s+
+Lrn2VP8A0EUVH45/5G27+if+giiumHwoze52fwzhkTQLmRhhJJ8p74ABrt1A5+lch8P7mL/hFokM
+ibldwRnn7xP9a6oTIf40/Oueb95mi2J8c+nFOAC9+1QeapI5Xp60ocYBJX86Vx2HhfnBLVKCPlqt
+vUYPy/nSmdI8biMH0NK4WLLMTEg/2jUYJAzx1quuoW8gUK+cMRn36VMHXH3v1ouFhzNlPqaOxHvR
+vXnnv60Fk55/Wi4WGNghsUxud2PSn7lOef1qNyACQe3rRcLHjHjgn/hLbz6J/wCgiim+NHEniy9I
+5wVH/joorrh8KMnuYAOOlODt/eP50UVQhfNkHR2H40vnzD/lq/8A30aKKAFF1cDpcSj6Oaet5dbT
+/pM3/fZoopWARby5UALcTAezmni+vB0up/8Av4aKKLIBft95n/j7n/7+H/GlN/ef8/c//fw/40UU
+WQ7irqF6BxeXH/f1v8aVtRvSP+Py4/7+t/jRRSsguUXZncszFmPUk5JoooqhH//Z
+"/>
+<Record name="result"><Section name="default" class="default"><Field abbrev="marc245" searchfield="false" sortfield="false"><Values><Value>Duche de Bretaigne / dessigné par le sieur Hardy Mareschal des logis du roy.</Value></Values><Label display="on">Title</Label></Field><Field abbrev="record_no" searchfield="false" sortfield="false"><Values><Value>004204102</Value></Values><Label display="on">Record No.</Label></Field></Section></Record></Snapshot>
+<Snapshot href="/cgi/i/image/image-idx?c=clark1ic8lift;entryid=x-004204105;viewid=39015091191406_01">
+    <Thumbnail src="data:image/jpeg;base64,/9j/4AAQSkZJRgABAQAAAQABAAD/2wBDAAgGBgcGBQgHBwcJCQgKDBQNDAsLDBkSEw8UHRofHh0a
+HBwgJC4nICIsIxwcKDcpLDAxNDQ0Hyc5PTgyPC4zNDL/2wBDAQkJCQwLDBgNDRgyIRwhMjIyMjIy
+MjIyMjIyMjIyMjIyMjIyMjIyMjIyMjIyMjIyMjIyMjIyMjIyMjIyMjIyMjL/wAARCABSAGQDASIA
+AhEBAxEB/8QAHwAAAQUBAQEBAQEAAAAAAAAAAAECAwQFBgcICQoL/8QAtRAAAgEDAwIEAwUFBAQA
+AAF9AQIDAAQRBRIhMUEGE1FhByJxFDKBkaEII0KxwRVS0fAkM2JyggkKFhcYGRolJicoKSo0NTY3
+ODk6Q0RFRkdISUpTVFVWV1hZWmNkZWZnaGlqc3R1dnd4eXqDhIWGh4iJipKTlJWWl5iZmqKjpKWm
+p6ipqrKztLW2t7i5usLDxMXGx8jJytLT1NXW19jZ2uHi4+Tl5ufo6erx8vP09fb3+Pn6/8QAHwEA
+AwEBAQEBAQEBAQAAAAAAAAECAwQFBgcICQoL/8QAtREAAgECBAQDBAcFBAQAAQJ3AAECAxEEBSEx
+BhJBUQdhcRMiMoEIFEKRobHBCSMzUvAVYnLRChYkNOEl8RcYGRomJygpKjU2Nzg5OkNERUZHSElK
+U1RVVldYWVpjZGVmZ2hpanN0dXZ3eHl6goOEhYaHiImKkpOUlZaXmJmaoqOkpaanqKmqsrO0tba3
+uLm6wsPExcbHyMnK0tPU1dbX2Nna4uPk5ebn6Onq8vP09fb3+Pn6/9oADAMBAAIRAxEAPwDM8LeG
+9PutGgnltY5XkG5mfJrcPhHSGHNhAPoDVfwoxTwhCynDCJiD+daKIxRWNzOCQP8Alof8a43dt6nR
+oiqvgrRR1s0z9TUg8F6Lj/jzjq00b/w3M7DuQ5quHLSAC4uNueT5h4pa9x3XYY3gvRWyTZx/hxUR
+8DaLn/j1X/vo/wCNXRjOPtlwD6bzUbJNni7uBg8kOTRr3Fddiu3gTROi2oz/AL7f400eBdFA/wCP
+Uf8AfR/xq4FnGQb6Zjj+/TSZw3/H3OQACRuNP3u4XXYqf8IPowGPsi/99N/jTo/BGjDrZofqT/jU
+7zeWf3t/Koxn7/8An3rOj1uQXDRyPOV3fK4c/dx1xRaXcLrsaK+DNFX/AJcoj9aR/CGjYP8AoEP5
+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
+UVVhDSSxySSfU0UUUAf/2Q==
+"/>
+<Record name="result"><Section name="default" class="default"><Field abbrev="marc245" searchfield="false" sortfield="false"><Values><Value>Le Maine.</Value></Values><Label display="on">Title</Label></Field><Field abbrev="record_no" searchfield="false" sortfield="false"><Values><Value>004204105</Value></Values><Label display="on">Record No.</Label></Field></Section></Record></Snapshot>
+<Snapshot href="/cgi/i/image/image-idx?c=clark1ic8lift;entryid=x-004204105;viewid=39015091191406_02">
+    <Thumbnail src="data:image/jpeg;base64,/9j/4AAQSkZJRgABAQAAAQABAAD/2wBDAAgGBgcGBQgHBwcJCQgKDBQNDAsLDBkSEw8UHRofHh0a
+HBwgJC4nICIsIxwcKDcpLDAxNDQ0Hyc5PTgyPC4zNDL/2wBDAQkJCQwLDBgNDRgyIRwhMjIyMjIy
+MjIyMjIyMjIyMjIyMjIyMjIyMjIyMjIyMjIyMjIyMjIyMjIyMjIyMjIyMjL/wAARCABRAGQDASIA
+AhEBAxEB/8QAHwAAAQUBAQEBAQEAAAAAAAAAAAECAwQFBgcICQoL/8QAtRAAAgEDAwIEAwUFBAQA
+AAF9AQIDAAQRBRIhMUEGE1FhByJxFDKBkaEII0KxwRVS0fAkM2JyggkKFhcYGRolJicoKSo0NTY3
+ODk6Q0RFRkdISUpTVFVWV1hZWmNkZWZnaGlqc3R1dnd4eXqDhIWGh4iJipKTlJWWl5iZmqKjpKWm
+p6ipqrKztLW2t7i5usLDxMXGx8jJytLT1NXW19jZ2uHi4+Tl5ufo6erx8vP09fb3+Pn6/8QAHwEA
+AwEBAQEBAQEBAQAAAAAAAAECAwQFBgcICQoL/8QAtREAAgECBAQDBAcFBAQAAQJ3AAECAxEEBSEx
+BhJBUQdhcRMiMoEIFEKRobHBCSMzUvAVYnLRChYkNOEl8RcYGRomJygpKjU2Nzg5OkNERUZHSElK
+U1RVVldYWVpjZGVmZ2hpanN0dXZ3eHl6goOEhYaHiImKkpOUlZaXmJmaoqOkpaanqKmqsrO0tba3
+uLm6wsPExcbHyMnK0tPU1dbX2Nna4uPk5ebn6Onq8vP09fb3+Pn6/9oADAMBAAIRAxEAPwDD8MeC
+tP1PRoby7MjvLkgK20AZxW6vw60THMcx/wC2pqx4GP8AxSdmfZv/AEI104I55rklKV3qbpK2xyQ+
+HGhjkxyn6yml/wCFeaHn/UP/AN/W/wAa67I/SjI+nFTzS7j07HJN8OtDY5EUgHoJWpU+HehDrBIf
+rK3+Ndb2/ClXoMntReXcNOxyr/DzQNilbZhnP/LVv8aiHw60I/8ALGX/AL+tXYv/AKmPB7mo16DJ
+ovLuGhyq/DzQQObdz/21b/GlHgHQBn/RCfrI3+NdV2FNPsM0Xl3DTscsPAegjj7HnnvI3+ND+BtD
+A+WxT3+dv8a6jr+dMk4BovLuGh4V4isIdN166tLfIijYbQTnGQD/AFoq14y/5Gu++q/+giiuuPwo
+xlueheA2DeFLbnpvH/jxrqlGePauU8AjPhO3I/vP/wChGutUfyrlluzXoKVIBx6UFCRzkcVKAMde
+1KcY/CkBGucfQUuP5UBSB9RTgDwPagAI/wBHj+pqIHgcH8qsMMwR/U1Gq4AzQwGgcCgDj8adjp9a
+THH40AMPT8ajcHGKmxx+NRyDAoA8S8Z/8jZffVf/AEEUUeNM/wDCW331X/0EUV1Q+FGUtz0H4fc+
+FIOejv8A+hGuvjH8q474dn/il4/+uj/zrs06Vyy+Jmq2Q8rx+FOC449qUHA/CnDBIpDGFc4+lAGM
+fSn96THIoEAB+zpn+8aZipiMWq/7xqIdqAG/40EcD607HFGOPxoGREfzqKXgVO1QzAYoA8Q8Z5/4
+Sy+yc8r/AOgiil8aADxZe49V/wDQRRXXD4UYy3Z3nw4/5FoD/ps/9K7Ven4VxPw348Nn/rs39K7Z
+O1csviZqtkTA5/Knr/SogacrUhjz1FIDShunFJnkUCHnm3H+9UQ61Jn9wP8AeqMGgBaQnijPFITx
+QMaxqCbkGpieKglYEGgDxLxkMeK73vyv/oIopfGmP+ErvcDGSp/8dFFdcPhRjLdnc/Dk48Nn/rs3
+9K7VDgD6VwXw7uootAkWSRVPntwTjsK7AX9sBxMn/fQrmn8TNUtEaQbP5Uu7ms9b2EjIkX65p4u4
+uplX86m47Muh+RTtwx1rPF3FvxvH4Gj7ZGDw4ouFmaBYC3HP8dRhuaovODHw3H1pgvY0+VpFB+tF
+wsaJbjik3jFZ51GAdZU/76pDqVsOsyf99Ci4WZfLioJDweapPqtmDg3MQOf74qKTVrPkfaof++xT
+Cx5T4058VXZ/3f8A0EUVH4smSfxJdSRurqduGU5H3RRXXD4UYy3ZmW/3D9anWiihgi2v3Kcfuiii
+oKJYvvipW60UVLGT3P8Ax7J9azJPvUUU0DK8nWom7UUVaJZWf75+tNPWiiqJG0UUUwP/2Q==
+"/>
+<Record name="result"><Section name="default" class="default"><Field abbrev="marc245" searchfield="false" sortfield="false"><Values><Value>Le Maine.</Value></Values><Label display="on">Title</Label></Field><Field abbrev="record_no" searchfield="false" sortfield="false"><Values><Value>004204105</Value></Values><Label display="on">Record No.</Label></Field></Section></Record></Snapshot>
+<Snapshot href="/cgi/i/image/image-idx?c=clark1ic8lift;entryid=x-004204106;viewid=39015091191620_01">
+    <Thumbnail src="data:image/jpeg;base64,/9j/4AAQSkZJRgABAQAAAQABAAD/2wBDAAgGBgcGBQgHBwcJCQgKDBQNDAsLDBkSEw8UHRofHh0a
+HBwgJC4nICIsIxwcKDcpLDAxNDQ0Hyc5PTgyPC4zNDL/2wBDAQkJCQwLDBgNDRgyIRwhMjIyMjIy
+MjIyMjIyMjIyMjIyMjIyMjIyMjIyMjIyMjIyMjIyMjIyMjIyMjIyMjIyMjL/wAARCABSAGQDASIA
+AhEBAxEB/8QAHwAAAQUBAQEBAQEAAAAAAAAAAAECAwQFBgcICQoL/8QAtRAAAgEDAwIEAwUFBAQA
+AAF9AQIDAAQRBRIhMUEGE1FhByJxFDKBkaEII0KxwRVS0fAkM2JyggkKFhcYGRolJicoKSo0NTY3
+ODk6Q0RFRkdISUpTVFVWV1hZWmNkZWZnaGlqc3R1dnd4eXqDhIWGh4iJipKTlJWWl5iZmqKjpKWm
+p6ipqrKztLW2t7i5usLDxMXGx8jJytLT1NXW19jZ2uHi4+Tl5ufo6erx8vP09fb3+Pn6/8QAHwEA
+AwEBAQEBAQEBAQAAAAAAAAECAwQFBgcICQoL/8QAtREAAgECBAQDBAcFBAQAAQJ3AAECAxEEBSEx
+BhJBUQdhcRMiMoEIFEKRobHBCSMzUvAVYnLRChYkNOEl8RcYGRomJygpKjU2Nzg5OkNERUZHSElK
+U1RVVldYWVpjZGVmZ2hpanN0dXZ3eHl6goOEhYaHiImKkpOUlZaXmJmaoqOkpaanqKmqsrO0tba3
+uLm6wsPExcbHyMnK0tPU1dbX2Nna4uPk5ebn6Onq8vP09fb3+Pn6/9oADAMBAAIRAxEAPwDN0Twr
+pE+lWd1NbqzyRhmLueSfxrYXwroOcmzgP4//AF6i0dQ/hzSQRkbV/kasSOtvIVY9SNgHU8dq5G3f
+c3SQh8LeHz/y5wfgf/r08eGPD+P+PO3H41GLn+IW52gZbdxj9eaZFM5KzFMxMfugdB6+tLXuPQmP
+hjw8f+XO2/OmHwv4fBz9jt/z/wDr0+d2+12wt4BJC/LMG9jUkn7ve6qGQNgDcR+v+elGvcBjeF/D
+5/5c7fHsaQeFdAB4soD+NWgI3IxwWAbBJ4z2/Ssu61xIZ3jitjLtOMqT83POPwzRqGhaPhjQccWV
+v+dNHhfQlORZwfjT9Nu47+x85oRFIMAq2SRnvVfWbl7K3jjt4wZ5jhAckjp2zRre1w0JT4a0Jvl+
+x234Un/CNaFnAtbfPYcc1jxahqaTkS2DrEASZPLbPHc/WtrT7lb20t59iq5cBgrZwQaHddQVjzLx
+VZw2HiK5t4ECRqFIVRjGVFFSeMGdvFd/5gwQ4Az6bRiiumPwoxe56DoRz4Z0k+w/kanvcTTwKo5Q
+7sjB4xj+tV/DnzeGNK9v/r1POzSXu4fII+Dg/e+tcz3NuhKFJiIUg9OTxUWWfcoYKx4z1xUzbiAQ
+cimspy+OOMYFICvDBLHI0TSn5m3blOPw/nVtkUxNhgYMBcA56f5xVYq5Zckb+5PFSRAyEdQinB68
+nr/hQA/JYgsZVLL1A6elYbxmOQg4VxkcrjJPP41vRsd5D4HAxTbm1S5EQlIXY+7JXOR6U0wsV9F3
+Is0rj5CAo4xuIA/wpmrTrDrVlPOSsAjI3j+Bj+natSR/MyFICbflwOn4VWvoDd2qoF3hW3PET/rB
+jp7daL6hYbLd20MRmkuSEAzu3r0/OqXh+NvsxmwyxyXBZEPGBkdveo30y2OY10nPTAyBj61rQxvF
+FBC773jCgsO9D2Dqed+Plx4plPrGh/Sil8e5/wCEnf8A65J/WiumHwoyludj4ayfDGl4OPf86szJ
+Ik2WY8tg8deP06VV8LHPhnSvqf5mtW+jIyy43D5xn2/+tXK9zVbFdJSuQevrjr6UyTLPiMYcjP8A
+9c0hEs3Majaf4j/QVYjj8oZZwxPIJHJoGU3aVJQjLI5OdpA4/GrSIYk2L8pPJPqc9aSYF3XheDgU
+ryR4AUAe/wD9egRIkbfMXbv1HapSQF4YHjoarKGjj253Y5JxyfSgyAqerdsUAOm3PlVyNwIyO3+T
+TFMkaA5JPPJHOadkAAjAB70mzbl35wCc47UDHySTsQfMZe+CBxn60R72IBOeQMkY70zaHYlSQQOC
+c4qwFCeWuOd3PT1FAjznx7/yMz8/8sl/rRR4+P8AxU7/APXJf60V0w+FGUtzrvCOD4Y0v/ef/wBC
+Nb15LshdiB8vTPcnj+tYHg4/8Uxpv+8//oRrVvpSzKmcncDjPbvx+v5VzS+Jmq2Eg/dRqrEkAYDb
+s5qUyZTyyASemfrVbcjKpRiTnJXtUxAdfmX689DSGI8fmHhTgevSonjKHIOPrnGKtLtCnnJXt1qO
+RgzEZ59qAISSEBxyeCTSIhChWyCe5xU6HLEYHTjNR7QckZL9PX8aYiNdivk43Edj+lPdov494A79
+OtKR5aFhgtgkEj/PeiPzJIgGjBcj5gKAJFZUX7oK+55A7UqJtkUDhQenpzSYZQCV5HTJ5FLGx8xQ
+RQB5z48/5GeT/rmtFHjz/kZ5P+uS0V1Q+FGUtzq/Bz48M6ePRpP/AEM1fkz9pfflBtXpnJ6//XrN
+8FmGTwzbK5O5WcDBx/Ea6IQ2+ep/77Nc0naTNVsVYmTGQOO/HFO3IzsFbBz2q0sVuDjJH/AqcLW2
+B3ZOT6tU3Q7FdWTAcFT6UwyAYwfmY4/H/Iq59mtvU/8AfVN+yWoJIY9f75ougsQGIFQQp3Dqd2M0
+BiM7UIx0HBHUVY+zWwU5J/76qPy7MEjzB/33RcLEe5mBJTH154qmt1dOrpbRRsqSFdzEk8H2rSEN
+mRw5/wC+zSeRZ5OGP/fZouhWZni81BgQLGAEfeOSefy/zmnwXbPciKSNY2XHAOeDVwwWneQj/gZq
+ExW6SblYcHqWNO6CzPOfHTZ8TSf9c1oqLxpKsniOQqQQEUcGiuqHwoyluc8kjr912H0NP+0Tf89p
+P++jRRVkh9puP+e8v/fZpftVx/z3l/77NFFKwCi6uNv/AB8S9f75o+1XBXBnlPOfvmiiiwDjeXJ6
+3Ex+rmozNKSSZXyf9o0UUWATzpf+ej/99Gjzpf8Ano//AH0aKKYCeY56u350eY/Te350UUANPWii
+igD/2Q==
+"/>
+<Record name="result"><Section name="default" class="default"><Field abbrev="marc245" searchfield="false" sortfield="false"><Values><Value>Nova et accurata Descriptio Delphinatus vulgo Dauphiné / Joannes Janssonius excudit.</Value></Values><Label display="on">Title</Label></Field><Field abbrev="record_no" searchfield="false" sortfield="false"><Values><Value>004204106</Value></Values><Label display="on">Record No.</Label></Field></Section></Record></Snapshot>
+<Snapshot href="/cgi/i/image/image-idx?c=clark1ic8lift;entryid=x-004204106;viewid=39015091191620_02">
+    <Thumbnail src="data:image/jpeg;base64,/9j/4AAQSkZJRgABAQAAAQABAAD/2wBDAAgGBgcGBQgHBwcJCQgKDBQNDAsLDBkSEw8UHRofHh0a
+HBwgJC4nICIsIxwcKDcpLDAxNDQ0Hyc5PTgyPC4zNDL/2wBDAQkJCQwLDBgNDRgyIRwhMjIyMjIy
+MjIyMjIyMjIyMjIyMjIyMjIyMjIyMjIyMjIyMjIyMjIyMjIyMjIyMjIyMjL/wAARCABSAGQDASIA
+AhEBAxEB/8QAHwAAAQUBAQEBAQEAAAAAAAAAAAECAwQFBgcICQoL/8QAtRAAAgEDAwIEAwUFBAQA
+AAF9AQIDAAQRBRIhMUEGE1FhByJxFDKBkaEII0KxwRVS0fAkM2JyggkKFhcYGRolJicoKSo0NTY3
+ODk6Q0RFRkdISUpTVFVWV1hZWmNkZWZnaGlqc3R1dnd4eXqDhIWGh4iJipKTlJWWl5iZmqKjpKWm
+p6ipqrKztLW2t7i5usLDxMXGx8jJytLT1NXW19jZ2uHi4+Tl5ufo6erx8vP09fb3+Pn6/8QAHwEA
+AwEBAQEBAQEBAQAAAAAAAAECAwQFBgcICQoL/8QAtREAAgECBAQDBAcFBAQAAQJ3AAECAxEEBSEx
+BhJBUQdhcRMiMoEIFEKRobHBCSMzUvAVYnLRChYkNOEl8RcYGRomJygpKjU2Nzg5OkNERUZHSElK
+U1RVVldYWVpjZGVmZ2hpanN0dXZ3eHl6goOEhYaHiImKkpOUlZaXmJmaoqOkpaanqKmqsrO0tba3
+uLm6wsPExcbHyMnK0tPU1dbX2Nna4uPk5ebn6Onq8vP09fb3+Pn6/9oADAMBAAIRAxEAPwCj4Y8L
+6Rd6BaXVzaJJLIuWJJ55+tbX/CHaD1+wR/mf8ag8DSPL4StN4+6XUe4DGul7HiuKUnzPU6ElYwf+
+EN0Ij/kHxdPU/wCNL/wh2hEf8g+P8z/jW6oPcU7aN33aXM+47Iwx4P0LA/4l8X60DwdoX/QPi/Wt
+0HkgL070DntS5n3DQyW8I6F5Sf8AEug7jpUR8I6ED/yD4K6A48iPHqaYy8dM807vuBgnwjoX/QPh
+pV8KaEvTT4PxFbZAGBjmm49uaXM+4WRjt4W0Q8/2db/gtRTeFdHZWUWEABGOFAI/Gt3jHPFRuMd+
+9HM+4WR414usLbTtfkt7aMRxhFO0epoq349/5GeT/rmtFdkPhRjLc9C8KAL4W04AYHl5rcXHesPw
+mSfC2nf9chW4BkZrjluzZbDscfy5p44qMD2xT+9SMAPWmnGc1JjOKjkNMRLn/R4/qaaXAPfP0pxB
++yR+uTUWTihjSAeuaTdSgU0+1IBW+7UcnQH3qTHynmo26D60wPI/Hv8AyNEv/XNKKTx6T/wlMv8A
+1zT+VFdkPhRhLc9D8Jc+FdPx/wA8/wCtbyggVgeDufCun/8AXP8Aqa6AdK5Jbs2Wwc04UDnr0p4U
+ZqRicimOM8ipCRkAU1h8vFADv+XWL/eNRFcEnsamGPssZx0Y0xiD2psBmD1zTSuOe1Te9IRxxSAi
+9TzTGHFSkdvzpkgIWmgPH/Hv/I0y8/8ALNaKXx7/AMjTL/1zWiuyHwowluegeCznwnYf7h/9CNdE
+vSuc8DnPhKx+jf8AoRroxxXJL4mbLYdnFO3cUyjP5VIxxOajLHOKeTxUfVqEJkqyhoQgyCrHNIR3
+xUMR+eT/AHqmznigaHA4FIW4pBSHGBQAE4P1qOU/KaVjxxTZTmM0wPH/AB7/AMjVN/1zT+VFJ48O
+fFM3/XNP5UV2w+FHPLdnfeBm/wCKSsvbf/6Ea6MOfSuU8CzqPClqM5ILjAx/eNdMJkwOR+dck/iZ
+uticOfSlD5NVzMg6nv60vnR9AR19akCxuyCKiB5/GmfaYhxu5qPzVJO1gefWgHsTxn5n+v8AU1OM
+AVRtpFy+5gDn19zVjzkx99fzoAlyKaSDmo/Oj/vD86a00Y/iH50DHFhk+tNZ/wB3TGmi/vj86gku
+Y9pIdffmgR5V46OfFEv/AFzT+VFR+NZUl8SzMjBhsUZB9qK7YfCjCW7MGOeWMYSV1HorEU83Vwf+
+W8v/AH2aKKqwg+1XH/PxL/32aPtVx/z3l/77NFFFgBbm43f6+T/vs0q3dyp+W4lHfhzRRRYAa7uW
+xm4lODkZc9aabmc/8tpP++jRRRYBDNKf+Wr/APfRpPNkP/LRvzoopgIZH/vt+dG5j1J/OiigBtFF
+FAH/2Q==
+"/>
+<Record name="result"><Section name="default" class="default"><Field abbrev="marc245" searchfield="false" sortfield="false"><Values><Value>Nova et accurata Descriptio Delphinatus vulgo Dauphiné / Joannes Janssonius excudit.</Value></Values><Label display="on">Title</Label></Field><Field abbrev="record_no" searchfield="false" sortfield="false"><Values><Value>004204106</Value></Values><Label display="on">Record No.</Label></Field></Section></Record></Snapshot>
+<Snapshot href="/cgi/i/image/image-idx?c=clark1ic8lift;entryid=x-004204107;viewid=39015091191570_01">
+    <Thumbnail src="data:image/jpeg;base64,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
+UUAFFFFABSUUUwCiiigD/9k=
+"/>
+<Record name="result"><Section name="default" class="default"><Field abbrev="marc245" searchfield="false" sortfield="false"><Values><Value>Carte du pais de Xaintonge.</Value></Values><Label display="on">Title</Label></Field><Field abbrev="record_no" searchfield="false" sortfield="false"><Values><Value>004204107</Value></Values><Label display="on">Record No.</Label></Field></Section></Record></Snapshot>
+<Snapshot href="/cgi/i/image/image-idx?c=clark1ic8lift;entryid=x-004204107;viewid=39015091191570_02">
+    <Thumbnail src="data:image/jpeg;base64,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
+CiiimAlFFFAH/9k=
+"/>
+<Record name="result"><Section name="default" class="default"><Field abbrev="marc245" searchfield="false" sortfield="false"><Values><Value>Carte du pais de Xaintonge.</Value></Values><Label display="on">Title</Label></Field><Field abbrev="record_no" searchfield="false" sortfield="false"><Values><Value>004204107</Value></Values><Label display="on">Record No.</Label></Field></Section></Record></Snapshot>
+<Snapshot href="/cgi/i/image/image-idx?c=clark1ic8lift;entryid=x-004217655;viewid=39015091185994">
+    <Thumbnail src="data:image/jpeg;base64,/9j/4AAQSkZJRgABAQAAAQABAAD/2wBDAAgGBgcGBQgHBwcJCQgKDBQNDAsLDBkSEw8UHRofHh0a
+HBwgJC4nICIsIxwcKDcpLDAxNDQ0Hyc5PTgyPC4zNDL/2wBDAQkJCQwLDBgNDRgyIRwhMjIyMjIy
+MjIyMjIyMjIyMjIyMjIyMjIyMjIyMjIyMjIyMjIyMjIyMjIyMjIyMjIyMjL/wAARCABPAGQDASIA
+AhEBAxEB/8QAHwAAAQUBAQEBAQEAAAAAAAAAAAECAwQFBgcICQoL/8QAtRAAAgEDAwIEAwUFBAQA
+AAF9AQIDAAQRBRIhMUEGE1FhByJxFDKBkaEII0KxwRVS0fAkM2JyggkKFhcYGRolJicoKSo0NTY3
+ODk6Q0RFRkdISUpTVFVWV1hZWmNkZWZnaGlqc3R1dnd4eXqDhIWGh4iJipKTlJWWl5iZmqKjpKWm
+p6ipqrKztLW2t7i5usLDxMXGx8jJytLT1NXW19jZ2uHi4+Tl5ufo6erx8vP09fb3+Pn6/8QAHwEA
+AwEBAQEBAQEBAQAAAAAAAAECAwQFBgcICQoL/8QAtREAAgECBAQDBAcFBAQAAQJ3AAECAxEEBSEx
+BhJBUQdhcRMiMoEIFEKRobHBCSMzUvAVYnLRChYkNOEl8RcYGRomJygpKjU2Nzg5OkNERUZHSElK
+U1RVVldYWVpjZGVmZ2hpanN0dXZ3eHl6goOEhYaHiImKkpOUlZaXmJmaoqOkpaanqKmqsrO0tba3
+uLm6wsPExcbHyMnK0tPU1dbX2Nna4uPk5ebn6Onq8vP09fb3+Pn6/9oADAMBAAIRAxEAPwCXRPCu
+ktotmZrCCaV4VkeR85JIB/rWifC+lsONLsB/2yq5ogH9lWCk8/ZY+P8AgIq/LkHbg49R1rhlJ33O
+lJWMmLw3pOONKsfxiH+FDeGdIYEtpNj+EYH9K2kBIGcH3HalmRhGMZ69RS5n3HZHPyeFtGRcnSLX
+6gE/pVd9B0GMZ/su1PttOa35InZwQ+NwwQ3A+oFVktseYWX5gxGR1x2p8z7hZGDFpmisoJ0W0+Yg
+AbQe+KvR6Do7sypo1llcf8sx/hVmO0USAEtt2Zx07mrSW5i+ZCpP931H680cz7hYqHw9pSqSNIsG
+I7CFf8Kii0nSJgyjR7BWHrCv+FbKSJJlcYJyCh6ipIreOMkoPvHNLmYWMVvDOjnk6RZDPA/d4/pS
+Hwvo20k6TZ8dcJ/9augKgHnpn9abMoWJyeODRzPuFkeLeOLG20/xG0NrAkMRiRtiDAyRRU/xF48V
+HP8Az7x/1orsh8KOeW56joyk6ZY5HH2WM/8AjorQKyZGMDJxk1n6OSdHscD5vssfb/ZFWF3SoXad
+gHO0ADj/APX0rje50IuFOTnG4e9PSRXHBHA5HpVS2aV4tzKHcADJ6/8A16dFE6szGRjk52t1qbDJ
+BEWdhuCnPBHX8aoTsYWZgf3vVmA69vpirLSo0xUuVkIOFJIJqrKWMT/LliOcj9femBXt5meYBhtw
+pGducnNX5JsAKvzNjIGKpQyrnPqDnn0JqV5127cnPbHGOPWmIdO6yIqOf3hJxt6/hU1pcZTbIVDD
+AwM8mq5mjBjSMZbtuGfz96uRWpjQyMB8wAx6UMCeaPzoWTdtyOo6ioinl2zLuJIHU1NGBIis2c8H
+GeKimwInCjjbwAPapGeP/EfI8Uj3to/60UnxGOfFX0t4x/Oiu2n8KOeXxM9U0QeZo2nkZBNpH06/
+dWpIiA0kcoO4H04OTUGhSsNF01zyDaR5/wC+Vq5ONzCVcZXse+e36VyPc3Wwy2fajD0A49+h/lU2
+75cc5J9OKqv5fkqVGOTjkEjnnkeuDUoIHzE9sA5pAEh34DKCR09qqSDJ8rJCsCO1SvKgkYFsjOD6
+/pVdp4kbMjADPBxTAhFltfdGEGFIYsMH6ilKlXS1iQ5A4yelT/aFMZkClgAWqa1tPnFxIX6YCrzx
+RcC3aWZtrcBgJGHI459asSsyjJjLAEcDHT15pVlIB4A68cnpTZ7gxQvIQeBxnoakZGJEZSd2zGAc
+jH+RSSACBwM9D15qjcQm7OZ7lU458s4JGOhz9aht2a2JtWbKMGMbDoeKdgueYfEUg+Kmx/zwj/lR
+TfiFn/hK5M/88Y//AEGiu2n8KOeW7PTtDYL4f0skgYs0Jz/urWgsodchlZWHVcis/QmJ0HTP+vSP
+/wBBWrhi8xE8z7wOcqeprke7NkJMrFcIysoPQkcH2P17Uxn8pwjDG4BhznHt+dTKYwSGCjJGe2T2
+/lTZ7cykMjgc5HFIZSmIaQjONzBS2Penypal8bUXHAyKhlR41CtkMpBB6jrVW6knIHBYDqU9femI
+szeXGcKUG8FcBTz71PZXZ2lZsMB/EFxj/P8AWqVqyTFIXRi4OcuO+c/1qZ7OVn/d4VccnuPy/wA8
+UAbccy7QVJwRxxUV3mS3YbTnHBz0qnDDOuFNxx7Cn/vop0Dybg3GfSlYY63keWI46qSp29Mj8aoM
+kkuo+YpQRwgj1zxz/h+FXnsYS+5d4JGcIcUyKNIQyKu3joM0AeWfEP8A5Gk/9cI/5UUnxE/5Gk/9
+cI/5UV2U/hRhLdnpOhc6DpQz/wAucfH/AAFa0w/yDOfyridK8c6JaaRZQTG5EsMCxMFTOCAB6+1W
+/wDhYXh7PW9/79//AF65nCV9jVNdzrkOc9eo7UuRt3dh2xXJL8QfDwJ+e95/6Zf/AF6U/EHw6eRL
+eA/9cv8A69Lkl2HzLudO7hxtbqeBxVWa0ywMRx3OAKwX8f8AhwqcS3hPtF/9eoz4/wDDy8r9tP8A
+2zH+NHJLsHMu5seXLE4ONzHI5/yKlY3Eq7nJQD+6eorn18feHiPnW+z/ALg/xpw8eeGwMA32OuNn
+/wBenyS7Cuu5vrEQzOrkcYOeffNKfMWUbJd3Gfm6fgRWAvj7w4o6Xx+kY/xob4i+HSc+VqJOMZ2L
+/wDFUckuwXXc6iO7VkBberd8qR+tPZhtJHVgecVxx+Inh/p9m1Ij6L/8VUY+ImiLkC31Hb2BVf8A
+4ql7OXYfMu5zXxBH/FUMfWCP+VFZ/inWLfW9ZN3apKkXlqgEoAbj6E0V1wVopMwluf/Z
+"/>
+<Record name="result"><Section name="default" class="default"><Field abbrev="marc245" searchfield="false" sortfield="false"><Values><Value>A map of North America : with the European settlements &amp; whatever else is remarkable in ye West Indies, from the latest and best observations / R. W. Seale delin. et sculp.</Value></Values><Label display="on">Title</Label></Field><Field abbrev="record_no" searchfield="false" sortfield="false"><Values><Value>004217655</Value></Values><Label display="on">Record No.</Label></Field></Section></Record></Snapshot>
+<Snapshot href="/cgi/i/image/image-idx?c=clark1ic8lift;entryid=x-004256886;viewid=39015091197296">
+    <Thumbnail src="data:image/jpeg;base64,/9j/4AAQSkZJRgABAQAAAQABAAD/2wBDAAgGBgcGBQgHBwcJCQgKDBQNDAsLDBkSEw8UHRofHh0a
+HBwgJC4nICIsIxwcKDcpLDAxNDQ0Hyc5PTgyPC4zNDL/2wBDAQkJCQwLDBgNDRgyIRwhMjIyMjIy
+MjIyMjIyMjIyMjIyMjIyMjIyMjIyMjIyMjIyMjIyMjIyMjIyMjIyMjIyMjL/wAARCAA9AGQDASIA
+AhEBAxEB/8QAHwAAAQUBAQEBAQEAAAAAAAAAAAECAwQFBgcICQoL/8QAtRAAAgEDAwIEAwUFBAQA
+AAF9AQIDAAQRBRIhMUEGE1FhByJxFDKBkaEII0KxwRVS0fAkM2JyggkKFhcYGRolJicoKSo0NTY3
+ODk6Q0RFRkdISUpTVFVWV1hZWmNkZWZnaGlqc3R1dnd4eXqDhIWGh4iJipKTlJWWl5iZmqKjpKWm
+p6ipqrKztLW2t7i5usLDxMXGx8jJytLT1NXW19jZ2uHi4+Tl5ufo6erx8vP09fb3+Pn6/8QAHwEA
+AwEBAQEBAQEBAQAAAAAAAAECAwQFBgcICQoL/8QAtREAAgECBAQDBAcFBAQAAQJ3AAECAxEEBSEx
+BhJBUQdhcRMiMoEIFEKRobHBCSMzUvAVYnLRChYkNOEl8RcYGRomJygpKjU2Nzg5OkNERUZHSElK
+U1RVVldYWVpjZGVmZ2hpanN0dXZ3eHl6goOEhYaHiImKkpOUlZaXmJmaoqOkpaanqKmqsrO0tba3
+uLm6wsPExcbHyMnK0tPU1dbX2Nna4uPk5ebn6Onq8vP09fb3+Pn6/9oADAMBAAIRAxEAPwDd0TSN
+KOh6YX0q0llkto2JMKZJ2Akkke9aP9iaZn/kAWn18mOotHTOiaP/ANeif+gLWzveNFym8nggH865
+jRmcuj6YBxoVpx/0yjqOSx01HCto9qM9B5cda0L/ACneWHpuFVpoWluBKpjMYHOf6U7gUBp2kk4O
+i234wJUp0XSsYOg2p9vIjqwkR6lkVR15IpksrKJSZGBHIG4Um7BYq/2To6SYOgW3PA/cRVM2iaSR
+zoFp/wB+I6mtZNzfMc8jawIPP+TV+OQSIc9VYqaaYWMT/hH9FJ/5F60Pv5EdR/2N4eZ2QaBall4I
+8iPit6MEqT6scce9MfyFk+YqHJ54z/8AqouwMT/hG9ELceHrYj/rkgpJPDWhAKH0C2UMwXPlJ3+l
+bcr7ZEXftXBJI/lUDyeasYyTtlXrRcDynxzo+n6brkUVpaxwxtbq5VemdzD+goq98SR/xUcH/Xov
+/ob0Va2Edzo526HpB54tI+n+4K0/PZTufoelZmjkDQdHBGSbSPH/AHwKvSLglSuQRnGOT9KzGTec
+XVXjVSGOBk5+tJNbblJ8wg46AmnWsTBPmHljcTt4JFTGGPrufPruNAEGXSHfJHtUdu496bIyYLMA
+eMcirQTKkK2fZuRWWQ6s0W3aV6r2AoAfIgAyGLDIYryM/wCcVfjCnc6sDG53fp/9asRPMnnELA7M
+nd8mD36VqRRBBsVQPYnP/wBaiwyZ5Y7Zl3MT5j4AZulUmk8+QgHGTyc8HmpLm2BdMKHbPQjge9NW
+GSNSWHyZycdhQIkjKqQoU8jr60ShF8oKoGJBkClICfxbT2FN25dCzfNvXimB5x8SBnxFB/16r/6G
+9FS/EUZ8Qwf9eq/+hPRVrYR1uku40HR9i7mFomBn/YFaUcmyWN9mGwS525J9vwrO0LnSNFB6G1TP
+/fsVsPncUcEgDg+tZoplhJ0fgMuT2IpxxgZUVUt2Usyg5wPTkVYTBPG4gcUxBsQHhcVDPbpOSoZl
+bGNwPSp9p3E4P1NJswRkjrQBkMksE+zhgoyHAOSD2P5Vetpy0WHXYR+tF9HGzxZPzE44PbB/+tTb
+RHZQ8g29wDQBOwdASMMTxz60gkZoioI35wRjpVgqoGM8YqtJAQzCMcueWz0FIBYV2qMlnUD5fpUL
+r5ZBAyN4x7CrCw7M4bg9BnpUFyMKnP8AGv8AOkM88+IJzr8PH/Lsv/oTUUePlzr0P/Xsv/oTUVpH
+YR1ugui6LojMwAFtHyf+uYre8+L/AJ6p+deOaf8AEaa0022s5NMilWCNYw3mYyAMZ6Gr6/FEBcf2
+HET6+f8A/Y1KhLsDaPU2ljI+SaNW7k4OajlZkh+WZCewH/68mvNB8UlUDGhRZ/67/wD2NB+K+Gx/
+YUX/AH//APsafKwuj0azkkO7fKi46EDAP4Zq4JVUndKh+nGP1rzNPirnH/Ejj/8AAj/7CpR8Us8f
+2JH/AN//AP7GjlYHfXEkcsqOskfycMGYdDUwuIwo/fRk9znFedf8LN5J/saMZ/6bf/Y04fE4nj+x
+k/7/AP8A9jS5WB3FxevvZUcDHTBFMsNQkk3i4cLtbgtgVxh+JY25OjIf+2//ANjTV+JoY/8AIEjH
+/bf/AOxp2YHfNcxk8XKD0+YGq9zOjLGElRjvXofcVxDfEndn/iTx8cf67/7Gmf8ACyAr4/sdPqJ/
+/sanlY7oZ45Odbh/691/9Caiuf8AEnic6nqMc/2QRYiC7fMz3J9PeitEnYV0f//Z
+"/>
+<Record name="result"><Section name="default" class="default"><Field abbrev="marc245" searchfield="false" sortfield="false"><Values><Value>Tehuantepec Railway Company's chart of the World on Mercator's projection : showing the line of its railway, with its connections by steamships and sailing vessels with the prominent ports of the world.</Value></Values><Label display="on">Title</Label></Field><Field abbrev="record_no" searchfield="false" sortfield="false"><Values><Value>004256886</Value></Values><Label display="on">Record No.</Label></Field></Section></Record></Snapshot>
+<Snapshot href="/cgi/i/image/image-idx?c=clark1ic8lift;entryid=x-004256897;viewid=39015091192198_01">
+    <Thumbnail src="data:image/jpeg;base64,/9j/4AAQSkZJRgABAQAAAQABAAD/2wBDAAgGBgcGBQgHBwcJCQgKDBQNDAsLDBkSEw8UHRofHh0a
+HBwgJC4nICIsIxwcKDcpLDAxNDQ0Hyc5PTgyPC4zNDL/2wBDAQkJCQwLDBgNDRgyIRwhMjIyMjIy
+MjIyMjIyMjIyMjIyMjIyMjIyMjIyMjIyMjIyMjIyMjIyMjIyMjIyMjIyMjL/wAARCABLAGQDASIA
+AhEBAxEB/8QAHwAAAQUBAQEBAQEAAAAAAAAAAAECAwQFBgcICQoL/8QAtRAAAgEDAwIEAwUFBAQA
+AAF9AQIDAAQRBRIhMUEGE1FhByJxFDKBkaEII0KxwRVS0fAkM2JyggkKFhcYGRolJicoKSo0NTY3
+ODk6Q0RFRkdISUpTVFVWV1hZWmNkZWZnaGlqc3R1dnd4eXqDhIWGh4iJipKTlJWWl5iZmqKjpKWm
+p6ipqrKztLW2t7i5usLDxMXGx8jJytLT1NXW19jZ2uHi4+Tl5ufo6erx8vP09fb3+Pn6/8QAHwEA
+AwEBAQEBAQEBAQAAAAAAAAECAwQFBgcICQoL/8QAtREAAgECBAQDBAcFBAQAAQJ3AAECAxEEBSEx
+BhJBUQdhcRMiMoEIFEKRobHBCSMzUvAVYnLRChYkNOEl8RcYGRomJygpKjU2Nzg5OkNERUZHSElK
+U1RVVldYWVpjZGVmZ2hpanN0dXZ3eHl6goOEhYaHiImKkpOUlZaXmJmaoqOkpaanqKmqsrO0tba3
+uLm6wsPExcbHyMnK0tPU1dbX2Nna4uPk5ebn6Onq8vP09fb3+Pn6/9oADAMBAAIRAxEAPwBnhnw1
+pN1oFnPPYxSSOgLFh1NbB8J6H0/s63+u2m+El3eF9P8A+uYpmoKz6hNGpweCCSR6f5/GuJtuT1Om
+ysSf8InoZ/5hsH/fNO/4RLQsf8g2D/vmqzWkv3iI1BIx+8/+tUb2FwqIAVLZwSXPtj+R/OjXuGnY
+u/8ACJ6F/wBA2D8qQ+E9CzgabB+VVTYzrG5ZU6Ej5+n6UJGPKdQ0W49DuPH6Ua9w07E3/CKaEGP/
+ABLoMfSgeF9BBybC3/KqaqzSkMI1HOMt16f4H86ebYzSkL5agY9ff2p69w0Ln/CNeH/+fC1/IUv/
+AAjWgdfsNr+QqpPAXAA8qMjI+vvS+WGl3Ax8DBUDijXuBaPh3w+P+XG0/wC+RQvhvRGOY7G1b6Rg
+1XRSGJPk5KhcEY9a1NOQqkoIUEsD8vTpSd11DQ8b8WWkNn4lvIII1jjUjCqMAZANFWfHC48XXv8A
+wH/0EUV1x+FGEtz1Dwfz4V0//rn/AFqPVfMS7kkjUHaV6+nGf8+1SeDTnwpp/wD1z/rU17Cs1xOC
+ewxk+2K5PtM36FGSVmxtbHpk9RTYGWVW81vmHI9Qe1VjujZMsTGTgbhyD9fwNWNphO8nocg45piF
+mu2kYxZYE8EDjtVAiTBG4jj24NS3QEr79zZBwVxjFQuTGoC4UnuenvTQDCWBUbixHTjvT/McoED7
+R296rGdAxAzkH16UMQ/zZ6+nINMRLFuE+ZJMr780z7ZdSossWI9wIIIJxnv068U8ltqlSGPUYNXr
+fT7Y2PyqEZyT5jEZyTn0ouBSS4vBCqs6Svv5ZkIGPTAFdHoMzXMEztGE+YAAHqAOtZttpdu0bCRR
+KpwR2Hpkevr+NaulxCBp4lztBGM/jUyaKR5R45/5G68/4B/6CKKXx1/yN139E/8AQRRXVD4UYS3Z
+6X4N48K6eP8Apn/U1Yun2XkxYArhc57VW8G/8ixYf9c/61au/wDkIOduflXv9a4/tM6Ohl3EETZY
+N5ch5XHPQfz/AMafbgvFG0iEuwB6ZyKkuGKkN0VeCScZqrDcsrIhJCg5APHGelUSOniWQbEXHvnG
+B+VU5IkUYdweOOa12wE8xwvIzt7/AErPNvlwHB28EEDGaEwM8jEuNuSTg+9IiM7EFSD3VvlI/Ota
+3iWO4Yrz0HX6Ut8jPdEDAGAdxHQ4o5tbDtpczSG2uoXG3ueMf5zUkMzRquN3J6etTzRmGFd7Bg46
+5xioC5CggAAD1/z7UxFu6vmeJFz5YHPynrWlodw1xDM/zEjaMsc561g2zbruPzAcEEcj/PrXTacA
+skoChRtXp+NKWwI8p8dA/wDCV3JPUqn/AKCKKd48H/FWXGP7q/yorqh8KMZbs9G8HAjw3p5HQx1f
+uYxJev0yEXr+NUfBw/4pmwb/AKZ/1q/cOiX7bu8Y/ma438TOjoU7q3WSJUZsZbgCsqNcfx7yM4I9
+q2Lq5RVYgbiF+UDvnisnymQ5xj2qkSywZmKg+QN2cM7dvz70hmcoBjKgYwDx7UuwsmwJ15PHvxTX
+RQNpBUEelAEAmbewUsjevFOjbZEXdmkfJHzHqP8AJpNuASg3H0IpqB5A3lnk8N7UDIneRuWwcdFx
+0pN6jqgx7mp9hRBHhQWOWJJNVrssgDDBwAcY4qhCwTrFIDIispPAI6fSui0mZJWlKknCjOfxrD0w
+edvaSFW7qSK3rHImcHGdg/mamQI8u8dj/iqZz6on8qKd48XHimb/AHF/lRXTD4UZS3PRPCDAeGLA
+f9M615IIZJN7OytjHDYrxez8R6vaWscEF66RIMKoA4/Sp/8AhLNd/wCgjJ+S/wCFYulK9zRTVj1p
+9PgdgS8rEdMtwKRtMthg5c/8CryceLdeH/MSl/Jf8KX/AIS7Xs5/tKT/AL5X/Cl7KXcfOj1k6dCx
+DHzCR/t1G2nW8jDO84ODljXln/CYa/j/AJCUn/fC/wCFM/4S3XSSf7Rkz/ur/hR7GXcOdHqraXaj
+7qsMHs1Nj0u3WNsKxGem415YfFuunrqMn/fK/wCFIvizXQCBqMo/Bf8ACn7KXcXOj1YadbsAGjOP
+QseKT+z7YHHkd+u415Q3irXCOdSl/T/CmHxRrf8A0EpvzFHsZdw50evHTrVVwsYIHOMmlt0jibKR
+hcjnANeQf8JRrf8A0Ep/zFJ/wlOuf9BKf8xR7KQudGh49APiiQjoYkorm72+ur24M1zM8smANzdc
+UVvFWViG7s//2Q==
+"/>
+<Record name="result"><Section name="default" class="default"><Field abbrev="marc245" searchfield="false" sortfield="false"><Values><Value>Description du pais de Beauce.</Value></Values><Label display="on">Title</Label></Field><Field abbrev="record_no" searchfield="false" sortfield="false"><Values><Value>004256897</Value></Values><Label display="on">Record No.</Label></Field></Section></Record></Snapshot>
+<Snapshot href="/cgi/i/image/image-idx?c=clark1ic8lift;entryid=x-004256897;viewid=39015091192198_02">
+    <Thumbnail src="data:image/jpeg;base64,/9j/4AAQSkZJRgABAQAAAQABAAD/2wBDAAgGBgcGBQgHBwcJCQgKDBQNDAsLDBkSEw8UHRofHh0a
+HBwgJC4nICIsIxwcKDcpLDAxNDQ0Hyc5PTgyPC4zNDL/2wBDAQkJCQwLDBgNDRgyIRwhMjIyMjIy
+MjIyMjIyMjIyMjIyMjIyMjIyMjIyMjIyMjIyMjIyMjIyMjIyMjIyMjIyMjL/wAARCABMAGQDASIA
+AhEBAxEB/8QAHwAAAQUBAQEBAQEAAAAAAAAAAAECAwQFBgcICQoL/8QAtRAAAgEDAwIEAwUFBAQA
+AAF9AQIDAAQRBRIhMUEGE1FhByJxFDKBkaEII0KxwRVS0fAkM2JyggkKFhcYGRolJicoKSo0NTY3
+ODk6Q0RFRkdISUpTVFVWV1hZWmNkZWZnaGlqc3R1dnd4eXqDhIWGh4iJipKTlJWWl5iZmqKjpKWm
+p6ipqrKztLW2t7i5usLDxMXGx8jJytLT1NXW19jZ2uHi4+Tl5ufo6erx8vP09fb3+Pn6/8QAHwEA
+AwEBAQEBAQEBAQAAAAAAAAECAwQFBgcICQoL/8QAtREAAgECBAQDBAcFBAQAAQJ3AAECAxEEBSEx
+BhJBUQdhcRMiMoEIFEKRobHBCSMzUvAVYnLRChYkNOEl8RcYGRomJygpKjU2Nzg5OkNERUZHSElK
+U1RVVldYWVpjZGVmZ2hpanN0dXZ3eHl6goOEhYaHiImKkpOUlZaXmJmaoqOkpaanqKmqsrO0tba3
+uLm6wsPExcbHyMnK0tPU1dbX2Nna4uPk5ebn6Onq8vP09fb3+Pn6/9oADAMBAAIRAxEAPwC3onhL
+RJ9GspJNPjd3hRmY5ySRmtL/AIQrw/jP9nQ4PsaveHVUeH9OPf7PH/6CKvXDiMAetcMpNdTrjFPQ
+5+TwboSKD/ZkPPsakXwToBXP9mw/rXQthkUdzSRnEeAMkHFTzPuPlVtjn28FaABj+zIR+dVZPB2g
+qpxpsWc+9dYcnriq065OMYocn3FyowIPBegt102I/MR3qz/whWgDGNLh9+tdBAo2Hp1NTEVV33Js
+jmx4J0HdzpkP5Uv/AAhmgD/mFwflXRhec0BODRd9w0ObXwdoQ5/sy3/FaJPCOhlcDS7Yf8AroyuK
+hkBou+4WPAfGFnDYeKLu2t41jiTbhVHA+UUVZ8ej/isb3/gH/oIorsh8KMJbnsfhznw7pv8A17R/
++gil1RC7x/e454qHw4x/4R3TsdBbx/8AoIq7N80qg+nSuCZ2UtHcnB+6fUYpGYQj/epFyuAegFNk
+YMdp9Km5ViRpTsXbgnIPPpTbkZAYHv2piKVK5xntinzKRgDJHfmi4mkWYF+VvrUg+9jB+tMgYhT3
+5qbPPStEZABjNAFIxPGDQD70ANaopBx1qSQjNQO3FAHhnj8EeMbz6J/6CKKXx/8A8jhd/RP/AEEU
+V2Q+FGEtz1zw78vhzTf+vaP/ANBFW7giN0OSSW+tVfDwA8OaaeP+PaP/ANBFXZAGlJIB4GK4ZnXT
+HyjIz3psYITLD5vWlV8mlY5XHGc1JYKCMZA44pSzMpPXJpc4Jz0FIM7QpxyKCWWIR8pJ9TUucdah
+h4T8akzmrMh7EAU1Sce9BYYxTc9aYBJzg1VmGUPOKsueMVE/3eQKAPDPHwx4uuf91P5UVL8QFA8W
+3GD1RT+lFdkPhRhLc9W8Oj/im9P/AOveP/0EVdbqe/eqWgf8i1p2P+fdP/QRV7ZiNveuGW51Q2IY
+5SrlTn5umatHAVcDnNVZwePXNPSRmYYXIWoNXqWcbjSsOc80sa5wwOQaey81djNsfGcR5pxweaZE
+cxEA9DSMu3gA4NUQOzxkcmmlu9JkDgUhXjGetJjsMMj45AH45oyWU5FKenpULM4yOuaEwZ438QF/
+4qyb/rmn8qKd8QFx4ql/65pRXbD4Uc0tz1Xw+o/4R3Th/wBO8f8A6CK01j5wcYrxmz8faza2kMEY
+tykSBFyjdAMDvVj/AIWRruc7bTn/AKZn/GsHSkaqaPXJI13A4FKqjbyox0ryL/hZGunqtp6f6o/4
+0o+JGuqchbT/AL9H/Gl7GQ/aI9dClHYqOop27IryE/ErXf7tp/37b/4qk/4WPrn920/79n/Gj2Mg
+9oj2CN9qA4705m3A4U5xXjv/AAsjXAOEtB/2zP8AjSj4la9jhbQf9sj/AI0eymLnieugEdc5PrRk
+IMnpXkP/AAsjXj1Nr/36P+NNb4ja8RjNtj/rl/8AXpexkP2iPXgVZRk9aa3ykntXkH/Cw9d4+a2/
+79f/AF6D8RNeP8dv/wB+v/r01RkDqRGfEHnxS59Yk/rRXPatq93q18bm6ZDJtC/KuBgUV0xTSSMW
+02f/2Q==
+"/>
+<Record name="result"><Section name="default" class="default"><Field abbrev="marc245" searchfield="false" sortfield="false"><Values><Value>Description du pais de Beauce.</Value></Values><Label display="on">Title</Label></Field><Field abbrev="record_no" searchfield="false" sortfield="false"><Values><Value>004256897</Value></Values><Label display="on">Record No.</Label></Field></Section></Record></Snapshot>
+<Snapshot href="/cgi/i/image/image-idx?c=clark1ic8lift;entryid=x-004257037;viewid=39015091185937">
+    <Thumbnail src="data:image/jpeg;base64,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
+0UUBInQ++iiigP/Z
+"/>
+<Record name="result"><Section name="default" class="default"><Field abbrev="marc245" searchfield="false" sortfield="false"><Values><Value>Tabula Mexicae et Floridae : terrarum Anglicarum, et anteriorum Americae Insularum, item cursuum et circuituum fluminis Mississippi dicti.</Value></Values><Label display="on">Title</Label></Field><Field abbrev="record_no" searchfield="false" sortfield="false"><Values><Value>004257037</Value></Values><Label display="on">Record No.</Label></Field></Section></Record></Snapshot>
+<Snapshot href="/cgi/i/image/image-idx?c=clark1ic8lift;entryid=x-004258493;viewid=39015091186562">
+    <Thumbnail src="data:image/jpeg;base64,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
+jCDAHXv7k0UUVSSSE2z/2Q==
+"/>
+<Record name="result"><Section name="default" class="default"><Field abbrev="marc245" searchfield="false" sortfield="false"><Values><Value>Plan de Paris sous Charles VII / par A.M. Perrot.</Value></Values><Label display="on">Title</Label></Field><Field abbrev="record_no" searchfield="false" sortfield="false"><Values><Value>004258493</Value></Values><Label display="on">Record No.</Label></Field></Section></Record></Snapshot>
+<Snapshot href="/cgi/i/image/image-idx?c=clark1ic8lift;entryid=x-004258498;viewid=39015091186638">
+    <Thumbnail src="data:image/jpeg;base64,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
+/9k=
+"/>
+<Record name="result"><Section name="default" class="default"><Field abbrev="marc245" searchfield="false" sortfield="false"><Values><Value>New York Sheet, New York -New Jersey.</Value></Values><Label display="on">Title</Label></Field><Field abbrev="record_no" searchfield="false" sortfield="false"><Values><Value>004258498</Value></Values><Label display="on">Record No.</Label></Field></Section></Record></Snapshot>
+<Snapshot href="/cgi/i/image/image-idx?c=clark1ic8lift;entryid=x-004267852;viewid=39015091193907">
+    <Thumbnail src="data:image/jpeg;base64,/9j/4AAQSkZJRgABAQAAAQABAAD/2wBDAAgGBgcGBQgHBwcJCQgKDBQNDAsLDBkSEw8UHRofHh0a
+HBwgJC4nICIsIxwcKDcpLDAxNDQ0Hyc5PTgyPC4zNDL/2wBDAQkJCQwLDBgNDRgyIRwhMjIyMjIy
+MjIyMjIyMjIyMjIyMjIyMjIyMjIyMjIyMjIyMjIyMjIyMjIyMjIyMjIyMjL/wAARCABkAFkDASIA
+AhEBAxEB/8QAHwAAAQUBAQEBAQEAAAAAAAAAAAECAwQFBgcICQoL/8QAtRAAAgEDAwIEAwUFBAQA
+AAF9AQIDAAQRBRIhMUEGE1FhByJxFDKBkaEII0KxwRVS0fAkM2JyggkKFhcYGRolJicoKSo0NTY3
+ODk6Q0RFRkdISUpTVFVWV1hZWmNkZWZnaGlqc3R1dnd4eXqDhIWGh4iJipKTlJWWl5iZmqKjpKWm
+p6ipqrKztLW2t7i5usLDxMXGx8jJytLT1NXW19jZ2uHi4+Tl5ufo6erx8vP09fb3+Pn6/8QAHwEA
+AwEBAQEBAQEBAQAAAAAAAAECAwQFBgcICQoL/8QAtREAAgECBAQDBAcFBAQAAQJ3AAECAxEEBSEx
+BhJBUQdhcRMiMoEIFEKRobHBCSMzUvAVYnLRChYkNOEl8RcYGRomJygpKjU2Nzg5OkNERUZHSElK
+U1RVVldYWVpjZGVmZ2hpanN0dXZ3eHl6goOEhYaHiImKkpOUlZaXmJmaoqOkpaanqKmqsrO0tba3
+uLm6wsPExcbHyMnK0tPU1dbX2Nna4uPk5ebn6Onq8vP09fb3+Pn6/9oADAMBAAIRAxEAPwDO8B+G
+tNudGe91W1SYzOREHB4UcZ/PP5V1h8L+G0UMuk2zknpj/Gq2hHZ4R00jI/cKRgfStG0lbyCWBJzg
+YFczbbNdEisPD3h8AE6NbHJ+7tGRTv8AhGvDoG46Lb5zjGB/jU9wf4URhjBL524qKVZmEeWlZTk4
+AGT+NTd9xrUF8PeH1BYaPag8DaUBpDouhf8AQCtvrsSoWt5Xmi27hhhwWOcVoeU4B3dWP3SBn25F
+P5g9CmND8PtLzpFqAO/lr19KlTRNA2FjotquMcGNO9IWFrMHkzGO5wQPzrR024+1Ru+/zBnhsYFK
+77h8ig+j6EmP+JNangE4iTj2p66PoLAk6XZpj+9ElWroRNeBZSwUpnjp+NL5dvHEHh+YDr33D+tF
+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
+xyXMRR1KkeSo4NcrmiimklsK9z//2Q==
+"/>
+<Record name="result"><Section name="default" class="default"><Field abbrev="marc245" searchfield="false" sortfield="false"><Values><Value>The Daily Mail commercial map of Africa.</Value></Values><Label display="on">Title</Label></Field><Field abbrev="record_no" searchfield="false" sortfield="false"><Values><Value>004267852</Value></Values><Label display="on">Record No.</Label></Field></Section></Record></Snapshot>
+</Snapshots>
+
+  <JavaScriptFooterUrl>/i/image/vendor/jquery.equalizecols.js</JavaScriptFooterUrl>
+
+  <ExtraIECSS test="lt IE 8">/i/image/css/ie7.css</ExtraIECSS>
+
+</Top>
