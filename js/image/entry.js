@@ -102,7 +102,17 @@ window.addEventListener('DOMContentLoaded', (event) => {
     document.querySelectorAll('.toc-list-item').forEach((li) => {
       const link = li.querySelector('.toc-link');
       let menuItem = document.createElement('option');
-      menuItem.textContent = link.textContent;
+      let indent = -1;
+      let ol = li.closest("ol.toc-list");
+      while ( ol ) {
+        indent += 1;
+        if ( ol.parentElement.classList.contains('toc-list-item') ) {
+          ol = ol.parentElement.parentElement;
+        } else {
+          ol = null;
+        }
+      }
+      menuItem.innerHTML = `${'&nbsp;'.repeat(indent)} ${link.textContent}`;
       pageIndexDropdown.appendChild(menuItem);
       menuItem.value = link.getAttribute('href');
       if ( link.classList.contains('is-active-link') ) {
