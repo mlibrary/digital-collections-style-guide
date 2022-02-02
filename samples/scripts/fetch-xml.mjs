@@ -43,6 +43,7 @@ const hrefToUrl = function(href) {
 }
 
 const urlToIdentifier = function(collid, url) {
+  console.log("--", url.searchParams.get('page'));
   let tmp = [url.searchParams.get("rgn1")];
   tmp.push(
     unescape(url.searchParams.get("q1"))
@@ -78,7 +79,13 @@ while ( queue.length ) {
       fs.mkdirSync(collidPath, { recursive: true, mode: 0o775 });
     }
 
-    const view = xpath.select("string(//Param[@name='view'])", xmlDoc);
+    const possibleViews = ['tpl', 'page', 'view'];
+    let view;
+    for (let i = 0; i < possibleViews.length; i++) {
+      let name = possibleViews[i];
+      view = xpath.select(`string(//Param[@name="${name}"])`, xmlDoc);
+      if (view) { break; }
+    }
     let identifier;
     if ( view == 'entry' ) {
       // this is an entry!
@@ -147,6 +154,8 @@ while ( queue.length ) {
         queue.push([paginationUrl.toString()]);
         numPagesFollowed += 1;
       }
+    } else if ( view == 'index' ) {
+      identifier = `S_${collid}_index`.toUpperCase();
     }
     xmlDoc.documentElement.setAttribute('identifier', identifier);
 
@@ -171,7 +180,7 @@ while ( queue.length ) {
         );
       }
 
-      const icCollidEls = xpath.select("//Results/Result/MediaInfo/ic_collid");
+      const icCollidEls = xpath.select("//Results/Result/MediaInfo/ic_collid", xmlDoc);
       if ( icCollidEls && icCollidEls.length > 0 ) {
         for(let i = 0; i < icCollidEls.length; i++) {
           let el = icCollidEls[i];
@@ -180,7 +189,7 @@ while ( queue.length ) {
       }
     }
 
-    console.log("==>", identifier, marker);
+    console.log("==>", identifier, view, marker);
     let outputFilename = identifier;
     // if ( marker ) { outputFilename += (  '__xz' + marker ); }
     fs.writeFileSync(
