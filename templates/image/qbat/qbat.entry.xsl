@@ -226,7 +226,7 @@
         <sl-button slot="trigger" caret="caret">Download</sl-button>
         <sl-menu>
           <xsl:for-each select="qui:download-options/qui:download-item">
-            <sl-menu-item data-href="{@href}">
+            <sl-menu-item data-href="{@href}" value="{@href}">
               <xsl:value-of select="@width" />
               <xsl:text> x </xsl:text>
               <xsl:value-of select="@height" />

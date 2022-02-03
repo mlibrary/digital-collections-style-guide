@@ -20,6 +20,7 @@ import http from "http";
 import morgan from "morgan";
 import serveStatic from 'serve-static';
 import cookieParser from 'cookie-parser';
+import proxy from 'express-http-proxy';
 
 let logger;
 const log = console.log;
@@ -315,6 +316,13 @@ function listen(options) {
     res.setHeader("Content-Type", "image/x-icon");
     res.end(favicon);
   });
+
+  app.use('/cgi/i/image/api', proxy('https://quod.lib.umich.edu/cgi/i/image/api', {
+    https: true,
+    forwardPath: function(req) {
+      return req.originalUrl.replace(/8lift/g, '');
+    }
+  }))
 
   app.get("/templates/debug.qui.xsl", function (req, res) {
     res.sendFile(path.join(rootPath, "templates/debug.qui.xsl"));

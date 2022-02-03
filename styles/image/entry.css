@@ -83,6 +83,15 @@ sl-button::part(caret) {
 
 sl-menu-item::part(base):hover {
   background: var(--color-teal-500);
+  color: white;
+}
+
+a.download-link {
+  text-decoration: none;;
+}
+
+a.download-link:hover {
+  color: white;
 }
 
 ul.outline li ul {

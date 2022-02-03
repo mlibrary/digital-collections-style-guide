@@ -60,7 +60,13 @@ window.addEventListener('message', (event) => {
 
 window.addEventListener('DOMContentLoaded', (event) => {
 
-  srm = ScreenReaderMessenger.getMessenger()
+  srm = ScreenReaderMessenger.getMessenger();
+
+  document.querySelector('#dropdown-action').addEventListener('sl-select', (event) => {
+    const selectedItem = event.detail.item;
+    let href = selectedItem.value + '?attachment=1';
+    location.href = location.protocol + '//' + location.host + href;
+  });
 
   var idx = 0;
   document.querySelectorAll('h2,h3,h4,h5').forEach((el) => {
