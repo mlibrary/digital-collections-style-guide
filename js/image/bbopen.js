@@ -33,30 +33,43 @@ window.addEventListener('DOMContentLoaded', (event) => {
   $state.counts.mine = $("#counts-mine")[0];
   window.$state = $state;
 
+  const $filters = {};
+  $filters.all = '.portfolio';
+  $filters.mine = `.portfolio[data-owner*=':${username}:']`;
+  $filters.recent = '.portfolio[data-recent="true"]';
+
   const _filter = function() {
     let newSelector = '';
     let parts = [];
 
-    if ( $state.filter == 'all' ) {
-      parts.push('.portfolio');
-    } else if ( $state.filter == 'mine' ) {
-      parts.push(`.portfolio[data-owner*=':${username}:']`);
-    } else if ( $state.filter == 'recent' ) {
-      parts.push('.portfolio[data-recent="true"]');
-    }
+    // if ( $state.filter == 'all' ) {
+    //   parts.push('.portfolio');
+    // } else if ( $state.filter == 'mine' ) {
+    //   parts.push(`.portfolio[data-owner*=':${username}:']`);
+    // } else if ( $state.filter == 'recent' ) {
+    //   parts.push('.portfolio[data-recent="true"]');
+    // }
 
+    parts.push($filters[$state.filter]);
+
+    let search_selector = '';
     if ( $state.search.length ) {
-      parts.push(`.portfolio[data-collname*='${$state.search}']`);
+      search_selector = `.portfolio[data-collname*='${$state.search}']`;
+      parts.push(search_selector);
     }
 
     newSelector = `.portfolio--list ${parts.join('')}`;
     $styles.cssRules[0].selectorText = newSelector;
     console.log("!!", newSelector, $styles.cssRules[0].selectorText);
 
-    let $visible = $lists.filter((div) => div.offsetHeight > 0);
-    $state.counts.mine.innerText = `(${$visible.filter((div) => div.dataset.mine == 'true').length})`;
-    $state.counts.recent.innerText = `(${$visible.filter((div) => div.dataset.recent == 'true').length})`;
-    $state.counts.all.innerText = `(${$visible.length})`;
+    // let $visible = $lists.filter((div) => div.offsetHeight > 0);
+    // $state.counts.mine.innerText = `(${$visible.filter((div) => div.dataset.mine == 'true').length})`;
+    // $state.counts.recent.innerText = `(${$visible.filter((div) => div.dataset.recent == 'true').length})`;
+    // $state.counts.all.innerText = `(${$visible.length})`;
+
+    $state.counts.mine.innerText = $(`${$filters.mine}${search_selector}`).length;
+    $state.counts.recent.innerText = $(`${$filters.recent}${search_selector}`).length;
+    $state.counts.all.innerText = $(`${$filters.all}${search_selector}`).length;
 
   }
 
