@@ -1,6 +1,7 @@
 window.addEventListener('DOMContentLoaded', (event) => {
 
   const $main = $(".main-panel")[0];
+  const $paginator = $("[data-action='paginate']")[0];
 
   // fade in after components load
   Promise.allSettled([
@@ -26,7 +27,7 @@ window.addEventListener('DOMContentLoaded', (event) => {
   }
 
   const username = document.documentElement.dataset.username;
-  const $state = { filter: 'all', search: '' };
+  const $state = { filter: 'all', search: '', page: 1 };
   $state.counts = {};
   $state.counts.all = $("#counts-all")[0];
   $state.counts.recent = $("#counts-recent")[0];
@@ -37,6 +38,56 @@ window.addEventListener('DOMContentLoaded', (event) => {
   $filters.all = '.portfolio';
   $filters.mine = `.portfolio[data-owner*=':${username}:']`;
   $filters.recent = '.portfolio[data-recent="true"]';
+
+  const $slots = {};
+  $slots.pagination = $("[data-slot='pagination-summary']")[0];
+  $slots.query = $("[data-slot='query-summary']")[0];
+
+  const _updateSelector = function() {
+    let parts = [ ...$state.parts ];
+    // parts.push(`[data-page="${$state.page}"]`);
+
+    let newSelector = `.portfolio--list ${parts.join('')}`;
+    $state.selector = newSelector;
+    newSelector += `[data-page="${$state.page}"]`;
+    $styles.cssRules[0].selectorText = newSelector;
+    console.log("!!", newSelector, $styles.cssRules[0].selectorText);
+  }
+  
+  const _updateStats = function() {
+    let $visible = $($state.selector);
+    $visible.forEach((div, idx) => {
+      let page = Math.floor(idx / 50) + 1;
+      div.dataset.page = page;
+    })
+    $state.totalPages = Math.ceil($visible.length / 50);
+    $state.total = $visible.length;
+
+    let message;
+    if ( $state.total == 0 ) {
+      message = '0 results';
+    } else if ( $state.total < 50 ) {
+      message = `${$state.total} result`;
+      if ( $state.total > 1 ) { message += 's'; }
+    } else {
+      let startPage = ( ( $state.page - 1 ) * 50 )  + 1;
+      let endPage = ( $state.page * 50 );
+      if ( endPage > $state.total ) { endPage = $state.total; }
+      message = `${startPage} to ${endPage} of ${$state.total} results`;
+    }
+    $slots.pagination.innerText = message;
+
+    message = '';
+    if ( $state.search ) {
+      message = `"${$state.search}" in `;
+    }
+    let $filterEl = $(`input[type="radio"]:checked`)[0];
+    message += '<strong>' + $filterEl.nextElementSibling.childNodes[0].textContent.toLowerCase() + '</strong>';
+    $slots.query.innerHTML = `Showing results for ${message}`;
+
+  }
+
+  window._updateSelector = _updateSelector;
 
   const _filter = function() {
     let newSelector = '';
@@ -58,11 +109,8 @@ window.addEventListener('DOMContentLoaded', (event) => {
       parts.push(search_selector);
     }
 
-    newSelector = `.portfolio--list ${parts.join('')}`;
-    $styles.cssRules[0].selectorText = newSelector;
-    console.log("!!", newSelector, $styles.cssRules[0].selectorText);
+    $state.parts = parts;
 
-    // let $visible = $lists.filter((div) => div.offsetHeight > 0);
     // $state.counts.mine.innerText = `(${$visible.filter((div) => div.dataset.mine == 'true').length})`;
     // $state.counts.recent.innerText = `(${$visible.filter((div) => div.dataset.recent == 'true').length})`;
     // $state.counts.all.innerText = `(${$visible.length})`;
@@ -70,6 +118,11 @@ window.addEventListener('DOMContentLoaded', (event) => {
     $state.counts.mine.innerText = $(`${$filters.mine}${search_selector}`).length;
     $state.counts.recent.innerText = $(`${$filters.recent}${search_selector}`).length;
     $state.counts.all.innerText = $(`${$filters.all}${search_selector}`).length;
+
+    $state.page = 1;
+    _updateSelector();
+    _updateStats();
+    _updatePagination();
 
   }
 
@@ -103,7 +156,23 @@ window.addEventListener('DOMContentLoaded', (event) => {
       $container.appendChild(div);
     })
 
-    $main.appendChild($container);
+    // $main.appendChild($container);
+    $main.insertBefore($container, $paginator);
+
+    $state.page = 1;
+    _updateStats();
+    _updatePagination();
+  }
+
+  const _updatePagination = function() {
+    $paginator.dataset.active = $state.totalPages > 1;
+
+    $paginator.querySelector('[data-action="next-link"]').dataset.active = $state.page < $state.totalPages;
+    $paginator.querySelector('[data-action="previous-link"]').dataset.active = $state.page > 1;
+
+    $paginator.querySelector('input').max = $state.totalPages;
+    $paginator.querySelector('input').value = $state.page;
+    $paginator.querySelector('[data-slot="total-pages"]').innerText = $state.totalPages;
   }
 
   $("details[data-key='filter']")[0].addEventListener('click', (event) => {
@@ -131,6 +200,42 @@ window.addEventListener('DOMContentLoaded', (event) => {
     _sort(field, order);
   })
 
+  $paginator.querySelector("[data-action='next-link'] a").addEventListener('click', (event) => {
+    $state.page += 1;
+    _updateSelector();
+    _updateStats();
+    _updatePagination();
+    window.scrollTo(0,0);
+  })
+
+  $paginator.querySelector("[data-action='previous-link'] a").addEventListener('click', (event) => {
+    $state.page -= 1;
+    _updateSelector();
+    _updateStats();
+    _updatePagination();
+    window.scrollTo(0, 0);
+  })
+
+  $paginator.querySelector('input[type="number"]').addEventListener('focus', (event) => {
+    event.target.dataset.value = event.target.value;
+  })
+
+  $paginator.querySelector('button[type="submit"]').addEventListener('click', (event) => {
+    event.preventDefault();
+    let $inputEl = $paginator.querySelector('input[type="number"]');
+    let page = $inputEl.value;
+    if ( page > $state.totalPages || page < 0 ) {
+      // do something clever
+      $inputEl.value = $inputEl.dataset.value;
+    } else {
+      $state.page = page;
+      _updateSelector();
+      _updateStats();
+      _updatePagination();
+      window.scrollTo(0, 0);
+    }
+  })
+
   // and initialize data elements on the portfolios
   $lists.forEach((div) => {
 
@@ -149,5 +254,7 @@ window.addEventListener('DOMContentLoaded', (event) => {
     const collnameEl = div.querySelector('[data-key="collname"]');
     div.dataset.collname = collnameEl.textContent.toLowerCase() + ' ' + div.dataset.owner.toLowerCase();
   })
+
+  _filter();
 
 });

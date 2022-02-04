@@ -44,9 +44,13 @@
         display: none;
       }
 
+      [data-active="false"] {
+        display: none !important;
+      }
+
     </style>
     <style id="portfolio-filter-rules" type="text/css">
-      .portfolio--list .portfolio {
+      .portfolio--list .portfolio[data-page="1"] {
         display: flex;
       }
     </style>
@@ -102,6 +106,7 @@
         <div class="[ portfolio--list ]">
           <xsl:call-template name="build-results-list" />
         </div>
+        <xsl:call-template name="build-results-pagination" />
       </div>
     </div>
 
@@ -140,6 +145,16 @@
   </xsl:template>
 
   <xsl:template name="build-search-summary">
+    <xsl:variable name="total" select="count(//qui:section[@identifier])" />
+    <p data-slot="pagination-summary">
+      <xsl:text>1</xsl:text>
+      <xsl:text> to </xsl:text>
+      <xsl:value-of select="50" />
+      <xsl:text> of </xsl:text>
+      <xsl:value-of select="$total" />
+      <xsl:text> results</xsl:text>
+    </p>
+    <p data-slot="query-summary">Showing results for all portfolios.</p>
   </xsl:template>
 
   <xsl:template name="build-search-tools">
@@ -173,6 +188,9 @@
       <xsl:if test="@mine">
         <xsl:attribute name="data-mine"><xsl:value-of select="@mine" /></xsl:attribute>
       </xsl:if>
+      <xsl:attribute name="data-page">
+        <xsl:value-of select="floor(( position() - 1 ) div 50) + 1" />
+      </xsl:attribute>
       <xsl:variable name="link-tmp">
         <xsl:apply-templates select="qui:link[@rel='open']" />
       </xsl:variable>
@@ -203,6 +221,46 @@
         </div>
       </a>
     </section>
+  </xsl:template>
+
+  <xsl:template name="build-results-pagination">
+    <xsl:variable name="max" select="round(count(//qui:section[@identifier]) div 50)" />
+    <nav aria-label="Result navigation" data-action="paginate" class="[ pagination__row ][ flex flex-space-between flex-align-center ]">
+      <xsl:attribute name="data-active">
+        <xsl:choose>
+          <xsl:when test="$max &gt; 1">
+            <xsl:text>true</xsl:text>
+          </xsl:when>
+          <xsl:otherwise>
+            <xsl:text>false</xsl:text>
+          </xsl:otherwise>
+        </xsl:choose>
+      </xsl:attribute>
+      <div class="pagination__group">
+        <ul class="pagination">
+          <li class="pagination__item" data-action="previous-link" data-active="false">
+            <a href="#">Previous</a>
+          </li>
+          <li class="pagination__item" data-action="next-link" data-active="true">
+            <a href="#">Next</a>
+          </li>
+        </ul>
+      </div>
+      <div class="pagination__group">
+        <label for="results-pagination">Go to page:</label>
+        <input type="number" id="results-pagination" name="page" min="1" max="{$max}" style="width: 10ch" value="1" />
+        <span>
+          of
+          <span data-slot="total-pages">
+            <xsl:value-of select="$max" />
+          </span>
+        </span>
+
+        <button type="submit" class="[ button button--secondary ] [ flex ]">
+          Go
+        </button>
+      </div>
+    </nav>
   </xsl:template>
 
   <xsl:template match="qui:head/qui:title">
