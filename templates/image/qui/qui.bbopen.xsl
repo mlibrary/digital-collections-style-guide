@@ -2,12 +2,12 @@
 <xsl:stylesheet version="1.0" xmlns:xhtml="http://www.w3.org/1999/xhtml" xmlns:xsl="http://www.w3.org/1999/XSL/Transform" xmlns:dlxs="http://dlxs.org" xmlns:qbat="http://dlxs.org/quombat" xmlns:exsl="http://exslt.org/common" xmlns:str="http://exslt.org/strings" extension-element-prefixes="exsl str" xmlns:qui="http://dlxs.org/quombat/ui">
 
   <xsl:template name="get-title">
-    ImageClass Portfolios Index
+    Image Collections Portfolios Index
   </xsl:template>
 
   <xsl:template name="build-body-main">
     <qui:header role="main">
-      <xsl:text>ImageClass Portfolios Index</xsl:text>
+      <xsl:text>Image Collections Portfolios Index</xsl:text>
     </qui:header>
     <xsl:call-template name="build-portfolios-index" />
   </xsl:template>

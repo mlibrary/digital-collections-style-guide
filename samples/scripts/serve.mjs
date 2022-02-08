@@ -70,6 +70,9 @@ async function processDLXS(req, res) {
   if (url.searchParams.get("view") == "thumbnail") {
     url.searchParams.set("view", "reslist");
   }
+  if (url.searchParams.get("view") == "bbthumbnail") {
+    url.searchParams.set("view", "bbreslist");
+  }
 
   const headers = {};
   console.log("-- cookies", req.cookies);
@@ -266,7 +269,8 @@ async function processDLXS(req, res) {
     output.stdout = fs.readFileSync(qbatOutputFilename, "utf8");
 
     const outputData = output.stdout
-      .replace(/https:\/\/roger.quod.lib.umich.edu\//g, "/")
+      .replace(/src="https:\/\/roger.quod.lib.umich.edu\//g, 'src="/')
+      .replace(/href="https:\/\/roger.quod.lib.umich.edu\//g, 'href="/')
       .replace(/debug=xml/g, 'debug=noop')
       .split("\n");
     outputData[0] = "<!DOCTYPE html>";

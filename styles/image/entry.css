@@ -32,6 +32,27 @@ a[aria-current="page"] {
 
 .toolbar button {
   white-space: nowrap;
+  padding: var(--space-x-small);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 0.25rem;
+}
+
+.toolbar > * {
+  flex: 1;
+}
+
+.toolbar form {
+  display: flex;
+}
+
+.toolbar form > * {
+  flex: 1;
+}
+
+.toolbar .button + .button  {
+  margin-left: unset;
 }
 
 .button.small {
@@ -62,7 +83,7 @@ sl-button::part(base) {
   font-family: var(--font-base-family);
   border: 2px outset var(--color-neutral-100);
   border-radius: var(--radius-default);
-  padding: var(--space-small) var(--space-xxx-large);
+  padding: var(--space-x-small); /* var(--space-xxx-large); */
   background: var(--color-teal-400);
   border: solid 1px var(--color-teal-400);
   color: #fff;
@@ -200,7 +221,8 @@ a.toc-link {
   margin: 1rem;
   order: 2;
   flex-shrink: 0;
-  width: 13rem;
+  /* width: 13rem; */
+  width: 25%;
 }
 
 .aside--wrap {
@@ -290,8 +312,24 @@ a.is-active-link {
   position: relative;
 }
 
-dl.record input[type="text"] {
+dl.record input[type="text"], 
+dl.record textarea {
   padding: 0.5rem;
   width: 100%;
   max-width: 65ch;
+}
+
+.toolbar .button--tiny {
+  min-height: 0;
+  text-decoration: none;
+  color: #000;
+  padding: var(--space-xx-small) var(--space-x-small);
+}
+
+#full-citation {
+  min-height: 8em;
+}
+
+#brief-citation {
+  min-height: 2em;
 }

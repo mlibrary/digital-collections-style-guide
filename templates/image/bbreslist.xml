@@ -1,0 +1,33 @@
+<?xml version="1.0"?>
+
+<?CHUNK filename="entitiesdoctype.chnk" optional="1"?>
+<Top xmlns:dlxs="http://www.umdl.umich.edu/dlxs">
+
+  <!-- XSL fallback files -->
+  <XslFallbackFileList pipeline="qui">
+    <Filename>qui/qui.base.xsl</Filename>
+    <Filename>qui/components/*.xsl</Filename>
+    <Filename>../vendor/str.split.function.xsl</Filename>
+    <Filename>qui/qui.bbbase.xsl</Filename>
+    <Filename>qui/qui.reslist.xsl</Filename>
+    <Filename>qui/qui.bbreslist.xsl</Filename>
+  </XslFallbackFileList>
+
+  <XslFallbackFileList pipeline="qbat">
+    <Filename>qbat/qbat.base.xsl</Filename>
+    <Filename>qbat/components/*.xsl</Filename>
+    <Filename>qbat/qbat.bbbase.xsl</Filename>
+    <Filename>qbat/qbat.reslist.xsl</Filename>
+    <Filename>qbat/qbat.bbreslist.xsl</Filename>
+  </XslFallbackFileList>
+
+  <!-- Custom OPTIONAL XML for top-level file bbreslist.xml -->
+  <CustomXml><?CHUNK filename="bbreslistextra.xml" optional="1"?></CustomXml>
+
+  <ExtraCSS><?FBFILE_XML file="css/imageclass_portfolios.css"?></ExtraCSS>
+  <ExtraIECSS test="lt IE 10"><?FBFILE_XML file="css/ie.css"?></ExtraIECSS>
+
+  <?CHUNK filename="results_chunk.xml"?>
+  <?CHUNK filename="bbresults_chunk.xml"?>
+  <?CHUNK filename="reslist.assets.chnk"?>
+</Top>

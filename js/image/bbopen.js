@@ -1,4 +1,30 @@
+let srm;
+
 window.addEventListener('DOMContentLoaded', (event) => {
+
+  srm = ScreenReaderMessenger.getMessenger();
+
+  window.debugSRM = function () {
+    if (!srm.speakRegion.dataset.cssText) {
+      srm.speakRegion.dataset.cssText = srm.speakRegion.style.cssText;
+      srm.speakRegion.setAttribute('id', 'srm-log');
+    }
+    srm.speakRegion.style.cssText = '';
+    document.documentElement.dataset.debuggingSrm = "true";
+  }
+
+  if (location.hostname.indexOf('.netlify.app') < 0) {
+    // login trigger
+    const $actionLogin = document.querySelector('#action-login');
+    $actionLogin.addEventListener('click', (event) => {
+      event.preventDefault();
+      const loggedIn = !($actionLogin.dataset.loggedIn == "true");
+      // set the cookie
+      document.cookie = `loggedIn=${loggedIn}; path=/`;
+      // reload the page
+      location.reload();
+    })
+  }
 
   const $main = $(".main-panel")[0];
   const $paginator = $("[data-action='paginate']")[0];
@@ -36,8 +62,10 @@ window.addEventListener('DOMContentLoaded', (event) => {
 
   const $filters = {};
   $filters.all = '.portfolio';
-  $filters.mine = `.portfolio[data-owner*=':${username}:']`;
+  // $filters.mine = `.portfolio[data-owner*=':${username}:']`;
+  $filters.mine = `.portfolio[data-mine='true']`;
   $filters.recent = '.portfolio[data-recent="true"]';
+  window.$filters = $filters;
 
   const $slots = {};
   $slots.pagination = $("[data-slot='pagination-summary']")[0];
@@ -85,6 +113,7 @@ window.addEventListener('DOMContentLoaded', (event) => {
     message += '<strong>' + $filterEl.nextElementSibling.childNodes[0].textContent.toLowerCase() + '</strong>';
     $slots.query.innerHTML = `Showing results for ${message}`;
 
+    srm.say($slots.pagination.innerText + "\n" + $slots.query.innerText);
   }
 
   window._updateSelector = _updateSelector;
@@ -115,9 +144,9 @@ window.addEventListener('DOMContentLoaded', (event) => {
     // $state.counts.recent.innerText = `(${$visible.filter((div) => div.dataset.recent == 'true').length})`;
     // $state.counts.all.innerText = `(${$visible.length})`;
 
-    $state.counts.mine.innerText = $(`${$filters.mine}${search_selector}`).length;
-    $state.counts.recent.innerText = $(`${$filters.recent}${search_selector}`).length;
-    $state.counts.all.innerText = $(`${$filters.all}${search_selector}`).length;
+    $state.counts.mine.innerText = '(' + $(`${$filters.mine}${search_selector}`).length + ')'
+    $state.counts.recent.innerText = '(' + $(`${$filters.recent}${search_selector}`).length + ')';
+    $state.counts.all.innerText = '(' + $(`${$filters.all}${search_selector}`).length + ')';
 
     $state.page = 1;
     _updateSelector();
@@ -192,6 +221,12 @@ window.addEventListener('DOMContentLoaded', (event) => {
       $state.search = target.value;
       _filter();
     }
+  })
+
+  $("button[data-action='clear-search']")[0].addEventListener('click', (event) => {
+    $("input[data-action='search']")[0].value = '';
+    $state.search = '';
+    _filter();
   })
 
   $("select[data-action='sort']")[0].addEventListener('change', (event) => {

@@ -140,6 +140,7 @@
               name="results"
               id="result-sort"
               class="[ dropdown select ]"
+              autocomplete="off"
             >
               <xsl:for-each select="$sort-options//qui:option">
                 <option value="{@value}">
@@ -189,7 +190,6 @@
             name="page"
             min="1"
             max="{$nav/@max}"
-            style="width: {$nav/@max + 4}ch"
             value="{$nav/@current}"
           />
           <span>of <xsl:value-of select="$nav/@max" /></span>

@@ -48,8 +48,8 @@
     <qui:m-website-header name="Digital Collections">
       <qui:search-form collid="{$collid}" value="{//Param[@name='q1']}" />
       <qui:nav>
-        <qui:link href="{//Help}">Help</qui:link>
-        <qui:link href="{//OpenPortfolio/Url}">Portfolios</qui:link>
+        <qui:link rel="help" href="{//Help}">Help</qui:link>
+        <qui:link rel="portfolios" href="{//OpenPortfolio/Url}">Portfolios</qui:link>
         <xsl:call-template name="build-login-link" />
       </qui:nav>
     </qui:m-website-header>
@@ -96,6 +96,9 @@
 
   <xsl:template name="get-collection-title">
     <xsl:choose>
+      <xsl:when test="/Top/BookBagInfo/Field[@name='bbagname']">
+        <xsl:value-of select="normalize-space(/Top/BookBagInfo/Field[@name='bbagname'])" />
+      </xsl:when>
       <xsl:when test="/Top/CollName = 'multiple'">
         <xsl:value-of select="normalize-space(/Top/GroupName)" />
       </xsl:when>

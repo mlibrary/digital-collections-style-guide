@@ -1,14 +1,5 @@
 <xsl:stylesheet version="1.0" xmlns="http://www.w3.org/1999/xhtml" xmlns:xsl="http://www.w3.org/1999/XSL/Transform" xmlns:dlxs="http://dlxs.org" xmlns:qui="http://dlxs.org/quombat/ui" xmlns:exsl="http://exslt.org/common" xmlns:date="http://exslt.org/dates-and-times" extension-element-prefixes="exsl date">
 
-  <xsl:variable name="labels-tmp">
-    <dlxs:labels>
-      <dlxs:field key="itemcount">Number of items</dlxs:field>
-      <dlxs:field key="username">Owner</dlxs:field>
-      <dlxs:field key="modified_display">Last Modified</dlxs:field>
-    </dlxs:labels>
-  </xsl:variable>
-  <xsl:variable name="labels" select="exsl:node-set($labels-tmp)" />
-
   <xsl:template name="build-cqfill-script">
   </xsl:template>
 
@@ -40,6 +31,15 @@
         width: 25ch;
       }
 
+      .portfolio .results-list__blank::after {
+          /* possible icons:
+             bookmarks
+             collections
+             collections bookmark
+             category */
+          content: "\e98b";
+      }
+
       .portfolio {
         display: none;
       }
@@ -68,10 +68,11 @@
 
     <div class="[ flex flex-flow-row flex-gap-1 ]">
       <div class="side-panel">
+        <h3 class="[ mt-2 ]">Filters</h3>
         <details class="panel" data-list-expanded="false" data-key="filter">
           <xsl:attribute name="open">open</xsl:attribute>
           <summary>
-            Filter Portfolios
+            Portfolio Filter
           </summary>
           <div class="filter-item--list">
             <xsl:call-template name="build-filter-select">
@@ -99,6 +100,7 @@
             </xsl:call-template>
           </div>
         </details>
+        <xsl:call-template name="build-filter-search" />
       </div>
       <div class="main-panel" data-state="loading">
         <xsl:call-template name="build-search-summary" />
@@ -144,6 +146,16 @@
     </div>
   </xsl:template>
 
+  <xsl:template name="build-filter-search">
+    <div class="[ flex ][ flex-flow-column flex-gap-0_5 ]">
+      <label for="search">Search by title or description:</label>
+      <input type="text" value="" name="search" id="search" data-action="search" autocomplete="off" style="flex-grow: 1; height: 40px; width: 96%" />
+      <button type="submit" class="[ button button--secondary ] [ flex ]" style="align-self: flex-start" data-action="clear-search" >
+          Clear
+      </button>
+    </div>
+  </xsl:template>
+
   <xsl:template name="build-search-summary">
     <xsl:variable name="total" select="count(//qui:section[@identifier])" />
     <p data-slot="pagination-summary">
@@ -158,11 +170,7 @@
   </xsl:template>
 
   <xsl:template name="build-search-tools">
-    <div class="[ search-results__tools ] [ mb-1 flex-gap-1 flex-nowrap ]">
-      <div style="display: flex; flex-wrap: wrap; flex-grow: 1">
-        <label for="search">Search by title or description:</label>
-        <input type="text" value="" name="search" id="search" data-action="search" autocomplete="off" style="flex-grow: 1; height: 40px" />
-      </div>
+    <div class="[ search-results__tools ] [ mb-1 flex-gap-1 flex-justify-end ]">
       <div>
         <label for="result-sort">Sort by:</label>
         <select name="results" id="result-sort" data-action="sort" class="[ dropdown select ]" autocomplete="off">
@@ -248,7 +256,7 @@
       </div>
       <div class="pagination__group">
         <label for="results-pagination">Go to page:</label>
-        <input type="number" id="results-pagination" name="page" min="1" max="{$max}" style="width: 10ch" value="1" />
+        <input type="number" id="results-pagination" name="page" min="1" max="{$max}" value="1" />
         <span>
           of
           <span data-slot="total-pages">

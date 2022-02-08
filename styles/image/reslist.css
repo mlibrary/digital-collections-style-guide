@@ -3,6 +3,10 @@ select option {
   font-weight: normal; /* weird firefox issue */
 }
 
+select#result-sort {
+  text-transform: capitalize;
+}
+
 .separator::after {
   font-family: var(--material);
   content: "\e315";
@@ -29,4 +33,10 @@ details[data-list-expanded="true"] span[data-expanded="false"] {
 
 .filter-item--list {
   overflow: auto;
+}
+
+input#results-pagination {
+  height: 40px;
+  width: 6ch;
+  padding: 0 0.5rem;
 }

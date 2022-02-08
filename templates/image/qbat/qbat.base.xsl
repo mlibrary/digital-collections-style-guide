@@ -60,6 +60,7 @@
 
       <script type="module" src="https://unpkg.com/@umich-lib/web@1/dist/umich-lib/umich-lib.esm.js"></script>
       <script nomodule="" src="https://unpkg.com/@umich-lib/web@1/dist/umich-lib/umich-lib.js"></script>
+      <script src="{$docroot}js/sr-messaging.js"></script>
 
       <xsl:call-template name="build-cqfill-script" />
 
@@ -112,26 +113,6 @@
                   </xsl:if>
                 </xsl:with-param>
               </xsl:apply-templates>
-
-              <xsl:if test="false()">
-              <a>
-                <!-- how to pass aria attributes to generic qui:link handler? -->
-                <xsl:attribute name="href">
-                  <xsl:choose>
-                    <xsl:when test="normalize-space(@identifier)">
-                      <xsl:text>../</xsl:text>
-                      <xsl:value-of select="@identifier" />
-                      <xsl:text>/</xsl:text>
-                    </xsl:when>
-                    <xsl:otherwise><xsl:value-of select="@href" /></xsl:otherwise>
-                  </xsl:choose>
-                </xsl:attribute>
-                <xsl:if test="position() = last()">
-                  <xsl:attribute name="aria-current">page</xsl:attribute>
-                </xsl:if>
-                <xsl:value-of select="." />
-              </a>
-            </xsl:if>
             </li>
           </xsl:for-each>
         </ol>
@@ -542,7 +523,7 @@
   </xsl:template>
 
   <xsl:template match="qui:field[@component='input']//qui:value" mode="copy-guts" priority="99">
-    <input type="text" value="{.}" />
+    <input type="text" value="{.}" id="input-{ancestor-or-self::qui:field/@key}" readonly="true" />
   </xsl:template>
 
   <xsl:template match="qui:field">

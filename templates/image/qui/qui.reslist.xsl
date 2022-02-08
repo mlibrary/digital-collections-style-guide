@@ -65,8 +65,10 @@
   </xsl:template>
 
   <xsl:template name="get-title">
-    <xsl:value-of select="//Param[@name='q1']" />
-    <xsl:text> | </xsl:text>
+    <xsl:if test="//Param[@name='q1']">
+      <xsl:value-of select="//Param[@name='q1']" />
+      <xsl:text> | </xsl:text>
+    </xsl:if>
     <xsl:value-of select="$start" />
     <xsl:text>-</xsl:text>
     <xsl:value-of select="$end" />
@@ -126,6 +128,7 @@
     <xsl:variable name="q" select="//SearchForm/Q[@name='q1']" />
     <xsl:variable name="is-advanced" select="//SearchForm/Advanced" />
     <xsl:call-template name="build-search-form" />
+    <xsl:call-template name="build-portfolio-actions" />
     <xsl:apply-templates select="//Facets" />
     <qui:form id="sort-options">
       <xsl:for-each select="//SortOptionsMenu/HiddenVars/Variable">
@@ -159,6 +162,8 @@
       </xsl:choose>
     </qui:block>
   </xsl:template>
+
+  <xsl:template name="build-portfolio-actions" />
 
   <xsl:template name="build-no-results">
     <pre>BOO-YAH</pre>
