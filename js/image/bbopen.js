@@ -53,7 +53,7 @@ window.addEventListener('DOMContentLoaded', (event) => {
   }
 
   const username = document.documentElement.dataset.username;
-  const $state = { filter: 'all', search: '', page: 1 };
+  const $state = { filter: username ? 'mine' : 'all', search: '', page: 1 };
   $state.counts = {};
   $state.counts.all = $("#counts-all")[0];
   $state.counts.recent = $("#counts-recent")[0];

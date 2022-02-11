@@ -425,6 +425,12 @@
         </xsl:for-each>
       </xsl:if>
       <xsl:apply-templates select="@id" mode="copy" />
+      <xsl:if test="normalize-space(@rel)">
+        <xsl:attribute name="data-rel"><xsl:value-of select="@rel" /></xsl:attribute>
+      </xsl:if>
+      <xsl:if test="normalize-space(@target)">
+        <xsl:attribute name="data-target"><xsl:value-of select="@target" /></xsl:attribute>
+      </xsl:if>
       <xsl:apply-templates select="@*[starts-with(name(), 'data-')]" mode="copy" />
 
       <xsl:choose>

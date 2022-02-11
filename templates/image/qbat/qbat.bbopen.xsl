@@ -78,7 +78,7 @@
             <xsl:call-template name="build-filter-select">
               <xsl:with-param name="key">all</xsl:with-param>
               <xsl:with-param name="label">All Portfolios</xsl:with-param>
-              <xsl:with-param name="selected">true</xsl:with-param>
+              <xsl:with-param name="selected"><xsl:value-of select="$username = ''" /></xsl:with-param>
               <xsl:with-param name="count">
                 <xsl:value-of select="count(//qui:section[@access])" />
               </xsl:with-param>
@@ -94,6 +94,7 @@
               <xsl:with-param name="key">mine</xsl:with-param>
               <xsl:with-param name="label">My Portfolios</xsl:with-param>
               <xsl:with-param name="disabled"><xsl:value-of select="$username = ''" /></xsl:with-param>
+              <xsl:with-param name="selected"><xsl:value-of select="$username != ''" /></xsl:with-param>
               <xsl:with-param name="count">
                 <xsl:value-of select="count(//qui:section[@mine='true'])" />
               </xsl:with-param>
@@ -172,8 +173,8 @@
   <xsl:template name="build-search-tools">
     <div class="[ search-results__tools ] [ mb-1 flex-gap-1 flex-justify-end ]">
       <div>
-        <label for="result-sort">Sort by:</label>
-        <select name="results" id="result-sort" data-action="sort" class="[ dropdown select ]" autocomplete="off">
+        <label for="results-sort">Sort by:</label>
+        <select name="results" id="results-sort" data-action="sort" class="[ dropdown select ]" autocomplete="off">
           <option value="collname::asc">Title</option>
           <option value="modified::desc">Last Modified</option>
           <option value="numItems::asc">Number of Items (low to high)</option>

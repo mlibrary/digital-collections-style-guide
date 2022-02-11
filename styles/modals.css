@@ -1,0 +1,193 @@
+body {
+  min-height: 100vh;
+  padding: 0;
+  margin: 0;
+}
+
+main {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  height: 100%;
+  width: 100%;
+  margin: 0;
+}
+
+.modal--overlay {
+  background: rgba(16, 22, 26, 0.7);
+  z-index: 101;
+  position: fixed;
+  top: 0;
+  bottom: 0;
+  left: 0;
+  right: 0;
+}
+
+.modal {
+  max-height: calc(100% - 100px);
+	/* position: fixed;
+	top: 50%;
+	left: 50%;
+	transform: translate(-50%); */
+  width: 80vw;
+	max-width: 50rem;
+	box-shadow: 0 0 0 1px rgba(16,22,26,.1),0 4px 8px rgba(16,22,26,.2),0 18px 46px 6px rgba(16,22,26,.2);
+	padding: 2rem;
+	border-radius: 4px;
+	overflow: hidden;
+	height: auto;
+	margin: 1rem;
+	background: #fff; 
+  z-index: 102;
+
+  position: relative;;
+}
+
+.modal--header h1 {
+  margin: 0;
+}
+
+.modal--footer {
+  display: flex;
+  gap: 0.5rem;
+  align-items: center;
+  justify-content: flex-end;
+  margin-top: 2rem;
+}
+
+.button--dismiss {
+  background: none;
+  border: none;
+  min-height: 0;
+  line-height: 0;
+  color: var(--color-neutral-300);
+}
+
+.button--flex {
+  display: flex;
+  gap: 0.25rem;
+  align-items: center;
+  white-space: nowrap;
+  flex-grow: 0;
+}
+
+@media screen and ( max-width: 650px ) {
+  .hidden-for-narrow {
+    position: absolute !important;
+    height: 1px;
+    width: 1px;
+    overflow: hidden;
+    clip: rect(1px 1px 1px 1px);
+    /* IE6, IE7 */
+    clip: rect(1px, 1px, 1px, 1px);
+  }
+
+  .modal--footer .button {
+    padding: var(--space-small) var(--space-large);
+  }
+}
+
+ul.list--username {
+  display: inline;
+  list-style: none;
+}
+
+ul.list--username li {
+  display: inline;
+}
+
+ul.list--username li:not(:last-child):after {
+  content: "; ";
+}
+
+.list--select {
+  max-height: 50vh;
+  overflow: auto;
+}
+
+.list--select table {
+  border-spacing: 0 0.5rem;
+  width: 100%;
+}
+
+.list--select th {
+  text-align: left;
+}
+
+.list--select table caption {
+  text-align: left;
+  font-size: 90%;
+  color: var(--color-neutral-300);
+}
+
+.list--select thead {
+  position: sticky;
+  background: white;
+  top: 0;
+}
+
+.list--select tbody td {
+  padding: 0.25rem;
+}
+
+.list--select tbody tr:nth-child(odd) {
+  background: var(--color-neutral-100);
+}
+
+.list--select table label {
+  width: 100%;
+  display: block;
+}
+
+.modal--page {
+  display: none;
+}
+
+main[data-page="list"] .modal--page.list--select {
+  display: block;
+}
+
+main[data-page="list"] button[data-action="back"] {
+  display: none;
+}
+
+main[data-page="form"] .modal--page.form {
+  display: block;
+}
+
+.form {
+  margin-bottom: 1rem;
+}
+
+.form h2 {
+  font-size: var(--text-xx-small);
+}
+
+/* .form form > div {
+  display: flex;
+  flex-direction: column;
+} */
+
+.form form > div + div {
+  margin-top: 1rem;
+}
+
+input[type="text"], textarea {
+  padding: 0.25rem;
+  font-size: 1rem;
+}
+
+.form label {
+  font-weight: bold;
+}
+
+.form .help {
+  font-size: 90%;
+  color: var(--color-neutral-300);
+  margin: 0;
+}
+
+.align-left {
+  margin-right: auto;
+  align-self: flex-start;
+}

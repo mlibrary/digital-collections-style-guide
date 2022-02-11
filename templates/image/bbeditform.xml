@@ -1,0 +1,30 @@
+<?xml version="1.0"?>
+
+<Top xmlns:dlxs="http://www.umdl.umich.edu/dlxs">
+
+ <!-- XSL fallback files -->
+  <XslFallbackFileList pipeline="qui">
+    <Filename>qui/qui.base.xsl</Filename>
+    <Filename>qui/components/*.xsl</Filename>
+    <Filename>../vendor/str.split.function.xsl</Filename>
+    <Filename>qui/qui.bbbase.xsl</Filename>
+    <Filename>qui/qui.bbeditform.xsl</Filename>
+  </XslFallbackFileList>
+
+  <XslFallbackFileList pipeline="qbat">
+    <Filename>qbat/qbat.base.xsl</Filename>
+    <Filename>qbat/components/*.xsl</Filename>
+    <Filename>qbat/qbat.bbbase.xsl</Filename>
+    <Filename>qbat/qbat.bbeditform.xsl</Filename>
+  </XslFallbackFileList>
+
+  <!-- Custom OPTIONAL XML for top-level file bbedit.xml -->
+  <CustomXml><?CHUNK filename="bbeditextra.xml" optional="1"?></CustomXml>
+
+  <ExtraCSS><?FBFILE_XML file="css/bbeditform.css"?></ExtraCSS>
+
+<DlxsGlobals><?CHUNK filename="dlxsclassglobals.xml"?></DlxsGlobals>
+<Banner><?BANNER_XML?></Banner>
+<?BBAG_EDIT_FORM_XML>
+
+</Top>

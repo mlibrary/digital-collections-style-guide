@@ -6,6 +6,7 @@
     <xsl:comment>DUBIOUS EXCEPTIONS</xsl:comment>
     <link rel="stylesheet" href="{$docroot}styles/image/index.css" />
     <script src="https://unpkg.com/blingblingjs@2.1.1/dist/index.js"></script>
+    <script src="{$docroot}js/image/base.js"></script>
     <script src="{$docroot}js/image/index.js"></script>
 
     <style>

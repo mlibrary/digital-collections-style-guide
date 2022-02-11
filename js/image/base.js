@@ -103,7 +103,7 @@ window.addEventListener('DOMContentLoaded', (event) => {
     });
   }
 
-  const $resultSort = document.querySelector("select#result-sort");
+  const $resultSort = document.querySelector("select#results-sort");
   if ( $resultSort ) {
     $resultSort.addEventListener('change', (event) => {
       const value = $resultSort.value;
@@ -114,6 +114,33 @@ window.addEventListener('DOMContentLoaded', (event) => {
       fInput.setAttribute("value", value);
       $form.appendChild(fInput);
       $form.submit();     
+    })
+  }
+
+  const $actionSelectAll = document.querySelector('[data-action="select-all"]');
+  const $actionAddItems = document.querySelector('[data-action="add-items"]');
+  if ( $actionSelectAll ) {
+    $actionSelectAll.addEventListener('click', (event) => {
+      let checked = $actionSelectAll.checked;
+      document.querySelectorAll('input[name="bbidno"]').forEach((input) => {
+        input.checked = checked;
+      })
+      srm.say(checked ? 'Selecting all items' : 'Unselecting all items');
+    })
+
+    let $bbForm = document.querySelector('form#bbaction-form');
+    $actionAddItems.addEventListener('click', (event) => {
+      let inputs = document.querySelectorAll('input[name="bbidno"]:checked');
+      if ( ! inputs.length ) { return ; }
+      inputs.forEach((input) => {
+        let bbInput = input.cloneNode(true);
+        $bbForm.appendChild(bbInput);
+      })
+      let $action = $bbForm.querySelector('#bbaction-page');
+      $action.setAttribute('name', 'bbactionbbname');
+      $action.setAttribute('value', 'add');
+
+      $bbForm.submit();
     })
   }
 
