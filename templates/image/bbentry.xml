@@ -1,0 +1,80 @@
+<?xml version="1.0"?>
+
+<?CHUNK filename="entitiesdoctype.chnk" optional="1"?>
+<Top xmlns:dlxs="http://www.umdl.umich.edu/dlxs">
+
+ <!-- XSL fallback files -->
+  <XslFallbackFileList pipeline="qui">
+    <Filename>qui/qui.base.xsl</Filename>
+    <Filename>qui/components/*.xsl</Filename>
+    <Filename>../vendor/str.split.function.xsl</Filename>
+    <Filename>qui/qui.bbbase.xsl</Filename>
+    <Filename>qui/qui.entry.xsl</Filename>
+    <Filename>qui/qui.bbentry.xsl</Filename>
+  </XslFallbackFileList>
+
+  <XslFallbackFileList pipeline="qbat">
+    <Filename>qbat/qbat.base.xsl</Filename>
+    <Filename>qbat/components/*.xsl</Filename>
+    <Filename>qbat/qbat.entry.xsl</Filename>
+    <Filename>qbat/qbat.bbentry.xsl</Filename>
+  </XslFallbackFileList>
+
+
+  <!-- Custom OPTIONAL XML for top-level file bbentry.xml -->
+  <CustomXml><?CHUNK filename="bbentryextra.xml" optional="1"?></CustomXml>
+
+
+<DlxsGlobals><?CHUNK filename="dlxsclassglobals.xml"?></DlxsGlobals>
+
+<CollName><?COLLNAME_XML?></CollName>
+<RestrictStatus><?RESTRICTSTATUS_XML?></RestrictStatus>
+<EntryId><?ENTRYID_XML?></EntryId>
+<?ENTRYWINDOWNAME_XML?>
+<?ITEMURL_XML?>
+
+<RestrictStatus><?RESTRICTSTATUS_XML?></RestrictStatus>
+
+<?ACCESS_RESTRICTIONS_XML?>
+
+<Home><?HOME_XML?></Home>
+<Help><?HELP_XML?></Help>
+
+<JavaScriptUrl><?JAVASCRIPTURL_XML?></JavaScriptUrl>
+<JavaScriptUrl>//www.google.com/recaptcha/api.js</JavaScriptUrl>
+<JavaScriptUrl>/i/image/js/feedback.js</JavaScriptUrl>
+<DivView><?DIVBUTTONS_XML?></DivView>
+<Next><?NEXTENTRY_XML?></Next>
+<Prev><?PREVENTRY_XML?></Prev>
+<ContactLink><?CONTACT_XML type="link"?></ContactLink>
+<ContactText><?CONTACT_XML type="text"?></ContactText>
+<LoginLink><?LOGINLINK_XML></LoginLink>
+<BackLink><?BACKLINK_XML></BackLink>
+<Banner><?BANNER_XML?></Banner>
+<BookBagInfo><?BBAGINFO_XML?></BookBagInfo>
+<BookBagForm action="add"><?BBACTIONFORM_XML action="add"?></BookBagForm>
+<BookBagForm action="remove"><?BBACTIONFORM_XML action="remove"?></BookBagForm>
+
+<?THUMBURL_XML>
+<OpenPortfolio><?OPENPORTFOLIO_XML?></OpenPortfolio>
+<MediaInfo><?MEDIAINFO_XML?></MediaInfo>
+<ImageZoomTool><?IMAGEZOOMTOOL_XML?></ImageZoomTool>
+<ImagePanTool><?IMAGEPANTOOL_XML?></ImagePanTool>
+<ImageSizeTool><?IMAGESIZETOOL_XML?></ImageSizeTool>
+<RevertSizeTool><?REVERTSIZETOOL_XML?></RevertSizeTool>
+<MediaEquivsTool><?MEDIAEQUIVSTOOL_XML?></MediaEquivsTool>
+<ImageWithForm><?IMAGEWITHFORM_XML?></ImageWithForm>
+<?RECORDFILT_XML name="entry"?>
+<?RECORDFILT_XML name="special" fields="dlxs_ma"?>
+<MediaDownloadLink><?MEDIADOWNLOADLINK_XML?></MediaDownloadLink>
+
+
+<inserttextentryinfo><?CHUNK filename="entryinfo.txt"?></inserttextentryinfo>
+<?RELATEDVIEWSMENU_XML?>
+<RelatedViews><?RELATEDVIEWS_XML?></RelatedViews>
+
+<?CHUNK filename="entry.chnk" optional="0"?>
+  <ExtraCSS><?FBFILE_XML file="css/imageclass_portfolios.css"?></ExtraCSS>
+
+
+</Top>

@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="utf-8"?>
-<xsl:stylesheet version="1.0" xmlns:xsl="http://www.w3.org/1999/XSL/Transform" xmlns:qui="http://dlxs.org/quombat/ui" xmlns:xhtml="http://www.w3.org/1999/xhtml" xmlns:exsl="http://exslt.org/common" extension-element-prefixes="exsl">
+<xsl:stylesheet version="1.0" xmlns:xsl="http://www.w3.org/1999/XSL/Transform" xmlns:qui="http://dlxs.org/quombat/ui" xmlns:xhtml="http://www.w3.org/1999/xhtml" xmlns:exsl="http://exslt.org/common" xmlns:str="http://exslt.org/strings"  extension-element-prefixes="exsl str">
 
   <xsl:template name="build-head-block">
     <xsl:call-template name="build-social-twitter" />
@@ -140,7 +140,7 @@
       </qui:field>
 
       <qui:field key="bookmark" component="input">
-        <qui:label>Bookmark</qui:label>
+        <qui:label>Link to this Item</qui:label>
         <qui:values>
           <qui:value>
             <xsl:value-of select="/Top/ItemUrl" />
@@ -180,6 +180,8 @@
   <xsl:template name="build-special-metadata">
     <xsl:apply-templates select="//Record[@name='special']/Section/Field" />
   </xsl:template>
+
+  <xsl:template match="//Record[@name='special']/Section/Field[@abbrev='dlxs_ma']" priority="100" />
 
   <xsl:template match="//Record[@name='entry']//Field[@abbrev='dlxs_catalog']" priority="100">
     <xsl:message>AHOY</xsl:message>
@@ -287,7 +289,8 @@
     <xsl:if test="/Top/BookBagForm[ActionAllowed='1'][@action='add'] or /Top/Portfolios/Portfolio">
 
       <xsl:if test="/Top/BookBagForm[ActionAllowed='1'][@action='add']">
-        <xsl:variable name="has-favorited" select="normalize-space(//Portfolios/Portfolio/Field[@name='action']/Action[@type='bbdel']/Url) != ''" />
+        <xsl:variable name="xx-has-favorited" select="normalize-space(//Portfolios/Portfolio/Field[@name='action']/Action[@type='bbdel']/Url) != ''" />
+        <xsl:variable name="has-favorited" select="false()" />
         <xsl:variable name="bbaction">
           <xsl:choose>
             <xsl:when test="$has-favorited = 'true'">
@@ -296,48 +299,72 @@
             <xsl:otherwise>add</xsl:otherwise>
           </xsl:choose>
         </xsl:variable>
-        <qui:favorite-form action="{$bbaction}" checked="{$has-favorited}">
-          <xsl:apply-templates select="/Top/BookBagForm[@action=$bbaction]/HiddenVars" />
-        </qui:favorite-form>
+
+        <qui:form rel="add">
+          <xsl:apply-templates select="/Top/BookBagForm[@action='add']/HiddenVars" />
+        </qui:form>
       </xsl:if>
 
-      <xsl:if test="/Top/Portfolios[@type='private']/Portfolio">
+      <xsl:if test="/Top/Portfolios/Portfolio[@mine='true']">
         <qui:portfolio-list type="private">
-          <xsl:for-each select="/Top/Portfolios[@type='private']/Portfolio">
-            <qui:portfolio-link href="{Field[@name='action' ]/Action[@type='open']/Url}" editable="true" bbdid="{@id}" bbidno="{/Top/BookBagForm[@action='add']//Variable[@name='bbidno']}">
-              <qui:title>
-                <xsl:value-of select="Field[@name='bbagname']" />
-              </qui:title>
-              <qui:count>
-                <xsl:value-of select="Field[@name='itemcount']" />
-              </qui:count>
-              <qui:owner>
-                <xsl:value-of select="Field[@name='username']" />
-              </qui:owner>
-            </qui:portfolio-link>
-          </xsl:for-each>
+          <xsl:apply-templates select="/Top/Portfolios/Portfolio[@mine='true']" />
         </qui:portfolio-list>
       </xsl:if>
 
-      <xsl:if test="/Top/Portfolios[@type='public']/Portfolio">
+      <xsl:if test="/Top/Portfolios/Portfolio[not(@mine)]">
         <qui:portfolio-list type="public">
-          <xsl:for-each select="/Top/Portfolios[@type='public']/Portfolio">
-            <qui:portfolio-link href="{Field[@name='action' ]/Action[@type='open']/Url}" editable="false" bbdid="{@id}" bbidno="{/Top/BookBagForm[@action='add']//Variable[@name='bbidno']}">
-              <qui:title>
-                <xsl:value-of select="Field[@name='bbagname']" />
-              </qui:title>
-              <qui:count>
-                <xsl:value-of select="Field[@name='itemcount']" />
-              </qui:count>
-              <qui:owner>
-                <xsl:value-of select="Field[@name='username']" />
-              </qui:owner>
-            </qui:portfolio-link>
-          </xsl:for-each>
+          <xsl:apply-templates select="/Top/Portfolios/Portfolio[not(@mine)]" />
         </qui:portfolio-list>
       </xsl:if>
-
     </xsl:if>
+  </xsl:template>
+
+  <xsl:template match="Portfolio">
+    <qui:portfolio id="{@id}">
+      <xsl:variable name="bbdbid" select="@id" />
+      <qui:title><xsl:value-of select="Field[@name='bbagname']" /></qui:title>
+      <xsl:for-each select="Field[@name='action']/Action">
+        <qui:link href="{Url}" rel="{@type}" />
+      </xsl:for-each>
+      <xsl:apply-templates select="//BookBagForm[@action='remove'][.//Variable[@name='bbdbid'] = $bbdbid]" />
+      <xsl:for-each select="Field">
+        <xsl:choose>
+          <xsl:when test="@name = 'action'"></xsl:when>
+          <xsl:otherwise>
+            <qui:field key="{@name}">
+              <qui:values>
+                <xsl:choose>
+                  <xsl:when test="@name = 'shared'">
+                    <xsl:choose>
+                      <xsl:when test="Public = '0'">private</xsl:when>
+                      <xsl:otherwise>public</xsl:otherwise>
+                    </xsl:choose>
+                  </xsl:when>
+                  <xsl:when test="@name = 'username'">
+                    <xsl:for-each select="str:split(., ' ')">
+                      <qui:value><xsl:value-of select="." /></qui:value>
+                    </xsl:for-each>
+                  </xsl:when>
+                  <xsl:otherwise>
+                    <qui:value>
+                      <xsl:value-of select="." />
+                    </qui:value>
+                  </xsl:otherwise>
+                </xsl:choose>
+              </qui:values>
+            </qui:field>
+          </xsl:otherwise>
+        </xsl:choose>
+      </xsl:for-each>
+    </qui:portfolio>
+  </xsl:template>
+
+  <xsl:template match="BookBagForm[@action='remove']">
+    <qui:form rel="remove">
+      <xsl:for-each select=".//Variable">
+        <qui:hidden-field name="{@name}" value="{.}" />
+      </xsl:for-each>
+    </qui:form>
   </xsl:template>
 
   <xsl:template name="build-action-panel-iiif-link">

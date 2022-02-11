@@ -14,7 +14,7 @@
 
     <xsl:call-template name="build-collection-heading" />
 
-    <div class="[ flex flex-flow-rw ]">
+    <div class="[ flex flex-flow-rw ][ flex-gap-1 ]">
       <div class="side-panel">
         <xsl:call-template name="build-filters-panel" />
       </div>
@@ -27,6 +27,7 @@
         </xsl:if>
         <xsl:call-template name="build-results-list" />
         <xsl:call-template name="build-results-pagination" />
+        <xsl:call-template name="build-hidden-portfolio-form" />
       </div>
     </div>
 
@@ -105,16 +106,17 @@
   </xsl:template>
 
   <xsl:template name="build-search-tools">
+    <xsl:apply-templates select="//qui:callout" />
     <div class="[ search-results__tools ] [ mb-1 ]">
       <div class="[ flex flex-align-center ]">
-          <input type="checkbox" id="add-portfolio" name="portfolio" />
+          <input type="checkbox" id="add-portfolio" name="portfolio" data-action="select-all" autocomplete="off" />
           <label for="add-portfolio" class="visually-hidden"
-            >Add to portfolio</label
+            >Select all results for portfolio</label
           >
           <button
             class="[ button button--secondary ] [ flex ]"
-            type="submit"
-            aria-label="Search"
+            aria-label="Add items to portfolio"
+            data-action="add-items"
           >
             <svg
               xmlns="http://www.w3.org/2000/svg"
@@ -135,11 +137,12 @@
       <xsl:if test="$sort-options//qui:option">
         <div class="select-group">
           <form method="GET" action="/cgi/i/image/image-idx" autocomplete="off">
-            <label for="result-sort">Sort by:</label>
+            <label for="results-sort">Sort by:</label>
             <select
               name="results"
-              id="result-sort"
+              id="results-sort"
               class="[ dropdown select ]"
+              autocomplete="off"
             >
               <xsl:for-each select="$sort-options//qui:option">
                 <option value="{@value}">
@@ -189,7 +192,6 @@
             name="page"
             min="1"
             max="{$nav/@max}"
-            style="width: {$nav/@max + 4}ch"
             value="{$nav/@current}"
           />
           <span>of <xsl:value-of select="$nav/@max" /></span>
@@ -234,7 +236,7 @@
         </div>
       </a>
       <label class="[ portfolio-selection ]">
-        <input type="checkbox" name="box{generate-id(.)}" value="{@identifier}" />
+        <input type="checkbox" name="bbidno" value="{@identifier}" autocomplete="off" />
         <span class="visually-hidden">Add item to portfolio</span>
       </label>
     </section>
@@ -298,6 +300,19 @@
 
 
   <xsl:template name="build-navigation"></xsl:template>
+
+  <xsl:template name="build-hidden-portfolio-form">
+    <form style="display: none" method="GET" action="/cgi/i/image/image-idx" id="bbaction-form">
+      <xsl:apply-templates select="//qui:form[@action='bbaction']/qui:hidden-input" />
+      <input type="hidden" name="bbaction" value="" id="bbaction-page" />
+    </form>
+  </xsl:template>
+
+  <xsl:template match="qui:callout">
+    <m-callout subtle="subtle" icon="check" dismissable="dismissable" variant="{@variant}">
+      <xsl:apply-templates mode="copy" />
+    </m-callout>
+  </xsl:template>
 
   <xsl:template name="build-search-hints">
     <h3>Other suggestions</h3>

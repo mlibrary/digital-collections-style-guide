@@ -1,4 +1,3 @@
-let srm;
 
 window.addEventListener('message', (event) => {
   if ( event.data.event == 'canvasChange' ) {
@@ -62,11 +61,27 @@ window.addEventListener('DOMContentLoaded', (event) => {
 
   srm = ScreenReaderMessenger.getMessenger();
 
-  document.querySelector('#dropdown-action').addEventListener('sl-select', (event) => {
-    const selectedItem = event.detail.item;
-    let href = selectedItem.value + '?attachment=1';
-    location.href = location.protocol + '//' + location.host + href;
-  });
+  let downloadAction = document.querySelector('#dropdown-action');
+  if ( downloadAction ) {
+    downloadAction.addEventListener('sl-select', (event) => {
+      const selectedItem = event.detail.item;
+      let href = selectedItem.value + '?attachment=1';
+      location.href = location.protocol + '//' + location.host + href;
+    });
+  }
+
+  let citeAction = document.querySelector('[data-action="cite-this-item"]');
+  citeAction.addEventListener('click', (event) => {
+    let target = document.querySelector('#cite-this-item');
+    target.scrollIntoView();
+  })
+
+  let copyLinkAction = document.querySelector('[data-action="copy-link"]');
+  copyLinkAction.addEventListener('click', (event) => {
+    let target = document.querySelector('#input-bookmark');
+    target.select();
+    document.execCommand('copy');
+  })
 
   var idx = 0;
   document.querySelectorAll('h2,h3,h4,h5').forEach((el) => {
@@ -88,7 +103,7 @@ window.addEventListener('DOMContentLoaded', (event) => {
     // For headings inside relative or absolute positioned containers within content.
     hasInnerContainers: true,
     collapseDepth: 6,
-    scrollSmooth: false,
+    scrollSmooth: true,
     // scrollEndCallback: function(event) {
     //   pageIndexDropdown.value = document.querySelector('.is-active-link').getAttribute('href');
     // },
@@ -136,6 +151,19 @@ window.addEventListener('DOMContentLoaded', (event) => {
       target.scrollIntoView();
     }, 0);
   })
+
+  document.querySelectorAll('textarea[data-role="citation"]').forEach((textarea) => {
+    textarea.style.display = 'none';
+    autosize(textarea);
+    textarea.style.display = '';
+
+    setTimeout(() => {
+      autosize.update(textarea);
+    })
+  })
+
+  // autosize(document.querySelector('#full-citation'));
+  // autosize(document.querySelector('#brief-citation'));
 
 })
 

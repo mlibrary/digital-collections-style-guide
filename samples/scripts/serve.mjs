@@ -70,20 +70,37 @@ async function processDLXS(req, res) {
   if (url.searchParams.get("view") == "thumbnail") {
     url.searchParams.set("view", "reslist");
   }
+  if (url.searchParams.get("view") == "bbthumbnail") {
+    url.searchParams.set("view", "bbreslist");
+  }
 
   const headers = {};
-  console.log("-- cookies", req.cookies);
+  // console.log("-- cookies", req.cookies);
   if ( req.cookies.loggedIn == 'true' ) {
     headers['X-DLXS-Auth'] = 'nala@monkey.nu';
   }
   const resp = await fetch(url.toString(), {
-    headers: headers
+    headers: headers,
+    redirect: 'follow',
+    credentials: 'include'
   });
   res.setHeader("Content-Type", "text/html; charset=UTF-8");
   if (resp.ok) {
     const xmlData = await resp.text();
     if ( xmlData.indexOf('no hits. normally cgi redirects') > -1 ) {
       throw new Error('Query has no results');
+    }
+
+    // if ( xmlData.indexOf('xml') < 0 ) {
+    //   console.log(xmlData);
+    // }
+    if ( xmlData.indexOf('Location: ') > -1 ) {
+      let tmp = xmlData.match(/Location: (.*)$/si);
+      let domain = ( req.hostname == 'localhost' ) ? 'http://' : 'https://';
+      domain += req.hostname;
+      let href = tmp[1].trim().replace('https://roger.quod.lib.umich.edu/', '/' ).replace('debug=xml', 'debug=noop');
+      res.redirect(href);
+      return;
     }
     
     const xmlDoc = new DOMParser().parseFromString(xmlData, "text/xml");
@@ -114,7 +131,6 @@ async function processDLXS(req, res) {
       }
     });
 
-    console.log("AHOY 8LIFT", collid, collid.indexOf("8lift"));
     if (collid.indexOf("8lift") > -1) {
       // update the MiradorConfig
       const miradorConfigEl = xpath.select("//MiradorConfig", xmlDoc);
@@ -266,7 +282,8 @@ async function processDLXS(req, res) {
     output.stdout = fs.readFileSync(qbatOutputFilename, "utf8");
 
     const outputData = output.stdout
-      .replace(/https:\/\/roger.quod.lib.umich.edu\//g, "/")
+      .replace(/src="https:\/\/roger.quod.lib.umich.edu\//g, 'src="/')
+      .replace(/href="https:\/\/roger.quod.lib.umich.edu\//g, 'href="/')
       .replace(/debug=xml/g, 'debug=noop')
       .split("\n");
     outputData[0] = "<!DOCTYPE html>";

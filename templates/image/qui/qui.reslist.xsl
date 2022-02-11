@@ -61,12 +61,15 @@
     </qui:header>
     <!-- <xsl:call-template name="build-action-panel" /> -->
     <xsl:call-template name="build-results-list" />
+    <xsl:call-template name="build-portfolio-form" />
     <qui:message>BOO-YAH-HAH</qui:message>
   </xsl:template>
 
   <xsl:template name="get-title">
-    <xsl:value-of select="//Param[@name='q1']" />
-    <xsl:text> | </xsl:text>
+    <xsl:if test="//Param[@name='q1']">
+      <xsl:value-of select="//Param[@name='q1']" />
+      <xsl:text> | </xsl:text>
+    </xsl:if>
     <xsl:value-of select="$start" />
     <xsl:text>-</xsl:text>
     <xsl:value-of select="$end" />
@@ -126,6 +129,7 @@
     <xsl:variable name="q" select="//SearchForm/Q[@name='q1']" />
     <xsl:variable name="is-advanced" select="//SearchForm/Advanced" />
     <xsl:call-template name="build-search-form" />
+    <xsl:call-template name="build-portfolio-actions" />
     <xsl:apply-templates select="//Facets" />
     <qui:form id="sort-options">
       <xsl:for-each select="//SortOptionsMenu/HiddenVars/Variable">
@@ -158,14 +162,19 @@
         </xsl:otherwise>
       </xsl:choose>
     </qui:block>
+    <xsi:if test="//Callout">
+      <xsl:apply-templates select="//Callout" />
+    </xsi:if>
   </xsl:template>
+
+  <xsl:template name="build-portfolio-actions" />
 
   <xsl:template name="build-no-results">
     <pre>BOO-YAH</pre>
   </xsl:template>
 
   <xsl:template match="Results/Result">
-    <qui:section>
+    <qui:section identifier="{EntryId}">
       <qui:link rel="result" href="{Url[@name='EntryLink']}" identifier="{.//EntryWindowName}" marker="{@marker}" />
       <xsl:apply-templates select="MediaInfo" mode="iiif-link" />
       <qui:title>
@@ -233,6 +242,32 @@
     <xsl:if test="normalize-space(istruct_ms) = 'P'">
       <qui:link rel="iiif" href="https://quod.lib.umich.edu/cgi/i/image/api/image/{$collid}:{$m_id}:{$m_iid}" />
     </xsl:if>
+  </xsl:template>
+
+  <xsl:template name="build-portfolio-form">
+    <qui:form action="bbaction">
+      <xsl:for-each select="//BbagOptionsMenu/HiddenVars/Variable">
+        <qui:hidden-input name="{@name}" value="{.}" />
+      </xsl:for-each>
+      <qui:hidden-input name="backlink" value="{//BbagOptionsMenu/BackLink}" />
+    </qui:form>
+  </xsl:template>
+
+  <xsl:template match="Callout">
+    <qui:callout variant='success'>
+      <xhtml:p>
+        <xsl:value-of select="num_added" />
+        <xsl:text> item</xsl:text> 
+        <xsl:if test="num_added &gt; 1">
+          <xsl:text>s</xsl:text>
+        </xsl:if>
+        <xsl:text> added to </xsl:text>
+        <xhtml:a href="/cgi/i/image/image-idx?type=bbaglist;view=bbreslist;bbdbid={bbdbid}">
+          <xsl:value-of select="bbname" />
+        </xhtml:a>
+      </xhtml:p>
+    </qui:callout>
+
   </xsl:template>
 
 </xsl:stylesheet>

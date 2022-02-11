@@ -13,9 +13,10 @@
   <xsl:param name="docroot">/digital-collections-style-guide/</xsl:param>
 
   <xsl:variable name="collid" select="//qui:root/@collid" />
+  <xsl:variable name="username" select="//qui:root/@username" />
 
   <xsl:template match="qui:root">
-    <html lang="en" data-root="{$docroot}">
+    <html lang="en" data-root="{$docroot}" data-username="{$username}">
       <xsl:apply-templates select="qui:head" />
       <body class="[ font-base-family ]">
         <div class="border-bottom">
@@ -59,7 +60,9 @@
 
       <script type="module" src="https://unpkg.com/@umich-lib/web@1/dist/umich-lib/umich-lib.esm.js"></script>
       <script nomodule="" src="https://unpkg.com/@umich-lib/web@1/dist/umich-lib/umich-lib.js"></script>
-      <script src="https://unpkg.com/container-query-polyfill/cqfill.iife.min.js"></script>
+      <script src="{$docroot}js/sr-messaging.js"></script>
+
+      <xsl:call-template name="build-cqfill-script" />
 
       <link href="data:image/x-icon;base64,AAABAAEAEBAAAAAAAABoBQAAFgAAACgAAAAQAAAAIAAAAAEACAAAAAAAAAEAAAAAAAAAAAAAAAEAAAAAAAAAAAAAAOX/AD09PQA0a5EAuwD/AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAICAgACAgACAgIAAAAAAAIDAwMCAgICAwMDAgAAAAIDAwMDAgICAgMDAwMCAAACAwMDAgICAgICAwMDAgAAAgMDAwICAgICAgMDAwIAAAIBAwMCAgICAgIDAwECAAACAQEBAQICAgIBAQEBAgAAAgEBAgEBAgIBAQIBAQIAAAACAQEBAQEBAQEBAQIAAAAAAgEBAQEBAQEBAQECAAAAAAICAQEBAQEBAQECAgAAAAACBAIBAQEBAQECBAIAAAAAAAICAgICAgICAgIAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAP//AADiRwAAwAMAAIABAACAAQAAgAEAAIABAACAAQAAgAEAAMADAADAAwAAwAMAAMADAADgBwAA//8AAP//AAA=" rel="icon" type="image/x-icon" />
 
@@ -67,6 +70,10 @@
       <xsl:call-template name="build-extra-styles" />
 
     </head>
+  </xsl:template>
+
+  <xsl:template name="build-cqfill-script">
+    <script src="https://unpkg.com/container-query-polyfill/cqfill.iife.min.js"></script>
   </xsl:template>
 
   <xsl:template match="qui:m-website-header">
@@ -106,26 +113,6 @@
                   </xsl:if>
                 </xsl:with-param>
               </xsl:apply-templates>
-
-              <xsl:if test="false()">
-              <a>
-                <!-- how to pass aria attributes to generic qui:link handler? -->
-                <xsl:attribute name="href">
-                  <xsl:choose>
-                    <xsl:when test="normalize-space(@identifier)">
-                      <xsl:text>../</xsl:text>
-                      <xsl:value-of select="@identifier" />
-                      <xsl:text>/</xsl:text>
-                    </xsl:when>
-                    <xsl:otherwise><xsl:value-of select="@href" /></xsl:otherwise>
-                  </xsl:choose>
-                </xsl:attribute>
-                <xsl:if test="position() = last()">
-                  <xsl:attribute name="aria-current">page</xsl:attribute>
-                </xsl:if>
-                <xsl:value-of select="." />
-              </a>
-            </xsl:if>
             </li>
           </xsl:for-each>
         </ol>
@@ -438,6 +425,12 @@
         </xsl:for-each>
       </xsl:if>
       <xsl:apply-templates select="@id" mode="copy" />
+      <xsl:if test="normalize-space(@rel)">
+        <xsl:attribute name="data-rel"><xsl:value-of select="@rel" /></xsl:attribute>
+      </xsl:if>
+      <xsl:if test="normalize-space(@target)">
+        <xsl:attribute name="data-target"><xsl:value-of select="@target" /></xsl:attribute>
+      </xsl:if>
       <xsl:apply-templates select="@*[starts-with(name(), 'data-')]" mode="copy" />
 
       <xsl:choose>
@@ -536,12 +529,13 @@
   </xsl:template>
 
   <xsl:template match="qui:field[@component='input']//qui:value" mode="copy-guts" priority="99">
-    <input type="text" value="{.}" />
+    <input type="text" value="{.}" id="input-{ancestor-or-self::qui:field/@key}" readonly="true" />
   </xsl:template>
 
   <xsl:template match="qui:field">
     <div>
       <dt data-key="{@key}">
+        <xsl:apply-templates select="@*[starts-with(name(), 'data-')]" mode="copy" />
         <xsl:apply-templates select="qui:label" mode="copy-guts" />
       </dt>
       <xsl:for-each select="qui:values/qui:value">

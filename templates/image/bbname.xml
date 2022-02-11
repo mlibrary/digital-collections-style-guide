@@ -1,0 +1,38 @@
+<?xml version="1.0"?>
+
+<Top xmlns:dlxs="http://www.umdl.umich.edu/dlxs">
+
+  <!-- XSL fallback files -->
+  <XslFallbackFileList pipeline="qui">
+    <Filename>qui/qui.base.xsl</Filename>
+    <Filename>qui/components/*.xsl</Filename>
+    <Filename>../vendor/str.split.function.xsl</Filename>
+    <Filename>qui/qui.bbbase.xsl</Filename>
+    <Filename>qui/qui.bbname.xsl</Filename>
+  </XslFallbackFileList>
+
+  <XslFallbackFileList pipeline="qbat">
+    <Filename>qbat/qbat.base.xsl</Filename>
+    <Filename>qbat/components/*.xsl</Filename>
+    <Filename>qbat/qbat.bbbase.xsl</Filename>
+    <Filename>qbat/qbat.bbname.xsl</Filename>
+  </XslFallbackFileList>
+
+  <!-- Custom OPTIONAL XML for top-level file bbname.xml -->
+  <CustomXml><?CHUNK filename="bbnameextra.xml" optional="1"?></CustomXml>
+
+  <DlxsGlobals><?CHUNK filename="dlxsclassglobals.xml"?></DlxsGlobals>
+
+  <ExtraCSS><?FBFILE_XML file="css/bbopen.css"?></ExtraCSS>
+
+<PortfolioStatus><?PORTFOLIOSTATUS_XML?></PortfolioStatus>
+<LoginStatus><?LOGINSTATUS_XML?></LoginStatus>
+<LoginLink><?LOGINLINK_XML?></LoginLink>
+
+<Portfolios type="private"><?XX_BBAGPICKLIST_XML type="private" action="add"?></Portfolios>
+<Portfolios type="public"><?XX_BBAGPICKLIST_XML type="public" action="add"?></Portfolios>
+<Portfolios type="mine"><?BBAGPICKLIST_XML type="mine" action="add"?></Portfolios>
+<PortfolioNameForm><?BBAGNAMEFORM_XML?></PortfolioNameForm>
+
+
+</Top>

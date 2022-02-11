@@ -3,6 +3,10 @@ select option {
   font-weight: normal; /* weird firefox issue */
 }
 
+select#results-sort {
+  text-transform: capitalize;
+}
+
 .separator::after {
   font-family: var(--material);
   content: "\e315";
@@ -29,4 +33,35 @@ details[data-list-expanded="true"] span[data-expanded="false"] {
 
 .filter-item--list {
   overflow: auto;
+}
+
+input#results-pagination {
+  height: 40px;
+  width: 6ch;
+  padding: 0 0.5rem;
+}
+
+.button_group {
+  display: flex;
+  flex-direction: column;
+  gap: 1rem;
+  max-width: 20ch;
+}
+
+.button_group .button.button--large {
+  /* this makes the buttons respond better when narrow */
+  padding-left: 10%;
+  padding-right: 10%;
+}
+
+.button_group .button + .button {
+  margin: 0;
+}
+
+@media screen and (max-width: 600px) {
+
+
+  .button_group {
+    max-width: none;
+  }
 }

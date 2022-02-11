@@ -1,4 +1,4 @@
-<xsl:stylesheet version="1.0" xmlns="http://www.w3.org/1999/xhtml" xmlns:xhtml="http://www.w3.org/1999/xhtml" xmlns:xsl="http://www.w3.org/1999/XSL/Transform" xmlns:dlxs="http://dlxs.org" xmlns:qui="http://dlxs.org/quombat/ui" xmlns:exsl="http://exslt.org/common" extension-element-prefixes="exsl">
+<xsl:stylesheet version="1.0" xmlns="http://www.w3.org/1999/xhtml" xmlns:xhtml="http://www.w3.org/1999/xhtml" xmlns:xsl="http://www.w3.org/1999/XSL/Transform" xmlns:dlxs="http://dlxs.org" xmlns:qui="http://dlxs.org/quombat/ui" xmlns:exsl="http://exslt.org/common" xmlns:date="http://exslt.org/dates-and-times" extension-element-prefixes="exsl date">
 
   <xsl:param name="prototype">stacked</xsl:param>
 
@@ -14,7 +14,6 @@
     <script src="https://cdnjs.cloudflare.com/ajax/libs/tocbot/4.11.1/tocbot.js"></script>
 
     <link rel="stylesheet" href="{$docroot}styles/image/entry.css" />
-    <script src="{$docroot}js/sr-messaging.js"></script>
     <script src="{$docroot}js/image/base.js"></script>
     <script src="{$docroot}js/image/entry.js"></script>
   </xsl:template>
@@ -67,6 +66,8 @@
     <xsl:apply-templates select="qui:block[@slot='rights-statement']" />
 
     <xsl:call-template name="build-panel-related-links" />
+
+    <xsl:call-template name="build-cite-this-item-panel" />
 
   </xsl:template>
 
@@ -210,6 +211,7 @@
         <xsl:call-template name="build-download-action" />
         <xsl:call-template name="build-favorite-action" />
         <xsl:call-template name="build-copy-link-action" />
+        <xsl:call-template name="build-copy-citation-action" />
         <!-- <xsl:apply-templates select="." mode="extra" /> -->
       </div>
     </div>
@@ -257,6 +259,17 @@
   </xsl:template>
 
   <xsl:template name="build-favorite-action">
+    <form method="GET" action="bbaction">
+      <xsl:apply-templates select="//qui:form[@rel='add']/qui:hidden-input" />
+      <xsl:call-template name="button">
+        <xsl:with-param name="label">Save to portfolios</xsl:with-param>
+        <xsl:with-param name="classes">button--secondary</xsl:with-param>
+        <xsl:with-param name="icon">add</xsl:with-param>
+      </xsl:call-template>
+    </form>
+  </xsl:template>
+
+  <xsl:template name="build-favorite-action-xxx">
     <xsl:call-template name="button">
       <xsl:with-param name="label">
         <xsl:choose>
@@ -281,6 +294,7 @@
           </xsl:otherwise>
         </xsl:choose>
       </xsl:with-param>
+      <xsl:with-param name="action">save-item</xsl:with-param>
     </xsl:call-template>
   </xsl:template>
 
@@ -288,7 +302,20 @@
     <xsl:call-template name="button">
       <xsl:with-param name="label">Copy Link</xsl:with-param>
       <xsl:with-param name="classes">button--secondary</xsl:with-param>
+      <xsl:with-param name="action">copy-link</xsl:with-param>
       <xsl:with-param name="icon">link</xsl:with-param>
+    </xsl:call-template>
+  </xsl:template>
+
+  <xsl:template name="build-copy-citation-action">
+    <!-- data_object -->
+    <!-- save -->
+    <!-- class -->
+    <xsl:call-template name="button">
+      <xsl:with-param name="label">Cite this Item</xsl:with-param>
+      <xsl:with-param name="classes">button--secondary</xsl:with-param>
+      <xsl:with-param name="action">cite-this-item</xsl:with-param>
+      <xsl:with-param name="icon">save</xsl:with-param>
     </xsl:call-template>
   </xsl:template>
 
@@ -301,8 +328,56 @@
 
   <xsl:template match="qui:block[@slot='rights-statement']">
     <section>
-      <h2 class="[ subtle-heading ][ text-black ]" id="rights-statement">Rights/Permissions</h2>
+      <h2 class="[ subtle-heading ][ text-black ]" id="rights-statement">Rights and Permissions</h2>
       <xsl:apply-templates mode="copy" />
+    </section>
+  </xsl:template>
+
+  <xsl:template name="build-cite-this-item-panel">
+    <xsl:variable name="full-citation-text">
+      <xsl:text>"</xsl:text>
+      <xsl:value-of select="//qui:head/xhtml:meta[@property='og:title']/@content" />
+      <xsl:text>". </xsl:text>
+      <xsl:value-of select="//qui:field[@key='bookmark']//qui:value" />
+      <xsl:text>. </xsl:text>
+      <xsl:text>University of Michigan Library Digital Collections. </xsl:text>
+      <xsl:text>Accessed: </xsl:text>
+      <xsl:value-of select="concat(date:month-name(), ' ', date:day-in-month(), ', ', date:year(), '.')" /> 
+    </xsl:variable>
+    <xsl:variable name="brief-citation-text">
+      <xsl:text>University of Michigan Library Digital Collections. </xsl:text>
+      <xsl:value-of select="//qui:head/xhtml:meta[@property='og:site_name']/@content" />
+      <xsl:text>. Accessed: </xsl:text>
+      <xsl:value-of select="concat(date:month-name(), ' ', date:day-in-month(), ', ', date:year(), '.')" />
+    </xsl:variable>
+    <section>
+      <h2 class="[ subtle-heading ][ text-black ]" id="cite-this-item">Cite this Item</h2>
+      <p class="[ text-xxx-small mt-0 ]">
+        <xsl:text>View the </xsl:text>
+        <a href="{//qui:link[@rel='help']/@href}">Help Guide</a>
+        <xsl:text> for more information.</xsl:text>
+      </p>
+      <dl class="record">
+        <div>
+          <dt>Full citation</dt>
+          <dd>
+            <textarea data-role="citation" readonly="true" id="full-citation">
+              <xsl:value-of select="normalize-space($full-citation-text)" />
+            </textarea>
+          </dd>
+        </div>
+        <div>
+          <dt>Brief citation</dt>
+          <dd>
+            <textarea data-role="citation" readonly="true" id="brief-citation">
+              <xsl:value-of select="normalize-space($brief-citation-text)" />
+            </textarea>
+            <p class="[ text-xxx-small mt-0 ]">
+              For when space is at a premium.
+            </p>
+          </dd>
+        </div>
+      </dl>
     </section>
   </xsl:template>
 
@@ -333,7 +408,7 @@
         <div>
           <dt>Manifest</dt>
           <dd>
-            <input type="text" value="{//qui:viewer/@manifest-id}" />
+            <input readonly="true" type="text" value="{//qui:viewer/@manifest-id}" />
           </dd>
         </div>
       </dl>
@@ -360,16 +435,16 @@
     <xsl:variable name="private-list" select="//qui:portfolio-list[@type='private']" />
     <xsl:variable name="public-list" select="//qui:portfolio-list[@type='public']" />
 
-    <xsl:if test="$private-list//qui:portfolio-link or $public-list//qui:portfolio-link">
+    <xsl:if test="$private-list//qui:portfolio or $public-list//qui:portfolio">
       <h3 id="portfolios">Portfolios</h3>
       <dl class="record">
-        <xsl:if test="$private-list//qui:portfolio-link">
+        <xsl:if test="$private-list//qui:portfolio">
           <div>
             <dt>In your portfolios</dt>
             <xsl:apply-templates select="$private-list" mode="dl" />
           </div>
         </xsl:if>
-        <xsl:if test="$public-list//qui:portfolio-link">
+        <xsl:if test="$public-list//qui:portfolio">
           <div>
             <dt id="public-list">In public portfolios</dt>
             <xsl:apply-templates select="$public-list" mode="dl" />
@@ -383,14 +458,26 @@
   </xsl:template>
 
   <xsl:template match="qui:portfolio-list" mode="dl">
-    <xsl:for-each select="qui:portfolio-link">
+    <xsl:for-each select="qui:portfolio">
       <dd>
-        <a href="{@href}">
-          <xsl:value-of select="qui:title" />
-          <xsl:text> (</xsl:text>
-          <xsl:value-of select="qui:count" />
-          <xsl:text>)</xsl:text>
-        </a>
+        <div class="[ flex flex-flow-rw ]" style="justify-content: space-between">
+          <a href="{qui:link[@rel='open']/@href}" style="display: block">
+            <xsl:value-of select="qui:title" />
+            <xsl:text> (</xsl:text>
+            <xsl:value-of select="qui:field[@key='itemcount']//qui:value" />
+            <xsl:text>)</xsl:text>
+          </a>
+          <xsl:if test="qui:form">
+            <div class="[ toolbar toolbar--portfolio ]">
+              <xsl:for-each select="qui:form">
+                <form method="POST" name="bbaction">
+                  <xsl:apply-templates select="qui:hidden-input" />
+                  <button class="button button--secondary button--tiny" type="submit">Remove Item</button>
+                </form>
+              </xsl:for-each>
+            </div>
+          </xsl:if>
+        </div>
       </dd>
     </xsl:for-each>
   </xsl:template>
@@ -542,8 +629,12 @@
     <xsl:param name="label" />
     <xsl:param name="classes" />
     <xsl:param name="icon" />
+    <xsl:param name="action" />
     <button class="button button--large {$classes}">
-      <xsl:value-of select="$label" />
+      <xsl:if test="$action">
+        <xsl:attribute name="data-action"><xsl:value-of select="$action" /></xsl:attribute>
+      </xsl:if>
+      <span><xsl:value-of select="$label" /></span>
       <xsl:if test="normalize-space($icon)">
         <span class="material-icons" aria-hidden="true"><xsl:value-of select="$icon" /></span>
       </xsl:if>

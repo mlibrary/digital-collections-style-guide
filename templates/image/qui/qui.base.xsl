@@ -1,7 +1,18 @@
 <?xml version="1.0" encoding="UTF-8" ?>
 <xsl:stylesheet version="1.0" xmlns:xhtml="http://www.w3.org/1999/xhtml" xmlns:xsl="http://www.w3.org/1999/XSL/Transform" xmlns:dlxs="http://dlxs.org" xmlns:qbat="http://dlxs.org/quombat" xmlns:exsl="http://exslt.org/common" xmlns:qui="http://dlxs.org/quombat/ui" extension-element-prefixes="exsl" >
 
-  <xsl:variable name="collid" select="normalize-space((//Param[@name='cc']|//Param[@name='c'])[1])" />
+  <!-- <xsl:variable name="collid" select="normalize-space((//Param[@name='cc']|//Param[@name='c'])[1])" /> -->
+  <xsl:variable name="collid">
+    <xsl:choose>
+      <xsl:when test="//Param[@name='cc']">
+        <xsl:value-of select="//Param[@name='cc']" />
+      </xsl:when>
+      <xsl:when test="count(//Param[@name='c']) = 1">
+        <xsl:value-of select="//Param[@name='cc']" />
+      </xsl:when>
+      <xsl:otherwise>*</xsl:otherwise>
+    </xsl:choose>
+  </xsl:variable>
   <xsl:key match="/Top/DlxsGlobals/LangMap/lookup/item" name="gui-txt" use="@key"/>
 
   <xsl:param name="docroot">/digital-collections-style-guide</xsl:param>
@@ -10,7 +21,7 @@
     <xsl:processing-instruction name="xml-stylesheet">
       <xsl:value-of select="concat('type=&quot;text/xsl&quot; href=&quot;', $docroot, '/templates/debug.qui.xsl&quot;')" />
     </xsl:processing-instruction>
-    <qui:root view="{//Param[@name='view']|//Param[@name='page']}" collid="{$collid}">
+    <qui:root view="{//Param[@name='view']|//Param[@name='page']}" collid="{$collid}" username="{//AuthenticatedUsername}">
       <!-- fills html/head-->
       <qui:head>
         <xhtml:title>
@@ -37,8 +48,8 @@
     <qui:m-website-header name="Digital Collections">
       <qui:search-form collid="{$collid}" value="{//Param[@name='q1']}" />
       <qui:nav>
-        <qui:link href="{//Help}">Help</qui:link>
-        <qui:link href="{//OpenPortfolio/Url}">Portfolios</qui:link>
+        <qui:link rel="help" href="{//Help}">Help</qui:link>
+        <qui:link rel="portfolios" href="{//OpenPortfolio/Url}">Portfolios</qui:link>
         <xsl:call-template name="build-login-link" />
       </qui:nav>
     </qui:m-website-header>
@@ -85,6 +96,9 @@
 
   <xsl:template name="get-collection-title">
     <xsl:choose>
+      <xsl:when test="/Top/BookBagInfo/Field[@name='bbagname']">
+        <xsl:value-of select="normalize-space(/Top/BookBagInfo/Field[@name='bbagname'])" />
+      </xsl:when>
       <xsl:when test="/Top/CollName = 'multiple'">
         <xsl:value-of select="normalize-space(/Top/GroupName)" />
       </xsl:when>
@@ -136,6 +150,7 @@
 
   <xsl:template match="Field">
     <qui:field key="{@abbrev}">
+      <xsl:apply-templates select="@*[starts-with(name(), 'data-')]" mode="copy" />
       <qui:label>
         <xsl:value-of select="Label" />
       </qui:label>
