@@ -103,7 +103,7 @@ window.addEventListener('DOMContentLoaded', (event) => {
     // For headings inside relative or absolute positioned containers within content.
     hasInnerContainers: true,
     collapseDepth: 6,
-    scrollSmooth: false,
+    scrollSmooth: true,
     // scrollEndCallback: function(event) {
     //   pageIndexDropdown.value = document.querySelector('.is-active-link').getAttribute('href');
     // },
