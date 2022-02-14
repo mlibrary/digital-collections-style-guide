@@ -74,7 +74,7 @@
   <xsl:template match="qui:fieldset[@slot='clause']">
     <xsl:apply-templates select="qui:select[@slot='op']" />
     <fieldset class="[ no-border ][ fieldset--grid ]">
-      <legend class="visually-hidden">Search</legend>
+      <legend class="visually-hidden">Search Terms</legend>
       <div class="[ fieldset--clause--region ]">
         <xsl:apply-templates select="qui:select[@slot='region']" />
       </div>

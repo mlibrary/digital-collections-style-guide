@@ -18,6 +18,9 @@
         </xsl:choose>
         <div class="advanced-link"><a href="/cgi/i/image/image-idx?c={$collid};page=search">Advanced Search</a></div>
       </div>
+      <xsl:call-template name="build-search-hidden-fields">
+        <xsl:with-param name="form" select="$form" />
+      </xsl:call-template>
       <xsl:call-template name="build-search-additional-fields" />
     </form>
   </xsl:template>
@@ -83,24 +86,39 @@
                 d="M15.5 14h-.79l-.28-.27C15.41 12.59 16 11.11 16 9.5 16 5.91 13.09 3 9.5 3S3 5.91 3 9.5 5.91 16 9.5 16c1.61 0 3.09-.59 4.23-1.57l.27.28v.79l5 4.99L20.49 19l-4.99-5zm-6 0C7.01 14 5 11.99 5 9.5S7.01 5 9.5 5 14 7.01 14 9.5 11.99 14 9.5 14z"
               ></path>
             </svg>
-
-            <span class="visually-hidden">Submit</span>
           </button>
         </div>
       </div>
-      <xsl:apply-templates select="$form/qui:hidden-input" />
-      <input type="hidden" name="type" value="boolean" />
-      <input type="hidden" name="view" value="reslist" />
-      <input type="hidden" name="c" value="{//qui:root/@collid}" />
     </fieldset>
   </xsl:template>
   
   <xsl:template name="build-advanced-search-toolbar">
+    <xsl:variable name="form" select="." />
     <div class="[ search-container search-results__edit ]">
       <a href="{@data-edit-action}">Edit Search</a>
     </div>
   </xsl:template>
 
+  <xsl:template name="build-search-hidden-fields">
+    <xsl:param name="form" />
+    <xsl:if test="$form/@data-advanced='true'">
+      <xsl:for-each select="$form/qui:control">
+        <xsl:if test="normalize-space(qui:input[@slot='q']/@value)">
+          <xsl:apply-templates select="qui:input" mode="hidden" />
+        </xsl:if>
+      </xsl:for-each>
+      <input type="hidden" name="from" value="reslist" />
+    </xsl:if>
+    <xsl:apply-templates select="$form/qui:hidden-input" />
+    <input type="hidden" name="type" value="boolean" />
+    <input type="hidden" name="view" value="reslist" />
+    <input type="hidden" name="c" value="{//qui:root/@collid}" />
+  </xsl:template>
+
   <xsl:template name="build-search-additional-fields" />
+
+  <xsl:template match="qui:input" mode="hidden">
+    <input type="hidden" name="{@name}" value="{@value}" />
+  </xsl:template>
 
 </xsl:stylesheet>

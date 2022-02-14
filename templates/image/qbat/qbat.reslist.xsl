@@ -16,6 +16,7 @@
 
     <div class="[ flex flex-flow-rw ][ flex-gap-1 ]">
       <div class="side-panel">
+        <h2 class="visually-hidden">Options</h2>
         <xsl:call-template name="build-filters-panel" />
       </div>
       <div class="main-panel">
@@ -37,20 +38,20 @@
     <xsl:variable name="nav" select="//qui:nav[@role='results']" />
     <xsl:choose>
       <xsl:when test="$nav/@total = 0">
-        <p>
+        <h2 class="results-heading">
           <span class="[ bold ]">No results</span>
           <xsl:text> match your search.</xsl:text>
-        </p>
+        </h2>
       </xsl:when>
       <xsl:otherwise>
-        <p>
+        <h2 class="results-heading">
           <xsl:value-of select="$nav/@start" />
           <xsl:text> to </xsl:text>
           <xsl:value-of select="$nav/@end" />
           <xsl:text> of </xsl:text>
           <xsl:value-of select="$nav/@total" />
           <xsl:text> results</xsl:text>
-        </p>
+        </h2>
       </xsl:otherwise>
     </xsl:choose>
     <p>
@@ -229,7 +230,7 @@
           </xsl:otherwise>
         </xsl:choose>
         <div class="[ results-list__content ]">
-          <h4><xsl:apply-templates select="qui:title" /></h4>
+          <h3><xsl:apply-templates select="qui:title" /></h3>
           <dl class="[ results ]">
             <xsl:apply-templates select="qui:block[@slot='metadata']//qui:field" />
           </dl>
@@ -261,6 +262,8 @@
           fill="#06080a"
           aria-hidden="true"
           style="transform: rotate(-180deg)"
+          focusable="false"
+          role="img"
         >
           <g>
             <g><rect fill="none" height="20" width="20" /></g>
@@ -285,6 +288,8 @@
           width="12px"
           fill="#06080a"
           aria-hidden="true"
+          focusable="false"
+          role="img"
         >
         <g>
           <g><rect fill="none" height="20" width="20" /></g>

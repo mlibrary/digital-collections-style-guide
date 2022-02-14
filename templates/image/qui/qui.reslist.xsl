@@ -113,7 +113,6 @@
     <xsl:param name="marker" />
     <xsl:param name="href" />
     <xsl:if test="normalize-space($href)">
-      <xsl:message>NAVIGATION: <xsl:value-of select="$identifier" /></xsl:message>
       <qui:link rel="{$rel}" href="{$href}">
         <xsl:if test="normalize-space($identifier)">
           <xsl:attribute name="identifier"><xsl:value-of select="$identifier" /></xsl:attribute>
@@ -162,9 +161,9 @@
         </xsl:otherwise>
       </xsl:choose>
     </qui:block>
-    <xsi:if test="//Callout">
+    <xsl:if test="//Callout">
       <xsl:apply-templates select="//Callout" />
-    </xsi:if>
+    </xsl:if>
   </xsl:template>
 
   <xsl:template name="build-portfolio-actions" />
