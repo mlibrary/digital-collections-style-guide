@@ -110,7 +110,7 @@
         <qui:label>Collection</qui:label>
         <qui:values>
           <qui:value>
-            <qui:link href="/cgi/i/image/image-idx?cc={$collid}">
+            <qui:link href="{/Top/Home}">
               <xsl:value-of select="//CollName/Full" />
             </qui:link>
           </qui:value>
