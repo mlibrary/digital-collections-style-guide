@@ -7,6 +7,7 @@
     "@11ty/eleventy": "^0.11.1",
     "@umich-lib/components": "^1",
     "@xmldom/xmldom": "^0.7.2",
+    "esbuild": "^0.14.23",
     "express-http-proxy": "^1.6.3",
     "get-all-files": "^4.0.0",
     "md5": "^2.3.0",
