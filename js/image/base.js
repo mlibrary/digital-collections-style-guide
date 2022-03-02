@@ -16,7 +16,10 @@ window.addEventListener('DOMContentLoaded', (event) => {
     document.documentElement.dataset.debuggingSrm = "true";
   }
 
-  if ( location.hostname.indexOf('.netlify.app') < 0 ) {
+  if ( 
+    location.hostname.indexOf('.netlify.app') < 0 && 
+    location.hostname.indexOf('.quod.lib.umich.edu') < 0 
+  ) {
     // login trigger
     const $actionLogin = document.querySelector('#action-login');
     $actionLogin.addEventListener('click', (event) => {
@@ -167,4 +170,12 @@ window.addEventListener('DOMContentLoaded', (event) => {
       }
     })
   })
+
+  // slightly bonkers way to activate the action buttons
+  document.querySelectorAll('button[data-action][data-href]').forEach((button) => {
+    button.addEventListener('click', (event) => {
+      let href = button.dataset.href;
+      location.href = href;
+    })
+  });
 });

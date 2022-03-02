@@ -36,7 +36,7 @@ window.addEventListener('DOMContentLoaded', (event) => {
       let $inputShared = document.querySelector('#bbsh');
       $form.appendChild(_makeHiddenInput({ name: 'bbnn', value: $inputName.value }));
       if ( $inputUserName ) {
-        $form.appendChild(_makeHiddenInput({ name: 'bbusername', value: $inputUserName.value.trim().replace(/\n/g, "::") }));
+        $form.appendChild(_makeHiddenInput({ name: 'bbusername', value: $inputUserName.value.trim().replace(/\n/g, "|") }));
       }
       if ( $inputShared ) {
         $form.appendChild(_makeHiddenInput({ name: 'bbsh', value: ($inputShared.checked ? $inputShared.value : 0) }));

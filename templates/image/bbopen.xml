@@ -29,8 +29,9 @@
 <LoginStatus><?LOGINSTATUS_XML?></LoginStatus>
 <LoginLink><?LOGINLINK_XML?></LoginLink>
 
-<Portfolios type="private"><?BBAGPICKLIST_XML type="private" action="open"></Portfolios>
-<Portfolios type="public"><?BBAGPICKLIST_XML type="public" action="open"></Portfolios>
+<Portfolios type="merged"><?BBAGPICKLIST_XML type="merged" action="open"?></Portfolios>
+<Portfolios type="private"><?XXBBAGPICKLIST_XML type="private" action="open"?></Portfolios>
+<Portfolios type="public"><?XXBBAGPICKLIST_XML type="public" action="open"?></Portfolios>
 
 <JavaScriptFooterUrl><?FBFILE_XML file="js/imageclass.js"?></JavaScriptFooterUrl>
 <JavaScriptFooterUrl><?FBFILE_XML file="js/date.js"?></JavaScriptFooterUrl>

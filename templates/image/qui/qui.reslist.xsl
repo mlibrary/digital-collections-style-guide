@@ -1,4 +1,4 @@
-<xsl:stylesheet version="1.0" xmlns="http://www.w3.org/1999/xhtml" xmlns:xsl="http://www.w3.org/1999/XSL/Transform" xmlns:dlxs="http://dlxs.org" xmlns:qui="http://dlxs.org/quombat/ui" xmlns:exsl="http://exslt.org/common" xmlns:str="http://exslt.org/strings" extension-element-prefixes="exsl str">
+<xsl:stylesheet version="1.0" xmlns="http://www.w3.org/1999/xhtml" xmlns:xhtml="http://www.w3.org/1999/xhtml"  xmlns:xsl="http://www.w3.org/1999/XSL/Transform" xmlns:dlxs="http://dlxs.org" xmlns:qui="http://dlxs.org/quombat/ui" xmlns:exsl="http://exslt.org/common" xmlns:str="http://exslt.org/strings" extension-element-prefixes="exsl str">
 
   <xsl:output method="xml" version="1.0" encoding="utf-8" indent="yes" />
 
@@ -57,6 +57,9 @@
     <xsl:call-template name="build-results-navigation" />
     <xsl:call-template name="build-breadcrumbs" />
     <qui:header role="main">
+      <xsl:if test="//BookBagInfo/Field[@name='shared'] = '0'">
+        <xsl:attribute name="data-status">private</xsl:attribute>
+      </xsl:if>
       <xsl:call-template name="get-collection-title" />
     </qui:header>
     <!-- <xsl:call-template name="build-action-panel" /> -->
@@ -245,6 +248,15 @@
 
   <xsl:template name="build-portfolio-form">
     <qui:form action="bbaction">
+      <xsl:if test="//BbagOptionsMenu/UserIsOwner = 'true'">
+        <xsl:attribute name="data-owner">true</xsl:attribute>
+        <xsl:attribute name="data-status">
+          <xsl:choose>
+            <xsl:when test="//BookBagInfo/Field[@name='shared'] = '0'">private</xsl:when>
+            <xsl:otherwise>public</xsl:otherwise>
+          </xsl:choose>
+        </xsl:attribute>
+      </xsl:if>
       <xsl:for-each select="//BbagOptionsMenu/HiddenVars/Variable">
         <qui:hidden-input name="{@name}" value="{.}" />
       </xsl:for-each>

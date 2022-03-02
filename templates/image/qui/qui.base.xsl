@@ -22,6 +22,9 @@
       <xsl:value-of select="concat('type=&quot;text/xsl&quot; href=&quot;', $docroot, '/templates/debug.qui.xsl&quot;')" />
     </xsl:processing-instruction>
     <qui:root view="{//Param[@name='view']|//Param[@name='page']}" collid="{$collid}" username="{//AuthenticatedUsername}">
+      <xsl:if test="//BbagOptionsMenu/UserIsOwner = 'true'">
+        <xsl:attribute name="user-is-owner">true</xsl:attribute>
+      </xsl:if>
       <!-- fills html/head-->
       <qui:head>
         <xhtml:title>

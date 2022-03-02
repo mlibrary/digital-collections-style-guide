@@ -1,11 +1,13 @@
 <?xml version="1.0" encoding="UTF-8" ?>
 
-<xsl:stylesheet version="1.0" xmlns:xsl="http://www.w3.org/1999/XSL/Transform" xmlns:dlxs="http://dlxs.org" xmlns:xhtml="http://dlxs.org/quombat/xhtml" xmlns:qui="http://dlxs.org/quombat/ui">
+<xsl:stylesheet version="1.0" xmlns:xsl="http://www.w3.org/1999/XSL/Transform" xmlns:dlxs="http://dlxs.org" xmlns:xhtml="http://www.w3.org/1999/xhtml" xmlns:qui="http://dlxs.org/quombat/ui">
 
   <xsl:output
-    method="html"
+    method="xml"
     indent="yes"
     encoding="utf-8"
+    omit-xml-declaration="yes"
+    version="5.0"
     />
   <xsl:strip-space elements="*"/>
 

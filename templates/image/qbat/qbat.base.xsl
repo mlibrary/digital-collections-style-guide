@@ -507,6 +507,7 @@
 
   <xsl:template name="build-collection-heading">
     <h1 class="collection-heading">
+      <xsl:apply-templates select="//qui:header/@data-status" mode="copy" />
       <xsl:value-of select="//qui:header[@role='main']" />
     </h1>
   </xsl:template>
@@ -588,7 +589,7 @@
   </xsl:template>
 
   <xsl:template match="node()[namespace-uri() = 'http://dlxs.org/quombat/xhtml']" mode="copy" priority="99">
-    <xsl:element name="{name()}" namespace="http://www.w3.org/1999/xhtml">
+    <xsl:element name="{local-name()}" namespace="http://www.w3.org/1999/xhtml" data-copy="dlxs">
       <xsl:apply-templates select="*|@*|text()" mode="copy" />
     </xsl:element>
   </xsl:template>

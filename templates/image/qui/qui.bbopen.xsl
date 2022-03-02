@@ -64,7 +64,8 @@
   <xsl:template match="Field[@name='shared']" priority="100" />
 
   <xsl:template match="Field[@name='username']" mode="field-value" priority="100">
-    <xsl:for-each select="str:split(., ' ')">
+    <xsl:attribute name="data-username"><xsl:value-of select="@username" /></xsl:attribute>
+    <xsl:for-each select="str:split(., '; ')">
       <qui:value>
         <xsl:value-of select="." />
       </qui:value>

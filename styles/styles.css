@@ -770,6 +770,10 @@ a[class*="next"]::after {
   gap: 0.5em;
 }
 
+.gap-1 {
+  gap: 1rem;
+}
+
 .nowrap {
   white-space: nowrap;
 }
@@ -848,6 +852,14 @@ h3,
   font-family: var(--font-base-family);
 }
 
+.collection-heading[data-status="private"]::after {
+  font-family: var(--material);
+  content: "\e897";
+  display: inline-block;
+  margin-left: 0.25rem;
+  font-size: 90%;
+}
+
 .collection-heading--small {
   font-size: 20px;
   font-weight: var(--bold);
@@ -888,7 +900,11 @@ h3,
 .button,
 button {
   outline: none;
-  display: inline-block;
+  /* display: inline-block; */
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;;
+  gap: 0.25rem;
   padding: 0 0.75rem;
   font-size: 1rem;
   line-height: 1.5;

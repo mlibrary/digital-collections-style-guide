@@ -1,0 +1,41 @@
+<?xml version="1.0"?>
+
+<Top xmlns:dlxs="http://www.umdl.umich.edu/dlxs">
+
+  <!-- XSL fallback files -->
+  <XslFallbackFileList pipeline="qui">
+    <Filename>qui/qui.base.xsl</Filename>
+    <Filename>qui/components/*.xsl</Filename>
+    <Filename>../vendor/str.split.function.xsl</Filename>
+    <Filename>qui/qui.bbbase.xsl</Filename>
+    <Filename>qui/qui.bbdelconfirm.xsl</Filename>
+  </XslFallbackFileList>
+
+  <XslFallbackFileList pipeline="qbat">
+    <Filename>qbat/qbat.base.xsl</Filename>
+    <Filename>qbat/components/*.xsl</Filename>
+    <Filename>qbat/qbat.bbbase.xsl</Filename>
+    <Filename>qbat/qbat.bbdelconfirm.xsl</Filename>
+  </XslFallbackFileList>
+
+  <DlxsGlobals>
+    <?CHUNK filename="dlxsclassglobals.xml"?>
+  </DlxsGlobals>
+
+  <ExtraCSS>
+    <?FBFILE_XML file="css/bbdelconfirm.css"?>
+  </ExtraCSS>
+
+  <DeletePortfolio>
+    <?DELETEBOOKBAGLINK_XML ?>
+  </DeletePortfolio>
+
+  <OpenPortfolio>
+    <?OPENPORTFOLIO_XML ?>
+  </OpenPortfolio>
+
+  <Portfolios type="private">
+    <?BBAGPICKLIST_XML type="private" action="open">?>
+  </Portfolios>
+
+</Top>

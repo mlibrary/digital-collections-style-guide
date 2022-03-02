@@ -25,14 +25,27 @@
             </div>
           </div>
       </xsl:if>
-      <h3 class="[ mt-2 ]">Portfolio Actions</h3>
-      <div class="[ side_panel__box ]">
-        <div class="[ button_group ]">
-          <xsl:call-template name="button">
-            <xsl:with-param name="rel" select="'bbexportprep'" />
-          </xsl:call-template>
-        </div>
+      <!-- <xsl:call-template name="build-portfolio-actions-panel" /> -->
+    </xsl:if>
+  </xsl:template>
+
+  <xsl:template name="build-portfolio-actions-panel">
+    <h3 class="[ mt-2 ]">Portfolio Actions</h3>
+    <div class="[ side_panel__box ]">
+      <div class="[ button_group ]">
+        <xsl:call-template name="button">
+          <xsl:with-param name="rel" select="'bbexportprep'" />
+        </xsl:call-template>
       </div>
+    </div>
+  </xsl:template>
+
+  <xsl:template name="build-extra-portfolio-actions">
+    <xsl:if test="//qui:form[@action='bbaction']/@data-owner='true'">
+      <button class="[ button button--secondary ] [ flex ]" aria-label="Remove items from portfolio" data-action="remove-items">
+        <span class="material-icons" aria-hidden="true">remove</span>
+        <span>Remove from portfolio</span>
+      </button>
     </xsl:if>
   </xsl:template>
 

@@ -164,7 +164,7 @@
   </xsl:template>
 
   <xsl:template name="build-hidden-form">
-    <form style="display: none" method="GET" action="/cgi/i/image/image-idx" id="bbaction-form">
+    <form style="display: none" method="POST" action="/cgi/i/image/image-idx" id="bbaction-form">
       <xsl:apply-templates select="//qui:form[@action='bbaction']/qui:hidden-input" />
     </form>
   </xsl:template>
