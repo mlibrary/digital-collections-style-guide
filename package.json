@@ -20,6 +20,8 @@
     "build": "npx @11ty/eleventy",
     "develop": "npx @11ty/eleventy --serve",
     "start": "npm run develop",
+    "build-js": "npx esbuild --bundle src/js/image/*.js --outdir=dist --outbase=src --target=es2015",
+    "watch-js": "npx esbuild --bundle src/js/image/*.js --outdir=dist --outbase=src --target=es2015 --watch",
     "build-xml": "./samples/scripts/transform-xml-qui.mjs && ./samples/scripts/transform-qui-qbat.mjs && ./samples/scripts/build-indexes.mjs",
     "proxy": "./samples/scripts/serve.mjs"
   },

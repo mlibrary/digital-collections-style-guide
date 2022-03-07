@@ -1,25 +1,20 @@
 import { ScreenReaderMessenger } from "../sr-messaging";
 import "../dev.js";
 
+import "./handlers/action-go.js";
+import "../wait-for-defined-components.js";
+
 window.addEventListener('DOMContentLoaded', (event) => {
 
   const $main = document.querySelector(".main-panel");
   const $paginator = document.querySelector("[data-action='paginate']");
 
-  // fade in after components load
-  Promise.allSettled([
-    customElements.whenDefined('m-universal-header'),
-    customElements.whenDefined('m-website-header')
-  ])
-    .then(function () {
-      // $body.addClass('ready');
-      $main.dataset.state = 'ready'
-    })
+  $main.dataset.state = 'ready';
 
   // portfolio display management
   const $fragment = document.createDocumentFragment();
   const $container = document.querySelector(".portfolio--list");
-  let $lists = document.querySelectorAll(".portfolio");
+  let $lists = [ ...document.querySelectorAll(".portfolio") ];
 
   let $styles;
   for (let i = 0; i < document.styleSheets.length; i++) {

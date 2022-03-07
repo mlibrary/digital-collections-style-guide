@@ -13,3 +13,5 @@ import "./handlers/item-page-navigator.js";
 import "./viewers/viewer-mirador.js";
 
 import "./handlers/advanced-search-form.js";
+
+import "../wait-for-defined-components.js";

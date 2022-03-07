@@ -3,11 +3,15 @@
   <xsl:template name="build-cqfill-script">
   </xsl:template>
 
+  <xsl:template name="build-app-script">
+    <script src="{$docroot}dist/js/image/bbopen.js"></script>
+  </xsl:template>
+
   <xsl:template name="build-extra-styles">
     <xsl:comment>DUBIOUS EXCEPTIONS</xsl:comment>
     <link rel="stylesheet" href="{$docroot}styles/image/reslist.css" />
     <link rel="stylesheet" href="{$docroot}styles/image/bbopen.css" />
-    <script src="{$docroot}dist/js/image/bbopen.js"></script>
+    <!-- <script src="{$docroot}dist/js/image/bbopen.js"></script> -->
 
     <style id="portfolio-filter-rules" type="text/css">
       .portfolio--list .portfolio[data-page="1"] {
@@ -164,7 +168,7 @@
         <xsl:apply-templates select="qui:link[@rel='open']" />
       </xsl:variable>
       <xsl:variable name="link" select="exsl:node-set($link-tmp)" />
-      <a class="[ flex ]">
+      <a class="[ flex ][ flex-grow-1 ]">
         <xsl:attribute name="href">
           <xsl:value-of select="$link//@href" />
         </xsl:attribute>

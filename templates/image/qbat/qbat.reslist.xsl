@@ -200,7 +200,7 @@
         <xsl:apply-templates select="qui:link[@rel='result']" />
       </xsl:variable>
       <xsl:variable name="link" select="exsl:node-set($link-tmp)" />
-      <a class="[ flex ]">
+      <a class="[ flex ][ flex-grow-1 ]">
         <xsl:attribute name="href">
           <xsl:value-of select="$link//@href" />
         </xsl:attribute>

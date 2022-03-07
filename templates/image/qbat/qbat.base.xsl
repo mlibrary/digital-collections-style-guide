@@ -17,9 +17,9 @@
   <xsl:variable name="view" select="//qui:root/@view" />
 
   <xsl:template match="qui:root">
-    <html lang="en" data-root="{$docroot}" data-username="{$username}" data-view="{$view}">
+    <html lang="en" data-root="{$docroot}" data-username="{$username}" data-view="{$view}" data-initialized="false" style="opacity: 0">
       <xsl:apply-templates select="qui:head" />
-      <body class="[ font-base-family ]">
+      <body class="[ font-base-family ]" data-initialized="false" style="opacity: 0">
         <xsl:apply-templates select="build-body-data" />
         <div class="border-bottom">
           <m-universal-header></m-universal-header>
@@ -62,9 +62,14 @@
       <link href="https://unpkg.com/@umich-lib/web@1/umich-lib.css" rel="stylesheet" />
       <link href="{$docroot}styles/styles.css" rel="stylesheet" />
 
+      <script>
+        window.mUse = [ 'm-universal-header', 'm-website-header', 'm-logo' ];
+      </script>
+
       <script type="module" src="https://unpkg.com/@umich-lib/web@1/dist/umich-lib/umich-lib.esm.js"></script>
       <script nomodule="" src="https://unpkg.com/@umich-lib/web@1/dist/umich-lib/umich-lib.js"></script>
-      <script src="{$docroot}dist/js/image/main.js"></script>
+
+      <xsl:call-template name="build-app-script" />
 
       <xsl:call-template name="build-cqfill-script" />
 
@@ -76,6 +81,10 @@
     </head>
   </xsl:template>
 
+  <xsl:template name="build-app-script">
+    <script src="{$docroot}dist/js/image/main.js"></script>
+  </xsl:template>
+  
   <xsl:template name="build-cqfill-script">
     <script src="https://unpkg.com/container-query-polyfill/cqfill.iife.min.js"></script>
   </xsl:template>
