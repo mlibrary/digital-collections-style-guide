@@ -7,7 +7,6 @@
   <xsl:template name="build-extra-styles">
     <xsl:comment>DUBIOUS EXCEPTIONS</xsl:comment>
     <link rel="stylesheet" href="{$docroot}styles/image/reslist.css" />
-    <script src="{$docroot}js/image/base.js"></script>
   </xsl:template>
 
   <xsl:template match="qui:main">

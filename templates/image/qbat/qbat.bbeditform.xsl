@@ -102,7 +102,7 @@
 
   <xsl:template name="build-extra-styles">
     <link rel="stylesheet" href="{$docroot}styles/modals.css" />
-    <script src="{$docroot}js/image/bbeditform.js"></script>
+    <script src="{$docroot}dist/js/image/bbeditform.js"></script>
   </xsl:template>
 
 </xsl:stylesheet>

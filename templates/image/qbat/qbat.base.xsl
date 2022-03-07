@@ -14,11 +14,13 @@
 
   <xsl:variable name="collid" select="//qui:root/@collid" />
   <xsl:variable name="username" select="//qui:root/@username" />
+  <xsl:variable name="view" select="//qui:root/@view" />
 
   <xsl:template match="qui:root">
-    <html lang="en" data-root="{$docroot}" data-username="{$username}">
+    <html lang="en" data-root="{$docroot}" data-username="{$username}" data-view="{$view}">
       <xsl:apply-templates select="qui:head" />
       <body class="[ font-base-family ]">
+        <xsl:apply-templates select="build-body-data" />
         <div class="border-bottom">
           <m-universal-header></m-universal-header>
           <xsl:apply-templates select="//qui:m-website-header" />
@@ -42,6 +44,8 @@
   <xsl:template name="build-extra-scripts" />
   <xsl:template name="build-extra-styles" />
 
+  <xsl:template name="build-body-data" />
+
   <xsl:template match="qui:head">
     <head>
       <meta charset="UTF-8" />
@@ -60,7 +64,7 @@
 
       <script type="module" src="https://unpkg.com/@umich-lib/web@1/dist/umich-lib/umich-lib.esm.js"></script>
       <script nomodule="" src="https://unpkg.com/@umich-lib/web@1/dist/umich-lib/umich-lib.js"></script>
-      <script src="{$docroot}js/sr-messaging.js"></script>
+      <script src="{$docroot}dist/js/image/main.js"></script>
 
       <xsl:call-template name="build-cqfill-script" />
 
@@ -558,6 +562,34 @@
     <input type="hidden">
       <xsl:apply-templates select="@*" mode="copy" />
     </input>
+  </xsl:template>
+
+  <xsl:template name="build-content-copy-metadata">
+    <xsl:param name="term" />
+    <xsl:param name="text" />
+    <xsl:param name="class" />
+    <xsl:param name="key" />
+    <div>
+      <dt>
+        <xsl:if test="$key">
+          <xsl:attribute name="data-key"><xsl:value-of select="$key" /></xsl:attribute>
+        </xsl:if>
+        <xsl:value-of select="$term" />
+      </dt>
+      <dd>
+        <div class="text--copyable">
+          <span>
+            <xsl:if test="normalize-space($class)">
+              <xsl:attribute name="class"><xsl:value-of select="$class" /></xsl:attribute>
+            </xsl:if>
+            <xsl:value-of select="$text" />
+          </span>
+          <button class="button button--small" data-action="copy-text" aria-label="Copy Text">
+            <span class="material-icons" aria-hidden="true">content_copy</span>
+          </button>
+        </div>
+      </dd>
+    </div>
   </xsl:template>
 
   <!-- UTILITY -->

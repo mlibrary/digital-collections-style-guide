@@ -517,6 +517,10 @@ fieldset.fieldset--grid button[data-action="reset-clause"] {
   word-break: break-word;
 }
 
+.button.filter__button {
+  flex-direction: column;
+}
+
 /* 
 *CARD 
 * A card can have an image, a heading, and a description. The entire card is a link.
@@ -1013,6 +1017,64 @@ dl.record {
 
 .record dd + dd {
   grid-column: 2/3;
+}
+
+.record .text--copyable {
+  display: flex;
+  flex-wrap: nowrap;
+  justify-content: space-between;
+  gap: 1rem;
+  position: relative;
+}
+
+.record .text--copyable.copied::after {
+  content: "Copied to clipboard";
+  position: absolute;
+  top: 0;
+  left: 100%;
+  margin-left: 0.25rem;
+  font-size: 0.875rem;
+  padding: 0.5rem;
+  display: block;
+  background: var(--color-green-100);
+  color: black;
+  white-space: nowrap;
+
+  animation: fade-out 0s ease-in 5s;
+  animation-fill-mode: forwards;
+}
+
+@keyframes fade-out {
+  25% {
+    opacity: 0.75;
+  }
+  50% {
+    opacity: 0.5;
+  }
+  75% {
+    opacity: 0.25;
+  }
+  100% {
+    visibility: hidden;
+    display: none;
+    width: 0;
+    height: 0;
+  }
+}
+
+.record .text--copyable > span {
+  flex-grow: 1;
+  font-family: monospace;
+  font-size: 0.875rem;
+}
+
+span.url {
+  word-break: break-all;
+}
+
+.record .text--copyable button[data-action] {
+  flex-grow: 0;
+  align-self: flex-start;
 }
 
 /*

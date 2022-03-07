@@ -4,8 +4,6 @@
   <xsl:template name="build-extra-styles">
     <xsl:comment>DUBIOUS EXCEPTIONS</xsl:comment>
     <link rel="stylesheet" href="{$docroot}styles/image/reslist.css" />
-    <script src="{$docroot}js/image/base.js"></script>
-    <script src="{$docroot}js/image/bbreslist.js"></script>
   </xsl:template>
 
   <xsl:template name="build-search-form" />

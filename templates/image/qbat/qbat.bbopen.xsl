@@ -6,49 +6,9 @@
   <xsl:template name="build-extra-styles">
     <xsl:comment>DUBIOUS EXCEPTIONS</xsl:comment>
     <link rel="stylesheet" href="{$docroot}styles/image/reslist.css" />
-    <script src="https://unpkg.com/blingblingjs@2.1.1/dist/index.js"></script>
-    <script src="{$docroot}js/image/bbopen.js"></script>
+    <link rel="stylesheet" href="{$docroot}styles/image/bbopen.css" />
+    <script src="{$docroot}dist/js/image/bbopen.js"></script>
 
-    <style>
-      .main-panel[data-state="loading"] {
-        visibility: hidden;
-      }
-
-      .filter-item[data-disabled="true"] {
-        opacity: 0.25;
-      }
-
-      .flex-justify-end {
-        justify-content: flex-end;
-      }
-
-      .flex-nowrap {
-        flex-wrap: nowrap;
-      }
-
-      input[type="text"] {
-        padding: 0.5rem;
-        width: 25ch;
-      }
-
-      .portfolio .results-list__blank::after {
-          /* possible icons:
-             bookmarks
-             collections
-             collections bookmark
-             category */
-          content: "\e98b";
-      }
-
-      .portfolio {
-        display: none;
-      }
-
-      [data-active="false"] {
-        display: none !important;
-      }
-
-    </style>
     <style id="portfolio-filter-rules" type="text/css">
       .portfolio--list .portfolio[data-page="1"] {
         display: flex;
@@ -151,7 +111,7 @@
     <div class="[ flex ][ flex-flow-column flex-gap-0_5 ]">
       <label for="search">Search by title or description:</label>
       <input type="text" value="" name="search" id="search" data-action="search" autocomplete="off" style="flex-grow: 1; height: 40px; width: 96%" />
-      <button type="submit" class="[ button button--secondary ] [ flex ]" style="align-self: flex-start" data-action="clear-search" >
+      <button type="submit" class="[ button button--secondary ] [ flex ]" style="align-self: flex-start" data-action="clear-lists-search" >
           Clear
       </button>
     </div>

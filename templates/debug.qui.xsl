@@ -35,6 +35,11 @@
         <link rel="icon" href="data:image/svg+xml,&lt;svg xmlns='http://www.w3.org/2000/svg' width='1em' height='1em'>&lt;text y='.9em'>🎃&lt;/text>&lt;/svg>" />
 
         <style>
+
+          ul {
+            padding: 0 1.5rem;
+          }
+
           li {
             list-style-type: none;
           }

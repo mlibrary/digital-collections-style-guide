@@ -1,4 +1,4 @@
-<xsl:stylesheet version="1.0" xmlns="http://www.w3.org/1999/xhtml" xmlns:xhtml="http://www.w3.org/1999/xhtml" xmlns:xsl="http://www.w3.org/1999/XSL/Transform" xmlns:dlxs="http://dlxs.org" xmlns:qui="http://dlxs.org/quombat/ui" xmlns:exsl="http://exslt.org/common" xmlns:date="http://exslt.org/dates-and-times" extension-element-prefixes="exsl date">
+<xsl:stylesheet version="1.0" xmlns="http://www.w3.org/1999/xhtml" xmlns:xhtml="http://www.w3.org/1999/xhtml" xmlns:xsl="http://www.w3.org/1999/XSL/Transform" xmlns:dlxs="http://dlxs.org" xmlns:qui="http://dlxs.org/quombat/ui" xmlns:qbat="http://dlxs.org/quombat" xmlns:exsl="http://exslt.org/common" xmlns:date="http://exslt.org/dates-and-times" extension-element-prefixes="exsl date">
 
   <xsl:param name="prototype">stacked</xsl:param>
 
@@ -10,12 +10,8 @@
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@shoelace-style/shoelace@2.0.0-beta.64/dist/themes/light.css" />
     <script type="module" src="https://cdn.jsdelivr.net/npm/@shoelace-style/shoelace@2.0.0-beta.64/dist/shoelace.js"></script>
 
-    <!-- <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/tocbot/4.11.1/tocbot.css" /> -->
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/tocbot/4.11.1/tocbot.js"></script>
-
     <link rel="stylesheet" href="{$docroot}styles/image/entry.css" />
-    <script src="{$docroot}js/image/base.js"></script>
-    <script src="{$docroot}js/image/entry.js"></script>
+
   </xsl:template>
 
   <xsl:template name="build-extra-styles">
@@ -42,7 +38,6 @@
       <div class="[ aside ]">
         <nav class="[ page-index ]" xx-aria-labelledby="page-index-label">
           <h2 id="page-index-label" class="[ subtle-heading ][ text-black js-toc-ignore ]">Page Index</h2>
-          <!-- <div id="page-index-label" class="[ subtle-heading ][ mb-1 ]">Page Index</div> -->
           <div class="toc js-toc"></div>
           <select id="action-page-index"></select>
         </nav>
@@ -269,41 +264,17 @@
     </form>
   </xsl:template>
 
-  <xsl:template name="build-favorite-action-xxx">
-    <xsl:call-template name="button">
-      <xsl:with-param name="label">
-        <xsl:choose>
-          <xsl:when test="qui:favorite-form/@checked='true'">
-            <xsl:text>Remove from portfolio</xsl:text>
-          </xsl:when>
-          <xsl:otherwise>
-            <xsl:text>Save to portfolio</xsl:text>
-          </xsl:otherwise>
-        </xsl:choose>
-      </xsl:with-param>
-      <xsl:with-param name="classes">
-        <xsl:text>button--secondary</xsl:text>
-      </xsl:with-param>
-      <xsl:with-param name="icon">
-        <xsl:choose>
-          <xsl:when test="qui:favorite-form/@checked='true'">
-            <xsl:text>remove</xsl:text>
-          </xsl:when>
-          <xsl:otherwise>
-            <xsl:text>add</xsl:text>
-          </xsl:otherwise>
-        </xsl:choose>
-      </xsl:with-param>
-      <xsl:with-param name="action">save-item</xsl:with-param>
-    </xsl:call-template>
-  </xsl:template>
-
   <xsl:template name="build-copy-link-action">
     <xsl:call-template name="button">
       <xsl:with-param name="label">Copy Link</xsl:with-param>
       <xsl:with-param name="classes">button--secondary</xsl:with-param>
-      <xsl:with-param name="action">copy-link</xsl:with-param>
+      <xsl:with-param name="action">copy-text</xsl:with-param>
       <xsl:with-param name="icon">link</xsl:with-param>
+      <xsl:with-param name="data-attributes">
+        <qbat:attribute name="data-value">
+          <xsl:value-of select="//qui:field[@key='bookmark']//qui:value" />
+        </qbat:attribute>
+      </xsl:with-param>
     </xsl:call-template>
   </xsl:template>
 
@@ -314,8 +285,11 @@
     <xsl:call-template name="button">
       <xsl:with-param name="label">Cite this Item</xsl:with-param>
       <xsl:with-param name="classes">button--secondary</xsl:with-param>
-      <xsl:with-param name="action">cite-this-item</xsl:with-param>
+      <xsl:with-param name="action">go</xsl:with-param>
       <xsl:with-param name="icon">save</xsl:with-param>
+      <xsl:with-param name="data-attributes">
+        <qbat:attribute name="data-href">#cite-this-item</qbat:attribute>
+      </xsl:with-param>
     </xsl:call-template>
   </xsl:template>
 
@@ -358,7 +332,17 @@
         <xsl:text> for more information.</xsl:text>
       </p>
       <dl class="record">
-        <div>
+        <xsl:call-template name="build-content-copy-metadata">
+          <xsl:with-param name="term">Full citatation</xsl:with-param>
+          <xsl:with-param name="text" select="normalize-space($full-citation-text)" />
+        </xsl:call-template>
+
+        <xsl:call-template name="build-content-copy-metadata">
+          <xsl:with-param name="term">Brief citatation</xsl:with-param>
+          <xsl:with-param name="text" select="normalize-space($brief-citation-text)" />
+        </xsl:call-template>
+
+        <!-- <div>
           <dt>Full citation</dt>
           <dd>
             <textarea data-role="citation" readonly="true" id="full-citation">
@@ -376,7 +360,7 @@
               For when space is at a premium.
             </p>
           </dd>
-        </div>
+        </div> -->
       </dl>
     </section>
   </xsl:template>
@@ -405,12 +389,11 @@
     <xsl:if test="//qui:viewer/@manifest-id">
       <h3>IIIF</h3>
       <dl class="record">
-        <div>
-          <dt>Manifest</dt>
-          <dd>
-            <input readonly="true" type="text" value="{//qui:viewer/@manifest-id}" />
-          </dd>
-        </div>
+        <xsl:call-template name="build-content-copy-metadata">
+          <xsl:with-param name="term">Manifest</xsl:with-param>
+          <xsl:with-param name="text" select="//qui:viewer/@manifest-id" />
+          <xsl:with-param name="class">url</xsl:with-param>
+        </xsl:call-template>
       </dl>
     </xsl:if>
   </xsl:template>
@@ -625,14 +608,30 @@
     </dl>
   </xsl:template>
 
+  <xsl:template match="qui:field[@key='bookmark']" priority="101">
+    <xsl:call-template name="build-content-copy-metadata">
+      <xsl:with-param name="term"><xsl:value-of select="qui:label" /></xsl:with-param>
+      <xsl:with-param name="key"><xsl:value-of select="@key" /></xsl:with-param>
+      <xsl:with-param name="text" select="normalize-space(qui:values/qui:value)" />
+      <xsl:with-param name="class">url</xsl:with-param>
+    </xsl:call-template>    
+  </xsl:template>
+
   <xsl:template name="button">
     <xsl:param name="label" />
     <xsl:param name="classes" />
     <xsl:param name="icon" />
     <xsl:param name="action" />
+    <xsl:param name="href" />
+    <xsl:param name="data-attributes" />
     <button class="button button--large {$classes}">
       <xsl:if test="$action">
         <xsl:attribute name="data-action"><xsl:value-of select="$action" /></xsl:attribute>
+      </xsl:if>
+      <xsl:if test="$data-attributes">
+        <xsl:for-each select="exsl:node-set($data-attributes)//qbat:attribute">
+          <xsl:attribute name="{@name}"><xsl:value-of select="." /></xsl:attribute>
+        </xsl:for-each>
       </xsl:if>
       <span><xsl:value-of select="$label" /></span>
       <xsl:if test="normalize-space($icon)">
