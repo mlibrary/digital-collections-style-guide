@@ -83,9 +83,9 @@
   </xsl:template>
  
   <xsl:template match="Field[@name='username']" mode="field-value" priority="100">
-    <xsl:for-each select="str:split(., ' ')">
+    <xsl:for-each select="str:split(., ';')">
       <qui:value>
-        <xsl:value-of select="." />
+        <xsl:value-of select="normalize-space(.)" />
       </qui:value>
     </xsl:for-each>
   </xsl:template>
