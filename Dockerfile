@@ -23,4 +23,5 @@ RUN [ "/usr/bin/find", "/app", "-type", "f" ]
 # RUN sleep 600
 RUN npm install
 COPY . /app
+RUN npm run build-js
 CMD [ "npm", "run", "proxy" ]
