@@ -4,16 +4,16 @@
   "description": "A workshop repo to design and develop the details of the digital collections front-end. ",
   "main": "index.js",
   "devDependencies": {
-    "@11ty/eleventy": "^0.11.1",
+    "@11ty/eleventy": "^1.0.0",
     "@umich-lib/components": "^1",
-    "@xmldom/xmldom": "^0.7.2",
+    "@xmldom/xmldom": "^0.8.1",
     "esbuild": "^0.14.23",
     "express-http-proxy": "^1.6.3",
-    "get-all-files": "^4.0.0",
+    "get-all-files": "^4.1.0",
     "md5": "^2.3.0",
     "xpath": "^0.0.32",
-    "yargs": "^17.1.1",
-    "zx": "^3.1.0"
+    "yargs": "^17.3.1",
+    "zx": "^5.2.0"
   },
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1",
