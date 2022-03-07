@@ -14,11 +14,13 @@
 
   <xsl:variable name="collid" select="//qui:root/@collid" />
   <xsl:variable name="username" select="//qui:root/@username" />
+  <xsl:variable name="view" select="//qui:root/@view" />
 
   <xsl:template match="qui:root">
-    <html lang="en" data-root="{$docroot}" data-username="{$username}">
+    <html lang="en" data-root="{$docroot}" data-username="{$username}" data-view="{$view}" data-initialized="false" style="opacity: 0">
       <xsl:apply-templates select="qui:head" />
-      <body class="[ font-base-family ]">
+      <body class="[ font-base-family ]" data-initialized="false" style="opacity: 0">
+        <xsl:apply-templates select="build-body-data" />
         <div class="border-bottom">
           <m-universal-header></m-universal-header>
           <xsl:apply-templates select="//qui:m-website-header" />
@@ -42,6 +44,8 @@
   <xsl:template name="build-extra-scripts" />
   <xsl:template name="build-extra-styles" />
 
+  <xsl:template name="build-body-data" />
+
   <xsl:template match="qui:head">
     <head>
       <meta charset="UTF-8" />
@@ -58,9 +62,14 @@
       <link href="https://unpkg.com/@umich-lib/web@1/umich-lib.css" rel="stylesheet" />
       <link href="{$docroot}styles/styles.css" rel="stylesheet" />
 
+      <script>
+        window.mUse = [ 'm-universal-header', 'm-website-header', 'm-logo' ];
+      </script>
+
       <script type="module" src="https://unpkg.com/@umich-lib/web@1/dist/umich-lib/umich-lib.esm.js"></script>
       <script nomodule="" src="https://unpkg.com/@umich-lib/web@1/dist/umich-lib/umich-lib.js"></script>
-      <script src="{$docroot}js/sr-messaging.js"></script>
+
+      <xsl:call-template name="build-app-script" />
 
       <xsl:call-template name="build-cqfill-script" />
 
@@ -72,6 +81,10 @@
     </head>
   </xsl:template>
 
+  <xsl:template name="build-app-script">
+    <script src="{$docroot}dist/js/image/main.js"></script>
+  </xsl:template>
+  
   <xsl:template name="build-cqfill-script">
     <script src="https://unpkg.com/container-query-polyfill/cqfill.iife.min.js"></script>
   </xsl:template>
@@ -507,6 +520,7 @@
 
   <xsl:template name="build-collection-heading">
     <h1 class="collection-heading">
+      <xsl:apply-templates select="//qui:header/@data-status" mode="copy" />
       <xsl:value-of select="//qui:header[@role='main']" />
     </h1>
   </xsl:template>
@@ -559,6 +573,34 @@
     </input>
   </xsl:template>
 
+  <xsl:template name="build-content-copy-metadata">
+    <xsl:param name="term" />
+    <xsl:param name="text" />
+    <xsl:param name="class" />
+    <xsl:param name="key" />
+    <div>
+      <dt>
+        <xsl:if test="$key">
+          <xsl:attribute name="data-key"><xsl:value-of select="$key" /></xsl:attribute>
+        </xsl:if>
+        <xsl:value-of select="$term" />
+      </dt>
+      <dd>
+        <div class="text--copyable">
+          <span>
+            <xsl:if test="normalize-space($class)">
+              <xsl:attribute name="class"><xsl:value-of select="$class" /></xsl:attribute>
+            </xsl:if>
+            <xsl:value-of select="$text" />
+          </span>
+          <button class="button button--small" data-action="copy-text" aria-label="Copy Text">
+            <span class="material-icons" aria-hidden="true">content_copy</span>
+          </button>
+        </div>
+      </dd>
+    </div>
+  </xsl:template>
+
   <!-- UTILITY -->
   <xsl:template match="node()" mode="copy-guts">
     <!-- <xsl:message>AHOY COPY GUTS: <xsl:value-of select="local-name()" /></xsl:message> -->
@@ -588,7 +630,7 @@
   </xsl:template>
 
   <xsl:template match="node()[namespace-uri() = 'http://dlxs.org/quombat/xhtml']" mode="copy" priority="99">
-    <xsl:element name="{name()}" namespace="http://www.w3.org/1999/xhtml">
+    <xsl:element name="{local-name()}" namespace="http://www.w3.org/1999/xhtml" data-copy="dlxs">
       <xsl:apply-templates select="*|@*|text()" mode="copy" />
     </xsl:element>
   </xsl:template>

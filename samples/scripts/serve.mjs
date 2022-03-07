@@ -264,8 +264,12 @@ async function processDLXS(req, res) {
     }
 
     if ( debug == "qui" ) {
-      res.setHeader('Content-Type', 'application/xml');
-      res.sendFile(quiOutputFilename);
+      // res.setHeader('Content-Type', 'application/xml');
+      await $`xsltproc --stringparam docroot "" ${rootPath}/templates/debug.qui.xsl ${quiOutputFilename}`.pipe(
+        fs.createWriteStream(`${quiOutputFilename}.html`)
+      );
+      res.setHeader('Content-Type', 'text/html');
+      res.sendFile(`${quiOutputFilename}.html`);
       return;
     }
     

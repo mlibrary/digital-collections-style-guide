@@ -1,0 +1,37 @@
+.main-panel[data-state="loading"] {
+  visibility: hidden;
+}
+
+.filter-item[data-disabled="true"] {
+  opacity: 0.25;
+}
+
+.flex-justify-end {
+  justify-content: flex-end;
+}
+
+.flex-nowrap {
+  flex-wrap: nowrap;
+}
+
+input[type="text"] {
+  padding: 0.5rem;
+  width: 25ch;
+}
+
+.portfolio .results-list__blank::after {
+    /* possible icons:
+        bookmarks
+        collections
+        collections bookmark
+        category */
+    content: "\e98b";
+}
+
+.portfolio {
+  display: none;
+}
+
+[data-active="false"] {
+  display: none !important;
+}

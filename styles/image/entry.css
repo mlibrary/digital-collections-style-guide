@@ -28,6 +28,32 @@ a[aria-current="page"] {
   display: flex;
   align-items: center;
   gap: 0.5rem;
+  position: relative;
+}
+
+.toolbar button[data-action="copy-text"] {
+  position: relative;
+}
+
+.toolbar button[data-action="copy-text"].copied::after {
+  content: "Copied to clipboard";
+  position: absolute;
+  bottom: -3rem;
+  right: 0;
+  /* top: 0;
+  left: 100%; */
+  margin-left: 0.25rem;
+  font-size: 0.875rem;
+  padding: 0.5rem;
+  display: block;
+  background: var(--color-green-100);
+  color: black;
+  white-space: nowrap;
+
+  animation: fade-out 0s ease-in 5s;
+  animation-fill-mode: forwards;
+  z-index: 50;
+  font-weight: normal;
 }
 
 .toolbar button {

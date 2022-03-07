@@ -164,14 +164,14 @@
   </xsl:template>
 
   <xsl:template name="build-hidden-form">
-    <form style="display: none" method="GET" action="/cgi/i/image/image-idx" id="bbaction-form">
+    <form style="display: none" method="POST" action="/cgi/i/image/image-idx" id="bbaction-form">
       <xsl:apply-templates select="//qui:form[@action='bbaction']/qui:hidden-input" />
     </form>
   </xsl:template>
 
   <xsl:template name="build-extra-styles">
     <link rel="stylesheet" href="{$docroot}styles/modals.css" />
-    <script src="{$docroot}js/image/bbname.js"></script>
+    <script src="{$docroot}dist/js/image/bbname.js"></script>
   </xsl:template>
 
 </xsl:stylesheet>

@@ -7,7 +7,6 @@
   <xsl:template name="build-extra-styles">
     <xsl:comment>DUBIOUS EXCEPTIONS</xsl:comment>
     <link rel="stylesheet" href="{$docroot}styles/image/reslist.css" />
-    <script src="{$docroot}js/image/base.js"></script>
   </xsl:template>
 
   <xsl:template match="qui:main">
@@ -108,7 +107,7 @@
 
   <xsl:template name="build-search-tools">
     <xsl:apply-templates select="//qui:callout" />
-    <div class="[ search-results__tools ] [ mb-1 ]">
+    <div class="[ search-results__tools ] [ mb-1 gap-1 ]">
       <div class="[ flex flex-align-center ]">
           <input type="checkbox" id="add-portfolio" name="portfolio" data-action="select-all" autocomplete="off" />
           <label for="add-portfolio" class="visually-hidden"
@@ -119,21 +118,10 @@
             aria-label="Add items to portfolio"
             data-action="add-items"
           >
-            <svg
-              xmlns="http://www.w3.org/2000/svg"
-              width="16"
-              height="16"
-              viewBox="0 0 24 24"
-              fill="currentColor"
-              aria-hidden="true"
-              focusable="false"
-              role="img"
-            >
-              <path d="M19 13h-6v6h-2v-6H5v-2h6V5h2v6h6v2z" />
-            </svg>
-
+            <span class="material-icons" aria-hidden="true">add</span>
             <span>Add to portfolio</span>
           </button>
+          <xsl:call-template name="build-extra-portfolio-actions" />
       </div>
       <xsl:if test="$sort-options//qui:option">
         <div class="select-group">
@@ -212,7 +200,7 @@
         <xsl:apply-templates select="qui:link[@rel='result']" />
       </xsl:variable>
       <xsl:variable name="link" select="exsl:node-set($link-tmp)" />
-      <a class="[ flex ]">
+      <a class="[ flex ][ flex-grow-1 ]">
         <xsl:attribute name="href">
           <xsl:value-of select="$link//@href" />
         </xsl:attribute>
@@ -328,5 +316,8 @@
       <li>Try searching in <strong>Anywhere in record</strong>.</li>
     </ul>
   </xsl:template>
+
+  <xsl:template name="build-extra-portfolio-actions"></xsl:template>
+
 
 </xsl:stylesheet>

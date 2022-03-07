@@ -6,7 +6,8 @@ module.exports = function (eleventyConfig) {
 
   eleventyConfig.addPassthroughCopy("static");
   eleventyConfig.addPassthroughCopy("styles");
-  eleventyConfig.addPassthroughCopy('js');
+  // eleventyConfig.addPassthroughCopy('js');
+  eleventyConfig.addPassthroughCopy('dist');
   eleventyConfig.addPassthroughCopy('templates/debug.qui.xsl');
 
   eleventyConfig.addPassthroughCopy('samples/qui');
