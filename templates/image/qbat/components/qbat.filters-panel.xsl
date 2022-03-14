@@ -40,19 +40,17 @@
             <xsl:attribute name="class">mt-2 block</xsl:attribute>
           </xsl:if>
           <xsl:attribute name="href">
-            <xsl:choose>
+            <xsl:value-of select="//qui:link[@rel='restart']/@href" />
+            <!-- <xsl:choose>
               <xsl:when test="$search-form/@data-advanced = 'true'">
-                <xsl:text>/cgi/i/image/image-idx?page=search;cc=</xsl:text>
-                <xsl:value-of select="$collid" />
+                <xsl:text>;page=search</xsl:text>
               </xsl:when>
               <xsl:otherwise>
-                <xsl:text>/cgi/i/image/image-idx?cc=</xsl:text>
-                <xsl:value-of select="$collid" />
                 <xsl:text>;q1=</xsl:text>
                 <xsl:value-of select="$collid" />
                 <xsl:text>;view=reslist</xsl:text>
               </xsl:otherwise>
-            </xsl:choose>
+            </xsl:choose> -->
           </xsl:attribute>
           <xsl:text>Start Over</xsl:text>
         </a>

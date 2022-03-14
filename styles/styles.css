@@ -77,6 +77,11 @@ a:hover {
   text-decoration-thickness: 2px; /** TODO: HOVE **/
 }
 
+a.group {
+  display: inner-flex;
+  align-items: center;
+}
+
 :focus {
   /** TODO: FOCUS **/
   box-shadow: 0 0 0 2px var(--color-indigo-400);
@@ -380,6 +385,11 @@ fieldset.fieldset--grid button[data-action="reset-clause"] {
 
 .list__links ul li {
   margin-top: 0.5em;
+}
+
+.py-1 {
+  display: flex;
+  gap: 0.25rem;
 }
 
 /** Results **/
@@ -689,6 +699,10 @@ a[class*="next"]::after {
   text-decoration: underline;
 }
 
+.no-underline {
+  text-decoration: none;
+}
+
 .light-text-color {
   color: var(--light-text-color);
 }
@@ -756,6 +770,10 @@ a[class*="next"]::after {
 .center-grid {
   justify-self: center;
   align-self: center;
+}
+
+.mb-0 {
+  margin-bottom: 0;
 }
 
 .mb-1 {
@@ -872,12 +890,28 @@ h3,
   font-family: var(--font-base-family);
 }
 
-.collection-heading[data-status="private"]::after {
+.collection-heading[data-status]::after,
+.collection-heading[data-status]::before {
   font-family: var(--material);
-  content: "\e897";
   display: inline-block;
   margin-left: 0.25rem;
-  font-size: 90%;
+  margin-right: 0.25rem;
+  font-size: 1.5rem;
+  /* vertical-align: top; */
+}
+
+.collection-heading[data-status="private"]::after {
+  content: "\e897";
+}
+
+.collection-heading[data-status="group"]::before {
+  /* topic */
+  content: "\f1c8";
+}
+
+.collection-heading[data-status="multiple"]::before {
+  /* lens blur */
+  content: "\f029";
 }
 
 .collection-heading--small {

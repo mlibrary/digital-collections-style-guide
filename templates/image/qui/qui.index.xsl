@@ -86,7 +86,7 @@
         </qui:block>
         <qui:nav>
           <xsl:for-each select="//Groups/Group">
-            <qui:link href="/cgi/i/image/image-idx?page=searchgroup;g={@GroupID}">
+            <qui:link href="/cgi/i/image/image-idx?page=searchgroup;g={@GroupID}" data-status="group">
               <xsl:value-of select="normalize-space(.)" />
             </qui:link>
           </xsl:for-each>

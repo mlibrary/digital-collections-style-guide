@@ -4,6 +4,9 @@
   <!-- <xsl:variable name="collid" select="normalize-space((//Param[@name='cc']|//Param[@name='c'])[1])" /> -->
   <xsl:variable name="collid">
     <xsl:choose>
+      <xsl:when test="//Param[@name='xc'] = 1">
+        <xsl:text>*</xsl:text>
+      </xsl:when>
       <xsl:when test="//Param[@name='cc']">
         <xsl:value-of select="//Param[@name='cc']" />
       </xsl:when>
@@ -42,6 +45,7 @@
         <qui:footer>
           <qui:link rel="help" href="{//Help}" />
           <qui:link rel="collection-home" href="{//Home}" />
+          <qui:link rel="feedback" href="{//FeedbackUrl}" />
         </qui:footer>
       </qui:body>
     </qui:root>
@@ -102,8 +106,11 @@
       <xsl:when test="/Top/BookBagInfo/Field[@name='bbagname']">
         <xsl:value-of select="normalize-space(/Top/BookBagInfo/Field[@name='bbagname'])" />
       </xsl:when>
-      <xsl:when test="/Top/CollName = 'multiple'">
+      <xsl:when test="//Param[@name='xc'] = 1 and normalize-space(/Top/GroupName)">
         <xsl:value-of select="normalize-space(/Top/GroupName)" />
+      </xsl:when>
+      <xsl:when test="/Top/CollName = 'multiple'">
+        Image Collections
       </xsl:when>
       <xsl:otherwise>
         <xsl:value-of select="normalize-space(/Top/CollName/Full)" />

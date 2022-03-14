@@ -137,6 +137,7 @@
   <xsl:template name="build-breadcrumbs-extra-nav"></xsl:template>
 
   <xsl:template name="build-footer">
+    <xsl:variable name="feedback-href" select="//qui:footer/qui:link[@rel='feedback']/@href" />
     <footer class="[ footer ][ mt-2 ]">
       <div class="viewport-container">
         <div class="[ footer__content ]">
@@ -306,7 +307,7 @@
             <h2>Contact Us</h2>
             <ul>
               <li>
-                <a href="/cgi/f/feedback?collid={//qui:root/@collid}&amp;to=tech"
+                <a href="{$feedback-href};to=tech"
                   ><svg
                     xmlns="http://www.w3.org/2000/svg"
                     width="16"
@@ -325,7 +326,7 @@
                 >
               </li>
               <li>
-                <a href="/cgi/f/feedback?collid={//qui:root/@collid}&amp;to=content"
+                <a href="{$feedback-href};to=content"
                   ><svg
                     xmlns="http://www.w3.org/2000/svg"
                     width="16"
@@ -344,7 +345,7 @@
                 >
               </li>
               <li>
-                <a href="/cgi/f/feedback?collid={//qui:root/@collid}&amp;to=dcc"
+                <a href="{$feedback-href};to=dcc"
                   ><svg
                     xmlns="http://www.w3.org/2000/svg"
                     width="16"
@@ -494,9 +495,13 @@
     <ul class="nav">
       <xsl:for-each select="qui:link">
         <li class="py-1">
-          <a href="{@href}" class="text-teal-400 underline">
+          <xsl:if test="@data-status='group'">
+            <a class="material-icons text-black no-underline" aria-hidden="true" href="{@href}">topic</a>
+          </xsl:if>
+          <xsl:apply-templates select="." mode="copy" />
+          <!-- <a href="{@href}" class="text-teal-400 underline">
             <xsl:apply-templates select="." mode="copy-guts" />
-          </a>
+          </a> -->
         </li>
       </xsl:for-each>
     </ul>
@@ -619,7 +624,10 @@
   </xsl:template>
 
   <xsl:template match="qui:link" mode="copy" priority="99">
-    <a href="{@href}" ><xsl:apply-templates mode="copy" /></a>
+    <a href="{@href}">
+      <xsl:apply-templates select="@class" mode="copy" />
+      <xsl:apply-templates mode="copy" />
+    </a>
   </xsl:template>
 
   <xsl:template match="node()[namespace-uri() = 'http://www.w3.org/1999/xhtml']" mode="copy" priority="101">
