@@ -170,6 +170,13 @@ select {
   border: 0;
 }
 
+.summary--neutral {
+  background-color: var(--color-neutral-100);
+  border: 1px solid var(--color-neutral-200);
+  padding: 0.5rem 1rem;
+  font-weight: bold;
+}
+
 .input-group {
   padding: 0 0.5em 0 0;
   min-width: 60%;
