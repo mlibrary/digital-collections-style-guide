@@ -12,6 +12,13 @@
     <form id="collection-search" action="/cgi/i/image/image-idx" method="GET" autocomplete="off">
       <xsl:call-template name="build-collection-selection" />
 
+      <h2 class="subtle-heading">Fielded Search Options</h2>
+      <div class="message-callout info">
+        <p>
+          <xsl:apply-templates select="//qui:callout[@slot='clause']" mode="copy-guts" />
+        </p>
+      </div>
+
       <div class="advanced-search--containers">
         <div class="field-groups">
           <xsl:apply-templates select="$search-form/qui:fieldset[@slot='clause']" />
@@ -31,6 +38,12 @@
   </xsl:template>
 
   <xsl:template name="build-collection-selection">
+    <h2 class="subtle-heading">Filter by Collection Options</h2>
+    <div class="message-callout info">
+      <p>
+        <xsl:apply-templates select="//qui:callout[@slot='collids']" mode="copy-guts" />
+      </p>
+    </div>
     <div class="advanced-search--containers">
       <details class="panel" style="padding-bottom: 0">
         <summary style="font-weight: bold">

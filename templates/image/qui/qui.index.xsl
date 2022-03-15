@@ -5,7 +5,7 @@
     Index
   </xsl:template>
 
-  <xsl:template name="build-subheader" />
+  <xsl:template name="build-sub-header" />
 
   <xsl:template name="build-body-main">
     <qui:header role="main">

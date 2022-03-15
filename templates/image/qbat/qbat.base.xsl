@@ -97,7 +97,7 @@
         <xsl:otherwise>/cgi/i/image/image-idx?page=groups</xsl:otherwise>
       </xsl:choose>
     </xsl:variable>
-    <m-website-header name="{@name}" to="{$root-href}">
+    <m-website-header name="{@name}" to="{$root-href}" data-docroot="{$docroot}">
       <xsl:apply-templates select="qui:nav" />
     </m-website-header>
   </xsl:template>

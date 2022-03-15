@@ -1,0 +1,50 @@
+<!-- XSL fallback files -->
+
+<XslFallbackFileList pipeline="qui">
+  <Filename>qui/qui.base.xsl</Filename>
+  <Filename>../vendor/str.split.function.xsl</Filename>
+  <Filename>qui/components/*.xsl</Filename>
+  <Filename>qui/qui.static.xsl</Filename>
+</XslFallbackFileList>
+<XslFallbackFileList pipeline="qbat">
+  <Filename>qbat/qbat.base.xsl</Filename>
+  <Filename>qbat/components/*.xsl</Filename>
+  <Filename>qbat/qbat.static.xsl</Filename>
+</XslFallbackFileList>
+
+
+<DlxsGlobals><?CHUNK filename="dlxsclassglobals.xml"?></DlxsGlobals>
+<CollName><?COLLNAME_XML?></CollName>
+<Home><?HOME_XML?></Home>
+<Help><?HELP_XML?></Help>
+
+<ContactLink><?CONTACT_XML type="link"?></ContactLink>
+<ContactText><?CONTACT_XML type="text"?></ContactText>
+<LoginLink><?LOGINLINK_XML?></LoginLink>
+<SearchLink><?SEARCHLINK_XML?></SearchLink>
+<Banner><?BANNER_XML?></Banner>
+
+<OpenPortfolio><?OPENPORTFOLIO_XML?></OpenPortfolio>
+
+<BrowseImages>
+<?BROWSEALL_XML type="brwsimg"?>
+</BrowseImages>
+<BrowseRecords>
+<?BROWSEALL_XML type="brwsrec"?>
+</BrowseRecords>
+<BrowseMediaAddsMods>
+<?BROWSEALL_XML type="brwsadds"?>
+</BrowseMediaAddsMods>
+<BrowseMostViewed>
+<?BROWSEALL_XML type="brwsmostviewed"?>
+</BrowseMostViewed>
+
+
+<BrowseOptions><?BROWSEOPTIONS_XML?></BrowseOptions>
+
+
+<RestrictStatus><?RESTRICTSTATUS_XML?></RestrictStatus>
+<CollInfoLink><?COLLINFOURL_XML?></CollInfoLink>
+<ExtraCSS><?FBFILE_XML file="css/static.css"?></ExtraCSS>
+
+<JavaScriptFooterUrl><?FBFILE_XML file="js/imageclass.js"?></JavaScriptFooterUrl>

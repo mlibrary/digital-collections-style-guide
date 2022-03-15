@@ -18,7 +18,7 @@
   </xsl:template>
 
   <xsl:template match="SearchForm">
-    <qui:callout>
+    <qui:callout slot="clause">
       <xsl:value-of select="key('gui-txt', 'instructionsearch1')" />
       <xsl:text> </xsl:text>
       <xsl:value-of select="key('gui-txt', 'instructionsearch2')" />

@@ -116,12 +116,13 @@ async function processDLXS(req, res) {
       view = xpath.select(`string(//Param[@name="${name}"])`, xmlDoc);
       if ( view ) { break; }
     }
-    // const viewParam = possibleViews.find((name) => xpath.select(`string(//Param[@name="${name}"])`, xmlDoc));
-    
-    // const view = xpath.select(
-    //   "string(//Param[@name='view']|//Param[@name='page'])",
-    //   xmlDoc
-    // );
+
+    // static check
+    const staticXslFilename = xpath.select(`string(//XslFallbackFileList/Filename[last()])`, xmlDoc);
+    if ( staticXslFilename == 'static.xml' ) {
+      view = 'static';
+    }
+
     console.log("AHOY COLLID", collid, view, debug);
 
     const valueEls = xpath.select("//Value|//Param", xmlDoc);
@@ -182,7 +183,14 @@ async function processDLXS(req, res) {
     const inputFilename = `${baseFilename}.input.xml`;
     const quiOutputFilename = `${baseFilename}.qui.xml`;
     const qbatOutputFilename = `${baseFilename}.qbat.html`;
-    const viewXmlData = fs.readFileSync(viewFilename, "utf8");
+    let viewXmlData = fs.readFileSync(viewFilename, "utf8");
+
+    // oh, this is getting even more bonkers
+    if ( viewXmlData.indexOf('<?CHUNK filename="feedback.chunk.xml" optional="0"?>') > -1 ) {
+      const feedbackXmlChunk = fs.readFileSync(path.join(configPath, 'feedback.chunk.xml'));
+      viewXmlData = viewXmlData.replace('<?CHUNK filename="feedback.chunk.xml" optional="0"?>', feedbackXmlChunk);
+    }
+
     const viewDoc = new DOMParser().parseFromString(viewXmlData, "text/xml");
     const fallbackFilenames = xpath.select(
       "//XslFallbackFileList[@pipeline='qui']/Filename",
@@ -254,7 +262,7 @@ async function processDLXS(req, res) {
     );
 
     if ( debug == 'qui' ) {
-      await $`xsltproc --stringparam docroot "" ${quiCompiledFilename} ${inputFilename}`.pipe(
+      await $`xsltproc --stringparam docroot "/" ${quiCompiledFilename} ${inputFilename}`.pipe(
         fs.createWriteStream(quiOutputFilename)
       );
     } else {
@@ -265,7 +273,7 @@ async function processDLXS(req, res) {
 
     if ( debug == "qui" ) {
       // res.setHeader('Content-Type', 'application/xml');
-      await $`xsltproc --stringparam docroot "" ${rootPath}/templates/debug.qui.xsl ${quiOutputFilename}`.pipe(
+      await $`xsltproc --stringparam docroot "/" ${rootPath}/templates/debug.qui.xsl ${quiOutputFilename}`.pipe(
         fs.createWriteStream(`${quiOutputFilename}.html`)
       );
       res.setHeader('Content-Type', 'text/html');
@@ -278,7 +286,7 @@ async function processDLXS(req, res) {
 
     // weird bug: "output = await..." results in strange encoding issues
     // writing to a file and re-reading it do not
-    await $`xsltproc ${qbatCompiledFilename} ${quiOutputFilename}`.pipe(
+    await $`xsltproc --stringparam docroot "/" ${qbatCompiledFilename} ${quiOutputFilename}`.pipe(
       fs.createWriteStream(qbatOutputFilename)
     )
 

@@ -3,7 +3,8 @@
   <xsl:template name="build-body-main">
     <xsl:call-template name="build-breadcrumbs" />
     <qui:header role="main">
-      <xsl:call-template name="get-title" />
+      <!-- <xsl:call-template name="get-title" /> -->
+      <xsl:text>Group Search</xsl:text>
     </qui:header>
     <qui:header role="group">
       <xsl:call-template name="get-group-title" />
@@ -36,20 +37,17 @@
   </xsl:template>
 
   <xsl:template name="get-current-page-breadcrumb-label">
-    <!-- <xsl:call-template name="get-title" /> -->
-    <xsl:choose>
-      <xsl:when test="//CurrentCgi/Param[@name='g']">
-        <xsl:text>Search Results</xsl:text>
-      </xsl:when>
-      <xsl:otherwise>
-        Search Results
-      </xsl:otherwise>
-    </xsl:choose>
+    <xsl:text>Group Search</xsl:text>
   </xsl:template>
 
   <xsl:template match="SearchForm">
-    <qui:callout>
-      <xsl:value-of select="key('gui-txt', 'instructionsearch3')" />
+    <qui:callout slot="collids">
+      <xsl:text>You can search all the collections in this group, or use the list of collections to restrict your search to a subset.</xsl:text>
+    </qui:callout>
+    <qui:callout slot="clause">
+      <xsl:value-of select="key('gui-txt', 'instructionsearch1')" />
+      <xsl:text></xsl:text>
+      <xsl:value-of select="key('gui-txt', 'instructionsearch2')" />
     </qui:callout>
     <qui:form id="collection-search" data-num-qs="{NumQs}">
       <xsl:apply-templates select="Q" />

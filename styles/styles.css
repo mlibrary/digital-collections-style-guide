@@ -273,11 +273,16 @@ label {
   display: grid;
   grid-template-columns: auto 1fr;
   grid-gap: 0.75rem;
-  padding: var(--space-small);
-  padding-right: var(--space-x-large);
+  /* padding: var(--space-small);
+  padding-right: var(--space-x-large); */
+  padding: var(--space-xx-small) var(--space-large);
   border-radius: var(--radius-default);
   position: relative;
   margin-bottom: 1.5rem;
+}
+
+.message-callout.info {
+  border-left-color: var(--color-teal-500);
 }
 
 /** Advanced Search **/
@@ -786,6 +791,10 @@ a[class*="next"]::after {
 
 .mt-0 {
   margin-top: 0;
+}
+
+.mt-1 {
+  margin-top: 1rem;
 }
 
 .mt-2 {
