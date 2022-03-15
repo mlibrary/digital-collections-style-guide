@@ -359,3 +359,10 @@ dl.record textarea {
 #brief-citation {
   min-height: 2em;
 }
+
+h3#portfolios::before {
+  content: "\e8ef";
+  display: block;
+  font-family: var(--material);
+  font-size: 1rem;
+}

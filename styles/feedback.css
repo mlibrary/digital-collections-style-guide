@@ -1,0 +1,69 @@
+body {
+  min-height: 100vh;
+}
+
+.welcome-message {
+  font-size: var(--text-small);
+}
+
+p img {
+  display: inline-block;
+  height: 24px;
+  width: auto;
+  vertical-align: bottom;
+}
+
+.form--container {
+  display: flex;
+  flex-direction: column;
+  gap: 0.5rem;
+  margin-bottom: 1rem;
+}
+
+.form--container > * {
+  flex-grow: 1;
+}
+
+.form--container > label {
+  display: block;
+  font-weight: bold;
+}
+
+.form--control > * {
+  width: 100%;
+}
+
+p.hint {
+  font-size: 0.875rem;
+}
+
+input[type="text"], textarea {
+  font-size: 1rem;
+  padding: 0.5rem;
+}
+
+textarea {
+  min-height: 7.5rem;
+}
+
+fieldset {
+  border: none;
+  padding-left: 0;
+}
+
+legend {
+  font-weight: bold;
+  margin-bottom: 0.5rem;
+}
+
+.form--input--radio {
+  display: flex;
+  flex-direction: row;
+  padding: 0.5rem;
+  gap: 0.25rem;
+}
+
+input[type="radio"] {
+  width: 18px;
+  height: 18px;
+}

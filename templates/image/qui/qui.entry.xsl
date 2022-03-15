@@ -17,17 +17,21 @@
     <qui:message>BOO-YAH</qui:message>
   </xsl:template>
 
-  <xsl:template name="build-breadcrumbs">
+  <xsl:template name="get-current-page-breadcrumb-label">
+    <xsl:text>Item View</xsl:text>
+  </xsl:template>
+
+  <xsl:template name="build-breadcrumbs-xx">
     <qui:nav role="breadcrumb">
-      <qui:link href="{/Top/Home}">
-        <xsl:value-of select="/Top/Banner/Text" />
+      <qui:link href="{normalize-space(/Top/Home)}">
+        <xsl:text>Home</xsl:text>
       </qui:link>
       <xsl:if test="normalize-space(/Top/BackLink)">
-        <qui:link href="{/Top/BackLink}" identifier="{/Top/BackLink/@identifier}">
+        <qui:link href="{normalize-space(/Top/BackLink)}" identifier="{/Top/BackLink/@identifier}">
           <xsl:text>Search Results</xsl:text>
         </qui:link>
       </xsl:if>
-      <qui:link href="{/Top//CurrentUrl}" identifier="{//EntryWindowName}" current="true">
+      <qui:link href="{normalize-space(/Top//CurrentUrl)}" identifier="{//EntryWindowName}" current="true">
         <!-- <xsl:call-template name="get-record-title" /> -->
         <xsl:text>Item View</xsl:text>
       </qui:link>
@@ -37,7 +41,7 @@
   <xsl:template name="build-results-navigation">
     <!-- do we have M/N available in the PI handler? -->
     <xsl:variable name="tmp-xml">
-      <qui:nav role="results" total="{//TotalResults}" index="{/Top/Self/Url/@index}">
+      <qui:nav role="results" total="{normalize-space(//TotalResults)}" index="{/Top/Self/Url/@index}">
         <xsl:call-template name="build-results-navigation-link">
           <xsl:with-param name="rel">back</xsl:with-param>
           <xsl:with-param name="href" select="/Top/BackLink" />
@@ -65,7 +69,7 @@
     <xsl:param name="rel" />
     <xsl:param name="href" />
     <xsl:if test="normalize-space($href)">
-      <qui:link rel="{$rel}" href="{$href}" identifier="{$href/@identifier|$href/@name}" marker="{$href/@marker}" />
+      <qui:link rel="{$rel}" href="{normalize-space($href)}" identifier="{$href/@identifier|$href/@name}" marker="{$href/@marker}" />
     </xsl:if>
   </xsl:template>
 

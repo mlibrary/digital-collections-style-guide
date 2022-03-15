@@ -1,0 +1,63 @@
+<?xml version="1.0"?>
+<Top xmlns:dlxs="http://www.umdl.umich.edu/dlxs">
+
+ <!-- XSL fallback files -->
+  <XslFallbackFileList pipeline="qui">
+    <Filename>qui/qui.base.xsl</Filename>
+    <Filename>../vendor/str.split.function.xsl</Filename>
+    <Filename>qui/components/*.xsl</Filename>
+    <Filename>qui/qui.search.xsl</Filename>
+    <Filename>qui/qui.searchgroup.xsl</Filename>
+  </XslFallbackFileList>
+
+  <XslFallbackFileList pipeline="qbat">
+    <Filename>qbat/qbat.base.xsl</Filename>
+    <Filename>qbat/components/*.xsl</Filename>
+    <Filename>qbat/qbat.search.xsl</Filename>
+    <Filename>qbat/qbat.searchgroup.xsl</Filename>
+  </XslFallbackFileList>
+
+  <!-- Custom OPTIONAL XML for top-level file searchgroup.xml -->
+  <CustomXml><?CHUNK filename="searchgroupextra.xml" optional="1"?></CustomXml>
+
+  <ExtraCSS><?FBFILE_XML file="css/search.css"?></ExtraCSS>
+  <ExtraCSS><?FBFILE_XML file="css/searchgroup.css"?></ExtraCSS>
+
+
+<DlxsGlobals><?CHUNK filename="dlxsclassglobals.xml"?></DlxsGlobals>
+
+<CollName><?COLLNAME_XML?></CollName>
+
+<JavaScriptUrl><?JAVASCRIPTURL_XML?></JavaScriptUrl>
+<ContactLink><?CONTACT_XML type="link"?></ContactLink>
+<ContactText><?CONTACT_XML type="text"?></ContactText>
+<LoginLink><?LOGINLINK_XML?></LoginLink>
+
+<TipsUrl><?TIPSURL_XML?></TipsUrl>
+<SortOptionsMenu><?SORTMENU_XML?></SortOptionsMenu>
+
+<Home><?HOME_XML?></Home>
+<Help><?HELP_XML?></Help>
+<Banner><?BANNER_XML?></Banner>
+<OpenPortfolio><?OPENPORTFOLIO_XML?></OpenPortfolio>
+<SearchLink><?SEARCHLINK_XML?></SearchLink>
+<SearchForm><?SEARCHFORM_XML?></SearchForm>
+
+
+<GroupsLink><?GROUPSLINK_XML?></GroupsLink>
+<GroupName><?GROUPNAME_XML?></GroupName>
+<SearchFields>
+<?SEARCHFIELDS_XML?>
+</SearchFields>
+
+
+<!--needed-->
+
+<?COLLPICK_XML?>
+<?COLLPICKBUTTON_XML?>
+
+<JavaScriptFooterUrl><?FBFILE_XML file="js/DynamicOptionList.js"?></JavaScriptFooterUrl>
+<JavaScriptFooterUrl><?FBFILE_XML file="js/search_form.js"?></JavaScriptFooterUrl>
+<JavaScriptFooterUrl><?FBFILE_XML file="js/searchgroup.js"?></JavaScriptFooterUrl>
+
+</Top>

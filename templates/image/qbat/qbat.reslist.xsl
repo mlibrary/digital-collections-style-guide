@@ -12,14 +12,13 @@
 
   <xsl:template match="qui:main">
 
-    <xsl:call-template name="build-collection-heading" />
-
     <div class="[ flex flex-flow-rw ][ flex-gap-1 ]">
       <div class="side-panel">
         <h2 class="visually-hidden">Options</h2>
         <xsl:call-template name="build-filters-panel" />
       </div>
       <div class="main-panel">
+        <xsl:call-template name="build-collection-heading" />
         <xsl:call-template name="build-breadcrumbs" />
         <xsl:call-template name="build-search-form" />
         <xsl:call-template name="build-search-summary" />
@@ -260,6 +259,10 @@
         <xsl:text>; </xsl:text>
       </xsl:if>
     </xsl:for-each>
+  </xsl:template>
+
+  <xsl:template match="qui:field//qui:link" mode="copy" priority="105">
+    <xsl:value-of select="." />
   </xsl:template>
 
   <xsl:template match="qui:link[@rel='previous']" priority="100">

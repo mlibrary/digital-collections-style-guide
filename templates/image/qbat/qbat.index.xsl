@@ -16,7 +16,11 @@
         <xsl:apply-templates select="//qui:hero-image" />
       </xsl:when>
       <xsl:otherwise>
-        <xsl:call-template name="build-collection-heading" />
+        <xsl:call-template name="build-collection-heading">
+          <xsl:with-param name="badge">
+            <xsl:value-of select="@data-badge" />
+          </xsl:with-param>
+        </xsl:call-template>
       </xsl:otherwise>
     </xsl:choose>
 
@@ -53,7 +57,11 @@
     <div class="hero">
       <div class="hero--banner" style="--background-src: url(https://quod.lib.umich.edu/cgi/i/image/api/image/{@identifier}/full/1000,/0/default.jpg)">
         <div class="collection-title">
-          <xsl:call-template name="build-collection-heading" />
+          <xsl:call-template name="build-collection-heading">
+            <xsl:with-param name="badge">
+              <xsl:value-of select="@data-badge" />
+            </xsl:with-param>
+          </xsl:call-template>
         </div>
       </div>
     </div>

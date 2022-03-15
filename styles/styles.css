@@ -842,6 +842,19 @@ a[class*="next"]::after {
   margin: 0 0.25em;
 }
 
+.website-sub-header {
+  width: 100%;
+  background: var(--color-blue-500);
+  color: white;
+  font-weight: 600; /* semibold */
+  font-size: var(--text-small);
+  padding: 0.5rem 0;
+}
+
+.website-sub-header .material-icons {
+  font-size: 1.5rem;
+}
+
 /*
  * Headings
  *
@@ -886,8 +899,13 @@ h3,
   color: var(--color-neutral-400);
   line-height: 1.1;
   font-weight: var(--bold);
-  font-size: 32px;
+  /* font-size: 32px; */
+  font-size: 24px;
   font-family: var(--font-base-family);
+}
+
+html[data-view="index"] .collection-heading {
+  font-size: 32px;
 }
 
 .collection-heading[data-status]::after,

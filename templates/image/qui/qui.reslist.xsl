@@ -57,19 +57,10 @@
     <xsl:call-template name="build-results-navigation" />
     <xsl:call-template name="build-breadcrumbs" />
     <qui:header role="main">
-      <xsl:choose>
-        <xsl:when test="//BookBagInfo/Field[@name='shared'] = '0'">
-          <xsl:attribute name="data-status">private</xsl:attribute>
-        </xsl:when>
-        <xsl:when test="//Param[@name='xc'] = '1' and normalize-space(/Top/GroupName)">
-          <xsl:attribute name="data-status">group</xsl:attribute>
-        </xsl:when>
-        <xsl:when test="//Param[@name='xc'] = '1'">
-          <xsl:attribute name="data-status">multiple</xsl:attribute>
-        </xsl:when>
-        <xsl:otherwise />
-      </xsl:choose>
-      <xsl:call-template name="get-collection-title" />
+      <!-- <xsl:when test="//BookBagInfo/Field[@name='shared'] = '0'">
+        <xsl:attribute name="data-status">private</xsl:attribute>
+      </xsl:when> -->
+      <xsl:text>Search Results</xsl:text>
     </qui:header>
     <!-- <xsl:call-template name="build-action-panel" /> -->
     <xsl:call-template name="build-results-list" />

@@ -24,8 +24,9 @@ input[type="text"] {
         bookmarks
         collections
         collections bookmark
-        category */
-    content: "\e98b";
+        category 
+        view_list*/
+    content: "\e8ef";
 }
 
 .portfolio {

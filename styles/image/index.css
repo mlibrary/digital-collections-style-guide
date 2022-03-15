@@ -35,8 +35,10 @@
 }
 
 .hero--banner .collection-heading {
-  display: block;
+  display: flex;
   color: white;
+  align-items: center;
+  gap: 0.25rem;
   text-shadow: 0 2px 3px rgba(0, 0, 0, 0.3);
 }
 

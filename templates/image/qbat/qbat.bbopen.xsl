@@ -22,14 +22,6 @@
 
   <xsl:template match="qui:main">
 
-    <!-- <div class="message-callout">
-      <p>
-        This collection index re-design is still under construction.
-      </p>
-    </div> -->
-
-    <xsl:call-template name="build-collection-heading" />
-
     <div class="[ flex flex-flow-row flex-gap-1 ]">
       <div class="side-panel">
         <h3 class="[ mt-2 ]">Filters</h3>
@@ -68,6 +60,9 @@
         <xsl:call-template name="build-filter-search" />
       </div>
       <div class="main-panel" data-state="loading">
+        <xsl:call-template name="build-collection-heading" />
+        <!-- <xsl:call-template name="build-breadcrumbs" /> -->
+
         <xsl:call-template name="build-search-summary" />
         <xsl:call-template name="build-search-tools" />
         <div class="[ portfolio--list ]">
@@ -185,9 +180,9 @@
           </xsl:otherwise>
         </xsl:choose>
         <div class="[ results-list__content ]">
-          <h4 data-key="collname">
+          <h3 data-key="collname">
             <xsl:apply-templates select="qui:title" />
-          </h4>
+          </h3>
           <dl class="[ results ]">
             <xsl:apply-templates select="qui:block[@slot='metadata']//qui:field" />
           </dl>

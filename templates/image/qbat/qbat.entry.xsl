@@ -424,7 +424,9 @@
     <xsl:variable name="public-list" select="//qui:portfolio-list[@type='public']" />
 
     <xsl:if test="$private-list//qui:portfolio or $public-list//qui:portfolio">
-      <h3 id="portfolios">Portfolios</h3>
+      <h3 id="portfolios" class="flex flex-center">
+        Portfolios
+      </h3>
       <dl class="record">
         <xsl:if test="$private-list//qui:portfolio">
           <div>
@@ -449,7 +451,7 @@
     <xsl:for-each select="qui:portfolio">
       <dd>
         <div class="[ flex flex-flow-rw ]" style="justify-content: space-between">
-          <a href="{qui:link[@rel='open']/@href}" style="display: block">
+          <a href="{qui:link[@rel='open']/@href}" class="flex flex-center flex-gap_0_5">
             <xsl:value-of select="qui:title" />
             <xsl:text> (</xsl:text>
             <xsl:value-of select="qui:field[@key='itemcount']//qui:value" />

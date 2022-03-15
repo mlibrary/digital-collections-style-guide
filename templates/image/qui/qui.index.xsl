@@ -5,8 +5,11 @@
     Index
   </xsl:template>
 
+  <xsl:template name="build-subheader" />
+
   <xsl:template name="build-body-main">
     <qui:header role="main">
+      <xsl:call-template name="build-sub-header-badge-data" />
       <xsl:call-template name="get-collection-title" />
     </qui:header>
 
@@ -86,7 +89,7 @@
         </qui:block>
         <qui:nav>
           <xsl:for-each select="//Groups/Group">
-            <qui:link href="/cgi/i/image/image-idx?page=searchgroup;g={@GroupID}" data-status="group">
+            <qui:link href="/cgi/i/image/image-idx?page=searchgroup;g={@GroupID}" data-badge="group">
               <xsl:value-of select="normalize-space(.)" />
             </qui:link>
           </xsl:for-each>
