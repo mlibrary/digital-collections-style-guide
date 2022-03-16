@@ -1,0 +1,53 @@
+<?xml version="1.0"?>
+
+<?CHUNK filename="entitiesdoctype.chnk" optional="1"?>
+<Top xmlns:dlxs="http://www.umdl.umich.edu/dlxs">
+  
+<!-- XSL fallback files -->
+<XslFallbackFileList pipeline="qui">
+  <Filename>qui/qui.base.xsl</Filename>
+  <Filename>../vendor/str.split.function.xsl</Filename>
+  <Filename>qui/components/*.xsl</Filename>
+  <Filename>qui/qui.groups.xsl</Filename>
+</XslFallbackFileList>
+
+<XslFallbackFileList pipeline="qbat">
+  <Filename>qbat/qbat.base.xsl</Filename>
+  <Filename>qbat/components/*.xsl</Filename>
+  <Filename>qbat/qbat.groups.xsl</Filename>
+</XslFallbackFileList>
+
+  <!-- Custom OPTIONAL XML for top-level file groups.xml -->
+  <CustomXml><?CHUNK filename="groupsextra.xml" optional="1"?></CustomXml>
+  
+  <ExtraCSS><?FBFILE_XML file="css/colllist.css"?></ExtraCSS>
+  <ExtraCSS><?FBFILE_XML file="css/groups.css"?></ExtraCSS>
+
+
+  <DlxsGlobals><?CHUNK filename="dlxsclassglobals.xml"?></DlxsGlobals>
+  
+  <CollName><?COLLNAME_XML?></CollName>
+
+  <ExhibitScriptUrl>/lib/colllist/exhibit/ajax/api/simile-ajax-api.js</ExhibitScriptUrl>
+  <ExhibitScriptUrl>/lib/colllist/exhibit/api/exhibit-api.js</ExhibitScriptUrl>
+  <JavaScriptUrl><?JAVASCRIPTURL_XML?></JavaScriptUrl>
+  <ContactLink><?CONTACT_XML type="link"?></ContactLink>
+  <ContactText><?CONTACT_XML type="text"?></ContactText>
+  <LoginLink><?LOGINLINK_XML?></LoginLink>
+  
+  <Home><?HOME_XML?></Home>
+  <Help><?HELP_XML?></Help>
+  <Banner><?BANNER_XML?></Banner>
+  <OpenPortfolio><?OPENPORTFOLIO_XML?></OpenPortfolio>
+  
+  <Collections><?GROUPSPICK_XML?></Collections>
+  
+  <SearchLink><?SEARCHLINK_XML?></SearchLink>
+  <SearchForm><?SEARCHFORM_XML?></SearchForm>
+  
+  <JavaScriptFooterUrl><?FBFILE_XML file="js/DynamicOptionList.js"?></JavaScriptFooterUrl>
+  <JavaScriptFooterUrl><?FBFILE_XML file="js/jquery.trap.min.js"?></JavaScriptFooterUrl>
+  <JavaScriptFooterUrl><?FBFILE_XML file="js/search_form.js"?></JavaScriptFooterUrl>
+  <JavaScriptFooterUrl><?FBFILE_XML file="js/groups.js"?></JavaScriptFooterUrl>
+  
+</Top>

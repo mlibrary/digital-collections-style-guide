@@ -57,10 +57,10 @@
     <xsl:call-template name="build-results-navigation" />
     <xsl:call-template name="build-breadcrumbs" />
     <qui:header role="main">
-      <xsl:if test="//BookBagInfo/Field[@name='shared'] = '0'">
+      <!-- <xsl:when test="//BookBagInfo/Field[@name='shared'] = '0'">
         <xsl:attribute name="data-status">private</xsl:attribute>
-      </xsl:if>
-      <xsl:call-template name="get-collection-title" />
+      </xsl:when> -->
+      <xsl:text>Search Results</xsl:text>
     </qui:header>
     <!-- <xsl:call-template name="build-action-panel" /> -->
     <xsl:call-template name="build-results-list" />
@@ -99,6 +99,26 @@
           <xsl:with-param name="marker" select="/Top/Prev/@marker" />
           <xsl:with-param name="href" select="/Top/Prev/Url" />
         </xsl:call-template>
+        <xsl:if test="normalize-space(//StartOverLink)">
+          <qui:link rel="restart">
+            <xsl:attribute name="href">
+              <xsl:value-of select="//StartOverLink" />
+              <xsl:choose>
+                <xsl:when test="//Param[@name='xc'] = 1">
+                  <xsl:text>;page=searchgroup</xsl:text>
+                </xsl:when>
+                <xsl:when test="//SearchForm/Advanced = 'true'">
+                  <xsl:text>;page=search</xsl:text>
+                </xsl:when>
+                <xsl:otherwise>
+                  <xsl:text>;q1=</xsl:text>
+                  <xsl:value-of select="$collid" />
+                  <xsl:text>;view=reslist</xsl:text>
+                </xsl:otherwise>
+              </xsl:choose>
+            </xsl:attribute>
+          </qui:link>
+        </xsl:if>
       </qui:nav>
     </xsl:variable>
 
@@ -155,6 +175,9 @@
       </qui:select>
     </qui:form>
     <qui:block slot="results">
+      <xsl:if test="//Param[@name='xc'] = 1 or //Param[@name='view'] = 'bbreslist'">
+        <xsl:attribute name="data-xc">true</xsl:attribute>
+      </xsl:if>
       <xsl:choose>
         <xsl:when test="//TotalResults = 0">
           <xsl:call-template name="build-no-results" />
@@ -186,6 +209,9 @@
           </xsl:for-each>
         </qui:values>
       </qui:title>
+      <qui:collection collid="{CollName/@collid}">
+        <qui:title><xsl:value-of select="CollName/Full" /></qui:title>
+      </qui:collection>
       <qui:block slot="metadata">
         <xsl:apply-templates select="Record[@name='result']/Section" />
       </qui:block>

@@ -77,6 +77,11 @@ a:hover {
   text-decoration-thickness: 2px; /** TODO: HOVE **/
 }
 
+a.group {
+  display: inner-flex;
+  align-items: center;
+}
+
 :focus {
   /** TODO: FOCUS **/
   box-shadow: 0 0 0 2px var(--color-indigo-400);
@@ -163,6 +168,13 @@ select {
   background-color: var(--color-neutral-100);
   font-weight: var(--bold);
   border: 0;
+}
+
+.summary--neutral {
+  background-color: var(--color-neutral-100);
+  border: 1px solid var(--color-neutral-200);
+  padding: 0.5rem 1rem;
+  font-weight: bold;
 }
 
 .input-group {
@@ -268,11 +280,16 @@ label {
   display: grid;
   grid-template-columns: auto 1fr;
   grid-gap: 0.75rem;
-  padding: var(--space-small);
-  padding-right: var(--space-x-large);
+  /* padding: var(--space-small);
+  padding-right: var(--space-x-large); */
+  padding: var(--space-xx-small) var(--space-large);
   border-radius: var(--radius-default);
   position: relative;
   margin-bottom: 1.5rem;
+}
+
+.message-callout.info {
+  border-left-color: var(--color-teal-500);
 }
 
 /** Advanced Search **/
@@ -380,6 +397,11 @@ fieldset.fieldset--grid button[data-action="reset-clause"] {
 
 .list__links ul li {
   margin-top: 0.5em;
+}
+
+.py-1 {
+  display: flex;
+  gap: 0.25rem;
 }
 
 /** Results **/
@@ -689,6 +711,10 @@ a[class*="next"]::after {
   text-decoration: underline;
 }
 
+.no-underline {
+  text-decoration: none;
+}
+
 .light-text-color {
   color: var(--light-text-color);
 }
@@ -758,6 +784,10 @@ a[class*="next"]::after {
   align-self: center;
 }
 
+.mb-0 {
+  margin-bottom: 0;
+}
+
 .mb-1 {
   margin-bottom: 1em;
 }
@@ -768,6 +798,10 @@ a[class*="next"]::after {
 
 .mt-0 {
   margin-top: 0;
+}
+
+.mt-1 {
+  margin-top: 1rem;
 }
 
 .mt-2 {
@@ -824,6 +858,19 @@ a[class*="next"]::after {
   margin: 0 0.25em;
 }
 
+.website-sub-header {
+  width: 100%;
+  background: var(--color-blue-500);
+  color: white;
+  font-weight: 600; /* semibold */
+  font-size: var(--text-small);
+  padding: 0.5rem 0;
+}
+
+.website-sub-header .material-icons {
+  font-size: 1.5rem;
+}
+
 /*
  * Headings
  *
@@ -868,16 +915,37 @@ h3,
   color: var(--color-neutral-400);
   line-height: 1.1;
   font-weight: var(--bold);
-  font-size: 32px;
+  /* font-size: 32px; */
+  font-size: 24px;
   font-family: var(--font-base-family);
 }
 
-.collection-heading[data-status="private"]::after {
+html[data-view="index"] .collection-heading {
+  font-size: 32px;
+}
+
+.collection-heading[data-status]::after,
+.collection-heading[data-status]::before {
   font-family: var(--material);
-  content: "\e897";
   display: inline-block;
   margin-left: 0.25rem;
-  font-size: 90%;
+  margin-right: 0.25rem;
+  font-size: 1.5rem;
+  /* vertical-align: top; */
+}
+
+.collection-heading[data-status="private"]::after {
+  content: "\e897";
+}
+
+.collection-heading[data-status="group"]::before {
+  /* topic */
+  content: "\f1c8";
+}
+
+.collection-heading[data-status="multiple"]::before {
+  /* lens blur */
+  content: "\f029";
 }
 
 .collection-heading--small {

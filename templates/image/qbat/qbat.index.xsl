@@ -16,7 +16,11 @@
         <xsl:apply-templates select="//qui:hero-image" />
       </xsl:when>
       <xsl:otherwise>
-        <xsl:call-template name="build-collection-heading" />
+        <xsl:call-template name="build-collection-heading">
+          <xsl:with-param name="badge">
+            <xsl:value-of select="@data-badge" />
+          </xsl:with-param>
+        </xsl:call-template>
       </xsl:otherwise>
     </xsl:choose>
 
@@ -53,25 +57,37 @@
     <div class="hero">
       <div class="hero--banner" style="--background-src: url(https://quod.lib.umich.edu/cgi/i/image/api/image/{@identifier}/full/1000,/0/default.jpg)">
         <div class="collection-title">
-          <xsl:call-template name="build-collection-heading" />
+          <xsl:call-template name="build-collection-heading">
+            <xsl:with-param name="badge">
+              <xsl:value-of select="@data-badge" />
+            </xsl:with-param>
+          </xsl:call-template>
         </div>
       </div>
     </div>
   </xsl:template>
 
   <xsl:template match="qui:block[@slot='copyright']">
-    <h2>Rights/Permissions</h2>
+    <h2>Rights and Permissions</h2>
     <xsl:apply-templates mode="copy" />
   </xsl:template>
 
   <xsl:template match="qui:block[@slot='links']">
-    <div class="[ flex ]">
+    <div class="[ flex ][ mt-1 ]">
       <xsl:apply-templates />
     </div>
   </xsl:template>
 
   <xsl:template match="qui:figure">
-    <a href="{@href}">
+    <xsl:variable name="id" select="generate-id()" />
+    <a href="{@href}" id="{$id}">
+      <xsl:if test="qui:style">
+        <style>
+          <xsl:apply-templates select="qui:style">
+            <xsl:with-param name="id" select="$id" />
+          </xsl:apply-templates>
+        </style>
+      </xsl:if>
       <figure>
         <xsl:apply-templates select="qui:img" />
         <xsl:apply-templates select="qui:caption" />
@@ -79,8 +95,24 @@
     </a>
   </xsl:template>
 
+  <xsl:template match="qui:style">
+    <xsl:param name="id" />
+    <xsl:value-of select="concat('#', $id, ' ', .)" />
+  </xsl:template>
+
   <xsl:template match="qui:img">
-    <img height="{@height}" width="{@width}" src="https://quod.lib.umich.edu{@src}" />
+    <img height="{@height}" width="{@width}">
+      <xsl:attribute name="src">
+        <xsl:choose>
+          <xsl:when test="starts-with(@src, 'http')">
+            <xsl:value-of select="@src" />
+          </xsl:when>
+          <xsl:otherwise>
+            <xsl:value-of select="concat('https://quod.lib.umich.edu', @src)" />
+          </xsl:otherwise>
+        </xsl:choose>
+      </xsl:attribute>
+    </img>
   </xsl:template>
 
   <xsl:template match="qui:block[@slot='help']" priority="100">

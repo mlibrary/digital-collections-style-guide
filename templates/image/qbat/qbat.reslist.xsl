@@ -3,6 +3,7 @@
 
   <xsl:variable name="search-form" select="//qui:form[@id='collection-search']" />
   <xsl:variable name="sort-options" select="//qui:form[@id='sort-options']" />
+  <xsl:variable name="xc" select="//qui:block[@slot='results']/@data-xc" />
 
   <xsl:template name="build-extra-styles">
     <xsl:comment>DUBIOUS EXCEPTIONS</xsl:comment>
@@ -11,14 +12,13 @@
 
   <xsl:template match="qui:main">
 
-    <xsl:call-template name="build-collection-heading" />
-
     <div class="[ flex flex-flow-rw ][ flex-gap-1 ]">
       <div class="side-panel">
         <h2 class="visually-hidden">Options</h2>
         <xsl:call-template name="build-filters-panel" />
       </div>
       <div class="main-panel">
+        <xsl:call-template name="build-collection-heading" />
         <xsl:call-template name="build-breadcrumbs" />
         <xsl:call-template name="build-search-form" />
         <xsl:call-template name="build-search-summary" />
@@ -220,6 +220,7 @@
         <div class="[ results-list__content ]">
           <h3><xsl:apply-templates select="qui:title" /></h3>
           <dl class="[ results ]">
+            <xsl:apply-templates select="qui:collection" />
             <xsl:apply-templates select="qui:block[@slot='metadata']//qui:field" />
           </dl>
         </div>
@@ -231,6 +232,17 @@
     </section>
   </xsl:template>
 
+  <xsl:template match="qui:collection">
+    <xsl:if test="$xc = 'true'">
+      <div>
+        <dt data-key="collid">Collection</dt>
+        <dd>
+          <xsl:value-of select="qui:title" />
+        </dd>
+      </div>
+    </xsl:if>
+  </xsl:template>
+
   <xsl:template match="qui:head/qui:title">
     <xsl:for-each select="qui:values/qui:value">
       <xsl:value-of select="." />
@@ -238,6 +250,19 @@
         <xsl:text> | </xsl:text>
       </xsl:if>
     </xsl:for-each>
+  </xsl:template>
+
+  <xsl:template match="qui:section/qui:title">
+    <xsl:for-each select="qui:values/qui:value">
+      <xsl:value-of select="." />
+      <xsl:if test="position() &lt; last()">
+        <xsl:text>; </xsl:text>
+      </xsl:if>
+    </xsl:for-each>
+  </xsl:template>
+
+  <xsl:template match="qui:field//qui:link" mode="copy" priority="105">
+    <xsl:value-of select="." />
   </xsl:template>
 
   <xsl:template match="qui:link[@rel='previous']" priority="100">

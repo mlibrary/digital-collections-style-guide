@@ -13,10 +13,39 @@
   </xsl:template>
 
   <xsl:template name="build-breadcrumbs">
+    <xsl:variable name="view" select="//Param[@name='view']|//Param[@name='page']" />
     <qui:nav role="breadcrumb">
-      <qui:link href="{/Top/Home}">
-        <xsl:value-of select="/Top/Banner/Text" />
-      </qui:link>
+      <xsl:choose>
+        <xsl:when test="$context-type = 'collection'">
+          <qui:link href="{/Top/Home}">
+            <xsl:text>Collection Home</xsl:text>
+          </qui:link>
+        </xsl:when>
+        <xsl:when test="$context-type = 'list'">
+          <qui:link href="/cgi/i/image/image-idx?page=bbopen">
+            <xsl:text>Portfolio Index</xsl:text>
+          </qui:link>
+        </xsl:when>
+        <xsl:when test="$context-type = 'group' or $context-type = 'multiple'">
+          <qui:link href="/cgi/i/image/image-idx?page=groups">
+            <xsl:text>Image Collections</xsl:text>
+          </qui:link>
+        </xsl:when>
+        <xsl:otherwise>
+        </xsl:otherwise>
+      </xsl:choose>
+      <xsl:if test="normalize-space(/Top/BackLink)">
+        <qui:link href="{normalize-space(/Top/BackLink)}">
+          <xsl:choose>
+            <xsl:when test="$view = 'bbentry'">
+              <xsl:text>Portfolio</xsl:text>
+            </xsl:when>
+            <xsl:otherwise>
+              <xsl:text>Search Results</xsl:text>
+            </xsl:otherwise>
+          </xsl:choose>
+        </qui:link>
+      </xsl:if>
       <qui:link href="{/Top//CurrentUrl}" identifier="{/Top/@identifier}">
         <xsl:call-template name="get-current-page-breadcrumb-label" />
       </qui:link>

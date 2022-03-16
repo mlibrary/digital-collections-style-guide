@@ -24,6 +24,7 @@
         <div class="border-bottom">
           <m-universal-header></m-universal-header>
           <xsl:apply-templates select="//qui:m-website-header" />
+          <xsl:apply-templates select="//qui:sub-header" />
         </div>
 
         <main>
@@ -90,9 +91,28 @@
   </xsl:template>
 
   <xsl:template match="qui:m-website-header">
-    <m-website-header name="{@name}" to="/samples/">
+    <xsl:variable name="root-href">
+      <xsl:choose>
+        <xsl:when test="$docroot = '/'">/samples/</xsl:when>
+        <xsl:otherwise>/cgi/i/image/image-idx?page=groups</xsl:otherwise>
+      </xsl:choose>
+    </xsl:variable>
+    <m-website-header name="{@name}" to="{$root-href}" data-docroot="{$docroot}">
       <xsl:apply-templates select="qui:nav" />
     </m-website-header>
+  </xsl:template>
+
+  <xsl:template match="qui:sub-header">
+    <div class="website-sub-header">
+      <div class="[ viewport-container flex ][ flex-center flex-gap-0_5 ]">
+        <span class="material-icons" aria-hidden="true">
+          <xsl:value-of select="@data-badge" />
+        </span>
+        <span>
+          <xsl:value-of select="." />
+        </span>
+      </div>
+    </div>
   </xsl:template>
 
   <xsl:template match="qui:m-website-header/qui:nav">
@@ -137,6 +157,7 @@
   <xsl:template name="build-breadcrumbs-extra-nav"></xsl:template>
 
   <xsl:template name="build-footer">
+    <xsl:variable name="feedback-href" select="//qui:footer/qui:link[@rel='feedback']/@href" />
     <footer class="[ footer ][ mt-2 ]">
       <div class="viewport-container">
         <div class="[ footer__content ]">
@@ -306,7 +327,7 @@
             <h2>Contact Us</h2>
             <ul>
               <li>
-                <a href="/cgi/f/feedback?collid={//qui:root/@collid}&amp;to=tech"
+                <a href="{$feedback-href};to=tech"
                   ><svg
                     xmlns="http://www.w3.org/2000/svg"
                     width="16"
@@ -325,7 +346,7 @@
                 >
               </li>
               <li>
-                <a href="/cgi/f/feedback?collid={//qui:root/@collid}&amp;to=content"
+                <a href="{$feedback-href};to=content"
                   ><svg
                     xmlns="http://www.w3.org/2000/svg"
                     width="16"
@@ -344,7 +365,7 @@
                 >
               </li>
               <li>
-                <a href="/cgi/f/feedback?collid={//qui:root/@collid}&amp;to=dcc"
+                <a href="{$feedback-href};to=dcc"
                   ><svg
                     xmlns="http://www.w3.org/2000/svg"
                     width="16"
@@ -494,9 +515,13 @@
     <ul class="nav">
       <xsl:for-each select="qui:link">
         <li class="py-1">
-          <a href="{@href}" class="text-teal-400 underline">
+          <xsl:if test="@data-badge='group'">
+            <a class="material-icons text-black no-underline" aria-hidden="true" href="{@href}">topic</a>
+          </xsl:if>
+          <xsl:apply-templates select="." mode="copy" />
+          <!-- <a href="{@href}" class="text-teal-400 underline">
             <xsl:apply-templates select="." mode="copy-guts" />
-          </a>
+          </a> -->
         </li>
       </xsl:for-each>
     </ul>
@@ -519,9 +544,14 @@
   </xsl:template>
 
   <xsl:template name="build-collection-heading">
-    <h1 class="collection-heading">
-      <xsl:apply-templates select="//qui:header/@data-status" mode="copy" />
-      <xsl:value-of select="//qui:header[@role='main']" />
+    <xsl:variable name="header" select="//qui:header[@role='main']" />
+    <h1 class="collection-heading mb-0">
+      <xsl:if test="normalize-space($header/@data-badge)">
+        <span class="material-icons" aria-hidden="true">
+          <xsl:value-of select="$header/@data-badge" />
+        </span>
+      </xsl:if>
+      <xsl:value-of select="$header" />
     </h1>
   </xsl:template>
 
@@ -619,7 +649,10 @@
   </xsl:template>
 
   <xsl:template match="qui:link" mode="copy" priority="99">
-    <a href="{@href}" ><xsl:apply-templates mode="copy" /></a>
+    <a href="{@href}">
+      <xsl:apply-templates select="@class" mode="copy" />
+      <xsl:apply-templates mode="copy" />
+    </a>
   </xsl:template>
 
   <xsl:template match="node()[namespace-uri() = 'http://www.w3.org/1999/xhtml']" mode="copy" priority="101">

@@ -1,0 +1,18 @@
+<!-- XSL fallback files -->
+<XslFallbackFileList pipeline="qui">
+  <Filename>qui/qui.feedback.xsl</Filename>
+</XslFallbackFileList>
+<XslFallbackFileList pipeline="qbat">
+  <Filename>qbat/qbat.feedback.xsl</Filename>
+</XslFallbackFileList>
+<DlxsGlobals>
+  <?CHUNK filename="dlxsclassglobals.xml"?>
+  <FeedbackReturnUrl><?FEEDBACK_RETURN_URL_XML?></FeedbackReturnUrl>
+</DlxsGlobals>
+<CustomXml>
+  <?CHUNK filename="indexextra.xml" optional="1"?>
+</CustomXml>
+<CollName>
+  <?COLLNAME_XML ?>
+</CollName>
+<?CHUNK filename="uplift.feedback.xml" optional="1"?>

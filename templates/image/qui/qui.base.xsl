@@ -4,6 +4,9 @@
   <!-- <xsl:variable name="collid" select="normalize-space((//Param[@name='cc']|//Param[@name='c'])[1])" /> -->
   <xsl:variable name="collid">
     <xsl:choose>
+      <xsl:when test="//Param[@name='xc'] = 1">
+        <xsl:text>*</xsl:text>
+      </xsl:when>
       <xsl:when test="//Param[@name='cc']">
         <xsl:value-of select="//Param[@name='cc']" />
       </xsl:when>
@@ -14,17 +17,49 @@
     </xsl:choose>
   </xsl:variable>
   <xsl:key match="/Top/DlxsGlobals/LangMap/lookup/item" name="gui-txt" use="@key"/>
-
+  
   <xsl:param name="docroot">/digital-collections-style-guide</xsl:param>
+
+  <xsl:param name="view">
+    <xsl:call-template name="get-view" />
+  </xsl:param>
+
+  <xsl:param name="context-type">
+    <xsl:choose>
+      <xsl:when test="//Param[@name='bbdbid']">
+        <xsl:text>list</xsl:text>
+      </xsl:when>
+      <xsl:when test="//Param[@name='xc'] = 1">
+        <xsl:choose>
+          <xsl:when test="//Param[@name='g']">
+            <xsl:text>group</xsl:text>
+          </xsl:when>
+          <xsl:otherwise>
+            <xsl:text>multiple</xsl:text>
+          </xsl:otherwise>
+        </xsl:choose>
+      </xsl:when>
+      <xsl:when test="//Para[@name='cc']">
+        <xsl:text>collection</xsl:text>
+      </xsl:when>
+      <xsl:when test="count(//Param[@name='c']) = 1">
+        <xsl:text>collection</xsl:text>
+      </xsl:when>
+      <xsl:otherwise>
+        <xsl:text>root</xsl:text>
+      </xsl:otherwise>
+    </xsl:choose>
+  </xsl:param>
   
   <xsl:template match="Top">
     <xsl:processing-instruction name="xml-stylesheet">
       <xsl:value-of select="concat('type=&quot;text/xsl&quot; href=&quot;', $docroot, '/templates/debug.qui.xsl&quot;')" />
     </xsl:processing-instruction>
-    <qui:root view="{//Param[@name='view']|//Param[@name='page']}" collid="{$collid}" username="{//AuthenticatedUsername}">
+    <qui:root view="{$view}" collid="{$collid}" username="{//AuthenticatedUsername}">
       <xsl:if test="//BbagOptionsMenu/UserIsOwner = 'true'">
         <xsl:attribute name="user-is-owner">true</xsl:attribute>
       </xsl:if>
+      <xsl:attribute name="context-type"><xsl:value-of select="$context-type" /></xsl:attribute>
       <!-- fills html/head-->
       <qui:head>
         <xhtml:title>
@@ -35,13 +70,15 @@
       </qui:head>
       <qui:body>
         <xsl:call-template name="build-site-header" />
+        <xsl:call-template name="build-sub-header" />
         <qui:main>
           <xsl:call-template name="build-body-main" />
         </qui:main>
         <qui:message>Message recived, La Jolla</qui:message>
         <qui:footer>
-          <qui:link rel="help" href="{//Help}" />
+          <qui:link rel="help" href="{normalize-space(//Help)}" />
           <qui:link rel="collection-home" href="{//Home}" />
+          <qui:link rel="feedback" href="{//FeedbackUrl}" />
         </qui:footer>
       </qui:body>
     </qui:root>
@@ -56,6 +93,19 @@
         <xsl:call-template name="build-login-link" />
       </qui:nav>
     </qui:m-website-header>
+  </xsl:template>
+
+  <xsl:template name="build-sub-header">
+    <qui:sub-header>
+      <xsl:call-template name="build-sub-header-badge-data" />
+      <xsl:call-template name="get-context-title" />
+    </qui:sub-header>
+  </xsl:template>
+
+  <xsl:template name="build-sub-header-badge-data">
+    <xsl:attribute name="data-badge">
+      <xsl:value-of select="key('gui-txt', concat($context-type, '-badge'))" />
+    </xsl:attribute>
   </xsl:template>
 
   <xsl:template name="build-login-link">
@@ -102,13 +152,20 @@
       <xsl:when test="/Top/BookBagInfo/Field[@name='bbagname']">
         <xsl:value-of select="normalize-space(/Top/BookBagInfo/Field[@name='bbagname'])" />
       </xsl:when>
-      <xsl:when test="/Top/CollName = 'multiple'">
+      <xsl:when test="//Param[@name='xc'] = 1 and normalize-space(/Top/GroupName)">
         <xsl:value-of select="normalize-space(/Top/GroupName)" />
+      </xsl:when>
+      <xsl:when test="/Top/CollName = 'multiple'">
+        Image Collections
       </xsl:when>
       <xsl:otherwise>
         <xsl:value-of select="normalize-space(/Top/CollName/Full)" />
       </xsl:otherwise>
     </xsl:choose>
+  </xsl:template>
+
+  <xsl:template name="get-context-title">
+    <xsl:call-template name="get-collection-title" />
   </xsl:template>
 
   <xsl:template name="get-collection-subtitle">
@@ -218,6 +275,10 @@
     <xsl:copy>
       <xsl:apply-templates select="@*|*|text()" mode="copy" />
     </xsl:copy>
+  </xsl:template>
+
+  <xsl:template name="get-view">
+    <xsl:value-of select="//Param[@name='view']|//Param[@name='page']" />
   </xsl:template>
 
 </xsl:stylesheet>

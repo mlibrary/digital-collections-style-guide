@@ -17,12 +17,12 @@
     </div>
 
     <div class="advanced-search--form">
-      <h2>Search</h2>
+      <!-- <h2 class="subtle-heading">Fielded Search Options</h2>
       <div class="message-callout">
         <p>
           <xsl:apply-templates select="//qui:callout" mode="copy-guts" />
         </p>
-      </div>
+      </div> -->
       <xsl:call-template name="build-search-form" />
     </div>
 
@@ -37,6 +37,12 @@
 
   <xsl:template name="build-search-form">
     <form id="collection-search" action="/cgi/i/image/image-idx" method="GET" autocomplete="off">
+      <h2 class="subtle-heading">Fielded Search Options</h2>
+      <div class="message-callout info">
+        <p>
+          <xsl:apply-templates select="//qui:callout[@slot='clause']" mode="copy-guts" />
+        </p>
+      </div>
       <div class="advanced-search--containers">
         <div class="field-groups">
           <xsl:apply-templates select="$search-form/qui:fieldset[@slot='clause']" />

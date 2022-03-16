@@ -1,6 +1,9 @@
 window.addEventListener('DOMContentLoaded', (event) => {
 
-  if ( document.documentElement.dataset.view != 'search' ) { return; }
+  if ( ! (
+    document.documentElement.dataset.view == 'search' || 
+    document.documentElement.dataset.view == 'searchgroup'
+  ) ) { return; }
 
   const $form = document.querySelector('#collection-search');
 
@@ -38,6 +41,16 @@ window.addEventListener('DOMContentLoaded', (event) => {
       $form.querySelectorAll('input,select').forEach((input) => {
         input.value = input.dataset.resetValue;
         input.checked = input.dataset.resetChecked == 'true';
+      })
+    } else if ( target = event.target.closest(`button[data-action="select-all-collid"]`) ) {
+      event.preventDefault();
+      $form.querySelectorAll('input[type="checkbox"][name="c"]').forEach((input) => {
+        input.checked = true;
+      })
+    } else if ( target = event.target.closest(`button[data-action="clear-all-collid"]`) ) {
+      event.preventDefault();
+      $form.querySelectorAll('input[type="checkbox"][name="c"]').forEach((input) => {
+        input.checked = false;
       })
     }
   })

@@ -5,11 +5,29 @@
     Image Collections Portfolios Index
   </xsl:template>
 
+  <xsl:template name="build-sub-header">
+    <qui:sub-header data-badge="view_list">
+      ImageClass Collections Portfolios
+    </qui:sub-header>
+  </xsl:template>
+
   <xsl:template name="build-body-main">
     <qui:header role="main">
-      <xsl:text>Image Collections Portfolios Index</xsl:text>
+      <xsl:text>Portfolios Index</xsl:text>
     </qui:header>
+    <xsl:call-template name="build-breadcrumbs" />
     <xsl:call-template name="build-portfolios-index" />
+  </xsl:template>
+
+  <xsl:template name="build-breadcrumbs">
+    <qui:nav role="breadcrumb">
+      <qui:link href="/cgi/i/image/image-idx?page=groups">
+        <xsl:text>Digital Collections</xsl:text>
+      </qui:link>
+      <qui:link href="{/Top//CurrentUrl}" identifier="{/Top/@identifier}">
+        <xsl:call-template name="get-current-page-breadcrumb-label" />
+      </qui:link>
+    </qui:nav>
   </xsl:template>
 
   <xsl:template name="build-portfolios-index">
@@ -17,6 +35,10 @@
       <xsl:apply-templates select="//Portfolios[@type='merged']/Portfolio" />
       <!-- <xsl:apply-templates select="//Portfolios[@type='public']/Portfolio" /> -->
     </qui:block>
+  </xsl:template>
+
+  <xsl:template name="get-current-page-breadcrumb-label">
+    Portfolios Index
   </xsl:template>
 
   <xsl:template match="Portfolios/Portfolio">
