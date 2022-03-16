@@ -5,7 +5,9 @@ window.root = window;
 const tocbot = require('tocbot');
 
 window.addEventListener('DOMContentLoaded', (event) => {
-  if ( document.documentElement.dataset.view != 'entry' ) { return ; }
+  if ( ! ( document.documentElement.dataset.view == 'entry' || document.documentElement.dataset.view == 'static' ) ) {
+    return ; 
+  }
 
   const pageIndexDropdown = document.querySelector('#action-page-index');
 

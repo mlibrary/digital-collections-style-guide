@@ -20,6 +20,10 @@
   
   <xsl:param name="docroot">/digital-collections-style-guide</xsl:param>
 
+  <xsl:param name="view">
+    <xsl:call-template name="get-view" />
+  </xsl:param>
+
   <xsl:param name="context-type">
     <xsl:choose>
       <xsl:when test="//Param[@name='bbdbid']">
@@ -51,7 +55,7 @@
     <xsl:processing-instruction name="xml-stylesheet">
       <xsl:value-of select="concat('type=&quot;text/xsl&quot; href=&quot;', $docroot, '/templates/debug.qui.xsl&quot;')" />
     </xsl:processing-instruction>
-    <qui:root view="{//Param[@name='view']|//Param[@name='page']}" collid="{$collid}" username="{//AuthenticatedUsername}">
+    <qui:root view="{$view}" collid="{$collid}" username="{//AuthenticatedUsername}">
       <xsl:if test="//BbagOptionsMenu/UserIsOwner = 'true'">
         <xsl:attribute name="user-is-owner">true</xsl:attribute>
       </xsl:if>
@@ -271,6 +275,10 @@
     <xsl:copy>
       <xsl:apply-templates select="@*|*|text()" mode="copy" />
     </xsl:copy>
+  </xsl:template>
+
+  <xsl:template name="get-view">
+    <xsl:value-of select="//Param[@name='view']|//Param[@name='page']" />
   </xsl:template>
 
 </xsl:stylesheet>

@@ -27,4 +27,6 @@
 
   <xsl:template match="h1" mode="copy" priority="100" />
 
+  <xsl:template name="get-view">static</xsl:template>
+
 </xsl:stylesheet>
