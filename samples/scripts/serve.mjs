@@ -59,10 +59,34 @@ function allowCrossDomain(req, res, next) {
   next();
 }
 
+async function proxyIndex(req, res) {
+  const headers = {};
+  // console.log("-- cookies", req.cookies);
+  if (req.cookies.loggedIn == 'true') {
+    headers['X-DLXS-Auth'] = 'nala@monkey.nu';
+  }
+  const resp = await fetch(`https://quod.lib.umich.edu${req.originalUrl}`, {
+    headers: headers,
+    redirect: 'follow',
+    credentials: 'include'
+  });
+
+  let body = await resp.text();
+  body = body.replace(/https?:\/\/quod.lib.umich.edu\//g, '/');
+
+  res.setHeader("Content-Type", "text/html");
+  res.send(body);
+}
+
 async function processDLXS(req, res) {
   let url = new URL(
     `https://${dlxsBase}${req.originalUrl.replace(/;/g, "&")}`
   );
+
+  if ( req.originalUrl == '/cgi/i/image/image-idx' || 
+       req.originalUrl == '/cgi/i/image/image-idx?page=groups' ) {
+    return proxyIndex(req, res);
+  }
 
   let debug = url.searchParams.get('debug');
 
@@ -350,6 +374,20 @@ function listen(options) {
     https: true,
     forwardPath: function(req) {
       return req.originalUrl.replace(/8lift/g, '');
+    }
+  }))
+
+  app.use('/i/image', proxy('https://roger.quod.lib.umich.edu/i/image', {
+    https: true,
+    forwardPath: function (req) {
+      return req.originalUrl;
+    }
+  }))
+
+  app.use('/lib/colllist', proxy('https://quod.lib.umich.edu/lib/colllist', {
+    https: true,
+    forwardPath: function (req) {
+      return req.originalUrl;
     }
   }))
 

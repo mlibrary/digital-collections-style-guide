@@ -27,7 +27,7 @@
           </qui:link>
         </xsl:when>
         <xsl:when test="$context-type = 'group' or $context-type = 'multiple'">
-          <qui:link href="/cgi/image/image-idx?page=groups">
+          <qui:link href="/cgi/i/image/image-idx?page=groups">
             <xsl:text>Image Collections</xsl:text>
           </qui:link>
         </xsl:when>
