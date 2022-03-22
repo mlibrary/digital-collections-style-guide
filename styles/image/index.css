@@ -74,6 +74,12 @@
   border-top-left-radius: 4px;
 }
 
+.hero--banner figcaption:hover,
+.hero--banner figcaption a:hover, .hero--banner figcaption a:focus {
+  background: rgba(255, 255, 255, 1.0);
+}
+
+
 .hero--banner figcaption a:hover span.caption,
 .hero--banner figcaption a:focus span.caption,
 .hero--banner figcaption a:active span.caption {
