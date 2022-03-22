@@ -63,6 +63,17 @@
             </xsl:with-param>
           </xsl:call-template>
         </div>
+        <figure>
+          <img src="https://quod.lib.umich.edu/cgi/i/image/api/image/{@identifier}/full/1000,/0/default.jpg" />
+          <figcaption>
+            <a href="/cgi/i/image/image-idx?cc={$collid};entryid={@m_id};viewid={@m_iid};view=entry">
+              <span class="material-icons" aria-hidden="true">info</span>
+              <span class="caption visually-hidden">
+                <xsl:apply-templates select="qui:caption" mode="copy-guts" />
+              </span>
+            </a>
+          </figcaption>
+        </figure>
       </div>
     </div>
   </xsl:template>
