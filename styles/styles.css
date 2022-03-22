@@ -860,10 +860,6 @@ a[class*="next"]::after {
   color: var(--base-text-color);
 }
 
-.link-box a > * {
-  margin: 0 0.25em;
-}
-
 .link-box a {
   border-left: 2px solid transparent;
 }
