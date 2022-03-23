@@ -83,9 +83,11 @@ a.group {
   align-items: center;
 }
 
-:focus {
-  /** TODO: FOCUS **/
-  box-shadow: 0 0 0 2px var(--color-indigo-400);
+:not([disabled]):not(#maincontent):not(#chat):not(summary):focus {
+  outline: 0;
+  box-shadow: 0 0 0 2px var(--color-maize-400),
+    0 0 0 3px var(--color-neutral-400);
+  border-radius: 2px !important;
 }
 
 address {
@@ -102,30 +104,39 @@ main {
 details > summary {
   list-style: none;
   cursor: pointer;
+  padding: 0.25em 0.5em;
 }
 
 /* is this CUBE? */
 details.panel > summary {
   display: flex;
   justify-content: space-between;
+  align-items: center;
+  border-left: 2px solid transparent;
 }
 
 details[open] {
-  padding-bottom: var(--space-x-large);
+  padding: 0.25em 0.5em;
+}
+
+details[open] > summary:first-of-type {
+  font-weight: var(--semibold);
+  color: var(--color-teal-400);
+  border-left: 2px solid var(--color-teal-400);
+  padding: 0.25em 0.5em;
 }
 
 details > summary::after {
   font-family: "Material Icons";
+  font-size: 24px;
   content: "\e5cf";
   color: var(--color-teal-400);
-  vertical-align: sub;
 }
 
 details[open] > summary::after {
   font-family: "Material Icons";
   content: "\e5ce";
   color: var(--color-teal-400);
-  vertical-align: sub;
 }
 /* Removes the default arrow on Chrome */
 details > summary::-webkit-details-marker {
@@ -626,7 +637,7 @@ fieldset.fieldset--grid button[data-action="reset-clause"] {
 }
 
 .side-panel__box > details {
-  padding: 1em 0;
+  padding: 0.5em 0;
 }
 
 details > div {
@@ -844,15 +855,22 @@ a[class*="next"]::after {
 }
 
 .link-box {
-  background-color: var(--color-teal-100);
-  padding: 1.5em;
-  margin: 1em 0;
+  margin: 0 0 0.5em 0;
+  padding: 0.5em 0;
   display: inline-flex;
   color: var(--base-text-color);
 }
 
+.link-box a {
+  border-left: 2px solid transparent;
+}
+
+.link-box a:hover {
+  border-left: 2px solid var(--color-teal-400);
+}
+
 .link-box > * {
-  margin: 0 0.25em;
+  margin: 0.25em;
 }
 
 .website-sub-header {
