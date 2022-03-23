@@ -35,25 +35,25 @@
           </xsl:for-each>
         </xsl:if>
 
-        <a>
+        <!-- <a>
           <xsl:if test="not($selected-filters)">
             <xsl:attribute name="class">mt-2 block</xsl:attribute>
           </xsl:if>
           <xsl:attribute name="href">
             <xsl:value-of select="//qui:link[@rel='restart']/@href" />
-            <!-- <xsl:choose>
-              <xsl:when test="$search-form/@data-advanced = 'true'">
-                <xsl:text>;page=search</xsl:text>
-              </xsl:when>
-              <xsl:otherwise>
-                <xsl:text>;q1=</xsl:text>
-                <xsl:value-of select="$collid" />
-                <xsl:text>;view=reslist</xsl:text>
-              </xsl:otherwise>
-            </xsl:choose> -->
           </xsl:attribute>
-          <xsl:text>Start Over</xsl:text>
-        </a>
+          <xsl:text>Clear Search</xsl:text>
+        </a> -->
+        <button data-action="go" data-href="{//qui:link[@rel='restart']/@href}">
+          <xsl:attribute name="class">
+            <xsl:text>[ button button--secondary flex ][ flex-center ]</xsl:text>
+            <xsl:if test="not($selected-filters)">
+              <xsl:text>[ mt-2 block ]</xsl:text>
+            </xsl:if>
+          </xsl:attribute>
+          <span class="material-icons" aria-hidden="true">clear</span>
+          <xsl:text>Clear Search</xsl:text>
+        </button>
       </section>
     </xsl:if>
 

@@ -223,7 +223,7 @@
       <xsl:apply-templates select="//SearchForm/MediaOnly" />
       <xsl:for-each select="Field">
         <xsl:variable name="m" select="position()" />
-        <qui:filter key="{@abbrev}" data-total="{@total}">
+        <qui:filter key="{@abbrev}" data-total="{@actual_total}">
           <qui:label>
             <xsl:value-of select="Label" />
           </qui:label>
@@ -251,12 +251,19 @@
 
   <xsl:template match="MediaOnly">
     <qui:filter key="med" arity="1">
-      <qui:label>Has digital media?</qui:label>
+      <qui:label>Only include records with digital media</qui:label>
       <qui:values>
         <qui:value>
-          <xsl:if test="//Param[@name='med'] = 1">
-            <xsl:attribute name="selected">true</xsl:attribute>
-          </xsl:if>
+          <xsl:choose>
+            <xsl:when test="//Param[@name='med'] = 1">
+              <xsl:attribute name="selected">true</xsl:attribute>
+            </xsl:when>
+            <xsl:when test="//Param[@name='med'] or //Param[@name='q1']" />
+            <xsl:when test="Focus = 'true'">
+              <xsl:attribute name="selected">true</xsl:attribute>
+            </xsl:when>
+            <xsl:otherwise />
+          </xsl:choose>
           <xsl:text>1</xsl:text>
         </qui:value>
       </qui:values>

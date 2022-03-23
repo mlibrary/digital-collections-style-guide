@@ -68,9 +68,7 @@
 
   <xsl:template match="MediaOnly">
     <qui:control>
-      <qui:label>
-        <xsl:value-of select="key('gui-txt', 'only')"/>
-      </qui:label>
+      <qui:label>Only include records with digital media</qui:label>
       <qui:input type="checkbox" slot="limit-media" name="med" value="1">
         <xsl:if test="Focus = 'true'">
           <xsl:attribute name="checked">checked</xsl:attribute>
