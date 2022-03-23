@@ -36,7 +36,7 @@ html[data-initialized="false"] {
 
 html[data-initialized="true"] {
   opacity: 1 !important;
-  transition: .25s opacity;
+  transition: 0.25s opacity;
 }
 
 /*
@@ -50,6 +50,7 @@ body {
   font-size: var(--text-base-size);
   font-family: var(--font-base-family);
   line-height: var(--line-height-default);
+  accent-color: var(--color-teal-400);
 }
 
 ol,
@@ -160,7 +161,8 @@ select {
   /*-webkit-appearance: unset; */
 }
 
-.select:focus, select:focus {
+.select:focus,
+select:focus {
   box-shadow: 0 0 0 2px var(--color-indigo-400);
 }
 
@@ -307,7 +309,6 @@ label {
 
   container-type: inline-size;
   container-name: field-groups;
-
 }
 
 @container field-groups ( max-width: 720px ) {
@@ -317,16 +318,13 @@ label {
 }
 
 @container field-groups ( max-width: 625px ) {
-  
   fieldset.fieldset--grid {
     grid-template-columns: 1fr 6rem;
     grid-template-areas:
       "rgn ."
       "select ."
       "q clear";
-
   }
-
 }
 
 .advanced-grid--columns {
@@ -341,7 +339,6 @@ label {
   gap: 1rem;
   justify-content: center;
   padding: 2rem 4.5vw;
-
 }
 
 .fieldset--clause--select label[data-active="false"] {
@@ -991,7 +988,7 @@ button {
   /* display: inline-block; */
   display: inline-flex;
   align-items: center;
-  justify-content: center;;
+  justify-content: center;
   gap: 0.25rem;
   padding: 0 0.75rem;
   font-size: 1rem;
@@ -1186,7 +1183,6 @@ main {
 }
 
 @media (min-width: 600px) and (max-width: 1000px) {
-
   .flex.flex-gap-1 {
     gap: 0.5;
   }
@@ -1350,13 +1346,13 @@ m-website-header:not(.hydrated) nav {
 }
 
 html[data-debugging-srm="true"] #srm-log {
-  position: fixed; 
-  bottom: 1rem; 
-  right: 1rem; 
-  width: 50vw; 
+  position: fixed;
+  bottom: 1rem;
+  right: 1rem;
+  width: 50vw;
   min-height: 1rem;
-  background: black; 
-  color: yellow; 
-  padding: 1; 
-  min-height: 1.5rem
+  background: black;
+  color: yellow;
+  padding: 1;
+  min-height: 1.5rem;
 }
