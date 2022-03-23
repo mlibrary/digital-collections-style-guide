@@ -933,9 +933,21 @@ h3,
   /* font-size: 32px; */
   font-size: 24px;
   font-family: var(--font-base-family);
+  display: flex;
+  gap: 0.5rem;
+  align-items: flex-start;
+}
+
+.collection-heading .material-icons {
+  font-size: 24px;
+  line-height: 1.1;
 }
 
 html[data-view="index"] .collection-heading {
+  font-size: 32px;
+}
+
+html[data-view="index"] .collection-heading .material-icons {
   font-size: 32px;
 }
 

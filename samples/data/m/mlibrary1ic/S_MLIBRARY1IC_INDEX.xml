@@ -1,0 +1,874 @@
+
+<Top xmlns:dlxs="http://www.umdl.umich.edu/dlxs" identifier="S_MLIBRARY1IC_INDEX">
+
+  <!-- XSL fallback files -->
+  <XslFallbackFileList>
+    <Filename>xsl2htmlutils.xsl</Filename>
+    <Filename>htmlhead.xsl</Filename>
+    <Filename>displayheader.xsl</Filename>
+    <Filename>browseoptions.xsl</Filename>
+    <Filename>search.xsl</Filename>
+    <Filename>fieldvalues.xsl</Filename>
+    <Filename>index.xsl</Filename>
+  </XslFallbackFileList>  
+
+
+  <!-- Custom OPTIONAL XML for top-level file index.xml<2> -->
+  <CustomXml/>
+
+  <DlxsGlobals><CurrentCgi><Param name="cc">mlibrary1ic</Param>
+<Param name="page">index</Param>
+<Param name="c">mlibrary1ic</Param>
+<Param name="debug">xml</Param>
+</CurrentCgi>
+<CurrentUrl>https://roger.quod.lib.umich.edu/cgi/i/image/image-idx?cc=mlibrary1ic;page=index;c=mlibrary1ic;debug=xml</CurrentUrl>
+<FeedbackUrl>https://roger.quod.lib.umich.edu/cgi/i/image/image-idx?cc=mlibrary1ic;page=feedback;c=mlibrary1ic;debug=xml;frompage=index</FeedbackUrl>
+<UserAgent>node-fetch</UserAgent>
+<ReferrerHref/>
+<Sid>60a278d809148c87a7364db4ba96994a</Sid>
+
+<EffectiveLanguage>en</EffectiveLanguage>
+<LanguageOptions><OptionalLanguage>en</OptionalLanguage></LanguageOptions>
+<LangMap>
+  
+  <!-- bbopenutils.xsl which serves bbopen.xsl, bbname.xsl -->
+<!-- "items1" used by bbresults_nav.xsl SliceSummary -->
+<!-- "portfolio" used by bbresults_nav.xsl CollectionName -->
+<lookup id="bbopenutils">
+<item key="portfolio">portfolio</item>
+<item key="porthelp"><b>Help</b> For Using Portfolios</item>
+<item key="bbopenpageheader">Portfolios</item>
+<item key="bbnamepageheader">Add to a New
+or Existing Portfolio</item>
+<item key="yourport">your portfolios</item>
+<item key="pubport">all public portfolios</item>
+<item key="bbagname">portfolio name</item>
+<item key="action">action</item>
+<item key="items1">items</item>
+<item key="shared">public</item>
+<item key="username">owner(s)</item>
+<item key="open3">open</item>
+<item key="add3">add</item>
+<item key="savename">save name</item>
+<item key="saveowners">save owners</item>
+<item key="bbdel3">delete...</item>
+<item key="bbexportprep3">download...</item>
+<item key="viewable">viewable by public</item>
+<item key="instructionbbname">To create a <b>new</b> portfolio with the selected images, enter a name in the <b>text box</b> and click <b>Submit</b>.<br/>To <b>add</b> the selected images to an <b>existing</b> portfolio, find the portfolio name in the table below and click <b>add</b>.</item>
+<item key="0">no</item>
+<item key="1">yes</item>
+<item key="switch0">make public</item>
+<item key="switch1">make private</item>
+<item key="none present">None present.</item>
+</lookup>
+
+<!-- bbdel.xsl bbdelconf.xsl-->
+<lookup id="bbdel">
+<item key="successdel">Portfolio successfully deleted.</item>
+<item key="instructionbbdel">You may open a portfolio or close this window.</item>
+<item key="yes">Yes</item>
+<item key="no">No</item>
+<item key="instructionbbdelconf">Permanently delete portfolio?</item>
+<item key="name">Name of portfolio</item>
+</lookup>
+
+<!-- bbexport.xsl -->
+<lookup id="bbexport">
+<item key="exportfull-image">media</item>
+
+<item key="exportdescription">record</item>
+<item key="accessdenied">The media was not included due
+to a lack of access privileges. Sorry. You may view the record.</item>
+
+<item key="index">index</item>
+<item key="of"> of </item>
+<item key="viewonline">view online</item>
+<item key="exportPageTitle">export </item>
+<item key="guidelinesbuttontext">guidelines</item>
+<item key="guidelinesTitle">Guidelines For Use</item>
+<item key="portlastmod">portfolio last modified: </item>
+<item key="forhelp">For help or to request permission to publish: </item>
+
+</lookup>
+
+<!-- bbexportprep.xsl -->
+<lookup id="bbexportprep">
+<item key="returntoportfolios">return to the list of portfolios</item>
+<item key="morehelp">More Help</item>
+<item key="imagesize">image size</item>
+<item key="imagesizesmall">small</item>
+<item key="imagesizemedium">medium (presentation)</item>
+<item key="imagesizelarge">large</item>
+<item key="imagesizelargest">largest</item>
+<item key="download">download</item>
+<item key="whendone1P1">When done, all of the
+images (and/or other media) will reside on your computer for convenient
+use. HTML pages are also included for viewing records and easy
+navigation of images.</item>
+<item key="long">The download may take several minutes to complete.</item>
+<item key="portfoliodownloadsteps">Portfolio Download</item>
+<item key="bbexportpreppageheader">Portfolio Download</item>
+<item key="portfoliosdisabled">Portfolio functionality is
+turned off.</item>
+<item key="exportdisabled">Portfolio export functionality is turned
+off.</item>
+<item key="toomanyitemstodownload">Only the first $count items will be downloaded.</item>
+</lookup>
+
+<!-- displayheader_results.xsl -->
+<!-- <lookup id="displayheader_results_LEGACY">
+<item key="thumbnail">images with captions</item>
+<item key="thumbfull">images with record</item>
+<item key="reslist">captions only</item>
+<item key="bbthumbnail">images with captions</item>
+<item key="bbthumbfull">images with record</item>
+<item key="bbreslist">captions only</item>
+<item key="prep">prep tables in use</item>
+</lookup>
+ -->
+<lookup id="displayheader_results">
+<item key="thumbnail">grid</item>
+<item key="thumbfull">grid + details</item>
+<item key="reslist">list</item>
+<item key="icon-thumbnail">icon-th</item>
+<item key="icon-thumbfull">icon-picture</item>
+<item key="icon-reslist">icon-th-list</item>
+<item key="bbthumbnail">grid</item>
+<item key="bbthumbfull">grid + details</item>
+<item key="bbreslist">list</item>
+<item key="icon-bbthumbnail">icon-th</item>
+<item key="icon-bbthumbfull">icon-picture</item>
+<item key="icon-bbreslist">icon-th-list</item>
+<item key="prep">prep tables in use</item>
+</lookup>
+
+<!-- groups.xsl -->
+<lookup id="groups">
+<item key="groups">collection groups list</item>
+<item key="selectgroup">Select a collection group</item>
+<item key="instructiongroupspick">Collections are arranged into groups for searching. Click on a group name to search the collections in that group. A collection may include some content outside of the group's definition, and a collection could appear in more than one group. Click the title of a specific collection to search it alone. Sometimes it is advantageous to search a single collection. For example, search field and sorting options are often specific to the collection, allowing for a more refined search. </item>
+<item key="more">more</item>
+<item key="instructiongroupspick2">Some collections have a very narrow focus. Other collections are broader, and may encompass many sub-collections.  Occassionally an image appears in multiple collections, though generally there is a single authoritative source for each image.</item>
+<item key="collections">collections</item>
+<item key="media">images/media</item>
+<item key="records2">records</item>
+
+</lookup>
+
+
+<!-- searchutils.xsl -->
+<lookup id="searchutils">
+<item key="see">see search tips</item>
+
+<item key="instructioncollspick1">Select one or more databases to search. Click the database name to search it alone, often in more detail.</item>
+<item key="instructionsearch1">To search, enter a word or phrase in a box below and select a field from the menu.</item>
+<item key="instructionsearch2">It is not necessary to use more than one box.</item>
+<item key="instructionsearch3">You can search all the databases in this group, or use the <b>list of databases</b> to restrict your search to a subset.</item>
+<item key="newgroup">select a new group to search</item>
+<item key="in">in</item>
+<item key="rangehelp">e.g., 1954 to 1961, -825 to -800.</item>
+<item key="only">Has digital media</item>
+<item key="PleaseSelectColl">Please select at least one database to search.</item>
+</lookup>
+
+<!-- browse.xsl, index.xsl -->
+<lookup id="browse">
+<item key="browse">Browse</item>
+</lookup>
+
+<!-- collinfo.xsl -->
+<!-- index.xsl -->
+<lookup id="index">
+<item key="home">Home</item>
+<item key="collinfo">database info</item>
+<item key="closewindow">CLOSE WINDOW</item>
+<item key="thiscoll">this collection</item>
+<!-- <item key="browseallimages">Browse all media</item>
+<item key="browseallrecords">Browse all records</item>
+<item key="browsesampleimages">Browse sample media</item>
+<item key="browsesamplerecords">Browse sample records</item>
+<item key="browsemediaaddsmods">Browse newest additions and updates</item>
+<item key="browsemostviewed">Browse most viewed</item> -->
+<item key="browseallimages">All media</item>
+<item key="browseallrecords">All records</item>
+<item key="browsesampleimages">Sample media</item>
+<item key="browsesamplerecords">Sample records</item>
+<item key="browsemediaaddsmods">Newest additions and updates</item>
+<item key="browsemostviewed">Most viewed</item>
+<item key="access">Collection Access</item>
+<item key="access1">Access to this collection is restricted to authorized users.</item>
+<item key="access2">This collection is open to the public. You may have
+additional privileges if you log in.</item>
+<item key="access3">You are an authorized user of this collection.</item>
+<item key="access4">Access restricted.</item>
+<item key="sendcomments">Send comments on this collection to</item>
+<item key="brief">Collection Size</item>
+<item key="searchmulti">Search Multiple Collections</item>
+<item key="selectagroup1">Select a group</item>
+<item key="selectagroup2">of collections to search simultaneously. Search this collection together with others.</item>
+<item key="numberof">Number of Images and Records Online</item>
+<item key="images">Online Images/Media</item>
+<item key="records">Records</item>
+</lookup>
+
+<!-- noresults.xsl -->
+<lookup id="noresults">
+<item key="noresults">No Results</item>
+<item key="type_ic_range">ranges from</item>
+<item key="type_ic_exact">is exactly</item>
+<item key="type_default">contains the term(s)</item>
+<item key="type_allmedia"> media was added or updated within </item>
+<item key="days"> day(s).</item>
+<item key="to">to</item>
+</lookup>
+
+<!-- results.xsl -->
+<lookup id="results">
+<item key="and">and</item>
+<item key="view">view</item>
+<item key="record">record</item>
+<item key="digitalformat">digital format</item>
+<item key="notavail">not available</item>
+<item key="portfolioempty">This portfolio has no items.</item>
+<item key="missing">no longer available</item>
+<item key="restricted">Restricted.</item>
+<item key="trytolocate">try to locate</item>
+<item key="notifymaintainer">notify maintainer</item>
+<item key="nosortvalue">no sort value</item>
+</lookup>
+
+
+<!-- thumbfull.xsl -->
+<lookup id="thumbfull">
+<item key="instructionthumbfullresults">Click on thumbnails to view larger images and full records. <br/>Click "descriptive info" link to view record data to the left.</item>
+<item key="descriptive">&lt;text</item>
+</lookup>
+
+<!-- reslist.xsl -->
+<lookup id="reslist">
+<item key="view4">view full record for <b>item</b></item>
+</lookup>
+
+<!-- displayheader.xsl -->
+<lookup id="displayheader">
+<item key="newsearch">advanced search</item>
+<item key="quicksearch">Quick Search</item>
+</lookup>
+
+<!-- results_nav.xsl -->
+<lookup id="results_nav">
+<item key="to1">to</item>
+<item key="of">of</item>
+<item key="hits">hits</item>
+
+<item key="login0">You are not logged in.</item>
+<item key="login1">You are logged in.</item>
+
+<item key="prev">previous</item>
+<item key="next">next</item>
+
+<item key="portfour">Portfolio storage is temporary.</item>
+<item key="portone">Portfolio storage is long term.</item>
+<item key="portthree">You do not own this portfolio.</item>
+<item key="porttwo">You do not own this portfolio.</item>
+
+</lookup>
+
+<!-- bbcustomorder.xsl -->
+<lookup id="bbcustomorder">
+<item key="instructionbbcustomorder">To change the position of any image record in this portfilio, select it's title in the list, and click an appropriate directional arrow to move it up or down.  When you are done, click the save custom order button to return to the previous display.</item>
+<item key="nocaption">no caption or caption too long.</item>
+</lookup>
+
+<!-- entry.xsl -->
+<lookup id="entry">
+<item key="bookmarkhelp">bookmark:</item>
+<item key="downloadmedia">download largest size</item>
+<item key="downloadmediacurrentsize">download current size</item>
+<item key="newwindow">new window</item>
+<item key="viewmediaonly">view media only</item>
+<item key="otherviewsnothumb">view</item>
+
+<item key="other">other views</item>
+<item key="other views">other views</item>
+<item key="other-views">other views</item>
+
+<item key="full image">full image</item>
+<item key="full-image">full-image</item>
+
+<item key="description">description</item>
+
+<item key="backtoresults">back to results</item>
+<item key="previtem">&lt;&lt; previous item</item>
+<item key="nextitem">next item >></item>
+<item key="addport">add to portfolio</item>
+<item key="removeport">remove from portfolio</item>
+<item key="relatedports">portfolio inclusions</item>
+
+<item key="feedbacklink">Problems/comments about this item?</item>
+<item key="feedbackreply">To request a reply, please provide your email address.</item>
+<item key="feedbackcomments">Comments?</item>
+<item key="feedbackusername">Include your user name?</item>
+<item key="feedback">Feedback</item>
+
+
+</lookup>
+
+<!-- entry_imagetools.xsl -->
+<lookup id="entry_imagetools">
+
+<item key="video.sense">view</item>
+<item key="video">video</item>
+<item key="video.icon">icon-film</item>
+
+<item key="audio.sense">listen to</item>
+<item key="audio">audio</item>
+<item key="audio.icon">icon-volume-down</item>
+
+<item key="svg.sense">view</item>
+<item key="svg">flash movie</item>
+<item key="svg.icon">icon-film</item>
+
+<item key="doc.sense">view</item>
+<item key="doc">related document</item>
+<item key="doc.icon">icon-file</item>
+
+<item key="pdf.sense">view</item>
+<item key="pdf">PDF document</item>
+<item key="pdf.icon">icon-file</item>
+
+<item key="url.sense">view</item>
+<item key="url">linked content in new window</item>
+<item key="url.icon">icon-share</item>
+
+<item key="image.sense">view</item>
+<item key="image">image</item>
+<item key="image.icon">icon-picture</item>
+
+<item key="size">size</item>
+
+<item key="nomedia">Sorry, digital media is not available for this item.</item>
+
+<item key="panzoomhelp">How to interact with this image...</item>
+<item key="tozoomin">zoom in: double-click</item>
+<item key="tozoomout">zoom out: shift-double-click</item>
+<item key="topan">pan: drag</item>
+<item key="zoom">zoom</item>
+<item key="sizes">image sizes</item>
+
+
+</lookup>
+
+
+
+<!-- tips.xsl -->
+
+<lookup id="searchtips">
+<item key="searchtips">search tips</item>
+<item key="instructionsearchtips"><p><b>Matching words:</b> The search
+engine attempts to match any word or phrase exactly as you put it in
+the box.</p><p> e.g.: <i>Picasso and Rembrandt</i> in a box will look
+for</p><p> "Picasso and Rembrandt"</p><p>and produced no
+results.</p><p><b>Punctuation: </b>All punctuation is treated as an
+empty space.</p><p><b>Case</b>: The search engine is not case
+sensitive.</p><p><b>Wildcards:</b> Use wildcard * to expand word
+stems. This is a good way to search for variations on a
+word.</p><p><b>Choose image collections</b>: Limit your search to only
+those collections you choose in the image collections list.</p></item>
+</lookup>
+
+<!-- results.xsl -->
+<lookup id="BbagOptionsMenu">
+<item key="bbom.check">check all</item>
+<item key="bbom.uncheck">uncheck all</item>
+<item key="bbom.bbname">add checked to portfolio...</item>
+<item key="bbom.remove">remove checked from portfolio</item>
+</lookup>
+
+<lookup id="viewinstruct">
+<item key="thumbnail1">Use checkboxes to select images for adding to a
+portfolio, then click the "add to portfolio" button. Click on
+thumbnails to view larger images and full records.</item>
+<item key="thumbnail0">Click on thumbnails to view larger images and full records.</item>
+<item key="thumbfull0">Click on thumbnails to view larger images and full records. Click "descriptive info" link to view record data in this space.</item>
+<item key="thumbfull1">Click on thumbnails to view larger images and full records. <br/>Click "descriptive info" link to view record data in this space.</item>
+<item key="reslist1">Use checkboxes to select records for adding to a portfolio, then click the "add to portfolio" button. Click "view full record" link the full record.</item>
+<item key="reslist0">Click "view full record" link the full record.</item>
+<item key="bbthumbnail1">Click on thumbnails to view larger images and full records.</item>
+<item key="bbthumbnail0">Click on thumbnails to view larger images and full records.</item>
+<item key="bbthumbfull0">Click on thumbnails to view larger images and full records. Click "descriptive info" link to view record data in this space.</item>
+<item key="bbthumbfull1">Click on the thumbnail image to display a
+large image. Click on the "descriptive info" link beneath any thumbnail image to see detailed record information in this space.</item>
+<item key="bbreslist1">Click "view full record" link the full record.</item>
+<item key="bbreslist0">Click "view full record" link the full record</item>
+<item key="bbcustomorder1">To change the position of any image record in this portfilio, select it's title in the list, and click an appropriate directional arrow to move it up or down.  When you are done, click the save custom order button to return to the previous display.</item>
+<item key="bbcustomorder0"/>
+<item key="bbexport1">The portfolio package is ready for download as a ZIP file.</item>
+
+<item key="medianodownload">sorry, media is not available for
+download.</item>
+<item key="bbexport0"/>
+</lookup>
+
+<lookup id="sort">
+<item key="sort">sort</item>
+<item key="sortnot2">too many results to sort</item>
+<item key="customize">customize order...</item>
+</lookup>
+
+<lookup id="misc">
+
+<!-- alt tags for graphics -->
+
+<!-- login/out -->
+<item key="login">login</item>
+<item key="logout">logout</item>
+
+<!-- open portfolio -->
+<item key="portfolios">portfolios</item>
+
+<!-- contact / help -->
+<item key="contact">contact</item>
+<item key="Contact">Contact</item>
+<item key="help">help</item>
+
+<!-- appears in "index", "searchutils"-->
+<item key="search2">Search</item>
+
+<item key="databases">Databases</item>
+<item key="collhome">collection home</item>
+
+<item key="close">close</item>
+
+<item key="multiple">Multiple Collections</item>
+
+
+</lookup>
+
+<lookup id="SearchFormOpsMenu">
+<item key="And">And</item>
+<item key="Or">Or</item>
+<item key="Not">Not</item>
+<item key="and not">And Not</item>
+</lookup>
+
+<lookup id="SearchFormSelMenu">
+<item key="ends">Ends with</item>
+<item key="contains">Contains</item>
+<item key="phrase">Contains the phrase</item>
+<item key="starts">Starts with</item>
+<item key="any">Contains any of these words</item>
+<item key="all">Contains all of these words</item>
+<item key="ic_exact">Exactly matches</item>
+<item key="regex">Matches</item>
+</lookup>
+
+<!--
+<lookup id="SearchFormSelMenu">
+<item key="ends">ends with</item>
+<item key="contains">contains</item>
+<item key="phrase">the phrase</item>
+<item key="starts">starts with</item>
+<item key="any">any of these words</item>
+<item key="all">all of these words</item>
+<item key="ic_exact">exactly matches</item>
+<item key="regex">matches</item>
+</lookup>
+-->
+
+<!-- moaaic-group, searchmaps.xsl -->
+<lookup id="searchmaps">
+<item key="searchmaps">Search for maps</item>
+<item key="instructionsearch1">Enter an exact word or phrase.</item>
+</lookup>
+
+<lookup id="NoResults">
+<item key="sorrynoresults">Sorry, no results were found when searching
+for items where...</item>
+<item key="pleasetry">Please try again.</item>
+<item key="mediaonly">Including an image or other media.</item>
+</lookup>
+
+<lookup id="context-badges">
+  <item key="collection-badge">filter_frames</item>
+  <item key="list-badge">view_list</item>
+  <item key="group-badge">topic</item>
+  <item key="multiple-badge">check_box</item>
+  <item key="root-badge">filter_center_focus</item>
+  <item key="default-badge">more_vert</item>
+</lookup>
+
+</LangMap>
+
+<TemplatePath>/l1/dev/roger/web/i/image/index.xml</TemplatePath>
+<TemplateName>index</TemplateName>
+<XcollMode>singlecoll</XcollMode>
+
+<CurrentScriptName>/cgi/i/image/image-idx</CurrentScriptName>
+<ScriptName application="text">/cgi/t/text/text-idx</ScriptName>
+<ScriptName application="pageviewer">/cgi/t/text/pageviewer-idx</ScriptName>
+<ScriptName application="ww">/cgi/t/text/ww2-idx</ScriptName>
+<ScriptName application="findaid">/cgi/f/findaid/findaid-idx</ScriptName>
+<ScriptName application="image">/cgi/i/image/image-idx</ScriptName>
+
+
+
+<BookmarkableUrl/>
+<AuthenticationEnabled>1</AuthenticationEnabled>
+<UserAuthenticated>0</UserAuthenticated>
+<AuthenticatedUsername/>
+<SupportedAuthSystems><System>um</System></SupportedAuthSystems>
+<QuickBrowse/>
+<Feed>
+  <FeedLink type="short"/>
+  <FeedLink type="long"/>
+</Feed>
+<TaggingEnabled>0</TaggingEnabled>
+<CollGroupMembership>:misc-ic:</CollGroupMembership>
+<EncodingType/>
+
+
+<HeadLinks>
+  <!-- <CssLink>//netdna.bootstrapcdn.com/twitter-bootstrap/2.3.2/css/bootstrap-combined.min.css</CssLink> -->
+  <CssLink>/i/image/bootstrap/css/bootstrap.min.css</CssLink>
+  <CssLink>/i/image/css/imageclass.css</CssLink>
+  <CssLink>/i/image/css/imageclass-specific.css</CssLink>
+
+  <BootstrapLink>//ajax.googleapis.com/ajax/libs/jquery/1.9.1/jquery.min.js</BootstrapLink>
+  <BootstrapLink>/i/image/jquery/jquery-migrate-1.2.1.js</BootstrapLink>
+  <BootstrapLink>//netdna.bootstrapcdn.com/twitter-bootstrap/2.3.2/js/bootstrap.min.js</BootstrapLink>
+  <!-- <BootstrapLink>/i/image/bootstrap/js/bootstrap.js</BootstrapLink> -->
+  <JavaScriptUrl>/i/image/js/jquery.placeholder.js</JavaScriptUrl>
+
+  <ApiUrl>/cgi/i/image/api</ApiUrl>
+  <Timestamp>20180409</Timestamp>
+
+  <AssetDebug>yes</AssetDebug>
+
+
+</HeadLinks>
+</DlxsGlobals>
+
+  <ExtraCSS>/i/image/css/index.css</ExtraCSS>
+
+
+  <CollName><Full>Artists' Books</Full><Brief>Artists' Books</Brief></CollName>
+
+  <JavaScriptUrl>/i/image/js/imageclass.js</JavaScriptUrl>
+  <ContactLink>'m'+'a'+'i'+'l'+'t'+'o'+':'+'a'+'r'+'t'+'i'+'s'+'t'+'s'+'b'+'o'+'o'+'k'+'s'+'-'+'d'+'l'+'p'+'s'+'-'+'h'+'e'+'l'+'p'+'@'+'u'+'m'+'i'+'c'+'h'+'.'+'e'+'d'+'u'</ContactLink>
+  <ContactText>Artists' Books</ContactText>
+  <LoginLink><Url>https://roger.quod.lib.umich.edu/cgi/dlxslogin/go?target=https%3A%2F%2Froger.quod.lib.umich.edu%2Fcgi%2Fi%2Fimage%2Fimage-idx%3Fkey_authret%3D1647983502</Url><Mode>login</Mode></LoginLink>
+
+  <TipsUrl>https://roger.quod.lib.umich.edu/cgi/i/image/image-idx?page=tips;c=mlibrary1ic</TipsUrl>
+  <SortOptionsMenu><HiddenVars><Variable name="cc">mlibrary1ic</Variable>
+<Variable name="page">index</Variable>
+<Variable name="c">mlibrary1ic</Variable>
+<Variable name="debug">xml</Variable>
+</HiddenVars><TotalResults/><SortThresshold>1000</SortThresshold><ThresholdExceeded>false</ThresholdExceeded><Option index="0"><Label>Title</Label><Value>mlibrary1ic_title</Value></Option><Option index="1"><Label>Author</Label><Value>mlibrary1ic_author</Value></Option><Name>sort</Name><Default>none</Default></SortOptionsMenu>
+
+  <Home>https://roger.quod.lib.umich.edu/cgi/i/image/image-idx?page=index;c=mlibrary1ic</Home>
+  <Help>https://roger.quod.lib.umich.edu/cgi/i/image/image-idx?page=help;c=mlibrary1ic</Help>
+  <Banner><Text>Artists' Books</Text></Banner>
+  <OpenPortfolio><Url>https://roger.quod.lib.umich.edu/cgi/i/image/image-idx?page=bbopen</Url></OpenPortfolio>
+  <SearchLink>https://roger.quod.lib.umich.edu/cgi/i/image/image-idx?c=mlibrary1ic;debug=xml;page=search</SearchLink>
+  <BrowseImages><!-- brwsimg not enabled in colldb -->
+</BrowseImages>
+  <BrowseRecords><Url>https://roger.quod.lib.umich.edu/cgi/i/image/image-idx?sort=mlibrary1ic_title;q1=mlibrary1ic;type=boolean;rgn1=ic_all;view=reslist;c=mlibrary1ic</Url><Type>browseallrecords</Type></BrowseRecords>
+  <BrowseMediaAddsMods><Url>https://roger.quod.lib.umich.edu/cgi/i/image/image-idx?sort=m_flm;type=allmedia;view=reslist;c=mlibrary1ic</Url><Type>browsemediaaddsmods</Type></BrowseMediaAddsMods>
+  <BrowseMostViewed><Url>https://roger.quod.lib.umich.edu/cgi/i/image/image-idx?sort=mostviewed;type=mostviewed;view=reslist;c=mlibrary1ic</Url><Type>browsemostviewed</Type></BrowseMostViewed>
+
+
+  <BrowseOptions><Field abbrev="mlibrary1ic_author"><Label>Author</Label><Url>https://roger.quod.lib.umich.edu/cgi/i/image/image-idx?c=mlibrary1ic;cc=mlibrary1ic;page=browse;key=mlibrary1ic_author</Url></Field><Field abbrev="mlibrary1ic_publisher"><Label>Publisher</Label><Url>https://roger.quod.lib.umich.edu/cgi/i/image/image-idx?c=mlibrary1ic;cc=mlibrary1ic;page=browse;key=mlibrary1ic_publisher</Url></Field></BrowseOptions>
+
+
+  <RestrictStatus>access2</RestrictStatus>
+  <AccessRestrictions>
+    <Status>public</Status>
+    <Public href="https://roger.quod.lib.umich.edu/cgi/i/image/image-idx?auth=world;sort=mlibrary1ic_title;q1=mlibrary1ic;type=boolean;rgn1=ic_all;view=reslist;c=mlibrary1ic">2181</Public>
+    <Authorized>0</Authorized>
+    <Restricted>0</Restricted>
+</AccessRestrictions>
+
+
+  <CollInfoLink>https://roger.quod.lib.umich.edu/cgi/i/image/image-idx?page=collinfo;c=mlibrary1ic</CollInfoLink>
+
+  <SearchForm><NumQs>2</NumQs><Q name="q1"><Value/><Rgn name="rgn1"><Option index="0"><Label>Anywhere in record</Label><Value>ic_all</Value><Focus>true</Focus></Option><Option index="1"><Label>Catalog Number</Label><Value>mlibrary1ic_record_no</Value></Option><Option index="2"><Label>Call Number</Label><Value>mlibrary1ic_call_number</Value></Option><Option index="3"><Label>Title</Label><Value>mlibrary1ic_title</Value></Option><Option index="4"><Label>Author</Label><Value>mlibrary1ic_author</Value></Option><Option index="5"><Label>Publisher</Label><Value>mlibrary1ic_publisher</Value></Option><Name>rgn1</Name><Default>ic_all</Default></Rgn><Op name="op2"><Option index="0"><Label>And</Label><Value>And</Value><Focus>true</Focus></Option><Option index="1"><Label>Or</Label><Value>Or</Value></Option><Option index="2"><Label>Not</Label><Value>Not</Value></Option><Name>op2</Name><Default>And</Default></Op><Sel name="select1" abbr="ic_all"><Option index="0"><Label>all</Label><Value>all</Value></Option><Name>select1</Name><Default/></Sel><Sel name="select1" abbr="mlibrary1ic_record_no"><Option index="0"><Label>all</Label><Value>all</Value></Option><Option index="1"><Label>any</Label><Value>any</Value></Option><Option index="2"><Label>phrase</Label><Value>phrase</Value></Option><Option index="3"><Label>ic_exact</Label><Value>ic_exact</Value></Option><Name>select1</Name><Default/></Sel><Sel name="select1" abbr="mlibrary1ic_call_number"><Option index="0"><Label>all</Label><Value>all</Value></Option><Option index="1"><Label>any</Label><Value>any</Value></Option><Option index="2"><Label>phrase</Label><Value>phrase</Value></Option><Option index="3"><Label>ic_exact</Label><Value>ic_exact</Value></Option><Name>select1</Name><Default/></Sel><Sel name="select1" abbr="mlibrary1ic_title"><Option index="0"><Label>all</Label><Value>all</Value></Option><Option index="1"><Label>any</Label><Value>any</Value></Option><Option index="2"><Label>phrase</Label><Value>phrase</Value></Option><Option index="3"><Label>ic_exact</Label><Value>ic_exact</Value></Option><Name>select1</Name><Default/></Sel><Sel name="select1" abbr="mlibrary1ic_author"><Option index="0"><Label>all</Label><Value>all</Value></Option><Option index="1"><Label>any</Label><Value>any</Value></Option><Option index="2"><Label>phrase</Label><Value>phrase</Value></Option><Option index="3"><Label>ic_exact</Label><Value>ic_exact</Value></Option><Name>select1</Name><Default/></Sel><Sel name="select1" abbr="mlibrary1ic_publisher"><Option index="0"><Label>all</Label><Value>all</Value></Option><Option index="1"><Label>any</Label><Value>any</Value></Option><Option index="2"><Label>phrase</Label><Value>phrase</Value></Option><Option index="3"><Label>ic_exact</Label><Value>ic_exact</Value></Option><Name>select1</Name><Default/></Sel></Q><Q name="q2"><Value/><Rgn name="rgn2"><Option index="0"><Label>Anywhere in record</Label><Value>ic_all</Value><Focus>true</Focus></Option><Option index="1"><Label>Catalog Number</Label><Value>mlibrary1ic_record_no</Value></Option><Option index="2"><Label>Call Number</Label><Value>mlibrary1ic_call_number</Value></Option><Option index="3"><Label>Title</Label><Value>mlibrary1ic_title</Value></Option><Option index="4"><Label>Author</Label><Value>mlibrary1ic_author</Value></Option><Option index="5"><Label>Publisher</Label><Value>mlibrary1ic_publisher</Value></Option><Name>rgn2</Name><Default>ic_all</Default></Rgn><Sel name="select2" abbr="ic_all"><Option index="0"><Label>all</Label><Value>all</Value></Option><Name>select2</Name><Default/></Sel><Sel name="select2" abbr="mlibrary1ic_record_no"><Option index="0"><Label>all</Label><Value>all</Value></Option><Option index="1"><Label>any</Label><Value>any</Value></Option><Option index="2"><Label>phrase</Label><Value>phrase</Value></Option><Option index="3"><Label>ic_exact</Label><Value>ic_exact</Value></Option><Name>select2</Name><Default/></Sel><Sel name="select2" abbr="mlibrary1ic_call_number"><Option index="0"><Label>all</Label><Value>all</Value></Option><Option index="1"><Label>any</Label><Value>any</Value></Option><Option index="2"><Label>phrase</Label><Value>phrase</Value></Option><Option index="3"><Label>ic_exact</Label><Value>ic_exact</Value></Option><Name>select2</Name><Default/></Sel><Sel name="select2" abbr="mlibrary1ic_title"><Option index="0"><Label>all</Label><Value>all</Value></Option><Option index="1"><Label>any</Label><Value>any</Value></Option><Option index="2"><Label>phrase</Label><Value>phrase</Value></Option><Option index="3"><Label>ic_exact</Label><Value>ic_exact</Value></Option><Name>select2</Name><Default/></Sel><Sel name="select2" abbr="mlibrary1ic_author"><Option index="0"><Label>all</Label><Value>all</Value></Option><Option index="1"><Label>any</Label><Value>any</Value></Option><Option index="2"><Label>phrase</Label><Value>phrase</Value></Option><Option index="3"><Label>ic_exact</Label><Value>ic_exact</Value></Option><Name>select2</Name><Default/></Sel><Sel name="select2" abbr="mlibrary1ic_publisher"><Option index="0"><Label>all</Label><Value>all</Value></Option><Option index="1"><Label>any</Label><Value>any</Value></Option><Option index="2"><Label>phrase</Label><Value>phrase</Value></Option><Option index="3"><Label>ic_exact</Label><Value>ic_exact</Value></Option><Name>select2</Name><Default/></Sel></Q><HiddenVars><Variable name="type">boolean</Variable>
+<Variable name="c">mlibrary1ic</Variable>
+</HiddenVars><MediaOnly><Visible>true</Visible><Focus>true</Focus></MediaOnly><ResultsViewOptions><Option index="0"><Label>reslist</Label><Value>reslist</Value><Focus>true</Focus></Option><Name>view</Name><Default>reslist</Default></ResultsViewOptions><Advanced>false</Advanced></SearchForm>
+  <Facets><Delta label="SQL">0</Delta>
+<Delta label="facets">0</Delta>
+<Query>SELECT istruct_isentryid FROM mlibrary1ic_media</Query>
+<Query>SELECT istruct_isentryid FROM mlibrary1ic_media</Query>
+<Query>SELECT SQL_CALC_FOUND_ROWS b.field, b.value, COUNT(b.value) AS total FROM ItemBrowse b,
+( SELECT istruct_isentryid FROM mlibrary1ic_media ) a WHERE b.field = ? AND b.collid = ? AND a.istruct_isentryid = b.idno 
+GROUP BY b.field, b.value
+ORDER BY b.field, total DESC, b.value
+ LIMIT 10</Query>
+<Debug>$VAR1 = undef;
+</Debug>
+<Field abbrev="mlibrary1ic_author" total="50" actual_total="393">
+    <Label>Author</Label>
+    <Values>
+        <Value count="10">Kellner, Tana.</Value>
+        <Value count="9">Kermaire, Christine.</Value>
+        <Value count="9">King, Susan Elizabeth</Value>
+        <Value count="8">Crombie, John.</Value>
+        <Value count="8">Johnson, Paul</Value>
+        <Value count="8">Kalmbach, Ann E.</Value>
+        <Value count="6">Meador, Clifton.</Value>
+        <Value count="5">Chen, Julie.</Value>
+        <Value count="4">Millman, Toby.</Value>
+        <Value count="4">Olson, Lisa.</Value>
+    </Values>
+</Field>
+<Field abbrev="mlibrary1ic_publisher" total="50" actual_total="313">
+    <Label>Publisher</Label>
+    <Values>
+        <Value count="73">Rosendale, N.Y. : Women's Studio Workshop</Value>
+        <Value count="21">Ann Arbor, Mich. : s.n.</Value>
+        <Value count="14">Atlanta, Ga. : Nexus Press</Value>
+        <Value count="14">Rosendale, NY : Women's Studio Workshop</Value>
+        <Value count="8">S.l. : s.n.</Value>
+        <Value count="7">Charleroi, Belgium : Christine Kermaire</Value>
+        <Value count="6">Paris : KickShaws</Value>
+        <Value count="5">Rosendale, N.Y. : Women's Studio Workshop Print Center</Value>
+        <Value count="5">Santa Monica, Calif. : Paradise Press</Value>
+        <Value count="4">Berkeley, Calif. : Flying Fish Press</Value>
+    </Values>
+</Field>
+<Delta label="xml">0</Delta>
+</Facets>
+
+  <GroupsLink>https://roger.quod.lib.umich.edu/cgi/i/image/image-idx?page=groups</GroupsLink>
+  <Groups><Group GroupID="misc-ic">Miscellaneous</Group>
+</Groups>
+
+
+  <Stats>
+    <Records>537</Records>
+    <Images>2,008</Images>
+    <Items>538</Items>
+  </Stats>
+
+
+  <InsertTextInfo><div>
+    <div>
+        <p>
+       ARTISTS' BOOKS are books in the form of art objects or art objects in the form of books. They may look more like a codices (bound books) that employ elements from the visual arts, or they may appear more like visual works of art that borrow the vocabulary of books, such as text or pages. Artists make use of many different techniques and forms in creating these books, and most artists' books are produced in limited editions. 
+        </p>
+        <p>
+The Art, Architecture &amp; Engineering Library (AAEL) Special Collections has a growing collection of artists' books in its holdings. These books have been created via printing press, silk screening, painting, welding and numerous other processes. They are made from a wide range of media including aluminum, cloth, handmade paper and glass. The books vary greatly in size and structure. Some fit in the palm of a hand while others span the length of a table. Some are bound while others must be constructed to be read, and still others provide their own illumination to be read in the dark. 
+        </p>
+        <p>
+These books are available to anyone. Although some of the AAEL's artists' books circulate, the ones featured in this database require more careful handling and are only available for viewing on-site in Special Collections. If you would like to see a book from this database in person, please contact <a href="mailto:artistsbooks@umich.edu">artistsbooks@umich.edu</a> to make an appointment or for more information.
+        </p>
+        <p>
+In 2012, the University of Michigan Library became a repository for the ongoing collection of artists’ books created at the <a href="http://wsworkshop.org/" target="_blank">Women’s Studio Workshop</a>. This repository is part of the AAEL Artists' Books collection. For further information, please visit the <a href="http://www.lib.umich.edu/online-exhibits/exhibits/show/aaelartistbooks/wsw" target="_blank">online exhibition</a> Artist Books from the Women's Studio Workshop.
+        </p>
+    </div>
+    <div id="useguidelines">
+        <p>
+        The University of Michigan Library provides access to these materials for educational and research purposes. These materials may be under copyright. If you decide to use any of these materials, you are responsible for making your own legal assessment and securing any necessary permission. If you have questions about the collection, please contact <a href="mailto:artistsbooks-dlps-help@umich.edu">Artists' Books</a>. If you have concerns about the inclusion of an item in this collection, please contact <a href="mailto:LibraryIT-info@umich.edu">Library Information Technology</a>.
+        </p>
+    </div>
+</div>
+</InsertTextInfo>
+  <InsertTextInfo2><div>
+<!-- Copy this file (info2.txt) to a collection specific web
+directory and  fill it with a description of the collection. It will
+then appear in the page=index view for the collection. -->
+</div>
+</InsertTextInfo2>
+  <InsertTextFieldInfo><div><!-- Copy this file (fieldinfo.txt) to a collection specific web directory and  fill it with field definitions and any other information that would help the user understand the fields and it will be inserted in to the collinfo view (collinfo.tpl) --></div></InsertTextFieldInfo>
+  <Subtitle/>
+
+  <qui:block slot="information" xmlns="http://www.w3.org/1999/xhtml/" xmlns:qui="http://dlxs.org/quombat/ui">
+  <p>
+       ARTISTS' BOOKS are books in the form of art objects or art objects in the form of books. They may look more like a codices (bound books) that employ elements from the visual arts, or they may appear more like visual works of art that borrow the vocabulary of books, such as text or pages. Artists make use of many different techniques and forms in creating these books, and most artists' books are produced in limited editions. 
+        </p>
+  <p>
+The Art, Architecture &amp; Engineering Library (AAEL) Special Collections has a growing collection of artists' books in its holdings. These books have been created via printing press, silk screening, painting, welding and numerous other processes. They are made from a wide range of media including aluminum, cloth, handmade paper and glass. The books vary greatly in size and structure. Some fit in the palm of a hand while others span the length of a table. Some are bound while others must be constructed to be read, and still others provide their own illumination to be read in the dark. 
+        </p>
+  <p>
+    These books are available to anyone. Although some of the AAEL's artists' books circulate, the ones featured in this database require more careful handling and are only available for viewing on-site in Special Collections. If you would like to see a book from this database in person, please contact
+    <a href="mailto:artistsbooks@umich.edu">artistsbooks@umich.edu</a>
+    to make an appointment or for more information.
+  </p>
+  <p>
+    In 2012, the University of Michigan Library became a repository for the ongoing collection of artists’ books created at the
+    <a href="http://wsworkshop.org/" target="_blank">Women’s Studio Workshop</a>
+    . This repository is part of the AAEL Artists' Books collection. For further information, please visit the
+    <a href="http://www.lib.umich.edu/online-exhibits/exhibits/show/aaelartistbooks/wsw" target="_blank">online exhibition</a>
+    Artist Books from the Women's Studio Workshop.
+  </p>
+</qui:block>
+  <qui:block slot="copyright" xmlns="http://www.w3.org/1999/xhtml/" xmlns:qui="http://dlxs.org/quombat/ui">
+  <p>
+    The University of Michigan Library provides access to these materials for educational and research purposes. These materials may be under copyright. If you decide to use any of these materials, you are responsible for making your own legal assessment and securing any necessary permission.
+  </p>
+  <p>If you have questions about the collection, please contact
+    <a href="mailto:artistsbooks-dlps-help@umich.edu">Artists' Books</a>
+    . If you have concerns about the inclusion of an item in this collection, please contact
+    <a href="mailto:LibraryIT-info@umich.edu">Library Information Technology</a>
+    .
+  </p>
+</qui:block>
+  
+  
+  
+  <HeroImage m_iid="005631208_1" identifier="mlibrary1ic:005631208:005631208_1" m_id="005631208">
+    <Debug>SELECT m_id, m_iid, basename FROM mlibrary1ic_media, ImageClassAsset
+WHERE m_searchable = 1 AND m_fn = basename AND type = 'image' AND width > height AND access = 1 
+AND collid = 'mlibrary1ic'
+ORDER BY RAND()
+LIMIT 1
+</Debug>
+    <Caption>Séquence urbaine / Andrée-Anne Dupuis-Bourret.; </Caption>
+    <Fields>$VAR1 = {
+          'm_fn' => '005631208_1',
+          'mlibrary1ic_caption_6' => 'Cover with color bar and scale',
+          'istruct_face' => 'UNSPEC',
+          'istruct_me' => 'JP2',
+          'istruct_mo' => 'TIF',
+          'istruct_mt' => 'IMAGE:::DYNAMIC2',
+          'm_flm' => '2018-03-14 12:06:31',
+          'ic_id' => '005631208',
+          'mlibrary1ic_publisher' => "Montr\x{e9}al : Ateliers Graff",
+          'mlibrary1ic_phys_desc' => '[32] p. : all ill. ;',
+          'm_id' => '005631208',
+          'mlibrary1ic_caption_3' => 'Inner pages',
+          'mlibrary1ic_size' => '12 x 30 cm.',
+          'mlibrary1ic_caption_4' => 'Inner pages',
+          'mlibrary1ic_show' => 'true',
+          'mlibrary1ic_title' => "S\x{e9}quence urbaine / Andr\x{e9}e-Anne Dupuis-Bourret.",
+          'filename' => '005631208_1|||005631208_2|||005631208_3|||005631208_4|||005631208_5|||005631208_6',
+          'mlibrary1ic_desc' => 'Imprint from colophon.|||Silkscreen print, drawing and perforations on various papers. Glued and stapled binding with paper cover.|||Edition of 25.',
+          'ic_collid' => 'mlibrary1ic',
+          'mlibrary1ic_caption_1' => 'Cover',
+          'captions' => 'Cover|||Title page|||Inner pages|||Inner pages|||Back cover|||Cover with color bar and scale',
+          'istruct_caption_captions' => 'Cover',
+          'istruct_caption' => 'Cover',
+          'istruct_y' => '1',
+          'mlibrary1ic_vid' => '',
+          'istruct_isentryidv' => 'S-MLIBRARY1IC-X-005631208-1',
+          'istruct_ms' => 'P',
+          'istruct_m' => '005631208_1',
+          'mlibrary1ic_call_number' => 'N 7433.4 .D87 S47 2005',
+          'mlibrary1ic_loc' => 'Art, Architecture &amp; Engineering Library (AAEL)',
+          'm_iid' => '005631208_1',
+          'istruct_stid' => '0',
+          'm_caption' => 'Cover',
+          'm_entryauth' => 'WORLD',
+          'm_searchable' => '1',
+          'istruct_x' => '1',
+          'istruct_isentryid' => 'S-MLIBRARY1IC-X-005631208]005631208_1',
+          'mlibrary1ic_date' => '2005.',
+          'mlibrary1ic_caption_5' => 'Back cover',
+          'mlibrary1ic_caption_2' => 'Title page',
+          'ic_all' => ".D87 / 005631208 2005 25. 7433.4 : ; Andr\x{e9}e-Anne Ateliers Dupuis-Bourret, Dupuis-Bourret. Edition Glued Graff Imprint Montr\x{e9}al N S47 Silkscreen S\x{e9}quence [32] all and binding colophon., cover., drawing from ill. mlibrary1ic of on p. paper papers. perforations print, stapled urbaine various with",
+          'mlibrary1ic_author' => "Dupuis-Bourret, Andr\x{e9}e-Anne",
+          'istruct_stty' => 'SUMM',
+          'mlibrary1ic_record_no' => '005631208'
+        };
+</Fields>
+    <XcollMaps>$VAR1 = {
+          'dlxs_ri' => '"The University of Michigan Library provides access to these materials for educational and research purposes. These materials may be under copyright. If you decide to use any of these materials, you are responsible for making your own legal assessment and securing any necessary permission. If you have questions about the collection, please contact &lt;a href="mailto:artistsbooks-dlps-help@umich.edu">Artists' Books&lt;/a>. If you have concerns about the inclusion of an item in this collection, please contact &lt;a href="mailto:LibraryIT-info@umich.edu">Library Information Technology&lt;/a>."',
+          'dlxs_catalog' => 'mlibrary1ic_record_no',
+          'mlibrary1ic_all' => 'ic_all',
+          'dc_cr' => 'mlibrary1ic_author',
+          'dlxs_ma' => 'mlibrary1ic_title mlibrary1ic_filename',
+          'dc_id' => 'mlibrary1ic_record_no',
+          'dc_so' => 'mlibrary1ic_publisher',
+          'dc_ri' => '"The University of Michigan Library provides access to these materials for educational and research purposes. These materials may be under copyright. If you decide to use any of these materials, you are responsible for making your own legal assessment and securing any necessary permission. If you have questions about the collection, please contact artistsbooks-dlps-help@umich.edu. If you have concerns about the inclusion of an item in this collection, please contact LibraryIT-info@umich.edu."',
+          'dc_da' => 'mlibrary1ic_date',
+          'dc_de' => 'mlibrary1ic_desc',
+          'dc_ti' => 'mlibrary1ic_title'
+        };
+</XcollMaps>
+    <AdminMaps>$VAR1 = {
+          'ic_id' => 'mlibrary1ic_record_no',
+          'ic_fn' => 'filename',
+          'ic_xml' => 'dc_ri mlibrary1ic_vid',
+          'dlxs_catalog' => 'mlibrary1ic_record_no',
+          'ic_vi' => 'captions',
+          'ic_all' => 'mlibrary1ic_record_no mlibrary1ic_call_number mlibrary1ic_title mlibrary1ic_author mlibrary1ic_publisher mlibrary1ic_phys_desc mlibrary1ic_desc mlibrary1ic_vid'
+        };
+</AdminMaps>
+    <Url>data:image/jpeg;base64,/9j/4AAQSkZJRgABAQAAAQABAAD/2wBDAAgGBgcGBQgHBwcJCQgKDBQNDAsLDBkSEw8UHRofHh0a
+HBwgJC4nICIsIxwcKDcpLDAxNDQ0Hyc5PTgyPC4zNDL/2wBDAQkJCQwLDBgNDRgyIRwhMjIyMjIy
+MjIyMjIyMjIyMjIyMjIyMjIyMjIyMjIyMjIyMjIyMjIyMjIyMjIyMjIyMjL/wAARCAApAGQDASIA
+AhEBAxEB/8QAHwAAAQUBAQEBAQEAAAAAAAAAAAECAwQFBgcICQoL/8QAtRAAAgEDAwIEAwUFBAQA
+AAF9AQIDAAQRBRIhMUEGE1FhByJxFDKBkaEII0KxwRVS0fAkM2JyggkKFhcYGRolJicoKSo0NTY3
+ODk6Q0RFRkdISUpTVFVWV1hZWmNkZWZnaGlqc3R1dnd4eXqDhIWGh4iJipKTlJWWl5iZmqKjpKWm
+p6ipqrKztLW2t7i5usLDxMXGx8jJytLT1NXW19jZ2uHi4+Tl5ufo6erx8vP09fb3+Pn6/8QAHwEA
+AwEBAQEBAQEBAQAAAAAAAAECAwQFBgcICQoL/8QAtREAAgECBAQDBAcFBAQAAQJ3AAECAxEEBSEx
+BhJBUQdhcRMiMoEIFEKRobHBCSMzUvAVYnLRChYkNOEl8RcYGRomJygpKjU2Nzg5OkNERUZHSElK
+U1RVVldYWVpjZGVmZ2hpanN0dXZ3eHl6goOEhYaHiImKkpOUlZaXmJmaoqOkpaanqKmqsrO0tba3
+uLm6wsPExcbHyMnK0tPU1dbX2Nna4uPk5ebn6Onq8vP09fb3+Pn6/9oADAMBAAIRAxEAPwDzbR9H
+sZ9Jgmmtw7vnJJPqaoy29mjMosIMgkZLSZP/AI9W74fwdCtv+BfzNY84/fSf7x/nWVFtzkme5mdK
+EMJQlFJNr9EVDBa/8+UP/fT/APxVRtBbkcWsa/Qv/wDFVYI4pvP4V0WPCKrWsGP9Sv5n/GmG0iz9
+zH4mreAc54FMxRYCr9ji9D+dH2SL0P51bK4AJyCeR9KaeTkmlYCt9ki9D+dH2SL0P51YxT0jZzhV
+LEDOAM0WAqC0i/un86X7JF/dP51ZC80pWiwGRcoIpiqjjAop17n7S30FFSM7vw6AdCtyD/e/mayp
+1zJJ/vH+davh0f8AEht/+Bf+hGs2VcySf7x/nWND45H0Gbf7lh/T9EVWGKjYccVYccVERg11HzpE
+RxTSMdqlI600gUhkfJox1FOxSACgdgxjjqBWx4eZVu1Aj+cZYvntwMY/Osj8a2vD4IvNwxwhPzHH
+egR0d9aRapaJBOoBjOVkVRuX2z3HtXCyxGKV4z1RiDXeoeeDkf3j0+lcrrWnz29287QSLBKxKSFS
+FY9wDSQHJX3/AB9t9BRT9RAF2foKKTGdz4eP/EgtsMP4v/QjUDXDRs/+jQHDHBZM5/OuWs/+Pf8A
+OqEn+tf/AHjWVOPLJvuepjcX7bD0qdrcv+Vjr5NQbbt8m2A27f8AVLmmHUsHJhtDyDzEv+cVyNHe
+tuY8o6sajGFIa3tG4IyVx178GmHUYs5FpaDpxgn+Zrl6O1K4HUf2jCfvWdocEnoR1+h7U37dbleb
+O2zgDIZx+P3q5ig0XA6j7dbZ/wCPK1A3Z+8/T0+9TrTURayJIgG5eOoxjOccg1ytFFwPUU8eWqhg
++h2sm5ixLS9M+nFVtW8W2ur6Yli2nLDHHJ5iGOfkHBHcdOa83paALWp/8ffGD8o6UVVHSikB/9k=
+</Url>
+</HeroImage>
+
+  <Snapshots><Snapshot href="/cgi/i/image/image-idx?c=mlibrary1ic;entryid=x-009851457;viewid=009851457_1">
+    <Thumbnail src="data:image/jpeg;base64,/9j/4AAQSkZJRgABAQAAAQABAAD/2wBDAAgGBgcGBQgHBwcJCQgKDBQNDAsLDBkSEw8UHRofHh0a HBwgJC4nICIsIxwcKDcpLDAxNDQ0Hyc5PTgyPC4zNDL/2wBDAQkJCQwLDBgNDRgyIRwhMjIyMjIy MjIyMjIyMjIyMjIyMjIyMjIyMjIyMjIyMjIyMjIyMjIyMjIyMjIyMjIyMjL/wAARCABkAFgDASIA AhEBAxEB/8QAHwAAAQUBAQEBAQEAAAAAAAAAAAECAwQFBgcICQoL/8QAtRAAAgEDAwIEAwUFBAQA AAF9AQIDAAQRBRIhMUEGE1FhByJxFDKBkaEII0KxwRVS0fAkM2JyggkKFhcYGRolJicoKSo0NTY3 ODk6Q0RFRkdISUpTVFVWV1hZWmNkZWZnaGlqc3R1dnd4eXqDhIWGh4iJipKTlJWWl5iZmqKjpKWm p6ipqrKztLW2t7i5usLDxMXGx8jJytLT1NXW19jZ2uHi4+Tl5ufo6erx8vP09fb3+Pn6/8QAHwEA AwEBAQEBAQEBAQAAAAAAAAECAwQFBgcICQoL/8QAtREAAgECBAQDBAcFBAQAAQJ3AAECAxEEBSEx BhJBUQdhcRMiMoEIFEKRobHBCSMzUvAVYnLRChYkNOEl8RcYGRomJygpKjU2Nzg5OkNERUZHSElK U1RVVldYWVpjZGVmZ2hpanN0dXZ3eHl6goOEhYaHiImKkpOUlZaXmJmaoqOkpaanqKmqsrO0tba3 uLm6wsPExcbHyMnK0tPU1dbX2Nna4uPk5ebn6Onq8vP09fb3+Pn6/9oADAMBAAIRAxEAPwDxXTfD uq6vF5tjaGVN+zdvUc+nJ961x8N/FZ/5hf8A5GT/ABrp/h1/yB4f+v1v5JXr6rWSqNya7Fcuh89j 4b+K/wDoF/8AkVP8aX/hW3iw8f2X/wCRk/xr6HUVIoqudhY+dv8AhWfi7/oFf+Rk/wAaUfDLxd/0 Cv8AyMn+NfRYWnheaOdhZHzkPhh4v/6BX/kZP8aX/hV/i8n/AJBY/wC/yf419HBadt9qXOwsj5w/ 4Vd4v/6Bi/8Af9P8aUfCzxd305APedP8a+jsU2XIiY0ObBJHzl/wrjUraXbqU8Vt/sp+8b9OP1or 1LxQC2oAn0oriqYmopWRfIjjPhzzo8P/AF+t/JK9hQcV4/8ADfnR4f8Ar+b+SV7GgyK6I/HL+ugu iFArm5dVuEZgs7j6gevaumFcWRIXZipwGyCfrU1W1awjcgGsSokqyZRhkZI7ipDDrhPDqo+qmpJb 2C206w892XzWRFwhYMSOAcdqRo5obza98Q5wciEkAscD27YqlC63A07FbhbYC6O6XJyRirQqpBBc xzBpLrzE7qUAzV0dTV2sIbiklH7o/SpMUyX/AFRpPYa3OD8UD/TV+lFO8UA/bRRXm1vjZocR8Nx/ xKIB/wBPzfySvY06V498OR/xKoB/0/H+SV7FH0r0I/HL+uhHRC1xz7nf7w5457c12YGTXHsiJuIc k4zzx3qa2yEbga0ktLNJL7y/JCkhSPmIx14qSUWFy80n21RI+AHXqoHQfnzXPowaUMVB9uxp4DyN hF+6PmJOMdahVmFjpLXT4WMc0N07oG3EDkHGAB7AY/WtZep9Kz9FUrpsYOM5PQ571pCt07q4gxTJ ceWc1Jio5v8AVGh7DW5w3ir/AI/hRR4o/wCPyivNrfGzU474Y2i3OlF3kdTDdF1CnAJwvX8q9VQv t/1h/If4V5j8J/m0ab/r5b/0Fa9RUfLXfPSTsTFaABJ/z1b8h/hVH+xYGIJmlJBz/D/hWiBSKPap eu47IpHRYGPzTTDnPVeP0py6HAM4nnGeOCv+FXgOeakAqeVBZCW0BtoREkzlR3bB/pVhS/dz+Q/w pqDipOtO7HZCfP8A89G/T/CkkB2jLk8jjin4pJB8n40XYWRyWs6fb3upOtwGKqBjaxFFWdQ/5Ckn +6P60UnFPdCucB8I+dFn/wCvpv8A0Fa9TUcV5Z8Iv+QJP/19N/6CteqIOK0qfEwhsOHFOCimrUq8 4qChQg9KXaM9KVRz1p4+lAAo207oKOtPVaAE702T7nXuKcRzSPkp+VIDmdQP/Ezk/wB0UUmof8hO X6CiqJOD+EH/ACBJ/wDr6b/0FK9TT615b8IAf7DnPYXLf+gpXqCvjtV1PiYQ2JlxmniolbHY1IHG OlQUSAdKkGeKYre1ODD0NIB+KcByaYGz2NODD0oC46mSfc/EUu/2qORxgD3oA5vUT/xNJfoKKj1B s6rMAdwGKKZLPnWw8QatpUDW9jfzW8TNuKocAnpn9KtDxj4i/wCgxdf990UV2WRhcf8A8Jj4i/6D F3/33R/wmPiP/oM3n/fw0UUrILsT/hMvEef+Q1ef9/TTv+Ew8R/9Bq9/7+miiiyC7HDxh4j5/wCJ 1e/9/TQPGHiMk/8AE6vf+/pooosguw/4S7xEc51q9/7/ABp6+LPEHX+2L3P/AF2NFFFkF2WrTxzr 1rISboT5PPnLuJ/HrRRRUuK7BzM//9k= "/>
+<Record name="result"><Section name="default" class="default"><Field abbrev="mlibrary1ic_title" searchfield="false" sortfield="false"><Values><Value>California flora / Elizabeth McClintock ; with wood engravings by John DePol.</Value></Values><Label display="on">Title</Label></Field><Field abbrev="mlibrary1ic_author" searchfield="false" sortfield="false"><Values><Value>McClintock, Elizabeth May</Value></Values><Label display="on">Author</Label></Field><Field abbrev="mlibrary1ic_call_number" searchfield="false" sortfield="false"><Values><Value>SB 439.24 .C34 M3 1995</Value></Values><Label display="on">Call Number</Label></Field><Field abbrev="mlibrary1ic_record_no" searchfield="false" sortfield="false"><Values><Value>009851457</Value></Values><Label display="on">Catalog Number</Label></Field></Section></Record></Snapshot>
+<Snapshot href="/cgi/i/image/image-idx?c=mlibrary1ic;entryid=x-009853265;viewid=009853265_1">
+    <Thumbnail src="data:image/jpeg;base64,/9j/4AAQSkZJRgABAQAAAQABAAD/2wBDAAgGBgcGBQgHBwcJCQgKDBQNDAsLDBkSEw8UHRofHh0a HBwgJC4nICIsIxwcKDcpLDAxNDQ0Hyc5PTgyPC4zNDL/2wBDAQkJCQwLDBgNDRgyIRwhMjIyMjIy MjIyMjIyMjIyMjIyMjIyMjIyMjIyMjIyMjIyMjIyMjIyMjIyMjIyMjIyMjL/wAARCABiAGQDASIA AhEBAxEB/8QAHwAAAQUBAQEBAQEAAAAAAAAAAAECAwQFBgcICQoL/8QAtRAAAgEDAwIEAwUFBAQA AAF9AQIDAAQRBRIhMUEGE1FhByJxFDKBkaEII0KxwRVS0fAkM2JyggkKFhcYGRolJicoKSo0NTY3 ODk6Q0RFRkdISUpTVFVWV1hZWmNkZWZnaGlqc3R1dnd4eXqDhIWGh4iJipKTlJWWl5iZmqKjpKWm p6ipqrKztLW2t7i5usLDxMXGx8jJytLT1NXW19jZ2uHi4+Tl5ufo6erx8vP09fb3+Pn6/8QAHwEA AwEBAQEBAQEBAQAAAAAAAAECAwQFBgcICQoL/8QAtREAAgECBAQDBAcFBAQAAQJ3AAECAxEEBSEx BhJBUQdhcRMiMoEIFEKRobHBCSMzUvAVYnLRChYkNOEl8RcYGRomJygpKjU2Nzg5OkNERUZHSElK U1RVVldYWVpjZGVmZ2hpanN0dXZ3eHl6goOEhYaHiImKkpOUlZaXmJmaoqOkpaanqKmqsrO0tba3 uLm6wsPExcbHyMnK0tPU1dbX2Nna4uPk5ebn6Onq8vP09fb3+Pn6/9oADAMBAAIRAxEAPwDw3Ape nSjFAFAhQKUCilAoA0ND0d9d1m00uKVYnuH2B2GQOM/0r0yL4DTlB5mvRhu4W2JH/oVcX8PJFi8f aMzDIM+38SpA/nX1Co4raEU1qS2eK/8AChZe3iBP/AU//FUh+As2eNfj/wDAY/8AxVe24oIq+SIr s8Q/4ULcf9B6L/wGP/xVMPwFuf8AoOw/+A5/+Kr3LFNIo9nELs8Nb4EXQ/5jsP8A4Dn/ABqNvgZd L/zG4T/2wP8AjXuRFROtLkiHMz5V8S+GZvDOrf2fLcJO2wPvVSODn1+lFbXxSmMnjy8XPEaRoP8A vkH+ZNFZSsmWtjjB9KX8KQEE47+lOHpUAFKKKUDp60AdF4FOPHOi/wDX2g/WvqhBxXyx4EGfHOij 0u0/nX1Sv3RW9LYmQuKMUtZ8ukxyyM/nzqGfeyqwAJ468dOK0JL2KQisqOwtzcyWyX915irjZv8A ujrxx71Yh0sQTxyi7uX2Z+V3BDdevHPWgZZIqNxxUxFMIoEfMXxKGfH+qezIP/HBRTviUCPiDqv+ +v8A6AtFc0t2aLY5ZRG1sRgbw+7OOcY6VGKfAQr4PRuKRlKMR6UmAgz3pwxSClFIDpfAQz460b/r 5Wvqdegr5X8Bnb450U/9PSivqkdB9K3pbEyFopahuF82CSJZTGzKVDDqpPf9a1JKkclz9uIeyRUL lfNHXaAcH9MVeNZ5tLklv+Jm4UtlQEHC+me/bn2q8pAVVZwzYwT6mkAhphqRqjNMD5l+Jox8QtV/ 3k/9AWinfE0f8XC1T/eT/wBAWiuaW7NFsccOme45FTuBJCsq/Rvaq4qe3kCuUb7j8fjUgMHtR3p0 kZjkKnt096aKQHReBjjxvop/6e0/nX1WOg+lfKfgg/8AFb6L/wBfafzr6sH3R9K3pbEyHVVl5lP+ f8/5/GzVaX/Wnj/OP8/5zWhI0f5/z/n+tLH/AKwf5/z/AJ/BBRGfnFAExphpxphPFAHzN8TTu+IW qnP8SD/xxaKZ8SuPiDqv++v/AKAKK5pbs0WxyQxSjkYNIKX8KkC0p+1Q7T/rU/UVAOuMUiOyOHXq KsTKJUE8fQ/eHpT3A2/A3/I76MP+npP519VDoPpXyv4BXd470Uf9PKn+tfUyngVtS2JkPzxxWZ9o 1LAJ02IsTyfOH+HtV2SBJSCxcEf3XK/yqpKjIpSKO5JDZ3FyR/6EK0JEM9/hcaZH3BHnD2x2+v5e 9J9ov94zpiAdyJh/h/nNQ7LkAELKSB33HP8A4/U8Ue4BXS5BPU+YwH/oVAFxqYelNSJYidrOc/3n LfzpSaAPmb4mAf8ACwdU/wB5f/QBRT/icu34gal7lD/44KK5pfEzRbHG57UuaaDSjmpAcDUsMxhk 3Yyh+8KhBpQaAOk8LX9tonijT9XlDyWsEhd1jGWHBHA/GvYo/jX4Sbvej2MA/wAa+fI5XhOYzx3H ar9pJo9zKq6lFIinq8Rww/xrSMmthNHvP/C6PCX/AD0vP+/H/wBemn40+EB1mu8/9cD/AI14LPY6 QJz5N1K0WeCxAOKuiTw5Z2X7mGee9Pdh8g/Pv+FPnkKyPdY/i54Xlh83zLtU7FoCM/Soj8Y/CPT7 Rdf+A5r55uLmS5bLHavoKr7BnvS9qx8p9GH4xeEf+fi6/wDAc1G3xi8Jf897r/wHNfO5QUbAO9Ht GHKjovGmuWviHxTdalZrIsEoUKJFAbgAdjRXPgUVDd9RjB1o9aKKQCjoaeKKKAF7j60hA9KKKAGD pS44/KiigB3Y0GiigBD/AEpG4oooAVelFFFMD//Z "/>
+<Record name="result"><Section name="default" class="default"><Field abbrev="mlibrary1ic_title" searchfield="false" sortfield="false"><Values><Value>Euthanasia in kit form / Christine Kermaire.</Value></Values><Label display="on">Title</Label></Field><Field abbrev="mlibrary1ic_author" searchfield="false" sortfield="false"><Values><Value>Kermaire, Christine.</Value></Values><Label display="on">Author</Label></Field><Field abbrev="mlibrary1ic_call_number" searchfield="false" sortfield="false"><Values><Value>N 7433.4 .K4667 E98 2011</Value></Values><Label display="on">Call Number</Label></Field><Field abbrev="mlibrary1ic_record_no" searchfield="false" sortfield="false"><Values><Value>009853265</Value></Values><Label display="on">Catalog Number</Label></Field></Section></Record></Snapshot>
+<Snapshot href="/cgi/i/image/image-idx?c=mlibrary1ic;entryid=x-010745114;viewid=010745114_1">
+    <Thumbnail src="data:image/jpeg;base64,/9j/4AAQSkZJRgABAQAAAQABAAD/2wBDAAgGBgcGBQgHBwcJCQgKDBQNDAsLDBkSEw8UHRofHh0a HBwgJC4nICIsIxwcKDcpLDAxNDQ0Hyc5PTgyPC4zNDL/2wBDAQkJCQwLDBgNDRgyIRwhMjIyMjIy MjIyMjIyMjIyMjIyMjIyMjIyMjIyMjIyMjIyMjIyMjIyMjIyMjIyMjIyMjL/wAARCABkAEIDASIA AhEBAxEB/8QAHwAAAQUBAQEBAQEAAAAAAAAAAAECAwQFBgcICQoL/8QAtRAAAgEDAwIEAwUFBAQA AAF9AQIDAAQRBRIhMUEGE1FhByJxFDKBkaEII0KxwRVS0fAkM2JyggkKFhcYGRolJicoKSo0NTY3 ODk6Q0RFRkdISUpTVFVWV1hZWmNkZWZnaGlqc3R1dnd4eXqDhIWGh4iJipKTlJWWl5iZmqKjpKWm p6ipqrKztLW2t7i5usLDxMXGx8jJytLT1NXW19jZ2uHi4+Tl5ufo6erx8vP09fb3+Pn6/8QAHwEA AwEBAQEBAQEBAQAAAAAAAAECAwQFBgcICQoL/8QAtREAAgECBAQDBAcFBAQAAQJ3AAECAxEEBSEx BhJBUQdhcRMiMoEIFEKRobHBCSMzUvAVYnLRChYkNOEl8RcYGRomJygpKjU2Nzg5OkNERUZHSElK U1RVVldYWVpjZGVmZ2hpanN0dXZ3eHl6goOEhYaHiImKkpOUlZaXmJmaoqOkpaanqKmqsrO0tba3 uLm6wsPExcbHyMnK0tPU1dbX2Nna4uPk5ebn6Onq8vP09fb3+Pn6/9oADAMBAAIRAxEAPwCGz+GI uLS3mOpBfMj3FRD0JGR36VY/4VScf8hJc7P+ePG78+lddp4M7Wtq7skaWcUgVWKlycg8jnAwP++u e1aVhHNHPdxMZDCrjyjISTyASMnkjP8APHavCnKab1/q561PNMRypJ6bbLt6HAN8KPvBdRTOBtzD 3796d/wqcbjjUY8bxjMP8Pfv1r0wL6Cq7XtuZZYI5EedB9zcMk88fXis1UqPY0eZ11vJfcv8jzof CX5lzqMeNxziH+Ht3600fCU4XOoRZ2nd+579sc121vCL25QNeXRcwl32ytHtbIGNowBjnqDWhZmV ZJraaTzjFgrIQASD2OOM8fyrWUpx6mcc2xEv+GX+R5x/wqY4/wCP+Hds/wCeP8X59KD8JyA23UIs 4G3MPfvnmvUStNI4rP20+5p/aOI7r7l/keZN8KjuO3U1254zB2/OivSsD3ope3n3F/aGI7/gv8jH /wBCOm2C3UhgcQqYp87dpwM4bpn2PX3qG4fVJkV4ndxGriOWIECVuNpI6e3PHU+lX/t9tpehW1zd vtjEcajAySSAAAKq6hrmm3UctvHcy7opdjCFNxYgEnHYgdT9PetFUs3pc4I4SdWKcb28vkVnivIZ 5HtGvyvl7RvDfM+DjqM4G7qePlrU0cSxzXCSpMSzBlkdTjaABjJ565HPPGazbWe0guJoJL65l81E j84qRHHvG7bnPUj16Uljf29mwvpZL6aKXCW6vDjcTk5XnpgflTnW5o8tioYCcZcyv/XzL+pQ3ja5 G9s7hBb/ADxpgGQbucE9CM1WaG5W6cwC7S3kZMgByxXK7mPvww9enYVow+JNLuJhHFMWcojgbT/G cAfWrV7q1lYS+XdTCNtobGM9TtH4k9vY0o13GysZzwU3KzTu9TnTLdPeiGP7WswViuUZdxLKFZj0 xtXJz/8AWp9v/aIntDOLhmEodwQxXLAKwz6DLMO3YdKuTa5p0epNMskkjBPK2RxltxL4GPXJB/Im rUOsQ3F59mjt7reuN+YuIyRkBj2NVKvppESwNVau/wDVvMu4op2TnpRXNoaanO3GhLrllZJPPJHF HEpUJ1DfKd2fXAI/4EadH4OiijjjiuNkZQxzAJy6lskA54zwD14Arbs0J06JVbaxiADAZxx1qGfT 9RlmZo9SMabQFAj6EY5/Hn8/auz2N2/esXHF1adNRjt2MlvCDPZSxPfF5WZmVjHhV3Hk7QeSR8uc 8DpirE3hSO4ay8yZdlooCQiP92eTuyue4x34xVxLO9tcTXOq5jTlsrgHjv7Zqok7W1yY7jWt4QgS DyyDxyeR+VH1dLXnHHHYmT0T/D0H2PheG11ddReYySBWyu3ALknDfgp2gVHrHhQatqMl2946ZEYV Qv3Npyce5z17ZNJJelnYjWwoznaIT8v6f5xTRdsrKf7eU9MgxHB5weceuf8AIo9gv5xrE4tT5+R3 22WxNB4Wtku1mlbzERmdEAKgHgJ0P8KjA+p9an0bR5NMFw88yTTTyF3kVCpJJJ5yT+mOlSQajbxW 8M02oK6Y2MSh+Zzznpxxnj3q9Hc28+zy5FJdd6joSvrj0qPY9LjnXrOPv7P+rDT1NFDEbjx3oo9j 5nNcZaELaQgkDEY/lSXM8wDC2lts7PlDtzuz/LGay9ZvtP0vQxd38bP8giRIx+8kLY+Rfrj9K5Cx 16383bqvhmW0t5JAiSC48xlB4yw4x+HrXQ9Hc0pU1OOt/kjujLqptmJazDsyhctwP7319BUBi1OV SwGnO4zkbc4BJzn/AD3q1Np1gtkrpA8kfUCIn5t3GePY/lVZbKwiiliWwu8PGNxGeRjpnP6U/aeS IVGHSchLeO8E6+dFpvlhcttA3E46fnTVtdQCfvLbTFK+ijk9ce3f86eLTTpGH/EvuhsXgFSAcYOP 0qGfTNNuHe4ksb1nJLnJOSevTNHtPJFqjHrOX9fM0o45XjUXAtJAWwy46KRzj1JI/KrgWNQAiqAB gYHQVgrpelsQBaXagFV6Edf/ANXX3q7Z3duXVYrOeF5AAd8ZH3RgZP0qL3CcUklFt+v/AA5ZY/Mf rRTWPzH60UXMjzv4p3E1na+HbpQRbw3e6WXsnAxn8N1ZqodWsrhBK8/mQvJHI78cjI59BxXbeKtS 02z0P7NqFut19pUqlu38WB1z2xkc9a888KXdtphkt5VIj2MqZ7Z/h+lZSqc0Lpao9TBUZuDdtD06 38R6CLG2099Rt3cqkREJJAbgdR0Gat/Y595T7MShkzu+0noDwfbivGCqxudp5B617P4d1WLVNGt5 45QzqgSUZyVYDnNKVW2ti8Zgfq8FKDvfcDZz5LC1zvyHQ3HHbB+tIbW6G11tnDx4Kj7Tndz0P5mt bdTWcIMk9Tip9uux53MzN+zTLcFxZjjhf33y4znke2T+VOsbPywskiSRuvCo0u8AYq+WIpjGl7dd hO5Cx+Y/Wio2+8frRR9Y8iOQ88+JMUn2LT7sZARmQt6ZAI/ka4a1nS4XMgw3r059q9E+JMLSeH7a Nc7TcA4H+61ed29hJetFKzi1jRAgCRF9xVeWxkcnFb0kpUtT18LiHRinJXResYJLm/itFJYyuqrx yMnFdnoVnc+B9VuVvfPmtJDtjkjT5WGMgn34NS6TpOnaDdRFpJJ73ZvV2G3A7kDpXcxulzArHDI4 7jg1xyrXfKloXjMYqllFe6VbDXItSsJbqCKQJGDw2BkgdKmklgvLZlaUR8gj5gD61KsUKxtEsaKj ZBVRgHPWoG0+0ZmYxZ3Ekncev50Qcd2ePUTb91aCNcCyjhjmO4kHc2ckACpIrlLiFHQj5lDYPUA+ tRy2dvNnfGGY4G49cDpzVaa3+x288ljEpuNh2K7kgnsOTUvla8wipc1uhaLDcaKrrcfKN/D4+YA9 6KmxR86HXb+eONZpmkVQFUMxOB6DmnrqVwQBkYHI68UUV7ThFdD3adWbWr/r7i0msXz/AHp34OR8 x/xq5BrmpxhQl7OoRtygSHg+vWiiocI9jqg29/0/yJV1zVV2bdQuRtB2/vTxnr3oGv6uoAGpXQAU oP3p6UUVm4rsdcIRe6X3L/IefEWskEf2ndcqFP709B0qNvFGuOX3apc/MQT857fy/rRRS5V2HKjT /lX3L/IkPiPWZCXOozgtycNgflRRRRyR7HM6VP8AlX3I/9k= "/>
+<Record name="result"><Section name="default" class="default"><Field abbrev="mlibrary1ic_title" searchfield="false" sortfield="false"><Values><Value>Secret recipes for the modern wife : all the dishes you'll need to make from the day you say "I do" until death (or divorce) do you part / Nava Atlas.</Value></Values><Label display="on">Title</Label></Field><Field abbrev="mlibrary1ic_author" searchfield="false" sortfield="false"><Values><Value>Atlas, Nava.</Value></Values><Label display="on">Author</Label></Field><Field abbrev="mlibrary1ic_call_number" searchfield="false" sortfield="false"><Values><Value>N 7433.4 .A855 S43 2009</Value></Values><Label display="on">Call Number</Label></Field><Field abbrev="mlibrary1ic_record_no" searchfield="false" sortfield="false"><Values><Value>010745114</Value></Values><Label display="on">Catalog Number</Label></Field></Section></Record></Snapshot>
+<Snapshot href="/cgi/i/image/image-idx?c=mlibrary1ic;entryid=x-011052279;viewid=011052279_1">
+    <Thumbnail src="data:image/jpeg;base64,/9j/4AAQSkZJRgABAQAAAQABAAD/2wBDAAgGBgcGBQgHBwcJCQgKDBQNDAsLDBkSEw8UHRofHh0a HBwgJC4nICIsIxwcKDcpLDAxNDQ0Hyc5PTgyPC4zNDL/2wBDAQkJCQwLDBgNDRgyIRwhMjIyMjIy MjIyMjIyMjIyMjIyMjIyMjIyMjIyMjIyMjIyMjIyMjIyMjIyMjIyMjIyMjL/wAARCABNAGQDASIA AhEBAxEB/8QAHwAAAQUBAQEBAQEAAAAAAAAAAAECAwQFBgcICQoL/8QAtRAAAgEDAwIEAwUFBAQA AAF9AQIDAAQRBRIhMUEGE1FhByJxFDKBkaEII0KxwRVS0fAkM2JyggkKFhcYGRolJicoKSo0NTY3 ODk6Q0RFRkdISUpTVFVWV1hZWmNkZWZnaGlqc3R1dnd4eXqDhIWGh4iJipKTlJWWl5iZmqKjpKWm p6ipqrKztLW2t7i5usLDxMXGx8jJytLT1NXW19jZ2uHi4+Tl5ufo6erx8vP09fb3+Pn6/8QAHwEA AwEBAQEBAQEBAQAAAAAAAAECAwQFBgcICQoL/8QAtREAAgECBAQDBAcFBAQAAQJ3AAECAxEEBSEx BhJBUQdhcRMiMoEIFEKRobHBCSMzUvAVYnLRChYkNOEl8RcYGRomJygpKjU2Nzg5OkNERUZHSElK U1RVVldYWVpjZGVmZ2hpanN0dXZ3eHl6goOEhYaHiImKkpOUlZaXmJmaoqOkpaanqKmqsrO0tba3 uLm6wsPExcbHyMnK0tPU1dbX2Nna4uPk5ebn6Onq8vP09fb3+Pn6/9oADAMBAAIRAxEAPwDJ8MeE 9CuvCumXVzp8ck0yZdjnnmu2/wCFaeEcD/iWL+dYXhXjwZow/wCmQ/nXo38I+lTcDlv+Fa+Ef+gY v50f8K28Jf8AQMWunoouBzH/AArfwl/0DErO134eeGINCv5odPVJI7eRlYdiFJFdxWZ4i/5FvU/+ vWX/ANBNNMD57i0DT1vxG8bumTkbyM8Z6113hjwF4f124njmt54xGoYbJjzz71hr/wAhT8T/AOgm vQvh2P8AT7z/AK5j+dW1oTcP+FOeGPS7/wC/3/1qT/hTnhf/AKfP+/3/ANavRMUmKgZ52fg54Y/6 ff8Av9/9ak/4U74Y9bz/AL/f/Wr0TFGKAPmPxtoVnoHiWawshJ5KKCN7ZNFavxRH/Fb3P+4v9aKo D0bwuMeDtF/65L/OvRiPlH0rzrwz/wAifov/AFxX+dejHoPpUdRjKKCM0AYoAKzPEY/4prU/+vWX /wBBNalZniP/AJFrVP8Ar1l/9BNCA8LH/IUH1P8A6Ca9D+Hf/H/ef9cx/OvPR/yFB9T/AOgmvQ/h 3/yEbz/rkP51q9iT0KjFOorMY3FGKWjFAHzv8Uf+R3uP9xf5minfFL/kd7j/AK5r/WiqA9C8M/8A InaL/wBcV/nXox+6PpXnPhr/AJE/Rf8Ariv869F7D6VHUYlJ9KQ0UALWb4j/AORZ1P8A69Zf/QTW jmszxH/yLWp/9esn/oJoQHh3/MUH1P8A6Ca9D+Hf/IRu/wDrkP5152P+QoP94/8AoJr0T4d/8hG7 /wCuQ/nWj2JPRaazBcZIGeBmlqG5tYbtFWZdwU7hyRg9O1QMmyKKpjToAoHz4HTLmrYAVQB0HFAH z18U/wDkeLj/AK5r/Wij4qf8jxcf9c1/rRVAegeGz/xR+i/9cV/nXopPyj6V5z4b/wCRQ0X/AK4r /OvRM/KPpUDENFFB6UAFZniP/kWtT/69ZP8A0E1pVmeIz/xTOp/9esn/AKCaEI8PH/IUH+8f/QTX ofw7/wCQldf9ch/OvO1/5Cf4n/0E16F8PD/xMrr/AK5D+daPYR6NSUZoqBhmlptJmgD58+Kn/I8X H/XNf60UnxTOfHFx/wBc1/rRTA9D8NKT4R0X/riv869DCHArwrRPiC9joljaf2aHFvGFDedjOO/3 a6IfGO7x/wAgiL/v9/8AY0uVgep7D6Uvln0ry0fGS6z/AMgiL/v9/wDY1IvxhuT/AMwiP/v9/wDY 0crA9O8s+lZXiRCPDWp8f8usn/oJrix8Xbk/8wiP/v8Af/Y1Q1z4o3N3ol7B/ZkaeZC6bvNzjIx/ do5WBx68an+J/wDQTXoHw8/5CV1/1yH868ei8SSLdCZ7ZH5yRuIzW5pnxGutImeW0sIlZhtO5yeP yq76CsfROaN1eFf8Lm1r/n0t/wDP4Un/AAubWv8An0t/8/hU2Ge67qTdXhX/AAubW/8An0tv8/hS H4y63/z6W1FgKfxSP/Fbz/8AXNf60VzfiHxFceItVa/uIkjkZApCdOKKYH//2Q== "/>
+<Record name="result"><Section name="default" class="default"><Field abbrev="mlibrary1ic_title" searchfield="false" sortfield="false"><Values><Value>Biography / [Sarah Bryant].</Value></Values><Label display="on">Title</Label></Field><Field abbrev="mlibrary1ic_author" searchfield="false" sortfield="false"><Values><Value>Bryant, Sarah (Sarah Herrick)</Value></Values><Label display="on">Author</Label></Field><Field abbrev="mlibrary1ic_call_number" searchfield="false" sortfield="false"><Values><Value>N 7433.4 .B888 B56 2010</Value></Values><Label display="on">Call Number</Label></Field><Field abbrev="mlibrary1ic_record_no" searchfield="false" sortfield="false"><Values><Value>011052279</Value></Values><Label display="on">Catalog Number</Label></Field></Section></Record></Snapshot>
+<Snapshot href="/cgi/i/image/image-idx?c=mlibrary1ic;entryid=x-011052281;viewid=011052281_1">
+    <Thumbnail src="data:image/jpeg;base64,/9j/4AAQSkZJRgABAQAAAQABAAD/2wBDAAgGBgcGBQgHBwcJCQgKDBQNDAsLDBkSEw8UHRofHh0a HBwgJC4nICIsIxwcKDcpLDAxNDQ0Hyc5PTgyPC4zNDL/2wBDAQkJCQwLDBgNDRgyIRwhMjIyMjIy MjIyMjIyMjIyMjIyMjIyMjIyMjIyMjIyMjIyMjIyMjIyMjIyMjIyMjIyMjL/wAARCABkAEMDASIA AhEBAxEB/8QAHwAAAQUBAQEBAQEAAAAAAAAAAAECAwQFBgcICQoL/8QAtRAAAgEDAwIEAwUFBAQA AAF9AQIDAAQRBRIhMUEGE1FhByJxFDKBkaEII0KxwRVS0fAkM2JyggkKFhcYGRolJicoKSo0NTY3 ODk6Q0RFRkdISUpTVFVWV1hZWmNkZWZnaGlqc3R1dnd4eXqDhIWGh4iJipKTlJWWl5iZmqKjpKWm p6ipqrKztLW2t7i5usLDxMXGx8jJytLT1NXW19jZ2uHi4+Tl5ufo6erx8vP09fb3+Pn6/8QAHwEA AwEBAQEBAQEBAQAAAAAAAAECAwQFBgcICQoL/8QAtREAAgECBAQDBAcFBAQAAQJ3AAECAxEEBSEx BhJBUQdhcRMiMoEIFEKRobHBCSMzUvAVYnLRChYkNOEl8RcYGRomJygpKjU2Nzg5OkNERUZHSElK U1RVVldYWVpjZGVmZ2hpanN0dXZ3eHl6goOEhYaHiImKkpOUlZaXmJmaoqOkpaanqKmqsrO0tba3 uLm6wsPExcbHyMnK0tPU1dbX2Nna4uPk5ebn6Onq8vP09fb3+Pn6/9oADAMBAAIRAxEAPwDjQOTS 0DDcinYrE3EAp2KAOelLjFAxpopcUd6AGnjmm5PrTzTSM0CGc+tFIZYlOGkAPpmimBLt2ncPxFPH IHoaUDNKF2nI+7/KkMAKXFSBeKu2+jald4+z6fdS56FYic/T1pAZmM0hFXLmzuLSUxXMEsDjqsqF T+RqArimBFtqCVjnYn3j1PoKsOSBgfeNMCBR79z60ARLAgUDAP1oqXBooESgVcsbGW+uFijwo6sz HhR6mqoGauW1yYoZIhxv/i6Une2gNtLQ1oHhtbtbHRrVb2/Jx50nIH0HQVm6tr2vW1xOjaiwaBjG xjO35hwQPxrtPBOiR6Vcx6pvV2I+7nI2/WsvxToFjqd/d3Wl39qsVwxmkinyNjE8kEA5GT+tRCVO 7uZWbWplW1/4svbSY3CNeRQKrPFcIHOxhkEZqhE1lqLlIj9luf8Ank5ypPseoru/BzaX4c025jmn N/fXAAPlA7VUA4UE49TXn+taYbjVXntHRGkfcqZ/HtQpRcmloJ+6roS70+5smxcRMuejdQfoaqkc VtW+pXkOnm2v0DgDADDOTWQRVRbe5pCTktSPaPSinbaKoslA9qd0FJTu1AF7T9XvdMbNtMVU9UPK n8K6/RvFNhcTKL92t27k8qfxAyK4MDvQaznTjLcTSZ7UNb8PRQbzqVlnHUOpP5DmuQ13xVpBY/YY Dcy9ncbVH9TXCUY/Os1h4phZEl1cyXczSSnJPYdB9KrGpD0pjdK32GNxRSUUwJBTh1pg4p4NAC96 WkxzSgc0AA4FBopDxQA00004/SkYUAR0Uv40UAOFPBpo+lPAoABxSj1o70uKAEzTTT/rSFcigBhp p5qTbxTcYoAZg0U/6iigRKka7sVIUUCiigBqqMgUpADYoooGAUFuaeUHFFFACGNeuKa0a5oopiGl QOMUUUUCP//Z "/>
+<Record name="result"><Section name="default" class="default"><Field abbrev="mlibrary1ic_title" searchfield="false" sortfield="false"><Values><Value>How books work / Julie Chen and Clifton Meador.</Value></Values><Label display="on">Title</Label></Field><Field abbrev="mlibrary1ic_author" searchfield="false" sortfield="false"><Values><Value>Chen, Julie.</Value></Values><Label display="on">Author</Label></Field><Field abbrev="mlibrary1ic_call_number" searchfield="false" sortfield="false"><Values><Value>N 7433.4 .C44 H68 2010</Value></Values><Label display="on">Call Number</Label></Field><Field abbrev="mlibrary1ic_record_no" searchfield="false" sortfield="false"><Values><Value>011052281</Value></Values><Label display="on">Catalog Number</Label></Field></Section></Record></Snapshot>
+<Snapshot href="/cgi/i/image/image-idx?c=mlibrary1ic;entryid=x-011052282;viewid=011052282_1">
+    <Thumbnail src="data:image/jpeg;base64,/9j/4AAQSkZJRgABAQAAAQABAAD/2wBDAAgGBgcGBQgHBwcJCQgKDBQNDAsLDBkSEw8UHRofHh0a HBwgJC4nICIsIxwcKDcpLDAxNDQ0Hyc5PTgyPC4zNDL/2wBDAQkJCQwLDBgNDRgyIRwhMjIyMjIy MjIyMjIyMjIyMjIyMjIyMjIyMjIyMjIyMjIyMjIyMjIyMjIyMjIyMjIyMjL/wAARCAA5AGQDASIA AhEBAxEB/8QAHwAAAQUBAQEBAQEAAAAAAAAAAAECAwQFBgcICQoL/8QAtRAAAgEDAwIEAwUFBAQA AAF9AQIDAAQRBRIhMUEGE1FhByJxFDKBkaEII0KxwRVS0fAkM2JyggkKFhcYGRolJicoKSo0NTY3 ODk6Q0RFRkdISUpTVFVWV1hZWmNkZWZnaGlqc3R1dnd4eXqDhIWGh4iJipKTlJWWl5iZmqKjpKWm p6ipqrKztLW2t7i5usLDxMXGx8jJytLT1NXW19jZ2uHi4+Tl5ufo6erx8vP09fb3+Pn6/8QAHwEA AwEBAQEBAQEBAQAAAAAAAAECAwQFBgcICQoL/8QAtREAAgECBAQDBAcFBAQAAQJ3AAECAxEEBSEx BhJBUQdhcRMiMoEIFEKRobHBCSMzUvAVYnLRChYkNOEl8RcYGRomJygpKjU2Nzg5OkNERUZHSElK U1RVVldYWVpjZGVmZ2hpanN0dXZ3eHl6goOEhYaHiImKkpOUlZaXmJmaoqOkpaanqKmqsrO0tba3 uLm6wsPExcbHyMnK0tPU1dbX2Nna4uPk5ebn6Onq8vP09fb3+Pn6/9oADAMBAAIRAxEAPwDgQqg9 KUY98UBqcDn+EVwn0aEwB3/WjHuaXGOcAUY9jQMOnTFJjH8X4UuOaUr360AJtBNNKinhscgkUcnv mgBm04xSFff9KcQ3c00qfSgBNo/yKaR7CnleOlNKrigkjI5op/TvmimIk54FOBbt0puRjNKATztp FoflvpSEnPrS5HVhRlRSGICWPalUHP3c/hWloSJJrVtHIqlGdQw9RkV6hNo2mRoDFYwMf93P9a2p UZVL26HLiMXGg0pJu548F/2T+VBD+h/KvW10izLf8g+3x3+Qf/FVR8WaZp1poE8tvbxJICACoqpY aUYuV1oY08wpzmoJPU8xwx60EYHrRls5NN59f1rA7xCW9BTSCe1SE+hppY+tAmM20U45J4opiFHH rSjnscfWm4P4UoHHcUikO+maUe9N2k9Dml59TQMekjRNuU4PrU3265P/AC2f86rfNSgZHXFICc3t z/z2b86a11cSLhpmKnsTUeBjpSce9AClf9omm4z60Y56mjnrzTATj0ppHoaUnNJnigQzHuPzopT9 P1opkijHrTh+NQ08dKQyXd7ZpcjHIpidaKCh4IxRk0rfdFNX71IBc+ufypOPenUnagA4+lISPX9K cPummd6AEJU9qTilPUUj/dpiYw9etFMPWimSf//Z "/>
+<Record name="result"><Section name="default" class="default"><Field abbrev="mlibrary1ic_title" searchfield="false" sortfield="false"><Values><Value>Language Möbius / Jana Sim.</Value></Values><Label display="on">Title</Label></Field><Field abbrev="mlibrary1ic_author" searchfield="false" sortfield="false"><Values><Value>Sim, Jana.</Value></Values><Label display="on">Author</Label></Field><Field abbrev="mlibrary1ic_call_number" searchfield="false" sortfield="false"><Values><Value>N 7433.4 .S58 L38 2011</Value></Values><Label display="on">Call Number</Label></Field><Field abbrev="mlibrary1ic_record_no" searchfield="false" sortfield="false"><Values><Value>011052282</Value></Values><Label display="on">Catalog Number</Label></Field></Section></Record></Snapshot>
+<Snapshot href="/cgi/i/image/image-idx?c=mlibrary1ic;entryid=x-011085367;viewid=011085367_1">
+    <Thumbnail src="data:image/jpeg;base64,/9j/4AAQSkZJRgABAQAAAQABAAD/2wBDAAgGBgcGBQgHBwcJCQgKDBQNDAsLDBkSEw8UHRofHh0a HBwgJC4nICIsIxwcKDcpLDAxNDQ0Hyc5PTgyPC4zNDL/2wBDAQkJCQwLDBgNDRgyIRwhMjIyMjIy MjIyMjIyMjIyMjIyMjIyMjIyMjIyMjIyMjIyMjIyMjIyMjIyMjIyMjIyMjL/wAARCABjAGQDASIA AhEBAxEB/8QAHwAAAQUBAQEBAQEAAAAAAAAAAAECAwQFBgcICQoL/8QAtRAAAgEDAwIEAwUFBAQA AAF9AQIDAAQRBRIhMUEGE1FhByJxFDKBkaEII0KxwRVS0fAkM2JyggkKFhcYGRolJicoKSo0NTY3 ODk6Q0RFRkdISUpTVFVWV1hZWmNkZWZnaGlqc3R1dnd4eXqDhIWGh4iJipKTlJWWl5iZmqKjpKWm p6ipqrKztLW2t7i5usLDxMXGx8jJytLT1NXW19jZ2uHi4+Tl5ufo6erx8vP09fb3+Pn6/8QAHwEA AwEBAQEBAQEBAQAAAAAAAAECAwQFBgcICQoL/8QAtREAAgECBAQDBAcFBAQAAQJ3AAECAxEEBSEx BhJBUQdhcRMiMoEIFEKRobHBCSMzUvAVYnLRChYkNOEl8RcYGRomJygpKjU2Nzg5OkNERUZHSElK U1RVVldYWVpjZGVmZ2hpanN0dXZ3eHl6goOEhYaHiImKkpOUlZaXmJmaoqOkpaanqKmqsrO0tba3 uLm6wsPExcbHyMnK0tPU1dbX2Nna4uPk5ebn6Onq8vP09fb3+Pn6/9oADAMBAAIRAxEAPwDxuw0y G5shNJK6ncVIBHbH+NWv7Ftehnl/Mf4V1nw+0OPVdDlkdc7bhl/8dWuzHg23OPk/SnysDynTvC9p f6nb2hu5l859u4Y4rpE+F+mSHC6vck9h5Y5ru7bwtDaXkNyqfNG27NbsCDyYyMcqK0hFPcls86X4 LWTAH+17g9/9WtOHwWsSP+Qvc/8Afta9UVRtpu3ngfpWnJHsK7PLT8GLIDP9r3P/AH7U0f8AClrH HGsXP/fta9RYYGSSPpVq2tBNEG4B+X17/j70KnFicrHkZ+C1p/0GJ/xiX/Gj/hS9mB/yGZ/+/Q/x r2M6cufvd/fpjPrTV09X38j5GIPX/Gn7OIudnjp+DVovP9sXB/7ZD/GqGs/CuHTdGvL2PU5ne3ia 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 FKelFFADSTgH3ozRRQA48Yo70UUAJRRRTA//2Q== "/>
+<Record name="result"><Section name="default" class="default"><Field abbrev="mlibrary1ic_title" searchfield="false" sortfield="false"><Values><Value>Good will &amp; salvation / [Laura Russell].</Value></Values><Label display="on">Title</Label></Field><Field abbrev="mlibrary1ic_author" searchfield="false" sortfield="false"><Values><Value>Russell, Laura</Value></Values><Label display="on">Author</Label></Field><Field abbrev="mlibrary1ic_call_number" searchfield="false" sortfield="false"><Values><Value>N 7433.4 .R874 G6 2011</Value></Values><Label display="on">Call Number</Label></Field><Field abbrev="mlibrary1ic_record_no" searchfield="false" sortfield="false"><Values><Value>011085367</Value></Values><Label display="on">Catalog Number</Label></Field></Section></Record></Snapshot>
+<Snapshot href="/cgi/i/image/image-idx?c=mlibrary1ic;entryid=x-011089877;viewid=011089877_1">
+    <Thumbnail src="data:image/jpeg;base64,/9j/4AAQSkZJRgABAQAAAQABAAD/2wBDAAgGBgcGBQgHBwcJCQgKDBQNDAsLDBkSEw8UHRofHh0a HBwgJC4nICIsIxwcKDcpLDAxNDQ0Hyc5PTgyPC4zNDL/2wBDAQkJCQwLDBgNDRgyIRwhMjIyMjIy MjIyMjIyMjIyMjIyMjIyMjIyMjIyMjIyMjIyMjIyMjIyMjIyMjIyMjIyMjL/wAARCABkADgDASIA AhEBAxEB/8QAHwAAAQUBAQEBAQEAAAAAAAAAAAECAwQFBgcICQoL/8QAtRAAAgEDAwIEAwUFBAQA AAF9AQIDAAQRBRIhMUEGE1FhByJxFDKBkaEII0KxwRVS0fAkM2JyggkKFhcYGRolJicoKSo0NTY3 ODk6Q0RFRkdISUpTVFVWV1hZWmNkZWZnaGlqc3R1dnd4eXqDhIWGh4iJipKTlJWWl5iZmqKjpKWm p6ipqrKztLW2t7i5usLDxMXGx8jJytLT1NXW19jZ2uHi4+Tl5ufo6erx8vP09fb3+Pn6/8QAHwEA AwEBAQEBAQEBAQAAAAAAAAECAwQFBgcICQoL/8QAtREAAgECBAQDBAcFBAQAAQJ3AAECAxEEBSEx BhJBUQdhcRMiMoEIFEKRobHBCSMzUvAVYnLRChYkNOEl8RcYGRomJygpKjU2Nzg5OkNERUZHSElK U1RVVldYWVpjZGVmZ2hpanN0dXZ3eHl6goOEhYaHiImKkpOUlZaXmJmaoqOkpaanqKmqsrO0tba3 uLm6wsPExcbHyMnK0tPU1dbX2Nna4uPk5ebn6Onq8vP09fb3+Pn6/9oADAMBAAIRAxEAPwDf8H+D 9AvPBelTy6LYSTyWyMzyQgliR1JrZk8B+HiuV8P6dn08kUeA7hG8J6NAvVLSPd7ZWumuLqCA7WkA YjpWLbKscIfBGmCYhvDWk7c85Tn8MVb/AOEC8OhCR4e03AGRuj/MVvXGr2EStNPdxRRDHzu2B+tU IPGGhTSlI9UtuOMmVcH9aXMx2KafD3w8xDt4f05F/ueVz+dJJ8PfCmAH0TTyBknEeOPwP0rdfXbY bFRvPViAWjBYDP0zTHv7K3k2MhDN1GM4Ao5hWOX1L4deEotKu5o9DtVcQsyOrNxgZzycUV0up3Vt c6NfLHISfs79iP4TRVJsllLwhO1r4G0p0RTI1pEI0J5Y7RV6S6ns7d7m+mtY4kUszc8dTWH4TDS+ GNPWaLMcdsirhTkjA/Osjxy8X/CI6s4tZ4pfLAUMjkcMMnPT7oP+NQ9WaJHlPjbxhd+JNVMrystq hKww9Aq+uPU96wINRhispoWgV5ZGXZLubKYzkAZwc+/pVKadHBwCfXioVZc8Lj3xWlhnY+GfF+p+ HrsS2s7GIn54WPyOPp/Wve9G1B9QsRqC3CSwToHQcDYO4+tfLaOzHAPAr3b4azQv4KVbyzklRZnV GVCwI6/zJrNgdZqv22XS7xkkijTymwChJIx9aKr6reziwvv9DljRbd1RCpJPB54P9PSinEiQ3wdD NJoGmStcIyC2XEag8ccE81o3Ftb6rBLbXV/HNDICGjUL0IIwO/r+tVvBaInhXTylttP2eMkcfMcC ujWygjIljsot55yqBT+dKxVz5l8V+Ep/D1w0TESrj7wXaR9Qf51gR6VcfZhdG2kEBfy/MKHaWxnG fWvqbV9I02+jkF/YwFSOpxn654Oa5a7+H+jPF5Q0+6WNXLnbdgdvQj2qrrqO/Y8M0vR7jU9Rhs7a PdLIcDPAHqSewFfRGkaRb6DpFlp0F3EjRKcyHB3MTycZ9TU2k+HtP0y3EdppEMAQ/fcK8jY75NSW 9ndPqiS3FpGYYsmMIVHOf19e1S9QM/xAl9ZaTdubjzA0TbnMHbB756+worc16WVtEvwYQF8hxyf9 k0VUUQ2YHg+4ik8P6XbwLcIRAm5xwOnqfWuuXUYUcKJC4IyCGB/KuW8KR3p8P6YMxRRC2TJUZLfK PyrqLeKYEARwbQuMjg//AFqS3GwuNOgvpFnS4lQkchGAyD/L8KitdBt7aXcJWkU9VfBFQam89vIP LlSJ2IzvGQeO35VPEJ5gAI4ywxubHBoDUfd6YtxjF5PEBnPkkL+fGaorZrYksLm8kjQH7zgj6Y/w rWWOVNoaNQB1K96Y4lJXDoADlgR2osFzN190i8N3zjPNu/Xj+E0Ua6JG0C/LbOIX9+NpoqkSzD0K 2K+GNLlieUyGBR5ayNnO3tj6D9a6PTLk7HLCfeTllkVht9hmsvwgJI/DdisjIMRIdygjOVHFbc0M 7y4EoEbDoByfqamxVyG8iNy8rrFHJJgCPecAcev41NdXkFnH5SuAUwCqYyxx0xS7YJbllcEurBhj oMYqlqtvcvdLLDtKnG3Pbse1JvQe7J4brDbmlO44JUc4FT3QWeDzFj3nkMOmapfZJkICTIrH7zNk k/5NToskMcMEsheQlnY44/H8/wBKYmZOrSqnhzU9sLRokLgAclvl60UmuxPFoeqbZOGtnOD24oqk JkXhpJW0TTSwKIluo5GcnAFdHHk5AyMHknvWPoyJb6PawSScrEoIOOuK1o5ot2BIufTNIGQzSGC5 Yb9oY7jgc1Yt8rCRK5Ykk4bHA9KhePdc+Ysyhv7pXPH51JIrscrIF/4D/wDXpAN+1QIilRxnAIGa pRXiXZaSKfIzjAHXPvVopKYyDImecHb0/WooAsMSx70YJ/FnnNMDO19duiXqMDI8kDrwPY0VV8Q3 ZkspUimCYViTjjGDxzRQmDPIIfi34ijiVRDp3yjAJgOf/QqtR/F7xFnd9n03OevkN/8AFUUVpZE3 FPxf8RKxIttNz6+U/wD8XSD4x+JA7HyNP5/6Zv8A/F0UU7ILsib4x+JiceXp+MdPKb/4qom+LniE 4/0bTQRnBEDf/FUUUuVBcq3fxT166tpIXg08K6kErAc8/wDAqKKKLILn/9k= "/>
+<Record name="result"><Section name="default" class="default"><Field abbrev="mlibrary1ic_title" searchfield="false" sortfield="false"><Values><Value>A daily reminder and memoranda of important matters / [Julie Shaw Lutts].</Value></Values><Label display="on">Title</Label></Field><Field abbrev="mlibrary1ic_author" searchfield="false" sortfield="false"><Values><Value>Lutts, Julie Shaw.</Value></Values><Label display="on">Author</Label></Field><Field abbrev="mlibrary1ic_call_number" searchfield="false" sortfield="false"><Values><Value>N 7433.4 .L88 D35 2010</Value></Values><Label display="on">Call Number</Label></Field><Field abbrev="mlibrary1ic_record_no" searchfield="false" sortfield="false"><Values><Value>011089877</Value></Values><Label display="on">Catalog Number</Label></Field></Section></Record></Snapshot>
+<Snapshot href="/cgi/i/image/image-idx?c=mlibrary1ic;entryid=x-011093146;viewid=011093146_1">
+    <Thumbnail src="data:image/jpeg;base64,/9j/4AAQSkZJRgABAQAAAQABAAD/2wBDAAgGBgcGBQgHBwcJCQgKDBQNDAsLDBkSEw8UHRofHh0a HBwgJC4nICIsIxwcKDcpLDAxNDQ0Hyc5PTgyPC4zNDL/2wBDAQkJCQwLDBgNDRgyIRwhMjIyMjIy MjIyMjIyMjIyMjIyMjIyMjIyMjIyMjIyMjIyMjIyMjIyMjIyMjIyMjIyMjL/wAARCABkADsDASIA AhEBAxEB/8QAHwAAAQUBAQEBAQEAAAAAAAAAAAECAwQFBgcICQoL/8QAtRAAAgEDAwIEAwUFBAQA AAF9AQIDAAQRBRIhMUEGE1FhByJxFDKBkaEII0KxwRVS0fAkM2JyggkKFhcYGRolJicoKSo0NTY3 ODk6Q0RFRkdISUpTVFVWV1hZWmNkZWZnaGlqc3R1dnd4eXqDhIWGh4iJipKTlJWWl5iZmqKjpKWm p6ipqrKztLW2t7i5usLDxMXGx8jJytLT1NXW19jZ2uHi4+Tl5ufo6erx8vP09fb3+Pn6/8QAHwEA AwEBAQEBAQEBAQAAAAAAAAECAwQFBgcICQoL/8QAtREAAgECBAQDBAcFBAQAAQJ3AAECAxEEBSEx BhJBUQdhcRMiMoEIFEKRobHBCSMzUvAVYnLRChYkNOEl8RcYGRomJygpKjU2Nzg5OkNERUZHSElK U1RVVldYWVpjZGVmZ2hpanN0dXZ3eHl6goOEhYaHiImKkpOUlZaXmJmaoqOkpaanqKmqsrO0tba3 uLm6wsPExcbHyMnK0tPU1dbX2Nna4uPk5ebn6Onq8vP09fb3+Pn6/9oADAMBAAIRAxEAPwDyoUyU 4UAd6eKdBE897FGiMx3DIUZ4zQ3ZXBK7sRi0uSoZbeUr6hDio2jkQ4ZGX6jFe3aNaQ/YIxuO4KMg npVuWzhmZl3BvbjiuL66l0On6t5nguefQ08cjPavarrw9YvCWmt4XJH8UYNeYeJtNi02/CQoERxn A6VrSxMakuXqZzouKuc+aSnEdabg9hXSYloV0Xga2S78RsjruCxFuvuK50V1vw4QHVb2bgbYgPzP /wBascQ7U2aUleaO21dYtMtTcKzgnCpGoyWJ7Cs2xsdWVlu7m5kVyciJGwAPQ+tadkG1PUJb2Rg1 vCxjtx2z0Zv6VcuWKDEalieAR/D7mvNc7e6dyV9Stp+sJfGW3k4nQnIzn5ema4bx7GFvLZh0Kt/S t/T1uV8RyW6OBFGpd1AGceue3J6VkfEGPD2TcYO4cfhV0YKGIjbqRUd6TucIy0zbUxFNx9a9U4CQ da2vDovIkdLbKG6cxCTPQAZJx9DWKOtbfh+/83VrS1jxEYjhmOCDuPJ/Ksq3wGlL4j0uwubKw0iN XPkJAoVt/G047/nUllfLfWySxjcjbsv0wQccDvVC6m0sF47y8QxsODGwyrdiV79BV6wuIZYlFmIn ty5AkV88Yzk+hz2ryWlbm6nfrsY+m28kV1fXTbyxk3FnG07AMAEfr0rF8eyrLb2DKcjLkEemBXVS aet1O8rBvP8ALCvschVHXHuea4/x7thgsk2kbWK8+mB/hW9KSlWizOomqbOO4pKXik/H9K9Q4AZg vWtTwLZLqOt3KSj5eM+o5PSq1rp6XiSvJdCEIPlG3duNdF4b0d9KkWV5F82ZFkYqfu5zgfkK58RK 0GlubUVeaNaXwxaWXibT4ftbiCdiWRo9xc9lHPU9OTXYa5pGk6be2kMNqtokyFmWN/4uwYZPv+Vc 9LpsGoXtnPfX8tpawvuLqDuOOcLjoeOvaul1f/hGtQ0m7nnNxFOkXmwXYcs784XnuNxxjHrWFOPt KdpPU1m+SascumtXK+I5dPsLV5kCgBFXPp8xrG+IcOpLb25vLCW3j83dGzKQCMc81r+EJtWv7+ae ztgVkjQLPIi7ExywJ6k/jXW/ErSdT1jwoIdOtBPho3kC7QwK5DEDPOc9qulQipKXVCqVXZxPBByP 8aKsahYXWl6hLY3iBJowpwDwQQCD+tQV2HKWbC6gsr5JrpJJIVILRI2A+Ox9RWrHq9guszPcTzx6 dIcn7OmWI6gDJ4rAIDda6HS9Djn09Lxwsqn7w7L7VjV5Y+8zaknLRHUR+OdF1vVLK3l09ktrWRVt 1uJMRlADlnx0PTs1XPF/jZfEunSWdtpMsFpH/qikfLN65IG1fwyaxk0aMSROqINhzhVxXR2lkCN2 cgcYPGK5pYpL4Ubqh3Zg2mta5dQQad9kEFlaxLGqROYjIe7MVHPrjOK6fS/GWqaFoZtZ9PlnnaXA uDO0gAJO35SO2RwDzU0dtFZwsUHLHkn0rNvsXUa2pL4kDbgP7uP/ANVRHFSb20HKhGxB8S7LSRod pqNw0I8Q3JVpxE+e3Ix6DivK60NViMU0Ks0RZYtreX7Ejn3xis/Ar0VscT3Gt901b0jU5tPuQPMb 7O5/ex5yCPXHrVQ9MVGQR1oaTVmCbTuj1WGB7W1WeNjJHt3kdMg45H4Vs2satEH85UycYPUV5jpP im4tPJtrrElmp7L8yD2Pp7VrHxVZWLlYGkmTnAQAAEnPU/4V58sPK9rXO2NaLV7ne3lzBDaSbpUY opbaD8xH0/GuEl8ZwW8U6xRtLd7iisRhcZ9R1rHn8W3jpLFbwxRRyoUYsN7nPHLGsERnOc1rSwyX xGVSv/KPYlmJY5LHJNFHvSZHeuw5g70jfdoooAjNHeiigB0fX8KkNFFACU8DI60UUAf/2Q== "/>
+<Record name="result"><Section name="default" class="default"><Field abbrev="mlibrary1ic_title" searchfield="false" sortfield="false"><Values><Value>[How stories are born / Mia Leijonstedt].</Value></Values><Label display="on">Title</Label></Field><Field abbrev="mlibrary1ic_author" searchfield="false" sortfield="false"><Values><Value>Leijonstedt, Mia.</Value></Values><Label display="on">Author</Label></Field><Field abbrev="mlibrary1ic_call_number" searchfield="false" sortfield="false"><Values><Value>N 7433.4 .L453 H6 2000z</Value></Values><Label display="on">Call Number</Label></Field><Field abbrev="mlibrary1ic_record_no" searchfield="false" sortfield="false"><Values><Value>011093146</Value></Values><Label display="on">Catalog Number</Label></Field></Section></Record></Snapshot>
+<Snapshot href="/cgi/i/image/image-idx?c=mlibrary1ic;entryid=x-011094013;viewid=011094013_1">
+    <Thumbnail src="data:image/jpeg;base64,/9j/4AAQSkZJRgABAQAAAQABAAD/2wBDAAgGBgcGBQgHBwcJCQgKDBQNDAsLDBkSEw8UHRofHh0a HBwgJC4nICIsIxwcKDcpLDAxNDQ0Hyc5PTgyPC4zNDL/2wBDAQkJCQwLDBgNDRgyIRwhMjIyMjIy MjIyMjIyMjIyMjIyMjIyMjIyMjIyMjIyMjIyMjIyMjIyMjIyMjIyMjIyMjL/wAARCABjAGQDASIA AhEBAxEB/8QAHwAAAQUBAQEBAQEAAAAAAAAAAAECAwQFBgcICQoL/8QAtRAAAgEDAwIEAwUFBAQA AAF9AQIDAAQRBRIhMUEGE1FhByJxFDKBkaEII0KxwRVS0fAkM2JyggkKFhcYGRolJicoKSo0NTY3 ODk6Q0RFRkdISUpTVFVWV1hZWmNkZWZnaGlqc3R1dnd4eXqDhIWGh4iJipKTlJWWl5iZmqKjpKWm p6ipqrKztLW2t7i5usLDxMXGx8jJytLT1NXW19jZ2uHi4+Tl5ufo6erx8vP09fb3+Pn6/8QAHwEA AwEBAQEBAQEBAQAAAAAAAAECAwQFBgcICQoL/8QAtREAAgECBAQDBAcFBAQAAQJ3AAECAxEEBSEx BhJBUQdhcRMiMoEIFEKRobHBCSMzUvAVYnLRChYkNOEl8RcYGRomJygpKjU2Nzg5OkNERUZHSElK U1RVVldYWVpjZGVmZ2hpanN0dXZ3eHl6goOEhYaHiImKkpOUlZaXmJmaoqOkpaanqKmqsrO0tba3 uLm6wsPExcbHyMnK0tPU1dbX2Nna4uPk5ebn6Onq8vP09fb3+Pn6/9oADAMBAAIRAxEAPwDmfAfg 7SNa8NvqN7A8sy3DRj94QuAB2H1rUvPAHh+CEyCCcHd0EpIAq58K33+BZowBlb1znP8AsJXQX8Y+ wzc9MfzrzK1WaqNJnp0aUHTTaOLfwNoU33Y5IyR/C5qFPhvpIzvubk5HHIGP0rrY1G0HaM9qVjzj tWCxFVfaNXh6T6HNx/C3R5IPMF9cjnGMqT/Kobj4aaQFHl3F2pHB5U5/Suvt3KLg9M5qzMA0e4dT VfWKn8wvq1PseeR/DrTjIQ91dAL1+7z+lPi+HmkTByLm7XnI5XgenSu4RAM5FVB8hZPQ0fWKv8w/ q9LscdL8P9HRtoubvnvuX/CnJ4A0mQAeZcrjqQw5/Supmj3uCOtWbeLamSOaTxFX+YPq9L+U5hPh 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 "/>
+<Record name="result"><Section name="default" class="default"><Field abbrev="mlibrary1ic_title" searchfield="false" sortfield="false"><Values><Value>Skin / Jennifer Hines.</Value></Values><Label display="on">Title</Label></Field><Field abbrev="mlibrary1ic_author" searchfield="false" sortfield="false"><Values><Value>Hines, Jennifer.</Value></Values><Label display="on">Author</Label></Field><Field abbrev="mlibrary1ic_call_number" searchfield="false" sortfield="false"><Values><Value>N 7433.4 .H564 S55 2004</Value></Values><Label display="on">Call Number</Label></Field><Field abbrev="mlibrary1ic_record_no" searchfield="false" sortfield="false"><Values><Value>011094013</Value></Values><Label display="on">Catalog Number</Label></Field></Section></Record></Snapshot>
+<Snapshot href="/cgi/i/image/image-idx?c=mlibrary1ic;entryid=x-011155135;viewid=011155135_1">
+    <Thumbnail src="data:image/jpeg;base64,/9j/4AAQSkZJRgABAQAAAQABAAD/2wBDAAgGBgcGBQgHBwcJCQgKDBQNDAsLDBkSEw8UHRofHh0a HBwgJC4nICIsIxwcKDcpLDAxNDQ0Hyc5PTgyPC4zNDL/2wBDAQkJCQwLDBgNDRgyIRwhMjIyMjIy MjIyMjIyMjIyMjIyMjIyMjIyMjIyMjIyMjIyMjIyMjIyMjIyMjIyMjIyMjL/wAARCABkAFgDASIA AhEBAxEB/8QAHwAAAQUBAQEBAQEAAAAAAAAAAAECAwQFBgcICQoL/8QAtRAAAgEDAwIEAwUFBAQA AAF9AQIDAAQRBRIhMUEGE1FhByJxFDKBkaEII0KxwRVS0fAkM2JyggkKFhcYGRolJicoKSo0NTY3 ODk6Q0RFRkdISUpTVFVWV1hZWmNkZWZnaGlqc3R1dnd4eXqDhIWGh4iJipKTlJWWl5iZmqKjpKWm p6ipqrKztLW2t7i5usLDxMXGx8jJytLT1NXW19jZ2uHi4+Tl5ufo6erx8vP09fb3+Pn6/8QAHwEA AwEBAQEBAQEBAQAAAAAAAAECAwQFBgcICQoL/8QAtREAAgECBAQDBAcFBAQAAQJ3AAECAxEEBSEx BhJBUQdhcRMiMoEIFEKRobHBCSMzUvAVYnLRChYkNOEl8RcYGRomJygpKjU2Nzg5OkNERUZHSElK U1RVVldYWVpjZGVmZ2hpanN0dXZ3eHl6goOEhYaHiImKkpOUlZaXmJmaoqOkpaanqKmqsrO0tba3 uLm6wsPExcbHyMnK0tPU1dbX2Nna4uPk5ebn6Onq8vP09fb3+Pn6/9oADAMBAAIRAxEAPwDyOMAn 97naBkj3rQ0qaBbpXKEbXVl564OQDWbwCrNyCM4/Hoa2dPksZEaO4QxOfuMnOT9KctiorU3NS0e2 TRb2REPmeeyxgHoOoz/wGuGPVSDhs16pq+kh7ODULd90dxYlwjHOWVCCce20V5bIMMwI71EHcuqk noNJOck5zjmjq3y5/CjOOTjiremwfadTtIAMtJKqgepJ/wD1VZkiGdPLuGTJIU4Of1qIY3cjtmtv XtllqtxDGqlvMO5ioPOaZosaS/bXePf5cRkJIz6D+tF9LlNa2MfGQRzyfXvQDnOfWp4buS2mZojt QnJQjIYehFX9WtIIVhuYQViuIxLGvpyQw/Ag49sUCtoZS5BHPTgUV0uhafaXej380ijzbYCQ5Gc9 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 "/>
+<Record name="result"><Section name="default" class="default"><Field abbrev="mlibrary1ic_title" searchfield="false" sortfield="false"><Values><Value>Resilience of Al-Mutanabbi Street / Christine Kermaire.</Value></Values><Label display="on">Title</Label></Field><Field abbrev="mlibrary1ic_author" searchfield="false" sortfield="false"><Values><Value>Kermaire, Christine.</Value></Values><Label display="on">Author</Label></Field><Field abbrev="mlibrary1ic_call_number" searchfield="false" sortfield="false"><Values><Value>N 7433.4 .K4667 R47 2011</Value></Values><Label display="on">Call Number</Label></Field><Field abbrev="mlibrary1ic_record_no" searchfield="false" sortfield="false"><Values><Value>011155135</Value></Values><Label display="on">Catalog Number</Label></Field></Section></Record></Snapshot>
+<Snapshot href="/cgi/i/image/image-idx?c=mlibrary1ic;entryid=x-011214470;viewid=011214470_1">
+    <Thumbnail src="data:image/jpeg;base64,/9j/4AAQSkZJRgABAQAAAQABAAD/2wBDAAgGBgcGBQgHBwcJCQgKDBQNDAsLDBkSEw8UHRofHh0a HBwgJC4nICIsIxwcKDcpLDAxNDQ0Hyc5PTgyPC4zNDL/2wBDAQkJCQwLDBgNDRgyIRwhMjIyMjIy MjIyMjIyMjIyMjIyMjIyMjIyMjIyMjIyMjIyMjIyMjIyMjIyMjIyMjIyMjL/wAARCABkAEgDASIA AhEBAxEB/8QAHwAAAQUBAQEBAQEAAAAAAAAAAAECAwQFBgcICQoL/8QAtRAAAgEDAwIEAwUFBAQA AAF9AQIDAAQRBRIhMUEGE1FhByJxFDKBkaEII0KxwRVS0fAkM2JyggkKFhcYGRolJicoKSo0NTY3 ODk6Q0RFRkdISUpTVFVWV1hZWmNkZWZnaGlqc3R1dnd4eXqDhIWGh4iJipKTlJWWl5iZmqKjpKWm p6ipqrKztLW2t7i5usLDxMXGx8jJytLT1NXW19jZ2uHi4+Tl5ufo6erx8vP09fb3+Pn6/8QAHwEA AwEBAQEBAQEBAQAAAAAAAAECAwQFBgcICQoL/8QAtREAAgECBAQDBAcFBAQAAQJ3AAECAxEEBSEx BhJBUQdhcRMiMoEIFEKRobHBCSMzUvAVYnLRChYkNOEl8RcYGRomJygpKjU2Nzg5OkNERUZHSElK U1RVVldYWVpjZGVmZ2hpanN0dXZ3eHl6goOEhYaHiImKkpOUlZaXmJmaoqOkpaanqKmqsrO0tba3 uLm6wsPExcbHyMnK0tPU1dbX2Nna4uPk5ebn6Onq8vP09fb3+Pn6/9oADAMBAAIRAxEAPwDrPD8e NIhGPX+da6iszQAf7Hg47H+da60nuJbCqtPC0KKcKQCbaMU7NGaBjSKYVzUlNNAELLxRUhFFAGXo SgaPbjvg/wA61AKoaMmNJgz6H+daIFN7krYUCnUgFRTW3nlT5sqEAj5Gx1pDJe/SlxxVU2WTn7Vc dc/foFjtwPtNxgHpvoAsgUhHNSYFGM0DIiKKeRRQBn6MP+JVAPb+tX8VQ0Yf8Sq39dv9a0QMU3uJ bAAeAOlL7UCnUgG4pcUppOlACdKQ040hOaBjWNFIRRQBR0cY0m3HotaArP0k/wDErt/92rwpvcSJ BTqYDTs1IBRRR2oGJTSaU8000AIelFIelFMClpf/ACDYP92rveqWmDGnw/7tXPah7iQ8GnA00dKW kA7NGaYDS5oGKaYeDS5ppNMBCeKKQ9KKAKWmt/xLoP8AdFXVqjpx/wBAg/3BV4Gm9xIeKWkBpetI BM89KXqKO9FACGmnk07OKYWoAa3AoprNxRQMz9MOdOt/9wVoL0oopiH+9PB4oopAL3pM80UUANJ5 qMk5oooAYTRRRQwP/9k= "/>
+<Record name="result"><Section name="default" class="default"><Field abbrev="mlibrary1ic_title" searchfield="false" sortfield="false"><Values><Value>Facts on the ground : excerpts / Toby Millman.</Value></Values><Label display="on">Title</Label></Field><Field abbrev="mlibrary1ic_author" searchfield="false" sortfield="false"><Values><Value>Millman, Toby.</Value></Values><Label display="on">Author</Label></Field><Field abbrev="mlibrary1ic_call_number" searchfield="false" sortfield="false"><Values><Value>DS 113.7 .M553 2011</Value></Values><Label display="on">Call Number</Label></Field><Field abbrev="mlibrary1ic_record_no" searchfield="false" sortfield="false"><Values><Value>011214470</Value></Values><Label display="on">Catalog Number</Label></Field></Section></Record></Snapshot>
+<Snapshot href="/cgi/i/image/image-idx?c=mlibrary1ic;entryid=x-011350163;viewid=011350163_1">
+    <Thumbnail src="data:image/jpeg;base64,/9j/4AAQSkZJRgABAQAAAQABAAD/2wBDAAgGBgcGBQgHBwcJCQgKDBQNDAsLDBkSEw8UHRofHh0a HBwgJC4nICIsIxwcKDcpLDAxNDQ0Hyc5PTgyPC4zNDL/2wBDAQkJCQwLDBgNDRgyIRwhMjIyMjIy MjIyMjIyMjIyMjIyMjIyMjIyMjIyMjIyMjIyMjIyMjIyMjIyMjIyMjIyMjL/wAARCAA6AGQDASIA AhEBAxEB/8QAHwAAAQUBAQEBAQEAAAAAAAAAAAECAwQFBgcICQoL/8QAtRAAAgEDAwIEAwUFBAQA AAF9AQIDAAQRBRIhMUEGE1FhByJxFDKBkaEII0KxwRVS0fAkM2JyggkKFhcYGRolJicoKSo0NTY3 ODk6Q0RFRkdISUpTVFVWV1hZWmNkZWZnaGlqc3R1dnd4eXqDhIWGh4iJipKTlJWWl5iZmqKjpKWm p6ipqrKztLW2t7i5usLDxMXGx8jJytLT1NXW19jZ2uHi4+Tl5ufo6erx8vP09fb3+Pn6/8QAHwEA AwEBAQEBAQEBAQAAAAAAAAECAwQFBgcICQoL/8QAtREAAgECBAQDBAcFBAQAAQJ3AAECAxEEBSEx BhJBUQdhcRMiMoEIFEKRobHBCSMzUvAVYnLRChYkNOEl8RcYGRomJygpKjU2Nzg5OkNERUZHSElK U1RVVldYWVpjZGVmZ2hpanN0dXZ3eHl6goOEhYaHiImKkpOUlZaXmJmaoqOkpaanqKmqsrO0tba3 uLm6wsPExcbHyMnK0tPU1dbX2Nna4uPk5ebn6Onq8vP09fb3+Pn6/9oADAMBAAIRAxEAPwDpVB9D Un3h8wJpBIhA/eLz2zS5zjBGPY13nnAoCjGTilJIGQKVhleo/OhQu0LuXr60hCc+tDEkdOnel3Kp 5K49qQuHGVApgAJPbkUFSTjpT0YAZIB/GkeVSwxgY96AEAKnv7UjAjBzQZgeCR+dKxVm5OfoaAGE kYIwce9DKfKiz1ILH8//AK1KcdgMU8jIGSOBjrSGRKFC0UcDvRRYDlTIVZiWYAHAFRJNLyWkIHpn FPKnqRyRmoWPGAOpr0LI0Fe5lAbazE445piTTPGFMjgg/wB6m4+c+/apUUKxYg4XrjvTsgBZZmAx I+ec804TzqTiZ8Af3qiSTG5vUYqNiQQMD0osgLR1C4RRiXJHrUi6pdfKW2Nz3WqT4ZgMZ6fypzfM flOMDNLlj2FYuSajJv4jTjvg9ajfVZwSyYyfQVAcsuFH1NRS5jfbxheD9aXJHsFjRGsXIjGDg+tR TardOwxIy5GcVWRQwbngAmmFgu4HqelHJHsOyLJ1G5jJUyvn60VC6j5SV5KjPFFHLELFl3JxnoBi oDJyShwMd6A5ckkYGKRdmAuD3NUAsbkvnHI5NPJcwNg4Yng1GqlC5Jzxxn1p0jBWQA5XHb1xQAhP zIOOeDUalWYlgp54zRj5kYcEnODTWdVAB49KYD1BQhgBg5OKM4TIxnGaYzkw5B+lJscBQMnPWkBM MhyV444pCgDbfvEcmmbwW2gcZz+FSM3UrxuGSf8AP40wBv3T7evQ1E2Gy3r3zUjsJpPT5QKQRHbk jA6c0ASQZePO0fiaKYVlU4QjAA4opDERgAu70NDvkn06VVDMWHJ/OpW/1jfU0hEoBKgZB9eaVxtg BxwSRkVCT87fhTsnyOv8dMBU+bYo+96+9JIvmKGYdCOB2qSMDPTv/Skf/UP/ANdF/rQA2YEBFA4w OPTNN837uPTmmzE/aG57imScAY4pgS7hsPHJOOntSp0U8gE00cg/X+lJJzwfT+lACxqykAE56Yx3 qaWZpGJByqgAfSmSH55T38sf0qNPvL9BQBLjfzyT3oqSMA7s+tFAH//Z "/>
+<Record name="result"><Section name="default" class="default"><Field abbrev="mlibrary1ic_title" searchfield="false" sortfield="false"><Values><Value>True as earth, strong as water / [designed, printed, and bound by Shu-Ju Wang].</Value></Values><Label display="on">Title</Label></Field><Field abbrev="mlibrary1ic_author" searchfield="false" sortfield="false"><Values><Value>Wang, Shu-Ju.</Value></Values><Label display="on">Author</Label></Field><Field abbrev="mlibrary1ic_call_number" searchfield="false" sortfield="false"><Values><Value>N 7433.4 .W36 T78 2011</Value></Values><Label display="on">Call Number</Label></Field><Field abbrev="mlibrary1ic_record_no" searchfield="false" sortfield="false"><Values><Value>011350163</Value></Values><Label display="on">Catalog Number</Label></Field></Section></Record></Snapshot>
+<Snapshot href="/cgi/i/image/image-idx?c=mlibrary1ic;entryid=x-011357764;viewid=011357764_1">
+    <Thumbnail src="data:image/jpeg;base64,/9j/4AAQSkZJRgABAQAAAQABAAD/2wBDAAgGBgcGBQgHBwcJCQgKDBQNDAsLDBkSEw8UHRofHh0a HBwgJC4nICIsIxwcKDcpLDAxNDQ0Hyc5PTgyPC4zNDL/2wBDAQkJCQwLDBgNDRgyIRwhMjIyMjIy MjIyMjIyMjIyMjIyMjIyMjIyMjIyMjIyMjIyMjIyMjIyMjIyMjIyMjIyMjL/wAARCABkAE8DASIA AhEBAxEB/8QAHwAAAQUBAQEBAQEAAAAAAAAAAAECAwQFBgcICQoL/8QAtRAAAgEDAwIEAwUFBAQA AAF9AQIDAAQRBRIhMUEGE1FhByJxFDKBkaEII0KxwRVS0fAkM2JyggkKFhcYGRolJicoKSo0NTY3 ODk6Q0RFRkdISUpTVFVWV1hZWmNkZWZnaGlqc3R1dnd4eXqDhIWGh4iJipKTlJWWl5iZmqKjpKWm p6ipqrKztLW2t7i5usLDxMXGx8jJytLT1NXW19jZ2uHi4+Tl5ufo6erx8vP09fb3+Pn6/8QAHwEA AwEBAQEBAQEBAQAAAAAAAAECAwQFBgcICQoL/8QAtREAAgECBAQDBAcFBAQAAQJ3AAECAxEEBSEx BhJBUQdhcRMiMoEIFEKRobHBCSMzUvAVYnLRChYkNOEl8RcYGRomJygpKjU2Nzg5OkNERUZHSElK U1RVVldYWVpjZGVmZ2hpanN0dXZ3eHl6goOEhYaHiImKkpOUlZaXmJmaoqOkpaanqKmqsrO0tba3 uLm6wsPExcbHyMnK0tPU1dbX2Nna4uPk5ebn6Onq8vP09fb3+Pn6/9oADAMBAAIRAxEAPwCWyuTf 319HamOJrmPy2BBUfLgZCnkZFTfblhh8kxSHaqpkDrgAf0rG1C3aSbzoVAEfyO+ep9Pwrs4llhso ckj92p9eCK9JrlejPJk1OKujnhdQgt/o0uG5NULm9Zo18tG3K3BIrvI4ne3YlmyRwM5ycU0GAEbY x854B7f4dKPaszVOJwy6gdmWgcYP8IyKoyXd0bhniGwbMYPIPJ616O0DNjbgBj82cUhgt47mGNkB Rs5B70nWKjCCd7Hn/wDaFz9mjieL5ASSATiohLcSM+6MqjDCgAnH516ZNEknHlIABgADoKi8leFN L2w/d7HC6VY/apBFKHjXbku4yD0qzcf2XFp8sNsDJetIRI0i8EA9j09K3fEY/wCJO3AGGXGPrXNR 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 7mkfhR//2Q== "/>
+<Record name="result"><Section name="default" class="default"><Field abbrev="mlibrary1ic_title" searchfield="false" sortfield="false"><Values><Value>Gretchen E. Henderson presents Galerie De Difformité : &amp; other exhumed exhibits: a declassified catalogue.</Value></Values><Label display="on">Title</Label></Field><Field abbrev="mlibrary1ic_author" searchfield="false" sortfield="false"><Values><Value>Henderson, Gretchen E.</Value></Values><Label display="on">Author</Label></Field><Field abbrev="mlibrary1ic_call_number" searchfield="false" sortfield="false"><Values><Value>PS 3608 .E52595 G35 2011</Value></Values><Label display="on">Call Number</Label></Field><Field abbrev="mlibrary1ic_record_no" searchfield="false" sortfield="false"><Values><Value>011357764</Value></Values><Label display="on">Catalog Number</Label></Field></Section></Record></Snapshot>
+<Snapshot href="/cgi/i/image/image-idx?c=mlibrary1ic;entryid=x-011472218;viewid=011472218_1">
+    <Thumbnail src="data:image/jpeg;base64,/9j/4AAQSkZJRgABAQAAAQABAAD/2wBDAAgGBgcGBQgHBwcJCQgKDBQNDAsLDBkSEw8UHRofHh0a HBwgJC4nICIsIxwcKDcpLDAxNDQ0Hyc5PTgyPC4zNDL/2wBDAQkJCQwLDBgNDRgyIRwhMjIyMjIy MjIyMjIyMjIyMjIyMjIyMjIyMjIyMjIyMjIyMjIyMjIyMjIyMjIyMjIyMjL/wAARCABkAEUDASIA AhEBAxEB/8QAHwAAAQUBAQEBAQEAAAAAAAAAAAECAwQFBgcICQoL/8QAtRAAAgEDAwIEAwUFBAQA AAF9AQIDAAQRBRIhMUEGE1FhByJxFDKBkaEII0KxwRVS0fAkM2JyggkKFhcYGRolJicoKSo0NTY3 ODk6Q0RFRkdISUpTVFVWV1hZWmNkZWZnaGlqc3R1dnd4eXqDhIWGh4iJipKTlJWWl5iZmqKjpKWm p6ipqrKztLW2t7i5usLDxMXGx8jJytLT1NXW19jZ2uHi4+Tl5ufo6erx8vP09fb3+Pn6/8QAHwEA AwEBAQEBAQEBAQAAAAAAAAECAwQFBgcICQoL/8QAtREAAgECBAQDBAcFBAQAAQJ3AAECAxEEBSEx BhJBUQdhcRMiMoEIFEKRobHBCSMzUvAVYnLRChYkNOEl8RcYGRomJygpKjU2Nzg5OkNERUZHSElK U1RVVldYWVpjZGVmZ2hpanN0dXZ3eHl6goOEhYaHiImKkpOUlZaXmJmaoqOkpaanqKmqsrO0tba3 uLm6wsPExcbHyMnK0tPU1dbX2Nna4uPk5ebn6Onq8vP09fb3+Pn6/9oADAMBAAIRAxEAPwDxzS9D i1CyE7TOjbiMADFXx4TtyP8Aj5k/IVP4a/5BQ/66GtsGvOq16im0mfXYLLsNUoQnKF215/5nO/8A CJQf8/Mn/fIo/wCESh/5+pP++RXSYzSgcVn9Yqdzr/snB/yfn/mc1/wiMJ/5epP++RTh4PhP/L1J /wB8iukxj/8AXS9BR9Yqdw/snB/yfn/mc3/wiFuOt1KfwFH/AAilmv3ppz9CP8K6Q/55qJxR9Yqd xf2XhF9hfj/mcJrVjBp94kMG8qYwxLkE5yfairHif/kKJ/1yH8zRXpUm3BNnyONhGniJwirJM1/D X/IK/wC2h/pW6oNYfhj/AJBX/bQ/0rdDV5df+Iz7PLl/stP0Q7pRmkzSVkd4/NJmkpKAsG6mMaUm mnmmQzjvE5zqi/8AXIfzNFHib/kKL/1yH8zRXrUf4aPgsx/3up6/5Gv4Z/5BR/66N/IVuAZrD8Ln /iVH/rof5CtwV51f+Iz7PLf90p+g8YopuaM1idwuaTNITSE8UCAmmE0pNMY1SIZyPibnU1/65D+Z opPEfOpL/wBcx/M0V61H+Gj4PMP96qev+Rr+GT/xKz/11P8AIVtg1h+Gf+QWf+up/kK2682v/EZ9 hlv+6U/QdnijdTaKyO644npSGm54pCaBNik0xjRnmmt1qkiGzlPEX/ISX/rmP5mik8Rf8hJf+uY/ maK9Wl8CPhMw/wB6qepr+Gj/AMStv+up/kK2s8Vh+Gv+QY3/AF1P8hW0DxXnVv4jPr8uf+yU/T/M dmkzzRRWR23EzSE0HFJTFcSkNKaYTTRDZyviL/kJD/rmP5mik8Q/8hIf9cx/M0V6lL4EfDY//eqn qa/hr/kGt/11P8hW1WJ4b/5Brf8AXU/yFbIJrz638Rn1uXv/AGWn6f5j6KSkzWR23A00mgmmk07E tik0wmgmmk00Q2cv4g/5CQ/65j+Zoo14kaiOP+WY6j3NFenS+BHxOO/3mfqUYr25t08uGd0XOcKc c0/+077/AJ+5v++zRRV8qfQxVWolZSf3v/MP7Uvv+fub/vs0n9pX3/P3N/32aKKXLHsP21X+Z/e/ 8xP7Rvf+fuf/AL+Gj+0L3/n7m/77NFFPlj2F7ap/M/vf+Yn9oXn/AD9Tf99mlGo3o/5epv8Avs0U Ucq7B7Wp/M/vf+ZFNPNcOHmleRgMAsc8UUUUyG29Wf/Z "/>
+<Record name="result"><Section name="default" class="default"><Field abbrev="mlibrary1ic_title" searchfield="false" sortfield="false"><Values><Value>Hand, voice &amp; vision : artists' books from Women's Studio Workshop / curated by Kathleen Walkup.</Value></Values><Label display="on">Title</Label></Field><Field abbrev="mlibrary1ic_author" searchfield="false" sortfield="false"><Values><Value>Walkup, Kathy</Value></Values><Label display="on">Author</Label></Field><Field abbrev="mlibrary1ic_call_number" searchfield="false" sortfield="false"><Values><Value>N7433.4 .W65 2010</Value></Values><Label display="on">Call Number</Label></Field><Field abbrev="mlibrary1ic_record_no" searchfield="false" sortfield="false"><Values><Value>011472218</Value></Values><Label display="on">Catalog Number</Label></Field></Section></Record></Snapshot>
+</Snapshots>
+
+  <JavaScriptFooterUrl>/i/image/vendor/jquery.equalizecols.js</JavaScriptFooterUrl>
+
+  <ExtraIECSS test="lt IE 8">/i/image/css/ie7.css</ExtraIECSS>
+
+</Top>

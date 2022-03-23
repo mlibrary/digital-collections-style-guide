@@ -22,9 +22,10 @@
 <Param name="debug">xml</Param>
 </CurrentCgi>
 <CurrentUrl>https://roger.quod.lib.umich.edu/cgi/i/image/image-idx?cc=clark1ic8lift;page=index;c=clark1ic8lift;debug=xml</CurrentUrl>
-<UserAgent>node-fetch/1.0 (+https://github.com/bitinn/node-fetch)</UserAgent>
+<FeedbackUrl>https://roger.quod.lib.umich.edu/cgi/i/image/image-idx?cc=clark1ic8lift;page=feedback;c=clark1ic8lift;debug=xml;frompage=index</FeedbackUrl>
+<UserAgent>node-fetch</UserAgent>
 <ReferrerHref/>
-<Sid>ecd3925087fff76e6ba934b70c66c9be</Sid>
+<Sid>63b538797c0a961defbb3b630e2f392d</Sid>
 
 <EffectiveLanguage>en</EffectiveLanguage>
 <LanguageOptions><OptionalLanguage>en</OptionalLanguage></LanguageOptions>
@@ -488,6 +489,15 @@ for items where...</item>
 <item key="mediaonly">Including an image or other media.</item>
 </lookup>
 
+<lookup id="context-badges">
+  <item key="collection-badge">filter_frames</item>
+  <item key="list-badge">view_list</item>
+  <item key="group-badge">topic</item>
+  <item key="multiple-badge">check_box</item>
+  <item key="root-badge">filter_center_focus</item>
+  <item key="default-badge">more_vert</item>
+</lookup>
+
 </LangMap>
 
 <TemplatePath>/l1/dev/roger/web/i/image/index.xml</TemplatePath>
@@ -547,7 +557,7 @@ for items where...</item>
   <JavaScriptUrl>/i/image/js/imageclass.js</JavaScriptUrl>
   <ContactLink>'m'+'a'+'i'+'l'+'t'+'o'+':'+'c'+'l'+'a'+'r'+'k'+'1'+'i'+'c'+'-'+'h'+'e'+'l'+'p'+'@'+'u'+'m'+'i'+'c'+'h'+'.'+'e'+'d'+'u'</ContactLink>
   <ContactText>E-Mail Help</ContactText>
-  <LoginLink><Url>https://roger.quod.lib.umich.edu/cgi/dlxslogin/go?target=https%3A%2F%2Froger.quod.lib.umich.edu%2Fcgi%2Fi%2Fimage%2Fimage-idx%3Fkey_authret%3D1643811213</Url><Mode>login</Mode></LoginLink>
+  <LoginLink><Url>https://roger.quod.lib.umich.edu/cgi/dlxslogin/go?target=https%3A%2F%2Froger.quod.lib.umich.edu%2Fcgi%2Fi%2Fimage%2Fimage-idx%3Fkey_authret%3D1647983478</Url><Mode>login</Mode></LoginLink>
 
   <TipsUrl>https://roger.quod.lib.umich.edu/cgi/i/image/image-idx?page=tips;c=clark1ic8lift</TipsUrl>
   <SortOptionsMenu><HiddenVars><Variable name="cc">clark1ic8lift</Variable>
@@ -593,7 +603,7 @@ ORDER BY b.field, total DESC, b.value
  LIMIT 10</Query>
 <Debug>$VAR1 = undef;
 </Debug>
-<Field total="50" abbrev="marc100" actual_total="470">
+<Field abbrev="marc100" actual_total="470" total="50">
     <Label>Main Entry - Personal Name</Label>
     <Values>
         <Value count="169">Jansson, Jan, 1588-1664.</Value>
@@ -608,7 +618,7 @@ ORDER BY b.field, total DESC, b.value
         <Value count="11">01 Sagano, Hikotarō. http://id.loc.gov/authorities/names/n88091520</Value>
     </Values>
 </Field>
-<Field actual_total="508" total="50" abbrev="marc700">
+<Field abbrev="marc700" actual_total="508" total="50">
     <Label>Added Entry - Personal Name</Label>
     <Values>
         <Value count="238">Vignaud, Henry, 1830-1922, former owner.</Value>
@@ -623,7 +633,7 @@ ORDER BY b.field, total DESC, b.value
         <Value count="28">Hondius, Hendrik, 1597-1651, cartographer.</Value>
     </Values>
 </Field>
-<Field actual_total="948" abbrev="marc651" total="50">
+<Field total="50" abbrev="marc651" actual_total="948">
     <Label>Subject Added Entry - Geographic Name</Label>
     <Values>
         <Value count="109">Michigan Maps.</Value>
@@ -638,7 +648,7 @@ ORDER BY b.field, total DESC, b.value
         <Value count="28">France Maps Early works to 1800.</Value>
     </Values>
 </Field>
-<Field abbrev="marc710" total="50" actual_total="164">
+<Field total="50" abbrev="marc710" actual_total="164">
     <Label>Added Entry - Corporate Name</Label>
     <Values>
         <Value count="24">National Ocean Survey.</Value>
@@ -653,7 +663,7 @@ ORDER BY b.field, total DESC, b.value
         <Value count="6">A. Hoen &amp; Co.</Value>
     </Values>
 </Field>
-<Field abbrev="marc110" total="50" actual_total="140">
+<Field abbrev="marc110" actual_total="140" total="50">
     <Label>Main Entry - Corporate Name</Label>
     <Values>
         <Value count="23">Rand McNally and Company.</Value>
@@ -668,7 +678,7 @@ ORDER BY b.field, total DESC, b.value
         <Value count="5">United States. Army. Corps of Engineers.</Value>
     </Values>
 </Field>
-<Field actual_total="347" abbrev="marc650" total="50">
+<Field total="50" actual_total="347" abbrev="marc650">
     <Label>Subject Added Entry - Topical Term</Label>
     <Values>
         <Value count="24">Nautical charts Columbia River.</Value>
@@ -745,16 +755,107 @@ then appear in the page=index view for the collection. -->
   
   
   
-  <HeroImage identifier="clark1ic8lift:004172308:39015091903933">
+  <HeroImage m_id="012449137" m_iid="39015091191695_01" identifier="clark1ic8lift:012449137:39015091191695_01">
     <Debug>SELECT m_id, m_iid, basename FROM clark1ic8lift_media, ImageClassAsset
 WHERE m_searchable = 1 AND m_fn = basename AND type = 'image' AND width > height AND access = 1 
 AND collid = COALESCE(m_source, 'clark1ic8lift')
 ORDER BY RAND()
 LIMIT 1
 </Debug>
+    <Caption>Scotiae pars Septentrionalis.</Caption>
+    <Fields>$VAR1 = {
+          'marc245' => 'Scotiae pars Septentrionalis.',
+          'call_number' => 'G 1015 .A66 1630 no. 29',
+          'marc034dec' => 'a 1090000 -8.43 -1.35 59.13 56.77',
+          'istruct_isentryidv' => 'S-CLARK1IC8LIFT-X-012449137-1',
+          'marc110' => '',
+          'm_entryauth' => 'WORLD',
+          'note2' => '',
+          'istruct_mo' => 'TIF',
+          'title' => 'Scotiae pars Septentrionalis',
+          'istruct_mt' => 'IMAGE:::DYNAMIC2',
+          'ic_all' => ""49.", "Manuscript "Partie (Ms3)" (W .A66 012449137 1 1015 1090000 1588-1664. 1597-1651. 1630 1800. 1830-1922, 1:1,090,000] 1\x{b0}21'00"/N 23 29 3 37 39015091191695 39015091191695, 39015091191695_01, 39015091191695_02 43287., 50 56\x{b0}46'00"). 59\x{b0}08'00"-- 8\x{b0}26'00"-- : ; Accession Amsterdami Appendix Atlas Back British Clark Der Does Early Europe, Europe. Europe., From Front, G Hendrik, Henry, Hondius, Includes Isles Jan, Jansson, Krogt., Library, Manuscript Maps Michigan. N N0564600 N0590800 Northern Relief Scale Scotiae Scotland Septentrionale Septentrionalis Septentrionalis. Style Title University Van Vignaud Vignaud, W W0012100 W0082600 [ca. [s.n., a and angels., any cartouche clark1ic cm. collection collection., corner created cut de former illustrations in includes l'Ecosse"in lat listed manuscript map match monsters., no. no.29 nos. not numbered oceans of off on owner., pars pictorially., represent right sea set sheets ships shown states the three title to top unique verso. within works x clark1ic8lift",
+          'scan_purpose' => '',
+          'istruct_caption_barcode' => '39015091191695',
+          'marc700' => 'Vignaud, Henry, 1830-1922, former owner.|||Hondius, Hendrik, 1597-1651. Appendix Atlas of the British Isles and Northern Europe.|||Jansson, Jan, 1588-1664. Appendix Atlas of the British Isles and Northern Europe.',
+          'marc246' => '',
+          'm_searchable' => '1',
+          'marc590' => 'Accession no. 43287.|||Manuscript no.29 of 23 sheets numbered to "49."|||From the "Manuscript Style 3 (Ms3)" set of the Vignaud map collection.|||Includes cut off manuscript nos. and manuscript "Partie Septentrionale de l'Ecosse"in the top right corner of the verso.',
+          'istruct_caption_item_description' => 'Front',
+          'marc100' => '',
+          'bounding_box' => 'Y',
+          'm_caption' => '39015091191695|||Front',
+          'marc008' => 'lat',
+          'ic_collid' => 'clark1ic8lift',
+          'm_id' => '012449137',
+          'marc034' => 'a 1090000 W0082600 W0012100 N0590800 N0564600',
+          'm_fn' => '39015091191695_01',
+          'istruct_ms' => 'P',
+          'scan_date' => '2012-09-04',
+          'marc651' => 'Scotland Maps Early works to 1800.',
+          'aleph_updated' => 'Y',
+          'marc691' => '2638360: Scotland (country, state, region,...), Scotland, United Kingdom',
+          'm_iid' => '39015091191695_01',
+          'marc650' => '',
+          'color_corrected' => 'Y',
+          'marc255' => "Scale [ca. 1:1,090,000] (W 8\x{b0}26'00"-- W 1\x{b0}21'00"/N 59\x{b0}08'00"-- N 56\x{b0}46'00").",
+          'istruct_y' => '1',
+          'item_description' => 'Front|||Back',
+          'pk_id' => '1393',
+          'marc710' => '',
+          'istruct_me' => 'JP2',
+          'marc260' => 'Amsterdami : [s.n.,',
+          'istruct_x' => '1',
+          'istruct_stty' => 'SUMM',
+          'send_to_dlps' => 'To send 06.16.2015',
+          'date_issued' => '163-]',
+          'filename' => '39015091191695_01|||39015091191695_02',
+          'uuid' => '4f3ee09f-fda4-43ba-81fa-4de9a92ce0bf',
+          'marc500' => 'Relief shown pictorially.|||Includes illustrations of ships on the oceans and sea monsters.|||Title cartouche includes three angels.|||Does not match any states listed in Van Der Krogt.|||From the Appendix Atlas of the British Isles and Northern Europe, title created to represent a unique collection within the Clark Library, University of Michigan.',
+          'm_flm' => '2015-06-25 10:58:07',
+          'istruct_m' => '39015091191695_01',
+          'notes' => '',
+          'marc264' => '',
+          'istruct_face' => 'UNSPEC',
+          'istruct_isentryid' => 'S-CLARK1IC8LIFT-X-012449137]39015091191695_01',
+          'barcode' => '39015091191695|||39015091191695',
+          'record_no' => '012449137',
+          'ic_id' => '012449137',
+          'istruct_caption' => '39015091191695|||Front',
+          'marc300' => '1 map ; 37 x 50 cm.',
+          'm_source' => 'clark1ic',
+          'istruct_stid' => '0'
+        };
+</Fields>
+    <XcollMaps>$VAR1 = {
+          'dc_id' => 'Record_no uuid',
+          'dc_ri' => '"The University of Michigan Library provides access to these materials for educational and research purposes. These materials are believed to be in the public domain in the United States; however, if you decide to use any of these materials, you are responsible for making your own legal assessment and securing any necessary permission. If you have questions about the collection, please contact Clark Library for Maps Digital Collections Help: clark1ic-help@umich.edu. If you have concerns about the inclusion of an item in this collection, please contact Library Information Technology: LibraryIT-info@umich.edu. DPLA No Copyright - United States"',
+          'dc_de' => 'MARC500 MARC300',
+          'dlxs_ma' => 'MARC245',
+          'oai_split' => 'dc_de dc_so',
+          'dc_da' => 'MARC260',
+          'dc_so' => 'MARC034 MARC255',
+          'dlxs_catalog' => 'Record_no',
+          'dlxs_ri' => '"&lt;p>The University of Michigan Library provides access to these materials for educational and research purposes. These materials are believed to be in the public domain in the United States; however, if you decide to use any of these materials, you are responsible for making your own legal assessment and securing any necessary permission. If you have questions about the collection, please contact &lt;a href="mailto:clark1ic-help@umich.edu">Clark Library for Maps Digital Collections Help&lt;/a>. If you have concerns about the inclusion of an item in this collection, please contact &lt;a href="mailto:LibraryIT-info@umich.edu">Library Information Technology&lt;/a>.&lt;/p>&lt;p>DPLA No Copyright - United States&lt;/p>"',
+          'dc_la' => 'MARC008',
+          'dc_cr' => 'MARC100 MARC110 MARC700 MARC710',
+          'dc_ti' => 'MARC245',
+          'dc_su' => 'MARC650 MARC651'
+        };
+</XcollMaps>
+    <AdminMaps>$VAR1 = {
+          'ic_id' => 'Record_no',
+          'ic_fn' => 'filename',
+          'iiif_page_type' => 'Sheet',
+          'iiif_manifest_multiple_mode' => 'book',
+          'browse_split' => 'MARC100 MARC110 MARC700 MARC710 MARC650 MARC651',
+          'ic_vi' => 'Barcode Item_description',
+          'ic_all' => 'Record_no Pre_1923 Item_description Call_number Title Barcode MARC001 MARC003 MARC005 MARC007 MARC008 MARC034 MARC035 MARC052 MARC100 MARC245 MARC255 MARC260 MARC300 MARC500 MARC510 MARC590 MARC651 MARC650 MARC700 MARC852 MARC970 MARC971 MARC972 MARC997 MARC090 MARC246 MARC998 MARC040 MARC050 MARC710 MARC010 MARC006 MARC043 MARC110 MARC538 MARC973 MARC974 MARC534 MARC655 MARC541 filename'
+        };
+</AdminMaps>
     <Url>data:image/jpeg;base64,/9j/4AAQSkZJRgABAQAAAQABAAD/2wBDAAgGBgcGBQgHBwcJCQgKDBQNDAsLDBkSEw8UHRofHh0a
 HBwgJC4nICIsIxwcKDcpLDAxNDQ0Hyc5PTgyPC4zNDL/2wBDAQkJCQwLDBgNDRgyIRwhMjIyMjIy
-MjIyMjIyMjIyMjIyMjIyMjIyMjIyMjIyMjIyMjIyMjIyMjIyMjIyMjIyMjL/wAARCABMAGQDASIA
+MjIyMjIyMjIyMjIyMjIyMjIyMjIyMjIyMjIyMjIyMjIyMjIyMjIyMjIyMjL/wAARCABRAGQDASIA
 AhEBAxEB/8QAHwAAAQUBAQEBAQEAAAAAAAAAAAECAwQFBgcICQoL/8QAtRAAAgEDAwIEAwUFBAQA
 AAF9AQIDAAQRBRIhMUEGE1FhByJxFDKBkaEII0KxwRVS0fAkM2JyggkKFhcYGRolJicoKSo0NTY3
 ODk6Q0RFRkdISUpTVFVWV1hZWmNkZWZnaGlqc3R1dnd4eXqDhIWGh4iJipKTlJWWl5iZmqKjpKWm
@@ -762,664 +863,88 @@ p6ipqrKztLW2t7i5usLDxMXGx8jJytLT1NXW19jZ2uHi4+Tl5ufo6erx8vP09fb3+Pn6/8QAHwEA
 AwEBAQEBAQEBAQAAAAAAAAECAwQFBgcICQoL/8QAtREAAgECBAQDBAcFBAQAAQJ3AAECAxEEBSEx
 BhJBUQdhcRMiMoEIFEKRobHBCSMzUvAVYnLRChYkNOEl8RcYGRomJygpKjU2Nzg5OkNERUZHSElK
 U1RVVldYWVpjZGVmZ2hpanN0dXZ3eHl6goOEhYaHiImKkpOUlZaXmJmaoqOkpaanqKmqsrO0tba3
-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
-/9k=
+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
 </Url>
 </HeroImage>
 
-  <Snapshots><Snapshot href="/cgi/i/image/image-idx?c=clark1ic8lift;entryid=x-004204102;viewid=39015091191562_02">
-    <Thumbnail src="data:image/jpeg;base64,/9j/4AAQSkZJRgABAQAAAQABAAD/2wBDAAgGBgcGBQgHBwcJCQgKDBQNDAsLDBkSEw8UHRofHh0a
-HBwgJC4nICIsIxwcKDcpLDAxNDQ0Hyc5PTgyPC4zNDL/2wBDAQkJCQwLDBgNDRgyIRwhMjIyMjIy
-MjIyMjIyMjIyMjIyMjIyMjIyMjIyMjIyMjIyMjIyMjIyMjIyMjIyMjIyMjL/wAARCABSAGQDASIA
-AhEBAxEB/8QAHwAAAQUBAQEBAQEAAAAAAAAAAAECAwQFBgcICQoL/8QAtRAAAgEDAwIEAwUFBAQA
-AAF9AQIDAAQRBRIhMUEGE1FhByJxFDKBkaEII0KxwRVS0fAkM2JyggkKFhcYGRolJicoKSo0NTY3
-ODk6Q0RFRkdISUpTVFVWV1hZWmNkZWZnaGlqc3R1dnd4eXqDhIWGh4iJipKTlJWWl5iZmqKjpKWm
-p6ipqrKztLW2t7i5usLDxMXGx8jJytLT1NXW19jZ2uHi4+Tl5ufo6erx8vP09fb3+Pn6/8QAHwEA
-AwEBAQEBAQEBAQAAAAAAAAECAwQFBgcICQoL/8QAtREAAgECBAQDBAcFBAQAAQJ3AAECAxEEBSEx
-BhJBUQdhcRMiMoEIFEKRobHBCSMzUvAVYnLRChYkNOEl8RcYGRomJygpKjU2Nzg5OkNERUZHSElK
-U1RVVldYWVpjZGVmZ2hpanN0dXZ3eHl6goOEhYaHiImKkpOUlZaXmJmaoqOkpaanqKmqsrO0tba3
-uLm6wsPExcbHyMnK0tPU1dbX2Nna4uPk5ebn6Onq8vP09fb3+Pn6/9oADAMBAAIRAxEAPwDnNA8E
-2mr6XDdtLLucfMFYYB/Kttfhlp3Uz3HX+8P8K1/BI/4pOy/3T/M10ig81ySlK71N0lY4g/DHSy+f
-OuAv93eP8KlX4a6Mv3vObvzIa7TBoIODS5pdwsuxx/8AwrnRP+ecvr/rDSN8OdGP3YnB/wCurV2W
-3P5UFcYyaLy7hp2ONHw50cRDMRznk+Y1Knw60M/fhf8ACVq7Hyx5fX+KkCYxzQ3LuGnY48/DjQj0
-jmH/AG1NA+HGggY8uYn18012GzpzSEDH40c0u4aHGN8N9EPQTr9JKik+G2keW2x7gN2Jf/61dtjg
-545pjA5PNHNLuFl2PG/Efhq30nVBbwSyFDGH+fBPUj+lFbPjrI19f+uC/wA2oraLdiGlc6zwT/yK
-Vj/uH/0I10y/drlfAUgk8H2f+zvU/gxrqlHFYy3Za2HZpN/XjtQe/wBKBj9KQDlfPY0cNj2o4/Sm
-nORj0piHgqsYH+1QDnGBmkIxGv8AvH+VC8YoYCMCQMetMCN7dalDBqCBQMgKtz0601gQDU5HWopB
-1pAeV+Pnx4iUf9MF/maKr/EJyPE5HpCn9aK6IL3UZy3O08AqB4QtNoxneT7nca6kZ5rlvATf8Uda
-e2//ANDNdRuIzxxWEt2Wth+CT+FOx/Kow43HI4xTi4HbtQMXGMZ9KcOSB7UwPk/hTxj5eKBAMlQO
-2aVV4wKUNhB9aRTgUMBMcfjSHgZHrSFj+tJyQQPWkMcTkHmon4p7EYPIpjHrQB498QX/AOKpcekS
-f1oqP4gtnxZN/wBc0/lRXTD4UZy3O78Ac+D7Xr1f/wBDNdRnk56VyPw8b/ik418xWIkf5R1Xnof5
-/jXW84PTpWEt2Wth/Hp2pcAjPtTcjvjpTgP5UgEGAVIzjFSK2cdajGAVBPanjGV5pgPP+qTjuaYG
-Axx3qQn9yh/2jUYbj8aAEOCv49qUnnrScAZ96jYlt3I4NIBzHlhio3Yc4prb/m5FMbPNAHj3j5s+
-Lrn2VP8A0EUVH45/5G27+if+giiumHwoze52fwzhkTQLmRhhJJ8p74ABrt1A5+lch8P7mL/hFokM
-ibldwRnn7xP9a6oTIf40/Oueb95mi2J8c+nFOAC9+1QeapI5Xp60ocYBJX86Vx2HhfnBLVKCPlqt
-vUYPy/nSmdI8biMH0NK4WLLMTEg/2jUYJAzx1quuoW8gUK+cMRn36VMHXH3v1ouFhzNlPqaOxHvR
-vXnnv60Fk55/Wi4WGNghsUxud2PSn7lOef1qNyACQe3rRcLHjHjgn/hLbz6J/wCgiim+NHEniy9I
-5wVH/joorrh8KMnuYAOOlODt/eP50UVQhfNkHR2H40vnzD/lq/8A30aKKAFF1cDpcSj6Oaet5dbT
-/pM3/fZoopWARby5UALcTAezmni+vB0up/8Av4aKKLIBft95n/j7n/7+H/GlN/ef8/c//fw/40UU
-WQ7irqF6BxeXH/f1v8aVtRvSP+Py4/7+t/jRRSsguUXZncszFmPUk5JoooqhH//Z
-"/>
-<Record name="result"><Section name="default" class="default"><Field abbrev="marc245" searchfield="false" sortfield="false"><Values><Value>Duche de Bretaigne / dessigné par le sieur Hardy Mareschal des logis du roy.</Value></Values><Label display="on">Title</Label></Field><Field abbrev="record_no" searchfield="false" sortfield="false"><Values><Value>004204102</Value></Values><Label display="on">Record No.</Label></Field></Section></Record></Snapshot>
-<Snapshot href="/cgi/i/image/image-idx?c=clark1ic8lift;entryid=x-004204105;viewid=39015091191406_01">
-    <Thumbnail src="data:image/jpeg;base64,/9j/4AAQSkZJRgABAQAAAQABAAD/2wBDAAgGBgcGBQgHBwcJCQgKDBQNDAsLDBkSEw8UHRofHh0a
-HBwgJC4nICIsIxwcKDcpLDAxNDQ0Hyc5PTgyPC4zNDL/2wBDAQkJCQwLDBgNDRgyIRwhMjIyMjIy
-MjIyMjIyMjIyMjIyMjIyMjIyMjIyMjIyMjIyMjIyMjIyMjIyMjIyMjIyMjL/wAARCABSAGQDASIA
-AhEBAxEB/8QAHwAAAQUBAQEBAQEAAAAAAAAAAAECAwQFBgcICQoL/8QAtRAAAgEDAwIEAwUFBAQA
-AAF9AQIDAAQRBRIhMUEGE1FhByJxFDKBkaEII0KxwRVS0fAkM2JyggkKFhcYGRolJicoKSo0NTY3
-ODk6Q0RFRkdISUpTVFVWV1hZWmNkZWZnaGlqc3R1dnd4eXqDhIWGh4iJipKTlJWWl5iZmqKjpKWm
-p6ipqrKztLW2t7i5usLDxMXGx8jJytLT1NXW19jZ2uHi4+Tl5ufo6erx8vP09fb3+Pn6/8QAHwEA
-AwEBAQEBAQEBAQAAAAAAAAECAwQFBgcICQoL/8QAtREAAgECBAQDBAcFBAQAAQJ3AAECAxEEBSEx
-BhJBUQdhcRMiMoEIFEKRobHBCSMzUvAVYnLRChYkNOEl8RcYGRomJygpKjU2Nzg5OkNERUZHSElK
-U1RVVldYWVpjZGVmZ2hpanN0dXZ3eHl6goOEhYaHiImKkpOUlZaXmJmaoqOkpaanqKmqsrO0tba3
-uLm6wsPExcbHyMnK0tPU1dbX2Nna4uPk5ebn6Onq8vP09fb3+Pn6/9oADAMBAAIRAxEAPwDM8LeG
-9PutGgnltY5XkG5mfJrcPhHSGHNhAPoDVfwoxTwhCynDCJiD+daKIxRWNzOCQP8Alof8a43dt6nR
-oiqvgrRR1s0z9TUg8F6Lj/jzjq00b/w3M7DuQ5quHLSAC4uNueT5h4pa9x3XYY3gvRWyTZx/hxUR
-8DaLn/j1X/vo/wCNXRjOPtlwD6bzUbJNni7uBg8kOTRr3Fddiu3gTROi2oz/AL7f400eBdFA/wCP
-Uf8AfR/xq4FnGQb6Zjj+/TSZw3/H3OQACRuNP3u4XXYqf8IPowGPsi/99N/jTo/BGjDrZofqT/jU
-7zeWf3t/Koxn7/8An3rOj1uQXDRyPOV3fK4c/dx1xRaXcLrsaK+DNFX/AJcoj9aR/CGjYP8AoEP5
-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
-UVVhDSSxySSfU0UUUAf/2Q==
-"/>
-<Record name="result"><Section name="default" class="default"><Field abbrev="marc245" searchfield="false" sortfield="false"><Values><Value>Le Maine.</Value></Values><Label display="on">Title</Label></Field><Field abbrev="record_no" searchfield="false" sortfield="false"><Values><Value>004204105</Value></Values><Label display="on">Record No.</Label></Field></Section></Record></Snapshot>
-<Snapshot href="/cgi/i/image/image-idx?c=clark1ic8lift;entryid=x-004204105;viewid=39015091191406_02">
-    <Thumbnail src="data:image/jpeg;base64,/9j/4AAQSkZJRgABAQAAAQABAAD/2wBDAAgGBgcGBQgHBwcJCQgKDBQNDAsLDBkSEw8UHRofHh0a
-HBwgJC4nICIsIxwcKDcpLDAxNDQ0Hyc5PTgyPC4zNDL/2wBDAQkJCQwLDBgNDRgyIRwhMjIyMjIy
-MjIyMjIyMjIyMjIyMjIyMjIyMjIyMjIyMjIyMjIyMjIyMjIyMjIyMjIyMjL/wAARCABRAGQDASIA
-AhEBAxEB/8QAHwAAAQUBAQEBAQEAAAAAAAAAAAECAwQFBgcICQoL/8QAtRAAAgEDAwIEAwUFBAQA
-AAF9AQIDAAQRBRIhMUEGE1FhByJxFDKBkaEII0KxwRVS0fAkM2JyggkKFhcYGRolJicoKSo0NTY3
-ODk6Q0RFRkdISUpTVFVWV1hZWmNkZWZnaGlqc3R1dnd4eXqDhIWGh4iJipKTlJWWl5iZmqKjpKWm
-p6ipqrKztLW2t7i5usLDxMXGx8jJytLT1NXW19jZ2uHi4+Tl5ufo6erx8vP09fb3+Pn6/8QAHwEA
-AwEBAQEBAQEBAQAAAAAAAAECAwQFBgcICQoL/8QAtREAAgECBAQDBAcFBAQAAQJ3AAECAxEEBSEx
-BhJBUQdhcRMiMoEIFEKRobHBCSMzUvAVYnLRChYkNOEl8RcYGRomJygpKjU2Nzg5OkNERUZHSElK
-U1RVVldYWVpjZGVmZ2hpanN0dXZ3eHl6goOEhYaHiImKkpOUlZaXmJmaoqOkpaanqKmqsrO0tba3
-uLm6wsPExcbHyMnK0tPU1dbX2Nna4uPk5ebn6Onq8vP09fb3+Pn6/9oADAMBAAIRAxEAPwDD8MeC
-tP1PRoby7MjvLkgK20AZxW6vw60THMcx/wC2pqx4GP8AxSdmfZv/AEI104I55rklKV3qbpK2xyQ+
-HGhjkxyn6yml/wCFeaHn/UP/AN/W/wAa67I/SjI+nFTzS7j07HJN8OtDY5EUgHoJWpU+HehDrBIf
-rK3+Ndb2/ClXoMntReXcNOxyr/DzQNilbZhnP/LVv8aiHw60I/8ALGX/AL+tXYv/AKmPB7mo16DJ
-ovLuGhyq/DzQQObdz/21b/GlHgHQBn/RCfrI3+NdV2FNPsM0Xl3DTscsPAegjj7HnnvI3+ND+BtD
-A+WxT3+dv8a6jr+dMk4BovLuGh4V4isIdN166tLfIijYbQTnGQD/AFoq14y/5Gu++q/+giiuuPwo
-xlueheA2DeFLbnpvH/jxrqlGePauU8AjPhO3I/vP/wChGutUfyrlluzXoKVIBx6UFCRzkcVKAMde
-1KcY/CkBGucfQUuP5UBSB9RTgDwPagAI/wBHj+pqIHgcH8qsMMwR/U1Gq4AzQwGgcCgDj8adjp9a
-THH40AMPT8ajcHGKmxx+NRyDAoA8S8Z/8jZffVf/AEEUUeNM/wDCW331X/0EUV1Q+FGUtz0H4fc+
-FIOejv8A+hGuvjH8q474dn/il4/+uj/zrs06Vyy+Jmq2Q8rx+FOC449qUHA/CnDBIpDGFc4+lAGM
-fSn96THIoEAB+zpn+8aZipiMWq/7xqIdqAG/40EcD607HFGOPxoGREfzqKXgVO1QzAYoA8Q8Z5/4
-Sy+yc8r/AOgiil8aADxZe49V/wDQRRXXD4UYy3Z3nw4/5FoD/ps/9K7Ven4VxPw348Nn/rs39K7Z
-O1csviZqtkTA5/Knr/SogacrUhjz1FIDShunFJnkUCHnm3H+9UQ61Jn9wP8AeqMGgBaQnijPFITx
-QMaxqCbkGpieKglYEGgDxLxkMeK73vyv/oIopfGmP+ErvcDGSp/8dFFdcPhRjLdnc/Dk48Nn/rs3
-9K7VDgD6VwXw7uootAkWSRVPntwTjsK7AX9sBxMn/fQrmn8TNUtEaQbP5Uu7ms9b2EjIkX65p4u4
-uplX86m47Muh+RTtwx1rPF3FvxvH4Gj7ZGDw4ouFmaBYC3HP8dRhuaovODHw3H1pgvY0+VpFB+tF
-wsaJbjik3jFZ51GAdZU/76pDqVsOsyf99Ci4WZfLioJDweapPqtmDg3MQOf74qKTVrPkfaof++xT
-Cx5T4058VXZ/3f8A0EUVH4smSfxJdSRurqduGU5H3RRXXD4UYy3ZmW/3D9anWiihgi2v3Kcfuiii
-oKJYvvipW60UVLGT3P8Ax7J9azJPvUUU0DK8nWom7UUVaJZWf75+tNPWiiqJG0UUUwP/2Q==
-"/>
-<Record name="result"><Section name="default" class="default"><Field abbrev="marc245" searchfield="false" sortfield="false"><Values><Value>Le Maine.</Value></Values><Label display="on">Title</Label></Field><Field abbrev="record_no" searchfield="false" sortfield="false"><Values><Value>004204105</Value></Values><Label display="on">Record No.</Label></Field></Section></Record></Snapshot>
-<Snapshot href="/cgi/i/image/image-idx?c=clark1ic8lift;entryid=x-004204106;viewid=39015091191620_01">
-    <Thumbnail src="data:image/jpeg;base64,/9j/4AAQSkZJRgABAQAAAQABAAD/2wBDAAgGBgcGBQgHBwcJCQgKDBQNDAsLDBkSEw8UHRofHh0a
-HBwgJC4nICIsIxwcKDcpLDAxNDQ0Hyc5PTgyPC4zNDL/2wBDAQkJCQwLDBgNDRgyIRwhMjIyMjIy
-MjIyMjIyMjIyMjIyMjIyMjIyMjIyMjIyMjIyMjIyMjIyMjIyMjIyMjIyMjL/wAARCABSAGQDASIA
-AhEBAxEB/8QAHwAAAQUBAQEBAQEAAAAAAAAAAAECAwQFBgcICQoL/8QAtRAAAgEDAwIEAwUFBAQA
-AAF9AQIDAAQRBRIhMUEGE1FhByJxFDKBkaEII0KxwRVS0fAkM2JyggkKFhcYGRolJicoKSo0NTY3
-ODk6Q0RFRkdISUpTVFVWV1hZWmNkZWZnaGlqc3R1dnd4eXqDhIWGh4iJipKTlJWWl5iZmqKjpKWm
-p6ipqrKztLW2t7i5usLDxMXGx8jJytLT1NXW19jZ2uHi4+Tl5ufo6erx8vP09fb3+Pn6/8QAHwEA
-AwEBAQEBAQEBAQAAAAAAAAECAwQFBgcICQoL/8QAtREAAgECBAQDBAcFBAQAAQJ3AAECAxEEBSEx
-BhJBUQdhcRMiMoEIFEKRobHBCSMzUvAVYnLRChYkNOEl8RcYGRomJygpKjU2Nzg5OkNERUZHSElK
-U1RVVldYWVpjZGVmZ2hpanN0dXZ3eHl6goOEhYaHiImKkpOUlZaXmJmaoqOkpaanqKmqsrO0tba3
-uLm6wsPExcbHyMnK0tPU1dbX2Nna4uPk5ebn6Onq8vP09fb3+Pn6/9oADAMBAAIRAxEAPwDN0Twr
-pE+lWd1NbqzyRhmLueSfxrYXwroOcmzgP4//AF6i0dQ/hzSQRkbV/kasSOtvIVY9SNgHU8dq5G3f
-c3SQh8LeHz/y5wfgf/r08eGPD+P+PO3H41GLn+IW52gZbdxj9eaZFM5KzFMxMfugdB6+tLXuPQmP
-hjw8f+XO2/OmHwv4fBz9jt/z/wDr0+d2+12wt4BJC/LMG9jUkn7ve6qGQNgDcR+v+elGvcBjeF/D
-5/5c7fHsaQeFdAB4soD+NWgI3IxwWAbBJ4z2/Ssu61xIZ3jitjLtOMqT83POPwzRqGhaPhjQccWV
-v+dNHhfQlORZwfjT9Nu47+x85oRFIMAq2SRnvVfWbl7K3jjt4wZ5jhAckjp2zRre1w0JT4a0Jvl+
-x234Un/CNaFnAtbfPYcc1jxahqaTkS2DrEASZPLbPHc/WtrT7lb20t59iq5cBgrZwQaHddQVjzLx
-VZw2HiK5t4ECRqFIVRjGVFFSeMGdvFd/5gwQ4Az6bRiiumPwoxe56DoRz4Z0k+w/kanvcTTwKo5Q
-7sjB4xj+tV/DnzeGNK9v/r1POzSXu4fII+Dg/e+tcz3NuhKFJiIUg9OTxUWWfcoYKx4z1xUzbiAQ
-cimspy+OOMYFICvDBLHI0TSn5m3blOPw/nVtkUxNhgYMBcA56f5xVYq5Zckb+5PFSRAyEdQinB68
-nr/hQA/JYgsZVLL1A6elYbxmOQg4VxkcrjJPP41vRsd5D4HAxTbm1S5EQlIXY+7JXOR6U0wsV9F3
-Is0rj5CAo4xuIA/wpmrTrDrVlPOSsAjI3j+Bj+natSR/MyFICbflwOn4VWvoDd2qoF3hW3PET/rB
-jp7daL6hYbLd20MRmkuSEAzu3r0/OqXh+NvsxmwyxyXBZEPGBkdveo30y2OY10nPTAyBj61rQxvF
-FBC773jCgsO9D2Dqed+Plx4plPrGh/Sil8e5/wCEnf8A65J/WiumHwoyludj4ayfDGl4OPf86szJ
-Ik2WY8tg8deP06VV8LHPhnSvqf5mtW+jIyy43D5xn2/+tXK9zVbFdJSuQevrjr6UyTLPiMYcjP8A
-9c0hEs3Majaf4j/QVYjj8oZZwxPIJHJoGU3aVJQjLI5OdpA4/GrSIYk2L8pPJPqc9aSYF3XheDgU
-ryR4AUAe/wD9egRIkbfMXbv1HapSQF4YHjoarKGjj253Y5JxyfSgyAqerdsUAOm3PlVyNwIyO3+T
-TFMkaA5JPPJHOadkAAjAB70mzbl35wCc47UDHySTsQfMZe+CBxn60R72IBOeQMkY70zaHYlSQQOC
-c4qwFCeWuOd3PT1FAjznx7/yMz8/8sl/rRR4+P8AxU7/APXJf60V0w+FGUtzrvCOD4Y0v/ef/wBC
-Nb15LshdiB8vTPcnj+tYHg4/8Uxpv+8//oRrVvpSzKmcncDjPbvx+v5VzS+Jmq2Eg/dRqrEkAYDb
-s5qUyZTyyASemfrVbcjKpRiTnJXtUxAdfmX689DSGI8fmHhTgevSonjKHIOPrnGKtLtCnnJXt1qO
-RgzEZ59qAISSEBxyeCTSIhChWyCe5xU6HLEYHTjNR7QckZL9PX8aYiNdivk43Edj+lPdov494A79
-OtKR5aFhgtgkEj/PeiPzJIgGjBcj5gKAJFZUX7oK+55A7UqJtkUDhQenpzSYZQCV5HTJ5FLGx8xQ
-RQB5z48/5GeT/rmtFHjz/kZ5P+uS0V1Q+FGUtzq/Bz48M6ePRpP/AEM1fkz9pfflBtXpnJ6//XrN
-8FmGTwzbK5O5WcDBx/Ea6IQ2+ep/77Nc0naTNVsVYmTGQOO/HFO3IzsFbBz2q0sVuDjJH/AqcLW2
-B3ZOT6tU3Q7FdWTAcFT6UwyAYwfmY4/H/Iq59mtvU/8AfVN+yWoJIY9f75ougsQGIFQQp3Dqd2M0
-BiM7UIx0HBHUVY+zWwU5J/76qPy7MEjzB/33RcLEe5mBJTH154qmt1dOrpbRRsqSFdzEk8H2rSEN
-mRw5/wC+zSeRZ5OGP/fZouhWZni81BgQLGAEfeOSefy/zmnwXbPciKSNY2XHAOeDVwwWneQj/gZq
-ExW6SblYcHqWNO6CzPOfHTZ8TSf9c1oqLxpKsniOQqQQEUcGiuqHwoyluc8kjr912H0NP+0Tf89p
-P++jRRVkh9puP+e8v/fZpftVx/z3l/77NFFKwCi6uNv/AB8S9f75o+1XBXBnlPOfvmiiiwDjeXJ6
-3Ex+rmozNKSSZXyf9o0UUWATzpf+ej/99Gjzpf8Ano//AH0aKKYCeY56u350eY/Te350UUANPWii
-igD/2Q==
-"/>
-<Record name="result"><Section name="default" class="default"><Field abbrev="marc245" searchfield="false" sortfield="false"><Values><Value>Nova et accurata Descriptio Delphinatus vulgo Dauphiné / Joannes Janssonius excudit.</Value></Values><Label display="on">Title</Label></Field><Field abbrev="record_no" searchfield="false" sortfield="false"><Values><Value>004204106</Value></Values><Label display="on">Record No.</Label></Field></Section></Record></Snapshot>
-<Snapshot href="/cgi/i/image/image-idx?c=clark1ic8lift;entryid=x-004204106;viewid=39015091191620_02">
-    <Thumbnail src="data:image/jpeg;base64,/9j/4AAQSkZJRgABAQAAAQABAAD/2wBDAAgGBgcGBQgHBwcJCQgKDBQNDAsLDBkSEw8UHRofHh0a
-HBwgJC4nICIsIxwcKDcpLDAxNDQ0Hyc5PTgyPC4zNDL/2wBDAQkJCQwLDBgNDRgyIRwhMjIyMjIy
-MjIyMjIyMjIyMjIyMjIyMjIyMjIyMjIyMjIyMjIyMjIyMjIyMjIyMjIyMjL/wAARCABSAGQDASIA
-AhEBAxEB/8QAHwAAAQUBAQEBAQEAAAAAAAAAAAECAwQFBgcICQoL/8QAtRAAAgEDAwIEAwUFBAQA
-AAF9AQIDAAQRBRIhMUEGE1FhByJxFDKBkaEII0KxwRVS0fAkM2JyggkKFhcYGRolJicoKSo0NTY3
-ODk6Q0RFRkdISUpTVFVWV1hZWmNkZWZnaGlqc3R1dnd4eXqDhIWGh4iJipKTlJWWl5iZmqKjpKWm
-p6ipqrKztLW2t7i5usLDxMXGx8jJytLT1NXW19jZ2uHi4+Tl5ufo6erx8vP09fb3+Pn6/8QAHwEA
-AwEBAQEBAQEBAQAAAAAAAAECAwQFBgcICQoL/8QAtREAAgECBAQDBAcFBAQAAQJ3AAECAxEEBSEx
-BhJBUQdhcRMiMoEIFEKRobHBCSMzUvAVYnLRChYkNOEl8RcYGRomJygpKjU2Nzg5OkNERUZHSElK
-U1RVVldYWVpjZGVmZ2hpanN0dXZ3eHl6goOEhYaHiImKkpOUlZaXmJmaoqOkpaanqKmqsrO0tba3
-uLm6wsPExcbHyMnK0tPU1dbX2Nna4uPk5ebn6Onq8vP09fb3+Pn6/9oADAMBAAIRAxEAPwCj4Y8L
-6Rd6BaXVzaJJLIuWJJ55+tbX/CHaD1+wR/mf8ag8DSPL4StN4+6XUe4DGul7HiuKUnzPU6ElYwf+
-EN0Ij/kHxdPU/wCNL/wh2hEf8g+P8z/jW6oPcU7aN33aXM+47Iwx4P0LA/4l8X60DwdoX/QPi/Wt
-0HkgL070DntS5n3DQyW8I6F5Sf8AEug7jpUR8I6ED/yD4K6A48iPHqaYy8dM807vuBgnwjoX/QPh
-pV8KaEvTT4PxFbZAGBjmm49uaXM+4WRjt4W0Q8/2db/gtRTeFdHZWUWEABGOFAI/Gt3jHPFRuMd+
-9HM+4WR414usLbTtfkt7aMRxhFO0epoq349/5GeT/rmtFdkPhRjLc9C8KAL4W04AYHl5rcXHesPw
-mSfC2nf9chW4BkZrjluzZbDscfy5p44qMD2xT+9SMAPWmnGc1JjOKjkNMRLn/R4/qaaXAPfP0pxB
-+yR+uTUWTihjSAeuaTdSgU0+1IBW+7UcnQH3qTHynmo26D60wPI/Hv8AyNEv/XNKKTx6T/wlMv8A
-1zT+VFdkPhRhLc9D8Jc+FdPx/wA8/wCtbyggVgeDufCun/8AXP8Aqa6AdK5Jbs2Wwc04UDnr0p4U
-ZqRicimOM8ipCRkAU1h8vFADv+XWL/eNRFcEnsamGPssZx0Y0xiD2psBmD1zTSuOe1Te9IRxxSAi
-9TzTGHFSkdvzpkgIWmgPH/Hv/I0y8/8ALNaKXx7/AMjTL/1zWiuyHwowluegeCznwnYf7h/9CNdE
-vSuc8DnPhKx+jf8AoRroxxXJL4mbLYdnFO3cUyjP5VIxxOajLHOKeTxUfVqEJkqyhoQgyCrHNIR3
-xUMR+eT/AHqmznigaHA4FIW4pBSHGBQAE4P1qOU/KaVjxxTZTmM0wPH/AB7/AMjVN/1zT+VFJ48O
-fFM3/XNP5UV2w+FHPLdnfeBm/wCKSsvbf/6Ea6MOfSuU8CzqPClqM5ILjAx/eNdMJkwOR+dck/iZ
-uticOfSlD5NVzMg6nv60vnR9AR19akCxuyCKiB5/GmfaYhxu5qPzVJO1gefWgHsTxn5n+v8AU1OM
-AVRtpFy+5gDn19zVjzkx99fzoAlyKaSDmo/Oj/vD86a00Y/iH50DHFhk+tNZ/wB3TGmi/vj86gku
-Y9pIdffmgR5V46OfFEv/AFzT+VFR+NZUl8SzMjBhsUZB9qK7YfCjCW7MGOeWMYSV1HorEU83Vwf+
-W8v/AH2aKKqwg+1XH/PxL/32aPtVx/z3l/77NFFFgBbm43f6+T/vs0q3dyp+W4lHfhzRRRYAa7uW
-xm4lODkZc9aabmc/8tpP++jRRRYBDNKf+Wr/APfRpPNkP/LRvzoopgIZH/vt+dG5j1J/OiigBtFF
-FAH/2Q==
-"/>
-<Record name="result"><Section name="default" class="default"><Field abbrev="marc245" searchfield="false" sortfield="false"><Values><Value>Nova et accurata Descriptio Delphinatus vulgo Dauphiné / Joannes Janssonius excudit.</Value></Values><Label display="on">Title</Label></Field><Field abbrev="record_no" searchfield="false" sortfield="false"><Values><Value>004204106</Value></Values><Label display="on">Record No.</Label></Field></Section></Record></Snapshot>
-<Snapshot href="/cgi/i/image/image-idx?c=clark1ic8lift;entryid=x-004204107;viewid=39015091191570_01">
-    <Thumbnail src="data:image/jpeg;base64,/9j/4AAQSkZJRgABAQAAAQABAAD/2wBDAAgGBgcGBQgHBwcJCQgKDBQNDAsLDBkSEw8UHRofHh0a
-HBwgJC4nICIsIxwcKDcpLDAxNDQ0Hyc5PTgyPC4zNDL/2wBDAQkJCQwLDBgNDRgyIRwhMjIyMjIy
-MjIyMjIyMjIyMjIyMjIyMjIyMjIyMjIyMjIyMjIyMjIyMjIyMjIyMjIyMjL/wAARCABRAGQDASIA
-AhEBAxEB/8QAHwAAAQUBAQEBAQEAAAAAAAAAAAECAwQFBgcICQoL/8QAtRAAAgEDAwIEAwUFBAQA
-AAF9AQIDAAQRBRIhMUEGE1FhByJxFDKBkaEII0KxwRVS0fAkM2JyggkKFhcYGRolJicoKSo0NTY3
-ODk6Q0RFRkdISUpTVFVWV1hZWmNkZWZnaGlqc3R1dnd4eXqDhIWGh4iJipKTlJWWl5iZmqKjpKWm
-p6ipqrKztLW2t7i5usLDxMXGx8jJytLT1NXW19jZ2uHi4+Tl5ufo6erx8vP09fb3+Pn6/8QAHwEA
-AwEBAQEBAQEBAQAAAAAAAAECAwQFBgcICQoL/8QAtREAAgECBAQDBAcFBAQAAQJ3AAECAxEEBSEx
-BhJBUQdhcRMiMoEIFEKRobHBCSMzUvAVYnLRChYkNOEl8RcYGRomJygpKjU2Nzg5OkNERUZHSElK
-U1RVVldYWVpjZGVmZ2hpanN0dXZ3eHl6goOEhYaHiImKkpOUlZaXmJmaoqOkpaanqKmqsrO0tba3
-uLm6wsPExcbHyMnK0tPU1dbX2Nna4uPk5ebn6Onq8vP09fb3+Pn6/9oADAMBAAIRAxEAPwDC8LeH
-NNv9Dhuri2V5GLZYsefmI9a6FPCWjAg/YYvxzVLwo5XwXAUOCA+CP941pCS4PPmOB2681xybu9Tp
-SVkMk8KaKRj7BCPcZpV8I6IOfsMf605pJlIHmyEn3P8AjUZuZCQFuG3f3dxqby7j07D28J6M4/48
-YvwFSr4R0IEf6BF096GWXcQs8nAydxIz+tLmUjAmlLZ52sen50rvuGg1/CGh9fsEWT9aZ/wiOiAj
-/QIv1qyUO3cbu44zlWJz/OmKu8HFzOCTgAk/40XfcFYhHhTRR/y4RflSjwpouf8Ajwhx9KlaGRTx
-NM34t/jTDHcgE+c+ewDHn9aLvuOy7A3hbRSP+PCH/vmon8J6K6FTYR4PHGRUjJK0e6O4mJHXJYAf
-rT7RZotQVHldwYySCxIzn3p3fcWh5b4o0630vXZbW1VliVVIBbOMj3oq345/5Gmf/cT+VFdcNYo5
-5bs6zwkf+KNj9hJ/6Ea1980FujeaG3cJHjk1keDufByn0Mn8zWvZgHMj5LBiqlj0GcVyy3ZutkQS
-ag8keVQKSMZLHj9KiiuGhDOiknAUL0PepPsUUbxhpS3z5wRj6VMgmjvJWdVMH8BOOv8Ah1paDLEb
-kwhpflfBJRv/AK9Q2Uji6mLxYLtlU38YwassRzn72OePy6VFEQbhwMjYoA5wR1H9KkYGSaad2ljV
-FHBHYgd6YkhT5VdH3AMFB5xzVm6jj3LIFwxXAI7A1VjjRLlpQpBxgse309PSmJFtQGbLFsk9P69a
-ecY2kDIGPrnv61RhknhmYM6tGxwPmJb69OKvhlb/AJaYyMYJFIZG7FguSdpOT2x/k1FCT/aI6ACP
-HHfmrYAUAEFQvA561WjULqAUR7QU5H40IGeZeOD/AMVTcf7qfyopPG/Hiq5/3U/9BFFdsPhRzy3Z
-1ng1v+KP/GT+dbSw7I43WRzGxOV4xkn/ABrB8GHPhRx/tvXSxIZLJYigKkYzu/XpXLL4mbLZEFyx
-QiJGYN97cewotfMlUszsTuIB9B6VDNFOs4SQoWYYBB7D/wDXU0W6NCgiYqvBZSOW79fep6DJDNuY
-rGGL55yv+FRRRyi53PMmMYwD0xz1/E08PJHuaSFwWOegP07+gpsLearEEqQdvI6cHFAFq4GYyVyD
-nCj86q/M20gAZHAU5BPerE0bRW4HmZbGckDn8PxqqLhVwqr937x2/oaAROIQxVt2e/PSpU25ctGC
-MZyBnP4VWS6WR0RsoxOQCMgn61aDFXJ4KgEOc8ikMRotoyqll6hckGo4yp1Ebd2fL53detVtTuLq
-K2iMAwGX5nxyKZpcs00waZyzAYz7U7aXFfU8+8bf8jTc/RP/AEEUUnjT/kabr6J/6CKK7IfCjCW7
-On8En/imZgem9/5Ct+2l2fNuYxgncBwVOf1Heua8Esf+EeuB6O2PyFdLs3IroQshUhsg4IyfSuWf
-xM2WyFuXC3PmF1duNn+x70lrOVXYQzMxJLf1qvLAC6RgqBGMk8DnripIFSIsfMZj6DNLoMtiVQ6r
-J3yQPeo/IYuXRgisOeOc/wCHNIHjkYKwB9BVlPuj5ufepGMmhjRQJN4kHBO/Iz7VVVhGDnBBzhiO
-K1LtWcbscDHB7j/PNUnUswUpwRyTTuJDD5boVyx4zjr+VSwoj/xM6HqC5/Wm7RtARQFz2NOGPMyP
-lb36GkMlUKhYbOD0+Wq8ZRL9AqhQVyQBj1qUsHx2PYZ4zUJYfb4/Zf8AGmhHmnjL/kaLv6J/6CKK
-b4vOfE92f93/ANBFFdkPhRzy3Z0ngkf8SC6Po7fyFdB57JEF3HcwIUDt15Ncv4Lu7ePSp4Zp0QtI
-eGcA4wK3zJpu4E3MfT/nr/8AXrmn8TN47IvIjsgzMc9/8mkPlwRSO5Dc5ycZNUxc6WoH+kRf9/f/
-AK9H2vTNpxPFj/rr/wDXqCrFyOd3jV8J8wzjFILuOGaNZQoV84I4x061VFxppIzcR8/9Nf8A69T2
-8mlMCDPEMdP3v/16NA1Nq6eMqvOe/BrOLLvwCMdfvUPLpRRibiLd6ed/9eqRuNJ3c3EQHQ/vv/r0
-CRdUjapDcZ5GRVOSYzXM6LOwRQBhccHvTPtmkgD/AEmI/wDbb/69RS6hpCtj7XCMj/nv/wDXoSBk
-pg5Vjc3OR0+b/wCtT4HxeIC7uSDgt171WOo6H5qx/a4t23OBMcfnmnJqOjxMHS6hDDoTNn+tMRwf
-i3/kZbr/AID/AOgiiovElxFd6/czQuHjJGGU5B4FFdkPhRhLdmT3pe1FFMQUUUUAFOPWiigAPWm0
-UUAFFFFABSUUUwCiiigD/9k=
-"/>
-<Record name="result"><Section name="default" class="default"><Field abbrev="marc245" searchfield="false" sortfield="false"><Values><Value>Carte du pais de Xaintonge.</Value></Values><Label display="on">Title</Label></Field><Field abbrev="record_no" searchfield="false" sortfield="false"><Values><Value>004204107</Value></Values><Label display="on">Record No.</Label></Field></Section></Record></Snapshot>
-<Snapshot href="/cgi/i/image/image-idx?c=clark1ic8lift;entryid=x-004204107;viewid=39015091191570_02">
-    <Thumbnail src="data:image/jpeg;base64,/9j/4AAQSkZJRgABAQAAAQABAAD/2wBDAAgGBgcGBQgHBwcJCQgKDBQNDAsLDBkSEw8UHRofHh0a
-HBwgJC4nICIsIxwcKDcpLDAxNDQ0Hyc5PTgyPC4zNDL/2wBDAQkJCQwLDBgNDRgyIRwhMjIyMjIy
-MjIyMjIyMjIyMjIyMjIyMjIyMjIyMjIyMjIyMjIyMjIyMjIyMjIyMjIyMjL/wAARCABRAGQDASIA
-AhEBAxEB/8QAHwAAAQUBAQEBAQEAAAAAAAAAAAECAwQFBgcICQoL/8QAtRAAAgEDAwIEAwUFBAQA
-AAF9AQIDAAQRBRIhMUEGE1FhByJxFDKBkaEII0KxwRVS0fAkM2JyggkKFhcYGRolJicoKSo0NTY3
-ODk6Q0RFRkdISUpTVFVWV1hZWmNkZWZnaGlqc3R1dnd4eXqDhIWGh4iJipKTlJWWl5iZmqKjpKWm
-p6ipqrKztLW2t7i5usLDxMXGx8jJytLT1NXW19jZ2uHi4+Tl5ufo6erx8vP09fb3+Pn6/8QAHwEA
-AwEBAQEBAQEBAQAAAAAAAAECAwQFBgcICQoL/8QAtREAAgECBAQDBAcFBAQAAQJ3AAECAxEEBSEx
-BhJBUQdhcRMiMoEIFEKRobHBCSMzUvAVYnLRChYkNOEl8RcYGRomJygpKjU2Nzg5OkNERUZHSElK
-U1RVVldYWVpjZGVmZ2hpanN0dXZ3eHl6goOEhYaHiImKkpOUlZaXmJmaoqOkpaanqKmqsrO0tba3
-uLm6wsPExcbHyMnK0tPU1dbX2Nna4uPk5ebn6Onq8vP09fb3+Pn6/9oADAMBAAIRAxEAPwDA0Lw5
-ps2mQXMsHmSSICdzEj8q0j4c0vPFlGPwqTw2M6Fa8/wCtNl5xmvPlKV3qdsYq2xjnw5ppx/okf5U
-0+HNO72cf5VtAYNDYxU80u5Vl2MQeG9O/wCfRPyqePw5phGDZx/lWgB71NCuXAo5pdw5V2Eh8LaR
-5S40+A8d0qjqnhnTY2i2WUS8HotddAv7gcetZms5DRfjVNu25mrcxyp8PWBAH2WP/vmlj0DT0cML
-SE47MuRWxjimntU80u5pZdig+hafKuDY2y5/upioW8P6euB9jhx3+WtoAYGaScAUc0u4rLseYeIb
-WK01eSKGMIgUHA+lFT+LMf29L/ur/Kiu6D91HLP4mdp4ZY/2BaEf3a1yCxzWR4VBbw/af7v9TW1j
-FcMviZ1R2QzFI30qTHFNK1JRHt5FWIRyB71EBzU0Y+cfWgGav2lbeBCyk5JAxWbf3IuihVSMDvVq
-9/49ov8AeNZhBOMGqb6ERS3E2ZxTWX+dSLnjnmhuKksbjAxTJfuZqTqKbKMx0xHmviv/AJD0v+6v
-8qKb4sP/ABUE3+6v8qK76fwI5J/EztvCXPh+0/3T/M1ud6w/CP8AyLtofZv/AEI1vcDr0rin8TOm
-OyGYpvJ+lOxnmjgcVBYwZ6CpYifMAqPIHSpIfvigRevRm1hHoxrPKfLWlecWsH1NUSQRTYo7ESr2
-qOaIyBSGI2nNTjsaaeRSGQqpU5JpzH5DTjSEfu2pgeYeK/8AkYJ/ov8AKik8V/8AIw3H0X+Qor0K
-fwo45/EzuPB2P+Eatv8AgX/oRrcY81z/AIPbHhu3+rf+hGt3cCTxXFP4mdMdkOLVGzUrcdKiJzUF
-kgJxmpYjlxmqu/GRirED5YZoEaV4cWkJHqazi/HFXrw/6HEf9o1m7qb3FHYdu6U4YxzUQp3DDDDI
-zSGOHJoc4U4ppbBoJBWmB5d4qP8AxUVz/wAB/wDQRRTfFBJ8RXWfVf8A0EUV3w+FHJL4mdn4OP8A
-xTcJ/wBpv/QjW8p+Y1yvhPUrO30KOGW5iRwzZVnAPXNbL61p6BmN1DgDP+sBrjmnzM6I7I0mY+1Q
-utURr2nNGri7g2nplwKU6xZFci5hP/AxU2ZVy3gjPrU8AJYdRWb/AGvZ5P8ApMH/AH2Ks2+q2jZx
-cQ5H+2KVmFzcvR/ocP1NZTdetT3GrWZtowbmHjP8YrIbVrTeT9oix/vCm0KJf57U5eazf7YtAQPt
-MX/fQo/tm0yR9ph/77FKzKNEn5iKVAdpBP0rN/tazJ/4+of++xTv7VswvF3D0/56CnZiPPvE/wDy
-MN19V/8AQRRUevzJPrdzJG6uhIwynIPAoruh8KOSW7MylooqxBRRRSASlX7woooAc1NoooAKKKKA
-CiiimAlFFFAH/9k=
-"/>
-<Record name="result"><Section name="default" class="default"><Field abbrev="marc245" searchfield="false" sortfield="false"><Values><Value>Carte du pais de Xaintonge.</Value></Values><Label display="on">Title</Label></Field><Field abbrev="record_no" searchfield="false" sortfield="false"><Values><Value>004204107</Value></Values><Label display="on">Record No.</Label></Field></Section></Record></Snapshot>
-<Snapshot href="/cgi/i/image/image-idx?c=clark1ic8lift;entryid=x-004217655;viewid=39015091185994">
-    <Thumbnail src="data:image/jpeg;base64,/9j/4AAQSkZJRgABAQAAAQABAAD/2wBDAAgGBgcGBQgHBwcJCQgKDBQNDAsLDBkSEw8UHRofHh0a
-HBwgJC4nICIsIxwcKDcpLDAxNDQ0Hyc5PTgyPC4zNDL/2wBDAQkJCQwLDBgNDRgyIRwhMjIyMjIy
-MjIyMjIyMjIyMjIyMjIyMjIyMjIyMjIyMjIyMjIyMjIyMjIyMjIyMjIyMjL/wAARCABPAGQDASIA
-AhEBAxEB/8QAHwAAAQUBAQEBAQEAAAAAAAAAAAECAwQFBgcICQoL/8QAtRAAAgEDAwIEAwUFBAQA
-AAF9AQIDAAQRBRIhMUEGE1FhByJxFDKBkaEII0KxwRVS0fAkM2JyggkKFhcYGRolJicoKSo0NTY3
-ODk6Q0RFRkdISUpTVFVWV1hZWmNkZWZnaGlqc3R1dnd4eXqDhIWGh4iJipKTlJWWl5iZmqKjpKWm
-p6ipqrKztLW2t7i5usLDxMXGx8jJytLT1NXW19jZ2uHi4+Tl5ufo6erx8vP09fb3+Pn6/8QAHwEA
-AwEBAQEBAQEBAQAAAAAAAAECAwQFBgcICQoL/8QAtREAAgECBAQDBAcFBAQAAQJ3AAECAxEEBSEx
-BhJBUQdhcRMiMoEIFEKRobHBCSMzUvAVYnLRChYkNOEl8RcYGRomJygpKjU2Nzg5OkNERUZHSElK
-U1RVVldYWVpjZGVmZ2hpanN0dXZ3eHl6goOEhYaHiImKkpOUlZaXmJmaoqOkpaanqKmqsrO0tba3
-uLm6wsPExcbHyMnK0tPU1dbX2Nna4uPk5ebn6Onq8vP09fb3+Pn6/9oADAMBAAIRAxEAPwCXRPCu
-ktotmZrCCaV4VkeR85JIB/rWifC+lsONLsB/2yq5ogH9lWCk8/ZY+P8AgIq/LkHbg49R1rhlJ33O
-lJWMmLw3pOONKsfxiH+FDeGdIYEtpNj+EYH9K2kBIGcH3HalmRhGMZ69RS5n3HZHPyeFtGRcnSLX
-6gE/pVd9B0GMZ/su1PttOa35InZwQ+NwwQ3A+oFVktseYWX5gxGR1x2p8z7hZGDFpmisoJ0W0+Yg
-AbQe+KvR6Do7sypo1llcf8sx/hVmO0USAEtt2Zx07mrSW5i+ZCpP931H680cz7hYqHw9pSqSNIsG
-I7CFf8Kii0nSJgyjR7BWHrCv+FbKSJJlcYJyCh6ipIreOMkoPvHNLmYWMVvDOjnk6RZDPA/d4/pS
-Hwvo20k6TZ8dcJ/9augKgHnpn9abMoWJyeODRzPuFkeLeOLG20/xG0NrAkMRiRtiDAyRRU/xF48V
-HP8Az7x/1orsh8KOeW56joyk6ZY5HH2WM/8AjorQKyZGMDJxk1n6OSdHscD5vssfb/ZFWF3SoXad
-gHO0ADj/APX0rje50IuFOTnG4e9PSRXHBHA5HpVS2aV4tzKHcADJ6/8A16dFE6szGRjk52t1qbDJ
-BEWdhuCnPBHX8aoTsYWZgf3vVmA69vpirLSo0xUuVkIOFJIJqrKWMT/LliOcj9femBXt5meYBhtw
-pGducnNX5JsAKvzNjIGKpQyrnPqDnn0JqV5127cnPbHGOPWmIdO6yIqOf3hJxt6/hU1pcZTbIVDD
-AwM8mq5mjBjSMZbtuGfz96uRWpjQyMB8wAx6UMCeaPzoWTdtyOo6ioinl2zLuJIHU1NGBIis2c8H
-GeKimwInCjjbwAPapGeP/EfI8Uj3to/60UnxGOfFX0t4x/Oiu2n8KOeXxM9U0QeZo2nkZBNpH06/
-dWpIiA0kcoO4H04OTUGhSsNF01zyDaR5/wC+Vq5ONzCVcZXse+e36VyPc3Wwy2fajD0A49+h/lU2
-75cc5J9OKqv5fkqVGOTjkEjnnkeuDUoIHzE9sA5pAEh34DKCR09qqSDJ8rJCsCO1SvKgkYFsjOD6
-/pVdp4kbMjADPBxTAhFltfdGEGFIYsMH6ilKlXS1iQ5A4yelT/aFMZkClgAWqa1tPnFxIX6YCrzx
-RcC3aWZtrcBgJGHI459asSsyjJjLAEcDHT15pVlIB4A68cnpTZ7gxQvIQeBxnoakZGJEZSd2zGAc
-jH+RSSACBwM9D15qjcQm7OZ7lU458s4JGOhz9aht2a2JtWbKMGMbDoeKdgueYfEUg+Kmx/zwj/lR
-TfiFn/hK5M/88Y//AEGiu2n8KOeW7PTtDYL4f0skgYs0Jz/urWgsodchlZWHVcis/QmJ0HTP+vSP
-/wBBWrhi8xE8z7wOcqeprke7NkJMrFcIysoPQkcH2P17Uxn8pwjDG4BhznHt+dTKYwSGCjJGe2T2
-/lTZ7cykMjgc5HFIZSmIaQjONzBS2Penypal8bUXHAyKhlR41CtkMpBB6jrVW6knIHBYDqU9femI
-szeXGcKUG8FcBTz71PZXZ2lZsMB/EFxj/P8AWqVqyTFIXRi4OcuO+c/1qZ7OVn/d4VccnuPy/wA8
-UAbccy7QVJwRxxUV3mS3YbTnHBz0qnDDOuFNxx7Cn/vop0Dybg3GfSlYY63keWI46qSp29Mj8aoM
-kkuo+YpQRwgj1zxz/h+FXnsYS+5d4JGcIcUyKNIQyKu3joM0AeWfEP8A5Gk/9cI/5UUnxE/5Gk/9
-cI/5UV2U/hRhLdnpOhc6DpQz/wAucfH/AAFa0w/yDOfyridK8c6JaaRZQTG5EsMCxMFTOCAB6+1W
-/wDhYXh7PW9/79//AF65nCV9jVNdzrkOc9eo7UuRt3dh2xXJL8QfDwJ+e95/6Zf/AF6U/EHw6eRL
-eA/9cv8A69Lkl2HzLudO7hxtbqeBxVWa0ywMRx3OAKwX8f8AhwqcS3hPtF/9eoz4/wDDy8r9tP8A
-2zH+NHJLsHMu5seXLE4ONzHI5/yKlY3Eq7nJQD+6eorn18feHiPnW+z/ALg/xpw8eeGwMA32OuNn
-/wBenyS7Cuu5vrEQzOrkcYOeffNKfMWUbJd3Gfm6fgRWAvj7w4o6Xx+kY/xob4i+HSc+VqJOMZ2L
-/wDFUckuwXXc6iO7VkBberd8qR+tPZhtJHVgecVxx+Inh/p9m1Ij6L/8VUY+ImiLkC31Hb2BVf8A
-4ql7OXYfMu5zXxBH/FUMfWCP+VFZ/inWLfW9ZN3apKkXlqgEoAbj6E0V1wVopMwluf/Z
-"/>
-<Record name="result"><Section name="default" class="default"><Field abbrev="marc245" searchfield="false" sortfield="false"><Values><Value>A map of North America : with the European settlements &amp; whatever else is remarkable in ye West Indies, from the latest and best observations / R. W. Seale delin. et sculp.</Value></Values><Label display="on">Title</Label></Field><Field abbrev="record_no" searchfield="false" sortfield="false"><Values><Value>004217655</Value></Values><Label display="on">Record No.</Label></Field></Section></Record></Snapshot>
-<Snapshot href="/cgi/i/image/image-idx?c=clark1ic8lift;entryid=x-004256886;viewid=39015091197296">
-    <Thumbnail src="data:image/jpeg;base64,/9j/4AAQSkZJRgABAQAAAQABAAD/2wBDAAgGBgcGBQgHBwcJCQgKDBQNDAsLDBkSEw8UHRofHh0a
-HBwgJC4nICIsIxwcKDcpLDAxNDQ0Hyc5PTgyPC4zNDL/2wBDAQkJCQwLDBgNDRgyIRwhMjIyMjIy
-MjIyMjIyMjIyMjIyMjIyMjIyMjIyMjIyMjIyMjIyMjIyMjIyMjIyMjIyMjL/wAARCAA9AGQDASIA
-AhEBAxEB/8QAHwAAAQUBAQEBAQEAAAAAAAAAAAECAwQFBgcICQoL/8QAtRAAAgEDAwIEAwUFBAQA
-AAF9AQIDAAQRBRIhMUEGE1FhByJxFDKBkaEII0KxwRVS0fAkM2JyggkKFhcYGRolJicoKSo0NTY3
-ODk6Q0RFRkdISUpTVFVWV1hZWmNkZWZnaGlqc3R1dnd4eXqDhIWGh4iJipKTlJWWl5iZmqKjpKWm
-p6ipqrKztLW2t7i5usLDxMXGx8jJytLT1NXW19jZ2uHi4+Tl5ufo6erx8vP09fb3+Pn6/8QAHwEA
-AwEBAQEBAQEBAQAAAAAAAAECAwQFBgcICQoL/8QAtREAAgECBAQDBAcFBAQAAQJ3AAECAxEEBSEx
-BhJBUQdhcRMiMoEIFEKRobHBCSMzUvAVYnLRChYkNOEl8RcYGRomJygpKjU2Nzg5OkNERUZHSElK
-U1RVVldYWVpjZGVmZ2hpanN0dXZ3eHl6goOEhYaHiImKkpOUlZaXmJmaoqOkpaanqKmqsrO0tba3
-uLm6wsPExcbHyMnK0tPU1dbX2Nna4uPk5ebn6Onq8vP09fb3+Pn6/9oADAMBAAIRAxEAPwDd0TSN
-KOh6YX0q0llkto2JMKZJ2Akkke9aP9iaZn/kAWn18mOotHTOiaP/ANeif+gLWzveNFym8nggH865
-jRmcuj6YBxoVpx/0yjqOSx01HCto9qM9B5cda0L/ACneWHpuFVpoWluBKpjMYHOf6U7gUBp2kk4O
-i234wJUp0XSsYOg2p9vIjqwkR6lkVR15IpksrKJSZGBHIG4Um7BYq/2To6SYOgW3PA/cRVM2iaSR
-zoFp/wB+I6mtZNzfMc8jawIPP+TV+OQSIc9VYqaaYWMT/hH9FJ/5F60Pv5EdR/2N4eZ2QaBall4I
-8iPit6MEqT6scce9MfyFk+YqHJ54z/8AqouwMT/hG9ELceHrYj/rkgpJPDWhAKH0C2UMwXPlJ3+l
-bcr7ZEXftXBJI/lUDyeasYyTtlXrRcDynxzo+n6brkUVpaxwxtbq5VemdzD+goq98SR/xUcH/Xov
-/ob0Va2Edzo526HpB54tI+n+4K0/PZTufoelZmjkDQdHBGSbSPH/AHwKvSLglSuQRnGOT9KzGTec
-XVXjVSGOBk5+tJNbblJ8wg46AmnWsTBPmHljcTt4JFTGGPrufPruNAEGXSHfJHtUdu496bIyYLMA
-eMcirQTKkK2fZuRWWQ6s0W3aV6r2AoAfIgAyGLDIYryM/wCcVfjCnc6sDG53fp/9asRPMnnELA7M
-nd8mD36VqRRBBsVQPYnP/wBaiwyZ5Y7Zl3MT5j4AZulUmk8+QgHGTyc8HmpLm2BdMKHbPQjge9NW
-GSNSWHyZycdhQIkjKqQoU8jr60ShF8oKoGJBkClICfxbT2FN25dCzfNvXimB5x8SBnxFB/16r/6G
-9FS/EUZ8Qwf9eq/+hPRVrYR1uku40HR9i7mFomBn/YFaUcmyWN9mGwS525J9vwrO0LnSNFB6G1TP
-/fsVsPncUcEgDg+tZoplhJ0fgMuT2IpxxgZUVUt2Usyg5wPTkVYTBPG4gcUxBsQHhcVDPbpOSoZl
-bGNwPSp9p3E4P1NJswRkjrQBkMksE+zhgoyHAOSD2P5Vetpy0WHXYR+tF9HGzxZPzE44PbB/+tTb
-RHZQ8g29wDQBOwdASMMTxz60gkZoioI35wRjpVgqoGM8YqtJAQzCMcueWz0FIBYV2qMlnUD5fpUL
-r5ZBAyN4x7CrCw7M4bg9BnpUFyMKnP8AGv8AOkM88+IJzr8PH/Lsv/oTUUePlzr0P/Xsv/oTUVpH
-YR1ugui6LojMwAFtHyf+uYre8+L/AJ6p+deOaf8AEaa0022s5NMilWCNYw3mYyAMZ6Gr6/FEBcf2
-HET6+f8A/Y1KhLsDaPU2ljI+SaNW7k4OajlZkh+WZCewH/68mvNB8UlUDGhRZ/67/wD2NB+K+Gx/
-YUX/AH//APsafKwuj0azkkO7fKi46EDAP4Zq4JVUndKh+nGP1rzNPirnH/Ejj/8AAj/7CpR8Us8f
-2JH/AN//AP7GjlYHfXEkcsqOskfycMGYdDUwuIwo/fRk9znFedf8LN5J/saMZ/6bf/Y04fE4nj+x
-k/7/AP8A9jS5WB3FxevvZUcDHTBFMsNQkk3i4cLtbgtgVxh+JY25OjIf+2//ANjTV+JoY/8AIEjH
-/bf/AOxp2YHfNcxk8XKD0+YGq9zOjLGElRjvXofcVxDfEndn/iTx8cf67/7Gmf8ACyAr4/sdPqJ/
-/sanlY7oZ45Odbh/691/9Caiuf8AEnic6nqMc/2QRYiC7fMz3J9PeitEnYV0f//Z
-"/>
-<Record name="result"><Section name="default" class="default"><Field abbrev="marc245" searchfield="false" sortfield="false"><Values><Value>Tehuantepec Railway Company's chart of the World on Mercator's projection : showing the line of its railway, with its connections by steamships and sailing vessels with the prominent ports of the world.</Value></Values><Label display="on">Title</Label></Field><Field abbrev="record_no" searchfield="false" sortfield="false"><Values><Value>004256886</Value></Values><Label display="on">Record No.</Label></Field></Section></Record></Snapshot>
-<Snapshot href="/cgi/i/image/image-idx?c=clark1ic8lift;entryid=x-004256897;viewid=39015091192198_01">
-    <Thumbnail src="data:image/jpeg;base64,/9j/4AAQSkZJRgABAQAAAQABAAD/2wBDAAgGBgcGBQgHBwcJCQgKDBQNDAsLDBkSEw8UHRofHh0a
-HBwgJC4nICIsIxwcKDcpLDAxNDQ0Hyc5PTgyPC4zNDL/2wBDAQkJCQwLDBgNDRgyIRwhMjIyMjIy
-MjIyMjIyMjIyMjIyMjIyMjIyMjIyMjIyMjIyMjIyMjIyMjIyMjIyMjIyMjL/wAARCABLAGQDASIA
-AhEBAxEB/8QAHwAAAQUBAQEBAQEAAAAAAAAAAAECAwQFBgcICQoL/8QAtRAAAgEDAwIEAwUFBAQA
-AAF9AQIDAAQRBRIhMUEGE1FhByJxFDKBkaEII0KxwRVS0fAkM2JyggkKFhcYGRolJicoKSo0NTY3
-ODk6Q0RFRkdISUpTVFVWV1hZWmNkZWZnaGlqc3R1dnd4eXqDhIWGh4iJipKTlJWWl5iZmqKjpKWm
-p6ipqrKztLW2t7i5usLDxMXGx8jJytLT1NXW19jZ2uHi4+Tl5ufo6erx8vP09fb3+Pn6/8QAHwEA
-AwEBAQEBAQEBAQAAAAAAAAECAwQFBgcICQoL/8QAtREAAgECBAQDBAcFBAQAAQJ3AAECAxEEBSEx
-BhJBUQdhcRMiMoEIFEKRobHBCSMzUvAVYnLRChYkNOEl8RcYGRomJygpKjU2Nzg5OkNERUZHSElK
-U1RVVldYWVpjZGVmZ2hpanN0dXZ3eHl6goOEhYaHiImKkpOUlZaXmJmaoqOkpaanqKmqsrO0tba3
-uLm6wsPExcbHyMnK0tPU1dbX2Nna4uPk5ebn6Onq8vP09fb3+Pn6/9oADAMBAAIRAxEAPwBnhnw1
-pN1oFnPPYxSSOgLFh1NbB8J6H0/s63+u2m+El3eF9P8A+uYpmoKz6hNGpweCCSR6f5/GuJtuT1Om
-ysSf8InoZ/5hsH/fNO/4RLQsf8g2D/vmqzWkv3iI1BIx+8/+tUb2FwqIAVLZwSXPtj+R/OjXuGnY
-u/8ACJ6F/wBA2D8qQ+E9CzgabB+VVTYzrG5ZU6Ej5+n6UJGPKdQ0W49DuPH6Ua9w07E3/CKaEGP/
-ABLoMfSgeF9BBybC3/KqaqzSkMI1HOMt16f4H86ebYzSkL5agY9ff2p69w0Ln/CNeH/+fC1/IUv/
-AAjWgdfsNr+QqpPAXAA8qMjI+vvS+WGl3Ax8DBUDijXuBaPh3w+P+XG0/wC+RQvhvRGOY7G1b6Rg
-1XRSGJPk5KhcEY9a1NOQqkoIUEsD8vTpSd11DQ8b8WWkNn4lvIII1jjUjCqMAZANFWfHC48XXv8A
-wH/0EUV1x+FGEtz1Dwfz4V0//rn/AFqPVfMS7kkjUHaV6+nGf8+1SeDTnwpp/wD1z/rU17Cs1xOC
-ewxk+2K5PtM36FGSVmxtbHpk9RTYGWVW81vmHI9Qe1VjujZMsTGTgbhyD9fwNWNphO8nocg45piF
-mu2kYxZYE8EDjtVAiTBG4jj24NS3QEr79zZBwVxjFQuTGoC4UnuenvTQDCWBUbixHTjvT/McoED7
-R296rGdAxAzkH16UMQ/zZ6+nINMRLFuE+ZJMr780z7ZdSossWI9wIIIJxnv068U8ltqlSGPUYNXr
-fT7Y2PyqEZyT5jEZyTn0ouBSS4vBCqs6Svv5ZkIGPTAFdHoMzXMEztGE+YAAHqAOtZttpdu0bCRR
-KpwR2Hpkevr+NaulxCBp4lztBGM/jUyaKR5R45/5G68/4B/6CKKXx1/yN139E/8AQRRXVD4UYS3Z
-6X4N48K6eP8Apn/U1Yun2XkxYArhc57VW8G/8ixYf9c/61au/wDkIOduflXv9a4/tM6Ohl3EETZY
-N5ch5XHPQfz/AMafbgvFG0iEuwB6ZyKkuGKkN0VeCScZqrDcsrIhJCg5APHGelUSOniWQbEXHvnG
-B+VU5IkUYdweOOa12wE8xwvIzt7/AErPNvlwHB28EEDGaEwM8jEuNuSTg+9IiM7EFSD3VvlI/Ota
-3iWO4Yrz0HX6Ut8jPdEDAGAdxHQ4o5tbDtpczSG2uoXG3ueMf5zUkMzRquN3J6etTzRmGFd7Bg46
-5xioC5CggAAD1/z7UxFu6vmeJFz5YHPynrWlodw1xDM/zEjaMsc561g2zbruPzAcEEcj/PrXTacA
-skoChRtXp+NKWwI8p8dA/wDCV3JPUqn/AKCKKd48H/FWXGP7q/yorqh8KMZbs9G8HAjw3p5HQx1f
-uYxJev0yEXr+NUfBw/4pmwb/AKZ/1q/cOiX7bu8Y/ma438TOjoU7q3WSJUZsZbgCsqNcfx7yM4I9
-q2Lq5RVYgbiF+UDvnisnymQ5xj2qkSywZmKg+QN2cM7dvz70hmcoBjKgYwDx7UuwsmwJ15PHvxTX
-RQNpBUEelAEAmbewUsjevFOjbZEXdmkfJHzHqP8AJpNuASg3H0IpqB5A3lnk8N7UDIneRuWwcdFx
-0pN6jqgx7mp9hRBHhQWOWJJNVrssgDDBwAcY4qhCwTrFIDIispPAI6fSui0mZJWlKknCjOfxrD0w
-edvaSFW7qSK3rHImcHGdg/mamQI8u8dj/iqZz6on8qKd48XHimb/AHF/lRXTD4UZS3PRPCDAeGLA
-f9M615IIZJN7OytjHDYrxez8R6vaWscEF66RIMKoA4/Sp/8AhLNd/wCgjJ+S/wCFYulK9zRTVj1p
-9PgdgS8rEdMtwKRtMthg5c/8CryceLdeH/MSl/Jf8KX/AIS7Xs5/tKT/AL5X/Cl7KXcfOj1k6dCx
-DHzCR/t1G2nW8jDO84ODljXln/CYa/j/AJCUn/fC/wCFM/4S3XSSf7Rkz/ur/hR7GXcOdHqraXaj
-7qsMHs1Nj0u3WNsKxGem415YfFuunrqMn/fK/wCFIvizXQCBqMo/Bf8ACn7KXcXOj1YadbsAGjOP
-QseKT+z7YHHkd+u415Q3irXCOdSl/T/CmHxRrf8A0EpvzFHsZdw50evHTrVVwsYIHOMmlt0jibKR
-hcjnANeQf8JRrf8A0Ep/zFJ/wlOuf9BKf8xR7KQudGh49APiiQjoYkorm72+ur24M1zM8smANzdc
-UVvFWViG7s//2Q==
-"/>
-<Record name="result"><Section name="default" class="default"><Field abbrev="marc245" searchfield="false" sortfield="false"><Values><Value>Description du pais de Beauce.</Value></Values><Label display="on">Title</Label></Field><Field abbrev="record_no" searchfield="false" sortfield="false"><Values><Value>004256897</Value></Values><Label display="on">Record No.</Label></Field></Section></Record></Snapshot>
-<Snapshot href="/cgi/i/image/image-idx?c=clark1ic8lift;entryid=x-004256897;viewid=39015091192198_02">
-    <Thumbnail src="data:image/jpeg;base64,/9j/4AAQSkZJRgABAQAAAQABAAD/2wBDAAgGBgcGBQgHBwcJCQgKDBQNDAsLDBkSEw8UHRofHh0a
-HBwgJC4nICIsIxwcKDcpLDAxNDQ0Hyc5PTgyPC4zNDL/2wBDAQkJCQwLDBgNDRgyIRwhMjIyMjIy
-MjIyMjIyMjIyMjIyMjIyMjIyMjIyMjIyMjIyMjIyMjIyMjIyMjIyMjIyMjL/wAARCABMAGQDASIA
-AhEBAxEB/8QAHwAAAQUBAQEBAQEAAAAAAAAAAAECAwQFBgcICQoL/8QAtRAAAgEDAwIEAwUFBAQA
-AAF9AQIDAAQRBRIhMUEGE1FhByJxFDKBkaEII0KxwRVS0fAkM2JyggkKFhcYGRolJicoKSo0NTY3
-ODk6Q0RFRkdISUpTVFVWV1hZWmNkZWZnaGlqc3R1dnd4eXqDhIWGh4iJipKTlJWWl5iZmqKjpKWm
-p6ipqrKztLW2t7i5usLDxMXGx8jJytLT1NXW19jZ2uHi4+Tl5ufo6erx8vP09fb3+Pn6/8QAHwEA
-AwEBAQEBAQEBAQAAAAAAAAECAwQFBgcICQoL/8QAtREAAgECBAQDBAcFBAQAAQJ3AAECAxEEBSEx
-BhJBUQdhcRMiMoEIFEKRobHBCSMzUvAVYnLRChYkNOEl8RcYGRomJygpKjU2Nzg5OkNERUZHSElK
-U1RVVldYWVpjZGVmZ2hpanN0dXZ3eHl6goOEhYaHiImKkpOUlZaXmJmaoqOkpaanqKmqsrO0tba3
-uLm6wsPExcbHyMnK0tPU1dbX2Nna4uPk5ebn6Onq8vP09fb3+Pn6/9oADAMBAAIRAxEAPwC3onhL
-RJ9GspJNPjd3hRmY5ySRmtL/AIQrw/jP9nQ4PsaveHVUeH9OPf7PH/6CKvXDiMAetcMpNdTrjFPQ
-5+TwboSKD/ZkPPsakXwToBXP9mw/rXQthkUdzSRnEeAMkHFTzPuPlVtjn28FaABj+zIR+dVZPB2g
-qpxpsWc+9dYcnriq065OMYocn3FyowIPBegt102I/MR3qz/whWgDGNLh9+tdBAo2Hp1NTEVV33Js
-jmx4J0HdzpkP5Uv/AAhmgD/mFwflXRhec0BODRd9w0ObXwdoQ5/sy3/FaJPCOhlcDS7Yf8AroyuK
-hkBou+4WPAfGFnDYeKLu2t41jiTbhVHA+UUVZ8ej/isb3/gH/oIorsh8KMJbnsfhznw7pv8A17R/
-+gil1RC7x/e454qHw4x/4R3TsdBbx/8AoIq7N80qg+nSuCZ2UtHcnB+6fUYpGYQj/epFyuAegFNk
-YMdp9Km5ViRpTsXbgnIPPpTbkZAYHv2piKVK5xntinzKRgDJHfmi4mkWYF+VvrUg+9jB+tMgYhT3
-5qbPPStEZABjNAFIxPGDQD70ANaopBx1qSQjNQO3FAHhnj8EeMbz6J/6CKKXx/8A8jhd/RP/AEEU
-V2Q+FGEtz1zw78vhzTf+vaP/ANBFW7giN0OSSW+tVfDwA8OaaeP+PaP/ANBFXZAGlJIB4GK4ZnXT
-HyjIz3psYITLD5vWlV8mlY5XHGc1JYKCMZA44pSzMpPXJpc4Jz0FIM7QpxyKCWWIR8pJ9TUucdah
-h4T8akzmrMh7EAU1Sce9BYYxTc9aYBJzg1VmGUPOKsueMVE/3eQKAPDPHwx4uuf91P5UVL8QFA8W
-3GD1RT+lFdkPhRhLc9W8Oj/im9P/AOveP/0EVdbqe/eqWgf8i1p2P+fdP/QRV7ZiNveuGW51Q2IY
-5SrlTn5umatHAVcDnNVZwePXNPSRmYYXIWoNXqWcbjSsOc80sa5wwOQaey81djNsfGcR5pxweaZE
-cxEA9DSMu3gA4NUQOzxkcmmlu9JkDgUhXjGetJjsMMj45AH45oyWU5FKenpULM4yOuaEwZ438QF/
-4qyb/rmn8qKd8QFx4ql/65pRXbD4Uc0tz1Xw+o/4R3Th/wBO8f8A6CK01j5wcYrxmz8faza2kMEY
-tykSBFyjdAMDvVj/AIWRruc7bTn/AKZn/GsHSkaqaPXJI13A4FKqjbyox0ryL/hZGunqtp6f6o/4
-0o+JGuqchbT/AL9H/Gl7GQ/aI9dClHYqOop27IryE/ErXf7tp/37b/4qk/4WPrn920/79n/Gj2Mg
-9oj2CN9qA4705m3A4U5xXjv/AAsjXAOEtB/2zP8AjSj4la9jhbQf9sj/AI0eymLnieugEdc5PrRk
-IMnpXkP/AAsjXj1Nr/36P+NNb4ja8RjNtj/rl/8AXpexkP2iPXgVZRk9aa3ykntXkH/Cw9d4+a2/
-79f/AF6D8RNeP8dv/wB+v/r01RkDqRGfEHnxS59Yk/rRXPatq93q18bm6ZDJtC/KuBgUV0xTSSMW
-02f/2Q==
-"/>
-<Record name="result"><Section name="default" class="default"><Field abbrev="marc245" searchfield="false" sortfield="false"><Values><Value>Description du pais de Beauce.</Value></Values><Label display="on">Title</Label></Field><Field abbrev="record_no" searchfield="false" sortfield="false"><Values><Value>004256897</Value></Values><Label display="on">Record No.</Label></Field></Section></Record></Snapshot>
-<Snapshot href="/cgi/i/image/image-idx?c=clark1ic8lift;entryid=x-004257037;viewid=39015091185937">
-    <Thumbnail src="data:image/jpeg;base64,/9j/4AAQSkZJRgABAQIAFAAUAAD/2wBDAAgGBgcGBQgHBwcJCQgKDBQNDAsLDBkSEw8UHRofHh0a
-HBwgJC4nICIsIxwcKDcpLDAxNDQ0Hyc5PTgyPC4zNDL/2wBDAQkJCQwLDBgNDRgyIRwhMjIyMjIy
-MjIyMjIyMjIyMjIyMjIyMjIyMjIyMjIyMjIyMjIyMjIyMjIyMjIyMjIyMjL/wAARCABRAGQDASIA
-AhEBAxEB/8QAGwAAAgMBAQEAAAAAAAAAAAAAAAYDBAUCAQf/xABDEAACAQMCBAIFCAcFCQAAAAAB
-AgMABBEFIQYSMUETUQciYXGBFDJCZJGxssEjUmJ0odHwFRZyc+EkJSYzNTZTg5P/xAAYAQADAQEA
-AAAAAAAAAAAAAAAAAQIDBP/EAB8RAQEAAgICAwEAAAAAAAAAAAABAhESMSEyA0FRYf/aAAwDAQAC
-EQMRAD8A1dI4N4Zl0KwurjS4GeW3jdnZm9YlQT3q8OEOD0OTpNr1xuWP511piiXhfh0MoZWhjBB7
-jlFT3NoElKeCir2IH9dq47llut9QJwvwinTRrD4x5++pRoXCybLpGnD/ANC/yr2zthLMitCvKT1Z
-e3ftXc0Fv4JUxQhuxPXrU3LKHJEB07hxCQNGssefydB99eiz0RGIXRbTrgEQx7+2saWEJbSpsd8q
-Q3fsQPbXtxbG4giZU58EHCvjbBG3TvjvRyo02/A0fl30m2z+r4Efx7dqj+T6Jk/7ktCf8mOl64s1
-jW2AgmlbCCQKxxhB83HmTv7d69MRLmaaHDFy/hNJso7A4xtjtRypXwYmsuGdubTdOGemYE/lR/ZP
-DDddK047/wDgX+VJLajZM8cQkaWKaXmuGiGX9b9rGAPypnm08Xpge2ZYVjDRBeTJ5fMA7DpjvVXl
-CmqtvovC2N9I0/8A+C1EeHuFnOF0fT8/5YFWrbQ1tjFMG5miV/UJyH5sbnPfbOfbRdwKixult4QE
-q5LYyct/X20uVkPT5j6QNK0/TeIIoLO0hgjNsrFI1wM8zb/wFFWvSkeXiqIfVE/E9FdOPTO9nbQ2
-U8IcNu+MeCg3/wANai3Y5mBCIFG5aTasbRHYcBcPurEERJgj4jepmEMlsS8YiKbnLZHs+FceftW0
-6X4b+KZ32Ziqlh1AIA648v51VnvjGv6RLfI3wY8bfbWVG0yATc7EKqkg7c+SoYVPPArPzSKWffBP
-WnMZe2uElj11WeItzKpYHJ8v40F5pYvF5EjQj5o7r/XuqtLlYwrF1LYHqjc74Iz7q7uXj5HUKAeT
-bA7d8eXWr4xXGLJ1BI4HYpGyRnmYYwce7ofhS/fePe3Nt67IbqdQwzy8qnYD4CrX6QJ4asoWWQA5
-OMA7k1oaZpo1S4jv7mHntEHPbIejtv6/XOBtjPnnyokk8sPl71DJBaiFEhgjQW6LyMNgTgewb1Yi
-D5wyIFIzsd8+XTpXccCjBJyT5HaupQIkDJC0pyByqRnr13PbrSJHG2XdAsZ5GAIzuFIz5VDfr/sm
-6gESp0GfpCrMKhyXMZQknAJqHUUxbHAPzkOx/aFTl1RHyT0sNji6IfVE/E1Feelr/vCL9zT8TUV2
-YesZZdnHRZki9HOhSyMFVY13Jx3Iqx8tMaHEbrnC7qN/ZioeF4kuvR/oUEhISRChxjOCWG2agINs
-zWU4IljOFcj5ydAc9CMYz7a5Msd5VpvUi1DNaiF0kWaMEMoyGOe3uqpfzXDWkFva24kvXkMCIXwO
-bHXPkAM/GpSGZGRP1tumD7K5sYg/EtiUjKcqyTHB64HIM74+l27U8ZpWPyaWjw/qJsylxqUCysAT
-GE/R5HtzzfHt5VHa8LuWla8vHeUvlHinbCKOgx389/OmWV4wf0nhh3YKvNjcnYCoVuYBFHKpjCzN
-yxuExzHPT+FPdHKlm80v5BcRwtLJPFOGUOyjnRxvtgdxn4ir1jxDa6ZpFgssTqHUIHTJTKtyYJ7E
-4Jx7DXfEs0fg26vdrbt4wKuF532GDyAA774323pfmWC5tLPTrTULpI+dmYzpyLIztnJ2xnckZ/1p
-9i5TX9PwYxSsrlguc55s4Ofuqf1yuSrL63TNJNpq93o06Weo+O8Hqop5fEdX7KCDvnfrvgYNN9rc
-i5tUlgYPG4yPWGPgfyqbCWgSEU8r5J3Gfm++quojNo4IIw6YJbruKk8aXlOYiufN9vtxUOoSFrJy
-D3XoQfpCleg+R+lo/wDGEX7mn4morn0sHPF8Z+qR/e1FdeHrGN7O/Buf7k8PnmI9Y9B+01W9T066
-54p4GN0oDDleTf1jzbH4AAHbasnQLh7P0aaRcpjmi5mGe3rt9tMujaqmo2cbGWNpSSGGcZOfL3Vz
-X2rX6hYVy07qxKS53hcYYH2Z/KpJBJZSW16yB5IGPQblTswAJ643x7KbL21iuoxHPGjL19b6PtrI
-m0f1SkepcvQcrhW677nY0J0hv9YsL2xeA3DLzAqeRXyPLIxn+FY8lzbLYpPqU0jc42VnblVc5C8u
-cDbG2O1TahZXsTzEgyhVwJIAen3qftrEvdNh1W4VpLl1KDCpjm2+3rVQraY9E0q1u7SZ57CIQSyl
-4YZVyUUjGd+xxnAqK90HThFJJbWEccahwjWkrM0rAbjG64B6jrtVTT7Wa1V5bW+my5UktGHZgv8A
-iHTzxWnpyXmoahciTwYIlKy5hYcyuykHBIJ3GCfcKDn4XopdQjtDHaGRgM+KgVmViQBuwHU47eVX
-rd7qH5QYonDN/wA0JYkAkDO/Lg5x5f6U920skjmMhlK7cxjADe0VDNdNCzFkwkZwzEoB79+lLa54
-ZEOv6hyxRnQ7vlfYEjlIbHc7ADtnNdRa5b6hYukEkolxl4nX1kw+N/Lodq1Yp3uGQ+InKcnw/Dyf
-Zhht/QpVvrUWHEYlVmMdyjc6BTgsOUg46k4x9hqb5lIo+lcZ4ui/c4/vaipPSmueKoT9TT8TUV1Y
-esZ3sy6JcNbei3TJ0CFo+Yjn6fPaqHDNxYLqlyJb+3jJw3LIBysM9jkbg/fW9wNbrd8B6XG7soUO
-crj9dvOtduFtMkV0POqSfOVWCg/ZXNbrKtJPEGrJd3dhCunIs6vIBLyShSYu/KfPpSVe6HxLHlra
-zuTIZSzBpFOMH1SN9+/5U2Q8D8O2zAxI0ZHTlnYY/jWpBpdrbRiOK+uFQbANclvvJo5aPRRhv+IE
-iSCVYJblFEkkEhCYUDffp5HOfOmNodOvbeGOeG28eZcqoYPk4ycddvbVx7KCReVr+YjuPHFU4eHd
-DtJhcQeHDKu3iI4BA8vdS5DTGveHmtJRJb23ipnmZBIQVx5Hv7qpWlxbxXstzEI7sOyTFDccrI6q
-VGRg+rg9+hpzkS1jChtSlAY8oxMOpqrdcPaLdyiW5dZJAvJztMM48qORcfxgQ69GkRkQyDJLIIXD
-RtIei5xtknrio0sVuxNJqMsskxIY80pChjvgDpjI2FMaaDocRcq6AuQWPjDcjoetSLpukKfVmX3/
-ACgbY7ClbTKEOly2U1xNY3DQATEgFvUlTGRkewk71HNJq0E0Hyu5Sa4fKx3CDBXJGV7dcdcZ3xvT
-odO0sMW+UDJPNvODvUEtnphcZlDENkHxwcHz60S5Dw+cek4Z4mgP1NPxNRXvpHlhk4jhKyIwFqoy
-GB+k1FdWHrGd7LWn/wDS4/efvqKXoaKKf2TPk+dULfnRRVJrjvXNFFMPBQ3T40UUw4rnvRRQAa87
-0UUBInQ++iiigP/Z
-"/>
-<Record name="result"><Section name="default" class="default"><Field abbrev="marc245" searchfield="false" sortfield="false"><Values><Value>Tabula Mexicae et Floridae : terrarum Anglicarum, et anteriorum Americae Insularum, item cursuum et circuituum fluminis Mississippi dicti.</Value></Values><Label display="on">Title</Label></Field><Field abbrev="record_no" searchfield="false" sortfield="false"><Values><Value>004257037</Value></Values><Label display="on">Record No.</Label></Field></Section></Record></Snapshot>
-<Snapshot href="/cgi/i/image/image-idx?c=clark1ic8lift;entryid=x-004258493;viewid=39015091186562">
-    <Thumbnail src="data:image/jpeg;base64,/9j/4AAQSkZJRgABAQAAAQABAAD/2wBDAAgGBgcGBQgHBwcJCQgKDBQNDAsLDBkSEw8UHRofHh0a
-HBwgJC4nICIsIxwcKDcpLDAxNDQ0Hyc5PTgyPC4zNDL/2wBDAQkJCQwLDBgNDRgyIRwhMjIyMjIy
-MjIyMjIyMjIyMjIyMjIyMjIyMjIyMjIyMjIyMjIyMjIyMjIyMjIyMjIyMjL/wAARCABEAGQDASIA
-AhEBAxEB/8QAHwAAAQUBAQEBAQEAAAAAAAAAAAECAwQFBgcICQoL/8QAtRAAAgEDAwIEAwUFBAQA
-AAF9AQIDAAQRBRIhMUEGE1FhByJxFDKBkaEII0KxwRVS0fAkM2JyggkKFhcYGRolJicoKSo0NTY3
-ODk6Q0RFRkdISUpTVFVWV1hZWmNkZWZnaGlqc3R1dnd4eXqDhIWGh4iJipKTlJWWl5iZmqKjpKWm
-p6ipqrKztLW2t7i5usLDxMXGx8jJytLT1NXW19jZ2uHi4+Tl5ufo6erx8vP09fb3+Pn6/8QAHwEA
-AwEBAQEBAQEBAQAAAAAAAAECAwQFBgcICQoL/8QAtREAAgECBAQDBAcFBAQAAQJ3AAECAxEEBSEx
-BhJBUQdhcRMiMoEIFEKRobHBCSMzUvAVYnLRChYkNOEl8RcYGRomJygpKjU2Nzg5OkNERUZHSElK
-U1RVVldYWVpjZGVmZ2hpanN0dXZ3eHl6goOEhYaHiImKkpOUlZaXmJmaoqOkpaanqKmqsrO0tba3
-uLm6wsPExcbHyMnK0tPU1dbX2Nna4uPk5ebn6Onq8vP09fb3+Pn6/9oADAMBAAIRAxEAPwDiPB+i
-w69rLWMykq0TEENgqeOa9It/ANnZWMSPpsM0mAryMCQzdzz0+lYXwstYH865MY88SFA+edu0HH51
-7A8Z/s+AZIJcc1zVJPmsbRStc4GT4fac8YWXSYAc8FWdf5EUz/hBbIxhG0qz5A5+YH8xXphtGCjJ
-V8ZzkZz+tLbxMyA7EUgYyP6VF33K0PNLb4fWNtOJE0eByRjDl3X8iamuPh7ZTzM76JbBj2jdkGMe
-gwK9LVcDO3GG528VGfNWYt1TdjtkcUuZ9x2R5n/wruwTkaPAPYyPT4vA+noQw0S0OQcBnJ/mK9Im
-uWgZs7eeBn1qODEj7gVOwbflOc+p/OnzPuKyPPn8C2TnnQrVSOytj+lMbwFZIykaJbD1DP14r0vC
-biGw2RwSP5UycEFMrt56fgaV33DQ8vf4e6e7AnR41xzxMwBpg+HOmvKyHTkUqAcea5zn8a9TnUh1
-DAAZ5xUcaqb64IORsTr+NPmfcNOx88+IfBN5ZatJHZxL5DAMo3/d9uee1Fep+I/l1MATOnyDgN7m
-iqVWSD2aOY+F2kywab/aTTKYrlztjwcrtJUn8eK9XkKm1gHcOtcR8OtjeCtPVcMVD5x67yTXayZA
-hG04Mg5/A0pP3mC+E093H3TTBhlAD7WIxkdafjvk5x6GhF3KOh9KkCu1yYGxJtOepA+9VWWR5i/z
-MiKcYB74FXri2VmWQuQVHHGetURDJglDG65PIPP5H0pBcYvll+Bg9csev+eKc0WI9yjfIRxg4qOJ
-QoKbuh/ixx7VNFJtkwPlXbwT0/CgZNbQoGfzATIvqSc/56fhS3Q+ePYOM8Z78U6Er56lcfOh6+zH
-/GkuYXa5XcB5Z75xQA24y8qg/KCcfoKjhb/iZXfUgJH/AFqyIY3A5IYHs1VoR/xM73n+GPr+NAHB
-eMbjy9aUZx+6H82orJ8fPt8Qplv+WA7f7TUVaV0Fzmfhtrt7a6wmkxSExXLblQ8gMBk/TIH6Cvdp
-wwW3wesq/wAjXzr8Pv8AketM/wB5/wD0W1fRU7Lstckf61f5Gqqq0iIPQ1QCBnikZf3ZA4OOPeon
-uNinKnAGc01LhZAdoYk8ZHb2rMZVuXlR+uE3feY9faqvmPIskRU5JJJ6cH0/HNa0jI0g3sB2I6Vn
-XitJKGiHykYB7n/9VIY2BGkkCMnyEZAJ5HpTzC0ZCqAfUlsfnUMTs1wgTlsfxNx/jWhalcjqT0J3
-ZoAghefz0ZWSQY4APSr7FjtJA3nof8Kigi+zzsVQeWBwR15PJ/lU1wcDI+4epHOKAGSKQysc4zgg
-cVSiU/2je4X+GPj8DUywCNi7ZKluMnpVOJyNUvVU8/J/I0hnj/xG1Fm8UbfsdzH5cIT51HzYZvmG
-Cciis/x/4gsdS8Sk2zuywRiBjsx8wZsjn60V1RWi0M29TM+HQB8d6cSMgeaf/IbV9AuA/wBlJAH7
-1ePwNeA/DbH/AAm1ox6Kkh/8cNe8yyH9wyq5CSgnC54wazq/EOHwl+4IVh5ZUn+LcM56dKbbEbAJ
-WRTj5do6/wCPeojdnOEWTH+0pGKdDdoGAfeqA5GFbNQUaX2dHU71XaQQQO4qnBCBeSERgIOi46dP
-8Kk/tKA8FmCjk5U81E2o2ZR902CTnODx+lS0CGTxRpONuPnGV44/zzViBS6hNu0r1KgEH3zWVPdR
-SKNtyoKjj1P41dt9QtIo0H2pCwGGYk5NAzRWFmJLADgYwMYpjLiTOPlPUZ6e9Rf2janIN0v5/wD1
-qhl1C23L5c0XfJPNDBFqSNBg7cqeCO1Z1tEv9p33ynGUwc+xqT7XHjAmibI784/WqcbSPPeSQMeS
-uMfj7GhILnz94z0CfRPE11AziVZSZ0ccfKxPX3zmiug+KUmfFkfXItVH/jzUV1xbcUZSSucLp2pX
-elXi3VlN5U6ggPtB6/Wujj+JfiyMYGpKw/2reP8A+JooqnFPcm7LafFjxVH1uLZ/96Af0qX/AIW/
-4qP8dmP+2H/16KKXJHsHMxP+FveKz/y2tf8Avx/9elHxf8VD/lpZ8nP+o/8Ar0UUckewczHf8Lg8
-Vf37P/vx/wDXoPxh8VHHzWQ/7Yf/AF6KKOSPYOZjh8YvFOORYn6wH/GlHxf8Sk8xacfrAf8A4qii
-lyR7BzMc3xd8RMv/AB76bnHXyD/8VUR+LniQKwCWAyO0JH/s1FFHJHsPmZy+ta/f6zqH2q7dDIEC
-jCDAHXv7k0UUVSSSE2z/2Q==
-"/>
-<Record name="result"><Section name="default" class="default"><Field abbrev="marc245" searchfield="false" sortfield="false"><Values><Value>Plan de Paris sous Charles VII / par A.M. Perrot.</Value></Values><Label display="on">Title</Label></Field><Field abbrev="record_no" searchfield="false" sortfield="false"><Values><Value>004258493</Value></Values><Label display="on">Record No.</Label></Field></Section></Record></Snapshot>
-<Snapshot href="/cgi/i/image/image-idx?c=clark1ic8lift;entryid=x-004258498;viewid=39015091186638">
-    <Thumbnail src="data:image/jpeg;base64,/9j/4AAQSkZJRgABAQAAAQABAAD/2wBDAAgGBgcGBQgHBwcJCQgKDBQNDAsLDBkSEw8UHRofHh0a
-HBwgJC4nICIsIxwcKDcpLDAxNDQ0Hyc5PTgyPC4zNDL/2wBDAQkJCQwLDBgNDRgyIRwhMjIyMjIy
-MjIyMjIyMjIyMjIyMjIyMjIyMjIyMjIyMjIyMjIyMjIyMjIyMjIyMjIyMjL/wAARCABkAEYDASIA
-AhEBAxEB/8QAHwAAAQUBAQEBAQEAAAAAAAAAAAECAwQFBgcICQoL/8QAtRAAAgEDAwIEAwUFBAQA
-AAF9AQIDAAQRBRIhMUEGE1FhByJxFDKBkaEII0KxwRVS0fAkM2JyggkKFhcYGRolJicoKSo0NTY3
-ODk6Q0RFRkdISUpTVFVWV1hZWmNkZWZnaGlqc3R1dnd4eXqDhIWGh4iJipKTlJWWl5iZmqKjpKWm
-p6ipqrKztLW2t7i5usLDxMXGx8jJytLT1NXW19jZ2uHi4+Tl5ufo6erx8vP09fb3+Pn6/8QAHwEA
-AwEBAQEBAQEBAQAAAAAAAAECAwQFBgcICQoL/8QAtREAAgECBAQDBAcFBAQAAQJ3AAECAxEEBSEx
-BhJBUQdhcRMiMoEIFEKRobHBCSMzUvAVYnLRChYkNOEl8RcYGRomJygpKjU2Nzg5OkNERUZHSElK
-U1RVVldYWVpjZGVmZ2hpanN0dXZ3eHl6goOEhYaHiImKkpOUlZaXmJmaoqOkpaanqKmqsrO0tba3
-uLm6wsPExcbHyMnK0tPU1dbX2Nna4uPk5ebn6Onq8vP09fb3+Pn6/9oADAMBAAIRAxEAPwDc8JeG
-NEu/C+nz3GmW0srxAs7Jkk1vjwd4ex/yB7T/AL9iqfhZM+FNJyQcWqnnpWusvUFQCOcY7VwuTu9T
-qSVir/wh3h7/AKA1p/37FL/wh/h7/oDWf/foVaDvxlQQT1AFOG/bjADY7jpSu+4WRRPg/wAP/wDQ
-Hs/+/YqNvB2gH/mEWn/foVpSMUX7uT7CoXdsDBxyATgc0033FoUv+EN0DH/IJtf+/Ypp8IaAi8aR
-asfQxip4riVlzlTn0AqwhLrlsE54ou+4WRyviXw/otjp0csWlWqM0oXiMeh/woq94uwuhxdf+Plf
-/QWorSDdhOxc8Joo8I6Tn/n2WrN7OlqSznCY29Opqv4WbHhDSSBn/RVq3cwJdKYnBIA3D2rN7jWx
-btGE0Kv8mT6c4/zippcMvTHy+tV4JI0XYJDkYxjgZp9w5XZt3FSfmz2GaVguJOW2HPO1eoqjeFlg
-kZOXCHC+54/xq5Md52KVDDB9arXUgyqbSST26AdB/WmgZWRSIQWKqT8vHQ+tWgyIm3dubt9ag+zp
-cKzOuY4wCp9+pqfyQ0iOq7uDwKaQnKxi+L8/2DCT3uV/9AaipfGS/wDEjiH/AE8rx/wBqKuGwMse
-FyF8I6V1I+yrmtWGVWjaQYx0znjisjw+4j8F6Ux6fZUzVuE43yqP3RGdpI+vrUNasaehNI8YkE6I
-Hbb6dKnWQNYF5EId/QYqsZg9uDxvJOVHamySj7MSScrx9AKpR0uzNy1siWMI8WS2Cx7/AOfSs+4l
-WW42qxw5wi4yTzjOPpUkt0qQgbgGZcg46J3P9Kg063jkBnLfMTlV7gE9KSQ7mnGxEaR7crnk84xV
-kxDIZTgDt6VBJiJEO1mBPOMDBqwiv5YdwFJ+8M9qewtzA8ZnOhRHoTcr/wCgNRSeNQP+EfgOetyv
-/oDUU4bFMs+HIlPhDSckkfZEOPwqprH2i3uY44I2WNuTt7/hWh4XGfCWkY7WiHn6VdkZZRvU7tpx
-nPFSviBuyKlsizRK0u9Tjqw5J+lZmpuyzKi8gNjGfvNjpmuicGO2GTmST5VGM0xNIiZd8qKxJDen
-IqrkLucncMJteMMrYiT5eOwA6VvWhzbJLgCQgbQOmenFYV9ETqUxt7f5X3ZLckknk+wq1prXFom2
-UfuupypODSZSN2WJ7ggSHbHkblHWrkcKKmwvuGOOlU0ke4iCwhlVzjJPSrawNGSzuWyB8vQDFQyk
-c745Xb4egGTxdKP/ABxqKb4/fHh6Ajvdjp/uNRWsFoJ7mj4XUHwlpIIzmzT+VTR2xS6ZoWYRd07M
-ai8Khh4S0n5ufsac4x2rQj3IxBUk9KjqxPoVZ/tDXIfYVAHy9OKt2l676a00gXeuV60kjec+xFJb
-nGKlg09FVg2SrgZXHBpXuVZIzI7VGkeV0Ikb+IDPB/pV141igVNqk5GSR3qKZ2t7jYCzIx6Yztpd
-0k6piNwAvOfWmld6kuSS0I5GAHLHJHQDpSrdEN8uSPQ1I9t8pcZZjwRTEsJWGdu3HTPNaXVjOzOd
-+Ibn/hG7Y4xm7HH/AABqKZ8RVI8NWgLEEXYBwf8AYaiiGxozb8OAL4T0gAf8ukXHTtWmrZXaMH5u
-pNZfh+JpfC+jEKGAtI+Ccc7RW1Dbuh3YTPux/wAKxZSHwRSF/b1q75YwBxxUavKB92L/AL6P+FL5
-kv8Adj/76P8AhSbGkHkqXJxSPAGpokm3tiOP/vs/4U4PMedkf/fZ/wAKV2FkCwKOTyaVhjpSFpv+
-ecf/AH2f8KYzzY/1cZ/4Gf8ACgLHCfEr/kXrf/r8/wDZWop/xJjf/hHrYEDP2sHg5/haiuin8JEt
-yhoPia9ttBsIkigKpAijKt2A96vt4w1Af8sbb/vlv/iqKKXKrhdkDeNtTHSG1/75b/4ql/4TjUx/
-yxtP++W/+Kooo5UF2NPjrVFJxBaf98N/8VUL/EHVo34gs+R3R/8A4qiimox7BdjT8RNX/wCfey/7
-4f8A+KqNviJq4P8Ax72X/fD/APxVFFHJHsK7MHxN411LU7COGeC0CrKHG1GBzgju3vRRRWkYqwNn
-/9k=
-"/>
-<Record name="result"><Section name="default" class="default"><Field abbrev="marc245" searchfield="false" sortfield="false"><Values><Value>New York Sheet, New York -New Jersey.</Value></Values><Label display="on">Title</Label></Field><Field abbrev="record_no" searchfield="false" sortfield="false"><Values><Value>004258498</Value></Values><Label display="on">Record No.</Label></Field></Section></Record></Snapshot>
-<Snapshot href="/cgi/i/image/image-idx?c=clark1ic8lift;entryid=x-004267852;viewid=39015091193907">
-    <Thumbnail src="data:image/jpeg;base64,/9j/4AAQSkZJRgABAQAAAQABAAD/2wBDAAgGBgcGBQgHBwcJCQgKDBQNDAsLDBkSEw8UHRofHh0a
-HBwgJC4nICIsIxwcKDcpLDAxNDQ0Hyc5PTgyPC4zNDL/2wBDAQkJCQwLDBgNDRgyIRwhMjIyMjIy
-MjIyMjIyMjIyMjIyMjIyMjIyMjIyMjIyMjIyMjIyMjIyMjIyMjIyMjIyMjL/wAARCABkAFkDASIA
-AhEBAxEB/8QAHwAAAQUBAQEBAQEAAAAAAAAAAAECAwQFBgcICQoL/8QAtRAAAgEDAwIEAwUFBAQA
-AAF9AQIDAAQRBRIhMUEGE1FhByJxFDKBkaEII0KxwRVS0fAkM2JyggkKFhcYGRolJicoKSo0NTY3
-ODk6Q0RFRkdISUpTVFVWV1hZWmNkZWZnaGlqc3R1dnd4eXqDhIWGh4iJipKTlJWWl5iZmqKjpKWm
-p6ipqrKztLW2t7i5usLDxMXGx8jJytLT1NXW19jZ2uHi4+Tl5ufo6erx8vP09fb3+Pn6/8QAHwEA
-AwEBAQEBAQEBAQAAAAAAAAECAwQFBgcICQoL/8QAtREAAgECBAQDBAcFBAQAAQJ3AAECAxEEBSEx
-BhJBUQdhcRMiMoEIFEKRobHBCSMzUvAVYnLRChYkNOEl8RcYGRomJygpKjU2Nzg5OkNERUZHSElK
-U1RVVldYWVpjZGVmZ2hpanN0dXZ3eHl6goOEhYaHiImKkpOUlZaXmJmaoqOkpaanqKmqsrO0tba3
-uLm6wsPExcbHyMnK0tPU1dbX2Nna4uPk5ebn6Onq8vP09fb3+Pn6/9oADAMBAAIRAxEAPwDO8B+G
-tNudGe91W1SYzOREHB4UcZ/PP5V1h8L+G0UMuk2zknpj/Gq2hHZ4R00jI/cKRgfStG0lbyCWBJzg
-YFczbbNdEisPD3h8AE6NbHJ+7tGRTv8AhGvDoG46Lb5zjGB/jU9wf4URhjBL524qKVZmEeWlZTk4
-AGT+NTd9xrUF8PeH1BYaPag8DaUBpDouhf8AQCtvrsSoWt5Xmi27hhhwWOcVoeU4B3dWP3SBn25F
-P5g9CmND8PtLzpFqAO/lr19KlTRNA2FjotquMcGNO9IWFrMHkzGO5wQPzrR024+1Ru+/zBnhsYFK
-77h8ig+j6EmP+JNangE4iTj2p66PoLAk6XZpj+9ElWroRNeBZSwUpnjp+NL5dvHEHh+YDr33D+tF
-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
-xyXMRR1KkeSo4NcrmiimklsK9z//2Q==
-"/>
-<Record name="result"><Section name="default" class="default"><Field abbrev="marc245" searchfield="false" sortfield="false"><Values><Value>The Daily Mail commercial map of Africa.</Value></Values><Label display="on">Title</Label></Field><Field abbrev="record_no" searchfield="false" sortfield="false"><Values><Value>004267852</Value></Values><Label display="on">Record No.</Label></Field></Section></Record></Snapshot>
+  <Snapshots><Snapshot href="/cgi/i/image/image-idx?c=clark1ic8lift;entryid=x-003023238;viewid=39015091194277">
+    <Thumbnail src="data:image/jpeg;base64,/9j/4AAQSkZJRgABAQAAAQABAAD/2wBDAAgGBgcGBQgHBwcJCQgKDBQNDAsLDBkSEw8UHRofHh0a HBwgJC4nICIsIxwcKDcpLDAxNDQ0Hyc5PTgyPC4zNDL/2wBDAQkJCQwLDBgNDRgyIRwhMjIyMjIy MjIyMjIyMjIyMjIyMjIyMjIyMjIyMjIyMjIyMjIyMjIyMjIyMjIyMjIyMjL/wAARCABKAGQDASIA AhEBAxEB/8QAHwAAAQUBAQEBAQEAAAAAAAAAAAECAwQFBgcICQoL/8QAtRAAAgEDAwIEAwUFBAQA AAF9AQIDAAQRBRIhMUEGE1FhByJxFDKBkaEII0KxwRVS0fAkM2JyggkKFhcYGRolJicoKSo0NTY3 ODk6Q0RFRkdISUpTVFVWV1hZWmNkZWZnaGlqc3R1dnd4eXqDhIWGh4iJipKTlJWWl5iZmqKjpKWm p6ipqrKztLW2t7i5usLDxMXGx8jJytLT1NXW19jZ2uHi4+Tl5ufo6erx8vP09fb3+Pn6/8QAHwEA AwEBAQEBAQEBAQAAAAAAAAECAwQFBgcICQoL/8QAtREAAgECBAQDBAcFBAQAAQJ3AAECAxEEBSEx BhJBUQdhcRMiMoEIFEKRobHBCSMzUvAVYnLRChYkNOEl8RcYGRomJygpKjU2Nzg5OkNERUZHSElK U1RVVldYWVpjZGVmZ2hpanN0dXZ3eHl6goOEhYaHiImKkpOUlZaXmJmaoqOkpaanqKmqsrO0tba3 uLm6wsPExcbHyMnK0tPU1dbX2Nna4uPk5ebn6Onq8vP09fb3+Pn6/9oADAMBAAIRAxEAPwBNE8M6 I+jWk1xYQszwozu+epH1rUHhbw0QT9htSB15/wDr1JpQLeEbLbgMbeMc/QVTKYiDo5CE46c5rHUs tr4Z8MYDfYLTA6HP/wBepv8AhGfDYXP9n2eOmcCqBgZ4wUZ+ByHTjn0qNYJWQhsoueQeh5oA0W8P eGQmTY2XA9BTU8P+F9237FZFvQAGs0RDftwCMdzTV2qBx8yjHXFGoGr/AMI/4X6/YrLA68CnDQ/D BfatlYkk8AKKzpI1RA5XaG5I9vrUbEI4YKHQ52lew/L/ADigDZGheGNpAsLHg4+6OtB0Dw3xmxse uPuLWMJSibuCO2F60rO3DbivO4gAf0o1A2j4b8P7d/8AZ1lj12Limjw7oDkiPT7Jj6BFNY6mN2Yr g+vvWloESfandZFOEKhcYbqKHcDzLxvY21l4keG2hSKPy1O1BgZoqz8RP+Rsk/65JRWkdiWeg6Ur N4LswmAxtkxn8KroMGTbIw2K3Ud84Aq1oarJ4Lsg4OPs65AOKqbZCeIHwR/cOCcjvWZQ4ZlVQ7kk 8Abie4/xqFmXexKK2VyMk8+/XNOZbkptaIlgeDs6fpTn3jbGsZJC/Mdnv0/WgBiiOQsdpP0boaNs ONzRsGJzu3cGp1imZeiYkPdRyKimLQuFI+Ungbeo9OnWmA1wrRjYDwvc9ec+n0pkZAUMJiHLfd29 cj1qw5LpjyjtbkKFxj24xVaGMiJi4kRexP8ALmgBuHVthw3QAjk9cUS4jl2uSCp2nK449qnCpkbX zu4560kqgsD5gLcEkr6UANDIVIDMQOSSvX/OKv6AB9tkYNnMeOfwrNjUkEAAAnPTOK1dBVluZThc bO3FJgec/EQf8VbL/wBck/lRSfEP/kbZv+uSfyorRbEs9H8MAyeCrE9M2+KniSUHLSRkAY4Qj+tN 8KAt4N09R1NuKd5JdlIh7/e64rNlELi7V2CGHGe5PNOYOFzKVXkbsHin+THHOPlw7fhmnlQ7bWik Ydxs4oArrDbp86DJzndngU/dIy4CbsjGc4/pUypgFfL2qOemKl2oqgkgAe/QUAV3hWWLDjnHQ9Kg Nohxs3Agdmx/9arwJZPl5XqGzj+tCAqPmIKnnHNAFAWWMnK7j369P61GtkwlG8AAg+/+e1aLxKGM qoqsOpAqOSIMwY7sKc4HFAFBtOcsGExCgEbdv/16vaPa/Z7lzvDEqe2O9REsr42Ng/xZBH86u6cD 57Yxgg8jvQB5X8RB/wAVZJ/1yT+VFP8AiKP+Ktk/65JRWq2JZ6J4QbPg7Tz/ANMf6mlaeNdwLKDk Ac4685/WmeCgJPBunq3IMbA/99GrlrdWw1OWx8hY2QfeCj5v0+lZPcorCeKZXaIjG3jPWrAT9yHS ZCS4U/Nx+vei9iEcV05lznG0EAHqP89Ks/2fIbZYsoTvDde2KAMx2ZQuFbCd8E859jVyd3gjhBfA lGW5x1FWNPBmsJoipKuzKSDyOBUNzaJAbS3iOwvJkE9eh9KAIvtSpHEuNxKbiDjj8zQjF3x5sSnK HBIGQwzSQByj7IfN2SOpbGe/HTpUF5IsF/cJtTc6rtLHlck5NAE8kxWVFQIQd24hj0Bxn88GmTyv GZFVgSg5Ujk+h9aUP5dxIY5AVEe5SjZXOOtV4JyPIea7UvKQAhGeCfWgBt3HOqmRw3l8Ejd1/nVv S5W/tJoTjhGOPT5uP0prylYJZvPAPk+Z0yBzU1lO76vOuPlxyw7nC/8A1+lAHmHxFU/8JdKc9Yk/ lRTviMP+Ksc/9MU/rRWq2JZ3/gYbvB2ng9Njf+htXRCzhDFgq5PU7RXzhHNJHykjr/usRUpvLojB uZjn1kNS4FXPolrWFhtZVZT1BHBqQQxbvuivnL7Zdf8APzN/32aWO9uk+5czL9JCKXIFz6NS2t41 wkYUHng4oeztXZXeMFl5Uk9K+eV1PUA+RfXOf+uzf40+TVdRZcG/uiPeZv8AGjkC59ALa2sYcRoE LHJwep9aatjAJDKAA5GCw6kV8/Lqd+Ol9c/9/W/xqVdW1IIANQu8f9dm/wAaOQLnvf8AZtqGLeWm SME4qCXTrP5Q0MZwMDKA4FeDTanfv96+uW+srH+tVXuZ3ILzyN9XJp8gXPoBdNswcrBEP+2YqdII o23qoDYxkAV88C5nAwJpAP8AfNI9xM5y00jH1LE0cgrnXfEMf8VSxP8AzxT+tFcaWLHJJJ96KpKy Ef/Z "/>
+<Record name="result"><Section name="default" class="default"><Field abbrev="marc245" searchfield="false" sortfield="false"><Values><Value>Civitas Londinum.</Value></Values><Label display="on">Title</Label></Field><Field abbrev="record_no" searchfield="false" sortfield="false"><Values><Value>003023238</Value></Values><Label display="on">Record No.</Label></Field></Section></Record></Snapshot>
+<Snapshot href="/cgi/i/image/image-idx?c=clark1ic8lift;entryid=x-003023238;viewid=39015091194285">
+    <Thumbnail src="data:image/jpeg;base64,/9j/4AAQSkZJRgABAQAAAQABAAD/2wBDAAgGBgcGBQgHBwcJCQgKDBQNDAsLDBkSEw8UHRofHh0a HBwgJC4nICIsIxwcKDcpLDAxNDQ0Hyc5PTgyPC4zNDL/2wBDAQkJCQwLDBgNDRgyIRwhMjIyMjIy MjIyMjIyMjIyMjIyMjIyMjIyMjIyMjIyMjIyMjIyMjIyMjIyMjIyMjIyMjL/wAARCABKAGQDASIA AhEBAxEB/8QAHwAAAQUBAQEBAQEAAAAAAAAAAAECAwQFBgcICQoL/8QAtRAAAgEDAwIEAwUFBAQA AAF9AQIDAAQRBRIhMUEGE1FhByJxFDKBkaEII0KxwRVS0fAkM2JyggkKFhcYGRolJicoKSo0NTY3 ODk6Q0RFRkdISUpTVFVWV1hZWmNkZWZnaGlqc3R1dnd4eXqDhIWGh4iJipKTlJWWl5iZmqKjpKWm p6ipqrKztLW2t7i5usLDxMXGx8jJytLT1NXW19jZ2uHi4+Tl5ufo6erx8vP09fb3+Pn6/8QAHwEA AwEBAQEBAQEBAQAAAAAAAAECAwQFBgcICQoL/8QAtREAAgECBAQDBAcFBAQAAQJ3AAECAxEEBSEx BhJBUQdhcRMiMoEIFEKRobHBCSMzUvAVYnLRChYkNOEl8RcYGRomJygpKjU2Nzg5OkNERUZHSElK U1RVVldYWVpjZGVmZ2hpanN0dXZ3eHl6goOEhYaHiImKkpOUlZaXmJmaoqOkpaanqKmqsrO0tba3 uLm6wsPExcbHyMnK0tPU1dbX2Nna4uPk5ebn6Onq8vP09fb3+Pn6/9oADAMBAAIRAxEAPwC34d8L aNN4csZptPgaR4VdmZckkjrWivhrw2xDGyszjjoKm8PH/ijrFuCRajqePu1llCkCBSoLH+/kcVjq WXh4b8M44s7Hn2FRnw94VDjNnZd+wqq0brkHawIyfnHTHanbI3BLNt9ByT/hQBN/wj/hJjgWlmSR 2pf+EZ8KEBjZWgDcDnr+tUpVRRuY9h/s49enWnQLGz5Y5H0wMego1AvJ4V8Kvwthak9Op/xpw8I+ GghYadbbV6nPA/Wqgd3hV2kj37jtRcblOc9KnntpZJVliiVnPDIxwVJHPOfr9aNQJV8LeGPlxp9q d3Tvmkbwn4a5/wCJda+v4VVFmISzeUqtnIyenPTr05xU7Wd1LEVSM/MrLxIDwTnpu+v50AI3hHw0 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 "/>
+<Record name="result"><Section name="default" class="default"><Field abbrev="marc245" searchfield="false" sortfield="false"><Values><Value>Civitas Londinum.</Value></Values><Label display="on">Title</Label></Field><Field abbrev="record_no" searchfield="false" sortfield="false"><Values><Value>003023238</Value></Values><Label display="on">Record No.</Label></Field></Section></Record></Snapshot>
+<Snapshot href="/cgi/i/image/image-idx?c=clark1ic8lift;entryid=x-003053316;viewid=39015091904493">
+    <Thumbnail src="data:image/jpeg;base64,/9j/4AAQSkZJRgABAQAAAQABAAD/2wBDAAgGBgcGBQgHBwcJCQgKDBQNDAsLDBkSEw8UHRofHh0a HBwgJC4nICIsIxwcKDcpLDAxNDQ0Hyc5PTgyPC4zNDL/2wBDAQkJCQwLDBgNDRgyIRwhMjIyMjIy MjIyMjIyMjIyMjIyMjIyMjIyMjIyMjIyMjIyMjIyMjIyMjIyMjIyMjIyMjL/wAARCAA9AGQDASIA AhEBAxEB/8QAHwAAAQUBAQEBAQEAAAAAAAAAAAECAwQFBgcICQoL/8QAtRAAAgEDAwIEAwUFBAQA AAF9AQIDAAQRBRIhMUEGE1FhByJxFDKBkaEII0KxwRVS0fAkM2JyggkKFhcYGRolJicoKSo0NTY3 ODk6Q0RFRkdISUpTVFVWV1hZWmNkZWZnaGlqc3R1dnd4eXqDhIWGh4iJipKTlJWWl5iZmqKjpKWm p6ipqrKztLW2t7i5usLDxMXGx8jJytLT1NXW19jZ2uHi4+Tl5ufo6erx8vP09fb3+Pn6/8QAHwEA AwEBAQEBAQEBAQAAAAAAAAECAwQFBgcICQoL/8QAtREAAgECBAQDBAcFBAQAAQJ3AAECAxEEBSEx BhJBUQdhcRMiMoEIFEKRobHBCSMzUvAVYnLRChYkNOEl8RcYGRomJygpKjU2Nzg5OkNERUZHSElK U1RVVldYWVpjZGVmZ2hpanN0dXZ3eHl6goOEhYaHiImKkpOUlZaXmJmaoqOkpaanqKmqsrO0tba3 uLm6wsPExcbHyMnK0tPU1dbX2Nna4uPk5ebn6Onq8vP09fb3+Pn6/9oADAMBAAIRAxEAPwDM8MaB pd54etZ57CKWVkJZmHXk1pJoWh87tIt/yNTeDv8AkUrIY6xn+ZqZpVBYbSSCfb+dcs5O7N4xTRT/ ALB0Ddg6RB+GaeNA8Pnj+yLf9aljuYGbd5qEcg88ZqUTIBncGUcFl5wanmkVyorf8I74fI/5BEH5 mg+HvDoGTpMAHruNPOoqu8GN9yckAZ//AFUpuS+xkSTb1YYx/wDr/lQpTE1FEH9h+GTn/iVwcc8M 1Knh3w24yukwkf77VM13D0DsZAMOemD+NNKNJlradMEdlGc/UUc0u4+VDP8AhGfDh66RF/323+NH /CM+G+n9jx/9/H/xqQzTxQAty+7B44FS28kjr+8Kk9ivejnl3DlRUPhnw10/smME/wDTV/8AGlXw b4eeJn/swDBxgSP6D396ttIsjbQ3zLwV7ita1wYPy/kKFOXcTijxnxfp1rpmvvbWkXlwiNGC5J6j 3oqz4/b/AIqyf2RP5UV2Q+FGD3PRPBw/4pKyHP8Aq/6mopQ4nfGNu45OcGrHg3jwnZf9cqbKuJXJ wMsTkVyN+8bfZIo0L/MpAI9astpTFwzsTnluev8AjSW8JdgofB65rQHlwYZmY7hgsSSapmSfYoyW a26boocgjG0ACooJ5FhKPHtwSNvGMduRVySUOpVGKgnqe9VTGpBzIz854OAPyo16DuupG6KrllCs +Oq9/oajBlZd3lFMeoXn9asRtiTB6DoTj8qk3qckMCB6UlC+43Us9CkGlaN0ZWi4+V1bIH1xVeK5 kiYxNKkhzjhCB9MjjNXXkVm+TDEHkVWj2rISYAuTk5PX61DVjWMuZE6RCf55bQRzp0dTgH8f8a3L EN5HzDDY5GenArCYSEFopB1+7nGPpW9YMWgyeu0cj6Uhs8f8fjHi65H+wn/oIoo8fEnxfdf7kf8A 6CKK7ofCjnluekeDj/xSdmO/lVNKAS/TrzVXwi23wtZ/9cRTnlIuH+tcU1qzeGxGszR3UkW/BVvl IP8ADirg3lUBYuB/eNU5w3HEZx03/wD6qVLvchVPLyByN+MVpCV1qY1IWehf4A4FRN938ulQLcxK uGkVe+C4JqN5zIMKGwR2q20lczUG3YkKInIRQD396iImikDrJGwyPlK//XqMM64BdmB42sAf8Ka0 8SOqbCjN0AXArPmT1RqotaMnuJlyxeMKcfeUYIqsso2gfvCT1JUjNBuI2BRXw/fDVFuG8Ayl++1Q F4/Wo5maKCLfKEbCxHoRW9pxJt1JGGZRkfhXPJv2cK2w+hzj8a6DTv8Aj2jPbAGKHboCutGeR+Pe PGF2G67U/wDQBRS/EH/kc73/AHY//QForth8KMJbne+GXA8LWnPSAfyqwVJlZiD14rzOy8Y6pYWk dtD5HlxrtG5M8fnU48d6t/zytP8Av1/9esZUZNmimkej43cFD+VPW3QkOVO4dD6V5wPH+qj/AJYW R/7ZH/GpB8QtVC/8e1j/AN+j/jUewkV7RHo3kqRyCaaYVJ6GvPP+Fi6t/wA+th/36P8AjR/wsTVv +fWx/wC/R/8AiqPYSD2iO/MK56EUrw+Zgk8jpxXAD4i6rj/j0sP+/bf/ABVKPiLqve0sP+/bf/FU ewkHtEdwbPbnbhc/3QBTRZLnlcnOea4j/hY2q/8APpYf9+2/+KoPxF1U/wDLrY/9+2/+Ko9hMPaI 71bVB3Na1lhbdFHY4/SvLB8RNV6fZbH/AL9t/wDFUD4j6woAFvZDHPEbf/FUKhITqJlXx8R/wmV7 kEnEff8A2ForE1PUZ9X1Ga+udvmykE7RgDAwAPyorqirJIye5//Z "/>
+<Record name="result"><Section name="default" class="default"><Field abbrev="marc245" searchfield="false" sortfield="false"><Values><Value>Map of Lake Bonneville : (a water body of the Quaternary Period) / by G.K. Gilbert ; assisted by Gilbert Thompson ... [et al.] ; drawn by Gilbert Thompson and J.H. Renshawe.</Value></Values><Label display="on">Title</Label></Field><Field abbrev="record_no" searchfield="false" sortfield="false"><Values><Value>003053316</Value></Values><Label display="on">Record No.</Label></Field></Section></Record></Snapshot>
+<Snapshot href="/cgi/i/image/image-idx?c=clark1ic8lift;entryid=x-003060822;viewid=39015091905789_01">
+    <Thumbnail src="data:image/jpeg;base64,/9j/4AAQSkZJRgABAQAAAQABAAD/2wBDAAgGBgcGBQgHBwcJCQgKDBQNDAsLDBkSEw8UHRofHh0a HBwgJC4nICIsIxwcKDcpLDAxNDQ0Hyc5PTgyPC4zNDL/2wBDAQkJCQwLDBgNDRgyIRwhMjIyMjIy MjIyMjIyMjIyMjIyMjIyMjIyMjIyMjIyMjIyMjIyMjIyMjIyMjIyMjIyMjL/wAARCABDAGQDASIA AhEBAxEB/8QAHwAAAQUBAQEBAQEAAAAAAAAAAAECAwQFBgcICQoL/8QAtRAAAgEDAwIEAwUFBAQA AAF9AQIDAAQRBRIhMUEGE1FhByJxFDKBkaEII0KxwRVS0fAkM2JyggkKFhcYGRolJicoKSo0NTY3 ODk6Q0RFRkdISUpTVFVWV1hZWmNkZWZnaGlqc3R1dnd4eXqDhIWGh4iJipKTlJWWl5iZmqKjpKWm p6ipqrKztLW2t7i5usLDxMXGx8jJytLT1NXW19jZ2uHi4+Tl5ufo6erx8vP09fb3+Pn6/8QAHwEA AwEBAQEBAQEBAQAAAAAAAAECAwQFBgcICQoL/8QAtREAAgECBAQDBAcFBAQAAQJ3AAECAxEEBSEx BhJBUQdhcRMiMoEIFEKRobHBCSMzUvAVYnLRChYkNOEl8RcYGRomJygpKjU2Nzg5OkNERUZHSElK U1RVVldYWVpjZGVmZ2hpanN0dXZ3eHl6goOEhYaHiImKkpOUlZaXmJmaoqOkpaanqKmqsrO0tba3 uLm6wsPExcbHyMnK0tPU1dbX2Nna4uPk5ebn6Onq8vP09fb3+Pn6/9oADAMBAAIRAxEAPwDb8GfD zw3q/hiwurnTIWleFC7HdliVBJ6+9b//AAqfwiT/AMguH83/APiqd8PpWh8H6axGY/Ijz/3wtdkt 1Ewxv259eDXG5O+5uziB8JvCDEgaZFkejyf/ABVVx8K/CYUj+yEc7mAw8mOPfdXcm8R7gQxsoBGS TwT9KdBtYNsII3HkH3pOUu4HFJ8I/CEqB10uPB/6aS//ABdKfhB4T/6Bcf8A38l/+LrqFvntNZ8i UYtZ8CNiMbXx0P1/nWyTxTu+4rnnUPwi8JuXB0yPg4/1kv8A8XUo+D3hH/oGR/8AfyX/AOLruoD8 8n+8alyBnJFJSdtwe55+fg74Sx/yDEz/ANdZf/i6ZF8IfCTNIp0xPlbH+tl9B/t16HnKjGDUVuR5 sw/2h/IUOTvuC2OEPwc8I5H/ABLFx/12l/8Ai6X/AIU34QI/5Bg/7/S//F16DxmnHFO77iueXy/C bwnDKyDSQw9fPl/+KorvLskXDYFFZOcr7myStscd4CnlXwjpwiZT+4jyrKf7grduJJlQYjXAJ+Xe wH4D/PWsrwISngexZVJP2aPGP9xa2Y3Mh/eDKj5f1xTbd2TZGab+a3Zf3LAnJyCDVnS9W8tvKaKX GSS2zvRd24iCkHcpc4HoDmpLWURyKyqQTkcf/XobY7Fu8vrG4jaKQFtwGFKkVBDdmIeWbrIB+Vmk JIq2ZJNhfIEh4xjOBThIqsQwV8AcEYxRdk2K0d1cLKUSVCGb7x5qRjIU3vOpb1IIFQfaGidysQCb jnnp+FNN+Xxna0a9QBg/jUpsrQamoy2zjLAKeMZ4rRs9Rgkll5ZWyDgj2FUZ4xcTwQgcM2R6cc81 qpbozSAIOD8pBxjgU3cHaxN9qiJHz043UX98YqGGO5TG8o49D1/Op/MjDFWG0j1FNXM3Yx7y9gF0 wMgHTrRS3vlm6Y7d3TkUVk2dEdjJ+HahvBmnA5x9nj/9AWtv+ywsjybzt5IXpWB8PGmHg3TgqqR5 Ef8AF/sCurZpyCNi88fe/wDrVq3qzKzMG/jJQAEkqQRg9uKLaB3cMpZccZPI/KtIQymcB4VYDkbv p9KltRIASIUHzt396Vx9CmtpM/yvcO+ePugVoW1i0Q/eyGQj7oJ7f1pWinkYHCgjuCQaPs8m7eBh 8Y3b+aaZDuJFAj+ZuRT85/Kse+SzjvXV2EXyAfe2561pQfbI2l+7J8x4PFZWq+YZA8qBcjBU85+n +e1SVZ3LGnTKJxEcP5ZI38cjGR/OtWGaNnlw4PzY/QVy2i7455xGgOJCAD05AP8AWt+FHLSjy1AV sdfYe1DHa5d8wvIFTO3u2Kl8iM8ksx92NVY3lH3ETbns1SO07AAxj14Y04shxMy9KR3TqBjpRWTq +pC11BkkjZiQG4OaKydzoS0HfDsH/hC9N/694/8A0AVvS6kiF0/d+YDjaHBOfpWF8Pm2eDNMGOtv H/6AK6OcBz94A44wea6Huc5Uj1RTksyEAdWYDn8qtafJ50LMANjMSGVsg8moYgBnLZGe5qxZyqY2 5H327+5pdR9C0BzS4449aZ5i+o/Ol3rjqPzqiLEcI/1nH8RrmdWX7XqRkMZkhiYK/BIAx/jiuhWV VilOehJqOKYCFQI3PyjnA5qCupi2vlxXq/Z48xOo3bBgKR3/AC/lW7ZjDznOQX4H4ColWKEkxwsm Tk7ehqC1mZDIrRs4D4yvHYe9N9B9DTLFQOnvSl2xwnb1qrHOHkBMTLk8bmqyZF6nGaZJwnijLawT gj92P60U7xPL/wATc4bjyx0/GismdK2PFLTxp4hs9Nt4LfUWSKONVVREhwAAB2pp8feJ8/8AIVb/ AL9R/wDxNFFehyrsct2IfHvic8f2q/8A36T/AOJp0XjrxKi4XVHAyT/qk/8AiaKKOVdguy0nj7xO Af8AiaN/36j/APiacvj3xPg/8TV/+/Sf/E0UUuVdguwTx34lB41Rv+/Sf/E1IfHnibH/ACFG/wC/ Sf8AxNFFLlXYd2Mk8eeJiOdVf/v2n/xNVP8AhOvEqsxGqycnJ/dp/hRRT5V2FdiN498UZB/taTj/ AKZp/hTD4/8AFB66tJ/37T/4miinyrsF2Vn8Ya/O2+XUXZumSif4UUUUuSPYfM+5/9k= "/>
+<Record name="result"><Section name="default" class="default"><Field abbrev="marc245" searchfield="false" sortfield="false"><Values><Value>Map of a reconnoissance between Fort Leavenworth on the Missouri river and the Great Salt Lake in the Territory of Utah, made in 1849 and 1850 under the orders of Col. J.J. Abert ... / by Capt. Howard Stansbury aided by Lieut. J.W. Gunnison ... and Albert Carrington ; drawn by Lieut. Gunnison and Charles Preuss.</Value></Values><Label display="on">Title</Label></Field><Field abbrev="record_no" searchfield="false" sortfield="false"><Values><Value>003060822</Value></Values><Label display="on">Record No.</Label></Field></Section></Record></Snapshot>
+<Snapshot href="/cgi/i/image/image-idx?c=clark1ic8lift;entryid=x-003060822;viewid=39015091905789_02">
+    <Thumbnail src="data:image/jpeg;base64,/9j/4AAQSkZJRgABAQAAAQABAAD/2wBDAAgGBgcGBQgHBwcJCQgKDBQNDAsLDBkSEw8UHRofHh0a HBwgJC4nICIsIxwcKDcpLDAxNDQ0Hyc5PTgyPC4zNDL/2wBDAQkJCQwLDBgNDRgyIRwhMjIyMjIy MjIyMjIyMjIyMjIyMjIyMjIyMjIyMjIyMjIyMjIyMjIyMjIyMjIyMjIyMjL/wAARCABDAGQDASIA AhEBAxEB/8QAHwAAAQUBAQEBAQEAAAAAAAAAAAECAwQFBgcICQoL/8QAtRAAAgEDAwIEAwUFBAQA AAF9AQIDAAQRBRIhMUEGE1FhByJxFDKBkaEII0KxwRVS0fAkM2JyggkKFhcYGRolJicoKSo0NTY3 ODk6Q0RFRkdISUpTVFVWV1hZWmNkZWZnaGlqc3R1dnd4eXqDhIWGh4iJipKTlJWWl5iZmqKjpKWm p6ipqrKztLW2t7i5usLDxMXGx8jJytLT1NXW19jZ2uHi4+Tl5ufo6erx8vP09fb3+Pn6/8QAHwEA AwEBAQEBAQEBAQAAAAAAAAECAwQFBgcICQoL/8QAtREAAgECBAQDBAcFBAQAAQJ3AAECAxEEBSEx BhJBUQdhcRMiMoEIFEKRobHBCSMzUvAVYnLRChYkNOEl8RcYGRomJygpKjU2Nzg5OkNERUZHSElK U1RVVldYWVpjZGVmZ2hpanN0dXZ3eHl6goOEhYaHiImKkpOUlZaXmJmaoqOkpaanqKmqsrO0tba3 uLm6wsPExcbHyMnK0tPU1dbX2Nna4uPk5ebn6Onq8vP09fb3+Pn6/9oADAMBAAIRAxEAPwD1K38F 6C8I3aXaf9+E/wAKk/4Qjw/t/wCQXaf9+E/wrctiPJBpzTRqCDIAfrXCnpubNu5z7eBvD3/QKs8/ 9e6f4VDb+CPD7q2dKs+GI/4909fpXT7wwyrAj2qK1Pyvx/Gf50X1HfQwv+EE8OZ/5BFkf+3dP8KD 4C8NkY/sey/8B0/wrpRjNONMm7OSi8BeG/MlB0iy4bj/AEdPQe1SHwB4b/6BFl/4DR//ABNdFFgy S/739BUwAxSTY2zlh8P/AA3/ANAmy/8AAZP8KavgHw157A6RZYAHH2dPf2rrKjX/AF7/AEH9ad2K 5zLfD7w3zjSbP/wHT/Com+Hnhw9dJs//AAHT/Cuvpjd6evcEzzPUvBnh2G8aMaPaYA7RAfyorc1p iNSf6UUrvuaGjA9wV2iaTy8ZyF61JKnlxffcNjGSvX61WWeaOENtAQjoByP/AK1It6zyB3beudpB 4K1kmxjVvJrWZclsMemDg1p2N8HDBopFbceqnmqiRC51KEEAhQXyf5VqJAJInUhfvHB9KHe4m1Yk FypYfJJx/smnG5X0fH+4ajhhmjwDKHHcEf1qXzlDFXUqR7ZBqlexDtcrwXKmSYlZB8/9w+gqys6E dG5/2DUNuVaWbaQfn9fYVbA9qUbjlYj89OmGz/un/CoRcJ57n5+g/gPvVvgDmqjOWnbywMYHJ79e lU7olWJPtKYz83/fJpr3KZPJ/I0oLKV53g8EAdKk4ZQ2OCO9Go9DiNcukGpvyenoaKk10hdUce1F BpodRbRKbSPdtPHPFYV1JZpdTpOPLJfGeQO2ORxWpbR3cdsAkgYY/i7Vi6kxjuW81lDt1XI61Ara mlpd0HHzMCqgjd689a0ILiJo87urH2rndAEn2ZBHtwSRye2Tmt23WUxM5K4DHv70PcLaFpWMrggE R+o71P5MXXYM+4qpGZzgrsI9qkYTt95UOOc5NOL0JaCGOMvN8g+/6ewqYK4+7Jx/tDNUIEuPNlIc Ab84z7D2qzuucZURkfWiLCUdRzRyZ3SHzAP4V4H5d6iNzB9ob5SSAOdvSlEl5gZij/76/wDrVXW4 uftEm6Bdox0b/wCtTbBRNBDFtJUrg9qYp8pvLY8Hlf8ACoG+YbjHHg993/1qil+0KMKUkUjhS3P8 qdxcpzHiF1/tZ8nt/U0Vn+I3kbVSdgHyDjPuaKZZ39udtorHjArmJYJHvnvZbcmAlgSUzjng4P0r dadBp64OTgDAPPJp/wBoyMFDjp94VKF1MqwJF5IyRE27/MW/unHNbdku2A88lm/nVRmjVCiRFOMf KRjn8aZa3LLHho9/Jwcgd/rT6g1oahYrjn8PWnFn7KPzqpDPlwWj2E88tVnzk7kZpktEULENJ8rZ 3ensKl3uP+WZx9RUUEiEyfMMbvWpvNTdxgk+9KIS3GiWQj/V8fXmoY3xcyZVgTjGRU/y45IB7YPS oYpF86UbsEYzQwRN5MYJbaMmo3hix9wfhUnmAg/MPaoZJQv0x1zTGjhPEgA1ZgAANv8AU0UzxLMo 1Y8nlM/qaKaRR4WvjjxMowNYuP0/wpf+E58Tn/mMXH/jv+FFFdfKuxldjW8ceJSedXn/ACX/AApF 8a+JF6avOPy/wooo5V2C7HDxz4mByNYuM/h/hT/+E78T/wDQYn/Jf8KKKOVdguxV8d+J1zjV5v8A vlf8KePHnigH/kLzf98r/hRRRyrsF2OPj3xR/wBBib/vlf8ACm/8J34nBJGrzZPX5V/wooo5V2C7 Hr488Uf9Beb/AL5X/Cj/AITzxPu/5C83/fK/4UUUuVdguyrdeLteuZQ8upSswXGdqjj8qKKKdkF2 f//Z "/>
+<Record name="result"><Section name="default" class="default"><Field abbrev="marc245" searchfield="false" sortfield="false"><Values><Value>Map of a reconnoissance between Fort Leavenworth on the Missouri river and the Great Salt Lake in the Territory of Utah, made in 1849 and 1850 under the orders of Col. J.J. Abert ... / by Capt. Howard Stansbury aided by Lieut. J.W. Gunnison ... and Albert Carrington ; drawn by Lieut. Gunnison and Charles Preuss.</Value></Values><Label display="on">Title</Label></Field><Field abbrev="record_no" searchfield="false" sortfield="false"><Values><Value>003060822</Value></Values><Label display="on">Record No.</Label></Field></Section></Record></Snapshot>
+<Snapshot href="/cgi/i/image/image-idx?c=clark1ic8lift;entryid=x-003063750;viewid=39015091897218">
+    <Thumbnail src="data:image/jpeg;base64,/9j/4AAQSkZJRgABAQAAAQABAAD/2wBDAAgGBgcGBQgHBwcJCQgKDBQNDAsLDBkSEw8UHRofHh0a HBwgJC4nICIsIxwcKDcpLDAxNDQ0Hyc5PTgyPC4zNDL/2wBDAQkJCQwLDBgNDRgyIRwhMjIyMjIy MjIyMjIyMjIyMjIyMjIyMjIyMjIyMjIyMjIyMjIyMjIyMjIyMjIyMjIyMjL/wAARCABLAGQDASIA AhEBAxEB/8QAHwAAAQUBAQEBAQEAAAAAAAAAAAECAwQFBgcICQoL/8QAtRAAAgEDAwIEAwUFBAQA AAF9AQIDAAQRBRIhMUEGE1FhByJxFDKBkaEII0KxwRVS0fAkM2JyggkKFhcYGRolJicoKSo0NTY3 ODk6Q0RFRkdISUpTVFVWV1hZWmNkZWZnaGlqc3R1dnd4eXqDhIWGh4iJipKTlJWWl5iZmqKjpKWm p6ipqrKztLW2t7i5usLDxMXGx8jJytLT1NXW19jZ2uHi4+Tl5ufo6erx8vP09fb3+Pn6/8QAHwEA AwEBAQEBAQEBAQAAAAAAAAECAwQFBgcICQoL/8QAtREAAgECBAQDBAcFBAQAAQJ3AAECAxEEBSEx BhJBUQdhcRMiMoEIFEKRobHBCSMzUvAVYnLRChYkNOEl8RcYGRomJygpKjU2Nzg5OkNERUZHSElK U1RVVldYWVpjZGVmZ2hpanN0dXZ3eHl6goOEhYaHiImKkpOUlZaXmJmaoqOkpaanqKmqsrO0tba3 uLm6wsPExcbHyMnK0tPU1dbX2Nna4uPk5ebn6Onq8vP09fb3+Pn6/9oADAMBAAIRAxEAPwDsvBfg 7w3d+CNLvLzRrSeZrYO7vGCzHrya34/B3hlkUr4XsSCM/wCqSofAJ3fDrSuP+XTH866mBttshOBh c9a4ru7NWc4/g3w0UbHheyzj/nilOHg7wzgZ8LWX/fhK2kud85GBg8Z/z+H51NMrfKwOPXBxRd3E c+PBvhk9PC9l/wB+EoHg7wz1/wCEXs/+/CV0MLN7tx8xz0NCsoBI6HnrQ7gc+PB/hn/oVrP/AMB4 6cfCPhrp/wAItZ/+A8dbfnybSREzLn2z+FKskvm/OuEY4GevHrTb0CzMI+EvDAUk+F7MAdT9mjo/ 4RLwyOvhiz56f6NHXSHgEnGKquSChQEKp4z3qZTUVdgtTEPhHwwTz4Zs/wDwGSmv4P8ACoXLeGrI D1+zpxW6ZVlbcqscDnrwaZNCqrI4D7mxnLHHpwKE2M8P+KOhaZpnie3gsLCC2iazVykSBQW3uM8f QUVpfF3P/CWW3H/Lin/ob0V0wfuoR3nw8bPw60sj/n2I/U11MSCS1VG6Fa5P4cJt+HOljoTbk/mS a6iR3isA8QBcLxmudbsciFLYifawG0c5H+fYVamcKhGSDjjHtVGK+LQnzMCYHA46irEaBmPmNvyu c5wR9BST94GtNRYpQ7OcAFsAkDPPanrAocuyDcfSmJbhQ20743O7JA4OanUd2OSCcEU22Ift5HA4 702UYSnF1VSWOBUbujj5TmorN+zYJakQwDnA/KpOSAx/ChUDHkdKey+lc1Cm370im0RRtiaQjoFG f1/+vSXT7rZj2OMYpjHY5JyAw2/T0omAjtQhJyxA/rXUmyTyH4uMf+Estsf8+Kf+hvRTfi8MeLbb /rxT/wBDeiumHwoDv/h6pHw70nJHNr2/GunjCy2wQjoAMGuY+H7Z+Hmk47WuP510qA+RG6/eC9PU Vz31Y2UEi3y+WVIKkjI7VbJJbnPy8EAE4qD7QDclwGUZ6EY+tW5XWIg9Cx5OKzjZNlzu0hUmy/ll TgDgnHPtTlXYc8kE9DzikUmRCCCPc0YIPXgdKqdRLczsPaRVwMck4qJ13EZGff0pPKGTx+Ro3tGd uNxPQE1i37Z+Q9hd4jYJtZnbOQPSgmSQDYNnHJOCfwp6LtzkDc3cUq8DBre1lZCK00I+zt87kjJP PXFJKMxbzkngDcfpUz52kf3s/hUdycRceo/nTT0GeQ/F1j/wlltx/wAuKf8Aob0UvxaP/FV23/Xk n/ob0VvD4UI734fD/i3Wk8f8uv8AjXSR8QgYyxUdRXM+AWkHw80oEDH2Xj6c10UUjlECDdlQOegx WF1djaHy24lAPmtuA4PFRSRSiJlLBwDnkcimTmaPdkgF8bccj+lPjlkeYsuSM/NuOBik7NjTaRJC ZFi+fr0HvRJIVfbsbJGRxx+dTKGGM4OeuetMlwAXYcAYJx2qJQUtxXEWaPJBdd31pVUmRpDxkAAH riqubgTAPxDu56Zz1FWZpjEhbqfQDNarlirIROAQBSlelNDZA5FMldlXjaMHksOMUcyFYWThT/jV ScsU5/vL/OrEjMqE9unAqvMHWAMQB8y8fiKE1YNbnk/xaX/iq7b/AK8k/wDQ3oqv8XJD/wAJZbZ/ 58k/9Deit4fChs774fuZPh3pY6n7NjH4kV0cN2ixIpSbIH/PFv8ACvlbR/E2taIxGm6lPbh8bgpy DjpkH61csfHHibTrZILXWblIgxIUkN1x6g/lWbou7dx3PpTU9Usra2WW6l8mIOBulRlBJ4A5HXmr YnTYPklJzkHym/wr5M1LWtT1e6FzqF9PcTDkM79Pp6fhU6eKPECfd1zUh9LuT/Gn7B9wufWBuYz/ AAS5/wCuTf4VG04d1ykm1eo8puT+X1r5YXxf4lU8a/qf/gU/+NdLb/EDxVJ4duw2szkqFCvtUMOf 72M/rQ6TEfQbSRvEF2yhvURN1/Ko5JU8ty6SE7cEmN/8K+Yj458VN18Qah+E5FRv4z8TNndr+pEf 9fLf403RdtwR9PxuuwNiTd6rE2D+lTLP3ZZmPPHlNgfpXy9/wnPinIxr1+ABgBZiB+lOXx94sXpr 99+MuaSosD6gFySABFL7nYajuHMsYRIpQd6nlT6ivnJPiV4wW0RRrc3BPJjQn8yuab/wsvxjj/kO Tf8AftP/AIml7FgdX8XmC+LrYZ/5cU/9DeivM9U13U9auxdajeSXE4UIHfGQoJOP1NFbRjZWA//Z "/>
+<Record name="result"><Section name="default" class="default"><Field abbrev="marc245" searchfield="false" sortfield="false"><Values><Value>Provisional geological map of part of the Chippeway sand district of Wisconsin with part of Iowa &amp; of Minnesota Terratory [sic] : to illustrate the report of a geological reconnoissance made in 1847 / by David Dale Owen.</Value></Values><Label display="on">Title</Label></Field><Field abbrev="record_no" searchfield="false" sortfield="false"><Values><Value>003063750</Value></Values><Label display="on">Record No.</Label></Field></Section></Record></Snapshot>
+<Snapshot href="/cgi/i/image/image-idx?c=clark1ic8lift;entryid=x-003063750;viewid=39015091897366">
+    <Thumbnail src="data:image/jpeg;base64,/9j/4AAQSkZJRgABAQAAAQABAAD/2wBDAAgGBgcGBQgHBwcJCQgKDBQNDAsLDBkSEw8UHRofHh0a HBwgJC4nICIsIxwcKDcpLDAxNDQ0Hyc5PTgyPC4zNDL/2wBDAQkJCQwLDBgNDRgyIRwhMjIyMjIy MjIyMjIyMjIyMjIyMjIyMjIyMjIyMjIyMjIyMjIyMjIyMjIyMjIyMjIyMjL/wAARCAAoAGQDASIA AhEBAxEB/8QAHwAAAQUBAQEBAQEAAAAAAAAAAAECAwQFBgcICQoL/8QAtRAAAgEDAwIEAwUFBAQA AAF9AQIDAAQRBRIhMUEGE1FhByJxFDKBkaEII0KxwRVS0fAkM2JyggkKFhcYGRolJicoKSo0NTY3 ODk6Q0RFRkdISUpTVFVWV1hZWmNkZWZnaGlqc3R1dnd4eXqDhIWGh4iJipKTlJWWl5iZmqKjpKWm p6ipqrKztLW2t7i5usLDxMXGx8jJytLT1NXW19jZ2uHi4+Tl5ufo6erx8vP09fb3+Pn6/8QAHwEA AwEBAQEBAQEBAQAAAAAAAAECAwQFBgcICQoL/8QAtREAAgECBAQDBAcFBAQAAQJ3AAECAxEEBSEx BhJBUQdhcRMiMoEIFEKRobHBCSMzUvAVYnLRChYkNOEl8RcYGRomJygpKjU2Nzg5OkNERUZHSElK U1RVVldYWVpjZGVmZ2hpanN0dXZ3eHl6goOEhYaHiImKkpOUlZaXmJmaoqOkpaanqKmqsrO0tba3 uLm6wsPExcbHyMnK0tPU1dbX2Nna4uPk5ebn6Onq8vP09fb3+Pn6/9oADAMBAAIRAxEAPwDM0z4N a9qEk6C+sIzC5RtzP1Hp8ta6/ATVyPn1iyB9kc/0r1fwmrmC7kcks075JPOcmuiPXqKxhKUldmk9 HY8KT4B6gTh9ctlHqIWP9RUkfwBuDKRJ4giCY6rakk/+PV7iCCMggim7AJC6hQxABOOSB0/rTbfc m544nwBtx/rPEEp/3bYD/wBmqzH8A9KH+s1q8b/djUf4163h/wC8v/fP/wBekIk7FD+Bp69xXPLE +A+gAnfqWosPYoP/AGWrK/AzwuOtzqbf9tk/+Ir0sB+5X8qMP/eX8v8A69JXHc85X4I+E16tqDfW cf8AxNSR/BjwesmDb3b4Gfmnb+mK9EGcc03cN+3I3Yzih3C5xCfCDwUnXSXb/eupf/iqsR/CzwXC crocZ/35ZG/m1djRRYVz5E8ZWdvp/jLV7S0iWK3hunSONeigHgUVP49/5H7Xf+v2T+dFaIo+l/C1 qtlYy2yyPIIpWXc/U89617gkKSP7jfyrO0H/AFd0c9Z2/nWjOARg9CrD9Kwpv3Bz+I537Vec7SY+ OqqP8KSXxN9hmEbiKeZ9oXynOAuTlivY/wA6veXbnOFkI9kP+FYdr4W0y0lmKx3kiSHIRncBRnOO AM8+ua41i49mXyGxP4u0+1j3TpOpxyoTJFalvqVtc26yiRUDDO12AI+uDXPjw5ojuHk05nZWDDzA 7DPrg1j+LbO5kFn/AGbby7fMKzNGhJXptOOpA56VrTxfNJRsyXA7s31qBnz0I9jmopdXsYQd04+X 72ATj6+lcNJomqJaW8Quryd55QJPLVlCR4yc89+nTvV678Oi7sHs2s5Uifk+WpUg+uR3ro5mTyo1 o/GWnT301vARKsY/1iuMMe4FXbfW4bqQCJccjPmHb+XrWFZaQ+n2cdvHE6qg2jch5+tWLe1mE6Ex Nwcng+tTKTHZHVUUlFWQfJfjv/kfdd/6/Zf/AEI0Unjs/wDFe67/ANfsv/oRorVFH0Bpvi7QdHa8 h1HVIbZ2uZCiykgkBiKuf8LH8Hg/8h+0/M/4UUVlCPuoc9xp+Jfg1Rzr1t+Ab/CoT8UPBomC/wBt xYKk7vLfH8qKKpwTJJP+Fn+DQP8AkOwf98P/AIUn/C0fBf8A0HYf+/b/APxNFFNRCwxvir4LBx/b aH6Qyf8AxNH/AAtbwV/0G0/78Sf/ABNFFHKFhp+LHgr/AKDS/wDfiT/4mmH4r+DfMX/icJt5yTDJ x/47RRScL9Rjj8WfBS9dZH4W8v8A8TUTfF7wSP8AmLMfpbS//E0UUciEfPPiu/t9V8Warf2jF7e4 uXkjYgjKk5HBooorQZ//2Q== "/>
+<Record name="result"><Section name="default" class="default"><Field abbrev="marc245" searchfield="false" sortfield="false"><Values><Value>Provisional geological map of part of the Chippeway sand district of Wisconsin with part of Iowa &amp; of Minnesota Terratory [sic] : to illustrate the report of a geological reconnoissance made in 1847 / by David Dale Owen.</Value></Values><Label display="on">Title</Label></Field><Field abbrev="record_no" searchfield="false" sortfield="false"><Values><Value>003063750</Value></Values><Label display="on">Record No.</Label></Field></Section></Record></Snapshot>
+<Snapshot href="/cgi/i/image/image-idx?c=clark1ic8lift;entryid=x-003063750;viewid=39015091897077">
+    <Thumbnail src="data:image/jpeg;base64,/9j/4AAQSkZJRgABAQAAAQABAAD/2wBDAAgGBgcGBQgHBwcJCQgKDBQNDAsLDBkSEw8UHRofHh0a HBwgJC4nICIsIxwcKDcpLDAxNDQ0Hyc5PTgyPC4zNDL/2wBDAQkJCQwLDBgNDRgyIRwhMjIyMjIy MjIyMjIyMjIyMjIyMjIyMjIyMjIyMjIyMjIyMjIyMjIyMjIyMjIyMjIyMjL/wAARCAA/AGQDASIA AhEBAxEB/8QAHwAAAQUBAQEBAQEAAAAAAAAAAAECAwQFBgcICQoL/8QAtRAAAgEDAwIEAwUFBAQA AAF9AQIDAAQRBRIhMUEGE1FhByJxFDKBkaEII0KxwRVS0fAkM2JyggkKFhcYGRolJicoKSo0NTY3 ODk6Q0RFRkdISUpTVFVWV1hZWmNkZWZnaGlqc3R1dnd4eXqDhIWGh4iJipKTlJWWl5iZmqKjpKWm p6ipqrKztLW2t7i5usLDxMXGx8jJytLT1NXW19jZ2uHi4+Tl5ufo6erx8vP09fb3+Pn6/8QAHwEA AwEBAQEBAQEBAQAAAAAAAAECAwQFBgcICQoL/8QAtREAAgECBAQDBAcFBAQAAQJ3AAECAxEEBSEx BhJBUQdhcRMiMoEIFEKRobHBCSMzUvAVYnLRChYkNOEl8RcYGRomJygpKjU2Nzg5OkNERUZHSElK U1RVVldYWVpjZGVmZ2hpanN0dXZ3eHl6goOEhYaHiImKkpOUlZaXmJmaoqOkpaanqKmqsrO0tba3 uLm6wsPExcbHyMnK0tPU1dbX2Nna4uPk5ebn6Onq8vP09fb3+Pn6/9oADAMBAAIRAxEAPwD1Xw1o Gk/8I9ZsdLsw7xgsfIXk/lV5/C+hu3z6LpzD1Nun+FWPD67NAsV9IV/lVuSfy2bKOQo7Dr9K4VH3 UzWTfMzGbwX4abroOm/+Ayf4VG3gbwxg/wDEg078Ldf8K2BfJs8xkkUdNpXn9KebqMReZ8230A5/ KhrzFdnPp4H8LiTnQtPz2BgWrK+C/DS9NB04f9uyf4VpLfQ7icSdB/yzP+FTxzpKu5M4zzkEVMfU bbMkeD/Di9ND07/wGT/Cn/8ACKeHx00TTv8AwGT/AArT+0xerf8AfB/wpyyrIMoTjODkEVSs9mTd mOPC2g+Yf+JLp/Qf8uye/tUg8L6CDn+xdO/8Bk/wrQ+0wiVgX5wOx96d9phH8f6GhW7jbZQHhvRF ORpFgD7W6f4VImiaXEcx6daKfVYVH9KuC4iYgBjk/wCyaR541BDEg45AUmh27hdkK2kG0bYo8dsK KKsJ90UVHKPmZW0YbdGtB6RL/KrueSKqaSMaVbf9cxUsjzrI2yJWX1LY/pW8WuVXJl8TJ6Qiq3n3 Xe2X8HP+FSvIwXKoSfTpSco2FYb5aGUjnp/eNP8AKU+v5mog5+0HKkDaOfel+0SAn9zkdjurOMor cbuS+Uvv+dJ5K+9RfaZO9u34MP8AGgXTn/l3k/Mf41fNAWo8RDeeT0H9akVAvv8AWq32o7z/AKPL 2/u/41KZgql9rNnHyjrSTgN3Jdo9BSFR6CoVuDKSpikT3YDH6Gka6wcCCU+4A/xpuUbC1JlzjnGa KFORnGKKkZX0wY0y3H+wKtg5z7VWsBixhH+yKdm5V3wsbKTkckVdN+6gl8TJ6QjI5qHfc/8APKP/ AL7/APrU0y3K/eiixn++f8KptCsSbEL/AHVyPaneUn9xfyquZm3tuQY424bk0gu5sfNan6LIprOD Q2WfKj/uClMaH+Gqv29s4+yT/UFP/iqf9rGCfLk6fdwM1oIlCLuPHpTwABgVAt1GSeHB7goad5hf lM4x6UkBLSHgZpN5A+6x+gqN3LKR5bfpUyaAkFFCnIzRUKwytZHCBc8BRVvNZtjJmUgegrQzSpSs i6itIdRSZpM1bkZ2EP3x9KcDVfzSbkrjgD9am3cVEZFND6acegpMg0bsVTkKwADJOBThgVHuGaXc KlSHYfmmsaTdTS2aTkCQ5cBeABRTYydvPqelFJMGf//Z "/>
+<Record name="result"><Section name="default" class="default"><Field abbrev="marc245" searchfield="false" sortfield="false"><Values><Value>Provisional geological map of part of the Chippeway sand district of Wisconsin with part of Iowa &amp; of Minnesota Terratory [sic] : to illustrate the report of a geological reconnoissance made in 1847 / by David Dale Owen.</Value></Values><Label display="on">Title</Label></Field><Field abbrev="record_no" searchfield="false" sortfield="false"><Values><Value>003063750</Value></Values><Label display="on">Record No.</Label></Field></Section></Record></Snapshot>
+<Snapshot href="/cgi/i/image/image-idx?c=clark1ic8lift;entryid=x-003063750;viewid=39015091897226">
+    <Thumbnail src="data:image/jpeg;base64,/9j/4AAQSkZJRgABAQAAAQABAAD/2wBDAAgGBgcGBQgHBwcJCQgKDBQNDAsLDBkSEw8UHRofHh0a HBwgJC4nICIsIxwcKDcpLDAxNDQ0Hyc5PTgyPC4zNDL/2wBDAQkJCQwLDBgNDRgyIRwhMjIyMjIy MjIyMjIyMjIyMjIyMjIyMjIyMjIyMjIyMjIyMjIyMjIyMjIyMjIyMjIyMjL/wAARCABbAGQDASIA AhEBAxEB/8QAHwAAAQUBAQEBAQEAAAAAAAAAAAECAwQFBgcICQoL/8QAtRAAAgEDAwIEAwUFBAQA AAF9AQIDAAQRBRIhMUEGE1FhByJxFDKBkaEII0KxwRVS0fAkM2JyggkKFhcYGRolJicoKSo0NTY3 ODk6Q0RFRkdISUpTVFVWV1hZWmNkZWZnaGlqc3R1dnd4eXqDhIWGh4iJipKTlJWWl5iZmqKjpKWm p6ipqrKztLW2t7i5usLDxMXGx8jJytLT1NXW19jZ2uHi4+Tl5ufo6erx8vP09fb3+Pn6/8QAHwEA AwEBAQEBAQEBAQAAAAAAAAECAwQFBgcICQoL/8QAtREAAgECBAQDBAcFBAQAAQJ3AAECAxEEBSEx BhJBUQdhcRMiMoEIFEKRobHBCSMzUvAVYnLRChYkNOEl8RcYGRomJygpKjU2Nzg5OkNERUZHSElK U1RVVldYWVpjZGVmZ2hpanN0dXZ3eHl6goOEhYaHiImKkpOUlZaXmJmaoqOkpaanqKmqsrO0tba3 uLm6wsPExcbHyMnK0tPU1dbX2Nna4uPk5ebn6Onq8vP09fb3+Pn6/9oADAMBAAIRAxEAPwD2Tw0G Ph61IPzFOprVVWGdxB9MDFUtCQJotooGP3Yq3cruTG5l75U4rihG8EazfvMftprRI67WUMD2IzTp JFiTc5wKha9tlGWlAHqQaTiluJX6DhbQqMLEgH+6KQ20X/PJP++RQbuAYzIKmBBAIOQaXKmF2tyn Jbokedq53L29xSvAuG+UdKnmH7v/AIEv8xQ4+Q/SocClJjEiAQcnoM80/wAv3P508DgfSlq1AlyZ Hs9z+dLs+v51JRinyCuQqGBI3HGaKWRtjYweeeBRS5WO5Fpa7dMtx6IKmn3cbcY75plgMWMI/wBg VLJ0/CtqfwIUviYy5UMiggH5s8j2qlLZxzHkYGMYHFXp+i/X+lQnIXjr2zXDiW1U0Li9Culmi4yS wHZqtW52HYBhewHao0Egz5hU/wC6CKfkggjqKzhUcZJsb1JpR8n4j+dDj5T9KGIaMEdCR/Olb7pr uktLmaF7DnFLRRVJCCiilpgMYZNFI5wetFFhiWvFtH/uinSAEj2ptt/x7R/7opznBAweaqHwIH8T GXLbVUn1/pUHmrjvU10u5UH+13+lV2hJHBGa48RTnKd0io2tqKZlHrSCdPX9KryxyxjoSD/dBOKq GG5UkB5gB32Z/pWHsZ9i9DSN0EHy56jg/WpGvowvzKw+nNZXl3HXe5wRwU9/pVhkd8gKeMdQRVr2 sVYLRZpfa4f736GpUkSQZRgazfIk/u1YtI2jkO4YBFb06lRu0kQ4q2hcooorpRmQTNhwPainSRqz ZPp60Vm5WZaC2/494/8AdFPfrTLb/j3j/wB0U5wSwOfwq6b9xCfxMr35IjTacHd/SqgeQr94/kKu XyM6IEUkg5qmIZgPuGpnKzBCEykAjcec8CmHzAc/PkfWntDMQAY8geopphlJJ8nk9TtqOfzGMdpf QnoOQfWlaWRVPyjnHUUjRSAf6pj9c0rJN18psnjOD0pOXmMlWVsdvyq1asWlOSOlUwkuB8jfkat2 qsJTuB+73FOMtRMu0UlLWqZAx+tFKetFZNalIZb8QJ9BT3xkUkfCL9KfWlP4UJ7jHOGX8aTPvUmM 010LD5SFP0zSnS5ne4JkThzjYyj1yM0hE2fldB9V/wDr04RPjmQH/gAppV1ODhs9wnSs3R8x3DEv GXX3wv8A9ehA4B3sDzxgYpFDllHTnnMeKeY3xwyZ/wB2odDzHcUUo4YGkRGH39p+gxT9i+gpwpNO 9xNjqKTavpSgAV0kjW60UMeaKxb1KGhgqAnOPYZpyuHGRn8RikT7op9XTvYTCijtTJGKkYNaMQ+i iikwEzSE0ppD0qJXGLRmgdKKEAuaTNHrRTuAhPNFBoqdRn//2Q== "/>
+<Record name="result"><Section name="default" class="default"><Field abbrev="marc245" searchfield="false" sortfield="false"><Values><Value>Provisional geological map of part of the Chippeway sand district of Wisconsin with part of Iowa &amp; of Minnesota Terratory [sic] : to illustrate the report of a geological reconnoissance made in 1847 / by David Dale Owen.</Value></Values><Label display="on">Title</Label></Field><Field abbrev="record_no" searchfield="false" sortfield="false"><Values><Value>003063750</Value></Values><Label display="on">Record No.</Label></Field></Section></Record></Snapshot>
+<Snapshot href="/cgi/i/image/image-idx?c=clark1ic8lift;entryid=x-003063750;viewid=39015091897374">
+    <Thumbnail src="data:image/jpeg;base64,/9j/4AAQSkZJRgABAQAAAQABAAD/2wBDAAgGBgcGBQgHBwcJCQgKDBQNDAsLDBkSEw8UHRofHh0a HBwgJC4nICIsIxwcKDcpLDAxNDQ0Hyc5PTgyPC4zNDL/2wBDAQkJCQwLDBgNDRgyIRwhMjIyMjIy MjIyMjIyMjIyMjIyMjIyMjIyMjIyMjIyMjIyMjIyMjIyMjIyMjIyMjIyMjL/wAARCAAlAGQDASIA AhEBAxEB/8QAHwAAAQUBAQEBAQEAAAAAAAAAAAECAwQFBgcICQoL/8QAtRAAAgEDAwIEAwUFBAQA AAF9AQIDAAQRBRIhMUEGE1FhByJxFDKBkaEII0KxwRVS0fAkM2JyggkKFhcYGRolJicoKSo0NTY3 ODk6Q0RFRkdISUpTVFVWV1hZWmNkZWZnaGlqc3R1dnd4eXqDhIWGh4iJipKTlJWWl5iZmqKjpKWm p6ipqrKztLW2t7i5usLDxMXGx8jJytLT1NXW19jZ2uHi4+Tl5ufo6erx8vP09fb3+Pn6/8QAHwEA AwEBAQEBAQEBAQAAAAAAAAECAwQFBgcICQoL/8QAtREAAgECBAQDBAcFBAQAAQJ3AAECAxEEBSEx BhJBUQdhcRMiMoEIFEKRobHBCSMzUvAVYnLRChYkNOEl8RcYGRomJygpKjU2Nzg5OkNERUZHSElK U1RVVldYWVpjZGVmZ2hpanN0dXZ3eHl6goOEhYaHiImKkpOUlZaXmJmaoqOkpaanqKmqsrO0tba3 uLm6wsPExcbHyMnK0tPU1dbX2Nna4uPk5ebn6Onq8vP09fb3+Pn6/9oADAMBAAIRAxEAPwD3lFwg HfFLsHcA1BcTPC8WxNwJw3OMD1pl/cSwLGYhnJ5rjUE0W2TFW38bcU7a/qv5VBLd+UIm2Z3jPXpT /tP7+NAMo65zSjDUGx+Cw4ZDg9h/9el2v6r+X/16pfZiBMu7AkOf1qVWK3CAv/Dgj1rONWlJ2THZ k+1sZJUfh/8AXpdj/wB5fyrPZCtoy4/iq7DcLJuXoVxz61a5Xqhakmx/7w/75pAjD+IflStMiSKj MAzdBThVNK4BiowvzmpTUan5zUySuCMvVLIT3KttBwgH6mitVkDHJoq0guQXbhNpJ4qOQ+fEm09K NRQvCAM59qgtlYRFSTn1Nc2Ily0nJPXsNbjpYndIwRkqT0qZFOIyeCopMhcDd+tOB3civPeJqtcq L5UOJyM0nRs4pg37umF+lOCsemcVi41L3SY9CGK4EilSAD1FIy7UnYj7wGPzp/lsRhRg+4o8uZgR gfXNbUpVoS5oxBpMj+aVIHJ+71/OrkE/m+YD1RiKrCCZRgkN+OKbHbzR7iroCzbj836V3UKtWcnz xsuhEopLQuwziePcBjBwRTh941TjgeJNokTBJzg+tSxeYZTuZT6YNaylrsJLQsE0UnPrRVXCwjKJ Fw2fwNN8lNuMH86KKhAIYUAwB39aXykwBg8e9FFK7uMDEmc4/Wjyk/u9PeiindgIyJz8vX3pqqij hf1oopX1HYCqf3BSbUxnYKKKdx2RG2wfwL+VImF5VQD7CiikVYd5zUUUUxWP/9k= "/>
+<Record name="result"><Section name="default" class="default"><Field abbrev="marc245" searchfield="false" sortfield="false"><Values><Value>Provisional geological map of part of the Chippeway sand district of Wisconsin with part of Iowa &amp; of Minnesota Terratory [sic] : to illustrate the report of a geological reconnoissance made in 1847 / by David Dale Owen.</Value></Values><Label display="on">Title</Label></Field><Field abbrev="record_no" searchfield="false" sortfield="false"><Values><Value>003063750</Value></Values><Label display="on">Record No.</Label></Field></Section></Record></Snapshot>
+<Snapshot href="/cgi/i/image/image-idx?c=clark1ic8lift;entryid=x-003063750;viewid=39015091897085">
+    <Thumbnail src="data:image/jpeg;base64,/9j/4AAQSkZJRgABAQAAAQABAAD/2wBDAAgGBgcGBQgHBwcJCQgKDBQNDAsLDBkSEw8UHRofHh0a HBwgJC4nICIsIxwcKDcpLDAxNDQ0Hyc5PTgyPC4zNDL/2wBDAQkJCQwLDBgNDRgyIRwhMjIyMjIy MjIyMjIyMjIyMjIyMjIyMjIyMjIyMjIyMjIyMjIyMjIyMjIyMjIyMjIyMjL/wAARCAAkAGQDASIA AhEBAxEB/8QAHwAAAQUBAQEBAQEAAAAAAAAAAAECAwQFBgcICQoL/8QAtRAAAgEDAwIEAwUFBAQA AAF9AQIDAAQRBRIhMUEGE1FhByJxFDKBkaEII0KxwRVS0fAkM2JyggkKFhcYGRolJicoKSo0NTY3 ODk6Q0RFRkdISUpTVFVWV1hZWmNkZWZnaGlqc3R1dnd4eXqDhIWGh4iJipKTlJWWl5iZmqKjpKWm p6ipqrKztLW2t7i5usLDxMXGx8jJytLT1NXW19jZ2uHi4+Tl5ufo6erx8vP09fb3+Pn6/8QAHwEA AwEBAQEBAQEBAQAAAAAAAAECAwQFBgcICQoL/8QAtREAAgECBAQDBAcFBAQAAQJ3AAECAxEEBSEx BhJBUQdhcRMiMoEIFEKRobHBCSMzUvAVYnLRChYkNOEl8RcYGRomJygpKjU2Nzg5OkNERUZHSElK U1RVVldYWVpjZGVmZ2hpanN0dXZ3eHl6goOEhYaHiImKkpOUlZaXmJmaoqOkpaanqKmqsrO0tba3 uLm6wsPExcbHyMnK0tPU1dbX2Nna4uPk5ebn6Onq8vP09fb3+Pn6/9oADAMBAAIRAxEAPwD3LTl2 aZaLj/lko/SrQXA65qKFdkMK+gA/SnzHbESK5YxVi3uM8yJnCh1LegNSEEDgZrMt1IuELcfN0zWr SUVcTZGd2Pu/rR839z9aeaCQqknoKfKguRgk87PzNL839wfnUC38LyhAGyTjPFW6SihkYBPVQPxp 232qK6uktYw7gkZxxTLK9S9Viisu3Gc0cquIleNWGCoPPcUoQUSOqAbmCj3OKEljc4WRSfQGosr2 HrYyNS8PaVqN1595p1tPLtC75Igxx9TRWuw5oqh3FPVfrUd0x8kqnLelPbOARyQaoTidnJVyuewA rCvVlCnaKu2EVdkVvHMkys27Ge5HFIl7f+aQY12/T/69SwxzbxudmAPpS7ZAx/dHJ71wwr14R0jf 7zRxT6mjTJziIjHXimCUrGDIrbvQAmq1yszuDGGC478V3Vaso03KK1Zmo3dmRxWyJMHx34rTU1mx RXG8FskAjvUlpLdEyLNCRjlTkc1hhJ1F/EuXOK6CapNEoSOTOTyMA0umPEY3EWeMZzVWa2uZpi7Z z9RxVi3t5reCUBSWbGORSU71uflf9eQNe7a4y8uUaTaXUAHA5xT7F0MwCMDwe+azZLCZmH7l/wDv pau2NnLDOsjIwGCOSDXPCFSVdVJJ7luyjZGoetFRsXzxRXq8xjYVGJp2TRRWSbsN7iEmlyaKKd2I TJpcmiii7AaWPFKGNFFCbGG45pskhVGIxwKKKd2FjDuNbuYvupF+IP8AjWbP4rv4x8sVv+Kt/jRR VxQMoN421IMf3Nr/AN8N/wDFUUUVpyoD/9k= "/>
+<Record name="result"><Section name="default" class="default"><Field abbrev="marc245" searchfield="false" sortfield="false"><Values><Value>Provisional geological map of part of the Chippeway sand district of Wisconsin with part of Iowa &amp; of Minnesota Terratory [sic] : to illustrate the report of a geological reconnoissance made in 1847 / by David Dale Owen.</Value></Values><Label display="on">Title</Label></Field><Field abbrev="record_no" searchfield="false" sortfield="false"><Values><Value>003063750</Value></Values><Label display="on">Record No.</Label></Field></Section></Record></Snapshot>
+<Snapshot href="/cgi/i/image/image-idx?c=clark1ic8lift;entryid=x-003063750;viewid=39015091897234">
+    <Thumbnail src="data:image/jpeg;base64,/9j/4AAQSkZJRgABAQAAAQABAAD/2wBDAAgGBgcGBQgHBwcJCQgKDBQNDAsLDBkSEw8UHRofHh0a HBwgJC4nICIsIxwcKDcpLDAxNDQ0Hyc5PTgyPC4zNDL/2wBDAQkJCQwLDBgNDRgyIRwhMjIyMjIy MjIyMjIyMjIyMjIyMjIyMjIyMjIyMjIyMjIyMjIyMjIyMjIyMjIyMjIyMjL/wAARCAAyAGQDASIA AhEBAxEB/8QAHwAAAQUBAQEBAQEAAAAAAAAAAAECAwQFBgcICQoL/8QAtRAAAgEDAwIEAwUFBAQA AAF9AQIDAAQRBRIhMUEGE1FhByJxFDKBkaEII0KxwRVS0fAkM2JyggkKFhcYGRolJicoKSo0NTY3 ODk6Q0RFRkdISUpTVFVWV1hZWmNkZWZnaGlqc3R1dnd4eXqDhIWGh4iJipKTlJWWl5iZmqKjpKWm p6ipqrKztLW2t7i5usLDxMXGx8jJytLT1NXW19jZ2uHi4+Tl5ufo6erx8vP09fb3+Pn6/8QAHwEA AwEBAQEBAQEBAQAAAAAAAAECAwQFBgcICQoL/8QAtREAAgECBAQDBAcFBAQAAQJ3AAECAxEEBSEx BhJBUQdhcRMiMoEIFEKRobHBCSMzUvAVYnLRChYkNOEl8RcYGRomJygpKjU2Nzg5OkNERUZHSElK U1RVVldYWVpjZGVmZ2hpanN0dXZ3eHl6goOEhYaHiImKkpOUlZaXmJmaoqOkpaanqKmqsrO0tba3 uLm6wsPExcbHyMnK0tPU1dbX2Nna4uPk5ebn6Onq8vP09fb3+Pn6/9oADAMBAAIRAxEAPwD2nQbK CHRrXbBGGMYJIUc5q49haOPmtYG/3owaNNXZplqvpEv8qtVjGK5UVJ6soHRtMbO7TrQk9cwrz+lV 30DRt+f7FsG9/syf4VpTTwwANNKkYPQuwFVTrGmqxBvrfP8A10FKUUmCuVv7B0bp/Ylj/wCAyf4U p0LRv+gLY/8AgMn+FPk8QaZG237UrH0UE01/EOnIQPOLZ9B0o90NSIaFoTMcaJYE/wDXqn+FO/sD ROo0Ox/8BU/wpR4k00sF8xgT/s5/lTh4j00kgzMCPVDSXL3HZguiaQGyujWgPqLZB/SrC6XYIRts bdfpEoqjJ4nslGVV2HqeAKgHimMkE2xwehDgg/pSlyhaRuLaW6fdhjX6KBTxDGOiL+VZ1hrUV9cC FYmViCckitSqUYvYTutxnlp/dH5UU+ijlQrsZbrst4l9FA/SpKRRhQPQUtaR2QPcaUU9VB+oppij J5jT8qq6lE1xAIVEmCckpWK+iO+ebtTzj5s4/WsqlTldrMpRutzovKj/AOfdT+Ao8qPGPs64+grz X+wPGSX8iRkfZVbh1kC7h7Lniul0/T9diixLdPEATiN28wkdskHj8DVOdlewcvmdL5UeMeQuPoKP KiIx9nXH+6K5i60zxBzPbXiTOOkEi7F/Mc1Yh0q/CJ52o33mDlijYUn2BJ4qHWSWz+4OXzN8QQ/8 8EH/AAEUfZoBgCGPA7bBWH/ZMwkD/a75iSSSZP6Zpg0i8ScyJqd/z/CzZUfhmoeIj/K/uY+XzOgS CFG3JEin1CgVLWfp0V7Czi6uDMpxszHtx+OTmr9bwkpK6IasFFFFMAHSlpiNlQfaklVnjZVbaSMb sZxSUlYLD6TPzdRiuel8OXUl2k39qzFQMMpAyT/L8waRfDUgn8038rMBjkL/APE1nKo+xSiu50Ej qi5Mip7saTccZ8xMeuP/AK9c1J4Wnmu1kudQWW1H3oTEcn/gQb+lWl0C3iQrE20N/d3j+tKVWS2j f7g5V3NhriNCN1zEv1I/xphvrZV3NeW4HTJYf41gxeGSt21xJeCXcm1YzD8q+/fB47Yol8MF7qK5 t7sQSY2yAQAq6/Q8A+9T7Wd7cv4j5Y9zefUrGPbvvbddxwMyqM0Lf2jyELdwHb94CQZH61iP4Yec KLm5il2ngGBeR6Ht+lVJ/BZknUx33lw4IMaoAMccDHQfSn7SV9UCjHudXHcwSkCOeNyegVgalrkd L8FrpmrQXwvHkMRJwR1yMf1rrc1op9xSSWwh60UjNzRRzIVjI02RyxBdsema0txz1P50UVy09jWp uG4+p/Ooized94/d9aKKUnsJEu456mnAnjk0UVqSQF28w/MfzqGeSQK2HYcdjRRUx3GwjkcoMux/ GoTNJ9qUeY+MHjcaKKbAnWR+Pnbp608O+PvN+dFFMk5rW7u5jvVVLiVR5YOFcjuaKKKSND//2Q== "/>
+<Record name="result"><Section name="default" class="default"><Field abbrev="marc245" searchfield="false" sortfield="false"><Values><Value>Provisional geological map of part of the Chippeway sand district of Wisconsin with part of Iowa &amp; of Minnesota Terratory [sic] : to illustrate the report of a geological reconnoissance made in 1847 / by David Dale Owen.</Value></Values><Label display="on">Title</Label></Field><Field abbrev="record_no" searchfield="false" sortfield="false"><Values><Value>003063750</Value></Values><Label display="on">Record No.</Label></Field></Section></Record></Snapshot>
+<Snapshot href="/cgi/i/image/image-idx?c=clark1ic8lift;entryid=x-003063750;viewid=39015091897382">
+    <Thumbnail src="data:image/jpeg;base64,/9j/4AAQSkZJRgABAQAAAQABAAD/2wBDAAgGBgcGBQgHBwcJCQgKDBQNDAsLDBkSEw8UHRofHh0a HBwgJC4nICIsIxwcKDcpLDAxNDQ0Hyc5PTgyPC4zNDL/2wBDAQkJCQwLDBgNDRgyIRwhMjIyMjIy MjIyMjIyMjIyMjIyMjIyMjIyMjIyMjIyMjIyMjIyMjIyMjIyMjIyMjIyMjL/wAARCAAqAGQDASIA AhEBAxEB/8QAHwAAAQUBAQEBAQEAAAAAAAAAAAECAwQFBgcICQoL/8QAtRAAAgEDAwIEAwUFBAQA AAF9AQIDAAQRBRIhMUEGE1FhByJxFDKBkaEII0KxwRVS0fAkM2JyggkKFhcYGRolJicoKSo0NTY3 ODk6Q0RFRkdISUpTVFVWV1hZWmNkZWZnaGlqc3R1dnd4eXqDhIWGh4iJipKTlJWWl5iZmqKjpKWm p6ipqrKztLW2t7i5usLDxMXGx8jJytLT1NXW19jZ2uHi4+Tl5ufo6erx8vP09fb3+Pn6/8QAHwEA AwEBAQEBAQEBAQAAAAAAAAECAwQFBgcICQoL/8QAtREAAgECBAQDBAcFBAQAAQJ3AAECAxEEBSEx BhJBUQdhcRMiMoEIFEKRobHBCSMzUvAVYnLRChYkNOEl8RcYGRomJygpKjU2Nzg5OkNERUZHSElK U1RVVldYWVpjZGVmZ2hpanN0dXZ3eHl6goOEhYaHiImKkpOUlZaXmJmaoqOkpaanqKmqsrO0tba3 uLm6wsPExcbHyMnK0tPU1dbX2Nna4uPk5ebn6Onq8vP09fb3+Pn6/9oADAMBAAIRAxEAPwD3XTU8 vTbdfRBVkcjoR9aitf8Aj0hwQRsXkfSpSQoJJwBWcV7qQ3uxOKbuAfBYdOlQTX1lCC0sqD3IqlJr umpLsQ+bxyY1zt+tTJK40mavmJ/eFG9D/EPzrnJPGWhoxXMjMOwjGf51Nc+ItMt7dJ5ILjy2IGTE RjPTNPQLM3A6f3h+dLuT+8PzrIudVitIXnksLnyUXcz7eAPzqR9UhggMxsbjywu/d5fapVgsae5f 7w/OlxzWbHqkTwiVrK5TOMAxZJo/tnTVLBpVRlGWVhgj60OwWZp4pNo9Krw30FxjYTz0yKs1Vkxb EMiru5x0opZNm75sZx3orNxRRJGoSJEHRQBSsoZSpGQaBSSJvjZdzLkdVPIrdbEFWeytZEZGITd3 GAaqGXSLeQxTXFuH9H2j+lQX/h6zvJd1xqFypxgqsirn68U/TvD+kaaW+zxozsMM8jbiR/SspehY 26svD+oQbGe2+RwweJlDKw9CO9QzTaRBDsudXkeMYOyZlOcHIzlfUVYbQNFF1JMI44p5CGYo+0nH 0NI3hbSpblZ5IRKVIIVuRkd/env0DQnm1DTJLNvPuY/IkTDGQYDKf8c1BbRWk9uPJ1mWWAZXBdGB HocqSfxq5eRwyxNbzHcrjBXyd4x7jBFc/JY6XpxQxx3EeenlxKEY/wC4eM++KlaLVILHSxT2zERi 6jkcf7S5/Sqt1pmlXF0J50iFww2hw21j+R5rCubfTZnjlnt5maI5V4tqEg9iFPIq1Bd6LdBHUxE4 AxJbjj61La6IdjUs9EtrSbzVeRznK5YgD8q06o6dbQ26N5EpdSenpV6tY7EPcjkClucdKKV1BPai pYx44FZ1xJftMQloTHnAYT7TitBfu0tUtULY52fS9RuCWSWSJvSRg4/AjH8qhGlazGchraTA+6xY bvxycflXUUneolFFczOFt9H8UPITPFaR89RIGBGfQg0f2R4oaSSE7FhZuGWYDaPUYGfzru6KfKg5 2ec3mkeMY90MDyToM7ZFmVOo9MjP41J4e0PxIsc41QOSHHl+bKGOO/QmvQTS0nFNWDmZy39n38eB 5JLDuCMVDPo83mm4gtHSQkfKuOK66jvUqCQ+dmXpguoWMdxHgY4O3FatFFaLQlu41utFI3Wis29R o//Z "/>
+<Record name="result"><Section name="default" class="default"><Field abbrev="marc245" searchfield="false" sortfield="false"><Values><Value>Provisional geological map of part of the Chippeway sand district of Wisconsin with part of Iowa &amp; of Minnesota Terratory [sic] : to illustrate the report of a geological reconnoissance made in 1847 / by David Dale Owen.</Value></Values><Label display="on">Title</Label></Field><Field abbrev="record_no" searchfield="false" sortfield="false"><Values><Value>003063750</Value></Values><Label display="on">Record No.</Label></Field></Section></Record></Snapshot>
+<Snapshot href="/cgi/i/image/image-idx?c=clark1ic8lift;entryid=x-003063750;viewid=39015091897093">
+    <Thumbnail src="data:image/jpeg;base64,/9j/4AAQSkZJRgABAQAAAQABAAD/2wBDAAgGBgcGBQgHBwcJCQgKDBQNDAsLDBkSEw8UHRofHh0a HBwgJC4nICIsIxwcKDcpLDAxNDQ0Hyc5PTgyPC4zNDL/2wBDAQkJCQwLDBgNDRgyIRwhMjIyMjIy MjIyMjIyMjIyMjIyMjIyMjIyMjIyMjIyMjIyMjIyMjIyMjIyMjIyMjIyMjL/wAARCABkAEsDASIA AhEBAxEB/8QAHwAAAQUBAQEBAQEAAAAAAAAAAAECAwQFBgcICQoL/8QAtRAAAgEDAwIEAwUFBAQA AAF9AQIDAAQRBRIhMUEGE1FhByJxFDKBkaEII0KxwRVS0fAkM2JyggkKFhcYGRolJicoKSo0NTY3 ODk6Q0RFRkdISUpTVFVWV1hZWmNkZWZnaGlqc3R1dnd4eXqDhIWGh4iJipKTlJWWl5iZmqKjpKWm p6ipqrKztLW2t7i5usLDxMXGx8jJytLT1NXW19jZ2uHi4+Tl5ufo6erx8vP09fb3+Pn6/8QAHwEA AwEBAQEBAQEBAQAAAAAAAAECAwQFBgcICQoL/8QAtREAAgECBAQDBAcFBAQAAQJ3AAECAxEEBSEx BhJBUQdhcRMiMoEIFEKRobHBCSMzUvAVYnLRChYkNOEl8RcYGRomJygpKjU2Nzg5OkNERUZHSElK U1RVVldYWVpjZGVmZ2hpanN0dXZ3eHl6goOEhYaHiImKkpOUlZaXmJmaoqOkpaanqKmqsrO0tba3 uLm6wsPExcbHyMnK0tPU1dbX2Nna4uPk5ebn6Onq8vP09fb3+Pn6/9oADAMBAAIRAxEAPwD1C78I 6BrGtu99pVvOYoVCl06ZLf4VP/wr/wAJjpoFh/36FabMF1C7c4yI0UZ9sn+tPi1JZR8oXOB39a4I 6aXNW29TH/4V94Tx/wAgCx/79Cmn4deEj/zAbP8A74roDdjaSACQM4p8U4kYrtIP0p28xXZzJ+HP hHGDoNp/3yabH8OPCGP+QDannvn/ABrrCvOcn86arKvUgc0tb7hfQ5gfDjwiOmg2n/fJ/wAacPh5 4THTQrL/AL9103mx/wB8fnSh1bgMD9DVWfcLs5keAPC6njRLIe3kr/hR/wAIJ4a/6Alh/wCA6/4V 09N4qGn3GpFC55jv+AH2njOeNvFUIklNv5e8eZj0IAHpV2b5ri+j7ugA/KofsbsnzquO/wAxFKU1 F2bGkMjlmjiImBZ84yoJH8qt6XMZmc4IAYj5gQe3rVaSylZAsQRQBwSCat6ZaS2/mvJtyxGAM9Ku nOMnoSy+3A6VAsjc5BA9CvP86nZgoycAe5pgljOPmXnpzVNaiI/qenuf8acHboPT0z/WnFkP8aj1 5FKHTdgFd3pmqYCgk9iPrSU40mKzkgKDj/Tbv3Vf5VOsZA6j9agl/wCPu44PzKoyO3FShGA/1sh/ L/CuPEP3zToP2N6ipISQSp7AVFtP99/0qSMFQWLEjFPCt87JlsJKZH4VWGO/r+oqNVkyeHAP+f71 Du55DMo9v/1U1Xct99+e3+RXW3qJEgDk5+b6f5NOAcEZ3dc9D/jUSsV5BI9en+FPDP8A3m/T/CqT YiwrFhnBH1opiPuHXn0p9JgUJt6PdOSO2MfSoPtMo7j8hU16/wC6uQvLBecduKyUMh53sPxrgr/E dFOKa1NFbqQjJH6CrFteKx8tzhj06VlbnBALHn2pDu/vVnTm4SuhuCZ0BOVJVsmoRJJvIIOfocVm 2175fyvk/j1rTVwyCRDkH6mu2M1PVGLi47iK7qxAXv6E/wBKkEjk4x+h/wAKj3Nktt57Hac07fJn p+hra5BPzjk80lRoXbOeB+NOzSkwsYGkTy3HhxJpm8y4kjLM3djQgucZ8gn23VU8Ks7+DNImIG5r ZXb8ea6ZDlQRXJWVpWZspW2MfFz/AM+x/wC+6aRc9rY5/wB4VtnNN+bnnI+lYtIOdmJ/pI/5dj/3 3Whp9zKVEcsW1ccNuz+FWjnFC8KPpRGfI7oG7rUU+UM4jUkZ6DpSKyA/c5z1wKNxHJUMB6jmjcCv Ean/AIDXoU5KaujJ6EocHpRj6U1HJ42gLj0IoJOetEkCOb8JA/8ACCaNnj/Qo8/kK6KM4GKwvCSM /gbRUUgZsohz/uitgJMnLOMY/hGT/KorU5SldFJ6E9Iaj+bqHfHp5dGG/wCej9M/6usfYT7BdDmP BpoPyj6UzJUHc0jcf88jT19Pm6f3DWcsPUvsPmQmeKA4U5K5HpS7c4+90/55mk2Ajq3/AH7NEaNe DvFDvF7k6FSvyAAegpCOahjTa3ysw7nKECps12RcmveVmR6HyTb+KNftokig1rUI40UKqJcuAoHQ AZqf/hMvEwx/xP8AUv8AwJf/ABoorusiR48ceKQONf1D/v8AtTh478VDpr9//wB/jRRRZAOHj/xX /wBB69/7+U8fELxavTXbv/vof4UUUWQEg+JHi8dNcufx2/4U5fiX4wB/5Dc//fK/4UUUWQD1+J/j FTxrUn4xIf8A2Wn/APC0vGP/AEF//IEf/wATRRRyrsB//9k= "/>
+<Record name="result"><Section name="default" class="default"><Field abbrev="marc245" searchfield="false" sortfield="false"><Values><Value>Provisional geological map of part of the Chippeway sand district of Wisconsin with part of Iowa &amp; of Minnesota Terratory [sic] : to illustrate the report of a geological reconnoissance made in 1847 / by David Dale Owen.</Value></Values><Label display="on">Title</Label></Field><Field abbrev="record_no" searchfield="false" sortfield="false"><Values><Value>003063750</Value></Values><Label display="on">Record No.</Label></Field></Section></Record></Snapshot>
+<Snapshot href="/cgi/i/image/image-idx?c=clark1ic8lift;entryid=x-003063750;viewid=39015091897242">
+    <Thumbnail src="data:image/jpeg;base64,/9j/4AAQSkZJRgABAQAAAQABAAD/2wBDAAgGBgcGBQgHBwcJCQgKDBQNDAsLDBkSEw8UHRofHh0a HBwgJC4nICIsIxwcKDcpLDAxNDQ0Hyc5PTgyPC4zNDL/2wBDAQkJCQwLDBgNDRgyIRwhMjIyMjIy MjIyMjIyMjIyMjIyMjIyMjIyMjIyMjIyMjIyMjIyMjIyMjIyMjIyMjIyMjL/wAARCAArAGQDASIA AhEBAxEB/8QAHwAAAQUBAQEBAQEAAAAAAAAAAAECAwQFBgcICQoL/8QAtRAAAgEDAwIEAwUFBAQA AAF9AQIDAAQRBRIhMUEGE1FhByJxFDKBkaEII0KxwRVS0fAkM2JyggkKFhcYGRolJicoKSo0NTY3 ODk6Q0RFRkdISUpTVFVWV1hZWmNkZWZnaGlqc3R1dnd4eXqDhIWGh4iJipKTlJWWl5iZmqKjpKWm p6ipqrKztLW2t7i5usLDxMXGx8jJytLT1NXW19jZ2uHi4+Tl5ufo6erx8vP09fb3+Pn6/8QAHwEA AwEBAQEBAQEBAQAAAAAAAAECAwQFBgcICQoL/8QAtREAAgECBAQDBAcFBAQAAQJ3AAECAxEEBSEx BhJBUQdhcRMiMoEIFEKRobHBCSMzUvAVYnLRChYkNOEl8RcYGRomJygpKjU2Nzg5OkNERUZHSElK U1RVVldYWVpjZGVmZ2hpanN0dXZ3eHl6goOEhYaHiImKkpOUlZaXmJmaoqOkpaanqKmqsrO0tba3 uLm6wsPExcbHyMnK0tPU1dbX2Nna4uPk5ebn6Onq8vP09fb3+Pn6/9oADAMBAAIRAxEAPwD1Pw9p Fg32uaW0geVpQu9owSQFXvWrL4d0abPmaXZtnrmFf8KboIC2JOOXmc/kcf0rWrz4RvE2m3zMwH8F +G3GG0OwP/bBagfwD4WbOdCsvwiArpsUYquVk8zOSb4c+FG66Ja/guKrH4W+DnyW0dOfSVx/I12h FCip96+4+Y4g/CTwaf8AmFEfS4k/+KqM/B/waT/yDpP/AAIk/wAa7zFLV+93Fc8/Pwd8Hn/lxm/8 CX/xprfBzwew/wCPOcH2uX/xr0GgCleXcLnnZ+DPhI9ILofS4amN8FvCh6JeD6T/AP1q9HxRinef cLnmh+CfhjPD3w/7bD/CivS8UUrz7hczrRlttOhZAXXLEbBnOSTQ2oXOPktWP4GptLi8nSrWP+7G o/Srg+lKGqL5opu6uZ41GYABrSTPsDTjqQSMu9tcAD0TNX6TGRWln3FzQ/l/Ex59ak8rdBZzEkcb 0I/SsyPXtU34a1I9jGf8a6gxrjHOP940ixqP73/fRqeorroiha6r5igTwtGx744p8uqQW6fxSMSe EHvV3yznIY/mf8aPLHq3/fRqidDKPiGHcB5EuD3xUia7bM20pMvuVrQ8sZzub/vqnKoAx/OkPQpL q1u/3T/31xTxeEn5dhU9watkAjBApvlJ/dFRKE3tK3yC67BG+9c4x+NFOVQowBgUVaTtqSNjG2NV 9BipBUJYgjBpysfWppspokopuTS5NakgaQUdqQVD3GOoooNUISiilpAFJ3o70UAIzYPWimSfeH0o pXKsf//Z "/>
+<Record name="result"><Section name="default" class="default"><Field abbrev="marc245" searchfield="false" sortfield="false"><Values><Value>Provisional geological map of part of the Chippeway sand district of Wisconsin with part of Iowa &amp; of Minnesota Terratory [sic] : to illustrate the report of a geological reconnoissance made in 1847 / by David Dale Owen.</Value></Values><Label display="on">Title</Label></Field><Field abbrev="record_no" searchfield="false" sortfield="false"><Values><Value>003063750</Value></Values><Label display="on">Record No.</Label></Field></Section></Record></Snapshot>
 </Snapshots>
 
   <JavaScriptFooterUrl>/i/image/vendor/jquery.equalizecols.js</JavaScriptFooterUrl>
