@@ -747,6 +747,10 @@ a[class*="next"]::after {
   display: flex;
 }
 
+.flex-start {
+  align-items: flex-start;
+}
+
 .flex-end {
   align-items: flex-end;
 }
@@ -781,6 +785,10 @@ a[class*="next"]::after {
 
 .flex-gap-1 {
   gap: 1rem;
+}
+
+.flex-shrink-0 {
+  flex-shrink: 0;
 }
 
 .flex-grow-1 {

@@ -135,7 +135,15 @@
         <path d="M19 19H5V5h7V3H5c-1.11 0-2 .9-2 2v14c0 1.1.89 2 2 2h14c1.1 0 2-.9 2-2v-7h-2v7zM14 3v2h3.59l-9.83 9.83 1.41 1.41L19 6.41V10h2V3h-7z" />
       </svg> -->
       <xsl:variable name="link" select="qui:link[@rel='browse-items']" />
-      <a href="{$link/@href}">
+      <a class="[ flex flex-start ]" href="{$link/@href}">
+        <svg class="flex-shrink-0" xmlns="http://www.w3.org/2000/svg" height="24px" viewBox="0 0 24 24" width="24px" fill="#106684" aria-hidden="true" focusable="false" role="presentation">
+          <g>
+            <path d="M0,0h24v24H0V0z" fill="none"></path>
+          </g>
+          <g>
+            <path d="M7,9H2V7h5V9z M7,12H2v2h5V12z M20.59,19l-3.83-3.83C15.96,15.69,15.02,16,14,16c-2.76,0-5-2.24-5-5s2.24-5,5-5s5,2.24,5,5 c0,1.02-0.31,1.96-0.83,2.75L22,17.59L20.59,19z M17,11c0-1.65-1.35-3-3-3s-3,1.35-3,3s1.35,3,3,3S17,12.65,17,11z M2,19h10v-2H2 V19z"></path>
+          </g>
+        </svg>
         <xsl:text>Browse </xsl:text>
         <xsl:value-of select="$link/@data-count" />
         <xsl:text> collection items</xsl:text>
