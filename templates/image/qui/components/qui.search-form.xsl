@@ -115,13 +115,13 @@
   </xsl:template>
 
   <xsl:template match="MediaOnly" mode="search-form">
-    <qui:hidden-input type="hidden" name="med">
-      <xsl:attribute name="value">
-        <xsl:if test="Focus = 'true'">
+    <xsl:if test="Focus = 'true'">
+      <qui:hidden-input type="hidden" name="med">
+        <xsl:attribute name="value">
           <xsl:text>1</xsl:text>
-        </xsl:if>
-      </xsl:attribute>
-    </qui:hidden-input>
+        </xsl:attribute>
+      </qui:hidden-input>
+    </xsl:if>
   </xsl:template>
 
 </xsl:stylesheet>
