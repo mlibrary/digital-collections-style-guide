@@ -1018,7 +1018,6 @@ h3,
   color: var(--color-neutral-400);
   line-height: 1.1;
   font-weight: var(--bold);
-  /* font-size: 32px; */
   font-size: 24px;
   font-family: var(--font-base-family);
   display: flex;
