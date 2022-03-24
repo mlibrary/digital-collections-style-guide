@@ -140,6 +140,7 @@
 
   <xsl:template match="qui:panel[@slot='browse']" priority="100">
     <xsl:param name="classes" />
+    <h3>Browse this collection</h3>
     <div class="[ link-box ][ flex flex-center ]{$classes}">
       <!-- <svg xmlns="http://www.w3.org/2000/svg" height="16px" viewBox="0 0 24 24" width="16px" fill="#106684" aria-hidden="true" focusable="false" role="presentation">
         <path d="M0 0h24v24H0V0z" fill="none" />
