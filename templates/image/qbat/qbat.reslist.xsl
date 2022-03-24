@@ -240,7 +240,7 @@
       <label class="[ portfolio-selection ]" for="bb{$bb-id}">
         <input id="bb{$bb-id}" type="checkbox" name="bbidno" value="{@identifier}" autocomplete="off" />
         <span class="visually-hidden">Add item to portfolio</span>
-      </div>
+      </label>
     </section>
   </xsl:template>
 
