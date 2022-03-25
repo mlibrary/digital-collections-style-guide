@@ -225,13 +225,16 @@
   <xsl:template name="build-download-action-shoelace">
     <xsl:if test="qui:download-options/qui:download-item">
       <sl-dropdown id="dropdown-action">
-        <sl-button slot="trigger" caret="caret">Download</sl-button>
+        <sl-button slot="trigger" caret="caret">Download<span class="visually-hidden"> Image</span></sl-button>
         <sl-menu>
           <xsl:for-each select="qui:download-options/qui:download-item">
             <sl-menu-item data-href="{@href}" value="{@href}">
               <xsl:value-of select="@width" />
               <xsl:text> x </xsl:text>
               <xsl:value-of select="@height" />
+              <xsl:text> (</xsl:text>
+              <xsl:value-of select="@file-type" />
+              <xsl:text>)</xsl:text>
             </sl-menu-item>
           </xsl:for-each>
         </sl-menu>
@@ -346,26 +349,6 @@
           <xsl:with-param name="term">Brief citatation</xsl:with-param>
           <xsl:with-param name="text" select="normalize-space($brief-citation-text)" />
         </xsl:call-template>
-
-        <!-- <div>
-          <dt>Full citation</dt>
-          <dd>
-            <textarea data-role="citation" readonly="true" id="full-citation">
-              <xsl:value-of select="normalize-space($full-citation-text)" />
-            </textarea>
-          </dd>
-        </div>
-        <div>
-          <dt>Brief citation</dt>
-          <dd>
-            <textarea data-role="citation" readonly="true" id="brief-citation">
-              <xsl:value-of select="normalize-space($brief-citation-text)" />
-            </textarea>
-            <p class="[ text-xxx-small mt-0 ]">
-              For when space is at a premium.
-            </p>
-          </dd>
-        </div> -->
       </dl>
     </section>
   </xsl:template>

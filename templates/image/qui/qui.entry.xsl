@@ -84,8 +84,8 @@
   <xsl:template name="build-record">
     <xsl:call-template name="build-record-header" />
     <qui:block slot="record">
-      <xsl:call-template name="build-record-technical-metadata" />
       <xsl:call-template name="build-record-metadata" />
+      <xsl:call-template name="build-record-technical-metadata" />
     </qui:block>
     <qui:block slot="special">
       <xsl:call-template name="build-special-metadata" />
@@ -265,7 +265,7 @@
       <xsl:if test="//MediaInfo/istruct_ms = 'P'">
         <qui:download-options>
           <xsl:for-each select="//ImageSizeTool/Level">
-            <qui:download-item height="{LevelHeight}" width="{LevelWidth}" href="{Part[@name='MediaLink']}"></qui:download-item>
+            <qui:download-item height="{LevelHeight}" width="{LevelWidth}" href="{Part[@name='MediaLink']}" file-type="{FileType}"></qui:download-item>
           </xsl:for-each>
         </qui:download-options>
       </xsl:if>
