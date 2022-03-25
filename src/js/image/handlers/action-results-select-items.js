@@ -1,7 +1,7 @@
 import { ScreenReaderMessenger } from "../../sr-messaging";
 
 const _handleSelectAllItems = function(target) {
-  let checked = target.checked;
+  let checked = target.dataset.checked = ! ( target.dataset.checked == 'true' );
   document.querySelectorAll('input[name="bbidno"]').forEach((input) => {
     input.checked = checked;
   })

@@ -4,6 +4,8 @@
   <xsl:variable name="search-form" select="//qui:form[@id='collection-search']" />
   <xsl:variable name="sort-options" select="//qui:form[@id='sort-options']" />
   <xsl:variable name="xc" select="//qui:block[@slot='results']/@data-xc" />
+  <xsl:variable name="has-results" select="//qui:nav[@role='results']/@total &gt; 0" />
+  <xsl:variable name="nav" select="//qui:nav[@role='results']" />
 
   <xsl:template name="build-extra-styles">
     <xsl:comment>DUBIOUS EXCEPTIONS</xsl:comment>
@@ -21,9 +23,13 @@
         <xsl:call-template name="build-collection-heading" />
         <xsl:call-template name="build-breadcrumbs" />
         <xsl:call-template name="build-search-form" />
-        <xsl:call-template name="build-search-summary" />
+        <!-- <xsl:call-template name="build-search-summary" />
         <xsl:if test="//qui:nav[@role='results']/@total &gt; 0">
           <xsl:call-template name="build-search-tools" />
+        </xsl:if> -->
+        <xsl:call-template name="build-results-summary-sort" />
+        <xsl:if test="$has-results">
+          <xsl:call-template name="build-portfolio-actions" />
         </xsl:if>
         <xsl:call-template name="build-results-list" />
         <xsl:call-template name="build-results-pagination" />
@@ -33,37 +39,46 @@
 
   </xsl:template>
 
+  <xsl:template name="build-results-summary-sort">
+    <xsl:call-template name="build-search-tools" />
+  </xsl:template>
+
   <xsl:template name="build-search-summary">
-    <xsl:variable name="nav" select="//qui:nav[@role='results']" />
-    <xsl:choose>
-      <xsl:when test="$nav/@total = 0">
-        <h2 class="results-heading">
-          <span class="[ bold ]">No results</span>
-          <xsl:text> match your search.</xsl:text>
-        </h2>
-      </xsl:when>
-      <xsl:otherwise>
-        <h2 class="results-heading">
-          <xsl:value-of select="$nav/@start" />
-          <xsl:text> to </xsl:text>
-          <xsl:value-of select="$nav/@end" />
-          <xsl:text> of </xsl:text>
-          <xsl:value-of select="$nav/@total" />
-          <xsl:text> results</xsl:text>
-        </h2>
-      </xsl:otherwise>
-    </xsl:choose>
+    <div class="search-summary">
+      <xsl:choose>
+        <xsl:when test="$nav/@total = 0">
+          <h2 class="results-heading">
+            <span class="[ bold ]">No results</span>
+            <xsl:text> match your search.</xsl:text>
+          </h2>
+        </xsl:when>
+        <xsl:otherwise>
+          <h2 class="results-heading">
+            <xsl:value-of select="$nav/@start" />
+            <xsl:text> to </xsl:text>
+            <xsl:value-of select="$nav/@end" />
+            <xsl:text> of </xsl:text>
+            <xsl:value-of select="$nav/@total" />
+            <xsl:text> results</xsl:text>
+          </h2>
+        </xsl:otherwise>
+      </xsl:choose>
+      <xsl:call-template name="build-search-summary-body" />
+    </div>
+  </xsl:template>
+
+  <xsl:template name="build-search-summary-body">
     <p>
       <!-- needs to address advanced search -->
       <xsl:text>Showing results for </xsl:text>
       <xsl:for-each select="$search-form/qui:control[@slot='clause'][normalize-space(qui:input[@slot='q']/@value)]">
         <xsl:variable name="select" select="qui:input[@slot='select']/@value" />
         <xsl:if test="qui:input[@slot='op']">
-          <xsl:text> </xsl:text>
+          <xsl:text></xsl:text>
           <span class="[ lowercase ]">
             <xsl:value-of select="qui:input[@slot='op']/@label" />
           </span>
-          <xsl:text> </xsl:text>
+          <xsl:text></xsl:text>
         </xsl:if>
         <xsl:choose>
           <xsl:when test="$select = 'all'"></xsl:when>
@@ -102,29 +117,14 @@
     <xsl:if test="$nav/@total = 0">
       <xsl:call-template name="build-search-hints" />
     </xsl:if>
-
   </xsl:template>
 
   <xsl:template name="build-search-tools">
-    <xsl:apply-templates select="//qui:callout" />
     <div class="[ search-results__tools ] [ mb-1 gap-1 ]">
-      <div class="[ flex flex-align-center ]">
-          <input type="checkbox" id="add-portfolio" name="portfolio" data-action="select-all" autocomplete="off" />
-          <label for="add-portfolio" class="visually-hidden"
-            >Select all results for portfolio</label
-          >
-          <button
-            class="[ button button--secondary ] [ flex ]"
-            aria-label="Add items to portfolio"
-            data-action="add-items"
-          >
-            <span class="material-icons" aria-hidden="true">add</span>
-            <span>Add to portfolio</span>
-          </button>
-          <xsl:call-template name="build-extra-portfolio-actions" />
-      </div>
-      <xsl:if test="$sort-options//qui:option">
-        <div class="select-group">
+      <!-- lists tools? -->
+      <xsl:call-template name="build-search-summary" />
+      <xsl:if test="$has-results and $sort-options//qui:option">
+        <div class="[ select-group ][ pr-0 ]">
           <form method="GET" action="/cgi/i/image/image-idx" autocomplete="off">
             <label for="results-sort">Sort by:</label>
             <select
@@ -147,6 +147,21 @@
         </div>
       </xsl:if>
     </div>
+    <!-- <xsl:call-template name="build-portfolio-actions" /> -->
+  </xsl:template>
+
+  <xsl:template name="build-portfolio-actions">
+    <xsl:apply-templates select="//qui:callout" />
+    <div class="[ flex flex-align-center ][ mb-1 gap-0_5 ]">
+      <button class="[ button button--secondary ] [ flex ]" aria-label="Add items to portfolio" data-action="select-all" data-checked="false">
+        <span>Select all items</span>
+      </button>
+      <button class="[ button button--secondary ] [ flex ]" aria-label="Add items to portfolio" data-action="add-items">
+        <span class="material-icons" aria-hidden="true">add</span>
+        <span>Add items to portfolio</span>
+      </button>
+      <xsl:call-template name="build-extra-portfolio-actions" />
+    </div>
   </xsl:template>
 
   <xsl:template name="build-results-list">
@@ -160,16 +175,12 @@
         <div class="pagination__group">
           <xsl:if test="$nav/qui:link">
             <ul class="pagination">
-              <xsl:if test="$nav/qui:link[@rel='previous']">
-                <li class="pagination__item">
-                  <xsl:apply-templates select="$nav/qui:link[@rel='previous']" />
-                </li>
-              </xsl:if>
-              <xsl:if test="$nav/qui:link[@rel='next']">
-                <li class="pagination__item">
-                  <xsl:apply-templates select="$nav/qui:link[@rel='next']" />
-                </li>
-              </xsl:if>
+              <li class="pagination__item">
+                <xsl:apply-templates select="$nav/qui:link[@rel='previous']" />
+              </li>
+              <li class="pagination__item">
+                <xsl:apply-templates select="$nav/qui:link[@rel='next']" />
+              </li>
             </ul>
           </xsl:if>
         </div>
@@ -225,8 +236,9 @@
           </dl>
         </div>
       </a>
-      <label class="[ portfolio-selection ]">
-        <input type="checkbox" name="bbidno" value="{@identifier}" autocomplete="off" />
+      <xsl:variable name="bb-id" select="generate-id()" />
+      <label class="[ portfolio-selection ]" for="bb{$bb-id}">
+        <input id="bb{$bb-id}" type="checkbox" name="bbidno" value="{@identifier}" autocomplete="off" />
         <span class="visually-hidden">Add item to portfolio</span>
       </label>
     </section>
@@ -268,6 +280,7 @@
   <xsl:template match="qui:link[@rel='previous']" priority="100">
     <a>
       <xsl:call-template name="build-href-or-identifier" />
+      <xsl:apply-templates select="@disabled" mode="copy" />
       <svg
           height="18px"
           viewBox="0 0 20 20"
@@ -294,6 +307,7 @@
   <xsl:template match="qui:link[@rel='next']" priority="100">
     <a>
       <xsl:call-template name="build-href-or-identifier" />
+      <xsl:apply-templates select="@disabled" mode="copy" />
       <span>Next</span>
       <svg
           height="18px"
@@ -316,6 +330,11 @@
     </a>
   </xsl:template>
 
+  <xsl:template match="@disabled" mode="copy" priority="100">
+    <xsl:attribute name="disabled">disabled</xsl:attribute>
+    <xsl:attribute name="aria-hidden">true</xsl:attribute>
+    <xsl:attribute name="tabindex">-1</xsl:attribute>
+  </xsl:template>
 
   <xsl:template name="build-navigation"></xsl:template>
 
