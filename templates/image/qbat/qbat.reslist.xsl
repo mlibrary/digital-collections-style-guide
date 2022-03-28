@@ -214,6 +214,20 @@
           </xsl:when>
           <xsl:otherwise>
             <div class="[ results-list__blank ]" aria-hidden="true">
+              <xsl:attribute name="data-type">
+                <xsl:choose>
+                  <xsl:when test="qui:link[@rel='icon']/@type='audio'">
+                    <span>volume_up</span>
+                  </xsl:when>
+                  <xsl:when test="qui:link[@rel='icon']/@type='doc'">
+                    <span>description</span>
+                  </xsl:when>
+                  <xsl:when test="qui:link[@rel='icon']/@type='pdf'">
+                    <span>description</span>
+                  </xsl:when>
+                  <xsl:otherwise>blank</xsl:otherwise>
+                </xsl:choose>
+              </xsl:attribute>
             </div>
           </xsl:otherwise>
         </xsl:choose>

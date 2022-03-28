@@ -270,12 +270,30 @@
     </qui:filter>
   </xsl:template>
 
-  <xsl:template match="MediaInfo" mode="iiif-link">
+  <xsl:template match="MediaInfo[Type='image']" mode="iiif-link">
     <xsl:variable name="collid" select="ic_collid" />
     <xsl:variable name="m_id" select="m_id" />
     <xsl:variable name="m_iid" select="m_iid" />
     <xsl:if test="normalize-space(istruct_ms) = 'P'">
       <qui:link rel="iiif" href="https://quod.lib.umich.edu/cgi/i/image/api/image/{$collid}:{$m_id}:{$m_iid}" />
+    </xsl:if>
+  </xsl:template>
+
+  <xsl:template match="MediaInfo[Type='audio']" mode="iiif-link" priority="100">
+    <xsl:if test="normalize-space(istruct_ms) = 'P'">
+      <qui:link rel="icon" type="audio" />
+    </xsl:if>
+  </xsl:template>
+
+  <xsl:template match="MediaInfo[Type='pdf']" mode="iiif-link" priority="100">
+    <xsl:if test="normalize-space(istruct_ms) = 'P'">
+      <qui:link rel="icon" type="pdf" />
+    </xsl:if>
+  </xsl:template>
+
+  <xsl:template match="MediaInfo" mode="iiif-link">
+    <xsl:if test="normalize-space(istruct_ms) = 'P'">
+      <qui:link rel="icon" type="file" />
     </xsl:if>
   </xsl:template>
 
