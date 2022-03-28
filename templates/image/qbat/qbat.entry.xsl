@@ -218,28 +218,81 @@
   </xsl:template>
 
   <xsl:template name="build-download-action">
-    <xsl:call-template name="build-download-action-shoelace" />
-    <!-- <xsl:call-template name="build-download-action-html" /> -->
+    <xsl:choose>
+      <xsl:when test="qui:download-options/qui:download-item[1]/@asset-type = 'IMAGE'">
+        <xsl:call-template name="build-download-action-shoelace" />
+      </xsl:when>
+      <xsl:otherwise>
+        <button class="button button--primary capitlize">
+          <xsl:attribute name="data-href">
+            <xsl:value-of select="qui:download-options/qui:download-item[1]/@href" />
+          </xsl:attribute>
+          <span class="material-icons" style="font-size: 1rem">file_download</span>
+          <xsl:text> Download </xsl:text> 
+          <xsl:value-of select="qui:download-options/@label" />
+        </button>
+      </xsl:otherwise>
+    </xsl:choose>
   </xsl:template>
 
   <xsl:template name="build-download-action-shoelace">
     <xsl:if test="qui:download-options/qui:download-item">
       <sl-dropdown id="dropdown-action">
-        <sl-button slot="trigger" caret="caret">Download<span class="visually-hidden"> Image</span></sl-button>
+        <sl-button slot="trigger" caret="caret">
+          <span class="flex flex-center flex-gap-0_5">
+            <span class="material-icons">download</span>
+            <span class="capitalize">
+              <xsl:text>Download</xsl:text>
+              <xsl:text> </xsl:text>
+              <xsl:value-of select="qui:download-options/@label" />
+            </span>
+          </span>
+        </sl-button>
         <sl-menu>
           <xsl:for-each select="qui:download-options/qui:download-item">
+            <xsl:if test="position() &gt; 1 and @slot = 'original'">
+              <sl-divider></sl-divider>
+            </xsl:if>
             <sl-menu-item data-href="{@href}" value="{@href}">
-              <xsl:value-of select="@width" />
-              <xsl:text> x </xsl:text>
-              <xsl:value-of select="@height" />
-              <xsl:text> (</xsl:text>
-              <xsl:value-of select="@file-type" />
-              <xsl:text>)</xsl:text>
+              <xsl:apply-templates select="." mode="menu-item" />
             </sl-menu-item>
           </xsl:for-each>
         </sl-menu>
       </sl-dropdown>
     </xsl:if>
+  </xsl:template>
+
+  <xsl:template match="qui:download-item[@asset-type='IMAGE']" mode="menu-item">
+    <xsl:value-of select="@width" />
+    <xsl:text> x </xsl:text>
+    <xsl:value-of select="@height" />
+    <xsl:text> (</xsl:text>
+    <xsl:if test="@slot = 'original'">
+      <xsl:text>Original </xsl:text>
+    </xsl:if>
+    <xsl:value-of select="@file-type" />
+    <xsl:if test="@file-type-is-zip-compressed = 'true'">
+      <xsl:text>, ZIP archive</xsl:text>
+    </xsl:if>
+    <xsl:text>)</xsl:text>
+  </xsl:template>
+
+  <xsl:template match="qui:download-item[@asset-type='AUDIO']" mode="menu-item">
+    <xsl:text>Audo File (</xsl:text>
+    <xsl:value-of select="@file-type" />
+    <xsl:text>)</xsl:text>
+  </xsl:template>
+
+  <xsl:template match="qui:download-item[@asset-type='DOC']" mode="menu-item">
+    <xsl:text>Document (</xsl:text>
+    <xsl:value-of select="@file-type" />
+    <xsl:text>)</xsl:text>
+  </xsl:template>
+
+  <xsl:template match="qui:download-item" mode="menu-item">
+    <xsl:text>File (</xsl:text>
+    <xsl:value-of select="@file-type" />
+    <xsl:text>)</xsl:text>
   </xsl:template>
 
   <xsl:template name="build-download-action-html">
@@ -623,10 +676,12 @@
           <xsl:attribute name="{@name}"><xsl:value-of select="." /></xsl:attribute>
         </xsl:for-each>
       </xsl:if>
-      <span><xsl:value-of select="$label" /></span>
       <xsl:if test="normalize-space($icon)">
-        <span class="material-icons" aria-hidden="true"><xsl:value-of select="$icon" /></span>
+        <span class="material-icons" aria-hidden="true">
+          <xsl:value-of select="$icon" />
+        </span>
       </xsl:if>
+      <span><xsl:value-of select="$label" /></span>
     </button>
   </xsl:template>
 

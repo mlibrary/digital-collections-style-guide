@@ -122,13 +122,23 @@
       </qui:field>
 
       <xsl:if test="normalize-space(//MediaInfo/istruct_ms) = 'P'">
-        <qui:field key="image_size">
-          <qui:label>Image Size</qui:label>
+        <xsl:if test="//MediaInfo/Type = 'image'">
+          <qui:field key="image_size">
+            <qui:label>Image Size</qui:label>
+            <qui:values>
+              <qui:value>
+                <xsl:value-of select="/Top/MediaInfo/width" />
+                <xsl:text> x </xsl:text>
+                <xsl:value-of select="/Top/MediaInfo/height" />
+              </qui:value>
+            </qui:values>
+          </qui:field>
+        </xsl:if>
+        <qui:field key="reported_size">
+          <qui:label>File Size</qui:label>
           <qui:values>
             <qui:value>
-              <xsl:value-of select="/Top/MediaInfo/width" />
-              <xsl:text> x </xsl:text>
-              <xsl:value-of select="/Top/MediaInfo/height" />
+              <xsl:value-of select="/Top/MediaInfo/ReportedSize" />
             </qui:value>
           </qui:values>
         </qui:field>
@@ -263,10 +273,21 @@
     <qui:block slot="actions">
       <!-- download options -->
       <xsl:if test="//MediaInfo/istruct_ms = 'P'">
+        <xsl:variable name="type">
+          <xsl:choose>
+            <xsl:when test="normalize-space(/Top/MediaInfo/type[@class='imgInfHashRef'])">
+              <xsl:value-of select="/Top/MediaInfo/type[@class='imgInfHashRef']" />
+            </xsl:when>
+            <xsl:otherwise>
+              <xsl:value-of select="//MediaInfo/istruct_mt" />
+            </xsl:otherwise>
+          </xsl:choose>
+        </xsl:variable>
         <qui:download-options>
-          <xsl:for-each select="//ImageSizeTool/Level">
-            <qui:download-item height="{LevelHeight}" width="{LevelWidth}" href="{Part[@name='MediaLink']}" file-type="{FileType}"></qui:download-item>
-          </xsl:for-each>
+          <xsl:attribute name="label">
+            <xsl:value-of select="key('gui-txt', $type)" />
+          </xsl:attribute>
+          <xsl:apply-templates select="//ImageSizeTool" />
         </qui:download-options>
       </xsl:if>
 
@@ -276,6 +297,21 @@
 
     </qui:block>
 
+  </xsl:template>
+
+  <xsl:template match="ImageSizeTool">
+    <xsl:apply-templates select="Level" />
+  </xsl:template>
+
+  <xsl:template match="Level">
+    <xsl:variable name="part" select="Part[@name='MediaLink']" />
+    <qui:download-item height="{LevelHeight}" width="{LevelWidth}" href="{$part}" file-type="{FileType}" asset-type="{Type}">
+      <xsl:apply-templates select="@slot" mode="copy" />
+      <xsl:apply-templates select="$part/@filename" mode="copy" />
+      <xsl:if test="FileTypeIsZipCompressed = 'TRUE'">
+        <xsl:attribute name="file-type-is-zip-compressed">true</xsl:attribute>
+      </xsl:if>
+    </qui:download-item>
   </xsl:template>
 
   <xsl:template name="get-head-title">
