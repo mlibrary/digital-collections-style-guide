@@ -135,16 +135,25 @@
     <xsl:param name="identifier" />
     <xsl:param name="marker" />
     <xsl:param name="href" />
-    <xsl:if test="normalize-space($href)">
-      <qui:link rel="{$rel}" href="{$href}">
-        <xsl:if test="normalize-space($identifier)">
-          <xsl:attribute name="identifier"><xsl:value-of select="$identifier" /></xsl:attribute>
-        </xsl:if>
-        <xsl:if test="normalize-space($marker)">
-          <xsl:attribute name="marker"><xsl:value-of select="$marker" /></xsl:attribute>
-        </xsl:if>
-      </qui:link>
-    </xsl:if>
+    <xsl:choose>
+      <xsl:when test="normalize-space($href)">
+        <qui:link rel="{$rel}" href="{$href}">
+          <xsl:if test="normalize-space($identifier)">
+            <xsl:attribute name="identifier">
+              <xsl:value-of select="$identifier" />
+            </xsl:attribute>
+          </xsl:if>
+          <xsl:if test="normalize-space($marker)">
+            <xsl:attribute name="marker">
+              <xsl:value-of select="$marker" />
+            </xsl:attribute>
+          </xsl:if>
+        </qui:link>
+      </xsl:when>
+      <xsl:otherwise>
+        <qui:link rel="{$rel}" href="" disabled="disabled" />
+      </xsl:otherwise>
+    </xsl:choose>
   </xsl:template>
 
   <xsl:template name="build-results-list">

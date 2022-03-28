@@ -41,6 +41,19 @@ input#results-pagination {
   padding: 0 0.5rem;
 }
 
+button[data-action="select-all"]::before {
+  font-family: var(--material);
+  font-size: 24px;
+  color: inherit;
+  vertical-align: middle;
+  line-height: 1;
+  content: "\e835"; /* check_box_outline_blank */
+}
+
+button[data-action="select-all"][data-checked="true"]::before {
+  content: "\e834"; /* check_box */
+}
+
 .button_group {
   display: flex;
   flex-direction: column;
