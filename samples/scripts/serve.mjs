@@ -437,6 +437,10 @@ function listen(options) {
   });
 
   app.get('/digital-collections-style-guide/*', function(req, res) {
+    if (req.cookies.useBeta == 'true') {
+      // we're just proxying and sending this
+      return proxyBeta(req, res);
+    }
     let pathInfo = req.path.replace('/digital-collections-style-guide/', '/');
     res.sendFile(path.join(rootPath, pathInfo));
   })
