@@ -44,6 +44,7 @@ const scriptName = path.basename(moduleURL.pathname);
 
 const argv = yargs(hideBin(process.argv)).argv;
 const dlxsBase = argv.proxy ? 'dcp-proto.kubernetes.lib.umich.edu' : 'roger.quod.lib.umich.edu';
+const beta1Base = 'beta1.quod.lib.umich.edu';
 
 function start() {
   let addr = "0.0.0.0";
@@ -78,10 +79,35 @@ async function proxyIndex(req, res) {
   res.send(body);
 }
 
+async function proxyBeta(req, res) {
+  const headers = {};
+  // console.log("-- cookies", req.cookies);
+  if (req.cookies.loggedIn == 'true') {
+    headers['X-DLXS-Auth'] = 'nala@monkey.nu';
+  }
+  const resp = await fetch(`https://beta1.quod.lib.umich.edu${req.originalUrl}`, {
+    headers: headers,
+    redirect: 'follow',
+    credentials: 'include'
+  });
+
+  let body = await resp.text();
+  body = body.replace(/https?:\/\/beta1.quod.lib.umich.edu\//g, '/');
+
+  res.setHeader("Content-Type", "text/html");
+  res.send(body);
+}
+
 async function processDLXS(req, res) {
+  let appBase = ( req.cookies.useBeta == 'true' ) ? beta1Base : dlxsBase;
   let url = new URL(
-    `https://${dlxsBase}${req.originalUrl.replace(/;/g, "&")}`
+    `https://${appBase}${req.originalUrl.replace(/;/g, "&")}`
   );
+
+  if ( req.cookies.useBeta == 'true' ) {
+    // we're just proxying and sending this
+    return proxyBeta(req, res);
+  }
 
   if ( req.originalUrl == '/cgi/i/image/image-idx' || 
        req.originalUrl == '/cgi/i/image/image-idx?page=groups' ) {

@@ -482,15 +482,60 @@
         </div>
       </div>
       <div class="[ footer__disclaimer ]">
+        <style>
+          .button--link {
+            border: none;
+            font-size: 1rem;
+            color: yellow;
+            display: inline-block;
+            margin-left: 0.5rem;
+            background: var(--color-blue-500);
+            vertical-align: middle;
+            position: fixed;
+            bottom: 1rem;
+            right: 1rem;
+          }
+
+          .button--link[data-use-beta="true"] {
+            border: 4px solid green;
+          }
+
+          .button--link::hover {
+            background: black;
+          }
+        </style>
         <div class="viewport-container">
           <p>© 2021, Regents of the University of Michigan</p>
           <p>
             Built with the
             <a href="https://design-system.lib.umich.edu/">U-M Library Design System</a>
+            &nbsp;
+            <button class="button button--link" data-action="toggle-beta">
+              <span class="material-icons">transform</span>
+            </button>
           </p>
         </div>
       </div>
     </footer>
+
+    <script>
+      function getCookie(name) {
+        let value = `; ${document.cookie}`;
+        let parts = value.split(`; ${name}=`);
+        if (parts.length === 2) return parts.pop().split(';').shift();
+      }
+      let check = getCookie('useBeta');
+      const button = document.querySelector('button[data-action="toggle-beta"]');
+      button.dataset.useBeta = check == 'true';
+      button.addEventListener('click', (event) => {
+        if ( check == 'true' ){
+          document.cookie = `useBeta=false; path=/; max-age=0;`;
+        } else {
+          document.cookie = `useBeta=true; path=/; max-age=${60 * 60 * 24 * 24};`;
+        }
+        location.reload();
+      })
+    </script>
 
   </body>
 </html>
