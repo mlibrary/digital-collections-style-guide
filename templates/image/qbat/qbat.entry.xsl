@@ -218,25 +218,81 @@
   </xsl:template>
 
   <xsl:template name="build-download-action">
-    <xsl:call-template name="build-download-action-shoelace" />
-    <!-- <xsl:call-template name="build-download-action-html" /> -->
+    <xsl:choose>
+      <xsl:when test="qui:download-options/qui:download-item[1]/@asset-type = 'IMAGE'">
+        <xsl:call-template name="build-download-action-shoelace" />
+      </xsl:when>
+      <xsl:otherwise>
+        <button class="button button--primary capitalize">
+          <xsl:attribute name="data-href">
+            <xsl:value-of select="qui:download-options/qui:download-item[1]/@href" />
+          </xsl:attribute>
+          <span class="material-icons text-xx-small">file_download</span>
+          <xsl:text> Download </xsl:text> 
+          <xsl:value-of select="qui:download-options/@label" />
+        </button>
+      </xsl:otherwise>
+    </xsl:choose>
   </xsl:template>
 
   <xsl:template name="build-download-action-shoelace">
     <xsl:if test="qui:download-options/qui:download-item">
       <sl-dropdown id="dropdown-action">
-        <sl-button slot="trigger" caret="caret">Download</sl-button>
+        <sl-button slot="trigger" caret="caret">
+          <span class="flex flex-center flex-gap-0_5">
+            <span class="material-icons text-xx-small">file_download</span>
+            <span class="capitalize">
+              <xsl:text>Download</xsl:text>
+              <xsl:text> </xsl:text>
+              <xsl:value-of select="qui:download-options/@label" />
+            </span>
+          </span>
+        </sl-button>
         <sl-menu>
           <xsl:for-each select="qui:download-options/qui:download-item">
+            <xsl:if test="position() &gt; 1 and @slot = 'original'">
+              <sl-divider></sl-divider>
+            </xsl:if>
             <sl-menu-item data-href="{@href}" value="{@href}">
-              <xsl:value-of select="@width" />
-              <xsl:text> x </xsl:text>
-              <xsl:value-of select="@height" />
+              <xsl:apply-templates select="." mode="menu-item" />
             </sl-menu-item>
           </xsl:for-each>
         </sl-menu>
       </sl-dropdown>
     </xsl:if>
+  </xsl:template>
+
+  <xsl:template match="qui:download-item[@asset-type='IMAGE']" mode="menu-item">
+    <xsl:value-of select="@width" />
+    <xsl:text> x </xsl:text>
+    <xsl:value-of select="@height" />
+    <xsl:text> (</xsl:text>
+    <xsl:if test="@slot = 'original'">
+      <xsl:text>Original </xsl:text>
+    </xsl:if>
+    <xsl:value-of select="@file-type" />
+    <xsl:if test="@file-type-is-zip-compressed = 'true'">
+      <xsl:text>, ZIP archive</xsl:text>
+    </xsl:if>
+    <xsl:text>)</xsl:text>
+  </xsl:template>
+
+  <xsl:template match="qui:download-item[@asset-type='AUDIO']" mode="menu-item">
+    <xsl:text>Audo File (</xsl:text>
+    <xsl:value-of select="@file-type" />
+    <xsl:text>)</xsl:text>
+  </xsl:template>
+
+  <xsl:template match="qui:download-item[@asset-type='DOC']" mode="menu-item">
+    <xsl:text>Document (</xsl:text>
+    <xsl:value-of select="@file-type" />
+    <xsl:text>)</xsl:text>
+  </xsl:template>
+
+  <xsl:template match="qui:download-item" mode="menu-item">
+    <xsl:text>File (</xsl:text>
+    <xsl:value-of select="@file-type" />
+    <xsl:text>)</xsl:text>
   </xsl:template>
 
   <xsl:template name="build-download-action-html">
@@ -313,16 +369,6 @@
   </xsl:template>
 
   <xsl:template name="build-cite-this-item-panel">
-    <xsl:variable name="full-citation-text">
-      <xsl:text>"</xsl:text>
-      <xsl:value-of select="//qui:head/xhtml:meta[@property='og:title']/@content" />
-      <xsl:text>". </xsl:text>
-      <xsl:value-of select="//qui:field[@key='bookmark']//qui:value" />
-      <xsl:text>. </xsl:text>
-      <xsl:text>University of Michigan Library Digital Collections. </xsl:text>
-      <xsl:text>Accessed: </xsl:text>
-      <xsl:value-of select="concat(date:month-name(), ' ', date:day-in-month(), ', ', date:year(), '.')" /> 
-    </xsl:variable>
     <xsl:variable name="brief-citation-text">
       <xsl:text>University of Michigan Library Digital Collections. </xsl:text>
       <xsl:value-of select="//qui:head/xhtml:meta[@property='og:site_name']/@content" />
@@ -337,35 +383,26 @@
         <xsl:text> for more information.</xsl:text>
       </p>
       <dl class="record">
-        <xsl:call-template name="build-content-copy-metadata">
-          <xsl:with-param name="term">Full citatation</xsl:with-param>
-          <xsl:with-param name="text" select="normalize-space($full-citation-text)" />
-        </xsl:call-template>
+
+        <!-- do this here because passing the value causes weird encoding issues -->
+        <div>
+          <dt>Full citation</dt>
+          <dd>
+            <div class="text--copyable">
+              <span>
+                <xsl:apply-templates select="//qui:field[@key='full-citation']//qui:value" mode="copy-guts" />
+              </span>
+              <button class="button button--small" data-action="copy-text" aria-label="Copy Text">
+                <span class="material-icons" aria-hidden="true">content_copy</span>
+              </button>
+            </div>
+          </dd>
+        </div>
 
         <xsl:call-template name="build-content-copy-metadata">
           <xsl:with-param name="term">Brief citatation</xsl:with-param>
           <xsl:with-param name="text" select="normalize-space($brief-citation-text)" />
         </xsl:call-template>
-
-        <!-- <div>
-          <dt>Full citation</dt>
-          <dd>
-            <textarea data-role="citation" readonly="true" id="full-citation">
-              <xsl:value-of select="normalize-space($full-citation-text)" />
-            </textarea>
-          </dd>
-        </div>
-        <div>
-          <dt>Brief citation</dt>
-          <dd>
-            <textarea data-role="citation" readonly="true" id="brief-citation">
-              <xsl:value-of select="normalize-space($brief-citation-text)" />
-            </textarea>
-            <p class="[ text-xxx-small mt-0 ]">
-              For when space is at a premium.
-            </p>
-          </dd>
-        </div> -->
       </dl>
     </section>
   </xsl:template>
@@ -640,10 +677,12 @@
           <xsl:attribute name="{@name}"><xsl:value-of select="." /></xsl:attribute>
         </xsl:for-each>
       </xsl:if>
-      <span><xsl:value-of select="$label" /></span>
       <xsl:if test="normalize-space($icon)">
-        <span class="material-icons" aria-hidden="true"><xsl:value-of select="$icon" /></span>
+        <span class="material-icons" aria-hidden="true">
+          <xsl:value-of select="$icon" />
+        </span>
       </xsl:if>
+      <span><xsl:value-of select="$label" /></span>
     </button>
   </xsl:template>
 

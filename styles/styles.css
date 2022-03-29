@@ -605,11 +605,16 @@ fieldset.fieldset--grid button[data-action="reset-clause"] {
   font-family: var(--material);
   font-size: var(--text-xxx-large);
   content: "\e871";
-  content: "\e0ee";
+  /* content: "\e0ee"; */
+  content: attr(data-type);
   color: inherit;
   vertical-align: middle;
-  opacity: 0.4;
   line-height: 1;
+}
+
+.results-list__blank[data-type="blank"]::after {
+  opacity: 0.4;
+  content: "\e0ee";
 }
 
 .filters {
@@ -815,6 +820,10 @@ a[class*="next"]::after {
   text-transform: lowercase;
 }
 
+.capitalize {
+  text-transform: capitalize;
+}
+
 .block {
   display: block;
 }
@@ -930,6 +939,10 @@ a[class*="next"]::after {
 
 .text-xxx-small {
   font-size: var(--text-xxx-small);
+}
+
+.text-xx-small {
+  font-size: var(--text-xx-small);
 }
 
 /*
@@ -1223,6 +1236,7 @@ dl.record {
   justify-content: space-between;
   gap: 1rem;
   position: relative;
+  word-break: break-word;
 }
 
 .record .text--copyable.copied::after {
@@ -1273,6 +1287,7 @@ span.url {
 .record .text--copyable button[data-action] {
   flex-grow: 0;
   align-self: flex-start;
+  width: auto;
 }
 
 /*
