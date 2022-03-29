@@ -105,12 +105,14 @@
   <xsl:template match="qui:sub-header">
     <div class="website-sub-header">
       <div class="[ viewport-container flex ][ flex-center flex-gap-0_5 ]">
-        <span class="material-icons" aria-hidden="true">
-          <xsl:value-of select="@data-badge" />
-        </span>
-        <span>
-          <xsl:value-of select="." />
-        </span>
+        <a href="{@href}" class="[ flex flex-center flex-gap-0_5 ]">
+          <span class="material-icons" aria-hidden="true">
+            <xsl:value-of select="@data-badge" />
+          </span>
+          <span class="label">
+            <xsl:value-of select="." />
+          </span>
+        </a>
       </div>
     </div>
   </xsl:template>
