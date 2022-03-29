@@ -365,7 +365,7 @@
                 >
               </li>
               <li>
-                <a href="{$feedback-href};to=dcc"
+                <a href="https://www.lib.umich.edu/collections/digital-collections/about-our-digital-collections"
                   ><svg
                     xmlns="http://www.w3.org/2000/svg"
                     width="16"

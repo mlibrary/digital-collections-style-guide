@@ -99,7 +99,7 @@ async function proxyBeta(req, res) {
 }
 
 async function processDLXS(req, res) {
-  let appBase = ( req.cookies.useBeta == 'true' ) ? beta1Base : dlxsBase;
+  let appBase = ( false && req.cookies.useBeta == 'true' ) ? beta1Base : dlxsBase;
   let url = new URL(
     `https://${appBase}${req.originalUrl.replace(/;/g, "&")}`
   );
@@ -437,10 +437,10 @@ function listen(options) {
   });
 
   app.get('/digital-collections-style-guide/*', function(req, res) {
-    if (req.cookies.useBeta == 'true') {
-      // we're just proxying and sending this
-      return proxyBeta(req, res);
-    }
+    // if (req.cookies.useBeta == 'true') {
+    //   // we're just proxying and sending this
+    //   return proxyBeta(req, res);
+    // }
     let pathInfo = req.path.replace('/digital-collections-style-guide/', '/');
     res.sendFile(path.join(rootPath, pathInfo));
   })
