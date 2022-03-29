@@ -223,11 +223,11 @@
         <xsl:call-template name="build-download-action-shoelace" />
       </xsl:when>
       <xsl:otherwise>
-        <button class="button button--primary capitlize">
+        <button class="button button--primary capitalize">
           <xsl:attribute name="data-href">
             <xsl:value-of select="qui:download-options/qui:download-item[1]/@href" />
           </xsl:attribute>
-          <span class="material-icons" style="font-size: 1rem">file_download</span>
+          <span class="material-icons text-xx-small">file_download</span>
           <xsl:text> Download </xsl:text> 
           <xsl:value-of select="qui:download-options/@label" />
         </button>
@@ -240,7 +240,7 @@
       <sl-dropdown id="dropdown-action">
         <sl-button slot="trigger" caret="caret">
           <span class="flex flex-center flex-gap-0_5">
-            <span class="material-icons">download</span>
+            <span class="material-icons text-xx-small">file_download</span>
             <span class="capitalize">
               <xsl:text>Download</xsl:text>
               <xsl:text> </xsl:text>
@@ -369,16 +369,6 @@
   </xsl:template>
 
   <xsl:template name="build-cite-this-item-panel">
-    <xsl:variable name="full-citation-text">
-      <xsl:text>"</xsl:text>
-      <xsl:value-of select="//qui:head/xhtml:meta[@property='og:title']/@content" />
-      <xsl:text>". </xsl:text>
-      <xsl:value-of select="//qui:field[@key='bookmark']//qui:value" />
-      <xsl:text>. </xsl:text>
-      <xsl:text>University of Michigan Library Digital Collections. </xsl:text>
-      <xsl:text>Accessed: </xsl:text>
-      <xsl:value-of select="concat(date:month-name(), ' ', date:day-in-month(), ', ', date:year(), '.')" /> 
-    </xsl:variable>
     <xsl:variable name="brief-citation-text">
       <xsl:text>University of Michigan Library Digital Collections. </xsl:text>
       <xsl:value-of select="//qui:head/xhtml:meta[@property='og:site_name']/@content" />
@@ -393,10 +383,21 @@
         <xsl:text> for more information.</xsl:text>
       </p>
       <dl class="record">
-        <xsl:call-template name="build-content-copy-metadata">
-          <xsl:with-param name="term">Full citatation</xsl:with-param>
-          <xsl:with-param name="text" select="normalize-space($full-citation-text)" />
-        </xsl:call-template>
+
+        <!-- do this here because passing the value causes weird encoding issues -->
+        <div>
+          <dt>Full citation</dt>
+          <dd>
+            <div class="text--copyable">
+              <span>
+                <xsl:apply-templates select="//qui:field[@key='full-citation']//qui:value" mode="copy-guts" />
+              </span>
+              <button class="button button--small" data-action="copy-text" aria-label="Copy Text">
+                <span class="material-icons" aria-hidden="true">content_copy</span>
+              </button>
+            </div>
+          </dd>
+        </div>
 
         <xsl:call-template name="build-content-copy-metadata">
           <xsl:with-param name="term">Brief citatation</xsl:with-param>

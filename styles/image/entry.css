@@ -274,7 +274,7 @@ a.toc-link {
   }
 
   .main-panel {
-    width: 90%;
+    width: 100%;
   }
 
   .main-panel h2, .main-panel h3 {
@@ -314,6 +314,10 @@ a.toc-link {
   }
 
   button {
+    width: 90%;
+  }
+
+  .toolbar form {
     width: 90%;
   }
 }

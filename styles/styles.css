@@ -941,6 +941,10 @@ a[class*="next"]::after {
   font-size: var(--text-xxx-small);
 }
 
+.text-xx-small {
+  font-size: var(--text-xx-small);
+}
+
 /*
  * Anchors/Links
  *
@@ -1232,6 +1236,7 @@ dl.record {
   justify-content: space-between;
   gap: 1rem;
   position: relative;
+  word-break: break-word;
 }
 
 .record .text--copyable.copied::after {
@@ -1282,6 +1287,7 @@ span.url {
 .record .text--copyable button[data-action] {
   flex-grow: 0;
   align-self: flex-start;
+  width: auto;
 }
 
 /*

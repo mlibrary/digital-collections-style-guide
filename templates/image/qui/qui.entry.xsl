@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="utf-8"?>
-<xsl:stylesheet version="1.0" xmlns:xsl="http://www.w3.org/1999/XSL/Transform" xmlns:qui="http://dlxs.org/quombat/ui" xmlns:xhtml="http://www.w3.org/1999/xhtml" xmlns:exsl="http://exslt.org/common" xmlns:str="http://exslt.org/strings"  extension-element-prefixes="exsl str">
+<xsl:stylesheet version="1.0" xmlns:xsl="http://www.w3.org/1999/XSL/Transform" xmlns:qui="http://dlxs.org/quombat/ui" xmlns:xhtml="http://www.w3.org/1999/xhtml" xmlns:exsl="http://exslt.org/common" xmlns:str="http://exslt.org/strings" xmlns:date="http://exslt.org/dates-and-times" extension-element-prefixes="exsl str date">
 
   <xsl:template name="build-head-block">
     <xsl:call-template name="build-social-twitter" />
@@ -90,6 +90,22 @@
     <qui:block slot="special">
       <xsl:call-template name="build-special-metadata" />
     </qui:block>
+    <qui:field key="full-citation">
+      <qui:values>
+        <qui:value>
+          <xsl:text>"</xsl:text>
+          <xsl:value-of select="$title" />
+          <xsl:text>". </xsl:text>
+          <xhtml:span>
+            <xsl:value-of select="ItemUrl" disable-output-escaping="yes" />
+          </xhtml:span>
+          <xsl:text>. </xsl:text>
+          <xsl:text>University of Michigan Library Digital Collections. </xsl:text>
+          <xsl:text>Accessed: </xsl:text>
+          <xsl:value-of select="concat(date:month-name(), ' ', date:day-in-month(), ', ', date:year(), '.')" />
+        </qui:value>
+      </qui:values>
+    </qui:field>
   </xsl:template>
 
   <xsl:template name="build-record-header">
