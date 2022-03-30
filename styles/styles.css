@@ -262,10 +262,6 @@ label {
   text-align: center;
 }
 
-.site-skip-links ul li + li {
-  margin-top: var(--space-medium);
-}
-
 .skip-links a {
   color: #fff;
   padding: var(--space-x-small);
