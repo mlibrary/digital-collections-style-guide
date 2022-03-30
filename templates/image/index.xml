@@ -114,30 +114,14 @@
 
 
   <Stats>
-    <Records>
-      <?STATS_XML type="records"?>
-    </Records>
-    <Images>
-      <?STATS_XML type="images"?>
-    </Images>
-    <Items>
-      <?STATS_XML type="items"?>
-    </Items>
+    <Records><?STATS_XML type="records"?></Records>
+    <Images><?STATS_XML type="images"?></Images>
+    <Items><?STATS_XML type="items"?></Items>
   </Stats>
 
 
-  <InsertTextInfo>
-    <?CHUNK filename="info.txt"?>
-  </InsertTextInfo>
-  <InsertTextInfo2>
-    <?CHUNK filename="info2.txt"?>
-  </InsertTextInfo2>
-  <InsertTextFieldInfo>
-    <?CHUNK filename="fieldinfo.txt"?>
-  </InsertTextFieldInfo>
-  <Subtitle>
-    <?CHUNK filename="subtitle.txt"?>
-  </Subtitle>
+  <InsertTextFieldInfo><?CHUNK filename="fieldinfo.txt"?></InsertTextFieldInfo>
+  <Subtitle><?CHUNK filename="subtitle.txt"?></Subtitle>
 
   <?CHUNK filename="uplift.info.xml" optional="1"?>
   <?CHUNK filename="uplift.copyright.xml" optional="1"?>

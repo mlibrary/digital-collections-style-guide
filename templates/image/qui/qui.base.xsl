@@ -97,6 +97,9 @@
 
   <xsl:template name="build-sub-header">
     <qui:sub-header>
+      <xsl:attribute name="href">
+        <xsl:call-template name="get-context-link" />
+      </xsl:attribute>
       <xsl:call-template name="build-sub-header-badge-data" />
       <xsl:call-template name="get-context-title" />
     </qui:sub-header>
@@ -166,6 +169,27 @@
 
   <xsl:template name="get-context-title">
     <xsl:call-template name="get-collection-title" />
+  </xsl:template>
+
+  <xsl:template name="get-context-link">
+    <xsl:choose>
+      <xsl:when test="$context-type = 'collection'">
+        <xsl:value-of select="/Top/Home" />
+      </xsl:when>
+      <xsl:when test="$context-type = 'list' and //Param[@name='bbdbid']">
+        <xsl:value-of select="/Top/Home" />
+      </xsl:when>
+      <xsl:when test="$context-type = 'list'">
+        <xsl:text>/cgi/i/image/image-idx?page=bbopen</xsl:text>
+      </xsl:when>
+      <xsl:when test="$context-type = 'group'">
+        <xsl:value-of select="/Top/Home" />
+      </xsl:when>
+      <xsl:when test="$context-type = 'multiple'">
+        <xsl:value-of select="/Top/Home" />
+      </xsl:when>
+      <xsl:otherwise></xsl:otherwise>
+    </xsl:choose>
   </xsl:template>
 
   <xsl:template name="get-collection-subtitle">

@@ -983,6 +983,15 @@ a[class*="next"]::after {
   padding: 0.5rem 0;
 }
 
+.website-sub-header a {
+  color: white;
+  text-decoration: none;
+}
+
+.website-sub-header a:hover span:not(.material-icons), .website-sub-header a:focus span:not(.material-icons) {
+  text-decoration: underline;
+}
+
 .website-sub-header .material-icons {
   font-size: 1.5rem;
 }
