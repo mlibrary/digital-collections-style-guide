@@ -21,13 +21,14 @@
       <xsl:apply-templates select="qui:head" />
       <body class="[ font-base-family ]" data-initialized="false" style="opacity: 0">
         <xsl:apply-templates select="build-body-data" />
+        <xsl:apply-templates select="//qui:skip-links" />
         <div class="border-bottom">
           <m-universal-header></m-universal-header>
           <xsl:apply-templates select="//qui:m-website-header" />
           <xsl:apply-templates select="//qui:sub-header" />
         </div>
 
-        <main>
+        <main id="maincontent">
           <xsl:attribute name="class">
             <xsl:text>[ viewport-container ]</xsl:text>
             <xsl:call-template name="build-extra-main-class" />
@@ -46,6 +47,20 @@
   <xsl:template name="build-extra-styles" />
 
   <xsl:template name="build-body-data" />
+
+  <xsl:template match="qui:skip-links">
+    <div aria-label="Skip links" class="[ skip-links ]">
+      <div class="[ viewport-container ]">
+        <ul>
+          <xsl:for-each select="qui:link">
+            <li>
+              <xsl:apply-templates select="." />
+            </li>
+          </xsl:for-each>
+        </ul>
+      </div>
+    </div>
+  </xsl:template>
 
   <xsl:template match="qui:head">
     <head>

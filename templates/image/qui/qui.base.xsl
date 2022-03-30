@@ -69,6 +69,7 @@
         <xsl:call-template name="build-canonical-link" />
       </qui:head>
       <qui:body>
+        <xsl:call-template name="build-skip-links" />
         <xsl:call-template name="build-site-header" />
         <xsl:call-template name="build-sub-header" />
         <qui:main>
@@ -83,6 +84,15 @@
       </qui:body>
     </qui:root>
   </xsl:template>
+
+  <xsl:template name="build-skip-links">
+    <qui:skip-links>
+      <qui:link href="#maincontent">Skip to main content</qui:link>
+      <xsl:call-template name="build-page-skip-links" />
+    </qui:skip-links>
+  </xsl:template>
+
+  <xsl:template name="build-page-skip-links" />
 
   <xsl:template name="build-site-header">
     <qui:m-website-header name="Digital Collections">
