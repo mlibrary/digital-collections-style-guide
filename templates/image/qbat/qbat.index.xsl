@@ -79,7 +79,7 @@
   </xsl:template>
 
   <xsl:template match="qui:block[@slot='copyright']">
-    <h2>Rights and Permissions</h2>
+    <h2 id="rights-permissions">Rights and Permissions</h2>
     <xsl:apply-templates mode="copy" />
   </xsl:template>
 
@@ -210,5 +210,5 @@
       </a>
     </li>
   </xsl:template>
-
+  
 </xsl:stylesheet>

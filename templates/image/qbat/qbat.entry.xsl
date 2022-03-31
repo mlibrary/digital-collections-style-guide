@@ -363,7 +363,7 @@
 
   <xsl:template match="qui:block[@slot='rights-statement']">
     <section>
-      <h2 class="[ subtle-heading ][ text-black ]" id="rights-statement">Rights and Permissions</h2>
+      <h2 class="[ subtle-heading ][ text-black ]" id="rights-permissions">Rights and Permissions</h2>
       <xsl:apply-templates mode="copy" />
     </section>
   </xsl:template>
@@ -684,6 +684,10 @@
       </xsl:if>
       <span><xsl:value-of select="$label" /></span>
     </button>
+  </xsl:template>
+
+  <xsl:template name="get-rights-statement-href">
+    <xsl:text>#rights-permissions</xsl:text>
   </xsl:template>
 
 </xsl:stylesheet>

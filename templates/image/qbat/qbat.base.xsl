@@ -13,6 +13,7 @@
   <xsl:param name="docroot">/digital-collections-style-guide/</xsl:param>
 
   <xsl:variable name="collid" select="//qui:root/@collid" />
+  <xsl:variable name="context-type" select="//qui:root/@context-type" />
   <xsl:variable name="username" select="//qui:root/@username" />
   <xsl:variable name="view" select="//qui:root/@view" />
 
@@ -326,11 +327,14 @@
           </section>
 
           <section class="[ footer__policies ]">
+            <xsl:variable name="rights-statement-href">
+              <xsl:call-template name="get-rights-statement-href" />
+            </xsl:variable>
             <h2>Policies and Copyright</h2>
             <p>
               Copyright permissions may be different for each digital
               collection. Please check the
-              <a href="#rights-statement">Rights and Permissions</a> section on a specific
+              <a href="{$rights-statement-href}">Rights and Permissions</a> section on a specific
               collection for information.
             </p>
             <p>
@@ -646,6 +650,19 @@
         </div>
       </dd>
     </div>
+  </xsl:template>
+
+  <xsl:template name="get-rights-statement-href">
+    <xsl:choose>
+      <xsl:when test="$context-type = 'collection'">
+        <xsl:text>/cgi/i/image/image-idx?cc=</xsl:text>
+        <xsl:value-of select="$collid" />
+        <xsl:text>;page=index#rights-permissions</xsl:text>
+      </xsl:when>
+      <xsl:otherwise>
+        <xsl:text>https://www.lib.umich.edu/about-us/policies/copyright-policy</xsl:text>
+      </xsl:otherwise>
+    </xsl:choose>
   </xsl:template>
 
   <!-- UTILITY -->
