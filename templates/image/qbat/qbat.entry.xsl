@@ -238,7 +238,7 @@
   <xsl:template name="build-download-action-shoelace">
     <xsl:if test="qui:download-options/qui:download-item">
       <sl-dropdown id="dropdown-action">
-        <sl-button slot="trigger" caret="caret">
+        <sl-button slot="trigger" caret="caret" class="sl-button--primary">
           <span class="flex flex-center flex-gap-0_5">
             <span class="material-icons text-xx-small">file_download</span>
             <span class="capitalize">
