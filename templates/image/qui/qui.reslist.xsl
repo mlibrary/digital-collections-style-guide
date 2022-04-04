@@ -86,7 +86,7 @@
   <xsl:template name="build-results-navigation">
     <!-- do we have M/N available in the PI handler? -->
     <xsl:variable name="tmp-xml">
-      <qui:nav role="results" total="{//TotalResults}" size="{$sz}" min="1" max="{$max}" current="{$current}" start="{$start}" end="{$end}">
+      <qui:nav role="results" total="{//TotalResults}" size="{$sz}" min="1" max="{$max}" current="{$current}" start="{$start}" end="{$end}" is-truncated="{/Top/SearchSummary/Truncated}">
         <xsl:call-template name="build-results-navigation-link">
           <xsl:with-param name="rel">next</xsl:with-param>
           <xsl:with-param name="identifier" select="/Top/Next/@identifier" />

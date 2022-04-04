@@ -97,46 +97,6 @@ button .material-icons {
   border-color: var(--color-neutral-100);
 } */
 
-sl-button::part(base) {
-  outline: none;
-  height: auto;
-  min-height: 2.5rem;
-  margin: 0; /** must remove margin for Safari */
-  align-items: center;
-  font-size: 1rem;
-  line-height: 1.5;
-  font-weight: var(--bold);
-  font-family: var(--font-base-family);
-  border: 2px outset var(--color-neutral-100);
-  border-radius: var(--radius-default);
-  padding: var(--space-x-small); /* var(--space-xxx-large); */
-  background: var(--color-teal-400);
-  border: solid 1px var(--color-teal-400);
-  color: #fff;
-}
-
-/* :not(.button--disabled) */
-sl-button::part(base):focus, sl-button::part(base):hover {
-  box-shadow: 0 0 0 2px #fff,0 0 0 3px var(--color-neutral-400);
-}
-
-sl-button::part(label) {
-  padding: 0 0.25rem;
-}
-
-sl-button::part(caret) {
-  margin-top: 4px;
-}
-
-sl-menu-item[disabled]::part(base) {
-  color: var(--color-neutral-300);
-}
-
-sl-menu-item:not([disabled])::part(base):hover {
-  background: var(--color-teal-500);
-  color: white;
-}
-
 a.download-link {
   text-decoration: none;;
 }

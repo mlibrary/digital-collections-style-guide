@@ -12,6 +12,11 @@
     <link rel="stylesheet" href="{$docroot}styles/image/reslist.css" />
   </xsl:template>
 
+  <xsl:template name="build-extra-scripts">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@shoelace-style/shoelace@2.0.0-beta.64/dist/themes/light.css" />
+    <script type="module" src="https://cdn.jsdelivr.net/npm/@shoelace-style/shoelace@2.0.0-beta.64/dist/shoelace.js"></script>
+  </xsl:template>
+
   <xsl:template match="qui:main">
 
     <div class="[ flex flex-flow-rw ][ flex-gap-1 ]">
@@ -59,7 +64,13 @@
             <xsl:value-of select="$nav/@end" />
             <xsl:text> of </xsl:text>
             <xsl:value-of select="$nav/@total" />
-            <xsl:text> results</xsl:text>
+            <xsl:text> results </xsl:text>
+            <xsl:if test="$nav/@is-truncated='true'">
+              <span>
+                <xsl:text> </xsl:text>
+                <a href="?page=help#truncated-results">(truncated)</a>
+              </span>
+            </xsl:if>
           </h2>
         </xsl:otherwise>
       </xsl:choose>
@@ -120,6 +131,38 @@
   </xsl:template>
 
   <xsl:template name="build-search-tools">
+    <div class="[ search-results__tools ][ mb-1 gap-1 ]">
+      <xsl:call-template name="build-search-summary" />
+      <sl-dropdown id="action-results-sort">
+        <sl-button slot="trigger" caret="caret" class="sl-button--ghost">
+          <span class="sl-dropdown-label">
+            <span class="material-icons text-xx-small">sort</span>
+            <span>
+              <span>Sort by </span>
+              <span class="capitalize">
+                <xsl:value-of select="$sort-options//qui:option[@selected]" />
+              </span>
+            </span>
+          </span>
+        </sl-button>
+        <sl-menu>
+          <xsl:for-each select="$sort-options//qui:option">
+            <sl-menu-item value="{@value}">
+              <xsl:if test="@selected='selected'">
+                <xsl:attribute name="checked">checked</xsl:attribute>
+              </xsl:if>
+              <xsl:value-of select="." />
+            </sl-menu-item>
+          </xsl:for-each>
+        </sl-menu>
+      </sl-dropdown>
+      <form id="form-results-sort" method="GET" action="/cgi/i/image/image-idx" autocomplete="off" style="display: none">
+        <xsl:apply-templates select="$sort-options/qui:hidden-input" />
+      </form>
+    </div>
+  </xsl:template>
+
+  <xsl:template name="build-search-tools-xx">
     <div class="[ search-results__tools ] [ mb-1 gap-1 ]">
       <!-- lists tools? -->
       <xsl:call-template name="build-search-summary" />
@@ -171,7 +214,7 @@
   <xsl:template name="build-results-pagination">
     <xsl:variable name="nav" select="//qui:main/qui:nav[@role='results']" />
     <xsl:if test="$nav/@min &lt; $nav/@max">
-      <nav aria-label="Result navigation" class="[ pagination__row ][ flex flex-space-between flex-align-center ]">
+      <nav id="pagination" aria-label="Result navigation" class="[ pagination__row ][ flex flex-space-between flex-align-center sticky-bottom ]">
         <div class="pagination__group">
           <xsl:if test="$nav/qui:link">
             <ul class="pagination">
@@ -211,7 +254,7 @@
         <xsl:apply-templates select="qui:link[@rel='result']" />
       </xsl:variable>
       <xsl:variable name="link" select="exsl:node-set($link-tmp)" />
-      <a class="[ flex ][ flex-grow-1 ]">
+      <a class="[ flex ][ flex-grow-1 ]" data-behavior="focus-center">
         <xsl:attribute name="href">
           <xsl:value-of select="$link//@href" />
         </xsl:attribute>
@@ -256,6 +299,14 @@
         <span class="visually-hidden">Add item to portfolio</span>
       </label>
     </section>
+
+    <xsl:if test="position() mod 10 = 0 and position() != last()">
+      <div class="[ results--jump-toolbar flex flex-gap-0_5 flex-align-center ]">
+        <a href="#maincontent" data-behavior="focus-center" class="button button--ghost">Back to Top</a>
+        <a href="#pagination" data-behavior="focus-center" class="button button--ghost">Go to Pagination</a>
+      </div>
+    </xsl:if>
+
   </xsl:template>
 
   <xsl:template match="qui:collection">
