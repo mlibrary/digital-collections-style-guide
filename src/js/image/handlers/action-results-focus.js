@@ -16,7 +16,6 @@ window.addEventListener('DOMContentLoaded', (event) => {
         return;
       }
 
-      console.log('AHOY FOCUS', event);
       const y = event.target.offsetTop - ( window.innerHeight / 2);
       window.scrollTo({
         top: y,

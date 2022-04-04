@@ -64,7 +64,13 @@
             <xsl:value-of select="$nav/@end" />
             <xsl:text> of </xsl:text>
             <xsl:value-of select="$nav/@total" />
-            <xsl:text> results</xsl:text>
+            <xsl:text> results </xsl:text>
+            <xsl:if test="$nav/@is-truncated='true'">
+              <span>
+                <xsl:text> </xsl:text>
+                <a href="?page=help#truncated-results">(truncated)</a>
+              </span>
+            </xsl:if>
           </h2>
         </xsl:otherwise>
       </xsl:choose>
@@ -296,8 +302,8 @@
 
     <xsl:if test="position() mod 10 = 0 and position() != last()">
       <div class="[ results--jump-toolbar flex flex-gap-0_5 flex-align-center ]">
-        <a href="#maincontent" data-behavior="focus-center" class="button button--ghost">Scroll to Top</a>
-        <a href="#pagination" data-behavior="focus-center" class="button button--ghost">Scroll to Pagination</a>
+        <a href="#maincontent" data-behavior="focus-center" class="button button--ghost">Back to Top</a>
+        <a href="#pagination" data-behavior="focus-center" class="button button--ghost">Go to Pagination</a>
       </div>
     </xsl:if>
 
