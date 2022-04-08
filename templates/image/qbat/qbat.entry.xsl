@@ -206,7 +206,7 @@
 
   <xsl:template match="qui:block[@slot='actions']">
     <div class="[ actions ][ actions--toolbar-wrap ]">
-      <h2 class="[ subtle-heading ][ text-black ]">Actions</h2>
+      <h2 class="[ subtle-heading ][ text-black ]" id="actions">Actions</h2>
       <div class="[ toolbar ]">
         <xsl:call-template name="build-download-action" />
         <xsl:call-template name="build-favorite-action" />
@@ -429,7 +429,7 @@
 
   <xsl:template name="build-panel-iiif-manifest">
     <xsl:if test="//qui:viewer/@manifest-id">
-      <h3>IIIF</h3>
+      <h3 id="iiif-links">IIIF</h3>
       <dl class="record">
         <xsl:call-template name="build-content-copy-metadata">
           <xsl:with-param name="term">Manifest</xsl:with-param>
@@ -642,7 +642,7 @@
 
   <xsl:template match="qui:section">
     <xsl:if test="@name != 'default'">
-      <h3 id="{@class}"><xsl:value-of select="@name" /></h3>
+      <h3 id="{@slug}"><xsl:value-of select="@name" /></h3>
     </xsl:if>
     <xsl:if test="@name = 'default'">
       <h3 id="record_details">Record Details</h3>

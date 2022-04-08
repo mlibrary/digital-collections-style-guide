@@ -30,6 +30,10 @@
   display: none;
 }
 
+h3.viewport-narrow {
+  display: none;
+}
+
 .hero--figure {
   bottom: 0;
   right: 0;
@@ -142,8 +146,17 @@ section.filters__selected {
     display: none;
   }
 
+  .side-panel h3.browse-link {
+    display: none;
+  }
+
   .link-box.viewport-narrow {
     display: flex;
+    width: 100%;
+  }
+
+  h3.viewport-narrow {
+    display: block;
     width: 100%;
   }
 

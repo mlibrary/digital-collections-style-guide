@@ -32,9 +32,13 @@
 
     <div class="[ flex flex-flow-row flex-gap-1 ]">
       <div class="side-panel">
-        <xsl:apply-templates select="//qui:panel[@slot='browse']" />
+        <xsl:apply-templates select="//qui:panel[@slot='browse']">
+          <xsl:with-param name="classes">browse-link</xsl:with-param>
+        </xsl:apply-templates>
         <xsl:apply-templates select="//qui:panel[@slot='custom']" />
-        <xsl:call-template name="build-filters-panel" />
+        <xsl:call-template name="build-filters-panel">
+          <xsl:with-param name="margin-top">mt-0</xsl:with-param>
+        </xsl:call-template>
         <xsl:apply-templates select="//qui:panel[@slot='related-collections']" />
         <xsl:apply-templates select="//qui:panel[@slot='access-restrictions']" />
       </div>
@@ -140,7 +144,7 @@
 
   <xsl:template match="qui:panel[@slot='browse']" priority="100">
     <xsl:param name="classes" />
-    <h3>Browse this collection</h3>
+    <h3 class="{$classes}">Browse this collection</h3>
     <div class="[ link-box ][ flex flex-center ]{$classes}">
       <!-- <svg xmlns="http://www.w3.org/2000/svg" height="16px" viewBox="0 0 24 24" width="16px" fill="#106684" aria-hidden="true" focusable="false" role="presentation">
         <path d="M0 0h24v24H0V0z" fill="none" />
