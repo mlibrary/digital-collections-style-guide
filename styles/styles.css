@@ -64,6 +64,11 @@ ul.list-bulleted {
   padding: revert;
 }
 
+ol.list-numbered {
+  list-style: decimal;
+  padding: revert;
+}
+
 svg {
   display: inline-block;
   vertical-align: middle;
