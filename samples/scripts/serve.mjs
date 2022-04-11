@@ -66,7 +66,7 @@ async function proxyIndex(req, res) {
   if (req.cookies.loggedIn == 'true') {
     headers['X-DLXS-Auth'] = 'nala@monkey.nu';
   }
-  const resp = await fetch(`https://quod.lib.umich.edu${req.originalUrl}`, {
+  const resp = await fetch(`https://${dlxsBase}${req.originalUrl}`, {
     headers: headers,
     redirect: 'follow',
     credentials: 'include'
@@ -129,6 +129,8 @@ async function processDLXS(req, res) {
   if ( req.cookies.loggedIn == 'true' ) {
     headers['X-DLXS-Auth'] = 'nala@monkey.nu';
   }
+  headers['X-DLXS-Uplifted'] = 'true';
+
   const resp = await fetch(url.toString(), {
     headers: headers,
     redirect: 'follow',
@@ -397,7 +399,7 @@ function listen(options) {
     res.end(favicon);
   });
 
-  app.use('/cgi/i/image/api', proxy('https://quod.lib.umich.edu/cgi/i/image/api', {
+  app.use('/cgi/i/image/api', proxy('https://roger.quod.lib.umich.edu/cgi/i/image/api', {
     https: true,
     forwardPath: function(req) {
       return req.originalUrl.replace(/8lift/g, '');
