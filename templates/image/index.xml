@@ -31,87 +31,42 @@
   </ExtraCSS>
 
 
-  <CollName>
-    <?COLLNAME_XML ?>
-  </CollName>
+  <CollName><?COLLNAME_XML ?></CollName>
 
-  <JavaScriptUrl>
-    <?JAVASCRIPTURL_XML ?>
-  </JavaScriptUrl>
-  <ContactLink>
-    <?CONTACT_XML type="link"?>
-  </ContactLink>
-  <ContactText>
-    <?CONTACT_XML type="text"?>
-  </ContactText>
-  <LoginLink>
-    <?LOGINLINK_XML ?>
-  </LoginLink>
+  <JavaScriptUrl><?JAVASCRIPTURL_XML ?></JavaScriptUrl>
+  <ContactLink><?CONTACT_XML type="link"?></ContactLink>
+  <ContactText><?CONTACT_XML type="text"?></ContactText>
+  <LoginLink><?LOGINLINK_XML ?></LoginLink>
 
-  <TipsUrl>
-    <?TIPSURL_XML ?>
-  </TipsUrl>
+  <TipsUrl><?TIPSURL_XML ?></TipsUrl>
   <SortOptionsMenu>
     <?SORTMENU_XML ?>
   </SortOptionsMenu>
 
-  <Home>
-    <?HOME_XML ?>
-  </Home>
-  <Help>
-    <?HELP_XML ?>
-  </Help>
-  <Banner>
-    <?BANNER_XML ?>
-  </Banner>
-  <OpenPortfolio>
-    <?OPENPORTFOLIO_XML ?>
-  </OpenPortfolio>
-  <SearchLink>
-    <?SEARCHLINK_XML ?>
-  </SearchLink>
-  <BrowseImages>
-    <?BROWSEALL_XML type="brwsimg"?>
-  </BrowseImages>
-  <BrowseRecords>
-    <?BROWSEALL_XML type="brwsrec"?>
-  </BrowseRecords>
-  <BrowseMediaAddsMods>
-    <?BROWSEALL_XML type="brwsadds"?>
-  </BrowseMediaAddsMods>
-  <BrowseMostViewed>
-    <?BROWSEALL_XML type="brwsmostviewed"?>
-  </BrowseMostViewed>
+  <Home><?HOME_XML ?></Home>
+  <Help><?HELP_XML ?></Help>
+  <Banner><?BANNER_XML ?></Banner>
+  <OpenPortfolio><?OPENPORTFOLIO_XML ?></OpenPortfolio>
+  <SearchLink><?SEARCHLINK_XML ?></SearchLink>
+  <BrowseImages><?BROWSEALL_XML type="brwsimg"?></BrowseImages>
+  <BrowseRecords><?BROWSEALL_XML type="brwsrec"?></BrowseRecords>
+  <BrowseMediaAddsMods><?BROWSEALL_XML type="brwsadds"?></BrowseMediaAddsMods>
+  <BrowseMostViewed><?BROWSEALL_XML type="brwsmostviewed"?></BrowseMostViewed>
 
 
-  <BrowseOptions>
-    <?BROWSEOPTIONS_XML ?>
-  </BrowseOptions>
+  <BrowseOptions><?BROWSEOPTIONS_XML ?></BrowseOptions>
 
 
-  <RestrictStatus>
-    <?RESTRICTSTATUS_XML ?>
-  </RestrictStatus>
+  <RestrictStatus><?RESTRICTSTATUS_XML ?></RestrictStatus>
   <?ACCESS_RESTRICTIONS_XML ?>
 
-  <CollInfoLink>
-    <?COLLINFOURL_XML ?>
-  </CollInfoLink>
+  <CollInfoLink><?COLLINFOURL_XML ?></CollInfoLink>
 
-  <SearchForm>
-    <?SEARCHFORM_XML ?>
-  </SearchForm>
-  <Facets>
-    <?RESULTS_FACETS_XML ?>
-  </Facets>
+  <SearchForm><?SEARCHFORM_XML ?></SearchForm>
+  <Facets><?RESULTS_FACETS_XML ?></Facets>
 
-  <GroupsLink>
-    <?GROUPSLINK_XML ?>
-  </GroupsLink>
-  <Groups>
-    <?COLL_GROUPS_XML ?>
-  </Groups>
-
+  <GroupsLink><?GROUPSLINK_XML ?></GroupsLink>
+  <Groups><?COLL_GROUPS_XML ?></Groups>
 
   <Stats>
     <Records><?STATS_XML type="records"?></Records>

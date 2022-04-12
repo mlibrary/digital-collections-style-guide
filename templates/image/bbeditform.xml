@@ -25,6 +25,6 @@
 
 <DlxsGlobals><?CHUNK filename="dlxsclassglobals.xml"?></DlxsGlobals>
 <Banner><?BANNER_XML?></Banner>
-<?BBAG_EDIT_FORM_XML>
+<?BBAG_EDIT_FORM_XML?>
 
 </Top>

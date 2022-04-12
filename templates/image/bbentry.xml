@@ -51,14 +51,14 @@
 
 <ContactLink><?CONTACT_XML type="link"?></ContactLink>
 <ContactText><?CONTACT_XML type="text"?></ContactText>
-<LoginLink><?LOGINLINK_XML></LoginLink>
-<BackLink><?BACKLINK_XML></BackLink>
+<LoginLink><?LOGINLINK_XML?></LoginLink>
+<BackLink><?BACKLINK_XML?></BackLink>
 <Banner><?BANNER_XML?></Banner>
 <BookBagInfo><?BBAGINFO_XML?></BookBagInfo>
 <BookBagForm action="add"><?BBACTIONFORM_XML action="add"?></BookBagForm>
 <BookBagForm action="remove"><?BBACTIONFORM_XML action="remove"?></BookBagForm>
 
-<?THUMBURL_XML>
+<?THUMBURL_XML?>
 <OpenPortfolio><?OPENPORTFOLIO_XML?></OpenPortfolio>
 <MediaInfo><?MEDIAINFO_XML?></MediaInfo>
 <ImageZoomTool><?IMAGEZOOMTOOL_XML?></ImageZoomTool>
