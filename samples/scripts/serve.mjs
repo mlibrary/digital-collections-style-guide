@@ -172,7 +172,7 @@ async function processDLXS(req, res) {
     // static check
     const staticXslFilename = xpath.select(`string(//XslFallbackFileList/Filename[last()])`, xmlDoc);
     console.log("-- static check", staticXslFilename);
-    if ( staticXslFilename == 'static.xsl' ) {
+    if ( staticXslFilename.indexOf('static.xsl') > -1 ) {
       view = 'staticincl';
     }
 
