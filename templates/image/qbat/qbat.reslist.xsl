@@ -21,6 +21,11 @@
 
     <div class="[ flex flex-flow-rw ][ flex-gap-1 ]">
       <div class="side-panel">
+        <button data-action="toggle-side-panel" class="flex button button--secondary" aria-expanded="false" style="width: 100%">
+          <span class="flex flex-center flex-space-between flex-grow-1">
+            <span>Filters</span>
+          </span>
+        </button>
         <h2 class="visually-hidden">Options</h2>
         <xsl:call-template name="build-filters-panel" />
       </div>
