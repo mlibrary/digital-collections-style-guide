@@ -91,6 +91,8 @@ button[data-action="toggle-side-panel"] {
     align-items: center;
     gap: 0.5rem;
     margin-bottom: 1rem;
+    margin-top: 1rem;
+    width: 100%;
   }
 
   button[data-action="toggle-side-panel"]::after {
