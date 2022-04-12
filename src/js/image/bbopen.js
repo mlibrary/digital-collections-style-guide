@@ -2,11 +2,12 @@ import { ScreenReaderMessenger } from "../sr-messaging";
 import "../dev.js";
 
 import "./handlers/action-go.js";
+import "./handlers/action-toggle-side-panel.js";
 import "../wait-for-defined-components.js";
 
 window.addEventListener('DOMContentLoaded', (event) => {
 
-  const $main = document.querySelector(".main-panel");
+  const $main = document.querySelector(".main-panel[data-state]");
   const $paginator = document.querySelector("[data-action='paginate']");
 
   $main.dataset.state = 'ready';
@@ -165,11 +166,16 @@ window.addEventListener('DOMContentLoaded', (event) => {
     _updatePagination();
   }
 
+  const _updatePageLink = function($el, isActive) {
+    $el.dataset.active = isActive;
+    $el.querySelector('a').disabled = ! isActive;
+  }
+
   const _updatePagination = function () {
     $paginator.dataset.active = $state.totalPages > 1;
 
-    $paginator.querySelector('[data-action="next-link"]').dataset.active = $state.page < $state.totalPages;
-    $paginator.querySelector('[data-action="previous-link"]').dataset.active = $state.page > 1;
+    _updatePageLink($paginator.querySelector('[data-action="next-link"]'), $state.page < $state.totalPages);
+    _updatePageLink($paginator.querySelector('[data-action="previous-link"]'), $state.page > 1);
 
     $paginator.querySelector('input').max = $state.totalPages;
     $paginator.querySelector('input').value = $state.page;

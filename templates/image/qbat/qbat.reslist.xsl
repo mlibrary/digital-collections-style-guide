@@ -28,13 +28,16 @@
     </div>
     <div class="[ flex flex-flow-rw ][ flex-gap-1 ]">
       <div class="side-panel">
-        <button data-action="toggle-side-panel" class="flex button button--ghost" aria-expanded="false">
-          <span class="flex flex-center flex-space-between flex-grow-1">
-            <span>Filters</span>
-          </span>
-        </button>
-        <h2 class="visually-hidden">Options</h2>
-        <xsl:call-template name="build-filters-panel" />
+        <xsl:if test="//qui:filter">
+          <button data-action="toggle-side-panel" class="flex button button--ghost" aria-expanded="false">
+            <span class="flex flex-center flex-gap-0_5 flex-grow-1">
+              <span class="material-icons" aria-hidden="true">filter_alt</span>
+              <span>Filters</span>
+            </span>
+          </button>
+          <h2 class="visually-hidden">Options</h2>
+          <xsl:call-template name="build-filters-panel" />
+        </xsl:if>
       </div>
       <div class="main-panel">
         <!-- <xsl:call-template name="build-collection-heading" /> -->
