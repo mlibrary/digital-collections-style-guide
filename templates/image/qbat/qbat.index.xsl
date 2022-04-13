@@ -35,11 +35,17 @@
         <xsl:apply-templates select="//qui:panel[@slot='browse']">
           <xsl:with-param name="classes">browse-link</xsl:with-param>
         </xsl:apply-templates>
+
         <xsl:apply-templates select="//qui:panel[@slot='custom']" />
-        <xsl:call-template name="build-filters-panel">
-          <xsl:with-param name="margin-top">mt-0</xsl:with-param>
-        </xsl:call-template>
+        
+        <xsl:if test="//qui:filters-panel/qui:filter[@key != 'med']">
+          <xsl:call-template name="build-filters-panel">
+            <xsl:with-param name="margin-top">mt-0</xsl:with-param>
+          </xsl:call-template>
+        </xsl:if>
+
         <xsl:apply-templates select="//qui:panel[@slot='related-collections']" />
+
         <xsl:apply-templates select="//qui:panel[@slot='access-restrictions']" />
       </div>
       <div class="main-panel">

@@ -34,5 +34,13 @@ input[type="text"] {
 }
 
 [data-active="false"] {
-  display: none !important;
+  /* display: none !important; */
+  opacity: 0.75;
+  pointer-events: none;
+}
+
+@media screen and (max-width: 645px) {
+  .results-list__blank {
+    display: none;
+  }
 }

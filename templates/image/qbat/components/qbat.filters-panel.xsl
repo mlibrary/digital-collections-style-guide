@@ -86,7 +86,7 @@
     <xsl:variable name="value" select="qui:values/qui:value" />
     <xsl:if test="true() or not($value/@selected = 'true')">
       <div class="panel" style="padding: 1rem 0">
-        <div class="[ flex ][ gap-0_5 ]">
+        <div class="[ flex flex-align-center ][ gap-0_5 ]">
           <input type="checkbox" id="{ $key }-1" name="{$key}" value="{ normalize-space($value) }" data-action="facet" autocomplete="off" style="margin-top: 4px">
             <xsl:if test="$value/@selected = 'true'">
               <xsl:attribute name="checked">checked</xsl:attribute>

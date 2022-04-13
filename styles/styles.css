@@ -148,7 +148,8 @@ details > summary::-webkit-details-marker {
   display: none;
 }
 
-details input[type="checkbox"] {
+/* should a checkbox ever shrink? no. */
+input[type="checkbox"] {
   flex-shrink: 0;
 }
 
@@ -196,7 +197,8 @@ select:focus {
 }
 
 .input-group {
-  padding: 0 0.5em 0 0;
+  /* padding: 0 0.5em 0 0; */
+  padding: 0;
   min-width: 60%;
 }
 
@@ -338,6 +340,10 @@ label {
 
 /** Advanced Search **/
 
+.advanced-link {
+  white-space: nowrap;
+}
+
 .advanced-search--form {
   border: solid 1px var(--color-neutral-100);
   padding: 2rem 5.5vw;
@@ -450,6 +456,8 @@ fieldset.fieldset--grid button[data-action="reset-clause"] {
   justify-content: space-between;
   align-items: center;
   padding: var(--text-xx-small) 0;
+  padding-top: 0;
+  gap: var(--text-xx-small);
 }
 
 .search-container {
@@ -728,6 +736,7 @@ fieldset.fieldset--grid button[data-action="reset-clause"] {
 
 .button.filter__button {
   flex-direction: column;
+  width: 100%;
 }
 
 /* 

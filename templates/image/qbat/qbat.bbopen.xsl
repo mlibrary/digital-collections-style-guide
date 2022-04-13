@@ -22,8 +22,19 @@
 
   <xsl:template match="qui:main">
 
-    <div class="[ flex flex-flow-row flex-gap-1 ]">
+    <div class="[ flex flex-flow-rw ][ flex-gap-1 ]">
+      <div class="side-panel"></div>
+      <div class="main-panel">
+        <xsl:call-template name="build-collection-heading" />
+      </div>
+    </div>
+    <div class="[ flex flex-flow-rw flex-gap-1 ]">
       <div class="side-panel">
+        <button data-action="toggle-side-panel" class="flex button button--ghost" aria-expanded="false">
+          <span class="flex flex-center flex-space-between flex-grow-1">
+            <span>Filters</span>
+          </span>
+        </button>
         <h3 class="[ mt-2 ]">Filters</h3>
         <details class="panel" data-list-expanded="false" data-key="filter">
           <xsl:attribute name="open">open</xsl:attribute>
@@ -60,7 +71,7 @@
         <xsl:call-template name="build-filter-search" />
       </div>
       <div class="main-panel" data-state="loading">
-        <xsl:call-template name="build-collection-heading" />
+        <!-- <xsl:call-template name="build-collection-heading" /> -->
         <!-- <xsl:call-template name="build-breadcrumbs" /> -->
 
         <xsl:call-template name="build-search-summary" />
@@ -193,7 +204,7 @@
 
   <xsl:template name="build-results-pagination">
     <xsl:variable name="max" select="round(count(//qui:section[@identifier]) div 50)" />
-    <nav aria-label="Result navigation" data-action="paginate" class="[ pagination__row ][ flex flex-space-between flex-align-center ]">
+    <nav aria-label="Result navigation" data-action="paginate" class="[ pagination__row ][ flex flex-space-between flex-align-center sticky-bottom ]">
       <xsl:attribute name="data-active">
         <xsl:choose>
           <xsl:when test="$max &gt; 1">

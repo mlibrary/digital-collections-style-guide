@@ -18,7 +18,7 @@
   <xsl:template match="qui:main">
     <xsl:call-template name="build-collection-heading" />
 
-    <div class="[ flex flex-flow-row flex-gap-1 ][ aside--wrap ]">
+    <div class="[ flex flex-flow-rw flex-gap-1 ][ aside--wrap ]">
       <div class="[ aside ]">
         <nav class="[ page-index ]" xx-aria-labelledby="page-index-label">
           <h2 id="page-index-label" class="[ subtle-heading ][ text-black js-toc-ignore ]">Page Index</h2>

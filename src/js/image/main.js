@@ -7,6 +7,7 @@ import "./handlers/action-results-sort.js";
 import "./handlers/action-results-select-items.js";
 import "./handlers/action-results-remove-items.js";
 import "./handlers/action-results-focus.js";
+import "./handlers/action-toggle-side-panel.js";
 
 import "./handlers/action-copy-text.js";
 import "./handlers/action-item-download.js";

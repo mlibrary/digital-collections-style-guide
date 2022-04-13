@@ -20,13 +20,28 @@
   <xsl:template match="qui:main">
 
     <div class="[ flex flex-flow-rw ][ flex-gap-1 ]">
-      <div class="side-panel">
-        <h2 class="visually-hidden">Options</h2>
-        <xsl:call-template name="build-filters-panel" />
-      </div>
+      <div class="side-panel"></div>
       <div class="main-panel">
         <xsl:call-template name="build-collection-heading" />
         <xsl:call-template name="build-breadcrumbs" />
+      </div>
+    </div>
+    <div class="[ flex flex-flow-rw ][ flex-gap-1 ]">
+      <div class="side-panel">
+        <xsl:if test="//qui:filter">
+          <button data-action="toggle-side-panel" class="flex button button--ghost" aria-expanded="false">
+            <span class="flex flex-center flex-gap-0_5 flex-grow-1">
+              <span class="material-icons" aria-hidden="true">filter_alt</span>
+              <span>Filters</span>
+            </span>
+          </button>
+          <h2 class="visually-hidden">Options</h2>
+          <xsl:call-template name="build-filters-panel" />
+        </xsl:if>
+      </div>
+      <div class="main-panel">
+        <!-- <xsl:call-template name="build-collection-heading" /> -->
+        <!-- <xsl:call-template name="build-breadcrumbs" /> -->
         <xsl:call-template name="build-search-form" />
         <!-- <xsl:call-template name="build-search-summary" />
         <xsl:if test="//qui:nav[@role='results']/@total &gt; 0">
