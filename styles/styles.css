@@ -294,6 +294,12 @@ label {
   .breadcrumb {
     flex-flow: column;
   }
+
+  .breadcrumb p.pagination {
+    margin-left: -3px;
+    margin-top: -0.5rem;
+  }
+
 }
 
 .breadcrumb li {
