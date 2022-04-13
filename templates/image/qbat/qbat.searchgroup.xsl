@@ -47,9 +47,13 @@
     <div class="advanced-search--containers">
       <details class="panel">
         <summary class="summary--neutral">
-          <xsl:text>Select </xsl:text>
-          <xsl:value-of select="//qui:header[@role='group']" /> 
-          <xsl:text> Collections</xsl:text>
+          <span>
+            <xsl:text>Select collections from the </xsl:text>
+            <em>
+              <xsl:value-of select="//qui:header[@role='group']" />
+            </em>
+            <xsl:text> group</xsl:text>
+          </span>
         </summary>
         <div>
           <p style="font-size: 0.875rem">
