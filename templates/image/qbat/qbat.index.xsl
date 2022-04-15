@@ -16,11 +16,13 @@
         <xsl:apply-templates select="//qui:hero-image" />
       </xsl:when>
       <xsl:otherwise>
-        <xsl:call-template name="build-collection-heading">
-          <xsl:with-param name="badge">
-            <xsl:value-of select="@data-badge" />
-          </xsl:with-param>
-        </xsl:call-template>
+        <div class="[ mb-2 ]">
+          <xsl:call-template name="build-collection-heading">
+            <xsl:with-param name="badge">
+              <xsl:value-of select="@data-badge" />
+            </xsl:with-param>
+          </xsl:call-template>
+        </div>
       </xsl:otherwise>
     </xsl:choose>
 

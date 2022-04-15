@@ -16,7 +16,10 @@
   </xsl:template>
 
   <xsl:template match="qui:main">
-    <xsl:call-template name="build-collection-heading" />
+    <div class="[ mb-2 ]">
+      <xsl:call-template name="build-breadcrumbs" />
+      <xsl:call-template name="build-collection-heading" />
+    </div>
 
     <div class="[ flex flex-flow-rw flex-gap-1 ][ aside--wrap ]">
       <div class="[ aside ]">
@@ -27,7 +30,6 @@
         </nav>
       </div>
       <div class="main-panel">
-        <xsl:call-template name="build-breadcrumbs" />
         <xsl:apply-templates select="//qui:block[@slot='content']">
           <!-- <xsl:with-param name="classes">[ viewport-narrow ]</xsl:with-param> -->
         </xsl:apply-templates>

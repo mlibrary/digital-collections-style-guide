@@ -22,12 +22,10 @@
 
   <xsl:template match="qui:main">
 
-    <div class="[ flex flex-flow-rw ][ flex-gap-1 ]">
-      <div class="side-panel"></div>
-      <div class="main-panel">
-        <xsl:call-template name="build-collection-heading" />
-      </div>
+    <div class="[ mb-2 ]">
+      <xsl:call-template name="build-collection-heading" />
     </div>
+
     <div class="[ flex flex-flow-rw flex-gap-1 ]">
       <div class="side-panel">
         <button data-action="toggle-side-panel" class="flex button button--ghost" aria-expanded="false">
@@ -71,9 +69,6 @@
         <xsl:call-template name="build-filter-search" />
       </div>
       <div class="main-panel" data-state="loading">
-        <!-- <xsl:call-template name="build-collection-heading" /> -->
-        <!-- <xsl:call-template name="build-breadcrumbs" /> -->
-
         <xsl:call-template name="build-search-summary" />
         <xsl:call-template name="build-search-tools" />
         <div class="[ portfolio--list ]">

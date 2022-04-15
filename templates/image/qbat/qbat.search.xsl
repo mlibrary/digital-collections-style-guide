@@ -10,10 +10,9 @@
     
   <xsl:template match="qui:main">
 
-    <xsl:call-template name="build-collection-heading" />
-
-    <div class="[ flex flex-flow-rw ]">
+    <div class="[ mb-2 ]">
       <xsl:call-template name="build-breadcrumbs" />
+      <xsl:call-template name="build-collection-heading" />
     </div>
 
     <div class="advanced-search--form">

@@ -1098,6 +1098,10 @@ sl-dropdown::part(panel) {
   margin-bottom: 1em;
 }
 
+.mb-2 {
+  margin-bottom: 2em;
+}
+
 .mb-3 {
   margin-bottom: 3em;
 }

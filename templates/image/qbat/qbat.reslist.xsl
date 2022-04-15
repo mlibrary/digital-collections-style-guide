@@ -19,13 +19,11 @@
 
   <xsl:template match="qui:main">
 
-    <div class="[ flex flex-flow-rw ][ flex-gap-1 ]">
-      <div class="side-panel"></div>
-      <div class="main-panel">
-        <xsl:call-template name="build-collection-heading" />
-        <xsl:call-template name="build-breadcrumbs" />
-      </div>
+    <div class="[ mb-2 ]">
+      <xsl:call-template name="build-breadcrumbs" />
+      <xsl:call-template name="build-collection-heading" />
     </div>
+
     <div class="[ flex flex-flow-rw ][ flex-gap-1 ]">
       <div class="side-panel">
         <xsl:if test="//qui:filter">
@@ -40,13 +38,7 @@
         </xsl:if>
       </div>
       <div class="main-panel">
-        <!-- <xsl:call-template name="build-collection-heading" /> -->
-        <!-- <xsl:call-template name="build-breadcrumbs" /> -->
         <xsl:call-template name="build-search-form" />
-        <!-- <xsl:call-template name="build-search-summary" />
-        <xsl:if test="//qui:nav[@role='results']/@total &gt; 0">
-          <xsl:call-template name="build-search-tools" />
-        </xsl:if> -->
         <xsl:call-template name="build-results-summary-sort" />
         <xsl:if test="$has-results">
           <xsl:call-template name="build-portfolio-actions" />
