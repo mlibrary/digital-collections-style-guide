@@ -19,7 +19,11 @@ window.addEventListener('message', (event) => {
 
     // this will be different when we get to portfolios
     // let url = new URL(location.href.replace(/\;/g, "&"));
-    let url = new URL(link.getAttribute('href').replace(/;/g, '&'));
+    let self_href = link.getAttribute('href').replace(/;/g, '&');
+    if ( self_href.substring(0, 1) == '/' ) {
+      self_href = `${location.protocol}://${location.hostname}${self_url}`;
+    }
+    let url = new URL(self_href);
     url.searchParams.set('viewid', parts[2]);
     let href = url.toString();
 
