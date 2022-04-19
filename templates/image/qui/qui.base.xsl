@@ -67,6 +67,7 @@
         </xhtml:title>
         <xsl:call-template name="build-head-block" />
         <xsl:call-template name="build-canonical-link" />
+        <qui:link rel="self" href="{//CurrentUrl}" />
       </qui:head>
       <qui:body>
         <xsl:call-template name="build-skip-links" />

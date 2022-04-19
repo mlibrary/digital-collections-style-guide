@@ -5,6 +5,8 @@ window.addEventListener('message', (event) => {
     const identifier = event.data.identifier;
     const label = event.data.label;
     const section = document.querySelector('.main-panel > section');
+    const link = document.querySelector('link[rel="self"]');
+
     let alert = section.querySelector('.alert');
     if (!alert) {
       alert = document.createElement('div');
@@ -16,7 +18,8 @@ window.addEventListener('message', (event) => {
     const parts = identifier.split(':');
 
     // this will be different when we get to portfolios
-    let url = new URL(location.href.replace(/\;/g, "&"));
+    // let url = new URL(location.href.replace(/\;/g, "&"));
+    let url = new URL(link.getAttribute('href').replace(/;/g, '&'));
     url.searchParams.set('viewid', parts[2]);
     let href = url.toString();
 
@@ -47,7 +50,9 @@ window.addEventListener('message', (event) => {
           paginationEl.innerHTML = newPaginationEl.innerHTML;
         }
 
-        history.pushState({}, newDocument.title, `${url.pathname}?${url.searchParams.toString()}`);
+        let newUrl = newDocument.querySelector('.breadcrumb li:last-child a').getAttribute('href');
+        history.pushState({}, newDocument.title, newUrl);
+        document.querySelector('.breadcrumb li:last-child').setAttribute('href', newUrl);
 
         tocbot.refresh();
 
