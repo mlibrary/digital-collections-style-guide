@@ -21,7 +21,7 @@ window.addEventListener('message', (event) => {
     // let url = new URL(location.href.replace(/\;/g, "&"));
     let self_href = link.getAttribute('href').replace(/;/g, '&');
     if ( self_href.substring(0, 1) == '/' ) {
-      self_href = `${location.protocol}://${location.hostname}${self_href}`;
+      self_href = `${location.protocol}//${location.hostname}${self_href}`;
     }
     let url = new URL(self_href);
     url.searchParams.set('viewid', parts[2]);
