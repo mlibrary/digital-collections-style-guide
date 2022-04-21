@@ -13,6 +13,7 @@ document.addEventListener('click', (event) => {
     inputTextCopyEl.classList.add('visually-hidden');
     inputTextCopyEl.style.bottom = 0;
     inputTextCopyEl.style.left = 0;
+    inputTextCopyEl.style.width = 'auto';
     inputTextCopyEl.setAttribute('readonly', 'readonly');
     document.body.appendChild(inputTextCopyEl);
   }
