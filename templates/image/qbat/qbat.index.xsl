@@ -111,7 +111,10 @@
           </xsl:apply-templates>
         </style>
       </xsl:if>
-      <figure>
+      <style>
+        <xsl:value-of select="concat('#', $id, ' img { width: auto; align-self: center; }')" />
+      </style>
+      <figure class="flex align-center flex-flow-column">
         <xsl:apply-templates select="qui:img" />
         <xsl:apply-templates select="qui:caption" />
       </figure>

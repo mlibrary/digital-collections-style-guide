@@ -161,15 +161,17 @@
   </xsl:template>
 
   <xsl:template match="qui:fieldset[@slot='limits']">
-    <h3>Additional Search Options</h3>
-    <div class="advanced-grid--columns">
-      <div class="advanced-search--containers">
-        <div>
-          <p class="bold">Limit Search to</p>
-          <xsl:apply-templates select="qui:control" />
+    <xsl:if test="qui:control">
+      <h3>Additional Search Options</h3>
+      <div class="advanced-grid--columns">
+        <div class="advanced-search--containers">
+          <div>
+            <p class="bold">Limit Search to</p>
+            <xsl:apply-templates select="qui:control" />
+          </div>
         </div>
       </div>
-    </div>
+    </xsl:if>
   </xsl:template>
 
   <xsl:template match="qui:control">
