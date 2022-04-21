@@ -140,32 +140,34 @@
   <xsl:template name="build-search-tools">
     <div class="[ search-results__tools ][ mb-1 gap-1 ]">
       <xsl:call-template name="build-search-summary" />
-      <sl-dropdown id="action-results-sort">
-        <sl-button slot="trigger" caret="caret" class="sl-button--ghost">
-          <span class="sl-dropdown-label">
-            <span class="material-icons text-xx-small">sort</span>
-            <span>
-              <span>Sort by </span>
-              <span class="capitalize">
-                <xsl:value-of select="$sort-options//qui:option[@selected]" />
+      <xsl:if test="$has-results">
+        <sl-dropdown id="action-results-sort">
+          <sl-button slot="trigger" caret="caret" class="sl-button--ghost">
+            <span class="sl-dropdown-label">
+              <span class="material-icons text-xx-small">sort</span>
+              <span>
+                <span>Sort by </span>
+                <span class="capitalize">
+                  <xsl:value-of select="$sort-options//qui:option[@selected]" />
+                </span>
               </span>
             </span>
-          </span>
-        </sl-button>
-        <sl-menu>
-          <xsl:for-each select="$sort-options//qui:option">
-            <sl-menu-item value="{@value}">
-              <xsl:if test="@selected='selected'">
-                <xsl:attribute name="checked">checked</xsl:attribute>
-              </xsl:if>
-              <xsl:value-of select="." />
-            </sl-menu-item>
-          </xsl:for-each>
-        </sl-menu>
-      </sl-dropdown>
-      <form id="form-results-sort" method="GET" action="/cgi/i/image/image-idx" autocomplete="off" style="display: none">
-        <xsl:apply-templates select="$sort-options/qui:hidden-input" />
-      </form>
+          </sl-button>
+          <sl-menu>
+            <xsl:for-each select="$sort-options//qui:option">
+              <sl-menu-item value="{@value}">
+                <xsl:if test="@selected='selected'">
+                  <xsl:attribute name="checked">checked</xsl:attribute>
+                </xsl:if>
+                <xsl:value-of select="." />
+              </sl-menu-item>
+            </xsl:for-each>
+          </sl-menu>
+        </sl-dropdown>
+        <form id="form-results-sort" method="GET" action="/cgi/i/image/image-idx" autocomplete="off" style="display: none">
+          <xsl:apply-templates select="$sort-options/qui:hidden-input" />
+        </form>        
+      </xsl:if>
     </div>
   </xsl:template>
 
