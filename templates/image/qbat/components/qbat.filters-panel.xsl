@@ -14,7 +14,7 @@
           <xsl:for-each select="$selected-filters">
             <xsl:variable name="filter" select="ancestor-or-self::qui:filter" />
             <xsl:variable name="key" select="$filter/@key" />
-            <div>
+            <div class="[ flex filter-item ][ gap-0_5 ]">
               <input type="checkbox" id="x-{$key}-{position()}" name="{$key}" value="{.}" data-action="facet" data-num="{@num}" autocomplete="off" checked="checked" />
               <label for="x-{$key}-{position()}">
                 <xsl:choose>
