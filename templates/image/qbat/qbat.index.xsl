@@ -214,7 +214,7 @@
   <xsl:template name="build-filter-item--value">
     <xsl:param name="key" />
     <li>
-      <a href="/cgi/i/image/image-idx?cc={$collid};fn1={$key};fq1={.};q1=*;rgn1=ic_all;view=reslist">
+      <a href="/cgi/i/image/image-idx?cc={$collid};fn1={$key};fq1={@escaped};q1=*;rgn1=ic_all;view=reslist">
         <span><xsl:value-of select="." /></span>
         <xsl:text> </xsl:text>
         <span class="filters__count">

@@ -11,7 +11,7 @@
           </qui:label>
           <qui:values>
             <xsl:for-each select="Values/Value">
-              <qui:value count="{@count}">
+              <qui:value count="{@count}" escaped="{@escaped}">
                 <xsl:if test="@selected">
                   <xsl:attribute name="selected">
                     <xsl:value-of select="@selected" />

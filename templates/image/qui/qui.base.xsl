@@ -276,6 +276,15 @@
     </qui:field>
   </xsl:template>
 
+  <xsl:template match="Value[@link][Value]" priority="100">
+    <qui:link href="{@link}" data-message="ack">
+      <xsl:value-of select="Value" />
+    </qui:link>
+    <xsl:for-each select="Url">
+      <qui:link href="{.}"><xsl:value-of select="." /></qui:link>
+    </xsl:for-each>
+  </xsl:template>
+
   <xsl:template match="Value[@link]">
     <qui:link href="{@link}">
       <xsl:value-of select="." />
