@@ -280,6 +280,14 @@ a.toc-link {
   .toolbar form {
     width: 90%;
   }
+
+  .record>div {
+    grid-template-columns: 1fr;
+  }
+
+  dl.record dd+dd {
+    grid-column: 1;
+  }
 }
 
 nav.page-index {
