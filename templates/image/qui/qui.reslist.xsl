@@ -284,7 +284,7 @@
     <xsl:variable name="m_id" select="m_id" />
     <xsl:variable name="m_iid" select="m_iid" />
     <xsl:if test="normalize-space(istruct_ms) = 'P'">
-      <qui:link rel="iiif" href="https://quod.lib.umich.edu/cgi/i/image/api/image/{$collid}:{$m_id}:{$m_iid}" />
+      <qui:link rel="iiif" href="https://quod.lib.umich.edu/cgi/i/image/api/tile/{$collid}:{$m_id}:{$m_iid}" />
     </xsl:if>
   </xsl:template>
 
