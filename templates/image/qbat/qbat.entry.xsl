@@ -315,7 +315,7 @@
   </xsl:template>
 
   <xsl:template name="build-favorite-action">
-    <form method="GET" action="bbaction">
+    <form method="GET" name="bbaction">
       <xsl:apply-templates select="//qui:form[@rel='add']/qui:hidden-input" />
       <xsl:call-template name="button">
         <xsl:with-param name="label">Save to portfolios</xsl:with-param>
