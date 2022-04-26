@@ -85,6 +85,11 @@ h3.viewport-narrow {
   align-items: flex-start;
   text-decoration: none;
   border-top-left-radius: 4px;
+  width: 1.5rem;
+}
+
+.hero--caption:hover a {
+  width: auto;
 }
 
 .hero--caption:hover,
@@ -93,7 +98,7 @@ h3.viewport-narrow {
 }
 
 
-.hero--caption a:hover span.caption,
+.hero--caption:hover span.caption,
 .hero--caption a:focus span.caption,
 .hero--caption a:active span.caption {
   position: static !important;
