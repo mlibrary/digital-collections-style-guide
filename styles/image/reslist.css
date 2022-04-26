@@ -19,6 +19,10 @@ select#results-sort {
   max-width: 100%;
 }
 
+.filters__selected .filter-item + button {
+  margin-top: 1rem;
+}
+
 details[data-list-expanded="false"] .filter-item:nth-of-type(n+11) {
   display: none;
 }

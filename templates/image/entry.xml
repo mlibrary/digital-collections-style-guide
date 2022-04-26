@@ -87,5 +87,6 @@
   <?CHUNK filename="entry.chnk" optional="0"?>
 
   <GroupName><?GROUPNAME_XML?></GroupName>
+  <BrowseOptions><?BROWSEOPTIONS_XML?></BrowseOptions>
 
 </Top>

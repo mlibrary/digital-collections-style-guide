@@ -121,8 +121,8 @@
         <xsl:text> in </xsl:text>
         <span class="[ bold ]">
           <xsl:choose>
-            <xsl:when test="qui:input[@slot='rgn']/qui:option[@selected='selected']">
-              <xsl:value-of select="qui:input[@slot='rgn']/qui:option[@selected='selected']" />
+            <xsl:when test="qui:input[@slot='rgn']/node()[@selected='selected']">
+              <xsl:value-of select="qui:input[@slot='rgn']/node()[@selected='selected']" />
             </xsl:when>
             <xsl:otherwise>
               <xsl:value-of select="qui:input[@slot='rgn']/@label" />

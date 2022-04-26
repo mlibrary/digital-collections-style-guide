@@ -58,7 +58,7 @@
         </xsl:when>
         <xsl:otherwise>
           <!-- build the full region options to drive the basic search form -->
-          <qui:input slot="rgn" name="{Rgn/@name}" type="select">
+          <qui:input slot="rgn" name="{Rgn/@name}" type="select" data-rgn="{$rgn}">
             <xsl:for-each select="Rgn/Option">
               <xsl:variable name="value" select="Value" />
               <qui:option value="{Value}">
@@ -68,6 +68,11 @@
                 <xsl:value-of select="Label" />
               </qui:option>
             </xsl:for-each>
+            <xsl:if test="not(Rgn/Option[Value=$rgn])">
+              <qui:keylink selected="selected" keylinks="true" value="{$rgn}">
+                <xsl:value-of select="//ResultsHeader/Row/Column[@abbrev=$rgn]" />
+              </qui:keylink>
+            </xsl:if>
           </qui:input>
         </xsl:otherwise>
       </xsl:choose>
