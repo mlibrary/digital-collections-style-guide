@@ -214,6 +214,7 @@
         <xsl:call-template name="build-copy-citation-action" />
         <!-- <xsl:apply-templates select="." mode="extra" /> -->
       </div>
+      <xsl:apply-templates select="//qui:callout" />
     </div>
   </xsl:template>
 
@@ -315,7 +316,7 @@
   </xsl:template>
 
   <xsl:template name="build-favorite-action">
-    <form method="GET" name="bbaction">
+    <form method="GET" action="/cgi/i/image/image-idx">
       <xsl:apply-templates select="//qui:form[@rel='add']/qui:hidden-input" />
       <xsl:call-template name="button">
         <xsl:with-param name="label">Save to portfolios</xsl:with-param>
@@ -688,6 +689,12 @@
 
   <xsl:template name="get-rights-statement-href">
     <xsl:text>#rights-permissions</xsl:text>
+  </xsl:template>
+
+  <xsl:template match="qui:callout">
+    <m-callout subtle="subtle" icon="check" dismissable="dismissable" variant="{@variant}" style="margin-top: 1rem; margin-bottom: 0">
+      <xsl:apply-templates mode="copy" />
+    </m-callout>
   </xsl:template>
 
 </xsl:stylesheet>

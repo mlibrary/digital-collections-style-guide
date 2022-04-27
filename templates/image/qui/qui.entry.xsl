@@ -14,6 +14,9 @@
     <xsl:call-template name="build-record" />
     <xsl:call-template name="build-rights-statement" />
     <xsl:call-template name="build-related-links" />
+    <xsl:if test="//Callout">
+      <xsl:apply-templates select="//Callout" />
+    </xsl:if>
     <qui:message>BOO-YAH</qui:message>
   </xsl:template>
 
@@ -358,6 +361,7 @@
 
         <qui:form rel="add">
           <xsl:apply-templates select="/Top/BookBagForm[@action='add']/HiddenVars" />
+          <qui:hidden-input name="backlink" value="{/Top/BookBagForm[@action='add']/BackLink}" />
         </qui:form>
       </xsl:if>
 
@@ -433,4 +437,19 @@
     <xsl:value-of select="//ItemUrl" />
   </xsl:template>
 
+  <xsl:template match="Callout">
+    <qui:callout variant='success'>
+      <xhtml:p>
+        <xsl:value-of select="num_added" />
+        <xsl:text> item</xsl:text>
+        <xsl:if test="num_added &gt; 1">
+          <xsl:text>s</xsl:text>
+        </xsl:if>
+        <xsl:text> added to </xsl:text>
+        <xhtml:a href="/cgi/i/image/image-idx?type=bbaglist;view=bbreslist;bbdbid={bbdbid}">
+          <xsl:value-of select="bbname" />
+        </xhtml:a>
+      </xhtml:p>
+    </qui:callout>
+  </xsl:template>
 </xsl:stylesheet>
