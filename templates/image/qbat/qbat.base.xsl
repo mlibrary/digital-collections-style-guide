@@ -19,6 +19,17 @@
 
   <xsl:template match="qui:root">
     <html lang="en" data-root="{$docroot}" data-username="{$username}" data-view="{$view}" data-initialized="false" style="opacity: 0">
+      <xsl:call-template name="make-data-attribute">
+        <xsl:with-param name="name">c</xsl:with-param>
+        <xsl:with-param name="value"><xsl:value-of select="$collid" /></xsl:with-param>
+      </xsl:call-template>       
+      <xsl:call-template name="make-data-attribute">
+        <xsl:with-param name="name">g</xsl:with-param>
+        <xsl:with-param name="value">
+          <xsl:value-of select="//qui:root/@groupid" />
+        </xsl:with-param>
+      </xsl:call-template>
+
       <xsl:apply-templates select="qui:head" />
       <body class="[ font-base-family ]" data-initialized="false" style="opacity: 0">
         <xsl:apply-templates select="build-body-data" />
@@ -688,6 +699,16 @@
       <xsl:apply-templates select="@class" mode="copy" />
       <xsl:apply-templates mode="copy" />
     </a>
+  </xsl:template>
+
+  <xsl:template name="make-data-attribute">
+    <xsl:param name="name" />
+    <xsl:param name="value" />
+    <xsl:if test="normalize-space($value)">
+      <xsl:attribute name="data-{$name}">
+        <xsl:value-of select="$value" />
+      </xsl:attribute>
+    </xsl:if>
   </xsl:template>
 
   <xsl:template match="node()[namespace-uri() = 'http://www.w3.org/1999/xhtml']" mode="copy" priority="101">

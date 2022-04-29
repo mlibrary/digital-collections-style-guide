@@ -188,7 +188,7 @@
 
   <xsl:template match="qui:filter[@key='med']" mode="index" priority="100">
     <div>
-      <label>
+      <label class="control-checkbox">
         <input type="checkbox" value="{qui:values/qui:value}" name="med">
           <xsl:if test="qui:values/qui:value/@selected = 'true'">
             <xsl:attribute name="checked">checked</xsl:attribute>

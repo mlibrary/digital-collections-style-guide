@@ -238,6 +238,11 @@ label {
   padding-right: 0.5em;
 }
 
+label.control-checkbox {
+  display: inline-flex;
+  align-items: center;
+}
+
 /*
 * Blocks
 *
@@ -711,6 +716,7 @@ fieldset.fieldset--grid button[data-action="reset-clause"] {
   display: flex;
   align-items: center;
   justify-content: center;
+  flex-shrink: 0;
   border: 1px solid rgba(0, 0, 0, 0.25);
   opacity: 0.75;
 }

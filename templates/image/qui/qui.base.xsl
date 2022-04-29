@@ -60,6 +60,12 @@
         <xsl:attribute name="user-is-owner">true</xsl:attribute>
       </xsl:if>
       <xsl:attribute name="context-type"><xsl:value-of select="$context-type" /></xsl:attribute>
+      <xsl:if test="normalize-space(//CollGroupMembership)">
+        <xsl:attribute name="groupid">
+          <xsl:value-of select="//CollGroupMembership" />
+        </xsl:attribute>
+      </xsl:if>
+      
       <!-- fills html/head-->
       <qui:head>
         <xhtml:title>

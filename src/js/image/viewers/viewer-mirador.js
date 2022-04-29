@@ -61,6 +61,9 @@ window.addEventListener('message', (event) => {
         tocbot.refresh();
 
         ScreenReaderMessenger.getMessenger().say(`Viewing ${label || newTitle}`);
+
+        const event = new Event('dlxs:trackPageView');
+        window.dispatchEvent(event);
       })
 
   }
