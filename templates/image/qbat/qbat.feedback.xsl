@@ -86,6 +86,10 @@
 
               <fieldset class="form--container">
                 <legend>Status</legend>
+                <p class="[ hint flex ][ mt-0 mb-0 ]">
+                  <span aria-hidden="true" class="material-icons" style="margin-right: 0.25rem; color: var(--color-green-300)">check_circle</span>
+                  This field is optional.
+                </p>
 
                 <xsl:variable name="status-list-tmp">
                   <qui:option value="student">U-M Student</qui:option>
