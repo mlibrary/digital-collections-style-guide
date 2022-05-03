@@ -20,7 +20,7 @@
     <xsl:apply-templates select="//qui:block[@slot='copyright']" mode="copy" />
 
     <xsl:if test="//HeroImage/@identifier">
-      <qui:hero-image identifier="{//HeroImage/@identifier}" m_id="{//HeroImage/@m_id}" m_iid="{//HeroImage/@m_iid}">
+      <qui:hero-image identifier="{//HeroImage/@identifier}" m_id="{//HeroImage/@m_id}" m_iid="{//HeroImage/@m_iid}" region="{//HeroImage/@region}">
         <qui:caption><xsl:value-of select="//HeroImage/Caption" /></qui:caption>
       </qui:hero-image>
     </xsl:if>
