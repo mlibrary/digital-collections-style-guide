@@ -54,6 +54,12 @@ window.addEventListener('message', (event) => {
           paginationEl.innerHTML = newPaginationEl.innerHTML;
         }
 
+        let slMenuEl = document.querySelector('#dropdown-action sl-menu');
+        let newSlMenuEl = newDocument.querySelector('#dropdown-action sl-menu');
+        if ( slMenuEl && newSlMenuEl ) {
+          slMenuEl.innerHTML = newSlMenuEl.innerHTML;
+        }
+
         let newUrl = newDocument.querySelector('.breadcrumb li:last-child a').getAttribute('href');
         history.pushState({}, newDocument.title, newUrl);
         document.querySelector('.breadcrumb li:last-child').setAttribute('href', newUrl);
