@@ -7,6 +7,10 @@ window.addEventListener('message', (event) => {
     const section = document.querySelector('.main-panel > section');
     const link = document.querySelector('link[rel="self"]');
 
+    const slDropdownEl = document.querySelector('#dropdown-action');
+    slDropdownEl.disabled = true;
+    slDropdownEl.style.opacity = 0.5;
+
     let alert = section.querySelector('.alert');
     if (!alert) {
       alert = document.createElement('div');
@@ -59,6 +63,8 @@ window.addEventListener('message', (event) => {
         if ( slMenuEl && newSlMenuEl ) {
           slMenuEl.innerHTML = newSlMenuEl.innerHTML;
         }
+        slDropdownEl.disabled = false;
+        slDropdownEl.style.opacity = 1.0;
 
         let newUrl = newDocument.querySelector('.breadcrumb li:last-child a').getAttribute('href');
         history.pushState({}, newDocument.title, newUrl);
