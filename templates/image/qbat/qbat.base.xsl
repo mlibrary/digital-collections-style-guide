@@ -711,8 +711,13 @@
     </xsl:if>
   </xsl:template>
 
+  <xsl:template match="xhtml:br" mode="copy" priority="105">
+    <!-- <xsl:message>AHOY XHTML:BR</xsl:message> -->
+    <br />
+  </xsl:template>
+
   <xsl:template match="node()[namespace-uri() = 'http://www.w3.org/1999/xhtml']" mode="copy" priority="101">
-    <!-- <xsl:message>COPY XHTML <xsl:value-of select="local-name()" /></xsl:message> -->
+    <!-- <xsl:message>AHOY COPY XHTML <xsl:value-of select="local-name()" /></xsl:message> -->
     <xsl:element name="{local-name()}" namespace="http://www.w3.org/1999/xhtml" data-copy="xhtml">
       <xsl:apply-templates select="*|@*|text()" mode="copy" />
     </xsl:element>
@@ -741,8 +746,13 @@
     </xsl:if>
   </xsl:template>
 
+  <xsl:template match="br" mode="copy" priority="100">
+    <!-- <xsl:message>AHOY BR</xsl:message> -->
+    <br />
+  </xsl:template>
+
   <xsl:template match="@*|*|text()" mode="copy">
-    <!-- <xsl:message>COPY <xsl:value-of select="local-name()" /> :: <xsl:value-of select="namespace-uri()" /></xsl:message> -->
+    <!-- <xsl:message>AHOY DEFAULT COPY <xsl:value-of select="namespace-uri()" />::<xsl:value-of select="local-name()" /> :: <xsl:value-of select="namespace-uri()" /></xsl:message> -->
     <xsl:copy>
       <xsl:apply-templates select="@*|*|text()" mode="copy" />
     </xsl:copy>
