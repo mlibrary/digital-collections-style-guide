@@ -24,6 +24,19 @@ a[aria-current="page"] {
   right: 50%;
 }
 
+.viewer[data-mimetype="audio/mpeg"] {
+  height: 25vh;
+}
+
+.viewer[data-istruct_mt="AUDIO:::EXTERNAL:::KALTURA"] {
+  height: 50vh;
+}
+
+.viewer[data-istruct_mt="AUDIO:::EXTERNAL:::KALTURA:::V2"] {
+  height: 50vh;
+  box-shadow: 0 1px 0 0 #ddd; /* Border bottom */
+  margin-bottom: 1rem;
+}
 .toolbar {
   display: flex;
   align-items: center;

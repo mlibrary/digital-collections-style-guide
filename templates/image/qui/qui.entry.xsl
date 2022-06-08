@@ -80,7 +80,7 @@
     <xsl:variable name="config" select="//MiradorConfig" />
     <xsl:variable name="publisher" select="//Publisher/Value" />
     <xsl:if test="//MediaInfo/istruct_ms = 'P'">
-      <qui:viewer embed-href="{$config/@embed-href}" manifest-id="{$config/@manifest-href}" canvas-index="{$config/@canvas-index}" mode="{$config/@mode}" auth-check="{//MediaInfo/AuthCheck/@allowed}" mimetype="{//MediaInfo/mimetype}" width="{//MediaInfo/width}" height="{//MediaInfo/height}" levels="{//MediaInfo/Levels}" collid="{//MediaInfo/ic_collid}" m_id="{//MediaInfo/m_id}" m_iid="{//MediaInfo/m_iid}" />
+      <qui:viewer embed-href="{$config/@embed-href}" manifest-id="{$config/@manifest-href}" canvas-index="{$config/@canvas-index}" mode="{$config/@mode}" auth-check="{//MediaInfo/AuthCheck/@allowed}" mimetype="{//MediaInfo/mimetype}" istruct_mt="{//MediaInfo/istruct_mt}" width="{//MediaInfo/width}" height="{//MediaInfo/height}" levels="{//MediaInfo/Levels}" collid="{//MediaInfo/ic_collid}" m_id="{//MediaInfo/m_id}" m_iid="{//MediaInfo/m_iid}" />
     </xsl:if>
   </xsl:template>
 
@@ -153,14 +153,16 @@
             </qui:values>
           </qui:field>
         </xsl:if>
-        <qui:field key="reported_size">
-          <qui:label>File Size</qui:label>
-          <qui:values>
-            <qui:value>
-              <xsl:value-of select="/Top/MediaInfo/ReportedSize" />
-            </qui:value>
-          </qui:values>
-        </qui:field>
+        <xsl:if test="/Top/MediaInfo/ReportedSize">
+          <qui:field key="reported_size">
+            <qui:label>File Size</qui:label>
+            <qui:values>
+              <qui:value>
+                <xsl:value-of select="/Top/MediaInfo/ReportedSize" />
+              </qui:value>
+            </qui:values>
+          </qui:field>
+        </xsl:if>
       </xsl:if>
 
       <qui:field key="m_id">

@@ -186,7 +186,9 @@
         class="[ viewer ]" 
         allow="fullscreen" 
         title="{$title}"
-        src="{ $viewer/@embed-href }"></iframe>
+        src="{ $viewer/@embed-href }"
+        data-mimetype="{$viewer/@mimetype}"
+        data-istruct_mt="{$viewer/@istruct_mt}"></iframe>
     </xsl:if>
   </xsl:template>
 
@@ -429,7 +431,7 @@
   </xsl:template>
 
   <xsl:template name="build-panel-iiif-manifest">
-    <xsl:if test="//qui:viewer/@manifest-id">
+    <xsl:if test="normalize-space(//qui:viewer/@manifest-id)">
       <h3 id="iiif-links">IIIF</h3>
       <dl class="record">
         <xsl:call-template name="build-content-copy-metadata">
