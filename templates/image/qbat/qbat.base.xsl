@@ -11,6 +11,7 @@
     />
 
   <xsl:param name="docroot">/digital-collections-style-guide/</xsl:param>
+  <xsl:param name="api_root"></xsl:param>
 
   <xsl:variable name="collid" select="//qui:root/@collid" />
   <xsl:variable name="context-type" select="//qui:root/@context-type" />

@@ -19,6 +19,7 @@
   <xsl:key match="/Top/DlxsGlobals/LangMap/lookup/item" name="gui-txt" use="@key"/>
   
   <xsl:param name="docroot">/digital-collections-style-guide</xsl:param>
+  <xsl:param name="api_root"></xsl:param>
 
   <xsl:param name="view">
     <xsl:call-template name="get-view" />
