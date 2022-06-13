@@ -19,7 +19,7 @@
   <xsl:key match="/Top/DlxsGlobals/LangMap/lookup/item" name="gui-txt" use="@key"/>
   
   <xsl:param name="docroot">/digital-collections-style-guide</xsl:param>
-  <xsl:param name="api_root"></xsl:param>
+  <xsl:param name="api_url"><xsl:value-of select="//DlxsGlobals/ApiUrl" /></xsl:param>
 
   <xsl:param name="view">
     <xsl:call-template name="get-view" />
@@ -56,7 +56,7 @@
     <xsl:processing-instruction name="xml-stylesheet">
       <xsl:value-of select="concat('type=&quot;text/xsl&quot; href=&quot;', $docroot, '/templates/debug.qui.xsl&quot;')" />
     </xsl:processing-instruction>
-    <qui:root view="{$view}" collid="{$collid}" username="{//AuthenticatedUsername}" context-type="{$context-type}">
+    <qui:root view="{$view}" collid="{$collid}" username="{//AuthenticatedUsername}" context-type="{$context-type}" api_url="{$api_url}">
       <xsl:if test="//BbagOptionsMenu/UserIsOwner = 'true'">
         <xsl:attribute name="user-is-owner">true</xsl:attribute>
       </xsl:if>

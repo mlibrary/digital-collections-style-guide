@@ -67,7 +67,7 @@
 
   <xsl:template match="qui:hero-image">
     <div class="hero">
-      <div class="hero--banner" style="--background-src: url({$api_root}/cgi/i/image/api/image/{@identifier}/{@region}/1280,/0/default.jpg)">
+      <div class="hero--banner" style="--background-src: url({$api_url}/image/{@identifier}/{@region}/1280,/0/default.jpg)">
         <div class="collection-title">
           <xsl:call-template name="build-collection-heading">
             <xsl:with-param name="badge">
