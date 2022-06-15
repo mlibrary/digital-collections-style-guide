@@ -210,7 +210,7 @@ select:focus {
   border-radius: 4px 0 0 4px;
 }
 
-input[type="search"] {
+input[type="search"], input[type="text"] {
   font-size: 1rem;
   font-family: var(--font-base-family);
   margin: 0;
@@ -441,8 +441,12 @@ fieldset.fieldset--grid button[data-action="reset-clause"] {
   grid-area: clear;
 }
 
-.fieldset--clause--query input[type="search"] {
+.fieldset--clause--query [data-slot="query"] {
   width: 100%;
+}
+
+.fieldset--clause--query [data-active="false"] {
+  display: none;
 }
 
 .fieldset--clause--operator label {
@@ -1138,6 +1142,10 @@ sl-dropdown::part(panel) {
 
 .pr-1 {
   padding-right: 1rem;
+}
+
+.gap-0_25 {
+  gap: 0.25em;
 }
 
 .gap-0_5 {

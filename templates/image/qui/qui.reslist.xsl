@@ -229,6 +229,7 @@
 
   <xsl:template match="Facets">
     <qui:filters-panel>
+      <xsl:apply-templates select="//SearchForm/Range" />
       <xsl:apply-templates select="//SearchForm/MediaOnly" />
       <xsl:for-each select="Field">
         <xsl:variable name="m" select="position()" />
@@ -256,6 +257,48 @@
         </qui:filter>
       </xsl:for-each>
     </qui:filters-panel>
+  </xsl:template>
+
+  <xsl:template match="SearchForm/Range">
+    <xsl:variable name="check" select=".//Q/Value[normalize-space(.)]" />
+    <xsl:choose>
+      <xsl:when test="normalize-space($check)">
+        <qui:debug>HAVE RANGE</qui:debug>
+      </xsl:when>
+      <xsl:otherwise>
+        <qui:debug>NO RANGE</qui:debug>
+        <qui:debug><xsl:value-of select="$check" /></qui:debug>
+      </xsl:otherwise>
+    </xsl:choose>
+    <xsl:if test="normalize-space($check)">
+      <xsl:variable name="select" select="Sel/Option/Value" />
+      <qui:filter key="range-{@name}" data-type="range">
+        <qui:label>
+          <xsl:value-of select="Q/Rgn/Label" />
+        </qui:label>
+        <qui:values>
+          <qui:value selected="true">
+            <xsl:choose>
+              <xsl:when test="$select = 'ic_range'">
+                <xsl:text>between </xsl:text>
+                <xsl:value-of select="Q/Value[1]" />
+                <xsl:text> to </xsl:text>
+                <xsl:value-of select="Q/Value[2]" />
+              </xsl:when>
+              <xsl:when test="$select = 'ic_before'">
+                <xsl:text>before </xsl:text>
+                <xsl:value-of select="Q/Value[2]" />
+              </xsl:when>
+              <xsl:when test="$select = 'ic_after'">
+                <xsl:text>after </xsl:text>
+                <xsl:value-of select="Q/Value[1]" />
+              </xsl:when>
+              <xsl:otherwise />
+            </xsl:choose>
+        </qui:value>
+        </qui:values>
+      </qui:filter>
+    </xsl:if>
   </xsl:template>
 
   <xsl:template match="MediaOnly">

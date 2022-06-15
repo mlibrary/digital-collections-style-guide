@@ -83,7 +83,7 @@
         <xsl:apply-templates select="qui:select[@slot='select']" />
       </div>
       <div class="[ fieldset--clause--query ]">
-        <xsl:apply-templates select="qui:input[@slot='query']" />
+        <xsl:apply-templates select="node()[@slot='query']" />
       </div>
       <xsl:if test="position() &gt; 1">
         <button class="[ button button--secondary ]" data-action="reset-clause">Clear</button>
@@ -108,6 +108,25 @@
   <xsl:template match="qui:select[@slot='select']">
     <label for="{@name}-{position()}" class="visually-hidden" data-active="{@data-active}">Select a comparison operator:</label>
     <select class="[ dropdown--neutral ]" name="{@name}" id="{@name}-{position()}" autocomplete="off">
+      <xsl:apply-templates select="@data-field" mode="copy" />
+      <xsl:apply-templates select="@data-active" mode="copy" />
+      <xsl:if test="@data-active = 'false'">
+        <xsl:attribute name="disabled">disabled</xsl:attribute>
+      </xsl:if>
+      <xsl:for-each select="qui:option">
+        <option value="{@value}">
+          <xsl:if test="@selected = 'true'">
+            <xsl:attribute name="selected">true</xsl:attribute>
+          </xsl:if>
+          <xsl:value-of select="." />
+        </option>
+      </xsl:for-each>
+    </select>
+  </xsl:template>
+
+  <xsl:template match="qui:select[@slot='query']">
+    <label for="{@name}-{position()}" class="visually-hidden" data-active="{@data-active}">Select a value:</label>
+    <select class="[ dropdown--neutral ]" name="{@name}" id="{@name}-{position()}" autocomplete="off" data-slot="query">
       <xsl:apply-templates select="@data-field" mode="copy" />
       <xsl:apply-templates select="@data-active" mode="copy" />
       <xsl:if test="@data-active = 'false'">
@@ -157,25 +176,87 @@
 
   <xsl:template match="qui:input[@slot='query']">
     <label for="{@name}" class="visually-hidden">Search</label>
-    <input name="{@name}" id="{@name}" value="{@value}" type="search" autocomplete="off" placeholder="Enter search terms" />
+    <input name="{@name}" id="{@name}" value="{@value}" type="search" autocomplete="off" placeholder="Enter search terms" data-slot="query" data-active="{@data-active}" />
   </xsl:template>
 
   <xsl:template match="qui:fieldset[@slot='limits']">
-    <xsl:if test="qui:control">
+    <xsl:if test=".//qui:control">
       <h3>Additional Search Options</h3>
       <div class="advanced-grid--columns">
+        <xsl:apply-templates select="qui:fieldset[@slot='range']" />
         <div class="advanced-search--containers">
           <div>
             <p class="bold">Limit Search to</p>
-            <xsl:apply-templates select="qui:control" />
+            <xsl:apply-templates select="qui:control">
+              <xsl:with-param name="class">p-half</xsl:with-param>
+            </xsl:apply-templates>
           </div>
         </div>
       </div>
     </xsl:if>
   </xsl:template>
 
+  <xsl:template match="qui:fieldset[@slot='range']">
+    <xsl:variable name="range-type" select="@data-range-type" />
+    <div class="advanced-search--containers">
+      <fieldset class="[ no-border range-filter ][ mt-1 ]" data-select="{@data-select}">
+        <legend class="[ bold mb-1 ]"><xsl:value-of select="qui:legend" /></legend>
+        <xsl:apply-templates select="qui:hidden-input" />
+        <xsl:apply-templates select="qui:control" mode="range">
+          <xsl:with-param name="range-type" select="$range-type" />
+        </xsl:apply-templates>
+      </fieldset>
+    </div>
+  </xsl:template>
+
+  <xsl:template match="qui:control" mode="range">
+    <xsl:param name="range-type" />
+    <xsl:variable name="name" select="qui:input/@name" />
+    
+    <div class="[ flex flex-center ][ align-center gap-0_5 mb-1 ]">
+      <div class="[ flex flex-center gap-0_25 ]">
+        <input type="radio" name="range-type-{$name}" id="before-{$name}" value="ic_before">
+          <xsl:if test="$range-type = 'ic_before'">
+            <xsl:attribute name="checked">checked</xsl:attribute>
+          </xsl:if>
+        </input>
+        <label for="before-{$name}">Before</label>
+      </div>
+      <div class="[ flex flex-center gap-0_25 ]" data-active="{$range-type}">
+        <input type="radio" name="range-type-{$name}" id="after-{$name}" value="ic_after">
+          <xsl:if test="$range-type = 'ic_after'">
+            <xsl:attribute name="checked">checked</xsl:attribute>
+          </xsl:if>
+        </input>
+        <label for="after-{$name}">After</label>
+      </div>
+      <div class="[ flex flex-center gap-0_25 ]">
+        <input type="radio" name="range-type-{$name}" id="between-{$name}" value="ic_range">
+          <xsl:if test="$range-type = 'ic_range'">
+            <xsl:attribute name="checked">checked</xsl:attribute>
+          </xsl:if>
+        </input>
+        <label for="between-{$name}">Between</label>
+      </div>
+    </div>
+    <div class="[ flex ][ flex-center gap-0_5 ]" data-range-type="{$range-type}">   
+      <xsl:for-each select="qui:input">
+        <input type="text" aria-label="{@aria-label}" id="{@id}" name="{@name}" value="{@value}" placeholder="{@aria-label}" data-slot="ic_range {@slot}" />
+        <xsl:if test="position() &lt; last()">
+          <span data-slot="ic_range"> to </span>
+        </xsl:if>
+      </xsl:for-each>
+    </div>
+  </xsl:template>
+
   <xsl:template match="qui:control">
+    <xsl:param name="class" />
     <div>
+      <xsl:if test="normalize-space($class)">
+        <xsl:attribute name="class">
+          <xsl:value-of select="$class" />
+        </xsl:attribute>
+      </xsl:if>
       <label>
         <xsl:apply-templates select="qui:input[@type='checkbox']" />
         <xsl:text> </xsl:text>

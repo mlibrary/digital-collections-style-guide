@@ -1,1 +1,21 @@
 /* LOCAL HACKING */
+
+div[data-range-type] input[type="text"] {
+  flex-basis: 40%;
+}
+
+div[data-range-type] > * {
+  display: none;
+}
+
+div[data-range-type="ic_range"] [data-slot*="ic_range"] {
+  display: inline;
+}
+
+div[data-range-type="ic_after"] [data-slot*="ic_after"] {
+  display: inline;
+}
+
+div[data-range-type="ic_before"] [data-slot*="ic_before"] {
+  display: inline;
+}

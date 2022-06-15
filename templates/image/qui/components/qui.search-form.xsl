@@ -8,6 +8,7 @@
         <xsl:choose>
           <xsl:when test="//Facets/Value[@selected='true']">true</xsl:when>
           <xsl:when test="//SearchForm/MediaOnly[Focus='true']">true</xsl:when>
+          <xsl:when test="//SearchForm/Range//Value[normalize-space(.)]">true</xsl:when>
           <xsl:when test="count(//SearchForm/Q[normalize-space(Value)]) = 1 and //SearchForm/Q/Value = //SearchForm/HiddenVars/Variable[@name='c']">false</xsl:when>
           <xsl:when test="normalize-space(//SearchForm/Q/Value)">true</xsl:when>
           <xsl:otherwise>false</xsl:otherwise>
@@ -18,6 +19,7 @@
           <xsl:apply-templates select="//SearchForm/Q">
             <xsl:with-param name="is-advanced" select="//SearchForm/Advanced" />
           </xsl:apply-templates>
+          <xsl:apply-templates select="//SearchForm/Range" mode="search-form" />
         </xsl:when>
         <xsl:otherwise>
           <xsl:apply-templates select="//SearchForm/Q[1]" />
@@ -98,6 +100,21 @@
         <xsl:value-of select="$options/Default" />
       </xsl:otherwise>
     </xsl:choose>
+  </xsl:template>
+
+  <xsl:template match="Range" mode="search-form">
+    <xsl:if test=".//Value[normalize-space(.)]">
+      <xsl:variable name="key" select="@name" />
+      <xsl:for-each select="Q">
+        <xsl:variable name="name" select="@name" />
+        <xsl:for-each select="Value">
+          <qui:hidden-input name="{$name}" value="{.}" data-key="range-{$key}" />
+        </xsl:for-each>
+        <qui:hidden-input name="{Rgn/@name}" value="{Rgn/Value}" data-key="range-{$key}" />
+      </xsl:for-each>
+      <qui:hidden-input name="{Op/@name}" value="{Op/Option/Value}" data-key="range-{$key}" />
+      <qui:hidden-input name="{Select/@name}" value="{Select/Option/Value}" data-key="range-{$key}" data-type="select" />
+    </xsl:if>
   </xsl:template>
 
   <xsl:template match="Facets" mode="search-form">

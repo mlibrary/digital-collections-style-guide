@@ -17,6 +17,14 @@ const _removeInputFilter = function(input, $form) {
       fInput.parentElement.removeChild(fInput);
       message = 'remove digital media restriction';
     }
+  } else if (!input.checked && input.dataset.type == 'range') {
+    let key = input.getAttribute('name');
+    $form.querySelectorAll(`[data-key="${key}"]`).forEach((fInput) => {
+      console.log("-- removing", fInput);
+      fInput.parentElement.removeChild(fInput);
+    });
+
+    message = `remove ${input.nextElementSibling.textContent}`;
   } else if (!input.checked) {
     let num = input.dataset.num;
     let fInput = $form.querySelector(`input[name="fn${num}"]`);
@@ -77,6 +85,31 @@ const _handleInputFilter = function (input) {
     message = _addInputFilter(input, $form);
   }
   ScreenReaderMessenger.getMessenger().say(`Submitting query to ${message}`);
+
+  // check to see if there are any query parameters left in $form
+  let checkEls = $form.querySelectorAll(`input[name^="q"]`);
+  if ( checkEls.length == 0 ) {
+    let el = $form.querySelector('input[name="c"]');
+    let inputEl = document.createElement('input');
+    inputEl.setAttribute('type', 'hidden');
+    inputEl.setAttribute('name', 'q1');
+    inputEl.setAttribute('value', el.value);
+    $form.appendChild(inputEl);
+
+    inputEl = document.createElement('input');
+    inputEl.setAttribute('type', 'hidden');
+    inputEl.setAttribute('name', 'rgn1');
+    inputEl.setAttribute('value', 'ic_all');
+    $form.appendChild(inputEl);
+
+    // this also means we're probably no longer an advanced search
+    // so remove the "from"
+    el = $form.querySelector('input[name="from"]');
+    if ( el ) {
+      el.value = 'index';
+    }
+  }
+  
   $form.submit();
 }
 

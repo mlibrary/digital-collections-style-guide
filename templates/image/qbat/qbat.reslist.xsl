@@ -5,7 +5,7 @@
   <xsl:variable name="sort-options" select="//qui:form[@id='sort-options']" />
   <xsl:variable name="xc" select="//qui:block[@slot='results']/@data-xc" />
   <xsl:variable name="has-results" select="//qui:nav[@role='results']/@total &gt; 0" />
-  <xsl:variable name="nav" select="//qui:nav[@role='results']" />
+<xsl:variable name="nav" select="//qui:nav[@role='results']" />
 
   <xsl:template name="build-extra-styles">
     <xsl:comment>DUBIOUS EXCEPTIONS</xsl:comment>
@@ -86,52 +86,53 @@
   </xsl:template>
 
   <xsl:template name="build-search-summary-body">
-    <p>
-      <!-- needs to address advanced search -->
-      <xsl:text>Showing results for </xsl:text>
-      <xsl:for-each select="$search-form/qui:control[@slot='clause'][normalize-space(qui:input[@slot='q']/@value)]">
-        <xsl:variable name="select" select="qui:input[@slot='select']/@value" />
-        <xsl:if test="qui:input[@slot='op']">
-          <xsl:text></xsl:text>
-          <span class="[ lowercase ]">
-            <xsl:value-of select="qui:input[@slot='op']/@label" />
+    <xsl:if test="$search-form/qui:control[@slot='clause'][normalize-space(qui:input[@slot='q']/@value)]">
+      <p>
+        <xsl:text>Showing results for </xsl:text>
+        <xsl:for-each select="$search-form/qui:control[@slot='clause'][normalize-space(qui:input[@slot='q']/@value)]">
+          <xsl:variable name="select" select="qui:input[@slot='select']/@value" />
+          <xsl:if test="qui:input[@slot='op']">
+            <xsl:text></xsl:text>
+            <span class="[ lowercase ]">
+              <xsl:value-of select="qui:input[@slot='op']/@label" />
+            </span>
+            <xsl:text></xsl:text>
+          </xsl:if>
+          <xsl:choose>
+            <xsl:when test="$select = 'all'"></xsl:when>
+            <xsl:when test="$select = 'any'"> any of </xsl:when>
+            <xsl:when test="$select = 'phrase'"> the phrase </xsl:when>
+            <xsl:when test="$select = 'ic_exact'"> the exact keyword </xsl:when>
+            <xsl:when test="$select = 'regex'"> the expression </xsl:when>
+            <xsl:otherwise></xsl:otherwise>
+          </xsl:choose>
+          <span class="[ bold ]">
+            <xsl:choose>
+              <xsl:when test="qui:input[@slot='q']/@name = 'q1' and qui:input[@slot='q']/@value = $collid">
+                <xsl:text>*</xsl:text>
+              </xsl:when>
+              <xsl:otherwise>
+                <xsl:text>&quot;</xsl:text>
+                <xsl:value-of select="qui:input[@slot='q']/@value" />
+                <xsl:text>&quot;</xsl:text>
+              </xsl:otherwise>
+            </xsl:choose>
           </span>
-          <xsl:text></xsl:text>
-        </xsl:if>
-        <xsl:choose>
-          <xsl:when test="$select = 'all'"></xsl:when>
-          <xsl:when test="$select = 'any'"> any of </xsl:when>
-          <xsl:when test="$select = 'phrase'"> the phrase </xsl:when>
-          <xsl:when test="$select = 'ic_exact'"> the exact keyword </xsl:when>
-          <xsl:when test="$select = 'regex'"> the expression </xsl:when>
-          <xsl:otherwise></xsl:otherwise>
-        </xsl:choose>
-        <span class="[ bold ]">
-          <xsl:choose>
-            <xsl:when test="qui:input[@slot='q']/@name = 'q1' and qui:input[@slot='q']/@value = $collid">
-              <xsl:text>*</xsl:text>
-            </xsl:when>
-            <xsl:otherwise>
-              <xsl:text>&quot;</xsl:text>
-              <xsl:value-of select="qui:input[@slot='q']/@value" />
-              <xsl:text>&quot;</xsl:text>
-            </xsl:otherwise>
-          </xsl:choose>
-        </span>
-        <xsl:text> in </xsl:text>
-        <span class="[ bold ]">
-          <xsl:choose>
-            <xsl:when test="qui:input[@slot='rgn']/node()[@selected='selected']">
-              <xsl:value-of select="qui:input[@slot='rgn']/node()[@selected='selected']" />
-            </xsl:when>
-            <xsl:otherwise>
-              <xsl:value-of select="qui:input[@slot='rgn']/@label" />
-            </xsl:otherwise>
-          </xsl:choose>
-        </span>
-      </xsl:for-each>
-      <xsl:text>.</xsl:text>
-    </p>
+          <xsl:text> in </xsl:text>
+          <span class="[ bold ]">
+            <xsl:choose>
+              <xsl:when test="qui:input[@slot='rgn']/node()[@selected='selected']">
+                <xsl:value-of select="qui:input[@slot='rgn']/node()[@selected='selected']" />
+              </xsl:when>
+              <xsl:otherwise>
+                <xsl:value-of select="qui:input[@slot='rgn']/@label" />
+              </xsl:otherwise>
+            </xsl:choose>
+          </span>
+        </xsl:for-each>
+        <xsl:text>.</xsl:text>
+      </p>
+    </xsl:if>
     <xsl:if test="$nav/@total = 0">
       <xsl:call-template name="build-search-hints" />
     </xsl:if>
