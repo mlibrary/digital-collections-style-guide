@@ -9,6 +9,10 @@ window.addEventListener('DOMContentLoaded', (event) => {
     return ; 
   }
 
+  if ( document.querySelectorAll('main h2').length == 0 ) {
+    return;
+  }
+
   const pageIndexDropdown = document.querySelector('#action-page-index');
 
   tocbot.init({

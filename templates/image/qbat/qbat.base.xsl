@@ -730,7 +730,7 @@
     </xsl:element>
   </xsl:template>
 
-  <xsl:template match="text()" mode="copy" priority="25">
+  <xsl:template match="text()" mode="maybe-not-copy" priority="25">
     <xsl:if test="normalize-space(.)">
       <xsl:variable name="x" select="substring(normalize-space(.), 1, 1)" />
       <xsl:if test="position() &gt; 1">

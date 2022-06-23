@@ -52,6 +52,7 @@
     <qui:panel class="callout" slot="browse">
       <qui:link href="/cgi/i/image/image-idx?c={$collid};view=reslist;q1={$collid}" rel="browse-items" data-count="{//Stats/Items}" />
       <qui:link href="/cgi/i/image/image-idx?c={$collid};view=reslist;q1={$collid};med=1" rel="browse-images" data-count="{//Stats/Images}" />
+      <xsl:apply-templates select="//qui:block[@slot='browse']/qui:link" mode="copy" />
     </qui:panel>
   </xsl:template>
 

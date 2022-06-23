@@ -188,7 +188,15 @@
         title="{$title}"
         src="{ $viewer/@embed-href }"
         data-mimetype="{$viewer/@mimetype}"
-        data-istruct_mt="{$viewer/@istruct_mt}"></iframe>
+        data-istruct_mt="{$viewer/@istruct_mt}">
+        <xsl:if test="$viewer/@viewer-max-height">
+          <xsl:attribute name="style">
+            <xsl:text>height: </xsl:text>
+            <xsl:value-of select="$viewer/@viewer-max-height" />
+            <xsl:text>px</xsl:text>
+          </xsl:attribute>
+        </xsl:if>
+      </iframe>
     </xsl:if>
   </xsl:template>
 
@@ -411,23 +419,25 @@
   </xsl:template>
 
   <xsl:template name="build-panel-related-links">
-    <xsl:variable name="block" select="//qui:block[@slot='special']" />
-    <section class="[ records ]">
-      <h2 class="[ subtle-heading ][ text-black ]" id="related-links">Related Links</h2>
-      <xsl:if test="$block/qui:field">
-        <dl class="record">
-          <div>
-            <dt>More Item Details</dt>
-            <xsl:apply-templates select="$block/qui:field[@component='catalog-link']" mode="dl" />
-            <xsl:apply-templates select="$block/qui:field[@component='system-link']" mode="dl" />
-          </div>
-        </dl>
-      </xsl:if>
+    <xsl:variable name="block" select="//qui:block[@slot='related-links']" />
+    <xsl:if test="$block/qui:field or //qui:portfolio-list or normalize-space(//qui:viewer/@manifest-id)">
+      <section class="[ records ]">
+        <h2 class="[ subtle-heading ][ text-black ]" id="related-links">Related Links</h2>
+        <xsl:if test="$block/qui:field">
+          <dl class="record">
+            <div>
+              <dt>More Item Details</dt>
+              <xsl:apply-templates select="$block/qui:field[@component='catalog-link']" mode="dl" />
+              <xsl:apply-templates select="$block/qui:field[@component='system-link']" mode="dl" />
+            </div>
+          </dl>
+        </xsl:if>
 
-      <xsl:call-template name="build-panel-portfolios-dl" />
+        <xsl:call-template name="build-panel-portfolios-dl" />
 
-      <xsl:call-template name="build-panel-iiif-manifest" />
-    </section>
+        <xsl:call-template name="build-panel-iiif-manifest" />
+      </section>
+  </xsl:if>
   </xsl:template>
 
   <xsl:template name="build-panel-iiif-manifest">

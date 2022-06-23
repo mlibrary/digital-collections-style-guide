@@ -24,6 +24,7 @@
   left: 0;
   background-color: #E5E9ED;
   transition: opacity 0.5s ease 500ms;
+  /* transform: scale(1.25); */
 }
 
 .link-box.viewport-narrow {

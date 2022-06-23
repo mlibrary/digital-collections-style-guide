@@ -259,7 +259,12 @@ label.control-checkbox {
 /* Text Block/ prose */
 
 .text-block {
-  width: max(75%); /* Set line length for readability */
+  /* width: max(75%); */
+  max-width: 75ch; /* Set line length for readability */
+}
+
+.text-block img {
+  width: auto;
 }
 
 /* Skip link */
@@ -1579,6 +1584,10 @@ main {
 .main-panel {
   width: 70%;
   /* min-height: 60vh; */
+}
+
+.main-panel.full {
+  width: 100%;
 }
 
 @media (min-width: 600px) and (max-width: 1000px) {

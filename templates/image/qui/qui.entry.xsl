@@ -80,7 +80,25 @@
     <xsl:variable name="config" select="//MiradorConfig" />
     <xsl:variable name="publisher" select="//Publisher/Value" />
     <xsl:if test="//MediaInfo/istruct_ms = 'P'">
-      <qui:viewer embed-href="{$config/@embed-href}" manifest-id="{$config/@manifest-href}" canvas-index="{$config/@canvas-index}" mode="{$config/@mode}" auth-check="{//MediaInfo/AuthCheck/@allowed}" mimetype="{//MediaInfo/mimetype}" istruct_mt="{//MediaInfo/istruct_mt}" width="{//MediaInfo/width}" height="{//MediaInfo/height}" levels="{//MediaInfo/Levels}" collid="{//MediaInfo/ic_collid}" m_id="{//MediaInfo/m_id}" m_iid="{//MediaInfo/m_iid}" />
+      <qui:viewer 
+        embed-href="{$config/@embed-href}" 
+        manifest-id="{$config/@manifest-href}" 
+        canvas-index="{$config/@canvas-index}" 
+        mode="{$config/@mode}" 
+        auth-check="{//MediaInfo/AuthCheck/@allowed}" 
+        mimetype="{//MediaInfo/mimetype}" 
+        istruct_mt="{//MediaInfo/istruct_mt}" 
+        width="{//MediaInfo/width}" 
+        height="{//MediaInfo/height}" 
+        levels="{//MediaInfo/Levels}" 
+        collid="{//MediaInfo/ic_collid}" 
+        m_id="{//MediaInfo/m_id}" 
+        m_iid="{//MediaInfo/m_iid}">
+        <xsl:if test="//MediaInfo/ViewerMaxSize">
+          <xsl:attribute name="viewer-max-width"><xsl:value-of select="//MediaInfo/ViewerMaxSize/@width" /></xsl:attribute>
+          <xsl:attribute name="viewer-max-height"><xsl:value-of select="//MediaInfo/ViewerMaxSize/@height" /></xsl:attribute>
+        </xsl:if>
+      </qui:viewer>
     </xsl:if>
   </xsl:template>
 
