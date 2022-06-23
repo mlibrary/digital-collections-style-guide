@@ -87,6 +87,36 @@ button[data-action="toggle-side-panel"] {
   display: none;
 }
 
+.hilite1 {
+  color: #000000;
+  background-color: #FFFF00;
+}
+
+.hilite2 {
+  color: #000000;
+  background-color: #00FF00;
+}
+
+.hilite3 {
+  color: #000000;
+  background-color: #FF9900;
+}
+
+.hilite4 {
+  color: #000000;
+  background-color: #00ffcc;
+}
+
+.hilite5 {
+  color: #000000;
+  background-color: #00cccc;
+}
+
+.hilite6 {
+  color: #000000;
+  background-color: #0099cc;
+}
+
 @media screen and (max-width: 751px) {
 
   button[data-action="toggle-side-panel"] {
