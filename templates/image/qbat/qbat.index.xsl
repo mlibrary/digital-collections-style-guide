@@ -1,4 +1,4 @@
-<xsl:stylesheet version="1.0" xmlns="http://www.w3.org/1999/xhtml" xmlns:xsl="http://www.w3.org/1999/XSL/Transform" xmlns:dlxs="http://dlxs.org" xmlns:qui="http://dlxs.org/quombat/ui">
+<xsl:stylesheet version="1.0" xmlns="http://www.w3.org/1999/xhtml" xmlns:xhtml="http://www.w3.org/1999/xhtml" xmlns:xsl="http://www.w3.org/1999/XSL/Transform" xmlns:dlxs="http://dlxs.org" xmlns:qui="http://dlxs.org/quombat/ui">
 
   <xsl:variable name="search-form" select="//qui:form[@id='collection-search']" />
 
@@ -57,6 +57,7 @@
         <xsl:call-template name="build-search-form" />
         <div class="text-block">
           <xsl:apply-templates select="//qui:block[@slot='information']" />
+          <xsl:apply-templates select="//qui:block[@slot='contentwarning']" />
           <xsl:apply-templates select="//qui:block[@slot='copyright']" />
           <xsl:apply-templates select="//qui:block[@slot='links']" />
         </div>
@@ -90,9 +91,22 @@
     </div>
   </xsl:template>
 
+  <xsl:template match="qui:block[@slot='contentwarning']">
+    <xsl:if test="normalize-space(.)">
+      <div class="alert-info">
+        <xsl:if test="normalize-space(.//xhtml:h2) = ''">
+          <h2>Content Warning</h2>
+        </xsl:if>
+        <xsl:apply-templates mode="copy" />
+      </div>
+    </xsl:if>
+  </xsl:template>
+
   <xsl:template match="qui:block[@slot='copyright']">
-    <h2 id="rights-permissions">Rights and Permissions</h2>
-    <xsl:apply-templates mode="copy" />
+    <xsl:if test="normalize-space(.)">
+      <h2 id="rights-permissions">Rights and Permissions</h2>
+      <xsl:apply-templates mode="copy" />
+    </xsl:if>
   </xsl:template>
 
   <xsl:template match="qui:block[@slot='links']">

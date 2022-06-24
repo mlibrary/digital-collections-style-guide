@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8" ?>
-<xsl:stylesheet version="1.0" xmlns:xhtml="http://www.w3.org/1999/xhtml" xmlns:xsl="http://www.w3.org/1999/XSL/Transform" xmlns:dlxs="http://dlxs.org" xmlns:qbat="http://dlxs.org/quombat" xmlns:exsl="http://exslt.org/common" extension-element-prefixes="exsl" xmlns:qui="http://dlxs.org/quombat/ui">
+<xsl:stylesheet version="1.0" xmlns="http://www.w3.org/1999/xhtml" xmlns:xhtml="http://www.w3.org/1999/xhtml" xmlns:xsl="http://www.w3.org/1999/XSL/Transform" xmlns:dlxs="http://dlxs.org" xmlns:qbat="http://dlxs.org/quombat" xmlns:exsl="http://exslt.org/common" extension-element-prefixes="exsl" xmlns:qui="http://dlxs.org/quombat/ui">
 
   <xsl:template name="get-title">
     Index
@@ -18,6 +18,7 @@
     <xsl:apply-templates select="//qui:block[@slot='information']" mode="copy" />
     <xsl:apply-templates select="//qui:block[@slot='links']" mode="copy" />
     <xsl:apply-templates select="//qui:block[@slot='copyright']" mode="copy" />
+    <xsl:apply-templates select="//qui:block[@slot='contentwarning']" mode="copy" />
 
     <xsl:if test="//HeroImage/@identifier">
       <qui:hero-image identifier="{//HeroImage/@identifier}" m_id="{//HeroImage/@m_id}" m_iid="{//HeroImage/@m_iid}" region="{//HeroImage/@region}">

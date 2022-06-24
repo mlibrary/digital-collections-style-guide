@@ -82,6 +82,7 @@
   <?CHUNK filename="uplift.copyright.xml" optional="1"?>
   <?CHUNK filename="uplift.links.xml" optional="1"?>
   <?CHUNK filename="uplift.panels.xml" optional="1"?>
+  <?CHUNK filename="uplift.contentwarning.xml" optional="1"?>
 
   <?HERO_IMAGE_XML ?>
 
