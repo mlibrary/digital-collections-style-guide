@@ -249,7 +249,7 @@
           />
           <span>of <xsl:value-of select="$nav/@max" /></span>
 
-          <button type="submit" class="[ button button--secondary ] [ flex ]">
+          <button id="action-goto-results-page" class="[ button button--secondary ] [ flex ]">
             Go
           </button>
         </div>
