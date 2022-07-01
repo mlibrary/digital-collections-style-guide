@@ -1,0 +1,30 @@
+<?xml version="1.0"?>
+<Top xmlns:dlxs="http://www.umdl.umich.edu/dlxs">
+  <!-- XSL fallback files -->
+  <XslFallbackFileList pipeline="qui">
+    <Filename>qui/qui.base.xsl</Filename>
+    <Filename>qui/components/*.xsl</Filename>
+    <Filename>qui/qui.accessoptions.xsl</Filename>
+  </XslFallbackFileList>
+
+  <XslFallbackFileList pipeline="qbat">
+    <Filename>qbat/qbat.base.xsl</Filename>
+    <Filename>qbat/components/*.xsl</Filename>
+    <Filename>qbat/qbat.accessoptions.xsl</Filename>
+  </XslFallbackFileList>
+
+  <!-- Custom OPTIONAL XML for top-level file accessoptions.xml<2> -->
+  <CustomXml><?CHUNK filename="uplift.accessoptionsextra.xml" optional="1"?></CustomXml>
+  <CollName><?COLLNAME_XML?></CollName>
+
+  <DlxsGlobals><?CHUNK filename="dlxsclassglobals.xml"?></DlxsGlobals>
+
+  <ExtraCSS><?FBFILE_XML file="css/accessoptions.css"?></ExtraCSS>
+
+  <NoAccess><?CHECK_NO_ACCESS?></NoAccess>
+
+  <ReAuthLink><?RE_AUTH_LINK_XML indirect="1" specific="1"?></ReAuthLink>
+  <AthensAuthLink><?RE_AUTH_LINK_ATHENS_XML indirect="1"?></AthensAuthLink>
+  <LoginLink><?LOGINLINK_XML?></LoginLink>
+
+</Top>

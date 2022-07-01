@@ -26,12 +26,6 @@
       </xsl:otherwise>
     </xsl:choose>
 
-    <!-- <div class="message-callout">
-      <p>
-        This collection index re-design is still under construction.
-      </p>
-    </div> -->
-
     <div class="[ flex flex-flow-row flex-gap-1 ]">
       <div class="side-panel">
         <xsl:apply-templates select="//qui:panel[@slot='browse']">

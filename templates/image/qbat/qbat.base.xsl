@@ -188,7 +188,9 @@
   <xsl:template name="build-breadcrumbs-extra-nav"></xsl:template>
 
   <xsl:template name="build-footer">
-    <xsl:variable name="feedback-href" select="//qui:footer/qui:link[@rel='feedback']/@href" />
+    <xsl:variable name="feedback-href">
+      <xsl:call-template name="get-feedback-href" />
+    </xsl:variable>
     <footer class="[ footer ][ mt-2 ]">
       <div class="viewport-container">
         <div class="[ footer__content ]">
@@ -676,6 +678,10 @@
         <xsl:text>https://www.lib.umich.edu/about-us/policies/copyright-policy</xsl:text>
       </xsl:otherwise>
     </xsl:choose>
+  </xsl:template>
+
+  <xsl:template name="get-feedback-href">
+    <xsl:value-of select="//qui:footer/qui:link[@rel='feedback']/@href" />
   </xsl:template>
 
   <!-- UTILITY -->

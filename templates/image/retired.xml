@@ -1,0 +1,42 @@
+<?xml version="1.0"?>
+<Top xmlns:dlxs="http://www.umdl.umich.edu/dlxs">
+
+  <!-- XSL fallback files -->
+  <XslFallbackFileList pipeline="qui">
+    <Filename>qui/qui.base.xsl</Filename>
+    <Filename>qui/components/*.xsl</Filename>
+    <Filename>qui/qui.retired.xsl</Filename>
+  </XslFallbackFileList>
+
+  <XslFallbackFileList pipeline="qbat">
+    <Filename>qbat/qbat.base.xsl</Filename>
+    <Filename>qbat/components/*.xsl</Filename>
+    <Filename>qbat/qbat.retired.xsl</Filename>
+  </XslFallbackFileList>
+
+
+  <!-- Custom OPTIONAL XML for top-level file index.xml<2> -->
+  <CustomXml><?CHUNK filename="retiredextra.xml" optional="1"?></CustomXml>
+
+  <DlxsGlobals><?CHUNK filename="dlxsclassglobals.xml"?></DlxsGlobals>
+
+  <ExtraCSS><?FBFILE_XML file="css/index.css"?></ExtraCSS>
+
+
+  <CollName><?COLLNAME_XML?></CollName>
+
+  <ContactLink><?CONTACT_XML type="link"?></ContactLink>
+  <ContactText><?CONTACT_XML type="text"?></ContactText>
+
+  <Home><?HOME_XML?></Home>
+  <Help><?HELP_XML?></Help>
+  <Banner><?BANNER_XML?></Banner>
+
+  <RestrictStatus><?RESTRICTSTATUS_XML?></RestrictStatus>
+  <?ACCESS_RESTRICTIONS_XML?>
+
+  <Redirect><?RETIRED_REDIRECT_XML?></Redirect>
+
+  <?CHUNK filename="uplift.retiredextra.xml" optional="1"?>
+
+</Top>
