@@ -204,7 +204,7 @@
   </xsl:template>
 
   <xsl:template name="build-portfolio-actions">
-    <xsl:apply-templates select="//qui:callout" />
+    <xsl:apply-templates select="//qui:callout[@slot='portfolio']" />
     <div class="[ flex flex-align-center ][ mb-1 gap-0_5 ]">
       <button class="[ button button--secondary ] [ flex ]" aria-label="Add items to portfolio" data-action="select-all" data-checked="false">
         <span>Select all items</span>
@@ -418,6 +418,13 @@
       <xsl:apply-templates select="//qui:form[@action='bbaction']/qui:hidden-input" />
       <input type="hidden" name="bbaction" value="" id="bbaction-page" />
     </form>
+  </xsl:template>
+
+  <xsl:template match="qui:callout[@variant='warning']" priority="100">
+    <m-callout subtle="subtle" variant="{@variant}">
+      <xsl:apply-templates select="@*[starts-with(name(), 'data-')]" mode="copy" />
+      <xsl:apply-templates mode="copy" />
+    </m-callout>
   </xsl:template>
 
   <xsl:template match="qui:callout">

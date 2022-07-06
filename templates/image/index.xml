@@ -63,7 +63,7 @@
   <CollInfoLink><?COLLINFOURL_XML ?></CollInfoLink>
 
   <SearchForm><?SEARCHFORM_XML ?></SearchForm>
-  <Facets><?RESULTS_FACETS_XML ?></Facets>
+  <Facets><?INDEX_FACETS_XML ?></Facets>
 
   <GroupsLink><?GROUPSLINK_XML ?></GroupsLink>
   <Groups><?COLL_GROUPS_XML ?></Groups>

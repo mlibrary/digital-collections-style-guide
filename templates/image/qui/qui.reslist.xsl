@@ -229,8 +229,10 @@
 
   <xsl:template match="Facets">
     <qui:filters-panel>
+      <xsl:apply-templates select="Threshold" />
       <xsl:apply-templates select="//SearchForm/Range" />
       <xsl:apply-templates select="//SearchForm/MediaOnly" />
+      <xsl:apply-templates select="Error" />
       <xsl:for-each select="Field">
         <xsl:variable name="m" select="position()" />
         <qui:filter key="{@abbrev}" data-total="{@actual_total}">
@@ -368,7 +370,7 @@
   </xsl:template>
 
   <xsl:template match="Callout">
-    <qui:callout variant='success'>
+    <qui:callout variant='success' slot="portfolio">
       <xhtml:p>
         <xsl:value-of select="num_added" />
         <xsl:text> item</xsl:text> 

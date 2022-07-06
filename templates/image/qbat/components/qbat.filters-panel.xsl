@@ -62,12 +62,13 @@
       </section>
     </xsl:if>
 
-    <xsl:if test="$filters//qui:filter">
+    <xsl:if test="$filters//qui:filter or $filters//qui:callout">
       <h3>
         <xsl:attribute name="class"><xsl:value-of select="$margin-top" /></xsl:attribute>
         <xsl:text>Filters</xsl:text>
       </h3>
       <div class="[ side-panel__box ]">
+        <xsl:apply-templates select="$filters/@*[starts-with(name(), 'data-')]" mode="copy" />
         <xsl:for-each select="$filters//qui:filter">
           <xsl:choose>
             <xsl:when test="@arity = 1">
@@ -80,6 +81,7 @@
             </xsl:otherwise>
           </xsl:choose>
         </xsl:for-each>
+        <xsl:apply-templates select="$filters/qui:callout" />
       </div>
     </xsl:if>
   </xsl:template>
@@ -168,5 +170,12 @@
       </label>
     </div>
   </xsl:template>
+
+  <xsl:template match="qui:callout[@variant='warning']" priority="100">
+    <m-callout subtle="subtle" icon="warning" variant="{@variant}" style="margin-top: 1rem; margin-bottom: 0">
+      <xsl:apply-templates mode="copy" />
+    </m-callout>
+  </xsl:template>
+
 
 </xsl:stylesheet>

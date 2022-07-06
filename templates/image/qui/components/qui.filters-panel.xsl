@@ -1,7 +1,21 @@
 <xsl:stylesheet version="1.0" xmlns="http://www.w3.org/1999/xhtml" xmlns:xsl="http://www.w3.org/1999/XSL/Transform" xmlns:dlxs="http://dlxs.org" xmlns:qui="http://dlxs.org/quombat/ui" xmlns:exsl="http://exslt.org/common" xmlns:str="http://exslt.org/strings" extension-element-prefixes="exsl str">
 
+  <xsl:template match="Facets/Error" priority="100">
+    <qui:callout 
+      variant='warning' 
+      slot="results" 
+      data-threshold="{@threshold}" 
+      data-max="{@max}"
+      data-num="{@num}">
+      <p>
+        Apologies: there were too many search results to calculate filters.
+      </p>
+    </qui:callout>
+  </xsl:template>
+
   <xsl:template match="Facets">
     <qui:filters-panel>
+      <xsl:apply-templates select="Threshold" />
       <xsl:apply-templates select="//SearchForm/MediaOnly" />
       <xsl:for-each select="Field">
         <xsl:variable name="m" select="position()" />
@@ -54,6 +68,12 @@
         </qui:value>
       </qui:values>
     </qui:filter>
+  </xsl:template>
+
+  <xsl:template match="Threshold">
+    <xsl:attribute name="data-max"><xsl:value-of select="@max" /></xsl:attribute>
+    <xsl:attribute name="data-num"><xsl:value-of select="@num" /></xsl:attribute>
+    <xsl:attribute name="data-threshold"><xsl:value-of select="@threshold" /></xsl:attribute>
   </xsl:template>
 
 </xsl:stylesheet>
