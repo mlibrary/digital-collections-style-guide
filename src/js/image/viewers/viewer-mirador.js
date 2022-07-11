@@ -130,7 +130,7 @@ window.addEventListener('message', (event) => {
     });
   }
 
-  if (event.data.event == 'updateDownload') {
+  if (event.data.event == 'updateDownloadLinks') {
     const identifier = event.data.identifier;
     const resourceId = event.data.resourceId;
     const manifestId = event.data.manifestId;
