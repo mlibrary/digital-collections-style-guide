@@ -109,8 +109,15 @@
   <xsl:template name="build-filter-panel">
     <xsl:variable name="key" select="@key" />
     <xsl:variable name="total" select="@data-total" />
+    <xsl:variable name="open">
+      <xsl:choose>
+        <xsl:when test="qui:values/qui:value[@selected='true']">true</xsl:when>
+        <xsl:when test="count(//qui:filter[@data-total]) = 1">true</xsl:when>
+        <xsl:otherwise>false</xsl:otherwise>
+      </xsl:choose>
+    </xsl:variable>
     <details class="panel" data-list-expanded="false" data-key="{@key}">
-      <xsl:if test="qui:values/qui:value[@selected='true']">
+      <xsl:if test="$open = 'true'">
         <xsl:attribute name="open">open</xsl:attribute>
       </xsl:if>
       <summary>
