@@ -1,23 +1,63 @@
 import { ScreenReaderMessenger } from "../../sr-messaging";
 
+window.DLXS = window.DLXS || {};
+DLXS.manifestsData = {};
+DLXS.manifestsIndex = {};
+DLXS.totalManifests = 0;
+
+let updateDownloadMenu = function() {
+  const slDropdownEl = document.querySelector('#dropdown-action');
+  slDropdownEl.disabled = true;
+  slDropdownEl.style.opacity = 0.5;
+  let slMenuEl = slDropdownEl.querySelector('sl-menu');
+  while ( slMenuEl.firstChild ) {
+    slMenuEl.removeChild(slMenuEl.firstChild);
+  }
+  let menuHtml = '';
+  for(let i = 0; i < DLXS.totalManifests; i++) {
+    let manifestId = DLXS.manifestsIndex[i];
+    let info = DLXS.manifestsData[manifestId];
+    if ( ! info.label ) { 
+      // manifest data hasn't been loaded yet
+      continue; 
+    }
+    if ( i > 0 ) {
+      menuHtml += `<sl-menu-label></sl-menu-label>`;
+    }
+    menuHtml += `<sl-menu-label>${info.label}</sl-menu-label>`;
+    for (let ii = 0; ii < info.sizes.length; ii++) {
+      let size = info.sizes[ii];
+      console.log("-- updateDownload size", size.width, size.height);
+      if ( size.height >= 600 || size.width >= 600 ) {
+        let href = `${info.resourceId.replace('/tile/', '/image/')}/full/${size.width},${size.height}/0/default.jpg`;
+        menuHtml += `<sl-menu-item data-href="${href}" value="${href}">${size.width} x ${size.height} (JPEG)</sl-menu-item>`;
+      }
+    }
+  }
+  slMenuEl.innerHTML = menuHtml;
+
+  slDropdownEl.disabled = false;
+  slDropdownEl.style.opacity = 1.0;
+}
+
 window.addEventListener('message', (event) => {
-  if (event.data.event == 'canvasChange') {
+
+  const section = document.querySelector('.main-panel > section');
+  let alert = section.querySelector('.alert');
+  if (!alert) {
+    alert = document.createElement('div');
+    alert.classList.add('alert');
+    section.insertBefore(alert, section.firstChild);
+  }
+
+  if (event.data.event == 'updateMetadata') {
     const identifier = event.data.identifier;
     const label = event.data.label;
-    const section = document.querySelector('.main-panel > section');
     const link = document.querySelector('link[rel="self"]');
 
     const slDropdownEl = document.querySelector('#dropdown-action');
     slDropdownEl.disabled = true;
     slDropdownEl.style.opacity = 0.5;
-
-    let alert = section.querySelector('.alert');
-    if (!alert) {
-      alert = document.createElement('div');
-      alert.classList.add('alert');
-      section.insertBefore(alert, section.firstChild);
-    }
-    alert.innerHTML = `<p>Loading metadata for: ${identifier}</p>`;
 
     const parts = identifier.split(':');
 
@@ -30,6 +70,8 @@ window.addEventListener('message', (event) => {
     let url = new URL(self_href);
     url.searchParams.set('viewid', parts[2]);
     let href = url.toString();
+
+    alert.innerHTML = `<p>Loading metadata for: ${identifier}</p>`;
 
     fetch(href, {
       credentials: 'include',
@@ -77,7 +119,31 @@ window.addEventListener('message', (event) => {
         const event = new Event('dlxs:trackPageView');
         window.dispatchEvent(event);
       })
-
   }
-  // var identifier = event.identifier
+
+  if (event.data.event == 'configureManifests') {
+    let manifestList = JSON.parse(event.data.manifestList);
+    manifestList.forEach((v, idx) => {
+      DLXS.manifestsIndex[idx] = v;
+      DLXS.manifestsData[v] = {};
+      DLXS.totalManifests += 1;
+    });
+  }
+
+  if (event.data.event == 'updateDownload') {
+    const identifier = event.data.identifier;
+    const resourceId = event.data.resourceId;
+    const manifestId = event.data.manifestId;
+    const label = event.data.label;
+
+    alert.innerHTML = `<p>Updating download links for: ${identifier}</p>`;
+
+    console.log("-- updateDownload", label, resourceId, manifestId);
+    fetch(resourceId + '/info.json')
+      .then(resp => resp.json())
+      .then((data) => {
+        DLXS.manifestsData[manifestId] = { sizes: data.sizes, resourceId: resourceId, label: label };
+        updateDownloadMenu();
+      })
+  }
 })
