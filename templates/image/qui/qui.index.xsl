@@ -17,7 +17,7 @@
 
     <xsl:apply-templates select="//qui:block[@slot='information']" mode="copy" />
     <xsl:apply-templates select="//qui:block[@slot='links']" mode="copy" />
-    <xsl:apply-templates select="//qui:block[@slot='copyright']" mode="copy" />
+    <xsl:apply-templates select="//qui:block[@slot='copyright']|//qui:block[@slot='useguidelines']" mode="copy" />
     <xsl:apply-templates select="//qui:block[@slot='contentwarning']" mode="copy" />
 
     <xsl:if test="//HeroImage/@identifier">
@@ -52,8 +52,8 @@
   <xsl:template name="build-panel-browse-links">
     <qui:panel class="callout" slot="browse">
       <qui:link href="/cgi/i/image/image-idx?c={$collid};view=reslist;q1={$collid}" rel="browse-items" data-count="{//Stats/Items}" />
-      <qui:link href="/cgi/i/image/image-idx?c={$collid};view=reslist;q1={$collid};med=1" rel="browse-images" data-count="{//Stats/Images}" />
-      <xsl:apply-templates select="//qui:block[@slot='browse']/qui:link" mode="copy" />
+      <!-- <qui:link href="/cgi/i/image/image-idx?c={$collid};view=reslist;q1={$collid};med=1" rel="browse-images" data-count="{//Stats/Images}" /> -->
+      <xsl:apply-templates select="//qui:panel[@slot='browse']//qui:link" mode="copy" />
     </qui:panel>
   </xsl:template>
 

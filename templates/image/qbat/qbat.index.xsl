@@ -52,7 +52,7 @@
         <div class="text-block">
           <xsl:apply-templates select="//qui:block[@slot='information']" />
           <xsl:apply-templates select="//qui:block[@slot='contentwarning']" />
-          <xsl:apply-templates select="//qui:block[@slot='copyright']" />
+          <xsl:apply-templates select="//qui:block[@slot='copyright' or @slot='useguidelines']" />
           <xsl:apply-templates select="//qui:block[@slot='links']" />
         </div>
       </div>
@@ -96,7 +96,7 @@
     </xsl:if>
   </xsl:template>
 
-  <xsl:template match="qui:block[@slot='copyright']">
+  <xsl:template match="qui:block[@slot='copyright' or @slot='useguidelines']">
     <xsl:if test="normalize-space(.)">
       <h2 id="rights-permissions">Rights and Permissions</h2>
       <xsl:apply-templates mode="copy" />
@@ -104,7 +104,7 @@
   </xsl:template>
 
   <xsl:template match="qui:block[@slot='links']">
-    <div class="[ flex ][ mt-1 ]">
+    <div class="[ flex flex-justify-center ][ mt-1 ]">
       <xsl:apply-templates />
     </div>
   </xsl:template>
@@ -170,7 +170,7 @@
         <path d="M19 19H5V5h7V3H5c-1.11 0-2 .9-2 2v14c0 1.1.89 2 2 2h14c1.1 0 2-.9 2-2v-7h-2v7zM14 3v2h3.59l-9.83 9.83 1.41 1.41L19 6.41V10h2V3h-7z" />
       </svg> -->
       <xsl:variable name="link" select="qui:link[@rel='browse-items']" />
-      <a class="[ flex flex-start ]" href="{$link/@href}">
+      <a class="[ flex flex-start ][ gap-0_25 ]" href="{$link/@href}">
         <svg class="flex-shrink-0" xmlns="http://www.w3.org/2000/svg" height="24px" viewBox="0 0 24 24" width="24px" fill="#106684" aria-hidden="true" focusable="false" role="presentation">
           <g>
             <path d="M0,0h24v24H0V0z" fill="none"></path>
@@ -182,6 +182,23 @@
         <xsl:text>Browse </xsl:text>
         <xsl:value-of select="$link/@data-count" />
         <xsl:text> collection items</xsl:text>
+      </a>
+    </div>
+    <xsl:apply-templates select="qui:link[not(@rel)]" mode="browse-link" />
+  </xsl:template>
+
+  <xsl:template match="qui:link" mode="browse-link">
+    <div class="[ link-box ][ flex flex-center ]">
+      <a class="[ flex flex-start ][ gap-0_25 bedazzled-link ]" href="{@href}">
+        <xsl:choose>
+          <xsl:when test="@icon">
+            <span class="material-icons flex-shrink-0" aria-hidden="true"><xsl:value-of select="@icon" /></span>
+          </xsl:when>
+          <xsl:otherwise>
+            <span class="material-icons flex-shrink-0" aria-hidden="true" style="opacity: 0.5">check_box_outline_blank</span>
+          </xsl:otherwise>
+        </xsl:choose>
+        <span><xsl:value-of select="." /></span>
       </a>
     </div>
   </xsl:template>

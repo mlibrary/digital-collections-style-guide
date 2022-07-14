@@ -80,6 +80,7 @@
 
   <?CHUNK filename="uplift.info.xml" optional="1"?>
   <?CHUNK filename="uplift.copyright.xml" optional="1"?>
+  <?CHUNK filename="uplift.useguidelines.xml" optional="1"?>
   <?CHUNK filename="uplift.links.xml" optional="1"?>
   <?CHUNK filename="uplift.panels.xml" optional="1"?>
   <?CHUNK filename="uplift.contentwarning.xml" optional="1"?>
