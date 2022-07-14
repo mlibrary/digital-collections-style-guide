@@ -89,7 +89,7 @@ h3.viewport-narrow {
   width: 1.5rem;
 }
 
-.hero--caption:hover a {
+.hero--caption:hover a, .hero--caption:active a {
   width: auto;
 }
 
@@ -135,12 +135,30 @@ section.filters__selected {
   box-shadow: 0 1px 3px rgba(0, 0, 0, 0.1);
 }
 
+.float-right {
+  float: right;
+  margin: 1rem;
+  margin-right: 0;
+}
+
 .alert-info {
   margin-left: -1rem;
   margin-right: -1rem;
   margin-bottom: 1rem;
   padding: 0.5rem 1rem;
   background: lightyellow;
+}
+
+.link-box + .link-box {
+  margin-top: -1rem;
+}
+
+a.bedazzled-link {
+  text-decoration: none;
+}
+
+a.bedazzled-link span:not(.material-icons) {
+  text-decoration: underline;
 }
 
 @media screen and (max-height: 800px), ( max-width: 900px ) {

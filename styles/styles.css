@@ -265,6 +265,12 @@ label.control-checkbox {
 
 .text-block img {
   width: auto;
+  max-width: 100%;
+}
+
+.text-block ul {
+  list-style: initial;
+  padding: revert;
 }
 
 /* Skip link */
@@ -1080,8 +1086,16 @@ sl-dropdown::part(panel) {
   justify-content: space-between;
 }
 
+.flex-justify-center {
+  justify-content: center;
+}
+
 .flex-align-center {
   align-items: center;
+}
+
+.flex-gap-0_25 {
+  gap: 0.25rem;
 }
 
 .flex-gap-0_5 {

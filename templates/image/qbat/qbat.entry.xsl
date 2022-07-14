@@ -17,7 +17,11 @@
 
     <link rel="stylesheet" href="{$docroot}styles/image/entry.css" />
 
+    <xsl:call-template name="build-entry-scripts" />
+
   </xsl:template>
+
+  <xsl:template name="build-entry-scripts" />
 
   <xsl:template name="build-extra-styles">
     <xsl:comment>DUBIOUS EXCEPTIONS</xsl:comment>
@@ -173,6 +177,10 @@
   </xsl:template>
 
   <xsl:template name="build-asset-viewer">
+    <xsl:call-template name="build-iframe-embed" />
+  </xsl:template>
+
+  <xsl:template name="build-iframe-embed">
     <xsl:variable name="title">
       <xsl:text>Viewer for &quot;</xsl:text>
       <xsl:value-of select="//qui:header[@role='main']" />
