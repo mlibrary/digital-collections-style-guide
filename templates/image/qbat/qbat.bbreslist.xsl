@@ -27,6 +27,13 @@
     </xsl:if>
   </xsl:template>
 
+  <xsl:template name="check-side-actions">
+    <xsl:choose>
+      <xsl:when test="//qui:link[@target='portfolio']">true</xsl:when>
+      <xsl:otherwise>false</xsl:otherwise>
+    </xsl:choose>
+  </xsl:template>
+
   <xsl:template name="build-portfolio-actions-panel">
     <h3 class="[ mt-2 ]">Portfolio Actions</h3>
     <div class="[ side_panel__box ]">

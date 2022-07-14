@@ -25,8 +25,11 @@
     </div>
 
     <div class="[ flex flex-flow-rw ][ flex-gap-1 ]">
+      <xsl:variable name="has-side-actions">
+        <xsl:call-template name="check-side-actions" />
+      </xsl:variable>
       <div class="side-panel">
-        <xsl:if test="//qui:filter">
+        <xsl:if test="$has-side-actions = 'true'">
           <button data-action="toggle-side-panel" class="flex button button--ghost" aria-expanded="false">
             <span class="flex flex-center flex-gap-0_5 flex-grow-1">
               <span class="material-icons" aria-hidden="true">filter_alt</span>
@@ -49,6 +52,13 @@
       </div>
     </div>
 
+  </xsl:template>
+
+  <xsl:template name="check-side-actions">
+    <xsl:choose>
+      <xsl:when test="//qui:filter">true</xsl:when>
+      <xsl:otherwise>false</xsl:otherwise>
+    </xsl:choose>
   </xsl:template>
 
   <xsl:template name="build-results-summary-sort">
