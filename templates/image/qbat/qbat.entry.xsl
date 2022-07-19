@@ -388,12 +388,12 @@
   </xsl:template>
 
   <xsl:template name="build-cite-this-item-panel">
-    <xsl:variable name="brief-citation-text">
+    <!-- <xsl:variable name="brief-citation-text">
       <xsl:text>University of Michigan Library Digital Collections. </xsl:text>
       <xsl:value-of select="//qui:head/xhtml:meta[@property='og:site_name']/@content" />
       <xsl:text>. Accessed: </xsl:text>
       <xsl:value-of select="concat(date:month-name(), ' ', date:day-in-month(), ', ', date:year(), '.')" />
-    </xsl:variable>
+    </xsl:variable> -->
     <section>
       <h2 class="[ subtle-heading ][ text-black ]" id="cite-this-item">Cite this Item</h2>
       <p class="[ text-xxx-small mt-0 ]">
@@ -409,7 +409,7 @@
           <dd>
             <div class="text--copyable">
               <span>
-                <xsl:apply-templates select="//qui:field[@key='full-citation']//qui:value" mode="copy-guts" />
+                <xsl:apply-templates select="//qui:field[@slot='citation'][@rel='full']//qui:value" mode="copy-guts" />
               </span>
               <button class="button button--small" data-action="copy-text" aria-label="Copy Text">
                 <span class="material-icons" aria-hidden="true">content_copy</span>
@@ -418,10 +418,10 @@
           </dd>
         </div>
 
-        <xsl:call-template name="build-content-copy-metadata">
+        <!-- <xsl:call-template name="build-content-copy-metadata">
           <xsl:with-param name="term">Brief citatation</xsl:with-param>
           <xsl:with-param name="text" select="normalize-space($brief-citation-text)" />
-        </xsl:call-template>
+        </xsl:call-template> -->
       </dl>
     </section>
   </xsl:template>

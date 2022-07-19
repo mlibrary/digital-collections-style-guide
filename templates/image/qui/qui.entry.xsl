@@ -111,7 +111,14 @@
     <qui:block slot="special">
       <xsl:call-template name="build-special-metadata" />
     </qui:block>
-    <qui:field key="full-citation">
+    <qui:field slot="citation" rel="full">
+      <qui:values>
+        <qui:value>
+          <xsl:apply-templates select="//RecordCitation[@format='full']" mode="copy-guts" />
+        </qui:value>
+      </qui:values>
+    </qui:field>
+    <!-- <qui:field key="full-citation">
       <qui:values>
         <qui:value>
           <xsl:text>"</xsl:text>
@@ -126,7 +133,7 @@
           <xsl:value-of select="concat(date:month-name(), ' ', date:day-in-month(), ', ', date:year(), '.')" />
         </qui:value>
       </qui:values>
-    </qui:field>
+    </qui:field> -->
   </xsl:template>
 
   <xsl:template name="build-record-header">

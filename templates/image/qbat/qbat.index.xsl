@@ -157,6 +157,7 @@
 
   <xsl:template match="qui:caption">
     <figcaption>
+      <xsl:apply-templates select="@class" mode="copy" />
       <xsl:apply-templates mode="copy" />
     </figcaption>
   </xsl:template>

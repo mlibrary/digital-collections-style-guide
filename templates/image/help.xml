@@ -181,13 +181,16 @@
 
       <h2 id="citationattribution">Citation/Attribution</h2>
 
-      <p>There are two methods for citing or attributing an image you find in Image Collections.</p>
-      <ol class="list-numbered" type="1">
-        <li>
+      <!-- <p>There are two methods for citing or attributing an image you find in Image Collections.</p> -->
+      <!-- <p>To cite or attribute an image you find in the Digital Collections:</p> -->
+      <!-- <ol class="xx-list-numbered" type="1"> -->
+        <!-- <li> -->
           <p>
             To attribute or cite this image in any medium, please use this format:
-            <tt>“[Image Title].” [Image URL]. University of Michigan Library Digital Collections. Accessed: [Date accessed].</tt>
           </p>
+          <m-callout variant="info">
+            <tt>“[Image Title].” [Image URL]. University of Michigan Library Digital Collections. Accessed: [Date accessed].</tt>
+          </m-callout>
           <p>
             Example from the
             <a href="https://quod.lib.umich.edu/b/bhl">Bentley Image Bank, Bentley Historical Library</a>
@@ -195,10 +198,10 @@
             <tt>“UM Carillon. Adding new bells.” https://quod.lib.umich.edu/b/bhl/x-bl004079/bl004079. University of Michigan Library Digital Collections. Accessed: December 12, 2013.</tt>
           </p>
           <p>
-            <em>N.B: The “Image URL” should be grabbed from the “Bookmark” box located in the far right-hand column of the image viewer page, or, via the “Bookmark Link” option under the “Share/Cite” menu in the navigation bar. This will ensure you are using the permanent, short URL for this image.</em>
+            <em>N.B: The “Image URL” should be grabbed from the <strong>Link to this Item</strong> field in the <strong>Technical Details</strong> metadata. This will ensure you are using the permanent, short URL for this image.</em>
           </p>
-        </li>
-        <li>
+        <!-- </li> -->
+        <!-- <li>
           <p>
             For attribution or citation where space is at a premium, please use this format:
             <tt>U-M Library Digital Collections. [Collection name]. Accessed: [Date accessed].</tt>
@@ -212,8 +215,8 @@
           <p>
             <em>N.B.: The “Collection Name” is always at the very top of the screen when you’re in a collection.</em>
           </p>
-        </li>
-      </ol>
+        </li> -->
+      <!-- </ol> -->
 
       <h2 id="reporting-errors-and-further-help">Reporting Errors and Further Help</h2>
 
