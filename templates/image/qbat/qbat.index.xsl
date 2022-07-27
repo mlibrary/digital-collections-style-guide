@@ -63,7 +63,7 @@
 
   <xsl:template match="qui:hero-image[@src]" priority="100">
     <div class="hero">
-      <div class="hero--banner" style="--background-src: url{@src}">
+      <div class="hero--banner" style="--background-src: url({@src})">
         <div class="collection-title">
           <xsl:call-template name="build-collection-heading">
             <xsl:with-param name="badge">
