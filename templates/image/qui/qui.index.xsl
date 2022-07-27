@@ -26,6 +26,10 @@
       </qui:hero-image>
     </xsl:if>
 
+    <xsl:if test="//HeroImage/@src">
+      <qui:hero-image src="{//HeroImage/@src}" />
+    </xsl:if>
+
     <xsl:call-template name="build-panel-custom" />
     <xsl:call-template name="build-panel-browse-links" />
     <!-- <xsl:call-template name="build-panel-collection-links" /> -->

@@ -50,14 +50,29 @@
         </xsl:apply-templates>
         <xsl:call-template name="build-search-form" />
         <div class="text-block">
+          <xsl:apply-templates select="//qui:block[@slot='links'][@align='top']" />
           <xsl:apply-templates select="//qui:block[@slot='information']" />
           <xsl:apply-templates select="//qui:block[@slot='contentwarning']" />
           <xsl:apply-templates select="//qui:block[@slot='copyright' or @slot='useguidelines']" />
-          <xsl:apply-templates select="//qui:block[@slot='links']" />
+          <xsl:apply-templates select="//qui:block[@slot='links'][not(@align)]" />
         </div>
       </div>
     </div>
 
+  </xsl:template>
+
+  <xsl:template match="qui:hero-image[@src]" priority="100">
+    <div class="hero">
+      <div class="hero--banner" style="--background-src: url{@src}">
+        <div class="collection-title">
+          <xsl:call-template name="build-collection-heading">
+            <xsl:with-param name="badge">
+              <xsl:value-of select="@data-badge" />
+            </xsl:with-param>
+          </xsl:call-template>
+        </div>
+      </div>
+    </div>
   </xsl:template>
 
   <xsl:template match="qui:hero-image">
