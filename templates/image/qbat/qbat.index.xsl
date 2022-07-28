@@ -200,11 +200,14 @@
         <xsl:text> collection items</xsl:text>
       </a>
     </div>
-    <xsl:apply-templates select="qui:link[not(@rel)]" mode="browse-link" />
+    <xsl:apply-templates select="qui:link[not(@rel)]" mode="browse-link">
+      <xsl:with-param name="classes"><xsl:value-of select="$classes" /></xsl:with-param>
+    </xsl:apply-templates>
   </xsl:template>
 
   <xsl:template match="qui:link" mode="browse-link">
-    <div class="[ link-box ][ flex flex-center ]">
+    <xsl:param name="classes" />
+    <div class="[ link-box ][ flex flex-center ][ {$classes} ]">
       <a class="[ flex flex-start ][ gap-0_25 bedazzled-link ]" href="{@href}">
         <xsl:choose>
           <xsl:when test="@icon">
