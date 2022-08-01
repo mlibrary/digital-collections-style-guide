@@ -16,7 +16,7 @@ window.addEventListener('DOMContentLoaded', (event) => {
 
   if (
     location.hostname.indexOf('.netlify.app') < 0 &&
-    location.hostname.indexOf('.quod.lib.umich.edu') < 0
+    location.hostname.indexOf('quod.lib.umich.edu') < 0
   ) {
     // login trigger
     const $actionLogin = document.querySelector('#action-login');

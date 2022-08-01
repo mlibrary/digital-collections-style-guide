@@ -241,7 +241,7 @@
       <xsl:when test="qui:download-options/qui:download-item[1]/@asset-type = 'IMAGE'">
         <xsl:call-template name="build-download-action-shoelace" />
       </xsl:when>
-      <xsl:otherwise>
+      <xsl:when test="qui:download-options/qui:download-item">
         <button class="button button--primary capitalize">
           <xsl:attribute name="data-href">
             <xsl:value-of select="qui:download-options/qui:download-item[1]/@href" />
@@ -250,7 +250,8 @@
           <xsl:text> Download </xsl:text> 
           <xsl:value-of select="qui:download-options/@label" />
         </button>
-      </xsl:otherwise>
+      </xsl:when>
+      <xsl:otherwise />
     </xsl:choose>
   </xsl:template>
 
