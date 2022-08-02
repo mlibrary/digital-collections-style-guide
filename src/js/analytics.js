@@ -28,7 +28,7 @@ const trackPageView = function (options) {
     if ( _visited[options.location] ) { return ; }
     _visited[options.location] = true;
 
-    ga('create', 'UA-43730774-1', { cookieDomain: 'umich.edu', name: 'dlxs');
+    ga('create', 'UA-43730774-1', { cookieDomain: 'umich.edu', name: 'dlxs' });
     ga('dlxs.send', 'pageview', options);
 
     let codeForColl = document.documentElement.dataset.analyticsCodeForColl;
