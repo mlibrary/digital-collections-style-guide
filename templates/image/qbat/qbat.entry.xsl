@@ -699,7 +699,7 @@
         <figure>
           <div style="height: 100px">
             <xsl:if test="qui:link[@rel='iiif']">
-              <img src="{qui:link[@rel='iiif']/@href}" style="width: auto" />
+              <img src="{qui:link[@rel='iiif']/@href}" style="width: auto" alt="Thumbnail for view {@x}x{@y}" />
             </xsl:if>
             <xsl:if test="not(qui:link[@rel='iiif'])">
               <div style="height: 100px;" class="results-list__blank" data-type="image"></div>
