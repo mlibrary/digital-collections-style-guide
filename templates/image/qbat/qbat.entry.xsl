@@ -662,6 +662,13 @@
   <xsl:template match="qui:header[@role='main']">
   </xsl:template>
 
+  <xsl:template match="qui:section[qui:view-grid]" priority="100">
+    <xsl:if test="@name != 'default'">
+      <h3 id="{@slug}"><xsl:value-of select="@name" /></h3>
+    </xsl:if>
+    <xsl:apply-templates />
+  </xsl:template>
+
   <xsl:template match="qui:section">
     <xsl:if test="@name != 'default'">
       <h3 id="{@slug}"><xsl:value-of select="@name" /></h3>
@@ -672,6 +679,45 @@
     <dl class="record">
       <xsl:apply-templates />
     </dl>
+  </xsl:template>
+
+  <xsl:template match="qui:view-grid">
+    <h4>
+      <xsl:value-of select="@name" />
+      <xsl:text> (</xsl:text>
+      <xsl:value-of select="count(qui:view)" />
+      <xsl:text> items)</xsl:text>
+    </h4>
+    <div style="display: grid; gap: 0rem; border: 1px solid transparent; padding: 1rem; overflow: auto;">
+      <xsl:apply-templates select="qui:view" />
+    </div>
+  </xsl:template>
+
+  <xsl:template match="qui:view">
+    <div style="grid-column-start: {@x}; grid-row-start: {@y}; background-color: rgba(229, 233, 237, 0.125);" class="view">
+      <a href="{qui:link[@rel='result']}" class="[ flex ][ flex-grow-1 ]">
+        <figure>
+          <div style="height: 100px">
+            <xsl:if test="qui:link[@rel='iiif']">
+              <img src="{qui:link[@rel='iiif']/@href}" style="width: auto" />
+            </xsl:if>
+            <xsl:if test="not(qui:link[@rel='iiif'])">
+              <div style="height: 100px;" class="results-list__blank" data-type="image"></div>
+            </xsl:if>
+          </div>
+          <figcaption style="font-size: 0.875rem;">
+            <ul class="mt-0">
+            <xsl:for-each select="qui:caption//qui:value">
+              <li>
+                <xsl:value-of select="." />
+              </li>
+              <!-- <xsl:if test="position() &lt; last()">; </xsl:if> -->
+            </xsl:for-each>
+            </ul>
+          </figcaption>
+        </figure>
+      </a>
+    </div>
   </xsl:template>
 
   <xsl:template match="qui:field[@key='bookmark']" priority="101">

@@ -105,6 +105,7 @@
   <xsl:template name="build-record">
     <xsl:call-template name="build-record-header" />
     <qui:block slot="record">
+      <xsl:call-template name="build-related-views" />
       <xsl:call-template name="build-record-metadata" />
       <xsl:call-template name="build-record-technical-metadata" />
     </qui:block>
@@ -149,6 +150,32 @@
         <xsl:text> / </xsl:text>
       </xsl:if>
     </xsl:for-each>
+  </xsl:template>
+
+  <xsl:template name="build-related-views">
+    <qui:section name="Related Views" slug="related_views">
+      <xsl:apply-templates select="//RelatedViews/View" />
+    </qui:section>
+  </xsl:template>
+
+  <xsl:template match="View">
+    <qui:view-grid name="{Name}">
+      <xsl:for-each select=".//Column[@blank='no']">
+        <qui:view x="{@x}" y="{@y}" type="{Type}">
+          <xsl:if test="Url[@name='Thumb']">
+            <qui:link rel="iiif" href="{Url[@name='Thumb']}" />
+          </xsl:if>
+          <qui:link rel="result" href="{Url[@name='EntryLink']}" />
+          <qui:caption>
+            <qui:values>
+              <xsl:for-each select="Caption">
+                <qui:value><xsl:value-of select="." /></qui:value>
+              </xsl:for-each>
+            </qui:values>
+          </qui:caption>
+        </qui:view>
+      </xsl:for-each>
+    </qui:view-grid>
   </xsl:template>
 
   <xsl:template name="build-record-technical-metadata">
