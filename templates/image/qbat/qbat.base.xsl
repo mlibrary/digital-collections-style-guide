@@ -30,6 +30,12 @@
           <xsl:value-of select="//qui:root/@groupid" />
         </xsl:with-param>
       </xsl:call-template>
+      <xsl:call-template name="make-data-attribute">
+        <xsl:with-param name="name">analytics-code-for-coll</xsl:with-param>
+        <xsl:with-param name="value">
+          <xsl:value-of select="//qui:root/@analytics-code-for-coll" />
+        </xsl:with-param>
+      </xsl:call-template>
 
       <xsl:apply-templates select="qui:head" />
       <body class="[ font-base-family ]" data-initialized="false" style="opacity: 0">

@@ -31,6 +31,12 @@ const trackPageView = function (options) {
     ga('create', 'UA-43730774-1', 'umich.edu');
     ga('send', 'pageview', options);
 
+    let codeForColl = document.documentElement.dataset.analyticsCodeForColl;
+    if (codeForColl ) {
+      ga('create', codeForColl, { cookieDomain: 'umich.edu', name: 'coll' });
+      ga('coll.send', 'pageview', options);
+    }
+
   }
 }
 
