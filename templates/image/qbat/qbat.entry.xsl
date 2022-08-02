@@ -695,7 +695,7 @@
 
   <xsl:template match="qui:view">
     <div style="grid-column-start: {@x}; grid-row-start: {@y}; background-color: rgba(229, 233, 237, 0.125);" class="view">
-      <a href="{qui:link[@rel='result']}" class="[ flex ][ flex-grow-1 ]">
+      <a href="{qui:link[@rel='result']/@href}" class="[ flex ][ flex-grow-1 ]">
         <figure>
           <div style="height: 100px">
             <xsl:if test="qui:link[@rel='iiif']">
