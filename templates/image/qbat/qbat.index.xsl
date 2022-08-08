@@ -76,8 +76,13 @@
   </xsl:template>
 
   <xsl:template match="qui:hero-image">
+    <xsl:variable name="position-y">
+      <xsl:if test="normalize-space(@y)">
+        <xsl:value-of select="concat('--background-position-y: ', @y, ';')" />
+      </xsl:if>
+    </xsl:variable>
     <div class="hero">
-      <div class="hero--banner" style="--background-src: url({$api_url}/image/{@identifier}/{@region}/1280,/0/default.jpg)">
+      <div class="hero--banner" style="--background-src: url({$api_url}/image/{@identifier}/{@region}/1280,/0/default.jpg);{$position-y}">
         <div class="collection-title">
           <xsl:call-template name="build-collection-heading">
             <xsl:with-param name="badge">

@@ -11,7 +11,7 @@
 .hero--banner::before {
   z-index: -101;
   background-image: var(--background-src);
-  background-position: 50% 50%;
+  background-position: 50% var(--background-position-y, 50%);
   background-size: cover;
   background-repeat: no-repeat;
 
