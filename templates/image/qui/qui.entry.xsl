@@ -153,9 +153,11 @@
   </xsl:template>
 
   <xsl:template name="build-related-views">
-    <qui:section name="Related Views" slug="related_views">
-      <xsl:apply-templates select="//RelatedViews/View" />
-    </qui:section>
+    <xsl:if test="//RelatedViews/View">
+      <qui:section name="Related Views" slug="related_views">
+        <xsl:apply-templates select="//RelatedViews/View" />
+      </qui:section>
+    </xsl:if>
   </xsl:template>
 
   <xsl:template match="View">
