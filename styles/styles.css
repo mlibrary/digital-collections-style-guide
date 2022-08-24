@@ -1604,6 +1604,10 @@ main {
   width: 100%;
 }
 
+.main-panel img {
+  width: initial;
+}
+
 @media (min-width: 600px) and (max-width: 1000px) {
   .main-panel {
     /* width: 80%; */
@@ -1757,3 +1761,4 @@ html[data-debugging-srm="true"] #srm-log {
   padding: 1;
   min-height: 1.5rem;
 }
+
