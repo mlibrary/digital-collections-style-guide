@@ -46,11 +46,15 @@
         </xsl:otherwise>
       </xsl:choose>
     </xsl:variable>
-    <qui:fieldset id="{@name}-fieldset" slot="clause">
+    <qui:fieldset id="{@name}-fieldset">
+      <xsl:attribute name="slot">
+        <xsl:if test="@name = 'q0'">clause-template</xsl:if>
+        <xsl:if test="@name != 'q0'">clause</xsl:if>
+      </xsl:attribute>
       <qui:input name="{@name}" slot="query" value="{Value}">
         <xsl:attribute name="data-active">
           <xsl:choose>
-            <xsl:when test="Qlist[normalize-space(Default)]">false</xsl:when>
+            <xsl:when test="Qlist[@active = 'TRUE']">false</xsl:when>
             <xsl:otherwise>true</xsl:otherwise>
           </xsl:choose>
         </xsl:attribute>

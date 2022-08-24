@@ -18,15 +18,16 @@ window.addEventListener('DOMContentLoaded', (event) => {
       let $clause = target.closest("fieldset");
       let rgn = target.value;
       console.log("--", rgn);
-      let $select = $clause.querySelector('select[data-active="true"]');
-      $select.dataset.active = false;
-      $select.disabled = true;
-      // $select = $clause.querySelector(`select[data-field="${rgn}"]`);
-      // $select.dataset.active = true;
-      // $select.disabled = false;
+      $clause.querySelectorAll(`select[data-active="true"]`).forEach(($select) => {
+        $select.dataset.active = false;
+        $select.disabled = true;
+        console.log("--", $clause.dataset.index, rgn, $select, $select.dataset.active);
+      });
+
 
       let has_query_select = false;
       $clause.querySelectorAll(`select[data-field="${rgn}"]`).forEach(($select) => {
+        console.log("-- activating", rgn, $clause.dataset.index, $select);
         $select.dataset.active = true;
         $select.disabled = false;
         if ( $select.dataset.slot == 'query' ) {
@@ -52,7 +53,7 @@ window.addEventListener('DOMContentLoaded', (event) => {
 
   $form.addEventListener('click', (event) => {
     let target;
-    if ( target = event.target.closest(`.fieldset--clause button[data-action='reset-clause']`) ) {
+    if ( target = event.target.closest(`.fieldset--grid button[data-action='reset-clause']`) ) {
       event.preventDefault();
       let $clause = target.closest('fieldset');
       $clause.querySelectorAll('select,input').forEach((input) => {

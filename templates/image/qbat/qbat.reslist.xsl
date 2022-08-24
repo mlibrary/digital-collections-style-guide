@@ -102,7 +102,7 @@
         <xsl:for-each select="$search-form/qui:control[@slot='clause'][normalize-space(qui:input[@slot='q']/@value)]">
           <xsl:variable name="select" select="qui:input[@slot='select']/@value" />
           <xsl:if test="qui:input[@slot='op']">
-            <xsl:text></xsl:text>
+            <xsl:text> </xsl:text>
             <span class="[ lowercase ]">
               <xsl:value-of select="qui:input[@slot='op']/@label" />
             </span>

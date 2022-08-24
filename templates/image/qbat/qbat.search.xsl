@@ -74,7 +74,7 @@
 
   <xsl:template match="qui:fieldset[@slot='clause']">
     <xsl:apply-templates select="qui:select[@slot='op']" />
-    <fieldset class="[ no-border ][ fieldset--grid ]">
+    <fieldset class="[ no-border ][ fieldset--grid ]" data-index="{position()}">
       <legend class="visually-hidden">Search Terms</legend>
       <div class="[ fieldset--clause--region ]">
         <xsl:apply-templates select="qui:select[@slot='region']" />
@@ -150,7 +150,7 @@
       <legend class="visually-hidden">Radio operators</legend>
       <xsl:for-each select="qui:option">
         <label class="radio-buttons" for="{$name}-{$position}-{@value}">
-          <input type="radio" id="{$name}-{$position}-{@value}" name="{$name}-{$position}" value="{@value}">
+          <input type="radio" id="{$name}-{$position}-{@value}" name="{$name}" value="{@value}">
             <xsl:if test="@selected = 'true'">
               <xsl:attribute name="checked">checked</xsl:attribute>
             </xsl:if>
