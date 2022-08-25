@@ -24,7 +24,7 @@
     "watch-js": "npx esbuild --bundle src/js/image/*.js --outdir=dist --outbase=src --target=es2015 --watch",
     "build-xml": "./samples/scripts/transform-xml-qui.mjs && ./samples/scripts/transform-qui-qbat.mjs && ./samples/scripts/build-indexes.mjs",
     "proxy": "./samples/scripts/serve.mjs",
-    "release": "rsync -av --exclude=node_modules --exclude=.git . quod-update:/quod/web/digital-collections-style-guide"
+    "release": "rsync -av --exclude=node_modules --exclude=.git . quod-update.umdl.umich.edu:/quod/web/digital-collections-style-guide"
   },
   "repository": {
     "type": "git",
