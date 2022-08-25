@@ -1477,6 +1477,10 @@ dl.record {
   font-weight: var(--bold);
 }
 
+.record > div[data-key="relevance"], .results > div[data-key="relevance"] {
+  display: none;
+}
+
 dl.record dt,
 dl.record dd {
   padding: var(--space-small) 0;

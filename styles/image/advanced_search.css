@@ -8,14 +8,24 @@ div[data-range-type] > * {
   display: none;
 }
 
+
 div[data-range-type="ic_range"] [data-slot*="ic_range"] {
   display: inline;
 }
 
+/* div[data-range-type="ic_range"] [data-slot*="ic_exact_range"] {
+  display: none;
+} */
+
 div[data-range-type="ic_after"] [data-slot*="ic_after"] {
+  display: inline;
+}
+
+div[data-range-type="ic_exact_range"] [data-slot*="ic_exact_range"] {
   display: inline;
 }
 
 div[data-range-type="ic_before"] [data-slot*="ic_before"] {
   display: inline;
 }
+

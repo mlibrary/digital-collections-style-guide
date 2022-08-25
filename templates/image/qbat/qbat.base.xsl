@@ -619,7 +619,7 @@
   </xsl:template>
 
   <xsl:template match="qui:field">
-    <div>
+    <div data-key="{@key}">
       <dt data-key="{@key}">
         <xsl:apply-templates select="@*[starts-with(name(), 'data-')]" mode="copy" />
         <xsl:apply-templates select="qui:label" mode="copy-guts" />
