@@ -282,10 +282,17 @@
           <qui:value selected="true">
             <xsl:choose>
               <xsl:when test="$select = 'ic_range'">
-                <xsl:text>between </xsl:text>
-                <xsl:value-of select="Q/Value[1]" />
-                <xsl:text> to </xsl:text>
-                <xsl:value-of select="Q/Value[2]" />
+                <xsl:choose>
+                  <xsl:when test="Q/Value[1] = Q/Value[2]">
+                    <xsl:value-of select="Q/Value[1]" />
+                  </xsl:when>
+                  <xsl:otherwise>
+                    <xsl:text>between </xsl:text>
+                    <xsl:value-of select="Q/Value[1]" />
+                    <xsl:text> to </xsl:text>
+                    <xsl:value-of select="Q/Value[2]" />
+                  </xsl:otherwise>
+                </xsl:choose>
               </xsl:when>
               <xsl:when test="$select = 'ic_before'">
                 <xsl:text>before </xsl:text>
@@ -293,6 +300,10 @@
               </xsl:when>
               <xsl:when test="$select = 'ic_after'">
                 <xsl:text>after </xsl:text>
+                <xsl:value-of select="Q/Value[1]" />
+              </xsl:when>
+              <xsl:when test="$select = 'ic_exact_range'">
+                <xsl:text> </xsl:text>
                 <xsl:value-of select="Q/Value[1]" />
               </xsl:when>
               <xsl:otherwise />
