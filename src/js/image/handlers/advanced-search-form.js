@@ -51,21 +51,56 @@ window.addEventListener('DOMContentLoaded', (event) => {
     }
   })
 
+  let _buildClause = function(qN) {
+    const template = document.querySelector('#clause-template');
+    const $newClause = template.content.cloneNode(true);
+    $newClause.querySelector('.fieldset--grid').dataset.index = qN;
+    $newClause.querySelectorAll('input,label,select').forEach((el) => {
+      ['for', 'id', 'name', 'id'].forEach((attr) => {
+        if (el.hasAttribute(attr)) {
+          let value = el.getAttribute(attr);
+          let prefix; let N = 0;
+          if (value.match(/^q/)) { prefix = 'q'; }
+          else if (value.match(/^rgn/)) { prefix = 'rgn'; }
+          else if (value.match(/^op/)) { prefix = 'op'; N = 1; }
+          else if (value.match(/^select/)) { prefix = 'select'; }
+          el.setAttribute(attr, value.replace(`${prefix}${N}`, `${prefix}${qN}`));
+        }
+      })
+    })
+    return $newClause;
+  }
+
   $form.addEventListener('click', (event) => {
     let target;
     if ( target = event.target.closest(`.fieldset--grid button[data-action='reset-clause']`) ) {
       event.preventDefault();
       let $clause = target.closest('fieldset');
-      $clause.querySelectorAll('select,input').forEach((input) => {
-        input.value = input.dataset.resetValue;
-        input.checked = input.dataset.resetChecked == 'true';
+      let $replacement = _buildClause($clause.dataset.index);
+      $clause.previousElementSibling.querySelectorAll('input[value="And"]').forEach((input) => {
+        input.checked = true;
       })
+      $clause.replaceWith($replacement.querySelector('.fieldset--grid'));
+      // $clause.querySelectorAll('select,input').forEach((input) => {
+      //   input.value = input.dataset.resetValue;
+      //   input.checked = input.dataset.resetChecked == 'true';
+      // })
     } else if (target = event.target.closest(`button[data-action='reset-form']`) ) {
       event.preventDefault();
-      $form.querySelectorAll('input,select').forEach((input) => {
-        input.value = input.dataset.resetValue;
-        input.checked = input.dataset.resetChecked == 'true';
-      })
+      const clauses = [ ...$form.querySelectorAll('.fieldset--grid')];
+      for(let $clause of clauses) {
+        if ( $clause.dataset.index == '0' ) { continue; }
+        console.log("--", $clause, $clause.dataset.index);
+        let $replacement = _buildClause($clause.dataset.index);
+        $clause.previousElementSibling.querySelectorAll('input[value="And"]').forEach((input) => {
+          input.checked = true;
+        })
+        $clause.replaceWith($replacement.querySelector('.fieldset--grid'));
+      }
+      // $form.querySelectorAll('input,select').forEach((input) => {
+      //   input.value = input.dataset.resetValue;
+      //   input.checked = input.dataset.resetChecked == 'true';
+      // })
     } else if ( target = event.target.closest(`button[data-action="select-all-collid"]`) ) {
       event.preventDefault();
       $form.querySelectorAll('input[type="checkbox"][name="c"]').forEach((input) => {
@@ -76,6 +111,28 @@ window.addEventListener('DOMContentLoaded', (event) => {
       $form.querySelectorAll('input[type="checkbox"][name="c"]').forEach((input) => {
         input.checked = false;
       })
+    } else if ( target = event.target.closest('button[data-action="add-clause"]') ) {
+      event.preventDefault();
+      const template = document.querySelector('#clause-template');
+      const $newClause = template.content.cloneNode(true);
+      let qN = parseInt($form.dataset.numQs, 10);
+      if ( qN < 10 ) { qN = 10; }
+      qN += 1;
+      $form.dataset.numQs = qN;
+      $newClause.querySelectorAll('input,label,select').forEach((el) => {
+        [ 'for', 'id', 'name', 'id' ].forEach((attr) => {
+          if (el.hasAttribute(attr)) {
+            let value = el.getAttribute(attr);
+            let prefix; let N = 0;
+            if ( value.match(/^q/) ) { prefix = 'q'; }
+            else if ( value.match(/^rgn/) ) { prefix = 'rgn'; }
+            else if ( value.match(/^op/) ) { prefix = 'op'; N = 1; }
+            else if ( value.match(/^select/) ) { prefix = 'select'; }
+            el.setAttribute(attr, value.replace(`${prefix}${N}`, `${prefix}${qN}`));
+          }
+        })
+      })
+      target.parentElement.insertBefore($newClause, target);
     }
   })
 

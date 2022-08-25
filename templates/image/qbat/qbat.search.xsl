@@ -35,7 +35,7 @@
   </xsl:template>
 
   <xsl:template name="build-search-form">
-    <form id="collection-search" action="/cgi/i/image/image-idx" method="GET" autocomplete="off">
+    <form id="collection-search" action="/cgi/i/image/image-idx" method="GET" autocomplete="off" data-num-qs="{$search-form/@data-num-qs}">
       <h2 class="subtle-heading">Fielded Search Options</h2>
       <div class="message-callout info">
         <p>
@@ -45,6 +45,8 @@
       <div class="advanced-search--containers">
         <div class="field-groups">
           <xsl:apply-templates select="$search-form/qui:fieldset[@slot='clause']" />
+          <!-- TODO: requires changes to DLXS -->
+          <!-- <button data-action="add-clause">Add another field</button> -->
         </div>
       </div>
       
@@ -72,9 +74,19 @@
     </button>
   </xsl:template>
 
+  <xsl:template match="qui:fieldset[@slot='clause'][@role='template']" priority="100">
+    <template id="clause-template">
+      <xsl:call-template name="build-fieldset-clause" />
+    </template>
+  </xsl:template>
+
   <xsl:template match="qui:fieldset[@slot='clause']">
+    <xsl:call-template name="build-fieldset-clause" />
+  </xsl:template>
+
+  <xsl:template name="build-fieldset-clause">
     <xsl:apply-templates select="qui:select[@slot='op']" />
-    <fieldset class="[ no-border ][ fieldset--grid ]" data-index="{position()}">
+    <fieldset class="[ no-border ][ fieldset--grid ]" data-index="{substring(@data-name, 2)}">
       <legend class="visually-hidden">Search Terms</legend>
       <div class="[ fieldset--clause--region ]">
         <xsl:apply-templates select="qui:select[@slot='region']" />
@@ -85,7 +97,7 @@
       <div class="[ fieldset--clause--query ]">
         <xsl:apply-templates select="node()[@slot='query']" />
       </div>
-      <xsl:if test="position() &gt; 1">
+      <xsl:if test="true() or @data-name != 'q1'">
         <button class="[ button button--secondary ]" data-action="reset-clause">Clear</button>
       </xsl:if>
     </fieldset>
@@ -230,6 +242,14 @@
         </input>
         <label for="after-{$name}">After</label>
       </div>
+      <div class="[ flex flex-center gap-0_25 ]" data-active="{$range-type}">
+        <input type="radio" name="range-type-{$name}" id="exact-{$name}" value="ic_exact_range">
+          <xsl:if test="$range-type = 'ic_exact_range'">
+            <xsl:attribute name="checked">checked</xsl:attribute>
+          </xsl:if>
+        </input>
+        <label for="exact-{$name}">Exact</label>
+      </div>
       <div class="[ flex flex-center gap-0_25 ]">
         <input type="radio" name="range-type-{$name}" id="between-{$name}" value="ic_range">
           <xsl:if test="$range-type = 'ic_range'">
@@ -241,10 +261,15 @@
     </div>
     <div class="[ flex ][ flex-center gap-0_5 ]" data-range-type="{$range-type}">   
       <xsl:for-each select="qui:input">
-        <input type="text" aria-label="{@aria-label}" id="{@id}" name="{@name}" value="{@value}" placeholder="{@aria-label}" data-slot="ic_range {@slot}" />
-        <xsl:if test="position() &lt; last()">
+        <xsl:if test="position() &gt; 1 and @slot != 'ic_exact_range'">
           <span data-slot="ic_range"> to </span>
         </xsl:if>
+        <input type="text" aria-label="{@aria-label}" id="{@id}" name="{@name}" value="{@value}" placeholder="{@aria-label}" data-xx-slot="ic_range {@slot}">
+          <xsl:attribute name="data-slot">
+            <xsl:if test="@slot != 'ic_exact_range'">ic_range </xsl:if>
+            <xsl:value-of select="@slot" />
+          </xsl:attribute>
+        </input>
       </xsl:for-each>
     </div>
   </xsl:template>

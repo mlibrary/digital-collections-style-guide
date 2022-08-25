@@ -46,11 +46,10 @@
         </xsl:otherwise>
       </xsl:choose>
     </xsl:variable>
-    <qui:fieldset id="{@name}-fieldset">
-      <xsl:attribute name="slot">
-        <xsl:if test="@name = 'q0'">clause-template</xsl:if>
-        <xsl:if test="@name != 'q0'">clause</xsl:if>
-      </xsl:attribute>
+    <qui:fieldset id="{@name}-fieldset" data-name="{@name}" slot="clause">
+      <xsl:if test="@name = 'q0'">
+        <xsl:attribute name="role">template</xsl:attribute>
+      </xsl:if>
       <qui:input name="{@name}" slot="query" value="{Value}">
         <xsl:attribute name="data-active">
           <xsl:choose>
@@ -106,6 +105,7 @@
     <qui:control>
       <qui:input slot="ic_after" aria-label="Start Date" data-field="{$abbr}" name="{@name}" id="{@name}-min" value="{Value[1]}" />
       <qui:input slot="ic_before" aria-label="End Date" data-field="{$abbr}" name="{@name}" id="{@name}-max" value="{Value[2]}" />
+      <qui:input slot="ic_exact_range" aria-label="Exact Date" data-field="{$abbr}" name="{@name}" id="{@name}-max" value="{Value[1]}" />
     </qui:control>
   </xsl:template>
 
@@ -122,8 +122,11 @@
 
   <xsl:template name="build-operator-select">
     <xsl:choose>
-      <xsl:when test="preceding::Q[1]/Op">
+      <xsl:when test="preceding::Q[1]/Op and preceding::Q[1]/@name != 'q0'">
         <xsl:apply-templates select="preceding::Q[1]/Op" />
+      </xsl:when>
+      <xsl:when test="@name = 'q0'">
+        <xsl:apply-templates select="Op" />
       </xsl:when>
       <xsl:otherwise>
         <!-- empty -->
