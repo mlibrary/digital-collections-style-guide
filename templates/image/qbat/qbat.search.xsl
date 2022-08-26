@@ -188,7 +188,11 @@
 
   <xsl:template match="qui:input[@slot='query']">
     <label for="{@name}" class="visually-hidden">Search</label>
-    <input name="{@name}" id="{@name}" value="{@value}" type="search" autocomplete="off" placeholder="Enter search terms" data-slot="query" data-active="{@data-active}" />
+    <input name="{@name}" id="{@name}" value="{@value}" type="search" autocomplete="off" placeholder="Enter search terms" data-slot="query" data-active="{@data-active}">
+      <xsl:if test="@data-active='false'">
+        <xsl:attribute name="disabled">disabled</xsl:attribute>
+      </xsl:if>
+    </input>
   </xsl:template>
 
   <xsl:template match="qui:fieldset[@slot='limits']">
