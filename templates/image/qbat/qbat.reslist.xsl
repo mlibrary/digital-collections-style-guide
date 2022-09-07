@@ -99,14 +99,14 @@
     <xsl:if test="$search-form/qui:control[@slot='clause'][normalize-space(qui:input[@slot='q']/@value)]">
       <p>
         <xsl:text>Showing results for </xsl:text>
-        <xsl:for-each select="$search-form/qui:control[@slot='clause'][normalize-space(qui:input[@slot='q']/@value)]">
+        <xsl:for-each select="$search-form/qui:control[@slot='clause'][@data-name!='q0'][normalize-space(qui:input[@slot='q']/@value)]">
           <xsl:variable name="select" select="qui:input[@slot='select']/@value" />
-          <xsl:if test="qui:input[@slot='op']">
+          <xsl:if test="qui:input[@slot='op'] and position() &gt; 1">
             <xsl:text> </xsl:text>
             <span class="[ lowercase ]">
               <xsl:value-of select="qui:input[@slot='op']/@label" />
             </span>
-            <xsl:text></xsl:text>
+            <xsl:text> </xsl:text>
           </xsl:if>
           <xsl:choose>
             <xsl:when test="$select = 'all'"></xsl:when>

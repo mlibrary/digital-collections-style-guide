@@ -22,7 +22,7 @@
           <xsl:apply-templates select="//SearchForm/Range" mode="search-form" />
         </xsl:when>
         <xsl:otherwise>
-          <xsl:apply-templates select="//SearchForm/Q[1]" />
+          <xsl:apply-templates select="//SearchForm/Q[@name!='q0'][1]" />
         </xsl:otherwise>
       </xsl:choose>
       <xsl:apply-templates select="//Facets" mode="search-form" />
