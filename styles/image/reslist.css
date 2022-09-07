@@ -41,7 +41,7 @@ details[data-list-expanded="true"] span[data-expanded="false"] {
 
 input#results-pagination {
   height: 40px;
-  width: 6ch;
+  min-width: 6ch;
   padding: 0 0.5rem;
 }
 
