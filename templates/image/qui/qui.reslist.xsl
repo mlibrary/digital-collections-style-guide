@@ -335,6 +335,12 @@
     </qui:filter>
   </xsl:template>
 
+  <xsl:template match="MediaInfo[AuthCheck/@allowed = 'no']" mode="iiif-link" priority="250">
+    <xsl:if test="normalize-space(istruct_ms) = 'P'">
+      <qui:link rel="icon" type="restricted" />
+    </xsl:if>
+  </xsl:template>
+
   <xsl:template match="MediaInfo[Type='image']" mode="iiif-link">
     <xsl:variable name="collid" select="ic_collid" />
     <xsl:variable name="m_id" select="m_id" />

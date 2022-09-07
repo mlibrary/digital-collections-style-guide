@@ -79,7 +79,7 @@
   <xsl:template name="build-asset-viewer-configuration">
     <xsl:variable name="config" select="//MiradorConfig" />
     <xsl:variable name="publisher" select="//Publisher/Value" />
-    <xsl:if test="//MediaInfo/istruct_ms = 'P'">
+    <xsl:if test="//MediaInfo/istruct_ms = 'P' and //MediaInfo/AuthCheck/@allowed = 'yes'">
       <qui:viewer 
         embed-href="{$config/@embed-href}" 
         manifest-id="{$config/@manifest-href}" 
@@ -99,6 +99,11 @@
           <xsl:attribute name="viewer-max-height"><xsl:value-of select="//MediaInfo/ViewerMaxSize/@height" /></xsl:attribute>
         </xsl:if>
       </qui:viewer>
+    </xsl:if>
+    <xsl:if test="//MediaInfo/istruct_ms = 'P' and //MediaInfo/AuthCheck/@allowed = 'no'">
+      <qui:callout icon="warning" variant="warning" slot="viewer" dismissable="false">
+        <p>Access to this resource is restricted.</p>
+      </qui:callout>
     </xsl:if>
   </xsl:template>
 
@@ -347,7 +352,7 @@
   <xsl:template name="build-action-panel">
     <qui:block slot="actions">
       <!-- download options -->
-      <xsl:if test="//MediaInfo/istruct_ms = 'P'">
+      <xsl:if test="//MediaInfo/istruct_ms = 'P' and //MediaInfo/AuthCheck/@allowed = 'yes'">
         <xsl:variable name="type">
           <xsl:choose>
             <xsl:when test="normalize-space(/Top/MediaInfo/type[@class='imgInfHashRef'])">
@@ -494,7 +499,7 @@
   </xsl:template>
 
   <xsl:template match="Callout">
-    <qui:callout variant='success'>
+    <qui:callout variant='success' slot="actions">
       <xhtml:p>
         <xsl:value-of select="num_added" />
         <xsl:text> item</xsl:text>

@@ -299,6 +299,9 @@
                   <xsl:when test="qui:link[@rel='icon']/@type='pdf'">
                     <span>description</span>
                   </xsl:when>
+                  <xsl:when test="qui:link[@rel='icon']/@type='restricted'">
+                    <span>lock</span>
+                  </xsl:when>
                   <xsl:otherwise>blank</xsl:otherwise>
                 </xsl:choose>
               </xsl:attribute>

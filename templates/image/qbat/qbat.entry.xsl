@@ -206,6 +206,9 @@
         </xsl:if>
       </iframe>
     </xsl:if>
+    <xsl:if test="//qui:callout[@slot='viewer']">
+      <xsl:apply-templates select="//qui:callout[@slot='viewer']" />
+    </xsl:if>
   </xsl:template>
 
   <xsl:template name="build-asset-viewer--inline">
@@ -232,7 +235,7 @@
         <xsl:call-template name="build-copy-citation-action" />
         <!-- <xsl:apply-templates select="." mode="extra" /> -->
       </div>
-      <xsl:apply-templates select="//qui:callout" />
+      <xsl:apply-templates select="//qui:callout[@slot='actions']" />
     </div>
   </xsl:template>
 
@@ -759,7 +762,21 @@
   </xsl:template>
 
   <xsl:template match="qui:callout">
-    <m-callout subtle="subtle" icon="check" dismissable="dismissable" variant="{@variant}" style="margin-top: 1rem; margin-bottom: 0">
+    <xsl:variable name="icon">
+      <xsl:choose>
+        <xsl:when test="@icon"><xsl:value-of select="@icon" /></xsl:when>
+        <xsl:otherwise>check</xsl:otherwise>
+      </xsl:choose>
+    </xsl:variable>
+    <xsl:variable name="dismissable">
+      <xsl:choose>
+        <xsl:when test="@dismissable">
+          <xsl:value-of select="@dismissable" />
+        </xsl:when>
+        <xsl:otherwise>dismissable</xsl:otherwise>
+      </xsl:choose>
+    </xsl:variable>
+    <m-callout subtle="subtle" icon="{$icon}" dismissable="{$dismissable}" variant="{@variant}" style="margin-top: 1rem; margin-bottom: 0">
       <xsl:apply-templates mode="copy" />
     </m-callout>
   </xsl:template>
