@@ -8,6 +8,8 @@ document.addEventListener('click', (event) => {
       setTimeout(() => {
         el.scrollIntoView();
       }, 0);
+    } else if ( target.dataset.target ) {
+      window.open(target.dataset.href, target.dataset.target);
     } else {
       location.href = target.dataset.href;
     }

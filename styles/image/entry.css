@@ -37,10 +37,21 @@ a[aria-current="page"] {
   box-shadow: 0 1px 0 0 #ddd; /* Border bottom */
   margin-bottom: 1rem;
 }
-.toolbar {
+
+/* .toolbar {
   display: flex;
   align-items: center;
   gap: 0.5rem;
+  position: relative;
+} */
+
+.toolbar {
+  display: grid;
+  gap: 0.5rem;
+  align-items: center;
+  /* can't do auto-fill because the download label doesn't expand when long */
+  /* grid-template-columns: repeat(auto-fill, minmax(10.5rem, 1fr)); */
+  grid-template-columns: repeat(2, minmax(10.5rem, 1fr));
   position: relative;
 }
 
@@ -75,12 +86,13 @@ a[aria-current="page"] {
   display: flex;
   align-items: center;
   justify-content: center;
-  gap: 0.25rem;
+  gap: 0.25rem; 
+  font-size: 0.875rem;
 }
 
-.toolbar > * {
+/* .toolbar > * {
   flex: 1;
-}
+} */
 
 .toolbar form {
   display: flex;
@@ -278,11 +290,11 @@ a.toc-link {
 }
 
 @container aside--wrap (max-width: 670px ) {
-  .toolbar {
+  /* .toolbar {
     flex-direction: column; 
-  }
+  } */
 
-  sl-dropdown {
+  /* sl-dropdown {
     width: 90%;
   }
 
@@ -292,7 +304,7 @@ a.toc-link {
 
   .toolbar form {
     width: 90%;
-  }
+  } */
 
   .record>div {
     grid-template-columns: 1fr;
