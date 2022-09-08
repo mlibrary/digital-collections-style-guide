@@ -375,9 +375,13 @@
 
       <xsl:call-template name="build-action-panel-iiif-link" />
 
+      <xsl:call-template name="build-action-panel-extra" />
+
     </qui:block>
 
   </xsl:template>
+
+  <xsl:template name="build-action-panel-extra" />
 
   <xsl:template match="ImageSizeTool">
     <xsl:apply-templates select="Level" />

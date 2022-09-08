@@ -7,6 +7,7 @@
   --base-text-color: var(--color-neutral-400);
   --light-text-color: var(--color-neutral-300);
   --viewport-margin: var(--space-medium);
+  --text-xx-small: 0.875rem;
   --material: "Material Icons";
 }
 
@@ -1180,11 +1181,11 @@ sl-dropdown::part(panel) {
 }
 
 .text-xxx-small {
-  font-size: var(--text-xxx-small);
+  font-size: var(--text-xxx-small) !important;
 }
 
 .text-xx-small {
-  font-size: var(--text-xx-small);
+  font-size: var(--text-xx-small) !important;
 }
 
 /*
@@ -1381,6 +1382,7 @@ button {
   align-items: center;
   min-height: 2.5rem;
   margin: 0; /** must remove margin for Safari */
+  text-decoration: none;
 }
 
 .button--small {

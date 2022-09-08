@@ -233,10 +233,14 @@
         <xsl:call-template name="build-favorite-action" />
         <xsl:call-template name="build-copy-link-action" />
         <xsl:call-template name="build-copy-citation-action" />
-        <!-- <xsl:apply-templates select="." mode="extra" /> -->
+        <xsl:apply-templates select="." mode="extra" />
       </div>
       <xsl:apply-templates select="//qui:callout[@slot='actions']" />
     </div>
+  </xsl:template>
+
+  <xsl:template match="qui:block[@slot='actions']" mode="extra">
+    <xsl:apply-templates select="*[@slot='extension']" mode="action" />
   </xsl:template>
 
   <xsl:template name="build-download-action">
@@ -260,9 +264,9 @@
 
   <xsl:template name="build-download-action-shoelace">
     <xsl:if test="qui:download-options/qui:download-item">
-      <sl-dropdown id="dropdown-action">
+      <sl-dropdown id="dropdown-action" placement="bottom">
         <sl-button slot="trigger" caret="caret" class="sl-button--primary">
-          <span class="flex flex-center flex-gap-0_5">
+          <span class="flex flex-center flex-gap-0_5 text-xx-small">
             <span class="material-icons text-xx-small">file_download</span>
             <span class="capitalize">
               <xsl:text>Download</xsl:text>
@@ -373,6 +377,30 @@
       <xsl:with-param name="icon">save</xsl:with-param>
       <xsl:with-param name="data-attributes">
         <qbat:attribute name="data-href">#cite-this-item</qbat:attribute>
+      </xsl:with-param>
+    </xsl:call-template>
+  </xsl:template>
+
+  <xsl:template match="qui:link" mode="action">
+    <a href="{@href}" target="{@target}" class="button button--secondary text-xx-small">
+      <xsl:if test="@icon">
+        <span class="material-icons" aria-hidden="true">
+          <xsl:value-of select="@icon" />
+        </span>
+      </xsl:if>
+      <span><xsl:value-of select="." /></span>
+    </a>
+  </xsl:template>
+
+  <xsl:template match="qui:button" mode="action">
+    <xsl:call-template name="button">
+      <xsl:with-param name="label"><xsl:value-of select="." /></xsl:with-param>
+      <xsl:with-param name="classes">button--secondary</xsl:with-param>
+      <xsl:with-param name="action">go</xsl:with-param>
+      <xsl:with-param name="icon"><xsl:value-of select="@icon" /></xsl:with-param>
+      <xsl:with-param name="data-attributes">
+        <qbat:attribute name="data-href"><xsl:value-of select="@data-href" /></qbat:attribute>
+        <qbat:attribute name="data-target"><xsl:value-of select="@data-target" /></qbat:attribute>
       </xsl:with-param>
     </xsl:call-template>
   </xsl:template>
