@@ -994,6 +994,10 @@ sl-menu-item::part(label) {
   font-size: var(--text-base-size);
 }
 
+sl-menu-item:hover::part(label) {
+  color: white;
+}
+
 sl-dropdown::part(panel) {
   max-height: 50vh;
 }
