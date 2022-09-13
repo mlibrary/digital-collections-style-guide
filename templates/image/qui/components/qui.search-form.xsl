@@ -9,8 +9,8 @@
           <xsl:when test="//Facets/Value[@selected='true']">true</xsl:when>
           <xsl:when test="//SearchForm/MediaOnly[Focus='true']">true</xsl:when>
           <xsl:when test="//SearchForm/Range//Value[normalize-space(.)]">true</xsl:when>
-          <xsl:when test="count(//SearchForm/Q[normalize-space(Value)]) = 1 and //SearchForm/Q/Value = //SearchForm/HiddenVars/Variable[@name='c']">false</xsl:when>
-          <xsl:when test="normalize-space(//SearchForm/Q/Value)">true</xsl:when>
+          <xsl:when test="count(//SearchForm/Q[@name != 'q0'][normalize-space(Value)]) = 1 and //SearchForm/Q[@name != 'q0']/Value = //SearchForm/HiddenVars/Variable[@name='c']">false</xsl:when>
+          <xsl:when test="normalize-space(//SearchForm/Q[@name != 'q0']/Value)">true</xsl:when>
           <xsl:otherwise>false</xsl:otherwise>
         </xsl:choose>
       </xsl:attribute>
