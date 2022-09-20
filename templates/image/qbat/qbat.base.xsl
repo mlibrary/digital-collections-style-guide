@@ -12,6 +12,7 @@
 
   <xsl:param name="docroot">/digital-collections-style-guide/</xsl:param>
   <xsl:param name="api_url"><xsl:value-of select="//qui:root/@api_url" /></xsl:param>
+  <xsl:param name="ds_url">https://unpkg.com</xsl:param>
 
   <xsl:variable name="collid" select="//qui:root/@collid" />
   <xsl:variable name="context-type" select="//qui:root/@context-type" />
@@ -94,15 +95,15 @@
         rel="stylesheet"
         href="https://fonts.googleapis.com/icon?family=Material+Icons"
       />
-      <link href="https://unpkg.com/@umich-lib/web@1/umich-lib.css" rel="stylesheet" />
+      <link href="{$ds_url}/@umich-lib/web@1.3.0/umich-lib.css" rel="stylesheet" />
       <link href="{$docroot}styles/styles.css" rel="stylesheet" />
 
       <script>
         window.mUse = [ 'm-universal-header', 'm-website-header', 'm-logo' ];
       </script>
 
-      <script type="module" src="https://unpkg.com/@umich-lib/web@1/dist/umich-lib/umich-lib.esm.js"></script>
-      <script nomodule="" src="https://unpkg.com/@umich-lib/web@1/dist/umich-lib/umich-lib.js"></script>
+      <script type="module" src="{$ds_url}/@umich-lib/web@1.3.0/dist/umich-lib/umich-lib.esm.js"></script>
+      <script nomodule="" src="{$ds_url}/@umich-lib/web@1.3.0/dist/umich-lib/umich-lib.js"></script>
 
       <xsl:call-template name="build-app-script" />
 
@@ -122,7 +123,7 @@
   </xsl:template>
   
   <xsl:template name="build-cqfill-script">
-    <script src="https://unpkg.com/container-query-polyfill/cqfill.iife.min.js"></script>
+    <script src="{$ds_url}/container-query-polyfill/cqfill.iife.min.js"></script>
   </xsl:template>
 
   <xsl:template match="qui:m-website-header">
