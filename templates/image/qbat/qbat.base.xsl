@@ -12,7 +12,7 @@
 
   <xsl:param name="docroot">/digital-collections-style-guide/</xsl:param>
   <xsl:param name="api_url"><xsl:value-of select="//qui:root/@api_url" /></xsl:param>
-  <xsl:param name="ds_url">https://unpkg.com</xsl:param>
+  <xsl:param name="ds_url">https://cdn.jsdelivr.net/npm</xsl:param>
 
   <xsl:variable name="collid" select="//qui:root/@collid" />
   <xsl:variable name="context-type" select="//qui:root/@context-type" />
@@ -123,7 +123,8 @@
   </xsl:template>
   
   <xsl:template name="build-cqfill-script">
-    <script src="{$ds_url}/container-query-polyfill/cqfill.iife.min.js"></script>
+    <!-- <script src="{$ds_url}/container-query-polyfill/cqfill.iife.min.js"></script> -->
+    <script src="{$ds_url}/container-query-polyfill@1/dist/container-query-polyfill.modern.js"></script>
   </xsl:template>
 
   <xsl:template match="qui:m-website-header">
