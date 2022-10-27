@@ -26,6 +26,12 @@
         </xsl:otherwise>
       </xsl:choose>
       <xsl:apply-templates select="//Facets" mode="search-form" />
+      <xsl:apply-templates select="//SearchForm/HiddenVars/Variable" />
+      <xsl:if test="//SearchForm/HiddenVars/Variable[@name='xc'] = '1'">
+        <xsl:for-each select="//Param[@name='c']">
+          <qui:hidden-input name="c" value="{.}" />
+        </xsl:for-each>
+      </xsl:if>
     </qui:form>
   </xsl:template>
 

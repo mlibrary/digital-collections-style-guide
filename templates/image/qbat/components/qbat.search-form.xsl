@@ -112,7 +112,12 @@
     <xsl:apply-templates select="$form/qui:hidden-input" />
     <input type="hidden" name="type" value="boolean" />
     <input type="hidden" name="view" value="reslist" />
-    <input type="hidden" name="c" value="{//qui:root/@collid}" />
+    <xsl:choose>
+      <xsl:when test="$form/qui:hidden-input[@name='c']" />
+      <xsl:otherwise>
+        <input type="hidden" name="c" value="{//qui:root/@collid}" />
+      </xsl:otherwise>
+    </xsl:choose>
   </xsl:template>
 
   <xsl:template name="build-search-additional-fields" />
