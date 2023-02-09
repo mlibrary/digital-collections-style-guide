@@ -284,7 +284,7 @@
 
         <xsl:choose>
           <xsl:when test="qui:link[@rel='iiif']">
-            <img class="[ results-list__image ]" src="{qui:link[@rel='iiif']/@href}/full/!250,250/0/native.jpg" alt="{ItemDescription}" />
+            <img class="[ results-list__image ]" src="{qui:link[@rel='iiif']/@href}/full/140,/0/native.jpg" alt="{ItemDescription}" />
           </xsl:when>
           <xsl:otherwise>
             <div class="[ results-list__blank ]" aria-hidden="true">
