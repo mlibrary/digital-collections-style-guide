@@ -6,7 +6,10 @@ window.addEventListener('DOMContentLoaded', (event) => {
       const selectedItem = event.detail.item;
 
       let href = selectedItem.value + '?attachment=1';
-      location.href = location.protocol + '//' + location.host + href;
+      if ( href.indexOf('https://') < 0 ) {
+        href = location.protocol + '//' + location.host + href;
+      }
+      location.href = href;
 
       window.dispatchEvent(new CustomEvent('dlxs:trackPageView', {
         detail: {

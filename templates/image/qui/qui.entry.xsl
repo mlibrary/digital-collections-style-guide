@@ -387,7 +387,7 @@
     <xsl:apply-templates select="Level" />
   </xsl:template>
 
-  <xsl:template match="Level">
+  <xsl:template match="Level[FileType!='NA']">
     <xsl:variable name="part" select="Part[@name='MediaLink']" />
     <qui:download-item height="{LevelHeight}" width="{LevelWidth}" href="{$part}" file-type="{FileType}" asset-type="{Type}">
       <xsl:apply-templates select="@slot" mode="copy" />

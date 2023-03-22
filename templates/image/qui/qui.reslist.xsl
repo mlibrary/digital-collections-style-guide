@@ -362,6 +362,13 @@
     </xsl:if>
   </xsl:template>
 
+   <xsl:template match="MediaInfo[istruct_mt='AUDIO:::EXTERNAL:::KALTURA:::ABLEPLAYER']"
+     mode="iiif-link" priority="100">
+     <xsl:if test="normalize-space(istruct_ms) = 'P'">
+       <qui:link rel="icon" type="audio" />
+     </xsl:if>
+   </xsl:template>
+     
   <xsl:template match="MediaInfo" mode="iiif-link">
     <xsl:if test="normalize-space(istruct_ms) = 'P'">
       <qui:link rel="icon" type="file" />
