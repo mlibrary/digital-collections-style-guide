@@ -1,0 +1,26 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+
+<Top xmlns:dlxs="http://www.umdl.umich.edu/dlxs">
+
+  <!-- XSL fallback files -->
+  <XslFallbackFileList pipeline="qui">
+    <Filename>qui/qui.base.xsl</Filename>
+    <Filename>qui/components/*.xsl</Filename>
+    <Filename>qui/qui.loginoptions.xsl</Filename>
+  </XslFallbackFileList>
+
+  <XslFallbackFileList pipeline="qbat">
+    <Filename>qbat/qbat.base.xsl</Filename>
+    <Filename>qbat/components/*.xsl</Filename>
+    <Filename>qbat/qbat.loginoptions.xsl</Filename>
+  </XslFallbackFileList>
+
+  <!-- Custom OPTIONAL XML for top-level file accessoptions.xml -->
+  <?CHUNK filename="loginoptionsextra.xml" optional="1"?>
+
+  <DlxsGlobals><?CHUNK filename="dlxsclassglobals.xml"?></DlxsGlobals>
+
+  <!-- <ExtraCSS><?FBFILE_XML file="css/loginoptions.css"?></ExtraCSS> -->
+
+  <ReAuthLink><?RE_AUTH_LINK_XML indirect="1" specific="1"?></ReAuthLink>
+</Top>
