@@ -253,7 +253,9 @@
           <xsl:attribute name="data-href">
             <xsl:value-of select="qui:download-options/qui:download-item[1]/@href" />
           </xsl:attribute>
-          <span class="material-icons text-xx-small">file_download</span>
+          <xsl:attribute name="data-attachment">download</xsl:attribute>
+          <span class="material-icons text-xx-small">
+            file_download</span>
           <xsl:text> Download </xsl:text> 
           <xsl:value-of select="qui:download-options/@label" />
         </button>

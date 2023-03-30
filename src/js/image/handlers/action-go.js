@@ -11,7 +11,14 @@ document.addEventListener('click', (event) => {
     } else if ( target.dataset.target ) {
       window.open(target.dataset.href, target.dataset.target);
     } else {
-      location.href = target.dataset.href;
+      let href = target.dataset.href;
+      if ( target.dataset.attachment == 'download' ) {
+        let delim = '&';
+        if ( href.indexOf('?') < 0 ) { delim = '?' }
+        else if ( href.indexOf(';') > -1 ) { delim = ';'; }
+        href += delim + 'attachment=1';
+      }
+      location.href = href;
     }
   } else if ( target = event.target.closest('button[data-action="cancel"]') ) {
     event.preventDefault();
