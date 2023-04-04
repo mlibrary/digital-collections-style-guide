@@ -19,7 +19,7 @@
         <meta name="robots" content="noindex" />
 
         <link rel="stylesheet" href="https://fonts.googleapis.com/icon?family=Material+Icons" />
-        <link href="https://unpkg.com/@umich-lib/web@1/umich-lib.css" rel="stylesheet" />
+        <link href="https://cdn.jsdelivr.net/npm/@umich-lib/web@1/umich-lib.css" rel="stylesheet" />
         <link href="{$docroot}styles/styles.css" rel="stylesheet" />
         <link href="{$docroot}styles/feedback.css" rel="stylesheet" />
 
@@ -27,8 +27,8 @@
           window.mUse = [  'm-website-header', 'm-logo' ];
         </script>
 
-        <script type="module" src="https://unpkg.com/@umich-lib/web@1/dist/umich-lib/umich-lib.esm.js"></script>
-        <script nomodule="" src="https://unpkg.com/@umich-lib/web@1/dist/umich-lib/umich-lib.js"></script>
+        <script type="module" src="https://cdn.jsdelivr.net/npm/@umich-lib/web@1/dist/umich-lib/umich-lib.esm.js"></script>
+        <script nomodule="" src="https://cdn.jsdelivr.net/npm/@umich-lib/web@1/dist/umich-lib/umich-lib.js"></script>
 
         <script src="{$docroot}dist/js/image/main.js"></script>
         <script src="https://www.google.com/recaptcha/api.js?onload=onloadCallback" async="async" defer="defer"></script>

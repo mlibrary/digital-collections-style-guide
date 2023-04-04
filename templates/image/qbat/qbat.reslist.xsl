@@ -5,7 +5,7 @@
   <xsl:variable name="sort-options" select="//qui:form[@id='sort-options']" />
   <xsl:variable name="xc" select="//qui:block[@slot='results']/@data-xc" />
   <xsl:variable name="has-results" select="//qui:nav[@role='results']/@total &gt; 0" />
-<xsl:variable name="nav" select="//qui:nav[@role='results']" />
+  <xsl:variable name="nav" select="//qui:nav[@role='results']" />
 
   <xsl:template name="build-extra-styles">
     <xsl:comment>DUBIOUS EXCEPTIONS</xsl:comment>
@@ -284,7 +284,7 @@
 
         <xsl:choose>
           <xsl:when test="qui:link[@rel='iiif']">
-            <img class="[ results-list__image ]" src="{qui:link[@rel='iiif']/@href}/full/140,/0/native.jpg" alt="{ItemDescription}" />
+            <img class="[ results-list__image ]" style="width: 200px;" src="{qui:link[@rel='iiif']/@href}/full/200,/0/native.jpg" alt="{ItemDescription}" />
           </xsl:when>
           <xsl:otherwise>
             <div class="[ results-list__blank ]" aria-hidden="true">

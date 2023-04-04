@@ -43,6 +43,8 @@ let updateDownloadMenu = function() {
 window.addEventListener('message', (event) => {
 
   const section = document.querySelector('.main-panel > section');
+  if ( ! section ) { return ; }
+  
   let alert = section.querySelector('.alert');
   if (!alert) {
     alert = document.createElement('div');
