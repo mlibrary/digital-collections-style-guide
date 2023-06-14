@@ -66,11 +66,11 @@
           <xsl:value-of select="//CollGroupMembership" />
         </xsl:attribute>
       </xsl:if>
-      <xsl:if test="normalize-space(//AnalyticsCodeForColl)">
+      <!-- <xsl:if test="normalize-space(//AnalyticsCodeForColl)">
         <xsl:attribute name="analytics-code-for-coll">
           <xsl:value-of select="//AnalyticsCodeForColl" />
         </xsl:attribute>
-      </xsl:if>
+      </xsl:if> -->
       
       <!-- fills html/head-->
       <qui:head>

@@ -41,6 +41,12 @@
       <xsl:apply-templates select="qui:head" />
       <body class="[ font-base-family ]" data-initialized="false" style="opacity: 0">
         <xsl:apply-templates select="build-body-data" />
+
+        <!-- Google Tag Manager (noscript) -->
+        <noscript><iframe src="https://www.googletagmanager.com/ns.html?id=GTM-MN98W2F"
+        height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
+        <!-- End Google Tag Manager (noscript)-->
+
         <xsl:apply-templates select="//qui:skip-links" />
         <div class="border-bottom">
           <m-universal-header></m-universal-header>
