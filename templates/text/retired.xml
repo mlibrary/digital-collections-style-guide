@@ -1,0 +1,27 @@
+<?xml version="1.0"?>
+<Top xmlns:dlxs="http://www.umdl.umich.edu/dlxs">
+
+  <!-- XSL fallback files -->
+  <XslFallbackFileList>
+    <Filename>xsl2htmlutils.xsl</Filename>
+    <Filename>footer.import.xsl</Filename>
+    <Filename>globalvariables.xsl</Filename>
+    <Filename>htmlhead.xsl</Filename>
+    <Filename>misc.xsl</Filename>
+    <Filename>retired.xsl</Filename>
+  </XslFallbackFileList>  
+
+
+  <!-- Custom OPTIONAL XML for top-level file index.xml<2> -->
+  <CustomXml><?CHUNK filename="retiredextra.xml" optional="1"?></CustomXml>
+
+  <DlxsGlobals><?CHUNK filename="dlxsclassglobals.xml"?></DlxsGlobals>
+
+  <CollName><?COLLNAME_XML?></CollName>
+
+  <ContactLink><?CONTACT_XML type="link"?></ContactLink>
+  <ContactText><?CONTACT_XML type="text"?></ContactText>
+
+  <Redirect><?RETIRED_REDIRECT_XML?></Redirect>
+
+</Top>

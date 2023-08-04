@@ -1,0 +1,21 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+
+<Top xmlns:dlxs="http://www.umdl.umich.edu/dlxs">
+
+  <!-- XSL fallback files -->
+  <XslFallbackFileList>
+    <Filename>globalvariables.xsl</Filename>
+    <Filename>bbagcount.xsl</Filename>
+    <Filename>bookbagitemsstring.xsl</Filename>
+  </XslFallbackFileList>
+
+  <!-- Custom OPTIONAL XML for top-level file bbagcount.xml -->
+  <CustomXml><?CHUNK filename="bbagcountextra.xml" optional="1"?></CustomXml>
+
+  <DlxsGlobals><?CHUNK filename="dlxsclassglobals.xml"?></DlxsGlobals>
+
+  <NavHeader>
+    <BookbagItems><?BOOKBAG_ITEMS_XML?></BookbagItems>
+  </NavHeader>
+
+</Top>

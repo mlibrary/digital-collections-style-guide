@@ -1,0 +1,29 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+
+<?CHUNK filename="entitiesdoctype.chnk" optional="1"?>
+<Top xmlns:dlxs="http://www.umdl.umich.edu/dlxs">
+    <XslFallbackFileList>
+        <Filename>bookbagitemsstring.xsl</Filename>
+	<Filename>footer.import.xsl</Filename>
+        <Filename>globalvariables.xsl</Filename>
+        <Filename>htmlhead.xsl</Filename>
+        <Filename>misc.xsl</Filename>
+        <Filename>navheader.xsl</Filename>
+        <Filename>pageviewer.xsl</Filename>
+        <Filename>pageviewerheader.xsl</Filename>
+        <Filename>viewer.utils.xsl</Filename>
+        <Filename>viewer.xsl</Filename>
+        <Filename>xsl2htmlutils.xsl</Filename>
+    </XslFallbackFileList>
+    <CustomXml>
+        <?CHUNK filename="pageviewerextra.xml" optional="1"?>
+    </CustomXml>
+    <!-- Custom OPTIONAL XML for top-level file pageviewer.xml -->
+    <DocMeta>
+        <DocEncodingType><?DOC_ENCODING_TYPE_XML ?></DocEncodingType>
+        <TocHref><?TEXT_TOC_LINK_XML ?></TocHref>
+        <ItemHeader><?HEADER_XML ?></ItemHeader>
+        <ItemDivhead><?ITEM_DIVHEAD_XML ?></ItemDivhead>
+    </DocMeta>
+    <?CHUNK filename="viewer.xml"?>
+</Top>

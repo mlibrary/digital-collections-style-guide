@@ -1,0 +1,6 @@
+
+<GraphicsPathUparrow><?GRAPHICS_PATH_XML filename="uparrow.gif"?></GraphicsPathUparrow>
+<ContactText><?CONTACT_XML type="text" ?></ContactText>
+<ContactLink><?CONTACT_XML type="link"?></ContactLink>
+<OrgInfoText><?ORG_INFO_XML type="text" ?></OrgInfoText>
+<OrgInfoLink><?ORG_INFO_XML type="link" ?></OrgInfoLink>

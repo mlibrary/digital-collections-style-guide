@@ -1,0 +1,67 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+
+<?CHUNK filename="entitiesdoctype.chnk" optional="1"?>
+
+<Top xmlns:dlxs="http://www.umdl.umich.edu/dlxs">
+  
+  <!-- XSL fallback files -->
+  <XslFallbackFileList>
+    <Filename>searchhistory.xsl</Filename>
+    <Filename>bookbagitemsstring.xsl</Filename>
+    <Filename>htmlhead.xsl</Filename>
+    <Filename>globalvariables.xsl</Filename>
+    <Filename>navheader.xsl</Filename>
+    <Filename>footer.import.xsl</Filename>
+    <Filename>searchforms.xsl</Filename>
+    <Filename>results.xsl</Filename>
+    <Filename>xsl2htmlutils.xsl</Filename>
+  </XslFallbackFileList>  
+  
+  <!-- Custom OPTIONAL XML for top-level file searchhistory.xml -->
+  <CustomXml><?CHUNK filename="searchhistoryextra.xml" optional="1"?></CustomXml>
+  
+  <DlxsGlobals><?CHUNK filename="dlxsclassglobals.xml"?></DlxsGlobals>
+  
+  <NavHeader><?CHUNK filename="navheader.xml"?></NavHeader>
+  <SearchType><?SEARCH_TYPE_XML?></SearchType>
+  <SearchNav>
+    <NavItem>
+      <Name>simple</Name>
+      <Tab>true</Tab>
+      <Link><?SIMPLE_SEARCH_LINK_XML?></Link>
+    </NavItem>
+    <NavItem>
+      <Name>boolean</Name>
+      <Tab>true</Tab>
+      <Link><?BOOLEAN_SEARCH_LINK_XML?></Link>
+    </NavItem>
+    <NavItem>
+      <Name>proximity</Name>
+      <Tab>true</Tab>
+      <Link><?PROXIMITY_SEARCH_LINK_XML?></Link>
+    </NavItem>
+    <NavItem>
+      <Name>bib</Name>
+      <Tab>true</Tab>
+      <Link><?BIB_SEARCH_LINK_XML?></Link>
+    </NavItem>
+    <NavItem>
+      <Name>wwstart</Name>
+      <Tab><?WW_NAV_XML?></Tab>
+      <Link><?WORDWHEEL_SEARCH_LINK_XML?></Link>
+    </NavItem>
+    <NavItem>
+      <Name>history</Name>
+      <Tab>true</Tab>
+      <Link><?SEARCH_HISTORY_LINK_XML?></Link>
+    </NavItem>	
+  </SearchNav>
+  
+  
+  <SearchHistoryTable><?SEARCH_HISTORY_TABLE_XML?></SearchHistoryTable>
+  
+  <Footer>
+    <?CHUNK filename="footer.xml"?>
+  </Footer>
+  
+</Top>

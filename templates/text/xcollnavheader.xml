@@ -1,0 +1,35 @@
+<MainNav>
+	<NavItem>
+		<Name>home</Name>
+		<Tab>true</Tab>
+		<Link>https://quod.lib.umich.edu/</Link>
+	</NavItem>
+	<NavItem>
+		<Name>search</Name>
+		<Tab><?INCLUDE_SEARCH_TAB_XML?></Tab>
+		<Link><?SIMPLE_SEARCH_LINK_XML?></Link>
+	</NavItem>
+	<NavItem>
+		<Name>browse</Name>
+		<Tab><?INCLUDE_COLL_SPECIFIC_CONTENT_XML id="navbarbrowselink"?></Tab>
+		<Link><?COLL_SPECIFIC_CONTENT_XML id="navbarbrowselink" cginame="text-idx"?></Link>
+	</NavItem>
+	<NavItem>
+		<Name>bookbag</Name>
+		<Tab>true</Tab>
+		<Link><?BOOKBAG_LINK_XML?></Link>
+	</NavItem>
+	<NavItem>
+		<Name>help</Name>
+		<Tab>true</Tab>
+		<Link><?HELP_LINK_XML?></Link>
+	</NavItem>
+</MainNav>
+<BrowseFields>
+  <?BROWSE_FIELDS_XML?>
+</BrowseFields>
+ 
+<IncludeGoToXcoll><?INCLUDE_GO_TO_XCOLL_XML?></IncludeGoToXcoll>
+<GoToXcoll><?GO_TO_XCOLL_XML?></GoToXcoll>
+<ReAuthLink><?RE_AUTH_LINK_XML?></ReAuthLink>
+<BookbagItems><?BOOKBAG_ITEMS_XML?></BookbagItems>

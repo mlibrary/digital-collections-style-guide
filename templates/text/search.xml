@@ -1,0 +1,128 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+
+<?CHUNK filename="entitiesdoctype.chnk" optional="1"?>
+<Top xmlns:dlxs="http://www.umdl.umich.edu/dlxs">
+
+  <!-- XSL fallback files -->
+
+  <XslFallbackFileList pipeline="qui">
+    <Filename>qui/qui.base.xsl</Filename>
+    <Filename>../vendor/str.split.function.xsl</Filename>
+    <Filename>qui/components/*.xsl</Filename>
+    <Filename>qui/qui.index.xsl</Filename>
+  </XslFallbackFileList>
+
+  <XslFallbackFileList pipeline="qbat">
+    <Filename>qbat/qbat.base.xsl</Filename>
+    <Filename>qbat/components/*.xsl</Filename>
+    <Filename>qbat/qbat.index.xsl</Filename>
+  </XslFallbackFileList>
+
+  <!-- Custom OPTIONAL XML for top-level file search.xml<2> -->
+  <CustomXml><?CHUNK filename="searchextra.xml" optional="1"?></CustomXml>
+
+  <SearchTips>
+    <Url><?SEARCH_TIPS_URL_XML?></Url>
+    <Show><?SHOW_SEARCH_TIPS_XML?></Show>
+  </SearchTips>
+  
+  <?CHUNK filename="dlxspageglobals.xml"?>
+
+  <SearchType><?SEARCH_TYPE_XML?></SearchType>
+  <SearchNav>
+    <NavItem>
+      <Name>simple</Name>
+      <Tab>true</Tab>
+      <Link><?SIMPLE_SEARCH_LINK_XML testforrestrict="1"?></Link>
+    </NavItem>
+    <NavItem>
+      <Name>boolean</Name>
+      <Tab>true</Tab>
+      <Link><?BOOLEAN_SEARCH_LINK_XML testforrestrict="1"?></Link>
+    </NavItem>
+    <NavItem>
+      <Name>proximity</Name>
+      <Tab>true</Tab>
+      <Link><?PROXIMITY_SEARCH_LINK_XML testforrestrict="1"?></Link>
+    </NavItem>
+    <NavItem>
+      <Name>bib</Name>
+      <Tab>true</Tab>
+      <Link><?BIB_SEARCH_LINK_XML?></Link>
+    </NavItem>
+    <NavItem>
+      <Name>wwstart</Name>
+      <Tab><?WW_NAV_XML?></Tab>
+      <Link><?WORDWHEEL_SEARCH_LINK_XML?></Link>
+    </NavItem>
+    <NavItem>
+      <Name>history</Name>
+      <Tab>true</Tab>
+      <Link><?SEARCH_HISTORY_LINK_XML?></Link>
+    </NavItem>	
+  </SearchNav>
+  
+  <BookbagAddHref><?BOOKBAG_ADD_REMOVE_ITEM_XML?></BookbagAddHref>
+  <SearchRestriction>
+   <DocEncodingType><?DOC_ENCODING_TYPE_XML?></DocEncodingType>
+    <ItemHeader><?HEADER_XML?></ItemHeader>
+  </SearchRestriction>
+  
+  <!-- this is for the HTML select element (pulldown) of all groups -->
+  <GroupsSelect><?GROUPS_SELECT_XML?></GroupsSelect>
+  
+  <SearchForm>
+    <HiddenVars>
+      <?HIDDEN_REQUESTED_COLLECTIONS_XML?>
+      <?HIDDEN_XC_XML?>
+      <?HIDDEN_IDNO_XML?>
+      <?HIDDEN_BOOKBAG_XML?>
+      <?HIDDEN_G_XML?> 
+      <?HIDDEN_XG_XML?>
+      <?HIDDEN_DEBUG_XML?>
+    </HiddenVars>
+    <SearchQuery>
+      <RegionSearchSelect><?REGION_SEARCH_SELECT_XML?></RegionSearchSelect>
+      <Region1SearchSelect><?REGION1_SEARCH_SELECT_XML?></Region1SearchSelect>
+      <Region2SearchSelect><?REGION2_SEARCH_SELECT_XML?></Region2SearchSelect>
+      <Region3SearchSelect><?REGION3_SEARCH_SELECT_XML?></Region3SearchSelect>
+      <Q1><?Q1_INPUT_XML?></Q1>
+      <Op2><?OP2_SELECT_XML?></Op2>
+      <Q2><?Q2_INPUT_XML?></Q2>
+      <Amt2><?AMT2_SELECT_XML?></Amt2>
+      <Op3><?OP3_SELECT_XML?></Op3>
+      <Q3><?Q3_INPUT_XML?></Q3>
+      <Amt3><?AMT3_SELECT_XML?></Amt3>
+    </SearchQuery>
+    <CiteRestrictions>
+      <Cite>
+        <Input><?CITE1_INPUT_XML?></Input>
+        <Restrict><?CITE1_RESTRICT_SELECT_XML?></Restrict>
+      </Cite>
+      <Cite>
+        <Input><?CITE2_INPUT_XML?></Input>
+        <Restrict><?CITE2_RESTRICT_SELECT_XML?></Restrict>
+      </Cite>
+    </CiteRestrictions>
+    <OtherRestrictions>
+      <!-- Begin collection specific restrictions -->
+      <GenreSelect>
+        <?GENRE_SEARCH_SELECT_XML?>
+      </GenreSelect>
+      <GenderSelect>
+        <?GENDER_SEARCH_SELECT_XML?>
+      </GenderSelect>
+      <PeriodSelect>
+        <?PERIOD_SEARCH_SELECT_XML?>
+      </PeriodSelect>
+      <PubBetweenSelect>
+        <?PUB_BETWEEN_SEARCH_SELECT_XML?>
+      </PubBetweenSelect>
+    </OtherRestrictions>
+  </SearchForm>
+  
+  <CollCheckboxList>
+    <?COLL_LIST_WITH_CHECKBOXES_XML?>
+  </CollCheckboxList>
+
+</Top>

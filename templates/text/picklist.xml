@@ -1,0 +1,33 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+
+<?CHUNK filename="entitiesdoctype.chnk" optional="1"?>
+
+<Top xmlns:dlxs="http://www.umdl.umich.edu/dlxs">
+    <!-- XSL fallback files -->
+    <XslFallbackFileList>
+        <Filename>bookbagitemsstring.xsl</Filename>
+        <Filename>picklist.xsl</Filename>
+        <Filename>picklistheader.xsl</Filename>
+        <Filename>htmlhead.xsl</Filename>
+        <Filename>navheader.xsl</Filename>
+        <Filename>footer.import.xsl</Filename>
+        <Filename>xsl2htmlutils.xsl</Filename>
+        <Filename>globalvariables.xsl</Filename>
+    </XslFallbackFileList>
+    <!-- Custom OPTIONAL XML for top-level file picklist.xml -->
+    <CustomXml>
+        <?CHUNK filename="picklistextra.xml" optional="1"?>
+    </CustomXml>
+    <DlxsGlobals>
+        <?CHUNK filename="dlxsclassglobals.xml"?>
+    </DlxsGlobals>
+    <NavHeader>
+        <?CHUNK filename="navheader.xml"?>
+    </NavHeader>
+    <Footer>
+        <?CHUNK filename="footer.xml"?>
+    </Footer>
+    <Picklist>
+        <?PICKLIST_XML ?>
+    </Picklist>
+</Top>
