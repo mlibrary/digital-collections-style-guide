@@ -1,0 +1,13 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+
+<?CHUNK filename="entitiesdoctype.chnk" optional="1"?>
+
+<Top xmlns:dlxs="http://www.umdl.umich.edu/dlxs">
+ 
+  <!-- Custom OPTIONAL XML for top-level file bookbag.xml -->
+  <CustomXml><?CHUNK filename="bookbagactionextra.xml" optional="1"?></CustomXml>
+  
+  <DlxsGlobals><?CHUNK filename="../../lib/dlxsglobals.xml"?></DlxsGlobals>
+
+  <?BOOKBAG_HEADER_XML?>  
+</Top>

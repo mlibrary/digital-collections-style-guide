@@ -1,0 +1,61 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+
+<?CHUNK filename="entitiesdoctype.chnk" optional="1"?>
+
+<Top xmlns:dlxs="http://www.umdl.umich.edu/dlxs">
+
+  <!-- XSL fallback files -->
+    <XslFallbackFileList>
+        <Filename>bookbagitemsstring.xsl</Filename>
+	<Filename>footer.import.xsl</Filename>
+        <Filename>globalvariables.xsl</Filename>
+        <Filename>header.xsl</Filename>
+        <Filename>htmlhead.xsl</Filename>
+        <Filename>misc.xsl</Filename>
+        <Filename>navheader.xsl</Filename>
+        <Filename>scopedivs.xsl</Filename>
+        <!-- text.components for para filtering: -->
+        <Filename>text.components.xsl</Filename>
+        <Filename>tocheader.xsl</Filename>
+        <Filename>xsl2htmlutils.xsl</Filename>
+        <Filename>xslfunctions.xsl</Filename>
+    </XslFallbackFileList>
+
+  <!-- Custom OPTIONAL XML for top-level file header.xml -->
+  <CustomXml><?CHUNK filename="headerextra.xml" optional="1"?></CustomXml>
+  
+
+  <DlxsGlobals><?CHUNK filename="dlxsclassglobals.xml"?></DlxsGlobals>
+  
+  <NavHeader><?CHUNK filename="navheader.xml"?></NavHeader>
+  
+  <ReturnToResultsLink><?RETURN_TO_RESULTS_LINK_XML?></ReturnToResultsLink>
+  <AuthRequired><?AUTH_REQUIRED_XML?></AuthRequired>
+  <IncludeItemSearch><?INCLUDE_ITEM_SEARCH_XML?></IncludeItemSearch>
+  <BookbagAddHref><?BOOKBAG_ADD_REMOVE_ITEM_XML?></BookbagAddHref>
+  <SimpleSearchWithinLink><?SIMPLE_SEARCH_WITHIN_LINK_XML?></SimpleSearchWithinLink>
+  <SearchForm>    
+    <HiddenVars>
+      <?HIDDEN_REQUESTED_COLLECTIONS_XML?>
+      <?HIDDEN_XC_XML?>
+      <?HIDDEN_IDNO_XML?>
+      <?HIDDEN_BOOKBAG_XML?>
+      <?HIDDEN_G_XML?> 
+      <?HIDDEN_XG_XML?>
+      <?HIDDEN_DEBUG_XML?>
+    </HiddenVars>
+  </SearchForm>
+
+<Item>
+  <DocEncodingType><?DOC_ENCODING_TYPE_XML?></DocEncodingType>
+  <ItemHeader><?HEADER_XML?></ItemHeader>
+
+  
+  
+  <HeaderToc><?HEADER_TOC_XML?></HeaderToc>
+  <?POD_AND_DOD_LINKS_XML?>
+  <ViewEntireTextLink><?VIEW_ENTIRE_TEXT_LINK_XML?></ViewEntireTextLink>
+  </Item>
+  <Footer><?CHUNK filename="footer.xml"?></Footer>
+  
+</Top>

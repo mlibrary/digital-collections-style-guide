@@ -1,0 +1,17 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+
+<Top xmlns:dlxs="http://www.umdl.umich.edu/dlxs">
+<!-- XSL fallback files -->
+ <XslFallbackFileList>
+  <Filename>viewtextnote.xsl</Filename>
+  <Filename>htmlhead.xsl</Filename>
+ </XslFallbackFileList>
+  <!-- Custom OPTIONAL XML for top-level file viewtextnote.xml -->
+  <CustomXml><?CHUNK filename="viewtextnoteextra.xml" optional="1"?></CustomXml>
+
+    <DlxsGlobals><?CHUNK filename="dlxsclassglobals.xml"?></DlxsGlobals>
+
+    <ViewTextConfirmedLink><?VIEW_TEXT_LINK_XML?></ViewTextConfirmedLink>
+
+</Top>
+

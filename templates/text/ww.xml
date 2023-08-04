@@ -1,0 +1,94 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+
+<?CHUNK filename="entitiesdoctype.chnk" optional="1"?>
+
+<Top xmlns:dlxs="http://www.umdl.umich.edu/dlxs">
+
+  <!-- XSL fallback files -->
+<XslFallbackFileList>
+<Filename>bookbagitemsstring.xsl</Filename>
+ <Filename>ww.xsl</Filename>
+ <Filename>htmlhead.xsl</Filename>
+ <Filename>globalvariables.xsl</Filename>
+ <Filename>navheader.xsl</Filename>
+ <Filename>footer.import.xsl</Filename>
+ <Filename>results.xsl</Filename>
+ <Filename>xsl2htmlutils.xsl</Filename>
+</XslFallbackFileList>
+
+
+
+  <!-- Custom OPTIONAL XML for top-level file ww.xml -->
+  <CustomXml><?CHUNK filename="wwextra.xml" optional="1"?></CustomXml>
+  
+  <?CHUNK filename="dlxspageglobals.xml"?>
+  
+  <SearchTips>
+    <Url><?SEARCH_TIPS_URL_XML?></Url>
+    <Show><?SHOW_SEARCH_TIPS_XML?></Show>
+  </SearchTips>
+  
+  <SearchType><?SEARCH_TYPE_XML?></SearchType>
+  <SearchNav>
+    <NavItem>
+      <Name>simple</Name>
+      <Tab>true</Tab>
+      <Link><?SIMPLE_SEARCH_LINK_XML testforrestrict="1"?></Link>
+    </NavItem>
+    <NavItem>
+      <Name>boolean</Name>
+      <Tab>true</Tab>
+      <Link><?BOOLEAN_SEARCH_LINK_XML testforrestrict="1"?></Link>
+    </NavItem>
+    <NavItem>
+      <Name>proximity</Name>
+      <Tab>true</Tab>
+      <Link><?PROXIMITY_SEARCH_LINK_XML testforrestrict="1"?></Link>
+    </NavItem>
+    <NavItem>
+      <Name>bib</Name>
+      <Tab>true</Tab>
+      <Link><?BIB_SEARCH_LINK_XML?></Link>
+    </NavItem>
+    <NavItem>
+      <Name>ww</Name>
+      <Tab><?WW_NAV_XML?></Tab>
+      <Link><?WORDWHEEL_SEARCH_LINK_XML?></Link>
+    </NavItem>
+    <NavItem>
+      <Name>history</Name>
+      <Tab>true</Tab>
+      <Link><?SEARCH_HISTORY_LINK_XML?></Link>
+    </NavItem>
+  </SearchNav>
+  
+  <SearchForm>
+    <HiddenVars>
+      <?HIDDEN_REQUESTED_COLLECTIONS_XML?>
+      <?HIDDEN_XC_XML?>
+      <?HIDDEN_G_XML?>
+      <?HIDDEN_XG_XML?>
+      <?HIDDEN_DEBUG_XML?>
+      <?HIDDEN_REQUESTED_CHARTYPE_XML?>
+      <?HIDDEN_REQUESTED_TOPBOTTOM_XML?>
+      <?HIDDEN_CHECKED_ITEMS_XML?>
+    </HiddenVars>
+    
+    <Q1><?Q1_INPUT_XML?></Q1>
+    <WordWheelList>
+    <!-- <WWListItem bestmatch="1"> <Term></Term><Occur></Occur><Checked></Checked> </WWListItem> -->
+    <?WORDWHEEL_LIST_XML?>
+  </WordWheelList>
+  
+  <WordWheelQuickLinks>
+    <?WORDWHEEL_QUICK_LINK_XML?>
+  </WordWheelQuickLinks>
+    <!-- Note: graphics/ww-up-000000.gif and graphics/ww-dw-000000.gif -->
+    <WordWheelUpButton><?WORDWHEEL_UP_BUTTON_XML?></WordWheelUpButton>
+    <WordWheelDownButton><?WORDWHEEL_DOWN_BUTTON_XML?></WordWheelDownButton>
+
+  </SearchForm>
+  
+  
+  
+</Top>

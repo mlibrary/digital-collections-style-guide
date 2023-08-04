@@ -1,0 +1,40 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+
+<?CHUNK filename="entitiesdoctype.chnk" optional="1"?>
+
+<Top xmlns:dlxs="http://www.umdl.umich.edu/dlxs">
+<XslFallbackFileList>
+    <Filename>bookbagitemsstring.xsl</Filename>
+    <Filename>clipviewer.xsl</Filename>
+    <Filename>footer.import.xsl</Filename>
+    <Filename>globalvariables.xsl</Filename>
+    <Filename>htmlhead.xsl</Filename>
+    <Filename>misc.xsl</Filename>
+    <Filename>navheader.xsl</Filename>
+    <Filename>pageviewerheader.xsl</Filename>
+    <Filename>pageviewerheaderextra.xsl</Filename>
+    <Filename>viewer.utils.xsl</Filename>
+    <Filename>viewer.xsl</Filename>
+    <Filename>viewerextra.xsl</Filename>
+    <Filename>xsl2htmlutils.xsl</Filename>
+</XslFallbackFileList>
+
+  <!-- Custom OPTIONAL XML for top-level file clipviewer.xml -->
+  <CustomXml><?CHUNK filename="clipviewerextra.xml" optional="1"?></CustomXml>
+
+  <DocMeta>
+    <DocEncodingType>newspaper</DocEncodingType>
+    <ItemHeader><?HEADER_XML?></ItemHeader>
+    <ItemDivhead><?ITEM_DIVHEAD_XML?></ItemDivhead>
+    
+    <NPArticleTitle><?NPARTICLE_TITLE_XML?></NPArticleTitle>
+    <NPPageNumber><?NPPAGE_NUMBER_XML?></NPPageNumber>
+    
+    <NPIssueLink><?NPISSUE_LINK_XML?></NPIssueLink>
+    <NPPageViewArticlePageLink><?NPPAGE_VIEW_ARTICLE_PAGE_LINK_XML?></NPPageViewArticlePageLink>
+    
+    <NPPageToc><?NPPAGE_ARTICLES_TOC_XML?></NPPageToc>
+  </DocMeta>
+  
+  <?CHUNK filename="viewer.xml"?>
+ </Top>
