@@ -8,13 +8,25 @@
   <XslFallbackFileList pipeline="qui">
     <Filename>qui/qui.base.xsl</Filename>
     <Filename>../vendor/str.split.function.xsl</Filename>
+    <Filename>../vendor/xslfunctions.xsl</Filename>
     <Filename>qui/components/*.xsl</Filename>
+    <Filename>qui/includes/qui.search-common.xsl</Filename>
+    <Filename>qui/includes/qui.search-simple.xsl</Filename>
+    <Filename>qui/includes/qui.search-boolean.xsl</Filename>
+    <Filename>qui/includes/qui.search-proximity.xsl</Filename>
+    <Filename>qui/includes/qui.search-bib.xsl</Filename>
     <Filename>qui/qui.index.xsl</Filename>
   </XslFallbackFileList>
 
   <XslFallbackFileList pipeline="qbat">
     <Filename>qbat/qbat.base.xsl</Filename>
+    <Filename>../vendor/xslfunctions.xsl</Filename>
     <Filename>qbat/components/*.xsl</Filename>
+    <Filename>qbat/includes/qbat.search-common.xsl</Filename>
+    <Filename>qbat/includes/qbat.search-simple.xsl</Filename>
+    <Filename>qbat/includes/qbat.search-boolean.xsl</Filename>
+    <Filename>qbat/includes/qbat.search-proximity.xsl</Filename>
+    <Filename>qbat/includes/qbat.search-bib.xsl</Filename>
     <Filename>qbat/qbat.index.xsl</Filename>
   </XslFallbackFileList>
 

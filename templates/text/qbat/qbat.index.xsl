@@ -1,16 +1,33 @@
 <xsl:stylesheet version="1.0" xmlns="http://www.w3.org/1999/xhtml" xmlns:xhtml="http://www.w3.org/1999/xhtml" xmlns:xsl="http://www.w3.org/1999/XSL/Transform" xmlns:dlxs="http://dlxs.org" xmlns:qui="http://dlxs.org/quombat/ui">
 
   <xsl:variable name="search-form" select="//qui:form[@id='collection-search']" />
+  <xsl:variable name="template" select="//qui:root/@template" />
 
   <xsl:template name="build-extra-styles">
     <xsl:comment>DUBIOUS EXCEPTIONS</xsl:comment>
-    <link rel="stylesheet" href="{$docroot}styles/image/index.css" />
+    <link rel="stylesheet" href="{$docroot}styles/text/index.css" />
+    <link rel="stylesheet" href="{$docroot}styles/text/tabs.css" />
+    <link rel="stylesheet" href="{$docroot}styles/text/advanced_search.css" />
 
     <style>
     </style>
   </xsl:template>
 
   <xsl:template match="qui:main">
+    <xsl:choose>
+      <xsl:when test="$view = 'index'">
+        <xsl:call-template name="build-main-index" />
+      </xsl:when>
+      <xsl:when test="$view = 'wwstart' or $view = 'wwfull'">
+        <xsl:call-template name="build-ww-form" />
+      </xsl:when>
+      <xsl:otherwise>
+        <xsl:call-template name="build-advanced-search-form" />
+      </xsl:otherwise>
+    </xsl:choose>
+  </xsl:template>
+
+  <xsl:template name="build-main-index">
     <xsl:choose>
       <xsl:when test="//qui:hero-image">
         <xsl:apply-templates select="//qui:hero-image" />
@@ -300,5 +317,5 @@
       </a>
     </li>
   </xsl:template>
-  
+
 </xsl:stylesheet>

@@ -39,13 +39,19 @@
           </xsl:call-template>
         </xsl:otherwise>
       </xsl:choose>
-      <xsl:apply-templates select="//Facets" mode="search-form" />
-      <xsl:apply-templates select="//SearchForm/HiddenVars/Variable" />
-      <xsl:if test="//SearchForm/HiddenVars/Variable[@name='xc'] = '1'">
-        <xsl:for-each select="//Param[@name='c']">
-          <qui:hidden-input name="c" value="{.}" />
-        </xsl:for-each>
-      </xsl:if>
+      <!-- <xsl:apply-templates select="//Facets" mode="search-form" /> -->
+      <xsl:choose>
+        <xsl:when test="//ResultsLinks/HiddenVars/Variable[@name != 'q1']">
+          <xsl:for-each select="//ResultsLinks/HiddenVars/Variable">
+            <qui:input type="hidden" role="search" name="{@name}" value="{.}">
+              <xsl:attribute name="disabled"><xsl:value-of select="$is-browse" /></xsl:attribute>
+            </qui:input>
+          </xsl:for-each>
+        </xsl:when>
+        <xsl:otherwise>
+          <qui:input type="hidden" role="search" name="type" value="simple" disabled="{$is-browse}" />
+        </xsl:otherwise>
+      </xsl:choose>
     </qui:form>
   </xsl:template>
 
@@ -59,20 +65,21 @@
       </xsl:choose>
     </xsl:variable>
     <qui:control slot="clause" data-name="{$field}">
-      <qui:input name="{$field}" slot="query" value="{$q}" data-active="true" />
+      <qui:input name="q1" slot="query" value="{$q}" data-active="true" />
       <qui:input slot="rgn" name="key" type="select">
-        <qui:option value="simple">
-          <xsl:if test="not($is-browse)">
-            <xsl:attribute name="selected">selected</xsl:attribute>
-          </xsl:if>
-          <xsl:text>Collection</xsl:text>
-        </qui:option>
-        <xsl:for-each select="/Top/NavHeader/BrowseFields/Field">
-          <qui:option value="{Name}">
-            <xsl:if test="Name/@default = '1'">
+        <xsl:for-each select="//SearchQuery/RegionSearchSelect/Option">
+          <qui:option value="{Value}">
+            <xsl:if test="Focus = 'true'">
               <xsl:attribute name="selected">selected</xsl:attribute>
             </xsl:if>
-            <xsl:value-of select="dlxs:capitalize(Name)" />
+            <xsl:choose>
+              <xsl:when test="Value = 'full text'">
+                Full Text
+              </xsl:when>
+              <xsl:otherwise>
+                <xsl:value-of select="dlxs:capitalize(Label)" />
+              </xsl:otherwise>
+            </xsl:choose>
           </qui:option>
         </xsl:for-each>
       </qui:input>  

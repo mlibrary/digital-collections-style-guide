@@ -53,6 +53,7 @@
       </xsl:otherwise>
     </xsl:choose>
   </xsl:variable>
+  <xsl:variable name="current-browse-field" select="//Param[@name='key']" />
 
 
   <xsl:template name="build-body-main">
@@ -63,7 +64,7 @@
         <xsl:attribute name="data-status">private</xsl:attribute>
       </xsl:when> -->
       <xsl:text>Browse Collection: </xsl:text>
-      <xsl:value-of select="dlxs:capitalize(/Top/NavHeader/BrowseFields/Field/Name[@default='1'])"/>
+      <xsl:value-of select="dlxs:capitalize($current-browse-field)"/>
     </qui:header>
     <!-- <xsl:call-template name="build-action-panel" /> -->
     <xsl:call-template name="build-results-list" />
@@ -92,7 +93,7 @@
     <qui:nav role="browse">
       <xsl:for-each select="/Top/NavHeader/BrowseFields/Field">
         <qui:link href="{Link}" key="{Name}">
-          <xsl:if test="Name/@default = '1'">
+          <xsl:if test="Name = $current-browse-field">
             <xsl:attribute name="current">true</xsl:attribute>
           </xsl:if>
           <qui:label><xsl:value-of select="dlxs:capitalize(Name)" /></qui:label>
@@ -103,6 +104,28 @@
 
   <xsl:template name="build-browse-index">
     <xsl:variable name="default-value" select="//BrowseNav/DefaultValue" />
+    <qui:form role="browse">
+      <qui:label for="input-value">
+        <xsl:text>Find items having </xsl:text>
+        <xsl:value-of select="dlxs:capitalize(//Param[@name='key'])" />
+        <br />
+        <xsl:text>starting with:</xsl:text>
+      </qui:label>
+      <qui:input type="text" name="value" id="input-value">
+        <xsl:attribute name="value">
+          <xsl:choose>
+            <xsl:when test="//BrowseNav//String[Value[. = $default-value]][Count &lt; 0]">
+              <xsl:value-of select="$default-value" />
+            </xsl:when>
+            <xsl:otherwise />
+          </xsl:choose>
+        </xsl:attribute>
+      </qui:input>
+      <xsl:for-each select="//BrowseStringForm/HiddenVars/Variable[@name != 'xxkey']">
+        <qui:input type="hidden" role="browse" name="{@name}" value="{.}">
+        </qui:input>
+      </xsl:for-each>
+    </qui:form>
     <qui:nav role="index">
       <xsl:for-each select="//BrowseNav/FirstLetter">
         <xsl:variable name="first-letter" select="Value" />
@@ -111,7 +134,7 @@
             <xsl:attribute name="data-selected">true</xsl:attribute>
           </xsl:if>
           <qui:label><xsl:value-of select="Value" /></qui:label>
-          <xsl:apply-templates select="//BrowseNav/String[starts-with(Value, $first-letter)]">
+          <xsl:apply-templates select="//BrowseNav/String[starts-with(Value, $first-letter)][Count &gt; 0]">
             <xsl:with-param name="default-value" select="$default-value" />
           </xsl:apply-templates>
         </qui:link>
@@ -223,11 +246,9 @@
   </xsl:template>
   
   <xsl:template name="build-results-list">
-    <xsl:variable name="q" select="//SearchForm/Q[@name='q1']" />
-    <xsl:variable name="is-advanced" select="//SearchForm/Advanced" />
-    <xsl:call-template name="build-search-form" />
-    <xsl:call-template name="build-portfolio-actions" />
-    <qui:block slot="results">
+    <xsl:variable name="key" select="//Param[@name='key']" />
+    <xsl:variable name="value" select="//BrowseNav/DefaultValue" />
+    <qui:block slot="results" data-key="{$key}" data-value="{$value}">
       <xsl:if test="//Param[@name='xc'] = 1 or //Param[@name='view'] = 'bbreslist'">
         <xsl:attribute name="data-xc">true</xsl:attribute>
       </xsl:if>
