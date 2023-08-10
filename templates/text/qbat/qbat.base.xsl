@@ -129,7 +129,7 @@
   </xsl:template>
 
   <xsl:template name="build-app-script">
-    <script src="{$docroot}dist/js/image/main.js"></script>
+    <script src="{$docroot}dist/js/text/main.js"></script>
   </xsl:template>
   
   <xsl:template name="build-cqfill-script">
@@ -717,6 +717,18 @@
         <xsl:otherwise><xsl:apply-templates mode="copy" /></xsl:otherwise>
       </xsl:choose>
     </a>
+  </xsl:template>
+
+  <xsl:template match="qui:input[@type='text']">
+    <input>
+      <xsl:apply-templates select="@*" mode="copy" />
+    </input>
+  </xsl:template>
+
+  <xsl:template match="qui:label">
+    <label>
+      <xsl:apply-templates select="@*|text()" mode="copy" />
+    </label>
   </xsl:template>
 
   <xsl:template match="qui:link" mode="copy" priority="99">

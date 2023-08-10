@@ -56,7 +56,7 @@
     <xsl:processing-instruction name="xml-stylesheet">
       <xsl:value-of select="concat('type=&quot;text/xsl&quot; href=&quot;', $docroot, '/templates/debug.qui.xsl&quot;')" />
     </xsl:processing-instruction>
-    <qui:root view="{$view}" collid="{$collid}" username="{//AuthenticatedUsername}" context-type="{$context-type}" api_url="{$api_url}">
+    <qui:root template="{$template-name}" view="{$view}" collid="{$collid}" username="{//AuthenticatedUsername}" context-type="{$context-type}" api_url="{$api_url}">
       <xsl:if test="//BbagOptionsMenu/UserIsOwner = 'true'">
         <xsl:attribute name="user-is-owner">true</xsl:attribute>
       </xsl:if>
@@ -116,13 +116,15 @@
   </xsl:template>
 
   <xsl:template name="build-sub-header">
-    <qui:sub-header>
-      <xsl:attribute name="href">
-        <xsl:call-template name="get-context-link" />
-      </xsl:attribute>
-      <xsl:call-template name="build-sub-header-badge-data" />
-      <xsl:call-template name="get-context-title" />
-    </qui:sub-header>
+    <xsl:if test="$page != 'index'">
+      <qui:sub-header>
+        <xsl:attribute name="href">
+          <xsl:call-template name="get-context-link" />
+        </xsl:attribute>
+        <xsl:call-template name="build-sub-header-badge-data" />
+        <xsl:call-template name="get-context-title" />
+      </qui:sub-header>  
+    </xsl:if>
   </xsl:template>
 
   <xsl:template name="build-sub-header-badge-data">

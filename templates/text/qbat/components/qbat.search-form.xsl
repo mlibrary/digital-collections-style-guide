@@ -6,7 +6,7 @@
 
   <xsl:template match="qui:form[@id='collection-search']">
     <xsl:variable name="form" select="." />
-    <form id="collection-search" action="/cgi/t/text-idx" class="[ mb-1 ]" method="GET">
+    <form id="collection-search" action="/cgi/t/text/text-idx" class="[ mb-1 ]" method="GET">
       <div class="search">
         <xsl:choose>
           <xsl:when test="$form/@data-advanced = 'true'">
@@ -17,7 +17,7 @@
           </xsl:otherwise>
         </xsl:choose>
         <xsl:if test="true() or @role = 'search'">
-          <div class="advanced-link"><a href="/cgi/i/image/image-idx?c={$collid};page=search">Advanced Search</a></div>
+          <div class="advanced-link"><a href="/cgi/t/text/text-idx?c={$collid};page=simple">Advanced Search</a></div>
         </xsl:if>
       </div>
       <xsl:call-template name="build-search-hidden-fields">
@@ -115,8 +115,9 @@
       <input type="hidden" name="from" value="reslist" />
     </xsl:if>
     <xsl:apply-templates select="$form/qui:hidden-input" />
-    <input type="hidden" name="type" value="boolean" />
-    <input type="hidden" name="view" value="reslist" />
+    <xsl:apply-templates select="$form/qui:input[@type='hidden']" mode="hidden" />
+    <!-- <input type="hidden" name="type" value="boolean" />
+    <input type="hidden" name="view" value="reslist" /> -->
     <xsl:choose>
       <xsl:when test="$form/qui:hidden-input[@name='c']" />
       <xsl:otherwise>
@@ -128,7 +129,14 @@
   <xsl:template name="build-search-additional-fields" />
 
   <xsl:template match="qui:input" mode="hidden">
-    <input type="hidden" name="{@name}" value="{@value}" />
+    <input type="hidden" name="{@name}" value="{@value}">
+      <xsl:if test="@role">
+        <xsl:attribute name="data-role"><xsl:value-of select="@role" /></xsl:attribute>
+      </xsl:if>
+      <xsl:if test="@disabled = 'true'">
+        <xsl:attribute name="disabled">disabled</xsl:attribute>
+      </xsl:if>
+    </input>
   </xsl:template>
 
 </xsl:stylesheet>

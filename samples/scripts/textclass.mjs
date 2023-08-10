@@ -164,6 +164,8 @@ async function processDLXS(req, res) {
       if ( view ) { break; }
     }
 
+    view = xpath.select('string(//TemplateName)', xmlDoc);
+
     if ( url.searchParams.get('page') == 'home' ) {
       view = 'index';
       xpath.select("//Param[@name='page']", xmlDoc)[0].textContent = 'index';
@@ -172,7 +174,12 @@ async function processDLXS(req, res) {
       const homeResp = await fetch(`https://${dlxsBase}/${collid.substr(0, 1)}/${collid}/index.html`);
       const htmlData = await homeResp.text();
       const htmlDom = new JSDOM(htmlData);
-      const htmlDoc = htmlDom.window.document.body.querySelector('main');
+      let htmlDoc = htmlDom.window.document.body.querySelector('main');
+      let klass = 'refresh';
+      if ( ! htmlDoc ) {
+        htmlDoc = htmlDom.window.document.body;
+        klass = 'classic';
+      }
       htmlDoc.querySelectorAll('script').forEach((el) => {
         el.remove();
       })
@@ -180,6 +187,7 @@ async function processDLXS(req, res) {
       const bodyDoc = new DOMParser().parseFromString(bodyHtml, "text/html");
 
       const homePageEl = xmlDoc.createElement('HomePage');
+      homePageEl.setAttribute('class', klass);
       homePageEl.appendChild(bodyDoc.documentElement);
       xmlDoc.documentElement.appendChild(homePageEl);
       console.log("-- parsed index.html");

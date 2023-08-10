@@ -1,0 +1,33 @@
+.parenthetical-expression::before {
+  content: "(";
+  font-size: 4rem;
+  color: var(--color-neutral-300);
+}
+
+.parenthetical-expression::after {
+  content: ")";
+  font-size: 4rem;
+  color: var(--color-neutral-300);
+}
+
+.ww-terms {
+  width: 100%;
+  vertical-align: top;
+  border-color: var(--color-neutral-100);
+}
+
+tbody, td, tfoot, th, thead, tr {
+  border-color: inherit;
+  border-style: solid;
+  border-width: 0;
+}
+
+th {
+  font-weight: bold;
+  text-align: left;
+}
+
+.table>:not(caption)>*>* {
+  padding: 0.5rem 0.5rem;
+  border-bottom-width: 1px;
+}

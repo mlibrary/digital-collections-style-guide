@@ -4,18 +4,44 @@
 ]>
 <xsl:stylesheet version="1.0" xmlns="http://www.w3.org/1999/xhtml" xmlns:xhtml="http://www.w3.org/1999/xhtml" xmlns:xsl="http://www.w3.org/1999/XSL/Transform" xmlns:dlxs="http://dlxs.org" xmlns:qbat="http://dlxs.org/quombat" xmlns:exsl="http://exslt.org/common" extension-element-prefixes="exsl" xmlns:qui="http://dlxs.org/quombat/ui">
 
+  <xsl:variable name="search-form" select="//SearchForm" />
+
   <xsl:template name="get-title">
-    Index
+    <xsl:choose>
+      <xsl:when test="$page = 'index'">Index</xsl:when>
+      <xsl:when test="$page = 'simple'">Advanced Search: Basic</xsl:when>
+      <xsl:when test="$page = 'boolean'">Advanced Search: Boolean</xsl:when>
+      <xsl:when test="$page = 'proximity'">Advanced Search: Proximity</xsl:when>
+      <xsl:when test="$page = 'bib'">Advanced Search: Bibliographic</xsl:when>
+      <xsl:when test="$page = 'wwstart'">Advanced Search: Word Index</xsl:when>
+      <xsl:when test="$page = 'wwfull'">Advanced Search: Word Index</xsl:when>
+      <xsl:when test="$page = 'history'">Search History</xsl:when>
+    </xsl:choose>
   </xsl:template>
 
   <xsl:template name="build-body-main">
+    <xsl:choose>
+      <xsl:when test="$page = 'index'">
+        <xsl:call-template name="build-body-page-index" />
+      </xsl:when>
+      <xsl:when test="$page = 'history'">
+        <xsl:call-template name="build-body-page-history" />
+      </xsl:when>
+      <xsl:when test="$page = 'wwstart' or $page = 'wwfull'">
+        <xsl:call-template name="build-ww-form" />
+      </xsl:when>
+      <xsl:otherwise>
+        <xsl:call-template name="build-advanced-search-form" />
+      </xsl:otherwise>
+    </xsl:choose>
+  </xsl:template>
+
+  <xsl:template name="build-body-page-index">
     <qui:header role="main">
       <xsl:call-template name="build-sub-header-badge-data" />
       <xsl:call-template name="get-collection-title" />
     </qui:header>
     
-    <xsl:call-template name="build-search-form" />
-
     <qui:block slot="information">
       <xsl:apply-templates select="//HomePage//xhtml:div[@id='collection-overview']" mode="copy-guts" />
     </qui:block>
@@ -51,7 +77,7 @@
 
     <xsl:call-template name="build-panel-custom" />
     <xsl:call-template name="build-panel-browse-links" />
-
+    <xsl:call-template name="build-search-form" />
   </xsl:template>
 
   <xsl:template name="build-panel-custom">
@@ -91,6 +117,20 @@
     </qui:panel>
   </xsl:template>
 
+  <xsl:template name="get-current-page-breadcrumb-label">
+    <xsl:call-template name="get-title" />
+  </xsl:template>
+
   <xsl:template match="//HomePage//xhtml:div[@id='copyright']//xhtml:h2" mode="copy" />
+
+  <xsl:template match="Option">
+    <xsl:param name="default" />
+    <qui:option value="{Value}">
+      <xsl:if test="Focus = 'true' or Value = $default">
+        <xsl:attribute name="selected">true</xsl:attribute>
+      </xsl:if>
+      <xsl:apply-templates select="Label" />
+    </qui:option>
+  </xsl:template>
 
 </xsl:stylesheet>

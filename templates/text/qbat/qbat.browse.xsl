@@ -1,9 +1,11 @@
 <?xml version="1.0" encoding="utf-8"?>
-<xsl:stylesheet version="1.0" xmlns="http://www.w3.org/1999/xhtml" xmlns:xsl="http://www.w3.org/1999/XSL/Transform" xmlns:qui="http://dlxs.org/quombat/ui" xmlns:xhtml="http://www.w3.org/1999/xhtml" xmlns:exsl="http://exslt.org/common" extension-element-prefixes="exsl">
+<xsl:stylesheet version="1.0" xmlns="http://www.w3.org/1999/xhtml" xmlns:xsl="http://www.w3.org/1999/XSL/Transform" xmlns:qui="http://dlxs.org/quombat/ui" xmlns:xhtml="http://www.w3.org/1999/xhtml" xmlns:dlxs="http://dlxs.org" xmlns:exsl="http://exslt.org/common" extension-element-prefixes="exsl">
 
   <xsl:variable name="search-form" select="//qui:form[@id='collection-search']" />
   <xsl:variable name="sort-options" select="//qui:form[@id='sort-options']" />
   <xsl:variable name="xc" select="//qui:block[@slot='results']/@data-xc" />
+  <xsl:variable name="key" select="//qui:block[@slot='results']/@data-key" />
+  <xsl:variable name="value" select="//qui:block[@slot='results']/@data-value" />
   <xsl:variable name="has-results" select="//qui:nav[@role='results']/@total &gt; 0" />
   <xsl:variable name="nav" select="//qui:nav[@role='results']" />
 
@@ -31,7 +33,7 @@
   <xsl:template match="qui:main">
 
     <div class="[ mb-2 ]">
-      <xsl:call-template name="build-breadcrumbs" />
+      <xsl:call-template name="build-navigation" />
       <xsl:call-template name="build-collection-heading" />
     </div>
 
@@ -53,7 +55,7 @@
       </div>
       <div class="main-panel">
         <xsl:call-template name="build-browse-navigation" />
-        <xsl:call-template name="build-search-form" />
+        <!-- <xsl:call-template name="build-search-form" /> -->
         <xsl:call-template name="build-results-summary-sort" />
         <!-- <xsl:if test="$has-results">
           <xsl:call-template name="build-portfolio-actions" />
@@ -128,6 +130,12 @@
   </xsl:template>
 
   <xsl:template name="build-search-summary-body">
+    <p>
+      <xsl:text>Browsing items having </xsl:text>
+      <strong><xsl:value-of select="dlxs:capitalize($key)" /></strong>
+      <xsl:text> starting with </xsl:text>
+      <strong><xsl:value-of select="dlxs:capitalize($value)" /></strong>
+    </p>
     <xsl:if test="$search-form/qui:control[@slot='clause'][normalize-space(qui:input[@slot='q']/@value)]">
       <p>
         <xsl:text>Showing results for </xsl:text>
@@ -183,7 +191,7 @@
   <xsl:template name="build-search-tools">
     <div class="[ search-results__tools ][ mb-1 gap-1 ]">
       <xsl:call-template name="build-search-summary" />
-      <xsl:if test="$has-results">
+      <xsl:if test="false() and $has-results">
         <sl-dropdown id="action-results-sort">
           <sl-button slot="trigger" caret="caret" class="sl-button--ghost">
             <span class="sl-dropdown-label">
@@ -215,19 +223,33 @@
   </xsl:template>
 
   <xsl:template name="build-filters-panel">
+    <xsl:variable name="browse-form" select="//qui:form[@role='browse']" />
+    <xsl:if test="false()">
+      <h3>Quick Browse</h3>
+      <div class="[ side-panel__box ]">
+        <form method="GET" action="/cgi/t/text/text-idx">
+          <div class="[ flex flex-center gap-0_5 flex-flow-rw ]">
+            <xsl:apply-templates select="$browse-form//qui:label" />
+            <xsl:apply-templates select="$browse-form//qui:input[@type='text']" />
+            <button class="button button--small button--secondary" type="submit">Lookup</button>
+          </div>
+          <xsl:apply-templates select="$browse-form/qui:input[@type='hidden']" mode="hidden" />
+        </form>
+      </div>  
+    </xsl:if>
     <h3>Index</h3>
     <div class="[ side-panel__box ]">
       <ul class="[ browse-index ][ flex flex-gap-0_5 flex-flow-rw flex-shrink-0 ]">
         <xsl:apply-templates select="//qui:nav[@role='index']/qui:link" mode="index" />
       </ul>
-      <xsl:if test="//qui:nav[@role='index']/qui:link/qui:link">
-        <h4 class="visually-hidden">Secondary Index</h4>
-        <ul class="[ browse-index ][ flex flex-gap-0_5 flex-flow-rw flex-shrink-0 ]">
-          <xsl:apply-templates select="//qui:nav[@role='index']/qui:link/qui:link" mode="index" />
-        </ul>
-      </xsl:if>
     </div>
-  </xsl:template>
+    <xsl:if test="//qui:nav[@role='index']/qui:link/qui:link">
+      <h4 class="visually-hidden">Secondary Index</h4>
+      <ul class="[ browse-index ][ flex flex-gap-0_5 flex-flow-rw flex-shrink-0 ]">
+        <xsl:apply-templates select="//qui:nav[@role='index']/qui:link/qui:link" mode="index" />
+      </ul>
+    </xsl:if>
+</xsl:template>
 
   <xsl:template match="qui:link" mode="index">
     <li style="flex: 1; flex-grow: 0;">
@@ -477,7 +499,9 @@
     <xsl:attribute name="tabindex">-1</xsl:attribute>
   </xsl:template>
 
-  <xsl:template name="build-navigation"></xsl:template>
+  <xsl:template name="build-navigation">
+    <xsl:call-template name="build-breadcrumbs" />
+  </xsl:template>
 
   <xsl:template name="build-hidden-portfolio-form">
     <form style="display: none" method="GET" action="/cgi/i/image/image-idx" id="bbaction-form">
@@ -507,6 +531,12 @@
       <li>Try different keywords that mean the same thing.</li>
       <li>Try searching in <strong>Anywhere in record</strong>.</li>
     </ul>
+  </xsl:template>
+
+  <xsl:template match="qui:label[@for='input-value']">
+    <label class="text-muted text-xx-small flex--wide" style="margin-bottom: -0.5rem">
+      <xsl:apply-templates select="." mode="copy-guts" />
+    </label>
   </xsl:template>
 
   <xsl:template name="build-extra-portfolio-actions"></xsl:template>

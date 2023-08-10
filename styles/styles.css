@@ -432,6 +432,7 @@ fieldset.fieldset--grid {
   grid-template-areas: "rgn select ." "q q clear";
   grid-column-gap: 0.5rem;
   grid-row-gap: 0.5rem;
+  padding: 0.5rem 1rem;
 }
 
 fieldset.fieldset--grid .fieldset--clause--region {
@@ -463,6 +464,15 @@ fieldset.fieldset--grid button[data-action="reset-clause"] {
 
 .fieldset--clause--operator label {
   text-transform: uppercase;
+}
+
+fieldset {
+  padding: 0.5rem 1rem;
+}
+
+fieldset legend {
+  font-weight: bold;
+  margin-bottom: 1rem;
 }
 
 /** Lists **/
@@ -1192,6 +1202,15 @@ sl-dropdown::part(panel) {
   font-size: var(--text-xx-small) !important;
 }
 
+.text-muted {
+  color: var(--color-neutral-400);
+}
+
+.flex--wide {
+  flex-basis: 100%;
+  flex-shrink: 0;
+}
+
 /*
  * Anchors/Links
  *
@@ -1390,7 +1409,7 @@ button {
 }
 
 .button--small {
-  padding: var(--space-small);
+  padding: var(--space-x-small) var(--space-small);
 }
 
 .button--large {
