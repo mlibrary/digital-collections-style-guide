@@ -106,7 +106,7 @@
       <qui:nav>
         <xsl:apply-templates select="//qui:panel[@slot='browse'][@weight=0]//qui:link" mode="copy" />
         <xsl:for-each select="//BrowseFields/Field">
-          <qui:link href="{Link}" data-rel="browse-items">
+          <qui:link href="{Link}" data-rel="browse-items" icon="layers">
             <xsl:text>Browse by </xsl:text>
             <xsl:value-of select="key('get-lookup', concat('headerutils.str.', Name))" />
           </qui:link>
