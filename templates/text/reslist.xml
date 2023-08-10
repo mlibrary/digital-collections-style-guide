@@ -4,20 +4,19 @@
 <Top xmlns:dlxs="http://www.umdl.umich.edu/dlxs">
 
   <!-- XSL fallback files -->
-    <XslFallbackFileList>
-        <Filename>bookbagitemsstring.xsl</Filename>
-        <Filename>footer.import.xsl</Filename>
-        <Filename>globalvariables.xsl</Filename>
-        <Filename>htmlhead.xsl</Filename>
-        <Filename>misc.xsl</Filename>
-        <Filename>navheader.xsl</Filename>
-        <Filename>reslist.xsl</Filename>
-        <Filename>results.xsl</Filename>
-        <Filename>resultsheader.xsl</Filename>
-        <Filename>scopedivs.xsl</Filename>
-        <Filename>xsl2htmlutils.xsl</Filename>
-        <Filename>xslfunctions.xsl</Filename>
-    </XslFallbackFileList>
+  <XslFallbackFileList pipeline="qui">
+    <Filename>qui/qui.base.xsl</Filename>
+    <Filename>../vendor/str.split.function.xsl</Filename>
+    <Filename>../vendor/xslfunctions.xsl</Filename>
+    <Filename>qui/components/*.xsl</Filename>
+    <Filename>qui/qui.reslist.xsl</Filename>
+  </XslFallbackFileList>
+
+  <XslFallbackFileList pipeline="qbat">
+    <Filename>qbat/qbat.base.xsl</Filename>
+    <Filename>qbat/components/*.xsl</Filename>
+    <Filename>qbat/qbat.reslist.xsl</Filename>
+  </XslFallbackFileList>
 
   <!-- Custom OPTIONAL XML for top-level file reslist.xml -->
   <CustomXml><?CHUNK filename="reslistextra.xml" optional="1"?></CustomXml>
