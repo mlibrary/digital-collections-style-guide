@@ -376,21 +376,23 @@
   </xsl:template>
 
   <xsl:template name="build-portfolio-form">
-    <qui:form action="bbaction">
-      <xsl:if test="//BbagOptionsMenu/UserIsOwner = 'true'">
-        <xsl:attribute name="data-owner">true</xsl:attribute>
-        <xsl:attribute name="data-status">
-          <xsl:choose>
-            <xsl:when test="//BookBagInfo/Field[@name='shared'] = '0'">private</xsl:when>
-            <xsl:otherwise>public</xsl:otherwise>
-          </xsl:choose>
-        </xsl:attribute>
-      </xsl:if>
-      <xsl:for-each select="//BbagOptionsMenu/HiddenVars/Variable">
-        <qui:hidden-input name="{@name}" value="{.}" />
-      </xsl:for-each>
-      <qui:hidden-input name="backlink" value="{//BbagOptionsMenu/BackLink}" />
-    </qui:form>
+    <xsl:if test="//BbagOptionsMenu/HiddenVars">
+      <qui:form action="bbaction">
+        <xsl:if test="//BbagOptionsMenu/UserIsOwner = 'true'">
+          <xsl:attribute name="data-owner">true</xsl:attribute>
+          <xsl:attribute name="data-status">
+            <xsl:choose>
+              <xsl:when test="//BookBagInfo/Field[@name='shared'] = '0'">private</xsl:when>
+              <xsl:otherwise>public</xsl:otherwise>
+            </xsl:choose>
+          </xsl:attribute>
+        </xsl:if>
+        <xsl:for-each select="//BbagOptionsMenu/HiddenVars/Variable">
+          <qui:hidden-input name="{@name}" value="{.}" />
+        </xsl:for-each>
+        <qui:hidden-input name="backlink" value="{//BbagOptionsMenu/BackLink}" />
+      </qui:form>
+    </xsl:if>
   </xsl:template>
 
   <xsl:template match="Callout">

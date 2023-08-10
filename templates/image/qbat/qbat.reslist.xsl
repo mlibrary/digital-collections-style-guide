@@ -214,17 +214,19 @@
   </xsl:template>
 
   <xsl:template name="build-portfolio-actions">
-    <xsl:apply-templates select="//qui:callout[@slot='portfolio']" />
-    <div class="[ flex flex-align-center ][ mb-1 gap-0_5 ]">
-      <button class="[ button button--secondary ] [ flex ]" aria-label="Add items to portfolio" data-action="select-all" data-checked="false">
-        <span>Select all items</span>
-      </button>
-      <button class="[ button button--secondary ] [ flex ]" aria-label="Add items to portfolio" data-action="add-items">
-        <span class="material-icons" aria-hidden="true">add</span>
-        <span>Add items to portfolio</span>
-      </button>
-      <xsl:call-template name="build-extra-portfolio-actions" />
-    </div>
+    <xsl:if test="//qui:form[@action='bbaction']">
+      <xsl:apply-templates select="//qui:callout[@slot='portfolio']" />
+      <div class="[ flex flex-align-center ][ mb-1 gap-0_5 ]">
+        <button class="[ button button--secondary ] [ flex ]" aria-label="Add items to portfolio" data-action="select-all" data-checked="false">
+          <span>Select all items</span>
+        </button>
+        <button class="[ button button--secondary ] [ flex ]" aria-label="Add items to portfolio" data-action="add-items">
+          <span class="material-icons" aria-hidden="true">add</span>
+          <span>Add items to portfolio</span>
+        </button>
+        <xsl:call-template name="build-extra-portfolio-actions" />
+      </div>
+    </xsl:if>
   </xsl:template>
 
   <xsl:template name="build-results-list">
@@ -316,11 +318,13 @@
           </dl>
         </div>
       </a>
-      <xsl:variable name="bb-id" select="generate-id()" />
-      <label class="[ portfolio-selection ]" for="bb{$bb-id}">
-        <input id="bb{$bb-id}" type="checkbox" name="bbidno" value="{@identifier}" autocomplete="off" />
-        <span class="visually-hidden">Add item to portfolio</span>
-      </label>
+      <xsl:if test="//qui:form[@action='bbaction']">
+        <xsl:variable name="bb-id" select="generate-id()" />
+        <label class="[ portfolio-selection ]" for="bb{$bb-id}">
+          <input id="bb{$bb-id}" type="checkbox" name="bbidno" value="{@identifier}" autocomplete="off" />
+          <span class="visually-hidden">Add item to portfolio</span>
+        </label>
+      </xsl:if>
     </section>
 
     <xsl:if test="position() mod 10 = 0 and position() != last()">

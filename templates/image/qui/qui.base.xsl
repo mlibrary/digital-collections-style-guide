@@ -112,7 +112,9 @@
       <qui:search-form collid="{$collid}" value="{//Param[@name='q1']}" />
       <qui:nav>
         <qui:link rel="help" href="{//Help}">Help</qui:link>
-        <qui:link rel="portfolios" href="{//OpenPortfolio/Url}">Portfolios</qui:link>
+        <xsl:if test="//OpenPortfolio/Url">
+          <qui:link rel="portfolios" href="{//OpenPortfolio/Url}">Portfolios</qui:link>
+        </xsl:if>
         <xsl:call-template name="build-login-link" />
       </qui:nav>
     </qui:m-website-header>
