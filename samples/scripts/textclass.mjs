@@ -166,6 +166,11 @@ async function processDLXS(req, res) {
 
     view = xpath.select('string(//TemplateName)', xmlDoc);
 
+    // hacking around the home business
+    if ( url.pathname.match(/^\/([a-z])\/(\w+)\/?$/) ) {
+      url.searchParams.set('page', 'home');
+    }
+
     if ( url.searchParams.get('page') == 'home' ) {
       view = 'index';
       xpath.select("//Param[@name='page']", xmlDoc)[0].textContent = 'index';
