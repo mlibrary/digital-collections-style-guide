@@ -9,11 +9,13 @@
     <Filename>../vendor/str.split.function.xsl</Filename>
     <Filename>../vendor/xslfunctions.xsl</Filename>
     <Filename>qui/components/*.xsl</Filename>
+    <Filename>qui/includes/qui.results-item.xsl</Filename>
     <Filename>qui/qui.reslist.xsl</Filename>
   </XslFallbackFileList>
 
   <XslFallbackFileList pipeline="qbat">
     <Filename>qbat/qbat.base.xsl</Filename>
+    <Filename>../vendor/xslfunctions.xsl</Filename>
     <Filename>qbat/components/*.xsl</Filename>
     <Filename>qbat/qbat.reslist.xsl</Filename>
   </XslFallbackFileList>

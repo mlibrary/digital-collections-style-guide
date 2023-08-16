@@ -416,6 +416,13 @@ function listen(options) {
     }
   }))
 
+  app.use('/cache', proxy('https://roger.quod.lib.umich.edu/cache', {
+    https: true,
+    forwardPath: function (req) {
+      return req.originalUrl;
+    }
+  }))
+
   app.use('/lib/colllist', proxy('https://quod.lib.umich.edu/lib/colllist', {
     https: true,
     forwardPath: function (req) {
