@@ -1,0 +1,155 @@
+
+select option {
+  font-weight: normal; /* weird firefox issue */
+}
+
+select#results-sort {
+  text-transform: capitalize;
+}
+
+.separator::after {
+  font-family: var(--material);
+  content: "\e315";
+  vertical-align: bottom;
+  color: var(--color-neutral-200);  
+  padding-left: 0.25rem;
+}
+
+.side-panel__box > details {
+  max-width: 100%;
+}
+
+.filters__selected .filter-item + button {
+  margin-top: 1rem;
+}
+
+details[data-list-expanded="false"] .filter-item:nth-of-type(n+11) {
+  display: none;
+}
+
+details[data-list-expanded="false"] span[data-expanded="true"] {
+  display: none;
+}
+
+details[data-list-expanded="true"] span[data-expanded="false"] {
+  display: none;
+}
+
+.filter-item--list {
+  overflow: auto;
+}
+
+input#results-pagination {
+  height: 40px;
+  min-width: 6ch;
+  padding: 0 0.5rem;
+}
+
+button[data-action="select-all"]::before {
+  font-family: var(--material);
+  font-size: 24px;
+  color: inherit;
+  vertical-align: middle;
+  line-height: 1;
+  content: "\e835"; /* check_box_outline_blank */
+}
+
+button[data-action="select-all"][data-checked="true"]::before {
+  content: "\e834"; /* check_box */
+}
+
+.button_group {
+  display: flex;
+  flex-direction: column;
+  gap: 1rem;
+  max-width: 20ch;
+}
+
+.button_group .button.button--large {
+  /* this makes the buttons respond better when narrow */
+  padding-left: 10%;
+  padding-right: 10%;
+}
+
+.button_group .button + .button {
+  margin: 0;
+}
+
+@media screen and (max-width: 600px) {
+
+
+  .button_group {
+    max-width: none;
+  }
+}
+
+button[data-action="toggle-side-panel"] {
+  display: none;
+}
+
+.hilite1 {
+  color: #000000;
+  background-color: #FFFF00;
+}
+
+.hilite2 {
+  color: #000000;
+  background-color: #00FF00;
+}
+
+.hilite3 {
+  color: #000000;
+  background-color: #FF9900;
+}
+
+.hilite4 {
+  color: #000000;
+  background-color: #00ffcc;
+}
+
+.hilite5 {
+  color: #000000;
+  background-color: #00cccc;
+}
+
+.hilite6 {
+  color: #000000;
+  background-color: #0099cc;
+}
+
+@media screen and (max-width: 751px) {
+
+  button[data-action="toggle-side-panel"] {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    gap: 0.5rem;
+    margin-bottom: 1rem;
+    margin-top: 1rem;
+    width: 100%;
+  }
+
+  button[data-action="toggle-side-panel"]::after {
+    font-family: "Material Icons";
+    font-size: 24px;
+    color: var(--color-teal-400);
+  }
+
+  button[data-action="toggle-side-panel"][aria-expanded="false"]::after {
+    content: "\e5cf";
+  }
+
+  button[data-action="toggle-side-panel"][aria-expanded="true"]::after {
+    content: "\e5ce";
+  }
+
+  button[data-action="toggle-side-panel"][aria-expanded="false"] ~ * {
+    display: none;
+  }
+
+}
+
+iframe {
+  border: none;
+  height: 2rem;
+}

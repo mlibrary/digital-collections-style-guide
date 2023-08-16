@@ -605,7 +605,7 @@ fieldset legend {
   border-bottom: none;
 }
 
-.results-list--small a {
+.results-list--small a[data-behavior] {
   text-decoration: none;
   color: var(--color-neutral-400);
   margin-bottom: 0.5rem;
@@ -730,6 +730,12 @@ fieldset legend {
   padding: 0;
   margin-right: 1rem;
   flex-shrink: 0;
+}
+
+.results-list__empty {
+  width: 140px;
+  padding: 0;
+  margin-right: 1rem;
 }
 
 .results-list__blank {

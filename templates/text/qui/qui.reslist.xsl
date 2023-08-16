@@ -13,7 +13,7 @@
         <xsl:value-of select="$total" />
       </xsl:when>
       <xsl:otherwise>
-        <xsl:value-of select="//Fisheye/Url[@class='active']/@name + $sz - 1" />
+        <xsl:value-of select="//FisheyeLinks/FisheyeLink/LinkNumber[@focus='true'] + $sz - 1" />
       </xsl:otherwise>
     </xsl:choose>
   </xsl:variable>
@@ -29,17 +29,17 @@
         <xsl:value-of select="1" />
       </xsl:when>
       <xsl:otherwise>
-        <xsl:value-of select="count(//Fisheye/Url)" />
+        <xsl:value-of select="count(//FisheyeLinks/FisheyeLink)" />
       </xsl:otherwise>
     </xsl:choose>
   </xsl:variable>
   <xsl:variable name="current">
     <xsl:choose>
-      <xsl:when test="count(//Fisheye/Url) = 0">
+      <xsl:when test="count(//FisheyeLinks/FisheyeLink) = 0">
         <xsl:value-of select="1" />
       </xsl:when>
       <xsl:otherwise>
-        <xsl:value-of select="count(//Fisheye/Url[@class='active']//preceding-sibling::Url) + 1" />
+        <xsl:value-of select="count(//FisheyeLinks/FisheyeLink[LinkNumber[@focus='true']]//preceding-sibling::Url) + 1" />
       </xsl:otherwise>
     </xsl:choose>
   </xsl:variable>
@@ -49,11 +49,23 @@
         <xsl:value-of select="1" />
       </xsl:when>
       <xsl:otherwise>
-        <xsl:value-of select="//Fisheye/Url[@class='active']/@name" />
+        <xsl:value-of select="//FisheyeLinks/FisheyeLink/LinkNumber[@focus='true']" />
       </xsl:otherwise>
     </xsl:choose>
   </xsl:variable>
-
+  <xsl:variable name="number-matches">
+    <xsl:choose>
+      <xsl:when test="$searchtype='basic' or $searchtype='proximity'">
+        <xsl:value-of select="//CollTotals/HitCount" />
+      </xsl:when>
+      <xsl:when test="$searchtype='boolean'">
+        <xsl:value-of select="//CollTotals/HitRegionCount" />
+      </xsl:when>
+      <xsl:when test="$searchtype='bibliographic'">
+        <xsl:value-of select="//CollTotals/RecordCount" />
+      </xsl:when>
+    </xsl:choose>
+  </xsl:variable>
 
   <xsl:template name="build-body-main">
     <xsl:call-template name="build-results-navigation" />
@@ -88,7 +100,7 @@
   <xsl:template name="build-results-navigation">
     <!-- do we have M/N available in the PI handler? -->
     <xsl:variable name="tmp-xml">
-      <qui:nav role="results" total="{$total}" size="{$sz}" min="1" max="{$max}" current="{$current}" start="{$start}" end="{$end}" is-truncated="{/Top/SearchSummary/Truncated}">
+      <qui:nav role="results" total="{$total}" size="{$sz}" min="1" max="{$max}" current="{$current}" start="{$start}" end="{$end}" number-matches="{$number-matches}" is-truncated="{/Top/SearchSummary/Truncated}">
         <xsl:call-template name="build-results-navigation-link">
           <xsl:with-param name="rel">next</xsl:with-param>
           <xsl:with-param name="identifier" select="/Top/Next/@identifier" />
@@ -164,12 +176,13 @@
     <xsl:call-template name="build-search-form" />
     <xsl:call-template name="build-portfolio-actions" />
     <xsl:apply-templates select="//Facets" />
+    <xsl:apply-templates select="//SearchDescription" />
     <qui:form id="sort-options">
-      <xsl:for-each select="//SortOptionsMenu/HiddenVars/Variable">
+      <xsl:for-each select="//ResultsLinks/HiddenVars/Variable">
         <qui:hidden-input name="{@name}" value="{.}" />
       </xsl:for-each>
       <qui:select name="sort">
-        <xsl:for-each select="//SortOptionsMenu/Option">
+        <xsl:for-each select="//SortSelect/Option">
           <qui:option index="{@index}" value="{Value}">
             <xsl:if test="Focus = 'true'">
               <xsl:attribute name="selected">selected</xsl:attribute>
@@ -194,7 +207,7 @@
           <xsl:call-template name="build-no-results" />
         </xsl:when>
         <xsl:otherwise>
-          <xsl:apply-templates select="//Results/Result" />
+          <xsl:apply-templates select="//ResList/Results/Item" />
         </xsl:otherwise>
       </xsl:choose>
     </qui:block>
@@ -203,29 +216,68 @@
     </xsl:if>
   </xsl:template>
 
-  <xsl:template name="build-portfolio-actions" />
+  <xsl:template name="build-portfolio-actions">
+    <qui:callout slot="portfolio">
+      <iframe id="BBwindow" src="/cache/7/6/2/762da80dee881cd8b0c04168276a8711/bookbagitemsstring.html"></iframe>
+    </qui:callout>
+  </xsl:template>
 
   <xsl:template name="build-no-results">
     <pre>BOO-YAH</pre>
   </xsl:template>
 
-  <xsl:template match="Results/Result">
-    <qui:section identifier="{EntryId}">
-      <qui:link rel="result" href="{Url[@name='EntryLink']}" identifier="{.//EntryWindowName}" marker="{@marker}" />
+  <xsl:template match="Results/Item">
+    <xsl:variable name="encoding-type">
+      <xsl:choose>
+        <xsl:when test="DocEncodingType">
+          <xsl:value-of select="normalize-space(DocEncodingType)"/>
+        </xsl:when>
+        <xsl:otherwise>
+          <xsl:value-of select="normalize-space(parent::*/DocEncodingType)"/>
+        </xsl:otherwise>
+      </xsl:choose>
+    </xsl:variable>
+
+    <xsl:variable name="item-encoding-level">
+      <xsl:choose>
+        <xsl:when test="HEADER/ENCODINGDESC/EDITORIALDECL/@N">
+          <xsl:value-of select="HEADER/ENCODINGDESC/EDITORIALDECL/@N"/>
+        </xsl:when>
+        <xsl:otherwise>
+          <xsl:value-of select="''"/>
+        </xsl:otherwise>
+      </xsl:choose>
+    </xsl:variable>
+
+    <qui:section identifier="{ItemIdno}" auth-required="{AuthRequired}" encoding-type="{DocEncodingType}" encoding-level="{ItemEncodingLevel}">
+      <xsl:apply-templates select="Tombstone" />
+      <xsl:apply-templates select="DetailHref" />
+      <xsl:apply-templates select="TocHref">
+        <xsl:with-param name="item-encoding-level" xml:base="$item-encoding-level" />
+      </xsl:apply-templates>
+      <qui:link rel="bookmark" href="{BookbagAddHref}" label="{key('get-lookup', 'results.str.21')}" />
+      <xsl:if test="not($encoding-type='serialissue')">
+        <xsl:apply-templates select="FirstPageHref"/>
+      </xsl:if>
       <xsl:apply-templates select="MediaInfo" mode="iiif-link" />
-      <qui:title>
-        <qui:values>
-          <xsl:for-each select="str:split(ItemDescription, '|||')">
-            <qui:value><xsl:value-of select="." /></qui:value>
-          </xsl:for-each>
-        </qui:values>
-      </qui:title>
-      <qui:collection collid="{CollName/@collid}">
-        <qui:title><xsl:value-of select="CollName/Full" /></qui:title>
-      </qui:collection>
-      <qui:block slot="metadata">
-        <xsl:apply-templates select="Record[@name='result']/Section" />
-      </qui:block>
+      <xsl:choose>
+        <xsl:when test="$encoding-type = 'monograph'">
+          <xsl:call-template name="process-monograph">
+            <xsl:with-param name="item-encoding-level" xml:base="$item-encoding-level" />
+          </xsl:call-template>
+        </xsl:when>
+        <xsl:when test="$encoding-type = 'serialissue'">
+          <xsl:call-template name="process-serial-issue">
+            <xsl:with-param name="item-encoding-level" xml:base="$item-encoding-level" />
+          </xsl:call-template>
+        </xsl:when>
+        <xsl:when test="$encoding-type = 'serialarticle'">
+          <xsl:call-template name="process-serial-article">
+            <xsl:with-param name="item-encoding-level" xml:base="$item-encoding-level" />
+          </xsl:call-template>          
+        </xsl:when>
+      </xsl:choose>
+      <xsl:apply-templates select="HitSummary" />
     </qui:section>
   </xsl:template>
 
@@ -409,7 +461,95 @@
         </xhtml:a>
       </xhtml:p>
     </qui:callout>
-
   </xsl:template>  
 
+  <xsl:template match="SearchDescription">
+    <qui:block slot="search-summary">
+      <!-- <xsl:value-of select="key('get-lookup','reslist.str.yousearched')"/> -->
+      <xsl:text>Showing results for </xsl:text>
+      <xsl:value-of select="key('get-lookup','reslist.str.for')"/>
+      <xsl:text> </xsl:text>
+      <span class="naturallanguage">
+        <xsl:apply-templates select="SearchInNaturalLanguage"/>
+      </span>
+      <xsl:text> in </xsl:text>
+      <xsl:choose>
+        <xsl:when test="SearchQualifier!=''">
+          <span class="itemid">
+            <xsl:value-of select="key('get-lookup',SearchQualifier)"/>
+          </span>
+        </xsl:when>
+        <xsl:otherwise>
+          <span class="collid">
+            <xsl:apply-templates select="SearchCollid"/>
+          </span>
+        </xsl:otherwise>
+      </xsl:choose>
+      <!-- <br/>
+      <xsl:value-of select="key('get-lookup','reslist.str.results')"/>
+      <xsl:text> </xsl:text>
+      <xsl:apply-templates select="CollTotals"/> -->
+    </qui:block>
+  </xsl:template>
+
+  <xsl:template match="CollTotals">
+    <xsl:choose>
+      <xsl:when test="$searchtype='basic' or $searchtype='proximity'">
+        <xsl:call-template name="SimpleXCHitSumm"/>
+      </xsl:when>
+      <xsl:when test="$searchtype='boolean'">
+        <xsl:call-template name="BooleanXCHitSumm"/>
+      </xsl:when>
+      <xsl:when test="$searchtype='bibliographic'">
+        <xsl:call-template name="BibXCHitSumm"/>
+      </xsl:when>
+    </xsl:choose>
+  </xsl:template>
+  <xsl:template match="SearchQualifier">
+    <xsl:copy-of select="."/>
+  </xsl:template>
+  <xsl:template match="SearchTypeName">
+    <xsl:value-of select="."/>
+  </xsl:template>
+  <xsl:template match="SearchInNaturalLanguage">
+    <xsl:value-of select="."/>
+  </xsl:template>
+  <xsl:template match="SearchCollid">
+    <xsl:choose>
+      <xsl:when test="contains(.,'.')">
+        <xsl:value-of select="key('get-lookup',.)"/>
+      </xsl:when>
+      <xsl:otherwise>
+        <xsl:value-of select="."/>
+      </xsl:otherwise>
+    </xsl:choose>
+  </xsl:template>
+
+  <xsl:template name="SimpleXCHitSumm">
+    <xsl:value-of select="HitCount"/>
+    <xsl:value-of select="key('get-lookup','results.str.23')"/>
+    <xsl:apply-templates mode="HitSummPl" select="HitCount"/>
+    <xsl:value-of select="key('get-lookup','results.str.24')"/>
+    <xsl:value-of select="RecordCount"/>
+    <xsl:value-of select="key('get-lookup','results.str.25')"/>
+    <xsl:apply-templates mode="HitSummPl" select="RecordCount"/>
+  </xsl:template>
+  
+  <xsl:template name="BibXCHitSumm">
+    <xsl:value-of select="RecordCount"/>
+    <xsl:value-of select="key('get-lookup','results.str.26')"/>
+    <xsl:value-of select="key('get-lookup','results.str.27')"/>
+    <xsl:apply-templates mode="HitSummPl" select="RecordCount"/>
+  </xsl:template>
+   
+  <xsl:template name="BooleanXCHitSumm">
+    <xsl:value-of select="HitRegionCount"/>
+    <xsl:value-of select="key('get-lookup','results.str.28')"/>
+    <xsl:value-of select="HitRegion"/>
+    <xsl:value-of select="key('get-lookup','results.str.29')"/>
+    <xsl:value-of select="RecordCount"/>
+    <xsl:value-of select="key('get-lookup','results.str.30')"/>
+    <xsl:apply-templates mode="HitSummPl" select="RecordCount"/>
+  </xsl:template>
+   
 </xsl:stylesheet>

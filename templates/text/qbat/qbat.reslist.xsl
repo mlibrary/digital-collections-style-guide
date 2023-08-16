@@ -9,25 +9,14 @@
   <xsl:variable name="has-results" select="//qui:nav[@role='results']/@total &gt; 0" />
   <xsl:variable name="nav" select="//qui:nav[@role='results']" />
 
-  <xsl:template name="build-extra-styles">
-    <xsl:comment>DUBIOUS EXCEPTIONS</xsl:comment>
-    <link rel="stylesheet" href="{$docroot}styles/image/reslist.css" />
-    <link rel="stylesheet" href="{$docroot}styles/text/tabs.css" />
-    <style>
-      .browse-index .button:not([data-selected]) {
-        border: 1px solid transparent;
-      }
-      .browse-index a[disabled] {
-        opacity: 0.5;
-        pointer-events: none;
-        color: var(--color-neutral-300);
-      }
-    </style>
-  </xsl:template>
-
   <xsl:template name="build-extra-scripts">
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@shoelace-style/shoelace@2.4.0/dist/themes/light.css" />
     <script type="module" src="https://cdn.jsdelivr.net/npm/@shoelace-style/shoelace@2.4.0/dist/shoelace-autoloader.js"></script>
+  </xsl:template>
+
+  <xsl:template name="build-extra-styles">
+    <xsl:comment>DUBIOUS EXCEPTIONS</xsl:comment>
+    <link rel="stylesheet" href="{$docroot}styles/text/reslist.css" />
   </xsl:template>
 
   <xsl:template match="qui:main">
@@ -54,19 +43,18 @@
         </xsl:if>
       </div>
       <div class="main-panel">
-        <xsl:call-template name="build-browse-navigation" />
-        <!-- <xsl:call-template name="build-search-form" /> -->
+        <xsl:call-template name="build-search-form" />
         <xsl:call-template name="build-results-summary-sort" />
-        <!-- <xsl:if test="$has-results">
+        <xsl:if test="$has-results">
           <xsl:call-template name="build-portfolio-actions" />
-        </xsl:if> -->
+        </xsl:if>
         <xsl:call-template name="build-results-list" />
         <xsl:call-template name="build-results-pagination" />
         <!-- <xsl:call-template name="build-hidden-portfolio-form" /> -->
       </div>
     </div>
 
-  </xsl:template>
+  </xsl:template>  
 
   <xsl:template name="check-side-actions">
     <xsl:choose>
@@ -74,25 +62,6 @@
       <xsl:when test="//qui:nav[@role='index']">true</xsl:when>
       <xsl:otherwise>false</xsl:otherwise>
     </xsl:choose>
-  </xsl:template>
-
-  <xsl:template name="build-browse-navigation">
-    <xsl:if test="//qui:nav[@role='browse']">
-      <nav aria-labelledby="maincontent" class="horizontal-navigation-container mb-2">
-        <ul class="horizontal-navigation-list">
-          <xsl:for-each select="//qui:nav[@role='browse']/qui:link">
-            <li>
-              <a href="{@href}">
-                <xsl:if test="@current = 'true'">
-                  <xsl:attribute name="aria-current">page</xsl:attribute>
-                </xsl:if>
-                <xsl:value-of select="qui:label" />
-              </a>
-            </li>
-          </xsl:for-each>
-        </ul>
-      </nav>
-    </xsl:if>
   </xsl:template>
 
   <xsl:template name="build-results-summary-sort">
@@ -116,6 +85,9 @@
             <xsl:text> of </xsl:text>
             <xsl:value-of select="$nav/@total" />
             <xsl:text> results </xsl:text>
+            <xsl:text> (</xsl:text>
+            <xsl:value-of select="$nav/@number-matches" />
+            <xsl:text> matches)</xsl:text>
             <xsl:if test="$nav/@is-truncated='true'">
               <span>
                 <xsl:text> </xsl:text>
@@ -131,12 +103,9 @@
 
   <xsl:template name="build-search-summary-body">
     <p>
-      <xsl:text>Browsing items having </xsl:text>
-      <strong><xsl:value-of select="dlxs:capitalize($key)" /></strong>
-      <xsl:text> starting with </xsl:text>
-      <strong><xsl:value-of select="dlxs:capitalize($value)" /></strong>
+      <xsl:apply-templates select="//qui:block[@slot='search-summary']" mode="copy-guts" />
     </p>
-    <xsl:if test="$search-form/qui:control[@slot='clause'][normalize-space(qui:input[@slot='q']/@value)]">
+    <xsl:if test="false() and $search-form/qui:control[@slot='clause'][normalize-space(qui:input[@slot='q']/@value)]">
       <p>
         <xsl:text>Showing results for </xsl:text>
         <xsl:for-each select="$search-form/qui:control[@slot='clause'][@data-name!='q0'][normalize-space(qui:input[@slot='q']/@value)]">
@@ -191,7 +160,7 @@
   <xsl:template name="build-search-tools">
     <div class="[ search-results__tools ][ mb-1 gap-1 ]">
       <xsl:call-template name="build-search-summary" />
-      <xsl:if test="false() and $has-results">
+      <xsl:if test="$has-results">
         <sl-dropdown id="action-results-sort">
           <sl-button slot="trigger" caret="caret" class="sl-button--ghost">
             <span class="sl-dropdown-label">
@@ -219,86 +188,6 @@
           <xsl:apply-templates select="$sort-options/qui:hidden-input" />
         </form>        
       </xsl:if>
-    </div>
-  </xsl:template>
-
-  <xsl:template name="build-filters-panel">
-    <xsl:variable name="browse-form" select="//qui:form[@role='browse']" />
-    <xsl:if test="false()">
-      <h3>Quick Browse</h3>
-      <div class="[ side-panel__box ]">
-        <form method="GET" action="/cgi/t/text/text-idx">
-          <div class="[ flex flex-center gap-0_5 flex-flow-rw ]">
-            <xsl:apply-templates select="$browse-form//qui:label" />
-            <xsl:apply-templates select="$browse-form//qui:input[@type='text']" />
-            <button class="button button--small button--secondary" type="submit">Lookup</button>
-          </div>
-          <xsl:apply-templates select="$browse-form/qui:input[@type='hidden']" mode="hidden" />
-        </form>
-      </div>  
-    </xsl:if>
-    <h3>Index</h3>
-    <div class="[ side-panel__box ]">
-      <ul class="[ browse-index ][ flex flex-gap-0_5 flex-flow-rw flex-shrink-0 ]">
-        <xsl:apply-templates select="//qui:nav[@role='index']/qui:link" mode="index" />
-      </ul>
-    </div>
-    <xsl:if test="//qui:nav[@role='index']/qui:link/qui:link">
-      <h4 class="visually-hidden">Secondary Index</h4>
-      <ul class="[ browse-index ][ flex flex-gap-0_5 flex-flow-rw flex-shrink-0 ]">
-        <xsl:apply-templates select="//qui:nav[@role='index']/qui:link/qui:link" mode="index" />
-      </ul>
-    </xsl:if>
-  </xsl:template>
-
-  <xsl:template match="qui:link" mode="index">
-    <li style="flex: 1; flex-grow: 0;">
-      <xsl:choose>
-        <xsl:when test="true() or normalize-space(@href)">
-          <a href="{@href}" style="width: 5ch; padding: 0.5em 1em; margin: 0; border-radius: 0;">
-            <xsl:attribute name="class">
-              <xsl:text>button</xsl:text>
-              <xsl:if test="@data-selected = 'true'">
-                <xsl:text> button--ghost</xsl:text>
-              </xsl:if>
-            </xsl:attribute>
-            <xsl:if test="not(normalize-space(@href))">
-              <xsl:attribute name="disabled">disabled</xsl:attribute>
-              <xsl:attribute name="aria-hidden">true</xsl:attribute>
-              <xsl:attribute name="tabindex">-1</xsl:attribute>
-            </xsl:if>
-            <xsl:apply-templates select="@data-selected" mode="copy" />
-            <xsl:value-of select="qui:label" />
-          </a>    
-        </xsl:when>
-        <xsl:otherwise>
-          <span style="width: 5ch; padding: 0.5em 1em; margin: 0; border-radius: 0;">
-            <xsl:attribute name="class">
-              <xsl:text>xbutton</xsl:text>
-            </xsl:attribute>
-            <xsl:value-of select="qui:label" />
-          </span>    
-        </xsl:otherwise>
-      </xsl:choose>
-      <xsl:if test="false() and qui:link">
-        <ul class="[ ml-2 ]">
-          <xsl:apply-templates select="qui:link" mode="index" />
-        </ul>
-      </xsl:if>
-    </li>
-  </xsl:template>
-
-  <xsl:template name="build-portfolio-actions">
-    <xsl:apply-templates select="//qui:callout[@slot='portfolio']" />
-    <div class="[ flex flex-align-center ][ mb-1 gap-0_5 ]">
-      <button class="[ button button--secondary ] [ flex ]" aria-label="Add items to portfolio" data-action="select-all" data-checked="false">
-        <span>Select all items</span>
-      </button>
-      <button class="[ button button--secondary ] [ flex ]" aria-label="Add items to portfolio" data-action="add-items">
-        <span class="material-icons" aria-hidden="true">add</span>
-        <span>Add items to portfolio</span>
-      </button>
-      <xsl:call-template name="build-extra-portfolio-actions" />
     </div>
   </xsl:template>
 
@@ -344,53 +233,79 @@
 
   <xsl:template match="qui:section" mode="result">
     <section class="[ results-list--small ]">
-      <!-- <xsl:variable name="link" select="qui:link[@rel='result']" /> -->
-      <xsl:variable name="link-tmp">
-        <xsl:apply-templates select="qui:link[@rel='result']" />
-      </xsl:variable>
-      <xsl:variable name="link" select="exsl:node-set($link-tmp)" />
-      <a class="[ flex ][ flex-grow-1 ]" data-behavior="focus-center">
-        <xsl:attribute name="href">
-          <xsl:value-of select="$link//@href" />
-        </xsl:attribute>
-        <xsl:attribute name="data-available">
-          <xsl:value-of select="$link//@data-available" />
-        </xsl:attribute>
-
+      <xsl:variable name="link-href">
         <xsl:choose>
-          <xsl:when test="qui:link[@rel='iiif']">
-            <img class="[ results-list__image ]" src="{qui:link[@rel='iiif']/@href}/full/140,/0/native.jpg" alt="{ItemDescription}" />
+          <xsl:when test="qui:link[@rel='result']">
+            <xsl:value-of select="qui:link[@rel='result']/@href" />
           </xsl:when>
           <xsl:otherwise>
-            <div class="[ results-list__blank ]" aria-hidden="true">
-              <xsl:attribute name="data-type">
-                <xsl:choose>
-                  <xsl:when test="qui:link[@rel='icon']/@type='audio'">
-                    <span>volume_up</span>
-                  </xsl:when>
-                  <xsl:when test="qui:link[@rel='icon']/@type='doc'">
-                    <span>description</span>
-                  </xsl:when>
-                  <xsl:when test="qui:link[@rel='icon']/@type='pdf'">
-                    <span>description</span>
-                  </xsl:when>
-                  <xsl:when test="qui:link[@rel='icon']/@type='restricted'">
-                    <span>lock</span>
-                  </xsl:when>
-                  <xsl:otherwise>blank</xsl:otherwise>
-                </xsl:choose>
-              </xsl:attribute>
-            </div>
+            <xsl:value-of select="qui:link[@rel='toc']/@href" />
           </xsl:otherwise>
         </xsl:choose>
-        <div class="[ results-list__content ]">
-          <h3><xsl:apply-templates select="qui:title" /></h3>
+      </xsl:variable>
+      <!-- <xsl:variable name="link" select="exsl:node-set($link-tmp)" /> -->
+      <div class="flex-grow-1">
+        <a class="[ flex ][ flex-grow-1 ]" data-behavior="focus-center">
+          <xsl:attribute name="href">
+            <xsl:value-of select="$link-href" />
+          </xsl:attribute>
+          <xsl:choose>
+            <xsl:when test="qui:link[@rel='iiif']">
+              <img class="[ results-list__image ]" src="{qui:link[@rel='iiif']/@href}/full/140,/0/native.jpg" alt="{ItemDescription}" />
+            </xsl:when>
+            <xsl:otherwise>
+              <div class="[ results-list__blank ]" aria-hidden="true">
+                <xsl:attribute name="data-type">
+                  <xsl:choose>
+                    <xsl:when test="qui:link[@rel='icon']/@type='audio'">
+                      <span>volume_up</span>
+                    </xsl:when>
+                    <xsl:when test="qui:link[@rel='icon']/@type='doc'">
+                      <span>description</span>
+                    </xsl:when>
+                    <xsl:when test="qui:link[@rel='icon']/@type='pdf'">
+                      <span>description</span>
+                    </xsl:when>
+                    <xsl:when test="qui:link[@rel='icon']/@type='restricted'">
+                      <span>lock</span>
+                    </xsl:when>
+                    <xsl:otherwise>blank</xsl:otherwise>
+                  </xsl:choose>
+                </xsl:attribute>
+              </div>
+            </xsl:otherwise>
+          </xsl:choose>
+          <div class="[ results-list__content ]">
+            <h3><xsl:apply-templates select="qui:title" /></h3>
+            <dl class="[ results ]">
+              <xsl:apply-templates select="qui:collection" />
+              <xsl:apply-templates select="qui:block[@slot='metadata']//qui:field" />
+            </dl>
+          </div>
+        </a>
+        <div class="[ flex ]" style="margin-bottom: 0.5rem;">
+          <div class="[ results-list__empty ]"></div>
           <dl class="[ results ]">
-            <xsl:apply-templates select="qui:collection" />
-            <xsl:apply-templates select="qui:block[@slot='metadata']//qui:field" />
+            <xsl:apply-templates select="qui:block[@slot='summary']" />
+            <xsl:if test="qui:link[@rel='toc' or @rel='detail']">
+              <div>
+                <dt>Links</dt>
+                <xsl:apply-templates select="qui:link[@rel='detail']" mode="summary" />
+                <xsl:apply-templates select="qui:link[@rel='toc']" mode="summary" />
+              </div>
+            </xsl:if>
           </dl>
         </div>
-      </a>
+      </div>
+      <xsl:if test="qui:link[@rel='bookmark']">
+        <a class="button button--ghost portfolio-selection" 
+          style="margin-bottom: auto" 
+          aria-label="Add to bookbag"
+          href="{qui:link[@rel='bookmark']/@href}"
+          target="BBwindow">
+          <span class="material-icons" aria-hidden="true">bookmark_border</span>
+        </a>
+      </xsl:if>
       <!-- <xsl:variable name="bb-id" select="generate-id()" />
       <label class="[ portfolio-selection ]" for="bb{$bb-id}">
         <input id="bb{$bb-id}" type="checkbox" name="bbidno" value="{@identifier}" autocomplete="off" />
@@ -503,13 +418,6 @@
     <xsl:call-template name="build-breadcrumbs" />
   </xsl:template>
 
-  <xsl:template name="build-hidden-portfolio-form">
-    <form style="display: none" method="GET" action="/cgi/i/image/image-idx" id="bbaction-form">
-      <xsl:apply-templates select="//qui:form[@action='bbaction']/qui:hidden-input" />
-      <input type="hidden" name="bbaction" value="" id="bbaction-page" />
-    </form>
-  </xsl:template>
-
   <xsl:template match="qui:callout[@variant='warning']" priority="100">
     <m-callout subtle="subtle" variant="{@variant}">
       <xsl:apply-templates select="@*[starts-with(name(), 'data-')]" mode="copy" />
@@ -539,6 +447,27 @@
     </label>
   </xsl:template>
 
+  <xsl:template match="qui:block[@slot='summary']">
+    <div>
+      <dt><xsl:value-of select="@label" /></dt>
+      <dd>
+        <xsl:apply-templates select="." mode="copy-guts" />
+      </dd>
+    </div>
+  </xsl:template>
+
+  <xsl:template match="qui:link" mode="summary">
+    <dd>
+      <a href="{@href}">
+        <xsl:value-of select="@label" />
+      </a>
+    </dd>
+  </xsl:template>
+
   <xsl:template name="build-extra-portfolio-actions"></xsl:template>
+
+  <xsl:template name="build-portfolio-actions">
+    <xsl:apply-templates select="//qui:callout[@slot='portfolio']" />
+  </xsl:template>
 
 </xsl:stylesheet>
