@@ -199,6 +199,9 @@ async function processDLXS(req, res) {
     }
 
     console.log("AHOY VIEW", view, url.searchParams.get('page'));
+    if ( ! view ) {
+      console.log(xmlData);
+    }
 
     // static check
     const staticXslFilename = xpath.select(`string(//XslFallbackFileList/Filename[last()])`, xmlDoc);

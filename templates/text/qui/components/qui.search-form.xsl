@@ -12,16 +12,12 @@
         <xsl:otherwise />
       </xsl:choose>
     </xsl:variable>
-    <xsl:variable name="is-advanced" select="//SearchForm/Advanced" />
+    <xsl:variable name="is-advanced" select="$search-type != 'simple'" />
     <xsl:variable name="is-browse" select="//Param[@name='page'] = 'browse'" />
-    <qui:form id="collection-search" data-edit-action="{//SearchLink}">
+    <qui:form id="collection-search" data-advanced="{$is-advanced}" data-edit-action="{//SearchDescription/RefineSearchLink}">
       <xsl:attribute name="data-has-query">
         <xsl:choose>
-          <xsl:when test="//Facets/Value[@selected='true']">true</xsl:when>
-          <xsl:when test="normalize-space(//BrowseStringForm/Value)">true</xsl:when>
-          <xsl:when test="//SearchForm/Range//Value[normalize-space(.)]">true</xsl:when>
-          <xsl:when test="count(//SearchForm/Q[@name != 'q0'][normalize-space(Value)]) = 1 and //SearchForm/Q[@name != 'q0']/Value = //SearchForm/HiddenVars/Variable[@name='c']">false</xsl:when>
-          <xsl:when test="normalize-space(//SearchForm/Q[@name != 'q0']/Value)">true</xsl:when>
+          <xsl:when test="//SearchDescription/RefineSearchLink">true</xsl:when>
           <xsl:otherwise>false</xsl:otherwise>
         </xsl:choose>
       </xsl:attribute>

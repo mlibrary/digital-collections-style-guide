@@ -46,6 +46,9 @@
           </xsl:choose>
         </qui:link>
       </xsl:if>
+      <xsl:if test="$view = 'reslist' and //Param[@name='subview'] = 'detail'">
+        <qui:link href="{/Top//CurrentUrl}">Search Results</qui:link>
+      </xsl:if>
       <qui:link href="{/Top//CurrentUrl}">
         <xsl:call-template name="get-current-page-breadcrumb-label" />
       </qui:link>

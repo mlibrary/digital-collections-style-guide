@@ -159,5 +159,18 @@
     </xsl:choose>
   </xsl:variable>
 
-  <xsl:variable name="page" select="//Param[@name='page']" />
+  <xsl:variable name="page">
+    <xsl:choose>
+      <xsl:when test="normalize-space(//Param[@name='page'])">
+        <xsl:value-of select="//Param[@name='page']" />
+      </xsl:when>
+      <xsl:otherwise>
+        <xsl:value-of select="//Param[@name='view']" />
+      </xsl:otherwise>
+    </xsl:choose>
+  </xsl:variable>
+
+  <xsl:variable name="subview" select="//Param[@name='subview']" />
+
+  <xsl:variable name="search-type" select="key('get-lookup', /Top/SearchDescription/SearchTypeName)" />
 </xsl:stylesheet>

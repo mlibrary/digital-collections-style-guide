@@ -305,7 +305,7 @@
           </xsl:call-template>
         </xsl:when>
         <xsl:when test="$encoding-type = 'serialissue'">
-          <xsl:call-template name="process-serial-issue">
+          <xsl:call-template name="process-serialissue">
             <xsl:with-param name="item-encoding-level" xml:base="$item-encoding-level" />
           </xsl:call-template>
         </xsl:when>

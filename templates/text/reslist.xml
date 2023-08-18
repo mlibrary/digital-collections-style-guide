@@ -10,6 +10,7 @@
     <Filename>../vendor/xslfunctions.xsl</Filename>
     <Filename>qui/components/*.xsl</Filename>
     <Filename>qui/includes/qui.results-item.xsl</Filename>
+    <Filename>qui/includes/qui.scopedivs.xsl</Filename>
     <Filename>qui/qui.reslist.xsl</Filename>
   </XslFallbackFileList>
 

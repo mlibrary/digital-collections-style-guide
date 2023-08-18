@@ -153,3 +153,39 @@ iframe {
   border: none;
   height: 2rem;
 }
+
+dt[data-key] {
+  text-transform: capitalize;
+}
+
+.results-list--small {
+  margin: 1rem 0;
+}
+
+.results-card {
+  display: flex;
+  flex-direction: row;
+  position: relative;
+  /* border: 1px solid #ddd; */
+  border-radius: 0.25rem;
+  flex-grow: 1;
+  margin-bottom: 1rem;
+}
+
+.results-card .results-link {
+  text-decoration: none;
+  color: black;
+}
+
+.results-card .results-link::after {
+  content: '';
+  position: absolute;
+  left: 0;
+  top: 0;
+  right: 0;
+  bottom: 0;
+}
+
+.results-card a {
+  position: relative;
+}
