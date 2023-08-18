@@ -67,6 +67,35 @@
     </xsl:choose>
   </xsl:variable>
 
+  <xsl:variable name="cgiNode" select="/Top/DlxsGlobals/CurrentCgi"/>
+  <xsl:variable name="subject-match-str">
+    <xsl:value-of select="key('get-lookup','results.str.33')"/>
+  </xsl:variable>
+  <xsl:variable name="is-subj-search">
+    <xsl:choose>
+      <xsl:when
+        test="$cgiNode/Param[
+        @name = 'rgn'  or
+        @name = 'rgn1' or
+        @name = 'rgn2' or
+        @name = 'rgn3'
+        ] = $subject-match-str">
+        <xsl:value-of select="'yes'"/>
+      </xsl:when>
+      <xsl:otherwise>
+        <xsl:value-of select="'no'"/>
+      </xsl:otherwise>
+    </xsl:choose>
+  </xsl:variable>
+  <xsl:variable name="display-layout" select="normalize-space(//Top/ResList/Results/DisplayLayout)"/>
+  <xsl:variable name="display-type" select="normalize-space(//Top/ResList/Results/DisplayType)"/>
+  <xsl:variable name="BuildLinks">
+    <xsl:choose>
+      <xsl:when test="/Top/AuthRequired='true'">false</xsl:when>
+      <xsl:otherwise>true</xsl:otherwise>
+    </xsl:choose>
+  </xsl:variable>
+
   <xsl:template name="build-body-main">
     <xsl:call-template name="build-results-navigation" />
     <xsl:call-template name="build-breadcrumbs" />
@@ -94,13 +123,52 @@
   </xsl:template>
 
   <xsl:template name="get-current-page-breadcrumb-label">
-    Search Results
+    <xsl:choose>
+      <xsl:when test="//Param[@name='subview'] = 'detail'">
+        <xsl:choose>
+          <xsl:when test="key('get-lookup', 'reslist.str.foldersearchresults')">
+            <xsl:value-of select="key('get-lookup', 'reslist.str.foldersearchresults')" />
+          </xsl:when>
+          <xsl:otherwise>
+            <xsl:text>Item Search Results</xsl:text>
+          </xsl:otherwise>
+        </xsl:choose>
+      </xsl:when>
+      <xsl:otherwise>
+        <xsl:text>Search Results</xsl:text>
+      </xsl:otherwise>
+    </xsl:choose>
   </xsl:template>
 
   <xsl:template name="build-results-navigation">
     <!-- do we have M/N available in the PI handler? -->
     <xsl:variable name="tmp-xml">
-      <qui:nav role="results" total="{$total}" size="{$sz}" min="1" max="{$max}" current="{$current}" start="{$start}" end="{$end}" number-matches="{$number-matches}" is-truncated="{/Top/SearchSummary/Truncated}">
+      <qui:nav 
+        role="results" 
+        total="{$total}" 
+        size="{$sz}" 
+        min="1" 
+        max="{$max}" 
+        current="{$current}" 
+        start="{$start}" 
+        end="{$end}" 
+        number-matches="{$number-matches}" 
+        is-truncated="{/Top/SearchSummary/Truncated}">
+        <xsl:if test="//CollTotals/RecordCount">
+          <xsl:attribute name="record-count">
+            <xsl:value-of select="//CollTotals/RecordCount" />
+          </xsl:attribute>
+          <xsl:attribute name="record-type">
+            <xsl:choose>
+              <xsl:when test="//CollTotals/RecordCount = 1">
+                <xsl:value-of select="normalize-space(key('get-lookup', 'results.str.container'))" />
+              </xsl:when>
+              <xsl:otherwise>
+                <xsl:value-of select="normalize-space(key('get-lookup', 'results.str.container.plural'))" />
+              </xsl:otherwise>
+            </xsl:choose>
+          </xsl:attribute>
+        </xsl:if>
         <xsl:call-template name="build-results-navigation-link">
           <xsl:with-param name="rel">next</xsl:with-param>
           <xsl:with-param name="identifier" select="/Top/Next/@identifier" />
@@ -113,6 +181,15 @@
           <xsl:with-param name="marker" select="/Top/Prev/@marker" />
           <xsl:with-param name="href" select="/Top/Prev/Url" />
         </xsl:call-template>
+        <xsl:if test="//SearchDescription/RefineSearchLink">
+          <qui:link rel="restart">
+            <xsl:attribute name="href">
+              <xsl:text>/cgi/t/text/text-idx?cc=</xsl:text>
+              <xsl:value-of select="//Param[@name='cc']" />
+              <xsl:text>;page=simple</xsl:text>
+            </xsl:attribute>
+          </qui:link>
+        </xsl:if>
         <xsl:if test="normalize-space(//StartOverLink)">
           <qui:link rel="restart">
             <xsl:attribute name="href">
@@ -141,7 +218,9 @@
     <xsl:if test="true() or $tmp//qui:link">
       <xsl:apply-templates select="$tmp" mode="copy" />
     </xsl:if>
-
+    <xsl:if test="//SearchDescription/RefineSearchLink">
+      <qui:link rel="refine-search" href="{//SearchDescription/RefineSearchLink}" />
+    </xsl:if>
   </xsl:template>
 
   <xsl:template name="build-results-navigation-link">
@@ -172,32 +251,43 @@
 
   <xsl:template name="build-results-list">
     <xsl:variable name="q" select="//SearchForm/Q[@name='q1']" />
-    <xsl:variable name="is-advanced" select="//SearchForm/Advanced" />
+    <xsl:variable name="is-advanced">
+      <xsl:choose>
+        <xsl:when test="$search-type = 'simple' 
+          and ( 
+            normalize-space(//SearchForm/CiteRestrictions//Default) or 
+            normalize-space(//SearchForm/OtherRestrictions//Default) )">true</xsl:when>
+        <xsl:when test="$search-type = 'simple'">false</xsl:when>
+        <xsl:otherwise>true</xsl:otherwise>
+      </xsl:choose>
+    </xsl:variable>
     <xsl:call-template name="build-search-form" />
     <xsl:call-template name="build-portfolio-actions" />
     <xsl:apply-templates select="//Facets" />
     <xsl:apply-templates select="//SearchDescription" />
-    <qui:form id="sort-options">
-      <xsl:for-each select="//ResultsLinks/HiddenVars/Variable">
-        <qui:hidden-input name="{@name}" value="{.}" />
-      </xsl:for-each>
-      <qui:select name="sort">
-        <xsl:for-each select="//SortSelect/Option">
-          <qui:option index="{@index}" value="{Value}">
-            <xsl:if test="Focus = 'true'">
-              <xsl:attribute name="selected">selected</xsl:attribute>
-            </xsl:if>
-            <xsl:choose>
-              <xsl:when test="Value = 'none'">None</xsl:when>
-              <xsl:when test="Value = 'relevance'">Relevance</xsl:when>
-              <xsl:otherwise>
-                <xsl:value-of select="Label" />
-              </xsl:otherwise>
-            </xsl:choose>
-          </qui:option>
+    <xsl:if test="$subview != 'detail'">
+      <qui:form id="sort-options">
+        <xsl:for-each select="//ResultsLinks/HiddenVars/Variable">
+          <qui:hidden-input name="{@name}" value="{.}" />
         </xsl:for-each>
-      </qui:select>
-    </qui:form>
+        <qui:select name="sort">
+          <xsl:for-each select="//SortSelect/Option">
+            <qui:option index="{@index}" value="{Value}">
+              <xsl:if test="Focus = 'true'">
+                <xsl:attribute name="selected">selected</xsl:attribute>
+              </xsl:if>
+              <xsl:choose>
+                <xsl:when test="Value = 'none'">None</xsl:when>
+                <xsl:when test="Value = 'relevance'">Relevance</xsl:when>
+                <xsl:otherwise>
+                  <xsl:value-of select="Label" />
+                </xsl:otherwise>
+              </xsl:choose>
+            </qui:option>
+          </xsl:for-each>
+        </qui:select>
+      </qui:form>
+    </xsl:if>
     <qui:block slot="results">
       <xsl:if test="//Param[@name='xc'] = 1 or //Param[@name='view'] = 'bbreslist'">
         <xsl:attribute name="data-xc">true</xsl:attribute>
@@ -217,9 +307,9 @@
   </xsl:template>
 
   <xsl:template name="build-portfolio-actions">
-    <qui:callout slot="portfolio">
+    <!-- <qui:callout slot="portfolio">
       <iframe id="BBwindow" src="/cache/7/6/2/762da80dee881cd8b0c04168276a8711/bookbagitemsstring.html"></iframe>
-    </qui:callout>
+    </qui:callout> -->
   </xsl:template>
 
   <xsl:template name="build-no-results">
@@ -249,13 +339,17 @@
       </xsl:choose>
     </xsl:variable>
 
+    <xsl:variable name="identifier" select="ItemIdno" />
+
     <qui:section identifier="{ItemIdno}" auth-required="{AuthRequired}" encoding-type="{DocEncodingType}" encoding-level="{ItemEncodingLevel}">
       <xsl:apply-templates select="Tombstone" />
       <xsl:apply-templates select="DetailHref" />
       <xsl:apply-templates select="TocHref">
         <xsl:with-param name="item-encoding-level" xml:base="$item-encoding-level" />
       </xsl:apply-templates>
-      <qui:link rel="bookmark" href="{BookbagAddHref}" label="{key('get-lookup', 'results.str.21')}" />
+      <xsl:if test="normalize-space(BookbagAddHref)">
+        <qui:link rel="bookmark" href="{BookbagAddHref}" label="{key('get-lookup', 'results.str.21')}" />
+      </xsl:if>
       <xsl:if test="not($encoding-type='serialissue')">
         <xsl:apply-templates select="FirstPageHref"/>
       </xsl:if>
@@ -263,14 +357,19 @@
       <xsl:choose>
         <xsl:when test="$encoding-type = 'monograph'">
           <xsl:call-template name="process-monograph">
+            <xsl:with-param name="encoding-type" select="$encoding-type" />
             <xsl:with-param name="item-encoding-level" xml:base="$item-encoding-level" />
+            <xsl:with-param name="is-subj-search" select="$is-subj-search" />
           </xsl:call-template>
         </xsl:when>
         <xsl:when test="$encoding-type = 'serialissue'">
-          <xsl:call-template name="process-serial-issue">
+          <xsl:call-template name="process-serialissue">
+            <xsl:with-param name="encoding-type" select="$encoding-type" />
             <xsl:with-param name="item-encoding-level" xml:base="$item-encoding-level" />
+            <xsl:with-param name="is-subj-search" select="$is-subj-search" />
           </xsl:call-template>
         </xsl:when>
+        <!-- NEVER GOING TO HAPPEN -->
         <xsl:when test="$encoding-type = 'serialarticle'">
           <xsl:call-template name="process-serial-article">
             <xsl:with-param name="item-encoding-level" xml:base="$item-encoding-level" />
@@ -278,6 +377,20 @@
         </xsl:when>
       </xsl:choose>
       <xsl:apply-templates select="HitSummary" />
+      <xsl:call-template name="build-item-details">
+        <xsl:with-param name="identifier" select="$identifier" />
+        <xsl:with-param name="details" select="ItemDetails" />
+        <xsl:with-param name="layout">
+          <xsl:choose>
+            <xsl:when test="ItemDetails/descendant::ScopingPage and not(ItemDetails/DIV1)">
+              <xsl:text>nostruct</xsl:text>
+            </xsl:when>
+            <xsl:otherwise>
+              <xsl:value-of select="$display-layout"/>
+            </xsl:otherwise>
+          </xsl:choose>
+        </xsl:with-param>
+      </xsl:call-template>
     </qui:section>
   </xsl:template>
 
@@ -447,6 +560,58 @@
     </qui:form>
   </xsl:template>
 
+  <xsl:template name="build-item-details">
+    <xsl:param name="identifier" />
+    <xsl:param name="details" />
+    <xsl:param name="layout" />
+    <xsl:for-each select="$details/*">
+      <qui:block slot="details" for="{$identifier}" template-name="{$template-name}" layout="{$layout}">
+        <xsl:choose>
+          <xsl:when test="$template-name='reslist'">
+            <xsl:choose>
+              <xsl:when test="$layout = 'breadcrumb'">
+                <xsl:apply-templates mode="build-bc-reslist" select="."/>
+              </xsl:when>
+              <xsl:when test="$layout = 'outline'">
+                <xsl:apply-templates mode="build-outline-list" select="."/>
+              </xsl:when>
+              <xsl:when test="$layout = 'nostruct'">
+                <xsl:apply-templates select="descendant-or-self::ScopingPage" mode="ScopingPage"/>
+                <xsl:apply-templates select="descendant-or-self::Kwic|descendant-or-self::SummaryString"/>
+              </xsl:when>
+              <xsl:when test="$layout = 'summary'">
+                <xsl:for-each select="descendant-or-self::ScopingPage|descendant-or-self::SummaryString">
+                  <xsl:choose>
+                    <xsl:when test="name()='ScopingPage'">
+                      <xsl:apply-templates select="." mode="ScopingPage"/>
+                    </xsl:when>
+                    <xsl:when test="name()='SummaryString'">
+                      <xsl:apply-templates select="."/>
+                    </xsl:when>
+                  </xsl:choose>
+                </xsl:for-each>
+              </xsl:when>
+            </xsl:choose>
+          </xsl:when>
+          <xsl:when test="$template-name='text'">
+            <xsl:choose>
+              <xsl:when test="$layout = 'breadcrumb'">
+                <xsl:apply-templates mode="build-bc-txt-hdr-list" select="."/>
+              </xsl:when>
+              <xsl:when test="$layout = 'outline'">
+              </xsl:when>
+              <xsl:otherwise>
+                <xsl:apply-templates mode="build-outline-list" select=".">
+                  <xsl:with-param name="display-layout" select="$display-layout"/>
+                </xsl:apply-templates>
+              </xsl:otherwise>
+            </xsl:choose>
+          </xsl:when>
+        </xsl:choose>        
+      </qui:block>
+    </xsl:for-each>
+  </xsl:template>
+
   <xsl:template match="Callout">
     <qui:callout variant='success' slot="portfolio">
       <xhtml:p>
@@ -551,5 +716,73 @@
     <xsl:value-of select="key('get-lookup','results.str.30')"/>
     <xsl:apply-templates mode="HitSummPl" select="RecordCount"/>
   </xsl:template>
-   
+  
+  <xsl:template match="HEAD" mode="procdivhead">
+    <xsl:if test="BIBL">
+      <xsl:for-each select="BIBL[@TYPE!='pg' and @TYPE!='pp' and @TYPE!='page' and @TYPE!='para']">
+        <xsl:apply-templates select="LB|HI1|HI2|Highlight|text()"/>
+        <xsl:if test="position()!=last()">
+          <xsl:text>:&#xa0;</xsl:text>
+        </xsl:if>
+      </xsl:for-each>
+    </xsl:if>
+    <xsl:apply-templates select="LB|HI1|HI2|Highlight|text()[not(starts-with(normalize-space(.),' '))]"/>
+  </xsl:template>
+  
+  
+  <xsl:template match="BIBL[ancestor::Divhead]">
+    <xsl:choose>
+      <xsl:when test="@TYPE='para'">
+        <xsl:text>[para.&#xa0;</xsl:text>
+        <xsl:value-of select="concat(.,']&#xa0;')"/>
+      </xsl:when>
+      <xsl:when test="@TYPE='title'">
+        <xsl:value-of select="."/>
+      </xsl:when>
+      <xsl:when test="@TYPE='chapter'">
+        <xsl:value-of select="concat(., ':&#xa0;')"/>
+      </xsl:when>
+      <xsl:otherwise> [<xsl:value-of select="."/>] </xsl:otherwise>
+    </xsl:choose>
+  </xsl:template>
+  
+  <!-- Template for handling content inside kwic tags -->
+  <xsl:template match="*" mode="KwicContent">
+    <xsl:choose>
+      <xsl:when test="name()='Highlight'">
+        <xsl:apply-templates select="."/>
+      </xsl:when>
+      <xsl:otherwise>        
+        <xsl:apply-templates  select="child::node()" mode="KwicContent"/>
+      </xsl:otherwise>
+    </xsl:choose>
+  </xsl:template>
+  <!-- Special formatting for elements inside kwic tags -->
+  <xsl:template match="HEAD" mode="KwicContent">
+    <xsl:apply-templates select="child::node()" mode="KwicContent"/>
+    <xsl:text>: </xsl:text>
+  </xsl:template>
+  <xsl:template match="NOTE1|NOTE2" mode="KwicContent">
+    <xsl:text>[</xsl:text>
+    <xsl:apply-templates select="child::node()" mode="KwicContent"/>
+    <xsl:text>]</xsl:text>
+  </xsl:template>
+  <xsl:template match="LB" mode="KwicContent">
+    <xsl:text> </xsl:text>
+  </xsl:template>
+  <xsl:template match="L" mode="KwicContent">
+    <xsl:apply-templates select="child::node()" mode="KwicContent"/>
+    <xsl:text> / </xsl:text>
+  </xsl:template>
+  <xsl:template match="P" mode="KwicContent">
+    <xsl:text> </xsl:text>
+    <xsl:apply-templates select="child::node()" mode="KwicContent"/>
+    <xsl:text> / </xsl:text>
+  </xsl:template>
+  <xsl:template match="DATE|CLOSER" mode="KwicContent">
+    <xsl:text> </xsl:text>
+    <xsl:apply-templates select="child::node()" mode="KwicContent"/>
+    <xsl:text> </xsl:text>
+  </xsl:template>
+  
 </xsl:stylesheet>

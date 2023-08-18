@@ -79,6 +79,7 @@
       <qui:body>
         <xsl:call-template name="build-skip-links" />
         <xsl:call-template name="build-site-header" />
+        <qui:debug>WTF</qui:debug>
         <xsl:call-template name="build-sub-header" />
         <qui:main>
           <xsl:call-template name="build-body-main" />
@@ -118,6 +119,7 @@
 
   <xsl:template name="build-sub-header">
     <xsl:if test="$page != 'index'">
+      <qui:debug>WTF: <xsl:value-of select="$page" /></qui:debug>
       <qui:sub-header>
         <xsl:attribute name="href">
           <xsl:call-template name="get-context-link" />
@@ -125,6 +127,9 @@
         <xsl:call-template name="build-sub-header-badge-data" />
         <xsl:call-template name="get-context-title" />
       </qui:sub-header>  
+    </xsl:if>
+    <xsl:if test="$page = 'index'">
+      <qui:debug>INDEX</qui:debug>
     </xsl:if>
   </xsl:template>
 
@@ -340,4 +345,31 @@
     <xsl:value-of select="//Param[@name='view']|//Param[@name='page']" />
   </xsl:template>
 
+  <!-- highlighting -->
+  <xsl:template match="Highlight">
+    
+    <!-- special treatment for text view but not pageviewer text view -->
+    <xsl:choose>
+      <xsl:when test="/Top/DlxsGlobals/CurrentCgi/Param[@name='view']='text'
+                      and not(/Top/DlxsGlobals/CurrentCgi/Param[@name='page']='root')">
+        <xsl:apply-templates select="." mode="text"/>
+      </xsl:when>
+      
+      <xsl:otherwise>
+        
+        <xsl:choose>
+          <xsl:when test="$show-text-hilight='yes'
+                          or /Top/DlxsGlobals/CurrentCgi/Param[@name='page']='root'">
+            <xsl:element name="span">
+              <xsl:copy-of select="@class"/>
+              <xsl:value-of select="."/>
+            </xsl:element>
+          </xsl:when>
+          <xsl:otherwise>
+            <xsl:value-of select="."/>
+          </xsl:otherwise>
+        </xsl:choose>
+      </xsl:otherwise>
+    </xsl:choose>
+  </xsl:template>
 </xsl:stylesheet>

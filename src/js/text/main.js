@@ -3,7 +3,7 @@ import "../dev.js";
 
 import "./handlers/action-go.js";
 // import "./handlers/action-facet-selection.js";
-// import "./handlers/action-results-sort.js";
+import "./handlers/action-results-sort.js";
 // import "./handlers/action-results-select-items.js";
 // import "./handlers/action-results-remove-items.js";
 import "./handlers/action-submit-collection-search.js";
