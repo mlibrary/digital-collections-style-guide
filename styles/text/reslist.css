@@ -175,6 +175,7 @@ dt[data-key] {
 .results-card .results-link {
   text-decoration: none;
   color: black;
+  position: static;
 }
 
 .results-card .results-link::after {
@@ -188,4 +189,29 @@ dt[data-key] {
 
 .results-card a {
   position: relative;
+  z-index: 1;
+}
+
+dt[data-key="path"] ~ dd ol {
+  /* font-size: 0.75rem; */
+  margin: 0;
+}
+
+dt[data-key="path"] ~ dd li {
+  display: inline;
+  padding-right: 0.5rem;
+}
+
+dt[data-key="path"] ~ dd li + li::before {
+  content: " / ";
+  display: inline-block;
+  padding-right: 0.5rem;
+}
+
+dt[data-key="matches"] ~ dd {
+  font-size: 0.75rem;
+}
+
+dl div + div {
+  margin-bottom: 0.5rem;
 }

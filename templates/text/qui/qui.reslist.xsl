@@ -171,15 +171,11 @@
         </xsl:if>
         <xsl:call-template name="build-results-navigation-link">
           <xsl:with-param name="rel">next</xsl:with-param>
-          <xsl:with-param name="identifier" select="/Top/Next/@identifier" />
-          <xsl:with-param name="marker" select="/Top/Next/@marker" />
-          <xsl:with-param name="href" select="/Top/Next/Url" />
+          <xsl:with-param name="href" select="/Top/ResultsLinks/SliceNavigationLinks/NextHitsLink" />
         </xsl:call-template>
         <xsl:call-template name="build-results-navigation-link">
           <xsl:with-param name="rel">previous</xsl:with-param>
-          <xsl:with-param name="identifier" select="/Top/Prev/@identifier" />
-          <xsl:with-param name="marker" select="/Top/Prev/@marker" />
-          <xsl:with-param name="href" select="/Top/Prev/Url" />
+          <xsl:with-param name="href" select="/Top/ResultsLinks/SliceNavigationLinks/PrevHitsLink" />
         </xsl:call-template>
         <xsl:if test="//SearchDescription/RefineSearchLink">
           <qui:link rel="restart">
@@ -288,6 +284,9 @@
         </qui:select>
       </qui:form>
     </xsl:if>
+    <xsl:if test="//ResList/Results/Item[ItemDetails]">
+      <xsl:apply-templates select="//ResList/Results/Item" mode="metadata" />
+    </xsl:if>
     <qui:block slot="results">
       <xsl:if test="//Param[@name='xc'] = 1 or //Param[@name='view'] = 'bbreslist'">
         <xsl:attribute name="data-xc">true</xsl:attribute>
@@ -314,6 +313,91 @@
 
   <xsl:template name="build-no-results">
     <pre>BOO-YAH</pre>
+  </xsl:template>
+
+  <xsl:template match="Results/Item" mode="metadata">
+    <xsl:variable name="encoding-type">
+      <xsl:choose>
+        <xsl:when test="DocEncodingType">
+          <xsl:value-of select="normalize-space(DocEncodingType)"/>
+        </xsl:when>
+        <xsl:otherwise>
+          <xsl:value-of select="normalize-space(parent::*/DocEncodingType)"/>
+        </xsl:otherwise>
+      </xsl:choose>
+    </xsl:variable>
+    <xsl:variable name="item-encoding-level">
+      <xsl:choose>
+        <xsl:when test="HEADER/ENCODINGDESC/EDITORIALDECL/@N">
+          <xsl:value-of select="HEADER/ENCODINGDESC/EDITORIALDECL/@N"/>
+        </xsl:when>
+        <xsl:otherwise>
+          <xsl:value-of select="''"/>
+        </xsl:otherwise>
+      </xsl:choose>
+    </xsl:variable>
+
+    <xsl:call-template name="build-item-metadata">
+      <xsl:with-param name="item" select="." />
+      <xsl:with-param name="encoding-type" select="$encoding-type" />
+      <xsl:with-param name="item-encoding-level" select="$item-encoding-level" />
+      <xsl:with-param name="slot">item</xsl:with-param>
+    </xsl:call-template>
+  </xsl:template>
+
+  <xsl:template match="Results/Item[ItemDetails]" priority="99">
+    <xsl:variable name="encoding-type">
+      <xsl:choose>
+        <xsl:when test="DocEncodingType">
+          <xsl:value-of select="normalize-space(DocEncodingType)"/>
+        </xsl:when>
+        <xsl:otherwise>
+          <xsl:value-of select="normalize-space(parent::*/DocEncodingType)"/>
+        </xsl:otherwise>
+      </xsl:choose>
+    </xsl:variable>
+
+    <xsl:variable name="item-encoding-level">
+      <xsl:choose>
+        <xsl:when test="HEADER/ENCODINGDESC/EDITORIALDECL/@N">
+          <xsl:value-of select="HEADER/ENCODINGDESC/EDITORIALDECL/@N"/>
+        </xsl:when>
+        <xsl:otherwise>
+          <xsl:value-of select="''"/>
+        </xsl:otherwise>
+      </xsl:choose>
+    </xsl:variable>
+
+    <xsl:variable name="identifier" select="ItemIdno" />
+
+    <xsl:variable name="item-metadata-tmp">
+      <xsl:call-template name="build-item-metadata">
+        <xsl:with-param name="item" select="." />
+        <xsl:with-param name="encoding-type" select="$encoding-type" />
+        <xsl:with-param name="item-encoding-level" select="$item-encoding-level" />
+      </xsl:call-template>
+    </xsl:variable>
+    <xsl:variable name="item-metadata" select="exsl:node-set($item-metadata-tmp)" />
+
+
+    <xsl:call-template name="build-item-details">
+      <xsl:with-param name="identifier" select="$identifier" />
+      <xsl:with-param name="encoding-type" select="$encoding-type" />
+      <xsl:with-param name="item-encoding-level" select="$item-encoding-level" />
+      <xsl:with-param name="item-metadata" select="$item-metadata" />
+      <xsl:with-param name="details" select="ItemDetails" />
+      <xsl:with-param name="layout">
+        <xsl:choose>
+          <xsl:when test="ItemDetails/descendant::ScopingPage and not(ItemDetails/DIV1)">
+            <xsl:text>nostruct</xsl:text>
+          </xsl:when>
+          <xsl:otherwise>
+            <xsl:value-of select="$display-layout"/>
+          </xsl:otherwise>
+        </xsl:choose>
+      </xsl:with-param>
+    </xsl:call-template>
+
   </xsl:template>
 
   <xsl:template match="Results/Item">
@@ -354,43 +438,14 @@
         <xsl:apply-templates select="FirstPageHref"/>
       </xsl:if>
       <xsl:apply-templates select="MediaInfo" mode="iiif-link" />
-      <xsl:choose>
-        <xsl:when test="$encoding-type = 'monograph'">
-          <xsl:call-template name="process-monograph">
-            <xsl:with-param name="encoding-type" select="$encoding-type" />
-            <xsl:with-param name="item-encoding-level" xml:base="$item-encoding-level" />
-            <xsl:with-param name="is-subj-search" select="$is-subj-search" />
-          </xsl:call-template>
-        </xsl:when>
-        <xsl:when test="$encoding-type = 'serialissue'">
-          <xsl:call-template name="process-serialissue">
-            <xsl:with-param name="encoding-type" select="$encoding-type" />
-            <xsl:with-param name="item-encoding-level" xml:base="$item-encoding-level" />
-            <xsl:with-param name="is-subj-search" select="$is-subj-search" />
-          </xsl:call-template>
-        </xsl:when>
-        <!-- NEVER GOING TO HAPPEN -->
-        <xsl:when test="$encoding-type = 'serialarticle'">
-          <xsl:call-template name="process-serial-article">
-            <xsl:with-param name="item-encoding-level" xml:base="$item-encoding-level" />
-          </xsl:call-template>          
-        </xsl:when>
-      </xsl:choose>
-      <xsl:apply-templates select="HitSummary" />
-      <xsl:call-template name="build-item-details">
-        <xsl:with-param name="identifier" select="$identifier" />
-        <xsl:with-param name="details" select="ItemDetails" />
-        <xsl:with-param name="layout">
-          <xsl:choose>
-            <xsl:when test="ItemDetails/descendant::ScopingPage and not(ItemDetails/DIV1)">
-              <xsl:text>nostruct</xsl:text>
-            </xsl:when>
-            <xsl:otherwise>
-              <xsl:value-of select="$display-layout"/>
-            </xsl:otherwise>
-          </xsl:choose>
-        </xsl:with-param>
+
+      <xsl:call-template name="build-item-metadata">
+        <xsl:with-param name="item" select="." />
+        <xsl:with-param name="encoding-type" select="$encoding-type" />
+        <xsl:with-param name="item-encoding-level" select="$item-encoding-level" />
       </xsl:call-template>
+      
+      <xsl:apply-templates select="HitSummary" />
     </qui:section>
   </xsl:template>
 
@@ -562,54 +617,106 @@
 
   <xsl:template name="build-item-details">
     <xsl:param name="identifier" />
+    <xsl:param name="encoding-type" />
+    <xsl:param name="item-encoding-level" />
+    <xsl:param name="item-metadata" />
     <xsl:param name="details" />
     <xsl:param name="layout" />
-    <xsl:for-each select="$details/*">
-      <qui:block slot="details" for="{$identifier}" template-name="{$template-name}" layout="{$layout}">
-        <xsl:choose>
-          <xsl:when test="$template-name='reslist'">
-            <xsl:choose>
-              <xsl:when test="$layout = 'breadcrumb'">
-                <xsl:apply-templates mode="build-bc-reslist" select="."/>
-              </xsl:when>
-              <xsl:when test="$layout = 'outline'">
-                <xsl:apply-templates mode="build-outline-list" select="."/>
-              </xsl:when>
-              <xsl:when test="$layout = 'nostruct'">
-                <xsl:apply-templates select="descendant-or-self::ScopingPage" mode="ScopingPage"/>
-                <xsl:apply-templates select="descendant-or-self::Kwic|descendant-or-self::SummaryString"/>
-              </xsl:when>
-              <xsl:when test="$layout = 'summary'">
-                <xsl:for-each select="descendant-or-self::ScopingPage|descendant-or-self::SummaryString">
-                  <xsl:choose>
-                    <xsl:when test="name()='ScopingPage'">
-                      <xsl:apply-templates select="." mode="ScopingPage"/>
-                    </xsl:when>
-                    <xsl:when test="name()='SummaryString'">
-                      <xsl:apply-templates select="."/>
-                    </xsl:when>
-                  </xsl:choose>
+
+    <xsl:apply-templates select="$details/*" mode="section">
+      <xsl:with-param name="identifier" select="$identifier" />
+      <xsl:with-param name="item-metadata" select="$item-metadata" />
+    </xsl:apply-templates>
+  </xsl:template>
+
+  <xsl:template match="node()" mode="debug">
+    <xsl:value-of select="name()" />
+  </xsl:template>
+
+  <xsl:template match="node()[Divhead/HEAD]|node()[Kwic]" mode="section">
+    <xsl:param name="identifier" />
+    <xsl:param name="item-metadata" />
+
+    <!-- we only need a qui:section if THIS is the DIV of interest -->
+
+    <xsl:if test="not(node()[@TYPE][Divhead/HEAD])">
+      <qui:section identifier="{@NODE}" for="{$identifier}" template-name="{$template-name}">
+        <!-- <xsl:apply-templates select="$item/TocHref">
+          <xsl:with-param name="item-encoding-level" xml:base="$item-encoding-level" />
+        </xsl:apply-templates> -->
+        <xsl:apply-templates select="ancestor::Item/TocHref">
+          <xsl:with-param name="item-encoding-level" xml:base="$item-encoding-level" />
+        </xsl:apply-templates>
+        <xsl:apply-templates select="MediaInfo" mode="iiif-link" />
+        <qui:link href="{Link}" rel="result" />
+        <qui:title>
+          <qui:values>
+            <qui:value>
+              <xsl:choose>
+                <xsl:when test="Divhead/HEAD">
+                  <xsl:value-of select="Divhead/HEAD" />
+                </xsl:when>
+                <xsl:otherwise>
+                  <xsl:value-of select="@TYPE" />
+                </xsl:otherwise>
+              </xsl:choose>
+            </qui:value>
+          </qui:values>
+        </qui:title>
+        <!-- metadata -->
+        <qui:block slot="metadata">
+          <qui:section>
+            <!-- path -->
+            <qui:field key="path">
+              <qui:label>Path</qui:label>
+              <qui:values format="ordered">
+                <xsl:for-each select="ancestor::*[@TYPE]">
+                  <qui:value>
+                    <qui:link rel="{name(.)}" href="{Link}">
+                      <xsl:value-of select="Divhead/HEAD" />
+                    </qui:link>  
+                  </qui:value>
+                </xsl:for-each>      
+              </qui:values>
+            </qui:field>
+            <xsl:apply-templates select="$item-metadata//qui:field" mode="copy" />
+          </qui:section>
+        </qui:block>
+        <qui:block slot="matches">
+          <qui:section>
+            <qui:field key="matches">
+              <qui:label>Matches</qui:label>
+              <qui:values format="kwic">
+                <xsl:for-each select="descendant-or-self::Kwic|descendant-or-self::SummaryString">
+                  <qui:value>
+                    <xsl:apply-templates select="." />
+                  </qui:value>
                 </xsl:for-each>
-              </xsl:when>
-            </xsl:choose>
-          </xsl:when>
-          <xsl:when test="$template-name='text'">
-            <xsl:choose>
-              <xsl:when test="$layout = 'breadcrumb'">
-                <xsl:apply-templates mode="build-bc-txt-hdr-list" select="."/>
-              </xsl:when>
-              <xsl:when test="$layout = 'outline'">
-              </xsl:when>
-              <xsl:otherwise>
-                <xsl:apply-templates mode="build-outline-list" select=".">
-                  <xsl:with-param name="display-layout" select="$display-layout"/>
-                </xsl:apply-templates>
-              </xsl:otherwise>
-            </xsl:choose>
-          </xsl:when>
-        </xsl:choose>        
-      </qui:block>
-    </xsl:for-each>
+              </qui:values>
+            </qui:field>z  
+          </qui:section>
+        </qui:block>
+      </qui:section>  
+    </xsl:if>
+
+    <xsl:apply-templates select="*[starts-with(name(),'DIV')][Divhead/HEAD]" mode="section">
+      <xsl:with-param name="identifier" select="$identifier" />
+      <xsl:with-param name="item-metadata" select="$item-metadata" />
+    </xsl:apply-templates>
+  </xsl:template>
+
+  <xsl:template match="@*" mode="dlxsify">
+    <xsl:copy></xsl:copy>
+  </xsl:template>
+
+  <xsl:template match="text()" mode="dlxsify">
+    <xsl:copy></xsl:copy>
+  </xsl:template>
+
+  <xsl:template match="node()[name()]" mode="dlxsify" priority="99">
+    <xsl:element name="dlxs:{name()}">
+      <xsl:apply-templates select="@*|text()|*" mode="dlxsify" />
+    </xsl:element>
   </xsl:template>
 
   <xsl:template match="Callout">

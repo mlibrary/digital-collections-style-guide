@@ -605,8 +605,16 @@
           <xsl:value-of select="$header/@data-badge" />
         </span>
       </xsl:if>
-      <xsl:value-of select="$header" />
+      <xsl:call-template name="build-collection-header-string">
+        <xsl:with-param name="header" select="normalize-space($header)" />
+      </xsl:call-template>
+      <!-- <xsl:value-of select="$header" /> -->
     </h1>
+  </xsl:template>
+
+  <xsl:template name="build-collection-header-string">
+    <xsl:param name="header" />
+    <xsl:value-of select="$header" />
   </xsl:template>
 
   <!-- FIELDS -->
@@ -631,17 +639,26 @@
   </xsl:template>
 
   <xsl:template match="qui:field">
+    <xsl:apply-templates select="." mode="build" />
+  </xsl:template>
+
+  <xsl:template match="qui:field" mode="build">
     <div data-key="{@key}">
       <dt data-key="{@key}">
         <xsl:apply-templates select="@*[starts-with(name(), 'data-')]" mode="copy" />
         <xsl:apply-templates select="qui:label" mode="copy-guts" />
       </dt>
-      <xsl:for-each select="qui:values/qui:value">
-        <dd>
-          <xsl:apply-templates select="." mode="copy-guts" />
-        </dd>
-      </xsl:for-each>
+      <xsl:apply-templates select="qui:values" />
     </div>
+  </xsl:template>
+
+  <xsl:template match="qui:values">
+    <xsl:for-each select="qui:value">
+    <dd>
+      <xsl:apply-templates select="." mode="copy-guts" />
+    </dd>
+  </xsl:for-each>
+
   </xsl:template>
 
   <xsl:template match="qui:hidden-input[@name='debug']" priority="100" />
@@ -705,6 +722,7 @@
   <!-- UTILITY -->
   <xsl:template match="node()" mode="copy-guts">
     <!-- <xsl:message>AHOY COPY GUTS: <xsl:value-of select="local-name()" /></xsl:message> -->
+    <!-- <debug><xsl:value-of select="local-name()" /></debug> -->
     <xsl:apply-templates select="*|text()" mode="copy" />
   </xsl:template>
 
