@@ -284,11 +284,18 @@
         <div class="results-list__content flex flex-flow-column flex-grow-1">
           <h3>
             <a href="{$link-href}" class="results-link">
-              <xsl:apply-templates select="qui:title" />
+              <xsl:choose>
+                <xsl:when test="qui:title">
+                  <xsl:apply-templates select="qui:title" mode="title" />
+                </xsl:when>
+                <xsl:otherwise>
+                  <xsl:apply-templates select="qui:block[@slot='metadata']//qui:field[@key='title']" mode="title" />
+                </xsl:otherwise>
+              </xsl:choose>
             </a>
           </h3>
           <dl class="[ results ]">
-            <xsl:apply-templates select="qui:collection" />
+            <!-- <xsl:apply-templates select="qui:collection" /> -->
             <xsl:apply-templates select="qui:block[@slot='metadata']//qui:field" />
             <xsl:if test="qui:link[@rel='toc' or @rel='detail']">
               <div>
@@ -297,6 +304,7 @@
                 <xsl:apply-templates select="qui:link[@rel='toc']" mode="summary" />
               </div>
             </xsl:if>
+            <xsl:apply-templates select="qui:block[@slot='matches']//qui:field" />
           </dl>
           <xsl:apply-templates select="qui:block[@slot='summary']" mode="callout">
             <xsl:with-param name="title" select="normalize-space(qui:title)" />
@@ -422,9 +430,41 @@
     </xsl:for-each>
   </xsl:template>
 
-  <xsl:template match="qui:field//qui:link" mode="copy" priority="105">
-    <xsl:value-of select="." />
+  <xsl:template match="*[qui:values]" mode="title">
+    <xsl:for-each select="qui:values/qui:value">
+      <xsl:value-of select="." />
+      <xsl:if test="position() &lt; last()">
+        <xsl:text>; </xsl:text>
+      </xsl:if>
+    </xsl:for-each>
   </xsl:template>
+
+  <xsl:template match="qui:field[@key='title']" priority="99">
+    <xsl:choose>
+      <xsl:when test="//qui:block[@slot='item']">
+        <xsl:apply-templates select="." mode="build" />
+      </xsl:when>
+    </xsl:choose>
+  </xsl:template>
+
+  <xsl:template match="qui:field[@key='path'][not(.//qui:value)]" priority="99" />
+
+  <xsl:template match="qui:values[@format='ordered']">
+    <dd>
+      <ol>
+        <xsl:for-each select="qui:value">
+          <li>
+            <xsl:apply-templates select="." mode="copy-guts" />
+          </li>
+        </xsl:for-each>
+      </ol>  
+    </dd>
+  </xsl:template>
+
+  <!-- we did this in ImageClass to disable links in fields, but we use them in TextClass -->
+  <!-- <xsl:template match="qui:field//qui:link" mode="copy" priority="105">
+    <xsl:value-of select="." />
+  </xsl:template> -->
 
   <xsl:template match="qui:link[@rel='previous']" priority="100">
     <a>
@@ -594,6 +634,20 @@
 
   <xsl:template name="build-portfolio-actions">
     <xsl:apply-templates select="//qui:callout[@slot='portfolio']" />
+  </xsl:template>
+
+  <xsl:template name="build-collection-header-string">
+    <xsl:variable name="header" select="//qui:header[@role='main']" />
+    <xsl:choose>
+      <xsl:when test="//qui:block[@slot='item']">
+        <xsl:value-of select="$header" />
+        <xsl:text> / </xsl:text>
+        <xsl:value-of select="//qui:block[@slot='item']//qui:field[@key='title']//qui:values" />
+      </xsl:when>
+      <xsl:otherwise>
+        <xsl:value-of select="$header" />
+      </xsl:otherwise>
+    </xsl:choose>
   </xsl:template>
 
 </xsl:stylesheet>

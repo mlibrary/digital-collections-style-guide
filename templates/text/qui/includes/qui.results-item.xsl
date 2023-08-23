@@ -1,10 +1,43 @@
 <?xml version="1.0" encoding="UTF-8" ?>
 <xsl:stylesheet version="1.0" xmlns="http://www.w3.org/1999/xhtml" xmlns:xhtml="http://www.w3.org/1999/xhtml" xmlns:xsl="http://www.w3.org/1999/XSL/Transform" xmlns:dlxs="http://dlxs.org" xmlns:qbat="http://dlxs.org/quombat" xmlns:exsl="http://exslt.org/common" extension-element-prefixes="exsl" xmlns:qui="http://dlxs.org/quombat/ui">
+
+  <xsl:template name="build-item-metadata">
+    <xsl:param name="encoding-type" />
+    <xsl:param name="item-encoding-level" />
+    <xsl:param name="item" select="." />
+    <xsl:param name="slot">metadata</xsl:param>
+    <xsl:choose>
+      <xsl:when test="$encoding-type = 'monograph'">
+        <xsl:call-template name="process-monograph">
+          <xsl:with-param name="encoding-type" select="$encoding-type" />
+          <xsl:with-param name="item-encoding-level" xml:base="$item-encoding-level" />
+          <xsl:with-param name="is-subj-search" select="$is-subj-search" />
+          <xsl:with-param name="slot" select="$slot" />
+        </xsl:call-template>
+      </xsl:when>
+      <xsl:when test="$encoding-type = 'serialissue'">
+        <xsl:call-template name="process-serialissue">
+          <xsl:with-param name="encoding-type" select="$encoding-type" />
+          <xsl:with-param name="item-encoding-level" xml:base="$item-encoding-level" />
+          <xsl:with-param name="is-subj-search" select="$is-subj-search" />
+          <xsl:with-param name="slot" select="$slot" />
+        </xsl:call-template>
+      </xsl:when>
+      <!-- NEVER GOING TO HAPPEN -->
+      <xsl:when test="$encoding-type = 'serialarticle'">
+        <xsl:call-template name="process-serial-article">
+          <xsl:with-param name="item-encoding-level" xml:base="$item-encoding-level" />
+          <xsl:with-param name="slot" select="$slot" />
+        </xsl:call-template>          
+      </xsl:when>
+    </xsl:choose>
+  </xsl:template>
+
   <xsl:template name="process-monograph">
     <xsl:param name="encoding-type" />
     <xsl:param name="item-encoding-level" />
-    <xsl:param name="is-subj-search" select="'no'" />
     <xsl:param name="item" select="." />
+    <xsl:param name="slot" />
 
     <xsl:variable name="sourcedesc" select="$item/HEADER/FILEDESC/SOURCEDESC" />
 
@@ -20,7 +53,7 @@
           <xsl:value-of select="$item/HEADER/FILEDESC/TITLESTMT/TITLE[@TYPE='245']"/>
         </xsl:when>
         <xsl:otherwise>
-          <xsl:value-of select="$item/HEADER/FILEDESC/TITLESTMT/TITLE"/>
+          <xsl:value-of select="$item/HEADER/FILEDESC/TITLESTMT/TITLE[not(@TYPE='sort')][1]"/>
         </xsl:otherwise>
       </xsl:choose>
     </xsl:variable>
@@ -60,30 +93,79 @@
       <xsl:value-of select="$item/HEADER/FILEDESC//EDITIONSTMT"/>
     </xsl:variable>
 
-    <xsl:variable name="pubinfo">
-      <xsl:apply-templates select="($sourcedesc/BIBLFULL/PUBLICATIONSTMT|$sourcedesc/BIBL)"/>
+    <xsl:variable name="pubinfo-tmp">
+      <qui:block>
+        <qui:field key="pubinfo">
+          <qui:label>
+            <xsl:value-of select="key('get-lookup','headerutils.str.publicationinfo')"/>
+          </qui:label>
+          <qui:values>
+            <xsl:apply-templates select="($sourcedesc/BIBLFULL/PUBLICATIONSTMT|$sourcedesc/BIBL)" mode="metadata"/>
+          </qui:values>
+        </qui:field>
+      </qui:block>
     </xsl:variable>
+    <xsl:variable name="pubinfo" select="exsl:node-set($pubinfo-tmp)" />
 
-    <xsl:variable name="subjectinfo">
-      <xsl:if test="$is-subj-search='yes' and $item//KEYWORDS/child::TERM">
-        <xsl:call-template name="build-res-item-subjects">
-          <xsl:with-param name="subj-parent" select="$item"/>
-        </xsl:call-template>
-      </xsl:if>
+    <!-- <xsl:variable name="subjectinfo-tmp">
+      <qui:block>
+        <xsl:if test="$is-subj-search='yes' and $item//KEYWORDS/child::TERM">
+          <xsl:call-template name="build-res-item-subjects">
+            <xsl:with-param name="subj-parent" select="$item"/>
+          </xsl:call-template>
+        </xsl:if>
+      </qui:block>
     </xsl:variable>
+    <xsl:variable name="subjectinfo" select="exsl:node-set($subjectinfo-tmp)" /> -->
 
-    <xsl:call-template name="build-metadata">
-      <xsl:with-param name="main-title" select="$main-title"/>
-      <xsl:with-param name="sort-title" select="$sort-title"/>
-      <xsl:with-param name="main-authors" select="$main-authors"/>
-      <xsl:with-param name="inverted-author" select="$inverted-author"/>
-      <xsl:with-param name="main-date" select="$main-date"/>
-      <xsl:with-param name="item-encoding-level" select="$item-encoding-level"/>
-      <xsl:with-param name="pubinfo" select="($sourcedesc/BIBLFULL/PUBLICATIONSTMT|$sourcedesc/BIBL)" />
-      <xsl:with-param name="edition-stmt" select="$edition-stmt" />
-      <xsl:with-param name="subjectinfo" select="$subjectinfo" />
-    </xsl:call-template>
-    <!-- there's a whole COINS thing -->
+    <qui:block slot="{$slot}">
+      <qui:section>
+        <qui:field key="title">
+          <qui:label>Title</qui:label>
+          <qui:values>
+            <qui:value>
+              <xsl:value-of select="$main-title" />
+            </qui:value>
+          </qui:values>
+        </qui:field>
+        <xsl:if test="normalize-space($main-authors) or normalize-space($inverted-author)">
+          <qui:field key="author">
+            <qui:label>Author</qui:label>
+            <qui:values>
+              <qui:value>
+                <xsl:choose>
+                  <xsl:when test="$inverted-author">
+                    <xsl:value-of select="$inverted-author" />
+                  </xsl:when>
+                  <xsl:when test="$main-authors">
+                    <xsl:value-of select="$main-authors" />
+                  </xsl:when>
+                </xsl:choose>    
+              </qui:value>
+            </qui:values>
+          </qui:field>
+        </xsl:if>
+        <xsl:if test="normalize-space($main-date)">
+          <qui:field key="publication-date">
+            <qui:label>Publication Date</qui:label>
+            <qui:values>
+              <qui:value>
+                <xsl:value-of select="translate(dlxs:stripEndingChars($main-date,'.'), '][','')"/>
+              </qui:value>
+            </qui:values>
+          </qui:field>
+        </xsl:if>
+        <xsl:if test="$pubinfo//qui:value">
+          <xsl:apply-templates select="$pubinfo//qui:field" mode="copy" />
+        </xsl:if>
+        <xsl:if test="$is-subj-search='yes' and $item//KEYWORDS/child::TERM">
+          <xsl:call-template name="build-res-item-subjects">
+            <xsl:with-param name="subj-parent" select="$item"/>
+          </xsl:call-template>
+        </xsl:if>
+        <xsl:apply-templates select="$item/CollName" mode="field" />
+      </qui:section>
+    </qui:block>
   </xsl:template>
 
   <xsl:template name="process-serialissue">
@@ -154,6 +236,7 @@
     <xsl:param name="item-encoding-level" />
     <xsl:param name="is-subj-search"/>
     <xsl:param name="item" />
+    <xsl:param name="slot" />
 
     <xsl:variable name="ser-iss-src" select="$item/MainHeader/HEADER/FILEDESC/SOURCEDESC"/>
     <xsl:variable name="article-cite" select="$item/DIV1/Divhead/BIBL"/>
@@ -166,15 +249,16 @@
     
     <xsl:variable name="article-title" select="$article-cite/TITLE"/>
 
-    <qui:title>
-      <qui:values>
-        <qui:value>
-          <xsl:value-of select="$article-title" />
-        </qui:value>
-      </qui:values>
-    </qui:title>
-    <qui:block slot="metadata">
+    <qui:block slot="{$slot}">
       <qui:section>
+        <qui:field key="title">
+          <qui:label>Title</qui:label>
+          <qui:values>
+            <qui:value>
+              <xsl:value-of select="$article-title" />
+            </qui:value>
+          </qui:values>
+        </qui:field>
         <xsl:if test="normalize-space($main-authors)">
           <qui:field key="author">
             <qui:label>Author</qui:label>
@@ -197,6 +281,7 @@
     <xsl:param name="item-encoding-level" />
     <xsl:param name="is-subj-search"/>
     <xsl:param name="item" />
+    <xsl:param name="slot" />
 
     <xsl:variable name="article-cite" select="$item/ItemDetails/DIV1[1]/Divhead/BIBL"/>
     <xsl:variable name="ser-iss-src" select="$item/MainHeader/HEADER/FILEDESC/SOURCEDESC"/>
@@ -225,15 +310,16 @@
 
     <qui:debug><xsl:value-of select="name($item)" /></qui:debug>
 
-    <qui:title>
-      <qui:values>
-        <qui:value>
-          <xsl:value-of select="$article-title" />
-        </qui:value>
-      </qui:values>
-    </qui:title>
-    <qui:block slot="metadata">
+    <qui:block slot="{$slot}">
       <qui:section>
+        <qui:field key="title">
+          <qui:label>Title</qui:label>
+          <qui:values>
+            <qui:value>
+              <xsl:value-of select="$article-title" />
+            </qui:value>
+          </qui:values>
+        </qui:field>
         <xsl:if test="normalize-space($main-authors)">
           <qui:field key="author">
             <qui:label>
@@ -521,7 +607,7 @@
     </xsl:if>
   </xsl:template>
 
-  <xsl:template match="IMPRINT|PUBLICATIONSTMT">
+  <xsl:template match="IMPRINT|PUBLICATIONSTMT" mode="metadata">
     <xsl:for-each select="PUBPLACE">
       <qui:value><xsl:value-of select="." /></qui:value>
     </xsl:for-each>
@@ -529,6 +615,10 @@
       <qui:value><xsl:value-of select="." /></qui:value>
     </xsl:for-each>
     <!-- date? -->
+  </xsl:template>
+
+  <xsl:template match="BIBL" mode="metadata">
+    <qui:value><xsl:value-of select="." /></qui:value>
   </xsl:template>
 
   <!-- ********************************************************************** -->
@@ -572,4 +662,16 @@
       <xsl:if test="following-sibling::BIBLSCOPE[not(@TYPE='issuetitle')]">, </xsl:if>
     </xsl:if>
   </xsl:template>  
+
+  <xsl:template match="CollName" mode="field">
+    <qui:field key="collection">
+      <qui:label>Collection</qui:label>
+      <qui:values>
+        <qui:value>
+          <!-- should this be a link? -->
+          <xsl:value-of select="." />
+        </qui:value>
+      </qui:values>
+    </qui:field>
+  </xsl:template>
 </xsl:stylesheet>
