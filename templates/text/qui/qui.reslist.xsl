@@ -142,6 +142,23 @@
 
   <xsl:template name="build-results-navigation">
     <!-- do we have M/N available in the PI handler? -->
+    <xsl:if test="$subview = 'detail'">
+      <qui:nav
+        role="details"
+        current="{/Top/ResultsLinks/PrevNextItemLinks/current}"
+        hit-count="{/Top/SearchDescription/CollTotals/HitCount}"
+        total="{/Top/SearchDescription/CollTotals/RecordCount}"
+      >
+        <xsl:call-template name="build-results-navigation-link">
+          <xsl:with-param name="rel">next-item</xsl:with-param>
+          <xsl:with-param name="href" select="/Top/ResultsLinks/PrevNextItemLinks/next/Href" />
+        </xsl:call-template>
+        <xsl:call-template name="build-results-navigation-link">
+          <xsl:with-param name="rel">previous-item</xsl:with-param>
+          <xsl:with-param name="href" select="/Top/ResultsLinks/PrevNextItemLinks/prev/Href" />
+        </xsl:call-template>
+      </qui:nav>
+    </xsl:if> 
     <xsl:variable name="tmp-xml">
       <qui:nav 
         role="results" 
@@ -149,9 +166,10 @@
         size="{$sz}" 
         min="1" 
         max="{$max}" 
-        current="{$current}" 
+        current="{$current}"
         start="{$start}" 
-        end="{$end}" 
+        end="{$end}"
+        subview="{$subview}"
         number-matches="{$number-matches}" 
         is-truncated="{/Top/SearchSummary/Truncated}">
         <xsl:if test="//CollTotals/RecordCount">
@@ -177,6 +195,8 @@
           <xsl:with-param name="rel">previous</xsl:with-param>
           <xsl:with-param name="href" select="/Top/ResultsLinks/SliceNavigationLinks/PrevHitsLink" />
         </xsl:call-template>
+        <xsl:if test="$subview = 'detail'">
+        </xsl:if>
         <xsl:if test="//SearchDescription/RefineSearchLink">
           <qui:link rel="restart">
             <xsl:attribute name="href">
@@ -738,7 +758,8 @@
   <xsl:template match="SearchDescription">
     <qui:block slot="search-summary">
       <!-- <xsl:value-of select="key('get-lookup','reslist.str.yousearched')"/> -->
-      <xsl:text>Showing results for </xsl:text>
+      <xsl:value-of select="/Top/SearchDescription/CollTotals/HitCount" />
+      <xsl:text> matches </xsl:text>
       <xsl:value-of select="key('get-lookup','reslist.str.for')"/>
       <xsl:text> </xsl:text>
       <span class="naturallanguage">

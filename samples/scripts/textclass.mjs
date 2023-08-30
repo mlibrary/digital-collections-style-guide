@@ -125,6 +125,10 @@ async function processDLXS(req, res) {
     headers['X-DLXS-Auth'] = 'nala@monkey.nu';
   }
   headers['X-DLXS-Uplifted'] = 'true';
+  // headers['X-DLXS-SessionID'] = `${req.socket.remoteAddress}--${(new Date).getDay()}`;
+  headers['Cookie'] = `DLXSsid=${req.cookies.DLXSsid}`;
+  console.log("AHOY PROXY", headers['Cookie']);
+
 
   const resp = await fetch(url.toString(), {
     headers: headers,
@@ -133,6 +137,9 @@ async function processDLXS(req, res) {
   });
   res.setHeader("Content-Type", "text/html; charset=UTF-8");
   if (resp.ok) {
+    const cookieValue = (resp.headers.get('set-cookie').split(/;\s*/))[0].replace('DLXSsid=','');
+    res.cookie('DLXSsid', cookieValue, { path: '/' });
+    console.log("AHOY AHOY cookie = ", cookieValue);
     const xmlData = await resp.text();
     if ( xmlData.indexOf('no hits. normally cgi redirects') > -1 ) {
       throw new Error('Query has no results');
