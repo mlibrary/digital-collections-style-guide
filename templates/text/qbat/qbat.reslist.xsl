@@ -85,23 +85,32 @@
             <xsl:value-of select="$nav/@end" />
             <xsl:text> of </xsl:text>
             <xsl:value-of select="$nav/@total" />
-            <xsl:text> results </xsl:text>
-            <xsl:text> (</xsl:text>
-            <xsl:value-of select="$nav/@number-matches" />
-            <xsl:text> matches</xsl:text>
-            <xsl:if test="$nav/@record-type and 
-              $nav/@record-count and 
-              $nav/@record-count != $nav/@number-matches">
-              <xsl:text> in </xsl:text>
-              <xsl:value-of select="$nav/@record-count" />
-              <xsl:text> </xsl:text>
-              <xsl:value-of select="$nav/@record-type" />
-              <xsl:text>)</xsl:text>
-            </xsl:if>
+            <xsl:choose>
+              <xsl:when test="$nav/@subview = 'short'">
+                <xsl:text> results </xsl:text>
+                <!-- <xsl:text> (</xsl:text>
+                <xsl:value-of select="$nav/@number-matches" />
+                <xsl:text> matches</xsl:text>
+                <xsl:text>)</xsl:text> -->
+              </xsl:when>
+              <xsl:when test="$nav/@subview = 'detail'">
+                <xsl:text> hits in this item</xsl:text>
+              </xsl:when>
+            </xsl:choose>
             <xsl:if test="$nav/@is-truncated='true'">
               <span>
                 <xsl:text> </xsl:text>
                 <a href="?page=help#truncated-results">(truncated)</a>
+              </span>
+            </xsl:if>
+            <xsl:if test="false() and $nav/@subview = 'detail'">
+              <xsl:variable name="details" select="//qui:nav[@role='details']" />
+              <br />
+              <span>
+                <xsl:value-of select="$details/@hit-count" />
+                <xsl:text> matches in </xsl:text>
+                <xsl:value-of select="$details/@total" />
+                <xsl:text> items</xsl:text>
               </span>
             </xsl:if>
           </h2>
@@ -650,4 +659,56 @@
     </xsl:choose>
   </xsl:template>
 
+  <xsl:template name="build-breadcrumbs-extra-nav">
+    <xsl:apply-templates select="qui:nav[@role='details']" mode="pagination-link" />
+  </xsl:template>
+
+  <xsl:template match="qui:nav[@role='details']" mode="pagination-link">
+    <p class="[ pagination ][ nowrap ml-2 ]">
+      <xsl:if test="qui:link[@rel='previous-item']">
+        <svg
+          height="18px"
+          viewBox="0 0 20 20"
+          width="12px"
+          fill="#06080a"
+          aria-hidden="true"
+          style="transform: rotate(-180deg)"
+        >
+          <g>
+            <g><rect fill="none" height="20" width="20" /></g>
+          </g>
+          <g>
+            <polygon
+              points="4.59,16.59 6,18 14,10 6,2 4.59,3.41 11.17,10"
+            />
+          </g>
+        </svg>
+        <xsl:apply-templates select="qui:link[@rel='previous-item']" />
+      </xsl:if>
+      <span>
+        <xsl:value-of select="@current" />
+        <xsl:text> of </xsl:text>
+        <xsl:value-of select="@total" />
+      </span>
+      <xsl:if test="qui:link[@rel='next-item']">
+        <xsl:apply-templates select="qui:link[@rel='next-item']" />
+        <svg
+          height="18px"
+          viewBox="0 0 20 20"
+          width="12px"
+          fill="#06080a"
+          aria-hidden="true"
+        >
+          <g>
+            <g><rect fill="none" height="20" width="20" /></g>
+          </g>
+          <g>
+            <polygon
+              points="4.59,16.59 6,18 14,10 6,2 4.59,3.41 11.17,10"
+            />
+          </g>
+        </svg>
+      </xsl:if>
+    </p>
+  </xsl:template>  
 </xsl:stylesheet>

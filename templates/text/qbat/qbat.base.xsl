@@ -524,6 +524,8 @@
       <xsl:choose>
         <xsl:when test="@rel = 'next'">Next</xsl:when>
         <xsl:when test="@rel = 'previous'">Previous</xsl:when>
+        <xsl:when test="@rel = 'next-item'">Next Item</xsl:when>
+        <xsl:when test="@rel = 'previous-item'">Previous Item</xsl:when>
         <xsl:when test="@rel = 'back'">Search Results</xsl:when>
         <xsl:otherwise><xsl:apply-templates mode="copy" /></xsl:otherwise>
       </xsl:choose>
@@ -731,6 +733,8 @@
       <xsl:choose>
         <xsl:when test="@rel = 'next'">Next</xsl:when>
         <xsl:when test="@rel = 'previous'">Previous</xsl:when>
+        <xsl:when test="@rel = 'next-item'">Next Item</xsl:when>
+        <xsl:when test="@rel = 'previous-item'">Previous Item</xsl:when>
         <xsl:when test="@rel = 'back'">Search Results</xsl:when>
         <xsl:otherwise><xsl:apply-templates mode="copy" /></xsl:otherwise>
       </xsl:choose>
