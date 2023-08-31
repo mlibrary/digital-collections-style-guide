@@ -626,7 +626,74 @@
     <xsl:value-of select="name()" />
   </xsl:template>
 
-  <xsl:template match="node()[Divhead/HEAD]|node()[Kwic]" mode="section">
+  <xsl:template match="Kwic" mode="section" />
+
+  <xsl:template match="ScopingPage" mode="section">
+    <xsl:param name="identifier" />
+    <xsl:param name="item-metadata" />
+
+    <xsl:variable name="scope" select="." />
+
+    <qui:section identifier="XYZZY-{position()}" for="{$identifier}" template-name="{$template-name}">
+      <xsl:apply-templates select="ancestor::Item/TocHref">
+        <xsl:with-param name="item-encoding-level" xml:base="$item-encoding-level" />
+      </xsl:apply-templates>
+      <qui:link href="{ViewPageLink}" rel="result" />
+      <qui:link href="{ViewPageThumbnailLink}" rel="iiif" />
+      <qui:title>
+        <qui:values>
+          <qui:value>
+            <xsl:value-of select="key('get-lookup','headerutils.str.page')"/>
+            <xsl:text> </xsl:text>
+            <xsl:if test="PageNumber!='NA'"><xsl:value-of select="PageNumber"/></xsl:if>
+            <xsl:if test="PageNumber='NA'"><xsl:text>[unnumbered]</xsl:text></xsl:if>
+            <xsl:if test="PageType!='viewer.ftr.uns'"><xsl:text> - </xsl:text></xsl:if>
+            <xsl:value-of select="key('get-lookup',PageType)"/>  
+          </qui:value>
+        </qui:values>
+      </qui:title>
+      <!-- metadata -->
+      <qui:block slot="metadata">
+        <qui:section>
+          <!-- path -->
+          <qui:field key="path">
+            <qui:label>Path</qui:label>
+            <qui:values format="ordered">
+              <xsl:for-each select="ancestor::*[@TYPE]">
+                <qui:value>
+                  <qui:link rel="{name(.)}" href="{Link}">
+                    <xsl:value-of select="Divhead/HEAD" />
+                  </qui:link>  
+                </qui:value>
+              </xsl:for-each>      
+            </qui:values>
+          </qui:field>
+          <xsl:apply-templates select="$item-metadata//qui:field" mode="copy" />
+        </qui:section>
+      </qui:block>
+      <xsl:for-each select="following-sibling::SummaryString[./preceding-sibling::ScopingPage[1] = $scope]">
+        <qui:callout slot="summary" variant="info">
+          <xsl:apply-templates select="." />
+        </qui:callout>
+      </xsl:for-each>
+      <qui:block slot="matches">
+        <qui:section>
+          <qui:field key="matches">
+            <qui:label>Matches</qui:label>
+            <qui:values format="kwic">
+              <xsl:for-each select="following-sibling::Kwic[./preceding-sibling::ScopingPage[1] = $scope]|">
+                <qui:value>
+                  <xsl:apply-templates select="." />
+                </qui:value>
+              </xsl:for-each>
+            </qui:values>
+          </qui:field>z  
+        </qui:section>
+      </qui:block>
+    </qui:section>
+  </xsl:template>
+
+  <xsl:template match="node()[Divhead/HEAD]|node()[Divhead][Kwic]" mode="section">
     <xsl:param name="identifier" />
     <xsl:param name="item-metadata" />
 
