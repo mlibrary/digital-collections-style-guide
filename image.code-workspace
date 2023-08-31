@@ -1,0 +1,19 @@
+{
+	"folders": [
+		{
+			"path": "templates/image/qbat"
+		},
+		{
+			"path": "templates/image/qui"
+		},
+		{
+			"path": "templates/image/xml"
+		},
+		{
+			"path": "src/js"
+		},
+		{
+			"path": "styles"
+		}
+	]
+}
