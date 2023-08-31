@@ -681,7 +681,7 @@
           <qui:field key="matches">
             <qui:label>Matches</qui:label>
             <qui:values format="kwic">
-              <xsl:for-each select="following-sibling::Kwic[./preceding-sibling::ScopingPage[1] = $scope]|">
+              <xsl:for-each select="following-sibling::Kwic[./preceding-sibling::ScopingPage[1] = $scope]">
                 <qui:value>
                   <xsl:apply-templates select="." />
                 </qui:value>
