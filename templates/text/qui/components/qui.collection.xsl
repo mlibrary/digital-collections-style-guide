@@ -46,8 +46,20 @@
           </xsl:choose>
         </qui:link>
       </xsl:if>
-      <xsl:if test="$view = 'reslist' and //Param[@name='subview'] = 'detail'">
-        <qui:link href="{/Top//CurrentUrl}">Search Results</qui:link>
+      <xsl:variable name="return-to-results-link" select="/Top//ReturnToResultsLink" />
+      <xsl:if test="normalize-space($return-to-results-link)">
+        <xsl:choose>
+          <xsl:when test="$view = 'reslist' and $subview = 'detail'">
+            <qui:link href="{$return-to-results-link}">Search Results</qui:link>
+          </xsl:when>
+          <xsl:when test="$subview = 'detail'">
+            <qui:link href="{$return-to-results-link}">Item Search Results</qui:link>
+          </xsl:when>
+          <!-- could be otherwise, but avoid too much search history -->
+          <xsl:when test="$view != 'reslist'">
+            <qui:link href="{$return-to-results-link}">Search Results</qui:link>
+          </xsl:when>
+        </xsl:choose>
       </xsl:if>
       <qui:link href="{/Top//CurrentUrl}">
         <xsl:call-template name="get-current-page-breadcrumb-label" />
