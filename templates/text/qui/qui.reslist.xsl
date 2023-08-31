@@ -67,34 +67,6 @@
     </xsl:choose>
   </xsl:variable>
 
-  <xsl:variable name="cgiNode" select="/Top/DlxsGlobals/CurrentCgi"/>
-  <xsl:variable name="subject-match-str">
-    <xsl:value-of select="key('get-lookup','results.str.33')"/>
-  </xsl:variable>
-  <xsl:variable name="is-subj-search">
-    <xsl:choose>
-      <xsl:when
-        test="$cgiNode/Param[
-        @name = 'rgn'  or
-        @name = 'rgn1' or
-        @name = 'rgn2' or
-        @name = 'rgn3'
-        ] = $subject-match-str">
-        <xsl:value-of select="'yes'"/>
-      </xsl:when>
-      <xsl:otherwise>
-        <xsl:value-of select="'no'"/>
-      </xsl:otherwise>
-    </xsl:choose>
-  </xsl:variable>
-  <xsl:variable name="display-layout" select="normalize-space(//Top/ResList/Results/DisplayLayout)"/>
-  <xsl:variable name="display-type" select="normalize-space(//Top/ResList/Results/DisplayType)"/>
-  <xsl:variable name="BuildLinks">
-    <xsl:choose>
-      <xsl:when test="/Top/AuthRequired='true'">false</xsl:when>
-      <xsl:otherwise>true</xsl:otherwise>
-    </xsl:choose>
-  </xsl:variable>
 
   <xsl:template name="build-body-main">
     <xsl:call-template name="build-results-navigation" />
@@ -451,6 +423,7 @@
       <xsl:apply-templates select="TocHref">
         <xsl:with-param name="item-encoding-level" xml:base="$item-encoding-level" />
       </xsl:apply-templates>
+      <xsl:apply-templates select="ThumbnailLink" />
       <xsl:if test="normalize-space(BookbagAddHref)">
         <qui:link rel="bookmark" href="{BookbagAddHref}" label="{key('get-lookup', 'results.str.21')}" />
       </xsl:if>

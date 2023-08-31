@@ -178,7 +178,7 @@ async function processDLXS(req, res) {
       url.searchParams.set('page', 'home');
     }
 
-    if ( url.searchParams.get('page') == 'home' ) {
+    if ( false && url.searchParams.get('page') == 'home' ) {
       view = 'index';
       xpath.select("//Param[@name='page']", xmlDoc)[0].textContent = 'index';
 

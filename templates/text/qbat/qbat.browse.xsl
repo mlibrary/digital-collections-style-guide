@@ -11,7 +11,7 @@
 
   <xsl:template name="build-extra-styles">
     <xsl:comment>DUBIOUS EXCEPTIONS</xsl:comment>
-    <link rel="stylesheet" href="{$docroot}styles/image/reslist.css" />
+    <link rel="stylesheet" href="{$docroot}styles/text/reslist.css" />
     <link rel="stylesheet" href="{$docroot}styles/text/tabs.css" />
     <style>
       .browse-index .button:not([data-selected]) {
@@ -71,7 +71,7 @@
   <xsl:template name="check-side-actions">
     <xsl:choose>
       <xsl:when test="//qui:filter">true</xsl:when>
-      <xsl:when test="//qui:nav[@role='index']">true</xsl:when>
+      <xsl:when test="//qui:nav[@role='index'][.//qui:link]">true</xsl:when>
       <xsl:otherwise>false</xsl:otherwise>
     </xsl:choose>
   </xsl:template>
@@ -131,10 +131,18 @@
 
   <xsl:template name="build-search-summary-body">
     <p>
-      <xsl:text>Browsing items having </xsl:text>
-      <strong><xsl:value-of select="dlxs:capitalize($key)" /></strong>
-      <xsl:text> starting with </xsl:text>
-      <strong><xsl:value-of select="dlxs:capitalize($value)" /></strong>
+      <xsl:choose>
+        <xsl:when test="normalize-space($value)">
+          <xsl:text>Browsing items having </xsl:text>
+          <strong><xsl:value-of select="dlxs:capitalize($key)" /></strong>      
+          <xsl:text> starting with </xsl:text>
+          <strong><xsl:value-of select="dlxs:capitalize($value)" /></strong>  
+        </xsl:when>
+        <xsl:otherwise>
+          <xsl:text>Browsing items by </xsl:text>
+          <strong><xsl:value-of select="dlxs:capitalize($key)" /></strong>      
+        </xsl:otherwise>
+      </xsl:choose>
     </p>
     <xsl:if test="$search-form/qui:control[@slot='clause'][normalize-space(qui:input[@slot='q']/@value)]">
       <p>
@@ -359,7 +367,7 @@
 
         <xsl:choose>
           <xsl:when test="qui:link[@rel='iiif']">
-            <img class="[ results-list__image ]" src="{qui:link[@rel='iiif']/@href}/full/140,/0/native.jpg" alt="{ItemDescription}" />
+            <img class="[ results-list__image ]" src="{qui:link[@rel='iiif']/@href}" aria-hidden="true" alt="{ItemDescription}" />
           </xsl:when>
           <xsl:otherwise>
             <div class="[ results-list__blank ]" aria-hidden="true">

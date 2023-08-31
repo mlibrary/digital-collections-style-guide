@@ -295,7 +295,29 @@
       </xsl:choose>
     </xsl:variable>
 
-    <qui:section identifier="{Idno}">
+    <qui:section identifier="{Idno}" auth-required="{AuthRequired}" encoding-type="{$encoding-type}" encoding-level="{$item-encoding-level}">
+      <xsl:apply-templates select="Tombstone" />
+      <xsl:apply-templates select="DetailHref" />
+      <xsl:apply-templates select="TocHref">
+        <xsl:with-param name="item-encoding-level" xml:base="$item-encoding-level" />
+      </xsl:apply-templates>
+      <xsl:apply-templates select="ThumbnailLink" />
+      <xsl:if test="normalize-space(BookbagAddHref)">
+        <qui:link rel="bookmark" href="{BookbagAddHref}" label="{key('get-lookup', 'results.str.21')}" />
+      </xsl:if>
+      <xsl:if test="not($encoding-type='serialissue')">
+        <xsl:apply-templates select="FirstPageHref"/>
+      </xsl:if>
+
+      <xsl:call-template name="build-item-metadata">
+        <xsl:with-param name="item" select="ItemHeader" />
+        <xsl:with-param name="encoding-type" select="$encoding-type" />
+        <xsl:with-param name="item-encoding-level" select="$item-encoding-level" />
+      </xsl:call-template>
+      
+    </qui:section>
+
+    <!-- <qui:section identifier="{Idno}">
       <qui:link rel="result" href="{Link}" />
       <xsl:apply-templates select="ThumbnailLink" mode="iiif-link" />
       <xsl:choose>
@@ -315,7 +337,7 @@
           </xsl:call-template>          
         </xsl:when>
       </xsl:choose>
-    </qui:section>
+    </qui:section> -->
   </xsl:template>
 
   <!-- override -->

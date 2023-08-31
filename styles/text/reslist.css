@@ -215,3 +215,8 @@ dt[data-key="matches"] ~ dd {
 dl div + div {
   margin-bottom: 0.5rem;
 }
+
+.results-list__image {
+  border: 1px solid var(--color-neutral-100);
+  padding: 4px;
+}
