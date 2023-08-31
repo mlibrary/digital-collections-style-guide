@@ -276,7 +276,7 @@
       <div class="results-card">
         <xsl:choose>
           <xsl:when test="qui:link[@rel='iiif']">
-            <img class="[ results-list__image ]" src="{qui:link[@rel='iiif']/@href}/full/140,/0/native.jpg" alt="{ItemDescription}" />
+            <img class="[ results-list__image ]" src="{qui:link[@rel='iiif']/@href}" aria-hidden="true" alt="" />
           </xsl:when>
           <xsl:otherwise>
             <div class="[ results-list__blank ]" aria-hidden="true">
@@ -303,7 +303,7 @@
         <div class="results-list__content flex flex-flow-column flex-grow-1">
           <h3>
             <a href="{$link-href}" class="results-link">
-              <xsl:value-of select="link-title" />
+              <xsl:value-of select="$link-title" />
             </a>
           </h3>
           <dl class="[ results ]">

@@ -56,6 +56,9 @@
 
       <xsl:apply-templates select="$search-form/CiteRestrictions" />
       <xsl:apply-templates select="$search-form/OtherRestrictions/*[normalize-space(.)]" />
+      <xsl:for-each select="//SearchForm/HiddenVars/Variable">
+        <qui:hidden-input name="{@name}" value="{.}" />
+      </xsl:for-each>
     </qui:form>     
   </xsl:template>
 

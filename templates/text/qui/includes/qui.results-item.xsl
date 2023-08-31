@@ -13,6 +13,7 @@
           <xsl:with-param name="item-encoding-level" xml:base="$item-encoding-level" />
           <xsl:with-param name="is-subj-search" select="$is-subj-search" />
           <xsl:with-param name="slot" select="$slot" />
+          <xsl:with-param name="item" select="$item" />
         </xsl:call-template>
       </xsl:when>
       <xsl:when test="$encoding-type = 'serialissue'">
@@ -21,6 +22,7 @@
           <xsl:with-param name="item-encoding-level" xml:base="$item-encoding-level" />
           <xsl:with-param name="is-subj-search" select="$is-subj-search" />
           <xsl:with-param name="slot" select="$slot" />
+          <xsl:with-param name="item" select="$item" />
         </xsl:call-template>
       </xsl:when>
       <!-- NEVER GOING TO HAPPEN -->
@@ -28,6 +30,7 @@
         <xsl:call-template name="process-serial-article">
           <xsl:with-param name="item-encoding-level" xml:base="$item-encoding-level" />
           <xsl:with-param name="slot" select="$slot" />
+          <xsl:with-param name="item" select="$item" />
         </xsl:call-template>          
       </xsl:when>
     </xsl:choose>
@@ -46,10 +49,10 @@
       <xsl:choose>
         <xsl:when test="$item/HEADER/FILEDESC/TITLESTMT/TITLE[@TYPE='245']
           and
-          contains($item/HEADER/FILEDESC/TITLESTMT/TITLE[@TYPE='245'], '/')">
+          contains($item/HEADER/FILEDESC/TITLESTMT/TITLE[@TYPE='245'], '::')">
           <xsl:value-of select="normalize-space(substring-before($item/HEADER/FILEDESC/TITLESTMT/TITLE[@TYPE='245'],'/'))"/>
         </xsl:when>
-        <xsl:when test="false() and $item/HEADER/FILEDESC/TITLESTMT/TITLE[@TYPE='245']">
+        <xsl:when test="$item/HEADER/FILEDESC/TITLESTMT/TITLE[@TYPE='245']">
           <xsl:value-of select="$item/HEADER/FILEDESC/TITLESTMT/TITLE[@TYPE='245']"/>
         </xsl:when>
         <xsl:otherwise>
@@ -514,6 +517,10 @@
         </xsl:choose>
       </xsl:attribute>
     </qui:link>
+  </xsl:template>
+
+  <xsl:template match="ThumbnailLink">
+    <qui:link rel="iiif" href="{.}" />
   </xsl:template>
 
   <xsl:template match="Tombstone">

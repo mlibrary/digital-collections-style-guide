@@ -555,13 +555,13 @@
     </section>
   </xsl:template>
 
-  <xsl:template match="qui:panel">
+  <xsl:template match="qui:panel[.//qui:link]">
     <div class="[ border-bottom ][ pr-1 ]">
       <xsl:apply-templates />
     </div>
   </xsl:template>
 
-  <xsl:template match="qui:panel/qui:header">
+  <xsl:template match="qui:panel[.//qui:link]/qui:header">
     <h3>
       <xsl:apply-templates select="." mode="copy-guts" />
     </h3>
@@ -592,6 +592,8 @@
       <xsl:text>)</xsl:text>
     </p>
   </xsl:template>
+
+  <xsl:template match="qui:panel" />
 
   <xsl:template match="qui:main">
     <section class="px-9">
