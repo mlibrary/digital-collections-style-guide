@@ -118,7 +118,7 @@
   </xsl:template>
 
   <xsl:template name="build-sub-header">
-    <xsl:if test="$page != 'index'">
+    <xsl:if test="$page != 'home'">
       <qui:debug>WTF: <xsl:value-of select="$page" /></qui:debug>
       <qui:sub-header>
         <xsl:attribute name="href">
@@ -128,7 +128,7 @@
         <xsl:call-template name="get-context-title" />
       </qui:sub-header>  
     </xsl:if>
-    <xsl:if test="$page = 'index'">
+    <xsl:if test="$page = 'home'">
       <qui:debug>INDEX</qui:debug>
     </xsl:if>
   </xsl:template>

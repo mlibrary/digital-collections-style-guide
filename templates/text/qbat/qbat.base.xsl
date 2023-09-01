@@ -38,7 +38,7 @@
         </xsl:with-param>
       </xsl:call-template>
 
-      <xsl:if test="normalize-space($collid)">
+      <xsl:if test="false() and normalize-space($collid)">
         <base href="/{substring($collid, 1, 1)}/{$collid}/" />
       </xsl:if>
 

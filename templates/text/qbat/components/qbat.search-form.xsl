@@ -37,7 +37,7 @@
           <label for="search-select" class="visually-hidden"
             >Select a search filter:</label
           >
-          <select name="rgn1" id="search-select" class="[ dropdown dropdown--neutral select ] [ bold no-border ]">
+          <select name="rgn" id="search-select" class="[ dropdown dropdown--neutral select ] [ bold no-border ]">
             <xsl:for-each select="$form/qui:control/qui:input[@slot='rgn']/qui:option">
               <option value="{@value}">
                 <xsl:if test="@selected = 'selected'">

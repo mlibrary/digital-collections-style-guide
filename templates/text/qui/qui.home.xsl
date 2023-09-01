@@ -24,6 +24,10 @@
       <xsl:apply-templates select="//Content" mode="copy-guts" />
     </qui:block>
 
+    <xsl:apply-templates select="//qui:block[@slot='links']" mode="copy" />
+    <xsl:apply-templates select="//qui:block[@slot='copyright']|//qui:block[@slot='useguidelines']" mode="copy" />
+    <xsl:apply-templates select="//qui:block[@slot='contentwarning']" mode="copy" />
+
     <!-- can do we cards? -->
     <xsl:if test="//HomePage//xhtml:div[contains(@class, 'series-cards')]//xhtml:div[contains(@class, 'series-card')]">
       <qui:block slot="gallery">
@@ -59,6 +63,7 @@
   </xsl:template>
 
   <xsl:template name="build-panel-custom">
+    <qui:debug>WTH?</qui:debug>
     <qui:panel slot="custom">
       <qui:header>Links</qui:header>
       <qui:nav>

@@ -163,7 +163,7 @@
     </div>
   </xsl:template>
 
-  <xsl:template match="qui:figure">
+  <xsl:template match="qui:figure[@href]">
     <xsl:variable name="id" select="generate-id()" />
     <a href="{@href}" id="{$id}">
       <xsl:if test="qui:style">
@@ -176,11 +176,19 @@
       <style>
         <xsl:value-of select="concat('#', $id, ' img { width: auto; align-self: center; }')" />
       </style>
-      <figure class="flex align-center flex-flow-column">
-        <xsl:apply-templates select="qui:img" />
-        <xsl:apply-templates select="qui:caption" />
-      </figure>
+      <xsl:apply-templates select="." mode="build-figure" />
     </a>
+  </xsl:template>
+
+  <xsl:template match="qui:figure">
+    <xsl:apply-templates select="." mode="build-figure" />
+  </xsl:template>
+
+  <xsl:template match="qui:figure" mode="build-figure">
+    <figure class="flex align-center flex-flow-column">
+      <xsl:apply-templates select="qui:img" />
+      <xsl:apply-templates select="qui:caption" />
+    </figure>
   </xsl:template>
 
   <xsl:template match="qui:style">

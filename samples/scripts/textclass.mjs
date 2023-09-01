@@ -211,9 +211,9 @@ async function processDLXS(req, res) {
     }
 
     // static check
-    const staticXslFilename = xpath.select(`string(//XslFallbackFileList/Filename[last()])`, xmlDoc);
+    const staticXslFilename = xpath.select(`string(//XslFallbackFileList/Filename[. = 'static.xsl'])`, xmlDoc);
     console.log("-- static check", staticXslFilename);
-    if ( staticXslFilename.indexOf('static.xsl') > -1 ) {
+    if ( view != 'home' && staticXslFilename.indexOf('static.xsl') > -1 ) {
       view = 'staticincl';
     }
 
@@ -243,6 +243,11 @@ async function processDLXS(req, res) {
     const quiOutputFilename = `${baseFilename}.qui.xml`;
     const qbatOutputFilename = `${baseFilename}.qbat.html`;
     let viewXmlData = fs.readFileSync(viewFilename, "utf8");
+
+    // dumb hack
+    if ( view == 'staticincl' ) {
+      viewXmlData = '<Top>' + viewXmlData + '</Top>';
+    }
 
     // oh, this is getting even more bonkers
     if ( viewXmlData.indexOf('<?CHUNK filename="feedback.chunk.xml" optional="0"?>') > -1 ) {
