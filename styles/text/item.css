@@ -1,0 +1,369 @@
+#viewer-heading {
+  scroll-margin-top: 2.5rem;
+}
+
+#action-page-index {
+  display: none;;
+}
+
+a[aria-current="page"] {
+  color: black;
+  text-decoration: none;;
+}
+
+.viewer {
+  width: 98vw;
+  height: 85vh;
+  position: relative;
+  border: 0;
+  display: block;
+  margin-left: -49vw;
+  margin-right: -49vw;
+  margin-bottom: 1rem;
+  left: 50%;
+  right: 50%;
+}
+
+.viewer[data-mimetype="audio/mpeg"] {
+  height: 25vh;
+}
+
+.viewer[data-istruct_mt="AUDIO:::EXTERNAL:::KALTURA"] {
+  height: 50vh;
+}
+
+.viewer[data-istruct_mt="AUDIO:::EXTERNAL:::KALTURA:::V2"] {
+  height: 50vh;
+  box-shadow: 0 1px 0 0 #ddd; /* Border bottom */
+  margin-bottom: 1rem;
+}
+
+/* .toolbar {
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+  position: relative;
+} */
+
+.toolbar {
+  display: grid;
+  gap: 0.5rem;
+  align-items: center;
+  /* can't do auto-fill because the download label doesn't expand when long */
+  /* grid-template-columns: repeat(auto-fill, minmax(10.5rem, 1fr)); */
+  grid-template-columns: repeat(2, minmax(10.5rem, 1fr));
+  position: relative;
+}
+
+.toolbar button[data-action="copy-text"] {
+  position: relative;
+}
+
+.toolbar button[data-action="copy-text"].copied::after {
+  content: "Copied to clipboard";
+  position: absolute;
+  bottom: -3rem;
+  right: 0;
+  /* top: 0;
+  left: 100%; */
+  margin-left: 0.25rem;
+  font-size: 0.875rem;
+  padding: 0.5rem;
+  display: block;
+  background: var(--color-green-100);
+  color: black;
+  white-space: nowrap;
+
+  animation: fade-out 0s ease-in 5s;
+  animation-fill-mode: forwards;
+  z-index: 50;
+  font-weight: normal;
+}
+
+.toolbar button {
+  white-space: nowrap;
+  padding: var(--space-x-small);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 0.25rem; 
+  font-size: 0.875rem;
+}
+
+/* .toolbar > * {
+  flex: 1;
+} */
+
+.toolbar form {
+  display: flex;
+}
+
+.toolbar form > * {
+  flex: 1;
+}
+
+.toolbar .button + .button  {
+  margin-left: unset;
+}
+
+.button.small {
+  font-size: 0.875rem;
+  line-height: 1;
+  padding: var(--space-x-small) var(--space-x-small);
+}
+
+button .material-icons {
+  /* vertical-align: middle;
+  margin-left: 0.25rem; */
+  font-size: 1rem;
+}
+
+/* .button {
+  border-color: var(--color-neutral-100);
+} */
+
+a.download-link {
+  text-decoration: none;;
+}
+
+a.download-link:hover {
+  color: white;
+}
+
+ul.outline li ul {
+  margin:0 1.5em;
+}
+ul.outline {
+  margin:0 1.5em 1.5em 1.5em;
+}
+
+.actions {
+  margin-bottom: 1rem;
+}
+
+/* .actions--toolbar-wrap {
+  container-type: inline-size;
+  container-name: actions--toolbar-wrap;
+} */
+
+sl-button[slot="trigger"] {
+  width: 100%;
+  background: orange;
+}
+
+/* @container actions--toolbar-wrap (max-width: 660px) {
+  .toolbar {
+    flex-direction: column; 
+  }
+
+  sl-dropdown {
+    width: 90%;
+  }
+
+  button {
+    width: 90%;
+  }
+} */
+
+.text-black {
+  color: #000;
+}
+
+/*
+ * Utilities
+ *
+ * 
+ */
+
+/*
+ * TocBot
+ *
+ * 
+ */
+.toc {
+ overflow-y:auto
+}
+.toc>.toc-list {
+ overflow:hidden;
+ position:relative;
+ padding-left: 1.5rem;
+}
+.toc>.toc-list li {
+ list-style:none
+}
+.toc-list {
+ margin:0;
+ padding-left:10px
+}
+a.toc-link {
+ color:currentColor;
+ height:100%
+}
+.is-collapsible {
+ max-height:1000px;
+ overflow:hidden;
+ transition:all 300ms ease-in-out
+}
+.is-collapsed {
+ max-height:0
+}
+.is-position-fixed {
+ position:fixed !important;
+ top:0
+}
+.is-active-link {
+ font-weight:700
+}
+.toc-link::before {
+ background-color:#EEE;
+ content:' ';
+ display:inline-block;
+ height:inherit;
+ left:0;
+ margin-top:-1px;
+ position:absolute;
+ width:3px;
+ height: 100%;
+ display: block;
+}
+.is-active-link::before {
+ background-color: var(--color-teal-400);
+}
+
+/* TOCBOT EXCEPTIONS */
+
+.aside {
+  margin: 1rem;
+  order: 2;
+  flex-shrink: 0;
+  /* width: 13rem; */
+  width: 25%;
+}
+
+.aside--wrap {
+  container-type: inline-size;
+  container-name: aside--wrap;
+}
+
+@container aside--wrap ( max-width: 920px ) {
+
+  .aside {
+    order: 0;
+    width: 100%;
+    background: #fff;
+    position: sticky;
+    top: 0rem;
+    z-index: 1000;
+    filter: drop-shadow(10px 10px 4px #ddd);
+    margin: 0 auto;
+  }
+
+  .main-panel {
+    width: 100%;
+  }
+
+  .main-panel h2, .main-panel h3 {
+    scroll-margin-top: 4rem;
+  }
+
+  nav.page-index {
+    position: static;
+    display: flex;
+    gap: 0.5rem;
+    width: 80%;
+    align-items: center;
+    margin: 0.5rem auto;
+  }
+
+  nav.page-index h2 {
+    padding: 0;
+  }
+
+  nav.page-index .toc {
+    display: none;
+  }
+
+  nav.page-index #action-page-index {
+    display: block;
+    flex-grow: 1;
+  }
+}
+
+@container aside--wrap (max-width: 670px ) {
+  /* .toolbar {
+    flex-direction: column; 
+  } */
+
+  /* sl-dropdown {
+    width: 90%;
+  }
+
+  button {
+    width: 90%;
+  }
+
+  .toolbar form {
+    width: 90%;
+  } */
+
+  .record>div {
+    grid-template-columns: 1fr;
+  }
+
+  dl.record dd+dd {
+    grid-column: 1;
+  }
+}
+
+nav.page-index {
+  position: sticky;
+  top: 1rem;
+  margin-left: 1rem;
+}
+  
+
+/* .js-toc > .toc-list {
+  position: sticky;
+  top: 1rem;
+} */
+
+a.toc-link {
+  text-decoration: none;
+}
+
+a.is-active-link {
+  text-decoration: underline;
+}
+
+.container {
+  position: relative;
+}
+
+dl.record input[type="text"], 
+dl.record textarea {
+  padding: 0.5rem;
+  width: 100%;
+  max-width: 65ch;
+}
+
+.toolbar .button--tiny {
+  min-height: 0;
+  text-decoration: none;
+  color: #000;
+  padding: var(--space-xx-small) var(--space-x-small);
+}
+
+#full-citation {
+  min-height: 8em;
+}
+
+#brief-citation {
+  min-height: 2em;
+}
+
+h3#portfolios::before {
+  content: "\e8ef";
+  display: block;
+  font-family: var(--material);
+  font-size: 1rem;
+}

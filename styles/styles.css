@@ -937,6 +937,7 @@ a[class*="next"]::after {
   bottom: 0;
   background-color: #fff;
   box-shadow: 0px -0.5rem 0.5rem -0.5rem rgba(0,0,0,0.1);
+  z-index: 5;
 }
 
 /*
