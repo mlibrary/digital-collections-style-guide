@@ -353,10 +353,81 @@
   <xsl:template match="qui:section" mode="result">
     <section class="[ results-list--small ]">
       <!-- <xsl:variable name="link" select="qui:link[@rel='result']" /> -->
-      <xsl:variable name="link-tmp">
-        <xsl:apply-templates select="qui:link[@rel='result']" />
+      <xsl:variable name="link-href">
+        <xsl:choose>
+          <xsl:when test="qui:link[@rel='result']">
+            <xsl:value-of select="qui:link[@rel='result']/@href" />
+          </xsl:when>
+          <xsl:otherwise>
+            <xsl:value-of select="qui:link[@rel='toc']/@href" />
+          </xsl:otherwise>
+        </xsl:choose>
       </xsl:variable>
-      <xsl:variable name="link" select="exsl:node-set($link-tmp)" />
+      <xsl:variable name="link-title">
+        <xsl:choose>
+          <xsl:when test="qui:title">
+            <xsl:apply-templates select="qui:title" mode="title" />
+          </xsl:when>
+          <xsl:otherwise>
+            <xsl:apply-templates select="qui:block[@slot='metadata']//qui:field[@key='title']" mode="title" />
+          </xsl:otherwise>
+        </xsl:choose>
+      </xsl:variable>
+
+      <div class="results-card">
+        <xsl:choose>
+          <xsl:when test="qui:link[@rel='iiif']">
+            <img class="[ results-list__image ]" src="{qui:link[@rel='iiif']/@href}" aria-hidden="true" alt="" />
+          </xsl:when>
+          <xsl:otherwise>
+            <div class="[ results-list__blank ]" aria-hidden="true">
+              <xsl:attribute name="data-type">
+                <xsl:choose>
+                  <xsl:when test="qui:link[@rel='icon']/@type='audio'">
+                    <span>volume_up</span>
+                  </xsl:when>
+                  <xsl:when test="qui:link[@rel='icon']/@type='doc'">
+                    <span>description</span>
+                  </xsl:when>
+                  <xsl:when test="qui:link[@rel='icon']/@type='pdf'">
+                    <span>description</span>
+                  </xsl:when>
+                  <xsl:when test="qui:link[@rel='icon']/@type='restricted'">
+                    <span>lock</span>
+                  </xsl:when>
+                  <xsl:otherwise>blank</xsl:otherwise>
+                </xsl:choose>
+              </xsl:attribute>
+            </div>
+          </xsl:otherwise>
+        </xsl:choose>
+        <div class="results-list__content flex flex-flow-column flex-grow-1">
+          <h3>
+            <a href="{$link-href}" class="results-link">
+              <xsl:value-of select="$link-title" />
+            </a>
+          </h3>
+          <dl class="[ results ]">
+            <!-- <xsl:apply-templates select="qui:collection" /> -->
+            <xsl:apply-templates select="qui:block[@slot='metadata']//qui:field" />
+            <xsl:if test="qui:link[@rel='toc' or @rel='detail']">
+              <div>
+                <dt>Links</dt>
+                <!-- <xsl:apply-templates select="qui:link[@rel='detail']" mode="summary" /> -->
+                <xsl:apply-templates select="qui:link[@rel='toc']" mode="summary">
+                  <xsl:with-param name="title" select="normalize-space($link-title)" />
+                </xsl:apply-templates>
+              </div>
+            </xsl:if>
+            <xsl:apply-templates select="qui:block[@slot='matches']//qui:field" />
+          </dl>
+          <xsl:apply-templates select="qui:block[@slot='summary']" mode="callout">
+            <xsl:with-param name="title" select="normalize-space($link-title)" />
+          </xsl:apply-templates>
+        </div>
+      </div>
+
+      <xsl:if test="false()">
       <a class="[ flex ][ flex-grow-1 ]" data-behavior="focus-center">
         <xsl:attribute name="href">
           <xsl:value-of select="$link//@href" />
@@ -399,6 +470,7 @@
           </dl>
         </div>
       </a>
+    </xsl:if>
       <!-- <xsl:variable name="bb-id" select="generate-id()" />
       <label class="[ portfolio-selection ]" for="bb{$bb-id}">
         <input id="bb{$bb-id}" type="checkbox" name="bbidno" value="{@identifier}" autocomplete="off" />
@@ -442,6 +514,14 @@
         <xsl:text>; </xsl:text>
       </xsl:if>
     </xsl:for-each>
+  </xsl:template>
+
+  <xsl:template match="qui:field[@key='title']" priority="99">
+    <xsl:choose>
+      <xsl:when test="//qui:block[@slot='item']">
+        <xsl:apply-templates select="." mode="build" />
+      </xsl:when>
+    </xsl:choose>
   </xsl:template>
 
   <xsl:template match="qui:field//qui:link" mode="copy" priority="105">
