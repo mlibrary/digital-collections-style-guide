@@ -33,6 +33,8 @@
 
     <div class="[ flex flex-flow-row flex-gap-1 ]">
       <div class="side-panel">
+        <h2 class="visually-hidden">Options</h2>
+        
         <xsl:apply-templates select="//qui:panel[@slot='browse']">
           <xsl:with-param name="classes">browse-link</xsl:with-param>
         </xsl:apply-templates>
