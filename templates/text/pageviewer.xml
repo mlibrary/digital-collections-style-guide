@@ -2,19 +2,22 @@
 
 <?CHUNK filename="entitiesdoctype.chnk" optional="1"?>
 <Top xmlns:dlxs="http://www.umdl.umich.edu/dlxs">
-    <XslFallbackFileList>
-        <Filename>bookbagitemsstring.xsl</Filename>
-	<Filename>footer.import.xsl</Filename>
-        <Filename>globalvariables.xsl</Filename>
-        <Filename>htmlhead.xsl</Filename>
-        <Filename>misc.xsl</Filename>
-        <Filename>navheader.xsl</Filename>
-        <Filename>pageviewer.xsl</Filename>
-        <Filename>pageviewerheader.xsl</Filename>
-        <Filename>viewer.utils.xsl</Filename>
-        <Filename>viewer.xsl</Filename>
-        <Filename>xsl2htmlutils.xsl</Filename>
+
+    <XslFallbackFileList pipeline="qui">
+        <Filename>qui/qui.base.xsl</Filename>
+        <Filename>../vendor/str.split.function.xsl</Filename>
+        <Filename>../vendor/xslfunctions.xsl</Filename>
+        <Filename>qui/components/*.xsl</Filename>
+        <Filename>qui/qui.pageviewer.xsl</Filename>
     </XslFallbackFileList>
+
+    <XslFallbackFileList pipeline="qbat">
+        <Filename>qbat/qbat.base.xsl</Filename>
+        <Filename>../vendor/xslfunctions.xsl</Filename>
+        <Filename>qbat/components/*.xsl</Filename>
+        <Filename>qbat/qbat.pageviewer.xsl</Filename>
+    </XslFallbackFileList>
+    
     <CustomXml>
         <?CHUNK filename="pageviewerextra.xml" optional="1"?>
     </CustomXml>
