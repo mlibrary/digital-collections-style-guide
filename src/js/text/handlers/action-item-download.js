@@ -1,5 +1,6 @@
 window.addEventListener('DOMContentLoaded', (event) => {
   let downloadAction = document.querySelector('#dropdown-action');
+  console.log("-- downloadAction", downloadAction);
   if (downloadAction) {
     downloadAction.addEventListener('sl-select', (event) => {
 
@@ -17,5 +18,13 @@ window.addEventListener('DOMContentLoaded', (event) => {
         }
       }));
     });
+
+    const ro = new ResizeObserver((entries) => {
+      const entry = entries[0];
+      console.log("ahoy", entry);
+      const contentBoxSize = entry.contentBoxSize[0];
+      downloadAction.style.setProperty('--download-menu-width', `${Math.floor(contentBoxSize.inlineSize * 0.9)}px`);
+    })
+    ro.observe(downloadAction);
   }
 })

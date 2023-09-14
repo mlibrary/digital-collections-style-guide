@@ -1,9 +1,19 @@
 <?xml version="1.0" encoding="UTF-8" ?>
-<xsl:stylesheet version="1.0" xmlns:xhtml="http://www.w3.org/1999/xhtml" xmlns:xsl="http://www.w3.org/1999/XSL/Transform" xmlns:dlxs="http://dlxs.org" xmlns:qbat="http://dlxs.org/quombat" xmlns:exsl="http://exslt.org/common" xmlns:qui="http://dlxs.org/quombat/ui" extension-element-prefixes="exsl" >
+<xsl:stylesheet version="1.0" xmlns:xhtml="http://www.w3.org/1999/xhtml" xmlns:xsl="http://www.w3.org/1999/XSL/Transform" xmlns:dlxs="http://dlxs.org" xmlns:qbat="http://dlxs.org/quombat" xmlns:exsl="http://exslt.org/common" xmlns:date="http://exslt.org/dates-and-times" xmlns:qui="http://dlxs.org/quombat/ui" extension-element-prefixes="exsl date" >
   <xsl:output method="xml" version="1.0" encoding="utf-8" indent="yes" />
   <xsl:strip-space elements="*"/>
 
   <xsl:variable name="has-plain-text" select="//ViewSelect/Option[Value='text']" />
+  <xsl:variable name="is-subj-search">yes</xsl:variable>
+
+  <xsl:variable name="idno" select="//Param[@name='idno']" />
+  <xsl:variable name="seq" select="//Param[@name='seq']" />
+  <xsl:variable name="label" select="//DocNavigation/PageNavForm/PageSelect/Option[Focus='true']/Label" />
+
+  <xsl:variable name="item-metadata-tmp">
+    <xsl:apply-templates select="/Top/DocMeta" mode="metadata" />
+  </xsl:variable>
+  <xsl:variable name="item-metadata" select="exsl:node-set($item-metadata-tmp)" />
 
   <xsl:template name="build-head-block">
     <!-- <xsl:call-template name="build-social-twitter" />
@@ -77,8 +87,9 @@
   
     <xsl:if test="true() or //MediaInfo/istruct_ms = 'P' and //MediaInfo/AuthCheck/@allowed = 'yes'">
       <qui:viewer 
-        embed-href="https://roger.quod.lib.umich.edu/cgi/t/text/api/embed/{$collid}:{//CurrentCgi/Param[@name='idno']}" 
+        embed-href="https://roger.quod.lib.umich.edu/cgi/t/text/api/embed/{$collid}:{//CurrentCgi/Param[@name='idno']}:{//CurrentCgi/Param[@name='seq']}" 
         manifest-id="https://roger.quod.lib.umich.edu/cgi/t/text/api/manifest/{$collid}:{//CurrentCgi/Param[@name='idno']}" 
+        plaintext-href="/cgi/t/text/pageviewer-idx?cc={$collid};idno={$idno};seq={//Param[@name='seq']};view=text;tpl=plaintext.viewer" 
         canvas-index="{//CurrentCgi/Param[@name='seq']}" 
         mode="{$behavior}" 
         auth-check="true" 
@@ -104,7 +115,7 @@
 
   <xsl:template name="build-action-panel">
     <qui:block slot="actions">
-      <qui:download-options>
+      <qui:download-options label="Item">
         <qui:download-item href="/cgi/t/text/pdf-idx?cc={/Top/DlxsGlobals/CurrentCgi/Param[@name='cc']};idno={/Top/DlxsGlobals/CurrentCgi/Param[@name='idno']};seq={//CurrentCgi/Params[@name='seq']}" file-type="PDF" type="FILE">
           Page PDF
         </qui:download-item>
@@ -112,24 +123,120 @@
           Page Image
         </qui:download-item>
         <xsl:if test="$has-plain-text">
-            <qui:download-item href="/cgi/t/text/text-idx?cc={/Top/DlxsGlobals/CurrentCgi/Param[@name='cc']};idno={/Top/DlxsGlobals/CurrentCgi/Param[@name='idno']};seq={//CurrentCgi/Params[@name='seq']};view=text;tpl=plaintext.viewer" file-type="JPEG" type="IMAGE">
+            <qui:download-item href="/cgi/t/text/text-idx?cc={/Top/DlxsGlobals/CurrentCgi/Param[@name='cc']};idno={/Top/DlxsGlobals/CurrentCgi/Param[@name='idno']};seq={//CurrentCgi/Params[@name='seq']};view=text;tpl=plaintext.viewer" file-type="TEXT" type="TEXT">
               Page Text
             </qui:download-item>
         </xsl:if>
-        <qui:hr />
-        <qui:download-item href="/cgi/t/text/request-pdf-idx?cc={/Top/DlxsGlobals/CurrentCgi/Param[@name='cc']};idno={/Top/DlxsGlobals/CurrentCgi/Param[@name='idno']}" file-type="PDF" type="FILE">
-          <xsl:value-of select="key('get-lookup','results.str.container')"/>
-        </qui:download-item>
+        <xsl:if test="//AllowFullPdfDownload = 'true'">
+          <qui:hr />
+          <qui:download-item href="/cgi/t/text/request-pdf-idx?cc={/Top/DlxsGlobals/CurrentCgi/Param[@name='cc']};idno={/Top/DlxsGlobals/CurrentCgi/Param[@name='idno']}" file-type="PDF" type="FILE">
+            <xsl:value-of select="key('get-lookup','results.str.container')"/>
+            <xsl:text> PDF</xsl:text>
+          </qui:download-item>  
+        </xsl:if>
       </qui:download-options>
+
+      <xsl:call-template name="build-action-panel-portfolio" />
+
+      <xsl:call-template name="build-action-panel-iiif-link" />
+
+      <xsl:call-template name="build-action-panel-extra" />
     </qui:block>
   </xsl:template>
 
-  <xsl:template name="build-record">
+  <xsl:template name="build-action-panel-extra" />
 
+  <xsl:template name="build-action-panel-portfolio">
+    <xsl:if test="/Top/BookbagAddHref">
+
+      <qui:form rel="add" href="{/Top/BookbagAddHref}">
+      </qui:form>
+
+    </xsl:if>
+  </xsl:template>
+
+  <xsl:template name="build-action-panel-iiif-link">
+    <xsl:if test="true() or normalize-space(//MiradorConfig/@manifest-id)">
+      <qui:link rel="iiif-manifest" href="https://roger.quod.lib.umich.edu/cgi/t/text/api/manifest/{$collid}:{//CurrentCgi/Param[@name='idno']}" />
+    </xsl:if>
+  </xsl:template>
+
+  <xsl:template name="build-record">
+    <qui:header role="main">
+      <xsl:value-of select="$item-metadata//qui:field[@key='title']//qui:value" />
+      <xsl:text>: </xsl:text>
+      <xsl:choose>
+        <xsl:when test="$view = 'toc'">
+          <xsl:value-of select="key('get-lookup', 'headerutils.str.title')" />
+          <xsl:text> Contents</xsl:text>
+        </xsl:when>
+        <xsl:when test="$view = 'text'">
+          <xsl:value-of select="key('get-lookup', 'headerutils.str.viewentiretext')" />
+          <xsl:text> Entire Text</xsl:text>
+        </xsl:when>
+        <xsl:when test="normalize-space($label/PageNumber)">
+          <xsl:text>Page no. </xsl:text>
+          <xsl:value-of select="$label/PageNumber" />
+          <xsl:text>: </xsl:text>
+          <xsl:value-of select="key('get-lookup', $label/PageType)" />
+        </xsl:when>
+        <xsl:when test="//CurrentCgi/Param[@name='seq']">
+          <xsl:value-of select="key('get-lookup', 'headerutils.str.page')" />
+          <xsl:text> </xsl:text>
+          <xsl:value-of select="//CurrentCgi/Param[@name='seq']" />
+        </xsl:when>
+        <xsl:otherwise />
+      </xsl:choose>  
+    </qui:header>
+
+    <qui:block slot="record">
+      <xsl:apply-templates select="$item-metadata//qui:section" mode="copy" />
+      <xsl:call-template name="build-record-technical-metadata" />
+    </qui:block>
+
+    <!-- <xsl:apply-templates select="$item-metadata" mode="copy" /> -->
+    <!-- <xsl:call-template name="build-record-technical-metadata"> -->
+      <!-- <xsl:with-param name="item" select="ItemHeader" />
+      <xsl:with-param name="encoding-type" select="$encoding-type" />
+      <xsl:with-param name="item-encoding-level" select="$item-encoding-level" /> -->
+    <!-- </xsl:call-template> -->
+    <!-- <xsl:apply-templates select="/Top/DocMeta" mode="metadata" /> -->
+  </xsl:template>
+
+  <xsl:template match="DocMeta" mode="metadata">
+    <xsl:variable name="encoding-type">
+      <xsl:choose>
+        <xsl:when test="DocEncodingType">
+          <xsl:value-of select="normalize-space(DocEncodingType)"/>
+        </xsl:when>
+        <xsl:otherwise>
+          <xsl:value-of select="normalize-space(parent::*/DocEncodingType)"/>
+        </xsl:otherwise>
+      </xsl:choose>
+    </xsl:variable>
+    <xsl:variable name="item-encoding-level">
+      <xsl:choose>
+        <xsl:when test="ItemHeader/HEADER/ENCODINGDESC/EDITORIALDECL/@N">
+          <xsl:value-of select="ItemHeader/HEADER/ENCODINGDESC/EDITORIALDECL/@N"/>
+        </xsl:when>
+        <xsl:otherwise>
+          <xsl:value-of select="''"/>
+        </xsl:otherwise>
+      </xsl:choose>
+    </xsl:variable>
+
+    <xsl:call-template name="build-item-metadata">
+      <xsl:with-param name="item" select="ItemHeader" />
+      <xsl:with-param name="encoding-type" select="$encoding-type" />
+      <xsl:with-param name="item-encoding-level" select="$item-encoding-level" />
+      <xsl:with-param name="slot">item</xsl:with-param>
+    </xsl:call-template>
   </xsl:template>
 
   <xsl:template name="build-rights-statement">
-
+    <qui:block slot="rights-statement">
+      <xsl:apply-templates select="//HEADER/FILEDESC/PUBLICATIONSTMT/AVAILABILITY/P" />
+    </qui:block>
   </xsl:template>
 
   <xsl:template name="build-related-links">
@@ -137,7 +244,153 @@
   </xsl:template>
 
   <xsl:template name="get-title">
-    <xsl:value-of select="//qui:title" />
+    <xsl:value-of select="normalize-space($item-metadata//qui:field[@key='title'])" />
   </xsl:template>
 
+  <xsl:template name="get-head-title">
+    <qui:values>
+      <qui:value>
+        <xsl:call-template name="get-record-title" />
+      </qui:value>
+      <qui:value>
+        <xsl:call-template name="get-collection-title" />
+      </qui:value>
+    </qui:values>
+  </xsl:template>
+
+  <xsl:template name="get-record-title">
+    <xsl:choose>
+      <xsl:when test="$view = 'toc'">
+        <xsl:value-of select="key('get-lookup', 'headerutils.str.title')" />
+        <xsl:text> Contents</xsl:text>
+      </xsl:when>
+      <xsl:when test="$view = 'text'">
+        <xsl:value-of select="key('get-lookup', 'headerutils.str.viewentiretext')" />
+        <xsl:text> Entire Text</xsl:text>
+      </xsl:when>
+      <xsl:when test="//CurrentCgi/Param[@name='seq']">
+        <xsl:value-of select="key('get-lookup', 'headerutils.str.page')" />
+        <xsl:text> </xsl:text>
+        <xsl:value-of select="//CurrentCgi/Param[@name='seq']" />
+        <xsl:text> - Item Page</xsl:text>
+      </xsl:when>
+      <xsl:otherwise />
+    </xsl:choose>
+  </xsl:template>
+
+  <xsl:template name="build-record-technical-metadata">
+    <!-- <xsl:param name="item" />
+    <xsl:param name="encoding-type" />
+    <xsl:param name="item-encoding-level" /> -->
+
+    <!-- <qui:block slot="technical-metadata"> -->
+      <qui:section name="Technical Details" slug="technical_details">
+
+        <qui:field key="collection">
+          <qui:label>Collection</qui:label>
+          <qui:values>
+            <qui:value>
+              <qui:link href="{/Top/NavHeader/MainNav/NavItem[Name='Home']/Link}">
+                <xsl:value-of select="//Top/DlxsGlobals/TitleComplex" />
+              </qui:link>
+            </qui:value>
+          </qui:values>
+        </qui:field>
+
+        <xsl:if test="normalize-space(//MediaInfo/istruct_ms) = 'P'">
+          <xsl:if test="//MediaInfo/Type = 'image'">
+            <qui:field key="image_size">
+              <qui:label>Image Size</qui:label>
+              <qui:values>
+                <qui:value>
+                  <xsl:value-of select="/Top/MediaInfo/width" />
+                  <xsl:text> x </xsl:text>
+                  <xsl:value-of select="/Top/MediaInfo/height" />
+                </qui:value>
+              </qui:values>
+            </qui:field>
+          </xsl:if>
+          <xsl:if test="/Top/MediaInfo/ReportedSize">
+            <qui:field key="reported_size">
+              <qui:label>File Size</qui:label>
+              <qui:values>
+                <qui:value>
+                  <xsl:value-of select="/Top/MediaInfo/ReportedSize" />
+                </qui:value>
+              </qui:values>
+            </qui:field>
+          </xsl:if>
+        </xsl:if>
+
+        <!-- <qui:field key="idno">
+          <qui:label>Record</qui:label>
+          <qui:values>
+            <qui:value>
+              <xsl:value-of select="/Top/EntryId" />
+            </qui:value>
+          </qui:values>
+        </qui:field> -->
+
+        <qui:field key="bookmark" component="input">
+          <qui:label>Link to this Item</qui:label>
+          <qui:values>
+            <qui:value>
+              <xsl:text>https://name.umdl.umich.edu/</xsl:text>
+              <xsl:value-of select="//Param[@name='idno']" />
+            </qui:value>
+          </qui:values>
+        </qui:field>
+
+      </qui:section>
+    <!-- </qui:block> -->
+    <qui:block slot="citation">
+      <qui:section>
+        <qui:field slot="citation" rel="full">
+          <qui:values>
+            <qui:value>
+              <xsl:text>&quot;</xsl:text>
+              <xsl:value-of select="$item-metadata//qui:field[@key='title']//qui:value" />
+              <xsl:text>.&quot; </xsl:text>
+              <xsl:if test="true()">
+              <em>
+                <xsl:value-of select="//TitleComplex" />
+                <xsl:text>. </xsl:text>
+              </em>
+              <xsl:text>https://name.umdl.umich.edu/</xsl:text>
+              <xsl:value-of select="substring($collid, 1, 1)" />
+              <xsl:text>/</xsl:text>
+              <xsl:value-of select="$collid" />
+              <xsl:text>/</xsl:text>
+              <xsl:value-of select="//Param[@name='idno']" />
+              <xsl:text>. </xsl:text>
+              <xsl:text>Accessed </xsl:text>
+              <xsl:value-of select="concat(date:month-name(), ' ', date:day-in-month(), ', ', date:year(), '.')" />
+            </xsl:if>
+            </qui:value>
+          </qui:values>
+        </qui:field>    
+      </qui:section>
+    </qui:block>
+  </xsl:template>
+
+  <xsl:template name="build-citation-monograph">
+    <xsl:param name="item" />
+    <xsl:param name="encoding-type" />
+    <xsl:param name="item-encoding-level" />
+
+    <!-- 
+      Sargent, Charles Sprague. Garden and Forest ; a Journal of Horticulture, Landscape Art and Forestry. v. 1-10 (Feb 29, 1888-Dec. 29 1897), The Garden and Forest Publishing Company, 1888-1897.
+    -->
+
+    <xsl:value-of select="concat($metadata//qui:field[@key='title']//qui:value, '. ')" />
+    <xsl:for-each select="$metadata//qui:field[@key='pubinfo']//qui:value">
+      <xsl:value-of select="." />
+      <xsl:if test="position() &lt; last()">, </xsl:if>
+    </xsl:for-each>
+    <xsl:text>, </xsl:text>
+    <xsl:value-of select="$metadata//qui:field[@key='publication-date']//qui:value" />
+    <xsl:text>. </xsl:text>
+
+  </xsl:template>
+  
 </xsl:stylesheet>

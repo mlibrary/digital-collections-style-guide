@@ -5,6 +5,10 @@ DLXS.manifestsData = {};
 DLXS.manifestsIndex = {};
 DLXS.totalManifests = 0;
 
+let plaintextViewer = null;
+let plaintextUrl;
+
+
 let updateDownloadMenu = function() {
   const slDropdownEl = document.querySelector('#dropdown-action');
   slDropdownEl.disabled = true;
@@ -40,6 +44,34 @@ let updateDownloadMenu = function() {
   slDropdownEl.style.opacity = 1.0;
 }
 
+const loadPlaintext = function(seq) {
+  if ( seq ) {
+    // update plaintextUrl...
+    plaintextUrl.searchParams.set('seq', seq);
+  }
+
+  fetch(plaintextUrl, { credentials: 'include' })
+    .then((response) => {
+      if ( ! response.ok ) {
+        console.log("-- plaintext fetch", plaintextUrl.toString(), response);
+        throw new Error(`HTTP error! Status: ${response.status}`);
+      }
+
+      return response.text();
+    })
+    .then((response) => {
+        let lines = [];
+        if ( response ) {
+          lines = response.split("\n");
+          if ( lines[0].indexOf('DOCTYPE') > -1 ) {
+              lines.shift();
+          }
+          response = lines.join("<br />")
+        }
+        plaintextViewer.innerHTML = response;
+    })
+}
+
 window.addEventListener('message', (event) => {
 
   const section = document.querySelector('.main-panel > section');
@@ -61,7 +93,11 @@ window.addEventListener('message', (event) => {
     slDropdownEl.disabled = true;
     slDropdownEl.style.opacity = 0.5;
 
+    console.log("-- plaintext.updateMetadata", identifier);
+
     const parts = identifier.split(':');
+    const seq = parts.at(-1);
+    loadPlaintext(seq);
 
     // this will be different when we get to portfolios
     // let url = new URL(location.href.replace(/\;/g, "&"));
@@ -74,6 +110,7 @@ window.addEventListener('message', (event) => {
     let href = url.toString();
 
     alert.innerHTML = `<p>Loading metadata for: ${identifier}</p>`;
+    return;
 
     fetch(href, {
       credentials: 'include',
@@ -147,5 +184,13 @@ window.addEventListener('message', (event) => {
         DLXS.manifestsData[manifestId] = { sizes: data.sizes, resourceId: resourceId, label: label };
         updateDownloadMenu();
       })
+  }
+})
+
+window.addEventListener('DOMContentLoaded', (event) => {
+  plaintextViewer = document.querySelector('#plaintext-viewer');
+  if ( plaintextViewer ) {
+    plaintextUrl = new URL(`${location.protocol}//${location.host}${plaintextViewer.dataset.href.replace(/;/g, '&')}`);
+    loadPlaintext();
   }
 })

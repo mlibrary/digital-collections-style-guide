@@ -12,9 +12,10 @@ import "./handlers/action-results-focus.js";
 import "./handlers/action-toggle-side-panel.js";
 
 import "./handlers/action-copy-text.js";
-// import "./handlers/action-item-download.js";
+import "./handlers/action-item-download.js";
 import "./handlers/item-page-navigator.js";
 import "./viewers/viewer-mirador.js";
+// import "./viewers/viewer-plaintext.js";
 
 // import "./handlers/advanced-search-form.js";
 
