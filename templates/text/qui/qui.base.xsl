@@ -1,5 +1,6 @@
 <?xml version="1.0" encoding="UTF-8" ?>
 <xsl:stylesheet version="1.0" xmlns:xhtml="http://www.w3.org/1999/xhtml" xmlns:xsl="http://www.w3.org/1999/XSL/Transform" xmlns:dlxs="http://dlxs.org" xmlns:qbat="http://dlxs.org/quombat" xmlns:exsl="http://exslt.org/common" xmlns:qui="http://dlxs.org/quombat/ui" extension-element-prefixes="exsl" >
+  <xsl:output method="xml" version="1.0" encoding="utf-8" indent="yes" />
 
   <!-- <xsl:variable name="collid" select="normalize-space((//Param[@name='cc']|//Param[@name='c'])[1])" /> -->
   <xsl:variable name="collid">
@@ -190,10 +191,17 @@
         <xsl:value-of select="normalize-space(/Top/GroupName)" />
       </xsl:when>
       <xsl:when test="/Top/CollName = 'multiple'">
-        Image Collections
+        Text Collections
       </xsl:when>
       <xsl:otherwise>
-        <xsl:value-of select="normalize-space(/Top/DlxsGlobals/Title)" />
+        <xsl:choose>
+          <xsl:when test="contains(/Top/DlxsGlobals/Title,'.str')">
+            <xsl:value-of select="key('get-lookup',/Top/DlxsGlobals/Title)"/>
+          </xsl:when>
+          <xsl:otherwise>
+            <xsl:value-of select="/Top/DlxsGlobals/Title"/>
+          </xsl:otherwise>
+        </xsl:choose>
       </xsl:otherwise>
     </xsl:choose>
   </xsl:template>

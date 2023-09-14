@@ -260,6 +260,9 @@ async function processDLXS(req, res) {
       "//XslFallbackFileList[@pipeline='qui']/Filename",
       viewDoc
     );
+    if ( fallbackFilenames.length == 0 ) {
+      fallbackFilenames.push({ textContent: 'qui/qui.echo.xsl' });
+    }
 
     const qbatFallbackFilenames = xpath.select(
       "//XslFallbackFileList[@pipeline='qbat']/Filename",
@@ -267,6 +270,7 @@ async function processDLXS(req, res) {
     );
 
     const xsltDoc = new DOMParser().parseFromString(xsltBase, "text/xml");
+    console.log(fallbackFilenames);
     fallbackFilenames.forEach((fallbackFilename) => {
       [textPath, collidPath].forEach((xslPath) => {
         console.log("==>", fallbackFilename.textContent);
@@ -418,6 +422,13 @@ function listen(options) {
   }))
 
   app.use('/i/image', proxy('https://roger.quod.lib.umich.edu/i/image', {
+    https: true,
+    forwardPath: function (req) {
+      return req.originalUrl;
+    }
+  }))
+
+  app.use('/uplift-image-viewer', proxy('https://roger.quod.lib.umich.edu/uplift-image-viewer', {
     https: true,
     forwardPath: function (req) {
       return req.originalUrl;

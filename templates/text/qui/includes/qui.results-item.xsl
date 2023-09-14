@@ -593,20 +593,21 @@
     <xsl:param name="subj-parent"/>
     <xsl:variable name="scount" select="count($subj-parent//KEYWORDS/child::TERM)"/>
     <xsl:variable name="label">
-      <xsl:value-of select="key('get-lookup','results.str.33')"/>
+      <xsl:value-of select="key('get-lookup','headerutils.str.subjectterms')"/>
     </xsl:variable>
     <xsl:variable name="plural">
-      <xsl:if test="not($scount = 1)">
+      <xsl:if test="false() and not($scount = 1)">
         <xsl:value-of select="key('get-lookup','results.str.32')"/>
       </xsl:if>
     </xsl:variable>
     <xsl:if test="$scount &gt; 0">
       <qui:field key="subjects">
-        <qui:label><xsl:value-of select="concat($label,$plural,':')"/></qui:label>
+        <qui:label><xsl:value-of select="concat($label,$plural)"/></qui:label>
         <qui:values>
           <xsl:for-each select="$subj-parent//KEYWORDS/TERM[not(@TYPE) or @TYPE='subject']">
             <qui:value>
-              <xsl:value-of select="concat('[',dlxs:stripEndingChars(.,'.,:;'),']')"/>
+              <xsl:value-of select="." />
+              <!-- <xsl:value-of select="concat('[',dlxs:stripEndingChars(.,'.,:;'),']')"/> -->
             </qui:value>
             </xsl:for-each>
         </qui:values>
@@ -680,5 +681,76 @@
         </qui:value>
       </qui:values>
     </qui:field>
+  </xsl:template>
+
+  <xsl:template match="AVAILABILITY/P">
+    <xhtml:p>
+      <xsl:apply-templates mode="copy-guts" />
+    </xhtml:p>    
+  </xsl:template>
+
+  <xsl:template match="AVAILABILITY/P[@TYPE='license']" priority="99">
+    <xsl:choose>
+      <xsl:when test=".='No Copyright'">
+        <xhtml:p>
+          <xhtml:strong>Rights Statement:</xhtml:strong>
+          <xsl:text> </xsl:text>
+          <xhtml:a href="https://creativecommons.org/publicdomain/mark/1.0/">No Copyright</xhtml:a>
+        </xhtml:p>
+      </xsl:when>
+      <xsl:when test=".='No Copyright - United States'">
+        <xhtml:p>
+          <xhtml:strong>DPLA Rights Statement:</xhtml:strong>
+          <xsl:text> </xsl:text>
+          <xhtml:a href="http://rightsstatements.org/vocab/NoC-US/1.0/">No Copyright - United  States</xhtml:a>
+        </xhtml:p>
+      </xsl:when>
+      <xsl:when test=".='In Copyright'">
+        <xhtml:p>
+          <xhtml:strong>DPLA Rights Statement:</xhtml:strong>
+          <xsl:text> </xsl:text>
+          <xhtml:a href="https://rightsstatements.org/page/InC/1.0/">In Copyright</xhtml:a>
+        </xhtml:p>
+      </xsl:when>
+      <xsl:when test=".='Copyright Not Evaluated'">
+        <xhtml:p>
+          <xhtml:strong>DPLA Rights Statement:</xhtml:strong>
+          <xsl:text> </xsl:text>
+          <xhtml:a href="http://rightsstatements.org/vocab/CNE/1.0/">Copyright Not Evaluated</xhtml:a>
+        </xhtml:p>
+      </xsl:when>
+      <xsl:otherwise>
+        <xhtml:p>
+          <xhtml:strong>Rights Statement:</xhtml:strong>
+          <xsl:text> </xsl:text>
+          <xsl:value-of select="."/>
+        </xhtml:p>
+      </xsl:otherwise>
+    </xsl:choose>
+  </xsl:template>
+  <xsl:template match="AVAILABILITY/P[@TYPE='DPLA']" priority="99">
+    <xsl:choose>
+      <xsl:when test=".='No Copyright - United States'">
+        <xhtml:p>
+          <xhtml:strong>DPLA Rights Statement:</xhtml:strong>
+          <xsl:text> </xsl:text>
+          <xhtml:a href="http://rightsstatements.org/vocab/NoC-US/1.0/">No Copyright - United  States</xhtml:a>
+        </xhtml:p>
+      </xsl:when>
+      <xsl:when test=".='Copyright Not Evaluated'">
+        <xhtml:p>
+          <xhtml:strong>DPLA Rights Statement:</xhtml:strong>
+          <xsl:text> </xsl:text>
+          <xhtml:a href="http://rightsstatements.org/vocab/CNE/1.0/">Copyright Not Evaluated</xhtml:a>
+        </xhtml:p>
+      </xsl:when>
+      <xsl:otherwise>
+        <xhtml:p>
+          <xhtml:strong>DPLA Rights Statement:</xhtml:strong>
+          <xsl:text> </xsl:text>
+          <xsl:value-of select="."/>
+        </xhtml:p>
+      </xsl:otherwise>
+    </xsl:choose>
   </xsl:template>
 </xsl:stylesheet>
