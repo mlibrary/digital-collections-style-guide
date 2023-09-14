@@ -56,7 +56,8 @@
 
   <xsl:template name="build-page-heading">
     <h1 class="collection-heading--small">
-      <xsl:value-of select="//qui:header[@role='main']" />
+      <!-- <xsl:value-of select="//qui:header[@role='main']" /> -->
+      <xsl:apply-templates select="//qui:header[@role='main']" mode="build-title" />
     </h1>
   </xsl:template>
 
@@ -73,38 +74,15 @@
     <xsl:variable name="viewer" select="//qui:viewer" />
     <xsl:if test="$viewer">
       <h2 id="viewer-heading" class="visually-hidden">Viewer</h2>
-      <xsl:choose>
-        <xsl:when test="true() and $viewer/@plaintext-href">
-          <xsl:variable name="plaintext-href" select="//qui:viewer/@plaintext-href" />
-          <div class="[ viewer viewer-grid ]">
-            <iframe 
-              id="viewer" 
-              class="[ xx-viewer ]" 
-              allow="fullscreen" 
-              title="{$title}"
-              src="{ $viewer/@embed-href }"
-              data-mimetype="{$viewer/@mimetype}"
-              data-istruct_mt="{$viewer/@istruct_mt}">
-            </iframe>
-            <div class="plaintext-viewer-wrap">
-              <div class="[ text-block ]" id="plaintext-viewer" data-href="{$plaintext-href}" data-tmp="{$plaintext-href}">
-                <xsl:value-of select="$plaintext-href" />
-              </div>  
-            </div>
-          </div>
-        </xsl:when>
-        <xsl:otherwise>
-          <iframe 
-            id="viewer" 
-            class="[ viewer ]" 
-            allow="fullscreen" 
-            title="{$title}"
-            src="{ $viewer/@embed-href }"
-            data-mimetype="{$viewer/@mimetype}"
-            data-istruct_mt="{$viewer/@istruct_mt}">
-          </iframe>  
-        </xsl:otherwise>
-      </xsl:choose>      
+      <iframe 
+        id="viewer" 
+        class="[ viewer ]" 
+        allow="fullscreen" 
+        title="{$title}"
+        src="{ $viewer/@embed-href }"
+        data-mimetype="{$viewer/@mimetype}"
+        data-istruct_mt="{$viewer/@istruct_mt}">
+      </iframe>  
     </xsl:if>
     <xsl:if test="//qui:callout[@slot='viewer']">
       <xsl:apply-templates select="//qui:callout[@slot='viewer']" />
@@ -400,6 +378,20 @@
     <dl class="record">
       <xsl:apply-templates />
     </dl>
+  </xsl:template>
+
+  <xsl:template match="qui:header" mode="build-title">
+    <xsl:apply-templates mode="build-title" />
+  </xsl:template>
+
+  <xsl:template match="text()" mode="build-title">
+    <xsl:copy></xsl:copy>
+  </xsl:template>
+
+  <xsl:template match="qui:span" mode="build-title">
+    <span data-key="{@data-key}">
+      <xsl:apply-templates mode="build-title" />
+    </span>
   </xsl:template>
 
   <xsl:template match="qui:field[@key='bookmark']" priority="101">
