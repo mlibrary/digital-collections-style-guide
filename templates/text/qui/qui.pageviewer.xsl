@@ -89,7 +89,6 @@
       <qui:viewer 
         embed-href="https://roger.quod.lib.umich.edu/cgi/t/text/api/embed/{$collid}:{//CurrentCgi/Param[@name='idno']}:{//CurrentCgi/Param[@name='seq']}" 
         manifest-id="https://roger.quod.lib.umich.edu/cgi/t/text/api/manifest/{$collid}:{//CurrentCgi/Param[@name='idno']}" 
-        plaintext-href="/cgi/t/text/pageviewer-idx?cc={$collid};idno={$idno};seq={//Param[@name='seq']};view=text;tpl=plaintext.viewer" 
         canvas-index="{//CurrentCgi/Param[@name='seq']}" 
         mode="{$behavior}" 
         auth-check="true" 
@@ -99,6 +98,9 @@
         levels="{//MediaInfo/Levels}" 
         collid="{$collid}" 
         >
+        <xsl:if test="$has-plain-text">
+          <xsl:attribute name="has-ocr">true</xsl:attribute>
+        </xsl:if>
         <xsl:if test="//MediaInfo/ViewerMaxSize">
           <xsl:attribute name="viewer-max-width"><xsl:value-of select="//MediaInfo/ViewerMaxSize/@width" /></xsl:attribute>
           <xsl:attribute name="viewer-max-height"><xsl:value-of select="//MediaInfo/ViewerMaxSize/@height" /></xsl:attribute>
@@ -116,14 +118,14 @@
   <xsl:template name="build-action-panel">
     <qui:block slot="actions">
       <qui:download-options label="Item">
-        <qui:download-item href="/cgi/t/text/pdf-idx?cc={/Top/DlxsGlobals/CurrentCgi/Param[@name='cc']};idno={/Top/DlxsGlobals/CurrentCgi/Param[@name='idno']};seq={//CurrentCgi/Params[@name='seq']}" file-type="PDF" type="FILE">
+        <qui:download-item href="/cgi/t/text/pdf-idx?cc={/Top/DlxsGlobals/CurrentCgi/Param[@name='cc']};idno={/Top/DlxsGlobals/CurrentCgi/Param[@name='idno']};seq={$seq}" file-type="PDF" type="FILE">
           Page PDF
         </qui:download-item>
-        <qui:download-item href="/cgi/t/text/api/image/{/Top/DlxsGlobals/CurrentCgi/Param[@name='cc']}:{/Top/DlxsGlobals/CurrentCgi/Param[@name='idno']}:{//CurrentCgi/Params[@name='seq']}/full/full/0/default.jpg" file-type="JPEG" type="IMAGE">
+        <qui:download-item href="/cgi/t/text/api/image/{/Top/DlxsGlobals/CurrentCgi/Param[@name='cc']}:{/Top/DlxsGlobals/CurrentCgi/Param[@name='idno']}:{$seq}/full/full/0/default.jpg" file-type="JPEG" type="IMAGE">
           Page Image
         </qui:download-item>
         <xsl:if test="$has-plain-text">
-            <qui:download-item href="/cgi/t/text/text-idx?cc={/Top/DlxsGlobals/CurrentCgi/Param[@name='cc']};idno={/Top/DlxsGlobals/CurrentCgi/Param[@name='idno']};seq={//CurrentCgi/Params[@name='seq']};view=text;tpl=plaintext.viewer" file-type="TEXT" type="TEXT">
+            <qui:download-item href="/cgi/t/text/text-idx?cc={/Top/DlxsGlobals/CurrentCgi/Param[@name='cc']};idno={/Top/DlxsGlobals/CurrentCgi/Param[@name='idno']};seq={$seq};view=text;tpl=plaintext.viewer" file-type="TEXT" type="TEXT">
               Page Text
             </qui:download-item>
         </xsl:if>
@@ -175,15 +177,22 @@
           <xsl:text> Entire Text</xsl:text>
         </xsl:when>
         <xsl:when test="normalize-space($label/PageNumber)">
-          <xsl:text>Page no. </xsl:text>
-          <xsl:value-of select="$label/PageNumber" />
-          <xsl:text>: </xsl:text>
-          <xsl:value-of select="key('get-lookup', $label/PageType)" />
+          <qui:span data-key="canvas-label">
+            <!-- Page no. -->
+            <xsl:value-of select="key('get-lookup', 'headerutils.str.page')" />
+            <xsl:value-of select="$label/PageNumber" />
+            <xsl:text> - </xsl:text>
+            <xsl:value-of select="key('get-lookup', $label/PageType)" />  
+          </qui:span>
         </xsl:when>
         <xsl:when test="//CurrentCgi/Param[@name='seq']">
-          <xsl:value-of select="key('get-lookup', 'headerutils.str.page')" />
-          <xsl:text> </xsl:text>
-          <xsl:value-of select="//CurrentCgi/Param[@name='seq']" />
+          <qui:span data-key="canvas-label">
+            <xsl:value-of select="key('get-lookup', 'headerutils.str.page')" />
+            <xsl:text> </xsl:text>
+            <xsl:value-of select="//CurrentCgi/Param[@name='seq']" />  
+            <xsl:text> - </xsl:text>
+            <xsl:value-of select="key('get-lookup', $label/PageType)" />  
+          </qui:span>
         </xsl:when>
         <xsl:otherwise />
       </xsl:choose>  

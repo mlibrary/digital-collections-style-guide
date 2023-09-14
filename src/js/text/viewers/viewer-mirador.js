@@ -84,10 +84,27 @@ window.addEventListener('message', (event) => {
     section.insertBefore(alert, section.firstChild);
   }
 
+  const labelEl = document.querySelector('h1 span[data-key="canvas-label"]');
+  console.log("-- viewer.mirador.message", event);
+
   if (event.data.event == 'updateMetadata') {
     const identifier = event.data.identifier;
     const label = event.data.label;
     const link = document.querySelector('link[rel="self"]');
+
+    labelEl.innerText = label;
+
+    let parts = document.title.split(' - ');
+    parts[0] = label;
+    document.title = parts.join(' - ');
+
+    parts = identifier.split(':');
+    const newSeq = parts.pop();
+    const idno = parts.at(-1);
+    const baseIdentifier = parts.join(':');
+
+    console.log("-- viewer.mirador", identifier, label);
+
 
     const slDropdownEl = document.querySelector('#dropdown-action');
     slDropdownEl.disabled = true;
@@ -95,69 +112,55 @@ window.addEventListener('message', (event) => {
 
     console.log("-- plaintext.updateMetadata", identifier);
 
-    const parts = identifier.split(':');
-    const seq = parts.at(-1);
-    loadPlaintext(seq);
-
     // this will be different when we get to portfolios
     // let url = new URL(location.href.replace(/\;/g, "&"));
     let self_href = link.getAttribute('href').replace(/;/g, '&');
     if ( self_href.substring(0, 1) == '/' ) {
-      self_href = `${location.protocol}//${location.hostname}${self_href}`;
+      self_href = `${location.protocol}//${location.host}${self_href}`;
     }
     let url = new URL(self_href);
-    url.searchParams.set('viewid', parts[2]);
-    let href = url.toString();
+    if ( url.pathname.indexOf('pageviewer-idx' ) ) {
+      url.searchParams.set('seq', newSeq);
+    } else if ( url.pathname.indexOf('/' + idno + '/') > -1 ) {
+      let re = new RegExp(`/${idno}/\\d+`);
+      url.pathname = url.pathname.replace(re, `/${idno}/${newSeq}`);
+    }
+    let newHref = url.toString();
 
     alert.innerHTML = `<p>Loading metadata for: ${identifier}</p>`;
-    return;
 
-    fetch(href, {
-      credentials: 'include',
+    // update download menu
+    let slMenuEl = document.querySelector('#dropdown-action sl-menu');
+    slMenuEl.querySelectorAll('sl-menu-item').forEach((itemEl) => {
+      let downloadHref = itemEl.dataset.href.replace(/;/g, '&');
+      if ( downloadHref.substr(0, 1) == '/' ) {
+        downloadHref = `https://roger.quod.lib.umich.edu${downloadHref}`;
+      }
+      let downloadUrl = new URL(downloadHref);
+      if ( downloadUrl.searchParams.has('seq') ) {
+        downloadUrl.searchParams.set('seq', newSeq);
+      } else if ( downloadUrl.pathname.indexOf(baseIdentifier) > -1 ) {
+        // replace the identifier in the path
+        let re = new RegExp(`${baseIdentifier}:\\d+`);
+        downloadUrl.pathname = downloadUrl.pathname.replace(re, identifier);
+      }
+      itemEl.dataset.href = downloadUrl.toString();
+      itemEl.setAttribute('value', downloadUrl.toString());
     })
-      .then((response) => {
-        if (!response.ok) {
-          throw new Error(`Request error: ${response.status}`);
-        }
-        return response.text();
-      })
-      .then((text) => {
-        const newDocument = new DOMParser().parseFromString(text, "text/html");
-        const sections = document.querySelectorAll('.main-panel > section');
-        const newSections = newDocument.querySelectorAll('.main-panel > section');
-        for (let i = 0; i < newSections.length; i++) {
-          sections[i].innerHTML = newSections[i].innerHTML;
-        }
+    slDropdownEl.disabled = false;
+    slDropdownEl.style.opacity = 1.0;
 
-        let newTitle = newDocument.querySelector('h1').innerHTML;
-        document.querySelector('h1').innerHTML = newTitle;
-        document.title = newDocument.title;
 
-        let paginationEl = document.querySelector('.breadcrumb .pagination');
-        let newPaginationEl = newDocument.querySelector('.breadcrumb .pagination');
-        if (paginationEl && newPaginationEl) {
-          paginationEl.innerHTML = newPaginationEl.innerHTML;
-        }
+    history.pushState({}, document.title, newHref);
+    document.querySelector('.breadcrumb li:last-child').setAttribute('href', newHref);
 
-        let slMenuEl = document.querySelector('#dropdown-action sl-menu');
-        let newSlMenuEl = newDocument.querySelector('#dropdown-action sl-menu');
-        if ( slMenuEl && newSlMenuEl ) {
-          slMenuEl.innerHTML = newSlMenuEl.innerHTML;
-        }
-        slDropdownEl.disabled = false;
-        slDropdownEl.style.opacity = 1.0;
+    tocbot.refresh();
 
-        let newUrl = newDocument.querySelector('.breadcrumb li:last-child a').getAttribute('href');
-        history.pushState({}, newDocument.title, newUrl);
-        document.querySelector('.breadcrumb li:last-child').setAttribute('href', newUrl);
+    ScreenReaderMessenger.getMessenger().say(`Viewing ${label}`);
 
-        tocbot.refresh();
+    const analyticsEvent = new Event('dlxs:trackPageView');
+    window.dispatchEvent(analyticsEvent);
 
-        ScreenReaderMessenger.getMessenger().say(`Viewing ${label || newTitle}`);
-
-        const event = new Event('dlxs:trackPageView');
-        window.dispatchEvent(event);
-      })
   }
 
   if (event.data.event == 'configureManifests') {
