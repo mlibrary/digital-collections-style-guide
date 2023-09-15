@@ -39,7 +39,7 @@
         <xsl:value-of select="1" />
       </xsl:when>
       <xsl:otherwise>
-        <xsl:value-of select="( ( $slice-start + 1 ) div $slice-size )" />
+        <xsl:value-of select="( ( $slice-start + 1 ) div $slice-size) + 1" />
       </xsl:otherwise>
     </xsl:choose>
   </xsl:variable>
@@ -49,7 +49,7 @@
         <xsl:value-of select="1" />
       </xsl:when>
       <xsl:otherwise>
-        <xsl:value-of select="$slice-start + 1 + 1" />
+        <xsl:value-of select="$slice-start + 1 " />
       </xsl:otherwise>
     </xsl:choose>
   </xsl:variable>
@@ -160,7 +160,7 @@
           <xsl:with-param name="rel">next</xsl:with-param>
           <xsl:with-param name="href">
             <xsl:if test="$current &lt; $max">
-              <xsl:text>/cgi/t/text/text-idx?</xsl:text>
+              <xsl:text>/cgi/t/text/text-idx?page=browse;</xsl:text>
               <xsl:text>key=</xsl:text>
               <xsl:value-of select="//Param[@name='key']" />
               <xsl:text>;value=</xsl:text>
@@ -176,7 +176,7 @@
           <xsl:with-param name="rel">previous</xsl:with-param>
           <xsl:with-param name="href">
             <xsl:if test="$current &gt; 1">
-              <xsl:text>/cgi/t/text/text-idx?</xsl:text>
+              <xsl:text>/cgi/t/text/text-idx?page=browse;</xsl:text>
               <xsl:text>key=</xsl:text>
               <xsl:value-of select="//Param[@name='key']" />
               <xsl:text>;value=</xsl:text>
@@ -184,7 +184,7 @@
               <xsl:text>;c=</xsl:text>
               <xsl:value-of select="//Param[@name='c']" />
               <xsl:text>;start=</xsl:text>
-              <xsl:value-of select="$slice-start - $slice-size" />  
+              <xsl:value-of select="( $slice-start + 1 ) - $slice-size" />  
             </xsl:if>
           </xsl:with-param>
         </xsl:call-template>
@@ -298,9 +298,21 @@
     <qui:section identifier="{Idno}" auth-required="{AuthRequired}" encoding-type="{$encoding-type}" encoding-level="{$item-encoding-level}">
       <xsl:apply-templates select="Tombstone" />
       <xsl:apply-templates select="DetailHref" />
-      <xsl:apply-templates select="TocHref">
+      <!-- <xsl:apply-templates select="TocHref">
         <xsl:with-param name="item-encoding-level" xml:base="$item-encoding-level" />
-      </xsl:apply-templates>
+      </xsl:apply-templates> -->
+      <qui:link rel="toc" href="{Link}">
+        <xsl:attribute name="label">
+          <xsl:choose>
+            <xsl:when test="$item-encoding-level = '1'">
+              <xsl:value-of select="key('get-lookup','results.str.16')"/>
+            </xsl:when>
+            <xsl:otherwise>
+              <xsl:value-of select="key('get-lookup','results.str.17')"/>            
+            </xsl:otherwise>
+          </xsl:choose>
+        </xsl:attribute>
+      </qui:link>  
       <xsl:apply-templates select="ThumbnailLink" />
       <xsl:if test="normalize-space(BookbagAddHref)">
         <qui:link rel="bookmark" href="{BookbagAddHref}" label="{key('get-lookup', 'results.str.21')}" />

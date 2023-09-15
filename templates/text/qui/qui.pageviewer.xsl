@@ -277,11 +277,18 @@
         <xsl:value-of select="key('get-lookup', 'headerutils.str.viewentiretext')" />
         <xsl:text> Entire Text</xsl:text>
       </xsl:when>
+      <xsl:when test="normalize-space($label/PageNumber)">
+        <!-- Page no. -->
+        <xsl:value-of select="key('get-lookup', 'headerutils.str.page')" />
+        <xsl:value-of select="$label/PageNumber" />
+        <xsl:text> - </xsl:text>
+        <xsl:value-of select="key('get-lookup', $label/PageType)" />  
+      </xsl:when>
       <xsl:when test="//CurrentCgi/Param[@name='seq']">
         <xsl:value-of select="key('get-lookup', 'headerutils.str.page')" />
-        <xsl:text> </xsl:text>
+        <xsl:text> #</xsl:text>
         <xsl:value-of select="//CurrentCgi/Param[@name='seq']" />
-        <xsl:text> - Item Page</xsl:text>
+        <xsl:value-of select="key('get-lookup', $label/PageType)" />  
       </xsl:when>
       <xsl:otherwise />
     </xsl:choose>
