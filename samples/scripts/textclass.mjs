@@ -127,7 +127,7 @@ async function processDLXS(req, res) {
     const cookieValue = (resp.headers.get('set-cookie').split(/;\s*/))[0].replace('DLXSsid=','');
     res.cookie('DLXSsid', cookieValue, { path: '/' });
     console.log("AHOY AHOY cookie = ", cookieValue);
-    const xmlData = await resp.text();
+    const xmlData = (await resp.text()).replace(/https:\/\/localhost/g, 'http://localhost');
     if ( xmlData.indexOf('no hits. normally cgi redirects') > -1 ) {
       throw new Error('Query has no results');
     }

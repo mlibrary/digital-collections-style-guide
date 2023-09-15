@@ -812,6 +812,18 @@
     <br />
   </xsl:template>
 
+  <xsl:template match="qui:ul">
+    <ul>
+      <xsl:apply-templates />
+    </ul>
+  </xsl:template>
+
+  <xsl:template match="qui:li">
+    <li>
+      <xsl:apply-templates />
+    </li>
+  </xsl:template>
+
   <xsl:template match="@*|*|text()" mode="copy">
     <!-- <xsl:message>AHOY DEFAULT COPY <xsl:value-of select="namespace-uri()" />::<xsl:value-of select="local-name()" /> :: <xsl:value-of select="namespace-uri()" /></xsl:message> -->
     <xsl:copy>
