@@ -416,6 +416,12 @@ function listen(options) {
 
   app.use('/cgi/t/text/api', proxy('https://roger.quod.lib.umich.edu/cgi/t/text/api', {
     https: true,
+    proxyReqOptDecorator: function (proxyReqOpts, srcReq) {
+      if ( ! srcReq.headers['x-forwarded-host'] ) {
+        proxyReqOpts.headers["X-Forwarded-Host"] = "localhost:5555";
+        return proxyReqOpts;        
+      }
+    },
     forwardPath: function(req) {
       return req.originalUrl.replace(/8lift/g, '');
     }
@@ -423,6 +429,12 @@ function listen(options) {
 
   app.use('/i/image', proxy('https://roger.quod.lib.umich.edu/i/image', {
     https: true,
+    proxyReqOptDecorator: function (proxyReqOpts, srcReq) {
+      if ( ! srcReq.headers['x-forwarded-host'] ) {
+        proxyReqOpts.headers["X-Forwarded-Host"] = "localhost:5555";
+      }
+      return proxyReqOpts;        
+    },
     forwardPath: function (req) {
       return req.originalUrl;
     }
