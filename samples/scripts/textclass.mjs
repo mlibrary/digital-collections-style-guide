@@ -406,8 +406,8 @@ function listen(options) {
     proxyReqOptDecorator: function (proxyReqOpts, srcReq) {
       if ( ! srcReq.headers['x-forwarded-host'] ) {
         proxyReqOpts.headers["X-Forwarded-Host"] = "localhost:5555";
-        return proxyReqOpts;        
       }
+      return proxyReqOpts;        
     },
     forwardPath: function(req) {
       return req.originalUrl.replace(/8lift/g, '');
