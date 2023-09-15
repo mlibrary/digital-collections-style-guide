@@ -133,9 +133,6 @@ window.addEventListener('message', (event) => {
     let slMenuEl = document.querySelector('#dropdown-action sl-menu');
     slMenuEl.querySelectorAll('sl-menu-item').forEach((itemEl) => {
       let downloadHref = itemEl.dataset.href.replace(/;/g, '&');
-      if ( downloadHref.substr(0, 1) == '/' ) {
-        downloadHref = `https://roger.quod.lib.umich.edu${downloadHref}`;
-      }
       let downloadUrl = new URL(downloadHref);
       if ( downloadUrl.searchParams.has('seq') ) {
         downloadUrl.searchParams.set('seq', newSeq);

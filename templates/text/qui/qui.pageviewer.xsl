@@ -87,8 +87,8 @@
   
     <xsl:if test="true() or //MediaInfo/istruct_ms = 'P' and //MediaInfo/AuthCheck/@allowed = 'yes'">
       <qui:viewer 
-        embed-href="https://roger.quod.lib.umich.edu/cgi/t/text/api/embed/{$collid}:{//CurrentCgi/Param[@name='idno']}:{//CurrentCgi/Param[@name='seq']}" 
-        manifest-id="https://roger.quod.lib.umich.edu/cgi/t/text/api/manifest/{$collid}:{//CurrentCgi/Param[@name='idno']}" 
+        embed-href="{$api_url}/cgi/t/text/api/embed/{$collid}:{//CurrentCgi/Param[@name='idno']}:{//CurrentCgi/Param[@name='seq']}" 
+        manifest-id="{$api_url}/cgi/t/text/api/manifest/{$collid}:{//CurrentCgi/Param[@name='idno']}" 
         canvas-index="{//CurrentCgi/Param[@name='seq']}" 
         mode="{$behavior}" 
         auth-check="true" 
@@ -118,20 +118,20 @@
   <xsl:template name="build-action-panel">
     <qui:block slot="actions">
       <qui:download-options label="Item">
-        <qui:download-item href="/cgi/t/text/pdf-idx?cc={/Top/DlxsGlobals/CurrentCgi/Param[@name='cc']};idno={/Top/DlxsGlobals/CurrentCgi/Param[@name='idno']};seq={$seq}" file-type="PDF" type="FILE">
+        <qui:download-item href="{$api_url}/cgi/t/text/pdf-idx?cc={/Top/DlxsGlobals/CurrentCgi/Param[@name='cc']};idno={/Top/DlxsGlobals/CurrentCgi/Param[@name='idno']};seq={$seq}" file-type="PDF" type="FILE">
           Page PDF
         </qui:download-item>
-        <qui:download-item href="/cgi/t/text/api/image/{/Top/DlxsGlobals/CurrentCgi/Param[@name='cc']}:{/Top/DlxsGlobals/CurrentCgi/Param[@name='idno']}:{$seq}/full/full/0/default.jpg" file-type="JPEG" type="IMAGE">
+        <qui:download-item href="{$api_url}/cgi/t/text/api/image/{/Top/DlxsGlobals/CurrentCgi/Param[@name='cc']}:{/Top/DlxsGlobals/CurrentCgi/Param[@name='idno']}:{$seq}/full/full/0/default.jpg" file-type="JPEG" type="IMAGE">
           Page Image
         </qui:download-item>
         <xsl:if test="$has-plain-text">
-            <qui:download-item href="/cgi/t/text/text-idx?cc={/Top/DlxsGlobals/CurrentCgi/Param[@name='cc']};idno={/Top/DlxsGlobals/CurrentCgi/Param[@name='idno']};seq={$seq};view=text;tpl=plaintext.viewer" file-type="TEXT" type="TEXT">
+            <qui:download-item href="{$api_url}/cgi/t/text/text-idx?cc={/Top/DlxsGlobals/CurrentCgi/Param[@name='cc']};idno={/Top/DlxsGlobals/CurrentCgi/Param[@name='idno']};seq={$seq};view=text;tpl=plaintext.viewer" file-type="TEXT" type="TEXT">
               Page Text
             </qui:download-item>
         </xsl:if>
         <xsl:if test="//AllowFullPdfDownload = 'true'">
           <qui:hr />
-          <qui:download-item href="/cgi/t/text/request-pdf-idx?cc={/Top/DlxsGlobals/CurrentCgi/Param[@name='cc']};idno={/Top/DlxsGlobals/CurrentCgi/Param[@name='idno']}" file-type="PDF" type="FILE">
+          <qui:download-item href="{$api_url}/cgi/t/text/request-pdf-idx?cc={/Top/DlxsGlobals/CurrentCgi/Param[@name='cc']};idno={/Top/DlxsGlobals/CurrentCgi/Param[@name='idno']}" file-type="PDF" type="FILE">
             <xsl:value-of select="key('get-lookup','results.str.container')"/>
             <xsl:text> PDF</xsl:text>
           </qui:download-item>  
@@ -159,7 +159,7 @@
 
   <xsl:template name="build-action-panel-iiif-link">
     <xsl:if test="true() or normalize-space(//MiradorConfig/@manifest-id)">
-      <qui:link rel="iiif-manifest" href="https://roger.quod.lib.umich.edu/cgi/t/text/api/manifest/{$collid}:{//CurrentCgi/Param[@name='idno']}" />
+      <qui:link rel="iiif-manifest" href="{$api_url}/cgi/t/text/api/manifest/{$collid}:{//CurrentCgi/Param[@name='idno']}" />
     </xsl:if>
   </xsl:template>
 
