@@ -67,6 +67,10 @@ async function proxyIndex(req, res) {
   if (req.cookies.loggedIn == 'true') {
     headers['X-DLXS-Auth'] = 'nala@monkey.nu';
   }
+  if ( ! req.headers['x-forwarded-host'] ) {
+    headers["x-forwarded-host"] = "localhost:5555";
+  }
+
   const resp = await fetch(`https://${dlxsBase}${req.originalUrl}`, {
     headers: headers,
     redirect: 'follow',
@@ -75,25 +79,6 @@ async function proxyIndex(req, res) {
 
   let body = await resp.text();
   body = body.replace(/https?:\/\/quod.lib.umich.edu\//g, '/');
-
-  res.setHeader("Content-Type", "text/html");
-  res.send(body);
-}
-
-async function proxyBeta(req, res) {
-  const headers = {};
-  // console.log("-- cookies", req.cookies);
-  if (req.cookies.loggedIn == 'true') {
-    headers['X-DLXS-Auth'] = 'nala@monkey.nu';
-  }
-  const resp = await fetch(`https://beta1.quod.lib.umich.edu${req.originalUrl}`, {
-    headers: headers,
-    redirect: 'follow',
-    credentials: 'include'
-  });
-
-  let body = await resp.text();
-  body = body.replace(/https?:\/\/beta1.quod.lib.umich.edu\//g, '/');
 
   res.setHeader("Content-Type", "text/html");
   res.send(body);
@@ -125,6 +110,8 @@ async function processDLXS(req, res) {
     headers['X-DLXS-Auth'] = 'nala@monkey.nu';
   }
   headers['X-DLXS-Uplifted'] = 'true';
+  headers['x-forwarded-host'] = req.headers['x-forwarded-host'] || 'localhost:5555';
+
   // headers['X-DLXS-SessionID'] = `${req.socket.remoteAddress}--${(new Date).getDay()}`;
   headers['Cookie'] = `DLXSsid=${req.cookies.DLXSsid}`;
   console.log("AHOY PROXY", headers['Cookie']);
