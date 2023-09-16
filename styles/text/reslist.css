@@ -83,10 +83,6 @@ button[data-action="select-all"][data-checked="true"]::before {
   }
 }
 
-button[data-action="toggle-side-panel"] {
-  display: none;
-}
-
 .hilite1 {
   color: #000000;
   background-color: #FFFF00;
@@ -115,38 +111,6 @@ button[data-action="toggle-side-panel"] {
 .hilite6 {
   color: #000000;
   background-color: #0099cc;
-}
-
-@media screen and (max-width: 751px) {
-
-  button[data-action="toggle-side-panel"] {
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
-    gap: 0.5rem;
-    margin-bottom: 1rem;
-    margin-top: 1rem;
-    width: 100%;
-  }
-
-  button[data-action="toggle-side-panel"]::after {
-    font-family: "Material Icons";
-    font-size: 24px;
-    color: var(--color-teal-400);
-  }
-
-  button[data-action="toggle-side-panel"][aria-expanded="false"]::after {
-    content: "\e5cf";
-  }
-
-  button[data-action="toggle-side-panel"][aria-expanded="true"]::after {
-    content: "\e5ce";
-  }
-
-  button[data-action="toggle-side-panel"][aria-expanded="false"] ~ * {
-    display: none;
-  }
-
 }
 
 iframe {

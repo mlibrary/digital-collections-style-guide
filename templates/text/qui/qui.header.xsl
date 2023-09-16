@@ -8,7 +8,7 @@
   <xsl:variable name="item-metadata" select="exsl:node-set($item-metadata-tmp)" />
 
   <xsl:template name="build-body-main">
-    <xsl:call-template name="build-results-navigation" />
+    <xsl:call-template name="build-contents-navigation" />
     <xsl:call-template name="build-breadcrumbs" />
     <qui:header role="main">
       <xsl:value-of select="$item-metadata//qui:field[@key='title']//qui:value" />
@@ -33,12 +33,20 @@
   </xsl:template>
 
   <xsl:template name="build-item-header">
-    <qui:block slot="item">
-      <xsl:apply-templates select="$item-metadata" mode="copy" />
-    </qui:block>
+    <xsl:apply-templates select="$item-metadata" mode="copy" />
   </xsl:template>
 
-  <xsl:template name="build-results-navigation"></xsl:template>
+  <xsl:template name="build-contents-navigation">
+    header.str.viewentiretext
+    <qui:nav role="contents">
+      <xsl:if test="/Top/AuthRequired != 'true'">
+        <qui:link href="{//ViewEntireTextLink}" role="view-text">
+          <xsl:value-of select="key('get-lookup','header.str.viewentiretext')"/>
+        </qui:link>
+      </xsl:if>
+      <qui:link rel="bookmark" href="{/Top/BookbagAddHref}" label="{key('get-lookup', 'results.str.21')}" />
+    </qui:nav>
+  </xsl:template>
 
   <xsl:template name="get-current-page-breadcrumb-label">
     Contents
@@ -106,18 +114,12 @@
       </xsl:choose>
     </xsl:variable>
 
-    <qui:section identifier="{Idno}" auth-required="{AuthRequired}" encoding-type="{$encoding-type}" encoding-level="{$item-encoding-level}">
-      <xsl:if test="normalize-space(/Top/BookbagAddHref)">
-        <qui:link rel="bookmark" href="{/Top/BookbagAddHref}" label="{key('get-lookup', 'results.str.21')}" />
-      </xsl:if>
-
-      <xsl:call-template name="build-item-metadata">
-        <xsl:with-param name="item" select="ItemHeader" />
-        <xsl:with-param name="encoding-type" select="$encoding-type" />
-        <xsl:with-param name="item-encoding-level" select="$item-encoding-level" />
-      </xsl:call-template>
+    <xsl:call-template name="build-item-metadata">
+      <xsl:with-param name="item" select="ItemHeader" />
+      <xsl:with-param name="encoding-type" select="$encoding-type" />
+      <xsl:with-param name="item-encoding-level" select="$item-encoding-level" />
+    </xsl:call-template>
       
-    </qui:section>  
   </xsl:template>  
 
 </xsl:stylesheet>

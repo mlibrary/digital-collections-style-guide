@@ -20,6 +20,14 @@
     <xsl:call-template name="build-social-facebook" /> -->
   </xsl:template>
 
+  <xsl:template name="build-breadcrumbs-intermediate-links">
+    <xsl:if test="//DocMeta/TocHref">
+      <qui:link href="{//DocMeta/TocHref}">
+        <xsl:value-of select="key('get-lookup', 'header.str.contents')" />
+      </qui:link>
+    </xsl:if>
+  </xsl:template>
+
   <xsl:template name="build-body-main">
     <xsl:call-template name="build-results-navigation" />
     <xsl:call-template name="build-breadcrumbs" />
