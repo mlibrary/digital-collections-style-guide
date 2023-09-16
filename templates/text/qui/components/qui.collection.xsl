@@ -61,10 +61,13 @@
           </xsl:when>
         </xsl:choose>
       </xsl:if>
+      <xsl:call-template name="build-breadcrumbs-intermediate-links" />
       <qui:link href="{/Top//CurrentUrl}">
         <xsl:call-template name="get-current-page-breadcrumb-label" />
       </qui:link>
     </qui:nav>
   </xsl:template>
+
+  <xsl:template name="build-breadcrumbs-intermediate-links" />
 
 </xsl:stylesheet>

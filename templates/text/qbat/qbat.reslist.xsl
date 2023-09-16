@@ -511,7 +511,7 @@
   </xsl:template>
 
   <xsl:template match="qui:block[@slot='summary']" mode="callout-v1">
-    <m-callout variant="info" icon="info" style="flex-grow: 1; margin-bottom: 0;">
+    <m-callout variant="info" icon="info" style="flex-grow: 1; margin-bottom: 0; z-index: 1;">
       <div class="[ flex ]" style="justify-content: space-between">
         <div>
           <a href="{../qui:link[@rel='detail']/@href}">Results detail</a>
