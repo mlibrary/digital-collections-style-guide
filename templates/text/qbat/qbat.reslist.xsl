@@ -526,7 +526,7 @@
 
   <xsl:template match="qui:block[@slot='summary']" mode="callout">
     <xsl:param name="title" />
-    <m-callout variant="info" icon="info" style="flex-grow: 1; margin-bottom: 0;">
+    <m-callout variant="info" icon="info" style="flex-grow: 1; margin-bottom: 0; z-index: 1;">
       <div class="[ flex ]" style="justify-content: space-between">
         <div>
           <span>Results detail: </span>
