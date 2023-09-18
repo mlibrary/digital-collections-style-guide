@@ -7,7 +7,7 @@
     <xsl:value-of select="key('get-lookup', 'header.str.viewentiretext')" />
   </xsl:variable>
 
-  <xsl:template name="get-head-title">
+  <xsl:template name="get-title">
     <xsl:value-of select="$title" />
   </xsl:template>
 
