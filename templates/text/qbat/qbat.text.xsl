@@ -94,5 +94,10 @@
     <dl class="record" data-message="wtf">
       <xsl:apply-templates />
     </dl>
-  </xsl:template>  
+  </xsl:template>
+  
+  <xsl:template match="text()" mode="build-title">
+    <xsl:copy></xsl:copy>
+  </xsl:template>
+  
 </xsl:stylesheet>

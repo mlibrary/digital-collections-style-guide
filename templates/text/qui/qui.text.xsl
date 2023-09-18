@@ -19,7 +19,7 @@
   </xsl:template>
 
   <xsl:template name="get-title">
-    <xsl:value-of select="normalize-space($item-metadata//qui:field[@key='title'])" />
+    <xsl:value-of select="normalize-space($item-metadata//qui:field[@key='title']/qui:values)" />
   </xsl:template>
 
   <xsl:template name="build-breadcrumbs-intermediate-links">
