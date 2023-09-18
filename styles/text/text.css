@@ -1,0 +1,8 @@
+.fullview-page p {
+ white-space: pre-line; 
+}
+
+.fullview-page + .fullview-page {
+  padding-top: 2rem;
+  border-top: 2px solid var(--color-neutral-100);
+}

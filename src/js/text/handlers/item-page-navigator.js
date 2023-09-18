@@ -5,7 +5,10 @@ window.root = window;
 const tocbot = require('tocbot');
 
 window.addEventListener('DOMContentLoaded', (event) => {
-  if ( ! ( document.documentElement.dataset.view == 'image' || document.documentElement.dataset.view == 'static' ) ) {
+  if ( ! ( 
+    document.documentElement.dataset.view == 'image' || 
+    document.documentElement.dataset.view == 'static' || 
+    document.documentElement.dataset.view == 'text' ) ) {
     return ; 
   }
 
