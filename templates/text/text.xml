@@ -7,22 +7,22 @@
 <Top xmlns:dlxs="http://www.umdl.umich.edu/dlxs">
 
   <!-- XSL fallback files -->
-  <XslFallbackFileList>
-  <Filename>bookbagitemsstring.xsl</Filename>
-    <Filename>footer.import.xsl</Filename>
-    <Filename>globalvariables.xsl</Filename>
-    <Filename>htmlhead.xsl</Filename>
-    <Filename>misc.xsl</Filename>
-    <Filename>navheader.xsl</Filename>
-    <Filename>scopedivs.xsl</Filename>
-    <Filename>text.components.xsl</Filename>
-    <Filename>text.xsl</Filename>
-    <Filename>textheader.xsl</Filename>
-    <!-- tocheader for serialarticle -->
-    <Filename>tocheader.xsl</Filename>
-    <Filename>xsl2htmlutils.xsl</Filename>
-    <Filename>xslfunctions.xsl</Filename>
-  </XslFallbackFileList>  
+  <XslFallbackFileList pipeline="qui">
+    <Filename>qui/qui.base.xsl</Filename>
+    <Filename>../vendor/str.split.function.xsl</Filename>
+    <Filename>../vendor/xslfunctions.xsl</Filename>
+    <Filename>qui/components/*.xsl</Filename>
+    <Filename>qui/includes/qui.results-item.xsl</Filename>
+    <Filename>qui/includes/qui.text.components.xsl</Filename>
+    <Filename>qui/qui.text.xsl</Filename>
+  </XslFallbackFileList>
+
+  <XslFallbackFileList pipeline="qbat">
+    <Filename>qbat/qbat.base.xsl</Filename>
+    <Filename>../vendor/xslfunctions.xsl</Filename>
+    <Filename>qbat/components/*.xsl</Filename>
+    <Filename>qbat/qbat.text.xsl</Filename>
+  </XslFallbackFileList>
 
   <!-- Custom OPTIONAL XML for top-level file text.xml -->
   <CustomXml><?CHUNK filename="textextra.xml" optional="1"?></CustomXml>

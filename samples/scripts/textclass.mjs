@@ -136,6 +136,7 @@ async function processDLXS(req, res) {
     //   console.log(xmlData);
     // }
     if ( xmlData.indexOf('Location: ') > -1 ) {
+      console.log(xmlData);
       let tmp = xmlData.match(/Location: (.*)$/si);
       let domain = ( req.hostname == 'localhost' ) ? 'http://' : 'https://';
       domain += req.hostname;

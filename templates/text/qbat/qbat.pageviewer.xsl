@@ -235,7 +235,7 @@
       <xsl:with-param name="icon">link</xsl:with-param>
       <xsl:with-param name="data-attributes">
         <qbat:attribute name="data-value">
-          <xsl:value-of select="//CurrentUrl" />
+          <xsl:value-of select="//qui:field[@key='bookmark']//qui:value" />
         </qbat:attribute>
       </xsl:with-param>
     </xsl:call-template>

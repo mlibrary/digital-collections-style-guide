@@ -39,7 +39,7 @@
 
   <xsl:template name="build-collection-heading">
     <xsl:variable name="header" select="//qui:header[@role='main']" />
-    <div class="flex flex-space-between">
+    <div class="flex flex-space-between flex-align-center">
       <h1 class="collection-heading mb-0">
         <xsl:if test="normalize-space($header/@data-badge)">
           <span class="material-icons" aria-hidden="true">
@@ -52,7 +52,7 @@
       </h1>
       <form>
         <div class="flex flex-align-center gap-0_5">
-          <label for="q1">Search in this text: </label>
+          <label for="q1" style="text-wrap: nowrap">Search in this text: </label>
           <input type="text" id="q1" name="q1" />
           <button class="button button--small">Search</button>  
         </div>
