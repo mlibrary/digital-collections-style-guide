@@ -190,8 +190,10 @@
             <!-- Page no. -->
             <xsl:value-of select="key('get-lookup', 'headerutils.str.page')" />
             <xsl:value-of select="$label/PageNumber" />
-            <xsl:text> - </xsl:text>
-            <xsl:value-of select="key('get-lookup', $label/PageType)" />  
+            <xsl:if test="$label/PageType != 'viewer.ftr.uns'">
+              <xsl:text> - </xsl:text>
+              <xsl:value-of select="key('get-lookup', $label/PageType)" />  
+            </xsl:if>
           </qui:span>
         </xsl:when>
         <xsl:when test="//CurrentCgi/Param[@name='seq']">
@@ -199,8 +201,10 @@
             <xsl:value-of select="key('get-lookup', 'headerutils.str.page')" />
             <xsl:text> #</xsl:text>
             <xsl:value-of select="//CurrentCgi/Param[@name='seq']" />  
-            <xsl:text> - </xsl:text>
-            <xsl:value-of select="key('get-lookup', $label/PageType)" />  
+            <xsl:if test="$label/PageType != 'viewer.ftr.uns'">
+              <xsl:text> - </xsl:text>
+              <xsl:value-of select="key('get-lookup', $label/PageType)" />  
+            </xsl:if>
           </qui:span>
         </xsl:when>
         <xsl:otherwise />
