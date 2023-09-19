@@ -14,6 +14,10 @@ p.plaintext {
   scroll-padding-top: 2rem;
 }
 
+html[data-highlight-state="off"] .inline-highlight a {
+  display: none;
+}
+
 .hl-link {
   display: inline-flex;
   align-items: center;
@@ -30,6 +34,10 @@ p.plaintext {
 
 .hilite1 {
   background-color: #ffff00;
+}
+
+html[data-highlight-state="off"] .hilite1 {
+  background-color: transparent;
 }
 
 html {

@@ -283,6 +283,10 @@ a.toc-link {
     display: none;
   }
 
+  nav.page-index .highlight-tools {
+    display: none;
+  }
+
   nav.page-index #action-page-index {
     display: block;
     flex-grow: 1;

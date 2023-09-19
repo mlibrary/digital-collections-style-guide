@@ -12,6 +12,27 @@
 
   <xsl:variable name="highlight-seq-last" select="//tei:TEXT//tei:Highlight[last()]/@seq"/>
   <xsl:variable name="highlight-seq-first" select="//tei:TEXT//tei:Highlight[1]/@seq"/>
+
+
+  <xsl:template match="tei:TEXT" priority="101">
+    <xsl:if test="false() and count($highlights) &gt; 0">
+      <div class="flex flex-row gap-0_5 flex-align-center" style="background: white; position: sticky; top: 1rem;">
+        <a href="#hl{$highlight-seq-first}" class="button button--ghost">First Match</a>
+        <button id="action-highlight" class="button button--ghost">
+          <span class="material-icons" aria-hidden="true">visibility</span>
+          <span>Turn highlights off</span>
+        </button>
+        <!-- <div class="flex flex-row gap_0_5 flex-align-center">
+          <label for="action-highlight">
+            Search highlights are visible
+          </label>
+          <button id="action-highlight" class="button buttonxxxghost">Turn off</button>
+        </div> -->
+      </div>
+    </xsl:if>
+    <xsl:apply-templates />
+  </xsl:template>
+
   <!-- NOTE1 PTRs -->
   <!-- #################### -->
   <xsl:template match="tei:PTR[@HREF]">
