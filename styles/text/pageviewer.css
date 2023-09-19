@@ -283,7 +283,8 @@ a.toc-link {
     display: none;
   }
 
-  nav.page-index .highlight-tools {
+  nav.page-index .highlight-tools,
+  nav.page-index #search-highlight-label {
     display: none;
   }
 
@@ -323,6 +324,7 @@ nav.page-index {
   position: sticky;
   top: 1rem;
   margin-left: 1rem;
+  padding-bottom: 1rem;
 }
   
 

@@ -84,6 +84,7 @@
         <xsl:call-template name="build-sub-header" />
         <qui:main>
           <xsl:call-template name="build-body-main" />
+          <xsl:call-template name="build-item-search-form" />
         </qui:main>
         <qui:message>Message recived, La Jolla</qui:message>
         <qui:footer>
@@ -351,6 +352,28 @@
 
   <xsl:template name="get-view">
     <xsl:value-of select="//Param[@name='view']|//Param[@name='page']" />
+  </xsl:template>
+
+  <xsl:template name="build-item-search-form">
+    <xsl:if test="//IncludeItemSearch = 'true'">
+      <qui:form id="item-search" action="{/Top/DlxsGlobals/ScriptName[@application='text']}">
+        <qui:hidden-input name="type" value="simple" />
+        <qui:hidden-input name="rgn" value="full text" />
+        <xsl:apply-templates select="//SearchForm/HiddenVars" />
+        <qui:input name="q1">
+          <qui:label>
+            <xsl:choose>
+              <xsl:when test="/Top/Item/DocEncodingType='serialissue'">
+                <xsl:value-of select="key('get-lookup','header.str.searchthisissue')"/>
+              </xsl:when>
+              <xsl:otherwise>
+                <xsl:value-of select="key('get-lookup','header.str.searchthistext')"/>
+              </xsl:otherwise>
+            </xsl:choose>  
+          </qui:label>
+        </qui:input>
+      </qui:form>
+    </xsl:if>
   </xsl:template>
 
   <!-- highlighting -->
