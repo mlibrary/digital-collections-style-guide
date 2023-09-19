@@ -23,6 +23,8 @@
       </xsl:for-each>
     </qui:nav>
 
+    <xsl:apply-templates select="/Top/SearchRestriction/ItemHeader" />
+
     <qui:callout slot="clause">
       <div>
         <p>
@@ -160,6 +162,18 @@
         </xsl:apply-templates>
       </qui:select>
     </qui:fieldset>
+  </xsl:template>
+
+  <xsl:template match="SearchRestriction/ItemHeader">
+    <qui:callout slot="restriction">
+      <qui:header>
+        <xsl:value-of select="key('get-lookup','search.str.6')"/>
+      </qui:header>
+      <xsl:call-template name="build-item-metadata">
+        <xsl:with-param name="item" select="." />
+        <xsl:with-param name="encoding-type" select="/Top/SearchRestriction/DocEncodingType" />
+      </xsl:call-template>
+    </qui:callout>
   </xsl:template>
 
 </xsl:stylesheet>

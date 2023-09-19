@@ -24,6 +24,9 @@
         </nav>
       </xsl:if>
     </div>
+
+    <xsl:apply-templates select="//qui:callout[@slot='restriction']" />
+
     <div class="advanced-search--form">
 
       <form id="collection-search" action="/cgi/t/text/text-idx" method="GET" autocomplete="off" data-num-qs="{$search-form/@data-num-qs}">
@@ -198,6 +201,27 @@
     <button type="button" class="[ button button--secondary ]" data-action="reset-form">
       <span>Clear all</span>
     </button>
+  </xsl:template>
+
+  <xsl:template match="qui:callout[@slot='restriction']" priority="100">
+    <div class="xx-message-callout xx-info mt-1">
+      <div></div>
+      <div>
+        <h2 class="subtle-heading text-black"><xsl:value-of select="qui:header" /></h2>
+        <dl class="record">
+          <xsl:apply-templates select="qui:block[@slot='metadata']/qui:section/qui:field[@key!='subjects']" />
+        </dl>  
+      </div>
+    </div>
+  </xsl:template>
+
+  <xsl:template match="qui:field">
+    <div>
+      <dt><xsl:value-of select="qui:label" /></dt>
+      <xsl:for-each select="qui:values/qui:value">
+        <dd><xsl:value-of select="." /></dd>
+      </xsl:for-each>
+    </div>
   </xsl:template>
 
 </xsl:stylesheet>

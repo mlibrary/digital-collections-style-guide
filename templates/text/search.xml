@@ -10,6 +10,7 @@
     <Filename>../vendor/str.split.function.xsl</Filename>
     <Filename>../vendor/xslfunctions.xsl</Filename>
     <Filename>qui/components/*.xsl</Filename>
+    <Filename>qui/includes/qui.results-item.xsl</Filename>
     <Filename>qui/includes/qui.search-common.xsl</Filename>
     <Filename>qui/includes/qui.search-simple.xsl</Filename>
     <Filename>qui/includes/qui.search-boolean.xsl</Filename>
