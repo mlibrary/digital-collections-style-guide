@@ -216,7 +216,7 @@
 
   <xsl:template name="build-results-pagination">
     <xsl:variable name="nav" select="//qui:main/qui:nav[@role='results']" />
-    <xsl:if test="$nav/@min &lt; $nav/@max">
+    <xsl:if test="$nav/@min &lt; $nav/@max and $nav/qui:link[@href]">
       <nav id="pagination" aria-label="Result navigation" class="[ pagination__row ][ flex flex-space-between flex-align-center sticky-bottom ]">
         <div class="pagination__group">
           <xsl:if test="$nav/qui:link">
@@ -614,51 +614,53 @@
   </xsl:template>
 
   <xsl:template match="qui:nav[@role='details']" mode="pagination-link">
-    <p class="[ pagination ][ nowrap ml-2 ]">
-      <xsl:if test="qui:link[@rel='previous-item']">
-        <svg
-          height="18px"
-          viewBox="0 0 20 20"
-          width="12px"
-          fill="#06080a"
-          aria-hidden="true"
-          style="transform: rotate(-180deg)"
-        >
-          <g>
-            <g><rect fill="none" height="20" width="20" /></g>
-          </g>
-          <g>
-            <polygon
-              points="4.59,16.59 6,18 14,10 6,2 4.59,3.41 11.17,10"
-            />
-          </g>
-        </svg>
-        <xsl:apply-templates select="qui:link[@rel='previous-item']" />
-      </xsl:if>
-      <span>
-        <xsl:value-of select="@current" />
-        <xsl:text> of </xsl:text>
-        <xsl:value-of select="@total" />
-      </span>
-      <xsl:if test="qui:link[@rel='next-item']">
-        <xsl:apply-templates select="qui:link[@rel='next-item']" />
-        <svg
-          height="18px"
-          viewBox="0 0 20 20"
-          width="12px"
-          fill="#06080a"
-          aria-hidden="true"
-        >
-          <g>
-            <g><rect fill="none" height="20" width="20" /></g>
-          </g>
-          <g>
-            <polygon
-              points="4.59,16.59 6,18 14,10 6,2 4.59,3.41 11.17,10"
-            />
-          </g>
-        </svg>
-      </xsl:if>
-    </p>
+    <xsl:if test="qui:link[not(@disabled)]">
+      <p class="[ pagination ][ nowrap ml-2 ]">
+        <xsl:if test="qui:link[@rel='previous-item']">
+          <svg
+            height="18px"
+            viewBox="0 0 20 20"
+            width="12px"
+            fill="#06080a"
+            aria-hidden="true"
+            style="transform: rotate(-180deg)"
+          >
+            <g>
+              <g><rect fill="none" height="20" width="20" /></g>
+            </g>
+            <g>
+              <polygon
+                points="4.59,16.59 6,18 14,10 6,2 4.59,3.41 11.17,10"
+              />
+            </g>
+          </svg>
+          <xsl:apply-templates select="qui:link[@rel='previous-item']" />
+        </xsl:if>
+        <span>
+          <xsl:value-of select="@current" />
+          <xsl:text> of </xsl:text>
+          <xsl:value-of select="@total" />
+        </span>
+        <xsl:if test="qui:link[@rel='next-item']">
+          <xsl:apply-templates select="qui:link[@rel='next-item']" />
+          <svg
+            height="18px"
+            viewBox="0 0 20 20"
+            width="12px"
+            fill="#06080a"
+            aria-hidden="true"
+          >
+            <g>
+              <g><rect fill="none" height="20" width="20" /></g>
+            </g>
+            <g>
+              <polygon
+                points="4.59,16.59 6,18 14,10 6,2 4.59,3.41 11.17,10"
+              />
+            </g>
+          </svg>
+        </xsl:if>
+      </p>
+    </xsl:if>
   </xsl:template>  
 </xsl:stylesheet>
