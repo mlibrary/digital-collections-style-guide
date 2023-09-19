@@ -48,15 +48,22 @@
     </qui:block>
 
     <qui:block slot="langmap">
-      <xsl:for-each select="//Lookup[@id='text.components']/Item">
-        <qui:lookup key="{@key}"><xsl:value-of select="." /></qui:lookup>
-      </xsl:for-each>
-      <xsl:for-each select="//Lookup[@id='headerutils']/Item">
-        <qui:lookup key="{@key}"><xsl:value-of select="." /></qui:lookup>
-      </xsl:for-each>
+      <xsl:apply-templates select="//Lookup[@id='text.components']" mode="build-lookup" />
+      <xsl:apply-templates select="//Lookup[@id='headerutils']" mode="build-lookup" />
+      <xsl:apply-templates select="//Lookup[@id='viewer']" mode="build-lookup" />
     </qui:block>
 
     <qui:message>BOO-YAH</qui:message>
+  </xsl:template>
+
+  <xsl:template match="Lookup" mode="build-lookup">
+    <qui:lookup id="{@id}">
+      <xsl:apply-templates select="Item" mode="build-lookup" />
+    </qui:lookup>
+  </xsl:template>
+
+  <xsl:template match="Item" mode="build-lookup">
+    <qui:item key="{@key}"><xsl:value-of select="." /></qui:item>
   </xsl:template>
 
   <xsl:template name="get-current-page-breadcrumb-label">

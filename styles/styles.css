@@ -1141,6 +1141,10 @@ sl-dropdown::part(panel) {
   align-self: center;
 }
 
+.m-0 {
+  margin: 0 !important;
+}
+
 .mb-0 {
   margin-bottom: 0;
 }
@@ -1183,6 +1187,10 @@ sl-dropdown::part(panel) {
 
 .pr-1 {
   padding-right: 1rem;
+}
+
+.pb-1 {
+  padding-bottom: 1rem;
 }
 
 .gap-0_25 {
@@ -1462,6 +1470,11 @@ button {
   padding: 0.5em 1em;
   margin: 0.25em;
   text-decoration: none;
+}
+
+.button--ghost.button--small {
+  padding: var(--space-x-small) var(--space-small);
+  font-size: 0.875rem;
 }
 
 .button + .button {

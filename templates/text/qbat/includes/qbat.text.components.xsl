@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="utf-8"?>
-<xsl:stylesheet version="1.0" xmlns="http://www.w3.org/1999/xhtml" xmlns:xsl="http://www.w3.org/1999/XSL/Transform" xmlns:qui="http://dlxs.org/quombat/ui" xmlns:qbat="http://dlxs.org/quombat/quombat" xmlns:xhtml="http://www.w3.org/1999/xhtml" xmlns:dlxs="http://dlxs.org" xmlns:exsl="http://exslt.org/common" xmlns:math="http://exslt.org/math" xmlns:tei="http://www.tei-c.org/ns/1.0" extension-element-prefixes="exsl math">
+<xsl:stylesheet version="1.0" xmlns="http://www.w3.org/1999/xhtml" xmlns:xsl="http://www.w3.org/1999/XSL/Transform" xmlns:qui="http://dlxs.org/quombat/ui" xmlns:qbat="http://dlxs.org/quombat/quombat" xmlns:xhtml="http://www.w3.org/1999/xhtml" xmlns:dlxs="http://dlxs.org" xmlns:exsl="http://exslt.org/common" xmlns:math="http://exslt.org/math" xmlns:tei="http://www.tei-c.org/ns/1.0" extension-element-prefixes="exsl math dlxs">
 
-  <xsl:key match="qui:lookup" name="get-lookup" use="@key"/>
+  <xsl:key match="qui:lookup/qui:item" name="get-lookup" use="@key"/>
 
   <xsl:variable name="is-target" select="//qui:block[@slot='content']/@is-target" />
   
@@ -61,14 +61,29 @@
   </xsl:template>
 
   <xsl:template match="tei:P[tei:PB]" priority="100">
-    <article id="{parent::*/@ID}-{PB/@SEQ}" class="fullview-page" data-count="{$highlights[1]/@seq}">
-      <xsl:apply-templates select="tei:PB" mode="build-p" />
-      <xsl:apply-templates select="." mode="build-p" />
+    <xsl:variable name="idno" select="parent::*/@NODE" />
+    <article id="{parent::*/@ID}-{PB/@SEQ}-article" class="fullview-page" data-count="{$highlights[1]/@seq}">
+      <xsl:apply-templates select="tei:PB" mode="build-p">
+        <xsl:with-param name="base" select="parent::*/@ID" />
+        <xsl:with-param name="idno" select="parent::*/@NODE" />
+      </xsl:apply-templates>
+      <div class="fullview-main">
+        <xsl:if test="tei:PB/@HREF">
+          <xsl:apply-templates select="tei:PB" mode="build-page-link">
+            <xsl:with-param name="base" select="parent::*/@ID" />
+            <xsl:with-param name="idno" select="parent::*/@NODE" />    
+          </xsl:apply-templates>
+        </xsl:if>
+        <xsl:apply-templates select="." mode="build-p" />  
+      </div>
     </article>
   </xsl:template>
 
-    <!-- #################### -->
-  <xsl:template match="tei:P/tei:PB" mode="build-p">
+  <!-- #################### -->
+
+  <xsl:template match="tei:P/tei:PB" mode="build-page-link">
+    <xsl:param name="base" />
+    <xsl:param name="idno" />
     <xsl:variable name="pNum">
       <xsl:choose>
         <xsl:when test="@DISPLAYN[string-length()&gt;=1]">
@@ -82,16 +97,74 @@
         </xsl:otherwise>
       </xsl:choose>
     </xsl:variable>
-    <h3>
-      <xsl:if test="@ID">
-        <xsl:attribute name="id">
-          <xsl:value-of select="@ID"/>
-        </xsl:attribute>
-      </xsl:if>
+    <xsl:variable name="feature">
+      <xsl:value-of select="key('get-lookup', concat('viewer.ftr.', dlxs:normAttr(@FTR)))" />
+    </xsl:variable>
+    <div class="pb-1 fullview-thumbnail">
+      <a href="{@HREF}">
+      <figure>
+        <img 
+          loading="lazy" 
+          src="/cgi/t/text/api/image/{$collid}:{$idno}:{tei:PB/@SEQ}/full/!250,250/0/default.jpg"
+          alt="Scan of {key('get-lookup','headerutils.str.page')} {$pNum}"
+          />
+        <figcaption>
+          <span href="{@HREF}" class="button button--ghost button--small">
+            <xsl:text>View </xsl:text>
+            <xsl:text> </xsl:text>
+            <xsl:value-of select="key('get-lookup','headerutils.str.page')"/>
+            <span class="visually-hidden">              
+              <xsl:text> </xsl:text>
+              <xsl:value-of select="$pNum"/>  
+              <xsl:if test="normalize-space($feature)">
+                <xsl:text> - </xsl:text>
+                <xsl:value-of select="$feature" />
+              </xsl:if>
+            </span>
+          </span>
+        </figcaption>
+      </figure>
+      </a>
+    </div>
+  </xsl:template>
+
+  <xsl:template match="tei:P/tei:PB" mode="build-p">
+    <xsl:param name="base" />
+    <xsl:variable name="pNum">
       <xsl:choose>
-        <xsl:when test="@HREF">
+        <xsl:when test="@DISPLAYN[string-length()&gt;=1]">
+          <xsl:value-of select="@DISPLAYN"/>
+        </xsl:when>
+        <xsl:when test="@N[string-length()&gt;=1]">
+          <xsl:value-of select="@N"/>
+        </xsl:when>
+        <xsl:otherwise>
+          <xsl:value-of select="key('get-lookup','text.components.str.1')"/>
+        </xsl:otherwise>
+      </xsl:choose>
+    </xsl:variable>
+    <xsl:variable name="feature">
+      <xsl:value-of select="key('get-lookup', concat('viewer.ftr.', dlxs:normAttr(@FTR)))" />
+    </xsl:variable>
+    <h3>
+      <xsl:attribute name="id">
+        <xsl:choose>
+          <xsl:when test="@ID">
+            <xsl:value-of select="@ID" />
+          </xsl:when>
+          <xsl:otherwise>
+            <xsl:value-of select="concat($base, '-', @SEQ)" />
+          </xsl:otherwise>
+          </xsl:choose>
+      </xsl:attribute>
+      <xsl:choose>
+        <xsl:when test="false() and @HREF">
           <a href="{@HREF}">
             <xsl:value-of select="concat(key('get-lookup','headerutils.str.page'), ' ', $pNum)"/>
+            <xsl:if test="normalize-space($feature)">
+              <xsl:text> - </xsl:text>
+              <xsl:value-of select="$feature" />
+            </xsl:if>
           </a>
         </xsl:when>
         <xsl:otherwise>
@@ -99,6 +172,10 @@
             <xsl:value-of select="key('get-lookup','headerutils.str.page')"/>
             <xsl:text> </xsl:text>
             <xsl:value-of select="$pNum"/>  
+            <xsl:if test="normalize-space($feature)">
+              <xsl:text> - </xsl:text>
+              <xsl:value-of select="$feature" />
+            </xsl:if>
           </span>
         </xsl:otherwise>
       </xsl:choose>

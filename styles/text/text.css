@@ -36,10 +36,51 @@ html[data-highlight-state="off"] .inline-highlight a {
   background-color: #ffff00;
 }
 
+.fullview-main {
+  display: flex;
+  gap: 1rem;
+  flex-direction: row;
+  flex-wrap: nowrap;
+}
+
+.fullview-thumbnail {
+  flex-basis: 250px;
+  flex-shrink: 0;
+}
+
+.fullview-thumbnail figure {
+  position: sticky;
+  top: 1rem;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 0.5rem;
+  margin-bottom: 1rem;
+}
+
+.fullview-thumbnail img {
+  border: 1px solid var(--color-neutral-400);
+  padding: 0.5rem;
+  width: auto;
+}
+
+.fullview-thumbnail a:hover img, 
+.fullview-thumbnail a:hover span {
+  /* outline: 1px solid var(--color-neutral-300);
+  outline-offset: 2px; */
+  box-shadow: 0 0 0 2px #fff,0 0 0 3px var(--color-neutral-400); 
+}
+
 html[data-highlight-state="off"] .hilite1 {
   background-color: transparent;
 }
 
 html {
   scroll-padding-top: 2rem;
+}
+
+@media screen and (max-width: 600px) {
+  .fullview-main {
+    flex-direction: column;
+  }
 }

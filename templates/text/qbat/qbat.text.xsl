@@ -31,9 +31,10 @@
       <div class="[ aside ]">
         <nav class="[ page-index ]" xx-aria-labelledby="page-index-label">
           <xsl:if test="count($highlights) &gt; 0">
-            <div class="higlight-tools flex flex-flow-column gap-0_5 mb-1">
-              <a href="#hl{$highlight-seq-first}" class="button button--ghost">First matched term</a>
-              <button id="action-toggle-highlight" class="button button--ghost">
+            <h2 id="search-highlight-label" class="[ subtle-heading ][ text-black js-toc-ignore ]">Search Highlight Tools</h2>
+            <div class="highlight-tools flex flex-flow-column gap-0_5 mb-1">
+              <a href="#hl{$highlight-seq-first}" class="button button--ghost m-0">First matched term</a>
+              <button id="action-toggle-highlight" class="button button--ghost m-0">
                 <span class="material-icons" aria-hidden="true">visibility</span>
                 <span>Turn highlights off</span>
               </button>
