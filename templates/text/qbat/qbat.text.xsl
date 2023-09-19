@@ -30,10 +30,8 @@
 
       <div class="[ aside ]">
         <nav class="[ page-index ]" xx-aria-labelledby="page-index-label">
-          <h2 id="page-index-label" class="[ subtle-heading ][ text-black js-toc-ignore ]">Page Index</h2>
-          <div class="toc js-toc"></div>
           <xsl:if test="count($highlights) &gt; 0">
-            <div class="higlight-tools flex flex-flow-column gap-0_5 mt-2">
+            <div class="higlight-tools flex flex-flow-column gap-0_5 mb-1">
               <a href="#hl{$highlight-seq-first}" class="button button--ghost">First matched term</a>
               <button id="action-toggle-highlight" class="button button--ghost">
                 <span class="material-icons" aria-hidden="true">visibility</span>
@@ -41,6 +39,8 @@
               </button>
             </div>  
           </xsl:if>
+          <h2 id="page-index-label" class="[ subtle-heading ][ text-black js-toc-ignore ]">Page Index</h2>
+          <div class="toc js-toc"></div>
           <select id="action-page-index"></select>
         </nav>
       </div>
