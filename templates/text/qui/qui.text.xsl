@@ -44,7 +44,7 @@
       is-target="{$is-target}"
       highlight-count="{$hl-count}"
       highlight-count-offset="{$hl-count-offset}">
-      <xsl:apply-templates select="/Top/FullTextResults/DocContent" mode="copy-guts" />
+      <xsl:apply-templates select="/Top/FullTextResults/DocContent/DLPSTEXTCLASS" mode="copy-guts" />
     </qui:block>
 
     <qui:block slot="langmap">
@@ -118,5 +118,8 @@
       <xsl:apply-templates select="*|@*|text()" mode="copy" />
     </xsl:element>
   </xsl:template>
+
+  <xsl:template match="DLPSTEXTCLASS/HEADER" mode="copy" priority="99" />
+  <xsl:template match="DLPSTEXTCLASS/TEXT/BODY/DIV1/BIBL" mode="copy" priority="99" />
 
 </xsl:stylesheet>
