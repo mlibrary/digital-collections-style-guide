@@ -48,17 +48,21 @@
       </div>
     </div>
 
-  </xsl:template>
+</xsl:template>
 
   <xsl:template name="build-navigation">
-    <xsl:call-template name="build-breadcrumbs" />
+    <xsl:call-template name="build-breadcrumbs">
+      <xsl:with-param name="classes">mt-1</xsl:with-param>
+    </xsl:call-template>
   </xsl:template>
 
   <xsl:template name="build-page-heading">
-    <h1 class="collection-heading--small">
-      <!-- <xsl:value-of select="//qui:header[@role='main']" /> -->
-      <xsl:apply-templates select="//qui:header[@role='main']" mode="build-title" />
-    </h1>
+    <div class="flex flex-flow-rw flex-space flex-space-between flex-align-center mt-1" style="column-gap: 3rem; row-gap: 1rem;">
+      <h1 class="collection-heading--small">
+        <xsl:apply-templates select="//qui:header[@role='main']" mode="build-title" />
+      </h1>
+      <!-- <xsl:apply-templates select="//qui:form[@id='item-search']" /> -->
+    </div>
   </xsl:template>
 
   <xsl:template name="build-asset-viewer">
@@ -402,4 +406,9 @@
       <xsl:with-param name="class">url</xsl:with-param>
     </xsl:call-template>    
   </xsl:template>
+
+  <xsl:template name="build-breadcrumbs-extra-nav">
+    <xsl:apply-templates select="//qui:form[@id='item-search']" />
+  </xsl:template>
+
 </xsl:stylesheet>

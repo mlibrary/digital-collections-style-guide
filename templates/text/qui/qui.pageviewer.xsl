@@ -36,6 +36,7 @@
     <xsl:call-template name="build-record" />
     <xsl:call-template name="build-rights-statement" />
     <xsl:call-template name="build-related-links" />
+    <xsl:call-template name="build-item-search" />
     <xsl:if test="//Callout">
       <xsl:apply-templates select="//Callout" />
     </xsl:if>
@@ -416,6 +417,27 @@
     <xsl:value-of select="$metadata//qui:field[@key='publication-date']//qui:value" />
     <xsl:text>. </xsl:text>
 
+  </xsl:template>
+
+  <xsl:template name="build-item-search">
+    <qui:form id="item-search" action="{/Top/DlxsGlobals/ScriptName[@application='text']}">
+      <qui:hidden-input name="type" value="simple" />
+      <qui:hidden-input name="rgn" value="full text" />
+      <xsl:apply-templates select="//PageNavForm/HiddenVars/Variable[@name!='q1'][@name!='view'][@name!='seq'][@name!='size']" />
+      <qui:input name="q1" value="{//Param[@name='q1']}" type="text" style="width: auto; flex-grow: 1;">
+        <qui:label>
+          <xsl:choose>
+            <xsl:when test="/Top/Item/DocEncodingType='serialissue'">
+              <xsl:value-of select="key('get-lookup','header.str.searchthisissue')"/>
+            </xsl:when>
+            <xsl:otherwise>
+              <xsl:value-of select="key('get-lookup','header.str.searchthistext')"/>
+            </xsl:otherwise>
+          </xsl:choose>
+        </qui:label>
+      </qui:input>
+      <qui:link href="{/Top/SimpleSearchWithinLink}" rel="advanced" />
+    </qui:form>
   </xsl:template>
   
 </xsl:stylesheet>

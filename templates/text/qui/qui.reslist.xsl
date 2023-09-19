@@ -232,7 +232,7 @@
         </qui:link>
       </xsl:when>
       <xsl:otherwise>
-        <qui:link rel="{$rel}" href="" disabled="disabled" />
+        <qui:link rel="{$rel}" disabled="disabled" />
       </xsl:otherwise>
     </xsl:choose>
   </xsl:template>
@@ -805,19 +805,21 @@
       <span class="naturallanguage">
         <xsl:apply-templates select="SearchInNaturalLanguage"/>
       </span>
-      <xsl:text> in </xsl:text>
-      <xsl:choose>
-        <xsl:when test="SearchQualifier!=''">
-          <span class="itemid">
-            <xsl:value-of select="key('get-lookup',SearchQualifier)"/>
-          </span>
-        </xsl:when>
-        <xsl:otherwise>
-          <span class="collid">
-            <xsl:apply-templates select="SearchCollid"/>
-          </span>
-        </xsl:otherwise>
-      </xsl:choose>
+      <xsl:if test="SearchQualifier != 'results.summary.singletextrestricted'">
+        <xsl:text> in </xsl:text>
+        <xsl:choose>
+          <xsl:when test="SearchQualifier!=''">
+            <span class="itemid">
+              <xsl:value-of select="key('get-lookup',SearchQualifier)"/>
+            </span>
+          </xsl:when>
+          <xsl:otherwise>
+            <span class="collid">
+              <xsl:apply-templates select="SearchCollid"/>
+            </span>
+          </xsl:otherwise>
+        </xsl:choose>  
+      </xsl:if>
       <!-- <br/>
       <xsl:value-of select="key('get-lookup','reslist.str.results')"/>
       <xsl:text> </xsl:text>

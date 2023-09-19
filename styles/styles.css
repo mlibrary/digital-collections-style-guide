@@ -274,6 +274,10 @@ label.control-checkbox {
   padding: revert;
 }
 
+.text--small {
+  font-size: 0.875rem !important;
+}
+
 /* Skip link */
 
 .skip-links {
@@ -1042,6 +1046,10 @@ sl-dropdown::part(panel) {
 
 .border-bottom {
   border-bottom: solid 1px var(--color-neutral-100);
+}
+
+.border-rounded {
+  border-radius: 0.5rem;
 }
 
 .underline {

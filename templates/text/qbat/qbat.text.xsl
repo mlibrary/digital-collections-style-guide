@@ -17,7 +17,7 @@
   <xsl:template name="build-entry-scripts" />
 
   <xsl:template name="build-extra-main-class">
-    <xsl:text>[ mt-0 ]</xsl:text>
+    <!-- <xsl:text>[ mt-0 ]</xsl:text> -->
   </xsl:template>
 
   <xsl:template match="qui:main">
@@ -45,7 +45,7 @@
           <select id="action-page-index"></select>
         </nav>
       </div>
-
+      
       <div class="[ main-panel ]">
 
         <xsl:call-template name="build-item-header" />
@@ -104,6 +104,10 @@
     <dl class="record" data-message="wtf">
       <xsl:apply-templates />
     </dl>
+  </xsl:template>
+
+  <xsl:template name="build-breadcrumbs-extra-nav">
+    <xsl:apply-templates select="//qui:form[@id='item-search']" />
   </xsl:template>
   
   <xsl:template match="text()" mode="build-title">

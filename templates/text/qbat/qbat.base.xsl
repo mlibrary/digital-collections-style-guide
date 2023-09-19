@@ -184,7 +184,7 @@
   <xsl:template name="build-breadcrumbs">
     <xsl:param name="classes" />
     <div class="[ breadcrumb ][ {$classes} ]">
-      <nav aria-label="Breadcrumb">
+      <nav aria-label="Breadcrumb" style="flex-grow: 8">
         <ol>
           <xsl:for-each select="qui:nav[@role='breadcrumb']/qui:link">
             <li>
@@ -602,8 +602,15 @@
   </xsl:template>
 
   <xsl:template name="build-collection-heading">
+    <div class="flex flex-flow-rw flex-space flex-space-between flex-align-center" style="column-gap: 3rem; row-gap: 1rem;">
+      <xsl:call-template name="build-collection-heading-h1" />
+      <!-- <xsl:apply-templates select="//qui:form[@id='item-search']" /> -->
+    </div>
+  </xsl:template>
+
+  <xsl:template name="build-collection-heading-h1">
     <xsl:variable name="header" select="//qui:header[@role='main']" />
-    <h1 class="collection-heading mb-0">
+    <h1 class="collection-heading mb-0" style="flex-grow: 2">
       <xsl:if test="normalize-space($header/@data-badge)">
         <span class="material-icons" aria-hidden="true">
           <xsl:value-of select="$header/@data-badge" />
@@ -744,6 +751,7 @@
   </xsl:template>
 
   <xsl:template match="qui:input[@type='text']">
+    <xsl:apply-templates select="qui:label" />
     <input>
       <xsl:apply-templates select="@*" mode="copy" />
     </input>
@@ -760,6 +768,31 @@
       <xsl:apply-templates select="@class" mode="copy" />
       <xsl:apply-templates mode="copy" />
     </a>
+  </xsl:template>
+
+  <xsl:template match="qui:form[@id='item-search']">
+    <form id="item-search" class="m-0" style="flex-grow: 1;" action="{@action}" method="GET">
+      <!-- <style>
+        #item-search * {
+          font-size: 0.875rem;
+        }
+      </style> -->
+      <div 
+        class="flex flex-flow-rw flex-align-center flex-space-between border border-rounded p-half"
+        style="margin: auto; padding: 4px 10px; gap: 0.5rem; border-width: 1px;">
+        <xsl:apply-templates select="qui:input" />
+        <button class="button button--primary button--small">Search</button>
+        <xsl:if test="qui:link[@rel='advanced']">
+          <a href="{qui:link[@rel='advanced']/@href}" class="text--small">
+            <xsl:text>Advanced</xsl:text>
+            <span class="visually-hidden">
+              <xsl:text> Search</xsl:text>
+            </span>
+          </a>
+        </xsl:if>
+      </div>
+      <xsl:apply-templates select="qui:hidden-input" />
+    </form>
   </xsl:template>
 
   <xsl:template name="make-data-attribute">
