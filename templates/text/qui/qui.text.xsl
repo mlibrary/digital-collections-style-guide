@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8" ?>
-<xsl:stylesheet version="1.0" xmlns:xhtml="http://www.w3.org/1999/xhtml" xmlns:xsl="http://www.w3.org/1999/XSL/Transform" xmlns:dlxs="http://dlxs.org" xmlns:qbat="http://dlxs.org/quombat" xmlns:exsl="http://exslt.org/common" xmlns:date="http://exslt.org/dates-and-times" xmlns:qui="http://dlxs.org/quombat/ui" extension-element-prefixes="exsl date" >
+<xsl:stylesheet version="1.0" xmlns:xhtml="http://www.w3.org/1999/xhtml" xmlns:xsl="http://www.w3.org/1999/XSL/Transform" xmlns:dlxs="http://dlxs.org" xmlns:qbat="http://dlxs.org/quombat" xmlns:exsl="http://exslt.org/common" xmlns:date="http://exslt.org/dates-and-times" xmlns:qui="http://dlxs.org/quombat/ui" xmlns:tei="http://www.tei-c.org/ns/1.0" extension-element-prefixes="exsl date" >
   <xsl:output method="xml" version="1.0" encoding="utf-8" indent="yes" />
   <xsl:strip-space elements="*"/>
 
@@ -39,7 +39,22 @@
     
     <xsl:apply-templates select="$item-metadata" mode="copy" />
 
-    <xsl:apply-templates select="/Top/FullTextResults/DocContent" />
+    <qui:block slot="content" 
+      mimetype="application/tei+xml" 
+      is-target="{$is-target}"
+      highlight-count="{$hl-count}"
+      highlight-count-offset="{$hl-count-offset}">
+      <xsl:apply-templates select="/Top/FullTextResults/DocContent" mode="copy-guts" />
+    </qui:block>
+
+    <qui:block slot="langmap">
+      <xsl:for-each select="//Lookup[@id='text.components']/Item">
+        <qui:lookup key="{@key}"><xsl:value-of select="." /></qui:lookup>
+      </xsl:for-each>
+      <xsl:for-each select="//Lookup[@id='headerutils']/Item">
+        <qui:lookup key="{@key}"><xsl:value-of select="." /></qui:lookup>
+      </xsl:for-each>
+    </qui:block>
 
     <qui:message>BOO-YAH</qui:message>
   </xsl:template>
@@ -96,6 +111,12 @@
       <xsl:with-param name="encoding-type" select="$encoding-type" />
       <xsl:with-param name="item-encoding-level" select="$item-encoding-level" />
     </xsl:call-template>
-      
-  </xsl:template>    
+  </xsl:template>
+
+  <xsl:template match="node()[name()][namespace-uri() = '']" mode="copy" priority="99">
+    <xsl:element name="tei:{name()}">
+      <xsl:apply-templates select="*|@*|text()" mode="copy" />
+    </xsl:element>
+  </xsl:template>
+
 </xsl:stylesheet>

@@ -1,8 +1,37 @@
-.fullview-page p {
+p.plaintext {
  white-space: pre-line; 
 }
 
 .fullview-page + .fullview-page {
   padding-top: 2rem;
   border-top: 2px solid var(--color-neutral-100);
+}
+
+.inline-highlight {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.25rem;
+  scroll-padding-top: 2rem;
+}
+
+.hl-link {
+  display: inline-flex;
+  align-items: center;
+}
+
+.hl-link .material-icons {
+  font-size: 1rem;
+}
+
+.button--highlight {
+  padding: var(--space-xxx-small);
+  min-height: 0;
+}
+
+.hilite1 {
+  background-color: #ffff00;
+}
+
+html {
+  scroll-padding-top: 2rem;
 }

@@ -1,12 +1,11 @@
 <?xml version="1.0" encoding="utf-8"?>
-<xsl:stylesheet version="1.0" xmlns="http://www.w3.org/1999/xhtml" xmlns:xsl="http://www.w3.org/1999/XSL/Transform" xmlns:qui="http://dlxs.org/quombat/ui" xmlns:qbat="http://dlxs.org/quombat/quombat" xmlns:xhtml="http://www.w3.org/1999/xhtml" xmlns:dlxs="http://dlxs.org" xmlns:exsl="http://exslt.org/common" extension-element-prefixes="exsl">
+<xsl:stylesheet version="1.0" xmlns="http://www.w3.org/1999/xhtml" xmlns:xsl="http://www.w3.org/1999/XSL/Transform" xmlns:qui="http://dlxs.org/quombat/ui" xmlns:qbat="http://dlxs.org/quombat/quombat" xmlns:xhtml="http://www.w3.org/1999/xhtml" xmlns:dlxs="http://dlxs.org" xmlns:exsl="http://exslt.org/common" xmlns:tei="http://www.tei-c.org/ns/1.0" extension-element-prefixes="exsl">
 
   <xsl:template name="build-extra-scripts">
 
     <script>
       window.mUse = window.mUse || [];
     </script>
-
 
     <link rel="stylesheet" href="{$docroot}styles/text/pageviewer.css" />
     <link rel="stylesheet" href="{$docroot}styles/text/text.css" />
@@ -66,7 +65,8 @@
   <xsl:template match="qui:block[@slot='content']">
     <section class="[ records ]">
       <h2 class="subtle-heading">Pages</h2>
-      <xsl:apply-templates select="qui:section/qui:div"></xsl:apply-templates>
+      <!-- <xsl:apply-templates select="qui:section/qui:div"></xsl:apply-templates> -->
+      <xsl:apply-templates select=".//tei:TEXT" />
     </section>
   </xsl:template>
 
