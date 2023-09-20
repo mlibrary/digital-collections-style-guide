@@ -207,6 +207,9 @@
           <xsl:apply-templates select="$sort-options/qui:hidden-input" />
         </form>        
       </xsl:if>
+      <xsl:if test="$has-results and //qui:message[@id='sort-options']">
+        <xsl:apply-templates select="//qui:message[@id='sort-options']" />
+      </xsl:if>
     </div>
   </xsl:template>
 
@@ -276,7 +279,7 @@
       <div class="results-card">
         <xsl:choose>
           <xsl:when test="qui:link[@rel='iiif']">
-            <img class="[ results-list__image ]" src="{qui:link[@rel='iiif']/@href}" aria-hidden="true" alt="" />
+            <img loading="lazy" class="[ results-list__image ]" src="{qui:link[@rel='iiif']/@href}" aria-hidden="true" alt="" />
           </xsl:when>
           <xsl:otherwise>
             <div class="[ results-list__blank ]" aria-hidden="true">
@@ -662,5 +665,12 @@
         </xsl:if>
       </p>
     </xsl:if>
-  </xsl:template>  
+  </xsl:template>
+
+  <xsl:template match="qui:message[@id='sort-options']">
+    <div class="text--bold">
+      <xsl:apply-templates mode="copy" />
+    </div>
+  </xsl:template>
+
 </xsl:stylesheet>

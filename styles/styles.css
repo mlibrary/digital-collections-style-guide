@@ -278,6 +278,10 @@ label.control-checkbox {
   font-size: 0.875rem !important;
 }
 
+.text--bold {
+  font-weight: bold;
+}
+
 /* Skip link */
 
 .skip-links {
