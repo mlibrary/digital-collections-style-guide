@@ -141,7 +141,8 @@
     <xsl:variable name="root-href">
       <xsl:choose>
         <xsl:when test="$docroot = '/'">/samples/</xsl:when>
-        <xsl:otherwise>/cgi/i/image/image-idx?page=groups</xsl:otherwise>
+        <xsl:when test="starts-width($api_url, 'https://quod.lib')">/lib/colllist/?byFormat=Text%20Collections</xsl:when>
+        <xsl:otherwise>/cgi/c/collsize/coll-idx?byFormat=Text%20Collections</xsl:otherwise>
       </xsl:choose>
     </xsl:variable>
     <m-website-header name="{@name}" to="{$root-href}" data-docroot="{$docroot}">
