@@ -70,6 +70,7 @@ window.addEventListener('message', (event) => {
       self_href = `${location.protocol}//${location.hostname}${self_href}`;
     }
     let url = new URL(self_href);
+    url.searchParams.set('entryid', parts[1]);
     url.searchParams.set('viewid', parts[2]);
     let href = url.toString();
 
