@@ -253,29 +253,39 @@
     <xsl:call-template name="build-portfolio-actions" />
     <xsl:apply-templates select="//Facets" />
     <xsl:apply-templates select="//SearchDescription" />
-    <xsl:if test="$subview != 'detail'">
-      <qui:form id="sort-options">
-        <xsl:for-each select="//ResultsLinks/HiddenVars/Variable">
-          <qui:hidden-input name="{@name}" value="{.}" />
-        </xsl:for-each>
-        <qui:select name="sort">
-          <xsl:for-each select="//SortSelect/Option">
-            <qui:option index="{@index}" value="{Value}">
-              <xsl:if test="Focus = 'true'">
-                <xsl:attribute name="selected">selected</xsl:attribute>
-              </xsl:if>
-              <xsl:choose>
-                <xsl:when test="Value = 'none'">None</xsl:when>
-                <xsl:when test="Value = 'relevance'">Relevance</xsl:when>
-                <xsl:otherwise>
-                  <xsl:value-of select="Label" />
-                </xsl:otherwise>
-              </xsl:choose>
-            </qui:option>
+    <xsl:choose>
+      <xsl:when test="$subview = 'detail'"></xsl:when>
+      <xsl:when test="//SortSelect = 'sort.overthresold'">
+        <qui:message id="sort-options">
+          <xsl:value-of select="key('get-lookup', 'results.str.11')"/>
+          <xsl:text> </xsl:text>
+          <xsl:value-of select="key('get-lookup','results.str.12')"/>
+        </qui:message>
+      </xsl:when>
+      <xsl:otherwise>
+        <qui:form id="sort-options">
+          <xsl:for-each select="//ResultsLinks/HiddenVars/Variable">
+            <qui:hidden-input name="{@name}" value="{.}" />
           </xsl:for-each>
-        </qui:select>
-      </qui:form>
-    </xsl:if>
+          <qui:select name="sort">
+            <xsl:for-each select="//SortSelect/Option">
+              <qui:option index="{@index}" value="{Value}">
+                <xsl:if test="Focus = 'true'">
+                  <xsl:attribute name="selected">selected</xsl:attribute>
+                </xsl:if>
+                <xsl:choose>
+                  <xsl:when test="Value = 'none'">None</xsl:when>
+                  <xsl:when test="Value = 'relevance'">Relevance</xsl:when>
+                  <xsl:otherwise>
+                    <xsl:value-of select="Label" />
+                  </xsl:otherwise>
+                </xsl:choose>
+              </qui:option>
+            </xsl:for-each>
+          </qui:select>
+        </qui:form>  
+      </xsl:otherwise>
+    </xsl:choose>
     <xsl:if test="//ResList/Results/Item[ItemDetails]">
       <xsl:apply-templates select="//ResList/Results/Item" mode="metadata" />
     </xsl:if>
