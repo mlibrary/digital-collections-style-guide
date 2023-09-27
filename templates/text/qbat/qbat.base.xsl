@@ -1,4 +1,4 @@
-<xsl:stylesheet version="1.0" xmlns="http://www.w3.org/1999/xhtml" xmlns:xhtml="http://www.w3.org/1999/xhtml" xmlns:xsl="http://www.w3.org/1999/XSL/Transform" xmlns:dlxs="http://dlxs.org" xmlns:qui="http://dlxs.org/quombat/ui" xmlns:exsl="http://exslt.org/common" xmlns:date="http://exslt.org/dates-and-times" extension-element-prefixes="exsl date">
+<xsl:stylesheet version="1.0" xmlns="http://www.w3.org/1999/xhtml" xmlns:xhtml="http://www.w3.org/1999/xhtml" xmlns:xsl="http://www.w3.org/1999/XSL/Transform" xmlns:dlxs="http://dlxs.org" xmlns:qui="http://dlxs.org/quombat/ui" xmlns:qbat="http://dlxs.org/quombat/quombat" xmlns:exsl="http://exslt.org/common" xmlns:date="http://exslt.org/dates-and-times" extension-element-prefixes="exsl date">
 
   <xsl:output
     method="xml"
@@ -67,6 +67,7 @@
         </main>
 
         <xsl:call-template name="build-footer" />
+        <iframe name="bookbag-sink" id="bookbag-sink"></iframe>
       </body>
     </html>
   </xsl:template>
@@ -731,7 +732,45 @@
     <xsl:value-of select="//qui:footer/qui:link[@rel='feedback']/@href" />
   </xsl:template>
 
+  <xsl:template name="build-hidden-portfolio-form">
+    <form style="display: none" method="GET" action="/cgi/t/text/text-idx" id="bbaction-form" target="bookbag-sink">
+      <xsl:apply-templates select="//qui:form[@action='bbaction']/qui:hidden-input" />
+      <input type="hidden" name="bbaction" value="" id="bbaction-page" />
+      <input type="hidden" name="bbc" value="{$collid}" />
+    </form>
+  </xsl:template>
+
   <!-- UTILITY -->
+  <xsl:template name="button">
+    <xsl:param name="label" />
+    <xsl:param name="classes" />
+    <xsl:param name="icon" />
+    <xsl:param name="action" />
+    <xsl:param name="href" />
+    <xsl:param name="data-attributes" />
+    <xsl:param name="label-classes" />
+    <xsl:param name="type" />
+    <button class="button button--large {$classes}">
+      <xsl:if test="$action">
+        <xsl:attribute name="data-action"><xsl:value-of select="$action" /></xsl:attribute>
+      </xsl:if>
+      <xsl:if test="$type">
+        <xsl:attribute name="type"><xsl:value-of select="$type" /></xsl:attribute>
+      </xsl:if>
+      <xsl:if test="$data-attributes">
+        <xsl:for-each select="exsl:node-set($data-attributes)//qbat:attribute">
+          <xsl:attribute name="{@name}"><xsl:value-of select="." /></xsl:attribute>
+        </xsl:for-each>
+      </xsl:if>
+      <xsl:if test="normalize-space($icon)">
+        <span class="material-icons" aria-hidden="true">
+          <xsl:value-of select="$icon" />
+        </span>
+      </xsl:if>
+      <span data-slot="label" class="{$label-classes}"><xsl:value-of select="$label" /></span>
+    </button>
+  </xsl:template>
+
   <xsl:template match="node()" mode="copy-guts">
     <!-- <xsl:message>AHOY COPY GUTS: <xsl:value-of select="local-name()" /></xsl:message> -->
     <!-- <debug><xsl:value-of select="local-name()" /></debug> -->

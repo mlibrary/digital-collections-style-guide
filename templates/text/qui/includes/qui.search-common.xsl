@@ -23,7 +23,7 @@
       </xsl:for-each>
     </qui:nav>
 
-    <xsl:apply-templates select="/Top/SearchRestriction/ItemHeader" />
+    <xsl:apply-templates select="/Top/SearchRestriction/ItemHeader[HEADER]" />
 
     <qui:callout slot="clause">
       <div>

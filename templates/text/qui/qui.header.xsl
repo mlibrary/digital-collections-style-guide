@@ -6,6 +6,7 @@
     <xsl:apply-templates select="/Top/Item" mode="metadata" />
   </xsl:variable>
   <xsl:variable name="item-metadata" select="exsl:node-set($item-metadata-tmp)" />
+  <xsl:variable name="idno" select="translate(//Param[@name='idno'], 'ABCDEFGHIJKLMNOPQRSTUVWXYZ','abcdefghijklmnopqrstuvwxyz')"/>
 
   <xsl:template name="build-body-main">
     <xsl:call-template name="build-contents-navigation" />
@@ -37,14 +38,25 @@
   </xsl:template>
 
   <xsl:template name="build-contents-navigation">
-    header.str.viewentiretext
     <qui:nav role="contents">
       <xsl:if test="/Top/AuthRequired != 'true'">
         <qui:link href="{//ViewEntireTextLink}" role="view-text">
           <xsl:value-of select="key('get-lookup','header.str.viewentiretext')"/>
         </qui:link>
       </xsl:if>
-      <qui:link rel="bookmark" href="{/Top/BookbagAddHref}" label="{key('get-lookup', 'results.str.21')}" />
+      <!-- <qui:link rel="bookmark" href="{/Top/BookbagAddHref}" label="{key('get-lookup', 'results.str.21')}" /> -->
+      <xsl:choose>
+        <xsl:when test="/Top/BookbagResults/Item[@idno=$idno]">
+          <qui:form slot="bookbag" rel="remove" href="{/Top/BookbagResults/Item[@idno=$idno]/AddRemoveUrl}" data-identifier="{$idno}">
+            <qui:hidden-input name="via" value="toc" />
+          </qui:form>
+        </xsl:when>
+        <xsl:when test="/Top/BookbagAddHref">
+          <qui:form slot="bookbag" rel="add" href="{/Top/BookbagAddHref}" data-identifier="{$idno}">
+            <qui:hidden-input name="via" value="toc" />
+          </qui:form>
+        </xsl:when>
+      </xsl:choose>
     </qui:nav>
   </xsl:template>
 

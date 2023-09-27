@@ -79,7 +79,7 @@
     </qui:header>
     <!-- <xsl:call-template name="build-action-panel" /> -->
     <xsl:call-template name="build-results-list" />
-    <!-- <xsl:call-template name="build-portfolio-form" /> -->
+    <xsl:call-template name="build-portfolio-form" />
     <qui:message>BOO-YAH-HAH</qui:message>
   </xsl:template>
 
@@ -425,7 +425,7 @@
       </xsl:choose>
     </xsl:variable>
 
-    <xsl:variable name="identifier" select="ItemIdno" />
+    <xsl:variable name="identifier" select="translate(ItemIdno, 'ABCDEFGHIJKLMNOPQRSTUVWXYZ','abcdefghijklmnopqrstuvwxyz')" />
 
     <qui:section identifier="{ItemIdno}" auth-required="{AuthRequired}" encoding-type="{DocEncodingType}" encoding-level="{ItemEncodingLevel}">
       <xsl:apply-templates select="Tombstone" />
@@ -434,9 +434,19 @@
         <xsl:with-param name="item-encoding-level" xml:base="$item-encoding-level" />
       </xsl:apply-templates>
       <xsl:apply-templates select="ThumbnailLink" />
-      <xsl:if test="normalize-space(BookbagAddHref)">
+      <!-- <xsl:if test="normalize-space(BookbagAddHref)">
         <qui:link rel="bookmark" href="{BookbagAddHref}" label="{key('get-lookup', 'results.str.21')}" />
-      </xsl:if>
+      </xsl:if> -->
+      <xsl:choose>
+        <xsl:when test="/Top/BookbagResults/Item[@idno=$identifier]">
+          <qui:form slot="bookbag" rel="remove" href="{/Top/BookbagResults/Item[@idno=$identifier]/AddRemoveUrl}" data-identifier="{$identifier}">
+          </qui:form>
+        </xsl:when>
+        <xsl:when test="/Top/BookbagAddHref">
+          <qui:form slot="bookbag" rel="add" href="{BookbagAddHref}" data-identifier="{$identifier}">
+          </qui:form>
+        </xsl:when>
+      </xsl:choose>  
       <xsl:if test="not($encoding-type='serialissue')">
         <xsl:apply-templates select="FirstPageHref"/>
       </xsl:if>
@@ -602,19 +612,10 @@
 
   <xsl:template name="build-portfolio-form">
     <qui:form action="bbaction">
-      <xsl:if test="//BbagOptionsMenu/UserIsOwner = 'true'">
-        <xsl:attribute name="data-owner">true</xsl:attribute>
-        <xsl:attribute name="data-status">
-          <xsl:choose>
-            <xsl:when test="//BookBagInfo/Field[@name='shared'] = '0'">private</xsl:when>
-            <xsl:otherwise>public</xsl:otherwise>
-          </xsl:choose>
-        </xsl:attribute>
-      </xsl:if>
-      <xsl:for-each select="//BbagOptionsMenu/HiddenVars/Variable">
-        <qui:hidden-input name="{@name}" value="{.}" />
-      </xsl:for-each>
-      <qui:hidden-input name="backlink" value="{//BbagOptionsMenu/BackLink}" />
+      <xsl:apply-templates select="//ResultsLinks/HiddenVars/Variable[@name='rgn']" />
+      <xsl:apply-templates select="//ResultsLinks/HiddenVars/Variable[@name='q1']" />
+      <xsl:apply-templates select="//ResultsLinks/HiddenVars/Variable[@name='c']" />
+      <xsl:apply-templates select="//ResultsLinks/HiddenVars/Variable[@name='cc']" />
     </qui:form>
   </xsl:template>
 
