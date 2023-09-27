@@ -5,6 +5,7 @@
 
   <xsl:variable name="has-plain-text" select="//ViewSelect/Option[Value='text']" />
   <xsl:variable name="is-subj-search">yes</xsl:variable>
+  <xsl:variable name="include-useguidelines-metadata">yes</xsl:variable>
 
   <xsl:variable name="idno" select="translate(//Param[@name='idno'], 'ABCDEFGHIJKLMNOPQRSTUVWXYZ','abcdefghijklmnopqrstuvwxyz')"/>
   <xsl:variable name="seq" select="//Param[@name='seq']" />
@@ -24,7 +25,7 @@
     <!-- header.str.contents ?? -->
     <xsl:if test="//DocMeta/TocHref">
       <qui:link href="{//DocMeta/TocHref}">
-        <xsl:value-of select="key('get-lookup', 'header.str.contents')" />
+        <xsl:value-of select="key('get-lookup', 'uplift.str.contents')" />
       </qui:link>
     </xsl:if>
   </xsl:template>
@@ -374,7 +375,7 @@
           <qui:values>
             <qui:value>
               <xsl:text>https://name.umdl.umich.edu/</xsl:text>
-              <xsl:value-of select="//Param[@name='idno']" />
+              <xsl:value-of select="dlxs:downcase(//Param[@name='idno'])" />  
             </qui:value>
           </qui:values>
         </qui:field>

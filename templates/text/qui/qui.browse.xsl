@@ -331,10 +331,12 @@
         <xsl:attribute name="label">
           <xsl:choose>
             <xsl:when test="$item-encoding-level = '1'">
-              <xsl:value-of select="key('get-lookup','results.str.16')"/>
+              <!-- <xsl:value-of select="key('get-lookup','results.str.16')"/> -->
+              <xsl:value-of select="key('get-lookup','uplift.str.contents')"/>
             </xsl:when>
             <xsl:otherwise>
-              <xsl:value-of select="key('get-lookup','results.str.17')"/>            
+              <!-- <xsl:value-of select="key('get-lookup','results.str.17')"/>             -->
+              <xsl:value-of select="key('get-lookup','uplift.str.contents')"/>
             </xsl:otherwise>
           </xsl:choose>
         </xsl:attribute>

@@ -1539,6 +1539,14 @@ dl.record {
   border-bottom: 1px solid var(--color-neutral-100);
 }
 
+.record dd > *:first-child {
+  margin-top: 0;
+}
+
+.record dd > *:last-child {
+  margin-bottom: 0;
+}
+
 .record dt {
   font-weight: var(--bold);
 }

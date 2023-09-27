@@ -9,7 +9,7 @@
 
     <div class="[ mb-2 ]">
       <xsl:call-template name="build-navigation" />
-      <xsl:call-template name="build-collection-heading" />
+      <xsl:call-template name="build-page-heading" />
     </div>
 
     <div class="[ flex flex-flow-rw ][ flex-gap-1 ]">
@@ -39,6 +39,15 @@
     </div>
 
   </xsl:template>  
+
+  <xsl:template name="build-page-heading">
+    <div class="flex flex-flow-rw flex-space flex-space-between flex-align-center mt-1" style="column-gap: 3rem; row-gap: 1rem;">
+      <h1 class="collection-heading--small">
+        <xsl:apply-templates select="//qui:header[@role='main']" mode="build-title" />
+      </h1>
+      <!-- <xsl:apply-templates select="//qui:form[@id='item-search']" /> -->
+    </div>
+  </xsl:template>
 
   <xsl:template name="build-collection-heading-xxx">
     <xsl:variable name="header" select="//qui:header[@role='main']" />
@@ -158,28 +167,12 @@
     <xsl:copy></xsl:copy>
   </xsl:template>
 
-  <xsl:template name="xx-button">
-    <xsl:param name="label" />
-    <xsl:param name="classes" />
-    <xsl:param name="icon" />
-    <xsl:param name="action" />
-    <xsl:param name="href" />
-    <xsl:param name="data-attributes" />
-    <button class="button button--large {$classes}">
-      <xsl:if test="$action">
-        <xsl:attribute name="data-action"><xsl:value-of select="$action" /></xsl:attribute>
-      </xsl:if>
-      <xsl:if test="$data-attributes">
-        <xsl:for-each select="exsl:node-set($data-attributes)//qbat:attribute">
-          <xsl:attribute name="{@name}"><xsl:value-of select="." /></xsl:attribute>
-        </xsl:for-each>
-      </xsl:if>
-      <xsl:if test="normalize-space($icon)">
-        <span class="material-icons" aria-hidden="true">
-          <xsl:value-of select="$icon" />
-        </span>
-      </xsl:if>
-      <span><xsl:value-of select="$label" /></span>
-    </button>
+  <xsl:template match="qui:field[@key='bookmark']" priority="101">
+    <xsl:call-template name="build-content-copy-metadata">
+      <xsl:with-param name="term"><xsl:value-of select="qui:label" /></xsl:with-param>
+      <xsl:with-param name="key"><xsl:value-of select="@key" /></xsl:with-param>
+      <xsl:with-param name="text" select="normalize-space(qui:values/qui:value)" />
+      <xsl:with-param name="class">url</xsl:with-param>
+    </xsl:call-template>    
   </xsl:template>
 </xsl:stylesheet>
