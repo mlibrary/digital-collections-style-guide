@@ -184,3 +184,11 @@ dl div + div {
   border: 1px solid var(--color-neutral-100);
   padding: 4px;
 }
+
+ul.list--striped li {
+  padding: 0.5rem 0.25rem;
+}
+
+ul.list--striped li:nth-child(odd) {
+  background: var(--color-teal-100);
+}
