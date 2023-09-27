@@ -59,7 +59,7 @@
         <div class="text-block">
           <xsl:apply-templates select="//qui:block[@slot='links'][@align='top']" />
           <xsl:apply-templates select="//qui:block[@slot='information']" />
-          <xsl:apply-templates select="//qui:block[@slot='gallery']" />
+          <xsl:apply-templates select="//qui:block[@slot='contents']" />
           <xsl:apply-templates select="//qui:block[@slot='contentwarning']" />
           <xsl:apply-templates select="//qui:block[@slot='copyright' or @slot='useguidelines']" />
           <xsl:apply-templates select="//qui:block[@slot='more-information']" />
@@ -114,7 +114,7 @@
     </div>
   </xsl:template>
 
-  <xsl:template match="qui:block[@slot='gallery']">
+  <xsl:template match="qui:block[@slot='contents'][.//qui:card]">
     <h2>Digitized Collection Contents</h2>
     <div class="[ gallery-view ]">
       <xsl:for-each select="qui:card">
@@ -129,17 +129,34 @@
     </div>
   </xsl:template>
 
-  <xsl:template match="qui:img" mode="card-image">
+  <xsl:template match="qui:block[@slot='contents'][.//xhtml:figure]">
+    <h2>Digitized Collection Contents</h2>
+    <div class="[ gallery-view ]">
+      <xsl:for-each select="xhtml:figure">
+        <!-- <div class="[ card ]"> -->
+          <a class="[ card ][ border mb-1 ]" style="padding: 1rem; width: 50%;" href="{@href}">
+            <xsl:apply-templates select="xhtml:img" mode="card-image" />
+            <xsl:apply-templates select="xhtml:xfigcaption/xhtml:h3" mode="card-title" />
+            <xsl:apply-templates select="xhtml:figcaption" mode="card-body" />
+          </a>  
+        <!-- </div> -->
+      </xsl:for-each>
+    </div>
+  </xsl:template>
+
+  <xsl:template match="qui:img|xhtml:img" mode="card-image">
     <img class="[ card__image ]" src="{@src}" alt="" />
   </xsl:template>
 
-  <xsl:template match="qui:header" mode="card-title">
+  <xsl:template match="qui:header|xhtml:h3" mode="card-title">
     <h3 class="[ card__heading ]" style="max-width: max(25ch); width: auto;"><xsl:value-of select="." /></h3>
   </xsl:template>
 
-  <xsl:template match="qui:body" mode="card-body">
+  <xsl:template match="qui:body|xhtml:figcaption" mode="card-body">
     <xsl:apply-templates select="." mode="copy-guts" />
   </xsl:template>
+
+  <xsl:template match="xhtml:figcaption/xhtml:h3" mode="copy-guts" priority="101" />
 
   <xsl:template match="qui:block[@slot='contentwarning']">
     <xsl:if test="normalize-space(.)">

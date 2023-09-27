@@ -3,12 +3,15 @@
   <xsl:output method="xml" version="1.0" encoding="utf-8" indent="yes" />
 
   <!-- globals -->
-  <xsl:variable name="total" select="//BrowseList/TotalBrowseItems" />
+  <xsl:variable name="total" select="//BrowseList/TotalBrowseItems|//BrowseList/TotalTags" />
   <xsl:variable name="slice-start" select="//BrowseList/SliceStart" />
   <xsl:variable name="slice-size" select="//BrowseList/BrowseSliceSize" />
   <xsl:variable name="sz" select="number(50)" />
   <xsl:variable name="end-1">
     <xsl:choose>
+      <xsl:when test="not($slice-start)">
+        <xsl:value-of select="$total" />
+      </xsl:when>
       <xsl:when test="$total &lt;= $sz">
         <xsl:value-of select="$total" />
       </xsl:when>
@@ -25,6 +28,9 @@
   </xsl:variable>
   <xsl:variable name="max">
     <xsl:choose>
+      <xsl:when test="not($slice-start)">
+        <xsl:value-of select="1" />
+      </xsl:when>
       <xsl:when test="$total &lt;= $sz">
         <xsl:value-of select="1" />
       </xsl:when>
@@ -35,6 +41,9 @@
   </xsl:variable>
   <xsl:variable name="current">
     <xsl:choose>
+      <xsl:when test="not($slice-start)">
+        <xsl:value-of select="1" />
+      </xsl:when>
       <xsl:when test="$slice-start = 0">
         <xsl:value-of select="1" />
       </xsl:when>
@@ -45,6 +54,9 @@
   </xsl:variable>
   <xsl:variable name="start">
     <xsl:choose>
+      <xsl:when test="not($slice-start)">
+        <xsl:value-of select="1" />
+      </xsl:when>
       <xsl:when test="$total &lt;= $sz">
         <xsl:value-of select="1" />
       </xsl:when>
@@ -64,7 +76,8 @@
         <xsl:attribute name="data-status">private</xsl:attribute>
       </xsl:when> -->
       <xsl:text>Browse Collection: </xsl:text>
-      <xsl:value-of select="dlxs:capitalize($current-browse-field)"/>
+      <xsl:value-of select="key('get-lookup', concat('browse.str.', $current-browse-field, '.column'))" />
+      <!-- <xsl:value-of select="dlxs:capitalize($current-browse-field)"/> -->
     </qui:header>
     <!-- <xsl:call-template name="build-action-panel" /> -->
     <xsl:call-template name="build-results-list" />
@@ -82,7 +95,8 @@
     <xsl:value-of select="$start" />
     <xsl:text>-</xsl:text>
     <xsl:value-of select="$end" />
-    <xsl:text> | Search Results</xsl:text>
+    <xsl:text> | Browse Collection | </xsl:text>
+    <xsl:value-of select="key('get-lookup', concat('browse.str.', $current-browse-field, '.column'))" />
   </xsl:template>
 
   <xsl:template name="get-current-page-breadcrumb-label">
@@ -96,7 +110,10 @@
           <xsl:if test="Name = $current-browse-field">
             <xsl:attribute name="current">true</xsl:attribute>
           </xsl:if>
-          <qui:label><xsl:value-of select="dlxs:capitalize(Name)" /></qui:label>
+          <qui:label>
+            <xsl:value-of select="key('get-lookup', concat('browse.str.', Name, '.column'))" />
+            <!-- <xsl:value-of select="dlxs:capitalize(Name)" /> -->
+          </qui:label>
         </qui:link>
       </xsl:for-each>
     </qui:nav>
@@ -256,6 +273,9 @@
         <xsl:when test="$total = 0">
           <xsl:call-template name="build-no-results" />
         </xsl:when>
+        <xsl:when test="//BrowseList/Tag">
+          <xsl:apply-templates select="//BrowseList/Tag" />
+        </xsl:when>
         <xsl:otherwise>
           <xsl:apply-templates select="//BrowseList/Item" />
         </xsl:otherwise>
@@ -270,6 +290,12 @@
 
   <xsl:template name="build-no-results">
     <pre>BOO-YAH</pre>
+  </xsl:template>
+
+  <xsl:template match="BrowseList/Tag">
+    <qui:tag href="{Url}" count="{Count}">
+      <xsl:value-of select="Value" />
+    </qui:tag>
   </xsl:template>
 
   <xsl:template match="BrowseList/Item">

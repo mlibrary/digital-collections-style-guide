@@ -311,7 +311,17 @@
   </xsl:template>
 
   <xsl:template name="build-results-list">
-    <xsl:apply-templates select="//qui:block[@slot='results']/qui:section" mode="result" />
+    <xsl:apply-templates select="//qui:block[@slot='results']" mode="result" />
+  </xsl:template>
+
+  <xsl:template match="qui:block[qui:tag]" mode="result">
+    <ul class="list--striped">
+      <xsl:apply-templates mode="result" />
+    </ul>
+  </xsl:template>
+
+  <xsl:template match="qui:block" mode="result">
+    <xsl:apply-templates mode="result" />
   </xsl:template>
 
   <xsl:template name="build-results-pagination">
@@ -348,6 +358,17 @@
         </div>
       </nav>
     </xsl:if>
+  </xsl:template>
+
+  <xsl:template match="qui:tag" mode="result">
+    <li>
+      <a 
+        class="flex flex-space-between flex-align-center"
+        href="{@href}">
+        <span><xsl:value-of select="." /></span>
+        <span><xsl:value-of select="@count" /></span>
+      </a>
+    </li>
   </xsl:template>
 
   <xsl:template match="qui:section" mode="result">
@@ -629,4 +650,35 @@
 
   <xsl:template name="build-extra-portfolio-actions"></xsl:template>
 
+  <xsl:template match="*[qui:values]" mode="title">
+    <xsl:for-each select="qui:values/qui:value">
+      <xsl:value-of select="." />
+      <xsl:if test="position() &lt; last()">
+        <xsl:text>; </xsl:text>
+      </xsl:if>
+    </xsl:for-each>
+  </xsl:template>
+
+  <xsl:template match="qui:field[@key='title']" priority="99">
+    <xsl:choose>
+      <xsl:when test="//qui:block[@slot='item']">
+        <xsl:apply-templates select="." mode="build" />
+      </xsl:when>
+    </xsl:choose>
+  </xsl:template>
+  
+  <xsl:template match="qui:link" mode="summary">
+    <xsl:param name="title" />
+    <dd>
+      <a href="{@href}">
+        <xsl:value-of select="@label" />
+        <xsl:if test="@rel = 'toc' and normalize-space($title)">
+          <span class="visually-hidden">
+            <xsl:text> of </xsl:text>
+            <xsl:value-of select="$title" />
+          </span>
+        </xsl:if>
+      </a>
+    </dd>
+  </xsl:template>  
 </xsl:stylesheet>
