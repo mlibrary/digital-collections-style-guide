@@ -6,7 +6,7 @@
   <xsl:variable name="has-plain-text" select="//ViewSelect/Option[Value='text']" />
   <xsl:variable name="is-subj-search">yes</xsl:variable>
 
-  <xsl:variable name="idno" select="//Param[@name='idno']" />
+  <xsl:variable name="idno" select="translate(//Param[@name='idno'], 'ABCDEFGHIJKLMNOPQRSTUVWXYZ','abcdefghijklmnopqrstuvwxyz')"/>
   <xsl:variable name="seq" select="//Param[@name='seq']" />
   <xsl:variable name="label" select="//DocNavigation/PageNavForm/PageSelect/Option[Focus='true']/Label" />
 
@@ -21,6 +21,7 @@
   </xsl:template>
 
   <xsl:template name="build-breadcrumbs-intermediate-links">
+    <!-- header.str.contents ?? -->
     <xsl:if test="//DocMeta/TocHref">
       <qui:link href="{//DocMeta/TocHref}">
         <xsl:value-of select="key('get-lookup', 'header.str.contents')" />
@@ -106,6 +107,7 @@
         height="{//MediaInfo/height}" 
         levels="{//MediaInfo/Levels}" 
         collid="{$collid}" 
+        q1="{//Param[@name='q1']}"
         >
         <xsl:if test="$has-plain-text">
           <xsl:attribute name="has-ocr">true</xsl:attribute>
@@ -158,12 +160,18 @@
   <xsl:template name="build-action-panel-extra" />
 
   <xsl:template name="build-action-panel-portfolio">
-    <xsl:if test="/Top/BookbagAddHref">
-
-      <qui:form rel="add" href="{/Top/BookbagAddHref}">
-      </qui:form>
-
-    </xsl:if>
+    <xsl:choose>
+      <xsl:when test="/Top/BookbagResults/Item[@idno=$idno]">
+        <qui:form slot="bookbag" rel="remove" href="{/Top/BookbagResults/Item[@idno=$idno]/AddRemoveUrl}" data-identifier="{$idno}">
+          <qui:hidden-input name="via" value="pageview" />
+        </qui:form>
+      </xsl:when>
+      <xsl:when test="/Top/BookbagAddHref">
+        <qui:form slot="bookbag" rel="add" href="{/Top/BookbagAddHref}" data-identifier="{$idno}">
+          <qui:hidden-input name="via" value="pageview" />
+        </qui:form>
+      </xsl:when>
+    </xsl:choose>
   </xsl:template>
 
   <xsl:template name="build-action-panel-iiif-link">
@@ -257,7 +265,7 @@
 
   <xsl:template name="build-rights-statement">
     <qui:block slot="rights-statement">
-      <xsl:apply-templates select="//HEADER/FILEDESC/PUBLICATIONSTMT/AVAILABILITY/P" />
+      <xsl:apply-templates select="/Top/DocMeta//HEADER/FILEDESC/PUBLICATIONSTMT/AVAILABILITY/P" />
     </qui:block>
   </xsl:template>
 

@@ -78,12 +78,19 @@
     <xsl:variable name="viewer" select="//qui:viewer" />
     <xsl:if test="$viewer">
       <h2 id="viewer-heading" class="visually-hidden">Viewer</h2>
+      <xsl:variable name="embed-href">
+        <xsl:value-of select="$viewer/@embed-href" />
+        <xsl:if test="normalize-space($viewer/@q1)">
+          <xsl:text>?q1=</xsl:text>
+          <xsl:value-of select="$viewer/@q1" />
+        </xsl:if>
+      </xsl:variable>
       <iframe 
         id="viewer" 
         class="[ viewer ]" 
         allow="fullscreen" 
         title="{$title}"
-        src="{ $viewer/@embed-href }"
+        src="{ $embed-href }"
         data-mimetype="{$viewer/@mimetype}"
         data-istruct_mt="{$viewer/@istruct_mt}">
       </iframe>  
@@ -221,12 +228,23 @@
   </xsl:template>  
 
   <xsl:template name="build-favorite-action">
-    <xsl:variable name="form" select="//qui:form[@rel='add']" />
-    <form method="GET" action="{$form/@href}">
+    <xsl:variable name="form" select="//qui:form[@slot='bookbag']" />
+    <form name="bookbag" method="GET" action="{$form/@href}" data-identifier="{$form/@data-identifier}" target="bookbag-sink">
+      <xsl:apply-templates select="$form/qui:hidden-input" />
       <xsl:call-template name="button">
-        <xsl:with-param name="label">Save to bookbag</xsl:with-param>
+        <xsl:with-param name="label">
+          <xsl:choose>
+            <xsl:when test="$form/@rel = 'add'">
+              Save to bookbag
+            </xsl:when>
+            <xsl:when test="$form/@rel = 'remove'">
+              Remove from bookbag
+            </xsl:when>
+          </xsl:choose>
+        </xsl:with-param>
+        <xsl:with-param name="icon" select="$form/@rel" />
         <xsl:with-param name="classes">button--secondary</xsl:with-param>
-        <xsl:with-param name="icon">add</xsl:with-param>
+        <xsl:with-param name="type">submit</xsl:with-param>
       </xsl:call-template>
     </form>
   </xsl:template>
@@ -323,7 +341,7 @@
     <sl-divider></sl-divider>
   </xsl:template>
 
-  <xsl:template name="button">
+  <xsl:template name="xx-button">
     <xsl:param name="label" />
     <xsl:param name="classes" />
     <xsl:param name="icon" />

@@ -50,7 +50,7 @@
         </xsl:if>
         <xsl:call-template name="build-results-list" />
         <xsl:call-template name="build-results-pagination" />
-        <!-- <xsl:call-template name="build-hidden-portfolio-form" /> -->
+        <xsl:call-template name="build-hidden-portfolio-form" />
       </div>
     </div>
 
@@ -329,7 +329,35 @@
         </div>
       </div>
 
-      <xsl:if test="qui:link[@rel='bookmark']">
+      <xsl:variable name="form" select="qui:form[@slot='bookbag']" />
+      <xsl:if test="$form">
+        <xsl:variable name="bb-id" select="generate-id()" />
+        <label class="[ portfolio-selection ]" for="bb{$bb-id}">
+          <input id="bb{$bb-id}" type="checkbox" name="bbidno" value="{$form/@data-identifier}" autocomplete="off" />
+          <span class="visually-hidden">Add item to portfolio</span>
+        </label>  
+      </xsl:if>
+      <xsl:if test="false() and $form">
+        <form name="bookbag" method="GET" action="{$form/@href}" class="portfolio-selection" data-identifier="{$form/@data-identifier}" target="bookbag-sink">
+          <button class="button button--ghost"
+            style="margin-bottom: auto">
+            <span class="material-icons" aria-hidden="true">
+              <xsl:value-of select="$form/@rel" />
+            </span>
+            <span data-slot="label" class="visually-hidden">
+              <xsl:choose>
+                <xsl:when test="$form/@rel = 'add'">
+                  Add to bookbag
+                </xsl:when>
+                <xsl:when test="$form/@rel = 'remove'">
+                  Remove from bookbag
+                </xsl:when>
+              </xsl:choose>
+            </span>
+          </button>
+        </form>
+      </xsl:if>
+      <xsl:if test="false() and qui:link[@rel='bookmark']">
         <a class="button button--ghost portfolio-selection" 
           style="margin-bottom: auto" 
           aria-label="Add to bookbag"
@@ -596,6 +624,18 @@
 
   <xsl:template name="build-portfolio-actions">
     <xsl:apply-templates select="//qui:callout[@slot='portfolio']" />
+    <!-- <div class="message-callout info mt-1" style="display: none" id="bookbag-overview"></div> -->
+    <div id="bookbag-overview" style="display: none"></div>
+    <div class="[ flex flex-align-center ][ mb-1 gap-0_5 ]">
+      <button class="[ button button--secondary ] [ flex ]" aria-label="Select all items" data-action="select-all" data-checked="false">
+        <span>Select all items</span>
+      </button>
+      <button class="[ button button--secondary ] [ flex ]" aria-label="Add items to bookbag" data-action="add-items">
+        <span class="material-icons" aria-hidden="true">add</span>
+        <span>Add items to bookbag</span>
+      </button>
+      <xsl:call-template name="build-extra-portfolio-actions" />
+    </div>
   </xsl:template>
 
   <xsl:template name="build-collection-header-string">

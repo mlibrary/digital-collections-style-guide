@@ -91,12 +91,23 @@
   </xsl:template>
 
   <xsl:template name="build-favorite-action">
-    <xsl:variable name="form" select="//qui:form[@rel='add']" />
-    <form method="GET" action="{$form/@href}">
+    <xsl:variable name="form" select="//qui:form[@slot='bookbag']" />
+    <form name="bookbag" method="GET" action="{$form/@href}" data-identifier="{$form/@data-identifier}" target="bookbag-sink">
+      <xsl:apply-templates select="$form/qui:hidden-input" />
       <xsl:call-template name="button">
-        <xsl:with-param name="label">Save to bookbag</xsl:with-param>
+        <xsl:with-param name="label">
+          <xsl:choose>
+            <xsl:when test="$form/@rel = 'add'">
+              Save to bookbag
+            </xsl:when>
+            <xsl:when test="$form/@rel = 'remove'">
+              Remove from bookbag
+            </xsl:when>
+          </xsl:choose>
+        </xsl:with-param>
+        <xsl:with-param name="icon" select="$form/@rel" />
         <xsl:with-param name="classes">button--secondary</xsl:with-param>
-        <xsl:with-param name="icon">add</xsl:with-param>
+        <xsl:with-param name="type">submit</xsl:with-param>
       </xsl:call-template>
     </form>
   </xsl:template>
@@ -147,7 +158,7 @@
     <xsl:copy></xsl:copy>
   </xsl:template>
 
-  <xsl:template name="button">
+  <xsl:template name="xx-button">
     <xsl:param name="label" />
     <xsl:param name="classes" />
     <xsl:param name="icon" />

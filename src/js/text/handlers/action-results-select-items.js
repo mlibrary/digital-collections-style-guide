@@ -10,6 +10,9 @@ const _handleSelectAllItems = function(target) {
 
 const _handleAddItems = function(target) {
   let $bbForm = document.querySelector('form#bbaction-form');
+  $bbForm.querySelectorAll('input[name="bbidno"]').forEach((inputEl) => {
+    inputEl.remove();
+  })
   let inputs = document.querySelectorAll('input[name="bbidno"]:checked');
   if (!inputs.length) { return; }
   inputs.forEach((input) => {
@@ -17,8 +20,10 @@ const _handleAddItems = function(target) {
     $bbForm.appendChild(bbInput);
   })
   let $action = $bbForm.querySelector('#bbaction-page');
-  $action.setAttribute('name', 'bbactionbbname');
+  $action.setAttribute('name', 'bbaction');
   $action.setAttribute('value', 'add');
+
+  target.disabled = true;
 
   $bbForm.submit();
 };
