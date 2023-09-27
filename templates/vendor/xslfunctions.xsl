@@ -15,6 +15,12 @@
             <xsl:value-of select="concat( translate(         $firstChar,'abcdefghijklmnopqrstuvwxyz','ABCDEFGHIJKLMNOPQRSTUVWXYZ'),$therest)"/>
         </func:result>
     </func:function>
+    <func:function name="dlxs:downcase">
+        <xsl:param name="str"/>
+        <func:result>
+            <xsl:value-of select="translate($str,'ABCDEFGHIJKLMNOPQRSTUVWXYZ','abcdefghijklmnopqrstuvwxyz')"/>
+        </func:result>
+    </func:function>
     <!-- Utility template for building an HTML form elements) -->
     <func:function name="dlxs:stripEndingChars">
         <xsl:param name="attr"/>

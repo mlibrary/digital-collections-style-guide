@@ -43,6 +43,12 @@
     <xsl:param name="slot" />
 
     <xsl:variable name="sourcedesc" select="$item/HEADER/FILEDESC/SOURCEDESC" />
+    <xsl:variable name="source-title-path" select="($sourcedesc//TITLESTMT|$sourcedesc/BIBLFULL|$sourcedesc/BIBL)"/>
+    <xsl:variable name="filedesc" select="$item/HEADER/FILEDESC" />
+    <xsl:variable name="mono-title-path" select="$filedesc/TITLESTMT" />
+    <xsl:variable name="bibl-src" select="($sourcedesc/BIBLFULL|$sourcedesc/BIBL)"/>
+    <xsl:variable name="source-pub-st-path" select="($bibl-src/PUBLICATIONSTMT|$bibl-src/IMPRINT|$bibl-src)"/>
+
 
     <xsl:variable name="main-title">
       <!-- use the 245 title if there is one -->
@@ -110,6 +116,85 @@
     </xsl:variable>
     <xsl:variable name="pubinfo" select="exsl:node-set($pubinfo-tmp)" />
 
+    <xsl:variable name="print-source-tmp">
+      <qui:block>
+        <xsl:if test="$include-print-source-metadata = 'yes'">
+          <qui:field key="print-source">
+            <qui:label>
+              <xsl:value-of select="key('get-lookup','headerutils.str.printsource')"/>
+            </qui:label>
+            <qui:values>
+              <qui:value>
+                <xhtml:em><xsl:value-of select="$source-title-path/TITLE"/></xhtml:em>
+              </qui:value>
+              <xsl:if test="$source-title-path/TITLE[@TYPE='series']">
+                <qui:value>
+                  <xsl:value-of select="$source-title-path/TITLE[@TYPE='series']"/>
+                </qui:value>
+                <qui:value>
+                  <xsl:for-each select="$source-title-path/AUTHOR">
+                    <xsl:apply-templates select="."/>
+                  </xsl:for-each>
+                </qui:value>
+              </xsl:if>
+              <xsl:if test="$mono-title-path/EDITOR">
+                <qui:value>
+                  <xsl:for-each select="$mono-title-path/EDITOR">
+                    <xsl:value-of select="concat(.,', ed.')"/>
+                  </xsl:for-each>
+                </qui:value>
+              </xsl:if>
+              <qui:value>
+                <xsl:for-each select="$source-pub-st-path/PUBPLACE">
+                  <xsl:value-of select="dlxs:stripEndingChars(.,'.,:;')"/>
+                  <xsl:if test="position()!=last()">
+                    <xsl:text>, </xsl:text>
+                  </xsl:if>
+                  <xsl:if test="position()=last()">
+                    <xsl:text>: </xsl:text>
+                  </xsl:if>
+                </xsl:for-each>
+                <xsl:for-each select="$source-pub-st-path/PUBLISHER">
+                  <xsl:value-of select="dlxs:stripEndingChars(.,'.,:;')"/>
+                  <xsl:if test="position()!=last()">
+                    <xsl:text>, </xsl:text>
+                  </xsl:if>
+                </xsl:for-each>
+              </qui:value>
+              <xsl:if test="$source-title-path/BIBLSCOPE[not(@TYPE='issuetitle')]">
+                <qui:value>
+                  <xsl:apply-templates select="$source-title-path/BIBLSCOPE[not(@TYPE='issuetitle')]"/>
+                </qui:value>
+              </xsl:if>
+              <xsl:if test="$source-pub-st-path/DATE">
+                <qui:value part="date">
+                  <xsl:value-of select="$source-pub-st-path/DATE[1]"/>
+                </qui:value>
+              </xsl:if>
+              <xsl:if test="$source-title-path/BIBLSCOPE[@TYPE='issuetitle']">
+                <qui:value>
+                  <xsl:apply-templates select="$source-title-path/BIBLSCOPE[@TYPE='issuetitle']"/>
+                </qui:value>                
+              </xsl:if>
+              <xsl:if test="$source-pub-st-path/IDNO[@TYPE='ISBN']">
+                <qui:value>
+                  <xsl:call-template name="docISBN">
+                    <xsl:with-param name="src-bibl-path" select="$bibl-src"/>
+                  </xsl:call-template>  
+                </qui:value>
+              </xsl:if>
+              <xsl:if test="$source-title-path/following-sibling::BIBL">
+                <qui:value>
+                  <xsl:apply-templates select="$source-title-path/following-sibling::BIBL"/>
+                </qui:value>
+              </xsl:if>
+            </qui:values>
+          </qui:field>
+        </xsl:if>          
+      </qui:block>
+    </xsl:variable>    
+    <xsl:variable name="print-source" select="exsl:node-set($print-source-tmp)" />
+
     <!-- <xsl:variable name="subjectinfo-tmp">
       <qui:block>
         <xsl:if test="$is-subj-search='yes' and $item//KEYWORDS/child::TERM">
@@ -161,12 +246,27 @@
         <xsl:if test="$pubinfo//qui:value">
           <xsl:apply-templates select="$pubinfo//qui:field" mode="copy" />
         </xsl:if>
+        <xsl:if test="$include-useguidelines-metadata = 'yes'">
+          <xsl:apply-templates select="$item/HEADER/FILEDESC/PUBLICATIONSTMT/AVAILABILITY" mode="metadata" />
+        </xsl:if>
+        <xsl:if test="$print-source//qui:value">
+          <xsl:apply-templates select="$print-source//qui:field" mode="copy" />
+        </xsl:if>
         <xsl:if test="$is-subj-search='yes' and $item//KEYWORDS/child::TERM">
           <xsl:call-template name="build-res-item-subjects">
             <xsl:with-param name="subj-parent" select="$item"/>
           </xsl:call-template>
         </xsl:if>
         <xsl:apply-templates select="$item/CollName" mode="field" />
+        <qui:field key="bookmark" component="input">
+          <qui:label>Link to this Item</qui:label>
+          <qui:values>
+            <qui:value>
+              <xsl:text>https://name.umdl.umich.edu/</xsl:text>
+              <xsl:value-of select="dlxs:downcase(//Param[@name='idno'])" />  
+            </qui:value>
+          </qui:values>
+        </qui:field>
       </qui:section>
     </qui:block>
   </xsl:template>
@@ -509,10 +609,12 @@
       <xsl:attribute name="label">
         <xsl:choose>
           <xsl:when test="$item-encoding-level = '1'">
-            <xsl:value-of select="key('get-lookup','results.str.16')"/>
+            <!-- <xsl:value-of select="key('get-lookup','results.str.16')"/> -->
+            <xsl:value-of select="key('get-lookup','uplift.str.contents')"/>
           </xsl:when>
           <xsl:otherwise>
-            <xsl:value-of select="key('get-lookup','results.str.17')"/>            
+            <!-- <xsl:value-of select="key('get-lookup','results.str.17')"/> -->
+            <xsl:value-of select="key('get-lookup','uplift.str.contents')"/>
           </xsl:otherwise>
         </xsl:choose>
       </xsl:attribute>
@@ -678,6 +780,19 @@
         <qui:value>
           <!-- should this be a link? -->
           <xsl:value-of select="." />
+        </qui:value>
+      </qui:values>
+    </qui:field>
+  </xsl:template>
+
+  <xsl:template match="AVAILABILITY" mode="metadata">
+    <qui:field key="useguidelines">
+      <qui:label>
+        <xsl:value-of select="key('get-lookup', 'headerutils.str.22')" />
+      </qui:label>
+      <qui:values>
+        <qui:value>
+          <xsl:apply-templates select="." />
         </qui:value>
       </qui:values>
     </qui:field>

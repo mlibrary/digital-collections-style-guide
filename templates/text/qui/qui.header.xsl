@@ -2,6 +2,10 @@
 
   <xsl:output method="xml" version="1.0" encoding="utf-8" indent="yes" />
 
+  <xsl:variable name="is-subj-search">yes</xsl:variable>
+  <xsl:variable name="include-useguidelines-metadata">yes</xsl:variable>
+  <xsl:variable name="include-print-source-metadata">yes</xsl:variable>
+
   <xsl:variable name="item-metadata-tmp">
     <xsl:apply-templates select="/Top/Item" mode="metadata" />
   </xsl:variable>
@@ -61,7 +65,7 @@
   </xsl:template>
 
   <xsl:template name="get-current-page-breadcrumb-label">
-    Contents
+    <xsl:value-of select="key('get-lookup', 'uplift.str.contents')" />
   </xsl:template>
 
   <xsl:template match="HeaderToc">
