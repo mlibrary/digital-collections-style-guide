@@ -20,6 +20,8 @@
       <xsl:call-template name="get-collection-title" />
     </qui:header>
 
+    <xsl:apply-templates select="/Top/BannerImage" />
+
     <xsl:apply-templates select="/Top/Content" />
     
     <xsl:apply-templates select="//qui:block[@slot='links']" mode="copy" />
@@ -80,6 +82,9 @@
     <qui:block slot="contents">
       <xsl:apply-templates select=".//div[@data-slot='contents']" mode="copy-guts" />
     </qui:block>
+    <qui:block slot="access">
+      <xsl:apply-templates select=".//div[@data-slot='access']" mode="copy-guts" />
+    </qui:block>
     <qui:block slot="useguidelines">
       <xsl:apply-templates select=".//div[@data-slot='useguidelines']" mode="copy" />
     </qui:block>
@@ -99,6 +104,14 @@
       </xsl:if>
       <xsl:apply-templates select="Label" />
     </qui:option>
+  </xsl:template>
+
+  <xsl:template match="BannerImage[normalize-space(.)]">
+    <qui:hero-image src="{.}" />
+  </xsl:template>
+
+  <xsl:template match="BannerImage">
+    <qui:debug>BOOGER</qui:debug>
   </xsl:template>
 
 </xsl:stylesheet>

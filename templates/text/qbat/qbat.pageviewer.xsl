@@ -48,7 +48,7 @@
       </div>
     </div>
 
-</xsl:template>
+  </xsl:template>
 
   <xsl:template name="build-navigation">
     <xsl:call-template name="build-breadcrumbs">
