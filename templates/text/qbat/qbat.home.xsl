@@ -39,6 +39,36 @@
           <xsl:with-param name="classes">browse-link</xsl:with-param>
         </xsl:apply-templates>
 
+        <xsl:if test="count(//qui:block[@slot != 'information' and @slot != 'links']) &gt; 0">
+          <div class="[ border-bottom ][ pr-1 ]">
+            <h3>Page Index</h3>
+            <ul class="nav">
+              <xsl:for-each select="//qui:block[@slot != 'information' and @slot != 'links']">
+                <li>
+                  <div class="flex flex-align-center gap-0_5">
+                    <a style="font-size: 0.75rem" class="material-icons text-black no-underline" aria-hidden="true" href="{@href}">minimize</a>                  
+                    <a href="#{@slot}">
+                      <xsl:apply-templates select="." mode="build-link-text" />
+                    </a>  
+                  </div>
+                  <xsl:if test="@slot = 'contents'">
+                    <ul>
+                      <xsl:for-each select="xhtml:figure">
+                        <li>
+                          <div class="flex flex-align-center gap-0_5">
+                            <a style="font-size: 0.75rem;" class="material-icons text-black no-underline" aria-hidden="true" href="{@href}">minimize</a>
+                            <a href="{@href}"><xsl:value-of select=".//xhtml:h3" /></a>  
+                          </div>
+                        </li>
+                      </xsl:for-each>
+                    </ul>  
+                  </xsl:if>
+                </li>
+              </xsl:for-each>
+            </ul>
+          </div>    
+        </xsl:if>
+
         <xsl:apply-templates select="//qui:panel[@slot='custom']" />
         
         <xsl:if test="//qui:filters-panel/qui:filter[@key != 'med']">
@@ -61,6 +91,7 @@
           <xsl:apply-templates select="//qui:block[@slot='information']" />
           <xsl:apply-templates select="//qui:block[@slot='contents']" />
           <xsl:apply-templates select="//qui:block[@slot='contentwarning']" />
+          <xsl:apply-templates select="//qui:block[@slot='access']" />
           <xsl:apply-templates select="//qui:block[@slot='copyright' or @slot='useguidelines']" />
           <xsl:apply-templates select="//qui:block[@slot='more-information']" />
           <xsl:apply-templates select="//qui:block[@slot='links'][not(@align)]" />
@@ -115,7 +146,7 @@
   </xsl:template>
 
   <xsl:template match="qui:block[@slot='contents'][.//qui:card]">
-    <h2>Digitized Collection Contents</h2>
+    <h2 id="{@slot}">Digitized Collection Contents</h2>
     <div class="[ gallery-view ]">
       <xsl:for-each select="qui:card">
         <!-- <div class="[ card ]"> -->
@@ -130,11 +161,11 @@
   </xsl:template>
 
   <xsl:template match="qui:block[@slot='contents'][.//xhtml:figure]">
-    <h2>Digitized Collection Contents</h2>
+    <h2 id="{@slot}">Digitized Collection Contents</h2>
     <div class="[ gallery-view ]">
       <xsl:for-each select="xhtml:figure">
         <!-- <div class="[ card ]"> -->
-          <a class="[ card ][ border mb-1 ]" style="padding: 1rem; width: 50%;" href="{@href}">
+          <a class="[ card ][ border mb-1 ]" href="{@href}">
             <xsl:apply-templates select="xhtml:img" mode="card-image" />
             <xsl:apply-templates select="xhtml:xfigcaption/xhtml:h3" mode="card-title" />
             <xsl:apply-templates select="xhtml:figcaption" mode="card-body" />
@@ -162,16 +193,23 @@
     <xsl:if test="normalize-space(.)">
       <div class="alert-info">
         <xsl:if test="normalize-space(.//xhtml:h2) = ''">
-          <h2>Content Warning</h2>
+          <h2 id="{@slot}">Content Warning</h2>
         </xsl:if>
         <xsl:apply-templates mode="copy" />
       </div>
     </xsl:if>
   </xsl:template>
 
+  <xsl:template match="qui:block[@slot='access']">
+    <xsl:if test="normalize-space(.)">
+      <h2 id="{@slot}">Access</h2>
+      <xsl:apply-templates mode="copy" />
+    </xsl:if>
+  </xsl:template>
+
   <xsl:template match="qui:block[@slot='copyright' or @slot='useguidelines']">
     <xsl:if test="normalize-space(.)">
-      <h2 id="rights-permissions">Rights and Permissions</h2>
+      <h2 id="{@slot}">Rights and Permissions</h2>
       <xsl:apply-templates mode="copy" />
     </xsl:if>
   </xsl:template>
@@ -331,6 +369,24 @@
         </span>
       </a>
     </li>
+  </xsl:template>
+
+  <xsl:template match="qui:block" mode="build-link-text">
+    <xsl:choose>
+      <xsl:when test="@slot = 'contents'">Digitized Collection Contents</xsl:when>
+      <xsl:when test="@slot = 'contentwarning'">
+        <xsl:choose>
+          <xsl:when test=".//xhtml:h2">
+            <xsl:value-of select=".//xhtml:h2" />
+          </xsl:when>
+          <xsl:otherwise>Content Warning</xsl:otherwise>
+        </xsl:choose>
+      </xsl:when>
+      <xsl:when test="@slot = 'access'">Access</xsl:when>
+      <xsl:when test="@slot = 'copyright'">Rights and Permissions</xsl:when>
+      <xsl:when test="@slot = 'useguidelines'">Rights and Permissions</xsl:when>
+      <xsl:when test="@slot = 'more-information'">More Information</xsl:when>
+    </xsl:choose>
   </xsl:template>
 
 </xsl:stylesheet>

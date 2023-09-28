@@ -225,3 +225,15 @@ a.bedazzled-link span:not(.material-icons) {
   }
 
 }
+
+.gallery-view .card {
+  min-width: 16rem;
+  max-width: 20rem;
+  padding: 1rem;
+  flex-grow: 1;
+}
+
+ul.nav ul {
+  margin-left: 1rem;
+  margin-top: 0.25rem;
+}

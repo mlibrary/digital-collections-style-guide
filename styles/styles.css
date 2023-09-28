@@ -55,7 +55,8 @@ body {
 }
 
 ol,
-ul {
+ul,
+ul.list-unstyled {
   list-style: none;
   padding: 0;
 }
@@ -269,7 +270,7 @@ label.control-checkbox {
   max-width: 100%;
 }
 
-.text-block ul {
+.text-block ul[not(@class)] {
   list-style: initial;
   padding: revert;
 }
