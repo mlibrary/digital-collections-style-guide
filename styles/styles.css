@@ -11,6 +11,10 @@
   --material: "Material Icons";
 }
 
+body[data-class="text"] {
+  --record-width: 75ch;
+}
+
 @media (min-width: 720px) {
   :root {
     --viewport-margin: var(--space-xx-large);
@@ -1207,6 +1211,10 @@ sl-dropdown::part(panel) {
   padding-right: 1rem;
 }
 
+.pl-1 {
+  padding-left: 1rem;
+}
+
 .pb-1 {
   padding-bottom: 1rem;
 }
@@ -1522,7 +1530,7 @@ button[disabled] {
 
 dl.record {
   /* max-width: 65vw; */
-  max-width: 65ch;
+  max-width: var(--record-width, 65ch);
   display: block;
   width: 100%;
 }

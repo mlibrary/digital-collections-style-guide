@@ -1,5 +1,7 @@
 <?xml version="1.0" encoding="UTF-8" ?>
 <xsl:stylesheet version="1.0" xmlns="http://www.w3.org/1999/xhtml" xmlns:xhtml="http://www.w3.org/1999/xhtml" xmlns:xsl="http://www.w3.org/1999/XSL/Transform" xmlns:dlxs="http://dlxs.org" xmlns:qbat="http://dlxs.org/quombat" xmlns:exsl="http://exslt.org/common" extension-element-prefixes="exsl" xmlns:qui="http://dlxs.org/quombat/ui">
+  <xsl:variable name="searchtype" select="/Top/SearchType"/>
+
 
   <xsl:template name="build-advanced-search-form">
     <xsl:variable name="key" select="concat('navheader.str.', $page)" />
@@ -37,6 +39,19 @@
     </qui:callout>
     
     <qui:form id="collection-search">
+
+      <qui:hidden-input name="type">
+        <xsl:attribute name="value">
+          <xsl:choose>
+            <xsl:when test="contains($searchtype, 'bbag')">
+              <xsl:value-of select="substring-before($searchtype, 'bbag')" />
+            </xsl:when>
+            <xsl:otherwise>
+              <xsl:value-of select="$searchtype" />
+            </xsl:otherwise>  
+          </xsl:choose>  
+        </xsl:attribute>
+      </qui:hidden-input>
 
       <xsl:choose>
         <xsl:when test="$page = 'simple'">

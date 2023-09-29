@@ -8,6 +8,7 @@ window.addEventListener('DOMContentLoaded', (event) => {
   if ( ! ( 
     document.documentElement.dataset.view == 'image' || 
     document.documentElement.dataset.view == 'static' || 
+    document.documentElement.dataset.view == 'root' || 
     document.documentElement.dataset.view == 'text' ) ) {
     return ; 
   }
