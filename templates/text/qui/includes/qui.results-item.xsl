@@ -233,7 +233,7 @@
             </qui:values>
           </qui:field>
         </xsl:if>
-        <xsl:if test="normalize-space($main-date)">
+        <xsl:if test="false() and normalize-space($main-date)">
           <qui:field key="publication-date">
             <qui:label>Publication Date</qui:label>
             <qui:values>
@@ -258,15 +258,17 @@
           </xsl:call-template>
         </xsl:if>
         <xsl:apply-templates select="$item/CollName" mode="field" />
-        <qui:field key="bookmark" component="input">
-          <qui:label>Link to this Item</qui:label>
-          <qui:values>
-            <qui:value>
-              <xsl:text>https://name.umdl.umich.edu/</xsl:text>
-              <xsl:value-of select="dlxs:downcase(//Param[@name='idno'])" />  
-            </qui:value>
-          </qui:values>
-        </qui:field>
+        <xsl:if test="//Param[@name='idno']">
+          <qui:field key="bookmark" component="input">
+            <qui:label>Link to this Item</qui:label>
+            <qui:values>
+              <qui:value>
+                <xsl:text>https://name.umdl.umich.edu/</xsl:text>
+                <xsl:value-of select="dlxs:downcase(//Param[@name='idno'])" />  
+              </qui:value>
+            </qui:values>
+          </qui:field>
+        </xsl:if>
       </qui:section>
     </qui:block>
   </xsl:template>
@@ -717,7 +719,7 @@
     </xsl:if>
   </xsl:template>
 
-  <xsl:template match="IMPRINT|PUBLICATIONSTMT" mode="metadata">
+  <xsl:template match="IMPRINT|PUBLICATIONSTMT" mode="metadata--values">
     <xsl:for-each select="PUBPLACE">
       <qui:value><xsl:value-of select="." /></qui:value>
     </xsl:for-each>
@@ -729,6 +731,28 @@
 
   <xsl:template match="BIBL" mode="metadata">
     <qui:value><xsl:value-of select="." /></qui:value>
+  </xsl:template>
+
+  <xsl:template match="IMPRINT|PUBLICATIONSTMT" mode="metadata">
+    <qui:value>
+      <xsl:for-each select="PUBPLACE">
+        <xsl:value-of select="dlxs:stripEndingChars(.,'.,:;')"/>
+        <xsl:if test="position()!=last()">
+          <xsl:text>,&#xa0;</xsl:text>
+        </xsl:if>
+      </xsl:for-each>
+      <xsl:text>.&#xa0;</xsl:text>
+      <xsl:for-each select="PUBLISHER">
+        <xsl:value-of select="dlxs:stripEndingChars(.,'.,:;')"/>
+        <xsl:if test="position()!=last()">
+          <xsl:text>,&#xa0;</xsl:text>
+        </xsl:if>
+        <xsl:if test="position()=last()">
+          <xsl:text>.&#xa0;</xsl:text>
+        </xsl:if>
+      </xsl:for-each>
+      <xsl:apply-templates select="DATE"/>
+    </qui:value>
   </xsl:template>
 
   <!-- ********************************************************************** -->

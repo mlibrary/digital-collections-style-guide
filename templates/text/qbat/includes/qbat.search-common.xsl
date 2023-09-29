@@ -30,6 +30,7 @@
     <div class="advanced-search--form">
 
       <form id="collection-search" action="/cgi/t/text/text-idx" method="GET" autocomplete="off" data-num-qs="{$search-form/@data-num-qs}">
+
         <h2 class="subtle-heading">Fielded Search Options</h2>
         <div class="message-callout info">
           <xsl:apply-templates select="//qui:callout[@slot='clause']" mode="copy-guts" />

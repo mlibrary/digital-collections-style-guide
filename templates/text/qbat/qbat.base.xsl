@@ -43,7 +43,7 @@
       </xsl:if>
 
       <xsl:apply-templates select="qui:head" />
-      <body class="[ font-base-family ]" data-initialized="false" style="opacity: 0">
+      <body class="[ font-base-family ]" data-class="text" data-initialized="false" style="opacity: 0">
         <xsl:apply-templates select="build-body-data" />
 
         <!-- Google Tag Manager (noscript) -->
