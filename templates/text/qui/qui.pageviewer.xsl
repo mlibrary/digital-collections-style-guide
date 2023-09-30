@@ -329,8 +329,8 @@
           <qui:label>Collection</qui:label>
           <qui:values>
             <qui:value>
-              <qui:link href="{/Top/NavHeader/MainNav/NavItem[Name='Home']/Link}">
-                <xsl:value-of select="//Top/DlxsGlobals/TitleComplex" />
+              <qui:link href="{/Top/NavHeader/MainNav/NavItem[Name='home']/Link}">
+                <xsl:apply-templates select="/Top/DlxsGlobals/TitleComplex" />
               </qui:link>
             </qui:value>
           </qui:values>
@@ -451,6 +451,17 @@
       </qui:input>
       <qui:link href="{/Top/SimpleSearchWithinLink}" rel="advanced" />
     </qui:form>
+  </xsl:template>
+
+  <xsl:template match="TitleComplex">
+    <xsl:choose>
+      <xsl:when test="img">
+        <xsl:value-of select="img/@alt" />
+      </xsl:when>
+      <xsl:otherwise>
+        <xsl:value-of select="." />
+      </xsl:otherwise>
+    </xsl:choose>
   </xsl:template>
   
 </xsl:stylesheet>

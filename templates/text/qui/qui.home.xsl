@@ -82,6 +82,9 @@
     <qui:block slot="contents">
       <xsl:apply-templates select=".//div[@data-slot='contents']" mode="copy-guts" />
     </qui:block>
+    <qui:block slot="contentwarning">
+      <xsl:apply-templates select=".//div[@data-slot='contentwarning']" mode="copy-guts" />
+    </qui:block>
     <qui:block slot="access">
       <xsl:apply-templates select=".//div[@data-slot='access']" mode="copy-guts" />
     </qui:block>

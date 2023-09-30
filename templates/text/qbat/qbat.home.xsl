@@ -43,7 +43,7 @@
           <div class="[ border-bottom ][ pr-1 ]">
             <h3>Page Index</h3>
             <ul class="nav">
-              <xsl:for-each select="//qui:block[@slot != 'information' and @slot != 'links']">
+              <xsl:for-each select="//qui:block[@slot != 'information' and @slot != 'links'][normalize-space(.)]">
                 <li>
                   <div class="flex flex-align-center gap-0_5">
                     <a style="font-size: 0.75rem" class="material-icons text-black no-underline" aria-hidden="true" href="{@href}">minimize</a>                  
