@@ -47,7 +47,7 @@
           </xsl:for-each>
         </xsl:when>
         <xsl:otherwise>
-          <qui:input type="hidden" role="search" name="type" value="simple" disabled="{$is-browse}" />
+          <qui:input type="hidden" role="search" name="type" value="{normalize-space(substring-after(//NavItem[Name='search']/Link, 'page='))}" disabled="{$is-browse}" />
         </xsl:otherwise>
       </xsl:choose>
     </qui:form>
@@ -62,26 +62,53 @@
         <xsl:otherwise>q1</xsl:otherwise>
       </xsl:choose>
     </xsl:variable>
+
+    <xsl:variable name="is-simple-search">
+      <xsl:choose>
+        <xsl:when test="contains(//NavItem[Name='search']/Link, 'page=simple')">
+          <xsl:text>true</xsl:text>
+        </xsl:when>
+        <xsl:otherwise>
+          <xsl:text>false</xsl:text>
+        </xsl:otherwise>
+      </xsl:choose>
+    </xsl:variable>
+
     <qui:control slot="clause" data-name="{$field}">
       <qui:input name="q1" slot="query" value="{$q}" data-active="true" />
-      <qui:input slot="rgn" name="key" type="select">
-        <xsl:for-each select="//SearchQuery/RegionSearchSelect/Option">
-          <qui:option value="{Value}">
-            <xsl:if test="Focus = 'true'">
-              <xsl:attribute name="selected">selected</xsl:attribute>
-            </xsl:if>
-            <xsl:choose>
-              <xsl:when test="Value = 'full text'">
-                Full Text
-              </xsl:when>
-              <xsl:otherwise>
-                <xsl:value-of select="dlxs:capitalize(Label)" />
-              </xsl:otherwise>
-            </xsl:choose>
-          </qui:option>
-        </xsl:for-each>
+      <qui:input slot="rgn" type="select">
+        <xsl:attribute name="name">
+          <xsl:choose>
+            <xsl:when test="$is-simple-search = 'true'">rgn</xsl:when>
+            <xsl:otherwise>rgn1</xsl:otherwise>
+          </xsl:choose>  
+        </xsl:attribute>
+        <xsl:choose>
+          <xsl:when test="$is-simple-search = 'false'">
+            <xsl:apply-templates select="//SearchQuery/Region1SearchSelect/Option" />
+          </xsl:when>
+          <xsl:otherwise>
+            <xsl:apply-templates select="//SearchQuery/RegionSearchSelect/Option" />
+          </xsl:otherwise>
+        </xsl:choose>
       </qui:input>  
     </qui:control>
+  </xsl:template>
+
+  <xsl:template match="Option">
+    <qui:option value="{Value}">
+      <xsl:if test="Focus = 'true'">
+        <xsl:attribute name="selected">selected</xsl:attribute>
+      </xsl:if>
+      <xsl:choose>
+        <xsl:when test="Value = 'full text'">
+          Full Text
+        </xsl:when>
+        <xsl:otherwise>
+          <xsl:value-of select="dlxs:capitalize(Label)" />
+        </xsl:otherwise>
+      </xsl:choose>
+    </qui:option>
   </xsl:template>
 
 </xsl:stylesheet>

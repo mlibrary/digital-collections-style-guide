@@ -113,7 +113,7 @@
         <xsl:if test="//NavItem/Name='bookbag'">
           <qui:link rel="portfolios" href="{//NavItem[Name='bookbag']/Link}">Bookbag</qui:link>
         </xsl:if>
-        <qui:link rel="search" href="/cgi/t/text/text-idx?cc={$collid};page=simple">Advanced Search</qui:link>
+        <qui:link rel="search" href="{//NavItem[Name='search']/Link}">Advanced Search</qui:link>
         <xsl:call-template name="build-login-link" />
       </qui:nav>
     </qui:m-website-header>
