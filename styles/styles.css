@@ -287,6 +287,10 @@ label.control-checkbox {
   font-weight: bold;
 }
 
+.capitalize {
+  text-transform: capitalize;
+}
+
 /* Skip link */
 
 .skip-links {

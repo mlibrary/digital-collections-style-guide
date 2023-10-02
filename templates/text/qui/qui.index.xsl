@@ -9,13 +9,18 @@
   <xsl:template name="get-title">
     <xsl:choose>
       <xsl:when test="$page = 'index'">Index</xsl:when>
-      <xsl:when test="$page = 'simple'">Advanced Search: Basic</xsl:when>
+      <xsl:when test="$page = 'history'">Search History</xsl:when>
+      <xsl:otherwise>
+        <xsl:text>Advanced Search</xsl:text>
+        <!-- <xsl:value-of select="key('get-lookup', concat('navheader.str.', $page))" /> -->
+      </xsl:otherwise>
+      <!-- <xsl:when test="$page = 'simple'">Advanced Search: Basic</xsl:when>
       <xsl:when test="$page = 'boolean'">Advanced Search: Boolean</xsl:when>
       <xsl:when test="$page = 'proximity'">Advanced Search: Proximity</xsl:when>
       <xsl:when test="$page = 'bib'">Advanced Search: Bibliographic</xsl:when>
       <xsl:when test="$page = 'wwstart'">Advanced Search: Word Index</xsl:when>
       <xsl:when test="$page = 'wwfull'">Advanced Search: Word Index</xsl:when>
-      <xsl:when test="$page = 'history'">Search History</xsl:when>
+      <xsl:when test="$page = 'history'">Search History</xsl:when> -->
     </xsl:choose>
   </xsl:template>
 
