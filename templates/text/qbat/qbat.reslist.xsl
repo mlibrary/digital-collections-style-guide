@@ -233,8 +233,8 @@
             </ul>
           </xsl:if>
         </div>
-        <div class="pagination__group">
-          <label for="results-pagination">Go to page:</label>
+        <div class="[ pagination__group ][ flex flex-align-center gap-0_5 ]">
+          <label for="results-pagination" class="pr-0">Go to page:</label>
           <input
             type="number"
             id="results-pagination"

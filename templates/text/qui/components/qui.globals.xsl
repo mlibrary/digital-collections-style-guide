@@ -196,6 +196,7 @@
   </xsl:variable>
   <xsl:variable name="include-useguidelines-metadata">no</xsl:variable>
   <xsl:variable name="include-print-source-metadata">no</xsl:variable>
+  <xsl:variable name="include-bookmark">no</xsl:variable>
   <xsl:variable name="display-layout" select="normalize-space(//Top/ResList/Results/DisplayLayout)"/>
   <xsl:variable name="display-type" select="normalize-space(//Top/ResList/Results/DisplayType)"/>
   <xsl:variable name="BuildLinks">

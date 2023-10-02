@@ -39,9 +39,11 @@
       <xsl:choose>
         <xsl:when test="//ResultsLinks/HiddenVars/Variable[@name != 'q1']">
           <xsl:for-each select="//ResultsLinks/HiddenVars/Variable">
-            <qui:input type="hidden" role="search" name="{@name}" value="{.}">
-              <xsl:attribute name="disabled"><xsl:value-of select="$is-browse" /></xsl:attribute>
-            </qui:input>
+            <xsl:if test="@name != 'debug'">
+              <qui:input type="hidden" role="search" name="{@name}" value="{.}">
+                <xsl:attribute name="disabled"><xsl:value-of select="$is-browse" /></xsl:attribute>
+              </qui:input>  
+            </xsl:if>
           </xsl:for-each>
         </xsl:when>
         <xsl:otherwise>
