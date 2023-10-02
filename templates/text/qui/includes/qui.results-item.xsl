@@ -258,7 +258,7 @@
           </xsl:call-template>
         </xsl:if>
         <xsl:apply-templates select="$item/CollName" mode="field" />
-        <xsl:if test="//Param[@name='idno']">
+        <xsl:if test="$include-bookmark = 'yes'">
           <qui:field key="bookmark" component="input">
             <qui:label>Link to this Item</qui:label>
             <qui:values>
