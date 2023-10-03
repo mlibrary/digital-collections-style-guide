@@ -334,7 +334,7 @@
         <xsl:variable name="bb-id" select="generate-id()" />
         <label class="[ portfolio-selection ]" for="bb{$bb-id}">
           <input id="bb{$bb-id}" type="checkbox" name="bbidno" value="{$form/@data-identifier}" autocomplete="off" />
-          <span class="visually-hidden">Add item to portfolio</span>
+          <span class="visually-hidden">Add item to bookbag</span>
         </label>  
       </xsl:if>
       <xsl:if test="false() and $form">

@@ -20,7 +20,7 @@
   <xsl:variable name="view" select="//qui:root/@view" />
 
   <xsl:template match="qui:root">
-    <html lang="en" data-root="{$docroot}" data-username="{$username}" data-view="{$view}" data-initialized="false" style="opacity: 0">
+    <html lang="en" data-root="{$docroot}" data-username="{$username}" data-view="{$view}" data-template="{//qui:root/@template}" data-initialized="false" style="opacity: 0">
       <xsl:call-template name="make-data-attribute">
         <xsl:with-param name="name">c</xsl:with-param>
         <xsl:with-param name="value"><xsl:value-of select="$collid" /></xsl:with-param>
@@ -739,10 +739,13 @@
   </xsl:template>
 
   <xsl:template name="build-hidden-portfolio-form">
-    <form style="display: none" method="GET" action="/cgi/t/text/text-idx" id="bbaction-form" target="bookbag-sink">
+    <xsl:param name="target">bookbag-sink</xsl:param>
+    <form style="display: none" method="GET" action="/cgi/t/text/text-idx" id="bbaction-form" target="{$target}">
       <xsl:apply-templates select="//qui:form[@action='bbaction']/qui:hidden-input" />
       <input type="hidden" name="bbaction" value="" id="bbaction-page" />
       <input type="hidden" name="bbc" value="{$collid}" />
+      <input type="hidden" name="c" value="{$collid}" />
+      <input type="hidden" name="cc" value="{$collid}" />
     </form>
   </xsl:template>
 

@@ -20,8 +20,9 @@ window.addEventListener('DOMContentLoaded', (event) => {
   })
 
   const view = document.documentElement.dataset.view;
+  const template = document.documentElement.dataset.template;
   const iframeEl = document.querySelector('iframe[name="bookbag-sink"]');
-  if ( iframeEl && view == 'reslist' ) {
+  if ( iframeEl && ( template == 'reslist' || template == 'bookbag' ) ) {
     iframeEl.addEventListener('load', (event) => {
       document.querySelectorAll('input[name="bbidno"]:checked').forEach((inputEl) => {
         inputEl.checked = false;
@@ -33,6 +34,10 @@ window.addEventListener('DOMContentLoaded', (event) => {
       const btnAdd = document.querySelector('button[data-action="add-items"]');
       if ( btnAdd ) {
         btnAdd.disabled = false;
+      }
+      const btnRemove = document.querySelector('button[data-action="remove-items"]');
+      if ( btnRemove ) {
+        btnRemove.disabled = false;
       }
       const divOverview = document.querySelector('#bookbag-overview');
       const iframeOverviewEl = iframeEl.contentWindow.document.querySelector(`.bookbag-overview`);

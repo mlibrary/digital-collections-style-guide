@@ -2,21 +2,36 @@
 <xsl:stylesheet version="1.0" xmlns="http://www.w3.org/1999/xhtml" xmlns:xhtml="http://www.w3.org/1999/xhtml" xmlns:xsl="http://www.w3.org/1999/XSL/Transform" xmlns:dlxs="http://dlxs.org" xmlns:qbat="http://dlxs.org/quombat" xmlns:exsl="http://exslt.org/common" extension-element-prefixes="exsl" xmlns:qui="http://dlxs.org/quombat/ui">
   <xsl:variable name="searchtype" select="/Top/SearchType"/>
 
-
-  <xsl:template name="build-advanced-search-form">
+  <xsl:template name="build-advanced-search">
     <xsl:variable name="key" select="concat('navheader.str.', $page)" />
     <xsl:call-template name="build-breadcrumbs" />
     <qui:header role="main">
       <xsl:text>Advanced Search: </xsl:text>
       <xsl:value-of select="key('get-lookup', $key)" />
     </qui:header>
+    <xsl:call-template name="build-advanced-search-form" />
+  </xsl:template>
+
+  <xsl:template name="build-advanced-search-form">
+    <xsl:variable name="key" select="concat('navheader.str.', $page)" />
 
     <qui:nav role="search">
       <xsl:for-each select="//SearchNav/NavItem[Tab = 'true']">
         <qui:link href="{Link}">
-          <xsl:if test="$page = Name">
-            <xsl:attribute name="current">true</xsl:attribute>
-          </xsl:if>
+          <xsl:choose>
+            <xsl:when test="contains($page, Name)">
+              <xsl:attribute name="current">true</xsl:attribute>
+            </xsl:when>  
+            <xsl:when test="$page = 'booleanbbag' and Name = 'boolean'">
+              <xsl:attribute name="current">true</xsl:attribute>
+            </xsl:when>
+            <xsl:when test="$page = 'proximitybbag' and Name = 'proximity'">
+              <xsl:attribute name="current">true</xsl:attribute>
+            </xsl:when>
+            <xsl:when test="$page = 'bbaglist' and Name = 'simple'">
+              <xsl:attribute name="current">true</xsl:attribute>
+            </xsl:when>
+          </xsl:choose>
           <xsl:variable name="nav-key" select="concat('navheader.str.', Name)" />
           <qui:label>
             <xsl:value-of select="key('get-lookup', $nav-key)" />
