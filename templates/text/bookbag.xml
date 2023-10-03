@@ -3,20 +3,29 @@
 <?CHUNK filename="entitiesdoctype.chnk" optional="1"?>
 
 <Top xmlns:dlxs="http://www.umdl.umich.edu/dlxs">
-<!-- XSL fallback files -->
- <XslFallbackFileList>
- <Filename>bookbagitemsstring.xsl</Filename>
- <Filename>bookbag.xsl</Filename>
- <Filename>bookbagheader.xsl</Filename>
- <Filename>htmlhead.xsl</Filename>
- <Filename>globalvariables.xsl</Filename>
- <Filename>navheader.xsl</Filename>
- <Filename>footer.import.xsl</Filename>
- <Filename>searchforms.xsl</Filename>
- <Filename>misc.xsl</Filename>
- <Filename>xsl2htmlutils.xsl</Filename>
- </XslFallbackFileList>
- 
+  <!-- XSL fallback files -->
+  <XslFallbackFileList pipeline="qui">
+    <Filename>qui/qui.base.xsl</Filename>
+    <Filename>../vendor/str.split.function.xsl</Filename>
+    <Filename>../vendor/xslfunctions.xsl</Filename>
+    <Filename>qui/components/*.xsl</Filename>
+    <Filename>qui/includes/qui.results-item.xsl</Filename>
+    <Filename>qui/includes/qui.search-common.xsl</Filename>
+    <Filename>qui/includes/qui.search-simple.xsl</Filename>
+    <Filename>qui/includes/qui.search-boolean.xsl</Filename>
+    <Filename>qui/includes/qui.search-proximity.xsl</Filename>
+    <Filename>qui/includes/qui.bookbag-items.xsl</Filename>
+    <Filename>qui/qui.bookbag.xsl</Filename>
+  </XslFallbackFileList>
+
+  <XslFallbackFileList pipeline="qbat">
+    <Filename>qbat/qbat.base.xsl</Filename>
+    <Filename>../vendor/xslfunctions.xsl</Filename>
+    <Filename>qbat/components/*.xsl</Filename>
+    <Filename>qbat/includes/qbat.bookbag-items.xsl</Filename>
+    <Filename>qbat/qbat.bookbag.xsl</Filename>
+  </XslFallbackFileList>
+
   <!-- Custom OPTIONAL XML for top-level file bookbag.xml -->
   <CustomXml><?CHUNK filename="bookbagextra.xml" optional="1"?></CustomXml>
   
