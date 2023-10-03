@@ -53,7 +53,7 @@
       </div>
     </qui:callout>
     
-    <qui:form id="collection-search">
+    <qui:form id="collection-search" data-searchtype="{$searchtype}">
 
       <qui:hidden-input name="type">
         <xsl:attribute name="value">
@@ -69,7 +69,7 @@
       </qui:hidden-input>
 
       <xsl:if test="contains($searchtype, 'bbag')">
-        <qui:hidden-input name="rgn" value="full text" />
+        <!-- <qui:hidden-input name="rgn" value="full text" /> -->
         <qui:hidden-input name="bookbag" value="1" />
       </xsl:if>
 
@@ -113,11 +113,18 @@
           </xsl:choose>
         </xsl:attribute>
       </qui:input>
-      <qui:select name="{$rgn/Name}" slot="region">
-        <xsl:apply-templates select="$rgn/Option">
-          <xsl:with-param name="default" select="$rgn/Default" />
-        </xsl:apply-templates>
-      </qui:select>
+      <xsl:if test="contains($searchtype, 'bbag')">
+        <qui:select name="rgn" slot="region">
+          <qui:option value="full text" selected="selected">Full Text</qui:option>
+        </qui:select>
+      </xsl:if>
+      <xsl:if test="not(contains($searchtype, 'bbag'))">
+        <qui:select name="{$rgn/Name}" slot="region">
+          <xsl:apply-templates select="$rgn/Option">
+            <xsl:with-param name="default" select="$rgn/Default" />
+          </xsl:apply-templates>
+        </qui:select>
+      </xsl:if>
       <xsl:if test="$op">
         <xsl:apply-templates select="$op" mode="build-op" />
       </xsl:if>

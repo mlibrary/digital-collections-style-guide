@@ -185,6 +185,7 @@ dl div + div {
   padding: 4px;
   flex-grow: 1;
   min-height: 100px;
+  max-width: 140px;
 }
 
 ul.list--striped li {
