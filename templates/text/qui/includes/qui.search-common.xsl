@@ -44,7 +44,7 @@
         <xsl:attribute name="value">
           <xsl:choose>
             <xsl:when test="contains($searchtype, 'bbag')">
-              <xsl:value-of select="substring-before($searchtype, 'bbag')" />
+              <xsl:value-of select="substring-after($searchtype, 'bbag')" />
             </xsl:when>
             <xsl:otherwise>
               <xsl:value-of select="$searchtype" />
@@ -53,17 +53,22 @@
         </xsl:attribute>
       </qui:hidden-input>
 
+      <xsl:if test="contains($searchtype, 'bbag')">
+        <qui:hidden-input name="rgn" value="full text" />
+        <qui:hidden-input name="bookbag" value="1" />
+      </xsl:if>
+
       <xsl:choose>
-        <xsl:when test="$page = 'simple'">
+        <xsl:when test="contains($searchtype, 'simple')">
           <xsl:call-template name="build-simple-form" />
         </xsl:when>
-        <xsl:when test="$page = 'boolean'">
+        <xsl:when test="contains($searchtype, 'boolean')">
           <xsl:call-template name="build-boolean-form" />
         </xsl:when>
-        <xsl:when test="$page = 'proximity'">
+        <xsl:when test="contains($searchtype, 'proximity')">
           <xsl:call-template name="build-proxmity-form" />
         </xsl:when>
-        <xsl:when test="$page = 'bib'">
+        <xsl:when test="contains($searchtype, 'bib')">
           <xsl:call-template name="build-bib-form" />
         </xsl:when>
         <xsl:when test="$page = 'wwstart' or $page = 'wwfull'">
