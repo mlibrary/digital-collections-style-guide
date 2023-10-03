@@ -97,6 +97,8 @@
     <head>
       <meta charset="UTF-8" />
       <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+      <xsl:apply-templates select="qui:base" />
+
       <xsl:apply-templates select="xhtml:title" mode="copy" />
       <xsl:apply-templates select="xhtml:meta" mode="copy" />
 
@@ -460,6 +462,10 @@
 
   <xsl:template match="qui:block">
     <xsl:apply-templates select="." mode="copy-guts" />
+  </xsl:template>
+
+  <xsl:template match="qui:base">
+    <base href="{@href}" />
   </xsl:template>
 
   <xsl:template match="qui:linkkkk[@identifier != '']" priority="100">

@@ -366,7 +366,8 @@ async function processDLXS(req, res) {
     fs.unlinkSync(quiCompiledFilename);
     fs.unlinkSync(qbatOutputFilename);
   } else {
-    res.send("OOPS");
+    const output = await resp.text();
+    res.send("OOPS\n" + '<details><summary>Stack Trace</summary><div>' + output + '</div>');
   }
 }
 
