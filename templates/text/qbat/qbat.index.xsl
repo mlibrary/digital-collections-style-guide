@@ -22,7 +22,7 @@
         <xsl:call-template name="build-ww-form" />
       </xsl:when>
       <xsl:otherwise>
-        <xsl:call-template name="build-advanced-search-form" />
+        <xsl:call-template name="build-advanced-search" />
       </xsl:otherwise>
     </xsl:choose>
   </xsl:template>

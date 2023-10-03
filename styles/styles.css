@@ -645,6 +645,7 @@ fieldset legend {
 .results-list--small .portfolio-selection {
   order: -1;
   flex-shrink: 0;
+  z-index: 1;
 }
 
 .results {

@@ -9,7 +9,8 @@ window.addEventListener('DOMContentLoaded', (event) => {
     document.documentElement.dataset.view == 'image' || 
     document.documentElement.dataset.view == 'static' || 
     document.documentElement.dataset.view == 'root' || 
-    document.documentElement.dataset.view == 'text' ) ) {
+    document.documentElement.dataset.view == 'text' || 
+    document.documentElement.dataset.template == 'bookbag' ) ) {
     return ; 
   }
 

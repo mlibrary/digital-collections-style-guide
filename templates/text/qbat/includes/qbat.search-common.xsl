@@ -1,29 +1,36 @@
 <xsl:stylesheet version="1.0" xmlns="http://www.w3.org/1999/xhtml" xmlns:xhtml="http://www.w3.org/1999/xhtml" xmlns:xsl="http://www.w3.org/1999/XSL/Transform" xmlns:dlxs="http://dlxs.org" xmlns:qui="http://dlxs.org/quombat/ui" xmlns:exsl="http://exslt.org/common" xmlns:date="http://exslt.org/dates-and-times" extension-element-prefixes="exsl date">
 
   <!-- search form -->
-  <xsl:template name="build-advanced-search-form">
-
+  <xsl:template name="build-advanced-search">
     <div class="[ mb-2 ]">
       <xsl:call-template name="build-breadcrumbs" />
       <xsl:call-template name="build-collection-heading" />
 
-      <xsl:if test="//qui:nav[@role='search']">
-        <nav aria-label="Advanced Search Options" class="horizontal-navigation-container mb-2">
-          <ul class="horizontal-navigation-list">
-            <xsl:for-each select="//qui:nav[@role='search']/qui:link">
-              <li>
-                <a href="{@href}">
-                  <xsl:if test="@current = 'true'">
-                    <xsl:attribute name="aria-current">page</xsl:attribute>
-                  </xsl:if>
-                  <xsl:value-of select="qui:label" />
-                </a>
-              </li>
-            </xsl:for-each>
-          </ul>
-        </nav>
-      </xsl:if>
+      <xsl:call-template name="build-advanced-search-form-tabs" />
     </div>
+    <xsl:call-template name="build-advanced-search-form" />
+  </xsl:template>
+
+  <xsl:template name="build-advanced-search-form-tabs">
+    <xsl:if test="//qui:nav[@role='search']">
+      <nav aria-label="Advanced Search Options" class="horizontal-navigation-container mb-2">
+        <ul class="horizontal-navigation-list">
+          <xsl:for-each select="//qui:nav[@role='search']/qui:link">
+            <li>
+              <a href="{@href}">
+                <xsl:if test="@current = 'true'">
+                  <xsl:attribute name="aria-current">page</xsl:attribute>
+                </xsl:if>
+                <xsl:value-of select="qui:label" />
+              </a>
+            </li>
+          </xsl:for-each>
+        </ul>
+      </nav>
+    </xsl:if>
+  </xsl:template>
+
+  <xsl:template name="build-advanced-search-form">
 
     <xsl:apply-templates select="//qui:callout[@slot='restriction']" />
 
@@ -31,19 +38,24 @@
 
       <form id="collection-search" action="/cgi/t/text/text-idx" method="GET" autocomplete="off" data-num-qs="{$search-form/@data-num-qs}">
 
+        <xsl:if test="not(contains($view, 'bbag'))">
         <h2 class="subtle-heading">Fielded Search Options</h2>
         <div class="message-callout info">
           <xsl:apply-templates select="//qui:callout[@slot='clause']" mode="copy-guts" />
         </div>
+        </xsl:if>
 
         <xsl:choose>
           <xsl:when test="$view = 'simple'">
             <xsl:call-template name="build-simple-form" />
           </xsl:when>
-          <xsl:when test="$view = 'boolean'">
+          <xsl:when test="$view = 'bbaglist'">
+            <xsl:call-template name="build-simple-form" />            
+          </xsl:when>
+          <xsl:when test="contains($view, 'boolean')">
             <xsl:call-template name="build-boolean-form" />
           </xsl:when>
-          <xsl:when test="$view = 'proximity'">
+          <xsl:when test="contains($view, 'proximity')">
             <xsl:call-template name="build-boolean-form" />
           </xsl:when>
           <xsl:when test="$view = 'bib'">
@@ -51,7 +63,7 @@
           </xsl:when>
         </xsl:choose>
 
-        <xsl:if test="$view != 'bib'">
+        <xsl:if test="$view != 'bib' and not(contains($view, 'bbag'))">
           <h3>Additional Search Options</h3>
         
           <div class="advanced-search--containers">
@@ -193,15 +205,17 @@
   </xsl:template>
 
   <xsl:template name="build-form-actions">
-    <button type="submit" class="[ button button--cta ]">
-      <svg xmlns="http://www.w3.org/2000/svg" width="16px" height="16px" viewBox="0 0 24 24" aria-hidden="true" fill="inherit" focusable="false" role="img">
-        <path d="M15.5 14h-.79l-.28-.27C15.41 12.59 16 11.11 16 9.5 16 5.91 13.09 3 9.5 3S3 5.91 3 9.5 5.91 16 9.5 16c1.61 0 3.09-.59 4.23-1.57l.27.28v.79l5 4.99L20.49 19l-4.99-5zm-6 0C7.01 14 5 11.99 5 9.5S7.01 5 9.5 5 14 7.01 14 9.5 11.99 14 9.5 14z"></path>
-      </svg>
-      <span>Advanced Search</span>
-    </button>
-    <button type="button" class="[ button button--secondary ]" data-action="reset-form">
-      <span>Clear all</span>
-    </button>
+    <div class="flex flex-align-center gap-1">
+      <button type="submit" class="[ button button--cta ]">
+        <svg xmlns="http://www.w3.org/2000/svg" width="16px" height="16px" viewBox="0 0 24 24" aria-hidden="true" fill="inherit" focusable="false" role="img">
+          <path d="M15.5 14h-.79l-.28-.27C15.41 12.59 16 11.11 16 9.5 16 5.91 13.09 3 9.5 3S3 5.91 3 9.5 5.91 16 9.5 16c1.61 0 3.09-.59 4.23-1.57l.27.28v.79l5 4.99L20.49 19l-4.99-5zm-6 0C7.01 14 5 11.99 5 9.5S7.01 5 9.5 5 14 7.01 14 9.5 11.99 14 9.5 14z"></path>
+        </svg>
+        <span>Advanced Search</span>
+      </button>
+      <button type="button" class="[ button button--secondary ]" data-action="reset-form">
+        <span>Clear all</span>
+      </button>  
+    </div>
   </xsl:template>
 
   <xsl:template match="qui:callout[@slot='restriction']" priority="100">

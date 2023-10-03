@@ -123,13 +123,35 @@ async function processDLXS(req, res) {
     credentials: 'include'
   });
   res.setHeader("Content-Type", "text/html; charset=UTF-8");
-  if (resp.ok) {
+  console.log("-- sigh", resp.headers.get('content-type'));
+  if(resp.ok && resp.headers.get('content-type').indexOf('application/text') > -1) {
+    res.setHeader('content-type', resp.headers.get('content-type'));
+    res.setHeader('content-disposition', resp.headers.get('content-disposition'));
+    res.send(await resp.text());
+  } else if (resp.ok) {
     const cookieValue = (resp.headers.get('set-cookie').split(/;\s*/))[0].replace('DLXSsid=','');
     res.cookie('DLXSsid', cookieValue, { path: '/' });
     console.log("AHOY AHOY cookie = ", cookieValue);
     const xmlData = (await resp.text()).replace(/https:\/\/localhost/g, 'http://localhost');
     if ( xmlData.indexOf('no hits. normally cgi redirects') > -1 ) {
       throw new Error('Query has no results');
+    }
+
+    if ( xmlData.indexOf('Content-Disposition') > -1 ) {
+      // this is really really dumb
+      const lines = xmlData.split("\n");
+      for(let i = 0; i < lines.length; i++) {
+        const line = lines[i].trim();
+        if ( line == "" ) {
+          // that's the end
+          break;
+        } else {
+          let parts = line.split(": ", 2);
+          res.setHeader(parts[0], parts[1]);
+        }
+      }
+      res.send(lines.join("\n"));
+      return;
     }
 
     // if ( xmlData.indexOf('xml') < 0 ) {
@@ -163,7 +185,7 @@ async function processDLXS(req, res) {
 
     // hacking around the home business
     if ( url.pathname.match(/^\/([a-z])\/(\w+)\/?$/) && url.size == 0 ) {
-      url.searchParams.set('page', 'home');
+      // url.searchParams.set('page', 'home');
     }
 
     if ( false && url.searchParams.get('page') == 'home' ) {
