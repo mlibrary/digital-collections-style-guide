@@ -1192,6 +1192,10 @@ sl-dropdown::part(panel) {
   margin-top: 0;
 }
 
+.mt-0_5 {
+  margin-top: 0.5rem;
+}
+
 .mt-1 {
   margin-top: 1rem;
 }

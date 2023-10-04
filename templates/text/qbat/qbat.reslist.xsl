@@ -40,6 +40,7 @@
           </button>
           <h2 class="visually-hidden">Options</h2>
           <xsl:call-template name="build-filters-panel" />
+          <xsl:apply-templates select="//qui:panel[@slot='guide-frame']" />
         </xsl:if>
       </div>
       <div class="main-panel">
@@ -61,6 +62,7 @@
       <xsl:when test="//qui:filter">true</xsl:when>
       <xsl:when test="$search-form/@data-has-query='true'">true</xsl:when>
       <xsl:when test="//qui:nav[@role='index']">true</xsl:when>
+      <xsl:when test="//qui:panel[@slot='guide-frame']">true</xsl:when>
       <xsl:otherwise>false</xsl:otherwise>
     </xsl:choose>
   </xsl:template>
@@ -711,6 +713,83 @@
     <div class="text--bold">
       <xsl:apply-templates mode="copy" />
     </div>
+  </xsl:template>
+
+  <xsl:template match="qui:panel[@slot='guide-frame']">
+    <details class="panel mt-2" open="open">
+      <summary>Collection</summary>
+    </details>
+    <div class="filter-item--list">
+      <xsl:apply-templates select="qui:section" />
+    </div>
+  </xsl:template>
+
+  <xsl:template match="qui:panel[@slot='guide-frame']/qui:section">
+    <xsl:variable name="href" select="qui:link[@rel='results']/@href" />
+    <a class="[ flex filter-item bedazzled-link ][ gap-0_5 mt-0_5 ]" href="{$href}">
+      <xsl:if test="@selected = 'selected'">
+        <xsl:attribute name="data-selected">true</xsl:attribute>
+      </xsl:if>
+      <span class="material-icons text-black no-underline" aria-hidden="true" href="{$href}">
+        <xsl:choose>
+          <xsl:when test="@selected = 'selected'">radio_button_checked</xsl:when>
+          <xsl:otherwise>radio_button_unchecked</xsl:otherwise>
+        </xsl:choose>
+      </span>
+      <span>
+        <xsl:if test="@selected = 'selected'">
+          <xsl:attribute name="style">text-decoration: none !important;</xsl:attribute>
+        </xsl:if>
+        <span>
+          <xsl:value-of select="qui:header" />
+        </span>
+        <span class="filters__count">
+          <xsl:text> (</xsl:text>
+          <xsl:value-of select="@data-hit-count" />
+          <xsl:text>)</xsl:text>
+        </span>
+      </span>
+    </a>
+  </xsl:template>
+
+  <xsl:template match="qui:panel[@slot='guide-frame']/qui:section" mode="v1">
+    <xsl:param name="classes" />
+    <div class="[ mt-1 ]">
+      <p>
+        <a class="[ flex flex-start ][ gap-0_25 bedazzled-link ]" href="{qui:link[@rel='home']/@href}">
+          <xsl:if test="@selected = 'selected'">
+            <xsl:attribute name="style">color: black;</xsl:attribute>
+          </xsl:if>
+          <xsl:choose>
+            <xsl:when test="@icon">
+              <span class="material-icons flex-shrink-0" aria-hidden="true"><xsl:value-of select="@icon" /></span>
+            </xsl:when>
+            <xsl:otherwise>
+              <span class="material-icons flex-shrink-0" aria-hidden="true" style="opacity: 0.5">check_box_outline_blank</span>
+            </xsl:otherwise>
+          </xsl:choose>
+          <span><xsl:value-of select="qui:header" /></span>
+        </a>  
+      </p>
+      <p class="text--small text--muted" style="margin-top: 0; margin-left: 1.5rem">
+        <xsl:apply-templates select="qui:block[@slot='summary']" mode="copy-guts" />
+      </p>
+    </div>
+    <xsl:if test="false()">
+    <div class="[ link-box ][ flex flex-center ][ mt-2 {$classes} ]">
+      <a class="[ flex flex-start ][ gap-0_25 bedazzled-link ]" href="{qui:link[@rel='home']/@href}">
+        <xsl:choose>
+          <xsl:when test="@icon">
+            <span class="material-icons flex-shrink-0" aria-hidden="true"><xsl:value-of select="@icon" /></span>
+          </xsl:when>
+          <xsl:otherwise>
+            <span class="material-icons flex-shrink-0" aria-hidden="true" style="opacity: 0.5">check_box_outline_blank</span>
+          </xsl:otherwise>
+        </xsl:choose>
+        <span><xsl:value-of select="qui:header" /></span>
+      </a>
+    </div>
+    </xsl:if>
   </xsl:template>
 
 </xsl:stylesheet>
