@@ -252,6 +252,7 @@
     <xsl:call-template name="build-search-form" />
     <xsl:call-template name="build-portfolio-actions" />
     <xsl:apply-templates select="//Facets" />
+    <xsl:apply-templates select="//GuideFrameResults" />
     <xsl:apply-templates select="//SearchDescription" />
     <xsl:choose>
       <xsl:when test="$subview = 'detail'"></xsl:when>
@@ -964,6 +965,63 @@
     <xsl:text> </xsl:text>
     <xsl:apply-templates select="child::node()" mode="KwicContent"/>
     <xsl:text> </xsl:text>
+  </xsl:template>
+
+  <xsl:template match="GuideFrameResults">
+    <xsl:if test="Coll">
+      <qui:panel slot="guide-frame">
+        <xsl:apply-templates select="Coll" />        
+      </qui:panel>
+    </xsl:if>
+  </xsl:template>
+
+  <xsl:template match="GuideFrameResults/Coll">
+    <qui:section>
+      <xsl:if test="FocusColl = 'true'">
+        <xsl:attribute name="selected">selected</xsl:attribute>
+      </xsl:if>
+      <xsl:attribute name="icon">
+        <xsl:choose>
+          <xsl:when test="CollName = 'results.allselectedcolls'">
+            <xsl:text>topic</xsl:text>
+          </xsl:when>
+          <xsl:otherwise>
+            <xsl:text>filter_frames</xsl:text>
+          </xsl:otherwise>
+        </xsl:choose>
+      </xsl:attribute>
+      <xsl:attribute name="data-hit-count">
+        <xsl:value-of select="CollTotals/HitCount" />
+      </xsl:attribute>
+      <qui:header>
+        <xsl:choose>
+          <xsl:when test="CollName = 'results.allselectedcolls'">
+            <xsl:value-of select="key('get-lookup', CollName)" />
+          </xsl:when>
+          <xsl:otherwise>
+            <xsl:value-of select="CollName" />
+          </xsl:otherwise>
+        </xsl:choose>    
+      </qui:header>
+      <qui:link rel="results">
+        <xsl:attribute name="href">
+          <xsl:choose>
+            <xsl:when test="FocusColl = 'true'">
+              <xsl:value-of select="//CurrentUrl" />
+            </xsl:when>
+            <xsl:otherwise>
+              <xsl:value-of select="CollResultsHref" />
+            </xsl:otherwise>
+          </xsl:choose>
+        </xsl:attribute>
+      </qui:link>
+      <xsl:if test="normalize-space(CollHomeHref)">
+        <qui:link rel="home" href="{CollHomeHref}" />
+      </xsl:if>
+      <qui:block slot="summary">
+        <xsl:apply-templates select="CollTotals" />
+      </qui:block>
+    </qui:section>
   </xsl:template>
   
 </xsl:stylesheet>

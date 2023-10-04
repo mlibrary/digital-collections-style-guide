@@ -258,4 +258,21 @@
     </button>
   </xsl:template>
 
+  <xsl:template match="*[qui:values]" mode="title">
+    <xsl:for-each select="qui:values/qui:value">
+      <xsl:value-of select="." />
+      <xsl:if test="position() &lt; last()">
+        <xsl:text>; </xsl:text>
+      </xsl:if>
+    </xsl:for-each>
+  </xsl:template>
+
+  <xsl:template match="qui:field[@key='title']" priority="99">
+    <xsl:choose>
+      <xsl:when test="//qui:block[@slot='item']">
+        <xsl:apply-templates select="." mode="build" />
+      </xsl:when>
+    </xsl:choose>
+  </xsl:template>
+
 </xsl:stylesheet>

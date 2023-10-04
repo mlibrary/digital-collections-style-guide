@@ -27,13 +27,25 @@
           </qui:link>
         </xsl:when>
         <xsl:when test="$context-type = 'group' or $context-type = 'multiple'">
-          <qui:link href="/cgi/i/image/image-idx?page=groups">
-            <xsl:text>Image Collections</xsl:text>
+          <xsl:variable name="root-href">
+            <xsl:choose>
+              <xsl:when test="$docroot = '/'">/samples/</xsl:when>
+              <xsl:when test="starts-with($api_url, 'https://quod.lib')">/lib/colllist/?byFormat=Text%20Collections</xsl:when>
+              <xsl:otherwise>/cgi/c/collsize/coll-idx?byFormat=Text%20Collections</xsl:otherwise>
+            </xsl:choose>
+          </xsl:variable>
+          <qui:link href="{$root-href}">
+            <xsl:text>Text Collections</xsl:text>
           </qui:link>
         </xsl:when>
         <xsl:otherwise>
         </xsl:otherwise>
       </xsl:choose>
+      <xsl:if test="//Param[@name='bookbag'] = '1'">
+        <qui:link href="{//MainNav/NavItem[Name='bookbag']/Link}">
+          <xsl:text>Bookbag</xsl:text>
+        </qui:link>
+      </xsl:if>
       <xsl:if test="normalize-space(/Top/BackLink)">
         <qui:link href="{normalize-space(/Top/BackLink)}">
           <xsl:choose>
