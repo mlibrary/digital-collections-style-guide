@@ -733,7 +733,7 @@
     <qui:value><xsl:value-of select="." /></qui:value>
   </xsl:template>
 
-  <xsl:template match="IMPRINT|PUBLICATIONSTMT" mode="metadata">
+  <xsl:template match="IMPRINT|PUBLICATIONSTMT[PUBLISHER != 'unpublished']" mode="metadata">
     <qui:value>
       <xsl:for-each select="PUBPLACE">
         <xsl:value-of select="dlxs:stripEndingChars(.,'.,:;')"/>
