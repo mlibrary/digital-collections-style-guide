@@ -28,7 +28,10 @@
 
   <xsl:param name="context-type">
     <xsl:choose>
-      <xsl:when test="//Param[@name='bbdbid']">
+      <xsl:when test="contains(//Param[@name='page'], 'bbag')">
+        <xsl:text>list</xsl:text>
+      </xsl:when>
+      <xsl:when test="//Param[@name='bookbag'] = '1'">
         <xsl:text>list</xsl:text>
       </xsl:when>
       <xsl:when test="//Param[@name='xc'] = 1">
@@ -185,6 +188,9 @@
 
   <xsl:template name="get-collection-title">
     <xsl:choose>
+      <xsl:when test="$context-type = 'list'">
+        <xsl:text>Bookbag</xsl:text>
+      </xsl:when>
       <xsl:when test="/Top/BookBagInfo/Field[@name='bbagname']">
         <xsl:value-of select="normalize-space(/Top/BookBagInfo/Field[@name='bbagname'])" />
       </xsl:when>
@@ -220,7 +226,7 @@
         <xsl:value-of select="/Top/Home" />
       </xsl:when>
       <xsl:when test="$context-type = 'list'">
-        <xsl:text>/cgi/i/image/image-idx?page=bbopen</xsl:text>
+        <xsl:text>/cgi/t/text/text-idx?page=bbaglist</xsl:text>
       </xsl:when>
       <xsl:when test="$context-type = 'group'">
         <xsl:value-of select="/Top/Home" />

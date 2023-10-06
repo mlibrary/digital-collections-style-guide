@@ -21,9 +21,9 @@
             <xsl:text>Collection Home</xsl:text>
           </qui:link>
         </xsl:when>
-        <xsl:when test="$context-type = 'list'">
-          <qui:link href="/cgi/i/image/image-idx?page=bbopen">
-            <xsl:text>Portfolio Index</xsl:text>
+        <xsl:when test="$context-type = 'list' and //Param[@name='page'] != 'bbaglist'">
+          <qui:link href="/cgi/i/text/text-idx?page=bbaglist">
+            <xsl:text>Bookbag</xsl:text>
           </qui:link>
         </xsl:when>
         <xsl:when test="$context-type = 'group' or $context-type = 'multiple'">
@@ -41,7 +41,7 @@
         <xsl:otherwise>
         </xsl:otherwise>
       </xsl:choose>
-      <xsl:if test="//Param[@name='bookbag'] = '1'">
+      <xsl:if test="$context-type != 'list' and //Param[@name='bookbag'] = '1'">
         <qui:link href="{//MainNav/NavItem[Name='bookbag']/Link}">
           <xsl:text>Bookbag</xsl:text>
         </qui:link>
@@ -74,9 +74,11 @@
         </xsl:choose>
       </xsl:if>
       <xsl:call-template name="build-breadcrumbs-intermediate-links" />
-      <qui:link href="{/Top//CurrentUrl}">
-        <xsl:call-template name="get-current-page-breadcrumb-label" />
-      </qui:link>
+      <xsl:if test="$page != 'bbaglist'">
+        <qui:link href="{/Top//CurrentUrl}">
+          <xsl:call-template name="get-current-page-breadcrumb-label" />
+        </qui:link>
+      </xsl:if>
     </qui:nav>
   </xsl:template>
 

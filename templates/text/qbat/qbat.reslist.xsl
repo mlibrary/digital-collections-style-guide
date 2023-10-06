@@ -39,8 +39,15 @@
             </span>
           </button>
           <h2 class="visually-hidden">Options</h2>
-          <xsl:call-template name="build-filters-panel" />
-          <xsl:apply-templates select="//qui:panel[@slot='guide-frame']" />
+          <xsl:call-template name="build-selected-filters-panel" />
+          <xsl:if test="count($filters) or //qui:panel[@slot='guide-frame']">
+            <h3>
+              <xsl:attribute name="class">mt-2</xsl:attribute>
+              <xsl:text>Filters</xsl:text>
+            </h3>
+            <xsl:apply-templates select="//qui:panel[@slot='guide-frame']" />      
+            <xsl:call-template name="build-filters-panel" />
+          </xsl:if>
         </xsl:if>
       </div>
       <div class="main-panel">
@@ -718,10 +725,10 @@
   <xsl:template match="qui:panel[@slot='guide-frame']">
     <details class="panel mt-2" open="open">
       <summary>Collection</summary>
+      <div class="filter-item--list">
+        <xsl:apply-templates select="qui:section" />
+      </div>
     </details>
-    <div class="filter-item--list">
-      <xsl:apply-templates select="qui:section" />
-    </div>
   </xsl:template>
 
   <xsl:template match="qui:panel[@slot='guide-frame']/qui:section">
