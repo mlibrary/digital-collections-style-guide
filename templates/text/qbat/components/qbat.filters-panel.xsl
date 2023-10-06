@@ -1,12 +1,9 @@
 <?xml version="1.0" encoding="utf-8"?>
 <xsl:stylesheet version="1.0" xmlns="http://www.w3.org/1999/xhtml" xmlns:xsl="http://www.w3.org/1999/XSL/Transform" xmlns:qui="http://dlxs.org/quombat/ui" xmlns:xhtml="http://www.w3.org/1999/xhtml" xmlns:exsl="http://exslt.org/common" extension-element-prefixes="exsl">
+  <xsl:variable name="filters" select="//qui:filters-panel" />
+  <xsl:variable name="selected-filters" select="$filters//qui:filter[not(@arity)]//qui:value[@selected='true']" />
 
-  <xsl:template name="build-filters-panel">
-    <xsl:param name="margin-top">mt-2</xsl:param>
-
-    <xsl:variable name="filters" select="//qui:filters-panel" />
-
-    <xsl:variable name="selected-filters" select="$filters//qui:filter[not(@arity)]//qui:value[@selected='true']" />
+  <xsl:template name="build-selected-filters-panel">
     <xsl:if test="$search-form/@data-has-query = 'true'">
       <section class="[ filters__selected ]">
         <xsl:if test="$selected-filters">
@@ -61,12 +58,16 @@
         </button>
       </section>
     </xsl:if>
+  </xsl:template>
+
+  <xsl:template name="build-filters-panel">
+    <xsl:param name="margin-top">mt-2</xsl:param>
 
     <xsl:if test="$filters//qui:filter or $filters//qui:callout">
-      <h3>
+      <!-- <h3>
         <xsl:attribute name="class"><xsl:value-of select="$margin-top" /></xsl:attribute>
         <xsl:text>Filters</xsl:text>
-      </h3>
+      </h3> -->
       <div class="[ side-panel__box ]">
         <xsl:apply-templates select="$filters/@*[starts-with(name(), 'data-')]" mode="copy" />
         <xsl:for-each select="$filters//qui:filter">

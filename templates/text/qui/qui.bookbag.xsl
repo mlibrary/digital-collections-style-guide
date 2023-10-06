@@ -7,7 +7,7 @@
   <xsl:template name="build-body-main">
     
     <xsl:call-template name="build-breadcrumbs" />
-    <qui:header role="main" data-badge="view_list">
+    <qui:header role="main">
       <xsl:value-of select="key('get-lookup', 'bookbag.str.holdings')" />
     </qui:header>
 
@@ -49,7 +49,7 @@
   </xsl:template>
 
   <xsl:template name="get-current-page-breadcrumb-label">
-    Bookbag
+    Bookbag holdings
   </xsl:template>
 
   <xsl:template name="build-bookbag-search-form">

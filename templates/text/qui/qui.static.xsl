@@ -14,6 +14,10 @@
     </xsl:choose>
   </xsl:template>
 
+  <xsl:template name="build-head-block">
+    <qui:base href="/{substring($collid, 1, 1)}/{$collid}/" />
+  </xsl:template>
+
   <xsl:template name="build-body-main">
     <qui:header role="main">
       <xsl:call-template  name="get-title" />

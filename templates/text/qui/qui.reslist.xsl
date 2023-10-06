@@ -172,9 +172,10 @@
         <xsl:if test="//SearchDescription/RefineSearchLink">
           <qui:link rel="restart">
             <xsl:attribute name="href">
-              <xsl:text>/cgi/t/text/text-idx?cc=</xsl:text>
+              <xsl:value-of select="/Top/NavHeader/MainNav/NavItem[Name='search']/Link" />
+              <!-- <xsl:text>/cgi/t/text/text-idx?cc=</xsl:text>
               <xsl:value-of select="//Param[@name='cc']" />
-              <xsl:text>;page=simple</xsl:text>
+              <xsl:text>;page=simple</xsl:text> -->
             </xsl:attribute>
           </qui:link>
         </xsl:if>
@@ -252,7 +253,7 @@
     <xsl:call-template name="build-search-form" />
     <xsl:call-template name="build-portfolio-actions" />
     <xsl:apply-templates select="//Facets" />
-    <xsl:apply-templates select="//GuideFrameResults" />
+    <xsl:apply-templates select="//GuideFrame[IncludeGuideFrame='true']/GuideFrameResults" />
     <xsl:apply-templates select="//SearchDescription" />
     <xsl:choose>
       <xsl:when test="$subview = 'detail'"></xsl:when>

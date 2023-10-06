@@ -65,13 +65,13 @@
     <article id="{parent::*/@ID}-{PB/@SEQ}-article" class="fullview-page" data-count="{$highlights[1]/@seq}">
       <xsl:apply-templates select="tei:PB" mode="build-p">
         <xsl:with-param name="base" select="parent::*/@ID" />
-        <xsl:with-param name="idno" select="parent::*/@NODE" />
+        <xsl:with-param name="idno" select="substring-before(parent::*/@NODE, ':')" />
       </xsl:apply-templates>
       <div class="fullview-main">
         <xsl:if test="tei:PB/@HREF">
           <xsl:apply-templates select="tei:PB" mode="build-page-link">
             <xsl:with-param name="base" select="parent::*/@ID" />
-            <xsl:with-param name="idno" select="parent::*/@NODE" />    
+            <xsl:with-param name="idno" select="substring-before(parent::*/@NODE, ':')" />
           </xsl:apply-templates>
         </xsl:if>
         <xsl:apply-templates select="." mode="build-p" />  
@@ -100,12 +100,13 @@
     <xsl:variable name="feature">
       <xsl:value-of select="key('get-lookup', concat('viewer.ftr.', dlxs:normAttr(@FTR)))" />
     </xsl:variable>
-    <div class="pb-1 fullview-thumbnail">
+    <div class="pb-1 fullview-thumbnail" data-idno="{$idno}">
       <a href="{@HREF}">
       <figure>
         <img 
+          style="min-width: 100px"
           loading="lazy" 
-          src="/cgi/t/text/api/image/{$collid}:{$idno}:{tei:PB/@SEQ}/full/!250,250/0/default.jpg"
+          src="/cgi/t/text/api/image/{$collid}:{$idno}:{@SEQ}/full/!250,250/0/default.jpg"
           alt="Scan of {key('get-lookup','headerutils.str.page')} {$pNum}"
           />
         <figcaption>
