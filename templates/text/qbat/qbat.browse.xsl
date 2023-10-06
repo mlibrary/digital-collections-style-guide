@@ -253,9 +253,11 @@
     </div>
     <xsl:if test="//qui:nav[@role='index']/qui:link/qui:link">
       <h4 class="visually-hidden">Secondary Index</h4>
-      <ul class="[ browse-index ][ flex flex-gap-0_5 flex-flow-rw flex-shrink-0 ]">
-        <xsl:apply-templates select="//qui:nav[@role='index']/qui:link/qui:link" mode="index" />
-      </ul>
+      <div class="[ side-panel__box ]">
+        <ul class="[ browse-index ][ flex flex-gap-0_5 flex-flow-rw flex-shrink-0 ]">
+          <xsl:apply-templates select="//qui:nav[@role='index']/qui:link/qui:link" mode="index" />
+        </ul>
+      </div>
     </xsl:if>
   </xsl:template>
 
@@ -328,7 +330,7 @@
     <xsl:variable name="nav" select="//qui:main/qui:nav[@role='results']" />
     <xsl:if test="$nav/@min &lt; $nav/@max">
       <nav id="pagination" aria-label="Result navigation" class="[ pagination__row ][ flex flex-space-between flex-align-center sticky-bottom ]">
-        <div class="pagination__group">
+        <div class="[ pagination__group ][ flex flex-align-center gap-0_5 ]">
           <xsl:if test="$nav/qui:link">
             <ul class="pagination">
               <li class="pagination__item">
