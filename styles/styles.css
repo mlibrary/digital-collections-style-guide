@@ -1912,3 +1912,23 @@ iframe[name="bookbag-sink"] {
 #bookbag-overview .inner p:last-child {
   margin-bottom: 0;
 }
+
+a.bedazzled-link {
+  text-decoration: none;
+  display: inline-flex;
+  gap: 0.25rem;
+  align-items: flex-start;
+}
+
+a.bedazzled-link span:not(.material-icons) {
+  text-decoration: underline;
+}
+
+a.bedazzled-link[data-selected="true"] .material-icons {
+  color: var(--color-neutral-500);
+}
+
+a.bedazzled-link[data-selected="true"] span:not(.material-icons) {
+  text-decoration: none;
+  color: var(--color-neutral-500);
+}
