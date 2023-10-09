@@ -33,7 +33,7 @@
   </xsl:template>
 
   <xsl:template name="build-static-content">
-    <qui:block slot="content">
+    <qui:block slot="content" data-current-page="{$current-page}">
       <xsl:apply-templates select="//Content" mode="copy-guts" />
     </qui:block>
   </xsl:template>

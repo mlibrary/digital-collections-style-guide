@@ -66,6 +66,46 @@
 
   </xsl:template>
 
-  
+  <xsl:template match="qui:block[@data-current-page='contents']//xhtml:section" mode="copy">
+    <section>
+      <xsl:attribute name="class">border-bottom pb-1 mb-2</xsl:attribute>
+      <xsl:apply-templates select="@*" mode="copy" />
+      <xsl:apply-templates mode="copy" />
+    </section>
+  </xsl:template>
+
+  <xsl:template match="qui:block[@data-current-page='contents']//xhtml:details" mode="copy">
+    <details>
+      <xsl:attribute name="class">panel w-100</xsl:attribute>
+      <xsl:apply-templates select="@*" mode="copy" />
+      <xsl:apply-templates mode="copy" />
+    </details>
+  </xsl:template>
+
+  <xsl:template match="qui:block[@data-current-page='contents']//xhtml:details/xhtml:div" mode="copy">
+    <div>
+      <xsl:attribute name="class">pl-1</xsl:attribute>
+      <xsl:apply-templates select="@*" mode="copy" />
+      <xsl:apply-templates mode="copy" />
+    </div>
+  </xsl:template>
+
+  <xsl:template match="qui:block[@data-current-page='contents']//xhtml:ul" mode="copy">
+    <ul>
+      <xsl:attribute name="class">list-unstyled</xsl:attribute>
+      <xsl:apply-templates select="@*" mode="copy" />
+      <xsl:apply-templates mode="copy" />
+    </ul>
+  </xsl:template>
+
+  <xsl:template match="qui:block[@data-current-page='contents']//xhtml:ul//xhtml:li" mode="copy">
+    <li>
+      <xsl:attribute name="class">mb-1</xsl:attribute>
+      <xsl:apply-templates select="@*" mode="copy" />
+      <xsl:apply-templates mode="copy" />
+    </li>
+  </xsl:template>
+
+  <xsl:template match="qui:block[@data-current-page='contents']//xhtml:img[@class='badge']" mode="copy" priority="101" />
 
 </xsl:stylesheet>
