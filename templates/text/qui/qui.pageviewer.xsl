@@ -294,7 +294,7 @@
 
   <xsl:template match="node()" mode="collection-link-value">
     <qui:value>
-      <qui:link href="{.}" icon="inventory">
+      <qui:link href="{.}" icon="inventory_2">
         <xsl:text>Collection Finding Aid</xsl:text>
       </qui:link>
     </qui:value>

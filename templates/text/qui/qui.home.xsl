@@ -71,6 +71,7 @@
         </xsl:for-each>
       <!-- <qui:link href="/cgi/i/image/image-idx?c={$collid};view=reslist;q1={$collid};med=1" rel="browse-images" data-count="{//Stats/Images}" /> -->
         <xsl:apply-templates select="//qui:panel[@slot='browse'][not(@weight)]//qui:link" mode="copy" />
+        <xsl:apply-templates select="/Top/Panels/div[@data-slot='browse']" mode="links" />
       </qui:nav>
     </qui:panel>
   </xsl:template>
@@ -81,19 +82,19 @@
 
   <xsl:template match="Content[.//div[@data-slot]]" priority="100">
     <qui:block slot="information">
-      <xsl:apply-templates select=".//div[@data-slot='overview']|.//div[@data-slot='information']" mode="copy" />
+      <xsl:apply-templates select="./div[@data-slot='overview']|./div[@data-slot='information']" mode="copy" />
     </qui:block>
     <qui:block slot="contents">
-      <xsl:apply-templates select=".//div[@data-slot='contents']" mode="copy-guts" />
+      <xsl:apply-templates select="./div[@data-slot='contents']" mode="copy-guts" />
     </qui:block>
     <qui:block slot="contentwarning">
-      <xsl:apply-templates select=".//div[@data-slot='contentwarning']" mode="copy-guts" />
+      <xsl:apply-templates select="./div[@data-slot='contentwarning']" mode="copy-guts" />
     </qui:block>
     <qui:block slot="access">
-      <xsl:apply-templates select=".//div[@data-slot='access']" mode="copy-guts" />
+      <xsl:apply-templates select="./div[@data-slot='access']" mode="copy-guts" />
     </qui:block>
     <qui:block slot="useguidelines">
-      <xsl:apply-templates select=".//div[@data-slot='useguidelines']" mode="copy" />
+      <xsl:apply-templates select="./div[@data-slot='useguidelines']" mode="copy" />
     </qui:block>
   </xsl:template>
 
@@ -119,6 +120,45 @@
 
   <xsl:template match="BannerImage">
     <qui:debug>BOOGER</qui:debug>
+  </xsl:template>
+
+  <xsl:template match="div[@data-slot='contents'][Content]" mode="copy-guts" priority="101">
+    <!-- we are doing a nested thing -->
+    <xsl:for-each select="Content/section">
+      <xhtml:figure href="contents#{@id}">
+        <xhtml:img src="{img/@src}" alt="{img/@alt}" />
+        <xhtml:figcaption>
+          <xhtml:h3>
+            <xsl:value-of select="div[@data-slot='overview']/h2" />
+          </xhtml:h3>
+        </xhtml:figcaption>
+      </xhtml:figure>
+    </xsl:for-each>
+  </xsl:template>
+
+  <xsl:template match="div[@data-slot='browse']" mode="links">
+    <xsl:for-each select=".//a">
+      <qui:link href="{@href}">
+        <xsl:apply-templates select="@rel" mode="build-icon" />
+        <xsl:apply-templates mode="copy" />
+      </qui:link>
+    </xsl:for-each>
+  </xsl:template>
+
+  <xsl:template match="@rel" mode="build-icon">
+    <xsl:attribute name="icon">
+      <xsl:choose>
+        <xsl:when test=". = 'findingaid'">
+          <xsl:text>inventory_2</xsl:text>
+        </xsl:when>
+        <xsl:when test=". = 'findingaid'">
+          <xsl:text>inventory_2</xsl:text>
+        </xsl:when>
+        <xsl:when test="normalize-space(.)">
+          <xsl:value-of select="." />
+        </xsl:when>
+      </xsl:choose>
+    </xsl:attribute>
   </xsl:template>
 
 </xsl:stylesheet>

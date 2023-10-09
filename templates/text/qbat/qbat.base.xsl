@@ -812,7 +812,7 @@
     </label>
   </xsl:template>
 
-  <xsl:template match="qui:link[@icon]" mode="copy" priority="101">
+  <xsl:template match="qui:link[normalize-space(@icon)]" mode="copy" priority="101">
     <a class="bedazzled-link">
       <span class="material-icons" aria-hidden="true">
         <xsl:value-of select="@icon" />
