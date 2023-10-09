@@ -321,7 +321,9 @@
       </xsl:choose>
     </xsl:variable>
 
-    <qui:section identifier="{Idno}" auth-required="{AuthRequired}" encoding-type="{$encoding-type}" encoding-level="{$item-encoding-level}">
+    <xsl:variable name="identifier" select="translate(Idno, 'ABCDEFGHIJKLMNOPQRSTUVWXYZ','abcdefghijklmnopqrstuvwxyz')" />
+
+    <qui:section identifier="{$identifier}" auth-required="{AuthRequired}" encoding-type="{$encoding-type}" encoding-level="{$item-encoding-level}">
       <xsl:apply-templates select="Tombstone" />
       <xsl:apply-templates select="DetailHref" />
       <!-- <xsl:apply-templates select="TocHref">
@@ -343,7 +345,8 @@
       </qui:link>  
       <xsl:apply-templates select="ThumbnailLink" />
       <xsl:if test="normalize-space(BookbagAddHref)">
-        <qui:link rel="bookmark" href="{BookbagAddHref}" label="{key('get-lookup', 'results.str.21')}" />
+        <qui:form slot="bookbag" rel="add" href="{BookbagAddHref}" data-identifier="{$identifier}">
+        </qui:form>
       </xsl:if>
       <xsl:if test="not($encoding-type='serialissue')">
         <xsl:apply-templates select="FirstPageHref"/>

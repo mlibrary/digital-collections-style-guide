@@ -346,40 +346,6 @@
           <span class="visually-hidden">Add item to bookbag</span>
         </label>  
       </xsl:if>
-      <xsl:if test="false() and $form">
-        <form name="bookbag" method="GET" action="{$form/@href}" class="portfolio-selection" data-identifier="{$form/@data-identifier}" target="bookbag-sink">
-          <button class="button button--ghost"
-            style="margin-bottom: auto">
-            <span class="material-icons" aria-hidden="true">
-              <xsl:value-of select="$form/@rel" />
-            </span>
-            <span data-slot="label" class="visually-hidden">
-              <xsl:choose>
-                <xsl:when test="$form/@rel = 'add'">
-                  Add to bookbag
-                </xsl:when>
-                <xsl:when test="$form/@rel = 'remove'">
-                  Remove from bookbag
-                </xsl:when>
-              </xsl:choose>
-            </span>
-          </button>
-        </form>
-      </xsl:if>
-      <xsl:if test="false() and qui:link[@rel='bookmark']">
-        <a class="button button--ghost portfolio-selection" 
-          style="margin-bottom: auto" 
-          aria-label="Add to bookbag"
-          href="{qui:link[@rel='bookmark']/@href}"
-          target="BBwindow">
-          <span class="material-icons" aria-hidden="true">bookmark_border</span>
-        </a>
-      </xsl:if>
-      <!-- <xsl:variable name="bb-id" select="generate-id()" />
-      <label class="[ portfolio-selection ]" for="bb{$bb-id}">
-        <input id="bb{$bb-id}" type="checkbox" name="bbidno" value="{@identifier}" autocomplete="off" />
-        <span class="visually-hidden">Add item to portfolio</span>
-      </label> -->
     </section>
     <xsl:variable name="identifier" select="@identifier" />
     <xsl:apply-templates select="qui:block[@slot='details'][@for=$identifier]" />

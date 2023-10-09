@@ -439,16 +439,10 @@
       <!-- <xsl:if test="normalize-space(BookbagAddHref)">
         <qui:link rel="bookmark" href="{BookbagAddHref}" label="{key('get-lookup', 'results.str.21')}" />
       </xsl:if> -->
-      <xsl:choose>
-        <xsl:when test="/Top/BookbagResults/Item[@idno=$identifier]">
-          <qui:form slot="bookbag" rel="remove" href="{/Top/BookbagResults/Item[@idno=$identifier]/AddRemoveUrl}" data-identifier="{$identifier}">
-          </qui:form>
-        </xsl:when>
-        <xsl:when test="/Top/BookbagAddHref">
-          <qui:form slot="bookbag" rel="add" href="{BookbagAddHref}" data-identifier="{$identifier}">
-          </qui:form>
-        </xsl:when>
-      </xsl:choose>  
+      <xsl:if test="normalize-space(BookbagAddHref)">
+        <qui:form slot="bookbag" rel="add" href="{BookbagAddHref}" data-identifier="{$identifier}">
+        </qui:form>
+      </xsl:if>
       <xsl:if test="not($encoding-type='serialissue')">
         <xsl:apply-templates select="FirstPageHref"/>
       </xsl:if>
