@@ -196,23 +196,6 @@ ul.list--striped li:nth-child(odd) {
   background: var(--color-teal-100);
 }
 
-a.bedazzled-link {
-  text-decoration: none;
-}
-
-a.bedazzled-link span:not(.material-icons) {
-  text-decoration: underline;
-}
-
-a.bedazzled-link[data-selected="true"] .material-icons {
-  color: var(--color-neutral-500);
-}
-
-a.bedazzled-link[data-selected="true"] span:not(.material-icons) {
-  text-decoration: none;
-  color: var(--color-neutral-500);
-}
-
 .filters__count {
   white-space: nowrap;
 }

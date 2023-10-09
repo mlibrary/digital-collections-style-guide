@@ -134,6 +134,7 @@
           <dl class="record">
             <div>
               <dt>More Item Details</dt>
+              <!-- <xsl:apply-templates select="$block/qui:field[@component='findingaid-link']" mode="dl" /> -->
               <xsl:apply-templates select="$block/qui:field[@component='catalog-link']" mode="dl" />
               <xsl:apply-templates select="$block/qui:field[@component='system-link']" mode="dl" />
             </div>
@@ -156,6 +157,14 @@
         </xsl:call-template>
       </dl>
     </xsl:if>
+  </xsl:template>
+
+  <xsl:template match="qui:field[@component='findingaid-link']" mode="dl">
+    <dd>
+      <a class="catalog-link" href="https://findingaids.lib.umich.edu/catalog/{qui:values/qui:value}">
+        <xsl:value-of select="qui:label" />
+      </a>
+    </dd>
   </xsl:template>
 
   <xsl:template match="qui:field[@component='catalog-link']" mode="dl">

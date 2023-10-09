@@ -812,6 +812,17 @@
     </label>
   </xsl:template>
 
+  <xsl:template match="qui:link[@icon]" mode="copy" priority="101">
+    <a class="bedazzled-link">
+      <span class="material-icons" aria-hidden="true">
+        <xsl:value-of select="@icon" />
+      </span>
+      <span>
+        <xsl:apply-templates mode="copy" />
+      </span>
+    </a>
+  </xsl:template>
+  
   <xsl:template match="qui:link" mode="copy" priority="99">
     <a href="{@href}">
       <xsl:apply-templates select="@class" mode="copy" />

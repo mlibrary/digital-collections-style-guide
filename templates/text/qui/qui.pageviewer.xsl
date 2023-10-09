@@ -271,7 +271,33 @@
   </xsl:template>
 
   <xsl:template name="build-related-links">
+    <qui:block slot="related-links">
+      <xsl:apply-templates select="//DocMeta/ItemHeader/HEADER/FILEDESC/PUBLICATIONSTMT/IDNO[@TYPE='eadid']" mode="field">
+        <xsl:with-param name="name">findingaid-link</xsl:with-param>
+        <xsl:with-param name="label">Collection Finding Aid</xsl:with-param>
+      </xsl:apply-templates>
+    </qui:block>
+  </xsl:template>
 
+  <xsl:template match="node()" mode="field">
+    <xsl:param name="name" />
+    <xsl:param name="label" />
+    <qui:field component="{$name}">
+      <qui:label><xsl:value-of select="$label" /></qui:label>
+      <qui:values>
+        <qui:value>
+          <xsl:value-of select="." />
+        </qui:value>
+      </qui:values>
+    </qui:field>
+  </xsl:template>
+
+  <xsl:template match="node()" mode="collection-link-value">
+    <qui:value>
+      <qui:link href="{.}" icon="inventory">
+        <xsl:text>Collection Finding Aid</xsl:text>
+      </qui:link>
+    </qui:value>
   </xsl:template>
 
   <xsl:template name="get-title">
@@ -333,6 +359,7 @@
                 <xsl:apply-templates select="/Top/DlxsGlobals/TitleComplex" />
               </qui:link>
             </qui:value>
+            <xsl:apply-templates select="//DocMeta/ItemHeader/HEADER/FILEDESC/PUBLICATIONSTMT/IDNO[@TYPE='eadid']" mode="collection-link-value" />
           </qui:values>
         </qui:field>
 
