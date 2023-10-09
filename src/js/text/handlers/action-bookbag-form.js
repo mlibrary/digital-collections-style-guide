@@ -22,7 +22,7 @@ window.addEventListener('DOMContentLoaded', (event) => {
   const view = document.documentElement.dataset.view;
   const template = document.documentElement.dataset.template;
   const iframeEl = document.querySelector('iframe[name="bookbag-sink"]');
-  if ( iframeEl && ( template == 'reslist' || template == 'bookbag' ) ) {
+  if ( iframeEl && ( template == 'reslist' || template == 'bookbag' || template == 'browse' ) ) {
     iframeEl.addEventListener('load', (event) => {
       document.querySelectorAll('input[name="bbidno"]:checked').forEach((inputEl) => {
         inputEl.checked = false;
@@ -48,7 +48,7 @@ window.addEventListener('DOMContentLoaded', (event) => {
       divOverview.style.display = null;
     })
   }
-  if ( iframeEl && view != 'reslist' ) {
+  if ( iframeEl && ( view != 'reslist' && view != 'browse' ) ) {
     iframeEl.addEventListener('load', (event) => {
       const iframeUrl = new URL(iframeEl.contentWindow.document.location.href);
       const identifier = iframeUrl.searchParams.get('bbidno').toLowerCase();
