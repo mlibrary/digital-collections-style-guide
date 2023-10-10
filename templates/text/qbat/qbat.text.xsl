@@ -76,7 +76,7 @@
     <section class="[ records ]">
       <h2 class="subtle-heading">Pages</h2>
       <!-- <xsl:apply-templates select="qui:section/qui:div"></xsl:apply-templates> -->
-      <xsl:apply-templates select=".//tei:TEXT" />
+      <xsl:apply-templates />
     </section>
   </xsl:template>
 
@@ -110,6 +110,8 @@
     <xsl:apply-templates select="//qui:form[@id='item-search']" />
   </xsl:template>
   
+  <xsl:template match="tei:HEADER" priority="101" />
+
   <xsl:template match="text()" mode="build-title">
     <xsl:copy></xsl:copy>
   </xsl:template>

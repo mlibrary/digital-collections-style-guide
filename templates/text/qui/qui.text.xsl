@@ -44,7 +44,14 @@
       is-target="{$is-target}"
       highlight-count="{$hl-count}"
       highlight-count-offset="{$hl-count-offset}">
-      <xsl:apply-templates select="/Top/FullTextResults/DocContent/DLPSTEXTCLASS" mode="copy-guts" />
+      <xsl:choose>
+        <xsl:when test="/Top/FullTextResults/DocContent/DLPSTEXTCLASS">
+          <xsl:apply-templates select="/Top/FullTextResults/DocContent/DLPSTEXTCLASS" mode="copy-guts" />
+        </xsl:when>
+        <xsl:when test="/Top/FullTextResults/DocContent">
+          <xsl:apply-templates select="/Top/FullTextResults/DocContent" mode="copy-guts" />
+        </xsl:when>
+      </xsl:choose>
     </qui:block>
 
     <qui:block slot="langmap">
