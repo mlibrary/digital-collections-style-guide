@@ -38,7 +38,13 @@
     <xsl:call-template name="build-record" />
     <xsl:call-template name="build-rights-statement" />
     <xsl:call-template name="build-related-links" />
-    <xsl:call-template name="build-item-search" />
+
+    <xsl:choose>
+      <xsl:when test="//DocMeta/ItemHeader/HEADER/@TYPE = 'noocr'"></xsl:when>
+      <xsl:otherwise>
+        <xsl:call-template name="build-item-search" />
+      </xsl:otherwise>
+    </xsl:choose>
     <xsl:if test="//Callout">
       <xsl:apply-templates select="//Callout" />
     </xsl:if>

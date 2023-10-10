@@ -13,6 +13,10 @@
   <xsl:variable name="highlight-seq-last" select="//tei:TEXT//tei:Highlight[last()]/@seq"/>
   <xsl:variable name="highlight-seq-first" select="//tei:TEXT//tei:Highlight[1]/@seq"/>
 
+  <xsl:variable name="has-page-images">
+    
+  </xsl:variable>
+
 
   <xsl:template match="tei:TEXT" priority="101">
     <xsl:if test="false() and count($highlights) &gt; 0">
@@ -61,17 +65,28 @@
   </xsl:template>
 
   <xsl:template match="tei:P[tei:PB]" priority="100">
-    <xsl:variable name="idno" select="parent::*/@NODE" />
-    <article id="{parent::*/@ID}-{PB/@SEQ}-article" class="fullview-page" data-count="{$highlights[1]/@seq}">
+    <xsl:variable name="idno" select="ancestor-or-self::*/@NODE" />
+    <xsl:variable name="id">
+      <xsl:choose>
+        <xsl:when test="ancestor-or-self::*/@ID">
+          <xsl:value-of select="ancestor-or-self::*/@ID" />
+        </xsl:when>
+        <xsl:otherwise>
+          <xsl:value-of select="translate($idno, ':', '-')" />
+        </xsl:otherwise>
+      </xsl:choose>
+    </xsl:variable>
+    <article id="{$id}-{PB/@SEQ}-article" class="fullview-page" data-count="{$highlights[1]/@seq}" data-idno="{$idno}">
       <xsl:apply-templates select="tei:PB" mode="build-p">
-        <xsl:with-param name="base" select="parent::*/@ID" />
-        <xsl:with-param name="idno" select="substring-before(parent::*/@NODE, ':')" />
+        <xsl:with-param name="base" select="$id" />
+        <xsl:with-param name="idno" select="substring-before($idno, ':')" />
       </xsl:apply-templates>
       <div class="fullview-main">
         <xsl:if test="tei:PB/@HREF">
           <xsl:apply-templates select="tei:PB" mode="build-page-link">
-            <xsl:with-param name="base" select="parent::*/@ID" />
-            <xsl:with-param name="idno" select="substring-before(parent::*/@NODE, ':')" />
+            <!-- <xsl:with-param name="base" select="parent::*/@ID" /> -->
+            <xsl:with-param name="base" select="$id" />
+            <xsl:with-param name="idno" select="substring-before($idno, ':')" />
           </xsl:apply-templates>
         </xsl:if>
         <xsl:apply-templates select="." mode="build-p" />  

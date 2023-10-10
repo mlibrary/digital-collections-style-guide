@@ -59,6 +59,16 @@
         </qui:link>
       </xsl:if>
       <xsl:variable name="return-to-results-link" select="/Top//ReturnToResultsLink" />
+      <xsl:variable name="return-to-results-label">
+        <xsl:choose>
+          <xsl:when test="contains($return-to-results-link, 'page=browse')">
+            Browse Results
+          </xsl:when>
+          <xsl:otherwise>
+            Search Results
+          </xsl:otherwise>
+        </xsl:choose>
+      </xsl:variable>
       <xsl:if test="normalize-space($return-to-results-link)">
         <xsl:choose>
           <xsl:when test="$view = 'reslist' and $subview = 'detail'">
@@ -69,7 +79,7 @@
           </xsl:when>
           <!-- could be otherwise, but avoid too much search history -->
           <xsl:when test="$view != 'reslist'">
-            <qui:link href="{$return-to-results-link}">Search Results</qui:link>
+            <qui:link href="{$return-to-results-link}"><xsl:value-of select="$return-to-results-label" /></qui:link>
           </xsl:when>
         </xsl:choose>
       </xsl:if>
