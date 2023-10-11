@@ -14,9 +14,41 @@
   <xsl:variable name="highlight-seq-first" select="//tei:TEXT//tei:Highlight[1]/@seq"/>
 
   <xsl:variable name="has-page-images">
-    
+
   </xsl:variable>
 
+  <xsl:template match="tei:DLPSWRAP">
+    <xsl:variable name="pb" select=".//tei:PB" />
+    <xsl:variable name="idno" select="tei:DIV1/@NODE" />
+    <xsl:variable name="id">
+      <xsl:choose>
+        <xsl:when test="tei:DIV1/@ID">
+          <xsl:value-of select="tei:DIV1/@ID" />
+        </xsl:when>
+        <xsl:otherwise>
+          <xsl:value-of select="translate($idno, ':', '-')" />
+        </xsl:otherwise>
+      </xsl:choose>
+    </xsl:variable>
+    <article id="{$id}-{$pb/@SEQ}-{position()}-article" class="fullview-page" data-count="{$highlights[1]/@seq}" data-idno="{$idno}">      
+      <xsl:apply-templates select="$pb" mode="build-p">
+        <xsl:with-param name="base" select="$id" />
+        <xsl:with-param name="idno" select="substring-before($idno, ':')" />
+      </xsl:apply-templates>
+      <div class="fullview-main">
+        <xsl:if test="$pb/@HREF">
+          <xsl:apply-templates select="$pb" mode="build-page-link">
+            <!-- <xsl:with-param name="base" select="parent::*/@ID" /> -->
+            <xsl:with-param name="base" select="$id" />
+            <xsl:with-param name="idno" select="substring-before($idno, ':')" />
+          </xsl:apply-templates>
+        </xsl:if>
+        <div>
+          <xsl:apply-templates select="tei:DIV1/*" />
+        </div>
+      </div>
+    </article>    
+  </xsl:template>
 
   <xsl:template match="tei:TEXT" priority="101">
     <xsl:if test="false() and count($highlights) &gt; 0">
@@ -64,7 +96,7 @@
     </qui:link>
   </xsl:template>
 
-  <xsl:template match="tei:P[tei:PB]" priority="100">
+  <xsl:template match="tei:TEXT//tei:P[tei:PB]" priority="100">
     <xsl:variable name="idno" select="ancestor-or-self::*/@NODE" />
     <xsl:variable name="id">
       <xsl:choose>
@@ -97,6 +129,54 @@
   <!-- #################### -->
 
   <xsl:template match="tei:P/tei:PB" mode="build-page-link">
+    <xsl:param name="base" />
+    <xsl:param name="idno" />
+    <xsl:variable name="pNum">
+      <xsl:choose>
+        <xsl:when test="@DISPLAYN[string-length()&gt;=1]">
+          <xsl:value-of select="@DISPLAYN"/>
+        </xsl:when>
+        <xsl:when test="@N[string-length()&gt;=1]">
+          <xsl:value-of select="@N"/>
+        </xsl:when>
+        <xsl:otherwise>
+          <xsl:value-of select="key('get-lookup','text.components.str.1')"/>
+        </xsl:otherwise>
+      </xsl:choose>
+    </xsl:variable>
+    <xsl:variable name="feature">
+      <xsl:value-of select="key('get-lookup', concat('viewer.ftr.', dlxs:normAttr(@FTR)))" />
+    </xsl:variable>
+    <div class="pb-1 fullview-thumbnail" data-idno="{$idno}">
+      <a href="{@HREF}">
+      <figure>
+        <img 
+          style="min-width: 100px"
+          loading="lazy" 
+          src="/cgi/t/text/api/image/{$collid}:{$idno}:{@SEQ}/full/!250,250/0/default.jpg"
+          alt="Scan of {key('get-lookup','headerutils.str.page')} {$pNum}"
+          />
+        <figcaption>
+          <span href="{@HREF}" class="button button--ghost button--small">
+            <xsl:text>View </xsl:text>
+            <xsl:text> </xsl:text>
+            <xsl:value-of select="key('get-lookup','headerutils.str.page')"/>
+            <span class="visually-hidden">              
+              <xsl:text> </xsl:text>
+              <xsl:value-of select="$pNum"/>  
+              <xsl:if test="normalize-space($feature)">
+                <xsl:text> - </xsl:text>
+                <xsl:value-of select="$feature" />
+              </xsl:if>
+            </span>
+          </span>
+        </figcaption>
+      </figure>
+      </a>
+    </div>
+  </xsl:template>
+
+  <xsl:template match="tei:PB" mode="build-page-link">
     <xsl:param name="base" />
     <xsl:param name="idno" />
     <xsl:variable name="pNum">
