@@ -25,7 +25,7 @@
   <xsl:template name="build-breadcrumbs-intermediate-links">
     <xsl:if test="/Top/FullTextResults/TocHref">
       <qui:link href="{/Top/FullTextResults/TocHref}">
-        <xsl:value-of select="key('get-lookup', 'header.str.contents')" />
+        <xsl:value-of select="key('get-lookup', 'uplift.str.contents')" />
       </qui:link>
     </xsl:if>
   </xsl:template>
@@ -47,6 +47,9 @@
       <xsl:choose>
         <xsl:when test="/Top/FullTextResults/DocContent/DLPSTEXTCLASS">
           <xsl:apply-templates select="/Top/FullTextResults/DocContent/DLPSTEXTCLASS" mode="copy-guts" />
+        </xsl:when>
+        <xsl:when test="/Top/FullTextResults/DocContent/DLPSWRAP">
+          <xsl:apply-templates select="/Top/FullTextResults/DocContent/DLPSWRAP" mode="copy" />
         </xsl:when>
         <xsl:when test="/Top/FullTextResults/DocContent">
           <xsl:apply-templates select="/Top/FullTextResults/DocContent" mode="copy-guts" />
