@@ -193,11 +193,11 @@
   <xsl:template name="build-cite-this-item-panel">
     <section>
       <h2 class="[ subtle-heading ][ text-black ]" id="cite-this-item">Cite this Item</h2>
-      <p class="[ text-xxx-small mt-0 ]">
+      <!-- <p class="[ text-xxx-small mt-0 ]">
         <xsl:text>View the </xsl:text>
         <a href="{//qui:link[@rel='help']/@href}">Help Guide</a>
         <xsl:text> for more information.</xsl:text>
-      </p>
+      </p> -->
       <dl class="record">
 
         <!-- do this here because passing the value causes weird encoding issues -->
