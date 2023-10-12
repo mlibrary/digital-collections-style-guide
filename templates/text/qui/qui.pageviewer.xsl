@@ -425,7 +425,14 @@
               <xsl:text>.&quot; </xsl:text>
               <xsl:if test="true()">
               <em>
-                <xsl:value-of select="//TitleComplex" />
+                <xsl:choose>
+                  <xsl:when test="//TitleComplex/img">
+                    <xsl:value-of select="//TitleComplex/img/@alt" />
+                  </xsl:when>
+                  <xsl:otherwise>
+                    <xsl:value-of select="//TitleComplex" />
+                  </xsl:otherwise>
+                </xsl:choose>
                 <xsl:text>. </xsl:text>
               </em>
               <xsl:text>https://name.umdl.umich.edu/</xsl:text>
@@ -435,6 +442,7 @@
               <xsl:text>/</xsl:text>
               <xsl:value-of select="//Param[@name='idno']" />
               <xsl:text>. </xsl:text>
+              <xsl:text>University of Michigan Library Digital Collections. </xsl:text>
               <xsl:text>Accessed </xsl:text>
               <xsl:value-of select="concat(date:month-name(), ' ', date:day-in-month(), ', ', date:year(), '.')" />
             </xsl:if>
