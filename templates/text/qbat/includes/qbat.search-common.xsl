@@ -142,7 +142,7 @@
       <div class="[ fieldset--clause--query ]">
         <xsl:apply-templates select="node()[@slot='query']" />
       </div>
-      <xsl:if test="true() or @data-name != 'q1'">
+      <xsl:if test="false() or @data-name != 'q1'">
         <button type="button" class="[ button button--secondary ]" data-action="reset-clause">Clear</button>
       </xsl:if>
     </fieldset>
