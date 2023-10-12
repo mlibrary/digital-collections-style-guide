@@ -128,7 +128,7 @@
       <xhtml:figure href="contents#{@id}">
         <xhtml:img src="{img/@src}" alt="{img/@alt}" />
         <xhtml:figcaption>
-          <xhtml:h3>
+          <xhtml:h3 id="{@id}">
             <xsl:value-of select="div[@data-slot='overview']/h2" />
           </xhtml:h3>
         </xhtml:figcaption>

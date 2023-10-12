@@ -5,13 +5,17 @@ window.root = window;
 const tocbot = require('tocbot');
 
 window.addEventListener('DOMContentLoaded', (event) => {
-  if ( ! ( 
-    ( document.documentElement.dataset.view == 'image' || 
-    document.documentElement.dataset.view == 'static' || 
-    document.documentElement.dataset.view == 'root' || 
-    document.documentElement.dataset.view == 'text' ) || 
-    document.documentElement.dataset.template == 'bookbag' ) ) {
-    return ; 
+  // if ( ! ( 
+  //   ( document.documentElement.dataset.view == 'image' || 
+  //   document.documentElement.dataset.view == 'static' || 
+  //   document.documentElement.dataset.view == 'root' || 
+  //   document.documentElement.dataset.view == 'text' ) || 
+  //   document.documentElement.dataset.template == 'bookbag' ) ) {
+  //   return ; 
+  // }
+
+  if ( ! document.querySelector('.js-toc') ) {
+    return;
   }
 
   if ( document.querySelectorAll('main h2').length == 0 ) {
@@ -24,7 +28,7 @@ window.addEventListener('DOMContentLoaded', (event) => {
     // Where to render the table of contents.
     tocSelector: '.js-toc',
     // Where to grab the headings to build the table of contents.
-    contentSelector: 'main',
+    contentSelector: '.main-panel',
     // Which headings to grab inside of the contentSelector element.
     headingSelector: 'h2, h3, h4',
     // For headings inside relative or absolute positioned containers within content.

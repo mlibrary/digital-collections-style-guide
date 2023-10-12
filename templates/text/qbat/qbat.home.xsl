@@ -40,24 +40,26 @@
         </xsl:apply-templates>
 
         <xsl:if test="count(//qui:block[@slot != 'information' and @slot != 'links']) &gt; 0">
-          <div class="[ border-bottom ][ pr-1 ]">
+          <div class="[ pr-1 mb-1 ]">
             <h3>Page Index</h3>
-            <ul class="nav">
+            <div class="toc js-toc"></div>
+            <xsl:if test="false()">
+            <ul class="toc-list">
               <xsl:for-each select="//qui:block[@slot != 'information' and @slot != 'links'][normalize-space(.)]">
-                <li>
+                <li class="toc-list-item">
                   <div class="flex flex-align-center gap-0_5">
-                    <a style="font-size: 0.75rem" class="material-icons text-black no-underline" aria-hidden="true" href="{@href}">minimize</a>                  
-                    <a href="#{@slot}">
+                    <!-- <a style="font-size: 0.75rem" class="material-icons text-black no-underline" aria-hidden="true" href="{@href}">tag</a> -->
+                    <a class="toc-link" href="#{@slot}">
                       <xsl:apply-templates select="." mode="build-link-text" />
                     </a>  
                   </div>
                   <xsl:if test="@slot = 'contents'">
-                    <ul>
+                    <ul class="toc-list">
                       <xsl:for-each select="xhtml:figure">
-                        <li>
+                        <li class="toc-list-item">
                           <div class="flex flex-align-center gap-0_5">
-                            <a style="font-size: 0.75rem;" class="material-icons text-black no-underline" aria-hidden="true" href="{@href}">minimize</a>
-                            <a href="{@href}"><xsl:value-of select=".//xhtml:h3" /></a>  
+                            <!-- <a style="font-size: 0.75rem;" class="material-icons text-black no-underline" aria-hidden="true" href="{@href}">tag</a> -->
+                            <a class="toc-link" href="{@href}"><xsl:value-of select=".//xhtml:h3" /></a>  
                           </div>
                         </li>
                       </xsl:for-each>
@@ -66,6 +68,7 @@
                 </li>
               </xsl:for-each>
             </ul>
+            </xsl:if>
           </div>    
         </xsl:if>
 
@@ -283,7 +286,7 @@
 
   <xsl:template match="qui:panel[@slot='browse']" priority="100">
     <xsl:param name="classes" />
-    <h3 class="{$classes}">Browse this collection</h3>
+    <h3 class="{$classes} js-toc-ignore">Browse this collection</h3>
     <!-- <div class="[ link-box ][ flex flex-center ]{$classes}">
       <xsl:variable name="link" select="qui:link[@rel='browse-items']" />
       <a class="[ flex flex-start ][ gap-0_25 ]" href="{$link/@href}">
