@@ -65,6 +65,16 @@ ul.list-unstyled {
   padding: 0;
 }
 
+ul:not([class]) ul:not([class]) {
+  margin-left: 1rem;
+}
+
+/* fight me */
+ul ul {
+  margin-left: 1rem;
+}
+
+
 ul.list-bulleted {
   list-style: initial;
   padding: revert;

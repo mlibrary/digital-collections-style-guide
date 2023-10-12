@@ -84,7 +84,7 @@
     </qui:block>
   </xsl:template>
 
-  <xsl:template match="ScopingPage" mode="outline">
+  <xsl:template match="ScopingPage" mode="outline" priority="101">
     <xsl:variable name="do-build-link">
       <xsl:choose>
         <xsl:when test="/Top/AuthRequired='true'">false</xsl:when>
@@ -111,8 +111,45 @@
     </qui:li>
   </xsl:template>
 
-  <xsl:template match="DIV1" mode="outline">
-    <qui:debug>TBD</qui:debug>
+  <xsl:template match="Divhead" mode="outline" priority="101" />
+
+  <xsl:template match="*" mode="outline">
+    <xsl:variable name="do-build-link">
+      <xsl:choose>
+        <xsl:when test="/Top/AuthRequired='true'">false</xsl:when>
+        <xsl:otherwise>true</xsl:otherwise>
+      </xsl:choose>
+    </xsl:variable>
+    <xsl:variable name="label">
+      <xsl:choose>
+        <xsl:when test="Divhead/HEAD">
+          <xsl:value-of select="Divhead/HEAD" />
+        </xsl:when>
+        <xsl:when test="key('get-lookup',@TYPE)">
+          <xsl:value-of select="key('get-lookup', @TYPE)" />
+        </xsl:when>
+        <xsl:otherwise>
+          <xsl:value-of select="@TYPE" />
+        </xsl:otherwise>
+      </xsl:choose>
+    </xsl:variable>
+    <qui:li>
+      <xsl:choose>
+        <xsl:when test="$do-build-link = 'true'">
+          <qui:link href="{Link}">
+            <xsl:value-of select="$label" />
+          </qui:link>
+        </xsl:when>
+        <xsl:otherwise>
+          <qui:span><xsl:value-of select="$label" /></qui:span>
+        </xsl:otherwise>
+      </xsl:choose>
+      <xsl:if test="DIV2|DIV3|DIV4|DIV5|DIV6|DIV7|DIV8|DIV9|DIV10">
+        <qui:ul>
+          <xsl:apply-templates select="DIV2|DIV3|DIV4|DIV5|DIV6|DIV7|DIV8|DIV9|DIV10" mode="outline" />
+        </qui:ul>
+      </xsl:if>
+    </qui:li>
   </xsl:template>
 
   <xsl:template match="Top/Item" mode="metadata">

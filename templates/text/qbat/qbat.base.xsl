@@ -907,6 +907,7 @@
 
   <xsl:template match="qui:ul">
     <ul>
+      <xsl:apply-templates select="@class" mode="copy" />
       <xsl:apply-templates />
     </ul>
   </xsl:template>
