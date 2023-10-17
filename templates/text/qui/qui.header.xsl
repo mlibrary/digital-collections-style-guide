@@ -123,7 +123,7 @@
     <xsl:variable name="label">
       <xsl:choose>
         <xsl:when test="Divhead/HEAD">
-          <xsl:value-of select="Divhead/HEAD" />
+          <xsl:apply-templates select="Divhead/HEAD" mode="copy" />
         </xsl:when>
         <xsl:when test="key('get-lookup',@TYPE)">
           <xsl:value-of select="key('get-lookup', @TYPE)" />
@@ -151,6 +151,8 @@
       </xsl:if>
     </qui:li>
   </xsl:template>
+
+  <xsl:template match="Divhead/HEAD/NOTE1|Divhead/HEAD/NOTE2" priority="101" mode="copy" />
 
   <xsl:template match="Top/Item" mode="metadata">
     <xsl:variable name="encoding-type">
