@@ -60,6 +60,11 @@
     <qui:block slot="notes"
       mimetype="application/tei+xml"
       >
+      <xsl:for-each select="/Top/FullTextResults/DocContent//NOTE1|/Top/FullTextResults/DocContent//NOTE2">
+        <tei:NOTE>
+          <xsl:apply-templates select="." mode="copy" />
+        </tei:NOTE>
+      </xsl:for-each>
       <xsl:apply-templates select="/Top/FullTextResults/NOTES" mode="copy-guts" />
     </qui:block>
 

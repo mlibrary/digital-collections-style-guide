@@ -704,6 +704,12 @@
   </xsl:template>
 
   <!-- #################### -->
+  <xsl:template match="tei:NOTE/tei:NOTE1|tei:NOTE/tei:NOTE2" priority="101">
+    <p>
+      <xsl:apply-templates />
+    </p>
+  </xsl:template>
+
   <xsl:template match="tei:NOTE1|tei:NOTE2">
     <xsl:choose>
       <xsl:when test="not(@HREF)">
@@ -749,7 +755,7 @@
     <a 
       class="button button--secondary button--highlight footnote-link"
       id="back{@ID}"
-      href="fn{@ID}">
+      href="#fn{@ID}">
         <xsl:choose>
           <xsl:when test="@N != '*'">
             <xsl:value-of select="@N" />
@@ -926,6 +932,9 @@
           <xsl:apply-templates select="tei:TITLE" />
         </cite>
       </xsl:when>
+      <xsl:otherwise>
+        <xsl:apply-templates />
+      </xsl:otherwise>
     </xsl:choose>
   </xsl:template>
 
@@ -1666,13 +1675,23 @@
 
   <xsl:template match="tei:NOTE/node()[@ID]" mode="note">
     <xsl:variable name="id" select="@ID" />
-    <xsl:variable name="ptr" select="//tei:PTR[@TARGET=$id]" />
+    <!-- <xsl:variable name="ptr" select="//tei:PTR[@TARGET=$id]" /> -->
+    <xsl:variable name="N">
+      <xsl:choose>
+        <xsl:when test="@HREF">
+          <xsl:value-of select="@N" />
+        </xsl:when>
+        <xsl:otherwise>
+          <xsl:value-of select="//tei:PTR[@TARGET=$id]/@N" />
+        </xsl:otherwise>
+      </xsl:choose>
+    </xsl:variable>
     <div class="flex flex-flow-row gap-1 flex-align-start"
       id="fn{$id}">
       <div class="text-bold text-medium">
         <xsl:choose>
-          <xsl:when test="$ptr/@N">
-            <xsl:value-of select="$ptr/@N" />
+          <xsl:when test="$N">
+            <xsl:value-of select="$N" />
           </xsl:when>
           <xsl:otherwise>
             <span class="material-icons">hash</span>
