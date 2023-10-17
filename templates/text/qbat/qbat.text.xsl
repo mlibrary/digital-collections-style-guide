@@ -52,6 +52,8 @@
 
         <xsl:apply-templates select="//qui:block[@slot='content']" />
 
+        <xsl:apply-templates select="//qui:block[@slot='notes']" />
+
       </div>
     </div>
 
@@ -77,6 +79,19 @@
       <h2 class="subtle-heading">Pages</h2>
       <!-- <xsl:apply-templates select="qui:section/qui:div"></xsl:apply-templates> -->
       <xsl:apply-templates />
+    </section>
+  </xsl:template>
+
+  <xsl:template match="qui:block[@slot='notes'][tei:NOTE]">
+    <section class="[ records ]">
+      <h2 id="notes" class="subtle-heading">Notes</h2>
+      <ul class="list-unstyled">
+        <xsl:for-each select="tei:NOTE">
+          <li class="mb-2">
+            <xsl:apply-templates select="*" mode="note" />
+          </li>
+        </xsl:for-each>
+      </ul>
     </section>
   </xsl:template>
 
