@@ -1262,6 +1262,18 @@ sl-dropdown::part(panel) {
   font-size: var(--text-xx-small) !important;
 }
 
+.text-x-large {
+  font-size: var(--text-x-large) !important;
+}
+
+.text-large {
+  font-size: var(--text-large) !important;
+}
+
+.text-medium {
+  font-size: var(--text-medium) !important;
+}
+
 .text-muted {
   color: var(--color-neutral-400);
 }

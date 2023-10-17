@@ -46,6 +46,15 @@
             </xsl:if>
           </xsl:for-each>
         </xsl:when>
+        <xsl:when test="//SearchForm/HiddenVars/Variable">
+          <xsl:for-each select="//SearchForm/HiddenVars/Variable">
+            <xsl:if test="@name != 'debug'">
+              <qui:input type="hidden" role="search" name="{@name}" value="{.}">
+              </qui:input>  
+            </xsl:if>
+          </xsl:for-each>
+          <qui:input type="hidden" role="search" name="type" value="{normalize-space(substring-after(//NavItem[Name='search']/Link, 'page='))}" disabled="{$is-browse}" />
+        </xsl:when>
         <xsl:otherwise>
           <qui:input type="hidden" role="search" name="type" value="{normalize-space(substring-after(//NavItem[Name='search']/Link, 'page='))}" disabled="{$is-browse}" />
         </xsl:otherwise>

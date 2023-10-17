@@ -57,6 +57,12 @@
       </xsl:choose>
     </qui:block>
 
+    <qui:block slot="notes"
+      mimetype="application/tei+xml"
+      >
+      <xsl:apply-templates select="/Top/FullTextResults/NOTES" mode="copy-guts" />
+    </qui:block>
+
     <qui:block slot="langmap">
       <xsl:apply-templates select="//Lookup[@id='text.components']" mode="build-lookup" />
       <xsl:apply-templates select="//Lookup[@id='headerutils']" mode="build-lookup" />
