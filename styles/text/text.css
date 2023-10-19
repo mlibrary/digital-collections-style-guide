@@ -116,6 +116,45 @@ html[data-highlight-state="off"] .inline-highlight a {
   margin-top: 0;
 }
 
+del {
+  background-color: var(--color-pink-100);
+  text-decoration: none;
+}
+
+ins {
+  background-color: var(--color-green-100);
+  text-decoration: none;
+}
+
+del::before,
+del::after,
+ins::before,
+ins::after {
+  clip-path: inset(100%);
+  clip: rect(1px, 1px, 1px, 1px);
+  height: 1px;
+  overflow: hidden;
+  position: absolute;
+  white-space: nowrap;
+  width: 1px;
+}
+
+del::before {
+  content: " [deletion start] ";
+}
+
+del::after {
+  content: " [deletion end] ";
+}
+
+ins::before {
+  content: " [addition start] ";
+}
+
+ins::after {
+  content: " [addition end] ";
+}
+
 html[data-highlight-state="off"] .hilite1 {
   background-color: transparent;
 }
