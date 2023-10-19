@@ -1579,42 +1579,36 @@
 
   <!-- #################### -->
   <xsl:template match="tei:ADD">
-    <xsl:element name="span">
-      <xsl:attribute name="class">add</xsl:attribute>
-      <xsl:attribute name="title">
-        <xsl:choose>
-          <xsl:when test="@DESC">
-            <xsl:value-of select="@DESC"/>
-          </xsl:when>
-          <xsl:otherwise>
-            <xsl:value-of select="key('get-lookup','text.components.str.addition')"/>
-          </xsl:otherwise>
-        </xsl:choose>
-      </xsl:attribute>
-      <xsl:apply-templates/>
-    </xsl:element>
-  </xsl:template>
-
-  <!-- #################### -->
-  <xsl:template match="tei:DEL">
-    <xsl:element name="span">
+    <ins>
       <xsl:if test="@REND">
         <xsl:attribute name="class">
           <xsl:value-of select="concat('rend-', @REND)"/>
         </xsl:attribute>
       </xsl:if>
-      <xsl:attribute name="title">
-        <xsl:choose>
-          <xsl:when test="@DESC">
-            <xsl:value-of select="@DESC"/>
-          </xsl:when>
-          <xsl:otherwise>
-            <xsl:value-of select="key('get-lookup','text.components.str.deletion')"/>
-          </xsl:otherwise>
-        </xsl:choose>
-      </xsl:attribute>
+      <xsl:if test="@DESC">
+        <xsl:attribute name="data-desc">
+          <xsl:value-of select="@DESC" />
+        </xsl:attribute>
+      </xsl:if>
       <xsl:apply-templates/>
-    </xsl:element>
+    </ins>    
+  </xsl:template>
+
+  <!-- #################### -->
+  <xsl:template match="tei:DEL">
+    <del>
+      <xsl:if test="@REND">
+        <xsl:attribute name="class">
+          <xsl:value-of select="concat('rend-', @REND)"/>
+        </xsl:attribute>
+      </xsl:if>
+      <xsl:if test="@DESC">
+        <xsl:attribute name="data-desc">
+          <xsl:value-of select="@DESC" />
+        </xsl:attribute>
+      </xsl:if>
+      <xsl:apply-templates/>
+    </del>
   </xsl:template>
 
   <!-- #################### -->
