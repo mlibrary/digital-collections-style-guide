@@ -2,12 +2,17 @@
 
 <?CHUNK filename="entitiesdoctype.chnk" optional="1"?>
 <Top xmlns:dlxs="http://www.umdl.umich.edu/dlxs">
+    <XslFallbackFileList pipeline="qui">
+        <Filename>qui/qui.plaintext.viewer.xsl</Filename>
+    </XslFallbackFileList>
     <XslFallbackFileList pipeline="qbat">
+        <Filename>qbat/qbat.base.xsl</Filename>
+        <Filename>../vendor/xslfunctions.xsl</Filename>
+        <Filename>qbat/components/*.xsl</Filename>
+        <Filename>qbat/includes/qbat.text.components.xsl</Filename>
         <Filename>qbat/qbat.plaintext.viewer.xsl</Filename>
     </XslFallbackFileList>
-    <CustomXml>
-        <?CHUNK filename="pageviewerextra.xml" optional="1"?>
-    </CustomXml>
+    <CustomXml><?CHUNK filename="pageviewerextra.xml" optional="1"?></CustomXml>
     <!-- Custom OPTIONAL XML for top-level file pageviewer.xml -->
     <DocMeta>
         <DocEncodingType><?DOC_ENCODING_TYPE_XML ?></DocEncodingType>
