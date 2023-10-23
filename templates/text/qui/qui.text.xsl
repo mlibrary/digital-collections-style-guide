@@ -32,10 +32,15 @@
 
   <xsl:template name="build-body-main">
     <!-- <xsl:call-template name="build-results-navigation" /> -->
+    <xsl:call-template name="build-section-navigation" />
     <xsl:call-template name="build-breadcrumbs" />
     <!-- <xsl:call-template name="build-record" />
     <xsl:call-template name="build-rights-statement" />
     <xsl:call-template name="build-related-links" /> -->
+
+    <qui:header role="main">
+      <xsl:apply-templates select="$item-metadata//qui:field[@key='title']/qui:values" mode="copy" />
+    </qui:header>
     
     <xsl:apply-templates select="$item-metadata" mode="copy" />
 
@@ -91,10 +96,10 @@
     <xsl:text>Entire Text</xsl:text>
   </xsl:template>
 
-  <xsl:template name="build-results-navigation">
+  <xsl:template name="build-section-navigation">
     <!-- do we have M/N available in the PI handler? -->
     <xsl:variable name="tmp-xml">
-      <qui:nav role="results" total="{normalize-space(//ReturnToResultsLink)}">
+      <qui:nav role="sections" total="{normalize-space(//ReturnToResultsLink)}">
         <xsl:call-template name="build-results-navigation-link">
           <xsl:with-param name="rel">back</xsl:with-param>
           <xsl:with-param name="href" select="/Top/ReturnToResultsLink" />
@@ -107,6 +112,7 @@
           <xsl:with-param name="rel">previous</xsl:with-param>
           <xsl:with-param name="href" select="/Top/Prev/Url" />
         </xsl:call-template> -->
+        <xsl:apply-templates select="/Top/FullTextResults/PrevNextSectionLinks" />
       </qui:nav>
     </xsl:variable>
 
@@ -116,6 +122,19 @@
       <xsl:apply-templates select="$tmp" mode="copy" />
     </xsl:if>
 
+  </xsl:template>
+
+  <xsl:template match="PrevNextSectionLinks">
+    <xsl:call-template name="build-results-navigation-link">
+      <xsl:with-param name="rel">previous-section</xsl:with-param>
+      <xsl:with-param name="href" select="PrevSectionLink" />
+      <xsl:with-param name="label" select="key('get-lookup', 'uplift.previous.section')" />
+    </xsl:call-template>
+    <xsl:call-template name="build-results-navigation-link">
+      <xsl:with-param name="rel">next-section</xsl:with-param>
+      <xsl:with-param name="href" select="NextSectionLink" />
+      <xsl:with-param name="label" select="key('get-lookup', 'uplift.next.section')" />
+    </xsl:call-template>
   </xsl:template>
 
   <xsl:template match="Top/FullTextResults" mode="metadata">
@@ -150,4 +169,37 @@
   <xsl:template match="DLPSTEXTCLASS/HEADER" mode="copy" priority="99" />
   <xsl:template match="DLPSTEXTCLASS/TEXT/BODY/DIV1/BIBL" mode="copy" priority="99" />
 
+  <xsl:template name="build-results-navigation-link">
+    <xsl:param name="rel" />
+    <xsl:param name="identifier" />
+    <xsl:param name="marker" />
+    <xsl:param name="href" />
+    <xsl:param name="label" />
+    <xsl:choose>
+      <xsl:when test="normalize-space($href)">
+        <qui:link rel="{$rel}" href="{$href}" type="section">
+          <xsl:if test="normalize-space($identifier)">
+            <xsl:attribute name="identifier">
+              <xsl:value-of select="$identifier" />
+            </xsl:attribute>
+          </xsl:if>
+          <xsl:if test="normalize-space($marker)">
+            <xsl:attribute name="marker">
+              <xsl:value-of select="$marker" />
+            </xsl:attribute>
+          </xsl:if>
+          <xsl:if test="$label">
+            <qui:label><xsl:value-of select="$label" /></qui:label>
+          </xsl:if>
+        </qui:link>
+      </xsl:when>
+      <xsl:otherwise>
+        <qui:link rel="{$rel}" disabled="disabled" type="section">
+          <xsl:if test="$label">
+            <qui:label><xsl:value-of select="$label" /></qui:label>
+          </xsl:if>
+        </qui:link>
+      </xsl:otherwise>
+    </xsl:choose>
+  </xsl:template>  
 </xsl:stylesheet>

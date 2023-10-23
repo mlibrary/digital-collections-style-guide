@@ -66,7 +66,14 @@
   <xsl:template name="build-page-heading">
     <h1 class="collection-heading--small">
       <!-- <xsl:value-of select="//qui:header[@role='main']" /> -->
-      <xsl:apply-templates select="//qui:header[@role='main']" mode="build-title" />
+      <xsl:choose>
+        <xsl:when test="//qui:header[@role='main']">
+          <xsl:apply-templates select="//qui:header[@role='main']" mode="build-title" />
+        </xsl:when>
+        <xsl:when test="//qui:block[@slot='content']/DLPSWRAP">
+
+        </xsl:when>
+      </xsl:choose>
     </h1>
   </xsl:template>
 
@@ -121,8 +128,63 @@
     </dl>
   </xsl:template>
 
+  <xsl:template match="qui:nav[@role='sections']" mode="pagination-link">
+    <xsl:if test="qui:link[not(@disabled)]">
+      <p class="[ pagination ][ nowrap ml-2 ]">
+        <xsl:if test="qui:link[@rel='previous-section']">
+          <svg
+            height="18px"
+            viewBox="0 0 20 20"
+            width="12px"
+            fill="#06080a"
+            aria-hidden="true"
+            style="transform: rotate(-180deg)"
+          >
+            <g>
+              <g><rect fill="none" height="20" width="20" /></g>
+            </g>
+            <g>
+              <polygon
+                points="4.59,16.59 6,18 14,10 6,2 4.59,3.41 11.17,10"
+              />
+            </g>
+          </svg>
+          <xsl:apply-templates select="qui:link[@rel='previous-section']" />
+        </xsl:if>
+        <span class="text-muted" aria-hidden="true" style="color: var(--color-neutral-200)">
+          <xsl:text>◆</xsl:text>
+        </span>
+        <!-- <span>
+          <xsl:value-of select="@current" />
+          <xsl:text> of </xsl:text>
+          <xsl:value-of select="@total" />
+        </span> -->
+        <xsl:if test="qui:link[@rel='next-section']">
+          <xsl:apply-templates select="qui:link[@rel='next-section']" />
+          <svg
+            height="18px"
+            viewBox="0 0 20 20"
+            width="12px"
+            fill="#06080a"
+            aria-hidden="true"
+          >
+            <g>
+              <g><rect fill="none" height="20" width="20" /></g>
+            </g>
+            <g>
+              <polygon
+                points="4.59,16.59 6,18 14,10 6,2 4.59,3.41 11.17,10"
+              />
+            </g>
+          </svg>
+        </xsl:if>
+      </p>
+    </xsl:if>
+  </xsl:template>
+
   <xsl:template name="build-breadcrumbs-extra-nav">
     <xsl:apply-templates select="//qui:form[@id='item-search']" />
+    <xsl:apply-templates select="//qui:nav[@role='sections']" mode="pagination-link" />
   </xsl:template>
   
   <xsl:template match="tei:HEADER" priority="101" />

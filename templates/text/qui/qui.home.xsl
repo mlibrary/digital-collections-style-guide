@@ -96,6 +96,9 @@
     <qui:block slot="useguidelines">
       <xsl:apply-templates select="./div[@data-slot='useguidelines']" mode="copy" />
     </qui:block>
+    <qui:block slot="download">
+      <xsl:apply-templates select="./div[@data-slot='download']" mode="copy" />
+    </qui:block>
   </xsl:template>
 
   <xsl:template match="Content">

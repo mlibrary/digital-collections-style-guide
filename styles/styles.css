@@ -1186,6 +1186,10 @@ sl-dropdown::part(panel) {
   margin-bottom: 0;
 }
 
+.mb-0_5 {
+  margin-bottom: 0.5rem;
+}
+
 .mb-1 {
   margin-bottom: 1em;
 }
@@ -1216,6 +1220,10 @@ sl-dropdown::part(panel) {
 
 .ml-2 {
   margin-left: 2em;
+}
+
+.p-1 {
+  padding: 1rem;
 }
 
 .p-half {
@@ -1254,12 +1262,20 @@ sl-dropdown::part(panel) {
   white-space: nowrap;
 }
 
+.text-align-center {
+  text-align: center;
+}
+
 .text-xxx-small {
   font-size: var(--text-xxx-small) !important;
 }
 
 .text-xx-small {
   font-size: var(--text-xx-small) !important;
+}
+
+.text-x-small {
+  font-size: var(--text-x-small) !important;
 }
 
 .text-x-large {

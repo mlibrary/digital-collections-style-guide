@@ -18,7 +18,7 @@ window.addEventListener('DOMContentLoaded', (event) => {
     return;
   }
 
-  if ( document.querySelectorAll('main h2').length == 0 ) {
+  if ( document.querySelectorAll('.main-panel h2').length == 0 ) {
     return;
   }
 
@@ -45,10 +45,12 @@ window.addEventListener('DOMContentLoaded', (event) => {
   tocbot._buildHtml.updateToc = function (headingsArray) {
     originalUpdateToc(headingsArray);
     let activeLink = document.querySelector('.is-active-link').getAttribute("href");
-    if (pageIndexDropdown.value != activeLink) {
+    if ( pageIndexDropdown && pageIndexDropdown.value != activeLink) {
       pageIndexDropdown.value = activeLink;
     }
   }
+
+  if ( ! pageIndexDropdown ) { return; }
 
   setTimeout(() => {
     document.querySelectorAll('.toc-list-item').forEach((li) => {

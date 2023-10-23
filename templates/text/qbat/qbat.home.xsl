@@ -96,6 +96,7 @@
           <xsl:apply-templates select="//qui:block[@slot='contentwarning']" />
           <xsl:apply-templates select="//qui:block[@slot='access']" />
           <xsl:apply-templates select="//qui:block[@slot='copyright' or @slot='useguidelines']" />
+          <xsl:apply-templates select="//qui:block[@slot='download']" />
           <xsl:apply-templates select="//qui:block[@slot='more-information']" />
           <xsl:apply-templates select="//qui:block[@slot='links'][not(@align)]" />
         </div>
@@ -213,6 +214,13 @@
   <xsl:template match="qui:block[@slot='copyright' or @slot='useguidelines']">
     <xsl:if test="normalize-space(.)">
       <h2 id="{@slot}">Rights and Permissions</h2>
+      <xsl:apply-templates mode="copy" />
+    </xsl:if>
+  </xsl:template>
+
+  <xsl:template match="qui:block[@slot='download']">
+    <xsl:if test="normalize-space(.)">
+      <h2 id="{@slot}">Downloadable Data</h2>
       <xsl:apply-templates mode="copy" />
     </xsl:if>
   </xsl:template>
@@ -389,6 +397,7 @@
       <xsl:when test="@slot = 'copyright'">Rights and Permissions</xsl:when>
       <xsl:when test="@slot = 'useguidelines'">Rights and Permissions</xsl:when>
       <xsl:when test="@slot = 'more-information'">More Information</xsl:when>
+      <xsl:when test="@slot = 'download'">Downloadable Data</xsl:when>
     </xsl:choose>
   </xsl:template>
 

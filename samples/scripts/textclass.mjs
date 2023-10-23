@@ -222,7 +222,6 @@ async function processDLXS(req, res) {
 
     // static check
     const staticXslFilename = xpath.select(`string(//XslFallbackFileList/Filename[. = 'static.xsl'])`, xmlDoc);
-    console.log("-- static check", staticXslFilename);
     if ( view != 'home' && staticXslFilename.indexOf('static.xsl') > -1 ) {
       view = 'staticincl';
     }
@@ -242,8 +241,8 @@ async function processDLXS(req, res) {
       "xsl",
       collid.substr(0, 1),
       collid,
-      "uplift",
-      "qui"
+      // "uplift",
+      // "qui"
     );
     const viewFilename = path.join(configPath, `${view}.xml`);
     const baseFilename = `/tmp/${Date.now()}`;
@@ -280,10 +279,9 @@ async function processDLXS(req, res) {
     );
 
     const xsltDoc = new DOMParser().parseFromString(xsltBase, "text/xml");
-    console.log(fallbackFilenames);
+    // console.log(fallbackFilenames);
     fallbackFilenames.forEach((fallbackFilename) => {
       [textPath, collidPath].forEach((xslPath) => {
-        console.log("==>", fallbackFilename.textContent);
         const possibles = fg.sync(
           path.join(xslPath, fallbackFilename.textContent)
         );
@@ -509,7 +507,15 @@ function listen(options) {
   app.use("/([a-z])/:collid/(*).(gif|jpg|html)", proxy('https://roger.quod.lib.umich.edu/', {
     https: true,
     forwardPath: function (req) {
-      console.log("-- static file?", req.originalUrl);
+      // console.log("-- static file?", req.originalUrl);
+      return req.originalUrl;
+    }
+  }));
+
+  app.use("/([a-z])/:collid/graphics/(*).(gif|jpg|html)", proxy('https://roger.quod.lib.umich.edu/', {
+    https: true,
+    forwardPath: function (req) {
+      // console.log("-- static file?", req.originalUrl);
       return req.originalUrl;
     }
   }));
@@ -525,6 +531,11 @@ function listen(options) {
       handleError(req, res, error);
     }
   });
+
+  app.get("/[a-z]/:collid$", async function (req, res) {
+    console.log("LEAF");
+    res.redirect(req.originalUrl + '/');
+  })
 
   app.get("/[a-z]/:collid(*)", async function (req, res) {
     try {
