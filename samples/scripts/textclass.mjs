@@ -332,6 +332,9 @@ async function processDLXS(req, res) {
       new XMLSerializer().serializeToString(xsltDoc)
     );
 
+    fs.copyFileSync(inputFilename, "/tmp/wth.xml");
+    fs.copyFileSync(quiCompiledFilename, "/tmp/wtf.xsl");
+
     fs.writeFileSync(
       qbatCompiledFilename,
       new XMLSerializer().serializeToString(qbatXsltDoc)

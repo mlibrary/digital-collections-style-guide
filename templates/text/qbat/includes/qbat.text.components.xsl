@@ -1300,14 +1300,15 @@
         </xsl:element>
       </xsl:when>
       <xsl:otherwise>
-        <header>
-          <xsl:if test="number($divlevel)">
-            <xsl:attribute name="class">
+        <div>
+          <xsl:attribute name="class">
+            <xsl:text>fullview-heading </xsl:text>
+            <xsl:if test="number($divlevel)">
               <xsl:value-of select="concat('fullview-heading-', $divlevel)" />
-            </xsl:attribute>
-          </xsl:if>
+            </xsl:if>
+          </xsl:attribute>
           <xsl:call-template name="addRend" />
-        </header>
+        </div>
         <!-- <xsl:choose>
           <xsl:when test="$divlevel='1'">
             <xsl:element name="h3">
