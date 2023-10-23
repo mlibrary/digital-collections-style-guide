@@ -530,10 +530,13 @@
       <xsl:apply-templates select="@*[starts-with(name(), 'data-')]" mode="copy" />
 
       <xsl:choose>
+        <xsl:when test="qui:label"><xsl:value-of select="qui:label" /></xsl:when>
         <xsl:when test="@rel = 'next'">Next</xsl:when>
         <xsl:when test="@rel = 'previous'">Previous</xsl:when>
         <xsl:when test="@rel = 'next-item'">Next Item</xsl:when>
         <xsl:when test="@rel = 'previous-item'">Previous Item</xsl:when>
+        <xsl:when test="@rel = 'next-section'">Next Section</xsl:when>
+        <xsl:when test="@rel = 'previous-section'">Previous Section</xsl:when>
         <xsl:when test="@rel = 'back'">Search Results</xsl:when>
         <xsl:otherwise><xsl:apply-templates mode="copy" /></xsl:otherwise>
       </xsl:choose>
@@ -907,13 +910,16 @@
 
   <xsl:template match="qui:ul">
     <ul>
+      <xsl:if test="parent::qui:li">
+        <xsl:attribute name="class">mt-0_5</xsl:attribute>
+      </xsl:if>
       <xsl:apply-templates select="@class" mode="copy" />
       <xsl:apply-templates />
     </ul>
   </xsl:template>
 
   <xsl:template match="qui:li">
-    <li>
+    <li class="mb-0_5">
       <xsl:apply-templates />
     </li>
   </xsl:template>

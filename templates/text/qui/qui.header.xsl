@@ -91,9 +91,15 @@
         <xsl:otherwise>true</xsl:otherwise>
       </xsl:choose>
     </xsl:variable>
+    <xsl:variable name="non-linked-div">
+      <xsl:call-template name="should-div-not-be-linked" />
+    </xsl:variable>
     <qui:li>
       <xsl:choose>
-        <xsl:when test="$do-build-link = 'true'">
+        <xsl:when test="$do-build-link = 'false' or $non-linked-div = 'true'">
+          <qui:debug>oops</qui:debug>
+        </xsl:when>
+        <xsl:otherwise>
           <qui:link href="{ViewPageLink}">
             <xsl:value-of select="key('get-lookup','headerutils.str.page')"/>
             <xsl:text> </xsl:text>
@@ -106,7 +112,7 @@
             <xsl:if test="PageType!='viewer.ftr.uns'"><xsl:text> - </xsl:text></xsl:if>
             <xsl:value-of select="key('get-lookup',PageType)"/>        
           </qui:link>
-        </xsl:when>
+        </xsl:otherwise>
       </xsl:choose>
     </qui:li>
   </xsl:template>
@@ -119,6 +125,9 @@
         <xsl:when test="/Top/AuthRequired='true'">false</xsl:when>
         <xsl:otherwise>true</xsl:otherwise>
       </xsl:choose>
+    </xsl:variable>
+    <xsl:variable name="non-linked-div">
+      <xsl:call-template name="should-div-not-be-linked" />
     </xsl:variable>
     <xsl:variable name="label">
       <xsl:choose>
@@ -135,13 +144,13 @@
     </xsl:variable>
     <qui:li>
       <xsl:choose>
-        <xsl:when test="$do-build-link = 'true'">
+        <xsl:when test="$do-build-link = 'false' or $non-linked-div = 'true'">
+          <qui:span><xsl:value-of select="$label" /></qui:span>
+        </xsl:when>
+        <xsl:otherwise>
           <qui:link href="{Link}">
             <xsl:value-of select="$label" />
           </qui:link>
-        </xsl:when>
-        <xsl:otherwise>
-          <qui:span><xsl:value-of select="$label" /></qui:span>
         </xsl:otherwise>
       </xsl:choose>
       <xsl:if test="DIV2|DIV3|DIV4|DIV5|DIV6|DIV7|DIV8|DIV9|DIV10">
@@ -178,4 +187,18 @@
       
   </xsl:template>  
 
+  <xsl:template name="should-div-not-be-linked">
+    <xsl:choose>
+      <xsl:when test="ancestor::Item/DocEncodingType='serialarticle'">
+        <xsl:text>true</xsl:text>
+      </xsl:when>
+      <xsl:when test="parent::*[@STATUS='nolink']">
+        <xsl:text>true</xsl:text>
+      </xsl:when>
+      <xsl:otherwise>
+        <xsl:text>false</xsl:text>
+      </xsl:otherwise>
+    </xsl:choose>
+  </xsl:template>
+  
 </xsl:stylesheet>
