@@ -535,12 +535,14 @@ function listen(options) {
     }
   });
 
-  // app.get("/[a-z]/([a-z\d]+)$", async function (req, res) {
-  //   console.log("LEAF");
-  //   res.redirect(req.originalUrl + '/');
-  // })
-
   app.get("/[a-z]/:collid(*)", async function (req, res) {
+    if ( req.params['collid'].match(/^.*\/?\w+$/) ) {
+      const redirectTmp = req.originalUrl.split('?');
+      redirectTmp[0] += '/';
+      const redirectUrl = redirectTmp.join('?');
+      res.redirect(redirectUrl);
+      return;
+    }
     try {
       processDLXS(req, res).catch((error) => {
         handleError(req, res, error);
