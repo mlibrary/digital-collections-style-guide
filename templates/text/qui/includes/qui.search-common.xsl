@@ -1,6 +1,7 @@
 <?xml version="1.0" encoding="UTF-8" ?>
 <xsl:stylesheet version="1.0" xmlns="http://www.w3.org/1999/xhtml" xmlns:xhtml="http://www.w3.org/1999/xhtml" xmlns:xsl="http://www.w3.org/1999/XSL/Transform" xmlns:dlxs="http://dlxs.org" xmlns:qbat="http://dlxs.org/quombat" xmlns:exsl="http://exslt.org/common" extension-element-prefixes="exsl" xmlns:qui="http://dlxs.org/quombat/ui">
   <xsl:variable name="searchtype" select="/Top/SearchType"/>
+  <xsl:variable name="xcoll-mode" select="/Top/DlxsGlobals/XcollMode" />
 
   <xsl:template name="build-advanced-search">
     <xsl:variable name="key" select="concat('navheader.str.', $page)" />
@@ -41,6 +42,13 @@
     </qui:nav>
 
     <xsl:apply-templates select="/Top/SearchRestriction/ItemHeader[HEADER]" />
+
+
+    <xsl:if test="$xcoll-mode = 'group'">
+      <qui:callout slot="collids">
+        <xsl:text>You can search all the collections in this group, or use the list of collections to restrict your search to a subset.</xsl:text>
+      </qui:callout>
+    </xsl:if>
 
     <qui:callout slot="clause">
       <div>
@@ -96,6 +104,7 @@
       <xsl:for-each select="//SearchForm/HiddenVars/Variable">
         <qui:hidden-input name="{@name}" value="{.}" />
       </xsl:for-each>
+      <xsl:call-template name="build-collection-select" />      
     </qui:form>     
   </xsl:template>
 
@@ -216,6 +225,28 @@
         <xsl:with-param name="encoding-type" select="/Top/SearchRestriction/DocEncodingType" />
       </xsl:call-template>
     </qui:callout>
+  </xsl:template>
+
+  <xsl:template name="build-collection-select">
+    <xsl:if test="$xcoll-mode = 'group'">
+      <qui:fieldset slot="collids">
+        <xsl:for-each select="/Top/CollCheckboxList/Coll">
+          <xsl:apply-templates select="." />
+        </xsl:for-each>
+      </qui:fieldset>
+    </xsl:if>
+  </xsl:template>
+
+  <xsl:template match="Coll">
+    <qui:option value="{Id}" data-href="{Href}">
+      <xsl:if test="Checked = '1'">
+        <xsl:attribute name="checked">checked</xsl:attribute>
+      </xsl:if>
+      <xsl:if test="@collid = 'DC'">
+        <xsl:attribute name="type">hidden</xsl:attribute>
+      </xsl:if>
+      <xsl:value-of select="Name" />
+    </qui:option>
   </xsl:template>
 
 </xsl:stylesheet>

@@ -26,6 +26,11 @@
             <xsl:text>Bookbag</xsl:text>
           </qui:link>
         </xsl:when>
+        <xsl:when test="$context-type = 'group' and /Top/NavHeader/MainNav/NavItem[Name='home']/Link">
+          <qui:link href="{/Top/NavHeader/MainNav/NavItem[Name='home']/Link}">
+            <xsl:text>Group Home</xsl:text>
+          </qui:link>
+        </xsl:when>
         <xsl:when test="$context-type = 'group' or $context-type = 'multiple'">
           <xsl:variable name="root-href">
             <xsl:choose>

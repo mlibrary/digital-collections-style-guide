@@ -149,7 +149,7 @@
     </div>
   </xsl:template>
 
-  <xsl:template match="qui:block[@slot='contents'][.//qui:card]">
+  <xsl:template match="qui:block[@slot='contents'][.//qui:card]" priority="10">
     <h2 id="{@slot}">Digitized Collection Contents</h2>
     <div class="[ gallery-view ]">
       <xsl:for-each select="qui:card">
@@ -164,8 +164,17 @@
     </div>
   </xsl:template>
 
-  <xsl:template match="qui:block[@slot='contents'][.//xhtml:figure]">
-    <h2 id="{@slot}">Digitized Collection Contents</h2>
+  <xsl:template match="qui:block[@slot='contents'][.//xhtml:figure]" priority="10">
+    <h2 id="{@slot}">
+      <xsl:choose>
+        <xsl:when test="qui:label">
+          <xsl:value-of select="qui:label" />
+        </xsl:when>
+        <xsl:otherwise>
+          <xsl:text>Digitized Collection Contents</xsl:text>
+        </xsl:otherwise>
+      </xsl:choose>
+    </h2>
     <div class="[ gallery-view ]">
       <xsl:for-each select="xhtml:figure">
         <!-- <div class="[ card ]"> -->
@@ -178,6 +187,8 @@
       </xsl:for-each>
     </div>
   </xsl:template>
+
+  <xsl:template match="qui:block[@slot='contents']" />
 
   <xsl:template match="qui:img|xhtml:img" mode="card-image">
     <img class="[ card__image ]" src="{@src}" alt="" />
@@ -292,7 +303,7 @@
     </figcaption>
   </xsl:template>
 
-  <xsl:template match="qui:panel[@slot='browse']" priority="100">
+  <xsl:template match="qui:panel[@slot='browse'][.//qui:link]" priority="100">
     <xsl:param name="classes" />
     <h3 class="{$classes} js-toc-ignore">Browse this collection</h3>
     <!-- <div class="[ link-box ][ flex flex-center ]{$classes}">

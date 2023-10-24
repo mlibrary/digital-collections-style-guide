@@ -85,7 +85,15 @@
       <xsl:apply-templates select="./div[@data-slot='overview']|./div[@data-slot='information']" mode="copy" />
     </qui:block>
     <qui:block slot="contents">
-      <xsl:apply-templates select="./div[@data-slot='contents']" mode="copy-guts" />
+      <xsl:choose>
+        <xsl:when test="//CollCheckboxList/Coll">
+          <qui:label>Publications</qui:label>
+          <xsl:apply-templates select="//CollCheckboxList/Coll" />
+        </xsl:when>
+        <xsl:otherwise>
+          <xsl:apply-templates select="./div[@data-slot='contents']" mode="copy-guts" />
+        </xsl:otherwise>
+      </xsl:choose>
     </qui:block>
     <qui:block slot="contentwarning">
       <xsl:apply-templates select="./div[@data-slot='contentwarning']" mode="copy-guts" />
@@ -162,6 +170,17 @@
         </xsl:when>
       </xsl:choose>
     </xsl:attribute>
+  </xsl:template>
+
+  <xsl:template match="CollCheckboxList/Coll" priority="101" />
+  <xsl:template match="CollCheckboxList/Coll">
+    <xhtml:figure href="{Href}">
+      <xhtml:figcaption>
+        <xhtml:h3 id="coll-{Id}">
+          <xsl:value-of select="Name" />
+        </xhtml:h3>
+      </xhtml:figcaption>
+    </xhtml:figure>
   </xsl:template>
 
 </xsl:stylesheet>
