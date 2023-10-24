@@ -8,6 +8,17 @@
 
   <xsl:variable name="idno" select="//Param[@name='idno']" />
 
+  <xsl:variable name="item-encoding-level">
+    <xsl:choose>
+      <xsl:when test="/Top/FullTextResults/ItemHeader/HEADER/ENCODINGDESC/EDITORIALDECL/@N">
+        <xsl:value-of select="/Top/FullTextResults/ItemHeader/HEADER/ENCODINGDESC/EDITORIALDECL/@N"/>
+      </xsl:when>
+      <xsl:otherwise>
+        <xsl:value-of select="''"/>
+      </xsl:otherwise>
+    </xsl:choose>
+  </xsl:variable>
+
   <xsl:variable name="item-metadata-tmp">
     <xsl:apply-templates select="/Top/FullTextResults" mode="metadata" />
   </xsl:variable>
@@ -47,8 +58,7 @@
     <qui:block slot="content" 
       mimetype="application/tei+xml" 
       is-target="{$is-target}"
-      highlight-count="{$hl-count}"
-      highlight-count-offset="{$hl-count-offset}">
+      item-encoding-level="{$item-encoding-level}" >
       <xsl:choose>
         <xsl:when test="/Top/FullTextResults/DocContent/DLPSTEXTCLASS">
           <xsl:apply-templates select="/Top/FullTextResults/DocContent/DLPSTEXTCLASS" mode="copy-guts" />
@@ -140,17 +150,6 @@
   <xsl:template match="Top/FullTextResults" mode="metadata">
     <xsl:variable name="encoding-type">
       <xsl:value-of select="DocEncodingType" />
-    </xsl:variable>
-
-    <xsl:variable name="item-encoding-level">
-      <xsl:choose>
-        <xsl:when test="ItemHeader/HEADER/ENCODINGDESC/EDITORIALDECL/@N">
-          <xsl:value-of select="ItemHeader/HEADER/ENCODINGDESC/EDITORIALDECL/@N"/>
-        </xsl:when>
-        <xsl:otherwise>
-          <xsl:value-of select="''"/>
-        </xsl:otherwise>
-      </xsl:choose>
     </xsl:variable>
 
     <xsl:call-template name="build-item-metadata">

@@ -85,7 +85,14 @@
     <section class="[ records ]">
       <h2 class="subtle-heading">Pages</h2>
       <!-- <xsl:apply-templates select="qui:section/qui:div"></xsl:apply-templates> -->
-      <xsl:apply-templates />
+      <xsl:choose>
+        <xsl:when test=".//tei:DLPSWRAP">
+          <xsl:apply-templates select=".//tei:DLPSWRAP" />
+        </xsl:when>
+        <xsl:otherwise>
+          <xsl:apply-templates />
+        </xsl:otherwise>
+      </xsl:choose>
     </section>
   </xsl:template>
 
