@@ -19,7 +19,7 @@
 
   <xsl:variable name="has-page-images" select="count(//tei:DLPSWRAP//tei:PB[@HREF]) &gt; 0" />
 
-  <xsl:template match="tei:DLPSWRAP">
+  <xsl:template match="tei:DLPSWRAP-V1">
     <xsl:variable name="pb" select=".//tei:PB" />
     <xsl:variable name="div" select="tei:DIV1|tei:DIV2|tei:DIV3|tei:DIV4|tei:DIV5|tei:DIV6|tei:DIV7" />
     <xsl:variable name="idno" select="$div/@NODE" />
@@ -58,6 +58,49 @@
         </xsl:choose>
         <div>
           <xsl:apply-templates select="$div/*" />
+        </div>
+      </div>
+    </article>    
+  </xsl:template>
+
+  <xsl:template match="tei:DLPSWRAP">
+    <xsl:variable name="pb" select=".//tei:PB" />
+    <xsl:variable name="idno" select="$pb/@IDNO" />
+    <xsl:variable name="id">
+      <xsl:choose>
+        <xsl:when test="$pb/@ID">
+          <xsl:value-of select="$pb/@ID" />
+        </xsl:when>
+        <xsl:otherwise>
+          <xsl:value-of select="translate($idno, ':', '-')" />
+        </xsl:otherwise>
+      </xsl:choose>
+    </xsl:variable>
+    <article id="{$id}-{$pb/@SEQ}-{position()}-article" class="fullview-page" data-count="{$highlights[1]/@seq}" data-idno="{$idno}">      
+      <xsl:apply-templates select="$pb" mode="build-p">
+        <xsl:with-param name="base" select="$id" />
+        <xsl:with-param name="idno" select="$idno" />
+      </xsl:apply-templates>
+      <div class="fullview-main">
+        <xsl:choose>
+          <xsl:when test="$pb/@HREF">
+            <xsl:apply-templates select="$pb" mode="build-page-link">
+              <!-- <xsl:with-param name="base" select="parent::*/@ID" /> -->
+              <xsl:with-param name="base" select="$id" />
+              <xsl:with-param name="idno" select="$idno" />
+            </xsl:apply-templates>
+          </xsl:when>
+          <xsl:when test="$has-page-images">
+            <div class="pb-1 fullview-blank">
+              <!-- <div style="min-width: 100px; margin: 1rem">
+                <div style="padding: 0.5rem"></div>
+              </div> -->
+            </div>
+          </xsl:when>
+          <xsl:otherwise></xsl:otherwise>
+        </xsl:choose>
+        <div>
+          <xsl:apply-templates />
         </div>
       </div>
     </article>    
@@ -564,7 +607,7 @@
       <p>
         <xsl:attribute name="class">
           <xsl:choose>
-            <xsl:when test="ancestor::tei:DIV1 or ancestor::tei:DIV2">
+            <xsl:when test="ancestor::qui:block[@slot='content']/@item-encoding-level != '1'">
             </xsl:when>
             <xsl:otherwise>
               <xsl:text>plaintext</xsl:text>

@@ -535,10 +535,10 @@ function listen(options) {
     }
   });
 
-  app.get("/[a-z]/:collid$", async function (req, res) {
-    console.log("LEAF");
-    res.redirect(req.originalUrl + '/');
-  })
+  // app.get("/[a-z]/([a-z\d]+)$", async function (req, res) {
+  //   console.log("LEAF");
+  //   res.redirect(req.originalUrl + '/');
+  // })
 
   app.get("/[a-z]/:collid(*)", async function (req, res) {
     try {
