@@ -4,17 +4,24 @@
 
 <Top xmlns:dlxs="http://www.umdl.umich.edu/dlxs">
     <!-- XSL fallback files -->
-    <XslFallbackFileList>
-        <Filename>bookbagitemsstring.xsl</Filename>
-        <Filename>picklist.xsl</Filename>
-        <Filename>picklistheader.xsl</Filename>
-        <Filename>htmlhead.xsl</Filename>
-        <Filename>navheader.xsl</Filename>
-        <Filename>footer.import.xsl</Filename>
-        <Filename>xsl2htmlutils.xsl</Filename>
-        <Filename>globalvariables.xsl</Filename>
+    <XslFallbackFileList pipeline="qui">
+        <Filename>qui/qui.base.xsl</Filename>
+        <Filename>../vendor/str.split.function.xsl</Filename>
+        <Filename>../vendor/xslfunctions.xsl</Filename>
+        <Filename>qui/components/*.xsl</Filename>
+        <Filename>qui/includes/qui.results-item.xsl</Filename>
+        <Filename>qui/includes/qui.scopedivs.xsl</Filename>
+        <Filename>qui/qui.picklist.xsl</Filename>
     </XslFallbackFileList>
-    <!-- Custom OPTIONAL XML for top-level file picklist.xml -->
+
+    <XslFallbackFileList pipeline="qbat">
+        <Filename>qbat/qbat.base.xsl</Filename>
+        <Filename>../vendor/xslfunctions.xsl</Filename>
+        <Filename>qbat/components/*.xsl</Filename>
+        <Filename>qbat/qbat.picklist.xsl</Filename>
+    </XslFallbackFileList>
+
+  <!-- Custom OPTIONAL XML for top-level file picklist.xml -->
     <CustomXml>
         <?CHUNK filename="picklistextra.xml" optional="1"?>
     </CustomXml>

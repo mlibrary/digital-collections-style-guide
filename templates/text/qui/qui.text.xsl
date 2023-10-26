@@ -103,7 +103,18 @@
   </xsl:template>
 
   <xsl:template name="get-current-page-breadcrumb-label">
-    <xsl:text>Entire Text</xsl:text>
+    <xsl:choose>
+      <xsl:when test="//Param[@name='rgn'] = 'main'">Entire Text</xsl:when>
+      <xsl:when test="false() and //DLPSWRAP[1]/node()[@TYPE]">
+        <xsl:value-of select="//DLPSWRAP[1]/node()/@TYPE" />
+      </xsl:when>
+      <xsl:when test="false() and //DLPSWRAP[1]/node()">
+        <xsl:value-of select="local-name(//DLPSWRAP[1]/node())" />
+      </xsl:when>
+      <xsl:otherwise>
+        <xsl:value-of select="key('get-lookup', 'uplift.section')" />
+      </xsl:otherwise>
+    </xsl:choose>
   </xsl:template>
 
   <xsl:template name="build-section-navigation">
