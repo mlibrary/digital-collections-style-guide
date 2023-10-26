@@ -105,6 +105,13 @@
 
   <xsl:template name="build-browse-navigation">
     <qui:nav role="browse">
+      <xsl:if test="//CollectionIdno">
+        <qui:link key="picklist" href="/cgi/t/text/text-idx?cc={$collid};idno={//CollectionIdno}">
+          <qui:label>
+            <xsl:value-of select="key('get-lookup', 'uplift.picklist.str.morethanoneitem')" />
+          </qui:label>
+        </qui:link>
+      </xsl:if>
       <xsl:for-each select="/Top/NavHeader/BrowseFields/Field">
         <qui:link href="{Link}" key="{Name}">
           <xsl:if test="Name = $current-browse-field">

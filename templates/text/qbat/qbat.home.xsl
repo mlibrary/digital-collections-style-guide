@@ -222,6 +222,15 @@
     </xsl:if>
   </xsl:template>
 
+  <xsl:template match="qui:block[@slot='more-information']">
+    <xsl:if test="normalize-space(.)">
+      <xsl:if test="not(h2)">
+        <h2 id="{@slot}">More Information</h2>
+      </xsl:if>
+      <xsl:apply-templates mode="copy" />
+    </xsl:if>
+  </xsl:template>
+
   <xsl:template match="qui:block[@slot='copyright' or @slot='useguidelines']">
     <xsl:if test="normalize-space(.)">
       <h2 id="{@slot}">Rights and Permissions</h2>

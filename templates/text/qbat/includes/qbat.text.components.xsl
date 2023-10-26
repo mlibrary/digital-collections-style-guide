@@ -445,9 +445,9 @@
 
   <!-- #################### -->
   <xsl:template name="titlepage">
-    <qui:div class="titlepage">
+    <div class="titlepage">
       <xsl:apply-templates />
-    </qui:div>
+    </div>
   </xsl:template>
 
   <!-- title page templates -->
@@ -458,48 +458,53 @@
 
   <!-- #################### -->
   <xsl:template match="tei:DOCTITLE">
-    <qui:div class="doctitle">
+    <div class="doctitle">
       <xsl:apply-templates />
-    </qui:div>
+    </div>
   </xsl:template>
 
   <!-- #################### -->
+  <xsl:template match="tei:TITLEPART[@TYPE='sub']" priority="101">
+    <div class="fullview-heading fullview-heading-2">
+      <xsl:apply-templates />
+    </div>
+  </xsl:template>
+
   <xsl:template match="tei:TITLEPART">
-    <xsl:apply-templates />
-    <xsl:if test="position()!=last()">
-      <xsl:text>:&#xa0;</xsl:text>
-    </xsl:if>
+    <div class="fullview-heading fullview-heading-1">
+      <xsl:apply-templates />
+    </div>
   </xsl:template>
 
   <!-- #################### -->
   <xsl:template match="tei:BYLINE">
-    <qui:div class="byline">
+    <div class="byline">
       <xsl:apply-templates />
-    </qui:div>
+    </div>
   </xsl:template>
 
   <!-- #################### -->
   <xsl:template match="tei:DOCAUTHOR">
-    <qui:div class="docauthor">
+    <div class="docauthor">
       <xsl:apply-templates />
-    </qui:div>
+    </div>
   </xsl:template>
 
   <!-- #################### -->
   <xsl:template match="tei:DOCIMPRINT">
-    <qui:div class="docimprint">
+    <div class="docimprint">
       <xsl:for-each select="*">
         <xsl:apply-templates select="." />
         <br />
       </xsl:for-each>
-    </qui:div>
+    </div>
   </xsl:template>
 
   <!-- #################### -->
   <xsl:template match="tei:CAESURA">
-    <qui:div>
+    <div>
       <xsl:value-of select="key('get-lookup','text.components.str.3')" />
-    </qui:div>
+    </div>
   </xsl:template>
 
   <!-- #################### -->

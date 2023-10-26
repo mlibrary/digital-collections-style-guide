@@ -47,8 +47,8 @@
     <xsl:variable name="filedesc" select="$item/HEADER/FILEDESC" />
     <xsl:variable name="mono-title-path" select="$filedesc/TITLESTMT" />
     <xsl:variable name="bibl-src" select="($sourcedesc/BIBLFULL|$sourcedesc/BIBL)"/>
-    <xsl:variable name="source-pub-st-path" select="($bibl-src/PUBLICATIONSTMT|$bibl-src/IMPRINT|$bibl-src)"/>
-
+    <xsl:variable name="source-pub-st-path" select="($bibl-src/PUBLICATIONSTMT|$bibl-src/IMPRINT|$bibl-src|$sourcedesc/PUBLICATIONSTMT)"/>
+    <xsl:variable name="main-pub-st-path" select="$filedesc/PUBLICATIONSTMT" />
 
     <xsl:variable name="main-title">
       <!-- use the 245 title if there is one -->
@@ -109,7 +109,16 @@
             <xsl:value-of select="key('get-lookup','headerutils.str.publicationinfo')"/>
           </qui:label>
           <qui:values>
-            <xsl:apply-templates select="($sourcedesc/BIBLFULL/PUBLICATIONSTMT|$sourcedesc/BIBL)" mode="metadata"/>
+            <!-- <xsl:apply-templates select="($sourcedesc/BIBLFULL/PUBLICATIONSTMT|$sourcedesc/BIBL)" mode="metadata"/> -->
+            <qui:value>
+              <xsl:value-of select="$source-pub-st-path/PUBPLACE" />
+              <xsl:text> </xsl:text>
+              <xsl:value-of select="$source-pub-st-path/PUBLISHER" />
+            </qui:value>
+            <!-- <xsl:apply-templates select="$source-pub-st-path/PUBPLACE" mode="metadata-value" />
+            <xsl:apply-templates select="$source-pub-st-path/PUBLISHER" mode="metadata-value" /> -->
+            <xsl:apply-templates select="$source-pub-st-path/SERIES[1]" mode="metadata-value" />
+            <xsl:apply-templates select="$source-pub-st-path/DATE[not(@TYPE='sort')][1]" mode="metadata-value" />
           </qui:values>
         </qui:field>
       </qui:block>
@@ -131,6 +140,8 @@
                 <qui:value>
                   <xsl:value-of select="$source-title-path/TITLE[@TYPE='series']"/>
                 </qui:value>
+              </xsl:if>
+              <xsl:if test="$source-title-path/AUTHOR">
                 <qui:value>
                   <xsl:for-each select="$source-title-path/AUTHOR">
                     <xsl:apply-templates select="."/>
@@ -278,6 +289,7 @@
     <xsl:param name="item-encoding-level" />
     <xsl:param name="is-subj-search" select="'no'" />
     <xsl:param name="item" select="." />
+    <xsl:param name="slot" />
 
     <xsl:choose>
 
@@ -296,6 +308,18 @@
         </xsl:call-template>
       </xsl:when>
 
+      <xsl:when test="( /Top/DlxsGlobals/CurrentCgi/Param[@name='idno'] )
+        and
+        /Top/DlxsGlobals/CurrentCgi/Param[@name='page'] = 'picklist'
+        " >
+        <xsl:call-template name="process-monograph">
+          <xsl:with-param name="item-encoding-level" select="$item-encoding-level"/>
+          <xsl:with-param name="is-subj-search" select="$is-subj-search"/>
+          <xsl:with-param name="item" select="$item" />
+          <xsl:with-param name="slot" select="$slot" />
+        </xsl:call-template>
+      </xsl:when>
+
       <!-- ********************************************************************** -->
       <!-- branch to filter SERIALISSUE, only one article, layer2 results -->
       <!-- ********************************************************************** -->
@@ -308,6 +332,16 @@
           <xsl:with-param name="item-encoding-level" select="$item-encoding-level"/>
           <xsl:with-param name="is-subj-search" select="$is-subj-search"/>
           <xsl:with-param name="item" select="$item" />
+          <xsl:with-param name="slot" select="$slot" />
+        </xsl:call-template>
+      </xsl:when>
+
+      <xsl:when test="/Top/DlxsGlobals/CurrentCgi/Param[@name='page'] = 'browse'">
+        <xsl:call-template name="process-serialissue-for-single-article">
+          <xsl:with-param name="item-encoding-level" select="$item-encoding-level"/>
+          <xsl:with-param name="is-subj-search" select="$is-subj-search"/>
+          <xsl:with-param name="item" select="$item" />
+          <xsl:with-param name="slot" select="$slot" />
         </xsl:call-template>
       </xsl:when>
 
@@ -388,7 +422,7 @@
     <xsl:param name="item" />
     <xsl:param name="slot" />
 
-    <xsl:variable name="article-cite" select="$item/ItemDetails/DIV1[1]/Divhead/BIBL"/>
+    <xsl:variable name="article-cite" select="($item/ItemDetails/DIV1[1]/Divhead/BIBL|$item/DIV1/BIBL)"/>
     <xsl:variable name="ser-iss-src" select="$item/MainHeader/HEADER/FILEDESC/SOURCEDESC"/>
 
     <xsl:variable name="main-authors">
@@ -551,9 +585,11 @@
     <xsl:param name="article-cite" />
 
     <xsl:variable name="pubinfo-tmp">
-      <qui:value>
-        <xsl:value-of select="$ser-iss-src/descendant::TITLE[1]"/>
-      </qui:value>
+      <xsl:if test="$ser-iss-src/descendant::TITLE[1]">
+        <qui:value>
+          <xsl:value-of select="$ser-iss-src/descendant::TITLE[1]"/>
+        </qui:value>
+      </xsl:if>
       <xsl:if test="$ser-iss-src/BIBL/BIBLSCOPE">
         <qui:value>
           <xsl:apply-templates select="$ser-iss-src/BIBL/BIBLSCOPE"/>
@@ -575,7 +611,7 @@
     <xsl:if test="normalize-space($pubinfo-tmp)">
       <qui:field>
         <qui:label>
-          <xsl:value-of select="key('get-lookup','headerutils.str.publicationinfo')"/>
+          <xsl:value-of select="key('get-lookup','headerutils.str.printsource')"/>
         </qui:label>
         <qui:values>
           <xsl:copy-of select="$pubinfo-tmp" />
@@ -820,6 +856,12 @@
         </qui:value>
       </qui:values>
     </qui:field>
+  </xsl:template>
+
+  <xsl:template match="node()" mode="metadata-value">
+    <xsl:if test="normalize-space(.)">
+      <qui:value><xsl:value-of select="." /></qui:value>
+    </xsl:if>
   </xsl:template>
 
   <xsl:template match="AVAILABILITY/P">
