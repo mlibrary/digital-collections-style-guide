@@ -325,7 +325,7 @@
       <!-- ********************************************************************** -->
       <xsl:when test="/Top/DlxsGlobals/CurrentCgi/Param[@name='node']
         and
-        /Top/DlxsGlobals/CurrentCgi/Param[@name='view'] = 'reslist'
+        /Top/DlxsGlobals/CurrentCgi/Param[@name='view'] = 'reslist' 
         and
         /Top/DlxsGlobals/CurrentCgi/Param[@name='didno'] " >
         <xsl:call-template name="process-serialissue-for-single-article">
@@ -350,11 +350,13 @@
       <!-- ********************************************************************** -->
       <xsl:when test="/Top/DlxsGlobals/CurrentCgi/Param[@name='node']
         and
-        /Top/DlxsGlobals/CurrentCgi/Param[@name='view'] = 'toc' " >
-        <xsl:call-template name="process-serialissue-for-toc-view">
+        ( /Top/DlxsGlobals/CurrentCgi/Param[@name='view'] = 'toc' or 
+          /Top/DlxsGlobals/CurrentCgi/Param[@name='page'] = 'root' ) " >
+        <xsl:call-template name="process-serialissue-for-single-article"> <!-- toc-view -->
           <xsl:with-param name="item-encoding-level" select="$item-encoding-level"/>
           <xsl:with-param name="is-subj-search" select="$is-subj-search"/>
           <xsl:with-param name="item" select="$item" />
+          <xsl:with-param name="slot" select="$slot" />
         </xsl:call-template>
       </xsl:when>
 
@@ -421,6 +423,12 @@
     <xsl:param name="is-subj-search"/>
     <xsl:param name="item" />
     <xsl:param name="slot" />
+
+    <qui:debug>WTF: single-article</qui:debug>
+
+    <qui:debug>
+      <xsl:copy-of select="$item" />
+    </qui:debug>
 
     <xsl:variable name="article-cite" select="($item/ItemDetails/DIV1[1]/Divhead/BIBL|$item/DIV1/BIBL)"/>
     <xsl:variable name="ser-iss-src" select="$item/MainHeader/HEADER/FILEDESC/SOURCEDESC"/>
