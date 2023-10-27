@@ -51,6 +51,17 @@
     <qui:message>BOO-YAH</qui:message>
   </xsl:template>
 
+  <qui:debug>
+    <xsl:choose>
+      <xsl:when test="ItemDivhead">
+        <xsl:copy-of select="ItemDivhead" />
+      </xsl:when>
+      <xsl:otherwise>
+        <xsl:copy-of select="ItemHeader" />
+      </xsl:otherwise>
+    </xsl:choose>  
+  </qui:debug>
+
   <xsl:template name="get-current-page-breadcrumb-label">
     <xsl:text>Item View</xsl:text>
   </xsl:template>
@@ -263,7 +274,7 @@
     </xsl:variable>
 
     <xsl:call-template name="build-item-metadata">
-      <xsl:with-param name="item" select="ItemHeader" />
+      <xsl:with-param name="item" select="(ItemDivhead | ItemHeader)[last()]" />
       <xsl:with-param name="encoding-type" select="$encoding-type" />
       <xsl:with-param name="item-encoding-level" select="$item-encoding-level" />
       <xsl:with-param name="slot">item</xsl:with-param>
