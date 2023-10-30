@@ -38,7 +38,9 @@
 
       <form id="collection-search" action="/cgi/t/text/text-idx" method="GET" autocomplete="off" data-num-qs="{$search-form/@data-num-qs}">
 
-        <xsl:call-template name="build-collection-selection" />
+        <xsl:if test="qui:fieldset[@slot='collids']">
+          <xsl:call-template name="build-collection-selection" />
+        </xsl:if>
 
         <xsl:if test="not(contains($view, 'bbag'))">
         <h2 class="subtle-heading">Fielded Search Options</h2>

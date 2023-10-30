@@ -402,8 +402,10 @@
   <xsl:template match="qui:field[@key='title']" priority="99">
     <xsl:choose>
       <xsl:when test="not(ancestor::qui:section/qui:title)">
-        <xsl:apply-templates select="." mode="build" />
       </xsl:when>
+      <xsl:otherwise>
+        <xsl:apply-templates select="." mode="build" />
+      </xsl:otherwise>
     </xsl:choose>
   </xsl:template>
 
