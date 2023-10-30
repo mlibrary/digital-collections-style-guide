@@ -501,11 +501,13 @@
   </xsl:template>
 
   <xsl:template match="qui:field[@key='title']" priority="199">
-    <!-- <xsl:choose>
-      <xsl:when test="//qui:metadata[@slot='item']">
-        <xsl:apply-templates select="." mode="build" />
+    <xsl:choose>
+      <xsl:when test="not(ancestor::qui:section/qui:title)">
       </xsl:when>
-    </xsl:choose> -->
+      <xsl:otherwise>
+        <xsl:apply-templates select="." mode="build" />
+      </xsl:otherwise>
+    </xsl:choose>
   </xsl:template>
 
   <xsl:template match="qui:field//qui:link" mode="copy" priority="105">

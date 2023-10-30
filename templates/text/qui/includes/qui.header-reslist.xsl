@@ -5,7 +5,7 @@
     <xsl:param name="root" />
 
     <xsl:call-template name="build-main-title-for-monograph">
-      <xsl:with-param name="root" select="$root/ItemHeader" />
+      <xsl:with-param name="root" select="$root/ItemHeader|$root" />
     </xsl:call-template>
 
     <xsl:call-template name="build-contributor-list-for-monograph">
