@@ -406,3 +406,18 @@ h3#portfolios::before {
   height: 100%;
   width: 100%;
 }
+
+.article-link {
+  text-decoration: none;
+}
+
+.article-title {
+  text-decoration: underline;
+}
+
+.article-details {
+  display: block;
+  margin-left: 1rem;
+  text-decoration: none;
+  color: var(--base-text-color);
+}

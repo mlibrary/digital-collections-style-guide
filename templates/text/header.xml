@@ -10,7 +10,8 @@
     <Filename>../vendor/str.split.function.xsl</Filename>
     <Filename>../vendor/xslfunctions.xsl</Filename>
     <Filename>qui/components/*.xsl</Filename>
-    <Filename>qui/includes/qui.results-item.xsl</Filename>
+    <Filename>qui/includes/qui.header-common.xsl</Filename>
+    <Filename>qui/includes/qui.header-toc.xsl</Filename>
     <Filename>qui/qui.header.xsl</Filename>
   </XslFallbackFileList>
 

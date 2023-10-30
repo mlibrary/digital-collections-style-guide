@@ -230,7 +230,7 @@
     <xsl:variable name="nav" select="//qui:main/qui:nav[@role='results']" />
     <xsl:if test="$nav/@min &lt; $nav/@max and $nav/qui:link[@href]">
       <nav id="pagination" aria-label="Result navigation" class="[ pagination__row ][ flex flex-space-between flex-align-center sticky-bottom ]">
-        <div class="pagination__group">
+        <div class="[ pagination__group ][ flex flex-align-center gap-0_5 ]">
           <xsl:if test="$nav/qui:link">
             <ul class="pagination">
               <li class="pagination__item">
@@ -280,7 +280,8 @@
             <xsl:apply-templates select="qui:title" mode="title" />
           </xsl:when>
           <xsl:otherwise>
-            <xsl:apply-templates select="qui:block[@slot='metadata']//qui:field[@key='title']" mode="title" />
+            <!-- <xsl:apply-templates select="qui:block[@slot='metadata']//qui:field[@key='title']" mode="title" /> -->
+            <xsl:apply-templates select="qui:metadata//qui:field[@key='title']" mode="title" />
           </xsl:otherwise>
         </xsl:choose>
       </xsl:variable>
@@ -320,7 +321,8 @@
           </h3>
           <dl class="[ results ]">
             <!-- <xsl:apply-templates select="qui:collection" /> -->
-            <xsl:apply-templates select="qui:block[@slot='metadata']//qui:field" />
+            <!-- <xsl:apply-templates select="qui:block[@slot='metadata']//qui:field" /> -->
+            <xsl:apply-templates select="qui:metadata//qui:field" />
             <xsl:if test="qui:link[@rel='toc' or @rel='detail']">
               <div>
                 <dt>Links</dt>
@@ -399,11 +401,15 @@
 
   <xsl:template match="qui:field[@key='title']" priority="99">
     <xsl:choose>
-      <xsl:when test="//qui:block[@slot='item']">
+      <xsl:when test="not(ancestor::qui:section/qui:title)">
         <xsl:apply-templates select="." mode="build" />
       </xsl:when>
     </xsl:choose>
   </xsl:template>
+
+  <!-- <xsl:when test="//qui:block[@slot='item']">
+    <xsl:apply-templates select="." mode="build" />
+  </xsl:when> -->
 
   <xsl:template match="qui:field[@key='path'][not(.//qui:value)]" priority="99" />
 

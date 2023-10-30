@@ -341,8 +341,8 @@
       </xsl:choose>
     </xsl:variable>
 
-    <xsl:call-template name="build-item-metadata">
-      <xsl:with-param name="item" select="." />
+    <xsl:call-template name="build-header-metadata">
+      <xsl:with-param name="root" select="." />
       <xsl:with-param name="encoding-type" select="$encoding-type" />
       <xsl:with-param name="item-encoding-level" select="$item-encoding-level" />
       <xsl:with-param name="slot">item</xsl:with-param>
@@ -375,8 +375,8 @@
     <xsl:variable name="identifier" select="ItemIdno" />
 
     <xsl:variable name="item-metadata-tmp">
-      <xsl:call-template name="build-item-metadata">
-        <xsl:with-param name="item" select="." />
+      <xsl:call-template name="build-header-metadata">
+        <xsl:with-param name="root" select="." />
         <xsl:with-param name="encoding-type" select="$encoding-type" />
         <xsl:with-param name="item-encoding-level" select="$item-encoding-level" />
       </xsl:call-template>
@@ -626,6 +626,8 @@
     <xsl:apply-templates select="$details/*" mode="section">
       <xsl:with-param name="identifier" select="$identifier" />
       <xsl:with-param name="item-metadata" select="$item-metadata" />
+      <xsl:with-param name="item-encoding-level" select="$item-encoding-level" />
+      <xsl:with-param name="encoding-type" select="$encoding-type" />
     </xsl:apply-templates>
   </xsl:template>
 
@@ -660,6 +662,22 @@
         </qui:values>
       </qui:title>
       <!-- metadata -->
+      <qui:metadata>
+        <qui:field key="path">
+          <qui:label>Path</qui:label>
+          <qui:values format="ordered">
+            <xsl:for-each select="ancestor::*[@TYPE]">
+              <qui:value>
+                <qui:link rel="{name(.)}" href="{Link}">
+                  <xsl:value-of select="Divhead/HEAD" />
+                </qui:link>  
+              </qui:value>
+            </xsl:for-each>      
+          </qui:values>
+        </qui:field>
+        <xsl:apply-templates select="$item-metadata//qui:field" mode="copy" />
+      </qui:metadata>
+      <xsl:if test="false()">
       <qui:block slot="metadata">
         <qui:section>
           <!-- path -->
@@ -678,6 +696,7 @@
           <xsl:apply-templates select="$item-metadata//qui:field" mode="copy" />
         </qui:section>
       </qui:block>
+      </xsl:if>
       <xsl:for-each select="following-sibling::SummaryString[./preceding-sibling::ScopingPage[1] = $scope]">
         <qui:callout slot="summary" variant="info">
           <xsl:apply-templates select="." />
@@ -703,10 +722,23 @@
   <xsl:template match="node()[Divhead/HEAD]|node()[Divhead][Kwic]" mode="section">
     <xsl:param name="identifier" />
     <xsl:param name="item-metadata" />
+    <xsl:param name="encoding-type" />
+    <xsl:param name="item-encoding-level" />
 
     <!-- we only need a qui:section if THIS is the DIV of interest -->
 
     <xsl:if test="not(node()[@TYPE][Divhead/HEAD])">
+
+      <xsl:variable name="details-metadata-tmp">
+        <xsl:call-template name="build-header-metadata">
+          <xsl:with-param name="root" select="." />
+          <xsl:with-param name="encoding-type" select="$encoding-type" />
+          <xsl:with-param name="item-encoding-level" select="$item-encoding-level" />
+          <xsl:with-param name="slot">item</xsl:with-param>
+        </xsl:call-template>
+      </xsl:variable>
+      <xsl:variable name="details-metadata" select="exsl:node-set($details-metadata-tmp)" />
+
       <qui:section identifier="{@NODE}" for="{$identifier}" template-name="{$template-name}">
         <!-- <xsl:apply-templates select="$item/TocHref">
           <xsl:with-param name="item-encoding-level" xml:base="$item-encoding-level" />
@@ -716,21 +748,36 @@
         </xsl:apply-templates>
         <xsl:apply-templates select="MediaInfo" mode="iiif-link" />
         <qui:link href="{Link}" rel="result" />
+        <xsl:if test="ViewPageThumbnailLink">
+          <qui:link href="{ViewPageThumbnailLink}" rel="iiif" />
+        </xsl:if>
         <qui:title>
-          <qui:values>
-            <qui:value>
-              <xsl:choose>
-                <xsl:when test="Divhead/HEAD">
-                  <xsl:value-of select="Divhead/HEAD" />
-                </xsl:when>
-                <xsl:otherwise>
-                  <xsl:value-of select="@TYPE" />
-                </xsl:otherwise>
-              </xsl:choose>
-            </qui:value>
-          </qui:values>
+          <xsl:choose>
+            <xsl:when test="$details-metadata//qui:field[@key='title']">
+              <xsl:apply-templates select="$details-metadata//qui:field[@key='title']/qui:values" mode="copy" />
+            </xsl:when>
+            <xsl:otherwise>
+              <xsl:value-of select="@TYPE" />
+            </xsl:otherwise>
+          </xsl:choose>
         </qui:title>
         <!-- metadata -->
+        <qui:metadata>
+          <qui:field key="path">
+            <qui:label>Path</qui:label>
+            <qui:values format="ordered">
+              <xsl:for-each select="ancestor::*[@TYPE]">
+                <qui:value>
+                  <qui:link rel="{name(.)}" href="{Link}">
+                    <xsl:value-of select="Divhead/HEAD" />
+                  </qui:link>  
+                </qui:value>
+              </xsl:for-each>      
+            </qui:values>
+          </qui:field>
+          <xsl:apply-templates select="$details-metadata//qui:field" mode="copy" />
+        </qui:metadata>
+        <xsl:if test="false()">
         <qui:block slot="metadata">
           <qui:section>
             <!-- path -->
@@ -749,6 +796,7 @@
             <xsl:apply-templates select="$item-metadata//qui:field" mode="copy" />
           </qui:section>
         </qui:block>
+      </xsl:if>
         <qui:block slot="matches">
           <qui:section>
             <qui:field key="matches">

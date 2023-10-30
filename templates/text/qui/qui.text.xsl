@@ -83,23 +83,7 @@
       <xsl:apply-templates select="/Top/FullTextResults/NOTES" mode="copy-guts" />
     </qui:block>
 
-    <qui:block slot="langmap">
-      <xsl:apply-templates select="//Lookup[@id='text.components']" mode="build-lookup" />
-      <xsl:apply-templates select="//Lookup[@id='headerutils']" mode="build-lookup" />
-      <xsl:apply-templates select="//Lookup[@id='viewer']" mode="build-lookup" />
-    </qui:block>
-
     <qui:message>BOO-YAH</qui:message>
-  </xsl:template>
-
-  <xsl:template match="Lookup" mode="build-lookup">
-    <qui:lookup id="{@id}">
-      <xsl:apply-templates select="Item" mode="build-lookup" />
-    </qui:lookup>
-  </xsl:template>
-
-  <xsl:template match="Item" mode="build-lookup">
-    <qui:item key="{@key}"><xsl:value-of select="." /></qui:item>
   </xsl:template>
 
   <xsl:template name="get-current-page-breadcrumb-label">
