@@ -84,7 +84,7 @@ window.addEventListener('message', (event) => {
     section.insertBefore(alert, section.firstChild);
   }
 
-  const labelEl = document.querySelector('h1 span[data-key="canvas-label"]');
+  const labelEl = document.querySelector('span[data-key="canvas-label"]');
   console.log("-- viewer.mirador.message", event);
 
   if (event.data.event == 'updateMetadata') {
@@ -94,9 +94,9 @@ window.addEventListener('message', (event) => {
 
     labelEl.innerText = label;
 
-    let parts = document.title.split(' - ');
+    let parts = document.title.split(' | ');
     parts[0] = label;
-    document.title = parts.join(' - ');
+    document.title = parts.join(' | ');
 
     parts = identifier.split(':');
     const newSeq = parts.pop();

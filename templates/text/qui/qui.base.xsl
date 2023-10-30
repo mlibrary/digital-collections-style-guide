@@ -55,11 +55,22 @@
       </xsl:otherwise>
     </xsl:choose>
   </xsl:param>
+
+  <xsl:template match="/">
+    <xsl:apply-templates select="/Top" />
+    <!-- <qui:root>
+      <qui:debug>ONE</qui:debug>
+      <xsl:apply-templates 
+        select="document('')//xsl:template[@name='ACK']">
+        <xsl:with-param name="root" select="/Top" />
+      </xsl:apply-templates>
+    </qui:root> -->
+  </xsl:template>
   
   <xsl:template match="Top">
-    <xsl:processing-instruction name="xml-stylesheet">
+    <!-- <xsl:processing-instruction name="xml-stylesheet">
       <xsl:value-of select="concat('type=&quot;text/xsl&quot; href=&quot;', $docroot, '/templates/debug.qui.xsl&quot;')" />
-    </xsl:processing-instruction>
+    </xsl:processing-instruction> -->
     <qui:root template="{$template-name}" view="{$view}" collid="{$collid}" username="{//AuthenticatedUsername}" context-type="{$context-type}" api_url="{$api_url}">
       <xsl:if test="//BbagOptionsMenu/UserIsOwner = 'true'">
         <xsl:attribute name="user-is-owner">true</xsl:attribute>
@@ -70,6 +81,11 @@
           <xsl:value-of select="//CollGroupMembership" />
         </xsl:attribute>
       </xsl:if>
+
+      <xsl:apply-templates 
+        select="document('')//xsl:template[@name='ACK']">
+        <xsl:with-param name="root" select="/Top" />
+      </xsl:apply-templates>
 
       <!-- fills html/head-->
       <qui:head>
@@ -83,7 +99,6 @@
       <qui:body>
         <xsl:call-template name="build-skip-links" />
         <xsl:call-template name="build-site-header" />
-        <qui:debug>WTF</qui:debug>
         <xsl:call-template name="build-sub-header" />
         <qui:main>
           <xsl:call-template name="build-body-main" />
@@ -95,6 +110,13 @@
           <qui:link rel="collection-home" href="{//Home}" />
           <qui:link rel="feedback" href="{//FeedbackUrl}" />
         </qui:footer>
+        <qui:block slot="langmap">
+          <xsl:apply-templates select="/Top/Langmap//Lookup/Item" mode="build-lookup" />
+          <!-- <xsl:apply-templates select="//Lookup[@id='text.components']" mode="build-lookup" />
+          <xsl:apply-templates select="//Lookup[@id='headerutils']" mode="build-lookup" />
+          <xsl:apply-templates select="//Lookup[@id='viewer']" mode="build-lookup" />
+          <xsl:apply-templates select="//Lookup[@id='uplift']" mode="build-lookup" /> -->
+        </qui:block>    
       </qui:body>
     </qui:root>
   </xsl:template>
@@ -416,4 +438,22 @@
       </xsl:otherwise>
     </xsl:choose>
   </xsl:template>
+
+  <xsl:template match="Lookup" mode="build-lookup">
+    <qui:lookup id="{@id}">
+      <xsl:apply-templates select="Item" mode="build-lookup" />
+    </qui:lookup>
+  </xsl:template>
+
+  <xsl:template match="Item" mode="build-lookup">
+    <qui:item key="{@key}"><xsl:value-of select="." /></qui:item>
+  </xsl:template>
+
+  <xsl:template match="xsl:template[@name='ACK']" name="ACK" priority="101">
+    <qui:debug>ACK</qui:debug>
+    <xsl:if test="true()">
+      <message>TRUE</message>
+    </xsl:if>
+  </xsl:template>
+
 </xsl:stylesheet>

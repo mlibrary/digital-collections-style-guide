@@ -51,17 +51,6 @@
     <qui:message>BOO-YAH</qui:message>
   </xsl:template>
 
-  <qui:debug>
-    <xsl:choose>
-      <xsl:when test="ItemDivhead">
-        <xsl:copy-of select="ItemDivhead" />
-      </xsl:when>
-      <xsl:otherwise>
-        <xsl:copy-of select="ItemHeader" />
-      </xsl:otherwise>
-    </xsl:choose>  
-  </qui:debug>
-
   <xsl:template name="get-current-page-breadcrumb-label">
     <xsl:text>Item View</xsl:text>
   </xsl:template>
@@ -200,68 +189,34 @@
 
   <xsl:template name="build-record">
     <qui:header role="main">
-      <xsl:value-of select="$item-metadata//qui:field[@key='title']//qui:value" />
-      <xsl:text>: </xsl:text>
       <xsl:choose>
-        <xsl:when test="$view = 'toc'">
-          <xsl:value-of select="key('get-lookup', 'headerutils.str.title')" />
-          <xsl:text> Contents</xsl:text>
+        <xsl:when test="$item-metadata//qui:field[@key='title']">
+          <xsl:value-of select="$item-metadata//qui:field[@key='title']//qui:value" />
         </xsl:when>
-        <xsl:when test="$view = 'text'">
-          <xsl:value-of select="key('get-lookup', 'headerutils.str.viewentiretext')" />
-          <xsl:text> Entire Text</xsl:text>
-        </xsl:when>
-        <xsl:when test="normalize-space($label/PageNumber) and $label/PageNumber != 'viewer.nopagenum'">
-          <qui:span data-key="canvas-label">
-            <!-- Page no. -->
-            <xsl:value-of select="key('get-lookup', 'headerutils.str.page')" />
-            <xsl:value-of select="$label/PageNumber" />
-            <xsl:if test="$label/PageType != 'viewer.ftr.uns'">
-              <xsl:text> - </xsl:text>
-              <xsl:value-of select="key('get-lookup', $label/PageType)" />  
-            </xsl:if>
-          </qui:span>
-        </xsl:when>
-        <xsl:when test="//CurrentCgi/Param[@name='seq']">
-          <qui:span data-key="canvas-label">
-            <xsl:value-of select="key('get-lookup', 'headerutils.str.page')" />
-            <xsl:text> #</xsl:text>
-            <xsl:value-of select="//CurrentCgi/Param[@name='seq']" />  
-            <xsl:if test="$label/PageType != 'viewer.ftr.uns'">
-              <xsl:text> - </xsl:text>
-              <xsl:value-of select="key('get-lookup', $label/PageType)" />  
-            </xsl:if>
-          </qui:span>
-        </xsl:when>
-        <xsl:otherwise />
-      </xsl:choose>  
+        <xsl:otherwise>
+          <xsl:value-of select="$item-metadata//qui:field[@key='serial']//qui:value" />
+        </xsl:otherwise>
+      </xsl:choose>
     </qui:header>
 
+    <xsl:if test="$item-metadata//qui:field[@key='serial']">
+      <qui:header role="submain">
+        <xsl:value-of select="$item-metadata//qui:field[@key='serial']//qui:value" />
+      </qui:header>
+    </xsl:if>
+
     <qui:block slot="record">
-      <xsl:apply-templates select="$item-metadata//qui:section" mode="copy" />
+      <xsl:apply-templates select="$item-metadata" mode="copy" />
       <xsl:call-template name="build-record-technical-metadata" />
     </qui:block>
 
-    <!-- <xsl:apply-templates select="$item-metadata" mode="copy" /> -->
-    <!-- <xsl:call-template name="build-record-technical-metadata"> -->
-      <!-- <xsl:with-param name="item" select="ItemHeader" />
-      <xsl:with-param name="encoding-type" select="$encoding-type" />
-      <xsl:with-param name="item-encoding-level" select="$item-encoding-level" /> -->
-    <!-- </xsl:call-template> -->
-    <!-- <xsl:apply-templates select="/Top/DocMeta" mode="metadata" /> -->
   </xsl:template>
 
   <xsl:template match="DocMeta" mode="metadata">
     <xsl:variable name="encoding-type">
-      <xsl:choose>
-        <xsl:when test="DocEncodingType">
-          <xsl:value-of select="normalize-space(DocEncodingType)"/>
-        </xsl:when>
-        <xsl:otherwise>
-          <xsl:value-of select="normalize-space(parent::*/DocEncodingType)"/>
-        </xsl:otherwise>
-      </xsl:choose>
+      <xsl:value-of select="normalize-space(DocEncodingType)"/>
     </xsl:variable>
+
     <xsl:variable name="item-encoding-level">
       <xsl:choose>
         <xsl:when test="ItemHeader/HEADER/ENCODINGDESC/EDITORIALDECL/@N">
@@ -273,11 +228,11 @@
       </xsl:choose>
     </xsl:variable>
 
-    <xsl:call-template name="build-item-metadata">
-      <xsl:with-param name="item" select="(ItemDivhead | ItemHeader)[last()]" />
+    <xsl:call-template name="build-header-metadata">
       <xsl:with-param name="encoding-type" select="$encoding-type" />
       <xsl:with-param name="item-encoding-level" select="$item-encoding-level" />
-      <xsl:with-param name="slot">item</xsl:with-param>
+      <xsl:with-param name="root" select="." />
+      <xsl:with-param name="slot">root</xsl:with-param>
     </xsl:call-template>
   </xsl:template>
 
@@ -323,8 +278,37 @@
 
   <xsl:template name="get-head-title">
     <qui:values>
+      <xsl:choose>
+        <xsl:when test="normalize-space($label/PageNumber) and $label/PageNumber != 'viewer.nopagenum'">
+          <qui:value>
+            <!-- Page no. -->
+            <xsl:value-of select="key('get-lookup', 'headerutils.str.page')" />
+            <xsl:value-of select="$label/PageNumber" />
+            <xsl:if test="$label/PageType != 'viewer.ftr.uns'">
+              <xsl:text> - </xsl:text>
+              <xsl:value-of select="key('get-lookup', $label/PageType)" />  
+            </xsl:if>
+          </qui:value>
+        </xsl:when>
+        <xsl:when test="//CurrentCgi/Param[@name='seq']">
+          <qui:value>
+            <xsl:value-of select="key('get-lookup', 'headerutils.str.page')" />
+            <xsl:text> #</xsl:text>
+            <xsl:value-of select="//CurrentCgi/Param[@name='seq']" />
+            <xsl:if test="$label/PageType != 'viewer.nopagenum' and $label/PageType != 'viewer.ftr.uns'">
+              <xsl:text> - </xsl:text>
+              <xsl:value-of select="key('get-lookup', $label/PageType)" />
+            </xsl:if>
+          </qui:value>
+        </xsl:when>
+      </xsl:choose>
+      <xsl:if test="$item-metadata//qui:field[@key='articletitle']">
+        <qui:value>
+          <xsl:value-of select="$item-metadata//qui:field[@key='articletitle']//qui:value" />          
+        </qui:value>
+      </xsl:if>
       <qui:value>
-        <xsl:call-template name="get-record-title" />
+        <xsl:value-of select="$item-metadata//qui:field[@key='title']//qui:value" />          
       </qui:value>
       <qui:value>
         <xsl:call-template name="get-collection-title" />
@@ -432,9 +416,23 @@
           <qui:values>
             <qui:value>
               <xsl:text>&quot;</xsl:text>
-              <xsl:value-of select="$item-metadata//qui:field[@key='title']//qui:value" />
+              <xsl:choose>
+                <xsl:when test="$item-metadata//qui:field[@key='articletitle']">
+                  <xsl:value-of select="$item-metadata//qui:field[@key='articletitle']//qui:value" />
+                </xsl:when>
+                <xsl:otherwise>
+                  <xsl:value-of select="$item-metadata//qui:field[@key='title']//qui:value" />
+                </xsl:otherwise>
+              </xsl:choose>
               <xsl:text>.&quot; </xsl:text>
+              <xsl:if test="$item-metadata//qui:field[@key='articletitle']">
+                <em>
+                  <xsl:value-of select="$item-metadata//qui:field[@key='title']//qui:value" />
+                  <xsl:text>. </xsl:text>
+                </em>
+              </xsl:if>
               <xsl:if test="true()">
+              <xsl:text>In the digital collection </xsl:text>
               <em>
                 <xsl:choose>
                   <xsl:when test="//TitleComplex/img">

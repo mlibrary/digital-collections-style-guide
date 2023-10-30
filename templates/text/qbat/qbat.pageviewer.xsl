@@ -58,9 +58,23 @@
 
   <xsl:template name="build-page-heading">
     <div class="flex flex-flow-rw flex-space flex-space-between flex-align-center mt-1" style="column-gap: 3rem; row-gap: 1rem;">
-      <h1 class="collection-heading--small">
-        <xsl:apply-templates select="//qui:header[@role='main']" mode="build-title" />
-      </h1>
+      <xsl:choose>
+        <xsl:when test="//qui:header[@role='submain']">
+          <hgroup>
+            <h1 class="collection-heading--small">
+              <xsl:apply-templates select="//qui:header[@role='main']" mode="build-title" />
+            </h1>    
+            <p class="collection-heading--subheading">
+              <xsl:apply-templates select="//qui:header[@role='submain']" mode="build-title" />
+            </p>
+          </hgroup>
+        </xsl:when>
+        <xsl:otherwise>
+          <h1 class="collection-heading--small">
+            <xsl:apply-templates select="//qui:header[@role='main']" mode="build-title" />
+          </h1>    
+        </xsl:otherwise>
+      </xsl:choose>
       <!-- <xsl:apply-templates select="//qui:form[@id='item-search']" /> -->
     </div>
   </xsl:template>
@@ -105,7 +119,7 @@
 
     <section class="[ records ]">
       <h2 class="[ subtle-heading ][ text-black ]" id="details">About this Item</h2>
-      <xsl:apply-templates select="qui:block[@slot='record']/qui:section" />
+      <xsl:apply-templates select="qui:block[@slot='record']/qui:metadata|qui:block[@slot='record']/qui:section" />
       <!-- <xsl:apply-templates select="qui:block[@slot='technical-metadata']/qui:section" /> -->
 
       <xsl:if test="false() and //qui:viewer/@plaintext-href">
@@ -399,7 +413,7 @@
     </m-callout>
   </xsl:template>
 
-  <xsl:template match="qui:section">
+  <xsl:template match="qui:section|qui:metadata">
     <xsl:if test="@name != 'default'">
       <h3 id="{@slug}"><xsl:value-of select="@name" /></h3>
     </xsl:if>
@@ -420,6 +434,12 @@
   </xsl:template>
 
   <xsl:template match="qui:span" mode="build-title">
+    <span data-key="{@data-key}">
+      <xsl:apply-templates mode="build-title" />
+    </span>
+  </xsl:template>
+
+  <xsl:template match="qui:field//qui:span" mode="copy" priority="202">
     <span data-key="{@data-key}">
       <xsl:apply-templates mode="build-title" />
     </span>

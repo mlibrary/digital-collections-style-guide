@@ -8,7 +8,8 @@
         <Filename>../vendor/str.split.function.xsl</Filename>
         <Filename>../vendor/xslfunctions.xsl</Filename>
         <Filename>qui/components/*.xsl</Filename>
-        <Filename>qui/includes/qui.results-item.xsl</Filename>
+        <Filename>qui/includes/qui.header-common.xsl</Filename>
+        <Filename>qui/includes/qui.header-pageviewer.xsl</Filename>
         <Filename>qui/qui.pageviewer.xsl</Filename>
     </XslFallbackFileList>
 

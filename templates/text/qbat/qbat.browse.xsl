@@ -344,7 +344,7 @@
             </ul>
           </xsl:if>
         </div>
-        <div class="pagination__group">
+        <div class="[ pagination__group ][ flex flex-align-center gap-0_5 ]">
           <label for="results-pagination">Go to page:</label>
           <input
             type="number"
@@ -394,7 +394,7 @@
             <xsl:apply-templates select="qui:title" mode="title" />
           </xsl:when>
           <xsl:otherwise>
-            <xsl:apply-templates select="qui:block[@slot='metadata']//qui:field[@key='title']" mode="title" />
+            <xsl:apply-templates select="qui:metadata[@slot='item']//qui:field[@key='title']" mode="title" />
           </xsl:otherwise>
         </xsl:choose>
       </xsl:variable>
@@ -434,7 +434,7 @@
           </h3>
           <dl class="[ results ]">
             <!-- <xsl:apply-templates select="qui:collection" /> -->
-            <xsl:apply-templates select="qui:block[@slot='metadata']//qui:field" />
+            <xsl:apply-templates select="qui:metadata[@slot='item']//qui:field" />
             <xsl:if test="qui:link[@rel='toc' or @rel='detail']">
               <div>
                 <dt>Links</dt>
@@ -500,12 +500,12 @@
     </xsl:for-each>
   </xsl:template>
 
-  <xsl:template match="qui:field[@key='title']" priority="99">
-    <xsl:choose>
-      <xsl:when test="//qui:block[@slot='item']">
+  <xsl:template match="qui:field[@key='title']" priority="199">
+    <!-- <xsl:choose>
+      <xsl:when test="//qui:metadata[@slot='item']">
         <xsl:apply-templates select="." mode="build" />
       </xsl:when>
-    </xsl:choose>
+    </xsl:choose> -->
   </xsl:template>
 
   <xsl:template match="qui:field//qui:link" mode="copy" priority="105">
@@ -617,7 +617,7 @@
 
   <xsl:template match="qui:field[@key='title']" priority="99">
     <xsl:choose>
-      <xsl:when test="//qui:block[@slot='item']">
+      <xsl:when test="//qui:metadata[@slot='item']">
         <xsl:apply-templates select="." mode="build" />
       </xsl:when>
     </xsl:choose>

@@ -10,6 +10,8 @@
     version="5.0"
     />
 
+  <xsl:key match="//qui:lookup/qui:item" name="get-lookup" use="@key" />
+
   <xsl:param name="docroot">/digital-collections-style-guide/</xsl:param>
   <xsl:param name="api_url"><xsl:value-of select="//qui:root/@api_url" /></xsl:param>
   <xsl:param name="ds_url">https://cdn.jsdelivr.net/npm</xsl:param>
@@ -515,6 +517,9 @@
       <xsl:if test="normalize-space($class)">
         <xsl:attribute name="class"><xsl:value-of select="$class" /></xsl:attribute>
       </xsl:if>
+      <xsl:if test="@class">
+        <xsl:apply-templates select="@class" mode="copy" />
+      </xsl:if>
       <xsl:if test="normalize-space($attributes)">
         <xsl:for-each select="exsl:node-set($attributes)//qui:attribute">
           <xsl:attribute name="{@name}"><xsl:value-of select="." /></xsl:attribute>
@@ -665,10 +670,20 @@
   </xsl:template>
 
   <xsl:template match="qui:field" mode="build">
-    <div data-key="{@key}">
+    <div data-key="{@key}" data-lookup="{@lookup}">
       <dt data-key="{@key}">
         <xsl:apply-templates select="@*[starts-with(name(), 'data-')]" mode="copy" />
-        <xsl:apply-templates select="qui:label" mode="copy-guts" />
+        <xsl:choose>
+          <xsl:when test="qui:label">
+            <xsl:apply-templates select="qui:label" mode="copy-guts" />
+          </xsl:when>
+          <xsl:when test="@lookup">
+            <xsl:value-of select="key('get-lookup', concat('uplift.header.str.', @lookup))" />
+          </xsl:when>
+          <xsl:otherwise>
+            <xsl:value-of select="key('get-lookup', concat('uplift.header.str.', @key))" />
+          </xsl:otherwise>
+        </xsl:choose>
       </dt>
       <xsl:apply-templates select="qui:values" />
     </div>

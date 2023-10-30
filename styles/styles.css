@@ -1447,6 +1447,15 @@ html[data-view="index"] .collection-heading .material-icons {
   line-height: 1.1;
 }
 
+.collection-heading--subheading {
+  font-size: 18px;
+  font-weight: var(--bold);
+  font-family: var(--font-base-family);
+  color: var(--color-neutral-300);
+  line-height: 1.1;
+  margin-top: 0;
+}
+
 .results-heading {
   font-size: 16px;
   font-weight: normal;

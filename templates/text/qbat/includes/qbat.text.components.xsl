@@ -2,7 +2,6 @@
 <xsl:stylesheet version="1.0" xmlns="http://www.w3.org/1999/xhtml" xmlns:xsl="http://www.w3.org/1999/XSL/Transform" xmlns:qui="http://dlxs.org/quombat/ui" xmlns:qbat="http://dlxs.org/quombat/quombat" xmlns:xhtml="http://www.w3.org/1999/xhtml" xmlns:dlxs="http://dlxs.org" xmlns:exsl="http://exslt.org/common" xmlns:math="http://exslt.org/math" xmlns:tei="http://www.tei-c.org/ns/1.0" extension-element-prefixes="exsl math dlxs">
 
   <xsl:variable name="is-skip-consecutive-hi-elements" select="true()"/>
-  <xsl:key match="qui:lookup/qui:item" name="get-lookup" use="@key" />
 
   <xsl:variable name="is-target" select="//qui:block[@slot='content']/@is-target" />
   

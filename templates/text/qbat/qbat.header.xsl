@@ -73,7 +73,7 @@
   </xsl:template>
 
   <xsl:template name="build-item-header">
-    <xsl:apply-templates select="//qui:block[@slot='metadata']/qui:section" />
+    <xsl:apply-templates select="//qui:block[@slot='metadata']/qui:metadata" />
   </xsl:template>
 
   <xsl:template name="build-filters-panel">
@@ -147,14 +147,8 @@
     </a>
   </xsl:template>
 
-  <xsl:template match="qui:section" priority="101">
-    <!-- <xsl:if test="@name != 'default'">
-      <h3 id="{@slug}"><xsl:value-of select="@name" /></h3>
-    </xsl:if>
-    <xsl:if test="@name = 'default'">
-      <h3 id="record_details">Record Details</h3>
-    </xsl:if> -->
-    <dl class="record" data-message="wtf">
+  <xsl:template match="qui:section|qui:metadata" priority="101">
+    <dl class="record">
       <xsl:apply-templates />
     </dl>
   </xsl:template>
@@ -165,6 +159,12 @@
 
   <xsl:template match="text()" mode="build-title">
     <xsl:copy></xsl:copy>
+  </xsl:template>
+
+  <xsl:template match="qui:span[@class]" mode="copy" priority="101">
+    <span class="{@class}">
+      <xsl:apply-templates select="." mode="copy-guts"  />
+    </span>
   </xsl:template>
 
   <xsl:template match="qui:field[@key='bookmark']" priority="101">
