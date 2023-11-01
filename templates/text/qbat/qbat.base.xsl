@@ -68,6 +68,7 @@
           <xsl:apply-templates select="//qui:main" />
         </main>
 
+        <xsl:call-template name="build-feedback-callout" />
         <xsl:call-template name="build-footer" />
         <iframe name="bookbag-sink" id="bookbag-sink"></iframe>
       </body>
@@ -211,11 +212,31 @@
 
   <xsl:template name="build-breadcrumbs-extra-nav"></xsl:template>
 
+  <xsl:template name="build-feedback-callout">
+    <xsl:variable name="feedback-href">
+      <xsl:call-template name="get-feedback-href" />
+    </xsl:variable>
+
+    <div class="[ mt-1 feedback-callout ]">
+      <div class="viewport-container">
+        <div class="[ pt-2 pb-2 ]">
+          <div class="flex flex-flow-row gap-0_5">
+            <span class="material-icons" aria-hidden="true">question_answer</span>
+            <span>
+              Do you have questions about this content? Need to report a problem?
+              <a href="{$feedback-href};to=tech">Submit Feedback</a>
+            </span>
+          </div>
+        </div>
+      </div>
+    </div>
+  </xsl:template>
+
   <xsl:template name="build-footer">
     <xsl:variable name="feedback-href">
       <xsl:call-template name="get-feedback-href" />
     </xsl:variable>
-    <footer class="[ footer ][ mt-2 ]">
+    <footer class="[ footer ][ xx-mt-2 ]">
       <div class="viewport-container">
         <div class="[ footer__content ]">
           <section>
@@ -383,7 +404,7 @@
               >
             </p>
           </section>
-          <section>
+          <section style="display: none;">
             <h2>Contact Us</h2>
             <ul>
               <li>
