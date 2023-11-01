@@ -342,7 +342,7 @@
     </xsl:variable>
 
     <xsl:call-template name="build-header-metadata">
-      <xsl:with-param name="root" select="." />
+      <xsl:with-param name="item" select="." />
       <xsl:with-param name="encoding-type" select="$encoding-type" />
       <xsl:with-param name="item-encoding-level" select="$item-encoding-level" />
       <xsl:with-param name="slot">item</xsl:with-param>
@@ -376,7 +376,7 @@
 
     <xsl:variable name="item-metadata-tmp">
       <xsl:call-template name="build-header-metadata">
-        <xsl:with-param name="root" select="." />
+        <xsl:with-param name="item" select="." />
         <xsl:with-param name="encoding-type" select="$encoding-type" />
         <xsl:with-param name="item-encoding-level" select="$item-encoding-level" />
       </xsl:call-template>
@@ -435,7 +435,15 @@
       <xsl:apply-templates select="TocHref">
         <xsl:with-param name="item-encoding-level" xml:base="$item-encoding-level" />
       </xsl:apply-templates>
-      <xsl:apply-templates select="ThumbnailLink" />
+      <xsl:choose>
+        <xsl:when test="normalize-space(ThumbnailLink)">
+          <qui:link href="{ThumbnailLink}" rel="iiif" />
+        </xsl:when>
+        <xsl:when test="normalize-space(ViewPageThumbnailLink)">
+          <qui:link href="{ViewPageThumbnailLink}" rel="iiif" />
+        </xsl:when>
+        <xsl:otherwise></xsl:otherwise>
+      </xsl:choose>
       <!-- <xsl:if test="normalize-space(BookbagAddHref)">
         <qui:link rel="bookmark" href="{BookbagAddHref}" label="{key('get-lookup', 'results.str.21')}" />
       </xsl:if> -->
@@ -449,7 +457,7 @@
       <xsl:apply-templates select="MediaInfo" mode="iiif-link" />
 
       <xsl:call-template name="build-header-metadata">
-        <xsl:with-param name="root" select="." />
+        <xsl:with-param name="item" select="." />
         <xsl:with-param name="encoding-type" select="$encoding-type" />
         <xsl:with-param name="item-encoding-level" select="$item-encoding-level" />
       </xsl:call-template>
@@ -731,7 +739,7 @@
 
       <xsl:variable name="details-metadata-tmp">
         <xsl:call-template name="build-header-metadata">
-          <xsl:with-param name="root" select="." />
+          <xsl:with-param name="item" select="." />
           <xsl:with-param name="encoding-type" select="$encoding-type" />
           <xsl:with-param name="item-encoding-level" select="$item-encoding-level" />
           <xsl:with-param name="slot">item</xsl:with-param>

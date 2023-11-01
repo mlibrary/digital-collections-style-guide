@@ -2,49 +2,47 @@
 <xsl:stylesheet xmlns="http://www.w3.org/1999/xhtml" xmlns:xsl="http://www.w3.org/1999/XSL/Transform" xmlns:dlxs="http://dlxs.org" xmlns:qui="http://dlxs.org/quombat/ui" xmlns:exsl="http://exslt.org/common" xmlns:str="http://exslt.org/strings" version="1.0" extension-element-prefixes="exsl str">
 
   <xsl:template name="build-metadata-fields-for-monograph">
-    <xsl:param name="root" />
+    <xsl:param name="item" />
 
-    <xsl:call-template name="build-main-title-for-monograph">
-      <xsl:with-param name="root" select="$root/ItemHeader|$root" />
+    <xsl:call-template name="build-title-for-monograph">
+      <xsl:with-param name="item" select="$item" />
     </xsl:call-template>
 
-    <xsl:call-template name="build-contributor-list-for-monograph">
-      <xsl:with-param name="key">author</xsl:with-param>
-      <xsl:with-param name="values" select="($root/ItemHeader|$root)/HEADER/FILEDESC/TITLESTMT/AUTHOR" />
+    <xsl:call-template name="build-author-for-monograph">
+      <xsl:with-param name="item" select="$item" />
     </xsl:call-template>
 
-    <xsl:call-template name="build-contributor-list-for-monograph">
-      <xsl:with-param name="key">editor</xsl:with-param>
-      <xsl:with-param name="values" select="($root/ItemHeader|$root)/HEADER/FILEDESC/TITLESTMT/EDITOR" />
+    <xsl:call-template name="build-editor-for-monograph">
+      <xsl:with-param name="item" select="$item" />
     </xsl:call-template>
 
-    <xsl:call-template name="build-publication-info-for-monograph">
-      <xsl:with-param name="source" select="($root/ItemHeader|$root)/HEADER/FILEDESC/SOURCEDESC" />
+    <xsl:call-template name="build-pubinfo-for-monograph">
+      <xsl:with-param name="item" select="$item" />
     </xsl:call-template>
   </xsl:template>
 
   <xsl:template name="build-metadata-fields-for-serialissue">
-    <xsl:param name="root" />
+    <xsl:param name="item" />
 
     <xsl:choose>
-      <xsl:when test="$root/ItemHeader/HEADER">
+      <xsl:when test="$item/ItemHeader/HEADER">
         <xsl:call-template name="build-metadata-fields-for-monograph">
-          <xsl:with-param name="root" select="$root" />
+          <xsl:with-param name="item" select="$item" />
         </xsl:call-template>
       </xsl:when>
-      <xsl:when test="$root/MainHeader and $root/ItemDetails">
+      <xsl:when test="$item/MainHeader and $item/ItemDetails">
         <xsl:call-template name="build-metadata-fields-for-serialissue-article">
-          <xsl:with-param name="root" select="$root" />
+          <xsl:with-param name="item" select="$item" />
         </xsl:call-template>
       </xsl:when>
-      <xsl:when test="$root/MainHeader">
-        <xsl:call-template name="build-metadata-fields-for-serialissue-layer">
-          <xsl:with-param name="root" select="$root" />
+      <xsl:when test="$item/MainHeader">
+        <xsl:call-template name="build-metadata-fields-for-serialissue-issue">
+          <xsl:with-param name="item" select="$item" />
         </xsl:call-template>
       </xsl:when>
-      <xsl:when test="$root[@NODE]">
+      <xsl:when test="$item[@NODE]">
         <xsl:call-template name="build-metadata-fields-for-serialissue-node">
-          <xsl:with-param name="root" select="$root" />
+          <xsl:with-param name="item" select="$item" />
         </xsl:call-template>
       </xsl:when>
       <xsl:otherwise>
@@ -53,72 +51,65 @@
     </xsl:choose>
   </xsl:template>
 
-  <xsl:template name="build-metadata-fields-for-serialissue-layer">
-    <xsl:param name="root" />
+  <xsl:template name="build-metadata-fields-for-serialissue-issue">
+    <xsl:param name="item" />
 
-    <qui:debug>AHOY</qui:debug>
-
-    <xsl:variable name="articleCite" select="$root/ItemDetails/DIV1/BIBL"/>
-    <xsl:variable name="serIssSrc" select="$root/MainHeader/HEADER/FILEDESC/SOURCEDESC"/>
-
-    <xsl:call-template name="build-main-title-for-serialissue">
-      <xsl:with-param name="article-cite" select="$articleCite" />
+    <xsl:call-template name="build-title-for-serialissue-issue">
+      <xsl:with-param name="item" select="$item" />
     </xsl:call-template>
 
-    <xsl:call-template name="build-author-for-serialissue">
-      <xsl:with-param name="article-cite" select="$articleCite" />
+    <xsl:call-template name="build-author-for-serialissue-issue">
+      <xsl:with-param name="item" select="$item" />
     </xsl:call-template>
 
-    <xsl:call-template name="build-serial-title-for-serialissue">
-      <xsl:with-param name="source" select="$root/MainHeader/HEADER/FILEDESC" />
+    <xsl:call-template name="build-serial-for-serialissue-issue">
+      <xsl:with-param name="item" select="$item" />
     </xsl:call-template>
 
-    <xsl:call-template name="build-pubinfo-for-serialissue">
-      <xsl:with-param name="ser-iss-src" select="$serIssSrc"/>
-      <xsl:with-param name="article-cite" select="$articleCite"/>
+    <xsl:call-template name="build-pubinfo-for-serialissue-issue">
+      <xsl:with-param name="item" select="$item" />
     </xsl:call-template>
   </xsl:template>
 
   <xsl:template name="build-metadata-fields-for-serialissue-article">
-    <xsl:param name="root" />
-    <xsl:variable name="articleCite" select="$root/ItemDetails/DIV1//BIBL"/>
-    <xsl:variable name="serIssSrc" select="$root/MainHeader/HEADER/FILEDESC/SOURCEDESC"/>
-    
-    <xsl:call-template name="build-main-title-for-serialissue">
-      <xsl:with-param name="article-cite" select="$articleCite" />
+    <xsl:param name="item" />
+    <xsl:variable name="articleCite" select="$item/ItemDetails/DIV1//BIBL"/>
+    <xsl:variable name="serIssSrc" select="$item/MainHeader/HEADER/FILEDESC/SOURCEDESC"/>
+
+    <xsl:call-template name="build-title-for-serialissue-article">
+      <xsl:with-param name="item" select="$item" />
     </xsl:call-template>
 
-    <xsl:call-template name="build-author-for-serialissue">
-      <xsl:with-param name="article-cite" select="$articleCite" />
+    <xsl:call-template name="build-author-for-serialissue-article">
+      <xsl:with-param name="item" select="$item" />
     </xsl:call-template>
 
-    <xsl:call-template name="build-pubinfo-for-serialissue">
-      <xsl:with-param name="ser-iss-src" select="$serIssSrc"/>
-      <xsl:with-param name="article-cite" select="$articleCite"/>
+    <xsl:call-template name="build-serial-for-serialissue-article">
+      <xsl:with-param name="item" select="$item" />
+    </xsl:call-template>
+
+    <xsl:call-template name="build-pubinfo-for-serialissue-article">
+      <xsl:with-param name="item" select="$item" />
     </xsl:call-template>
 
   </xsl:template>
 
   <xsl:template name="build-metadata-fields-for-serialissue-node">
-    <xsl:param name="root" />
+    <xsl:param name="item" />
 
-    <xsl:variable name="articleCite" select="$root/descendant-or-self::node()[@NODE]//BIBL"/>
+    <xsl:call-template name="build-title-for-serialissue-node">
+      <xsl:with-param name="item" select="$item" />
+    </xsl:call-template>
 
-    <qui:debug>BEH <xsl:value-of select="$root/descendant-or-self::node()/@NODE" /></qui:debug>
+    <xsl:call-template name="build-author-for-serialissue-node">
+      <xsl:with-param name="item" select="$item" />
+    </xsl:call-template>
+
+    <xsl:call-template name="build-pubinfo-for-serialissue-node">
+      <xsl:with-param name="item" select="$item" />
+    </xsl:call-template>
+
+  </xsl:template>
+
     
-    <xsl:call-template name="build-main-title-for-serialissue">
-      <xsl:with-param name="article-cite" select="$articleCite" />
-    </xsl:call-template>
-
-    <xsl:call-template name="build-author-for-serialissue">
-      <xsl:with-param name="article-cite" select="$articleCite" />
-    </xsl:call-template>
-
-    <xsl:call-template name="build-pubinfo-for-serialissue">
-      <!-- <xsl:with-param name="ser-iss-src" select="$root/ItemHeader/node()"/> -->
-      <xsl:with-param name="article-cite" select="$articleCite"/>
-    </xsl:call-template>
-
-  </xsl:template>  
-
 </xsl:stylesheet>

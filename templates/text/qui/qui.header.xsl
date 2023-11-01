@@ -256,7 +256,7 @@
     </xsl:variable>
 
     <xsl:call-template name="build-header-metadata">
-      <xsl:with-param name="root" select="." />
+      <xsl:with-param name="item" select="." />
       <xsl:with-param name="encoding-type" select="$encoding-type" />
       <xsl:with-param name="item-encoding-level" select="$item-encoding-level" />
       <xsl:with-param name="slot">root</xsl:with-param>
