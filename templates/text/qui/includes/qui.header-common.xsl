@@ -120,9 +120,15 @@
 
   <xsl:template name="build-serial-for-serialissue-article">
     <xsl:param name="item" />
-    <xsl:apply-templates select="$item/MainHeader/HEADER/FILEDESC" mode="process-title">
+    <xsl:apply-templates select="($item/MainHeader|$item/ItemHeader)/HEADER/FILEDESC" mode="process-title">
       <xsl:with-param name="key">serial</xsl:with-param>
     </xsl:apply-templates>
+  </xsl:template>
+
+  <xsl:template name="build-pubdate-for-serialissue-article">
+    <xsl:param name="item" />
+    <xsl:variable name="bibl" select="($item/ItemDetails|$item/ItemDivhead)/DIV1//BIBL" />
+    <xsl:apply-templates select="$bibl" mode="process-pubdate" />
   </xsl:template>
 
   <xsl:template name="build-pubinfo-for-serialissue-article">
@@ -422,7 +428,7 @@
     <xsl:variable name="bibl-source" select="(BIBLFULL|BIBL)" />
     <xsl:variable name="pubstatement-source" select="($bibl-source/PUBLICATIONSTMT|$bibl-source/IMPRINT)" />
     <xsl:call-template name="build-field">
-      <xsl:with-param name="key">publicationinfo</xsl:with-param>
+      <xsl:with-param name="key">pubinfo</xsl:with-param>
       <xsl:with-param name="value">
         <qui:value>
           <xsl:value-of select="$pubstatement-source/PUBPLACE" />
@@ -485,6 +491,30 @@
         </xsl:choose>
       </xsl:with-param>
     </xsl:call-template>
+  </xsl:template>
+
+  <xsl:template match="BIBL" mode="process-pubdate">
+    <xsl:call-template name="build-field">
+      <xsl:with-param name="key">pubdate</xsl:with-param>
+      <xsl:with-param name="value">
+        <xsl:value-of select="BIBLSCOPE[@TYPE='mo']" />
+        <xsl:text> </xsl:text>
+        <xsl:value-of select="BIBLSCOPE[@TYPE='year']" />
+      </xsl:with-param>
+    </xsl:call-template>
+  </xsl:template>
+
+  <xsl:template match="NOTESSTMT" mode="process-notesstmt">
+    <xsl:if test="normalize-space(NOTE)">
+      <xsl:call-template name="build-field">
+        <xsl:with-param name="key">note</xsl:with-param>
+        <xsl:with-param name="value">
+          <xsl:for-each select="NOTE">
+            <Value><xsl:value-of select="." /></Value>
+          </xsl:for-each>
+        </xsl:with-param>
+      </xsl:call-template>  
+    </xsl:if>
   </xsl:template>
   
   <xsl:template name="process-pubinfo-for-serialissue">

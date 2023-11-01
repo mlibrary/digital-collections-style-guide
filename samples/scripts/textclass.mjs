@@ -280,6 +280,7 @@ async function processDLXS(req, res) {
 
     const xsltDoc = new DOMParser().parseFromString(xsltBase, "text/xml");
     // console.log(fallbackFilenames);
+    console.log(collidPath);
     fallbackFilenames.forEach((fallbackFilename) => {
       [textPath, collidPath].forEach((xslPath) => {
         const possibles = fg.sync(

@@ -36,8 +36,6 @@
 
   <xsl:template  name="build-metadata-fields-for-serialissue">
     <xsl:param name="item" />
-    <!-- <xsl:variable name="articleCite" select="$item/ItemDivhead/DIV1/BIBL"/>
-    <xsl:variable name="serIssSrc" select="$item/ItemHeader/HEADER/FILEDESC/SOURCEDESC"/> -->
 
     <xsl:call-template name="build-title-for-serialissue-article">
       <xsl:with-param name="item" select="$item" />
@@ -54,6 +52,10 @@
       <xsl:with-param name="item" select="$item" />
     </xsl:call-template>
 
+    <xsl:call-template name="build-pubdate-for-serialissue-article">
+      <xsl:with-param name="item" select="$item" />
+    </xsl:call-template>
+
     <xsl:call-template name="build-pubinfo-for-serialissue-article">
       <xsl:with-param name="item" select="$item" />
     </xsl:call-template>
@@ -66,6 +68,14 @@
       <xsl:with-param name="item" select="$item" />
     </xsl:call-template>
 
+    <xsl:call-template name="build-metadata-fields-for-serialissue-extra">
+      <xsl:with-param name="item" select="$item" />
+    </xsl:call-template>
+
+  </xsl:template>
+
+  <xsl:template name="build-metadata-fields-for-serialissue-extra">
+    <qui:debug>MMMM</qui:debug>
   </xsl:template>
 
 </xsl:stylesheet>
