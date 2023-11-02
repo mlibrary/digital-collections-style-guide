@@ -51,7 +51,7 @@
       <div>
         <xsl:attribute name="class">
           <xsl:text>main-panel</xsl:text>
-          <xsl:if test="count(//qui:block[@slot='content']//xhtml:h2) &lt;= 1">
+          <xsl:if test="count(//qui:block[@slot='content']//xhtml:h2) &lt; 1">
             <xsl:text> full</xsl:text>
           </xsl:if>
         </xsl:attribute>
