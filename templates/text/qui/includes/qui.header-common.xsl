@@ -34,7 +34,14 @@
           <qui:values>
             <qui:value>
               <xsl:text>https://name.umdl.umich.edu/</xsl:text>
-              <xsl:value-of select="dlxs:downcase(//Param[@name='idno'])" />  
+              <xsl:choose>
+                <xsl:when test="//Param[@name='node']">
+                  <xsl:value-of select="//Param[@name='node']" />
+                </xsl:when>
+                <xsl:otherwise>
+                  <xsl:value-of select="dlxs:downcase(//Param[@name='idno'])" />  
+                </xsl:otherwise>
+              </xsl:choose>
             </qui:value>
           </qui:values>
         </qui:field>

@@ -763,7 +763,7 @@
   <xsl:template name="get-rights-statement-href">
     <xsl:choose>
       <xsl:when test="$context-type = 'collection'">
-        <xsl:text>/cgi/i/image/image-idx?cc=</xsl:text>
+        <xsl:text>/cgi/t/text/text-idx?cc=</xsl:text>
         <xsl:value-of select="$collid" />
         <xsl:text>;page=index#rights-permissions</xsl:text>
       </xsl:when>
