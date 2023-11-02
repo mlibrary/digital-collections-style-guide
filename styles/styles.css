@@ -338,6 +338,10 @@ label.control-checkbox {
   text-transform: capitalize;
 } */
 
+.contact-icon {
+  color: var(--color-teal-400);
+}
+
 @media screen and (max-width: 600px) {
   .breadcrumb {
     flex-flow: column;

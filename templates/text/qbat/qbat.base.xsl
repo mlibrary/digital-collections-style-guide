@@ -221,10 +221,10 @@
       <div class="viewport-container">
         <div class="[ pt-2 pb-2 ]">
           <div class="flex flex-flow-row gap-0_5">
-            <span class="material-icons" aria-hidden="true">question_answer</span>
+            <span class="material-icons contact-icon" aria-hidden="true">email</span>
             <span>
               Do you have questions about this content? Need to report a problem?
-              <a href="{$feedback-href};to=tech">Submit Feedback</a>
+              Please <a class="text--bold" href="{$feedback-href};to=tech">contact us</a>.
             </span>
           </div>
         </div>
