@@ -43,4 +43,7 @@
 
   </xsl:template>
 
+  <xsl:template name="build-metadata-fields-for-monograph-extra"></xsl:template>
+  <xsl:template name="build-metadata-fields-for-serialissue-extra"></xsl:template>
+
 </xsl:stylesheet>
