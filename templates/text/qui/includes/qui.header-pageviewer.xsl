@@ -24,6 +24,10 @@
       <xsl:with-param name="item" select="$item" />
     </xsl:call-template>
 
+    <xsl:call-template name="build-metadata-fields-for-monograph-extra">
+      <xsl:with-param name="item" select="$item" />
+    </xsl:call-template>
+
     <xsl:call-template name="build-useguidelines-for-monograph">
       <xsl:with-param name="item" select="$item" />
     </xsl:call-template>
@@ -60,6 +64,10 @@
       <xsl:with-param name="item" select="$item" />
     </xsl:call-template>
 
+    <xsl:call-template name="build-metadata-fields-for-serialissue-extra">
+      <xsl:with-param name="item" select="$item" />
+    </xsl:call-template>
+
     <xsl:call-template name="build-useguidelines-for-monograph">
       <xsl:with-param name="item" select="$item" />
     </xsl:call-template>
@@ -68,14 +76,12 @@
       <xsl:with-param name="item" select="$item" />
     </xsl:call-template>
 
-    <xsl:call-template name="build-metadata-fields-for-serialissue-extra">
-      <xsl:with-param name="item" select="$item" />
-    </xsl:call-template>
-
   </xsl:template>
 
   <xsl:template name="build-metadata-fields-for-serialissue-extra">
-    <qui:debug>MMMM</qui:debug>
+  </xsl:template>
+
+  <xsl:template name="build-metadata-fields-for-monograph-extra">
   </xsl:template>
 
 </xsl:stylesheet>
