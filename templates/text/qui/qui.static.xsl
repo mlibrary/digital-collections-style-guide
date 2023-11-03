@@ -26,6 +26,8 @@
     <xsl:call-template name="build-breadcrumbs" />
     <xsl:call-template name="build-static-content" />
 
+    <xsl:apply-templates select="//Navigation" />
+
   </xsl:template>
 
   <xsl:template name="get-current-page-breadcrumb-label">
@@ -47,5 +49,43 @@
   </xsl:template>
 
   <xsl:template name="get-view">static</xsl:template>
+
+  <xsl:template match="Navigation[Link or Section]">
+    <qui:nav rel="pages">
+      <qui:ul>
+        <xsl:apply-templates select="Link|Section" mode="navigation" />
+      </qui:ul>
+    </qui:nav>
+  </xsl:template>
+
+  <xsl:template match="Link" mode="navigation">
+    <qui:li>
+      <qui:link href="{@href}">
+        <xsl:if test="@current">
+          <xsl:attribute name="data-current"><xsl:value-of select="@current" /></xsl:attribute>
+        </xsl:if>
+        <xsl:apply-templates mode="copy" />
+      </qui:link>
+    </qui:li>
+  </xsl:template>
+
+  <xsl:template match="Section[@href]" mode="navigation">
+    <qui:li>
+      <qui:link href="{@href}">
+        <xsl:apply-templates mode="copy" />
+      </qui:link>
+    </qui:li>
+  </xsl:template>
+
+  <xsl:template match="Section" mode="navigation">
+    <qui:li>
+      <qui:span>
+        <xsl:value-of select="Label" />
+      </qui:span>
+      <qui:ul>
+        <xsl:apply-templates select="Link" mode="navigation" />
+      </qui:ul>
+    </qui:li>
+  </xsl:template>
 
 </xsl:stylesheet>

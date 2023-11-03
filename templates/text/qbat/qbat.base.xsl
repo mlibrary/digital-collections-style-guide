@@ -955,7 +955,13 @@
   </xsl:template>
 
   <xsl:template match="qui:li">
-    <li class="mb-0_5">
+    <li>
+      <xsl:attribute name="class">
+        <xsl:text>mb-0_5 </xsl:text>
+        <xsl:if test="@current">
+          <xsl:value-of select="@current" />
+        </xsl:if>
+      </xsl:attribute>
       <xsl:apply-templates />
     </li>
   </xsl:template>

@@ -95,6 +95,12 @@ a {
   text-decoration: underline;
 }
 
+a[data-current="true"] {
+  color: var(--color-neutral-600);
+  font-weight: bold;
+  text-decoration: none;
+}
+
 a:hover {
   text-decoration-thickness: 2px; /** TODO: HOVE **/
 }

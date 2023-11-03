@@ -39,19 +39,23 @@
     </div>
 
     <div class="[ flex flex-flow-rw flex-gap-1 ][ aside--wrap ]">
-      <xsl:if test="//qui:block[@slot='content']//xhtml:h2">
+      <xsl:if test="//qui:block[@slot='content']//xhtml:h2 or //qui:nav[@rel='pages']">
         <div class="[ aside ]">
           <nav class="[ page-index ]" xx-aria-labelledby="page-index-label">
             <h2 id="page-index-label" class="[ subtle-heading ][ text-black js-toc-ignore ]">Page Index</h2>
             <div class="toc js-toc"></div>
             <select id="action-page-index"></select>
+            <xsl:apply-templates select="//qui:nav[@rel='pages']" />
           </nav>
         </div>
       </xsl:if>
       <div>
         <xsl:attribute name="class">
           <xsl:text>main-panel</xsl:text>
-          <xsl:if test="count(//qui:block[@slot='content']//xhtml:h2) &lt; 1">
+          <xsl:if test="
+            count(//qui:block[@slot='content']//xhtml:h2) &lt; 1
+            and
+            not(//qui:nav[@rel='pages'])">
             <xsl:text> full</xsl:text>
           </xsl:if>
         </xsl:attribute>
@@ -107,5 +111,10 @@
   </xsl:template>
 
   <xsl:template match="qui:block[@data-current-page='contents']//xhtml:img[@class='badge']" mode="copy" priority="101" />
+
+  <xsl:template match="qui:nav[@rel='pages']">
+    <h2 class="subtle-heading mt-1 text-black">Related Pages</h2>
+    <xsl:apply-templates select="qui:ul" />
+  </xsl:template>
 
 </xsl:stylesheet>
