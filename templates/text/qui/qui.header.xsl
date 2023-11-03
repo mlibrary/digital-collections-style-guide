@@ -192,9 +192,17 @@
       </xsl:when>
       <xsl:when test="key('get-lookup',@TYPE)">
         <xsl:value-of select="key('get-lookup', @TYPE)" />
+        <xsl:if test="@N">
+          <xsl:text> - </xsl:text>
+          <xsl:value-of select="@N" />
+        </xsl:if>
       </xsl:when>
       <xsl:otherwise>
         <xsl:value-of select="@TYPE" />
+        <xsl:if test="@N">
+          <xsl:text> - </xsl:text>
+          <xsl:value-of select="@N" />
+        </xsl:if>
       </xsl:otherwise>
     </xsl:choose>
   </xsl:template>
