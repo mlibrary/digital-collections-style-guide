@@ -47,7 +47,7 @@
 
   <xsl:template name="build-contents-navigation">
     <qui:nav role="contents">
-      <xsl:if test="/Top/AuthRequired != 'true'">
+      <xsl:if test="/Top/AuthRequired != 'true' and /Top/Item/DocEncodingType != 'serialissue'">
         <qui:link href="{//ViewEntireTextLink}" role="view-text">
           <xsl:value-of select="key('get-lookup','header.str.viewentiretext')"/>
         </qui:link>
