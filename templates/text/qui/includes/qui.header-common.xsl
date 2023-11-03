@@ -437,11 +437,28 @@
     <xsl:call-template name="build-field">
       <xsl:with-param name="key">pubinfo</xsl:with-param>
       <xsl:with-param name="value">
-        <qui:value>
-          <xsl:value-of select="$pubstatement-source/PUBPLACE" />
-          <xsl:text>: </xsl:text>
-          <xsl:value-of select="$pubstatement-source/PUBLISHER" />
-        </qui:value>
+        <xsl:variable name="pubplace" select="normalize-space($pubstatement-source/PUBPLACE)" />
+        <xsl:variable name="publisher" select="normalize-space($pubstatement-source/PUBLISHER)" />
+        <xsl:choose>
+          <xsl:when test="$pubplace and $publisher">
+            <qui:value>
+              <xsl:value-of select="$pubplace" />
+              <xsl:text>: </xsl:text>
+              <xsl:value-of select="$publisher" />
+            </qui:value>
+          </xsl:when>
+          <xsl:when test="$pubplace">
+            <qui:value>
+              <xsl:value-of select="$pubplace" />
+            </qui:value>
+          </xsl:when>
+          <xsl:when test="$publisher">
+            <qui:value>
+              <xsl:value-of select="$publisher" />
+            </qui:value>
+          </xsl:when>
+          <xsl:otherwise></xsl:otherwise>
+        </xsl:choose>
         <xsl:apply-templates select="$pubstatement-source/SERIES[1]" mode="metadata-value" />
         <xsl:apply-templates select="$pubstatement-source/DATE[not(@TYPE='sort')][1]" mode="metadata-value" />
       </xsl:with-param>

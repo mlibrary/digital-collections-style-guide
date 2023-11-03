@@ -78,7 +78,7 @@
   </xsl:template>
 
   <xsl:template name="build-item-header">
-    <xsl:apply-templates select="//qui:block[@slot='metadata']/qui:section" />
+    <xsl:apply-templates select="//qui:block[@slot='metadata']/qui:metadata" />
   </xsl:template>
 
   <xsl:template match="qui:block[@slot='content']">
@@ -122,7 +122,7 @@
 
   <xsl:template match="qui:div/qui:nav" mode="copy" />
 
-  <xsl:template match="qui:section" priority="101">
+  <xsl:template match="qui:section|qui:metadata" priority="101">
     <!-- <xsl:if test="@name != 'default'">
       <h3 id="{@slug}"><xsl:value-of select="@name" /></h3>
     </xsl:if>

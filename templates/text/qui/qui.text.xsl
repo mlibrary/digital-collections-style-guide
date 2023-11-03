@@ -52,8 +52,10 @@
     <qui:header role="main">
       <xsl:apply-templates select="$item-metadata//qui:field[@key='title']/qui:values" mode="copy" />
     </qui:header>
-    
-    <xsl:apply-templates select="$item-metadata" mode="copy" />
+   
+    <qui:block slot="metadata">
+      <xsl:apply-templates select="$item-metadata" mode="copy" />
+    </qui:block>
 
     <qui:block slot="content" 
       mimetype="application/tei+xml" 
@@ -147,8 +149,8 @@
       <xsl:value-of select="DocEncodingType" />
     </xsl:variable>
 
-    <xsl:call-template name="build-item-metadata">
-      <xsl:with-param name="item" select="ItemHeader" />
+    <xsl:call-template name="build-header-metadata">
+      <xsl:with-param name="item" select="." />
       <xsl:with-param name="encoding-type" select="$encoding-type" />
       <xsl:with-param name="item-encoding-level" select="$item-encoding-level" />
     </xsl:call-template>
