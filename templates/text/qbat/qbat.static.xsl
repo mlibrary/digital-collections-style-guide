@@ -113,7 +113,7 @@
   <xsl:template match="qui:block[@data-current-page='contents']//xhtml:img[@class='badge']" mode="copy" priority="101" />
 
   <xsl:template match="qui:nav[@rel='pages']">
-    <h2 class="subtle-heading mt-1 text-black">Related Pages</h2>
+    <h2 class="subtle-heading mt-1 text-black"><xsl:value-of select="qui:header" /></h2>
     <xsl:apply-templates select="qui:ul" />
   </xsl:template>
 
