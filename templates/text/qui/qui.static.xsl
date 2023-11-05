@@ -34,6 +34,14 @@
     <xsl:call-template name="get-title" />
   </xsl:template>
 
+  <xsl:template name="build-breadcrumbs-intermediate-links">
+    <xsl:if test="//Navigation and $current-page != //Navigation//Page[1]/Link/@page">
+      <qui:link href="{//Navigation//Page[1]/Link}">
+        <xsl:value-of select="//Navigation//Page[1]/Label" />
+      </qui:link>
+    </xsl:if>
+  </xsl:template>
+
   <xsl:template name="build-static-content">
     <qui:block slot="content" data-current-page="{$current-page}">
       <xsl:apply-templates select="//Content" mode="copy-guts" />
@@ -52,27 +60,32 @@
 
   <xsl:template match="Navigation[Link or Section]">
     <qui:nav rel="pages">
+      <xsl:if test="Label">
+        <qui:header>
+          <xsl:value-of select="Label" />
+        </qui:header>  
+      </xsl:if>
       <qui:ul>
-        <xsl:apply-templates select="Link|Section" mode="navigation" />
+        <xsl:apply-templates select="Page|Section" mode="navigation" />
       </qui:ul>
     </qui:nav>
   </xsl:template>
 
-  <xsl:template match="Link" mode="navigation">
+  <xsl:template match="Page" mode="navigation">
     <qui:li>
-      <qui:link href="{@href}">
-        <xsl:if test="@current">
-          <xsl:attribute name="data-current"><xsl:value-of select="@current" /></xsl:attribute>
+      <qui:link href="{Link}">
+        <xsl:if test="Link/@current">
+          <xsl:attribute name="data-current"><xsl:value-of select="Link/@current" /></xsl:attribute>
         </xsl:if>
-        <xsl:apply-templates mode="copy" />
+        <xsl:apply-templates select="Label" mode="copy-guts" />
       </qui:link>
     </qui:li>
   </xsl:template>
 
-  <xsl:template match="Section[@href]" mode="navigation">
+  <xsl:template match="Section[Link]" mode="navigation">
     <qui:li>
-      <qui:link href="{@href}">
-        <xsl:apply-templates mode="copy" />
+      <qui:link href="{Link}">
+        <xsl:apply-templates select="Label" mode="copy-guts" />
       </qui:link>
     </qui:li>
   </xsl:template>
@@ -83,7 +96,7 @@
         <xsl:value-of select="Label" />
       </qui:span>
       <qui:ul>
-        <xsl:apply-templates select="Link" mode="navigation" />
+        <xsl:apply-templates select="Page" mode="navigation" />
       </qui:ul>
     </qui:li>
   </xsl:template>
