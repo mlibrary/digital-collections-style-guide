@@ -84,6 +84,53 @@ async function proxyIndex(req, res) {
   res.send(body);
 }
 
+async function processLandingPage(req, res) {
+  let url = new URL(`https://roger.quod.lib.umich.edu/cgi/t/text/uplifted-idx`);
+
+  const headers = {};
+  // console.log("-- cookies", req.cookies);
+  if ( req.cookies.loggedIn == 'true' ) {
+    headers['X-DLXS-Auth'] = 'nala@monkey.nu';
+  }
+  headers['X-DLXS-Uplifted'] = 'true';
+  headers['x-forwarded-host'] = req.headers['x-forwarded-host'] || 'localhost:5555';
+
+  // headers['X-DLXS-SessionID'] = `${req.socket.remoteAddress}--${(new Date).getDay()}`;
+  headers['Cookie'] = `DLXSsid=${req.cookies.DLXSsid}`;
+
+  const inputFilename = `/tmp/landing.${(new Date).getHours()}.xml`;
+  if ( ! fs.existsSync(inputFilename) ) {
+    const resp = await fetch(url.toString(), {
+      headers: headers,
+      redirect: 'follow',
+      credentials: 'include'
+    });
+    const xmlData = (await resp.text());
+    fs.writeFileSync(
+      inputFilename,
+      xmlData
+    );    
+  }
+
+  res.setHeader("Content-Type", "text/html; charset=UTF-8");
+  const outputFilename = `/tmp/landing.${(new Date).getTime()}.html`;
+  await $`xsltproc --stringparam docroot "/" ${path.join(rootPath, 'samples', 'xsl', 'landing.xsl')} ${inputFilename}`.pipe(
+    fs.createWriteStream(outputFilename)
+  );
+  const output = {};
+  output.stdout = fs.readFileSync(outputFilename, "utf8");
+
+  const outputData = output.stdout
+    .replace(/src="https:\/\/roger.quod.lib.umich.edu\//g, 'src="/')
+    .replace(/href="https:\/\/roger.quod.lib.umich.edu\//g, 'href="/')
+    .replace(/debug=xml/g, 'debug=noop')
+    .split("\n");
+  outputData[0] = "<!DOCTYPE html>";
+  res.send(outputData.join("\n"));
+
+  fs.unlinkSync(outputFilename);  
+}
+
 async function processDLXS(req, res) {
   let appBase = ( false && req.cookies.useBeta == 'true' ) ? beta1Base : dlxsBase;
   let url = new URL(
@@ -487,7 +534,14 @@ function listen(options) {
 
   app.get('/', function(req, res) {
     if ( req.query.guide !== undefined ) { return res.sendFile(path.join(rootPath, "index.html")); }
-    res.sendFile(path.join(rootPath, "samples/index.proxy.html"));
+    // res.sendFile(path.join(rootPath, "samples/index.proxy.html"));
+    try {
+      processLandingPage(req, res).catch((error) => {
+        handleError(req, res, error);
+      })
+    } catch(error) {
+      handleError(req, res, error);
+    }    
   })
 
   app.get("/index.html", function (req, res) {
@@ -496,7 +550,14 @@ function listen(options) {
   });
 
   app.get('/samples/', function(req, res) {
-    res.sendFile(path.join(rootPath, "samples/index.proxy.html"));
+    // res.sendFile(path.join(rootPath, "samples/index.proxy.html"));
+    try {
+      processLandingPage(req, res).catch((error) => {
+        handleError(req, res, error);
+      })
+    } catch(error) {
+      handleError(req, res, error);
+    }        
   });
 
   app.get('/digital-collections-style-guide/*', function(req, res) {
