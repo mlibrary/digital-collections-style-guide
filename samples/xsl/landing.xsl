@@ -55,8 +55,8 @@
               <ul>
                 <xsl:for-each select="//Collection">
                   <li class="flex flex-flow-row flex-space-between p-1 gap-2" style="border-bottom: 1px solid var(--color-neutral-100);">
-                    <a href="{HomeLink}" style="width: 50%">
-                      <xsl:value-of select="concat(Title, '/')" />
+                    <a href="{HomeLink}/" style="width: 50%">
+                      <xsl:value-of select="Title" />
                     </a>
                     <div class="flex flex-flow-row flex-space-between gap-1" style="width: 50%; flex-grow: 0;">
                       <span class="collid">
