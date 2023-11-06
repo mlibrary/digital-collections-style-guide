@@ -134,7 +134,7 @@
     <qui:m-website-header name="Digital Collections">
       <qui:search-form collid="{$collid}" value="{//Param[@name='q1']}" />
       <qui:nav>
-        <qui:link rel="help" href="{//Help}">Help</qui:link>
+        <qui:link rel="help" href="{//NavHeader/MainNav/NavItem[Name='help']/Link}">Help</qui:link>
         <xsl:if test="//NavItem/Name='bookbag'">
           <qui:link rel="portfolios" href="{//NavItem[Name='bookbag']/Link}">Bookbag</qui:link>
         </xsl:if>

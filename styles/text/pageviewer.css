@@ -2,10 +2,6 @@
   scroll-margin-top: 2.5rem;
 }
 
-#action-page-index {
-  display: none;;
-}
-
 a[aria-current="page"] {
   color: black;
   text-decoration: none;;
@@ -175,124 +171,6 @@ sl-button[slot="trigger"] {
  * 
  */
 
-/*
- * TocBot
- *
- * 
- */
-.toc {
- overflow-y:auto
-}
-.toc>.toc-list {
- overflow:hidden;
- position:relative;
- padding-left: 1.5rem;
-}
-.toc>.toc-list li {
- list-style:none
-}
-.toc-list {
- margin:0;
- padding-left:10px
-}
-a.toc-link {
- color:currentColor;
- height:100%
-}
-.is-collapsible {
- max-height:1000px;
- overflow:hidden;
- transition:all 300ms ease-in-out
-}
-.is-collapsed {
- max-height:0
-}
-.is-position-fixed {
- position:fixed !important;
- top:0
-}
-.is-active-link {
- font-weight:700
-}
-.toc-link::before {
- background-color:#EEE;
- content:' ';
- display:inline-block;
- height:inherit;
- left:0;
- margin-top:-1px;
- position:absolute;
- width:3px;
- height: 100%;
- display: block;
-}
-.is-active-link::before {
- background-color: var(--color-teal-400);
-}
-
-/* TOCBOT EXCEPTIONS */
-
-.aside {
-  margin: 1rem;
-  order: 2;
-  flex-shrink: 0;
-  /* width: 13rem; */
-  width: 25%;
-}
-
-.aside--wrap {
-  container-type: inline-size;
-  container-name: aside--wrap;
-}
-
-@container aside--wrap ( max-width: 920px ) {
-
-  .aside {
-    order: 0;
-    width: 100%;
-    background: #fff;
-    position: sticky;
-    top: 0rem;
-    z-index: 1000;
-    filter: drop-shadow(10px 10px 4px #ddd);
-    margin: 0 auto;
-  }
-
-  .main-panel {
-    width: 100%;
-  }
-
-  .main-panel h2, .main-panel h3 {
-    scroll-margin-top: 4rem;
-  }
-
-  nav.page-index {
-    position: static;
-    display: flex;
-    gap: 0.5rem;
-    width: 80%;
-    align-items: center;
-    margin: 0.5rem auto;
-  }
-
-  nav.page-index h2 {
-    padding: 0;
-  }
-
-  nav.page-index .toc {
-    display: none;
-  }
-
-  nav.page-index .highlight-tools,
-  nav.page-index #search-highlight-label {
-    display: none;
-  }
-
-  nav.page-index #action-page-index {
-    display: block;
-    flex-grow: 1;
-  }
-}
 
 @container aside--wrap (max-width: 670px ) {
   /* .toolbar {
@@ -320,28 +198,13 @@ a.toc-link {
   }
 }
 
-nav.page-index {
-  position: sticky;
-  top: 1rem;
-  margin-left: 1rem;
-  padding-bottom: 1rem;
-  max-height: 90vh;
-  overflow: auto;
-}
-  
-
-/* .js-toc > .toc-list {
-  position: sticky;
-  top: 1rem;
-} */
-
-a.toc-link {
+/* a.toc-link {
   text-decoration: none;
 }
 
 a.is-active-link {
   text-decoration: underline;
-}
+} */
 
 .container {
   position: relative;

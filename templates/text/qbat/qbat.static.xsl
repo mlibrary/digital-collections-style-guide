@@ -6,7 +6,7 @@
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@shoelace-style/shoelace@2.4.0/dist/themes/light.css" />
     <script type="module" src="https://cdn.jsdelivr.net/npm/@shoelace-style/shoelace@2.4.0/dist/shoelace-autoloader.js"></script>
 
-    <link rel="stylesheet" href="{$docroot}styles/text/item.css" />
+    <!-- <link rel="stylesheet" href="{$docroot}styles/text/item.css" /> -->
 
     <style>
       h2 {
@@ -113,8 +113,19 @@
   <xsl:template match="qui:block[@data-current-page='contents']//xhtml:img[@class='badge']" mode="copy" priority="101" />
 
   <xsl:template match="qui:nav[@rel='pages']">
-    <h2 class="subtle-heading mt-1 text-black"><xsl:value-of select="qui:header" /></h2>
-    <xsl:apply-templates select="qui:ul" />
+    <div class="page-navigation">
+      <h2 class="subtle-heading mt-1 text-black">
+        <xsl:choose>
+          <xsl:when test="qui:header">
+            <xsl:value-of select="qui:header" />
+          </xsl:when>
+          <xsl:otherwise>
+            <xsl:text>Page Index</xsl:text>
+          </xsl:otherwise>
+        </xsl:choose>
+      </h2>
+      <xsl:apply-templates select="qui:ul" />  
+    </div>
   </xsl:template>
 
 </xsl:stylesheet>
