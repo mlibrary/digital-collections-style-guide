@@ -10,7 +10,14 @@
       <xsl:text>Advanced Search: </xsl:text>
       <xsl:value-of select="key('get-lookup', $key)" />
     </qui:header>
-    <xsl:call-template name="build-advanced-search-form" />
+    <xsl:choose>
+      <xsl:when test="$page = 'history'">
+        <xsl:call-template name="build-search-history-table" />
+      </xsl:when>
+      <xsl:otherwise>
+        <xsl:call-template name="build-advanced-search-form" />
+      </xsl:otherwise>
+    </xsl:choose>
   </xsl:template>
 
   <xsl:template name="build-advanced-search-form">

@@ -133,6 +133,7 @@ del {
   display: inline-flex;
   align-items: center;
   gap: 0.25rem;
+  vertical-align: bottom;
 }
 
 ins {
@@ -141,6 +142,7 @@ ins {
   display: inline-flex;
   align-items: center;
   gap: 0.25rem;
+  vertical-align: bottom;
 }
 
 del::before,
@@ -170,6 +172,29 @@ ins::before {
 
 ins::after {
   content: " [addition end] ";
+}
+
+.corr {
+  background-color: var(--color-green-100);
+}
+
+.sic {
+  /* color: var(--color-neutral-400); */
+  background-color: var(--color-pink-100);
+}
+
+.sic::before {
+  content: '[ ';
+}
+
+.sic::after {
+  content: ' ]';
+}
+
+.unclear::after {
+  content: ' [unclear] ';
+  /* color: #5e6f7d; */
+  /* color: var(--color-neutral-400); */
 }
 
 .fullview-main figure {
@@ -229,6 +254,21 @@ ins::after {
   font-style: italic;
 }
 
+.rend-underline {
+  text-decoration: dotted underline;
+}
+
+.rend-superscript {
+  font-size: 75%;
+  vertical-align: top;
+}
+
+.rend-superscriptunderline {
+  font-size: 75%;
+  vertical-align: top;
+  text-decoration: dotted underline;
+}
+
 .gap {
   white-space: pre-line;
   font-family: monospace;
@@ -274,122 +314,6 @@ hr {
   border-top: 3px double var(--color-teal-100);
 }
 
-table{
-    border-collapse:collapse;
-    border-spacing:0
-}
-
-.responsive-table table{
-    width:100%
-}
-.responsive-table table *{
-    text-align:left
-}
-.responsive-table table caption .caption-flex{
-    justify-content:space-between
-}
-.responsive-table table caption .caption-flex,.responsive-table table caption .caption-flex form,.responsive-table table caption .caption-flex form>label{
-    align-items:center;
-    display:flex
-}
-.responsive-table table caption .caption-flex,.responsive-table table caption .caption-flex form{
-    gap:1rem;
-    flex-wrap:wrap
-}
-.responsive-table table caption .caption-flex form,.responsive-table table caption .caption-flex form>label{
-    justify-content:flex-start
-}
-.responsive-table table caption .caption-flex form>label{
-    gap:.5rem
-}
-.responsive-table table thead{
-    border-bottom:solid 2px var(--color-maize-400)
-}
-@media(max-width: 1000px){
-    .responsive-table table thead{
-        border:none;
-        clip:rect(0 0 0 0);
-        height:1px;
-        margin:-1px;
-        overflow:hidden;
-        padding:0;
-        position:absolute;
-        width:1px
-    }
-}
-.responsive-table table th,.responsive-table table td{
-    vertical-align:top
-}
-@media(min-width: 1001px){
-    .responsive-table table th,.responsive-table table td{
-        padding:1rem 0
-    }
-    .responsive-table table th:not(:last-of-type),.responsive-table table td:not(:last-of-type){
-        padding-right:2rem
-    }
-}
-.responsive-table table th{
-    font-size:.875rem;
-    font-weight:800;
-    letter-spacing:1.25px;
-    text-transform:uppercase
-}
-@media(min-width: 1280px){
-    .responsive-table table th{
-        white-space:nowrap
-    }
-}
-.responsive-table table th[scope=row]{
-    line-height:2
-}
-@media(max-width: 1000px){
-    .responsive-table table th[scope=row]{
-        border:none;
-        clip:rect(0 0 0 0);
-        height:1px;
-        margin:-1px;
-        overflow:hidden;
-        padding:0;
-        position:absolute;
-        width:1px
-    }
-}
-.responsive-table table tbody tr{
-    border-bottom:solid 1px var(--color-neutral-100)
-}
-@media(max-width: 1000px){
-    .responsive-table table tbody tr{
-        display:grid;
-        grid-template-columns:1fr auto;
-        padding:1rem 0
-    }
-    .responsive-table table tbody tr td{
-        display:block;
-        grid-column:1/2
-    }
-    .responsive-table table tbody tr td:first-of-type:not(:only-of-type){
-        padding-bottom:.75rem
-    }
-    .responsive-table table tbody tr td.table-cell-action{
-        grid-column:2/3;
-        grid-row:1/-1;
-        padding-left:1rem
-    }
-    .responsive-table table tbody tr td a:not(.button){
-        display:block
-    }
-    .responsive-table table tbody tr td .bullet-point:first-of-type{
-        display:none
-    }
-}
-.responsive-table table tbody tr span[aria-hidden=true]{
-    font-weight:600
-}
-@media(min-width: 1001px){
-    .responsive-table table tbody tr span[aria-hidden=true]{
-        display:none
-    }
-}
 
 html[data-highlight-state="off"] .hilite1 {
   background-color: transparent;

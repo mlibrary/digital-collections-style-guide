@@ -522,15 +522,44 @@
 
   <!-- #################### -->
   <xsl:template match="tei:SIC">
-    <span class="sic">
-      <xsl:if test="@CORR">
+    <xsl:if test="@CORR">
+      <span class="corr">
         <xsl:value-of select="@CORR" />
-        <xsl:text>&#xa0;</xsl:text>
-      </xsl:if>
-      <xsl:text>[&#xa0;</xsl:text>
-      <xsl:value-of select="." />
-      <xsl:text>&#xa0;]</xsl:text>
+        <xsl:text> </xsl:text>
+      </span>
+    </xsl:if>
+    <span class="sic">
+      <xsl:apply-templates />
     </span>
+  </xsl:template>
+
+  <xsl:template match="tei:CORR">
+    <span class="corr">
+      <xsl:apply-templates />
+    </span>
+    <!-- <xsl:text> </xsl:text> -->
+  </xsl:template>
+
+  <xsl:template match="tei:CHOICE">
+    <xsl:choose>
+      <xsl:when test="tei:SIC">
+        <xsl:apply-templates select="tei:SIC" />
+        <xsl:text> </xsl:text>
+        <xsl:apply-templates select="tei:CORR" />
+      </xsl:when>
+      <xsl:when test="tei:ABBR">
+        <span class="abbr">
+          <xsl:value-of select="tei:ABBR" />
+          <xsl:text> (</xsl:text>
+          <xsl:value-of select="tei:EXPAN" />
+          <xsl:text>)</xsl:text>
+        </span>
+      </xsl:when>
+      <xsl:when test="tei:ORIG">
+        <xsl:apply-templates select="tei:ORIG" />
+      </xsl:when>
+    </xsl:choose>
+    <xsl:text> </xsl:text>
   </xsl:template>
 
   <!-- #################### -->
@@ -552,9 +581,27 @@
           </xsl:if>
           <xsl:text>]</xsl:text>
         </xsl:when>
+        <xsl:when test="@REASON = 'illegible'">
+          <small>???</small>
+        </xsl:when>
+        <xsl:when test="@REASON">
+          <small>[...]</small>
+        </xsl:when>
       </xsl:choose>
     </span>
     <xsl:text> </xsl:text>
+  </xsl:template>
+
+  <xsl:template match="tei:UNCLEAR">
+    <span class="unclear">
+      <xsl:apply-templates />
+    </span>
+  </xsl:template>
+
+  <xsl:template match="tei:SUPPLIED">
+    <xsl:text> [</xsl:text>
+    <xsl:apply-templates />
+    <xsl:text>] </xsl:text>
   </xsl:template>
 
   <!-- #################### -->
@@ -1633,6 +1680,12 @@
     <p class="indentlevel1">
       <xsl:apply-templates/>
     </p>
+  </xsl:template>
+
+  <xsl:template match="tei:P/tei:DATELINE" priority="101">
+    <span class="dateline">
+      <xsl:apply-templates />
+    </span>
   </xsl:template>
 
   <!-- #################### -->
