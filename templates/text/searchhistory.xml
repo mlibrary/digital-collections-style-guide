@@ -4,18 +4,24 @@
 
 <Top xmlns:dlxs="http://www.umdl.umich.edu/dlxs">
   
-  <!-- XSL fallback files -->
-  <XslFallbackFileList>
-    <Filename>searchhistory.xsl</Filename>
-    <Filename>bookbagitemsstring.xsl</Filename>
-    <Filename>htmlhead.xsl</Filename>
-    <Filename>globalvariables.xsl</Filename>
-    <Filename>navheader.xsl</Filename>
-    <Filename>footer.import.xsl</Filename>
-    <Filename>searchforms.xsl</Filename>
-    <Filename>results.xsl</Filename>
-    <Filename>xsl2htmlutils.xsl</Filename>
-  </XslFallbackFileList>  
+  <XslFallbackFileList pipeline="qui">
+    <Filename>qui/qui.base.xsl</Filename>
+    <Filename>../vendor/str.split.function.xsl</Filename>
+    <Filename>../vendor/xslfunctions.xsl</Filename>
+    <Filename>qui/components/*.xsl</Filename>
+    <Filename>qui/includes/qui.search-common.xsl</Filename>
+    <Filename>qui/includes/qui.search-history.xsl</Filename>
+    <Filename>qui/qui.index.xsl</Filename>
+  </XslFallbackFileList>
+
+  <XslFallbackFileList pipeline="qbat">
+    <Filename>qbat/qbat.base.xsl</Filename>
+    <Filename>../vendor/xslfunctions.xsl</Filename>
+    <Filename>qbat/components/*.xsl</Filename>
+    <Filename>qbat/includes/qbat.search-common.xsl</Filename>
+    <Filename>qbat/qbat.index.xsl</Filename>
+    <Filename>qbat/includes/qbat.search-history.xsl</Filename>
+  </XslFallbackFileList>
   
   <!-- Custom OPTIONAL XML for top-level file searchhistory.xml -->
   <CustomXml><?CHUNK filename="searchhistoryextra.xml" optional="1"?></CustomXml>

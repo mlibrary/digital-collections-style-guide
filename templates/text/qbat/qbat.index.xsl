@@ -21,6 +21,9 @@
       <xsl:when test="$view = 'wwstart' or $view = 'wwfull'">
         <xsl:call-template name="build-ww-form" />
       </xsl:when>
+      <xsl:when test="$view = 'history'">
+        <xsl:call-template name="build-search-history" />
+      </xsl:when>
       <xsl:otherwise>
         <xsl:call-template name="build-advanced-search" />
       </xsl:otherwise>
