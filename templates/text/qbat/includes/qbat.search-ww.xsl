@@ -142,13 +142,13 @@
 
   <xsl:template match="qui:form[@id='ww-search']" mode="button" priority="100">
     <div style="padding: 0.5rem 1rem">
-      <button class="button button--primary">Show Word Index</button>
+      <button class="button button--primary" value="Show Word Index">Show Word Index</button>
     </div>
   </xsl:template>
 
   <xsl:template match="qui:form[@id='ww-selection']" mode="button" priority="100">
     <div style="padding: 0.5rem 1rem">
-      <button class="button button--primary" name="simplesearch">Search for Selected Items</button>
+      <button class="button button--primary" name="simplesearch" value="Search for selected terms">Search for Selected Items</button>
     </div>
   </xsl:template>
 

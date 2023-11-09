@@ -801,35 +801,43 @@
     </xhtml:p>    
   </xsl:template>
 
+  <xsl:template match="AVAILABILITY/P[contains(., 'The University of Michigan Library provides access')]" priority="99">
+    <xsl:apply-templates select="//RightsStatement[@key='u-m-research-access']" mode="copy-guts" />
+  </xsl:template>
+
   <xsl:template match="AVAILABILITY/P[@TYPE='license']" priority="99">
     <xsl:choose>
       <xsl:when test=".='No Copyright'">
-        <xhtml:p>
+        <xsl:apply-templates select="//RightsStatement[@key='dpla-no-copyright']" mode="copy-guts" />
+        <!-- <xhtml:p>
           <xhtml:strong>Rights Statement:</xhtml:strong>
           <xsl:text> </xsl:text>
           <xhtml:a href="https://creativecommons.org/publicdomain/mark/1.0/">No Copyright</xhtml:a>
-        </xhtml:p>
+        </xhtml:p> -->
       </xsl:when>
       <xsl:when test=".='No Copyright - United States'">
-        <xhtml:p>
+        <xsl:apply-templates select="//RightsStatement[@key='dpla-no-copyright-us']" mode="copy-guts" />
+        <!-- <xhtml:p>
           <xhtml:strong>DPLA Rights Statement:</xhtml:strong>
           <xsl:text> </xsl:text>
           <xhtml:a href="http://rightsstatements.org/vocab/NoC-US/1.0/">No Copyright - United  States</xhtml:a>
-        </xhtml:p>
+        </xhtml:p> -->
       </xsl:when>
       <xsl:when test=".='In Copyright'">
-        <xhtml:p>
+        <xsl:apply-templates select="//RightsStatement[@key='dpla-in-copyright']" mode="copy-guts" />
+        <!-- <xhtml:p>
           <xhtml:strong>DPLA Rights Statement:</xhtml:strong>
           <xsl:text> </xsl:text>
           <xhtml:a href="https://rightsstatements.org/page/InC/1.0/">In Copyright</xhtml:a>
-        </xhtml:p>
+        </xhtml:p> -->
       </xsl:when>
       <xsl:when test=".='Copyright Not Evaluated'">
-        <xhtml:p>
+        <xsl:apply-templates select="//RightsStatement[@key='dpla-copyright-not-evaluated']" mode="copy-guts" />
+        <!-- <xhtml:p>
           <xhtml:strong>DPLA Rights Statement:</xhtml:strong>
           <xsl:text> </xsl:text>
           <xhtml:a href="http://rightsstatements.org/vocab/CNE/1.0/">Copyright Not Evaluated</xhtml:a>
-        </xhtml:p>
+        </xhtml:p> -->
       </xsl:when>
       <xsl:otherwise>
         <xhtml:p>
@@ -843,18 +851,20 @@
   <xsl:template match="AVAILABILITY/P[@TYPE='DPLA']" priority="99">
     <xsl:choose>
       <xsl:when test=".='No Copyright - United States'">
-        <xhtml:p>
+        <xsl:apply-templates select="//RightsStatement[@key='dpla-no-copyright-us']" mode="copy-guts" />
+        <!-- <xhtml:p>
           <xhtml:strong>DPLA Rights Statement:</xhtml:strong>
           <xsl:text> </xsl:text>
           <xhtml:a href="http://rightsstatements.org/vocab/NoC-US/1.0/">No Copyright - United  States</xhtml:a>
-        </xhtml:p>
+        </xhtml:p> -->
       </xsl:when>
       <xsl:when test=".='Copyright Not Evaluated'">
-        <xhtml:p>
+        <xsl:apply-templates select="//RightsStatement[@key='dpla-copyright-not-evaluated']" mode="copy-guts" />
+        <!-- <xhtml:p>
           <xhtml:strong>DPLA Rights Statement:</xhtml:strong>
           <xsl:text> </xsl:text>
           <xhtml:a href="http://rightsstatements.org/vocab/CNE/1.0/">Copyright Not Evaluated</xhtml:a>
-        </xhtml:p>
+        </xhtml:p> -->
       </xsl:when>
       <xsl:otherwise>
         <xhtml:p>

@@ -1285,6 +1285,10 @@ sl-dropdown::part(panel) {
   gap: 0.5em;
 }
 
+.gap-0_75 {
+  gap: 0.75rem;
+}
+
 .gap-1 {
   gap: 1rem;
 }
@@ -1842,6 +1846,28 @@ m-website-header:not(.hydrated) {
 m-website-header:not(.hydrated) nav {
   display: none;
 } */
+
+m-website-header nav a {
+  text-decoration: none;
+  font-size: 14px;
+  text-transform: uppercase;
+  font-weight: 800;
+  color: #637381;
+  display: flex;
+  align-items: center;
+  gap: 0.125rem;
+}
+
+m-website-header nav a:hover span:not(.material-icons), 
+m-website-header nav a:focus span:not(.material-icons) {
+  text-decoration: underline;
+}
+
+m-website-header nav a .material-icons {
+  font-size: 1rem;
+}
+
+
 
 /*
  * Feedback Callout
