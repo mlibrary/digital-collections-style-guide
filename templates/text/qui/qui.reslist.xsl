@@ -764,6 +764,12 @@
             <xsl:when test="$details-metadata//qui:field[@key='title']">
               <xsl:apply-templates select="$details-metadata//qui:field[@key='title']/qui:values" mode="copy" />
             </xsl:when>
+            <xsl:when test="Divhead/HEAD">
+              <xsl:value-of select="Divhead/HEAD" />
+            </xsl:when>
+            <xsl:when test="Kwic/HEAD">
+              <xsl:value-of select="Kwic/HEAD" />
+            </xsl:when>
             <xsl:otherwise>
               <xsl:value-of select="@TYPE" />
             </xsl:otherwise>

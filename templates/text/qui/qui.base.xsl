@@ -134,11 +134,15 @@
     <qui:m-website-header name="Digital Collections">
       <qui:search-form collid="{$collid}" value="{//Param[@name='q1']}" />
       <qui:nav>
-        <qui:link rel="help" href="{//NavHeader/MainNav/NavItem[Name='help']/Link}">Help</qui:link>
-        <xsl:if test="//NavItem/Name='bookbag'">
-          <qui:link rel="portfolios" href="{//NavItem[Name='bookbag']/Link}">Bookbag</qui:link>
+        <qui:link rel="feedback" icon="email" href="{//FeedbackUrl}">Concact Us</qui:link>
+        <qui:link rel="help" icon="help" href="{//NavHeader/MainNav/NavItem[Name='help']/Link}">Help</qui:link>
+        <xsl:if test="//NavItem[Name='browse']/Tab='true'">
+          <qui:link rel="browse" icon="list" href="{//NavItem[Name='browse']/Link}">Browse</qui:link>
         </xsl:if>
-        <qui:link rel="search" href="{//NavItem[Name='search']/Link}">Advanced Search</qui:link>
+        <qui:link rel="search" icon="search" href="{//NavItem[Name='search']/Link}">Search</qui:link>
+        <xsl:if test="//NavItem/Name='bookbag'">
+          <qui:link rel="portfolios" icon="bookmark" href="{//NavItem[Name='bookbag']/Link}">Bookbag</qui:link>
+        </xsl:if>
         <xsl:call-template name="build-login-link" />
       </qui:nav>
     </qui:m-website-header>
@@ -174,10 +178,12 @@
       <xsl:choose>
         <xsl:when test="//LoginLink/Mode = 'logout'">
           <xsl:attribute name="data-logged-in">true</xsl:attribute>
+          <xsl:attribute name="icon">logout</xsl:attribute>
           <xsl:text>Log out</xsl:text>
         </xsl:when>
         <xsl:otherwise>
           <xsl:attribute name="data-logged-in">false</xsl:attribute>
+          <xsl:attribute name="icon">login</xsl:attribute>
           <xsl:text>Log in</xsl:text>
         </xsl:otherwise>
       </xsl:choose>

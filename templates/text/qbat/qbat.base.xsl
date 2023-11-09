@@ -172,7 +172,7 @@
   </xsl:template>
 
   <xsl:template match="qui:m-website-header/qui:nav">
-    <nav class="[ flex flex-end ][ gap-0_5 ]">
+    <nav class="[ flex flex-end ][ gap-0_75 ]">
       <xsl:apply-templates select="qui:link" />
     </nav>
   </xsl:template>
@@ -555,6 +555,13 @@
       </xsl:if>
       <xsl:apply-templates select="@*[starts-with(name(), 'data-')]" mode="copy" />
 
+      <xsl:if test="@icon">
+        <span class="material-icons" aria-hidden="true">
+          <xsl:value-of select="@icon" />
+        </span>
+        <xsl:text> </xsl:text>
+      </xsl:if>
+
       <xsl:choose>
         <xsl:when test="qui:label"><xsl:value-of select="qui:label" /></xsl:when>
         <xsl:when test="@rel = 'next'">Next</xsl:when>
@@ -564,6 +571,11 @@
         <xsl:when test="@rel = 'next-section'">Next Section</xsl:when>
         <xsl:when test="@rel = 'previous-section'">Previous Section</xsl:when>
         <xsl:when test="@rel = 'back'">Search Results</xsl:when>
+        <xsl:when test="@icon">
+          <span>
+            <xsl:apply-templates mode="copy" />
+          </span>
+        </xsl:when>
         <xsl:otherwise><xsl:apply-templates mode="copy" /></xsl:otherwise>
       </xsl:choose>
     </a>
