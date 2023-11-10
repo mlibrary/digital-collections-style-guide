@@ -127,24 +127,24 @@ dt[data-key] {
 }
 
 @media screen and (max-width: 600px) {
-  .results-list--small {
+  .XXresults-list--small {
     /* flex-direction: column; */
   }
 
-  .results-card {
+  .XXresults-card {
     flex-wrap: wrap;
   }
 
-  .results-card h3 {
+  .XXresults-card h3 {
     margin-top: 0;
   }
 
-  .results-list__blank {
+  .XXresults-list__blank {
     display: none;
   }
 }
 
-.results-card {
+.XXresults-card {
   display: flex;
   flex-direction: row;
   position: relative;
@@ -154,7 +154,7 @@ dt[data-key] {
   margin-bottom: 1rem;
 }
 
-.results-card .results-link {
+/* .results-card .results-link {
   text-decoration: none;
   color: black;
   position: static;
@@ -172,7 +172,7 @@ dt[data-key] {
 .results-card a {
   position: relative;
   z-index: 1;
-}
+} */
 
 dt[data-key="path"] ~ dd ol {
   /* font-size: 0.75rem; */

@@ -172,7 +172,7 @@
   </xsl:template>
 
   <xsl:template match="qui:m-website-header/qui:nav">
-    <nav class="[ flex flex-end ][ gap-0_75 ]">
+    <nav class="[ flex flex-center justify-end ][ gap-0_75 ]">
       <xsl:apply-templates select="qui:link" />
     </nav>
   </xsl:template>
@@ -528,6 +528,12 @@
 
   <xsl:template match="qui:head/qui:link">
     <link rel="{@rel}" href="{@href}" />
+  </xsl:template>
+
+  <xsl:template match="qui:link[@rel='quod']" priority="101">
+    <a href="#" class="quod-link" target="_blank">
+      <span class="material-icons" aria-hidden="true">stream</span>
+    </a>
   </xsl:template>
 
   <xsl:template match="qui:link">

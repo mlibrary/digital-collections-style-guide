@@ -802,7 +802,17 @@
   </xsl:template>
 
   <xsl:template match="AVAILABILITY/P[contains(., 'The University of Michigan Library provides access')]" priority="99">
-    <xsl:apply-templates select="//RightsStatement[@key='u-m-research-access']" mode="copy-guts" />
+    <xsl:choose>
+      <xsl:when test="contains(., 'believed to be in the public domain')">
+        <xsl:apply-templates select="key('get-statement', 'u-m-research-access-believed')" mode="copy-guts" />
+      </xsl:when>
+      <xsl:when test="contains(., 'may be under copyright')">
+        <xsl:apply-templates select="key('get-statement', 'u-m-research-access-copyright')" mode="copy-guts" />
+      </xsl:when>
+      <xsl:otherwise>
+        <xsl:apply-templates select="key('get-statement', 'u-m-research-access-pd')" mode="copy-guts" />
+      </xsl:otherwise>
+    </xsl:choose>
   </xsl:template>
 
   <xsl:template match="AVAILABILITY/P[@TYPE='license']" priority="99">

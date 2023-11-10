@@ -668,9 +668,89 @@ fieldset legend {
   z-index: 1;
 }
 
+.results-list--grid {
+  border-bottom: 1px solid var(--color-neutral-100);
+  padding-bottom: 1rem;
+  color: var(--color-neutral-400);
+
+  display: grid;
+  position: relative;
+  grid-template-areas:
+    "checkbox thumbnail title"
+    ". thumbnail metadata";
+  grid-template-columns: min-content min-content 1fr;
+  grid-template-rows: min-content 1fr;
+  margin: 1rem 0;
+}
+
+.results-list--grid .results-card {
+  position: static;
+  grid-area: title;
+}
+
+.results-list--grid .results-list__image,
+.results-list--grid .results-list__blank {
+  grid-area: thumbnail;
+}
+
+.results-list--grid .portfolio-selection {
+  grid-area: checkbox;
+  position: relative;
+  z-index: 1;
+}
+
+.results-details {
+  grid-area: metadata;
+}
+
+.results-details a {
+  z-index: 1;
+  position: relative;
+}
+
+.results-card .results-link {
+  text-decoration: none;
+  color: black;
+  position: static;
+}
+
+.results-card .results-link::after {
+  content: '';
+  position: absolute;
+  left: 0;
+  top: 0;
+  right: 0;
+  bottom: 0;
+}
+
+@media (max-width: 500px) {
+  .results-list--grid {
+    grid-template-areas:
+      "checkbox title"
+      ". thumbnail"
+      ". metadata";
+    grid-template-columns: min-content 1fr;
+    gap: 0.5rem;
+  }
+
+  .results-list--grid h3 {
+    margin-top: 0;
+    margin-bottom: 0.25rem;
+  }
+
+  .results-list--grid .results-card {
+    margin-bottom: 0;
+  }
+  
+  .results-list--grid .results > div {
+    grid-template-columns: 1fr;
+  }
+}
+
 .results {
   margin-top: 0.25em;
 }
+
 
 .results > div {
   display: grid;
@@ -1138,6 +1218,10 @@ sl-dropdown::part(panel) {
 
 .flex-center {
   align-items: center;
+}
+
+.justify-end {
+  justify-content: end;
 }
 
 .flex-flow-rw {
@@ -1849,13 +1933,15 @@ m-website-header:not(.hydrated) nav {
 
 m-website-header nav a {
   text-decoration: none;
-  font-size: 14px;
+  font-size: 0.875rem;
   text-transform: uppercase;
   font-weight: 800;
-  color: #637381;
+  /* color: #637381; */
+  color: var(--color-neutral-300);
+  letter-spacing: 1.25px;
   display: flex;
   align-items: center;
-  gap: 0.125rem;
+  gap: 0.25rem;
   white-space: nowrap;
 }
 
@@ -1865,7 +1951,7 @@ m-website-header nav a:focus span:not(.material-icons) {
 }
 
 m-website-header nav a .material-icons {
-  font-size: 1rem;
+  font-size: 1.5em;
 }
 
 @media screen and (max-width: 500px) {
@@ -2308,3 +2394,19 @@ table{
         display:none
     }
 }
+
+/* DEV */
+.quod-link {
+  color: darkorange;
+  font-size: 2.5rem;
+}
+
+.quod-link .material-icons {
+  font-size: 1em;
+}
+
+.quod-link:hover, .quod-link:focus {
+  transform: scale(1.5);
+}
+
+/*  */
