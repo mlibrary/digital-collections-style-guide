@@ -126,6 +126,24 @@ dt[data-key] {
   margin: 1rem 0;
 }
 
+@media screen and (max-width: 600px) {
+  .results-list--small {
+    /* flex-direction: column; */
+  }
+
+  .results-card {
+    flex-wrap: wrap;
+  }
+
+  .results-card h3 {
+    margin-top: 0;
+  }
+
+  .results-list__blank {
+    display: none;
+  }
+}
+
 .results-card {
   display: flex;
   flex-direction: row;

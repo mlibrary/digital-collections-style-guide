@@ -707,7 +707,7 @@ fieldset legend {
 
 @media (max-width: 700px) {
   .results > div {
-    grid-template-columns: 1fr 1fr;
+    grid-template-columns: 1fr;
     max-width: none;
   }
 }
@@ -1856,6 +1856,7 @@ m-website-header nav a {
   display: flex;
   align-items: center;
   gap: 0.125rem;
+  white-space: nowrap;
 }
 
 m-website-header nav a:hover span:not(.material-icons), 
@@ -1867,6 +1868,12 @@ m-website-header nav a .material-icons {
   font-size: 1rem;
 }
 
+@media screen and (max-width: 500px) {
+  m-website-header nav {
+    margin-top: 1rem;
+    flex-wrap: wrap;
+  }
+}
 
 
 /*
