@@ -560,6 +560,13 @@ function listen(options) {
     }        
   });
 
+  app.use('/digital-collections-style-guide/static/text', proxy('https://roger.quod.lib.umich.edu/digital-collections-style-guide/static/text', {
+    https: true,
+    forwardPath: function (req) {
+      return req.originalUrl;
+    }
+  }));
+
   app.get('/digital-collections-style-guide/*', function(req, res) {
     // if (req.cookies.useBeta == 'true') {
     //   // we're just proxying and sending this
