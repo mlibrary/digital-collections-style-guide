@@ -159,6 +159,21 @@
     </xsl:for-each>
   </xsl:template>
 
+  <xsl:template match="div[@data-slot='useguidelines']" mode="copy" priority="101">
+    <xsl:copy>
+      <xsl:apply-templates select="@*" mode="copy" />
+      <xsl:choose>
+        <xsl:when test="@key">
+          <xsl:variable name="key" select="@key" />
+          <xsl:apply-templates select="//RightsStatement[@key=$key]" mode="copy-guts" />
+        </xsl:when>
+        <xsl:otherwise>
+          <xsl:apply-templates mode="copy" />
+        </xsl:otherwise>
+      </xsl:choose>
+      </xsl:copy>
+  </xsl:template>
+
   <xsl:template match="@rel" mode="build-icon">
     <xsl:attribute name="icon">
       <xsl:choose>

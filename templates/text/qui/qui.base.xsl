@@ -134,7 +134,7 @@
     <qui:m-website-header name="Digital Collections">
       <qui:search-form collid="{$collid}" value="{//Param[@name='q1']}" />
       <qui:nav>
-        <qui:link rel="feedback" icon="email" href="{//FeedbackUrl}">Concact Us</qui:link>
+        <qui:link rel="feedback" icon="email" href="{//FeedbackUrl}">Contact Us</qui:link>
         <qui:link rel="help" icon="help" href="{//NavHeader/MainNav/NavItem[Name='help']/Link}">Help</qui:link>
         <xsl:if test="//NavItem[Name='browse']/Tab='true'">
           <qui:link rel="browse" icon="list" href="{//NavItem[Name='browse']/Link}">Browse</qui:link>
@@ -143,7 +143,8 @@
         <xsl:if test="//NavItem/Name='bookbag'">
           <qui:link rel="portfolios" icon="bookmark" href="{//NavItem[Name='bookbag']/Link}">Bookbag</qui:link>
         </xsl:if>
-        <xsl:call-template name="build-login-link" />
+        <!-- <xsl:call-template name="build-login-link" /> -->
+        <qui:link rel="quod" />
       </qui:nav>
     </qui:m-website-header>
   </xsl:template>
