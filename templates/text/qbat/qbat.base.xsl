@@ -532,7 +532,9 @@
 
   <xsl:template match="qui:link[@rel='quod']" priority="101">
     <a href="#" class="quod-link" target="_blank">
-      <span class="material-icons" aria-hidden="true">stream</span>
+      <!-- <span class="material-icons" aria-hidden="true">stream</span>
+      <span>QUOD</span> -->
+      <img src="/static/QUOD.svg" />
     </a>
   </xsl:template>
 
