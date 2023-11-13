@@ -2397,16 +2397,18 @@ table{
 
 /* DEV */
 .quod-link {
-  color: darkorange;
-  font-size: 2.5rem;
+  /* color: darkorange; */
+  /* font-size: 2.5rem; */
+}
+
+.quod-link img {
+
 }
 
 .quod-link .material-icons {
-  font-size: 1em;
+  /* font-size: 1em; */
+  color: darkorange;
 }
 
-.quod-link:hover, .quod-link:focus {
-  transform: scale(1.5);
-}
 
 /*  */
