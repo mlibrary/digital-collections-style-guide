@@ -5,7 +5,16 @@
 
   <!-- globals -->
   <xsl:variable name="searchtype" select="key('get-lookup',/Top/SearchDescription/SearchTypeName)"/>
-  <xsl:variable name="total" select="/Top/ResultsLinks/SliceNavigationLinks/TotalRecordsOrItemHits" />
+  <xsl:variable name="total">
+    <xsl:choose>
+      <xsl:when test="/Top/ResultsLinks/SliceNavigationLinks/TotalRecordsOrItemHits">
+        <xsl:value-of select="/Top/ResultsLinks/SliceNavigationLinks/TotalRecordsOrItemHits" />
+      </xsl:when>
+      <xsl:otherwise>
+        <xsl:value-of select="count(/Top/ResList/Results/Item)" />
+      </xsl:otherwise>
+    </xsl:choose>
+  </xsl:variable>
   <xsl:variable name="sz" select="number(50)" />
   <xsl:variable name="end-1">
     <xsl:choose>
@@ -706,9 +715,9 @@
       </qui:block>
       </xsl:if>
       <xsl:for-each select="following-sibling::SummaryString[./preceding-sibling::ScopingPage[1] = $scope]">
-        <qui:callout slot="summary" variant="info">
+        <qui:block slot="summary" variant="info">
           <xsl:apply-templates select="." />
-        </qui:callout>
+        </qui:block>
       </xsl:for-each>
       <qui:block slot="matches">
         <qui:section>
@@ -791,40 +800,22 @@
           </qui:field>
           <xsl:apply-templates select="$details-metadata//qui:field" mode="copy" />
         </qui:metadata>
-        <xsl:if test="false()">
-        <qui:block slot="metadata">
-          <qui:section>
-            <!-- path -->
-            <qui:field key="path">
-              <qui:label>Path</qui:label>
-              <qui:values format="ordered">
-                <xsl:for-each select="ancestor::*[@TYPE]">
-                  <qui:value>
-                    <qui:link rel="{name(.)}" href="{Link}">
-                      <xsl:value-of select="Divhead/HEAD" />
-                    </qui:link>  
-                  </qui:value>
-                </xsl:for-each>      
-              </qui:values>
-            </qui:field>
-            <xsl:apply-templates select="$item-metadata//qui:field" mode="copy" />
-          </qui:section>
-        </qui:block>
-      </xsl:if>
-        <qui:block slot="matches">
-          <qui:section>
-            <qui:field key="matches">
-              <qui:label>Matches</qui:label>
-              <qui:values format="kwic">
-                <xsl:for-each select="descendant-or-self::Kwic|descendant-or-self::SummaryString">
-                  <qui:value>
-                    <xsl:apply-templates select="." />
-                  </qui:value>
-                </xsl:for-each>
-              </qui:values>
-            </qui:field>z  
-          </qui:section>
-        </qui:block>
+        <xsl:if test="descendant-or-self::Kwic">
+          <qui:block slot="matches">
+            <qui:section>
+              <qui:field key="matches">
+                <qui:label>Matches</qui:label>
+                <qui:values format="kwic">
+                  <xsl:for-each select="descendant-or-self::Kwic|descendant-or-self::SummaryString">
+                    <qui:value>
+                      <xsl:apply-templates select="." />
+                    </qui:value>
+                  </xsl:for-each>
+                </qui:values>
+              </qui:field>z  
+            </qui:section>
+          </qui:block>  
+        </xsl:if>
       </qui:section>  
     </xsl:if>
 
@@ -1079,6 +1070,27 @@
         <xsl:apply-templates select="CollTotals" />
       </qui:block>
     </qui:section>
+  </xsl:template>
+
+  <xsl:template match="SummaryString">
+    <xsl:variable name="key">
+      <xsl:text>results.str.3</xsl:text>
+      <xsl:if test="HitCount != 1">
+        <xsl:text>p</xsl:text>
+      </xsl:if>
+    </xsl:variable>
+    <span>
+      <xsl:value-of select="HitCount" />
+      <xsl:value-of select="key('get-lookup',$key)"/>
+      <xsl:text> of </xsl:text>
+      <xsl:apply-templates select="HitTerm" />
+    </span>
+  </xsl:template>
+
+  <xsl:template match="HitTerm">
+    <xsl:text>"</xsl:text>
+    <xsl:value-of select="." />
+    <xsl:text>"</xsl:text>
   </xsl:template>
   
 </xsl:stylesheet>
