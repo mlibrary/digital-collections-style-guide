@@ -588,6 +588,8 @@
 
   <!-- TEI -->
   <xsl:template match="DetailHref">
+    <qui:debug key="not-is-bib-srch"><xsl:value-of select="not($is-bib-srch='yes')" /></qui:debug>
+    <qui:debug key="is-alla-rgn-srch"><xsl:value-of select="$is-all-rgn-srch" /></qui:debug>
     <xsl:if test="not($is-bib-srch='yes') and $is-all-rgn-srch='yes'">
       <qui:link rel="detail" href="{.}">
         <xsl:attribute name="label">
@@ -635,6 +637,30 @@
   </xsl:template>
 
   <xsl:template match="HitSummary">
+    <xsl:if test="$is-bib-srch='no' and $is-all-rgn-srch='yes'">
+      <xsl:choose>
+        <xsl:when test="node() and child::*">
+          <qui:block slot="summary" label="{key('get-lookup','results.str.2')}">
+            <xsl:choose>
+              <xsl:when test="$searchtype='basic' or $searchtype='proximity'">
+                <xsl:call-template name="SimpleHitSumm"/>
+              </xsl:when>
+              <xsl:when test="$searchtype='boolean'">
+                <xsl:call-template name="BooleanHitSumm"/>
+              </xsl:when>
+            </xsl:choose>
+          </qui:block>    
+        </xsl:when>
+        <xsl:otherwise>
+          <qui:block slot="summary" label="{key('get-lookup','results.str.2')}">
+            <span>View matches in item</span>
+          </qui:block>    
+        </xsl:otherwise>
+      </xsl:choose>
+    </xsl:if>
+  </xsl:template>
+
+  <xsl:template match="HitSummary" mode="v1">
     <xsl:if test="node() and $is-bib-srch='no' and $is-all-rgn-srch='yes' and child::*">
       <qui:block slot="summary" label="{key('get-lookup','results.str.2')}">
         <xsl:choose>
@@ -646,6 +672,9 @@
           </xsl:when>
         </xsl:choose>
       </qui:block>
+    </xsl:if>
+    <xsl:if test="node()">
+      <qui:debug>WTF</qui:debug>
     </xsl:if>
   </xsl:template>
 

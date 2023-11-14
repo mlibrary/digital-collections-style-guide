@@ -89,11 +89,18 @@
         </xsl:when>
         <xsl:otherwise>
           <h2 class="results-heading">
-            <xsl:value-of select="$nav/@start" />
-            <xsl:text> to </xsl:text>
-            <xsl:value-of select="$nav/@end" />
-            <xsl:text> of </xsl:text>
-            <xsl:value-of select="$nav/@total" />
+            <xsl:choose>
+              <xsl:when test="$nav/@start = $nav/@end">
+                <xsl:value-of select="$nav/@start" />
+              </xsl:when>
+              <xsl:otherwise>
+                <xsl:value-of select="$nav/@start" />
+                <xsl:text> to </xsl:text>
+                <xsl:value-of select="$nav/@end" />
+                <xsl:text> of </xsl:text>
+                <xsl:value-of select="$nav/@total" />    
+              </xsl:otherwise>
+            </xsl:choose>
             <xsl:choose>
               <xsl:when test="$nav/@subview = 'short'">
                 <xsl:text> results </xsl:text>
@@ -101,6 +108,9 @@
                 <xsl:value-of select="$nav/@number-matches" />
                 <xsl:text> matches</xsl:text>
                 <xsl:text>)</xsl:text> -->
+              </xsl:when>
+              <xsl:when test="$nav/@subview = 'detail' and $nav/@end = 1">
+                <xsl:text> hit in this item</xsl:text>
               </xsl:when>
               <xsl:when test="$nav/@subview = 'detail'">
                 <xsl:text> hits in this item</xsl:text>
@@ -521,14 +531,20 @@
       <div class="[ flex ]" style="justify-content: space-between">
         <div>
           <span>Results detail: </span>
-          <!-- <xsl:value-of select="concat(@label, ' ')" /> -->
-          <a href="{../qui:link[@rel='detail']/@href}">
-            <xsl:apply-templates select="." mode="copy-guts" />
-            <span class="visually-hidden">
-              <xsl:text> in </xsl:text>
-              <xsl:value-of select="$title" />
-            </span>
-          </a>
+          <xsl:choose>
+            <xsl:when test="../qui:link[@rel='detail']">
+              <a href="{../qui:link[@rel='detail']/@href}">
+                <xsl:apply-templates select="." mode="copy-guts" />
+                <span class="visually-hidden">
+                  <xsl:text> in </xsl:text>
+                  <xsl:value-of select="$title" />
+                </span>
+              </a>
+            </xsl:when>
+            <xsl:otherwise>
+              <xsl:apply-templates select="." mode="copy-guts" />
+            </xsl:otherwise>
+          </xsl:choose>
         </div>
         <!-- <a href="{../qui:link[@rel='detail']/@href}">Results detail</a> -->
       </div>
