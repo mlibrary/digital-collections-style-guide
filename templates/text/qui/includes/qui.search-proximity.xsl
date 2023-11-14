@@ -5,7 +5,7 @@
     <xsl:variable name="query" select="$search-form/SearchQuery" />
     <xsl:variable name="rgn" select="$query/RegionSearchSelect" />
 
-    <qui:fieldset id="boolean-fieldset" slot="clause" type="boolean">
+    <qui:fieldset id="boolean-fieldset" slot="clause" type="proximity">
       <qui:select name="{$rgn/Name}" slot="region">
         <xsl:apply-templates select="$rgn/Option">
           <xsl:with-param name="default" select="$rgn/Default" />

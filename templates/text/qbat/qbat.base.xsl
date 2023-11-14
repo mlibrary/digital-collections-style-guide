@@ -10,7 +10,7 @@
     version="5.0"
     />
 
-  <xsl:key match="//qui:lookup/qui:item" name="get-lookup" use="@key" />
+  <xsl:key match="/qui:root/qui:lookup/qui:item" name="get-lookup" use="@key" />
 
   <xsl:param name="docroot">/digital-collections-style-guide/</xsl:param>
   <xsl:param name="api_url"><xsl:value-of select="//qui:root/@api_url" /></xsl:param>

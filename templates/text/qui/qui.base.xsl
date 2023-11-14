@@ -110,14 +110,14 @@
           <qui:link rel="collection-home" href="{//Home}" />
           <qui:link rel="feedback" href="{//FeedbackUrl}" />
         </qui:footer>
-        <qui:block slot="langmap">
-          <xsl:apply-templates select="/Top/Langmap//Lookup/Item" mode="build-lookup" />
-          <!-- <xsl:apply-templates select="//Lookup[@id='text.components']" mode="build-lookup" />
-          <xsl:apply-templates select="//Lookup[@id='headerutils']" mode="build-lookup" />
-          <xsl:apply-templates select="//Lookup[@id='viewer']" mode="build-lookup" />
-          <xsl:apply-templates select="//Lookup[@id='uplift']" mode="build-lookup" /> -->
-        </qui:block>    
       </qui:body>
+      <qui:lookup>
+        <xsl:apply-templates select="/Top/DlxsGlobals/LangMap//Lookup/Item" mode="build-lookup" />
+        <!-- <xsl:apply-templates select="//Lookup[@id='text.components']" mode="build-lookup" />
+        <xsl:apply-templates select="//Lookup[@id='headerutils']" mode="build-lookup" />
+        <xsl:apply-templates select="//Lookup[@id='viewer']" mode="build-lookup" />
+        <xsl:apply-templates select="//Lookup[@id='uplift']" mode="build-lookup" /> -->
+      </qui:lookup>    
     </qui:root>
   </xsl:template>
 

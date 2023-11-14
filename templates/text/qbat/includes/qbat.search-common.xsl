@@ -60,7 +60,7 @@
             <xsl:call-template name="build-boolean-form" />
           </xsl:when>
           <xsl:when test="contains($view, 'proximity')">
-            <xsl:call-template name="build-boolean-form" />
+            <xsl:call-template name="build-proximity-form" />
           </xsl:when>
           <xsl:when test="$view = 'bib'">
             <xsl:call-template name="build-bib-form" />
@@ -154,6 +154,10 @@
 
   <xsl:template match="qui:select[@slot='region']">
     <label for="{@name}-{position()}" class="visually-hidden">Select a field:</label>
+    <xsl:apply-templates select="." mode="build-select" />
+  </xsl:template>
+
+  <xsl:template match="qui:select[@slot='region']" mode="build-select">
     <select class="[ dropdown--neutral ]" name="{@name}" id="{@name}-{position()}" autocomplete="off">
       <xsl:for-each select="qui:option">
         <option value="{@value}">
@@ -180,14 +184,18 @@
     <label for="{$name}-{position()}" class="visually-hidden"><xsl:value-of select="@label" /></label>
     <select class="[ dropdown--neutral ]" name="{@name}" id="{@name}-{position()}" autocomplete="off">
       <xsl:for-each select="qui:option">
-        <option value="{@value}">
-          <xsl:if test="@selected = 'true'">
-            <xsl:attribute name="selected">true</xsl:attribute>
-          </xsl:if>
-          <xsl:value-of select="." />
-        </option>
+        <xsl:apply-templates select="." />
       </xsl:for-each>
     </select>
+  </xsl:template>
+
+  <xsl:template match="qui:option">
+    <option value="{@value}">
+      <xsl:if test="@selected = 'true'">
+        <xsl:attribute name="selected">true</xsl:attribute>
+      </xsl:if>
+      <xsl:value-of select="." />
+    </option>
   </xsl:template>
 
   <xsl:template match="qui:select[@slot='op']" mode="radio">
