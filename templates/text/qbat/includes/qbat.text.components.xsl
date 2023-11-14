@@ -328,7 +328,20 @@
     </xsl:variable>
     <h3 
       class="flex align-items-center gap-0_5"
-      data-heading-label="{$heading}">
+      data-heading-label="{$heading}" data-p-num="{$pNum}">
+      <xsl:attribute name="data-wut">
+        <xsl:choose>
+          <xsl:when test="@DISPLAYN[string-length()&gt;=1]">
+            <xsl:text>DISPLAYN</xsl:text>
+          </xsl:when>
+          <xsl:when test="@N[string-length()&gt;=1]">
+            <xsl:text>N</xsl:text>
+          </xsl:when>
+          <xsl:otherwise>
+            <xsl:text>AHH</xsl:text>
+          </xsl:otherwise>
+        </xsl:choose>
+      </xsl:attribute>
       <xsl:attribute name="id">
         <xsl:choose>
           <xsl:when test="@ID">
@@ -337,7 +350,7 @@
           <xsl:otherwise>
             <xsl:value-of select="concat($base, '-', @SEQ)" />
           </xsl:otherwise>
-          </xsl:choose>
+        </xsl:choose>
       </xsl:attribute>
       <span class="material-icons text-x-small" aria-hidden="true">description</span>
       <span>

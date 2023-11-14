@@ -343,9 +343,10 @@ async function processDLXS(req, res) {
     });
 
     const qbatXsltDoc = new DOMParser().parseFromString(xsltBase, "text/xml");
+    console.log("QBAT", collidPath);
     qbatFallbackFilenames.forEach((fallbackFilename) => {
       [textPath, collidPath].forEach((xslPath) => {
-        console.log("==>", fallbackFilename.textContent);
+        console.log("==>", xslPath, fallbackFilename.textContent);
         const possibles = fg.sync(
           path.join(xslPath, fallbackFilename.textContent)
         );
@@ -387,6 +388,8 @@ async function processDLXS(req, res) {
       qbatCompiledFilename,
       new XMLSerializer().serializeToString(qbatXsltDoc)
     );
+
+    fs.copyFileSync(qbatCompiledFilename, "/tmp/wtx.xsl");
 
     if ( debug == 'qui' ) {
       await $`xsltproc --stringparam docroot "/" ${quiCompiledFilename} ${inputFilename}`.pipe(

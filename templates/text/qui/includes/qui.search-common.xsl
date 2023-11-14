@@ -96,7 +96,7 @@
           <xsl:call-template name="build-boolean-form" />
         </xsl:when>
         <xsl:when test="contains($searchtype, 'proximity')">
-          <xsl:call-template name="build-proxmity-form" />
+          <xsl:call-template name="build-proximity-form" />
         </xsl:when>
         <xsl:when test="contains($searchtype, 'bib')">
           <xsl:call-template name="build-bib-form" />
