@@ -756,7 +756,7 @@
       </xsl:variable>
       <xsl:variable name="details-metadata" select="exsl:node-set($details-metadata-tmp)" />
 
-      <qui:section identifier="{@NODE}" for="{$identifier}" template-name="{$template-name}">
+      <qui:section identifier="{@NODE}" for="{$identifier}" template-name="{$template-name}" local-name="{local-name()}">
         <!-- <xsl:apply-templates select="$item/TocHref">
           <xsl:with-param name="item-encoding-level" xml:base="$item-encoding-level" />
         </xsl:apply-templates> -->
@@ -764,10 +764,19 @@
           <xsl:with-param name="item-encoding-level" xml:base="$item-encoding-level" />
         </xsl:apply-templates>
         <xsl:apply-templates select="MediaInfo" mode="iiif-link" />
-        <qui:link href="{Link}" rel="result" />
-        <xsl:if test="ViewPageThumbnailLink">
-          <qui:link href="{ViewPageThumbnailLink}" rel="iiif" />
-        </xsl:if>
+        <qui:link rel="result">
+          <xsl:attribute name="href">
+            <xsl:value-of select="ancestor-or-self::DIV1/Link" />
+          </xsl:attribute>
+        </qui:link>
+        <xsl:choose>
+          <xsl:when test="ViewPageThumbnailLink">
+            <qui:link href="{ViewPageThumbnailLink}" rel="iiif" />
+          </xsl:when>
+          <xsl:when test="ancestor-or-self::*/ViewPageThumbnailLink">
+            <qui:link href="{ancestor-or-self::*/ViewPageThumbnailLink}" rel="iiif" />
+          </xsl:when>
+        </xsl:choose>
         <qui:title>
           <xsl:choose>
             <xsl:when test="$details-metadata//qui:field[@key='title']">

@@ -601,17 +601,19 @@
   <xsl:template name="build-portfolio-actions">
     <xsl:apply-templates select="//qui:callout[@slot='portfolio']" />
     <!-- <div class="message-callout info mt-1" style="display: none" id="bookbag-overview"></div> -->
-    <div id="bookbag-overview" style="display: none"></div>
-    <div class="[ flex flex-align-center ][ mb-1 gap-0_5 ]">
-      <button class="[ button button--secondary ] [ flex ]" aria-label="Select all items" data-action="select-all" data-checked="false">
-        <span>Select all items</span>
-      </button>
-      <button class="[ button button--secondary ] [ flex ]" aria-label="Add items to bookbag" data-action="add-items">
-        <span class="material-icons" aria-hidden="true">add</span>
-        <span>Add items to bookbag</span>
-      </button>
-      <xsl:call-template name="build-extra-portfolio-actions" />
-    </div>
+    <xsl:if test="$nav/@subview != 'detail'">
+      <div id="bookbag-overview" style="display: none"></div>
+      <div class="[ flex flex-align-center ][ mb-1 gap-0_5 ]">
+        <button class="[ button button--secondary ] [ flex ]" aria-label="Select all items" data-action="select-all" data-checked="false">
+          <span>Select all items</span>
+        </button>
+        <button class="[ button button--secondary ] [ flex ]" aria-label="Add items to bookbag" data-action="add-items">
+          <span class="material-icons" aria-hidden="true">add</span>
+          <span>Add items to bookbag</span>
+        </button>
+        <xsl:call-template name="build-extra-portfolio-actions" />
+      </div>
+    </xsl:if>
   </xsl:template>
 
   <xsl:template name="build-collection-header-string">

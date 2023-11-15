@@ -600,6 +600,9 @@
         <xsl:when test="@REASON">
           <small>[...]</small>
         </xsl:when>
+        <xsl:otherwise>
+          <xsl:text>[gap: unclear]</xsl:text>
+        </xsl:otherwise>
       </xsl:choose>
     </span>
     <xsl:text> </xsl:text>
