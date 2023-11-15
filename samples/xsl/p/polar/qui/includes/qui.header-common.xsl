@@ -11,6 +11,6 @@
 
   </xsl:template>
 
-  <xsl:template name="build-pubinfo-for-monograph"></xsl:template>
+  <!-- <xsl:template name="build-pubinfo-for-monograph"></xsl:template> -->
 
 </xsl:stylesheet>
