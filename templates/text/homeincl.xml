@@ -1,0 +1,83 @@
+<!-- XSL fallback files -->
+<XslFallbackFileList pipeline="qui">
+  <Filename>qui/qui.base.xsl</Filename>
+  <Filename>../vendor/str.split.function.xsl</Filename>
+  <Filename>../vendor/xslfunctions.xsl</Filename>
+  <Filename>qui/components/*.xsl</Filename>
+  <Filename>qui/qui.home.xsl</Filename>
+</XslFallbackFileList>
+
+<XslFallbackFileList pipeline="qbat">
+  <Filename>qbat/qbat.base.xsl</Filename>
+  <Filename>../vendor/xslfunctions.xsl</Filename>
+  <Filename>qbat/components/*.xsl</Filename>
+  <Filename>qbat/qbat.home.xsl</Filename>
+</XslFallbackFileList>
+
+<CustomXml><?CHUNK filename="searchextra.xml" optional="1"?></CustomXml>
+
+<DlxsGlobals><?CHUNK filename="dlxsclassglobals.xml"?></DlxsGlobals>
+<DEBUG>SERIOUSLY</DEBUG>
+
+<NavHeader><?CHUNK filename="navheader.xml"?></NavHeader>
+
+<CurrentGroup><?CURRENT_GROUP_XML?></CurrentGroup>
+ 
+<Footer>
+  <?CHUNK filename="footer.xml"?>
+</Footer>
+
+<SearchForm>
+  <HiddenVars>
+    <?HIDDEN_REQUESTED_COLLECTIONS_XML?>
+    <?HIDDEN_XC_XML?>
+    <?HIDDEN_IDNO_XML?>
+    <?HIDDEN_BOOKBAG_XML?>
+    <?HIDDEN_G_XML?> 
+    <?HIDDEN_XG_XML?>
+    <?HIDDEN_DEBUG_XML?>
+  </HiddenVars>
+  <SearchQuery>
+    <RegionSearchSelect><?REGION_SEARCH_SELECT_XML?></RegionSearchSelect>
+    <Region1SearchSelect><?REGION1_SEARCH_SELECT_XML?></Region1SearchSelect>
+    <Region2SearchSelect><?REGION2_SEARCH_SELECT_XML?></Region2SearchSelect>
+    <Region3SearchSelect><?REGION3_SEARCH_SELECT_XML?></Region3SearchSelect>
+    <Q1><?Q1_INPUT_XML?></Q1>
+    <Op2><?OP2_SELECT_XML?></Op2>
+    <Q2><?Q2_INPUT_XML?></Q2>
+    <Amt2><?AMT2_SELECT_XML?></Amt2>
+    <Op3><?OP3_SELECT_XML?></Op3>
+    <Q3><?Q3_INPUT_XML?></Q3>
+    <Amt3><?AMT3_SELECT_XML?></Amt3>
+  </SearchQuery>
+  <CiteRestrictions>
+    <Cite>
+      <Input><?CITE1_INPUT_XML?></Input>
+      <Restrict><?CITE1_RESTRICT_SELECT_XML?></Restrict>
+    </Cite>
+    <Cite>
+      <Input><?CITE2_INPUT_XML?></Input>
+      <Restrict><?CITE2_RESTRICT_SELECT_XML?></Restrict>
+    </Cite>
+  </CiteRestrictions>
+  <OtherRestrictions>
+    <!-- Begin collection specific restrictions -->
+    <GenreSelect>
+      <?GENRE_SEARCH_SELECT_XML?>
+    </GenreSelect>
+    <GenderSelect>
+      <?GENDER_SEARCH_SELECT_XML?>
+    </GenderSelect>
+    <PeriodSelect>
+      <?PERIOD_SEARCH_SELECT_XML?>
+    </PeriodSelect>
+    <PubBetweenSelect>
+      <?PUB_BETWEEN_SEARCH_SELECT_XML?>
+    </PubBetweenSelect>
+  </OtherRestrictions>
+</SearchForm>
+
+<?CHUNK filename="uplift.useguidelines.xml" optional="1"?>
+<?CHUNK filename="uplift.links.xml" optional="1"?>
+<?CHUNK filename="uplift.panels.xml" optional="1"?>
+<?CHUNK filename="uplift.contentwarning.xml" optional="1"?>
