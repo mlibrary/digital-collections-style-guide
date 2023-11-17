@@ -31,4 +31,5 @@
         <ItemDivhead><?ITEM_DIVHEAD_XML ?></ItemDivhead>
     </DocMeta>
     <?CHUNK filename="viewer.xml"?>
+    <BookbagResults><?BOOKBAG_RESULTS_XML?></BookbagResults>
 </Top>

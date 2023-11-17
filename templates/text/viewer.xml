@@ -49,3 +49,10 @@
 <ContentFrameExistenceFlag><?CONTENT_FRAME_EXISTENCE_FLAG?></ContentFrameExistenceFlag>
 <ContentFrameSrcHref><?CONTENT_FRAME_SRC_HREF?></ContentFrameSrcHref>
 <ContentFrameSourcePath><?CONTENT_FRAME_SOURCE_PATH?></ContentFrameSourcePath>
+
+<ResultsLinks>
+  <PrevNextItemLinks><?PREV_NEXT_ITEM_LINKS_XML?></PrevNextItemLinks>
+  <SliceNavigationLinks><?SLICE_NAVIGATION_LINKS_XML?></SliceNavigationLinks>
+  <SortSelect><?SORT_SELECT_XML onchange="sortform.submit()"?></SortSelect>
+  <HiddenVars><?HIDDEN_SORT_VARS_XML?></HiddenVars>
+</ResultsLinks>

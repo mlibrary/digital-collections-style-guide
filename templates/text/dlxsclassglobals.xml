@@ -16,3 +16,5 @@
 <PrintOnDemandEnabled><?POD_ENABLED_XML?></PrintOnDemandEnabled>
 <SearchHistoryHref><?SEARCH_HISTORY_LINK_XML?></SearchHistoryHref>
 
+<?CHUNK filename="rightsmap.en.xml"?>
+<?CHUNK filename="rightsmap-extra.en.xml" optional="1"?>

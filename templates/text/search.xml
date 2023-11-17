@@ -138,4 +138,6 @@
     <?COLL_LIST_WITH_CHECKBOXES_XML?>
   </CollCheckboxList>
 
+  <?CHUNK filename="uplift.panels.xml" optional="1"?>
+
 </Top>

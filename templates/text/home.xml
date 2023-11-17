@@ -20,14 +20,22 @@
     <Filename>qbat/qbat.home.xsl</Filename>
   </XslFallbackFileList>
 
+  <!-- Custom OPTIONAL XML for top-level file home.xml -->
+  <CustomXml><?CHUNK filename="home.extra.xml" optional="1"?></CustomXml>
   <DlxsGlobals><?CHUNK filename="dlxsclassglobals.xml"?></DlxsGlobals>
-
   <NavHeader><?CHUNK filename="navheader.xml"?></NavHeader>
-  
+  <ReAuthLink><?RE_AUTH_LINK_XML?></ReAuthLink>
+    
   <CurrentGroup><?CURRENT_GROUP_XML?></CurrentGroup>
    
   <Footer>
     <?CHUNK filename="footer.xml"?>
   </Footer>
   
+  <HomePage>
+    <BrowseGroupsCollsLink><?BROWSE_GROUP_COLLS_LINK_XML?></BrowseGroupsCollsLink>
+
+    <NumberOfTexts><?NUMBER_OF_TEXTS_XML?></NumberOfTexts>
+    <NumberOfCollections><?NUMBER_OF_COLLECTIONS_XML?></NumberOfCollections>
+  </HomePage>  
 </Top>
