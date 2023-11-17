@@ -249,9 +249,19 @@
     <xsl:param name="label" />
     <xsl:param name="value" />
     <xsl:variable name="value-type" select="exsl:object-type($value)" />
+    <xsl:variable name="lookup-key">
+      <xsl:choose>
+        <xsl:when test="contains($key, '.')">
+          <xsl:value-of select="$key" />
+        </xsl:when>
+        <xsl:otherwise>
+          <xsl:value-of select="concat('uplift.header.str.', $key)" />
+        </xsl:otherwise>
+      </xsl:choose>
+    </xsl:variable>
     <xsl:if test="normalize-space($value)">
       <qui:field key="{$key}">
-        <xsl:if test="key('get-lookup', concat('uplift.header.str.', $key))
+        <xsl:if test="key('get-lookup', $lookup-key)
                       or normalize-space($label)">
           <qui:label>
             <xsl:choose>
@@ -259,7 +269,7 @@
                 <xsl:value-of select="$label" />
               </xsl:when>
               <xsl:otherwise>
-                <xsl:value-of select="key('get-lookup', concat('uplift.header.str.', $key))" />
+                <xsl:value-of select="key('get-lookup', $lookup-key)" />
               </xsl:otherwise>
             </xsl:choose>
           </qui:label>              
