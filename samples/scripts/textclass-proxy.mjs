@@ -124,6 +124,8 @@ async function processDLXS(req, res) {
   // headers['X-DLXS-SessionID'] = `${req.socket.remoteAddress}--${(new Date).getDay()}`;
   headers['Cookie'] = `DLXSsid=${req.cookies.DLXSsid}`;
 
+  console.log("-- fetching", url.toString());
+
   const resp = await fetch(url.toString(), {
     headers: headers,
     redirect: 'follow',
@@ -136,9 +138,11 @@ async function processDLXS(req, res) {
     res.setHeader('content-disposition', resp.headers.get('content-disposition'));
     res.send(await resp.text());
   } else if (resp.ok) {
-    const cookieValue = (resp.headers.get('set-cookie').split(/;\s*/))[0].replace('DLXSsid=','');
-    res.cookie('DLXSsid', cookieValue, { path: '/' });
-    console.log("AHOY AHOY cookie = ", cookieValue);
+    if ( resp.headers.get('set-cookie') ) {
+      const cookieValue = (resp.headers.get('set-cookie').split(/;\s*/))[0].replace('DLXSsid=','');
+      res.cookie('DLXSsid', cookieValue, { path: '/' });
+      console.log("AHOY AHOY cookie = ", cookieValue);      
+    }
     const xmlData = (await resp.text()).replace(/https:\/\/localhost/g, 'http://localhost');
     if ( xmlData.indexOf('no hits. normally cgi redirects') > -1 ) {
       throw new Error('Query has no results');
@@ -161,9 +165,18 @@ async function processDLXS(req, res) {
       return;
     }
 
+    if ( url.searchParams.get('debug') == 'xml' ) {
+        res.setHeader("Content-Type", "application/xml");
+        res.send(xmlData);
+        return;
+    }
+
     // if ( xmlData.indexOf('xml') < 0 ) {
     //   console.log(xmlData);
     // }
+
+    // console.log(xmlData);
+
     if ( xmlData.indexOf('Location: ') > -1 ) {
       console.log(xmlData);
       let tmp = xmlData.match(/Location: (.*)$/si);
