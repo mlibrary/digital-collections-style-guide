@@ -1,4 +1,4 @@
- <LookupTables>
+<LookupTables>
   <Lookup id="auth">
     <Item key="standardlogin.str">Login&#xa0;</Item>
     <Item key="standardlogout.str">Logout&#xa0;</Item>
@@ -53,6 +53,7 @@
     <Item key="browse.str.there.are">There are </Item>
     <Item key="browse.str.items.in.collection"> items in this collection</Item>
     <Item key="browse.str.author.publ.column">Author / [Publication date]</Item>
+    <Item key="browse.str.author.column">Author</Item>    
     <Item key="browse.str.title.column">Title</Item>
     <Item key="browse.str.subject.column">Subject Term</Item>
     <Item key="browse.str.itemcount.column">No. of Items</Item>
@@ -76,7 +77,8 @@
     <Item key="footer.str.reprintinfo">Reprint information for this collection</Item>
   </Lookup>
   <Lookup id="header">
-    <Item key="header.str.contents">Contents</Item>
+    <Item key="header.str.contents.old">Contents</Item>
+    <Item key="header.str.contents">Table of Contents</Item>
     <Item key="header.str.viewentiretext">View entire text</Item>
     <Item key="header.str.fullaccess">For full access to this item, please </Item>
     <Item key="header.str.login">Login </Item>
@@ -200,6 +202,7 @@
     <Item key="results.str.1">Collection: </Item>
     <Item key="results.str.2">Search Results: </Item>
     <Item key="results.str.3"> match</Item>
+    <Item key="results.str.3p"> matches</Item>
     <Item key="results.str.4"> in </Item>
     <Item key="results.str.5"> of </Item>
     <Item key="results.str.6"> matching </Item>
@@ -232,6 +235,7 @@
     <Item key="results.str.33">subject</Item>
     <Item key="results.str.34">Check your library for this item</Item>
     <Item key="results.str.downloadpdf">Download full pdf</Item>
+    <Item key="results.str.container">Item</Item>
     <Item key="results.str.viewresults">view results&#xa0;&#187;</Item>
     <Item key="results.str.articletype">article type</Item>
   
@@ -407,7 +411,7 @@
 
   </Lookup>
   <Lookup id="viewtextnote">
-    <Item key="viewtextnote.str.1">view entire text now</Item>
+    <Item key="viewtextnote.str.1">View entire text now</Item>
   </Lookup>
   <Lookup id="ww">
     <Item key="ww.str.wordindexsearch">Word Index Search</Item>
@@ -426,4 +430,35 @@
     <Item key="ww.str.quickindex">Quick index. </Item>
     <Item key="ww.str.selectcharacter">Select a character to view the corresponding word index.</Item>
   </Lookup>
- </LookupTables>
+  <Lookup id="context-badges">
+    <Item key="collection-badge">filter_frames</Item>
+    <Item key="list-badge">view_list</Item>
+    <Item key="group-badge">topic</Item>
+    <Item key="multiple-badge">check_box</Item>
+    <Item key="root-badge">filter_center_focus</Item>
+    <Item key="default-badge">more_vert</Item>
+  </Lookup>
+  <Lookup id="uplift">
+    <Item key="uplift.str.contents">Item Information</Item>
+    <Item key="uplift.str.page.contents">Collection Contents</Item>
+    <Item key="uplift.section">Section</Item>
+    <Item key="uplift.next.section">Next Section</Item>
+    <Item key="uplift.previous.section">Previous Section</Item>
+    <Item key="uplift.picklist.str.browseVol">Volume</Item>
+    <Item key="uplift.picklist.str.browseVolIss">Volume/Issue</Item>
+    <Item key="uplift.picklist.str.browseIss">Issue</Item>
+    <Item key="uplift.picklist.str.browseAuthTitle">Title/Author</Item>    
+    <Item key="uplift.picklist.str.morethanoneitem">Multiple Items</Item>
+    <Item key="uplift.header.str.title">Title</Item>
+    <Item key="uplift.header.str.serial">Serial</Item>
+    <Item key="uplift.header.str.articletitle">Article Title</Item>
+    <Item key="uplift.header.str.author">Author</Item>
+    <Item key="uplift.header.str.canvas">Canvas</Item>
+    <Item key="uplift.header.str.publicationinfo">Publication</Item>
+    <Item key="uplift.header.str.pubinfo">Publication</Item>
+    <Item key="uplift.header.str.pubdate">Publication Date</Item>
+    <Item key="uplift.header.str.note">Note</Item>
+    <Item key="uplift.header.str.printsource">Print Source</Item>
+    <Item key="uplift.header.str.print-publication-date">Print Publication Date</Item>
+  </Lookup>
+</LookupTables>

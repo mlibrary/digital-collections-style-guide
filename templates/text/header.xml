@@ -57,6 +57,7 @@
   <?POD_AND_DOD_LINKS_XML?>
   <ViewEntireTextLink><?VIEW_ENTIRE_TEXT_LINK_XML?></ViewEntireTextLink>
   </Item>
+  <BookbagResults><?BOOKBAG_RESULTS_XML?></BookbagResults>
   <Footer><?CHUNK filename="footer.xml"?></Footer>
   
 </Top>

@@ -28,6 +28,7 @@
 
   <NavHeader>
     <BookbagItems><?BOOKBAG_ITEMS_XML?></BookbagItems>
+    <BookbagResults><?BOOKBAG_RESULTS_XML?></BookbagResults>    
   </NavHeader>
 
 </Top>
