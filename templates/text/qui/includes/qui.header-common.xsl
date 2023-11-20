@@ -55,19 +55,19 @@
   <!-- MONOGRAPH -->
   <xsl:template name="build-title-for-monograph">
     <xsl:param name="item" />
-    <xsl:variable name="titlestmt" select="$item//HEADER/FILEDESC/TITLESTMT" />
+    <xsl:variable name="titlestmt" select="($item/ItemHeader|$item)/HEADER/FILEDESC/TITLESTMT" />
     <xsl:apply-templates select="$titlestmt" mode="process-title" />
   </xsl:template>
 
   <xsl:template name="build-author-for-monograph">
     <xsl:param name="item" />
-    <xsl:variable name="titlestmt" select="$item//HEADER/FILEDESC/TITLESTMT" />
+    <xsl:variable name="titlestmt" select="($item/ItemHeader|$item)/HEADER/FILEDESC/TITLESTMT" />
     <xsl:apply-templates select="$titlestmt" mode="process-author" />
   </xsl:template>
 
   <xsl:template name="build-editor-for-monograph">
     <xsl:param name="item" />
-    <xsl:variable name="titlestmt" select="$item//HEADER/FILEDESC/TITLESTMT" />
+    <xsl:variable name="titlestmt" select="($item/ItemHeader|$item)/HEADER/FILEDESC/TITLESTMT" />
     <xsl:apply-templates select="$titlestmt" mode="process-editor" />
   </xsl:template>
 
@@ -178,7 +178,7 @@
 
   <xsl:template name="build-useguidelines-for-monograph">
     <xsl:param name="item" />
-    <xsl:apply-templates select="$item//HEADER/FILEDESC/PUBLICATIONSTMT/AVAILABILITY" mode="metadata" />
+    <xsl:apply-templates select="($item/ItemHeader|$item)/HEADER/FILEDESC/PUBLICATIONSTMT/AVAILABILITY" mode="metadata" />
   </xsl:template>
 
   <xsl:template name="build-useguidelines-for-serialissue">
