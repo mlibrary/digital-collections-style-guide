@@ -1961,6 +1961,148 @@ m-website-header nav a .material-icons {
   }
 }
 
+@media (max-width: 52rem) {
+  .website-header-mobile {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+  }
+}
+
+@media (min-width: 52rem) {
+  .mobile-nav {
+    display: none;
+  }
+}
+
+@media (max-width: 52rem) {
+  m-website-header nav.primary-nav {
+    display: none;
+  }
+}
+
+.mobile-nav .submenu-container {
+  border-top: 1px solid var(--color-neutral-100);
+  margin-top: 20px;
+  position: absolute;
+  right: -1rem;
+  width: 50vw;
+  background: white;
+  box-shadow: rgba(0, 0, 0, 0.1) 0px 4px 8px 0px;
+  z-index: 101;
+}
+
+.mobile-nav .primary-container ul {
+  list-style: none;
+  margin: 0;
+  padding-left: 0;
+}
+.mobile-nav .primary-container ul li {
+  border-bottom: 1px solid rgb(229, 233, 237);
+  padding: 1rem;
+}
+.mobile-nav .primary-container ul a {
+  text-decoration: none;
+  color: var(--color-neutral-400);
+  display: flex;
+  align-items: center;
+  gap: 0.25rem;
+  white-space: nowrap;
+}
+.mobile-nav .primary-container ul a:hover {
+  text-decoration: underline;
+}
+
+.mobile-nav .utility-container ul {
+  list-style: none;
+  margin: 0;
+  padding-left: 0;
+  background-color: var(--color-blue-100);
+}
+.mobile-nav .utility-container ul li {
+  padding: 1rem;
+}
+.mobile-nav .utility-container ul a {
+  text-decoration: none;
+  display: flex;
+  align-items: center;
+  gap: 0.25rem;
+  color: var(--color-neutral-400);
+}
+
+[hidden] {
+  display: none;
+}
+
+button.nav {
+  background: #fff;
+  border: none;
+}
+
+button[aria-expanded]::after {
+  font-family: "Material Icons";
+  font-size: 2.5rem;
+  content: "\e5d2";
+  color: var(--color-neutral-400);
+}
+
+button[aria-expanded=true]::after {
+  font-family: "Material Icons";
+  font-size: 2.5rem;
+  content: "\e5cd";
+  color: var(--color-neutral-400);
+}
+
+@media (max-width: 64rem) {
+  .utility-nav {
+    margin-top: 1rem;
+  }
+}
+@media (max-width: 52rem) {
+  .utility-nav {
+    display: none;
+  }
+}
+
+.utility-nav ul {
+  list-style: none;
+  padding-left: 0;
+  margin-top: 0;
+  margin-bottom: 0;
+  display: flex;
+  flex-flow: row wrap;
+}
+.utility-nav ul li {
+  display: inline;
+}
+.utility-nav ul li:not(:last-child) {
+  margin-right: 1rem;
+}
+.utility-nav ul li a {
+  font-size: 0.875rem;
+  text-decoration: none;
+  color: var(--color-neutral-300);
+  text-transform: uppercase;
+  font-weight: var(--bold);
+  letter-spacing: 1.25px;
+  display: flex;
+  align-items: center;
+  gap: 0.25rem;
+}
+
+.material-symbols-outlined {
+  font-variation-settings: "wght" 300, "opsz" 20;
+}
+
+.material-symbols-outlined:hover {
+  font-variation-settings: "wght" 500, "FILL" 1;
+}
+
+@media (max-width: 40rem) {
+  .page-aside {
+    display: none;
+  }
+}
 
 /*
  * Feedback Callout

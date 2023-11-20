@@ -62,7 +62,7 @@
     </article>    
   </xsl:template>
 
-  <xsl:template match="tei:DLPSWRAP">
+  <xsl:template match="tei:DLPSWRAP[.//tei:PB or normalize-space(.)]">
     <xsl:variable name="pb" select=".//tei:PB" />
     <xsl:variable name="idno" select="$pb/@IDNO" />
     <xsl:variable name="id">
@@ -169,7 +169,7 @@
     <xsl:apply-templates />
   </xsl:template>
 
-  <xsl:template match="tei:TEXT//tei:P[tei:PB]" priority="100">
+  <xsl:template match="tei:TEXT//tei:P[tei:PB]" priority="100" mode="sketchy">
     <xsl:variable name="idno" select="ancestor-or-self::*/@NODE" />
     <xsl:variable name="id">
       <xsl:choose>

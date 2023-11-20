@@ -56,7 +56,10 @@
         <xsl:apply-templates select="//qui:skip-links" />
         <div class="border-bottom">
           <m-universal-header></m-universal-header>
-          <xsl:apply-templates select="//qui:m-website-header" />
+          <div class="website-header-mobile">
+            <xsl:apply-templates select="//qui:m-website-header" />
+            <xsl:apply-templates select="//qui:m-website-header" mode="mobile-nav" />
+          </div>
           <xsl:apply-templates select="//qui:sub-header" />
         </div>
 
@@ -156,6 +159,23 @@
     </m-website-header>
   </xsl:template>
 
+  <xsl:template match="qui:m-website-header" mode="mobile-nav">
+    <div class="mobile-nav">
+      <span class="nav-btn"></span>
+      <div class="submenu-container">
+        <div class="primary-container">
+          <ul>
+            <xsl:for-each select="qui:nav/qui:link">
+              <li>
+                <xsl:apply-templates select="." />
+              </li>
+            </xsl:for-each>
+          </ul>
+        </div>
+      </div>
+    </div>
+  </xsl:template>
+
   <xsl:template match="qui:sub-header">
     <div class="website-sub-header">
       <div class="[ viewport-container flex ][ flex-center flex-gap-0_5 ]">
@@ -172,7 +192,7 @@
   </xsl:template>
 
   <xsl:template match="qui:m-website-header/qui:nav">
-    <nav class="[ flex flex-center justify-end ][ gap-0_75 ]">
+    <nav class="[ primary-nav ][ flex flex-center justify-end ][ gap-0_75 ]">
       <xsl:apply-templates select="qui:link" />
     </nav>
   </xsl:template>
