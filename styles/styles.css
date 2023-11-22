@@ -75,12 +75,12 @@ ul ul {
 }
 
 
-ul.list-bulleted {
+ul.list-bulleted, .text-block ul {
   list-style: initial;
   padding: revert;
 }
 
-ol.list-numbered {
+ol.list-numbered, text-block ol {
   list-style: decimal;
   padding: revert;
 }

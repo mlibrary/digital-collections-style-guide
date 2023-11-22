@@ -121,6 +121,14 @@
     </xsl:choose>
   </xsl:template>
 
+  <xsl:template name="build-breadcrumbs-intermediate-links">
+    <xsl:if test="//Param[@name='subview'] = 'detail'">
+      <xsl:apply-templates select="//ResList/Results/Item[ItemDetails]/TocHref">
+        <xsl:with-param name="item-encoding-level" xml:base="$item-encoding-level" />
+      </xsl:apply-templates>  
+    </xsl:if>
+  </xsl:template>
+
   <xsl:template name="build-results-navigation">
     <!-- do we have M/N available in the PI handler? -->
     <xsl:if test="$subview = 'detail'">
@@ -298,6 +306,9 @@
       </xsl:otherwise>
     </xsl:choose>
     <xsl:if test="//ResList/Results/Item[ItemDetails]">
+      <xsl:apply-templates select="//ResList/Results/Item[ItemDetails]/TocHref">
+        <xsl:with-param name="item-encoding-level" xml:base="$item-encoding-level" />
+      </xsl:apply-templates>
       <xsl:apply-templates select="//ResList/Results/Item" mode="metadata" />
     </xsl:if>
     <qui:block slot="results">
@@ -661,9 +672,9 @@
     <xsl:variable name="scope" select="." />
 
     <qui:section identifier="XYZZY-{position()}" for="{$identifier}" template-name="{$template-name}">
-      <xsl:apply-templates select="ancestor::Item/TocHref">
+      <!-- <xsl:apply-templates select="ancestor::Item/TocHref">
         <xsl:with-param name="item-encoding-level" xml:base="$item-encoding-level" />
-      </xsl:apply-templates>
+      </xsl:apply-templates> -->
       <qui:link href="{ViewPageLink}" rel="result" />
       <qui:link href="{ViewPageThumbnailLink}" rel="iiif" />
       <qui:title>
@@ -760,9 +771,9 @@
         <!-- <xsl:apply-templates select="$item/TocHref">
           <xsl:with-param name="item-encoding-level" xml:base="$item-encoding-level" />
         </xsl:apply-templates> -->
-        <xsl:apply-templates select="ancestor::Item/TocHref">
+        <!-- <xsl:apply-templates select="ancestor::Item/TocHref">
           <xsl:with-param name="item-encoding-level" xml:base="$item-encoding-level" />
-        </xsl:apply-templates>
+        </xsl:apply-templates> -->
         <xsl:apply-templates select="MediaInfo" mode="iiif-link" />
         <qui:link rel="result">
           <xsl:attribute name="href">
@@ -869,6 +880,12 @@
       <!-- <xsl:value-of select="key('get-lookup','reslist.str.yousearched')"/> -->
       <xsl:value-of select="/Top/SearchDescription/CollTotals/HitCount" />
       <xsl:text> matches </xsl:text>
+      <xsl:text> in </xsl:text>
+      <xsl:value-of select="/Top/SearchDescription/CollTotals/RecordCount" />
+      <xsl:choose>
+        <xsl:when test="/Top/SearchDescription/CollTotals/RecordCount = 1"> item </xsl:when>
+        <xsl:otherwise> items </xsl:otherwise>
+      </xsl:choose>
       <xsl:value-of select="key('get-lookup','reslist.str.for')"/>
       <xsl:text> </xsl:text>
       <span class="naturallanguage">
