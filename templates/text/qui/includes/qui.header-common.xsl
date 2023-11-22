@@ -308,6 +308,13 @@
     <xsl:value-of select="." />
   </xsl:template>
 
+  <xsl:template match="qui:span" mode="copy-field-value">
+    <xsl:copy>
+      <xsl:apply-templates select="@*" mode="copy" />
+      <xsl:apply-templates mode="copy" />
+    </xsl:copy>
+  </xsl:template>
+
   <xsl:template match="text()" mode="copy-field-value" priority="0.5">
     <xsl:copy>
       <xsl:apply-templates select="@*" mode="copy" />

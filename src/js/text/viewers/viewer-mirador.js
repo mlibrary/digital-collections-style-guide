@@ -91,7 +91,7 @@ window.addEventListener('message', (event) => {
     const identifier = event.data.identifier;
     const label = event.data.label;
     const link = document.querySelector('link[rel="self"]');
-
+    
     labelEl.innerText = label;
 
     let parts = document.title.split(' | ');
@@ -143,6 +143,19 @@ window.addEventListener('message', (event) => {
       }
       itemEl.dataset.href = downloadUrl.toString();
       itemEl.setAttribute('value', downloadUrl.toString());
+
+      let newSeq2 = newSeq.replace(/^0*/, '');
+      let spanEl = itemEl.querySelector('.menu-label');
+      let newText = (spanEl.innerText.split(' ('))[0];
+      let pageData = DLXS.pageMap[newSeq2];
+      if ( itemEl.dataset.chunked == 'true' ) {
+        newText += ` (${pageData.chunk})`;
+      } else {
+        newText += ` (${pageData.pageNum})`;
+      }
+
+      console.log("-- update", spanEl, DLXS.pageMap[newSeq2].pageNum, newText);
+      spanEl.innerText = newText;
     })
     slDropdownEl.disabled = false;
     slDropdownEl.style.opacity = 1.0;
@@ -169,23 +182,23 @@ window.addEventListener('message', (event) => {
     });
   }
 
-  if (event.data.event == 'updateDownloadLinks') {
-    const identifier = event.data.identifier;
-    const resourceId = event.data.resourceId;
-    const manifestId = event.data.manifestId;
-    const label = event.data.label;
+//   if (event.data.event == 'updateDownloadLinks') {
+//     const identifier = event.data.identifier;
+//     const resourceId = event.data.resourceId;
+//     const manifestId = event.data.manifestId;
+//     const label = event.data.label;
 
-    alert.innerHTML = `<p>Updating download links for: ${identifier}</p>`;
+//     alert.innerHTML = `<p>Updating download links for: ${identifier}</p>`;
 
-    console.log("-- updateDownload", label, resourceId, manifestId);
-    fetch(resourceId + '/info.json')
-      .then(resp => resp.json())
-      .then((data) => {
-        DLXS.manifestsData[manifestId] = { sizes: data.sizes, resourceId: resourceId, label: label };
-        updateDownloadMenu();
-      })
-  }
-})
+//     console.log("-- updateDownload", label, resourceId, manifestId);
+//     fetch(resourceId + '/info.json')
+//       .then(resp => resp.json())
+//       .then((data) => {
+//         DLXS.manifestsData[manifestId] = { sizes: data.sizes, resourceId: resourceId, label: label };
+//         updateDownloadMenu();
+//       })
+//   }
+// })
 
 window.addEventListener('DOMContentLoaded', (event) => {
   plaintextViewer = document.querySelector('#plaintext-viewer');

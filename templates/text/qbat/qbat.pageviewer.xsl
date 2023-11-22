@@ -237,12 +237,15 @@
       <h2 class="[ subtle-heading ][ text-black ]" id="actions">Actions</h2>
       <div class="[ toolbar ]">
         <xsl:call-template name="build-download-action" />
-        <xsl:call-template name="build-favorite-action" />
+        <xsl:if test="//qui:form[@slot='bookbag']">
+          <xsl:call-template name="build-favorite-action" />
+        </xsl:if>
         <xsl:call-template name="build-copy-link-action" />
         <xsl:call-template name="build-copy-citation-action" />
         <xsl:apply-templates select="." mode="extra" />
       </div>
       <xsl:apply-templates select="//qui:callout[@slot='actions']" />
+      <xsl:apply-templates select="qui:script" />
     </div>
   </xsl:template>
 
@@ -322,7 +325,7 @@
     </xsl:choose>
   </xsl:template>
 
-  <xsl:template name="build-download-action-shoelace">
+  <xsl:template name="build-download-action-shoelace-v1">
     <xsl:if test="qui:download-options/qui:download-item">
       <sl-dropdown id="dropdown-action" placement="bottom">
         <sl-button slot="trigger" caret="caret" class="sl-button--primary">
@@ -342,8 +345,35 @@
     </xsl:if>
   </xsl:template>
 
-  <xsl:template match="qui:download-options/qui:download-item">
+  <xsl:template name="build-download-action-shoelace">
+    <xsl:if test="qui:download-options//qui:download-item">
+      <sl-dropdown id="dropdown-action" placement="bottom">
+        <sl-button slot="trigger" caret="caret" class="sl-button--primary">
+          <span class="flex flex-center flex-gap-0_5 text-xx-small">
+            <span class="material-icons text-xx-small">file_download</span>
+            <span class="capitalize">
+              <xsl:text>Download</xsl:text>
+              <xsl:text> </xsl:text>
+              <xsl:value-of select="qui:download-options/@label" />
+            </span>
+          </span>
+        </sl-button>
+        <sl-menu>
+          <xsl:apply-templates select="qui:download-options/*" />
+        </sl-menu>
+      </sl-dropdown>
+    </xsl:if>
+  </xsl:template>
+
+  <xsl:template match="qui:download-options/qui:option-group">
+    <div class="option-group">
+      <xsl:apply-templates />
+    </div>
+  </xsl:template>
+
+  <xsl:template match="qui:download-options//qui:download-item">
     <sl-menu-item data-href="{@href}" value="{@href}">
+      <xsl:apply-templates select="@data-chunked" mode="copy" />
       <xsl:choose>
         <xsl:when test="@file-type = 'PDF'">
           <sl-icon name="file-pdf" slot="prefix"></sl-icon>
@@ -356,7 +386,7 @@
         </xsl:when>
         <xsl:otherwise></xsl:otherwise>
       </xsl:choose>
-      <xsl:apply-templates select="." mode="menu-item" />
+      <span class="menu-label"><xsl:apply-templates select="." mode="menu-item" /></span>
     </sl-menu-item>
   </xsl:template>
 
@@ -456,6 +486,12 @@
 
   <xsl:template name="build-breadcrumbs-extra-nav">
     <xsl:apply-templates select="//qui:form[@id='item-search']" />
+  </xsl:template>
+
+  <xsl:template match="qui:script">
+    <script>
+      <xsl:apply-templates mode="copy" />
+    </script>
   </xsl:template>
 
 </xsl:stylesheet>

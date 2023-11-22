@@ -3,10 +3,19 @@
 <Top xmlns:dlxs="http://www.umdl.umich.edu/dlxs">
 
   <!-- XSL fallback files -->
-  <XslFallbackFileList>
-    <Filename>tombstone.xsl</Filename>
-    <Filename>globalvariables.xsl</Filename>
+  <XslFallbackFileList pipeline="qui">
+    <Filename>qui/qui.base.xsl</Filename>
+    <Filename>../vendor/xslfunctions.xsl</Filename>
+    <Filename>qui/components/*.xsl</Filename>
+    <Filename>qui/qui.tombstone.xsl</Filename>
   </XslFallbackFileList>
+
+  <XslFallbackFileList pipeline="qbat">
+    <Filename>qbat/qbat.base.xsl</Filename>
+    <Filename>qbat/components/*.xsl</Filename>
+    <Filename>qbat/qbat.tombstone.xsl</Filename>
+  </XslFallbackFileList>
+
   <!-- Custom OPTIONAL XML for top-level file restricteditem.xml -->
   <CustomXml><?CHUNK filename="tombstoneextra.xml" optional="1"?></CustomXml>
 
