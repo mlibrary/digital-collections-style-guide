@@ -224,8 +224,18 @@
     <xsl:if test="true() or $tmp//qui:link">
       <xsl:apply-templates select="$tmp" mode="copy" />
     </xsl:if>
-    <xsl:if test="//SearchDescription/RefineSearchLink">
-      <qui:link rel="refine-search" href="{//SearchDescription/RefineSearchLink}" />
+    <xsl:variable name="refine-search-link">
+      <xsl:choose>
+        <xsl:when test="normalize-space('//SimpleSearchWithinLink')">
+          <xsl:value-of select="//SimpleSearchWithinLink" />
+        </xsl:when>
+        <xsl:when test="normalize-space(//SearchDescription/RefineSearchLink)">
+          <xsl:value-of select="//SearchDescription/RefineSearchLink" />
+        </xsl:when>
+      </xsl:choose>
+    </xsl:variable>
+    <xsl:if test="normalize-space($refine-search-link)">
+      <qui:link rel="refine-search" href="{$refine-search-link}" />
     </xsl:if>
   </xsl:template>
 
