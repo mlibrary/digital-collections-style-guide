@@ -146,12 +146,12 @@ window.addEventListener('message', (event) => {
 
       let newSeq2 = newSeq.replace(/^0*/, '');
       let spanEl = itemEl.querySelector('.menu-label');
-      let newText = (spanEl.innerText.split(' ('))[0];
+      let newText = (spanEl.innerText.split(' -'))[0];
       let pageData = DLXS.pageMap[newSeq2];
       if ( itemEl.dataset.chunked == 'true' ) {
-        newText += ` (${pageData.chunk})`;
+        newText += ` - Pages ${pageData.chunk}`;
       } else {
-        newText += ` (${pageData.pageNum})`;
+        newText += ` - Page ${pageData.pageNum}`;
       }
 
       console.log("-- update", spanEl, DLXS.pageMap[newSeq2].pageNum, newText);
@@ -198,7 +198,7 @@ window.addEventListener('message', (event) => {
 //         updateDownloadMenu();
 //       })
 //   }
-// })
+})
 
 window.addEventListener('DOMContentLoaded', (event) => {
   plaintextViewer = document.querySelector('#plaintext-viewer');

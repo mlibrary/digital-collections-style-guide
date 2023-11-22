@@ -366,9 +366,11 @@
   </xsl:template>
 
   <xsl:template match="qui:download-options/qui:option-group">
-    <div class="option-group">
+    <!-- <div class="option-group">
       <xsl:apply-templates />
-    </div>
+    </div> -->
+    <sl-menu-label>Download this page</sl-menu-label>
+    <xsl:apply-templates />
   </xsl:template>
 
   <xsl:template match="qui:download-options//qui:download-item">
@@ -392,6 +394,7 @@
 
   <xsl:template match="qui:download-options/qui:hr">
     <sl-divider></sl-divider>
+    <sl-menu-label>Download this item</sl-menu-label>
   </xsl:template>
 
   <xsl:template name="xx-button">

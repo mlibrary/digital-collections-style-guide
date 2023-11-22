@@ -145,27 +145,29 @@
               <xsl:if test="Label/Chunk">
                 <xsl:attribute name="data-chunked">true</xsl:attribute>
               </xsl:if>
-              <xsl:text>Page PDF (</xsl:text>
+              <xsl:text>PDF - </xsl:text>
                 <xsl:choose>
                   <xsl:when test="Label/Chunk"> 
-                  <xsl:value-of select="Label/Chunk" />
-                </xsl:when>
+                    <xsl:text>Pages </xsl:text>
+                    <xsl:value-of select="Label/Chunk" />
+                  </xsl:when>
                 <xsl:otherwise>
+                  <xsl:text>Page </xsl:text>
                   <xsl:apply-templates select="." mode="pagenum" />
                 </xsl:otherwise>
               </xsl:choose>
-              <xsl:text>)</xsl:text>
+              <!-- <xsl:text>)</xsl:text> -->
             </qui:download-item>
             <qui:download-item href="{$api_url}/cgi/t/text/api/image/{/Top/DlxsGlobals/CurrentCgi/Param[@name='cc']}:{/Top/DlxsGlobals/CurrentCgi/Param[@name='idno']}:{Value}/full/full/0/default.jpg" file-type="JPEG" type="IMAGE">
-              <xsl:text>Page Image (</xsl:text>
+              <xsl:text>Image - Page </xsl:text>
               <xsl:apply-templates select="." mode="pagenum" />
-              <xsl:text>)</xsl:text>
+              <!-- <xsl:text>)</xsl:text> -->
             </qui:download-item>
             <xsl:if test="$has-plain-text">
               <qui:download-item href="{$api_url}/cgi/t/text/text-idx?cc={/Top/DlxsGlobals/CurrentCgi/Param[@name='cc']};idno={/Top/DlxsGlobals/CurrentCgi/Param[@name='idno']};seq={Value};view=text;tpl=plaintext.viewer" file-type="TEXT" type="TEXT">
-                <xsl:text>Page Text (</xsl:text>
+                <xsl:text>Plain Text - Page </xsl:text>
                 <xsl:apply-templates select="." mode="pagenum" />
-                <xsl:text>)</xsl:text>
+                <!-- <xsl:text>)</xsl:text> -->
               </qui:download-item>
             </xsl:if>
             </qui:option-group>
@@ -173,34 +175,32 @@
         <xsl:if test="//AllowFullPdfDownload = 'true'">
           <qui:hr />
           <qui:download-item href="{$api_url}/cgi/t/text/request-pdf-idx?cc={/Top/DlxsGlobals/CurrentCgi/Param[@name='cc']};idno={/Top/DlxsGlobals/CurrentCgi/Param[@name='idno']}" file-type="PDF" type="FILE">
-            <xsl:value-of select="key('get-lookup','results.str.container')"/>
+            <xsl:value-of select="dlxs:capitalize(normalize-space(key('get-lookup','results.str.container')))"/>
             <xsl:text> PDF</xsl:text>
           </qui:download-item>  
         </xsl:if>
       </qui:download-options>
-      <xsl:if test="//PageSelect/Option/Label/Chunk">
-        <qui:script>
-          DLXS.pageMap = {};
-          <xsl:for-each select="//PageSelect/Option">
-            <xsl:variable name="pageNum">
-              <xsl:apply-templates select="." mode="pagenum" />
-            </xsl:variable>
-            <xsl:variable name="chunk">
-              <xsl:choose>
-                <xsl:when test="Label/Chunk">
-                  <xsl:value-of select="Label/Chunk" />
-                </xsl:when>
-                <xsl:otherwise>
-                  <xsl:value-of select="$pageNum" />
-                </xsl:otherwise>
-              </xsl:choose>
-            </xsl:variable>
-            DLXS.pageMap['<xsl:value-of select="Value" />'] = {};
-            DLXS.pageMap['<xsl:value-of select="Value" />'].pageNum = '<xsl:value-of select="$pageNum" />';
-            DLXS.pageMap['<xsl:value-of select="Value" />'].chunk = '<xsl:value-of select="$chunk" />';
-          </xsl:for-each>
-        </qui:script>
-      </xsl:if>
+      <qui:script>
+        DLXS.pageMap = {};
+        <xsl:for-each select="//PageSelect/Option">
+          <xsl:variable name="pageNum">
+            <xsl:apply-templates select="." mode="pagenum" />
+          </xsl:variable>
+          <xsl:variable name="chunk">
+            <xsl:choose>
+              <xsl:when test="Label/Chunk">
+                <xsl:value-of select="Label/Chunk" />
+              </xsl:when>
+              <xsl:otherwise>
+                <xsl:value-of select="$pageNum" />
+              </xsl:otherwise>
+            </xsl:choose>
+          </xsl:variable>
+          DLXS.pageMap['<xsl:value-of select="Value" />'] = {};
+          DLXS.pageMap['<xsl:value-of select="Value" />'].pageNum = '<xsl:value-of select="$pageNum" />';
+          DLXS.pageMap['<xsl:value-of select="Value" />'].chunk = '<xsl:value-of select="$chunk" />';
+        </xsl:for-each>
+      </qui:script>
     </qui:block>
   </xsl:template>
 
