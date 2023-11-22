@@ -52,6 +52,9 @@
       </div>
       <div class="main-panel">
         <xsl:call-template name="build-search-form" />
+        <xsl:if test="qui:metadata[@slot='item']">
+          <xsl:apply-templates select="qui:metadata[@slot='item']" mode="callout" />
+        </xsl:if>
         <xsl:call-template name="build-results-summary-sort" />
         <xsl:if test="$has-results">
           <xsl:call-template name="build-portfolio-actions" />
@@ -80,6 +83,7 @@
 
   <xsl:template name="build-search-summary">
     <div class="search-summary">
+      <xsl:call-template name="build-search-summary-body" />
       <xsl:choose>
         <xsl:when test="$nav/@total = 0">
           <h2 class="results-heading">
@@ -135,7 +139,6 @@
           </h2>
         </xsl:otherwise>
       </xsl:choose>
-      <xsl:call-template name="build-search-summary-body" />
     </div>
   </xsl:template>
 
@@ -619,10 +622,10 @@
   <xsl:template name="build-collection-header-string">
     <xsl:variable name="header" select="//qui:header[@role='main']" />
     <xsl:choose>
-      <xsl:when test="//qui:block[@slot='item']">
+      <xsl:when test="//qui:metadata[@slot='item']">
         <xsl:value-of select="$header" />
         <xsl:text> / </xsl:text>
-        <xsl:value-of select="//qui:block[@slot='item']//qui:field[@key='title']//qui:values" />
+        <xsl:value-of select="//qui:metadata[@slot='item']//qui:field[@key='title']//qui:values" />
       </xsl:when>
       <xsl:otherwise>
         <xsl:value-of select="$header" />
@@ -766,6 +769,20 @@
       </a>
     </div>
     </xsl:if>
+  </xsl:template>
+
+  <xsl:template match="qui:metadata[@slot='item']" mode="callout">
+    <div calss="mt-1">
+      <dl class="record">
+        <xsl:apply-templates select="qui:field[@key!='subjects']" />
+        <!-- <div>
+          <dt>Links</dt>
+          <dd>
+            <a href="../qui:link[@rel='toc']/@href">Item Information</a>
+          </dd>
+        </div> -->
+      </dl>  
+    </div>              
   </xsl:template>
 
 </xsl:stylesheet>
