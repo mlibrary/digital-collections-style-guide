@@ -376,6 +376,7 @@
   <xsl:template match="qui:download-options//qui:download-item">
     <sl-menu-item data-href="{@href}" value="{@href}">
       <xsl:apply-templates select="@data-chunked" mode="copy" />
+      <xsl:apply-templates select="@data-transfer" mode="copy" />
       <xsl:choose>
         <xsl:when test="@file-type = 'PDF'">
           <sl-icon name="file-pdf" slot="prefix"></sl-icon>
@@ -495,6 +496,17 @@
     <script>
       <xsl:apply-templates mode="copy" />
     </script>
+  </xsl:template>
+
+  <xsl:template name="build-body-extra">
+    <xsl:if test="//qui:download-item[@data-transfer='async']">
+      <sl-dialog label="Download Item" id="download-progress" no-header="true">
+        <p data-slot="message">Downloading...</p>
+        <sl-progress-bar value="0" label="Download progress"></sl-progress-bar>
+        <a slot="footer" href="#" class="button button--primary" data-action="download">Downlaod PDF</a>
+        <sl-button slot="footer" class="sl-button--secondary" data-action="cancel">Cancel</sl-button>
+      </sl-dialog>    
+    </xsl:if>
   </xsl:template>
 
 </xsl:stylesheet>

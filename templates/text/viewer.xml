@@ -21,6 +21,7 @@
   <PrevSequenceLink><?PREV_SEQUENCE_LINK_XML?></PrevSequenceLink>
   <NextSequenceLink><?NEXT_SEQUENCE_LINK_XML?></NextSequenceLink>
   <AllowFullPdfDownload><?FULL_PDF_DOWNLOAD_ENABLED_XML?></AllowFullPdfDownload>
+  <?PDF_CHUNKED?>
   <?MANIFEST_BEHAVIOR_XML?>
 </DocNavigation>
 

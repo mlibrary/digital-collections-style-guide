@@ -74,6 +74,7 @@
         <xsl:call-template name="build-feedback-callout" />
         <xsl:call-template name="build-footer" />
         <iframe name="bookbag-sink" id="bookbag-sink"></iframe>
+        <xsl:call-template name="build-body-extra" />
       </body>
     </html>
   </xsl:template>
@@ -84,6 +85,8 @@
   <xsl:template name="build-extra-styles" />
 
   <xsl:template name="build-body-data" />
+
+  <xsl:template name="build-body-extra" />
 
   <xsl:template match="qui:skip-links">
     <div aria-label="Skip links" class="[ skip-links ]">
