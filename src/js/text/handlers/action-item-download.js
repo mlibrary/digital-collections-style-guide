@@ -72,11 +72,11 @@ window.addEventListener('DOMContentLoaded', (event) => {
 
     const ro = new ResizeObserver((entries) => {
       const entry = entries[0];
-      console.log("ahoy", entry);
       const contentBoxSize = entry.contentBoxSize[0];
-      const width = window.innerWith > 400 ?
+      const width = contentBoxSize.inlineSize >= 250 ?
         Math.floor(contentBoxSize.inlineSize * 0.9) : 
         Math.floor(window.innerWidth * 0.9);
+      console.log("AHOY RO", window.innerWidth, contentBoxSize.inlineSize, width);
 
       downloadAction.style.setProperty('--download-menu-width', `${width}px`);
     })
