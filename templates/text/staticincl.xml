@@ -21,6 +21,8 @@
 
 <CurrentGroup><?CURRENT_GROUP_XML?></CurrentGroup>
  
+<?CHUNK filename="uplift.panels.xml" optional="1"?>
+
 <Footer>
   <?CHUNK filename="footer.xml"?>
 </Footer>

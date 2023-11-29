@@ -5,6 +5,7 @@
   <xsl:template name="build-extra-styles">
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@shoelace-style/shoelace@2.4.0/dist/themes/light.css" />
     <script type="module" src="https://cdn.jsdelivr.net/npm/@shoelace-style/shoelace@2.4.0/dist/shoelace-autoloader.js"></script>
+    <link rel="stylesheet" href="{$docroot}styles/text/tabs.css" />
 
     <!-- <link rel="stylesheet" href="{$docroot}styles/text/item.css" /> -->
 
@@ -39,6 +40,9 @@
     </div>
 
     <div class="[ flex flex-flow-rw flex-gap-1 ][ aside--wrap ]">
+      <xsl:if test="//qui:nav[@role='browse']">
+        <div class="[ side-panel ]"></div>
+      </xsl:if>
       <xsl:if test="//qui:block[@slot='content']//xhtml:h2 or //qui:nav[@rel='pages']">
         <div class="[ aside ]">
           <nav class="[ page-index ]" xx-aria-labelledby="page-index-label">
@@ -55,10 +59,13 @@
           <xsl:if test="
             count(//qui:block[@slot='content']//xhtml:h2) &lt; 1
             and
-            not(//qui:nav[@rel='pages'])">
+            not(//qui:nav[@rel='pages'])
+            and
+            not(//qui:nav[@role='browse'])">
             <xsl:text> full</xsl:text>
           </xsl:if>
         </xsl:attribute>
+        <xsl:call-template name="build-browse-navigation" />
         <div class="text-block">
           <xsl:apply-templates select="//qui:block[@slot='content']">
             <!-- <xsl:with-param name="classes">[ viewport-narrow ]</xsl:with-param> -->
@@ -78,6 +85,14 @@
     </section>
   </xsl:template>
 
+  <xsl:template match="qui:block[@data-current-page='contents']//xhtml:ul[@class='list-tree']//xhtml:details" mode="copy">
+    <details>
+      <xsl:attribute name="class">tree</xsl:attribute>
+      <xsl:apply-templates select="@*" mode="copy" />
+      <xsl:apply-templates mode="copy" />
+    </details>
+  </xsl:template>
+
   <xsl:template match="qui:block[@data-current-page='contents']//xhtml:details" mode="copy">
     <details>
       <xsl:attribute name="class">panel w-100</xsl:attribute>
@@ -94,9 +109,32 @@
     </div>
   </xsl:template>
 
+  <xsl:template match="qui:block[@data-current-page]//xhtml:ul[@class='list-tree']" mode="copy" priority="101">
+    <div class="mb-1 flex flex-flow-row">
+      <button class="button button--small button--secondary" data-action="expand-all">
+        <span class="material-icons" aria-hidden="true">add</span>
+        <span>Expand All</span>
+      </button>
+      <button class="button button--small button--secondary" data-action="collapse-all">
+        <span class="material-icons" aria-hidden="true">remove</span>
+        <span>Collapse All</span>
+      </button>
+    </div>
+    <ul class="list-tree">
+      <xsl:apply-templates mode="copy" />
+    </ul>
+  </xsl:template>
+
   <xsl:template match="qui:block[@data-current-page='contents']//xhtml:ul" mode="copy">
     <ul>
-      <xsl:attribute name="class">list-unstyled</xsl:attribute>
+      <xsl:attribute name="class">
+        <xsl:choose>
+          <xsl:when test="@class">
+            <xsl:value-of select="@class" />
+          </xsl:when>
+          <xsl:otherwise>list-unstyled</xsl:otherwise>
+        </xsl:choose>  
+      </xsl:attribute>
       <xsl:apply-templates select="@*" mode="copy" />
       <xsl:apply-templates mode="copy" />
     </ul>
@@ -104,7 +142,12 @@
 
   <xsl:template match="qui:block[@data-current-page='contents']//xhtml:ul//xhtml:li" mode="copy">
     <li>
-      <xsl:attribute name="class">mb-1</xsl:attribute>
+      <!-- <xsl:attribute name="class">
+        <xsl:choose>
+          <xsl:when test="@class"><xsl:value-of select="@class" /></xsl:when>
+          <xsl:otherwise>mb-1</xsl:otherwise>
+        </xsl:choose>
+      </xsl:attribute> -->
       <xsl:apply-templates select="@*" mode="copy" />
       <xsl:apply-templates mode="copy" />
     </li>
@@ -128,4 +171,23 @@
     </div>
   </xsl:template>
 
+  <xsl:template name="build-browse-navigation">
+    <xsl:if test="//qui:nav[@role='browse']">
+      <nav aria-labelledby="maincontent" class="horizontal-navigation-container mb-2">
+        <ul class="horizontal-navigation-list">
+          <xsl:for-each select="//qui:nav[@role='browse']/qui:link">
+            <li>
+              <a href="{@href}">
+                <xsl:if test="@current = 'true'">
+                  <xsl:attribute name="aria-current">page</xsl:attribute>
+                </xsl:if>
+                <xsl:value-of select="qui:label" />
+              </a>
+            </li>
+          </xsl:for-each>
+        </ul>
+      </nav>
+    </xsl:if>
+  </xsl:template>
+    
 </xsl:stylesheet>

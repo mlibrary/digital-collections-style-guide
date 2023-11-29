@@ -5,6 +5,9 @@
 
   <xsl:template name="get-title">
     <xsl:choose>
+      <xsl:when test="//PageTitle">
+        <xsl:value-of select="//PageTitle" />
+      </xsl:when>
       <xsl:when test="key('get-lookup', concat('uplift.str.page.', $current-page))">
         <xsl:value-of select="key('get-lookup', concat('uplift.str.page.', $current-page))" />
       </xsl:when>
@@ -24,6 +27,9 @@
     </qui:header>
 
     <xsl:call-template name="build-breadcrumbs" />
+
+    <xsl:call-template name="build-browse-navigation" />
+
     <xsl:call-template name="build-static-content" />
 
     <xsl:apply-templates select="//Navigation" />
@@ -40,6 +46,31 @@
         <xsl:value-of select="//Navigation//Page[1]/Label" />
       </qui:link>
     </xsl:if>
+  </xsl:template>
+
+  <xsl:template name="build-browse-navigation">
+    <xsl:if test="//qui:panel[@slot='browse']//qui:link[@key]">
+      <qui:nav role="browse">
+        <xsl:for-each select="//qui:panel[@slot='browse']//qui:link[@key]">
+          <qui:link key="{@key}" href="{@href}">
+            <xsl:if test="//CurrentPage = @key">
+              <xsl:attribute name="current">true</xsl:attribute>
+            </xsl:if>
+            <qui:label>
+              <xsl:value-of select="key('get-lookup', concat('uplift.str.page.', @key))" />
+            </qui:label>
+          </qui:link>
+        </xsl:for-each>
+        <xsl:for-each select="/Top/NavHeader/BrowseFields/Field">
+          <qui:link href="{Link}" key="{Name}">
+            <qui:label>
+              <xsl:value-of select="key('get-lookup', concat('browse.str.', Name, '.column'))" />
+              <!-- <xsl:value-of select="dlxs:capitalize(Name)" /> -->
+            </qui:label>
+          </qui:link>
+        </xsl:for-each>
+      </qui:nav>
+    </xsl:if>    
   </xsl:template>
 
   <xsl:template name="build-static-content">
