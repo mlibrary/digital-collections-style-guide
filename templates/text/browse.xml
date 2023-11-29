@@ -34,6 +34,9 @@
   <BrowseStringForm><?BROWSE_STRING_FORM_XML?></BrowseStringForm>
   <BrowseLevels><?BROWSE_LEVELS_XML?></BrowseLevels>
 
+
+  <?CHUNK filename="uplift.panels.xml" optional="1"?>
+
    <Footer>
     <?CHUNK filename="footer.xml"?>
   </Footer>

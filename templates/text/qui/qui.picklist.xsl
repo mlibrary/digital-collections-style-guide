@@ -99,13 +99,13 @@
         </xsl:choose>
       </xsl:variable>
 
-      <xsl:variable name="identifier" select="translate(ItemHeader/HEADER/FILEDESC/PUBLICATIONSTMT/IDNO[@TYPE='dlps'], 'ABCDEFGHIJKLMNOPQRSTUVWXYZ','abcdefghijklmnopqrstuvwxyz')" />
+      <xsl:variable name="identifier" select="translate(ItemHeader/HEADER/FILEDESC/PUBLICATIONSTMT/IDNO[@TYPE='dlps' or @TYPE='DLPS'], 'ABCDEFGHIJKLMNOPQRSTUVWXYZ','abcdefghijklmnopqrstuvwxyz')" />
 
       <qui:section type="item" identifier="{$identifier}" auth-required="{AuthRequired}" encoding-type="{$encoding-type}" encoding-level="{$item-encoding-level}">
         <qui:link rel="result" href="{Url}" />
         <qui:link rel="iiif" href="{$api_url}/cgi/t/text/api/image/{$collid}:{$identifier}:1/full/!250,250/0/default.jpg" />
-        <xsl:call-template name="build-item-metadata">
-          <xsl:with-param name="item" select="ItemHeader" />
+        <xsl:call-template name="build-header-metadata">
+          <xsl:with-param name="item" select="." />
           <xsl:with-param name="encoding-type" select="$encoding-type" />
           <xsl:with-param name="item-encoding-level" select="$item-encoding-level" />
           <xsl:with-param name="slot">metadata</xsl:with-param>
@@ -157,7 +157,7 @@
   </xsl:template>
 
   <xsl:template name="group-by-volume">
-    <qui:section type="volume" identifier="{IDNO[@TYPE='dlps']}">
+    <qui:section type="volume" identifier="{IDNO[@TYPE='dlps' or @TYPE='DLPS']}">
       <xsl:call-template name="build-volume-group" />
       <xsl:call-template name="iterate-issues" />  
     </qui:section>
@@ -199,7 +199,7 @@
         </xsl:choose>  
       </xsl:variable>
 
-      <qui:section type="issue" identifier="{IDNO[@TYPE='dlps']}">
+      <qui:section type="issue" identifier="{IDNO[@TYPE='dlps' or @TYPE='DLPS']}">
         <qui:link rel="issue" href="{Url}" />
         <qui:header>
           <qui:title>

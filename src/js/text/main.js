@@ -16,6 +16,7 @@ import "./handlers/action-bookbag-form.js";
 
 import "./handlers/action-copy-text.js";
 import "./handlers/action-item-download.js";
+import "./handlers/action-toggle-tree.js";
 import "./handlers/item-page-navigator.js";
 import "./viewers/viewer-mirador.js";
 // import "./viewers/viewer-plaintext.js";

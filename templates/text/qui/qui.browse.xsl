@@ -105,13 +105,24 @@
 
   <xsl:template name="build-browse-navigation">
     <qui:nav role="browse">
-      <xsl:if test="//CollectionIdno">
-        <qui:link key="picklist" href="/cgi/t/text/text-idx?cc={$collid};idno={//CollectionIdno}">
-          <qui:label>
-            <xsl:value-of select="key('get-lookup', 'uplift.picklist.str.morethanoneitem')" />
-          </qui:label>
-        </qui:link>
-      </xsl:if>
+      <xsl:choose>
+        <xsl:when test="//qui:panel[@slot='browse']//qui:link[@key]">
+          <xsl:for-each select="//qui:panel[@slot='browse']//qui:link[@key]">
+            <qui:link key="{@key}" href="{@href}">
+              <qui:label>
+                <xsl:value-of select="key('get-lookup', concat('uplift.str.page.', @key))" />
+              </qui:label>
+            </qui:link>
+          </xsl:for-each>
+        </xsl:when>
+        <xsl:when test="//CollectionIdno">
+          <qui:link key="picklist" href="/cgi/t/text/text-idx?cc={$collid};idno={//CollectionIdno}">
+            <qui:label>
+              <xsl:value-of select="key('get-lookup', 'uplift.picklist.str.morethanoneitem')" />
+            </qui:label>
+          </qui:link>
+        </xsl:when>
+      </xsl:choose>
       <xsl:for-each select="/Top/NavHeader/BrowseFields/Field">
         <qui:link href="{Link}" key="{Name}">
           <xsl:if test="Name = $current-browse-field">

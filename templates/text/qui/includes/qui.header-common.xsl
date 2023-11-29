@@ -450,7 +450,7 @@
 
   <xsl:template match="SOURCEDESC" mode="process-pubinfo">
     <xsl:variable name="bibl-source" select="(BIBLFULL|BIBL)" />
-    <xsl:variable name="pubstatement-source" select="($bibl-source/PUBLICATIONSTMT|$bibl-source/IMPRINT)" />
+    <xsl:variable name="pubstatement-source" select="($bibl-source/PUBLICATIONSTMT|$bibl-source/IMPRINT|$bibl-source)" />
     <xsl:call-template name="build-field">
       <xsl:with-param name="key">pubinfo</xsl:with-param>
       <xsl:with-param name="value">

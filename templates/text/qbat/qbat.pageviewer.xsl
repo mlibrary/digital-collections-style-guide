@@ -5,7 +5,7 @@
 
     <script>
       window.mUse = window.mUse || [];
-      window.mUse.push('sl-dropdown');
+      window.mUse.push('sl-dropdown', 'sl-menu', 'sl-menu-item', 'sl-dialog');
     </script>
 
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@shoelace-style/shoelace@2.4.0/dist/themes/light.css" />
