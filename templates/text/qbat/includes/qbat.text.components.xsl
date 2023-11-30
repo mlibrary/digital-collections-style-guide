@@ -851,6 +851,7 @@
   </xsl:template>
 
   <xsl:template match="tei:NOTE1|tei:NOTE2">
+    <xsl:variable name="view" select="//Param[@name='view']" />
     <xsl:choose>
       <xsl:when test="not(@HREF)">
         <!-- no @HREF, therefore render the note content -->

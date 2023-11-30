@@ -100,20 +100,11 @@
     <qui:li>
       <xsl:choose>
         <xsl:when test="$do-build-link = 'false' or $non-linked-div = 'true'">
-          <qui:debug>oops</qui:debug>
+          <xsl:apply-templates select="." mode="build-label" />
         </xsl:when>
         <xsl:otherwise>
           <qui:link href="{ViewPageLink}">
-            <xsl:value-of select="key('get-lookup','headerutils.str.page')"/>
-            <xsl:text> </xsl:text>
-            <xsl:if test="PageNumber!='NA'">
-              <xsl:value-of select="PageNumber"/>
-            </xsl:if>
-            <xsl:if test="PageNumber='NA'">
-              <xsl:text>[unnumbered]</xsl:text>
-            </xsl:if>
-            <xsl:if test="PageType!='viewer.ftr.uns'"><xsl:text> - </xsl:text></xsl:if>
-            <xsl:value-of select="key('get-lookup',PageType)"/>        
+            <xsl:apply-templates select="." mode="build-label" />
           </qui:link>
         </xsl:otherwise>
       </xsl:choose>
@@ -284,6 +275,19 @@
         <xsl:text>false</xsl:text>
       </xsl:otherwise>
     </xsl:choose>
+  </xsl:template>
+
+  <xsl:template match="ScopingPage" mode="build-label">
+    <xsl:value-of select="key('get-lookup','headerutils.str.page')"/>
+    <xsl:text> </xsl:text>
+    <xsl:if test="PageNumber!='NA'">
+      <xsl:value-of select="PageNumber"/>
+    </xsl:if>
+    <xsl:if test="PageNumber='NA'">
+      <xsl:text>[unnumbered]</xsl:text>
+    </xsl:if>
+    <xsl:if test="PageType!='viewer.ftr.uns'"><xsl:text> - </xsl:text></xsl:if>
+    <xsl:value-of select="key('get-lookup',PageType)"/>        
   </xsl:template>
 
   <xsl:template match="Divhead">
