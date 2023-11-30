@@ -8,7 +8,9 @@
     <Filename>../vendor/str.split.function.xsl</Filename>
     <Filename>../vendor/xslfunctions.xsl</Filename>
     <Filename>qui/components/*.xsl</Filename>
-    <Filename>qui/includes/qui.results-item.xsl</Filename>
+    <!-- <Filename>qui/includes/qui.results-item.xsl</Filename> -->
+    <Filename>qui/includes/qui.header-common.xsl</Filename>
+    <Filename>qui/includes/qui.header-reslist.xsl</Filename>
     <Filename>qui/includes/qui.bookbag-items.xsl</Filename>
     <Filename>qui/qui.bbagcount.xsl</Filename>
   </XslFallbackFileList>

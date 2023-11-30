@@ -127,7 +127,7 @@
   </xsl:template>
 
   <xsl:template match="qui:section" mode="result">
-    <section class="[ results-list--small ]">
+    <section class="[ results-list--grid ]">
       <xsl:variable name="link-href">
         <xsl:choose>
           <xsl:when test="qui:link[@rel='result']">
@@ -144,44 +144,48 @@
             <xsl:apply-templates select="qui:title" mode="title" />
           </xsl:when>
           <xsl:otherwise>
-            <xsl:apply-templates select="qui:block[@slot='metadata']//qui:field[@key='title']" mode="title" />
+            <xsl:apply-templates select="qui:metadata[@slot='item']//qui:field[@key='title']" mode="title" />
           </xsl:otherwise>
         </xsl:choose>
       </xsl:variable>
 
+      <xsl:choose>
+        <xsl:when test="qui:link[@rel='iiif']">
+          <img loading="lazy" class="[ results-list__image ]" src="{qui:link[@rel='iiif']/@href}" aria-hidden="true" alt="" />
+        </xsl:when>
+        <xsl:otherwise>
+          <div class="[ results-list__blank ]" aria-hidden="true">
+            <xsl:attribute name="data-type">
+              <xsl:choose>
+                <xsl:when test="qui:link[@rel='icon']/@type='audio'">
+                  <span>volume_up</span>
+                </xsl:when>
+                <xsl:when test="qui:link[@rel='icon']/@type='doc'">
+                  <span>description</span>
+                </xsl:when>
+                <xsl:when test="qui:link[@rel='icon']/@type='pdf'">
+                  <span>description</span>
+                </xsl:when>
+                <xsl:when test="qui:link[@rel='icon']/@type='restricted'">
+                  <span>lock</span>
+                </xsl:when>
+                <xsl:otherwise>blank</xsl:otherwise>
+              </xsl:choose>
+            </xsl:attribute>
+          </div>
+        </xsl:otherwise>
+      </xsl:choose>      
+
       <div class="results-card">
-        <xsl:choose>
-          <xsl:when test="qui:link[@rel='iiif']">
-            <img loading="lazy" class="[ results-list__image ]" src="{qui:link[@rel='iiif']/@href}" aria-hidden="true" alt="" />
-          </xsl:when>
-          <xsl:otherwise>
-            <div class="[ results-list__blank ]" aria-hidden="true">
-              <xsl:attribute name="data-type">
-                <xsl:choose>
-                  <xsl:when test="qui:link[@rel='icon']/@type='audio'">
-                    <span>volume_up</span>
-                  </xsl:when>
-                  <xsl:when test="qui:link[@rel='icon']/@type='doc'">
-                    <span>description</span>
-                  </xsl:when>
-                  <xsl:when test="qui:link[@rel='icon']/@type='pdf'">
-                    <span>description</span>
-                  </xsl:when>
-                  <xsl:when test="qui:link[@rel='icon']/@type='restricted'">
-                    <span>lock</span>
-                  </xsl:when>
-                  <xsl:otherwise>blank</xsl:otherwise>
-                </xsl:choose>
-              </xsl:attribute>
-            </div>
-          </xsl:otherwise>
-        </xsl:choose>
         <div class="results-list__content flex flex-flow-column flex-grow-1">
           <h3 class="js-toc-ignore">
             <a href="{$link-href}" class="results-link">
               <xsl:value-of select="$link-title" />
             </a>
           </h3>
+        </div>
+      </div>
+      <div class="results-detail">
           <dl class="[ results ]">
             <!-- <xsl:apply-templates select="qui:collection" /> -->
             <xsl:apply-templates select="qui:block[@slot='metadata']//qui:field" />
@@ -199,7 +203,6 @@
           <xsl:apply-templates select="qui:block[@slot='summary']" mode="callout">
             <xsl:with-param name="title" select="normalize-space($link-title)" />
           </xsl:apply-templates>
-        </div>
       </div>
 
       <xsl:variable name="bb-id" select="generate-id()" />

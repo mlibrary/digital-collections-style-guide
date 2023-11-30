@@ -10,12 +10,14 @@ window.addEventListener('DOMContentLoaded', (event) => {
   const btnExpandAll = document.querySelector('button[data-action="expand-all"]');
   const btnCollapseAll = document.querySelector('button[data-action="collapse-all"]');
 
-  btnExpandAll.addEventListener('click', () => {
-    toggleDetails(true);
-  })
+  if (btnExpandAll && btnCollapseAll) {
+    btnExpandAll.addEventListener('click', () => {
+      toggleDetails(true);
+    })
 
-  btnCollapseAll.addEventListener('click', () => {
-    toggleDetails(false);
-  })
+    btnCollapseAll.addEventListener('click', () => {
+      toggleDetails(false);
+    })    
+  }
 
 });
