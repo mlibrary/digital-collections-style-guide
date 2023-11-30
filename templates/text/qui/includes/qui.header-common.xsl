@@ -178,7 +178,14 @@
 
   <xsl:template name="build-useguidelines-for-monograph">
     <xsl:param name="item" />
-    <xsl:apply-templates select="($item/ItemHeader|$item)/HEADER/FILEDESC/PUBLICATIONSTMT/AVAILABILITY" mode="metadata" />
+    <xsl:choose>
+      <xsl:when test="($item/ItemHeader|$item)/HEADER/@TYPE='restricted'">
+        <xsl:call-template name="build-useguidelines-restricted" />
+      </xsl:when>
+      <xsl:otherwise>
+        <xsl:apply-templates select="($item/ItemHeader|$item)/HEADER/FILEDESC/PUBLICATIONSTMT/AVAILABILITY" mode="metadata" />
+      </xsl:otherwise>
+    </xsl:choose>
   </xsl:template>
 
   <xsl:template name="build-useguidelines-for-serialissue">
@@ -188,7 +195,7 @@
 
   <xsl:template name="build-subjects-for-monograph">
     <xsl:param name="item" />
-    <xsl:if test="$item//KEYWORDS/child::TERM">
+    <xsl:if test="$item//KEYWORDS/child::TERM[not(@TYPE) or @TYPE='subject']">
       <xsl:call-template name="build-res-item-subjects">
         <xsl:with-param name="subj-parent" select="$item"/>
       </xsl:call-template>
@@ -930,6 +937,19 @@
         </xhtml:p>
       </xsl:otherwise>
     </xsl:choose>
+  </xsl:template>
+
+  <xsl:template name="build-useguidelines-restricted">
+    <qui:field key="useguidelines">
+      <qui:label>
+        <xsl:value-of select="key('get-lookup', 'headerutils.str.22')" />
+      </qui:label>
+      <qui:values>
+        <qui:value>
+          <xsl:value-of select="key('get-lookup', 'results.str.9')" />
+        </qui:value>
+      </qui:values>
+    </qui:field>
   </xsl:template>
   
 </xsl:stylesheet>

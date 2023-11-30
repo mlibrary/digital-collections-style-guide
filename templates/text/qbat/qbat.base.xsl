@@ -426,6 +426,12 @@
                 Collections</a
               >
             </p>
+            <p>
+              <a href="https://www.lib.umich.edu/about-us/policies/takedown-policy-addressing-copyright-concerns"
+                >Takedown Policy for Addressing Copyright
+                Concerns</a
+              >
+            </p>
           </section>
           <section style="display: none;">
             <h2>Contact Us</h2>
