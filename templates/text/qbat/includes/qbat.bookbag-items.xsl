@@ -33,6 +33,7 @@
             <xsl:text>visually-hidden</xsl:text>
           </xsl:if>
         </xsl:with-param>
+        <xsl:with-param name="type">submit</xsl:with-param>
       </xsl:call-template>
     </form>
   </xsl:template>

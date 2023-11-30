@@ -139,6 +139,9 @@
         <xsl:if test="//NavItem[Name='browse']/Tab='true'">
           <qui:link rel="browse" icon="list" href="{//NavItem[Name='browse']/Link}">Browse</qui:link>
         </xsl:if>
+        <xsl:if test="//NavItem[Name='contents']/Tab='true'">
+          <qui:link rel="browse" icon="list" href="{//NavItem[Name='contents']/Link}">Contents</qui:link>
+        </xsl:if>
         <qui:link rel="search" icon="search" href="{//NavItem[Name='search']/Link}">Search</qui:link>
         <xsl:if test="//NavItem/Name='bookbag'">
           <qui:link rel="portfolios" icon="bookmark" href="{//NavItem[Name='bookbag']/Link}">Bookbag</qui:link>

@@ -167,7 +167,7 @@
       </xsl:if>
       <xsl:apply-templates select="MediaInfo" mode="iiif-link" />
 
-      <xsl:call-template name="build-item-metadata">
+      <xsl:call-template name="build-header-metadata">
         <xsl:with-param name="item" select="." />
         <xsl:with-param name="encoding-type" select="$encoding-type" />
         <xsl:with-param name="item-encoding-level" select="$item-encoding-level" />
