@@ -225,6 +225,11 @@
         </xsl:for-each>
       </qui:script>
     </qui:block>
+    <xsl:call-template name="build-action-panel-portfolio" />
+
+    <xsl:call-template name="build-action-panel-iiif-link" />
+
+    <xsl:call-template name="build-action-panel-extra" />
   </xsl:template>
 
   <xsl:template name="build-action-panel-v1">
@@ -261,6 +266,7 @@
   <xsl:template name="build-action-panel-extra" />
 
   <xsl:template name="build-action-panel-portfolio">
+    <qui:debug>WUT</qui:debug>
     <xsl:choose>
       <xsl:when test="/Top/BookbagResults/Item[@idno=$idno]">
         <qui:form slot="bookbag" rel="remove" href="{/Top/BookbagResults/Item[@idno=$idno]/AddRemoveUrl}" data-identifier="{$idno}">
