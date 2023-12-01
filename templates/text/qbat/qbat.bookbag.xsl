@@ -185,10 +185,10 @@
           </h3>
         </div>
       </div>
-      <div class="results-detail">
+      <div class="results-details">
           <dl class="[ results ]">
             <!-- <xsl:apply-templates select="qui:collection" /> -->
-            <xsl:apply-templates select="qui:block[@slot='metadata']//qui:field" />
+            <xsl:apply-templates select="qui:metadata[@slot='item']//qui:field" />
             <xsl:if test="qui:link[@rel='toc' or @rel='detail']">
               <div>
                 <dt>Links</dt>

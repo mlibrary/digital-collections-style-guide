@@ -440,7 +440,8 @@
   </Lookup>
   <Lookup id="uplift">
     <Item key="uplift.str.contents">Item Information</Item>
-    <Item key="uplift.str.page.contents">Collection Contents</Item>
+    <Item key="uplift.str.page.contents">Browse: Collection Contents</Item>
+    <Item key="uplift.str.page.browse">Browse: Collection Contents</Item>
     <Item key="uplift.section">Section</Item>
     <Item key="uplift.next.section">Next Section</Item>
     <Item key="uplift.previous.section">Previous Section</Item>

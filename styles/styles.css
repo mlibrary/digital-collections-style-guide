@@ -69,6 +69,10 @@ ul:not([class]) ul:not([class]) {
   margin-left: 1rem;
 }
 
+li {
+  margin-bottom: 0.5rem;
+}
+
 /* fight me */
 ul ul {
   margin-left: 1rem;
@@ -794,6 +798,15 @@ fieldset legend {
 .results-list--grid .results-list__image,
 .results-list--grid .results-list__blank {
   grid-area: thumbnail;
+}
+
+.results-list--grid:has(:not(.results--list__image)) .results-list__blank {
+  /* do not show ever */
+  display: none !important;
+}
+
+.results-list--grid:has(:not(.results--list__image)) .results-card h3 {
+  margin-top: 0;
 }
 
 .results-list--grid .portfolio-selection {
@@ -2056,6 +2069,11 @@ m-website-header nav a:focus span:not(.material-icons) {
 
 m-website-header nav a .material-icons {
   font-size: 1.5em;
+}
+
+/* this sould be nice, alas */
+.website-header__inner-container {
+  row-gap: 0.5rem;
 }
 
 @media screen and (max-width: 500px) {
