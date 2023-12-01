@@ -117,7 +117,7 @@
       </xsl:choose>
     </xsl:variable>
     <details class="panel" data-list-expanded="false" data-key="{@key}">
-      <xsl:if test="$open = 'true'">
+      <xsl:if test="true() or $open = 'true'">
         <xsl:attribute name="open">open</xsl:attribute>
       </xsl:if>
       <summary>

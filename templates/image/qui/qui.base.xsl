@@ -53,9 +53,9 @@
   </xsl:param>
   
   <xsl:template match="Top">
-    <xsl:processing-instruction name="xml-stylesheet">
+    <!-- <xsl:processing-instruction name="xml-stylesheet">
       <xsl:value-of select="concat('type=&quot;text/xsl&quot; href=&quot;', $docroot, '/templates/debug.qui.xsl&quot;')" />
-    </xsl:processing-instruction>
+    </xsl:processing-instruction> -->
     <qui:root view="{$view}" collid="{$collid}" username="{//AuthenticatedUsername}" context-type="{$context-type}" api_url="{$api_url}">
       <xsl:if test="//BbagOptionsMenu/UserIsOwner = 'true'">
         <xsl:attribute name="user-is-owner">true</xsl:attribute>
@@ -111,8 +111,9 @@
     <qui:m-website-header name="Digital Collections">
       <qui:search-form collid="{$collid}" value="{//Param[@name='q1']}" />
       <qui:nav>
-        <qui:link rel="help" href="{//Help}">Help</qui:link>
-        <qui:link rel="portfolios" href="{//OpenPortfolio/Url}">Portfolios</qui:link>
+        <qui:link rel="feedback" icon="email" href="{//FeedbackUrl}">Contact Us</qui:link>
+        <qui:link rel="help" icon="help" href="{//Help}">Help</qui:link>
+        <qui:link icon="bookmark" rel="portfolios" href="{//OpenPortfolio/Url}">Portfolios</qui:link>
         <xsl:call-template name="build-login-link" />
       </qui:nav>
     </qui:m-website-header>
@@ -138,10 +139,12 @@
     <qui:link href="{//LoginLink/Url}" id="action-login">
       <xsl:choose>
         <xsl:when test="//LoginLink/Mode = 'logout'">
+          <xsl:attribute name="icon">logout</xsl:attribute>
           <xsl:attribute name="data-logged-in">true</xsl:attribute>
           <xsl:text>Log out</xsl:text>
         </xsl:when>
         <xsl:otherwise>
+          <xsl:attribute name="icon">login</xsl:attribute>
           <xsl:attribute name="data-logged-in">false</xsl:attribute>
           <xsl:text>Log in</xsl:text>
         </xsl:otherwise>
