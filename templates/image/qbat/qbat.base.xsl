@@ -50,7 +50,10 @@
         <xsl:apply-templates select="//qui:skip-links" />
         <div class="border-bottom">
           <m-universal-header></m-universal-header>
-          <xsl:apply-templates select="//qui:m-website-header" />
+          <div class="website-header-mobile">
+            <xsl:apply-templates select="//qui:m-website-header" />
+            <xsl:apply-templates select="//qui:m-website-header" mode="mobile-nav" />
+          </div>
           <xsl:apply-templates select="//qui:sub-header" />
         </div>
 
@@ -62,6 +65,7 @@
           <xsl:apply-templates select="//qui:main" />
         </main>
 
+        <xsl:call-template name="build-feedback-callout" />
         <xsl:call-template name="build-footer" />
       </body>
     </html>
@@ -145,6 +149,23 @@
     </m-website-header>
   </xsl:template>
 
+  <xsl:template match="qui:m-website-header" mode="mobile-nav">
+    <div class="mobile-nav">
+      <span class="nav-btn"></span>
+      <div class="submenu-container">
+        <div class="primary-container">
+          <ul>
+            <xsl:for-each select="qui:nav/qui:link">
+              <li>
+                <xsl:apply-templates select="." />
+              </li>
+            </xsl:for-each>
+          </ul>
+        </div>
+      </div>
+    </div>
+  </xsl:template>
+
   <xsl:template match="qui:sub-header">
     <div class="website-sub-header">
       <div class="[ viewport-container flex ][ flex-center flex-gap-0_5 ]">
@@ -161,7 +182,7 @@
   </xsl:template>
 
   <xsl:template match="qui:m-website-header/qui:nav">
-    <nav class="[ flex flex-end ][ gap-0_5 ]">
+    <nav class="[ primary-nav ][ flex flex-end ][ gap-0_5 ]">
       <xsl:apply-templates select="qui:link" />
     </nav>
   </xsl:template>
@@ -201,11 +222,31 @@
 
   <xsl:template name="build-breadcrumbs-extra-nav"></xsl:template>
 
+  <xsl:template name="build-feedback-callout">
+    <xsl:variable name="feedback-href">
+      <xsl:call-template name="get-feedback-href" />
+    </xsl:variable>
+
+    <div class="[ mt-1 feedback-callout ]">
+      <div class="viewport-container">
+        <div class="[ pt-2 pb-2 ]">
+          <div class="flex flex-flow-row gap-0_5">
+            <span class="material-icons contact-icon" aria-hidden="true">email</span>
+            <span>
+              Do you have questions about this content? Need to report a problem?
+              Please <a class="text--bold" href="{$feedback-href};to=tech">contact us</a>.
+            </span>
+          </div>
+        </div>
+      </div>
+    </div>
+  </xsl:template>
+
   <xsl:template name="build-footer">
     <xsl:variable name="feedback-href">
       <xsl:call-template name="get-feedback-href" />
     </xsl:variable>
-    <footer class="[ footer ][ mt-2 ]">
+    <footer class="[ footer ]">
       <div class="viewport-container">
         <div class="[ footer__content ]">
           <section>
@@ -372,7 +413,14 @@
                 Collections</a
               >
             </p>
+            <p>
+              <a href="https://www.lib.umich.edu/about-us/policies/takedown-policy-addressing-copyright-concerns"
+                >Takedown Policy for Addressing Copyright
+                Concerns</a
+              >
+            </p>
           </section>
+          <xsl:if test="false()">
           <section>
             <h2>Contact Us</h2>
             <ul>
@@ -435,7 +483,7 @@
               </li>
             </ul>
           </section>
-                    
+        </xsl:if>                    
         </div>
       </div>
       <div class="[ footer__disclaimer ]">
@@ -516,6 +564,13 @@
         <xsl:attribute name="data-target"><xsl:value-of select="@target" /></xsl:attribute>
       </xsl:if>
       <xsl:apply-templates select="@*[starts-with(name(), 'data-')]" mode="copy" />
+
+      <xsl:if test="@icon">
+        <span class="material-icons" aria-hidden="true">
+          <xsl:value-of select="@icon" />
+        </span>
+        <xsl:text> </xsl:text>
+      </xsl:if>
 
       <xsl:choose>
         <xsl:when test="@rel = 'next'">Next</xsl:when>
