@@ -178,7 +178,7 @@
     <div class="[ gallery-view ]">
       <xsl:for-each select="xhtml:figure">
         <!-- <div class="[ card ]"> -->
-          <a class="[ card ][ border mb-1 ]" href="{@href}">
+          <a class="[ card ][ border mb-1 ]" href="{@href}" id="{@id}">
             <xsl:apply-templates select="xhtml:img" mode="card-image" />
             <xsl:apply-templates select="xhtml:xfigcaption/xhtml:h3" mode="card-title" />
             <xsl:apply-templates select="xhtml:figcaption" mode="card-body" />
@@ -202,7 +202,17 @@
     <xsl:apply-templates select="." mode="copy-guts" />
   </xsl:template>
 
-  <xsl:template match="xhtml:figcaption/xhtml:h3" mode="copy-guts" priority="101" />
+  <xsl:template match="xhtml:h3" mode="card-title" priority="102">
+    <h3 class="[ card__heading ]">
+      <xsl:apply-templates select="." mode="copy-guts" />
+    </h3>
+  </xsl:template>
+
+  <xsl:template match="xhtml:figcaption/xhtml:h3" mode="copy" priority="101">
+    <h3 class="card__heading js-toc-ignore">
+      <xsl:apply-templates select="." mode="copy-guts" />
+    </h3>
+  </xsl:template>
 
   <xsl:template match="qui:block[@slot='contentwarning']">
     <xsl:if test="normalize-space(.)">
@@ -273,7 +283,7 @@
   </xsl:template>
 
   <xsl:template match="qui:figure" mode="build-figure">
-    <figure class="flex align-center flex-flow-column">
+    <figure class="flex align-center flex-flow-column" id="{@id}">
       <xsl:apply-templates select="qui:img" />
       <xsl:apply-templates select="qui:caption" />
     </figure>

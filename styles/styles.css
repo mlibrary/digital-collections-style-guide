@@ -970,6 +970,7 @@ fieldset legend {
 
 .results-list--grid .results-list__content h3:hover {
   box-shadow: none;
+  background: transparent;
 }
 
 .results-list--grid .results-list__content h3 a {
@@ -977,7 +978,9 @@ fieldset legend {
 }
 
 .results-list--grid .results-list__content h3 a:hover {
+  background: var(--color-maize-300);
   box-shadow: inset 0 -2px #1d7491;
+  transition: background 0.5s;
 }
 
 .results-list__image {

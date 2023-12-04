@@ -139,7 +139,7 @@
   <xsl:template match="div[@data-slot='contents'][Content]" mode="copy-guts" priority="101">
     <!-- we are doing a nested thing -->
     <xsl:for-each select="Content/section">
-      <xhtml:figure href="browse#{@id}">
+      <xhtml:figure href="browse#{@id}" id="fig-{@id}">
         <xhtml:img src="{img/@src}" alt="{img/@alt}" />
         <xhtml:figcaption>
           <xhtml:h3 id="{@id}">

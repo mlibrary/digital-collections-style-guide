@@ -299,3 +299,7 @@ a.is-active-link {
 .is-active-link::before {
  background-color: var(--color-teal-400);
 }
+
+a.card:has(img) h3 {
+  scroll-margin-top: 12.5rem;
+}
