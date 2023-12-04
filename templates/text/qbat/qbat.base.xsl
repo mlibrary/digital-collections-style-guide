@@ -153,6 +153,7 @@
     <xsl:variable name="root-href">
       <xsl:choose>
         <xsl:when test="$docroot = '/'">/samples/</xsl:when>
+        <xsl:when test="starts-with($api_url, 'https://dcp-proto')">/samples/</xsl:when>
         <xsl:when test="starts-with($api_url, 'https://quod.lib')">/lib/colllist/?byFormat=Text%20Collections</xsl:when>
         <xsl:otherwise>/cgi/c/collsize/coll-idx?byFormat=Text%20Collections</xsl:otherwise>
       </xsl:choose>

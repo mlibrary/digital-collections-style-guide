@@ -30,11 +30,17 @@ window.addEventListener('DOMContentLoaded', (event) => {
     // Where to grab the headings to build the table of contents.
     contentSelector: '.main-panel',
     // Which headings to grab inside of the contentSelector element.
-    headingSelector: 'h2, h3, h4',
+    headingSelector: 'h2, h3, h4, a.card[id]',
     // For headings inside relative or absolute positioned containers within content.
     hasInnerContainers: true,
     collapseDepth: 6,
     scrollSmooth: true,
+    headingObjectCallback: function(object, el) {
+      if ( el.classList.contains('card') ) {
+        object.headingLevel = 3;
+      }
+      return object;
+    }
     // scrollEndCallback: function(event) {
     //   pageIndexDropdown.value = document.querySelector('.is-active-link').getAttribute('href');
     // },
