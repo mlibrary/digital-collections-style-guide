@@ -485,8 +485,24 @@
         </xsl:choose>
         <xsl:apply-templates select="$pubstatement-source/SERIES[1]" mode="metadata-value" />
         <xsl:apply-templates select="$pubstatement-source/DATE[not(@TYPE='sort')][1]" mode="metadata-value" />
+        <xsl:apply-templates select="$pubstatement-source/../EXTENT" mode="metadata-value" />
       </xsl:with-param>
     </xsl:call-template>
+  </xsl:template>
+
+  <xsl:template match="EXTENT" mode="metadata-value">
+    <xsl:variable name="extent" select="substring-before(., ' ')" />
+    <xsl:variable name="key">
+      <xsl:text>uplift.header.str.extent</xsl:text>
+      <xsl:if test="$extent &gt; 1">
+        <xsl:text>.plural</xsl:text>
+      </xsl:if>
+    </xsl:variable>
+    <qui:value>
+      <xsl:value-of select="$extent" />
+      <xsl:text> </xsl:text>
+      <xsl:value-of select="key('get-lookup', $key)" />
+    </qui:value>
   </xsl:template>
 
   <xsl:template match="FILEDESC|SOURCEDESC" mode="process-title">
