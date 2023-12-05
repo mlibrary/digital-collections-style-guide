@@ -11,14 +11,9 @@ window.addEventListener('DOMContentLoaded', (event) => {
       el.after(actionDivEl);
       const btn = actionDivEl.querySelector('button');
       btn.addEventListener('click', () => {
-        console.log("AHOY TOGGLE TRUNCATE", el.dataset.truncated, ! ( el.dataset.truncated == 'true' ));
         el.dataset.truncated = ! ( el.dataset.truncated == 'true' );
         btn.innerText = el.dataset.truncated == 'true' ? 'Show More' : 'Show Less';
       })
-      // const btn = document.createElement('button');
-      // btn.classList.add('button', 'button--ghost', 'button--small');
-      // btn.innerText = `Show More`;
-      // el.after(btn);
     }
   })
 

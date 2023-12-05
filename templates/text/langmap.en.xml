@@ -461,5 +461,7 @@
     <Item key="uplift.header.str.note">Note</Item>
     <Item key="uplift.header.str.printsource">Print Source</Item>
     <Item key="uplift.header.str.print-publication-date">Print Publication Date</Item>
+    <Item key="uplift.header.str.extent">scan</Item>
+    <Item key="uplift.header.str.extent.plural">scans</Item>
   </Lookup>
 </LookupTables>
