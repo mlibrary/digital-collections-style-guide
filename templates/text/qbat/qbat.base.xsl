@@ -1023,17 +1023,12 @@
     <a>
       <xsl:apply-templates select="@*" mode="copy" />
       <xsl:apply-templates mode="copy" />
-      <svg width="25" height="25" viewBox="0 0 24 24" style="margin-left: 0.25rem; vertical-align: text-bottom; display: inline-block; fill: currentColor;">
+      <span class="sr-only"> (opens in new tab)</span>
+    </a>
+      <!-- <svg width="25" height="25" viewBox="0 0 24 24" style="margin-left: 0.25rem; vertical-align: text-bottom; display: inline-block; fill: currentColor;">
         <title>Open in new window</title>
         <path d="M14,3V5H17.59L7.76,14.83L9.17,16.24L19,6.41V10H21V3M19,19H5V5H12V3H5C3.89,3 3,3.9 3,5V19A2,2 0 0,0 5,21H19A2,2 0 0,0 21,19V12H19V19Z"></path>
-      </svg>    
-    </a>
-    <xsl:if test="false()">
-      <span class="text-muted flex flex-align-center gap-0_5 ml-1" style="margin-left: 0.5rem; display: inline-flex; color: var(--color-neutral-300);">
-        (opens in a new window)
-        <span class="material-icons" aria-hidden="true">open_in_new</span>
-      </span>  
-    </xsl:if>
+      </svg> -->
 </xsl:template>
 
   <xsl:template match="@*|*|text()" mode="copy">
