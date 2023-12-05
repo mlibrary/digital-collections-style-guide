@@ -18,7 +18,7 @@
   </xsl:template>
 
   <xsl:template name="build-head-block">
-    <qui:base href="/{substring($collid, 1, 1)}/{$collid}/" />
+    <!-- <qui:base href="/{substring($collid, 1, 1)}/{$collid}/" /> -->
   </xsl:template>
 
   <xsl:template name="build-body-main">

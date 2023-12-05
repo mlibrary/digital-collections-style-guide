@@ -95,7 +95,7 @@
 
   <xsl:template match="qui:block[@data-current-page='contents']//xhtml:details" mode="copy">
     <details>
-      <xsl:attribute name="class">panel w-100</xsl:attribute>
+      <xsl:attribute name="class">list-group w-100</xsl:attribute>
       <xsl:apply-templates select="@*" mode="copy" />
       <xsl:apply-templates mode="copy" />
     </details>
@@ -126,15 +126,15 @@
   </xsl:template>
 
   <xsl:template match="qui:block[@data-current-page='contents']//xhtml:ul" mode="copy">
-    <ul>
-      <xsl:attribute name="class">
+    <ul data-attribute="{@class}">
+      <!-- <xsl:attribute name="class">
         <xsl:choose>
           <xsl:when test="@class">
             <xsl:value-of select="@class" />
           </xsl:when>
           <xsl:otherwise>list-unstyled</xsl:otherwise>
         </xsl:choose>  
-      </xsl:attribute>
+      </xsl:attribute> -->
       <xsl:apply-templates select="@*" mode="copy" />
       <xsl:apply-templates mode="copy" />
     </ul>
@@ -188,6 +188,16 @@
         </ul>
       </nav>
     </xsl:if>
+  </xsl:template>
+
+  <xsl:template match="xhtml:h3" mode="copy">
+    <h3>
+      <xsl:if test="not(@id)">
+        <xsl:attribute name="class">js-toc-ignore</xsl:attribute>
+      </xsl:if>
+      <xsl:apply-templates select="@*" mode="copy" />
+      <xsl:apply-templates mode="copy" />
+    </h3>
   </xsl:template>
     
 </xsl:stylesheet>

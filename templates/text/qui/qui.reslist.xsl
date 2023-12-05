@@ -459,7 +459,7 @@
 
     <xsl:variable name="identifier" select="translate(ItemIdno, 'ABCDEFGHIJKLMNOPQRSTUVWXYZ','abcdefghijklmnopqrstuvwxyz')" />
 
-    <qui:section identifier="{ItemIdno}" auth-required="{AuthRequired}" encoding-type="{DocEncodingType}" encoding-level="{ItemEncodingLevel}">
+    <qui:section identifier="{@idno}" collid="{@collid}" auth-required="{AuthRequired}" encoding-type="{DocEncodingType}" encoding-level="{ItemEncodingLevel}">
       <xsl:apply-templates select="Tombstone" />
       <xsl:apply-templates select="DetailHref" />
       <xsl:apply-templates select="TocHref">
@@ -478,7 +478,7 @@
         <qui:link rel="bookmark" href="{BookbagAddHref}" label="{key('get-lookup', 'results.str.21')}" />
       </xsl:if> -->
       <xsl:if test="normalize-space(BookbagAddHref)">
-        <qui:form slot="bookbag" rel="add" href="{BookbagAddHref}" data-identifier="{$identifier}">
+        <qui:form slot="bookbag" rel="add" href="{BookbagAddHref}" data-identifier="{concat(@collid, ':', $identifier)}">
         </qui:form>
       </xsl:if>
       <xsl:if test="not($encoding-type='serialissue')">
