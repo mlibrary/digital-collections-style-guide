@@ -145,7 +145,7 @@
 
     <xsl:variable name="identifier" select="translate(@idno, 'ABCDEFGHIJKLMNOPQRSTUVWXYZ','abcdefghijklmnopqrstuvwxyz')" />
 
-    <qui:section identifier="{$identifier}" auth-required="{AuthRequired}" encoding-type="{DocEncodingType}" encoding-level="{ItemEncodingLevel}">
+    <qui:section identifier="{$identifier}" bcc="{@bcc}" auth-required="{AuthRequired}" encoding-type="{DocEncodingType}" encoding-level="{ItemEncodingLevel}">
       <xsl:apply-templates select="Tombstone" />
       <xsl:apply-templates select="TocHref">
         <xsl:with-param name="item-encoding-level" xml:base="$item-encoding-level" />

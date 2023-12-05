@@ -25,7 +25,7 @@
     <xsl:param name="item" />
 
     <xsl:choose>
-      <xsl:when test="$item/ItemHeader/HEADER">
+      <xsl:when test="$item/ItemHeader/HEADER or $item/HEADER">
         <xsl:call-template name="build-metadata-fields-for-monograph">
           <xsl:with-param name="item" select="$item" />
         </xsl:call-template>
