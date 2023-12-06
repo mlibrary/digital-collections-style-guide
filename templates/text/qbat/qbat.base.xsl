@@ -252,7 +252,7 @@
             <span class="material-icons contact-icon" aria-hidden="true">email</span>
             <span>
               Do you have questions about this content? Need to report a problem?
-              Please <a class="text--bold" href="{$feedback-href};to=tech">contact us</a>.
+              Please <a class="text--bold" href="{$feedback-href}">contact us</a>.
             </span>
           </div>
         </div>

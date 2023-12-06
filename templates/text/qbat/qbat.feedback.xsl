@@ -56,6 +56,8 @@
 
               <xsl:call-template name="build-provide-email" />
 
+              <xsl:call-template name="build-feedback-target" />
+              
               <!-- <xsl:call-template name="build-include-username" /> -->
               <xsl:choose>
                 <xsl:when test="$username">
@@ -69,7 +71,7 @@
               <div class="form--container">
                 <label for="url">If you'd like tell us about a specific page, please copy and paste the URL here.</label>
                 <div class="form--control">
-                  <input type="text" name="url" id="url" />
+                  <input type="text" name="url" id="url" class="w-100" />
                 </div>
                 <p class="[ hint ][ mt-0 ]">
                   We've supplied the URL of the last page you visited.
@@ -181,7 +183,7 @@
   </xsl:template>
 
   <xsl:template match="@to[. = 'content']" mode="message">
-    <p>We welcome your <strong>questions and comments about this collection.</strong> 
+    <p>We welcome your <strong>questions and comments about collections.</strong> 
     Thanks for taking the time to write.</p>
   </xsl:template>
 
@@ -246,6 +248,37 @@
         To request a reply, please provide your email address.
       </p> -->
     </div>
+  </xsl:template>
+
+  <xsl:template name="build-feedback-target">
+    <fieldset class="form--container">
+      <legend class="mb-0">What are you contacting us for?</legend>
+      <xsl:if test="false()">
+      <p class="[ hint flex ][ mt-0 mb-0 ]">
+        <span aria-hidden="true" class="material-icons" style="margin-right: 0.25rem; color: var(--color-green-300)">check_circle</span>
+        This field is optional.
+      </p>
+      </xsl:if>
+
+      <xsl:variable name="target-list-tmp">
+        <qui:option value="content">I'm asking about this content</qui:option>
+        <qui:option value="tech">I'm reporting a problem using this collection</qui:option>
+        <qui:option value="dcc">I'm interested in Digital Collections</qui:option>
+      </xsl:variable>
+
+      <div class="form--control">
+        <xsl:for-each select="exsl:node-set($target-list-tmp)//qui:option">
+          <div class="form--input--radio">
+            <input type="radio" value="{@value}" name="to" id="to-{position()}">
+              <xsl:if test="@value = 'content'">
+                <xsl:attribute name="checked">checked</xsl:attribute>
+              </xsl:if>
+            </input>
+            <label for="to-{position()}"><xsl:value-of select="." /></label>
+          </div>
+        </xsl:for-each>
+      </div>
+    </fieldset>    
   </xsl:template>
 
   <xsl:template name="build-required-field-label">
