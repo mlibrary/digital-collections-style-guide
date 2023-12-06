@@ -39,6 +39,14 @@
         <xsl:value-of select="key('get-lookup', 'uplift.str.contents')" />
       </qui:link>
     </xsl:if>
+    <xsl:apply-templates select="//ItemDetails/*" mode="build-nav" />
+  </xsl:template>
+
+  <xsl:template match="node()[Link]" mode="build-nav">
+    <qui:link href="{Link}">
+      <xsl:value-of select="Divhead/HEAD" />
+    </qui:link>
+    <xsl:apply-templates select="./node()[Link]" mode="build-nav" />
   </xsl:template>
 
   <xsl:template name="build-body-main">
