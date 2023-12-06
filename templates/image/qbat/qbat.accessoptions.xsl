@@ -90,7 +90,7 @@
   </xsl:template>
 
   <xsl:template name="build-extra-styles-modal">
-    <link rel="stylesheet" href="{$docroot}styles/modals.css" />
+    <link rel="stylesheet" href="{$docroot}dist/css/modals.css" />
   </xsl:template>
 
   <xsl:template name="get-feedback-href">

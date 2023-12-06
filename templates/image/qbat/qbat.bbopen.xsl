@@ -9,8 +9,7 @@
 
   <xsl:template name="build-extra-styles">
     <xsl:comment>DUBIOUS EXCEPTIONS</xsl:comment>
-    <link rel="stylesheet" href="{$docroot}styles/image/reslist.css" />
-    <link rel="stylesheet" href="{$docroot}styles/image/bbopen.css" />
+    <link rel="stylesheet" href="{$docroot}dist/css/image/bbopen.css" />
     <!-- <script src="{$docroot}dist/js/image/bbopen.js"></script> -->
 
     <style id="portfolio-filter-rules" type="text/css">

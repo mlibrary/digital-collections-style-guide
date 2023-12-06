@@ -20,8 +20,8 @@
 
         <link rel="stylesheet" href="https://fonts.googleapis.com/icon?family=Material+Icons" />
         <link href="https://cdn.jsdelivr.net/npm/@umich-lib/web@1/umich-lib.css" rel="stylesheet" />
-        <link href="{$docroot}styles/styles.css" rel="stylesheet" />
-        <link href="{$docroot}styles/feedback.css" rel="stylesheet" />
+        <link href="{$docroot}/dist/css/image/style.css" rel="stylesheet" />
+        <link href="{$docroot}dist/css/feedback.css" rel="stylesheet" />
 
         <script>
           window.mUse = [  'm-website-header', 'm-logo' ];
