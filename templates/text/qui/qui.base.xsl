@@ -139,6 +139,18 @@
         <xsl:if test="//NavItem[Name='browse']/Tab='true'">
           <qui:link rel="browse" icon="list" href="{//NavItem[Name='browse']/Link}">Browse</qui:link>
         </xsl:if>
+        <xsl:if test="//NavItem[Name='browse']/Tab='false' and //CollectionIdno">
+          <qui:link rel="browse" icon="list">
+            <xsl:attribute name="href">
+              <xsl:value-of select="//ScriptName[@application='pageviewer']" />
+              <xsl:text>?cc=</xsl:text>
+              <xsl:value-of select="$collid" />
+              <xsl:text>;idno=</xsl:text>
+              <xsl:value-of select="//CollectionIdno" />
+            </xsl:attribute>
+            Browse
+          </qui:link>
+        </xsl:if>
         <xsl:if test="//NavItem[Name='contents']/Tab='true'">
           <qui:link rel="browse" icon="list" href="{//NavItem[Name='contents']/Link}">Contents</qui:link>
         </xsl:if>
