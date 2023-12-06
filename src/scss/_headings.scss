@@ -1,0 +1,111 @@
+/*
+ * Headings
+ *
+ * The most used headings I imagine
+ * are a page title (h1) and section
+ * headings (h2) plus the subtle heading
+ * that that typography is in the
+ * universal header. 
+ *
+ */
+
+h1,
+.page-heading {
+  font-size: var(--text-xx-large);
+  font-family: var(--font-second-family);
+  line-height: var(--line-height-page-heading);
+  padding-top: 0;
+  margin-top: 0;
+}
+
+h2,
+.section-heading {
+  font-size: var(--text-large);
+  font-weight: var(--bold);
+  padding-top: 0;
+  margin-top: 0;
+}
+
+h3,
+.subtle-heading {
+  color: var(--color-neutral-300);
+  letter-spacing: 1.25px;
+  text-transform: uppercase;
+  font-size: 14px;
+  font-weight: var(--bold);
+  font-family: var(--font-base-family);
+  padding-top: var(--space-medium);
+  margin-top: 0;
+}
+
+.collection-heading {
+  color: var(--color-neutral-400);
+  line-height: 1.1;
+  font-weight: var(--bold);
+  font-size: 24px;
+  font-family: var(--font-base-family);
+  display: flex;
+  gap: 0.5rem;
+  align-items: flex-start;
+}
+
+.collection-heading .material-icons {
+  font-size: 24px;
+  line-height: 1.1;
+}
+
+html[data-view="index"] .collection-heading {
+  font-size: 32px;
+}
+
+html[data-view="index"] .collection-heading .material-icons {
+  font-size: 32px;
+}
+
+.collection-heading[data-status]::after,
+.collection-heading[data-status]::before {
+  font-family: var(--material);
+  display: inline-block;
+  margin-left: 0.25rem;
+  margin-right: 0.25rem;
+  font-size: 1.5rem;
+  /* vertical-align: top; */
+}
+
+.collection-heading[data-status="private"]::after {
+  content: "\e897";
+}
+
+.collection-heading[data-status="group"]::before {
+  /* topic */
+  content: "\f1c8";
+}
+
+.collection-heading[data-status="multiple"]::before {
+  /* lens blur */
+  content: "\f029";
+}
+
+.collection-heading--small {
+  font-size: 20px;
+  font-weight: var(--bold);
+  font-family: var(--font-base-family);
+  color: var(--color-neutral-400);
+  line-height: 1.1;
+}
+
+.collection-heading--subheading {
+  font-size: 18px;
+  font-weight: var(--bold);
+  font-family: var(--font-base-family);
+  color: var(--color-neutral-300);
+  line-height: 1.1;
+  margin-top: 0;
+}
+
+.results-heading {
+  font-size: 16px;
+  font-weight: normal;
+  font-family: var(--font-base-family);
+  color: var(--color-neutral-400);
+}

@@ -1,0 +1,129 @@
+/*
+ * Record Container
+ *
+ */
+
+/* section.records {
+  container-type: inline-size;
+  container-name: section--records-wrap;
+}
+
+@container section--records-wrap ( max-width: 600px ) {
+  dl.record {
+    max-width: none;
+    width: 100%;
+  }
+} */
+
+dl.record {
+  /* max-width: 65vw; */
+  max-width: var(--record-width, 65ch);
+  display: block;
+  width: 100%;
+}
+
+@media screen and (max-width: 600px) {
+  .record {
+    max-width: 90vw;
+  }
+}
+
+.record > div {
+  display: grid;
+  grid-template-columns: 12rem 1fr;
+  column-gap: 0;
+  border-bottom: 1px solid var(--color-neutral-100);
+}
+
+.record dd > *:first-child {
+  margin-top: 0;
+}
+
+.record dd > *:last-child {
+  margin-bottom: 0;
+}
+
+.record dt {
+  font-weight: var(--bold);
+}
+
+.record > div[data-key="relevance"], .results > div[data-key="relevance"] {
+  display: none;
+}
+
+dl.record dt,
+dl.record dd {
+  padding: var(--space-small) 0;
+  margin-left: 0;
+  border-bottom: none;
+}
+
+dl.record dd {
+  /* for longer/wrapping dt */
+  padding-left: var(--space-small);
+}
+
+dl.record dd + dd {
+  grid-column: 2/3;
+  border-top: 1px solid var(--color-indigo-100);
+}
+
+dl.record .text--copyable {
+  display: flex;
+  flex-wrap: nowrap;
+  justify-content: space-between;
+  gap: 1rem;
+  position: relative;
+  word-break: break-word;
+}
+
+dl.record .text--copyable.copied::after {
+  content: "Copied to clipboard";
+  position: absolute;
+  top: 0;
+  left: 100%;
+  margin-left: 0.25rem;
+  font-size: 0.875rem;
+  padding: 0.5rem;
+  display: block;
+  background: var(--color-green-100);
+  color: black;
+  white-space: nowrap;
+
+  animation: fade-out 0s ease-in 5s;
+  animation-fill-mode: forwards;
+}
+
+@keyframes fade-out {
+  25% {
+    opacity: 0.75;
+  }
+  50% {
+    opacity: 0.5;
+  }
+  75% {
+    opacity: 0.25;
+  }
+  100% {
+    visibility: hidden;
+    display: none;
+    width: 0;
+    height: 0;
+  }
+}
+
+.record .text--copyable > span {
+  flex-grow: 1;
+  font-family: monospace;
+  font-size: 0.875rem;
+}
+
+span.url {
+  word-break: break-all;
+}
+
+.record .text--copyable button[data-action] {
+  flex-grow: 0;
+  align-self: flex-start;
+  width: auto;
+}

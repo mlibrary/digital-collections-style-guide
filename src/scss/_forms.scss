@@ -1,0 +1,94 @@
+/* should a checkbox ever shrink? no. */
+input[type="checkbox"] {
+  flex-shrink: 0;
+}
+
+/* Forms, Selects & Inputs */
+
+.select-group {
+  padding: 0 1.5em 0;
+  color: var(--light-text-color);
+}
+
+.select,
+select {
+  min-width: 15ch;
+  padding: 0 1em;
+  height: 40px;
+  font-size: 1rem;
+  font-family: var(--font-base-family);
+  color: #262626;
+  line-height: 1.5;
+  box-shadow: none;
+  cursor: pointer;
+  max-width: 100%;
+  background-color: #fff;
+  border: solid 1px var(--color-neutral-200);
+  text-overflow: ellipsis;
+  /*-webkit-appearance: unset; */
+}
+
+.select:focus,
+select:focus {
+  box-shadow: 0 0 0 2px var(--color-indigo-400);
+}
+
+.dropdown--neutral {
+  background-color: var(--color-neutral-100);
+  font-weight: var(--bold);
+  border: 0;
+}
+
+.summary--neutral {
+  background-color: var(--color-neutral-100);
+  border: 1px solid var(--color-neutral-200);
+  padding: 0.5rem 1rem;
+  font-weight: bold;
+}
+
+.input-group {
+  /* padding: 0 0.5em 0 0; */
+  padding: 0;
+  min-width: 60%;
+}
+
+.input-group button {
+  border-radius: 0 2px 2px 0;
+}
+
+.input-group.right input {
+  border-radius: 4px 0 0 4px;
+}
+
+input[type="search"], input[type="text"] {
+  font-size: 1rem;
+  font-family: var(--font-base-family);
+  margin: 0;
+  border: solid 1px var(--color-neutral-200);
+  box-shadow: inset 0 1px 4px rgb(0 0 0 / 10%);
+  border-radius: 4px;
+  padding: 0.5rem 0.75rem;
+  font-family: inherit;
+  box-sizing: border-box;
+  height: 40px;
+  width: 60%;
+}
+
+input[type="checkbox"] {
+  width: 18px;
+  height: 18px;
+  margin-right: 0.5em;
+}
+
+.radio-buttons {
+  padding: 0 0.5em;
+}
+
+label {
+  padding-right: 0.5em;
+}
+
+label.control-checkbox {
+  display: inline-flex;
+  align-items: center;
+}

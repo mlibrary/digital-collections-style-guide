@@ -1,0 +1,102 @@
+/* TREE */
+.list-tree{
+  --spacing : 1.5rem;
+  --radius  : 12px;
+}
+
+.list-tree li{
+  display      : block;
+  position     : relative;
+  padding: 1rem 0;
+  padding-left : calc(2 * var(--spacing) - var(--radius) - 2px);
+  margin-top: -4px;
+}
+
+.xxlist-tree li:last-child {
+  margin-top: -4px; /* magic! */
+}
+
+.list-tree ul{
+  margin-left  : calc(var(--radius) - var(--spacing));
+  padding-left : 0;
+}
+
+.list-tree ul li{
+  border-left : 2px solid #ddd;
+}
+
+.list-tree ul li:last-child{
+  border-color : transparent;
+}
+
+.list-tree ul li::before{
+  content      : '';
+  display      : block;
+  position     : absolute;
+  top          : calc(var(--spacing) / -2 + 1rem);
+  left         : -2px;
+  width        : calc(var(--spacing) + 2px);
+  height       : calc(var(--spacing) + 1px);
+  border       : solid #ddd;
+  border-width : 0 0 2px 2px;
+}
+
+.list-tree summary{
+  display : block;
+  cursor  : pointer;
+}
+
+.list-tree summary::marker,
+.list-tree summary::-webkit-details-marker{
+  display : none;
+}
+
+.list-tree summary:focus{
+  outline : none;
+}
+
+.list-tree summary:focus-visible{
+  outline : 1px dotted #000;
+}
+
+.list-tree li::after,
+.list-tree summary::before{
+  content       : '';
+  display       : block;
+  position      : absolute;
+  top           : calc(var(--spacing) / 2 - var(--radius) + 1rem);
+  left          : calc(var(--spacing) - var(--radius) - 1px);
+  width         : calc(2 * var(--radius));
+  height        : calc(2 * var(--radius));
+  border-radius : 50%;
+  background    : #ddd;
+}
+
+.list-tree summary::before{
+  z-index    : 1;
+  /* background : #696 url('expand-collapse.svg') 0 0; */
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-family: "Material Icons";
+  font-size: 24px;
+  content: "\e5ce";
+  content: "\e409";
+  content: "\e145";
+  background: var(--color-teal-300);
+  color: white;
+}
+
+.list-tree details[open] > summary::before{
+  background-position : calc(-2 * var(--radius)) 0;
+  content: "\e5cf";
+  content: "\e15b";
+}
+
+.list-tree a, .list-tree details {
+  margin-left: 1rem;
+}
+
+.list-tree a {
+  display: block;
+}

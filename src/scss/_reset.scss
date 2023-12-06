@@ -1,0 +1,51 @@
+/*
+ * Resets
+ *
+ */
+
+html {
+  box-sizing: border-box;
+}
+*,
+*:before,
+*:after {
+  box-sizing: border-box;
+}
+
+html[data-initialized="false"] {
+  /* opacity: 0; */
+}
+
+html[data-initialized="true"] {
+  opacity: 1 !important;
+  transition: 0.25s opacity;
+}
+
+svg {
+  display: inline-block;
+  vertical-align: middle;
+}
+
+/*
+* Media
+*
+*/
+
+/* This is the most extreme application so we many want to adjust it */
+@media (prefers-reduced-motion: reduce) {
+  *,
+  ::before,
+  ::after {
+    animation-delay: -1ms !important;
+    animation-duration: 1ms !important;
+    animation-iteration-count: 1 !important;
+    background-attachment: initial !important;
+    scroll-behavior: auto !important;
+    transition-duration: 0s !important;
+    transition-delay: 0s !important;
+  }
+}
+
+[hidden] {
+  display: none;
+}

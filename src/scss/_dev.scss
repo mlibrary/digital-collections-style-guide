@@ -1,0 +1,11 @@
+html[data-debugging-srm="true"] #srm-log {
+  position: fixed;
+  bottom: 1rem;
+  right: 1rem;
+  width: 50vw;
+  min-height: 1rem;
+  background: black;
+  color: yellow;
+  padding: 1;
+  min-height: 1.5rem;
+}

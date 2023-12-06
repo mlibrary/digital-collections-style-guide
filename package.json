@@ -11,17 +11,19 @@
     "express-http-proxy": "^1.6.3",
     "get-all-files": "^4.1.0",
     "md5": "^2.3.0",
+    "npm-run-all": "^4.1.5",
+    "sass": "^1.69.5",
     "xpath": "^0.0.32",
     "yargs": "^17.3.1",
     "zx": "^7.0.8"
   },
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1",
-    "build": "npx @11ty/eleventy",
-    "develop": "npx @11ty/eleventy --serve",
-    "start": "npm run develop",
     "build-js": "npx esbuild --bundle src/js/image/*.js --bundle src/js/text/*.js --outdir=dist --outbase=src --target=es2015",
     "watch-js": "npx esbuild --bundle src/js/image/*.js --bundle src/js/text/*.js --outdir=dist --outbase=src --target=es2015 --watch --sourcemap",
+    "build-sass": "sass src/scss:dist/css",
+    "watch-sass": "sass --watch src/scss:dist/css",
+    "start": "npm-run-all build-sass --parallel watch-js watch-sass",
     "build-xml": "./samples/scripts/transform-xml-qui.mjs && ./samples/scripts/transform-qui-qbat.mjs && ./samples/scripts/build-indexes.mjs",
     "proxy": "NODE_EXTRA_CA_CERTS=./intermediate.pem ./samples/scripts/textclass-proxy.mjs",
     "release": "rsync -av --exclude=node_modules --exclude=.git . quod-update.umdl.umich.edu:/quod/web/digital-collections-style-guide"

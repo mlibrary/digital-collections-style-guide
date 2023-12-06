@@ -1,0 +1,287 @@
+#viewer-heading {
+  scroll-margin-top: 2.5rem;
+}
+
+a[aria-current="page"] {
+  color: black;
+  text-decoration: none;;
+}
+
+.viewer {
+  width: 98vw;
+  height: 85vh;
+  position: relative;
+  border: 0;
+  display: block;
+  margin-left: -49vw;
+  margin-right: -49vw;
+  margin-bottom: 1rem;
+  left: 50%;
+  right: 50%;
+}
+
+.viewer[data-mimetype="audio/mpeg"] {
+  height: 25vh;
+}
+
+.viewer[data-istruct_mt="AUDIO:::EXTERNAL:::KALTURA"] {
+  height: 50vh;
+}
+
+.viewer[data-istruct_mt="AUDIO:::EXTERNAL:::KALTURA:::V2"] {
+  height: 50vh;
+  box-shadow: 0 1px 0 0 #ddd; /* Border bottom */
+  margin-bottom: 1rem;
+}
+
+/* .toolbar {
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+  position: relative;
+} */
+
+.toolbar {
+  display: grid;
+  gap: 0.5rem;
+  align-items: center;
+  /* can't do auto-fill because the download label doesn't expand when long */
+  /* grid-template-columns: repeat(auto-fill, minmax(10.5rem, 1fr)); */
+  grid-template-columns: repeat(2, minmax(10.5rem, 1fr));
+  position: relative;
+}
+
+.toolbar button[data-action="copy-text"] {
+  position: relative;
+}
+
+.toolbar button[data-action="copy-text"].copied::after {
+  content: "Copied to clipboard";
+  position: absolute;
+  bottom: -3rem;
+  right: 0;
+  /* top: 0;
+  left: 100%; */
+  margin-left: 0.25rem;
+  font-size: 0.875rem;
+  padding: 0.5rem;
+  display: block;
+  background: var(--color-green-100);
+  color: black;
+  white-space: nowrap;
+
+  animation: fade-out 0s ease-in 5s;
+  animation-fill-mode: forwards;
+  z-index: 50;
+  font-weight: normal;
+}
+
+.toolbar button {
+  white-space: nowrap;
+  padding: var(--space-x-small);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 0.25rem; 
+  font-size: 0.875rem;
+}
+
+/* .toolbar > * {
+  flex: 1;
+} */
+
+.toolbar form {
+  display: flex;
+}
+
+.toolbar form > * {
+  flex: 1;
+}
+
+.toolbar .button + .button  {
+  margin-left: unset;
+}
+
+.button.small {
+  font-size: 0.875rem;
+  line-height: 1;
+  padding: var(--space-x-small) var(--space-x-small);
+}
+
+button .material-icons {
+  /* vertical-align: middle;
+  margin-left: 0.25rem; */
+  font-size: 1rem;
+}
+
+/* .button {
+  border-color: var(--color-neutral-100);
+} */
+
+a.download-link {
+  text-decoration: none;;
+}
+
+a.download-link:hover {
+  color: white;
+}
+
+ul.outline li ul {
+  margin:0 1.5em;
+}
+ul.outline {
+  margin:0 1.5em 1.5em 1.5em;
+}
+
+.actions {
+  margin-bottom: 1rem;
+}
+
+/* .actions--toolbar-wrap {
+  container-type: inline-size;
+  container-name: actions--toolbar-wrap;
+} */
+
+sl-button[slot="trigger"] {
+  width: 100%;
+  background: orange;
+}
+
+/* @container actions--toolbar-wrap (max-width: 660px) {
+  .toolbar {
+    flex-direction: column; 
+  }
+
+  sl-dropdown {
+    width: 90%;
+  }
+
+  button {
+    width: 90%;
+  }
+} */
+
+.text-black {
+  color: #000;
+}
+
+/*
+ * Utilities
+ *
+ * 
+ */
+
+
+@container aside--wrap (max-width: 670px ) {
+  /* .toolbar {
+    flex-direction: column; 
+  } */
+
+  /* sl-dropdown {
+    width: 90%;
+  }
+
+  button {
+    width: 90%;
+  }
+
+  .toolbar form {
+    width: 90%;
+  } */
+
+  .record>div {
+    grid-template-columns: 1fr;
+  }
+
+  dl.record dd+dd {
+    grid-column: 1;
+  }
+}
+
+/* a.toc-link {
+  text-decoration: none;
+}
+
+a.is-active-link {
+  text-decoration: underline;
+} */
+
+.container {
+  position: relative;
+}
+
+dl.record input[type="text"], 
+dl.record textarea {
+  padding: 0.5rem;
+  width: 100%;
+  max-width: 65ch;
+}
+
+.toolbar .button--tiny {
+  min-height: 0;
+  text-decoration: none;
+  color: #000;
+  padding: var(--space-xx-small) var(--space-x-small);
+}
+
+#full-citation {
+  min-height: 8em;
+}
+
+#brief-citation {
+  min-height: 2em;
+}
+
+h3#portfolios::before {
+  content: "\e8ef";
+  display: block;
+  font-family: var(--material);
+  font-size: 1rem;
+}
+
+#dropdown-action sl-menu {
+  width: var(--download-menu-width, 'auto');
+}
+
+#plaintext-viewer {
+  padding: 1rem;
+  /* border: 1px solid var(--color-neutral-300);
+  box-shadow: rgba(0,0,0,0.3) 0px 0px 15px 0px; */
+}
+
+.viewer-grid {
+   display: grid; 
+   grid-template-columns: 1fr 1fr;
+   gap: 0.5rem;
+   width: 100vw;
+   padding: 0 2rem;
+   margin-left: -50vw;
+   margin-right: -50vw;
+}
+
+.plaintext-viewer-wrap {
+  border: 1px solid var(--color-neutral-300);
+  box-shadow: rgba(0,0,0,0.3) 0px 0px 15px 0px;
+  overflow: auto;
+}
+
+.xx-viewer {
+  height: 100%;
+  width: 100%;
+}
+
+.article-link {
+  text-decoration: none;
+}
+
+.article-title {
+  text-decoration: underline;
+}
+
+.article-details {
+  display: block;
+  margin-left: 1rem;
+  text-decoration: none;
+  color: var(--base-text-color);
+}
+
