@@ -2,14 +2,6 @@
 
   <xsl:variable name="search-form" select="//qui:form[@id='collection-search']" />
 
-  <xsl:template name="build-extra-styles">
-    <xsl:comment>DUBIOUS EXCEPTIONS</xsl:comment>
-    <link rel="stylesheet" href="{$docroot}styles/image/index.css" />
-
-    <style>
-    </style>
-  </xsl:template>
-
   <xsl:template match="qui:main">
     <xsl:choose>
       <xsl:when test="//qui:hero-image">

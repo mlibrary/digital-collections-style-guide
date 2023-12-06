@@ -9,27 +9,6 @@
   <xsl:variable name="has-results" select="//qui:nav[@role='results']/@total &gt; 0" />
   <xsl:variable name="nav" select="//qui:nav[@role='results']" />
 
-  <xsl:template name="build-extra-styles">
-    <xsl:comment>DUBIOUS EXCEPTIONS</xsl:comment>
-    <link rel="stylesheet" href="{$docroot}styles/text/reslist.css" />
-    <link rel="stylesheet" href="{$docroot}styles/text/tabs.css" />
-    <style>
-      .browse-index .button:not([data-selected]) {
-        border: 1px solid transparent;
-      }
-      .browse-index a[disabled] {
-        opacity: 0.5;
-        pointer-events: none;
-        color: var(--color-neutral-300);
-      }
-    </style>
-  </xsl:template>
-
-  <xsl:template name="build-extra-scripts">
-    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@shoelace-style/shoelace@2.4.0/dist/themes/light.css" />
-    <script type="module" src="https://cdn.jsdelivr.net/npm/@shoelace-style/shoelace@2.4.0/dist/shoelace-autoloader.js"></script>
-  </xsl:template>
-
   <xsl:template match="qui:main">
 
     <div class="[ mb-2 ]">

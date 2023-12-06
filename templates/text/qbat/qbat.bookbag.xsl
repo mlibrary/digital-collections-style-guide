@@ -4,33 +4,6 @@
   <xsl:variable name="template" select="//qui:root/@template" />
   <xsl:variable name="view" select="//qui:root/@view" />
 
-  <xsl:template name="build-extra-styles">
-    <xsl:comment>DUBIOUS EXCEPTIONS</xsl:comment>
-    <link rel="stylesheet" href="{$docroot}styles/text/reslist.css" />
-    <link rel="stylesheet" href="{$docroot}styles/text/tabs.css" />
-    <link rel="stylesheet" href="{$docroot}styles/text/item.css" />
-
-    <style>
-      .advanced-search--form {
-        padding: 1rem;
-        margin-bottom: 2rem;
-      }
-
-      .advanced-search--containers {
-        margin: 0.5rem 0 0.5rem;
-        padding: 0;
-      }
-
-      .field-groups {
-        padding: 1rem 1.5rem;
-      }
-
-      .fieldset.fieldset--grid {
-        grid-template-columns: 1fr 1fr;
-      }
-    </style>
-  </xsl:template>
-
   <xsl:template match="qui:main">
     <div class="[ mb-2 ]">
       <xsl:call-template name="build-navigation" />

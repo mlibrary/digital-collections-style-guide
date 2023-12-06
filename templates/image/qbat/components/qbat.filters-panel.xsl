@@ -113,11 +113,12 @@
       <xsl:choose>
         <xsl:when test="qui:values/qui:value[@selected='true']">true</xsl:when>
         <xsl:when test="count(//qui:filter[@data-total]) = 1">true</xsl:when>
-        <xsl:otherwise>false</xsl:otherwise>
+        <xsl:when test="$view = 'index' and position() &gt; 2">false</xsl:when>
+        <xsl:otherwise>true</xsl:otherwise>
       </xsl:choose>
     </xsl:variable>
-    <details class="panel" data-list-expanded="false" data-key="{@key}">
-      <xsl:if test="true() or $open = 'true'">
+    <details class="panel" data-list-expanded="false" data-key="{@key}" data-position="{position()}">
+      <xsl:if test="$open = 'true'">
         <xsl:attribute name="open">open</xsl:attribute>
       </xsl:if>
       <summary>

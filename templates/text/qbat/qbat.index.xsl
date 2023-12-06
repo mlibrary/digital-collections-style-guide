@@ -3,16 +3,6 @@
   <xsl:variable name="search-form" select="//qui:form[@id='collection-search']" />
   <xsl:variable name="template" select="//qui:root/@template" />
 
-  <xsl:template name="build-extra-styles">
-    <xsl:comment>DUBIOUS EXCEPTIONS</xsl:comment>
-    <link rel="stylesheet" href="{$docroot}styles/text/index.css" />
-    <link rel="stylesheet" href="{$docroot}styles/text/tabs.css" />
-    <link rel="stylesheet" href="{$docroot}styles/text/advanced_search.css" />
-
-    <style>
-    </style>
-  </xsl:template>
-
   <xsl:template match="qui:main">
     <xsl:choose>
       <xsl:when test="$view = 'index'">
