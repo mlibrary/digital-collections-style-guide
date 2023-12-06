@@ -1,0 +1,105 @@
+/*
+ * Buttons
+ */
+
+.button,
+button {
+  outline: none;
+  /* display: inline-block; */
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: 0.25rem;
+  padding: 0 0.75rem;
+  padding: var(--space-x-small) var(--space-small);
+  font-size: 1rem;
+  line-height: 1.5;
+  font-weight: var(--bold);
+  font-family: var(--font-base-family);
+  border-radius: var(--radius-default);
+  align-items: center;
+  min-height: 2.5rem;
+  margin: 0; /** must remove margin for Safari */
+  text-decoration: none;
+}
+
+.button--small {
+  padding: var(--space-x-small) var(--space-small);
+}
+
+.button--large {
+  padding: var(--space-small) var(--space-xxx-large);
+}
+
+.button:focus {
+  box-shadow: 0 0 0 2px #ffffff, 0 0 0 4px var(--color-indigo-400);
+}
+
+.button:hover {
+  box-shadow: 0 0 0 2px #fff, 0 0 0 3px var(--color-neutral-400);
+}
+
+.button--primary {
+  background: var(--color-teal-400);
+  border: solid 1px var(--color-teal-400);
+  color: #fff;
+}
+
+.button--secondary {
+  background: var(--color-neutral-100);
+  border: solid 1px var(--color-neutral-100);
+  color: var(--color-neutral-400);
+}
+
+.button--cta {
+  background: var(--color-maize-400);
+  border: solid 1px var(--color-maize-400);
+  color: var(--color-neutral-400);
+}
+
+.button-icon {
+  bottom: 0.25em;
+  position: relative;
+}
+
+.button--ghost {
+  border: solid 1px var(--color-neutral-500);
+  border-radius: 4px;
+  color: var(--color-neutral-500);
+  background: white;
+  padding: 0.5em 1em;
+  margin: 0.25em;
+  text-decoration: none;
+}
+
+.button--ghost.button--small {
+  padding: var(--space-x-small) var(--space-small);
+  font-size: 0.875rem;
+}
+
+.button + .button, .button + sl-button, sl-button + .button {
+  margin-left: 0.5em;
+}
+
+button[disabled] {
+  opacity: 0.25;
+}
+
+button.nav {
+  background: #fff;
+  border: none;
+}
+
+button[aria-expanded]::after {
+  font-family: "Material Icons";
+  font-size: 2.5rem;
+  content: "\e5d2";
+  color: var(--color-neutral-400);
+}
+
+button[aria-expanded=true]::after {
+  font-family: "Material Icons";
+  font-size: 2.5rem;
+  content: "\e5cd";
+  color: var(--color-neutral-400);
+}

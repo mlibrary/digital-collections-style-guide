@@ -1,0 +1,376 @@
+@use 'media';
+
+/*
+ * Custom Properties
+ *
+ */
+
+:root {
+  --base-text-color: var(--color-neutral-400);
+  --light-text-color: var(--color-neutral-300);
+  --viewport-margin: var(--space-medium);
+  --text-xx-small: 0.875rem;
+  --material: "Material Icons";
+}
+
+@media (min-width: 720px) {
+  :root {
+    --viewport-margin: var(--space-xx-large);
+  }
+}
+
+body[data-class="text"] {
+  --record-width: 75ch;
+}
+
+/*
+ * Globals 
+ *
+ */
+
+body {
+  margin: 0;
+  color: var(--base-text-color);
+  font-size: var(--text-base-size);
+  font-family: var(--font-base-family);
+  line-height: var(--line-height-default);
+  accent-color: var(--color-teal-400);
+}
+
+ol,
+ul,
+ul.list-unstyled {
+  list-style: none;
+  padding: 0;
+}
+
+ul:not([class]) ul:not([class]) {
+  margin-left: 1rem;
+}
+
+li {
+  margin-bottom: 0.5rem;
+}
+
+/* fight me */
+ul ul {
+  margin-left: 1rem;
+}
+
+
+ul.list-bulleted {
+  list-style: initial;
+  padding: revert;
+}
+
+ol.list-numbered, text-block ol:not([class]) {
+  list-style: decimal;
+  padding: revert;
+}
+
+a {
+  color: var(--color-teal-400);
+  text-decoration: underline;
+}
+
+a[data-current="true"] {
+  color: var(--color-neutral-600);
+  font-weight: bold;
+  text-decoration: none;
+}
+
+a:hover {
+  text-decoration-thickness: 2px; /** TODO: HOVE **/
+}
+
+a.group {
+  display: inner-flex;
+  align-items: center;
+}
+
+a.bedazzled-link {
+  text-decoration: none;
+  display: inline-flex;
+  gap: 0.25rem;
+  align-items: flex-start;
+}
+
+a.bedazzled-link span:not(.material-icons) {
+  text-decoration: underline;
+}
+
+a.bedazzled-link[data-selected="true"] .material-icons {
+  color: var(--color-neutral-500);
+}
+
+a.bedazzled-link[data-selected="true"] span:not(.material-icons) {
+  text-decoration: none;
+  color: var(--color-neutral-500);
+}
+
+:not([disabled]):not(#maincontent):not(#chat):not(summary):focus {
+  outline: 0;
+  box-shadow: 0 0 0 2px var(--color-maize-400),
+    0 0 0 3px var(--color-neutral-400);
+  border-radius: 2px !important;
+}
+
+address {
+  font-style: normal;
+}
+
+main {
+  margin-top: 2rem;
+  margin-bottom: 2rem;
+
+  /* avoid squishing main with the footer */
+  min-height: 65vh;
+}
+
+p img {
+  width: initial;
+}
+
+
+/*
+ * Viewport Margins
+ *
+ * Handles the need for page content to be centered
+ * in the visible view port window and manage the
+ * amount of margin between the site and the edge
+ * of the screen's viewport.
+ */
+
+.viewport-container {
+  width: 100%;
+  max-width: 1280px;
+  margin-left: auto;
+  margin-right: auto;
+  padding-left: var(--viewport-margin);
+  padding-right: var(--viewport-margin);
+}
+
+/*
+* Actions
+*
+*/
+
+.actions {
+  padding-bottom: 2em;
+  border-bottom: 1px solid var(--color-neutral-100);
+}
+
+
+/*
+* Blocks
+*
+*/
+
+.hero {
+  margin: 1em 0 2em;
+}
+
+.hero__image {
+  max-width: 100%;
+}
+
+.contact-icon {
+  color: var(--color-teal-400);
+}
+
+/** Lists **/
+
+.list__links ul li {
+  margin-top: 0.5em;
+}
+
+/*
+ * Anchors/Links
+ *
+ */
+
+.active-link {
+  text-decoration: none;
+  color: var(--color-neutral-400);
+}
+
+.link-box {
+  margin: 0 0 0.5em 0;
+  padding: 0.5em 0;
+  display: inline-flex;
+  color: var(--base-text-color);
+}
+
+.link-box a {
+  border-left: 2px solid transparent;
+}
+
+.link-box a:hover {
+  border-left: 2px solid var(--color-teal-400);
+}
+
+.link-box > * {
+  margin: 0.25em;
+}
+
+/* WEBSITE HEADER */
+
+.website-sub-header {
+  width: 100%;
+  background: var(--color-blue-500);
+  color: white;
+  font-weight: 600; /* semibold */
+  font-size: var(--text-small);
+  padding: 0.5rem 0;
+}
+
+.website-sub-header a {
+  color: white;
+  text-decoration: none;
+}
+
+.website-sub-header a:hover span:not(.material-icons),
+.website-sub-header a:focus span:not(.material-icons) {
+  text-decoration: underline;
+}
+
+.website-sub-header .material-icons {
+  font-size: 1.5rem;
+}
+
+m-website-header nav a {
+  text-decoration: none;
+  font-size: 0.875rem;
+  text-transform: uppercase;
+  font-weight: 800;
+  /* color: #637381; */
+  color: var(--color-neutral-300);
+  letter-spacing: 1.25px;
+  display: flex;
+  align-items: center;
+  gap: 0.25rem;
+  white-space: nowrap;
+}
+
+m-website-header nav a:hover span:not(.material-icons), 
+m-website-header nav a:focus span:not(.material-icons) {
+  text-decoration: underline;
+}
+
+m-website-header nav a .material-icons {
+  font-size: 1.5em;
+}
+
+@media screen and (max-width: 500px) {
+  m-website-header nav {
+    margin-top: 1rem;
+    flex-wrap: wrap;
+  }
+}
+
+@media (max-width: 52rem) {
+  .website-header-mobile {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+  }
+}
+
+@media (min-width: 52rem) {
+  .mobile-nav {
+    display: none;
+  }
+}
+
+@media (max-width: 52rem) {
+  m-website-header nav.primary-nav {
+    display: none;
+  }
+}
+
+.mobile-nav .submenu-container {
+  border-top: 1px solid var(--color-neutral-100);
+  margin-top: 20px;
+  position: absolute;
+  right: -1rem;
+  width: 50vw;
+  background: white;
+  box-shadow: rgba(0, 0, 0, 0.1) 0px 4px 8px 0px;
+  z-index: 101;
+}
+
+.mobile-nav .primary-container ul {
+  list-style: none;
+  margin: 0;
+  padding-left: 0;
+}
+.mobile-nav .primary-container ul li {
+  border-bottom: 1px solid rgb(229, 233, 237);
+  padding: 1rem;
+}
+.mobile-nav .primary-container ul a {
+  text-decoration: none;
+  color: var(--color-neutral-400);
+  display: flex;
+  align-items: center;
+  gap: 0.25rem;
+  white-space: nowrap;
+}
+.mobile-nav .primary-container ul a:hover {
+  text-decoration: underline;
+}
+
+.mobile-nav .utility-container ul {
+  list-style: none;
+  margin: 0;
+  padding-left: 0;
+  background-color: var(--color-blue-100);
+}
+.mobile-nav .utility-container ul li {
+  padding: 1rem;
+}
+.mobile-nav .utility-container ul a {
+  text-decoration: none;
+  display: flex;
+  align-items: center;
+  gap: 0.25rem;
+  color: var(--color-neutral-400);
+}
+
+@media (max-width: 64rem) {
+  .utility-nav {
+    margin-top: 1rem;
+  }
+}
+@media (max-width: 52rem) {
+  .utility-nav {
+    display: none;
+  }
+}
+
+.utility-nav ul {
+  list-style: none;
+  padding-left: 0;
+  margin-top: 0;
+  margin-bottom: 0;
+  display: flex;
+  flex-flow: row wrap;
+}
+.utility-nav ul li {
+  display: inline;
+}
+.utility-nav ul li:not(:last-child) {
+  margin-right: 1rem;
+}
+.utility-nav ul li a {
+  font-size: 0.875rem;
+  text-decoration: none;
+  color: var(--color-neutral-300);
+  text-transform: uppercase;
+  font-weight: var(--bold);
+  letter-spacing: 1.25px;
+  display: flex;
+  align-items: center;
+  gap: 0.25rem;
+}
+

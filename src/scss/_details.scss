@@ -1,0 +1,86 @@
+/** Details **/
+
+details > div {
+  padding: 0.25em;
+}
+
+details.panel > summary {
+  list-style: none;
+  cursor: pointer;
+  padding: 0.25em 0.5em;
+}
+
+/* is this CUBE? */
+details.panel > summary {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  border-left: 2px solid transparent;
+  padding-left: 0;
+}
+
+details.panel[open] {
+  padding: 0.25em 0.5em;
+  padding-left: 0;
+}
+
+details.panel[open] > summary:first-of-type {
+  font-weight: var(--semibold);
+  color: var(--color-teal-400);
+  border-left: 2px solid var(--color-teal-400);
+  padding: 0.25em 0.5em;
+}
+
+details.panel > summary::after {
+  font-family: "Material Icons";
+  font-size: 24px;
+  content: "\e5cf";
+  color: var(--color-teal-400);
+}
+
+details.panel[open] > summary::after {
+  font-family: "Material Icons";
+  content: "\e5ce";
+  color: var(--color-teal-400);
+}
+/* Removes the default arrow on Chrome */
+details.panel > summary::-webkit-details-marker {
+  display: none;
+}
+
+details.list-group > summary {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  /* border-left: 2px solid transparent;
+  padding-left: 0; */
+}
+
+details.list-group[open] {
+  /* padding: 0.25em 0.5em;
+  padding-left: 0; */
+}
+
+details.list-group[open] > summary:first-of-type {
+  font-weight: var(--semibold);
+  color: var(--color-teal-400);
+  /* border-left: 2px solid var(--color-teal-400); */
+  /* padding: 0.25em 0.5em; */
+}
+
+details.list-group > summary::after {
+  font-family: "Material Icons";
+  font-size: 24px;
+  content: "\e5cf";
+  color: var(--color-teal-400);
+}
+
+details.list-group[open] > summary::after {
+  font-family: "Material Icons";
+  content: "\e5ce";
+  color: var(--color-teal-400);
+}
+/* Removes the default arrow on Chrome */
+details.list-group > summary::-webkit-details-marker {
+  display: none;
+}

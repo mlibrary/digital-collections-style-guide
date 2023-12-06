@@ -1,0 +1,37 @@
+
+/* Text Block/ prose */
+
+.text-block {
+  /* width: max(75%); */
+  max-width: 75ch; /* Set line length for readability */
+}
+
+.text-block img {
+  width: auto;
+  max-width: 100%;
+}
+
+.text-block ul:not([class]) {
+  list-style: initial;
+  padding: revert;
+}
+
+.text--small {
+  font-size: 0.875rem !important;
+}
+
+.text--bold {
+  font-weight: bold;
+}
+
+.capitalize {
+  text-transform: capitalize;
+}
+
+.material-symbols-outlined {
+  font-variation-settings: "wght" 300, "opsz" 20;
+}
+
+.material-symbols-outlined:hover {
+  font-variation-settings: "wght" 500, "FILL" 1;
+}
