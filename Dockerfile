@@ -24,4 +24,5 @@ RUN [ "/usr/bin/find", "/app", "-type", "f" ]
 RUN npm install
 COPY . /app
 RUN npm run build-js
+RUN npm run build-sass
 CMD [ "npm", "run", "proxy" ]
