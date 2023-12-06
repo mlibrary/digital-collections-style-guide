@@ -8,11 +8,6 @@
       window.mUse.push('sl-dropdown', 'sl-menu', 'sl-menu-item', 'sl-dialog');
     </script>
 
-    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@shoelace-style/shoelace@2.4.0/dist/themes/light.css" />
-    <script type="module" src="https://cdn.jsdelivr.net/npm/@shoelace-style/shoelace@2.4.0/dist/shoelace-autoloader.js"></script>
-
-    <link rel="stylesheet" href="{$docroot}styles/text/pageviewer.css" />
-
     <xsl:call-template name="build-entry-scripts" />
 
   </xsl:template>

@@ -1,10 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
 <xsl:stylesheet version="1.0" xmlns="http://www.w3.org/1999/xhtml" xmlns:xsl="http://www.w3.org/1999/XSL/Transform" xmlns:qui="http://dlxs.org/quombat/ui" xmlns:xhtml="http://www.w3.org/1999/xhtml" xmlns:dlxs="http://dlxs.org" xmlns:exsl="http://exslt.org/common" extension-element-prefixes="exsl">
 
-  <xsl:template name="build-extra-scripts">
-    <link rel="stylesheet" href="{$docroot}styles/text/pageviewer.css" />
-  </xsl:template>
-
   <xsl:template match="qui:main">
 
     <div class="[ mb-2 ]">

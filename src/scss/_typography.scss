@@ -6,6 +6,10 @@
   max-width: 75ch; /* Set line length for readability */
 }
 
+.text-block h2 {
+  font-size: 1.25rem;
+}
+
 .text-block img {
   width: auto;
   max-width: 100%;
@@ -34,4 +38,20 @@
 
 .material-symbols-outlined:hover {
   font-variation-settings: "wght" 500, "FILL" 1;
+}
+
+.float-right {
+  float: right;
+  margin: 1rem;
+}
+  
+
+.float-right img, img.float-right {
+  padding: 1rem;
+  border: 1px solid var(--color-neutral-100);
+}
+
+.float-right figcaption {
+  font-size: 0.875rem;
+  max-width: 20ch;
 }

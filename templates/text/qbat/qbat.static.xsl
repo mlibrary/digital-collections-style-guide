@@ -2,37 +2,6 @@
 
   <xsl:variable name="search-form" select="//qui:form[@id='collection-search']" />
 
-  <xsl:template name="build-extra-styles">
-    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@shoelace-style/shoelace@2.4.0/dist/themes/light.css" />
-    <script type="module" src="https://cdn.jsdelivr.net/npm/@shoelace-style/shoelace@2.4.0/dist/shoelace-autoloader.js"></script>
-    <link rel="stylesheet" href="{$docroot}styles/text/tabs.css" />
-
-    <!-- <link rel="stylesheet" href="{$docroot}styles/text/item.css" /> -->
-
-    <style>
-      h2 {
-        font-size: 1.25rem;
-      }
-
-      .float-right {
-        float: right;
-        margin: 1rem;
-      }
-        
-      
-      .float-right img, img.float-right {
-        padding: 1rem;
-        border: 1px solid var(--color-neutral-100);
-      }
-
-      .float-right figcaption {
-        font-size: 0.875rem;
-        max-width: 20ch;
-      }
-
-    </style>
-  </xsl:template>
-
   <xsl:template match="qui:main">
     <div class="[ mb-2 ]">
       <xsl:call-template name="build-breadcrumbs" />
