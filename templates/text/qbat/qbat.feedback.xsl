@@ -263,7 +263,7 @@
       <xsl:variable name="target-list-tmp">
         <qui:option value="content">I'm asking about this content</qui:option>
         <qui:option value="tech">I'm reporting a problem using this collection</qui:option>
-        <qui:option value="dcc">I'm interested in Digital Collections</qui:option>
+        <!-- <qui:option value="dcc">I'm interested in Digital Collections</qui:option> -->
       </xsl:variable>
 
       <div class="form--control">
