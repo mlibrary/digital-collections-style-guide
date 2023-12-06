@@ -36,7 +36,7 @@
         </qui:hidden-input>
         <qui:hidden-input name="return" value="{/Top/DlxsGlobals/FeedbackReturnUrl}" />
         <qui:hidden-input name="m" value="{/Top/DlxsGlobals/CurrentCgi/Param[@name='cc']}" />
-        <qui:hidden-input name="to" value="{$to}" />
+        <!-- <qui:hidden-input name="to" value="{$to}" /> -->
       </qui:form>
 
       <qui:footer>
