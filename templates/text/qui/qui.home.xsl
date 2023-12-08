@@ -74,6 +74,7 @@
         <xsl:apply-templates select="/Top/Panels/div[@data-slot='browse']" mode="links" />
       </qui:nav>
     </qui:panel>
+    <xsl:apply-templates select="/Top/Panels/div[@data-slot='custom']" mode="links" />
   </xsl:template>
 
   <xsl:template name="get-current-page-breadcrumb-label">
@@ -157,6 +158,20 @@
         <xsl:apply-templates mode="copy" />
       </qui:link>
     </xsl:for-each>
+  </xsl:template>
+
+  <xsl:template match="div[@data-slot='custom']" mode="links">
+    <qui:panel slot="custom">
+      <qui:header><xsl:value-of select="h3" /></qui:header>
+      <qui:nav>
+        <xsl:for-each select="nav/a">
+          <qui:link href="{@href}">
+            <xsl:apply-templates select="@rel" mode="build-icon" />
+            <xsl:apply-templates mode="copy" />
+          </qui:link>
+        </xsl:for-each>
+      </qui:nav>
+    </qui:panel>
   </xsl:template>
 
   <xsl:template match="div[@data-slot='useguidelines']" mode="copy" priority="101">
