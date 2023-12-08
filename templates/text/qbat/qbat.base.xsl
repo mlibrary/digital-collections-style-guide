@@ -1035,7 +1035,7 @@
       </svg> -->
   </xsl:template>
 
-  <xsl:template match="xhtml:img[substring(@src, 1, 1) != '/']/@src" mode="copy">
+  <xsl:template match="xhtml:img[substring(@src, 1, 1) != '/' and not(starts-with(@src, 'http'))]/@src" mode="copy">
     <xsl:attribute name="src">
       <xsl:choose>
         <xsl:when test="$collid = '*' or $collid = ''">

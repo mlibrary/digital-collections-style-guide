@@ -38,6 +38,7 @@ window.addEventListener('DOMContentLoaded', (event) => {
     headingObjectCallback: function(object, el) {
       if ( el.classList.contains('card') ) {
         object.headingLevel = 3;
+        object.textContent = el.querySelector('.card__heading').textContent;
       }
       return object;
     }

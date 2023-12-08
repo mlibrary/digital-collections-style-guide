@@ -142,7 +142,7 @@
         <xsl:if test="//NavItem[Name='browse']/Tab='false' and //CollectionIdno">
           <qui:link rel="browse" icon="list">
             <xsl:attribute name="href">
-              <xsl:value-of select="//ScriptName[@application='pageviewer']" />
+              <xsl:value-of select="//ScriptName[@application='text']" />
               <xsl:text>?cc=</xsl:text>
               <xsl:value-of select="$collid" />
               <xsl:text>;idno=</xsl:text>

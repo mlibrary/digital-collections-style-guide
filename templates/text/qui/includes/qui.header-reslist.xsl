@@ -40,6 +40,11 @@
           <xsl:with-param name="item" select="$item" />
         </xsl:call-template>
       </xsl:when>
+      <xsl:when test="$item/ItemHeader/node()[@NODE]">
+        <xsl:call-template name="build-metadata-fields-for-serialissue-node">
+          <xsl:with-param name="item" select="$item" />
+        </xsl:call-template>
+      </xsl:when>
       <xsl:when test="$item[@NODE]">
         <xsl:call-template name="build-metadata-fields-for-serialissue-node">
           <xsl:with-param name="item" select="$item" />
