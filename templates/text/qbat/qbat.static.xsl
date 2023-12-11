@@ -168,5 +168,11 @@
       <xsl:apply-templates mode="copy" />
     </h3>
   </xsl:template>
+
+  <xsl:template match="xhtml:div[@data-slot='list']/xhtml:ul[not(@class)]" mode="copy">
+    <ul class="list-unstyled">
+      <xsl:apply-templates mode="copy" />
+    </ul>
+  </xsl:template>
     
 </xsl:stylesheet>
