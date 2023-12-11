@@ -43,6 +43,7 @@
       </h1>
       <!-- <xsl:apply-templates select="//qui:form[@id='item-search']" /> -->
     </div>
+    <xsl:apply-templates select="qui:callout[@slot='access']" />
   </xsl:template>
 
   <xsl:template name="build-collection-heading-xxx">

@@ -7,9 +7,6 @@
       window.mUse = window.mUse || [];
     </script>
 
-    <link rel="stylesheet" href="{$docroot}styles/text/pageviewer.css" />
-    <link rel="stylesheet" href="{$docroot}styles/text/text.css" />
-
     <xsl:call-template name="build-entry-scripts" />
 
   </xsl:template>

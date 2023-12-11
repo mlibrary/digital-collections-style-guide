@@ -490,7 +490,13 @@
     </xsl:call-template>
   </xsl:template>
 
-  <xsl:template match="EXTENT" mode="metadata-value">
+  <xsl:template match="SOURCEDESC//EXTENT" mode="metadata-value" priority="101">
+    <qui:value>
+      <xsl:value-of select="." />
+    </qui:value>
+  </xsl:template>
+
+  <xsl:template match="FILEDESC/EXTENT" mode="metadata-value">
     <xsl:variable name="extent" select="substring-before(., ' ')" />
     <xsl:variable name="key">
       <xsl:text>uplift.header.str.extent</xsl:text>

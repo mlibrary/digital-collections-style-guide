@@ -310,6 +310,7 @@
   <xsl:template name="build-results-pagination">
     <xsl:variable name="nav" select="//qui:main/qui:nav[@role='results']" />
     <xsl:if test="$nav/@min &lt; $nav/@max">
+      <xsl:apply-templates select="//qui:form[@rel='browse']" />
       <nav id="pagination" aria-label="Result navigation" class="[ pagination__row ][ flex flex-space-between flex-align-center sticky-bottom ]">
         <div class="[ pagination__group ][ flex flex-align-center gap-0_5 ]">
           <xsl:if test="$nav/qui:link">
@@ -595,4 +596,10 @@
       </a>
     </dd>
   </xsl:template>  
+
+  <xsl:template match="qui:form[@rel='browse']">
+    <form action="{@action}" method="GET" hidden="hidden" id="{@id}">
+      <xsl:apply-templates />
+    </form>
+  </xsl:template>
 </xsl:stylesheet>
