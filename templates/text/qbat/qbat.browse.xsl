@@ -170,9 +170,6 @@
         <xsl:text>.</xsl:text>
       </p>
     </xsl:if>
-    <xsl:if test="$nav/@total = 0">
-      <xsl:call-template name="build-search-hints" />
-    </xsl:if>
   </xsl:template>
 
   <xsl:template name="build-search-tools">
@@ -545,16 +542,6 @@
     <m-callout subtle="subtle" icon="check" dismissable="dismissable" variant="{@variant}">
       <xsl:apply-templates mode="copy" />
     </m-callout>
-  </xsl:template>
-
-  <xsl:template name="build-search-hints">
-    <h3>Other suggestions</h3>
-    <ul class="[ list-bulleted ]">
-      <li>Check your spelling.</li>
-      <li>Try more general keywords.</li>
-      <li>Try different keywords that mean the same thing.</li>
-      <li>Try searching in <strong>Anywhere in record</strong>.</li>
-    </ul>
   </xsl:template>
 
   <xsl:template match="qui:label[@for='input-value']">

@@ -15,7 +15,10 @@
   max-width: 100%;
 }
 
-.text-block ul:not([class]) {
+// TODO - this is clunky and either this
+// should be refined or the browse.xml should stop
+// using staticincl
+.text-block > div > ul:not([class]) {
   list-style: initial;
   padding: revert;
 }
@@ -54,4 +57,8 @@
 .float-right figcaption {
   font-size: 0.875rem;
   max-width: 20ch;
+}
+
+img.brand {
+  border-radius: 0;
 }

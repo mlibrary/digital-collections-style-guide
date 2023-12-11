@@ -85,7 +85,6 @@
     <xsl:call-template name="build-browse-index" />
     <xsl:call-template name="build-browse-navigation" />
     <!-- <xsl:call-template name="build-portfolio-form" /> -->
-    <qui:message>BOO-YAH-HAH</qui:message>
   </xsl:template>
 
   <xsl:template name="get-title">
@@ -316,7 +315,6 @@
   <xsl:template name="build-portfolio-actions" />
 
   <xsl:template name="build-no-results">
-    <pre>BOO-YAH</pre>
   </xsl:template>
 
   <xsl:template match="BrowseList/Tag">
