@@ -205,6 +205,12 @@
     </nav>
   </xsl:template>
 
+  <xsl:template match="qui:callout">
+    <m-callout subtle="subtle" icon="warning" variant="warning">
+      <xsl:apply-templates select="." mode="copy-guts" />
+    </m-callout>
+  </xsl:template>
+
   <xsl:template match="xhtml:title/qui:values" mode="copy">
     <xsl:for-each select="qui:value">
       <xsl:value-of select="." />

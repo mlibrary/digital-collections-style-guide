@@ -215,6 +215,10 @@ ins::after {
   margin-left: 1rem;
 }
 
+.lg + .lg {
+  margin-top: 1rem;
+}
+
 .line {
   display: block;
 }

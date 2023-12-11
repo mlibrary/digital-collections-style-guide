@@ -101,6 +101,11 @@
         <xsl:call-template name="build-site-header" />
         <xsl:call-template name="build-sub-header" />
         <qui:main>
+          <xsl:if test="/Top/AuthRequired = 'true'">
+            <qui:callout slot="access">
+              <xsl:value-of select="key('get-lookup', 'header.str.fullaccess')" />
+            </qui:callout>
+          </xsl:if>
           <xsl:call-template name="build-body-main" />
           <xsl:call-template name="build-item-search-form" />
         </qui:main>

@@ -48,7 +48,7 @@
         <xsl:value-of select="1" />
       </xsl:when>
       <xsl:otherwise>
-        <xsl:value-of select="( ( $slice-start + 1 ) div $slice-size) + 1" />
+        <xsl:value-of select="round(( ( $slice-start + 1 ) div $slice-size) + 1)" />
       </xsl:otherwise>
     </xsl:choose>
   </xsl:variable>
@@ -80,6 +80,7 @@
       <!-- <xsl:value-of select="dlxs:capitalize($current-browse-field)"/> -->
     </qui:header>
     <!-- <xsl:call-template name="build-action-panel" /> -->
+    <xsl:call-template name="build-browse-form" />
     <xsl:call-template name="build-results-list" />
     <xsl:call-template name="build-browse-index" />
     <xsl:call-template name="build-browse-navigation" />
@@ -135,6 +136,14 @@
         </qui:link>
       </xsl:for-each>
     </qui:nav>
+  </xsl:template>
+
+  <xsl:template name="build-browse-form">
+    <qui:form rel="browse" action="/cgi/t/text/text-idx" id="collection-search" class="visually-hidden">
+      <xsl:for-each select="//BrowseStringForm/HiddenVars/Variable">
+        <qui:hidden-input name="{@name}" value="{.}" />
+      </xsl:for-each>
+    </qui:form>
   </xsl:template>
 
   <xsl:template name="build-browse-index">

@@ -31,7 +31,7 @@
           <xsl:with-param name="classes">browse-link</xsl:with-param>
         </xsl:apply-templates>
 
-        <xsl:if test="count(//qui:block[@slot != 'information' and @slot != 'links']) &gt; 0">
+        <xsl:if test="count(//qui:block[@slot != 'information' and @slot != 'links'][normalize-space(.)]) &gt; 0">
           <div class="[ pr-1 mb-1 ]">
             <h3>Page Index</h3>
             <div class="toc js-toc"></div>
