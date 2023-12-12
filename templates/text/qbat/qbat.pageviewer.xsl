@@ -102,7 +102,8 @@
         title="{$title}"
         src="{ $embed-href }"
         data-mimetype="{$viewer/@mimetype}"
-        data-istruct_mt="{$viewer/@istruct_mt}">
+        data-istruct_mt="{$viewer/@istruct_mt}"
+        data-has-ocr="{$viewer/@has-ocr}">
       </iframe>  
     </xsl:if>
     <xsl:if test="//qui:callout[@slot='viewer']">
