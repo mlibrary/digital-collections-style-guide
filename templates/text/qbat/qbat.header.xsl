@@ -32,6 +32,7 @@
         <xsl:call-template name="build-contents-list" />
         <xsl:call-template name="build-contents-pagination" />
       </div>
+      <xsl:apply-templates select="//qui:block[@slot='metadata']/qui:metadata" mode="build-coins" />
     </div>
 
   </xsl:template>  

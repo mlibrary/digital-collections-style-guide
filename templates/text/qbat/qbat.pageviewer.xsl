@@ -39,8 +39,9 @@
       <div class="[ main-panel ]">
 
         <xsl:call-template name="build-main-stacked"></xsl:call-template>
-      
+        
       </div>
+      <xsl:apply-templates select="//qui:block[@slot='record']/qui:metadata" mode="build-coins" /> 
     </div>
 
   </xsl:template>

@@ -300,6 +300,7 @@
         </div>
       </div>
       <div class="results-details">
+        <xsl:apply-templates select="qui:metadata" mode="build-coins" />
         <dl class="[ results ]">
           <!-- <xsl:apply-templates select="qui:collection" /> -->
           <!-- <xsl:apply-templates select="qui:block[@slot='metadata']//qui:field" /> -->
@@ -774,5 +775,7 @@
       </dl>  
     </div>              
   </xsl:template>
+
+  <xsl:template match="qui:field[@key='bookmark']"></xsl:template>
 
 </xsl:stylesheet>
