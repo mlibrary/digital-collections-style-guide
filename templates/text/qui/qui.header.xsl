@@ -35,7 +35,7 @@
 
 
   <xsl:template name="get-title">
-    Contents
+    Item Information
   </xsl:template>
 
   <xsl:template name="build-item-header">

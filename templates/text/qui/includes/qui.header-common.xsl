@@ -29,6 +29,19 @@
       <xsl:apply-templates select="$item//CollName" mode="field" />
 
       <xsl:if test="$include-bookmark = 'yes'">
+        <xsl:call-template name="build-bookmarkable-link" />
+      </xsl:if>
+
+    </qui:metadata>
+
+  </xsl:template>
+
+  <xsl:template name="build-bookmarkable-link">
+    <xsl:choose>
+      <xsl:when test="//BookmarkableUrl">
+        <xsl:apply-templates select="//BookmarkableUrl" mode="metadata" />
+      </xsl:when>
+      <xsl:otherwise>
         <qui:field key="bookmark" component="input">
           <qui:label>Link to this Item</qui:label>
           <qui:values>
@@ -45,10 +58,19 @@
             </qui:value>
           </qui:values>
         </qui:field>
-      </xsl:if>
+      </xsl:otherwise>
+    </xsl:choose>
+  </xsl:template>
 
-    </qui:metadata>
-
+  <xsl:template match="BookmarkableUrl" mode="metadata">
+    <qui:field key="bookmark" component="input">
+      <qui:label>Link to this Item</qui:label>
+      <qui:values>
+        <qui:value>
+          <xsl:value-of select="." />
+        </qui:value>
+      </qui:values>
+    </qui:field>    
   </xsl:template>
 
   <!-- core templates, maybe -->

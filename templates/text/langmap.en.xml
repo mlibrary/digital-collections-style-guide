@@ -463,5 +463,6 @@
     <Item key="uplift.header.str.print-publication-date">Print Publication Date</Item>
     <Item key="uplift.header.str.extent">scan</Item>
     <Item key="uplift.header.str.extent.plural">scans</Item>
+    <Item key="uplift.header.str.link">Link to this Item</Item>
   </Lookup>
 </LookupTables>
