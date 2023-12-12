@@ -387,6 +387,7 @@
       </div>
 
       <div class="results-details">
+        <xsl:apply-templates select="qui:metadata[@slot='item']" mode="build-coins" />
         <dl class="[ results ]">
           <!-- <xsl:apply-templates select="qui:collection" /> -->
           <xsl:apply-templates select="qui:metadata[@slot='item']//qui:field" />

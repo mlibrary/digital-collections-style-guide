@@ -3,7 +3,19 @@
   <xsl:output method="xml" version="1.0" encoding="utf-8" indent="yes" />
   <xsl:strip-space elements="*"/>
 
-  <xsl:variable name="has-plain-text" select="//ViewSelect/Option[Value='text']" />
+  <xsl:variable name="has-plain-text">
+    <xsl:choose>
+      <xsl:when test="/Top/DocMeta/ItemHeader/HEADER/@TYPE = 'noocr'">
+        <xsl:value-of select="'false'" />
+      </xsl:when>
+      <xsl:when test="//ViewSelect/Option[Value='text']">
+        <xsl:value-of select="'true'" />
+      </xsl:when>
+      <xsl:otherwise>
+        <xsl:value-of select="'false'" />
+      </xsl:otherwise>
+    </xsl:choose>
+  </xsl:variable>
   <xsl:variable name="is-subj-search">yes</xsl:variable>
   <xsl:variable name="include-useguidelines-metadata">yes</xsl:variable>
 
@@ -120,13 +132,12 @@
         collid="{$collid}" 
         q1="{//Param[@name='q1']}"
         >
-        <xsl:if test="$has-plain-text">
-          <xsl:attribute name="has-ocr">true</xsl:attribute>
-        </xsl:if>
+        <xsl:attribute name="has-ocr"><xsl:value-of select="$has-plain-text" /></xsl:attribute>
         <xsl:if test="//MediaInfo/ViewerMaxSize">
           <xsl:attribute name="viewer-max-width"><xsl:value-of select="//MediaInfo/ViewerMaxSize/@width" /></xsl:attribute>
           <xsl:attribute name="viewer-max-height"><xsl:value-of select="//MediaInfo/ViewerMaxSize/@height" /></xsl:attribute>
         </xsl:if>
+        <qui:debug><xsl:value-of select="$has-plain-text" /></qui:debug>
       </qui:viewer>
     </xsl:if>
     <!-- does this have an analog -->
@@ -182,7 +193,7 @@
               <xsl:apply-templates select="." mode="pagenum" />
               <!-- <xsl:text>)</xsl:text> -->
             </qui:download-item>
-            <xsl:if test="$has-plain-text">
+            <xsl:if test="$has-plain-text = 'true'">
               <qui:download-item href="{$api_url}/cgi/t/text/text-idx?cc={/Top/DlxsGlobals/CurrentCgi/Param[@name='cc']};idno={/Top/DlxsGlobals/CurrentCgi/Param[@name='idno']};seq={Value};view=text;tpl=plaintext.viewer" file-type="TEXT" type="TEXT">
                 <xsl:text>Plain Text - Page </xsl:text>
                 <xsl:apply-templates select="." mode="pagenum" />
@@ -241,7 +252,7 @@
         <qui:download-item href="{$api_url}/cgi/t/text/api/image/{/Top/DlxsGlobals/CurrentCgi/Param[@name='cc']}:{/Top/DlxsGlobals/CurrentCgi/Param[@name='idno']}:{$seq}/full/full/0/default.jpg" file-type="JPEG" type="IMAGE">
           Page Image
         </qui:download-item>
-        <xsl:if test="$has-plain-text">
+        <xsl:if test="$has-plain-text = 'true'">
             <qui:download-item href="{$api_url}/cgi/t/text/text-idx?cc={/Top/DlxsGlobals/CurrentCgi/Param[@name='cc']};idno={/Top/DlxsGlobals/CurrentCgi/Param[@name='idno']};seq={$seq};view=text;tpl=plaintext.viewer" file-type="TEXT" type="TEXT">
               Page Text
             </qui:download-item>
