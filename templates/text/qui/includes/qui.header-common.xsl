@@ -29,7 +29,9 @@
       <xsl:apply-templates select="$item//CollName" mode="field" />
 
       <xsl:if test="$include-bookmark = 'yes'">
-        <xsl:call-template name="build-bookmarkable-link" />
+        <xsl:call-template name="build-bookmarkable-link">
+          <xsl:with-param name="item" select="$item" />
+        </xsl:call-template>
       </xsl:if>
 
     </qui:metadata>
@@ -37,8 +39,12 @@
   </xsl:template>
 
   <xsl:template name="build-bookmarkable-link">
+    <xsl:param name="item" />
     <xsl:choose>
-      <xsl:when test="//BookmarkableUrl">
+      <xsl:when test="$item/BookmarkableUrl">
+        <xsl:apply-templates select="$item/BookmarkableUrl" mode="metadata" />
+      </xsl:when>
+      <xsl:when test="($template-name = 'pageviewer' or $template-name = 'browse') and normalize-space(//BookmarkableUrl)">
         <xsl:apply-templates select="//BookmarkableUrl" mode="metadata" />
       </xsl:when>
       <xsl:otherwise>
@@ -48,13 +54,16 @@
             <qui:value>
               <xsl:text>https://name.umdl.umich.edu/</xsl:text>
               <xsl:choose>
+                <xsl:when test="local-name($item) = 'Item'">
+                  <xsl:value-of select="$item/@idno" />
+                </xsl:when>
                 <xsl:when test="//Param[@name='node']">
                   <xsl:value-of select="//Param[@name='node']" />
                 </xsl:when>
                 <xsl:otherwise>
                   <xsl:value-of select="dlxs:downcase(//Param[@name='idno'])" />  
                 </xsl:otherwise>
-              </xsl:choose>
+              </xsl:choose>    
             </qui:value>
           </qui:values>
         </qui:field>
@@ -506,7 +515,9 @@
           <xsl:otherwise></xsl:otherwise>
         </xsl:choose>
         <xsl:apply-templates select="$pubstatement-source/SERIES[1]" mode="metadata-value" />
-        <xsl:apply-templates select="$pubstatement-source/DATE[not(@TYPE='sort')][1]" mode="metadata-value" />
+        <xsl:apply-templates select="$pubstatement-source/DATE[not(@TYPE='sort')][1]" mode="qui-value">
+          <xsl:with-param name="key">pubdate</xsl:with-param>
+        </xsl:apply-templates>
         <xsl:apply-templates select="$pubstatement-source/../EXTENT" mode="metadata-value" />
       </xsl:with-param>
     </xsl:call-template>
@@ -886,6 +897,18 @@
     </qui:field>
   </xsl:template>
 
+  <xsl:template match="node()[normalize-space(.)]" mode="qui-value">
+    <xsl:param name="key" />
+    <qui:value>
+      <xsl:if test="$key">
+        <xsl:attribute name="key">
+          <xsl:value-of select="$key" />
+        </xsl:attribute>
+        <xsl:value-of select="." />
+      </xsl:if>
+    </qui:value>
+  </xsl:template>
+
   <xsl:template match="node()" mode="metadata-value">
     <xsl:if test="normalize-space(.)">
       <Value><xsl:value-of select="." /></Value>
@@ -904,9 +927,11 @@
         <xsl:apply-templates select="key('get-statement', 'u-m-research-access-believed')" mode="copy-guts" />
       </xsl:when>
       <xsl:when test="contains(., 'may be under copyright')">
+        <qui:debug>WET</qui:debug>
         <xsl:apply-templates select="key('get-statement', 'u-m-research-access-copyright')" mode="copy-guts" />
       </xsl:when>
       <xsl:otherwise>
+        <qui:debug>WAT</qui:debug>
         <xsl:apply-templates select="key('get-statement', 'u-m-research-access-pd')" mode="copy-guts" />
       </xsl:otherwise>
     </xsl:choose>

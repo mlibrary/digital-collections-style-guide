@@ -51,6 +51,8 @@
 
         <xsl:apply-templates select="//qui:block[@slot='notes']" />
 
+        <xsl:apply-templates select="//qui:block[@slot='metadata']/qui:metadata" mode="build-coins" />
+
       </div>
     </div>
 

@@ -76,6 +76,8 @@
     </xsl:choose>
   </xsl:variable>
 
+  <xsl:variable name="include-bookmark">yes</xsl:variable>
+
 
   <xsl:template name="build-body-main">
     <xsl:call-template name="build-results-navigation" />
