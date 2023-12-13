@@ -462,6 +462,9 @@
     <xsl:variable name="identifier" select="translate(ItemIdno, 'ABCDEFGHIJKLMNOPQRSTUVWXYZ','abcdefghijklmnopqrstuvwxyz')" />
 
     <qui:section identifier="{@idno}" collid="{@collid}" auth-required="{AuthRequired}" encoding-type="{DocEncodingType}" encoding-level="{ItemEncodingLevel}">
+      <xsl:if test="HEADER/@TYPE='restricted'">
+        <xsl:attribute name="access">restricted</xsl:attribute>
+      </xsl:if>
       <xsl:apply-templates select="Tombstone" />
       <xsl:apply-templates select="DetailHref" />
       <xsl:apply-templates select="TocHref">

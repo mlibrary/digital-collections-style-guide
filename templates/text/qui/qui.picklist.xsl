@@ -102,8 +102,12 @@
       <xsl:variable name="identifier" select="translate(ItemHeader/HEADER/FILEDESC/PUBLICATIONSTMT/IDNO[@TYPE='dlps' or @TYPE='DLPS'], 'ABCDEFGHIJKLMNOPQRSTUVWXYZ','abcdefghijklmnopqrstuvwxyz')" />
 
       <qui:section type="item" identifier="{$identifier}" auth-required="{AuthRequired}" encoding-type="{$encoding-type}" encoding-level="{$item-encoding-level}">
+        <xsl:if test="ItemHeader/HEADER/@TYPE = 'restricted'">
+          <xsl:attribute name="access">restricted</xsl:attribute>
+        </xsl:if>
         <qui:link rel="result" href="{Url}" />
         <qui:link rel="iiif" href="{$api_url}/cgi/t/text/api/image/{$collid}:{$identifier}:1/full/!250,250/0/default.jpg" />
+        <xsl:apply-templates select="ItemHeader/HEADER[@TYPE='tombstone']" mode="build-tombstone-link" />
         <xsl:call-template name="build-header-metadata">
           <xsl:with-param name="item" select="." />
           <xsl:with-param name="encoding-type" select="$encoding-type" />

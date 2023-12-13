@@ -301,6 +301,11 @@
       </div>
       <div class="results-details">
         <xsl:apply-templates select="qui:metadata" mode="build-coins" />
+        <xsl:if test="@access = 'restricted'">
+          <m-callout variant="warning" icon="warning">
+            <xsl:value-of select="key('get-lookup', 'results.str.9')" />
+          </m-callout>
+        </xsl:if>
         <dl class="[ results ]">
           <!-- <xsl:apply-templates select="qui:collection" /> -->
           <!-- <xsl:apply-templates select="qui:block[@slot='metadata']//qui:field" /> -->
@@ -381,11 +386,13 @@
   </xsl:template>
 
   <xsl:template match="qui:field[@key='title']" priority="99">
+    <!-- only render the title field if the section 
+         doesn't have its own title -->
     <xsl:choose>
       <xsl:when test="ancestor::qui:section/qui:title">
+        <xsl:apply-templates select="." mode="build" />
       </xsl:when>
       <xsl:otherwise>
-        <xsl:apply-templates select="." mode="build" />
       </xsl:otherwise>
     </xsl:choose>
   </xsl:template>
@@ -521,12 +528,13 @@
 
   <xsl:template match="qui:block[@slot='summary']" mode="callout">
     <xsl:param name="title" />
+    <xsl:variable name="access" select="ancestor::qui:section/@access" />
     <m-callout variant="info" icon="info" style="flex-grow: 1; margin-bottom: 0; z-index: 1;">
       <div class="[ flex ]" style="justify-content: space-between">
         <div>
           <span>Results detail: </span>
           <xsl:choose>
-            <xsl:when test="../qui:link[@rel='detail']">
+            <xsl:when test="$access != 'restricted' and ../qui:link[@rel='detail']">
               <a href="{../qui:link[@rel='detail']/@href}">
                 <xsl:apply-templates select="." mode="copy-guts" />
                 <span class="visually-hidden">
