@@ -534,7 +534,10 @@
         <div>
           <span>Results detail: </span>
           <xsl:choose>
-            <xsl:when test="$access != 'restricted' and ../qui:link[@rel='detail']">
+            <xsl:when test="$access = 'restricted'">
+              <xsl:apply-templates select="." mode="copy-guts" />
+            </xsl:when>
+            <xsl:when test="../qui:link[@rel='detail']">
               <a href="{../qui:link[@rel='detail']/@href}">
                 <xsl:apply-templates select="." mode="copy-guts" />
                 <span class="visually-hidden">
@@ -621,10 +624,10 @@
   <xsl:template name="build-collection-header-string">
     <xsl:variable name="header" select="//qui:header[@role='main']" />
     <xsl:choose>
-      <xsl:when test="//qui:metadata[@slot='item']">
+      <xsl:when test="//qui:main/qui:metadata[@slot='item']">
         <xsl:value-of select="$header" />
         <xsl:text> / </xsl:text>
-        <xsl:value-of select="//qui:metadata[@slot='item']//qui:field[@key='title']//qui:values" />
+        <xsl:value-of select="//qui:main/qui:metadata[@slot='item']//qui:field[@key='title']//qui:values" />
       </xsl:when>
       <xsl:otherwise>
         <xsl:value-of select="$header" />
