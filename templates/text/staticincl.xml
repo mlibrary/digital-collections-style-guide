@@ -5,7 +5,6 @@
   <Filename>../vendor/str.split.function.xsl</Filename>
   <Filename>../vendor/xslfunctions.xsl</Filename>
   <Filename>qui/components/*.xsl</Filename>
-  <Filename>../vendor/xslfunctions.xsl</Filename>
   <Filename>qui/qui.static.xsl</Filename>
 </XslFallbackFileList>
 <XslFallbackFileList pipeline="qbat">

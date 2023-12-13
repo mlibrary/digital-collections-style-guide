@@ -220,7 +220,16 @@ ins::after {
 }
 
 .line {
-  display: block;
+  // display: block;
+  display: flex;
+  align-items: center;
+  gap: 1.5rem;
+  
+  .line--number {
+    font-family: monospace;
+    font-size: 0.75rem;
+    color: var(--color-blue-300);
+  }
 }
 
 .line--indent1, .indentlevel1 {

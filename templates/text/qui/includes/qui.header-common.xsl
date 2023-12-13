@@ -927,6 +927,10 @@
     </xhtml:p>    
   </xsl:template>
 
+  <xsl:template match="AVAILABILITY/P[contains(., 'Permission must be received for subsequent distribution in print or electronically.') and contains(., 'http://www.umdl.umich.edu/')]" priority="99">
+    <xsl:apply-templates select="key('get-statement', 'u-m-research-access-copyright')" mode="copy-guts" />
+  </xsl:template>
+
   <xsl:template match="AVAILABILITY/P[contains(., 'Where applicable, subject to copyright.') and contains(., 'http://www.umdl.umich.edu/')]" priority="99">
     <xsl:apply-templates select="key('get-statement', 'u-m-research-access-copyright')" mode="copy-guts" />
   </xsl:template>
