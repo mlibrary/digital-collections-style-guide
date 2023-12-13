@@ -927,6 +927,14 @@
     </xhtml:p>    
   </xsl:template>
 
+  <xsl:template match="AVAILABILITY/P[contains(., 'Where applicable, subject to copyright.') and contains(., 'http://www.umdl.umich.edu/')]" priority="99">
+    <xsl:apply-templates select="key('get-statement', 'u-m-research-access-copyright')" mode="copy-guts" />
+  </xsl:template>
+
+  <xsl:template match="AVAILABILITY/P[contains(., 'Where applicable, subject to copyright. Other restrictions on distribution may apply.')]" priority="99">
+    <xsl:apply-templates select="key('get-statement', 'u-m-research-access-copyright')" mode="copy-guts" />
+  </xsl:template>
+
   <xsl:template match="AVAILABILITY/P[contains(., 'The University of Michigan Library provides access')]" priority="99">
     <xsl:choose>
       <xsl:when test="contains(., 'believed to be in the public domain')">
@@ -937,7 +945,6 @@
         <xsl:apply-templates select="key('get-statement', 'u-m-research-access-copyright')" mode="copy-guts" />
       </xsl:when>
       <xsl:otherwise>
-        <qui:debug>WAT</qui:debug>
         <xsl:apply-templates select="key('get-statement', 'u-m-research-access-pd')" mode="copy-guts" />
       </xsl:otherwise>
     </xsl:choose>
