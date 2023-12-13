@@ -1341,7 +1341,14 @@
         </xsl:if>
       </xsl:attribute>
       <xsl:copy-of select="@*[not(local-name()='REND' or local-name()='ID')]" />
-      <xsl:apply-templates />
+      <xsl:if test="@N">
+        <span class="line--number">
+          <span class="visually-hidden">Line </span>
+          <xsl:value-of select="@N" />
+          <xsl:text> </xsl:text>
+        </span>
+      </xsl:if>
+      <span><xsl:apply-templates /></span>
     </span>
   </xsl:template>
 
