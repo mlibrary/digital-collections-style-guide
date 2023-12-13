@@ -29,4 +29,24 @@
       </xsl:otherwise>
     </xsl:choose>
   </xsl:template>
+
+  <xsl:template name="build-tombstone-notification">
+    <xsl:if test="qui:metadata/@data-tombstone='true'">
+      <m-callout icon="info" variant="info">
+        <p>
+          <xsl:value-of select="key('get-lookup', 'tombstone.str.8')" />
+        </p>
+        <xsl:if test="qui:link[@rel='tombstone']">
+          <a href="{qui:link[@rel='tombstone']/@href}" target="_blank">
+            <xsl:value-of select="qui:link[@rel='tombstone']" />
+            <span class="visually-hidden">
+              <xsl:text> for </xsl:text>
+              <xsl:value-of select="normalize-space(qui:metadata/qui:field[@key='title']//qui:value)" />
+            </span>
+            <span class="visually-hidden"> (opens in new tab)</span>
+          </a>
+        </xsl:if>
+      </m-callout>
+    </xsl:if>
+  </xsl:template>
 </xsl:stylesheet>

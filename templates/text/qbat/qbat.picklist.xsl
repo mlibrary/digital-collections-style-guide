@@ -353,6 +353,9 @@
       <!-- <xsl:variable name="link" select="qui:link[@rel='result']" /> -->
       <xsl:variable name="link-href">
         <xsl:choose>
+          <xsl:when test="qui:metadata/@data-tombstone = 'true'">
+            <!-- this should not be a link -->
+          </xsl:when>
           <xsl:when test="qui:link[@rel='result']">
             <xsl:value-of select="qui:link[@rel='result']/@href" />
           </xsl:when>
@@ -373,8 +376,14 @@
       </xsl:variable>
 
       <xsl:choose>
+        <xsl:when test="qui:metadata/@data-tombstone='true'">
+          <div class="[ results-list__blank ]" aria-hidden="true" data-type="blank"></div>
+        </xsl:when>
+        <xsl:when test="@access = 'restricted'">
+          <div class="[ results-list__blank ]" aria-hidden="true" data-type="blank"></div>
+        </xsl:when>
         <xsl:when test="qui:link[@rel='iiif']">
-          <img class="[ results-list__image ]" src="{qui:link[@rel='iiif']/@href}" aria-hidden="true" alt="" />
+          <img class="[ results-list__image ]" loading="lazy" src="{qui:link[@rel='iiif']/@href}" aria-hidden="true" alt="" />
         </xsl:when>
         <xsl:otherwise>
           <div class="[ results-list__blank ]" aria-hidden="true">
@@ -401,13 +410,25 @@
       <div class="results-card">
         <div class="results-list__content flex flex-flow-column flex-grow-1">
           <h3>
-            <a href="{$link-href}" class="results-link">
-              <xsl:value-of select="$link-title" />
-            </a>
+            <xsl:choose>
+              <xsl:when test="normalize-space($link-href)">
+                <a href="{$link-href}" class="results-link">
+                  <xsl:value-of select="$link-title" />
+                </a>    
+              </xsl:when>
+              <xsl:otherwise>
+                <xsl:value-of select="$link-title" />
+              </xsl:otherwise>
+            </xsl:choose>
           </h3>
         </div>
       </div>
       <div class="results-details">
+        <xsl:if test="@access = 'restricted'">
+          <m-callout variant="warning" icon="warning">
+            <xsl:value-of select="key('get-lookup', 'results.str.9')" />
+          </m-callout>
+        </xsl:if>
         <dl class="[ results ]">
           <!-- <xsl:apply-templates select="qui:collection" /> -->
           <xsl:apply-templates select="qui:metadata[@slot='metadata']//qui:field" />
@@ -425,6 +446,7 @@
         <xsl:apply-templates select="qui:block[@slot='summary']" mode="callout">
           <xsl:with-param name="title" select="normalize-space($link-title)" />
         </xsl:apply-templates>
+        <xsl:call-template name="build-tombstone-notification" />
       </div>
 
       <xsl:variable name="form" select="qui:form[@slot='bookbag']" />

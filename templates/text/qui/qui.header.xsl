@@ -16,6 +16,20 @@
   <xsl:template name="build-body-main">
     <xsl:call-template name="build-contents-navigation" />
     <xsl:call-template name="build-breadcrumbs" />
+
+    <xsl:choose>
+      <xsl:when test="/Top/Item/ItemHeader/HEADER/@TYPE = 'restricted'">
+        <qui:callout slot="access">
+          <xsl:value-of select="key('get-lookup', 'results.str.9')" />
+        </qui:callout>
+      </xsl:when>
+      <xsl:when test="/Top/AuthRequired = 'true'">
+        <qui:callout slot="access">
+          <xsl:value-of select="key('get-lookup', 'header.str.fullaccess')" />
+        </qui:callout>
+      </xsl:when>  
+    </xsl:choose>
+
     <qui:header role="main">
       <xsl:value-of select="$item-metadata//qui:field[@key='title']//qui:value" />
       <!-- <xsl:text>: </xsl:text> -->

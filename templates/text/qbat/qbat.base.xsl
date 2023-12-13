@@ -1033,7 +1033,7 @@
     <a>
       <xsl:apply-templates select="@*" mode="copy" />
       <xsl:apply-templates mode="copy" />
-      <span class="sr-only"> (opens in new tab)</span>
+      <span class="visually-hidden"> (opens in new tab)</span>
     </a>
       <!-- <svg width="25" height="25" viewBox="0 0 24 24" style="margin-left: 0.25rem; vertical-align: text-bottom; display: inline-block; fill: currentColor;">
         <title>Open in new window</title>

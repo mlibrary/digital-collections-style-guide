@@ -12,6 +12,9 @@
       item-encoding-level="{$item-encoding-level}"
       encoding-type="{$encoding-type}"
       root="{name($item)}">
+      <xsl:if test="$item//HEADER[@TYPE='tombstone']">
+        <xsl:attribute name="data-tombstone">true</xsl:attribute>
+      </xsl:if>
 
       <xsl:choose>
         <xsl:when test="$encoding-type = 'monograph'">
@@ -28,6 +31,10 @@
 
       <xsl:apply-templates select="$item//CollName" mode="field" />
 
+      <xsl:call-template name="build-metadata-extra-fields">
+        <xsl:with-param name="item" select="$item" />
+      </xsl:call-template>
+
       <xsl:if test="$include-bookmark = 'yes'">
         <xsl:call-template name="build-bookmarkable-link">
           <xsl:with-param name="item" select="$item" />
@@ -37,6 +44,8 @@
     </qui:metadata>
 
   </xsl:template>
+
+  <xsl:template name="build-metadata-extra-fields" />
 
   <xsl:template name="build-bookmarkable-link">
     <xsl:param name="item" />
@@ -54,7 +63,7 @@
             <qui:value>
               <xsl:text>https://name.umdl.umich.edu/</xsl:text>
               <xsl:choose>
-                <xsl:when test="local-name($item) = 'Item'">
+                <xsl:when test="local-name($item) = 'Item' and $item/@idno">
                   <xsl:value-of select="$item/@idno" />
                 </xsl:when>
                 <xsl:when test="//Param[@name='node']">
@@ -329,7 +338,7 @@
     </xsl:if>
   </xsl:template>
 
-  <xsl:template match="qui:value" mode="build-field-value">
+  <xsl:template match="qui:value" mode="build-field-value" priority="101">
     <xsl:copy>
       <xsl:apply-templates select="@*" mode="copy" />
       <xsl:apply-templates mode="copy" />
@@ -752,9 +761,6 @@
         </xsl:choose>
       </qui:block>
     </xsl:if>
-    <xsl:if test="node()">
-      <qui:debug>WTF</qui:debug>
-    </xsl:if>
   </xsl:template>
 
   <xsl:template name="SimpleHitSumm">
@@ -1019,6 +1025,10 @@
         </qui:value>
       </qui:values>
     </qui:field>
+  </xsl:template>
+
+  <xsl:template match="HEADER[@TYPE='tombstone']" mode="build-tombstone-link">
+    <!-- default does not generate a link -->
   </xsl:template>
   
 </xsl:stylesheet>

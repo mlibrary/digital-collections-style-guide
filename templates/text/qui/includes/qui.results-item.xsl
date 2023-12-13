@@ -424,8 +424,6 @@
     <xsl:param name="item" />
     <xsl:param name="slot" />
 
-    <qui:debug>WTF: single-article</qui:debug>
-
     <qui:debug>
       <xsl:copy-of select="$item" />
     </qui:debug>
