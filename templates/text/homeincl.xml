@@ -17,7 +17,6 @@
 <CustomXml><?CHUNK filename="searchextra.xml" optional="1"?></CustomXml>
 
 <DlxsGlobals><?CHUNK filename="dlxsclassglobals.xml"?></DlxsGlobals>
-<DEBUG>SERIOUSLY</DEBUG>
 
 <NavHeader><?CHUNK filename="navheader.xml"?></NavHeader>
 
@@ -76,6 +75,9 @@
     </PubBetweenSelect>
   </OtherRestrictions>
 </SearchForm>
+
+<GroupsLink><?GROUPSLINK_XML?></GroupsLink>
+<Groups><?COLL_GROUPS_XML?></Groups>
 
 <?CHUNK filename="uplift.useguidelines.xml" optional="1"?>
 <?CHUNK filename="uplift.links.xml" optional="1"?>

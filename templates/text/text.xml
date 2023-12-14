@@ -7,6 +7,7 @@
 <Top xmlns:dlxs="http://www.umdl.umich.edu/dlxs">
 
   <!-- XSL fallback files -->
+  <!-- <Filename>qui/includes/qui.text.components.xsl</Filename> -->
   <XslFallbackFileList pipeline="qui">
     <Filename>qui/qui.base.xsl</Filename>
     <Filename>../vendor/str.split.function.xsl</Filename>
@@ -14,7 +15,6 @@
     <Filename>qui/components/*.xsl</Filename>
     <Filename>qui/includes/qui.header-common.xsl</Filename>
     <Filename>qui/includes/qui.header-toc.xsl</Filename>
-    <Filename>qui/includes/qui.text.components.xsl</Filename>
     <Filename>qui/qui.text.xsl</Filename>
   </XslFallbackFileList>
 
