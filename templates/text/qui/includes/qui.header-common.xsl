@@ -921,6 +921,10 @@
     </xsl:if>
   </xsl:template>
 
+  <xsl:template match="AVAILABILITY">
+    <xsl:apply-templates />
+  </xsl:template>
+
   <xsl:template match="AVAILABILITY/P">
     <xhtml:p>
       <xsl:apply-templates mode="copy-guts" />
@@ -939,15 +943,15 @@
     <xsl:apply-templates select="key('get-statement', 'u-m-research-access-copyright')" mode="copy-guts" />
   </xsl:template>
 
-  <xsl:template match="AVAILABILITY/P[contains(., 'The University of Michigan Library provides access')]" priority="99">
+  <xsl:template match="AVAILABILITY/P[contains(normalize-space(.), 'The University of Michigan Library provides access')]" priority="99">
     <xsl:choose>
-      <xsl:when test="contains(., 'believed to be in the public domain')">
+      <xsl:when test="contains(normalize-space(.), 'believed to be in the public domain')">
         <xsl:apply-templates select="key('get-statement', 'u-m-research-access-believed')" mode="copy-guts" />
       </xsl:when>
-      <xsl:when test="contains(., 'with permission from copyright holder')">
+      <xsl:when test="contains(normalize-space(.), 'with permission from copyright holder')">
         <xsl:apply-templates select="key('get-statement', 'u-m-research-access-copyright-permission')" mode="copy-guts" />
       </xsl:when>
-      <xsl:when test="contains(., 'may be under copyright')">
+      <xsl:when test="contains(normalize-space(.), 'may be under copyright')">
         <xsl:apply-templates select="key('get-statement', 'u-m-research-access-copyright')" mode="copy-guts" />
       </xsl:when>
       <xsl:otherwise>
@@ -999,6 +1003,7 @@
       </xsl:otherwise>
     </xsl:choose>
   </xsl:template>
+
   <xsl:template match="AVAILABILITY/P[@TYPE='DPLA']" priority="99">
     <xsl:choose>
       <xsl:when test=".='No Copyright - United States'">

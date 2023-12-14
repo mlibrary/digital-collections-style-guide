@@ -164,7 +164,7 @@
     </xsl:call-template>
   </xsl:template>
 
-  <xsl:template match="node()[name()][namespace-uri() = '']" mode="copy" priority="99">
+  <xsl:template match="FullTextResults//node()[name()][namespace-uri() = '']" mode="copy" priority="99">
     <xsl:element name="tei:{name()}">
       <xsl:apply-templates select="*|@*|text()" mode="copy" />
     </xsl:element>
