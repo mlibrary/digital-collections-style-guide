@@ -327,6 +327,25 @@ hr {
   border-top: 3px double var(--color-teal-100);
 }
 
+.notenumber {
+  font-weight: bold;
+  display: inline-block;
+  padding: 0 0.25rem 0 0.5rem;
+}
+
+.inline-note {
+  background: var(--color-maize-100);
+  display: block;
+}
+
+.display-inline {
+  display: inline-block;
+}
+
+.inline-note-edge {
+  font-weight: bold;
+  font-size: 125%;
+}
 
 html[data-highlight-state="off"] .hilite1 {
   background-color: transparent;
