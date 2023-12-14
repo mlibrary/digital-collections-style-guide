@@ -80,6 +80,8 @@ a.card {
   padding: 0;
   display: block;
   margin: 0 auto 0.5rem;
+  padding: 4px;
+  border: 1px solid var(--color-neutral-100);
 }
 
 .card__heading {
