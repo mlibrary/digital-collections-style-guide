@@ -944,8 +944,10 @@
       <xsl:when test="contains(., 'believed to be in the public domain')">
         <xsl:apply-templates select="key('get-statement', 'u-m-research-access-believed')" mode="copy-guts" />
       </xsl:when>
+      <xsl:when test="contains(., 'with permission from copyright holder')">
+        <xsl:apply-templates select="key('get-statement', 'u-m-research-access-copyright-permission')" mode="copy-guts" />
+      </xsl:when>
       <xsl:when test="contains(., 'may be under copyright')">
-        <qui:debug>WET</qui:debug>
         <xsl:apply-templates select="key('get-statement', 'u-m-research-access-copyright')" mode="copy-guts" />
       </xsl:when>
       <xsl:otherwise>
