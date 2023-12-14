@@ -35,6 +35,7 @@
     <xsl:call-template name="build-panel-custom" />
     <xsl:call-template name="build-panel-browse-links" />
     <xsl:call-template name="build-search-form" />
+    <xsl:call-template name="build-panel-related-collections" />
   </xsl:template>
 
   <xsl:template name="build-panel-custom">
@@ -216,4 +217,29 @@
     </xhtml:figure>
   </xsl:template>
 
+  <xsl:template name="build-panel-related-collections">
+    <xsl:if test="//Groups/Group">
+      <qui:panel slot="related-collections">
+        <qui:header>Related Collections</qui:header>
+        <qui:block slot="help">
+          <xsl:text>Search this collection with other related collections in </xsl:text>
+          <xsl:choose>
+            <xsl:when test="count(//Groups/Group) = 1">
+              <xsl:text> this group</xsl:text>
+            </xsl:when>
+            <xsl:otherwise>
+              <xsl:text> these groups</xsl:text>
+            </xsl:otherwise>
+          </xsl:choose>
+        </qui:block>
+        <qui:nav>
+          <xsl:for-each select="//Groups/Group">
+            <qui:link href="/cgi/t/text/text-idx?page=simple;xc=1;g={@GroupID}" data-badge="group">
+              <xsl:value-of select="normalize-space(.)" />
+            </qui:link>
+          </xsl:for-each>
+        </qui:nav>
+      </qui:panel>
+    </xsl:if>
+  </xsl:template>  
 </xsl:stylesheet>
