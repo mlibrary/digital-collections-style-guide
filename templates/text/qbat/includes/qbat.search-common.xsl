@@ -38,7 +38,7 @@
 
       <form id="collection-search" action="/cgi/t/text/text-idx" method="GET" autocomplete="off" data-num-qs="{$search-form/@data-num-qs}">
 
-        <xsl:if test="qui:fieldset[@slot='collids']">
+        <xsl:if test="$search-form/qui:fieldset[@slot='collids']">
           <xsl:call-template name="build-collection-selection" />
         </xsl:if>
 
