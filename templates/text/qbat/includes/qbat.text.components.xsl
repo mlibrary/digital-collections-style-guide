@@ -862,6 +862,9 @@
           <xsl:when test="$view='text'">
             <xsl:call-template name="filterNotesInText" />
           </xsl:when>
+          <xsl:otherwise>
+            <xsl:call-template name="filterNotesInText" />
+          </xsl:otherwise>
         </xsl:choose>
       </xsl:when>
       <xsl:otherwise>
@@ -946,14 +949,30 @@
           </span>
         </xsl:if>
         <!-- it's an inline note -->
-        <xsl:if test="not(tei:P) and not(tei:TABLE)">
-          <xsl:text>[</xsl:text>
+        <xsl:if test="true()">
+          <xsl:if test="not(tei:P) and not(tei:TABLE)">
+            <span class="inline-note-edge">[</span>
+          </xsl:if>
+          <xsl:apply-templates
+            select="tei:BIBL|tei:DATE|tei:FIGURE|tei:FOREIGN|tei:GAP|tei:HEAD|tei:HI1|tei:HI2|tei:Highlight|tei:P|tei:PB|tei:Q1|tei:REF|tei:TABLE|text()" />
+          <xsl:if test="not(tei:P) and not(tei:TABLE)">
+            <span class="inline-note-edge">]</span>
+          </xsl:if>
         </xsl:if>
-        <xsl:apply-templates
-          select="tei:BIBL|tei:DATE|tei:FIGURE|tei:FOREIGN|tei:GAP|tei:HEAD|tei:HI1|tei:HI2|tei:Highlight|tei:P|tei:PB|tei:Q1|tei:REF|tei:TABLE|text()" />
-        <xsl:if test="not(tei:P) and not(tei:TABLE)">
-          <xsl:text>]</xsl:text>
-        </xsl:if>
+        <!-- <xsl:choose>
+          <xsl:when test="not(tei:P) and not(tei:TABLE)">
+            <span class="inline-note display-inline">
+              <xsl:apply-templates
+              select="tei:BIBL|tei:DATE|tei:FIGURE|tei:FOREIGN|tei:GAP|tei:HEAD|tei:HI1|tei:HI2|tei:Highlight|tei:P|tei:PB|tei:Q1|tei:REF|tei:TABLE|text()" />  
+            </span>
+          </xsl:when>
+          <xsl:otherwise>
+            <div class="inline-note">
+              <xsl:apply-templates
+                select="tei:BIBL|tei:DATE|tei:FIGURE|tei:FOREIGN|tei:GAP|tei:HEAD|tei:HI1|tei:HI2|tei:Highlight|tei:P|tei:PB|tei:Q1|tei:REF|tei:TABLE|text()" />
+            </div>    
+          </xsl:otherwise>
+        </xsl:choose> -->
       </xsl:otherwise>
     </xsl:choose>
   </xsl:template>

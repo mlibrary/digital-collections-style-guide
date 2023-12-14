@@ -85,7 +85,7 @@
     <qui:block slot="notes"
       mimetype="application/tei+xml"
       >
-      <xsl:for-each select="/Top/FullTextResults/DocContent//NOTE1|/Top/FullTextResults/DocContent//NOTE2">
+      <xsl:for-each select="/Top/FullTextResults/DocContent//NOTE1[@HREF]|/Top/FullTextResults/DocContent//NOTE2[@HREF]">
         <tei:NOTE>
           <xsl:apply-templates select="." mode="copy" />
         </tei:NOTE>
