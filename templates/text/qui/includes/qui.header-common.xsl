@@ -155,7 +155,7 @@
     <!-- <xsl:variable name="bibl" select="$item/ItemDetails/DIV1/BIBL" /> -->
     <xsl:variable name="bibl" select="($item/ItemDetails|$item/ItemDivhead)/DIV1//BIBL" />
     <xsl:apply-templates select="$bibl" mode="process-title">
-      <xsl:with-param name="add-biblscope" select="false()" />
+      <xsl:with-param name="add-biblscope" select="true()" />
     </xsl:apply-templates>
   </xsl:template>
 
@@ -578,7 +578,7 @@
         <xsl:value-of select="TITLE[1]" />
         <xsl:if test="$add-biblscope and BIBLSCOPE">
           <xsl:text> [</xsl:text>
-          <xsl:apply-templates select="$article-cite/BIBLSCOPE"/>
+          <xsl:apply-templates select=".//BIBLSCOPE"/>
           <xsl:text>]</xsl:text>
         </xsl:if>
       </xsl:with-param>
