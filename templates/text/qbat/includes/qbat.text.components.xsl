@@ -421,6 +421,9 @@
     </section>
   </xsl:template>
 
+  <!-- DIVINFO is handled elsewhere -->
+  <xsl:template match="tei:DIVINFO" />
+
   <!-- #################### -->
   <xsl:template match="tei:TEXT|tei:FRONT|tei:BODY|tei:BACK|tei:DLPSTEXTCLASS">
     <xsl:apply-templates />
