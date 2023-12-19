@@ -931,19 +931,23 @@
     </xhtml:p>    
   </xsl:template>
 
-  <xsl:template match="AVAILABILITY/P[contains(., 'Permission must be received for subsequent distribution in print or electronically.') and contains(., 'http://www.umdl.umich.edu/')]" priority="99">
+  <xsl:template match="AVAILABILITY/P[contains(., '@')]" priority="99">
+    <xsl:apply-templates select="." mode="uplift" />
+  </xsl:template>
+
+  <xsl:template match="AVAILABILITY/P[contains(., 'Permission must be received for subsequent distribution in print or electronically.') and contains(., 'http://www.umdl.umich.edu/')]" priority="99" mode="uplift">
     <xsl:apply-templates select="key('get-statement', 'u-m-research-access-copyright')" mode="copy-guts" />
   </xsl:template>
 
-  <xsl:template match="AVAILABILITY/P[contains(., 'Where applicable, subject to copyright.') and contains(., 'http://www.umdl.umich.edu/')]" priority="99">
+  <xsl:template match="AVAILABILITY/P[contains(., 'Where applicable, subject to copyright.') and contains(., 'http://www.umdl.umich.edu/')]" priority="99" mode="uplift">
     <xsl:apply-templates select="key('get-statement', 'u-m-research-access-copyright')" mode="copy-guts" />
   </xsl:template>
 
-  <xsl:template match="AVAILABILITY/P[contains(., 'Where applicable, subject to copyright. Other restrictions on distribution may apply.')]" priority="99">
+  <xsl:template match="AVAILABILITY/P[contains(., 'Where applicable, subject to copyright. Other restrictions on distribution may apply.')]" priority="99" mode="uplift">
     <xsl:apply-templates select="key('get-statement', 'u-m-research-access-copyright')" mode="copy-guts" />
   </xsl:template>
 
-  <xsl:template match="AVAILABILITY/P[contains(normalize-space(.), 'The University of Michigan Library provides access')]" priority="99">
+  <xsl:template match="AVAILABILITY/P[contains(normalize-space(.), 'The University of Michigan Library provides access')]" priority="99" mode="uplift">
     <xsl:choose>
       <xsl:when test="contains(normalize-space(.), 'believed to be in the public domain in the United States')">
         <xsl:apply-templates select="key('get-statement', 'u-m-research-access-believed-us')" mode="copy-guts" />
