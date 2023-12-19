@@ -180,11 +180,13 @@ async function processDLXS(req, res) {
     if ( xmlData.indexOf('Location: ') > -1 ) {
       console.log(xmlData);
       let tmp = xmlData.match(/Location: (.*)$/si);
-      let domain = ( req.hostname == 'localhost' ) ? 'http://' : 'https://';
-      domain += req.hostname;
-      let href = tmp[1].trim().replace('https://roger.quod.lib.umich.edu/', '/' ).replace('debug=xml', 'debug=noop');
-      res.redirect(href);
-      return;
+      if ( tmp[1].startsWith('/') or tmp[1].startsWith('https://') ) {
+          let domain = ( req.hostname == 'localhost' ) ? 'http://' : 'https://';
+          domain += req.hostname;
+          let href = tmp[1].trim().replace('https://roger.quod.lib.umich.edu/', '/' ).replace('debug=xml', 'debug=noop');
+          res.redirect(href);
+          return;
+      }
     }
     res.send(xmlData);
   } else {
