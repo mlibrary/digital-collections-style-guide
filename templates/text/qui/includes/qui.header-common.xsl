@@ -931,7 +931,10 @@
     </xhtml:p>    
   </xsl:template>
 
-  <xsl:template match="AVAILABILITY/P[contains(., '@')]" priority="99">
+  <xsl:template match="AVAILABILITY/P[
+    contains(., '@') or 
+    contains(., 'http://www.umdl.umich.edu/') or
+  contains(., 'http://quod.lib.umich.edu/t/text/accesspolicy.html')]" priority="99">
     <xsl:apply-templates select="." mode="uplift" />
   </xsl:template>
 
@@ -940,6 +943,10 @@
   </xsl:template>
 
   <xsl:template match="AVAILABILITY/P[contains(., 'Where applicable, subject to copyright.') and contains(., 'http://www.umdl.umich.edu/')]" priority="99" mode="uplift">
+    <xsl:apply-templates select="key('get-statement', 'u-m-research-access-copyright')" mode="copy-guts" />
+  </xsl:template>
+
+  <xsl:template match="AVAILABILITY/P[contains(., 'Where applicable, subject to copyright.') and contains(., 'http://quod.lib.umich.edu/t/text/accesspolicy.html')]" priority="99" mode="uplift">
     <xsl:apply-templates select="key('get-statement', 'u-m-research-access-copyright')" mode="copy-guts" />
   </xsl:template>
 
