@@ -180,7 +180,7 @@ async function processDLXS(req, res) {
     if ( xmlData.indexOf('Location: ') > -1 ) {
       console.log(xmlData);
       let tmp = xmlData.match(/Location: (.*)$/si);
-      if ( tmp[1].startsWith('/') or tmp[1].startsWith('https://') ) {
+      if ( tmp[1].startsWith('/') || tmp[1].startsWith('https://') ) {
           let domain = ( req.hostname == 'localhost' ) ? 'http://' : 'https://';
           domain += req.hostname;
           let href = tmp[1].trim().replace('https://roger.quod.lib.umich.edu/', '/' ).replace('debug=xml', 'debug=noop');
