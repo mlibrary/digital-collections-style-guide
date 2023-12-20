@@ -938,6 +938,17 @@
     <xsl:apply-templates select="." mode="uplift" />
   </xsl:template>
 
+  <xsl:template match="AVAILABILITY/P[@TYPE]" priority="100">
+    <xsl:choose>
+      <xsl:when test="@TYPE = 'rights'">
+        <xsl:apply-templates select="." mode="copy" />
+      </xsl:when>
+      <xsl:otherwise>
+        <xsl:apply-templates select="key('get-statement', @TYPE)" mode="copy-guts" />
+      </xsl:otherwise>
+    </xsl:choose>
+  </xsl:template>
+
   <xsl:template match="AVAILABILITY/P[
     contains(., 'These pages may be freely searched and displayed.') and 
     contains(., 'Please contact umdl-info@umich.edu for more information.')]" priority="99" mode="uplift">
@@ -970,7 +981,7 @@
         <xsl:apply-templates select="key('get-statement', 'u-m-research-access-believed')" mode="copy-guts" />
       </xsl:when>
       <xsl:when test="contains(normalize-space(.), 'with permission from copyright holder')">
-        <xsl:apply-templates select="key('get-statement', 'u-m-research-access-copyright-permission')" mode="copy-guts" />
+        <xsl:apply-templates select="key('get-statement', 'u-m-research-access-permission')" mode="copy-guts" />
       </xsl:when>
       <xsl:when test="contains(normalize-space(.), 'may be under copyright')">
         <xsl:apply-templates select="key('get-statement', 'u-m-research-access-copyright')" mode="copy-guts" />
