@@ -1002,7 +1002,7 @@
     </xsl:choose>
   </xsl:template>
 
-  <xsl:template match="AVAILABILITY/P[@TYPE='license']" priority="99">
+  <xsl:template match="AVAILABILITY/P[@TYPE='license']" priority="101">
     <xsl:choose>
       <xsl:when test=".='No Copyright'">
         <xsl:apply-templates select="//RightsStatement[@key='dpla-no-copyright']" mode="copy-guts" />
