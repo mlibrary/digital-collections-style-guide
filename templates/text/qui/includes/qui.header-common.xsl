@@ -979,6 +979,9 @@
       <xsl:when test="contains(normalize-space(.), 'believed to be in the public domain')">
         <xsl:apply-templates select="key('get-statement', 'u-m-research-access-believed')" mode="copy-guts" />
       </xsl:when>
+      <xsl:when test="contains(normalize-space(.), 'are likely to be in the public domain.')">
+        <xsl:apply-templates select="key('get-statement', 'u-m-research-access-believed')" mode="copy-guts" />
+      </xsl:when>
       <xsl:when test="contains(normalize-space(.), 'with permission from copyright holder')">
         <xsl:apply-templates select="key('get-statement', 'u-m-research-access-permission')" mode="copy-guts" />
       </xsl:when>
