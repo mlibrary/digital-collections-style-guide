@@ -968,8 +968,13 @@
       <xsl:when test="contains(normalize-space(.), 'may be under copyright')">
         <xsl:apply-templates select="key('get-statement', 'u-m-research-access-copyright')" mode="copy-guts" />
       </xsl:when>
+      <xsl:when test="contains(normalize-space(.), 'may be protected by copyright')">
+        <xsl:apply-templates select="key('get-statement', 'u-m-research-access-copyright')" mode="copy-guts" />
+      </xsl:when>
       <xsl:otherwise>
-        <xsl:apply-templates select="key('get-statement', 'u-m-research-access-pd')" mode="copy-guts" />
+        <!-- <xsl:apply-templates select="key('get-statement', 'u-m-research-access-pd')" mode="copy-guts" /> -->
+        <!-- should just punt-->
+        <xsl:apply-templates select="." mode="copy" />
       </xsl:otherwise>
     </xsl:choose>
   </xsl:template>
