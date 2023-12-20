@@ -938,6 +938,12 @@
     <xsl:apply-templates select="." mode="uplift" />
   </xsl:template>
 
+  <xsl:template match="AVAILABILITY/P[
+    contains(., 'These pages may be freely searched and displayed.') and 
+    contains(., 'Please contact umdl-info@umich.edu for more information.')]" priority="99" mode="uplift">
+    <xsl:apply-templates select="key('get-statement', 'u-m-research-access-pd-us')" mode="copy-guts" />
+  </xsl:template>
+
   <xsl:template match="AVAILABILITY/P[contains(., 'Permission must be received for subsequent distribution in print or electronically.') and contains(., 'http://www.umdl.umich.edu/')]" priority="99" mode="uplift">
     <xsl:apply-templates select="key('get-statement', 'u-m-research-access-copyright')" mode="copy-guts" />
   </xsl:template>
@@ -955,6 +961,7 @@
   </xsl:template>
 
   <xsl:template match="AVAILABILITY/P[contains(normalize-space(.), 'The University of Michigan Library provides access')]" priority="99" mode="uplift">
+    <xsl:message>BOO?</xsl:message>
     <xsl:choose>
       <xsl:when test="contains(normalize-space(.), 'believed to be in the public domain in the United States')">
         <xsl:apply-templates select="key('get-statement', 'u-m-research-access-believed-us')" mode="copy-guts" />
