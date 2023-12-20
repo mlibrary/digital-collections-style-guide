@@ -972,7 +972,6 @@
   </xsl:template>
 
   <xsl:template match="AVAILABILITY/P[contains(normalize-space(.), 'The University of Michigan Library provides access')]" priority="99" mode="uplift">
-    <xsl:message>BOO?</xsl:message>
     <xsl:choose>
       <xsl:when test="contains(normalize-space(.), 'believed to be in the public domain in the United States')">
         <xsl:apply-templates select="key('get-statement', 'u-m-research-access-believed-us')" mode="copy-guts" />
@@ -988,6 +987,12 @@
       </xsl:when>
       <xsl:when test="contains(normalize-space(.), 'may be protected by copyright')">
         <xsl:apply-templates select="key('get-statement', 'u-m-research-access-copyright')" mode="copy-guts" />
+      </xsl:when>
+      <xsl:when test="contains(normalize-space(.), 'are in the public domain in the United States')">
+        <xsl:apply-templates select="key('get-statement', 'u-m-research-access-pd-us')" mode="copy-guts" />
+      </xsl:when>
+      <xsl:when test="contains(normalize-space(.), 'are in the public domain')">
+        <xsl:apply-templates select="key('get-statement', 'u-m-research-access-pd')" mode="copy-guts" />
       </xsl:when>
       <xsl:otherwise>
         <!-- <xsl:apply-templates select="key('get-statement', 'u-m-research-access-pd')" mode="copy-guts" /> -->
