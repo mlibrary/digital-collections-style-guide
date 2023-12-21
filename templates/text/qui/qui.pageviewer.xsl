@@ -509,26 +509,42 @@
           </qui:values>
         </qui:field> -->
 
-        <qui:field key="bookmark" component="input">
-          <qui:label>Link to this Item</qui:label>
-          <qui:values>
-            <qui:value>
-              <xsl:text>https://name.umdl.umich.edu/</xsl:text>
-              <xsl:choose>
-                <xsl:when test="//Param[@name='node']">
-                  <xsl:value-of select="//Param[@name='node']" />
-                  <xsl:if test="//Param[@name='seq']">
-                    <xsl:text>/</xsl:text>
-                    <xsl:value-of select="//Param[@name='seq']" />
-                  </xsl:if>
-                </xsl:when>
-                <xsl:otherwise>
-                  <xsl:value-of select="dlxs:downcase(//Param[@name='idno'])" />  
-                </xsl:otherwise>
-              </xsl:choose>
-            </qui:value>
-          </qui:values>
-        </qui:field>
+        <xsl:call-template name="build-bookmarkable-link">
+          <xsl:with-param name="item" select="/Top/DocMeta" />
+        </xsl:call-template>
+
+        <xsl:if test="//Param[@name='seq'] or 
+          ( //Param[@name='node'] and //Param[@name='node'] != //Param[@name='idno'] )">
+          <qui:field key="bookmark-item" component="input">
+            <qui:label>Link to this <xsl:value-of select="key('get-lookup', 'results.str.singlepage')" /></qui:label>
+            <qui:values>
+              <qui:value>
+                <xsl:value-of select="//ApiUrl" />
+                <xsl:text>/</xsl:text>
+                <xsl:value-of select="substring($collid, 1, 1)" />
+                <xsl:text>/</xsl:text>
+                <xsl:value-of select="$collid" />
+                <xsl:text>/</xsl:text>
+                <xsl:choose>
+                  <xsl:when test="//Param[@name='node']">
+                    <xsl:value-of select="//Param[@name='node']" />
+                    <xsl:if test="//Param[@name='seq']">
+                      <xsl:text>/</xsl:text>
+                      <xsl:value-of select="//Param[@name='seq']" />
+                    </xsl:if>
+                  </xsl:when>
+                  <xsl:otherwise>
+                    <xsl:value-of select="dlxs:downcase(//Param[@name='idno'])" />  
+                    <xsl:if test="//Param[@name='seq']">
+                      <xsl:text>/</xsl:text>
+                      <xsl:value-of select="//Param[@name='seq']" />
+                    </xsl:if>
+                  </xsl:otherwise>
+                </xsl:choose>
+              </qui:value>
+            </qui:values>
+          </qui:field>        
+        </xsl:if>
 
       </qui:section>
     <!-- </qui:block> -->

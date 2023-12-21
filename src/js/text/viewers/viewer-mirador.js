@@ -164,6 +164,20 @@ window.addEventListener('message', (event) => {
     history.pushState({}, document.title, newHref);
     document.querySelector('.breadcrumb li:last-child').setAttribute('href', newHref);
 
+    const bookmarkItem = document.querySelector('dt[data-key="bookmark-item"] + dd span.url');
+    if ( bookmarkItem ) {
+      let itemHref = bookmarkItem.innerText.trim();
+      if ( itemHref.indexOf('/cgi/') > -1 ) {
+        // just use newHref
+        bookmarkItem.innerText = newHref;
+      } else {
+        // just pop on the new seq?
+        let tmp = itemHref.split('/');
+        tmp[tmp.length - 1] = newSeq.replace(/^0+/, '');
+        bookmarkItem.innerText = tmp.join('/');
+      }
+    }
+
     tocbot.refresh();
 
     ScreenReaderMessenger.getMessenger().say(`Viewing ${label}`);

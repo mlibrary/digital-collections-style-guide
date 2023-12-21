@@ -476,7 +476,7 @@
     </span>
   </xsl:template>
 
-  <xsl:template match="qui:field[@key='bookmark']" priority="101">
+  <xsl:template match="qui:field[contains(@key, 'bookmark')]" priority="101">
     <xsl:call-template name="build-content-copy-metadata">
       <xsl:with-param name="term"><xsl:value-of select="qui:label" /></xsl:with-param>
       <xsl:with-param name="key"><xsl:value-of select="@key" /></xsl:with-param>
