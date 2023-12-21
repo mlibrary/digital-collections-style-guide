@@ -61,7 +61,12 @@
           <qui:label>Link to this Item</qui:label>
           <qui:values>
             <qui:value>
-              <xsl:text>https://name.umdl.umich.edu/</xsl:text>
+              <xsl:value-of select="//ApiUrl" />
+              <xsl:text>/</xsl:text>
+              <xsl:value-of select="substring($collid, 1, 1)" />
+              <xsl:text>/</xsl:text>
+              <xsl:value-of select="$collid" />
+              <xsl:text>/</xsl:text>
               <xsl:choose>
                 <xsl:when test="local-name($item) = 'Item' and $item/@idno">
                   <xsl:value-of select="$item/@idno" />
@@ -979,7 +984,7 @@
       <xsl:when test="contains(normalize-space(.), 'believed to be in the public domain')">
         <xsl:apply-templates select="key('get-statement', 'u-m-research-access-believed')" mode="copy-guts" />
       </xsl:when>
-      <xsl:when test="contains(normalize-space(.), 'are likely to be in the public domain.')">
+      <xsl:when test="contains(normalize-space(.), 'are likely in the public domain.')">
         <xsl:apply-templates select="key('get-statement', 'u-m-research-access-believed')" mode="copy-guts" />
       </xsl:when>
       <xsl:when test="contains(normalize-space(.), 'with permission from copyright holder')">

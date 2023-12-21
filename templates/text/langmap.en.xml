@@ -439,6 +439,7 @@
     <Item key="default-badge">more_vert</Item>
   </Lookup>
   <Lookup id="uplift">
+    <Item key="results.str.singlepage"> scan</Item>
     <Item key="uplift.str.contents">Item Information</Item>
     <Item key="uplift.str.page.contents">Browse: Collection Contents</Item>
     <Item key="uplift.str.page.browse">Browse: Collection Contents</Item>

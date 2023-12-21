@@ -61,15 +61,17 @@
 
   <xsl:template name="build-contents-navigation">
     <qui:nav role="contents">
-      <xsl:if test="
-        /Top/AuthRequired != 'true' and 
-        /Top/Item/DocEncodingType != 'serialissue' and 
-        /Top/Item/ItemHeader/HEADER/@TYPE != 'noocr'">
-        <qui:link href="{//ViewEntireTextLink}" role="view-text">
-          <xsl:value-of select="key('get-lookup','header.str.viewentiretext')"/>
-        </qui:link>
-      </xsl:if>
-      <!-- <qui:link rel="bookmark" href="{/Top/BookbagAddHref}" label="{key('get-lookup', 'results.str.21')}" /> -->
+      <xsl:choose>
+        <xsl:when test="/Top/AuthRequired = 'true'"></xsl:when>
+        <xsl:when test="/Top/Item/DocEncodingType = 'serialissue'"></xsl:when>
+        <xsl:when test="/Top/Item/ItemHeader/HEADER/@TYPE = 'noocr'"></xsl:when>
+        <xsl:when test="//ViewEntireTextLink">
+          <qui:link href="{//ViewEntireTextLink}" role="view-text">
+            <xsl:value-of select="key('get-lookup','header.str.viewentiretext')"/>
+          </qui:link>
+        </xsl:when>
+        <xsl:otherwise></xsl:otherwise>
+      </xsl:choose>
       <xsl:choose>
         <xsl:when test="/Top/BookbagResults/Item[@idno=$idno]">
           <qui:form slot="bookbag" rel="remove" href="{/Top/BookbagResults/Item[@idno=$idno]/AddRemoveUrl}" data-identifier="{$idno}">
