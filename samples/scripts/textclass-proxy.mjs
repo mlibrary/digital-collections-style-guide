@@ -23,6 +23,8 @@ import serveStatic from 'serve-static';
 import cookieParser from 'cookie-parser';
 import proxy from 'express-http-proxy';
 
+import { isbot } from "isbot";
+
 let logger;
 const log = console.log;
 
@@ -349,6 +351,10 @@ function listen(options) {
   app.use(staticServer);
 
   app.get("/cgi/*", async function (req, res) {
+    if (isbot(req.get('user-agent'))) {
+      res.send("Beep boop");
+      return;
+    }
     try {
       processDLXS(req, res).catch((error) => {
         handleError(req, res, error);
@@ -364,6 +370,10 @@ function listen(options) {
       redirectTmp[0] += '/';
       const redirectUrl = redirectTmp.join('?');
       res.redirect(redirectUrl);
+      return;
+    }
+    if (isbot(req.get('user-agent'))) {
+      res.send("Beep boop");
       return;
     }
     try {
