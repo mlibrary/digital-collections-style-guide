@@ -1,11 +1,13 @@
 <?xml version="1.0"?>
 <xsl:stylesheet xmlns="http://www.w3.org/1999/xhtml" xmlns:xsl="http://www.w3.org/1999/XSL/Transform" xmlns:xhtml="http://www.w3.org/1999/xhtml" xmlns:dlxs="http://dlxs.org" xmlns:qui="http://dlxs.org/quombat/ui" xmlns:exsl="http://exslt.org/common" xmlns:str="http://exslt.org/strings" version="1.0" extension-element-prefixes="exsl str">
   <xsl:variable name="add-biblscope-to-serialissue-title" select="false()" />
+  <xsl:variable name="add-extent-to-pubinfo" select="false()" />
+  <xsl:variable name="add-notesstmt" select="false()" />
 
   <xsl:template name="build-header-metadata">
     <xsl:param name="encoding-type" />
     <xsl:param name="item-encoding-level" />
-    <xsl:param name="item" />
+    <xsl:param name="item" select="." />
     <xsl:param name="slot">item</xsl:param>
     
     <qui:metadata slot="{$slot}"
@@ -18,14 +20,16 @@
 
       <xsl:choose>
         <xsl:when test="$encoding-type = 'monograph'">
-          <xsl:call-template name="build-metadata-fields-for-monograph">
+          <xsl:apply-templates select="$item" mode="qui:monograph" />
+          <!-- <xsl:call-template name="build-metadata-fields-for-monograph">
             <xsl:with-param name="item" select="$item" />
-          </xsl:call-template>
+          </xsl:call-template> -->
         </xsl:when>
         <xsl:when test="$encoding-type = 'serialissue'">
-          <xsl:call-template name="build-metadata-fields-for-serialissue">
+          <xsl:apply-templates select="$item" mode="qui:serialissue" />
+          <!-- <xsl:call-template name="build-metadata-fields-for-serialissue">
             <xsl:with-param name="item" select="$item" />
-          </xsl:call-template>
+          </xsl:call-template> -->
         </xsl:when>
       </xsl:choose>
 
@@ -48,7 +52,7 @@
   <xsl:template name="build-metadata-extra-fields" />
 
   <xsl:template name="build-bookmarkable-link">
-    <xsl:param name="item" />
+    <xsl:param name="item" select="." />
     <xsl:choose>
       <xsl:when test="$item/BookmarkableUrl">
         <xsl:apply-templates select="$item/BookmarkableUrl" mode="metadata" />
@@ -98,33 +102,33 @@
 
   <!-- core templates, maybe -->
   <!-- MONOGRAPH -->
-  <xsl:template name="build-title-for-monograph">
-    <xsl:param name="item" />
+  <xsl:template match="*" name="build-title-for-monograph" mode="qui:monograph-title">
+    <xsl:param name="item" select="." />
     <xsl:variable name="titlestmt" select="($item/ItemHeader|$item)/HEADER/FILEDESC/TITLESTMT" />
     <xsl:apply-templates select="$titlestmt" mode="process-title" />
   </xsl:template>
 
-  <xsl:template name="build-author-for-monograph">
-    <xsl:param name="item" />
+  <xsl:template match="*" name="build-author-for-monograph" mode="qui:monograph-author">
+    <xsl:param name="item" select="." />
     <xsl:variable name="titlestmt" select="($item/ItemHeader|$item)/HEADER/FILEDESC/TITLESTMT" />
     <xsl:apply-templates select="$titlestmt" mode="process-author" />
   </xsl:template>
 
-  <xsl:template name="build-editor-for-monograph">
-    <xsl:param name="item" />
+  <xsl:template match="*" name="build-editor-for-monograph" mode="qui:monograph-editor">
+    <xsl:param name="item" select="." />
     <xsl:variable name="titlestmt" select="($item/ItemHeader|$item)/HEADER/FILEDESC/TITLESTMT" />
     <xsl:apply-templates select="$titlestmt" mode="process-editor" />
   </xsl:template>
 
-  <xsl:template name="build-pubinfo-for-monograph">
-    <xsl:param name="item" />
+  <xsl:template match="*" name="build-pubinfo-for-monograph" mode="qui:monograph-pubinfo">
+    <xsl:param name="item" select="." />
     <xsl:apply-templates select="($item/ItemHeader|$item)/HEADER/FILEDESC/SOURCEDESC" mode="process-pubinfo" />
   </xsl:template>
 
   <!-- SERIAL ISSUE : ISSUE -->
 
-  <xsl:template name="build-title-for-serialissue-issue">
-    <xsl:param name="item" />
+  <xsl:template match="*" name="build-title-for-serialissue-issue" mode="qui:serialissue-issue-title">
+    <xsl:param name="item" select="." />
     <!-- <xsl:variable name="bibl" select="$item/ItemDetails/DIV1/BIBL" /> -->
     <xsl:variable name="bibl" select="$item/DIV1//BIBL" />
     <xsl:apply-templates select="$bibl" mode="process-title">
@@ -132,21 +136,21 @@
     </xsl:apply-templates>
   </xsl:template>
 
-  <xsl:template name="build-author-for-serialissue-issue">
-    <xsl:param name="item" />
+  <xsl:template match="*" name="build-author-for-serialissue-issue" mode="qui:serialissue-issue-author">
+    <xsl:param name="item" select="." />
     <xsl:variable name="bibl" select="$item/DIV1//BIBL" />
     <xsl:apply-templates select="$bibl" mode="process-author" />
   </xsl:template>
 
-  <xsl:template name="build-serial-for-serialissue-issue">
-    <xsl:param name="item" />
+  <xsl:template match="*" name="build-serial-for-serialissue-issue" mode="qui:serialissue-issue-serial">
+    <xsl:param name="item" select="." />
     <xsl:apply-templates select="$item/MainHeader/HEADER/FILEDESC" mode="process-title">
       <xsl:with-param name="key">serial</xsl:with-param>
     </xsl:apply-templates>
   </xsl:template>
 
-  <xsl:template name="build-pubinfo-for-serialissue-issue">
-    <xsl:param name="item" />
+  <xsl:template match="*" name="build-pubinfo-for-serialissue-issue" mode="qui:serialissue-issue-pubinfo">
+    <xsl:param name="item" select="." />
     <xsl:call-template name="process-pubinfo-for-serialissue">
       <xsl:with-param name="bibl" select="$item/DIV1//BIBL" />
       <xsl:with-param name="header" select="$item/MainHeader/HEADER" />
@@ -155,8 +159,8 @@
 
   <!-- SERIAL ISSUE : ARTICLE -->
 
-  <xsl:template name="build-title-for-serialissue-article">
-    <xsl:param name="item" />
+  <xsl:template match="*" name="build-title-for-serialissue-article" mode="qui:serialissue-article-title">
+    <xsl:param name="item" select="." />
     <!-- <xsl:variable name="bibl" select="$item/ItemDetails/DIV1/BIBL" /> -->
     <xsl:variable name="bibl" select="($item/ItemDetails|$item/ItemDivhead)/DIV1//BIBL" />
     <xsl:apply-templates select="$bibl" mode="process-title">
@@ -164,65 +168,77 @@
     </xsl:apply-templates>
   </xsl:template>
 
-  <xsl:template name="build-author-for-serialissue-article">
-    <xsl:param name="item" />
+  <xsl:template match="*" name="build-author-for-serialissue-article" mode="qui:serialissue-article-author">
+    <xsl:param name="item" select="." />
     <xsl:variable name="bibl" select="($item/ItemDetails|$item/ItemDivhead)/DIV1//BIBL" />
     <xsl:apply-templates select="$bibl" mode="process-author" />
   </xsl:template>
 
-  <xsl:template name="build-serial-for-serialissue-article">
-    <xsl:param name="item" />
+  <xsl:template match="*" name="build-serial-for-serialissue-article" mode="qui:serialissue-article-serial">
+    <xsl:param name="item" select="." />
     <xsl:apply-templates select="($item/MainHeader|$item/ItemHeader)/HEADER/FILEDESC" mode="process-title">
       <xsl:with-param name="key">serial</xsl:with-param>
     </xsl:apply-templates>
   </xsl:template>
 
-  <xsl:template name="build-pubdate-for-serialissue-article">
-    <xsl:param name="item" />
+  <xsl:template match="*" name="build-pubdate-for-serialissue-article" mode="qui:serialissue-article-pubdate">
+    <xsl:param name="item" select="." />
     <xsl:variable name="bibl" select="($item/ItemDetails|$item/ItemDivhead)/DIV1//BIBL" />
     <xsl:apply-templates select="$bibl" mode="process-pubdate" />
   </xsl:template>
 
-  <xsl:template name="build-pubinfo-for-serialissue-article">
-    <xsl:param name="item" />
+  <xsl:template match="*" name="build-pubinfo-for-serialissue-article" mode="qui:serialissue-article-pubinfo">
+    <xsl:param name="item" select="." />
     <xsl:call-template name="process-pubinfo-for-serialissue">
       <xsl:with-param name="bibl" select="$item/ItemDetails/DIV1//BIBL" />
       <xsl:with-param name="header" select="$item/MainHeader/HEADER" />
     </xsl:call-template>
   </xsl:template>
 
-  <xsl:template name="build-title-for-serialissue-node">
-    <xsl:param name="item" />
+  <xsl:template match="*" name="build-title-for-serialissue-node" mode="qui:serialissue-node-title">
+    <xsl:param name="item" select="." />
     <!-- <xsl:variable name="bibl" select="$item/ItemDetails/DIV1/BIBL" /> -->
     <xsl:variable name="bibl" select="$item/descendant-or-self::node()[@NODE]//BIBL" />
-    <xsl:apply-templates select="$bibl" mode="process-title">
+    <xsl:choose>
+      <xsl:when test="$item//Divhead/BIBL">
+        <xsl:apply-templates select="$item//Divhead/BIBL" mode="process-title">
+          <xsl:with-param name="add-biblscope" select="false()" />
+        </xsl:apply-templates>
+      </xsl:when>
+      <xsl:when test="$item//BIBL">
+        <xsl:apply-templates select="$item//BIBL" mode="process-title">
+          <xsl:with-param name="add-biblscope" select="false()" />
+        </xsl:apply-templates>
+      </xsl:when>
+    </xsl:choose>
+    <!-- <xsl:apply-templates select="$bibl" mode="process-title">
       <xsl:with-param name="add-biblscope" select="false()" />
-    </xsl:apply-templates>
+    </xsl:apply-templates> -->
   </xsl:template>
 
-  <xsl:template name="build-author-for-serialissue-node">
-    <xsl:param name="item" />
+  <xsl:template match="*" name="build-author-for-serialissue-node" mode="qui:serialissue-node-author">
+    <xsl:param name="item" select="." />
     <xsl:variable name="bibl" select="$item/descendant-or-self::node()[@NODE]//BIBL" />
     <xsl:apply-templates select="$bibl" mode="process-author" />
   </xsl:template>
 
-  <xsl:template name="build-serial-for-serialissue-node">
-    <xsl:param name="item" />
+  <xsl:template match="*" name="build-serial-for-serialissue-node" mode="qui:serialissue-node-serial">
+    <xsl:param name="item" select="." />
     <xsl:apply-templates select="$item/MainHeader/HEADER/FILEDESC" mode="process-title">
       <xsl:with-param name="key">serial</xsl:with-param>
     </xsl:apply-templates>
   </xsl:template>
 
-  <xsl:template name="build-pubinfo-for-serialissue-node">
-    <xsl:param name="item" />
+  <xsl:template match="*" name="build-pubinfo-for-serialissue-node" mode="qui:serialissue-node-pubinfo">
+    <xsl:param name="item" select="." />
     <xsl:call-template name="process-pubinfo-for-serialissue">
       <xsl:with-param name="header" select="$item/ancestor-or-self::Item/MainHeader/HEADER" />
       <xsl:with-param name="bibl" select="$item/descendant-or-self::node()//BIBL" />
     </xsl:call-template>
   </xsl:template>
 
-  <xsl:template name="build-useguidelines-for-monograph">
-    <xsl:param name="item" />
+  <xsl:template match="*" name="build-useguidelines-for-monograph" mode="qui:monograph-useguidelines">
+    <xsl:param name="item" select="." />
     <xsl:choose>
       <xsl:when test="($item/ItemHeader|$item)/HEADER/@TYPE='restricted'">
         <xsl:call-template name="build-useguidelines-restricted" />
@@ -233,13 +249,13 @@
     </xsl:choose>
   </xsl:template>
 
-  <xsl:template name="build-useguidelines-for-serialissue">
-    <xsl:param name="item" />
+  <!-- <xsl:template name="build-useguidelines-for-serialissue" mode="qui:serialissue-node-title">
+    <xsl:param name="item" select="." />
     <xsl:apply-templates select="$item//HEADER/FILEDESC/PUBLICATIONSTMT/AVAILABILITY" mode="metadata" />
-  </xsl:template>
+  </xsl:template> -->
 
-  <xsl:template name="build-subjects-for-monograph">
-    <xsl:param name="item" />
+  <xsl:template match="*" name="build-subjects-for-monograph" mode="qui:monograph-subjects">
+    <xsl:param name="item" select="." />
     <xsl:if test="$item//KEYWORDS/child::TERM[not(@TYPE) or @TYPE='subject']">
       <xsl:call-template name="build-res-item-subjects">
         <xsl:with-param name="subj-parent" select="$item"/>
@@ -247,22 +263,22 @@
     </xsl:if>
   </xsl:template>
 
-  <xsl:template name="build-subjects-for-serialarticle">
-    <xsl:param name="item" />
+  <xsl:template match="*" name="build-subjects-for-serialarticle" mode="qui:serialarticle-subjects">
+    <xsl:param name="item" select="." />
     <xsl:call-template name="build-subjects-for-monograph">
       <xsl:with-param name="item" select="$item" />
     </xsl:call-template>
   </xsl:template>
 
   <xsl:template name="build-canvas-for-monograph">
-    <xsl:param name="item" />
+    <xsl:param name="item" select="." />
     <xsl:call-template name="build-canvas-for-serialissue">
       <xsl:with-param name="item" select="$item" />
     </xsl:call-template>
   </xsl:template>
 
   <xsl:template name="build-canvas-for-serialissue">
-    <xsl:param name="item" />
+    <xsl:param name="item" select="." />
     <xsl:if test="normalize-space(/Top/DocContent/DocSource/SourceUrl)">
       <xsl:call-template name="build-field">
         <xsl:with-param name="key">canvas</xsl:with-param>
@@ -376,7 +392,7 @@
   </xsl:template>
 
   <!-- <xsl:template name="build-main-title-for-monograph">
-    <xsl:param name="item" />
+    <xsl:param name="item" select="." />
     <xsl:call-template name="build-field">
       <xsl:with-param name="key">title</xsl:with-param>
       <xsl:with-param name="value">
@@ -532,7 +548,9 @@
         <xsl:apply-templates select="$pubstatement-source/DATE[not(@TYPE='sort')][1]" mode="qui-value">
           <xsl:with-param name="key">pubdate</xsl:with-param>
         </xsl:apply-templates>
-        <xsl:apply-templates select="$pubstatement-source/../EXTENT" mode="metadata-value" />
+        <xsl:if test="$add-extent-to-pubinfo">
+          <xsl:apply-templates select="$pubstatement-source/../EXTENT" mode="metadata-value" />
+        </xsl:if>
       </xsl:with-param>
     </xsl:call-template>
   </xsl:template>
@@ -621,10 +639,11 @@
     </xsl:call-template>
   </xsl:template>
 
-  <xsl:template match="NOTESSTMT" mode="process-notesstmt">
+  <xsl:template match="NOTESSTMT" mode="process-notes">
+    <xsl:param name="key">note</xsl:param>
     <xsl:if test="normalize-space(NOTE)">
       <xsl:call-template name="build-field">
-        <xsl:with-param name="key">note</xsl:with-param>
+        <xsl:with-param name="key"><xsl:value-of select="$key" /></xsl:with-param>
         <xsl:with-param name="value">
           <xsl:for-each select="NOTE">
             <Value><xsl:value-of select="." /></Value>
