@@ -1,120 +1,46 @@
 <?xml version="1.0"?>
 <xsl:stylesheet xmlns="http://www.w3.org/1999/xhtml" xmlns:xsl="http://www.w3.org/1999/XSL/Transform" xmlns:dlxs="http://dlxs.org" xmlns:qui="http://dlxs.org/quombat/ui" xmlns:exsl="http://exslt.org/common" xmlns:str="http://exslt.org/strings" version="1.0" extension-element-prefixes="exsl str">
 
-  <xsl:template name="build-metadata-fields-for-monograph">
-    <xsl:param name="item" />
-
-    <xsl:call-template name="build-title-for-monograph">
-      <xsl:with-param name="item" select="$item" />
-    </xsl:call-template>
-
-    <xsl:call-template name="build-author-for-monograph">
-      <xsl:with-param name="item" select="$item" />
-    </xsl:call-template>
-
-    <xsl:call-template name="build-editor-for-monograph">
-      <xsl:with-param name="item" select="$item" />
-    </xsl:call-template>
-
-    <xsl:call-template name="build-pubinfo-for-monograph">
-      <xsl:with-param name="item" select="$item" />
-    </xsl:call-template>
+  <xsl:template match="*" mode="qui:monograph">
+    <xsl:apply-templates select="." mode="qui:monograph-title" />
+    <xsl:apply-templates select="." mode="qui:monograph-author" />
+    <xsl:apply-templates select="." mode="qui:monograph-pubinfo" />
   </xsl:template>
 
-  <xsl:template name="build-metadata-fields-for-serialissue">
-    <xsl:param name="item" />
-
-    <xsl:choose>
-      <xsl:when test="$item/ItemHeader/HEADER or $item/HEADER">
-        <xsl:call-template name="build-metadata-fields-for-monograph">
-          <xsl:with-param name="item" select="$item" />
-        </xsl:call-template>
-      </xsl:when>
-      <xsl:when test="$item/MainHeader and $item/ItemDetails">
-        <xsl:call-template name="build-metadata-fields-for-serialissue-article">
-          <xsl:with-param name="item" select="$item" />
-        </xsl:call-template>
-      </xsl:when>
-      <xsl:when test="$item/MainHeader">
-        <xsl:call-template name="build-metadata-fields-for-serialissue-issue">
-          <xsl:with-param name="item" select="$item" />
-        </xsl:call-template>
-      </xsl:when>
-      <xsl:when test="$item/ItemHeader/node()[@NODE]">
-        <xsl:call-template name="build-metadata-fields-for-serialissue-node">
-          <xsl:with-param name="item" select="$item" />
-        </xsl:call-template>
-      </xsl:when>
-      <xsl:when test="$item[@NODE]">
-        <xsl:call-template name="build-metadata-fields-for-serialissue-node">
-          <xsl:with-param name="item" select="$item" />
-        </xsl:call-template>
-      </xsl:when>
-      <xsl:otherwise>
-        <qui:debug>FAIL</qui:debug>
-      </xsl:otherwise>
-    </xsl:choose>
+  <xsl:template match="*[ItemHeader/HEADER|HEADER]" mode="qui:serialissue">
+    <xsl:apply-templates select="." mode="qui:monograph" />
   </xsl:template>
 
-  <xsl:template name="build-metadata-fields-for-serialissue-issue">
-    <xsl:param name="item" />
-
-    <xsl:call-template name="build-title-for-serialissue-issue">
-      <xsl:with-param name="item" select="$item" />
-    </xsl:call-template>
-
-    <xsl:call-template name="build-author-for-serialissue-issue">
-      <xsl:with-param name="item" select="$item" />
-    </xsl:call-template>
-
-    <xsl:call-template name="build-serial-for-serialissue-issue">
-      <xsl:with-param name="item" select="$item" />
-    </xsl:call-template>
-
-    <xsl:call-template name="build-pubinfo-for-serialissue-issue">
-      <xsl:with-param name="item" select="$item" />
-    </xsl:call-template>
+  <xsl:template match="*[MainHeader][ItemDetails]" mode="qui:serialissue">
+    <qui:debug>serialissue-article</qui:debug>
+    <xsl:apply-templates select="." mode="qui:serialissue-article-title" />
+    <xsl:apply-templates select="." mode="qui:serialissue-article-author" />
+    <xsl:apply-templates select="." mode="qui:serialissue-article-serial" />
+    <xsl:apply-templates select="." mode="qui:serialissue-article-pubinfo" />
   </xsl:template>
 
-  <xsl:template name="build-metadata-fields-for-serialissue-article">
-    <xsl:param name="item" />
-    <xsl:variable name="articleCite" select="$item/ItemDetails/DIV1//BIBL"/>
-    <xsl:variable name="serIssSrc" select="$item/MainHeader/HEADER/FILEDESC/SOURCEDESC"/>
-
-    <xsl:call-template name="build-title-for-serialissue-article">
-      <xsl:with-param name="item" select="$item" />
-    </xsl:call-template>
-
-    <xsl:call-template name="build-author-for-serialissue-article">
-      <xsl:with-param name="item" select="$item" />
-    </xsl:call-template>
-
-    <xsl:call-template name="build-serial-for-serialissue-article">
-      <xsl:with-param name="item" select="$item" />
-    </xsl:call-template>
-
-    <xsl:call-template name="build-pubinfo-for-serialissue-article">
-      <xsl:with-param name="item" select="$item" />
-    </xsl:call-template>
-
+  <xsl:template match="*[MainHeader]" mode="qui:serialissue">
+    <qui:debug>serialissue-issue</qui:debug>
+    <xsl:apply-templates select="." mode="qui:serialissue-issue-title" />
+    <xsl:apply-templates select="." mode="qui:serialissue-issue-author" />
+    <xsl:apply-templates select="." mode="qui:serialissue-issue-serial" />
+    <xsl:apply-templates select="." mode="qui:serialissue-issue-pubinfo" />
   </xsl:template>
 
-  <xsl:template name="build-metadata-fields-for-serialissue-node">
-    <xsl:param name="item" />
-
-    <xsl:call-template name="build-title-for-serialissue-node">
-      <xsl:with-param name="item" select="$item" />
-    </xsl:call-template>
-
-    <xsl:call-template name="build-author-for-serialissue-node">
-      <xsl:with-param name="item" select="$item" />
-    </xsl:call-template>
-
-    <xsl:call-template name="build-pubinfo-for-serialissue-node">
-      <xsl:with-param name="item" select="$item" />
-    </xsl:call-template>
-
+  <xsl:template match="*[ItemHeader/node()[@NODE]]" mode="qui:serialissue">
+    <qui:debug>serialissue-node</qui:debug>
+    <xsl:apply-templates select="." mode="qui:serialissue-node-title" />
+    <xsl:apply-templates select="." mode="qui:serialissue-node-author" />
+    <xsl:apply-templates select="." mode="qui:serialissue-node-serial" />
+    <xsl:apply-templates select="." mode="qui:serialissue-node-pubinfo" />
   </xsl:template>
 
+  <xsl:template match="*[@NODE]" mode="qui:serialissue">
+    <qui:debug>serialissue-node</qui:debug>
+    <xsl:apply-templates select="." mode="qui:serialissue-node-title" />
+    <xsl:apply-templates select="." mode="qui:serialissue-node-author" />
+    <xsl:apply-templates select="." mode="qui:serialissue-node-serial" />
+    <xsl:apply-templates select="." mode="qui:serialissue-node-pubinfo" />
+  </xsl:template>
     
 </xsl:stylesheet>

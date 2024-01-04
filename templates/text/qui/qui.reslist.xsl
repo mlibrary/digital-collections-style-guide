@@ -718,7 +718,7 @@
             </xsl:for-each>      
           </qui:values>
         </qui:field>
-        <xsl:apply-templates select="$item-metadata//qui:field" mode="copy" />
+        <xsl:apply-templates select="$item-metadata//qui:field|$item-metadata//qui:debug" mode="copy" />
       </qui:metadata>
       <xsl:if test="false()">
       <qui:block slot="metadata">
@@ -736,7 +736,7 @@
               </xsl:for-each>      
             </qui:values>
           </qui:field>
-          <xsl:apply-templates select="$item-metadata//qui:field" mode="copy" />
+          <xsl:apply-templates select="$item-metadata//qui:field|$item-metadata//qui:debug" mode="copy" />
         </qui:section>
       </qui:block>
       </xsl:if>
@@ -833,7 +833,7 @@
               </xsl:for-each>      
             </qui:values>
           </qui:field>
-          <xsl:apply-templates select="$details-metadata//qui:field" mode="copy" />
+          <xsl:apply-templates select="$details-metadata//qui:field|$details-metadata//qui:debug" mode="copy" />
         </qui:metadata>
         <xsl:if test="descendant-or-self::Kwic">
           <qui:block slot="matches">
