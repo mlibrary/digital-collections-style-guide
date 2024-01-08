@@ -959,7 +959,8 @@
     contains(., '@') or 
     contains(., 'http://www.umdl.umich.edu/') or
   contains(., 'http://quod.lib.umich.edu/t/text/accesspolicy.html')]" priority="99">
-    <xsl:apply-templates select="." mode="uplift" />
+    <!-- <xsl:apply-templates select="." mode="uplift" /> -->
+    <xsl:apply-templates mode="copy" />
   </xsl:template>
 
   <xsl:template match="AVAILABILITY/P[@TYPE]" priority="100">
