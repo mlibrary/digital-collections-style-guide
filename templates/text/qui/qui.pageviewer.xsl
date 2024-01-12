@@ -376,8 +376,19 @@
   </xsl:template>
 
   <xsl:template match="node()" mode="collection-link-value">
+    <xsl:variable name="href">
+      <xsl:choose>
+        <xsl:when test="starts-with(., 'https://')">
+          <xsl:value-of select="." />
+        </xsl:when>
+        <xsl:otherwise>
+          <xsl:text>https://findingaids.lib.umich.edu/catalog/</xsl:text>
+          <xsl:value-of select="." />
+        </xsl:otherwise>
+      </xsl:choose>
+    </xsl:variable>
     <qui:value>
-      <qui:link href="{.}" icon="inventory_2">
+      <qui:link href="{$href}" icon="inventory_2">
         <xsl:text>Collection Finding Aid</xsl:text>
       </qui:link>
     </qui:value>

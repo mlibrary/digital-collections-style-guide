@@ -915,7 +915,7 @@
   </xsl:template>
 
   <xsl:template match="qui:link[normalize-space(@icon)]" mode="copy" priority="101">
-    <a class="bedazzled-link">
+    <a class="bedazzled-link" href="{@href}">
       <span class="material-icons" aria-hidden="true">
         <xsl:value-of select="@icon" />
       </span>
