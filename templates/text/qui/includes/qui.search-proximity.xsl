@@ -11,7 +11,7 @@
           <xsl:with-param name="default" select="$rgn/Default" />
         </xsl:apply-templates>
       </qui:select>
-      <qui:input name="{$query/Q1/Name}" slot="query" value="{$query/Q1/Default}">
+      <qui:input name="{$query/Q1/Name}" slot="query" value="{$query/Q1/Default}" required="required">
         <xsl:attribute name="data-active">true</xsl:attribute>
       </qui:input>
       <xsl:apply-templates select="$query/Amt2" mode="build-op">

@@ -121,7 +121,7 @@
     <xsl:param name="op" />
     <xsl:param name="rgn" />
     <qui:fieldset id="{$q/Name}-fieldset" data-name="{$q/Name}" slot="clause">
-      <qui:input name="{$q/Name}" slot="query" value="{$q/Default}">
+      <qui:input name="{$q/Name}" slot="query" value="{$q/Default}" required="required">
         <xsl:attribute name="data-active">
           <xsl:choose>
             <xsl:when test="Qlist[@active = 'TRUE']">false</xsl:when>

@@ -176,6 +176,9 @@
       <xsl:if test="@data-active='false'">
         <xsl:attribute name="disabled">disabled</xsl:attribute>
       </xsl:if>
+      <xsl:if test="@required">
+        <xsl:attribute name="required">required</xsl:attribute>
+      </xsl:if>
     </input>
   </xsl:template>
  
