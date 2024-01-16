@@ -145,7 +145,7 @@ async function processDLXS(req, res) {
       res.cookie('DLXSsid', cookieValue, { path: '/' });
       console.log("AHOY AHOY cookie = ", cookieValue);      
     }
-    const xmlData = (await resp.text()).replace(/https:\/\/localhost/g, 'http://localhost');
+    let xmlData = (await resp.text()).replace(/https:\/\/localhost/g, 'http://localhost');
     if ( xmlData.indexOf('no hits. normally cgi redirects') > -1 ) {
       throw new Error('Query has no results');
     }
@@ -166,6 +166,8 @@ async function processDLXS(req, res) {
       res.send(lines.join("\n"));
       return;
     }
+
+    xmlData = xmlData.replaceAll('roger.quod.lib.umich.edu', req.headers['x-forwarded-host'] || 'localhost:5555');    
 
     if ( url.searchParams.get('debug') == 'xml' ) {
         res.setHeader("Content-Type", "application/xml");
@@ -372,6 +374,7 @@ function listen(options) {
       res.redirect(redirectUrl);
       return;
     }
+    console.log("--?", req.originalUrl);
     if (isbot(req.get('user-agent'))) {
       res.send("Beep boop");
       return;
