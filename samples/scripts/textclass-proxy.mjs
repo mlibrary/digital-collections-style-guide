@@ -195,7 +195,7 @@ async function processDLXS(req, res) {
     res.send(xmlData);
   } else {
     const output = await resp.text();
-    res.send("OOPS\n" + '<details><summary>Stack Trace</summary><div>' + output + '</div>');
+    res.status(resp.status).send("OOPS\n" + '<details><summary>Stack Trace</summary><div>' + output + '</div>');
   }
 }
 
