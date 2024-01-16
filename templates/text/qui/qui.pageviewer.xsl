@@ -600,6 +600,10 @@
               <xsl:text>/</xsl:text>
               <xsl:value-of select="//Param[@name='idno']" />
               <xsl:text>. </xsl:text>
+              <xsl:if test="normalize-space(key('get-lookup', 'uplift.citation.repository'))">
+                <xsl:value-of select="key('get-lookup', 'uplift.citation.repository')" />
+                <xsl:text>, </xsl:text>
+              </xsl:if>
               <xsl:text>University of Michigan Library Digital Collections. </xsl:text>
               <xsl:text>Accessed </xsl:text>
               <xsl:value-of select="concat(date:month-name(), ' ', date:day-in-month(), ', ', date:year(), '.')" />
