@@ -786,6 +786,8 @@
     <xsl:text>#rights-permissions</xsl:text>
   </xsl:template>
 
+  <xsl:template match="qui:callout[preceding-sibling::qui:callout]" priority="101"/>
+
   <xsl:template match="qui:callout">
     <xsl:variable name="icon">
       <xsl:choose>
@@ -803,6 +805,9 @@
     </xsl:variable>
     <m-callout subtle="subtle" icon="{$icon}" dismissable="{$dismissable}" variant="{@variant}" style="margin-top: 1rem; margin-bottom: 0">
       <xsl:apply-templates mode="copy" />
+      <xsl:for-each select="following-sibling::qui:callout">
+        <xsl:apply-templates mode="copy" />
+      </xsl:for-each>
     </m-callout>
   </xsl:template>
 
