@@ -564,16 +564,22 @@
         <qui:field slot="citation" rel="full">
           <qui:values>
             <qui:value>
+              <xsl:variable name="title">
+                <xsl:choose>
+                  <xsl:when test="$item-metadata//qui:field[@key='articletitle']">
+                    <xsl:value-of select="$item-metadata//qui:field[@key='articletitle']//qui:value" />
+                  </xsl:when>
+                  <xsl:otherwise>
+                    <xsl:value-of select="$item-metadata//qui:field[@key='title']//qui:value" />
+                  </xsl:otherwise>
+                </xsl:choose>  
+              </xsl:variable>
               <xsl:text>&quot;</xsl:text>
-              <xsl:choose>
-                <xsl:when test="$item-metadata//qui:field[@key='articletitle']">
-                  <xsl:value-of select="$item-metadata//qui:field[@key='articletitle']//qui:value" />
-                </xsl:when>
-                <xsl:otherwise>
-                  <xsl:value-of select="$item-metadata//qui:field[@key='title']//qui:value" />
-                </xsl:otherwise>
-              </xsl:choose>
-              <xsl:text>.&quot; </xsl:text>
+              <xsl:value-of select="normalize-space($title)" />
+              <xsl:if test="substring(normalize-space($title), string-length(normalize-space($title))) != '.'">
+                <xsl:text>.</xsl:text>
+              </xsl:if>
+              <xsl:text>&quot; </xsl:text>
               <xsl:if test="$item-metadata//qui:field[@key='articletitle']">
                 <em>
                   <xsl:value-of select="$item-metadata//qui:field[@key='title']//qui:value" />
