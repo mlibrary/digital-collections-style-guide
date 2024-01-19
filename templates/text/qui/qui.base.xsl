@@ -278,10 +278,10 @@
         <xsl:text>/cgi/t/text/text-idx?page=bbaglist</xsl:text>
       </xsl:when>
       <xsl:when test="$context-type = 'group'">
-        <xsl:value-of select="/Top/Home" />
+        <xsl:value-of select="//MainNav/NavItem[Name='home']/Link" />
       </xsl:when>
       <xsl:when test="$context-type = 'multiple'">
-        <xsl:value-of select="/Top/Home" />
+        <xsl:value-of select="//MainNav/NavItem[Name='home']/Link" />
       </xsl:when>
       <xsl:otherwise></xsl:otherwise>
     </xsl:choose>
