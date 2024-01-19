@@ -1,0 +1,59 @@
+<DlxsGlobals><?CHUNK filename="dlxsclassglobals.xml"?></DlxsGlobals>
+
+<NavHeader><?CHUNK filename="navheader.xml"?></NavHeader>
+
+<DocNavigation>
+  <PageNavForm>
+    <HiddenVars>
+      <?HIDDEN_REQUESTED_COLLECTIONS_XML?>
+      <?HIDDEN_XC_XML?>
+      <?HIDDEN_IDNO_XML?>
+      <?HIDDEN_BOOKBAG_XML?>
+      <?HIDDEN_G_XML?>
+      <?HIDDEN_XG_XML?>
+      <?HIDDEN_DEBUG_XML?>
+      <?HIDDEN_VIEWFORM_VARS_XML?>
+    </HiddenVars>
+    <ViewSelect><?VIEW_SELECT_XML?></ViewSelect>
+    <SizeSelect><?SIZE_SELECT_XML?></SizeSelect>
+    <PageSelect><?PAGE_SELECT_XML?></PageSelect>
+  </PageNavForm>
+  <PrevSequenceLink><?PREV_SEQUENCE_LINK_XML?></PrevSequenceLink>
+  <NextSequenceLink><?NEXT_SEQUENCE_LINK_XML?></NextSequenceLink>
+  <AllowFullPdfDownload><?FULL_PDF_DOWNLOAD_ENABLED_XML?></AllowFullPdfDownload>
+  <?PDF_CHUNKED?>
+  <?MANIFEST_BEHAVIOR_XML?>
+</DocNavigation>
+
+<Footer><?CHUNK filename="footer.xml"?></Footer>
+
+<DocContent>
+  <DocSource>
+    <!-- url to either the pdf or image  -->
+    <SourceUrl><?SOURCE_URL_XML?></SourceUrl>
+    <!-- OCR or corrected text of page  -->
+    <SourcePageData><?SOURCE_PAGE_DATA_XML?></SourcePageData>
+    <Data></Data>
+  </DocSource>
+  
+  <Figures><?FIGURES_XML?></Figures>
+</DocContent>
+
+<?POD_AND_DOD_LINKS_XML?>
+<ReturnToResultsLink><?RETURN_TO_RESULTS_LINK_XML?></ReturnToResultsLink>
+<BookbagAddHref><?BOOKBAG_ADD_REMOVE_ITEM_XML?></BookbagAddHref>
+<SimpleSearchWithinLink><?SIMPLE_SEARCH_WITHIN_LINK_XML?></SimpleSearchWithinLink>
+
+<NavFrameExistenceFlag><?NAV_FRAME_EXISTENCE_FLAG?></NavFrameExistenceFlag>
+<NavFrameSrcHref><?NAV_FRAME_SRC_HREF?></NavFrameSrcHref>
+<NavFrameSourcePath><?NAV_FRAME_SOURCE_PATH?></NavFrameSourcePath>
+<ContentFrameExistenceFlag><?CONTENT_FRAME_EXISTENCE_FLAG?></ContentFrameExistenceFlag>
+<ContentFrameSrcHref><?CONTENT_FRAME_SRC_HREF?></ContentFrameSrcHref>
+<ContentFrameSourcePath><?CONTENT_FRAME_SOURCE_PATH?></ContentFrameSourcePath>
+
+<ResultsLinks>
+  <PrevNextItemLinks><?PREV_NEXT_ITEM_LINKS_XML?></PrevNextItemLinks>
+  <SliceNavigationLinks><?SLICE_NAVIGATION_LINKS_XML?></SliceNavigationLinks>
+  <SortSelect><?SORT_SELECT_XML onchange="sortform.submit()"?></SortSelect>
+  <HiddenVars><?HIDDEN_SORT_VARS_XML?></HiddenVars>
+</ResultsLinks>

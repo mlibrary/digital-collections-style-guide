@@ -1,0 +1,60 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+
+<!-- text.xml -->
+
+<?CHUNK filename="entitiesdoctype.chnk" optional="1"?>
+
+<Top xmlns:dlxs="http://www.umdl.umich.edu/dlxs">
+
+  <!-- XSL fallback files -->
+  <!-- <Filename>qui/includes/qui.text.components.xsl</Filename> -->
+  <XslFallbackFileList pipeline="qui">
+    <Filename>qui/qui.base.xsl</Filename>
+    <Filename>../vendor/str.split.function.xsl</Filename>
+    <Filename>../vendor/xslfunctions.xsl</Filename>
+    <Filename>qui/components/*.xsl</Filename>
+    <Filename>qui/includes/qui.header-common.xsl</Filename>
+    <Filename>qui/includes/qui.header-toc.xsl</Filename>
+    <Filename>qui/qui.text.xsl</Filename>
+  </XslFallbackFileList>
+
+  <XslFallbackFileList pipeline="qbat">
+    <Filename>qbat/qbat.base.xsl</Filename>
+    <Filename>../vendor/xslfunctions.xsl</Filename>
+    <Filename>qbat/components/*.xsl</Filename>
+    <Filename>qbat/includes/qbat.text.components.xsl</Filename>
+    <Filename>qbat/qbat.text.xsl</Filename>
+  </XslFallbackFileList>
+
+  <!-- Custom OPTIONAL XML for top-level file text.xml -->
+  <CustomXml><?CHUNK filename="textextra.xml" optional="1"?></CustomXml>
+
+  <DlxsGlobals><?CHUNK filename="dlxsclassglobals.xml"?></DlxsGlobals>
+
+  <NavHeader>
+    <?CHUNK filename="navheader.xml"?>
+  </NavHeader>
+
+  <Footer>
+    <?CHUNK filename="footer.xml"?>
+  </Footer>
+
+  <IncludeReturnToResults><?INCLUDE_RETURN_TO_RESULTS_XML?></IncludeReturnToResults>
+  <ReturnToResultsLink><?RETURN_TO_RESULTS_LINK_XML?></ReturnToResultsLink>
+  
+  
+  <BookbagAddHref><?BOOKBAG_ADD_REMOVE_ITEM_XML?></BookbagAddHref>
+  <SimpleSearchWithinLink><?SIMPLE_SEARCH_WITHIN_LINK_XML?></SimpleSearchWithinLink>
+
+  <FullTextResults>
+    <PrevNextSectionLinks><?PREV_NEXT_SECTION_LINKS_XML?></PrevNextSectionLinks>
+    <DocEncodingType><?DOC_ENCODING_TYPE_XML?></DocEncodingType>
+    <?POD_AND_DOD_LINKS_XML?>
+    <?XML_RESULTS?>
+  </FullTextResults>
+
+  <SearchDescription>
+    <SearchTypeName><?SEARCH_TYPE_NAME_XML?></SearchTypeName>
+  </SearchDescription>
+
+</Top>

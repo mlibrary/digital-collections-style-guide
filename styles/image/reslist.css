@@ -148,3 +148,15 @@ button[data-action="toggle-side-panel"] {
   }
 
 }
+
+dt[data-key] {
+  text-transform: capitalize;
+}
+
+.results-card {
+  display: flex;
+  flex-direction: row;
+  position: relative;
+  border: 1px solid #ddd;
+  border-radius: 0.25rem;
+}

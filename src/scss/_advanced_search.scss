@@ -1,0 +1,113 @@
+/** Advanced Search **/
+
+.advanced-link {
+  white-space: nowrap;
+}
+
+.advanced-search--form {
+  border: solid 1px var(--color-neutral-100);
+  padding: 2rem 5.5vw;
+}
+
+.advanced-search--containers {
+  margin: 0.5rem 0 2rem;
+  padding: 1rem;
+  background-color: #f9f9f9;
+  border: solid 1px var(--color-neutral-100);
+
+  container-type: inline-size;
+  container-name: field-groups;
+}
+
+@container field-groups ( max-width: 720px ) {
+  .field-groups {
+    padding: 2rem 0;
+  }
+}
+
+@container field-groups ( max-width: 625px ) {
+  fieldset.fieldset--grid {
+    grid-template-columns: 1fr 6rem;
+    grid-template-areas:
+      "rgn ."
+      "select ."
+      "q clear";
+  }
+}
+
+.advanced-grid--columns {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(225px, 1fr));
+  grid-gap: 2rem;
+}
+
+.field-groups {
+  display: grid;
+  grid-template-columns: minmax(380px, 1fr);
+  gap: 1rem;
+  justify-content: center;
+  padding: 2rem 4.5vw;
+}
+
+.fieldset--clause--select label[data-active="false"] {
+  display: none;
+}
+
+.fieldset--clause--select select[data-active="false"] {
+  display: none;
+}
+
+fieldset.fieldset--grid--v1 {
+  display: grid;
+  grid-template-columns: repeat(2, minmax(20%, auto)) 40% 40px;
+  grid-column-gap: 0.5rem;
+}
+
+fieldset.fieldset--grid {
+  display: grid;
+  grid-template-columns: 1fr 1fr 6rem;
+  grid-template-areas: "rgn select ." "q q clear";
+  grid-column-gap: 0.5rem;
+  grid-row-gap: 0.5rem;
+  padding: 0.5rem 1rem;
+}
+
+fieldset.fieldset--grid .fieldset--clause--region {
+  grid-area: rgn;
+}
+fieldset.fieldset--grid .fieldset--clause--region select {
+  width: 100%;
+}
+fieldset.fieldset--grid .fieldset--clause--select {
+  grid-area: select;
+}
+fieldset.fieldset--grid .fieldset--clause--select select {
+  width: 100%;
+}
+fieldset.fieldset--grid .fieldset--clause--query {
+  grid-area: q;
+}
+fieldset.fieldset--grid button[data-action="reset-clause"] {
+  grid-area: clear;
+}
+
+.fieldset--clause--query [data-slot="query"] {
+  width: 100%;
+}
+
+.fieldset--clause--query [data-active="false"] {
+  display: none;
+}
+
+.fieldset--clause--operator label {
+  text-transform: uppercase;
+}
+
+fieldset {
+  padding: 0.5rem 1rem;
+}
+
+fieldset legend {
+  font-weight: bold;
+  margin-bottom: 1rem;
+}

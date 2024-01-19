@@ -3,11 +3,6 @@
 
   <xsl:variable name="search-form" select="//qui:form[@id='collection-search']" />
 
-  <xsl:template name="build-extra-styles">
-    <xsl:comment>DUBIOUS EXCEPTIONS</xsl:comment>
-    <link rel="stylesheet" href="{$docroot}styles/image/advanced_search.css" />
-  </xsl:template>
-
   <xsl:template name="build-search-form">
     <form id="collection-search" action="/cgi/i/image/image-idx" method="GET" autocomplete="off">
       <xsl:call-template name="build-collection-selection" />

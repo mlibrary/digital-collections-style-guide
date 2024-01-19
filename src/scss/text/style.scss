@@ -1,0 +1,46 @@
+@use '../reset';
+@use '../base';
+@use '../dev';
+@use '../utils';
+@use '../layout';
+@use '../buttons';
+@use '../breadcrumb';
+@use '../callout';
+@use '../cards';
+@use '../details';
+@use '../footer';
+@use '../forms';
+@use '../headings';
+@use '../pagination';
+@use '../panels';
+@use '../record';
+@use '../reslist';
+@use '../shoelace';
+@use '../skip-link';
+@use '../tables';
+@use '../tocbot';
+@use '../typography';
+@use '../advanced_search';
+@use '../tabs';
+
+// text specific
+@use 'advanced_search--text';
+@use 'home';
+@use 'pageviewer';
+@use 'reslist--text';
+@use 'text';
+
+
+iframe[name="bookbag-sink"] {
+  width: 100%;
+  height: 10vh;
+  margin: 1rem;
+  display: none;
+}
+
+iframe[name="download-sink"] {
+  width: 100%;
+  height: 10vh;
+  margin: 1rem;
+  display: none;
+}

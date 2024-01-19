@@ -12,8 +12,6 @@
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@shoelace-style/shoelace@2.4.0/dist/themes/light.css" />
     <script type="module" src="https://cdn.jsdelivr.net/npm/@shoelace-style/shoelace@2.4.0/dist/shoelace-autoloader.js"></script>
 
-    <link rel="stylesheet" href="{$docroot}styles/image/entry.css" />
-
     <xsl:call-template name="build-entry-scripts" />
 
   </xsl:template>
@@ -788,6 +786,8 @@
     <xsl:text>#rights-permissions</xsl:text>
   </xsl:template>
 
+  <xsl:template match="qui:callout[preceding-sibling::qui:callout]" priority="101"/>
+
   <xsl:template match="qui:callout">
     <xsl:variable name="icon">
       <xsl:choose>
@@ -805,6 +805,9 @@
     </xsl:variable>
     <m-callout subtle="subtle" icon="{$icon}" dismissable="{$dismissable}" variant="{@variant}" style="margin-top: 1rem; margin-bottom: 0">
       <xsl:apply-templates mode="copy" />
+      <xsl:for-each select="following-sibling::qui:callout">
+        <xsl:apply-templates mode="copy" />
+      </xsl:for-each>
     </m-callout>
   </xsl:template>
 

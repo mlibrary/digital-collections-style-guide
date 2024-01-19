@@ -1,0 +1,41 @@
+/** SIDE PANEL BOX **/
+
+.side-panel__box {
+  display: flex;
+  flex-flow: column wrap;
+  max-width: 80%;
+}
+
+@media screen and (max-width: 751px) {
+  .side-panel__box {
+    max-width: none;
+  }
+}
+
+.side-panel__box--wrapper {
+  padding: 1em;
+}
+
+.side-panel__box > details:not(:last-child) {
+  border-bottom: solid 1px var(--color-neutral-100);
+}
+
+.side-panel__box > *:not(:last-child) {
+  border-bottom: solid 1px var(--color-neutral-100);
+}
+
+.side-panel__box > details {
+  padding: 0.5em 0;
+}
+
+details > div {
+  padding: 0.25em;
+}
+
+.filters__count {
+  color: var(--color-neutral-300);
+}
+
+.filters__selected > * + * {
+  padding: var(--space-small) 0;
+}

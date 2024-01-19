@@ -1,0 +1,19 @@
+/** Message Callout **/
+
+.message-callout {
+  border: solid 1px var(--color-neutral-100);
+  border-left: solid var(--space-xx-small) var(--color-orange-400);
+  display: grid;
+  grid-template-columns: auto 1fr;
+  grid-gap: 0.75rem;
+  /* padding: var(--space-small);
+  padding-right: var(--space-x-large); */
+  padding: var(--space-xx-small) var(--space-large);
+  border-radius: var(--radius-default);
+  position: relative;
+  margin-bottom: 1.5rem;
+}
+
+.message-callout.info {
+  border-left-color: var(--color-teal-500);
+}

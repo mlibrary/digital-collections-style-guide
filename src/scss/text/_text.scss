@@ -1,0 +1,366 @@
+p.plaintext {
+ white-space: pre-line; 
+}
+
+.fullview-page + .fullview-page {
+  padding-top: 2rem;
+  border-top: 2px solid var(--color-neutral-100);
+}
+
+.inline-highlight {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.25rem;
+  scroll-padding-top: 2rem;
+  white-space: wrap;
+}
+
+html[data-highlight-state="off"] .inline-highlight a {
+  display: none;
+}
+
+.hl-link {
+  display: inline-flex;
+  align-items: center;
+}
+
+.hl-link .material-icons {
+  font-size: 1rem;
+}
+
+.button--highlight {
+  padding: var(--space-xxx-small);
+  min-height: 0;
+}
+
+.hilite1 {
+  background-color: #ffff00;
+}
+
+.fullview-main {
+  display: flex;
+  gap: 1rem;
+  flex-direction: row;
+  flex-wrap: nowrap;
+  margin-left: 1rem;
+}
+
+ul.fullview-toc {
+  list-style: initial;
+  margin-left: 1rem;
+}
+
+.fullview-thumbnail, .fullview-blank {
+  flex-basis: 350px;
+  flex-shrink: 0;
+}
+
+.fullview-thumbnail figure {
+  position: sticky;
+  top: 1rem;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 0.5rem;
+  margin-bottom: 1rem;
+}
+
+.fullview-thumbnail img {
+  border: 1px solid var(--color-neutral-400);
+  padding: 0.5rem;
+  width: auto;
+  max-width: 100%;
+}
+
+.fullview-thumbnail a:hover img, 
+.fullview-thumbnail a:hover span {
+  /* outline: 1px solid var(--color-neutral-300);
+  outline-offset: 2px; */
+  box-shadow: 0 0 0 2px #fff,0 0 0 3px var(--color-neutral-400); 
+}
+
+.fullview-page {
+  padding-bottom: 2rem;
+}
+
+.fullview-heading {
+  font-weight: bold;
+  margin: 0.5rem 0;
+}
+
+.fullview-heading-1 {
+  font-size: 1.5rem;
+}
+
+.fullview-heading-2 {
+  font-size: 1.25rem;
+}
+
+.fullview-heading-3 {
+  font-size: 1.125rem;
+}
+
+.titlepage {
+  text-align: center;
+}
+
+.footnote-link {
+  display: inline-flex;
+  min-height: 2rem;
+  min-width: 2rem;
+  align-items: center;
+  justify-content: center;
+  font-size: 0.875rem;
+  margin: 0 0.25rem;
+  line-height: 0;
+}
+
+.footnote-link .material-icons {
+  font-size: 1rem;
+}
+
+.footnote-text {
+  padding: 0.5rem;
+}
+
+.footnote-text > * {
+  margin-top: 0;
+}
+
+del {
+  background-color: var(--color-pink-100);
+  text-decoration: none;
+  display: inline-flex;
+  align-items: center;
+  gap: 0.25rem;
+  vertical-align: bottom;
+}
+
+ins {
+  background-color: var(--color-green-100);
+  text-decoration: none;
+  display: inline-flex;
+  align-items: center;
+  gap: 0.25rem;
+  vertical-align: bottom;
+}
+
+del::before,
+del::after,
+ins::before,
+ins::after {
+  clip-path: inset(100%);
+  clip: rect(1px, 1px, 1px, 1px);
+  height: 1px;
+  overflow: hidden;
+  position: absolute;
+  white-space: nowrap;
+  width: 1px;
+}
+
+del::before {
+  content: " [deletion start] ";
+}
+
+del::after {
+  content: " [deletion end] ";
+}
+
+ins::before {
+  content: " [addition start] ";
+}
+
+ins::after {
+  content: " [addition end] ";
+}
+
+.corr {
+  background-color: var(--color-green-100);
+}
+
+.sic {
+  /* color: var(--color-neutral-400); */
+  background-color: var(--color-pink-100);
+}
+
+.sic::before {
+  content: '[ ';
+}
+
+.sic::after {
+  content: ' ]';
+}
+
+.unclear::after {
+  content: ' [unclear] ';
+  /* color: #5e6f7d; */
+  /* color: var(--color-neutral-400); */
+}
+
+.fullview-main figure {
+  border: 1px solid var(--color-neutral-100);
+  padding: 1rem;
+}
+
+.fullview-main figure img {
+  width: auto;
+}
+
+.fullview-main figure figcaption {
+  font-size: 0.875rem;
+  padding: 0.5rem;
+}
+
+.lg {
+  margin-left: 1rem;
+}
+
+.lg + .lg {
+  margin-top: 1rem;
+}
+
+.line {
+  // display: block;
+  display: flex;
+  align-items: center;
+  gap: 1.5rem;
+  
+  .line--number {
+    font-family: monospace;
+    font-size: 0.75rem;
+    color: var(--color-blue-300);
+  }
+}
+
+.line--indent1, .indentlevel1 {
+  margin-left: 1em;
+}
+
+.line--indent2 {
+  margin-left: 2em;
+}
+
+.q1 {
+  /* margin-left: 5%;
+  margin-right: 15%;
+  padding-top: 1em;
+  margin-bottom: 1rem; */
+  margin-left: 1rem;
+  padding: 1rem;
+  border-left: 0.5rem solid var(--color-teal-100);
+}
+
+.q1--block {
+  padding-top: 0;
+}
+
+.salute svg line {
+  stroke:rgb(0, 0, 0); 
+  stroke-width: 2;
+}
+
+.foreign {
+  font-style: italic;
+}
+
+.rend-i, .rend-italic {
+  font-style: italic;
+}
+
+.rend-underline {
+  text-decoration: dotted underline;
+}
+
+.rend-superscript {
+  font-size: 75%;
+  vertical-align: top;
+}
+
+.rend-superscriptunderline {
+  font-size: 75%;
+  vertical-align: top;
+  text-decoration: dotted underline;
+}
+
+.gap {
+  white-space: pre-line;
+  font-family: monospace;
+  color: var(--color-orange-500);
+}
+
+.opener {
+  padding: 1rem;
+  border-left: 0.5rem solid var(--color-teal-100);
+  margin: 1rem 0;
+}
+
+.closer {
+  padding: 1rem;
+  border-left: 0.5rem solid var(--color-teal-100);
+  margin: 1rem 0;
+}
+
+.sp {
+  margin-bottom: 1rem;
+}
+
+.stage {
+  margin-bottom: 1rem;
+  /* font-style: italic; */
+}
+
+.stage--align-c {
+  text-align: center;
+}
+
+.stage--align-r {
+  text-align: right;
+}
+
+.speaker {
+  font-size: 1.125em;
+  font-weight: bold;
+}
+
+hr {
+  border: none;
+  border-top: 3px double var(--color-teal-100);
+}
+
+.notenumber {
+  font-weight: bold;
+  display: inline-block;
+  padding: 0 0.25rem 0 0.5rem;
+}
+
+.inline-note {
+  background: var(--color-maize-100);
+  display: block;
+}
+
+.display-inline {
+  display: inline-block;
+}
+
+.inline-note-edge {
+  font-weight: bold;
+  font-size: 125%;
+}
+
+html[data-highlight-state="off"] .hilite1 {
+  background-color: transparent;
+}
+
+html {
+  scroll-padding-top: 2rem;
+}
+
+@media screen and (max-width: 600px) {
+  .fullview-main {
+    flex-direction: column;
+  }
+
+  .fullview-blank {
+    display: none;
+  }
+}

@@ -20,13 +20,27 @@ window.addEventListener('DOMContentLoaded', (event) => {
   ) {
     // login trigger
     const $actionLogin = document.querySelector('#action-login');
-    $actionLogin.addEventListener('click', (event) => {
-      event.preventDefault();
-      const loggedIn = !($actionLogin.dataset.loggedIn == "true");
-      // set the cookie
-      document.cookie = `loggedIn=${loggedIn}; path=/`;
-      // reload the page
-      location.reload();
+    if ( $actionLogin ) {
+      $actionLogin.addEventListener('click', (event) => {
+        event.preventDefault();
+        const loggedIn = !($actionLogin.dataset.loggedIn == "true");
+        // set the cookie
+        document.cookie = `loggedIn=${loggedIn}; path=/`;
+        // reload the page
+        location.reload();
+      })
+    }
+  }
+
+  const quodLink = document.querySelector('a.quod-link');
+  if ( quodLink ) {
+    quodLink.addEventListener('click', (event) => {
+      const quodUrl = new URL(location.href.replaceAll(';', '&'));
+      quodUrl.hostname = 'quod.lib.umich.edu';
+      quodUrl.port = 443;
+      quodUrl.protocol = 'https:';
+      quodLink.href = quodUrl.toString();
+      console.log("-- setting", quodLink.href);
     })
   }
 });

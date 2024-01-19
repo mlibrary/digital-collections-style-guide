@@ -1,0 +1,35 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+
+<?CHUNK filename="entitiesdoctype.chnk" optional="1"?>
+<Top xmlns:dlxs="http://www.umdl.umich.edu/dlxs">
+
+    <XslFallbackFileList pipeline="qui">
+        <Filename>qui/qui.base.xsl</Filename>
+        <Filename>../vendor/str.split.function.xsl</Filename>
+        <Filename>../vendor/xslfunctions.xsl</Filename>
+        <Filename>qui/components/*.xsl</Filename>
+        <Filename>qui/includes/qui.header-common.xsl</Filename>
+        <Filename>qui/includes/qui.header-pageviewer.xsl</Filename>
+        <Filename>qui/qui.pageviewer.xsl</Filename>
+    </XslFallbackFileList>
+
+    <XslFallbackFileList pipeline="qbat">
+        <Filename>qbat/qbat.base.xsl</Filename>
+        <Filename>../vendor/xslfunctions.xsl</Filename>
+        <Filename>qbat/components/*.xsl</Filename>
+        <Filename>qbat/qbat.pageviewer.xsl</Filename>
+    </XslFallbackFileList>
+    
+    <CustomXml>
+        <?CHUNK filename="pageviewerextra.xml" optional="1"?>
+    </CustomXml>
+    <!-- Custom OPTIONAL XML for top-level file pageviewer.xml -->
+    <DocMeta>
+        <DocEncodingType><?DOC_ENCODING_TYPE_XML ?></DocEncodingType>
+        <TocHref><?TEXT_TOC_LINK_XML ?></TocHref>
+        <ItemHeader><?HEADER_XML ?></ItemHeader>
+        <ItemDivhead><?ITEM_DIVHEAD_XML ?></ItemDivhead>
+    </DocMeta>
+    <?CHUNK filename="viewer.xml"?>
+    <BookbagResults><?BOOKBAG_RESULTS_XML?></BookbagResults>
+</Top>

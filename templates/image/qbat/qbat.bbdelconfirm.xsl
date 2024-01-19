@@ -56,7 +56,7 @@
   </xsl:template>
 
   <xsl:template name="build-extra-styles">
-    <link rel="stylesheet" href="{$docroot}styles/modals.css" />
+    <link rel="stylesheet" href="{$docroot}dist/css/modals.css" />
     <script src="{$docroot}js/image/base.js"></script>
   </xsl:template>
 

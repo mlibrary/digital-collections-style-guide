@@ -1,0 +1,219 @@
+
+select option {
+  font-weight: normal; /* weird firefox issue */
+}
+
+select#results-sort {
+  text-transform: capitalize;
+}
+
+.separator::after {
+  font-family: var(--material);
+  content: "\e315";
+  vertical-align: bottom;
+  color: var(--color-neutral-200);  
+  padding-left: 0.25rem;
+}
+
+.side-panel__box > details {
+  max-width: 100%;
+}
+
+.filters__selected .filter-item + button {
+  margin-top: 1rem;
+}
+
+details[data-list-expanded="false"] .filter-item:nth-of-type(n+11) {
+  display: none;
+}
+
+details[data-list-expanded="false"] span[data-expanded="true"] {
+  display: none;
+}
+
+details[data-list-expanded="true"] span[data-expanded="false"] {
+  display: none;
+}
+
+.filter-item--list {
+  overflow: auto;
+}
+
+input#results-pagination {
+  height: 40px;
+  min-width: 6ch;
+  padding: 0 0.5rem;
+}
+
+button[data-action="select-all"]::before {
+  font-family: var(--material);
+  font-size: 24px;
+  color: inherit;
+  vertical-align: middle;
+  line-height: 1;
+  content: "\e835"; /* check_box_outline_blank */
+}
+
+button[data-action="select-all"][data-checked="true"]::before {
+  content: "\e834"; /* check_box */
+}
+
+.button_group {
+  display: flex;
+  flex-direction: column;
+  gap: 1rem;
+  max-width: 20ch;
+}
+
+.button_group .button.button--large {
+  /* this makes the buttons respond better when narrow */
+  padding-left: 10%;
+  padding-right: 10%;
+}
+
+.button_group .button + .button {
+  margin: 0;
+}
+
+@media screen and (max-width: 600px) {
+
+
+  .button_group {
+    max-width: none;
+  }
+}
+
+.hilite1 {
+  color: #000000;
+  background-color: #FFFF00;
+}
+
+.hilite2 {
+  color: #000000;
+  background-color: #00FF00;
+}
+
+.hilite3 {
+  color: #000000;
+  background-color: #FF9900;
+}
+
+.hilite4 {
+  color: #000000;
+  background-color: #00ffcc;
+}
+
+.hilite5 {
+  color: #000000;
+  background-color: #00cccc;
+}
+
+.hilite6 {
+  color: #000000;
+  background-color: #0099cc;
+}
+
+iframe {
+  border: none;
+  height: 2rem;
+}
+
+dt[data-key] {
+  text-transform: capitalize;
+}
+
+.results-list--small {
+  margin: 1rem 0;
+}
+
+@media screen and (max-width: 600px) {
+  .XXresults-list--small {
+    /* flex-direction: column; */
+  }
+
+  .XXresults-card {
+    flex-wrap: wrap;
+  }
+
+  .XXresults-card h3 {
+    margin-top: 0;
+  }
+
+  .XXresults-list__blank {
+    display: none;
+  }
+}
+
+.XXresults-card {
+  display: flex;
+  flex-direction: row;
+  position: relative;
+  /* border: 1px solid #ddd; */
+  border-radius: 0.25rem;
+  flex-grow: 1;
+  margin-bottom: 1rem;
+}
+
+/* .results-card .results-link {
+  text-decoration: none;
+  color: black;
+  position: static;
+}
+
+.results-card .results-link::after {
+  content: '';
+  position: absolute;
+  left: 0;
+  top: 0;
+  right: 0;
+  bottom: 0;
+}
+
+.results-card a {
+  position: relative;
+  z-index: 1;
+} */
+
+dt[data-key="path"] ~ dd ol {
+  /* font-size: 0.75rem; */
+  margin: 0;
+}
+
+dt[data-key="path"] ~ dd li {
+  display: inline;
+  padding-right: 0.5rem;
+}
+
+dt[data-key="path"] ~ dd li + li::before {
+  content: " / ";
+  display: inline-block;
+  padding-right: 0.5rem;
+}
+
+dt[data-key="matches"] ~ dd {
+  font-size: 0.75rem;
+}
+
+dl div + div {
+  margin-bottom: 0.5rem;
+}
+
+.results-list__image {
+  border: 1px solid var(--color-neutral-100);
+  padding: 4px;
+  flex-grow: 1;
+  min-height: 100px;
+  max-width: 140px;
+}
+
+ul.list--striped li {
+  padding: 0.5rem 0.25rem;
+}
+
+ul.list--striped li:nth-child(odd) {
+  background: var(--color-teal-100);
+}
+
+.filters__count {
+  white-space: nowrap;
+}

@@ -1,0 +1,57 @@
+
+.results-list--small {
+  margin: 1rem 0;
+}
+
+dt[data-key="path"] ~ dd ol {
+  /* font-size: 0.75rem; */
+  margin: 0;
+}
+
+dt[data-key="path"] ~ dd li {
+  display: inline;
+  padding-right: 0.5rem;
+}
+
+dt[data-key="path"] ~ dd li + li::before {
+  content: " / ";
+  display: inline-block;
+  padding-right: 0.5rem;
+}
+
+dt[data-key="matches"] ~ dd {
+  font-size: 0.75rem;
+}
+
+dl div + div {
+  margin-bottom: 0.5rem;
+}
+
+.results-list__image {
+  border: 1px solid var(--color-neutral-100);
+  padding: 4px;
+  flex-grow: 1;
+  min-height: 100px;
+  max-width: 140px;
+}
+
+ul.list--striped li {
+  padding: 0.5rem 0.25rem;
+}
+
+ul.list--striped li:nth-child(odd) {
+  background: var(--color-teal-100);
+}
+
+.filters__count {
+  white-space: nowrap;
+}
+
+.browse-index .button:not([data-selected]) {
+  border: 1px solid transparent;
+}
+.browse-index a[disabled] {
+  opacity: 0.5;
+  pointer-events: none;
+  color: var(--color-neutral-300);
+}

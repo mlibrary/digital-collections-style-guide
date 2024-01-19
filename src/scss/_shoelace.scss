@@ -1,0 +1,91 @@
+/*
+ * Shoelace customizations
+ */
+sl-button {
+  border-radius: var(--radius-default);
+}
+
+sl-button::part(base) {
+  outline: none;
+  height: auto;
+  min-height: 2.5rem;
+  margin: 0; /** must remove margin for Safari */
+  align-items: center;
+  font-size: 1rem;
+  line-height: 1.5;
+  font-weight: var(--bold);
+  font-family: var(--font-base-family);
+  border: 2px outset var(--color-neutral-500);
+  background: white;
+  color: var(--color-neutral-500);
+  border-radius: var(--radius-default);
+  padding: var(--space-x-small); /* var(--space-xxx-large); */
+  color: #fff;
+}
+
+sl-button.sl-button--primary::part(base) {
+  background: var(--color-teal-400);
+  border: solid 1px var(--color-teal-400);
+}
+
+sl-button.sl-button--secondary::part(base) {
+  background: var(--color-neutral-100);
+  border: solid 1px var(--color-neutral-100);
+  color: var(--color-neutral-400); 
+}
+
+sl-button.sl-button--ghost::part(base) {
+  border: solid 1px var(--color-neutral-500);
+  color: var(--color-neutral-500);
+  background: white;
+  text-decoration: none;
+}
+
+/* :not(.button--disabled) */
+sl-button::part(base):focus, sl-button::part(base):hover {
+  box-shadow: 0 0 0 2px #fff,0 0 0 3px var(--color-neutral-400);
+}
+
+sl-button::part(label) {
+  padding: 0 0.25rem;
+}
+
+sl-button::part(caret) {
+  margin-top: 4px;
+}
+
+sl-menu-item[disabled]::part(base) {
+  color: var(--color-neutral-300);
+}
+
+sl-menu-item:not([disabled])::part(base):hover {
+  background: var(--color-teal-500);
+  color: white;
+}
+
+sl-menu-item::part(label) {
+  font-family: var(--font-base-family);
+  color: var(--base-text-color);
+  font-size: var(--text-base-size);
+}
+
+sl-menu-item:hover::part(label) {
+  color: white;
+}
+
+sl-dropdown::part(panel) {
+  max-height: 50vh;
+}
+
+.sl-dropdown-label {
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+  font-weight: normal;
+}
+
+sl-dialog::part(footer) {
+  display: flex;
+  align-items: center;
+  justify-content: flex-end;
+}

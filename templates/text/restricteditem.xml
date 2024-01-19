@@ -1,0 +1,15 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+
+<Top xmlns:dlxs="http://www.umdl.umich.edu/dlxs">
+
+  <!-- XSL fallback files -->
+  <XslFallbackFileList>
+    <Filename>restricteditem.xsl</Filename>
+    <Filename>globalvariables.xsl</Filename>
+  </XslFallbackFileList>
+  <!-- Custom OPTIONAL XML for top-level file restricteditem.xml -->
+  <CustomXml><?CHUNK filename="restricteditemextra.xml" optional="1"?></CustomXml>
+
+  <DlxsGlobals><?CHUNK filename="dlxsclassglobals.xml"?></DlxsGlobals>
+
+</Top>

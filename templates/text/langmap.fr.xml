@@ -1,0 +1,402 @@
+ <LookupTables>
+  <Lookup id="misc">
+    <Item key="crosscollection.search.title.str">UMDL Text Collections</Item>
+  </Lookup>
+  <Lookup id="bbagemailoutput">
+    <Item key="bbagemailoutput.str.title">Tîtr : </Item>
+    <Item key="bbagemailoutput.str.author">Auteu : </Item>
+    <Item key="bbagemailoutput.str.publisher">Maison d'éditio : </Item>
+    <Item key="bbagemailoutput.str.date">Dat : </Item>
+    <Item key="bbagemailoutput.str.availability">Disposition : </Item>
+  </Lookup>
+  <Lookup id="bbagdownloadoutput">
+    <Item key="bbagdownloadoutput.str.title">Tître : </Item>
+    <Item key="bbagdownloadoutput.str.author">Auteur : </Item>
+    <Item key="bbagdownloadoutput.str.publisher">Maison d'édition : </Item>
+    <Item key="bbagdownloadoutput.str.date">Date : </Item>
+    <Item key="bbagdownloadoutput.str.availability">Disposition : </Item>
+  </Lookup>
+  <Lookup id="bookbag">
+    <Item key="bookbag.str.holdings">Panier de citations</Item>
+    <Item key="bookbag.str.emailbookbagcontents">Envoyer citations par e-mail</Item>
+    <Item key="bookbag.str.sendto">À l'addresse :</Item>
+    <Item key="bookbag.str.emailcontents">Envoyer citations</Item>
+    <Item key="bookbag.str.bookboagholdings">Les Citations</Item>
+    <Item key="bookbag.str.downloadcontents">Télécharger les citations</Item>
+    <Item key="bookbag.str.emptycontents">Vider le panier</Item>
+    <Item key="bookbag.str.no.items">Votre panier est vide</Item>
+  </Lookup>
+  <Lookup id="bookbagheader">
+    <Item key="bookbagheader.str.linkdirectly">lien directe à la ressource</Item>
+    <Item key="bookbagheader.str.remove">enlever du panier</Item>
+  </Lookup>
+  <Lookup id="bookbagitemsstring">
+    <Item key="bookbagitemsstring.str.yourlisthas">Panier de citations : </Item>
+    <Item key="bookbagitemsstring.str.itemsingular"> ressource</Item>
+    <Item key="bookbagitemsstring.str.itemplural"> ressources</Item>
+  </Lookup>
+  <Lookup id="browse">
+    <Item key="browse.str.browse">Naviguer par liste </Item>
+    <Item key="browse.str.browsing">Navigant </Item>
+    <Item key="browse.str.browseby">Naviguer par</Item>
+    <Item key="browse.str.quickbrowse">Navigation raccourcie</Item>
+    <Item key="browse.str.starting.with"> commençant par </Item>
+    <Item key="browse.str.no.items">Aucune ressource ne commence par ce letter. Veuillez selectionnner une lettre ci-haut. </Item>
+    <Item key="browse.str.noauthor">aucun auteur</Item>
+    <Item key="browse.str.there.are">Il y'a </Item>
+    <Item key="browse.str.items.in.collection"> ressources dans cette collection</Item>
+    <Item key="browse.str.author.publ.column">Auteur / [date d'édition]</Item>
+    <Item key="browse.str.title.column">Tître</Item>
+  </Lookup>
+
+  <Lookup id="browsecolls">
+    <Item key="browsecolls.str.collcount"> Collections</Item>
+    <Item key="browsecolls.str.homelink">page d'acceuil pour cette collection</Item>
+  </Lookup>
+
+  <Lookup id="clipviewer">
+    <Item key="clipviewer.str.showcontents">Voire table des matières pour :</Item>
+    <Item key="clipviewer.str.format">Format</Item>
+    <Item key="clipviewer.str.searchresults">&lt;&lt; Résultats de recherche</Item>
+  </Lookup>
+  <Lookup id="footer">
+    <Item key="footer.str.poweredby">Réalisé par </Item>
+    <Item key="footer.str.dlxs">DLXS</Item>
+    <Item key="footer.str.commentcontact">Pour faire de commentaires ou pour vouz reseigner sur nos ressources, veuillez contacter </Item>
+    <Item key="footer.str.errorcontact">Pour indiquer les erreurs, veuillez contacter </Item>
+    <Item key="footer.str.reprintinfo">Reprint information for this collection</Item>
+    <Item key="footer.str.reprintinfo">Imprimer sur demande -- informations</Item>
+
+    
+    
+  </Lookup>
+  <Lookup id="header">
+    <Item key="header.str.contents">Table des matières</Item>
+    <Item key="header.str.viewentiretext">Télécharger le texte entier</Item>
+    <Item key="header.str.fullaccess">Pour accès libre à cette ressource, veuillez </Item>
+    <Item key="header.str.login">Verification </Item>
+    <Item key="header.str.addtobookbag">Ajouter au panier</Item>
+    <Item key="header.str.searchthistext"> Rechercher dans ce texte</Item>
+    <Item key="header.str.searchthisissue"> Rechercher dans ce numéro</Item>
+    <Item key="header.str.othersearchoptions"> Autre modes de recherche</Item>
+    <Item key="header.str.reprintunavailable">[pas disponible pour imprimer sur demande]</Item>
+    <Item key="header.str.orderreprint">Commander un exemplaire</Item>
+    <Item key="header.str.checkorder">Voir votre commande</Item>
+  </Lookup>
+
+<!-- headerutils should be deprecated -->
+  <Lookup id="headerutils">
+    <Item key="headerutils.str.author">Auteur</Item>
+    <Item key="headerutils.str.title">Tître</Item>
+    <Item key="headerutils.str.publicationinfo">Infos Bibliographiques </Item>
+    <Item key="headerutils.str.title">Tître</Item>
+    <Item key="headerutils.str.page">Page </Item>
+    <Item key="headerutils.str.viewarticlepageimage">Voir image/page pour cet article</Item>
+    <Item key="headerutils.str.isbn">ISBN</Item>
+    <Item key="headerutils.str.subjectterms">Mots sujets</Item>
+    <Item key="headerutils.str.editor">Rédacteur</Item>
+    <Item key="headerutils.str.edition">Édition</Item>
+    <Item key="headerutils.str.volume">Volume</Item>
+    <Item key="headerutils.str.abbrevvolume">vol.</Item>
+    <Item key="headerutils.str.abbrevnumber">no.</Item>
+    <Item key="headerutils.str.abbrevpages">pp.</Item>
+    <Item key="headerutils.str.issue.title">Tître de numéro</Item>
+    <Item key="headerutils.str.17">Nom de publication</Item>
+    <Item key="headerutils.str.18">Numéro</Item>
+    <Item key="headerutils.str.19">Maison d'Édition</Item>
+    <Item key="headerutils.str.plural">s</Item>
+    <Item key="headerutils.str.printsource">Ressource d'origine</Item>
+    <Item key="headerutils.str.22">Disposition</Item>
+    <Item key="headerutils.str.23">URL</Item>
+    <Item key="headerutils.str.24">Date d'édition</Item>
+    <Item key="headerutils.str.25">col.</Item>
+    <Item key="headerutils.str.26">Collection</Item>
+    
+  </Lookup>
+  <Lookup id="navheader">
+    <Item key="navheader.str.textshome">Textes de la BNUM: page d'acceuil</Item>
+    <Item key="navheader.str.login">'U of M' verification</Item>
+    <Item key="navheader.str.home">Page d'Acceuil</Item>
+    <Item key="navheader.str.search">Rechercher</Item>
+    <Item key="navheader.str.browse">Naviguer par liste</Item>
+    <Item key="navheader.str.bookbag">Panier de citations</Item>
+    <Item key="navheader.str.help">Aide</Item>
+    <Item key="navheader.str.simple">Simple</Item>
+    <Item key="navheader.str.boolean">Boolean</Item>
+    <Item key="navheader.str.proximity">Proximité</Item>
+    <Item key="navheader.str.bib">Bibliographique</Item>
+    <Item key="navheader.str.ww">Index à Mots</Item>
+    <Item key="navheader.str.wwstart">Index à Mots</Item>
+    <Item key="navheader.str.history">Histoire</Item>
+  </Lookup>
+  <Lookup id="pageviewer">
+    <Item key="pageviewer.str.pagenumber">No. de page</Item>
+    <Item key="pageviewer.str.pagesize">Grandeur de page</Item>
+    <Item key="pageviewer.str.format">Format</Item>
+    <Item key="pageviewer.str.searchresults">&lt;&lt; Résultats du recherce</Item>
+  </Lookup>
+  <Lookup id="picklist">
+    <Item key="picklist.str.morethanoneitem">Plus qu'un seul exemplaire ne corresponde à ce numéro d'ID  :</Item>    
+    <Item key="picklist.str.note">Notation</Item>
+    <Item key="picklist.str.listorder"> : The items are listed in order of their organization; e.g., in volume/issue order.</Item>
+    <Item key="picklist.str.listorder"> : Les exemplaires ci-dessous sont en ordre d'edition, e.g., selon tôme/numéro.</Item>
+    
+    
+  </Lookup>
+
+  <Lookup id="reslist">
+    <Item key="reslist.str.searchresults">Résultats de Recherche</Item>
+    <Item key="reslist.str.previousitem">&lt;&lt;Occurence prédédante</Item>
+    <Item key="reslist.str.nextitem">Occurence suivante &gt;&gt;</Item>
+    <Item key="reslist.str.plural">s</Item>
+    <Item key="reslist.str.inthisitem"> dans cette occurrence</Item>
+    <Item key="reslist.str.previous">&lt;&lt;Precedant</Item>
+    <Item key="reslist.str.next">Suivant&gt;&gt;</Item>
+    <Item key="reslist.str.yousearched">Vous avez recherché: </Item>
+    <Item key="reslist.str.for"> pour </Item>
+    <Item key="reslist.str.results">Résultat : </Item>
+    <Item key="reslist.str.refinesearch">Préciser la requête</Item>
+    <Item key="reslist.str.resultsbycollection">Résultats selon collection :</Item>
+  </Lookup>
+  <Lookup id="restricteditem">
+    <Item key="restricteditem.str.1">Bibliothèque Numérique de l'Université de Michigan - Erreur d'Accès.</Item>
+    <Item key="restricteditem.str.2">Bibliothèque Numérique de l'UM</Item>
+    <Item key="restricteditem.str.3">Textes de la BDUM </Item>
+    <Item key="restricteditem.str.4">'Image Source' de l'UM </Item>
+    <Item key="restricteditem.str.5">'Finding Aids' de l'UM</Item>
+    <Item key="restricteditem.str.6">Ressources Bibliographiques de l'UM </Item>
+    <Item key="restricteditem.str.7">Désolé, vous n'avez pas le droit d'accéder cette ressource.</Item>
+    <Item key="restricteditem.str.8">Vous êtes verifié comme utilisateur autorisé,  mais selon nos informations vous n'avez pas le droit d'accéder à cette ressource particulière.</Item>
+    <Item key="restricteditem.str.9">Veuillez se servir du butoun de retour de votre navigateur pour rattraper la ressource.</Item>
+    
+    <Item key="restricteditem.str.10">To inquire about obtaining access to this item for future use, please contact</Item>
+    <Item key="restricteditem.str.10">Pour se renseigner sur comment obtenir l'accès eventuel pour cette ressource, veuillez contacter</Item>
+
+    
+    <Item key="restricteditem.str.11">Aide BNUM</Item>
+  </Lookup>
+  <Lookup id="results">
+    <Item key="results.allselectedcolls">All Selected Collections</Item>
+    <Item key="results.searchtype.boolean">boolean</Item>
+    <Item key="results.searchtype.simple">simple</Item>
+    <Item key="results.searchtype.proximity">proximité</Item>
+    <Item key="results.searchtype.bib">bibliographique</Item>
+    <Item key="results.summary.singletextrestricted">Dans une seule occurence</Item>
+    <Item key="results.summary.bookbagrestricted">Dans le panier de citations</Item>
+    <Item key="occurrencetype.hit">occurence</Item>
+    <Item key="occurrencetype.record">exemplair</Item>
+    <Item key="occurrencetype.matchingterm">terme corréspondant</Item>
+    <Item key="results.str.sortresults">Arranger</Item>  
+    <Item key="results.str.1">Collection : </Item>
+    <Item key="results.str.2">Sommaire des résultats: </Item>
+    <Item key="results.str.3"> occurrence</Item>
+    <Item key="results.str.4"> dans </Item>
+    <Item key="results.str.5"> de </Item>
+    <Item key="results.str.6"> correspondant(e) </Item>
+    <Item key="results.str.7"> de </Item>
+    <Item key="results.str.8"> totale </Item>
+    <Item key="results.str.9">Pour accès libre à cette ressource, veuillez vous vérifier</Item>
+    <Item key="results.str.10">Résultats en détail</Item>
+    <Item key="results.str.11">Arrangement non disponible : </Item>
+    <Item key="results.str.12">trop de résultats.</Item>
+    <Item key="results.str.13">Arranger par: </Item>
+    <Item key="results.str.14"> occurrence</Item>
+    <Item key="results.str.15"> de "</Item>
+    <Item key="results.str.16">Liste des pages</Item>
+    <Item key="results.str.17">Table des matières</Item>
+    <Item key="results.str.18">Voir 1ère page</Item>
+    <Item key="results.str.19">Voir l'article</Item>
+    <Item key="results.str.20">Voir la page de l'article</Item>
+    <Item key="results.str.21">Ajouter au panier de citations</Item>
+    <Item key="results.str.22">&lt; Retourner à la liste d'occurrences</Item>
+    <Item key="results.str.23"> occurence</Item>
+    <Item key="results.str.24"> dans </Item>
+    <Item key="results.str.25"> exemplaire</Item>
+    <Item key="results.str.26"> correspondant(e)</Item>
+    <Item key="results.str.27"> exemplaire</Item>
+    <Item key="results.str.28"> correspondant(e) </Item>
+    <Item key="results.str.29"> dan </Item>
+    <Item key="results.str.30"> exemplaire</Item>
+    <!-- <Item key="results.str.31">e</Item> -->
+    <Item key="results.str.31"></Item>
+    <Item key="results.str.32">s</Item>
+    <Item key="results.str.33">sujet</Item>
+    <Item key="results.str.downloadpdf">Télécharger le PDF complet</Item>
+    <Item key="results.str.viewresults">voir les résultats&#xa0;&#187;</Item>
+  </Lookup>
+  <Lookup id="search">
+    <Item key="reslist.str.of"> de </Item>  
+    <Item key="reslist.str.to"> à </Item> 
+    <Item key="search.str.1">Recherche Simple</Item>
+    <Item key="search.str.2">Recherche Boolean</Item>
+    <Item key="search.str.3">Recherche de Proximité</Item>
+    <Item key="search.str.4">Recherche Bibliographique</Item>
+    <Item key="search.str.5">Histoire des Recherches</Item>
+    <Item key="search.str.6">Recherchant dans : </Item>
+    <Item key="search.str.7">Selectionner des collections pour les inclure dans le recherche.</Item>
+    <Item key="search.str.8">Dirigez-vous à la page d'accueuil pour plus d'informations et de choix à rechercher.</Item>
+    <Item key="search.str.9">Actuellement, vous recherchez dans :</Item>
+    <Item key="search.str.10">Collection</Item>
+    <Item key="search.str.11">Quantité de Textes</Item>
+    <Item key="search.str.12">Cacher les aides</Item>
+  </Lookup>
+  <Lookup id="searchforms">
+    <Item key="searchforms.str.tip">Aide</Item> 
+    <Item key="searchforms.str.1">travail* découvre "travailleur," "travaillé," etc.</Item>
+    <Item key="searchforms.str.2">war and peace trouve "war and peace"</Item>
+    <Item key="searchforms.str.3">&lt;&lt; Plus d'aides</Item>
+    <Item key="searchforms.str.4">Rechercher dans :</Item>
+    <Item key="searchforms.str.5">Texte complet des occurrences dans le panier de citations</Item>
+    <Item key="searchforms.str.6">Trouver :</Item>
+    <Item key="searchforms.str.7">Rechercher dans :</Item>
+    <Item key="searchforms.str.8">Texte complet des occurrences dans le panier de citations</Item>
+    <Item key="searchforms.str.9">Trouver :</Item>
+    <Item key="searchforms.str.10">Rechercher dans :</Item>
+    <Item key="searchforms.str.11">Full text of book bag items</Item>
+    <Item key="searchforms.str.12">Rechercher :</Item>
+    <Item key="searchforms.str.13">Rechercher :</Item>
+    <Item key="searchforms.str.14">dans</Item>
+    <Item key="searchforms.str.15">dans</Item>
+    <Item key="searchforms.str.16">Se limiter à:</Item>
+    <Item key="searchforms.str.17">dans</Item>
+    <Item key="searchforms.str.18"> et </Item>
+    <Item key="searchforms.str.19">Se limiter selon genre :</Item>
+    <Item key="searchforms.str.20">Se limiter selon sexe:</Item>
+    <Item key="searchforms.str.21">Se limiter selon l'époque:</Item>
+    <Item key="searchforms.str.22">Se limiter selon les dates:</Item>
+    <Item key="searchforms.str.23"> et </Item>
+    <Item key="searchforms.str.24">Collections pour le Groupe : </Item>
+    <Item key="searchforms.str.25">Selectionner des collections pour les inclure dans un recherche.</Item>
+  </Lookup>
+  <Lookup id="searchhistory">
+    <Item key="searchhistory.str.1">Recherche Simple</Item>
+    <Item key="searchhistory.str.2">Recherche Boolean</Item>
+    <Item key="searchhistory.str.3">Recherche de Proximité</Item>
+    <Item key="searchhistory.str.4">Recherche Bibliographique</Item>
+    <Item key="searchhistory.str.5">Histoire des Recherches</Item>
+    <Item key="searchhistory.str.6">Recherche des Indexs à Mots</Item>
+    <Item key="searchhistory.str.7">Histoire des Recherches</Item>
+    <Item key="searchhistory.str.8">Aucune histoire des recherches n'a été trouvée</Item>
+    <Item key="searchhistory.str.9">Cliquer sur un requête ci-dessous pour le soumettre de nouveau.</Item>
+    <Item key="searchhistory.str.10">Requête</Item>
+    <Item key="searchhistory.str.11">Bases de Donées Sélectionées</Item>
+    <Item key="searchhistory.str.12">Résultats Complets</Item>
+  </Lookup>
+  <Lookup id="sort">
+    <Item key="sort.overthreshold">Trop de résultats</Item>
+    <Item key="sort.notsorted">non pas arrangés</Item>
+    <Item key="sort.author">auteur</Item>
+    <Item key="sort.title">tître</Item>
+    <Item key="sort.dateascending">date ascendante</Item>
+    <Item key="sort.datedescending">date descendante</Item>
+    <Item key="sort.frequency">fréquence d'occurrence</Item>
+  </Lookup>
+  
+  <Lookup id="text.components">
+    <Item key="text.components.str.1">[non-numerisés]</Item>
+    <Item key="text.components.str.2">Plus d'informations sur ce </Item>
+    <Item key="text.components.str.3">(caesura)</Item>
+    <Item key="text.components.str.returntotext">retourner au text</Item>
+    <Item key="text.components.str.5">[figure]</Item>
+    <Item key="text.components.str.6">[figure non disponible]</Item>
+    <Item key="text.components.str.7">Premièrement publié :</Item>
+    <Item key="text.components.str.8">Cette édition publiée:</Item>
+    <Item key="text.components.str.9">Gendre de l'Auteur : </Item>
+    <Item key="text.components.str.10">Genre : </Item>
+    <Item key="text.components.str.11">Tître : </Item>
+    <Item key="text.components.str.12">Page[s : </Item>
+    <Item key="text.components.str.13">Auteur : </Item>
+    <Item key="text.components.str.14">Sauter à la première occurrence</Item>
+    <Item key="text.components.str.usebackbutton">Se servir du bouton de retour du navigateur pour retourner</Item>
+    <Item key="text.components.str.audio">fichier audio</Item>
+  </Lookup>
+
+  <Lookup id="text">
+    <Item key="text.str.gostr">lancer</Item> 
+    <Item key="text.str.1">&lt;&lt; Partie précedante</Item>
+    <Item key="text.str.2">Partie suivante &gt;&gt;</Item>
+    <Item key="text.str.3">souligner les occurences</Item>
+    <Item key="text.str.4">oui</Item>
+    <Item key="text.str.5">non</Item>
+  </Lookup>
+  <Lookup id="viewer.utils">
+    <Item key="viewer.utils.str.1">Grandeur de page :  </Item>
+    <Item key="viewer.utils.str.2">Imprimer cette page</Item>
+    <Item key="viewer.utils.str.3">Imprimer</Item>
+    <Item key="viewer.utils.str.4">Pour imprimer cette page, selectionner "Imprimer" au menu de votre menu navigateur</Item>
+    <Item key="viewer.utils.str.format">Format</Item>
+    <Item key="viewer.utils.str.pageno">No. de page</Item>
+    <Item key="viewer.utils.str.pagesize">Grandeur de page</Item>
+    <Item key="viewer.utils.str.searchthistext">Rechercher dans ce texte</Item>
+    <Item key="viewer.utils.str.viewentirepage">Voir la page entière</Item>
+    <Item key="viewer.utils.str.figures">Figures</Item>
+  </Lookup>
+  <Lookup id="viewer">
+    <Item key="viewer.ftr.1stpg">Première Page</Item>
+    <Item key="viewer.ftr.ack">Reconnaisance</Item>
+    <Item key="viewer.ftr.adv">Avertissemt</Item>
+    <Item key="viewer.ftr.app">Appendice</Item>
+    <Item key="viewer.ftr.bib">Bibliographie</Item>
+    <Item key="viewer.ftr.blp">Page Blanche</Item>
+    <Item key="viewer.ftr.ctp">Page devTître Principale</Item>
+    <Item key="viewer.ftr.dig">Digeste</Item>
+    <Item key="viewer.ftr.err">Errata</Item>
+    <Item key="viewer.ftr.fnt">Matières Préliminaires</Item>
+    <Item key="viewer.ftr.his">Histoire</Item>
+    <Item key="viewer.ftr.ind">Index Compréhensif</Item>
+    <Item key="viewer.ftr.loi">Liste des Illustrations</Item>
+    <Item key="viewer.ftr.lot">Liste des Tables</Item>
+    <Item key="viewer.ftr.map">Carte</Item>
+    <Item key="viewer.ftr.mis">Divers</Item>
+    <Item key="viewer.ftr.mss">Manuscrit</Item>
+    <Item key="viewer.ftr.not">Notations</Item>
+    <Item key="viewer.ftr.npn">[n/a]</Item>
+    <Item key="viewer.ftr.ord">Ordonnances</Item>
+    <Item key="viewer.ftr.pni">Index des Autueurs ou Noms</Item>
+    <Item key="viewer.ftr.pnt">Notation de Production</Item>
+    <Item key="viewer.ftr.pre">Préface</Item>
+    <Item key="viewer.ftr.prf">Préface</Item>
+    <Item key="viewer.ftr.ref">Reférences</Item>
+    <Item key="viewer.ftr.reg">Arrêtés</Item>
+    <Item key="viewer.ftr.rul">Règlements</Item>
+    <Item key="viewer.ftr.spi">Index Spécial</Item>
+    <Item key="viewer.ftr.sui">Subject Index</Item>
+    <Item key="viewer.ftr.sup">Supplement</Item>
+    <Item key="viewer.ftr.tab">Table</Item>
+    <Item key="viewer.ftr.toc">Table of Contents</Item>
+    <Item key="viewer.ftr.tpg">Tître Page</Item>
+    <Item key="viewer.ftr.uns"></Item>
+    <Item key="viewer.ftr.ves">Volume End Sheets</Item>
+    <Item key="viewer.ftr.vli">Tôme - Liste des Illus.</Item>
+    <Item key="viewer.ftr.voi">Tôme - Index</Item>
+    <Item key="viewer.ftr.vpg">Pagination Diverse</Item>
+    <Item key="viewer.ftr.vtp">Tôme - Page de Tître</Item>
+    <Item key="viewer.ftr.vtv">Tôme - Page de Tître Verso</Item>
+    <Item key="viewer.nopagenum">[ ]</Item>
+
+  </Lookup>
+  <Lookup id="viewtextnote">
+    <Item key="viewtextnote.str.1">voir le text entier</Item>
+  </Lookup>
+  <Lookup id="ww">
+    <Item key="ww.str.wordindexsearch">Recherche - Index à mots</Item>
+    <Item key="ww.str.search">Rechercher</Item>
+    <Item key="ww.str.new">Nouveau </Item>
+    <Item key="ww.str.wordindex">Index à Mots. </Item>
+    <Item key="ww.str.lookfor">Chercher un mot ou tronçon de mot dans l'Index à mots.</Item>
+    <Item key="ww.str.findword">Chercher mot ou tronçon de mot :</Item>
+    <Item key="ww.str.term">Terme</Item>
+    <Item key="ww.str.occurrences">Occurrences</Item>
+    <Item key="ww.str.usecheckboxes">Selectionner un ou multiple mots de la liste. </Item>
+    <Item key="ww.str.moveupdown">Actionner les flèches pour naviguer la liste.</Item>
+    <Item key="ww.str.clicksearchbutton">Sélectionner le bouton "Chercher les termes indiqués" pour chercher </Item>
+
+    
+    <Item key="ww.str.any">n'importe quels</Item>
+    <Item key="ww.str.oftheterms">des termes.</Item>
+    <Item key="ww.str.quickindex">Index Raccourci </Item>
+    <Item key="ww.str.selectcharacter">Select a character to view the corresponding word index.</Item>
+    <Item key="ww.str.selectcharacter">Sélectionner une letter pour voir l'index à mots corréspondant.</Item>
+    
+  </Lookup>
+ </LookupTables>

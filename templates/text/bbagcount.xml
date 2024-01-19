@@ -1,0 +1,36 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+
+<Top xmlns:dlxs="http://www.umdl.umich.edu/dlxs">
+
+  <!-- XSL fallback files -->
+  <XslFallbackFileList pipeline="qui">
+    <Filename>qui/qui.base.xsl</Filename>
+    <Filename>../vendor/str.split.function.xsl</Filename>
+    <Filename>../vendor/xslfunctions.xsl</Filename>
+    <Filename>qui/components/*.xsl</Filename>
+    <!-- <Filename>qui/includes/qui.results-item.xsl</Filename> -->
+    <Filename>qui/includes/qui.header-common.xsl</Filename>
+    <Filename>qui/includes/qui.header-reslist.xsl</Filename>
+    <Filename>qui/includes/qui.bookbag-items.xsl</Filename>
+    <Filename>qui/qui.bbagcount.xsl</Filename>
+  </XslFallbackFileList>
+
+  <XslFallbackFileList pipeline="qbat">
+    <Filename>qbat/qbat.base.xsl</Filename>
+    <Filename>../vendor/xslfunctions.xsl</Filename>
+    <Filename>qbat/components/*.xsl</Filename>
+    <Filename>qbat/includes/qbat.bookbag-items.xsl</Filename>
+    <Filename>qbat/qbat.bbagcount.xsl</Filename>
+  </XslFallbackFileList>
+
+  <!-- Custom OPTIONAL XML for top-level file bbagcount.xml -->
+  <CustomXml><?CHUNK filename="bbagcountextra.xml" optional="1"?></CustomXml>
+
+  <DlxsGlobals><?CHUNK filename="dlxsclassglobals.xml"?></DlxsGlobals>
+
+  <NavHeader>
+    <BookbagItems><?BOOKBAG_ITEMS_XML?></BookbagItems>
+    <BookbagResults><?BOOKBAG_RESULTS_XML?></BookbagResults>    
+  </NavHeader>
+
+</Top>

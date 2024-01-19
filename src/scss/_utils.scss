@@ -1,0 +1,282 @@
+/*
+ * Utilities
+ *
+ * 
+ */
+
+ .py-1 {
+  display: flex;
+  gap: 0.25rem;
+}
+
+.border {
+  border: solid 2px var(--color-neutral-100);
+}
+
+.no-border {
+  border: 0;
+}
+
+.border-bottom {
+  border-bottom: solid 1px var(--color-neutral-100);
+}
+
+.border-rounded {
+  border-radius: 0.5rem;
+}
+
+.underline {
+  text-decoration: underline;
+}
+
+.no-underline {
+  text-decoration: none;
+}
+
+.light-text-color {
+  color: var(--light-text-color);
+}
+
+.base-text-color {
+  color: var(--base-text-color);
+}
+
+.bold {
+  font-weight: var(--bold);
+}
+
+.lowercase {
+  text-transform: lowercase;
+}
+
+.capitalize {
+  text-transform: capitalize;
+}
+
+.block {
+  display: block;
+}
+
+.flex {
+  display: flex;
+}
+
+.flex-start {
+  align-items: flex-start;
+}
+
+.flex-end {
+  align-items: flex-end;
+}
+
+.flex-center {
+  align-items: center;
+}
+
+.justify-end {
+  justify-content: end;
+}
+
+.flex-flow-rw {
+  flex-flow: row wrap;
+}
+
+.flex-flow-row {
+  flex-flow: row nowrap;
+}
+
+.flex-flow-column {
+  flex-direction: column;
+}
+
+.flex-space-between {
+  justify-content: space-between;
+}
+
+.flex-justify-center {
+  justify-content: center;
+}
+
+.flex-align-center {
+  align-items: center;
+}
+
+.flex-gap-0_25 {
+  gap: 0.25rem;
+}
+
+.flex-gap-0_5 {
+  gap: 0.5rem;
+}
+
+.flex-gap-1 {
+  gap: 1rem;
+}
+
+.flex-shrink-0 {
+  flex-shrink: 0;
+}
+
+.flex-grow-1 {
+  flex-grow: 1;
+}
+
+.center-grid {
+  justify-self: center;
+  align-self: center;
+}
+
+.m-0 {
+  margin: 0 !important;
+}
+
+.mb-0 {
+  margin-bottom: 0;
+}
+
+.mb-0_5 {
+  margin-bottom: 0.5rem;
+}
+
+.mb-1 {
+  margin-bottom: 1em;
+}
+
+.mb-2 {
+  margin-bottom: 2em;
+}
+
+.mb-3 {
+  margin-bottom: 3em;
+}
+
+.mt-0 {
+  margin-top: 0;
+}
+
+.mt-0_5 {
+  margin-top: 0.5rem;
+}
+
+.mt-1 {
+  margin-top: 1rem;
+}
+
+.mt-2 {
+  margin-top: 2em;
+}
+
+.ml-2 {
+  margin-left: 2em;
+}
+
+.p-2 {
+  padding: 2rem;
+}
+
+.p-1 {
+  padding: 1rem;
+}
+
+.p-half {
+  padding: 0.5em;
+}
+
+.pr-0 {
+  padding-right: 0;
+}
+
+.pr-1 {
+  padding-right: 1rem;
+}
+
+.pl-1 {
+  padding-left: 1rem;
+}
+
+.pl-2 {
+  padding-left: 2rem;
+}
+
+.pt-1 {
+  padding-top: 1rem;
+}
+
+.pt-2 {
+  padding-top: 2rem;
+}
+
+.pb-1 {
+  padding-bottom: 1rem;
+}
+
+.pb-2 {
+  padding-bottom: 2rem;
+}
+
+.gap-0_25 {
+  gap: 0.25em;
+}
+
+.gap-0_5 {
+  gap: 0.5em;
+}
+
+.gap-0_75 {
+  gap: 0.75rem;
+}
+
+.gap-1 {
+  gap: 1rem;
+}
+
+.nowrap {
+  white-space: nowrap;
+}
+
+.text-align-center {
+  text-align: center;
+}
+
+.text-xxx-small {
+  font-size: var(--text-xxx-small) !important;
+}
+
+.text-xx-small {
+  font-size: var(--text-xx-small) !important;
+}
+
+.text-x-small {
+  font-size: var(--text-x-small) !important;
+}
+
+.text-x-large {
+  font-size: var(--text-x-large) !important;
+}
+
+.text-large {
+  font-size: var(--text-large) !important;
+}
+
+.text-medium {
+  font-size: var(--text-medium) !important;
+}
+
+.text-muted {
+  color: var(--color-neutral-400);
+}
+
+.flex--wide {
+  flex-basis: 100%;
+  flex-shrink: 0;
+}
+
+.hidden {
+  display: none;
+}
+
+.w-100 {
+  width: 100% !important;
+}
+
+// random comment

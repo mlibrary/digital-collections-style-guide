@@ -1,0 +1,6 @@
+ <DlxsGlobals><?CHUNK filename="dlxsclassglobals.xml"?></DlxsGlobals>
+ 
+ <NavHeader><?CHUNK filename="navheader.xml"?></NavHeader>
+
+ <Footer><?CHUNK filename="footer.xml"?></Footer>
+

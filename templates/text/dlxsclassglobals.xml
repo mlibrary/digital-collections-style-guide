@@ -1,0 +1,21 @@
+<?CHUNK filename="../../lib/dlxsglobals.xml"?>
+
+<Title><?TITLE_XML?></Title>
+<TitleComplex><?TITLE_XML mode="complex"?></TitleComplex>
+
+<CacheDirPath><?CACHE_DIR_PATH_XML?></CacheDirPath>
+<CacheWebPath><?CACHE_WEB_PATH_XML?></CacheWebPath>
+<HeadLinks>
+    <CssLink><?CSS_PATH_XML filename="textclass.css"?></CssLink>
+    <CssLink><?CSS_PATH_XML filename="textclass-specific.css"?></CssLink>
+</HeadLinks>
+
+<BibSearchRegionNames><?BIB_SEARCH_REGION_NAMES_XML?></BibSearchRegionNames>
+<AllSearchRegionNames><?ALL_SEARCH_REGION_NAMES_XML?></AllSearchRegionNames>
+
+<PrintOnDemandEnabled><?POD_ENABLED_XML?></PrintOnDemandEnabled>
+<SearchHistoryHref><?SEARCH_HISTORY_LINK_XML?></SearchHistoryHref>
+
+<?CHUNK filename="collection-idno.chnk" optional="1"?>
+<?CHUNK filename="rightsmap.en.xml"?>
+<?CHUNK filename="rightsmap-extra.en.xml" optional="1"?>
