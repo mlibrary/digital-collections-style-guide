@@ -1,0 +1,97 @@
+<?xml version="1.0"?>
+<?CHUNK filename="entitiesdoctype.chnk" optional="1"?><Top xmlns:dlxs="http://www.umdl.umich.edu/dlxs">
+  <?CHUNK filename="staticincl.xml"?>
+  <CurrentPage>xcbbag-intro</CurrentPage>
+  <Content>
+    <div class="content">
+      <h1>Getting started - using the bookbag</h1>
+      <?CHUNK filename="help/contact-us.chnk" optional="1"?>
+      <p> The bookbag lets you select items as you search or browse collections and hold them for the
+                     duration of your search session. Item records in your bookbag can be saved to your desktop as a
+                     text file or emailed to any email address. You can also search items in your bookbag
+                     collectively, as well as link to any item directly.
+                  </p>
+      <p><strong>Adding an item to your bookbag</strong><br/> You can add items to your bookbag from the results list, from the item table of contents,
+                     or while viewing an individual text. In the results list, under each result, is an
+                     "add to bookbag" link, as shown in the Fig. 1 below:
+                  </p>
+      <table border="0" cellspacing="0" cellpadding="1" align="center">
+        <tr bgcolor="#999999">
+          <td>
+            <img src="/t/text/help/graphics/xc1-resl1-item.gif" width="388" height="100" class="figure" alt="results"/>
+          </td>
+        </tr>
+        <tr>
+          <td>
+            <span class="caption"><strong>Fig. 1:</strong> A result with an "add to
+                              bookbag" link.</span>
+          </td>
+        </tr>
+      </table>
+      <p>To add an item to the bookbag, simply click the corresponding link. The number of items in
+                     the bookbag will be updated in the right side portion of the page header.
+                  </p>
+      <p>A corresponding "add to bookbag" link appears next to the work title when
+                     you are viewing the full contents of the text. Clicking the link there will add that item to
+                     the bookbag in a similar fashion.
+                  </p>
+      <p><strong>Opening the bookbag</strong><br/> You can view your bookbag contents from any page by clicking the
+                     "bookbag" tab in the main navigation bar. (Fig. 2) 
+                  </p>
+      <table border="0" cellspacing="0" cellpadding="1" align="center">
+        <tr bgcolor="#999999">
+          <td>
+            <img src="/t/text/help/graphics/view-bbag-button.gif" class="figure" alt="navigation bar"/>
+          </td>
+        </tr>
+        <tr>
+          <td>
+            <span class="caption"><strong>Fig. 2:</strong> Bookbag link in the navigation bar.</span>
+          </td>
+        </tr>
+      </table>
+      <p/>
+      <div id="relatedcontent">
+        <hr width="200" align="left" size="1"/>
+        <h3>Related topics:</h3>
+        <?STATIC_LINK page="help/./bbag-holdings" title="The holdings display" class="helpnavlink" display="inline"?>
+        <br/>
+      </div>
+      <p/>
+    </div>
+  </Content>
+  <Navigation>
+    <Label>Help Index</Label>
+    <Page>
+      <Label>Help Guide</Label>
+      <?STATIC_LINK page="help"?>
+    </Page>
+    <Section>
+      <Label>Searching</Label>
+      <?STATIC_LINK page="help/xcsearch-intro"?>
+    </Section>
+    <Section>
+      <Label>Interpreting search results</Label>
+      <?STATIC_LINK page="help/xcresults-intro"?>
+    </Section>
+    <Section>
+      <Label>Viewing search history</Label>
+      <?STATIC_LINK page="help/xchistory-intro"?>
+    </Section>
+    <Section>
+      <Label>Using the bookbag</Label>
+      <Page>
+        <Label>Getting started</Label>
+        <?STATIC_LINK page="help/xcbbag-intro" current="true"?>
+      </Page>
+      <Page>
+        <Label>The holdings display</Label>
+        <?STATIC_LINK page="help/./xcbbag-holdings"?>
+      </Page>
+      <Page>
+        <Label>Searches in the bookbag</Label>
+        <?STATIC_LINK page="help/xcbbag-search"?>
+      </Page>
+    </Section>
+  </Navigation>
+</Top>

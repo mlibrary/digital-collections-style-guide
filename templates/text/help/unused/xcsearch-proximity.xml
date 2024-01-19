@@ -1,0 +1,116 @@
+<?xml version="1.0"?>
+<?CHUNK filename="entitiesdoctype.chnk" optional="1"?><Top xmlns:dlxs="http://www.umdl.umich.edu/dlxs">
+  <?CHUNK filename="staticincl.xml"?>
+  <CurrentPage>xcsearch-proximity</CurrentPage>
+  <Content>
+    <div class="content">
+      <h1>Using proximity search</h1>
+      <?CHUNK filename="help/contact-us.chnk" optional="1"?>
+      <p>Proximity search lets you look for terms based on whether they occur (or do not occur) within
+                     a specified distance of each other. (Fig. 1)<br/></p>
+      <table border="0" cellspacing="0" cellpadding="1" align="center">
+        <tr bgcolor="#999999">
+          <td>
+            <img src="/t/text/help/graphics/prox-query-form.gif" alt="proximity form"/>
+          </td>
+        </tr>
+        <tr>
+          <td>
+            <span class="caption"><strong>Fig. 1:</strong> The proximity search query form.</span>
+          </td>
+        </tr>
+      </table>
+      <p><br/> To use the proximity form:
+                  </p>
+      <ol>
+        <li>Use the pulldown button to select a region of a text to search within (e.g., <strong>full
+                           text</strong> ). This region will be the context in which all the terms entered in the text
+                        boxes will be evaluated. <br/><br/></li>
+        <li>Enter a term or phrase in the first text box. Multiple words in a single box will be
+                        treated as a literal string, not separately in an "any word" or
+                        "all words" sense. Use an asterisk with a word stem to find variations on
+                        the word (e.g., searching for civ* will match civ, civil, civic, and civilian.). All other
+                        punctuation will be ignored.<strong><br/></strong><br/></li>
+        <li>If you enter a term or phrase in the second text box, select proximity operators after the
+                        first text box to determine the relationship between the first term and the second.<br/><br/>examples:<br/><blockquote><strong>Freedom</strong> in the first box, followed by the <strong>near</strong> and
+                           <strong>within 80 characters</strong> operators, and <strong>justice</strong> in the second
+                           box, would look for all instances of <strong>freedom</strong> and<strong> justice</strong>,
+                           within 80 characters of each other, and in any order.<br/><br/><strong>Freedom</strong> in the first box, followed by the <strong>followed by</strong> and
+                           <strong>within 80 characters</strong> operators, and <strong>justice</strong> in the second
+                           box, would look for all instances of <strong>freedom</strong> followed within 80 characters
+                           by <strong>justice</strong>. <br/><br/><strong>Freedom</strong> in the first box, followed by the <strong>not followed by / not
+                              near</strong> and <strong>within 80 characters</strong> operators, and
+                           <strong>justice</strong> in the second box, would look for all instances of
+                           <strong>freedom</strong> not followed by / not near <strong>justice</strong> within 80
+                           characters. <br/><br/></blockquote></li>
+        <li>If you enter a term or phrase in the third text box, select proximity operators after the
+                        second text box to determine the relationship between the second term and the third. <br/><br/> Please note: If you enter terms in all three boxes, the search query will evaluate the
+                        proximity relationship between terms 1 and 2 first, and then evaluate the last term.<br/><br/> example: <br/><blockquote><p><strong>Freedom</strong> in the first box, followed by the <strong>near </strong>and
+                              <strong>within 80 </strong>operators<br/><br/><strong>Justice</strong> in the second box followed by the <strong>not near</strong> and
+                              <strong>within 80</strong> operators<br/><br/><strong> Poverty</strong> in the last box
+                           </p></blockquote>
+ will be evaluated as <br/><blockquote>( <strong>freedom</strong> within 80 of <strong>justice</strong> ) not within 80
+                           of <strong>poverty</strong></blockquote><br/></li>
+        <li>To further limit the scope of the search, add words or word phrases in the "Limit
+                        to:" boxes and select a bibliographic field (e.g., author, title) from the
+                        appropriate field menu.<br/><br/></li>
+        <li>Click the "search" button to submit the query.</li>
+      </ol>
+      <p/>
+    </div>
+  </Content>
+  <Navigation>
+    <Label>Help Index</Label>
+    <Page>
+      <Label>Help Guide</Label>
+      <?STATIC_LINK page="help"?>
+    </Page>
+    <Section>
+      <Label>Searching</Label>
+      <Page>
+        <Label>Getting started</Label>
+        <?STATIC_LINK page="help/xcsearch-intro"?>
+      </Page>
+      <Page>
+        <Label>Searching tips</Label>
+        <?STATIC_LINK page="help/xcsearch-tips"?>
+      </Page>
+      <Page>
+        <Label>Choosing a search type</Label>
+        <?STATIC_LINK page="help/xcsearch-sel-type"?>
+      </Page>
+      <Page>
+        <Label>Using basic search</Label>
+        <?STATIC_LINK page="help/xcsearch-basic"?>
+      </Page>
+      <Page>
+        <Label>Using boolean search</Label>
+        <?STATIC_LINK page="help/xcsearch-boolean"?>
+      </Page>
+      <Page>
+        <Label>Using proximity search</Label>
+        <?STATIC_LINK page="help/xcsearch-proximity" current="true"?>
+      </Page>
+      <Page>
+        <Label>Using bibliographic search</Label>
+        <?STATIC_LINK page="help/xcsearch-bib"?>
+      </Page>
+      <Page>
+        <Label>Using word index search</Label>
+        <?STATIC_LINK page="help/xcsearch-ww"?>
+      </Page>
+    </Section>
+    <Section>
+      <Label>Interpreting search results</Label>
+      <?STATIC_LINK page="help/xcresults-intro"?>
+    </Section>
+    <Section>
+      <Label>Viewing search history</Label>
+      <?STATIC_LINK page="help/xchistory-intro"?>
+    </Section>
+    <Section>
+      <Label>Using the bookbag</Label>
+      <?STATIC_LINK page="help/./xcbbag-intro"?>
+    </Section>
+  </Navigation>
+</Top>

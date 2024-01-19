@@ -1,0 +1,103 @@
+<?xml version="1.0"?>
+<?CHUNK filename="entitiesdoctype.chnk" optional="1"?><Top xmlns:dlxs="http://www.umdl.umich.edu/dlxs">
+  <?CHUNK filename="staticincl.xml"?>
+  <CurrentPage>search-basic</CurrentPage>
+  <Content>
+    <div class="content">
+      <h1>Using Basic Search</h1>
+      <?CHUNK filename="help/contact-us.chnk" optional="1"?>
+      <p>Basic search is the simplest search type. Use it when you only need to find a single word or
+                     phrase. (Fig. 1)<br/></p>
+      <table border="0" cellspacing="0" cellpadding="1" align="center">
+        <tr >
+          <td>
+            <img border="1" src="/digital-collections-style-guide/static/text/help/basic-query-form.png" alt="basic form"/>
+          </td>
+        </tr>
+        <tr>
+          <td>
+            <span class="caption"><strong>Fig. 1:</strong> The basic search query form.</span>
+          </td>
+        </tr>
+      </table>
+      <p><br/> To use the basic search form ...
+                  </p>
+      <ol>
+        <li>Enter a term or phrase in the text box. Multiple words will be treated as a literal string,
+                        not separately in an "any word" or "all words" sense. To
+                        search for multiple terms in an "any" or "all" sense, use
+                        the Boolean search. Use an asterisk with a word stem to find variations on the word (e.g.,
+                        searching for civ* will match civ, civil, civic, and civilian.). All other punctuation will be
+                        ignored. See <?STATIC_LINK page="help/search-tips" title="Searching Tips" class="doclink" display="inline"?>.<br/><br/></li>
+        <li>Use the pulldown "Search in" menu to select an area of the text to search
+                        within. <br/><br/></li>
+        <li>To further limit the scope of the search, add words or word phrases in the "Limit
+                        to:" boxes and select a bibliographic field (e.g., author, title) from the
+                        appropriate field menu.<br/><br/></li>
+        <li>Click the "search " button to submit the query.</li>
+      </ol>
+      <p>Some collections may have additional search limitation fields, such as date ranges.</p>
+      <div id="relatedcontent">
+        <hr width="200" align="left" size="1"/>
+        <h3>Related Topics</h3>
+        <?STATIC_LINK page="help/search-tips" title="Searching Tips" class="helpnavlink" display="inline"?>
+        <p/>
+        <br/>
+      </div>
+    </div>
+  </Content>
+  <Navigation>
+    <Label>Help Index</Label>
+    <Page>
+      <Label>Help Guide</Label>
+      <?STATIC_LINK page="help"?>
+    </Page>
+    <Section>
+      <Label>Searching</Label>
+      <Page>
+        <Label>Getting Started</Label>
+        <?STATIC_LINK page="help/search-intro"?>
+      </Page>
+      <Page>
+        <Label>Searching Tips</Label>
+        <?STATIC_LINK page="help/search-tips"?>
+      </Page>
+      <Page>
+        <Label>Choosing a Search Type</Label>
+        <?STATIC_LINK page="help/search-sel-type"?>
+      </Page>
+      <Page>
+        <Label>Using Basic Search</Label>
+        <?STATIC_LINK page="help/search-basic" current="true"?>
+      </Page>
+      <Page>
+        <Label>Using Boolean Search</Label>
+        <?STATIC_LINK page="help/search-boolean"?>
+      </Page>
+      <Page>
+        <Label>Using Proximity Search</Label>
+        <?STATIC_LINK page="help/search-proximity"?>
+      </Page>
+      <Page>
+        <Label>Using Bibliographic Search</Label>
+        <?STATIC_LINK page="help/search-bib"?>
+      </Page>
+      <Page>
+        <Label>Using Word Index Search</Label>
+        <?STATIC_LINK page="help/search-ww"?>
+      </Page>
+    </Section>
+    <Section>
+      <Label>Interpreting Search Results</Label>
+      <?STATIC_LINK page="help/results-intro"?>
+    </Section>
+    <Section>
+      <Label>Viewing Search History</Label>
+      <?STATIC_LINK page="help/history-intro"?>
+    </Section>
+    <Section>
+      <Label>Using the Bookbag</Label>
+      <?STATIC_LINK page="help/./bbag-intro"?>
+    </Section>
+  </Navigation>
+</Top>

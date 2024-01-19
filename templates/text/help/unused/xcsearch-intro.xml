@@ -1,0 +1,183 @@
+<?xml version="1.0"?>
+<?CHUNK filename="entitiesdoctype.chnk" optional="1"?><Top xmlns:dlxs="http://www.umdl.umich.edu/dlxs">
+  <?CHUNK filename="staticincl.xml"?>
+  <CurrentPage>xcsearch-intro</CurrentPage>
+  <Content>
+    <div class="content">
+      <h1>Getting started - multiple collection searches</h1>
+      <?CHUNK filename="help/contact-us.chnk" optional="1"?>
+      <p>UMDL Texts allows you to select one or more collections, and to submit simple and complex
+                     queries against those collections. To conduct a search, follow these steps.
+                  </p>
+      <h2>Select a collection or collection group</h2>
+      <table width="225" border="0" align="right" cellpadding="1" cellspacing="0">
+        <tr>
+          <td>
+            <img src="/t/text/help/graphics/umdlbrowselink-sm.gif" class="figure" width="223" height="102" alt="browse collections link"/>
+          </td>
+        </tr>
+        <tr>
+          <td>
+            <span class="caption"><strong>Fig. 1:</strong> Link on UMDL Texts home page</span>
+          </td>
+        </tr>
+      </table>
+      <p>From the UMDL Texts home page, click the "Browse [collections]" link to
+                     display the list of available collections (Fig. 1).
+                  </p>
+      <p>The collections are arranged in topical or thematic groups (Fig. 2). </p>
+      <p/>
+      <p>Each group listing consists of</p>
+      <p><img src="/t/text/help/graphics/one.gif" alt="one"/>A short
+                     descriptive title, which is also a link. Click the link to search that group. This will take
+                     you to a group search page (see Fig. 3)
+                  </p>
+      <p><img src="/t/text/help/graphics/two.gif" alt="two"/>A descriptive paragraph.
+                  </p>
+      <p><img src="/t/text/help/graphics/three.gif" alt="three"/>A list of the collections included
+                     withing that group. Click the "collection home" link to enter the
+                     "site" for that collection only.
+                  </p>
+      <table width="365" border="0" align="center" cellpadding="1" cellspacing="0">
+        <tr>
+          <td valign="top">
+            <img src="/t/text/help/graphics/collgroupdescription1.gif" class="figure" alt="group description"/>
+          </td>
+        </tr>
+        <tr>
+          <td>
+            <span class="caption"><strong>Fig. 2:</strong> A collection group.</span>
+          </td>
+        </tr>
+      </table>
+      <br/>
+      <table width="370" border="0" align="center" cellpadding="1" cellspacing="0">
+        <tr>
+          <td>
+            <img src="/t/text/help/graphics/xcsearchpagefull1.gif" class="figure" alt="search page"/>
+          </td>
+        </tr>
+        <tr>
+          <td>
+            <span class="caption"><strong>Fig. 3:</strong> The groups search page. Highlighted are: 1)The groups menu; 2)The
+                              search form; 3)The collection list for the current group.</span>
+          </td>
+        </tr>
+      </table>
+      <h2> Select a search type</h2>
+      <p>By default, selecting a collection group lands you at the Basic search page. This is the
+                     simplest search form, but there are more complex searches available, including Boolean,
+                     proximity, and bibliographic searches. At the top of each search form (See Fig 4) there are
+                     links to other search forms. 
+                  </p>
+      <table width="403" border="0" align="center" cellpadding="1" cellspacing="0">
+        <tr>
+          <td>
+            <img src="/t/text/help/graphics/nav.gif" class="figure" alt="navigation bar"/>
+          </td>
+        </tr>
+        <tr>
+          <td>
+            <span class="caption"><strong>Fig. 4:</strong> The top navigation bar showing the search menu expanded.</span>
+          </td>
+        </tr>
+      </table>
+      <br/>
+      <p>For more about search type options, see <?STATIC_LINK page="help/xcsearch-sel-type" title="choosing a search type" class="doclink" display="inline"?>.
+                     
+                     
+                  </p>
+      <h2> Add or remove collections from the search (optional)</h2>
+      <p>Immediately below the search form (see area 3 in Fig. 3 and Fig. 5 below) is a list of the
+                     collections that comprise the currently selected collection group. Check or uncheck boxes
+                     next to each collection to include or exclude it from your search. 
+                  </p>
+      <table width="412" border="0" align="center" cellpadding="1" cellspacing="0">
+        <tr>
+          <td>
+            <img src="/t/text/help/graphics/coll-check-list.gif" class="figure" alt="collection list"/>
+          </td>
+        </tr>
+        <tr>
+          <td>
+            <span class="caption"><strong>Fig. 5:</strong> The collection list.</span>
+          </td>
+        </tr>
+      </table>
+      <h2> Enter query terms in the appropriate search form</h2>
+      <p>Having chosen a search type, you can now enter your search query terms. Depending on your
+                     search type, you can combine up to three words or word phrases to match in a specified area
+                     of the text. In addition, for Boolean, Basic, and proximity searches, you can restrict your
+                     search to only those items that match certain words in bibliographic fields (i.e., author,
+                     title, etc .)
+                  </p>
+      <p>For more about composing effective searches, see <?STATIC_LINK page="help/xcsearch-tips" title="search tips" class="doclink" display="inline"?>.
+                     
+                     
+                  </p>
+      <div id="relatedcontent">
+        <hr width="200" align="left" size="1"/>
+        <h3>Related topics:</h3>
+        <?STATIC_LINK page="help/xcsearch-tips" title="Search tips" class="helpnavlink" display="inline"?>
+        <br/>
+        <?STATIC_LINK page="help/xcsearch-sel-type" title="Choosing a search type" class="helpnavlink" display="inline"?>
+        <br/>
+      </div>
+      <p/>
+    </div>
+  </Content>
+  <Navigation>
+    <Label>Help Index</Label>
+    <Page>
+      <Label>Help Guide</Label>
+      <?STATIC_LINK page="help"?>
+    </Page>
+    <Section>
+      <Label>Searching</Label>
+      <Page>
+        <Label>Getting started</Label>
+        <?STATIC_LINK page="help/xcsearch-intro" current="true"?>
+      </Page>
+      <Page>
+        <Label>Searching tips</Label>
+        <?STATIC_LINK page="help/xcsearch-tips"?>
+      </Page>
+      <Page>
+        <Label>Choosing a search type</Label>
+        <?STATIC_LINK page="help/xcsearch-sel-type"?>
+      </Page>
+      <Page>
+        <Label>Using basic search</Label>
+        <?STATIC_LINK page="help/xcsearch-basic"?>
+      </Page>
+      <Page>
+        <Label>Using boolean search</Label>
+        <?STATIC_LINK page="help/xcsearch-boolean"?>
+      </Page>
+      <Page>
+        <Label>Using proximity search</Label>
+        <?STATIC_LINK page="help/xcsearch-proximity"?>
+      </Page>
+      <Page>
+        <Label>Using bibliographic search</Label>
+        <?STATIC_LINK page="help/xcsearch-bib"?>
+      </Page>
+      <Page>
+        <Label>Using word index search</Label>
+        <?STATIC_LINK page="help/xcsearch-ww"?>
+      </Page>
+    </Section>
+    <Section>
+      <Label>Interpreting search results</Label>
+      <?STATIC_LINK page="help/xcresults-intro"?>
+    </Section>
+    <Section>
+      <Label>Viewing search history</Label>
+      <?STATIC_LINK page="help/xchistory-intro"?>
+    </Section>
+    <Section>
+      <Label>Using the bookbag</Label>
+      <?STATIC_LINK page="help/./xcbbag-intro"?>
+    </Section>
+  </Navigation>
+</Top>

@@ -1,0 +1,86 @@
+<?xml version="1.0"?>
+<?CHUNK filename="entitiesdoctype.chnk" optional="1"?><Top xmlns:dlxs="http://www.umdl.umich.edu/dlxs">
+  <?CHUNK filename="staticincl.xml"?>
+  <CurrentPage>xcsearch-sel-type</CurrentPage>
+  <Content>
+    <div class="content">
+      <h1>Choosing a search type</h1>
+      <?CHUNK filename="help/contact-us.chnk" optional="1"?>
+      <p> One way to control your search is to select from among a number of search types. </p>
+      <p><strong>Basic search</strong> is the simplest search; it lets you look for a single word or
+                     phrase in a designated area of the text. Because it is less specific, sometimes your search
+                     results wil be larger than for advanced searches that let you be more specific in your search
+                     query.
+                  </p>
+      <p><strong>Boolean search</strong> lets you look for combinations of up to three terms or phrases
+                     using Boolean connector terms (i.e., AND, OR, NOT). 
+                  </p>
+      <p><strong>Proximity search</strong> lets you look for terms based on whether they occur (or do
+                     not occur) within a specified distance of each other.
+                  </p>
+      <p><strong>Bibliographic search</strong> lets you look for words that occur in author or title
+                     fields.
+                  </p>
+      <div id="relatedcontent">
+        <hr width="200" align="left" size="1"/>
+        <h3>Related topics:</h3>
+        <?STATIC_LINK page="help/search-tips" title="Search tips" class="helpnavlink" display="inline"?>
+        <br/>
+      </div>
+    </div>
+  </Content>
+  <Navigation>
+    <Label>Help Index</Label>
+    <Page>
+      <Label>Help Guide</Label>
+      <?STATIC_LINK page="help"?>
+    </Page>
+    <Section>
+      <Label>Searching</Label>
+      <Page>
+        <Label>Getting started</Label>
+        <?STATIC_LINK page="help/xcsearch-intro"?>
+      </Page>
+      <Page>
+        <Label>Searching tips</Label>
+        <?STATIC_LINK page="help/xcsearch-tips"?>
+      </Page>
+      <Page>
+        <Label>Choosing a search type</Label>
+        <?STATIC_LINK page="help/xcsearch-sel-type" current="true"?>
+      </Page>
+      <Page>
+        <Label>Using basic search</Label>
+        <?STATIC_LINK page="help/xcsearch-basic"?>
+      </Page>
+      <Page>
+        <Label>Using boolean search</Label>
+        <?STATIC_LINK page="help/xcsearch-boolean"?>
+      </Page>
+      <Page>
+        <Label>Using proximity search</Label>
+        <?STATIC_LINK page="help/xcsearch-proximity"?>
+      </Page>
+      <Page>
+        <Label>Using bibliographic search</Label>
+        <?STATIC_LINK page="help/xcsearch-bib"?>
+      </Page>
+      <Page>
+        <Label>Using word index search</Label>
+        <?STATIC_LINK page="help/xcsearch-ww"?>
+      </Page>
+    </Section>
+    <Section>
+      <Label>Interpreting search results</Label>
+      <?STATIC_LINK page="help/xcresults-intro"?>
+    </Section>
+    <Section>
+      <Label>Viewing search history</Label>
+      <?STATIC_LINK page="help/xchistory-intro"?>
+    </Section>
+    <Section>
+      <Label>Using the bookbag</Label>
+      <?STATIC_LINK page="help/./xcbbag-intro"?>
+    </Section>
+  </Navigation>
+</Top>

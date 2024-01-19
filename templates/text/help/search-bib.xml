@@ -1,0 +1,98 @@
+<?xml version="1.0"?>
+<?CHUNK filename="entitiesdoctype.chnk" optional="1"?><Top xmlns:dlxs="http://www.umdl.umich.edu/dlxs">
+  <?CHUNK filename="staticincl.xml"?>
+  <CurrentPage>search-bib</CurrentPage>
+  <Content>
+    <div class="content">
+      <h1>Using Bibliographic Search</h1>
+      <?CHUNK filename="help/contact-us.chnk" optional="1"?>
+      <p>Bibliographic search lets you look for words that occur in author or title fields. (Fig. 1)<br/></p>
+      <table border="0" cellspacing="0" cellpadding="1" align="center">
+        <tr >
+          <td>
+            <img border="1" src="/digital-collections-style-guide/static/text/help/bib-query-form.png" alt="bibliographic form"/>
+          </td>
+        </tr>
+        <tr>
+          <td>
+            <span class="caption"><strong>Fig. 1:</strong> The bibliographic search query form.</span>
+          </td>
+        </tr>
+      </table>
+      <p><br/> To use the bibliographic form ...
+                  </p>
+      <ol>
+        <li>Enter a term or phrase in the text box. Multiple words will be treated as a literal string,
+                        not separately in an "any word" or "all words" sense. Use
+                        an asterisk with a word stem to find variations on the word (e.g., searching for jo* will
+                        match johnson, jones, etc.). All other punctuation will be ignored. See <?STATIC_LINK page="help/search-tips" title="Searching Tips" class="doclink" display="inline"?>.
+                        <br/><br/></li>
+        <li>Use the pulldown "Search in" menu to select an area of the text to search
+                        within. "Citation" is all the metadata describing the item.<br/><br/></li>
+        <li>Click the "search" button to submit the query.</li>
+      </ol>
+      <div id="relatedcontent">
+        <hr width="200" align="left" size="1"/>
+        <h3>Related Topics</h3>
+        <?STATIC_LINK page="help/search-tips" title="Searching Tips" class="helpnavlink" display="inline"?>
+        <br/>
+        <?STATIC_LINK page="help/search-intro" title="Getting Started with Search" class="helpnavlink" display="inline"?>
+        <br/>
+      </div>
+    </div>
+  </Content>
+  <Navigation>
+    <Label>Help Index</Label>
+    <Page>
+      <Label>Help Guide</Label>
+      <?STATIC_LINK page="help"?>
+    </Page>
+    <Section>
+      <Label>Searching</Label>
+      <Page>
+        <Label>Getting Started</Label>
+        <?STATIC_LINK page="help/search-intro"?>
+      </Page>
+      <Page>
+        <Label>Searching Tips</Label>
+        <?STATIC_LINK page="help/search-tips"?>
+      </Page>
+      <Page>
+        <Label>Choosing a Search Type</Label>
+        <?STATIC_LINK page="help/search-sel-type"?>
+      </Page>
+      <Page>
+        <Label>Using Basic Search</Label>
+        <?STATIC_LINK page="help/search-basic"?>
+      </Page>
+      <Page>
+        <Label>Using Boolean Search</Label>
+        <?STATIC_LINK page="help/search-boolean"?>
+      </Page>
+      <Page>
+        <Label>Using Proximity Search</Label>
+        <?STATIC_LINK page="help/search-proximity"?>
+      </Page>
+      <Page>
+        <Label>Using Bibliographic Search</Label>
+        <?STATIC_LINK page="help/search-bib" current="true"?>
+      </Page>
+      <Page>
+        <Label>Using Word Index Search</Label>
+        <?STATIC_LINK page="help/search-ww"?>
+      </Page>
+    </Section>
+    <Section>
+      <Label>Interpreting Search Results</Label>
+      <?STATIC_LINK page="help/results-intro"?>
+    </Section>
+    <Section>
+      <Label>Viewing Search History</Label>
+      <?STATIC_LINK page="help/history-intro"?>
+    </Section>
+    <Section>
+      <Label>Using the Bookbag</Label>
+      <?STATIC_LINK page="help/./bbag-intro"?>
+    </Section>
+  </Navigation>
+</Top>

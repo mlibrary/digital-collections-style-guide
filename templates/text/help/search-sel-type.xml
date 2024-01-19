@@ -1,0 +1,87 @@
+<?xml version="1.0"?>
+<?CHUNK filename="entitiesdoctype.chnk" optional="1"?><Top xmlns:dlxs="http://www.umdl.umich.edu/dlxs">
+  <?CHUNK filename="staticincl.xml"?>
+  <CurrentPage>search-sel-type</CurrentPage>
+  <Content>
+    <div class="content">
+      <h1>Choosing a Search Type</h1>
+      <?CHUNK filename="help/contact-us.chnk" optional="1"?>
+      <p> One way to control your search is to select from among a number of search types. </p>
+      <p><strong><a href="search-basic.html">Basic search</a></strong> is the simplest search; it lets you look for a single word or
+                     phrase in a designated area of the text. Because Basic searches are less specific, your search
+                     results will be larger than for more complex searches that let you add more terms or be more specific in your search
+                     query.
+                  </p>
+      <p><strong><a href="search-boolean.html">Boolean search</a></strong> lets you look for combinations of up to three terms or phrases
+                     using Boolean connector terms (i.e., AND, OR, NOT). 
+                  </p>
+      <p><strong><a href="search-proximity.html">Proximity search</a></strong> lets you look for terms based on whether they occur (or do
+                     not occur) within a specified distance of each other.
+                  </p>
+      <p><strong><a href="search-bib.html">Bibliographic search</a></strong> lets you look for words that occur in author or title or other metadata fields.
+                  </p>
+      <p><strong><a href="search-ww.html">Word index search</a></strong> (not available in all collections) lets you browse a concordance (an index of all words) of the collection.
+                  </p>
+      <div id="relatedcontent">
+        <hr width="200" align="left" size="1"/>
+        <h3>Related Topics</h3>
+        <?STATIC_LINK page="help/search-tips" title="Searching Tips" class="helpnavlink" display="inline"?>
+        <br/>
+      </div>
+    </div>
+  </Content>
+  <Navigation>
+    <Label>Help Index</Label>
+    <Page>
+      <Label>Help Guide</Label>
+      <?STATIC_LINK page="help"?>
+    </Page>
+    <Section>
+      <Label>Searching</Label>
+      <Page>
+        <Label>Getting Started</Label>
+        <?STATIC_LINK page="help/search-intro"?>
+      </Page>
+      <Page>
+        <Label>Searching Tips</Label>
+        <?STATIC_LINK page="help/search-tips"?>
+      </Page>
+      <Page>
+        <Label>Choosing a Search Type</Label>
+        <?STATIC_LINK page="help/search-sel-type" current="true"?>
+      </Page>
+      <Page>
+        <Label>Using Basic Search</Label>
+        <?STATIC_LINK page="help/search-basic"?>
+      </Page>
+      <Page>
+        <Label>Using Boolean Search</Label>
+        <?STATIC_LINK page="help/search-boolean"?>
+      </Page>
+      <Page>
+        <Label>Using Proximity Search</Label>
+        <?STATIC_LINK page="help/search-proximity"?>
+      </Page>
+      <Page>
+        <Label>Using Bibliographic Search</Label>
+        <?STATIC_LINK page="help/search-bib"?>
+      </Page>
+      <Page>
+        <Label>Using Word Index Search</Label>
+        <?STATIC_LINK page="help/search-ww"?>
+      </Page>
+    </Section>
+    <Section>
+      <Label>Interpreting Search Results</Label>
+      <?STATIC_LINK page="help/results-intro"?>
+    </Section>
+    <Section>
+      <Label>Viewing Search History</Label>
+      <?STATIC_LINK page="help/history-intro"?>
+    </Section>
+    <Section>
+      <Label>Using the Bookbag</Label>
+      <?STATIC_LINK page="help/./bbag-intro"?>
+    </Section>
+  </Navigation>
+</Top>

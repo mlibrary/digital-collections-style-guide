@@ -1,0 +1,111 @@
+<?xml version="1.0"?>
+<?CHUNK filename="entitiesdoctype.chnk" optional="1"?><Top xmlns:dlxs="http://www.umdl.umich.edu/dlxs">
+  <?CHUNK filename="staticincl.xml"?>
+  <CurrentPage>search-intro</CurrentPage>
+  <Content>
+    <div class="content">
+      <h1>Getting Started Searching</h1>
+      <?CHUNK filename="help/contact-us.chnk" optional="1"?>
+      <p>Digital texts hosted by the University of Michigan University Library may be searched within their collection and individually. When collections are found in a <a href="https://quod.lib.umich.edu/t/text">group</a>, searching is possible across this collection and others like it. To conduct a search within a collection, follow these steps.</p>
+      <h2>Collection Search Options</h2>
+      <p>By default, using the search box on any collection home page performs a very basic search. This searches the entire collection for your word or phrase in either the Full Text or Description (a metadata-only search in archival collections that do not have Full Text available). If you click on Search in the menu at the top of any page in a collection or click on Advanced next to the search box on the collection home page, you will have more search options.</p>
+      <p>Full Text collections give you to opportunity to perform Basic, Boolean, Proximity and Bibliographic advanced searches. At the top of each search form (See Fig. 1) there are links to other search forms.</p>
+      <table width="403" border="0" align="center" cellpadding="1" cellspacing="0">
+        <tr>
+          <td>
+            <img border="1" src="/digital-collections-style-guide/static/text/help/nav.png" class="figure" alt="search navigation bar with five tabs"/>
+          </td>
+        </tr>
+        <tr>
+          <td>
+            <span class="caption"><strong>Fig. 1:</strong> The top navigation bar showing the search menu expanded for a Full Text collection.</span>
+          </td>
+        </tr>
+      </table>
+      <br/>
+      <table width="403" border="0" align="center" cellpadding="1" cellspacing="0">
+        <tr>
+          <td>
+            <img border="1" src="/digital-collections-style-guide/static/text/help/nav2.png" class="figure" alt="search navigation bar with only two tabs"/>
+          </td>
+        </tr>
+        <tr>
+          <td>
+            <span class="caption"><strong>Fig. 2:</strong> The top navigation bar showing the search menu expanded for a collection without Full Text.</span>
+          </td>
+        </tr>
+      </table>
+      <br/>
+      <p>For more about search type options, see <?STATIC_LINK page="help/search-sel-type" title="Choosing a Search Type" class="doclink" display="inline"?>.
+                     
+                     
+                  </p>
+      <p/>
+      <h2>Enter Query Terms</h2>
+      <p>Having chosen a search type, you can now enter your search query terms. Depending on your search type, you can combine up to three words or word phrases to match in a specified area of the text. In addition, for Boolean, Basic, and proximity searches, you can restrict your search to only those items that contain certain words in bibliographic fields (i.e., author, title, etc .).</p>
+      <p>For more about composing effective searches, see <?STATIC_LINK page="help/search-tips" title="Searching Tips" class="doclink" display="inline"?>.</p>
+      <div id="relatedcontent">
+        <hr width="200" align="left" size="1"/>
+        <h3>Related Topics</h3>
+        <?STATIC_LINK page="help/search-tips" title="Searching Tips" class="helpnavlink" display="inline"?>
+        <br/>
+        <?STATIC_LINK page="help/search-sel-type" title="Choosing a Search Type" class="helpnavlink" display="inline"?>
+        <br/>
+      </div>
+    </div>
+  </Content>
+  <Navigation>
+    <Label>Help Index</Label>
+    <Page>
+      <Label>Help Guide</Label>
+      <?STATIC_LINK page="help"?>
+    </Page>
+    <Section>
+      <Label>Searching</Label>
+      <Page>
+        <Label>Getting Started</Label>
+        <?STATIC_LINK page="help/search-intro" current="true"?>
+      </Page>
+      <Page>
+        <Label>Searching Tips</Label>
+        <?STATIC_LINK page="help/search-tips"?>
+      </Page>
+      <Page>
+        <Label>Choosing a Search Type</Label>
+        <?STATIC_LINK page="help/search-sel-type"?>
+      </Page>
+      <Page>
+        <Label>Using Basic Search</Label>
+        <?STATIC_LINK page="help/search-basic"?>
+      </Page>
+      <Page>
+        <Label>Using Boolean Search</Label>
+        <?STATIC_LINK page="help/search-boolean"?>
+      </Page>
+      <Page>
+        <Label>Using Proximity Search</Label>
+        <?STATIC_LINK page="help/search-proximity"?>
+      </Page>
+      <Page>
+        <Label>Using Bibliographic Search</Label>
+        <?STATIC_LINK page="help/search-bib"?>
+      </Page>
+      <Page>
+        <Label>Using Word Index Search</Label>
+        <?STATIC_LINK page="help/search-ww"?>
+      </Page>
+    </Section>
+    <Section>
+      <Label>Interpreting Search Results</Label>
+      <?STATIC_LINK page="help/results-intro"?>
+    </Section>
+    <Section>
+      <Label>Viewing Search History</Label>
+      <?STATIC_LINK page="help/history-intro"?>
+    </Section>
+    <Section>
+      <Label>Using the Bookbag</Label>
+      <?STATIC_LINK page="help/./bbag-intro"?>
+    </Section>
+  </Navigation>
+</Top>

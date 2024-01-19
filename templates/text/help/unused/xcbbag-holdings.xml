@@ -1,0 +1,101 @@
+<?xml version="1.0"?>
+<?CHUNK filename="entitiesdoctype.chnk" optional="1"?><Top xmlns:dlxs="http://www.umdl.umich.edu/dlxs">
+  <?CHUNK filename="staticincl.xml"?>
+  <CurrentPage>xcbbag-holdings</CurrentPage>
+  <Content>
+    <div class="content">
+      <h1>The holdings display</h1>
+      <?CHUNK filename="help/contact-us.chnk" optional="1"?>
+      <p> The main bookbag page is the holdings display. All the features in the bookbag are
+                     available from this page (See Fig. 1).
+                  </p>
+      <table width="387" border="0" cellspacing="0" cellpadding="1" align="center">
+        <tr>
+          <td>
+            <img border="1" class="figure" alt="bookbag" src="graphics/basic-in-bbag.gif"/>
+          </td>
+        </tr>
+        <tr>
+          <td>
+            <span class="caption"><strong>Fig. 1:</strong> Top portion of the bookbag holdings display.</span>
+          </td>
+        </tr>
+      </table>
+      <p>At the top right corner of the page is a count of items in the bookbag. There is a search form at the
+                     top for searches restricted to your bookbag. With this you can collect works into a bookbag
+                     from searches on a certain broad topic or author and then do more in depth analysis of the
+                     works as a group. 
+                  </p>
+      <p>
+        <strong>Other options:</strong>
+      </p>
+      <blockquote>
+        <p>Click the "Email Contents" button to send the item records to any email address.</p>
+        <p>Click the "Download Contents" button to save the contents to any place on
+                        your PC or display them in another application.<br/></p>
+        <p>Click "Empty Contents" to remove all the item records at once. </p>
+        <p> Clicking "Link to this item directly" will display the entire text of the
+                     item in the main window. 
+                  </p>
+        <p> Click "Remove from bookbag" to remove this item record only. </p>
+      </blockquote>
+      <p><br/> A typical item record in the bookbag is shown in Fig. 2. When you email records or
+                     download them, they will be sent or saved as plain text files.
+                  </p>
+      <table width="363" border="0" cellspacing="0" cellpadding="1" align="center">
+        <tr>
+          <td>
+            <img src="/t/text/help/graphics/bbag-item.gif" width="363" height="137" class="figure" alt="bookbag"/>
+          </td>
+        </tr>
+        <tr>
+          <td>
+            <span class="caption"><strong>Fig. 2:</strong> An item in the bookbag holdings display.</span>
+          </td>
+        </tr>
+      </table>
+      <p/>
+      <div id="relatedcontent">
+        <hr width="200" align="left" size="1"/>
+        <h3>Related topics:</h3>
+        <?STATIC_LINK page="help/./bbag-intro" title="Getting started with the bookbag" class="helpnavlink" display="inline"?>
+        <br/>
+      </div>
+      <p/>
+    </div>
+  </Content>
+  <Navigation>
+    <Label>Help Index</Label>
+    <Page>
+      <Label>Help Guide</Label>
+      <?STATIC_LINK page="help"?>
+    </Page>
+    <Section>
+      <Label>Searching</Label>
+      <?STATIC_LINK page="help/xcsearch-intro"?>
+    </Section>
+    <Section>
+      <Label>Interpreting search results</Label>
+      <?STATIC_LINK page="help/xcresults-intro"?>
+    </Section>
+    <Section>
+      <Label>Viewing search history</Label>
+      <?STATIC_LINK page="help/xchistory-intro"?>
+    </Section>
+    <Section>
+      <Label>Using the bookbag</Label>
+      <Page>
+        <Label>Getting started</Label>
+        <?STATIC_LINK page="help/./xcbbag-intro"?>
+      </Page>
+      <Page>
+        <Label>The holdings display</Label>
+        <?STATIC_LINK page="help/xcbbag-holdings" current="true"?>
+      </Page>
+      <Page>
+        <Label>Searches in the bookbag</Label>
+        <?STATIC_LINK page="help/xcbbag-search"?>
+      </Page>
+    </Section>
+  </Navigation>
+</Top>

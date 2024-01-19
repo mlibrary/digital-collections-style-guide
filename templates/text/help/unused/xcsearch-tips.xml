@@ -1,0 +1,102 @@
+<?xml version="1.0"?>
+<?CHUNK filename="entitiesdoctype.chnk" optional="1"?><Top xmlns:dlxs="http://www.umdl.umich.edu/dlxs">
+  <?CHUNK filename="staticincl.xml"?>
+  <CurrentPage>xcsearch-tips</CurrentPage>
+  <Content>
+    <div class="content">
+      <h1>Tips for successful searches</h1>
+      <?CHUNK filename="help/contact-us.chnk" optional="1"?>
+      <p>Here are some helpful tips to keep in mind when you are searching in UMDL Texts.</p>
+      <p><strong>String matching:</strong> The search engine uses string matching to determine search
+                     hits. That means, for each query term, the primary rule is this: <em>what you put in the form
+                        text box is literally what the search engine will look for.</em> This includes complete
+                     phrases. Exceptions to the primary rule follow. 
+                  </p>
+      <p><strong>Term expansion:</strong> You can use an asterisk (*) at the end of a word stem to find
+                     plural forms and other variations on that word.
+                  </p>
+      <p><i>Example</i>: searching for "work*" will match works,
+                  worker, working, etc.
+                  </p>
+      <p><strong>Punctuation:</strong> All punctuation marks entered in a search box are ignored and
+                     treated as spaces. 
+                  </p>
+      <p><i>Example</i>: searching for anti-slavery and anti slavery will match both
+                  phrases.
+                  </p>
+      <p><strong>Capitalization:</strong> Case sensitivity of the search term is not retained in
+                     searches by the search engine. 
+                  </p>
+      <p><i>Example</i>: searching for Love will match "LOVE,"
+                  "Love," and "love."</p>
+      <h2>Other helpful tips</h2>
+      <p><strong>Select specific areas of a text:</strong> Most of the search forms have pull-down
+                     menus that allow you to specify specific areas, or regions, of a text to search within. 
+
+<img src="/t/text/help/graphics/regions.gif" class="inline" alt="search field options"/></p>
+      <p>If you are searching more than one collection simultaneously, the items in the menu can
+                     change depending on what collections you have selected. A general rule of thumb is: the more
+                     collections you select, the fewer region options will be available to search in. 
+                  </p>
+      <p> </p>
+      <p><strong>Click the search button:</strong> Not all browsers will allow you to submit any search
+                     form by hitting the <strong>enter</strong> or <strong>return</strong> key. This is especially
+                     the case for forms with more than one input text box. To be safe, click the search button.
+                  </p>
+    </div>
+  </Content>
+  <Navigation>
+    <Label>Help Index</Label>
+    <Page>
+      <Label>Help Guide</Label>
+      <?STATIC_LINK page="help"?>
+    </Page>
+    <Section>
+      <Label>Searching</Label>
+      <Page>
+        <Label>Getting started</Label>
+        <?STATIC_LINK page="help/xcsearch-intro"?>
+      </Page>
+      <Page>
+        <Label>Searching tips</Label>
+        <?STATIC_LINK page="help/xcsearch-tips" current="true"?>
+      </Page>
+      <Page>
+        <Label>Choosing a search type</Label>
+        <?STATIC_LINK page="help/xcsearch-sel-type"?>
+      </Page>
+      <Page>
+        <Label>Using basic search</Label>
+        <?STATIC_LINK page="help/xcsearch-basic"?>
+      </Page>
+      <Page>
+        <Label>Using boolean search</Label>
+        <?STATIC_LINK page="help/xcsearch-boolean"?>
+      </Page>
+      <Page>
+        <Label>Using proximity search</Label>
+        <?STATIC_LINK page="help/xcsearch-proximity"?>
+      </Page>
+      <Page>
+        <Label>Using bibliographic search</Label>
+        <?STATIC_LINK page="help/xcsearch-bib"?>
+      </Page>
+      <Page>
+        <Label>Using word index search</Label>
+        <?STATIC_LINK page="help/xcsearch-ww"?>
+      </Page>
+    </Section>
+    <Section>
+      <Label>Interpreting search results</Label>
+      <?STATIC_LINK page="help/xcresults-intro"?>
+    </Section>
+    <Section>
+      <Label>Viewing search history</Label>
+      <?STATIC_LINK page="help/xchistory-intro"?>
+    </Section>
+    <Section>
+      <Label>Using the bookbag</Label>
+      <?STATIC_LINK page="help/./xcbbag-intro"?>
+    </Section>
+  </Navigation>
+</Top>

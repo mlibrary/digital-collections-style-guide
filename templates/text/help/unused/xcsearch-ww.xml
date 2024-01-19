@@ -1,0 +1,122 @@
+<?xml version="1.0"?>
+<?CHUNK filename="entitiesdoctype.chnk" optional="1"?><Top xmlns:dlxs="http://www.umdl.umich.edu/dlxs">
+  <?CHUNK filename="staticincl.xml"?>
+  <CurrentPage>xcsearch-ww</CurrentPage>
+  <Content>
+    <div class="content">
+      <h1>Using word index search</h1>
+      <?CHUNK filename="help/contact-us.chnk" optional="1"?>
+      <p>The word index lets you browse through concordances of words that occur in books or journals,
+                     selecting values as you go to add to a search query that you can then submit at any time. (Fig. 1)<br/></p>
+      <table width="332" border="0" align="center" cellpadding="1" cellspacing="0">
+        <tr bgcolor="#999999" valign="top">
+          <td>
+            <img src="/t/text/help/graphics/ww-start.gif" width="332" alt="word index search"/>
+          </td>
+        </tr>
+        <tr>
+          <td>
+            <span class="caption"><strong>Fig. 1:</strong> The word index start form.</span>
+          </td>
+        </tr>
+      </table>
+      <p><br/> There are two ways to initiate a word index.<br/><br/> Method 1:
+                  </p>
+      <ol>
+        <li>Enter a word or word stem in the text box.<br/><br/></li>
+        <li>Click a radio button to select an area of text to browse. <br/><br/></li>
+        <li>Click the "Show Word Index" button. The resulting browse list will
+                        highlight your word (if it exists) in the middle with similar words above and below it in
+                        alphabetical order. (Fig. 2) If your word does not exist, the list will highlight the next closest word
+                        in the middle.<br/></li>
+      </ol>
+      <p>Method 2:</p>
+      <ol>
+        <li>Click on a hyperlinked letter in the list as shown. The resulting browse list will begin
+                        with the first word in the index beginning with that letter.<br/></li>
+      </ol>
+      <p/>
+      <table width="327" border="0" align="center" cellpadding="1" cellspacing="0">
+        <tr bgcolor="#999999" valign="top">
+          <td>
+            <img src="/t/text/help/graphics/ww-full.gif" alt="word index search"/>
+          </td>
+        </tr>
+        <tr>
+          <td>
+            <span class="caption"><strong>Fig. 2:</strong> Browsing the resulting word list.</span>
+          </td>
+        </tr>
+      </table>
+      <p>When you get the resulting word list ...</p>
+      <ol>
+        <li>Select checkboxes next to any word you want to add to a search. All the words added in this
+                        manner will be treated in an "any word" sense (i.e., match any of the words selected).<br/><br/></li>
+        <li>Use up and down arrows at the top of the index to retrieve the next or previous 10 words in
+                        the index (any currently selected words will be remembered).<br/><br/></li>
+        <li>Click the "Search for selected terms" button to submit the search.</li>
+      </ol>
+      <div id="relatedcontent">
+        <hr width="200" align="left" size="1"/>
+        <h3>Related topics:</h3>
+        <?STATIC_LINK page="help/search-tips" title="Search tips" class="helpnavlink" display="inline"?>
+        <br/>
+      </div>
+      <p/>
+    </div>
+  </Content>
+  <Navigation>
+    <Label>Help Index</Label>
+    <Page>
+      <Label>Help Guide</Label>
+      <?STATIC_LINK page="help"?>
+    </Page>
+    <Section>
+      <Label>Searching</Label>
+      <Page>
+        <Label>Getting started</Label>
+        <?STATIC_LINK page="help/xcsearch-intro"?>
+      </Page>
+      <Page>
+        <Label>Searching tips</Label>
+        <?STATIC_LINK page="help/xcsearch-tips"?>
+      </Page>
+      <Page>
+        <Label>Choosing a search type</Label>
+        <?STATIC_LINK page="help/xcsearch-sel-type"?>
+      </Page>
+      <Page>
+        <Label>Using basic search</Label>
+        <?STATIC_LINK page="help/xcsearch-basic"?>
+      </Page>
+      <Page>
+        <Label>Using boolean search</Label>
+        <?STATIC_LINK page="help/xcsearch-boolean"?>
+      </Page>
+      <Page>
+        <Label>Using proximity search</Label>
+        <?STATIC_LINK page="help/xcsearch-proximity"?>
+      </Page>
+      <Page>
+        <Label>Using bibliographic search</Label>
+        <?STATIC_LINK page="help/xcsearch-bib"?>
+      </Page>
+      <Page>
+        <Label>Using word index search</Label>
+        <?STATIC_LINK page="help/xcsearch-ww" current="true"?>
+      </Page>
+    </Section>
+    <Section>
+      <Label>Interpreting search results</Label>
+      <?STATIC_LINK page="help/xcresults-intro"?>
+    </Section>
+    <Section>
+      <Label>Viewing search history</Label>
+      <?STATIC_LINK page="help/xchistory-intro"?>
+    </Section>
+    <Section>
+      <Label>Using the bookbag</Label>
+      <?STATIC_LINK page="help/./xcbbag-intro"?>
+    </Section>
+  </Navigation>
+</Top>

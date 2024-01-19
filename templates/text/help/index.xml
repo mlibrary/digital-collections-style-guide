@@ -1,0 +1,59 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<?CHUNK filename="entitiesdoctype.chnk" optional="1"?>
+<Top xmlns:dlxs="http://www.umdl.umich.edu/dlxs">
+  <?CHUNK filename="staticincl.xml"?>
+  <CurrentPage>help</CurrentPage>
+  <Content tabs="off">
+    <div class="content">
+      <h1>Help Guide</h1>
+
+      <?CHUNK filename="help/contact-us.chnk" optional="1"?>
+
+      <h2 id="use-and-access">Use and Access</h2>
+
+      <p>Text digital collections provide access to high-quality texts and associated metadata for use in teaching, learning, research, and scholarship. Some collections are restricted to use at U-M, while most are available for public use. Please note the rights statement associated with each collection in order to determine your personal use of the material.</p>
+
+      <h2 id="restricted-images-and-logging-in">Restricted Materials and Logging In</h2>
+
+      <p>
+        When a collection or title within a collection is restricted to use at U-M, that means it’s restricted to faculty, staff and students who are members of the U-M community. If you feel you should have access and do not, please check with your department first and if you continue to have trouble contact us at
+        <a href="mailto:digital-collections-help@umich.edu">digital-collections-help@umich.edu</a>.
+      </p>
+      <p>To access restricted materials, you should login using the “Login” link in the upper right of any page with your U-M uniqname and Kerberos password.</p>
+
+
+      <h2 id="system-requirements">System Requirements</h2>
+
+      <p>We regularly test for compatibility with the two most recent releases of Firefox, Chrome, Safari, and Edge. If you are using a much older version of these browsers, you may experience difficulty while using text digital collections. For best performance, we recommend using a recent version of Chrome.</p>
+
+      <h2 id="searching-text">Searching Text Digital Collections</h2>
+
+      <p>The search engine uses string matching to determine search hits. That means, for each query term, the primary rule is this: what you put in the form text box is literally what the search engine will look for. Two words will be searched as a phrase. </p>
+      <p>The search interfaces allow you to perform simple and advanced searches. For more information on searching, see the Help Guide menu on the right.</p>
+      
+    </div>
+  </Content>
+  <Navigation>
+    <Label>Help Index</Label>
+    <Page>
+      <Label>Help Guide</Label>
+      <?STATIC_LINK page="help" current="true"?>
+    </Page>
+    <Section>
+      <Label>Searching</Label>
+      <?STATIC_LINK page="help/search-intro" current="true"?>
+    </Section>
+    <Section>
+      <Label>Interpreting Search Results</Label>
+      <?STATIC_LINK page="help/results-intro"?>
+    </Section>
+    <Section>
+      <Label>Viewing Search History</Label>
+      <?STATIC_LINK page="help/history-intro"?>
+    </Section>
+    <Section>
+      <Label>Using the Bookbag</Label>
+      <?STATIC_LINK page="help/./bbag-intro"?>
+    </Section>
+  </Navigation>  
+</Top>

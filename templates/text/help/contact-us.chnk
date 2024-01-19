@@ -1,0 +1,14 @@
+<div class="[ mb-1 feedback-callout border-rounded ]">
+  <div>
+    <div class="[ p-1 pl-2 ]">
+      <div class="flex flex-flow-row gap-0_5">
+        <span class="material-icons contact-icon" aria-hidden="true">email</span>
+        <span>
+          Do you have questions about this content? Need to report a problem?
+          <br />
+          Please <a class="text--bold" href="/cgi/t/text/feedback-idx?page=feedback;to=tech">contact us</a>.
+        </span>
+      </div>
+    </div>
+  </div>
+</div>

@@ -1,0 +1,139 @@
+<?xml version="1.0"?>
+<?CHUNK filename="entitiesdoctype.chnk" optional="1"?><Top xmlns:dlxs="http://www.umdl.umich.edu/dlxs">
+  <?CHUNK filename="staticincl.xml"?>
+  <CurrentPage>xcresults-intro</CurrentPage>
+  <Content>
+    <div class="content">
+      <h1>Getting started - search results</h1>
+      <?CHUNK filename="help/contact-us.chnk" optional="1"?>
+      <p> The search results display gives you a quick overview of your multiple collection search
+                     results and easy access to a variety of viewing options for the items in the list.
+                  </p>
+      <p>The parts of the results display include (see Fig. 1 below): </p>
+      <table width="455" border="0" align="center" cellpadding="1" cellspacing="0">
+        <tr>
+          <td valign="top">
+            <img src="/t/text/help/graphics/xc1-resl1.gif" class="figure" alt="search results"/>
+          </td>
+        </tr>
+        <tr>
+          <td>
+            <span class="caption"><strong>Fig. 1:</strong> A results display contains: 1)search query summary statement;
+                              2)results by collection menu; 3)results by item display.</span>
+          </td>
+        </tr>
+      </table>
+      <p/>
+      <h2>1. The search query summary statement</h2>
+      <p> The query summary statement always appears at the top of the results by
+                  item display. The summary statement echoes the initial search terms, including what area of
+                  the text was specified, the type of search conducted, and the results either for all
+                  collections included in the search, or the current collection selected in the results by
+                  collection menu. Finally, the summary statement indicates what sort order, if any, the results
+                  are in.</p>
+      <p/>
+      <h2>2. The results by collection menu</h2>
+      <p>The results by collection menu (Fig. 2) appears any time a search has been conducted against more than one collection. The
+                  menu appears on the left side 
+                  of the display and indicates the number of hits for each
+                     collection. Additionally, clicking on a collection link causes results for only that
+                     collection to be displayed in the results by item list.
+                  </p>
+      <table width="216" border="0" align="center" cellpadding="0" cellspacing="0">
+        <tr>
+          <td>
+            <img src="/t/text/help/graphics/xc1-resl1-guide.gif" class="figure" alt="results by collection"/>
+          </td>
+        </tr>
+        <tr>
+          <td>
+            <span class="caption"><strong>Fig. 2</strong>: The results by collection menu.</span>
+          </td>
+        </tr>
+      </table>
+      <h2>3. The results by item display</h2>
+      <p>The results by item display shows the individual items (books, journal articles) in which
+                     matches of the query occured. Initially the results by item display shows all items in list
+                     format, with a maximum of 25 items per page. Each item in the list (Fig. 3) contains brief
+                     bibliographic information, a summary of occurrences for that item, and several viewing
+                     options for that item.
+                  </p>
+      <table width="388" border="0" cellspacing="0" cellpadding="1" align="center">
+        <tr>
+          <td>
+            <img src="/t/text/help/graphics/xc1-resl1-item.gif" class="figure" alt="results detail"/>
+          </td>
+        </tr>
+        <tr>
+          <td>
+            <span class="caption"><strong>Fig. 3</strong>: An item in the results by item display</span>
+          </td>
+        </tr>
+      </table>
+      <p>From each item in the list, a viewer has four options: </p>
+      <ul>
+        <li> results details - will load detailed information about results for that item, showing
+                        context for each match of the query. (see Fig. 4.) <br/></li>
+        <li>table of contents - goes to a bibliographic citation for the item and lists all contents
+                        for the item.<br/></li>
+        <li>view text - will either load the entire text into the browser window, or go to the first
+                        page of the item, depending on the encoding format of the item.<br/></li>
+        <li>add to bookbag - will add the item to your bookbag.</li>
+      </ul>
+      <p/>
+      <table width="437" border="0" cellpadding="1" cellspacing="0" align="center">
+        <tr>
+          <td>
+            <img src="/t/text/help/graphics/res-detail.gif" class="figure" alt="results detail"/>
+          </td>
+        </tr>
+        <tr>
+          <td>
+            <span class="caption"><strong>Fig. 4</strong>: Item results detail. Each search term occurrence is shown within
+                              its item context, including 1) breadcrumb path showing relative section of the book, and
+                              2) immediate textual context.</span>
+          </td>
+        </tr>
+      </table>
+      <p/>
+      <div id="relatedcontent">
+        <hr width="200" align="left" size="1"/>
+        <h3>Related topics:</h3>
+        <?STATIC_LINK page="help/results-sort" title="Sorting results" class="helpnavlink" display="inline"?>
+        <br/>
+        <?STATIC_LINK page="help/search-tips" title="Search tips" class="helpnavlink" display="inline"?>
+        <p/>
+      </div>
+    </div>
+  </Content>
+  <Navigation>
+    <Label>Help Index</Label>
+    <Page>
+      <Label>Help Guide</Label>
+      <?STATIC_LINK page="help"?>
+    </Page>
+    <Section>
+      <Label>Searching</Label>
+      <?STATIC_LINK page="help/xcsearch-intro"?>
+    </Section>
+    <Section>
+      <Label>Interpreting search results</Label>
+      <Page>
+        <Label>Getting started</Label>
+        <?STATIC_LINK page="help/xcresults-intro" current="true"?>
+      </Page>
+      <Page>
+        <Label>Sorting results</Label>
+        <?STATIC_LINK page="help/xcresults-sort"?>
+      </Page>
+    </Section>
+    <Section>
+      <Label>Viewing search history</Label>
+      <?STATIC_LINK page="help/xchistory-intro"?>
+    </Section>
+    <Section>
+      <Label>Using the bookbag</Label>
+      <?STATIC_LINK page="help/./xcbbag-intro"?>
+    </Section>
+  </Navigation>
+</Top>

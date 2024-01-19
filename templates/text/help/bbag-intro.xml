@@ -1,0 +1,95 @@
+<?xml version="1.0"?>
+<?CHUNK filename="entitiesdoctype.chnk" optional="1"?><Top xmlns:dlxs="http://www.umdl.umich.edu/dlxs">
+  <?CHUNK filename="staticincl.xml"?>
+  <CurrentPage>bbag-intro</CurrentPage>
+  <Content>
+    <div class="content">
+      <h1>Getting Started Using the Bookbag</h1>
+      <?CHUNK filename="help/contact-us.chnk" optional="1"?>
+      <p> The bookbag lets you select items as you search or browse collections and hold them for the
+                     duration of your search session. Item records in your bookbag can be saved to your desktop as a
+                     text file or emailed to any email address. You can also search items in your bookbag
+                     collectively, as well as link to any item directly.
+                  </p>
+      <p><strong>Adding an item to your bookbag</strong><br/> You can add items to your bookbag from the results list, from the item table of contents,
+                     or while viewing an individual text. In the results list, under each result, is an
+                     "add to bookbag" link, as shown in the Fig. 1 below:
+                  </p>
+      <table width="600" border="0" cellspacing="0" cellpadding="1" align="center">
+        <tr>
+          <td>
+            <img src="/digital-collections-style-guide/static/text/help/bb-resl1-item.png"  border="1" class="figure" alt="bookbag link on results"/>
+          </td>
+        </tr>
+        <tr>
+          <td>
+            <span class="caption"><strong>Fig. 1:</strong> A result with a checkbox and "Add items to bookbag" button.</span>
+          </td>
+        </tr>
+      </table>
+      <p>To add an item to the bookbag, simply click the corresponding checkbox and submit with the "Add items to bookbag" button. The number of items in
+                     the bookbag will be updated in the right side portion of the page header.
+                  </p>
+      <p>A corresponding "add to bookbag" action appears under the image viewer when you are viewing the full contents of the text. Clicking the button there will add that item to
+                     the bookbag in a similar fashion.
+                  </p>
+      <p><strong>Opening the bookbag</strong><br/> You can view your bookbag contents from any page by clicking the
+                     "bookbag" link in the main navigation menu in the upper right. (Fig. 2) 
+                  </p>
+      <table width="450" border="0" align="center" cellpadding="1" cellspacing="0">
+        <tr>
+          <td>
+            <img src="/digital-collections-style-guide/static/text/help/view-bbag-button.png"  border="1" class="figure" alt="navigation bar"/>
+          </td>
+        </tr>
+        <tr>
+          <td>
+            <span class="caption"><strong>Fig. 2:</strong> Bookbag link in the navigation bar.</span>
+          </td>
+        </tr>
+      </table>
+      <p>To learn about viewing items in your bookbag, see <a href="./bbag-holdings.html">the holdings display</a>.</p>
+      <div id="relatedcontent">
+        <hr width="200" align="left" size="1"/>
+        <h3>Related Topics</h3>
+        <?STATIC_LINK page="help/./bbag-holdings" title="The Holdings Display" class="helpnavlink" display="inline"?>
+        <br/>
+      </div>
+      <p/>
+    </div>
+  </Content>
+  <Navigation>
+    <Label>Help Index</Label>
+    <Page>
+      <Label>Help Guide</Label>
+      <?STATIC_LINK page="help"?>
+    </Page>
+    <Section>
+      <Label>Searching</Label>
+      <?STATIC_LINK page="help/search-intro"?>
+    </Section>
+    <Section>
+      <Label>Interpreting Search Results</Label>
+      <?STATIC_LINK page="help/results-intro"?>
+    </Section>
+    <Section>
+      <Label>Viewing Search History</Label>
+      <?STATIC_LINK page="help/history-intro"?>
+    </Section>
+    <Section>
+      <Label>Using the Bookbag</Label>
+      <Page>
+        <Label>Getting Started</Label>
+        <?STATIC_LINK page="help/./bbag-intro" current="true"?>
+      </Page>
+      <Page>
+        <Label>The Holdings Display</Label>
+        <?STATIC_LINK page="help/bbag-holdings"?>
+      </Page>
+      <Page>
+        <Label>Searches in the Bookbag</Label>
+        <?STATIC_LINK page="help/./bbag-srch"?>
+      </Page>
+    </Section>
+  </Navigation>
+</Top>

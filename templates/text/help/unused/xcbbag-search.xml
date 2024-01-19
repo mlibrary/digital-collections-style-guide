@@ -1,0 +1,68 @@
+<?xml version="1.0"?>
+<?CHUNK filename="entitiesdoctype.chnk" optional="1"?><Top xmlns:dlxs="http://www.umdl.umich.edu/dlxs">
+  <?CHUNK filename="staticincl.xml"?>
+  <CurrentPage>xcbbag-search</CurrentPage>
+  <Content>
+    <div class="content">
+      <h1>Searches in the bookbag</h1>
+      <?CHUNK filename="help/contact-us.chnk" optional="1"?>
+      <p> The bookbag offers you the option to perform simple, Boolean and proximity searches against
+                     only those items in your bookbag. The searches will perform exactly as they would against all
+                     collections. (Fig. 1)
+                  </p>
+      <table width="442" border="0" align="center" cellpadding="1" cellspacing="0">
+        <tr bgcolor="#999999">
+          <td bgcolor="#999999">
+            <img src="/t/text/help/graphics/basic-in-bbag.gif" width="442" height="295" class="figure" alt="search         in bookbag"/>
+          </td>
+        </tr>
+        <tr>
+          <td>
+            <span class="caption"><strong>Fig. 1:</strong> The bookbag basic search form.</span>
+          </td>
+        </tr>
+      </table>
+      <p/>
+      <div id="relatedcontent">
+        <hr width="200" align="left" size="1"/>
+        <h3>Related topics:</h3>
+        <?STATIC_LINK page="help/search-tips" title="Search tips" class="helpnavlink" display="inline"?>
+        <br/>
+      </div>
+    </div>
+  </Content>
+  <Navigation>
+    <Label>Help Index</Label>
+    <Page>
+      <Label>Help Guide</Label>
+      <?STATIC_LINK page="help"?>
+    </Page>
+    <Section>
+      <Label>Searching</Label>
+      <?STATIC_LINK page="help/xcsearch-intro"?>
+    </Section>
+    <Section>
+      <Label>Interpreting search results</Label>
+      <?STATIC_LINK page="help/xcresults-intro"?>
+    </Section>
+    <Section>
+      <Label>Viewing search history</Label>
+      <?STATIC_LINK page="help/xchistory-intro"?>
+    </Section>
+    <Section>
+      <Label>Using the bookbag</Label>
+      <Page>
+        <Label>Getting started</Label>
+        <?STATIC_LINK page="help/./xcbbag-intro"?>
+      </Page>
+      <Page>
+        <Label>The holdings display</Label>
+        <?STATIC_LINK page="help/./xcbbag-holdings"?>
+      </Page>
+      <Page>
+        <Label>Searches in the bookbag</Label>
+        <?STATIC_LINK page="help/xcbbag-search" current="true"?>
+      </Page>
+    </Section>
+  </Navigation>
+</Top>

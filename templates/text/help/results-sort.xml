@@ -1,0 +1,93 @@
+<?xml version="1.0"?>
+<?CHUNK filename="entitiesdoctype.chnk" optional="1"?><Top xmlns:dlxs="http://www.umdl.umich.edu/dlxs">
+  <?CHUNK filename="staticincl.xml"?>
+  <CurrentPage>results-sort</CurrentPage>
+  <Content>
+    <div class="content">
+      <h1>Sorting Search Results</h1>
+      <?CHUNK filename="help/contact-us.chnk" optional="1"?>
+      <p>Sorting is available for most results lists, though the sort options
+            may vary per collection, and all sorting is limited the maximum
+            sort threshold allowed by the system (1000 items). In the upper right hand corner
+            of the search results by item display you will see either a menu of sort
+            options, or a message indicating that the threshold has been exceeded.
+            If you see that the threshold has been exceeded, try using the "revise
+            this search" link to add more terms to the search in hopes of retrieving
+            a smaller result. </p>
+      <table width="235" border="0" cellpadding="0" cellspacing="0" align="center">
+        <tr>
+          <td width="10" align="center" valign="top">
+            <strong>
+              <span class="caption">a</span>
+            </strong>
+          </td>
+          <td>
+            <img border="1" src="/digital-collections-style-guide/static/text/help/sort.png" alt="sort options"/>
+          </td>
+        </tr>
+        <tr>
+          <td align="center" valign="top">
+            <img border="1" src="/t/text/help/graphics/plug.gif" alt="spacer"/>
+          </td>
+        </tr>
+        <tr>
+          <td width="10" align="center">
+            <strong>
+              <span class="caption">b</span>
+            </strong>
+          </td>
+          <td>
+            <img border="1" src="/digital-collections-style-guide/static/text/help/res-nosort.png" width="231" height="28" alt="no sort available"/>
+          </td>
+        </tr>
+        <tr>
+          <td colspan="2">
+            <span class="caption"><strong>Fig. 1:</strong>
+                     The sort options menu showing a) normal sorting options;
+                     and b) when sort threshold has been exceeded</span>
+          </td>
+        </tr>
+      </table>
+      <p/>
+      <div id="relatedcontent">
+        <hr width="200" align="left" size="1"/>
+        <h3>Related
+         Topics</h3>
+        <?STATIC_LINK page="help/search-intro" title="Getting started - search results" class="helpnavlink" display="inline"?>
+        <br/>
+        <?STATIC_LINK page="help/search-tips" title="Search tips" class="helpnavlink" display="inline"?>
+        <br/>
+      </div>
+    </div>
+  </Content>
+  <Navigation>
+    <Label>Help Index</Label>
+    <Page>
+      <Label>Help Guide</Label>
+      <?STATIC_LINK page="help"?>
+    </Page>
+    <Section>
+      <Label>Searching</Label>
+      <?STATIC_LINK page="help/search-intro"?>
+    </Section>
+    <Section>
+      <Label>Interpreting Search Results</Label>
+      <Page>
+        <Label>Getting Started</Label>
+        <?STATIC_LINK page="help/results-intro"?>
+      </Page>
+      <Page>
+        <Label>Sorting Results</Label>
+        <?STATIC_LINK page="help/results-sort" current="true"?>
+      </Page>
+    </Section>
+    <Section>
+      <Label>Viewing Search History</Label>
+      <?STATIC_LINK page="help/history-intro"?>
+    </Section>
+    <Section>
+      <Label>Using the Bookbag</Label>
+      <?STATIC_LINK page="help/./bbag-intro"?>
+    </Section>
+  </Navigation>
+</Top>

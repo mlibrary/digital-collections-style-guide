@@ -1,0 +1,63 @@
+<?xml version="1.0"?>
+<?CHUNK filename="entitiesdoctype.chnk" optional="1"?><Top xmlns:dlxs="http://www.umdl.umich.edu/dlxs">
+  <?CHUNK filename="staticincl.xml"?>
+  <CurrentPage>xchistory-intro</CurrentPage>
+  <Content>
+    <div class="content">
+      <h1>The search history</h1>
+      <?CHUNK filename="help/contact-us.chnk" optional="1"?>
+      <p> The search history keeps a record of the searches you have submitted during your current
+                     session. The history keeps track of your query terms, the collections that were searched, and a
+                     summary of your results. The query terms are displayed as links that, if clicked, will resubmit
+                     the search. (Fig. 1)
+                  </p>
+      <table width="400" border="0" align="center" cellpadding="1" cellspacing="0">
+        <tr bgcolor="#999999" valign="top">
+          <td>
+            <img src="/t/text/help/graphics/history.gif" alt="search history"/>
+          </td>
+        </tr>
+        <tr>
+          <td>
+            <span class="caption"><strong>Fig. 1:</strong> The search history display.</span>
+          </td>
+        </tr>
+      </table>
+      <p/>
+      <div id="relatedcontent">
+        <hr width="200" align="left" size="1"/>
+        <h3>Related topics:</h3>
+        <?STATIC_LINK page="help/search-intro" title="Getting started - search" class="helpnavlink" display="inline"?>
+        <br/>
+        <?STATIC_LINK page="help/search-tips" title="Search tips" class="helpnavlink" display="inline"?>
+        <br/>
+      </div>
+    </div>
+  </Content>
+  <Navigation>
+    <Label>Help Index</Label>
+    <Page>
+      <Label>Help Guide</Label>
+      <?STATIC_LINK page="help"?>
+    </Page>
+    <Section>
+      <Label>Searching</Label>
+      <?STATIC_LINK page="help/xcsearch-intro"?>
+    </Section>
+    <Section>
+      <Label>Interpreting search results</Label>
+      <?STATIC_LINK page="help/xcresults-intro"?>
+    </Section>
+    <Section>
+      <Label>Viewing search history</Label>
+      <Page>
+        <Label>The search history</Label>
+        <?STATIC_LINK page="help/xchistory-intro" current="true"?>
+      </Page>
+    </Section>
+    <Section>
+      <Label>Using the bookbag</Label>
+      <?STATIC_LINK page="help/./xcbbag-intro"?>
+    </Section>
+  </Navigation>
+</Top>

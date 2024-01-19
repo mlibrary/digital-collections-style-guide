@@ -1,0 +1,37 @@
+<?xml version="1.0"?>
+<?CHUNK filename="entitiesdoctype.chnk" optional="1"?><Top xmlns:dlxs="http://www.umdl.umich.edu/dlxs">
+  <?CHUNK filename="staticincl.xml"?>
+  <CurrentPage>about-ocr-errors</CurrentPage>
+  <Content>
+    <div class="content">
+      <h1>OCR and Plain Text</h1>
+      <?CHUNK filename="help/contact-us.chnk" optional="1"?>
+      <p>The plain text we provide is created using Optical Character Recognition (OCR). OCR software "reads" the page images and makes a <strong>best guess</strong> at identifying the letters and words on a page. This is an automated process and subject to error -- particularly if the original printing or the scan is of poor quality, the fonts are difficult to read, or the text is lightly printed.</p>
+      <p>Even the best quality OCR usually contains an error or two per page. While this does not usually cause significant problems with searching, it does mean the plain text is not a fully faithful reproduction of the printed (or scanned) original.</p>
+      <p>We want to make plain text as accessible and usable as possible, please contact us with questions or concerns you have and we’ll do all we can to help with your research.</p>
+    </div>
+  </Content>
+  <Navigation>
+    <Label>Help Index</Label>
+    <Page>
+      <Label>Help Guide</Label>
+      <?STATIC_LINK page="help"?>
+    </Page>
+    <Section>
+      <Label>Searching</Label>
+      <?STATIC_LINK page="help/search-intro"?>
+    </Section>
+    <Section>
+      <Label>Interpreting search results</Label>
+      <?STATIC_LINK page="help/results-intro"?>
+    </Section>
+    <Section>
+      <Label>Viewing search history</Label>
+      <?STATIC_LINK page="help/history-intro"?>
+    </Section>
+    <Section>
+      <Label>Using the bookbag</Label>
+      <?STATIC_LINK page="help/./bbag-intro"?>
+    </Section>
+  </Navigation>
+</Top>

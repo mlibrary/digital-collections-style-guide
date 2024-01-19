@@ -1,0 +1,102 @@
+<?xml version="1.0"?>
+<?CHUNK filename="entitiesdoctype.chnk" optional="1"?><Top xmlns:dlxs="http://www.umdl.umich.edu/dlxs">
+  <?CHUNK filename="staticincl.xml"?>
+  <CurrentPage>xcsearch-basic</CurrentPage>
+  <Content>
+    <div class="content">
+      <h1>Using basic search</h1>
+      <?CHUNK filename="help/contact-us.chnk" optional="1"?>
+      <p>Basic search is the simplest search type. Use it when you only need to find a single word or
+                     phrase. (Fig. 1)<br/></p>
+      <table border="0" cellspacing="0" cellpadding="1" align="center">
+        <tr bgcolor="#999999">
+          <td>
+            <img src="/t/text/help/graphics/basic-query-form.gif" alt="basic form"/>
+          </td>
+        </tr>
+        <tr>
+          <td>
+            <span class="caption"><strong>Fig. 1:</strong> The basic search query form.</span>
+          </td>
+        </tr>
+      </table>
+      <p><br/> To use the basic form ...
+                  </p>
+      <ol>
+        <li>Enter a term or phrase in the text box. Multiple words will be treated as a literal string,
+                        not separately in an "any word" or "all words" sense. To
+                        search for multiple terms in an "any" or "all" sense, use
+                        the Boolean search. Use an asterisk with a word stem to find variations on the word (e.g.,
+                        searching for civ* will match civ, civil, civic, and civilian.). All other punctuation will be
+                        ignored. See <?STATIC_LINK page="help/search-tips" title="searching tips" class="doclink" display="inline"?>.<br/><br/></li>
+        <li>Use the pulldown "Search in" menu to select an area of the text to search
+                        within. <br/><br/></li>
+        <li>To further limit the scope of the search, add words or word phrases in the "Limit
+                        to:" boxes and select a bibliographic field (e.g., author, title) from the
+                        appropriate field menu.<br/><br/></li>
+        <li>Click the "search " button to submit the query.</li>
+      </ol>
+      <div id="relatedcontent">
+        <hr width="200" align="left" size="1"/>
+        <h3>Related topics:</h3>
+        <?STATIC_LINK page="help/search-tips" title="Search tips" class="helpnavlink" display="inline"?>
+        <p/>
+        <br/>
+      </div>
+    </div>
+  </Content>
+  <Navigation>
+    <Label>Help Index</Label>
+    <Page>
+      <Label>Help Guide</Label>
+      <?STATIC_LINK page="help"?>
+    </Page>
+    <Section>
+      <Label>Searching</Label>
+      <Page>
+        <Label>Getting started</Label>
+        <?STATIC_LINK page="help/xcsearch-intro"?>
+      </Page>
+      <Page>
+        <Label>Searching tips</Label>
+        <?STATIC_LINK page="help/xcsearch-tips"?>
+      </Page>
+      <Page>
+        <Label>Choosing a search type</Label>
+        <?STATIC_LINK page="help/xcsearch-sel-type"?>
+      </Page>
+      <Page>
+        <Label>Using basic search</Label>
+        <?STATIC_LINK page="help/xcsearch-basic" current="true"?>
+      </Page>
+      <Page>
+        <Label>Using boolean search</Label>
+        <?STATIC_LINK page="help/xcsearch-boolean"?>
+      </Page>
+      <Page>
+        <Label>Using proximity search</Label>
+        <?STATIC_LINK page="help/xcsearch-proximity"?>
+      </Page>
+      <Page>
+        <Label>Using bibliographic search</Label>
+        <?STATIC_LINK page="help/xcsearch-bib"?>
+      </Page>
+      <Page>
+        <Label>Using word index search</Label>
+        <?STATIC_LINK page="help/xcsearch-ww"?>
+      </Page>
+    </Section>
+    <Section>
+      <Label>Interpreting search results</Label>
+      <?STATIC_LINK page="help/xcresults-intro"?>
+    </Section>
+    <Section>
+      <Label>Viewing search history</Label>
+      <?STATIC_LINK page="help/xchistory-intro"?>
+    </Section>
+    <Section>
+      <Label>Using the bookbag</Label>
+      <?STATIC_LINK page="help/./xcbbag-intro"?>
+    </Section>
+  </Navigation>
+</Top>

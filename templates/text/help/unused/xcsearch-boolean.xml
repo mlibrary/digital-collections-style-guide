@@ -1,0 +1,119 @@
+<?xml version="1.0"?>
+<?CHUNK filename="entitiesdoctype.chnk" optional="1"?><Top xmlns:dlxs="http://www.umdl.umich.edu/dlxs">
+  <?CHUNK filename="staticincl.xml"?>
+  <CurrentPage>xcsearch-boolean</CurrentPage>
+  <Content>
+    <div class="content">
+      <h1>Using Boolean search</h1>
+      <?CHUNK filename="help/contact-us.chnk" optional="1"?>
+      <p>Boolean search lets you look for combinations of up to three terms or phrases using Boolean
+                     connector terms (i.e., AND, OR, NOT). (Fig. 1.) <br/></p>
+      <table width="445" border="0" align="center" cellpadding="1" cellspacing="0">
+        <tr bgcolor="#999999">
+          <td>
+            <img src="/t/text/help/graphics/bool-query-form.gif" alt="boolean search form"/>
+          </td>
+        </tr>
+        <tr>
+          <td>
+            <span class="caption"><strong>Fig. 1:</strong> The boolean search query form.</span>
+          </td>
+        </tr>
+      </table>
+      <p><br/> To use the Boolean form:
+                  </p>
+      <ol>
+        <li>Use the pulldown "Search in" menu to select an area of the text to search
+                        within. <br/><br/></li>
+        <li>Enter a term or phrase in the first text box. Multiple words in a single box will be
+                        treated as a literal string, not separately in an "any word" or
+                        "all words" sense. Use an asterisk with a word stem to find variations on
+                        the word (e.g., searching for civ* will match civ, civil, civic, and civilian.). All other
+                        punctuation will be ignored. See <?STATIC_LINK page="help/search-tips" title="searching tips" class="doclink" display="inline"?>.
+                        <br/><br/></li>
+        <li>If you enter a term or phrase in the second text box, select a boolean operator after the
+                        first text box to determine the relationship between the first term and the second.<br/><br/> examples:<br/><blockquote><strong>Civil</strong> in the first box, <strong>war</strong> in the second box, and the
+                           <strong>and</strong> operator between would look for all instances of <strong>civil</strong>
+                           and <strong>war</strong> in the specified region.<br/><br/><strong>Civil</strong> in the first box, <strong>war</strong> in the second box, and the
+                           <strong>or</strong> operator between would look for all instances of <strong>civil</strong>
+                           or <strong>war</strong> in the specified region.<br/><br/><strong>Civil</strong> in the first box, <strong>war</strong> in the second box, and the
+                           <strong>not</strong> operator between would look for all instances of <strong>civil</strong>
+                           that occur without <strong>war</strong> occurring in the specified region. <br/><br/></blockquote></li>
+        <li>If you enter a term or phrase in the third text box, select a boolean operator after the
+                        second text box to determine the relationship between the second term and the third. <br/><br/> Please note: If you enter terms in all three boxes, the search query will evaluate the
+                        boolean relationship between terms 1 and 2 first, and then evaluate the last term.<br/><br/> example: <br/><blockquote><strong>World</strong> in the first box, followed by the <strong>and </strong>operator<br/><br/><strong>Socialism</strong> in the second box followed by the <strong>or</strong> operator<br/><br/><strong> Poverty</strong> in the last box
+                        </blockquote>
+
+                         will be evaluated as <br/><blockquote>( <strong>world</strong> and <strong>socialism</strong> ) or
+                           <strong>poverty</strong></blockquote><br/></li>
+        <li>To further limit the scope of the search, add words or word phrases in the "Limit
+                        to:" boxes and select a bibliographic field (e.g., author, title) from the
+                        appropriate field menu.<br/><br/></li>
+        <li>Click the "search" button to submit the query.</li>
+      </ol>
+      <div id="relatedcontent">
+        <hr width="200" align="left" size="1"/>
+        <h3>Related topics:</h3>
+        <?STATIC_LINK page="help/search-tips" title="Search tips" class="helpnavlink" display="inline"?>
+        <br/>
+        <?STATIC_LINK page="help/search-intro" title="Getting started with search" class="helpnavlink" display="inline"?>
+        <p/>
+        <br/>
+      </div>
+    </div>
+  </Content>
+  <Navigation>
+    <Label>Help Index</Label>
+    <Page>
+      <Label>Help Guide</Label>
+      <?STATIC_LINK page="help"?>
+    </Page>
+    <Section>
+      <Label>Searching</Label>
+      <Page>
+        <Label>Getting started</Label>
+        <?STATIC_LINK page="help/xcsearch-intro"?>
+      </Page>
+      <Page>
+        <Label>Searching tips</Label>
+        <?STATIC_LINK page="help/xcsearch-tips"?>
+      </Page>
+      <Page>
+        <Label>Choosing a search type</Label>
+        <?STATIC_LINK page="help/xcsearch-sel-type"?>
+      </Page>
+      <Page>
+        <Label>Using basic search</Label>
+        <?STATIC_LINK page="help/xcsearch-basic"?>
+      </Page>
+      <Page>
+        <Label>Using boolean search</Label>
+        <?STATIC_LINK page="help/xcsearch-boolean" current="true"?>
+      </Page>
+      <Page>
+        <Label>Using proximity search</Label>
+        <?STATIC_LINK page="help/xcsearch-proximity"?>
+      </Page>
+      <Page>
+        <Label>Using bibliographic search</Label>
+        <?STATIC_LINK page="help/xcsearch-bib"?>
+      </Page>
+      <Page>
+        <Label>Using word index search</Label>
+        <?STATIC_LINK page="help/xcsearch-ww"?>
+      </Page>
+    </Section>
+    <Section>
+      <Label>Interpreting search results</Label>
+      <?STATIC_LINK page="help/xcresults-intro"?>
+    </Section>
+    <Section>
+      <Label>Viewing search history</Label>
+      <?STATIC_LINK page="help/xchistory-intro"?>
+    </Section>
+    <Section>
+      <Label>Using the bookbag</Label>
+      <?STATIC_LINK page="help/./xcbbag-intro"?>
+    </Section>
+  </Navigation>
+</Top>
