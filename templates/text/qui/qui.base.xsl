@@ -158,8 +158,7 @@
         <xsl:if test="//NavItem/Name='bookbag'">
           <qui:link rel="portfolios" icon="bookmark" href="{//NavItem[Name='bookbag']/Link}">Bookbag</qui:link>
         </xsl:if>
-        <!-- <xsl:call-template name="build-login-link" /> -->
-        <qui:link rel="quod" />
+        <xsl:call-template name="build-login-link" />
       </qui:nav>
     </qui:m-website-header>
   </xsl:template>
@@ -189,9 +188,9 @@
   </xsl:template>
 
   <xsl:template name="build-login-link">
-    <qui:link href="{//LoginLink/Url}" id="action-login">
+    <qui:link href="{/Top/NavHeader/ReAuthLink}" id="action-login">
       <xsl:choose>
-        <xsl:when test="//LoginLink/Mode = 'logout'">
+        <xsl:when test="/Top/DlxsGlobals/UserAuthenticated = '1'">
           <xsl:attribute name="data-logged-in">true</xsl:attribute>
           <xsl:attribute name="icon">logout</xsl:attribute>
           <xsl:text>Log out</xsl:text>
