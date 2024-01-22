@@ -10,20 +10,20 @@
     <div class="content">
       <h1>Image Collections Help Guide</h1>
 
-      <h2 id="introduction">Introduction</h2>
-
-      <p>
-        The U-M Library Image Collections - managed and maintained by the
-        <a href="https://www.lib.umich.edu/about-us/our-divisions-and-departments/library-information-technology/digital-content-and">Digital Content and Collections</a> 
-        and <a href="https://www.lib.umich.edu/about-us/our-divisions-and-departments/library-information-technology/digital-library-applications">Digital Library Applications</a>
-        departments at the University of Michigan (U-M) Library - provide access to digitized images of artworks, cultural and historical artifacts, animal specimens, and other materials. Collections are produced and curated by units at U-M.
-      </p>
-      <p>
-        Users may search individual collections or multiple collections on a single theme (within groups of collections). Users may also search
-        <strong>within</strong>
-        collections from the
-        <a href="https://images.umdl.umich.edu">main image collections page</a>.
-      </p>
+      <div class="[ mb-1 feedback-callout border-rounded ]">
+        <div>
+          <div class="[ p-1 pl-2 ]">
+            <div class="flex flex-flow-row gap-0_5">
+              <span class="material-icons contact-icon" aria-hidden="true">email</span>
+              <span>
+                Do you have questions about this content? Need to report a problem?
+                <br />
+                Please <a class="text--bold" href="/cgi/i/image/feedback-idx?page=feedback;to=tech">contact us</a>.
+              </span>
+            </div>
+          </div>
+        </div>
+      </div>
 
       <h2 id="use-and-access">Use and Access</h2>
 
@@ -189,13 +189,16 @@
             To attribute or cite this image in any medium, please use this format:
           </p>
           <m-callout variant="info">
-            <tt>“[Image Title].” [Image URL]. University of Michigan Library Digital Collections. Accessed: [Date accessed].</tt>
+            <tt>
+              “[Image Title].” 
+              In the digital collection <em>[Collection Name]</em>. 
+              [Image URL]. University of Michigan Library Digital Collections. Accessed: [Date accessed].</tt>
           </m-callout>
           <p>
             Example from the
             <a href="https://quod.lib.umich.edu/b/bhl">Bentley Image Bank, Bentley Historical Library</a>
             collection:
-            <tt>“UM Carillon. Adding new bells.” https://quod.lib.umich.edu/b/bhl/x-bl004079/bl004079. University of Michigan Library Digital Collections. Accessed: December 12, 2013.</tt>
+            <tt>“UM Carillon. Adding new bells.” In the digital collection <em>Bentley Historical Library: Bentley Image Bank</em> https://quod.lib.umich.edu/b/bhl/x-bl004079/bl004079. University of Michigan Library Digital Collections. Accessed: December 12, 2013.</tt>
           </p>
           <p>
             <em>N.B: The “Image URL” should be grabbed from the <strong>Link to this Item</strong> field in the <strong>Technical Details</strong> metadata. This will ensure you are using the permanent, short URL for this image.</em>
@@ -221,8 +224,7 @@
       <h2 id="reporting-errors-and-further-help">Reporting Errors and Further Help</h2>
 
       <p>
-        To report errors, see the <strong>Contact Us</strong> links in the footer. For additional assistance, please email
-        <a href="mailto:digital-collections-help@umich.edu">digital-collections-help@umich.edu</a>.
+        To report errors, see the <strong><a class="text--bold" href="/cgi/i/image/feedback-idx?page=feedback;to=tech">Contact Us</a></strong> link in the footer.
       </p>
 
     </div>
