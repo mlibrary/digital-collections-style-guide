@@ -951,7 +951,7 @@
 
   <xsl:template match="AVAILABILITY/P">
     <xhtml:p>
-      <xsl:apply-templates mode="copy-guts" />
+      <xsl:apply-templates select="." mode="copy-guts" />
     </xhtml:p>    
   </xsl:template>
 
@@ -960,7 +960,9 @@
     contains(., 'http://www.umdl.umich.edu/') or
   contains(., 'http://quod.lib.umich.edu/t/text/accesspolicy.html')]" priority="99">
     <!-- <xsl:apply-templates select="." mode="uplift" /> -->
-    <xsl:apply-templates mode="copy" />
+    <xhtml:p>
+      <xsl:apply-templates mode="copy" />
+    </xhtml:p>
   </xsl:template>
 
   <xsl:template match="AVAILABILITY/P[@TYPE]" priority="100">

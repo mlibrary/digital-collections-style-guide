@@ -338,6 +338,16 @@ hr {
   display: block;
 }
 
+.div-heading {
+  display: flex;
+  padding: 0.25rem; 
+  padding-left: 0; 
+  font-weight: bold; 
+  background: var(--color-blue-100);
+  border-top: 1px solid var(--color-teal-500); 
+  border-bottom: 2px solid var(--color-teal-500);
+}
+
 .display-inline {
   display: inline-block;
 }
