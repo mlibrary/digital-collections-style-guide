@@ -64,6 +64,17 @@
     <qui:panel class="callout" slot="browse">
       <qui:nav>
         <xsl:apply-templates select="//qui:panel[@slot='browse'][@weight=0]//qui:link" mode="copy" />
+        <xsl:if test="normalize-space(//CollectionIdno)">
+          <xsl:choose>
+            <xsl:when test="//CollectionIdno/@home-link = 'no'"></xsl:when>
+            <xsl:otherwise>
+              <qui:link href="/cgi/t/text/text-idx?c={$collid};idno={//CollectionIdno}" icon="newspaper">
+                <xsl:text>Browse by </xsl:text>
+                <xsl:value-of select="key('get-lookup', 'uplift.picklist.str.morethanoneitem')" />
+              </qui:link>  
+            </xsl:otherwise>
+          </xsl:choose>
+        </xsl:if>
         <xsl:for-each select="//BrowseFields/Field">
           <qui:link href="{Link}" data-rel="browse-items" icon="layers">
             <xsl:text>Browse by </xsl:text>
