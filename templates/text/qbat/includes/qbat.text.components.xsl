@@ -1815,5 +1815,13 @@
     <xsl:if test="$is-skip-consecutive-hi-elements and name(following-sibling::node())=name()">
       <xsl:text> </xsl:text>
     </xsl:if>
-  </xsl:template>  
+  </xsl:template>
+
+  <xsl:template match="tei:ResultFragment">
+    <xsl:if test="preceding-sibling::tei:ResultFragment">
+      <hr />
+    </xsl:if>
+    <xsl:apply-templates />
+  </xsl:template>
+
 </xsl:stylesheet>

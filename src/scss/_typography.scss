@@ -62,3 +62,12 @@
 img.brand {
   border-radius: 0;
 }
+
+hr {
+  margin: 1rem 0;
+  color: inherit;
+  border: 0;
+  border-top: 0.25rem solid;
+  border-color: var(--color-neutral-500);
+  opacity: .25;
+}
