@@ -5,11 +5,11 @@
   <!-- <xsl:variable name="collid" select="normalize-space((//Param[@name='cc']|//Param[@name='c'])[1])" /> -->
   <xsl:variable name="collid">
     <xsl:choose>
-      <xsl:when test="//Param[@name='xc'] = 1">
-        <xsl:text>*</xsl:text>
-      </xsl:when>
       <xsl:when test="//Param[@name='cc']">
         <xsl:value-of select="//Param[@name='cc']" />
+      </xsl:when>
+      <xsl:when test="//Param[@name='xc'] = 1">
+        <xsl:text>*</xsl:text>
       </xsl:when>
       <xsl:when test="count(//Param[@name='c']) = 1">
         <xsl:value-of select="//Param[@name='cc']" />
