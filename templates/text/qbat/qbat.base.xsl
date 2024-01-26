@@ -826,7 +826,7 @@
       <xsl:when test="$context-type = 'collection'">
         <xsl:text>/cgi/t/text/text-idx?cc=</xsl:text>
         <xsl:value-of select="$collid" />
-        <xsl:text>;page=index#rights-permissions</xsl:text>
+        <xsl:text>;page=home#useguidelines</xsl:text>
       </xsl:when>
       <xsl:otherwise>
         <xsl:text>https://www.lib.umich.edu/about-us/policies/copyright-policy</xsl:text>
