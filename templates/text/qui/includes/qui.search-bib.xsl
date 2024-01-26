@@ -14,12 +14,14 @@
       <xsl:with-param name="q" select="$search-form/SearchQuery/Q2" />
       <xsl:with-param name="rgn" select="$search-form/SearchQuery/Region2SearchSelect" />
       <xsl:with-param name="op" select="$search-form/SearchQuery/Op2" />
+      <xsl:with-param name="required" select="false()" />
     </xsl:call-template>
     <xsl:call-template name="build-clause">
       <xsl:with-param name="name" select="'q3'" />
       <xsl:with-param name="q" select="$search-form/SearchQuery/Q3" />
       <xsl:with-param name="rgn" select="$search-form/SearchQuery/Region3SearchSelect" />
       <xsl:with-param name="op" select="$search-form/SearchQuery/Op3" />
+      <xsl:with-param name="required" select="false()" />
     </xsl:call-template>
   
   </xsl:template>
