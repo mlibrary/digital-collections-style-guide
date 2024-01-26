@@ -824,9 +824,15 @@
   <xsl:template name="get-rights-statement-href">
     <xsl:choose>
       <xsl:when test="$context-type = 'collection'">
-        <xsl:text>/cgi/t/text/text-idx?cc=</xsl:text>
+        <xsl:text>/</xsl:text>
+        <xsl:value-of select="substring($collid, 1, 1)" />
+        <xsl:text>/</xsl:text>
         <xsl:value-of select="$collid" />
-        <xsl:text>;page=home#rights-permissions</xsl:text>
+        <xsl:text>/</xsl:text>
+        <xsl:text>#rights-permissions</xsl:text>
+        <!-- <xsl:text>/cgi/t/text/text-idx?cc=</xsl:text>
+        <xsl:value-of select="$collid" />
+        <xsl:text>;page=home#rights-permissions</xsl:text> -->
       </xsl:when>
       <xsl:otherwise>
         <xsl:text>https://www.lib.umich.edu/about-us/policies/copyright-policy</xsl:text>
