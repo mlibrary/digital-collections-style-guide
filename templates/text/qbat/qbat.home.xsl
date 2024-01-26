@@ -237,7 +237,7 @@
 
   <xsl:template match="qui:block[@slot='copyright' or @slot='useguidelines']">
     <xsl:if test="normalize-space(.)">
-      <h2 id="{@slot}">Rights and Permissions</h2>
+      <h2 id="rights-permissions">Rights and Permissions</h2>
       <xsl:apply-templates mode="copy" />
     </xsl:if>
   </xsl:template>
