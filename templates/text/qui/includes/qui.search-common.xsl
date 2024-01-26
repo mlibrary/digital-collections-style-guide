@@ -59,6 +59,9 @@
 
     <qui:callout slot="clause">
       <div>
+        <xsl:if test="key('get-lookup', 'searchforms.str.0')">
+          <p><xsl:apply-templates select="key('get-lookup', 'searchforms.str.0')" mode="copy" /></p>
+        </xsl:if>
         <p>
           <xsl:value-of select="key('get-lookup','searchforms.str.1')"/>
         </p>
