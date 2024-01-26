@@ -448,7 +448,7 @@
             <h2>Contact Us</h2>
             <ul>
               <li>
-                <a href="{$feedback-href};to=tech"
+                <a href="{$feedback-href}"
                   ><svg
                     xmlns="http://www.w3.org/2000/svg"
                     width="16"

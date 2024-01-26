@@ -111,13 +111,14 @@
     <qui:m-website-header name="Digital Collections">
       <qui:search-form collid="{$collid}" value="{//Param[@name='q1']}" />
       <qui:nav>
-        <qui:link rel="help" href="{//Help}">Help</qui:link>
-        <xsl:if test="//OpenPortfolio/Url">
-          <qui:link rel="portfolios" href="{//OpenPortfolio/Url}">Portfolios</qui:link>
-        </xsl:if>
         <qui:link rel="feedback" icon="email" href="{//FeedbackUrl}">Contact Us</qui:link>
         <qui:link rel="help" icon="help" href="{//Help}">Help</qui:link>
-        <qui:link icon="bookmark" rel="portfolios" href="{//OpenPortfolio/Url}">Portfolios</qui:link>
+        <xsl:if test="//SearchLink">
+          <qui:link rel="search" icon="search" href="{//SearchLink}">Search</qui:link>
+        </xsl:if>
+        <xsl:if test="//OpenPortfolio/Url">
+          <qui:link rel="portfolios" icon="bookmark" href="{//OpenPortfolio/Url}">Portfolios</qui:link>
+        </xsl:if>
         <xsl:call-template name="build-login-link" />
       </qui:nav>
     </qui:m-website-header>
