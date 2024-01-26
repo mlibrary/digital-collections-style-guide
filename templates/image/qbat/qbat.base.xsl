@@ -182,7 +182,7 @@
   </xsl:template>
 
   <xsl:template match="qui:m-website-header/qui:nav">
-    <nav class="[ primary-nav ][ flex flex-end ][ gap-0_5 ]">
+    <nav class="[ primary-nav ][ flex flex-center flex-end ][ gap-0_75 ]">
       <xsl:apply-templates select="qui:link" />
     </nav>
   </xsl:template>
@@ -576,6 +576,11 @@
         <xsl:when test="@rel = 'next'">Next</xsl:when>
         <xsl:when test="@rel = 'previous'">Previous</xsl:when>
         <xsl:when test="@rel = 'back'">Search Results</xsl:when>
+        <xsl:when test="@icon">
+          <span>
+            <xsl:apply-templates mode="copy" />
+          </span>
+        </xsl:when>
         <xsl:otherwise><xsl:apply-templates mode="copy" /></xsl:otherwise>
       </xsl:choose>
     </a>
