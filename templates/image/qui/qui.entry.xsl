@@ -192,7 +192,7 @@
         <qui:label>Collection</qui:label>
         <qui:values>
           <qui:value>
-            <qui:link href="{/Top/Home}">
+	    <qui:link href="/cgi/i/image/image-idx?c={//CurrentCgi/Param[@name='cc']}">
               <xsl:value-of select="//CollName/Full" />
             </qui:link>
           </qui:value>
