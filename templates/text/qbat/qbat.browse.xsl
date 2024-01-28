@@ -36,7 +36,7 @@
         <xsl:call-template name="build-browse-navigation" />
         <!-- <xsl:call-template name="build-search-form" /> -->
         <xsl:call-template name="build-results-summary-sort" />
-        <xsl:if test="$has-results">
+        <xsl:if test="$has-results and $key != 'subject'">
           <xsl:call-template name="build-portfolio-actions" />
         </xsl:if>
         <xsl:call-template name="build-results-list" />
