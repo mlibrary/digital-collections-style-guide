@@ -188,7 +188,7 @@
   </xsl:template>
 
   <xsl:template name="build-login-link">
-    <qui:link href="{/Top/NavHeader/ReAuthLink}" id="action-login">
+    <qui:link href="{/Top//ReAuthLink}" id="action-login">
       <xsl:choose>
         <xsl:when test="/Top/DlxsGlobals/UserAuthenticated = '1'">
           <xsl:attribute name="data-logged-in">true</xsl:attribute>
