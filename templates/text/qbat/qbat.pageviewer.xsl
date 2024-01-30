@@ -470,6 +470,8 @@
     </span>
   </xsl:template>
 
+  <xsl:template match="qui:field[@key='useguidelines']" priority="101" />
+
   <xsl:template match="qui:field//qui:span" mode="copy" priority="202">
     <span data-key="{@data-key}">
       <xsl:apply-templates mode="build-title" />

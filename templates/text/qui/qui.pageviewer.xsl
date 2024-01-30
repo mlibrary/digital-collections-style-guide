@@ -349,7 +349,7 @@
 
   <xsl:template name="build-rights-statement">
     <qui:block slot="rights-statement">
-      <xsl:apply-templates select="/Top/DocMeta//HEADER/FILEDESC/PUBLICATIONSTMT/AVAILABILITY/P" />
+      <xsl:apply-templates select="/Top/DocMeta//HEADER/FILEDESC/PUBLICATIONSTMT/AVAILABILITY"/>
     </qui:block>
   </xsl:template>
 
