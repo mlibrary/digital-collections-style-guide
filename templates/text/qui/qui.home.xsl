@@ -15,7 +15,46 @@
   </xsl:template>
 
   <xsl:template name="build-body-main">
-    <xsl:call-template name="build-body-page-index" />
+    <xsl:choose>
+      <xsl:when test="//XcollMode = 'colls'">
+        <xsl:call-template name="build-body-page-overview" />
+      </xsl:when>
+      <xsl:otherwise>
+        <xsl:call-template name="build-body-page-index" />
+      </xsl:otherwise>
+    </xsl:choose>
+  </xsl:template>
+
+  <xsl:template name="build-body-page-overview">
+    <qui:header role="main">
+      <xsl:call-template name="build-sub-header-badge-data" />
+      <xsl:call-template name="get-collection-title" />
+    </qui:header>
+    <qui:panel slot="browse">
+      <qui:link icon="book" href="/lib/colllist/?byFormat=Text%20Collections">Browse Digital Collections</qui:link>
+    </qui:panel>
+    <qui:block slot="information">
+      <xhtml:p>
+        <xhtml:strong>Digital Collections: Text Collections</xhtml:strong> is the 
+        central access point for electronic books and journals provided by the 
+        University of Michigan 
+        <xhtml:a href="https://www.lib.umich.edu/digital-content-collections-dcc">Digital Content and Collections</xhtml:a>.
+      </xhtml:p>
+      <xhtml:p>
+        Some collections at this site are restricted to use by authorized users only (i.e., University faculty, staff, students, etc... ).
+      </xhtml:p>
+      <xhtml:p>
+        Authorized users should log in for complete access. Please see the 
+        <xhtml:a href="http://www.lib.umich.edu/library-administration/access-and-use-policy">Access and use Policy</xhtml:a> 
+        of the U-M Library.
+      </xhtml:p>
+      <xhtml:div class="alert-info">
+        <xsl:value-of select="//NumberOfCollections" />
+        <xsl:text> collections serving </xsl:text>
+        <xsl:value-of select="//NumberOfTexts" />
+        <xsl:text> texts</xsl:text>
+      </xhtml:div>
+    </qui:block>
   </xsl:template>
 
   <xsl:template name="build-body-page-index">
@@ -24,9 +63,9 @@
       <xsl:call-template name="get-collection-title" />
     </qui:header>
 
-    <xsl:apply-templates select="/Top/BannerImage" />
+    <xsl:apply-templates select="/Top//BannerImage" />
 
-    <xsl:apply-templates select="/Top/Content" />
+    <xsl:apply-templates select="/Top//Content" />
     
     <xsl:apply-templates select="//qui:block[@slot='links']" mode="copy" />
     <xsl:apply-templates select="//qui:block[@slot='copyright']|//qui:block[@slot='useguidelines']" mode="copy" />
@@ -39,7 +78,6 @@
   </xsl:template>
 
   <xsl:template name="build-panel-custom">
-    <qui:debug>WTH?</qui:debug>
     <qui:panel slot="custom">
       <qui:header>Links</qui:header>
       <qui:nav>
@@ -94,6 +132,7 @@
   </xsl:template>
 
   <xsl:template match="Content[.//div[@data-slot]]" priority="100">
+    <qui:debug>WHY</qui:debug>
     <qui:block slot="information">
       <xsl:apply-templates select="./div[@data-slot='overview']|./div[@data-slot='information']" mode="copy" />
     </qui:block>
