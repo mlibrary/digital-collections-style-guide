@@ -500,7 +500,7 @@
       <sl-dialog label="Download Item" id="download-progress" no-header="true">
         <p data-slot="message">Downloading...</p>
         <sl-progress-bar value="0" label="Download progress"></sl-progress-bar>
-        <a slot="footer" href="#" class="button button--primary" data-action="download">Downlaod PDF</a>
+        <a slot="footer" href="#" class="button button--primary" data-action="download">Download PDF</a>
         <sl-button slot="footer" class="sl-button--secondary" data-action="cancel">Cancel</sl-button>
       </sl-dialog>    
     </xsl:if>
