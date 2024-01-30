@@ -35,7 +35,7 @@
     </qui:panel>
     <qui:block slot="information">
       <xhtml:p>
-        <xhtml:strong>Digital Collections: Text Collections</xhtml:strong> is the 
+        <xhtml:strong>Digital Text Collections</xhtml:strong> is the 
         central access point for electronic books and journals provided by the 
         University of Michigan 
         <xhtml:a href="https://www.lib.umich.edu/digital-content-collections-dcc">Digital Content and Collections</xhtml:a>.
