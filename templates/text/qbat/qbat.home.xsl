@@ -83,7 +83,6 @@
         <xsl:call-template name="build-search-form" />
         <div class="text-block">
           <xsl:apply-templates select="//qui:block[@slot='links'][@align='top']" />
-          <xsl:apply-templates select="//qui:block[@slot='overview']" />
           <xsl:apply-templates select="//qui:block[@slot='information']" />
           <xsl:apply-templates select="//qui:block[@slot='contents']" />
           <xsl:apply-templates select="//qui:block[@slot='contentwarning']" />
