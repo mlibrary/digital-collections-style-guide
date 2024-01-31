@@ -194,7 +194,7 @@
               <!-- <xsl:text>)</xsl:text> -->
             </qui:download-item>
             <xsl:if test="$has-plain-text = 'true'">
-              <qui:download-item href="{$api_url}/cgi/t/text/text-idx?cc={/Top/DlxsGlobals/CurrentCgi/Param[@name='cc']};idno={/Top/DlxsGlobals/CurrentCgi/Param[@name='idno']};seq={Value};view=text;tpl=plaintext.viewer" file-type="TEXT" type="TEXT">
+              <qui:download-item href="{$api_url}/cgi/t/text/pageviewer-idx?cc={/Top/DlxsGlobals/CurrentCgi/Param[@name='cc']};idno={/Top/DlxsGlobals/CurrentCgi/Param[@name='idno']};seq={Value};view=text;tpl=plaintext.viewer" file-type="TEXT" type="TEXT">
                 <xsl:text>Plain Text - Page </xsl:text>
                 <xsl:apply-templates select="." mode="pagenum" />
                 <!-- <xsl:text>)</xsl:text> -->

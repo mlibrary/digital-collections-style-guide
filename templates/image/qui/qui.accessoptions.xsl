@@ -27,6 +27,8 @@
         <xsl:otherwise>
           <p>Sorry, you are not permitted access to this collection.</p>
           <p>Access for this collection is restricted to authorized users only.</p>
+          <p>Authorized users should log in for complete access. Please see the <a href="https://www.lib.umich.edu/about-us/policies/statement-appropriate-use-electronic-resources">Access and Use Policy</a>
+           of the U-M Library.</p>
         </xsl:otherwise>
       </xsl:choose>
     </qui:block>

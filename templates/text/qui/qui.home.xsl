@@ -38,22 +38,24 @@
         <xhtml:strong>Digital Text Collections</xhtml:strong> is the 
         central access point for electronic books and journals provided by the 
         University of Michigan 
-        <xhtml:a href="https://www.lib.umich.edu/digital-content-collections-dcc">Digital Content and Collections</xhtml:a>.
+        <xhtml:a href="https://www.lib.umich.edu/about-us/our-divisions-and-departments/library-information-technology/digital-content-and">Digital Content and Collections</xhtml:a>.
       </xhtml:p>
       <xhtml:p>
         Some collections at this site are restricted to use by authorized users only (i.e., University faculty, staff, students, etc... ).
       </xhtml:p>
       <xhtml:p>
         Authorized users should log in for complete access. Please see the 
-        <xhtml:a href="http://www.lib.umich.edu/library-administration/access-and-use-policy">Access and use Policy</xhtml:a> 
+        <xhtml:a href="https://www.lib.umich.edu/about-us/policies/statement-appropriate-use-electronic-resources">Access and Use Policy</xhtml:a> 
         of the U-M Library.
       </xhtml:p>
-      <xhtml:div class="alert-info">
-        <xsl:value-of select="//NumberOfCollections" />
-        <xsl:text> collections serving </xsl:text>
-        <xsl:value-of select="//NumberOfTexts" />
-        <xsl:text> texts</xsl:text>
-      </xhtml:div>
+      <xsl:if test="false()">
+        <xhtml:div class="alert-info">
+          <xsl:value-of select="//NumberOfCollections" />
+          <xsl:text> collections serving </xsl:text>
+          <xsl:value-of select="//NumberOfTexts" />
+          <xsl:text> texts</xsl:text>
+        </xhtml:div>
+        </xsl:if>
     </qui:block>
   </xsl:template>
 

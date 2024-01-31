@@ -57,7 +57,12 @@ window.addEventListener('DOMContentLoaded', (event) => {
         return;
       }
 
-      let href = selectedItem.value + '?attachment=1';
+      let href = selectedItem.value;
+      if ( href.indexOf(';') > -1 ) {
+        href += ';attachment=1';
+      } else {
+        href += '?attachment=1';
+      }
       if ( href.indexOf('https://') < 0 ) {
         href = location.protocol + '//' + location.host + href;
       }
