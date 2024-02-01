@@ -9,7 +9,8 @@ a[aria-current="page"] {
 
 .viewer {
   width: 98vw;
-  height: calc(99vh + 3.5rem + 8rem);
+  // height: calc(99vh + 3.5rem + 8rem);
+  height: calc(99vh + 3.5rem);
   position: relative;
   border: 0;
   display: block;
