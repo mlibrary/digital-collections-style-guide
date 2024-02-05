@@ -3,3 +3,61 @@
 @use './utils';
 @use './typography';
 @use './text/text';
+
+main {
+  margin: 0;
+}
+
+.mirador-companion-area-left {
+  .mirador-companion-windows {
+    // border-right: 1px solid var(--color-neutral-500);
+    box-shadow: 5px 0 5px -5px var(--color-neutral-500);
+  }
+}
+
+.mirador-osd-container {
+  display: grid !important;
+  grid-template-rows: 1fr min-content;
+  row-gap: 8px;
+
+  .openseadragon-container {
+    grid-row: 1/2;
+  }
+}
+
+.mirador-canvas-nav {
+  width: 96% !important;
+  left: 50%;
+  bottom: 4px !important;
+  transform: translateX(-50%);
+  background-color: rgba(255, 255, 255, 0.75) !important;
+  border: 1px solid var(--color-neutral-100) !important;
+  border-radius: 0.5rem;
+  align-items: center;
+
+  position: relative !important;
+  grid-row: 2/3;
+
+  .mirador-osd-info {
+    width: auto;
+  }
+}
+
+li.MuiListItem-root {
+
+  img[role="presentation"] {
+    border: 1px solid var(--color-neutral-100);
+    padding: 2px;
+  }
+
+  .MuiTypography-body1 {
+    font-size: 0.875rem;
+    white-space: wrap;
+  }
+}
+
+@media screen and (max-width: 600px) {
+  .ocr-wrap {
+    min-width: calc(100dvw - 50px) !important;
+  }
+}
