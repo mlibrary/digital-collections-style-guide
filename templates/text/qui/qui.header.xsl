@@ -49,7 +49,8 @@
 
 
   <xsl:template name="get-title">
-    Item Information
+    <xsl:text>Item Information | </xsl:text>
+    <xsl:value-of select="normalize-space($item-metadata//qui:field[@key='title']/qui:values)" />
   </xsl:template>
 
   <xsl:template name="build-item-header">
