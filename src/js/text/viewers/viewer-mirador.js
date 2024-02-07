@@ -118,14 +118,36 @@ window.addEventListener('message', (event) => {
     if ( self_href.substring(0, 1) == '/' ) {
       self_href = `${location.protocol}//${location.host}${self_href}`;
     }
+    let pageview_href = location.href.replace(/\;/g, "&");
     let url = new URL(self_href);
-    if ( url.pathname.indexOf('pageviewer-idx' ) ) {
+    let pageviewUrl = new URL(pageview_href);
+    let re1 = new RegExp(`/(${idno})/(\\d+):(\\d+)`, 'i');
+    let re2 = new RegExp(`/(${idno})/(\\d+)`, 'i');
+    let match;
+    if ( url.pathname.indexOf('pageviewer-idx' ) > -1 ) {
       url.searchParams.set('seq', newSeq);
-    } else if ( url.pathname.indexOf('/' + idno + '/') > -1 ) {
+    }
+
+    if ( pageviewUrl.pathname.indexOf('pageviewer-idx') > -1 ) {
+      pageviewUrl.searchParams.set('seq', newSeq);
+    } else if ( match = pageviewUrl.pathname.match(re1) ) {
+      // console.log("-- match d:d", match);
+      match[2] = newSeq.replace(/^0+/, '');;
+      pageviewUrl.pathname = pageviewUrl.pathname.replace(re1, `/${match[1]}/${match[2]}:${match[3]}`);
+    } else if ( match = pageviewUrl.pathname.match(re2) ) {
+      // console.log("-- match d", match);
+      match[2] = newSeq.replace(/^0+/, '');
+      pageviewUrl.pathname = pageviewUrl.pathname.replace(re2, `/${match[1]}/${match[2]}`);
+    } else if ( pageviewUrl.pathname.indexOf('/' + idno + '/') > -1 ) {
+      // console.log("-- match null", pageviewUrl.pathname);
       let re = new RegExp(`/${idno}/\\d+`);
-      url.pathname = url.pathname.replace(re, `/${idno}/${newSeq}`);
+      pageviewUrl.pathname = pageviewUrl.pathname.replace(re, `/${idno}/${newSeq.replace(/^0+/, '')}`);
+    } else {
+      console.log("-- match FAIL", pageviewUrl.pathname, idno);
     }
     let newHref = url.toString();
+    let newPageviewHref = pageviewUrl.toString();
+    // console.log("-- match new href", newHref, newPageviewHref);
 
     alert.innerHTML = `<p>Loading metadata for: ${identifier}</p>`;
 
@@ -161,21 +183,22 @@ window.addEventListener('message', (event) => {
     slDropdownEl.style.opacity = 1.0;
 
 
-    history.pushState({}, document.title, newHref);
-    document.querySelector('.breadcrumb li:last-child').setAttribute('href', newHref);
+    history.pushState({}, document.title, newPageviewHref);
+    document.querySelector('.breadcrumb li:last-child').setAttribute('href', newPageviewHref);
 
     const bookmarkItem = document.querySelector('dt[data-key="bookmark-item"] + dd span.url');
     if ( bookmarkItem ) {
       let itemHref = bookmarkItem.innerText.trim();
-      if ( itemHref.indexOf('/cgi/') > -1 ) {
-        // just use newHref
-        bookmarkItem.innerText = newHref;
-      } else {
-        // just pop on the new seq?
-        let tmp = itemHref.split('/');
-        tmp[tmp.length - 1] = newSeq.replace(/^0+/, '');
-        bookmarkItem.innerText = tmp.join('/');
-      }
+      bookmarkItem.innerText = newPageviewHref;
+      // if ( itemHref.indexOf('/cgi/') > -1 ) {
+      //   // just use newHref
+      //   bookmarkItem.innerText = newHref;
+      // } else {
+      //   // just pop on the new seq?
+      //   let tmp = itemHref.split('/');
+      //   tmp[tmp.length - 1] = newSeq.replace(/^0+/, '');
+      //   bookmarkItem.innerText = tmp.join('/');
+      // }
     }
 
     tocbot.refresh();
