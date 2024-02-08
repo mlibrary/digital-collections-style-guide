@@ -814,6 +814,17 @@
   </xsl:template>
 
   <!-- #################### -->
+  <xsl:template match="tei:NAME[@REG]">
+    <span class="name">
+      <xsl:apply-templates />
+      <xsl:text> </xsl:text>
+      <span class="name--reg">
+        <xsl:value-of select="@REG" />
+      </span>
+    </span>
+  </xsl:template>
+
+  <!-- #################### -->
   <xsl:template match="tei:NOTE/tei:NOTE1|tei:NOTE/tei:NOTE2" priority="101">
     <p>
       <xsl:apply-templates />
@@ -821,7 +832,7 @@
   </xsl:template>
 
   <xsl:template match="tei:NOTE1|tei:NOTE2">
-    <xsl:variable name="view" select="//Param[@name='view']" />
+    <xsl:variable name="view" select="'text'" />
     <xsl:choose>
       <xsl:when test="not(@HREF)">
         <!-- no @HREF, therefore render the note content -->

@@ -197,6 +197,24 @@ ins::after {
   /* color: var(--color-neutral-400); */
 }
 
+.fullview-main .name {
+  .name--reg {
+    &::before {
+      content: '[';
+      font-weight: bold;
+      font-size: 1.1rem;
+    }
+    &::after {
+      content: ']'; 
+      font-weight: bold;
+      font-size: 1.1rem;
+    }
+    display: inline-block;
+    background: var(--color-green-100);
+
+  }
+}
+
 .fullview-main figure {
   border: 1px solid var(--color-neutral-100);
   padding: 1rem;
@@ -336,6 +354,9 @@ ins::after {
 .inline-note {
   background: var(--color-maize-100);
   display: block;
+  &.inline {
+    display: inline-block;
+  }
 }
 
 .div-heading {
