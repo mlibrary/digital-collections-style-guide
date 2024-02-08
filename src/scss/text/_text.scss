@@ -43,6 +43,10 @@ html[data-highlight-state="off"] .inline-highlight a {
   flex-direction: row;
   flex-wrap: nowrap;
   margin-left: 1rem;
+
+  & .inner {
+    width: 100%;
+  }
 }
 
 ul.fullview-toc {
@@ -242,6 +246,12 @@ ins::after {
   display: flex;
   align-items: center;
   gap: 1.5rem;
+  justify-content: space-between;
+  width: 100%;
+
+  &:hover {
+    background: var(--color-indigo-100);
+  }
   
   .line--number {
     font-family: monospace;

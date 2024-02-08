@@ -54,7 +54,7 @@
           </xsl:when>
           <xsl:otherwise></xsl:otherwise>
         </xsl:choose>
-        <div>
+        <div class="inner">
           <xsl:apply-templates />
         </div>
       </div>
@@ -1341,6 +1341,7 @@
         </xsl:if>
       </xsl:attribute>
       <xsl:copy-of select="@*[not(local-name()='REND' or local-name()='ID')]" />
+      <span><xsl:apply-templates /></span>
       <xsl:if test="@N">
         <span class="line--number">
           <span class="visually-hidden">Line </span>
@@ -1348,7 +1349,6 @@
           <xsl:text> </xsl:text>
         </span>
       </xsl:if>
-      <span><xsl:apply-templates /></span>
     </span>
   </xsl:template>
 
