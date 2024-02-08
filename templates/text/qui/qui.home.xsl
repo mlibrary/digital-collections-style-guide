@@ -2,7 +2,18 @@
 <!DOCTYPE root [
 <!ENTITY nbsp "&#160;">  
 ]>
-<xsl:stylesheet version="1.0" xmlns="http://www.w3.org/1999/xhtml" xmlns:xhtml="http://www.w3.org/1999/xhtml" xmlns:xsl="http://www.w3.org/1999/XSL/Transform" xmlns:dlxs="http://dlxs.org" xmlns:qbat="http://dlxs.org/quombat" xmlns:exsl="http://exslt.org/common" extension-element-prefixes="exsl" xmlns:qui="http://dlxs.org/quombat/ui">
+<xsl:stylesheet 
+  version="1.0" 
+  xmlns="http://www.w3.org/1999/xhtml" 
+  xmlns:xhtml="http://www.w3.org/1999/xhtml" 
+  xmlns:xsl="http://www.w3.org/1999/XSL/Transform" 
+  xmlns:dlxs="http://dlxs.org" 
+  xmlns:qbat="http://dlxs.org/quombat" 
+  xmlns:exsl="http://exslt.org/common" 
+  xmlns:math="http://exslt.org/math"
+  xmlns:date="http://exslt.org/dates-and-times" 
+  extension-element-prefixes="exsl math date" 
+  xmlns:qui="http://dlxs.org/quombat/ui">
 
   <xsl:variable name="search-form" select="//SearchForm" />
 
@@ -60,12 +71,29 @@
   </xsl:template>
 
   <xsl:template name="build-body-page-index">
-    <qui:header role="main">
+    <qui:header role="main" data-banner="{floor((math:random() * date:minute-in-hour()) mod count(/Top/BannerImage) * count(/Top/BannerImage))}" data-random="{(math:random() * date:minute-in-hour()) mod count(/Top/BannerImage)}">
       <xsl:call-template name="build-sub-header-badge-data" />
       <xsl:call-template name="get-collection-title" />
     </qui:header>
 
-    <xsl:apply-templates select="/Top//BannerImage" />
+    <xsl:variable name="count-banner-images" select="count(/Top/BannerImage)" />
+    <xsl:if test="$count-banner-images &gt; 0">
+      <xsl:variable name="random-idx" select="floor((math:random() * date:minute-in-hour() mod $count-banner-images) * $count-banner-images)" />
+      <xsl:variable name="max1">
+        <xsl:choose>
+          <xsl:when test="1 &gt; $random-idx"><xsl:value-of select="number(1)" /></xsl:when>
+          <xsl:otherwise><xsl:value-of select="$random-idx" /></xsl:otherwise>
+        </xsl:choose>
+      </xsl:variable>
+      <xsl:variable name="banner-idx">
+        <xsl:choose>
+          <xsl:when test="$count-banner-images &lt; $max1"><xsl:value-of select="$count-banner-images" /></xsl:when>
+          <xsl:otherwise><xsl:value-of select="$max1" /></xsl:otherwise>
+        </xsl:choose>
+      </xsl:variable>
+      <qui:debug name="banner-idx" banner-idx="{$banner-idx}" random-idx="{$random-idx}" count-idx="{$count-banner-images}" />
+      <xsl:apply-templates select="/Top/BannerImage[number($banner-idx)]" />
+    </xsl:if>
 
     <xsl:apply-templates select="/Top//Content" />
     
