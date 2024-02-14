@@ -183,7 +183,7 @@
   <xsl:template match="qui:block[@slot='contents']" />
 
   <xsl:template match="qui:img|xhtml:img" mode="card-image">
-    <img class="[ card__image ]" src="{@src}" alt="@alt">
+    <img class="[ card__image ]" src="{@src}" alt="{@alt}">
       <xsl:apply-templates select="@width|@height" mode="copy" />
     </img>
   </xsl:template>
