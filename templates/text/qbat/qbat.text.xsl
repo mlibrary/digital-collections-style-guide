@@ -1,6 +1,28 @@
 <?xml version="1.0" encoding="utf-8"?>
 <xsl:stylesheet version="1.0" xmlns="http://www.w3.org/1999/xhtml" xmlns:xsl="http://www.w3.org/1999/XSL/Transform" xmlns:qui="http://dlxs.org/quombat/ui" xmlns:qbat="http://dlxs.org/quombat/quombat" xmlns:xhtml="http://www.w3.org/1999/xhtml" xmlns:dlxs="http://dlxs.org" xmlns:exsl="http://exslt.org/common" xmlns:tei="http://www.tei-c.org/ns/1.0" extension-element-prefixes="exsl">
 
+  <xsl:variable name="has-annotations">
+    <xsl:choose>
+      <xsl:when test="//qui:block[@slot='metadata']/qui:metadata/@item-encoding-level = 4">
+        <xsl:variable name="content" select="//qui:block[@slot='content']" />
+        <xsl:choose>
+          <xsl:when test="
+          $content//tei:CHOICE[not(tei:ORIG)] or 
+          $content//tei:XXADD or $content//tei:XXDEL or 
+          $content//tei:ABBR">
+            <xsl:value-of select="true()" />
+          </xsl:when>
+          <xsl:otherwise>
+            <xsl:value-of select="false()" />
+          </xsl:otherwise>          
+        </xsl:choose>
+      </xsl:when>
+      <xsl:otherwise>
+        <xsl:value-of select="false()" />
+      </xsl:otherwise>
+    </xsl:choose>
+  </xsl:variable>
+
   <xsl:template name="build-extra-scripts">
 
     <script>
@@ -9,6 +31,10 @@
 
     <xsl:call-template name="build-entry-scripts" />
 
+  </xsl:template>
+
+  <xsl:template name="build-extra-html-attributes">
+    <xsl:attribute name="data-annotations-state">off</xsl:attribute>
   </xsl:template>
 
   <xsl:template name="build-entry-scripts" />
@@ -26,7 +52,17 @@
     <div class="[ flex flex-flow-rw ][ aside--wrap ]">
 
       <div class="[ aside ]">
-        <nav class="[ page-index ]" xx-aria-labelledby="page-index-label">
+        <nav class="[ page-index ]">
+          <!-- this needs to be smarter -->
+          <div class="annotations-panel" style="display: none;">
+            <h2 id="annotations-label" class="[ subtle-heading ][ text-black js-toc-ignore visually-hidden ]">Annotations Tools</h2>
+            <div class="annotations-tools flex flex-flow-column gap-0_5 mb-1">
+              <button id="action-toggle-annotations" class="button button--ghost m-0">
+                <span class="material-icons" aria-hidden="true">visibility</span>
+                <span>Show annotations</span>
+              </button>
+            </div>
+          </div>
           <xsl:if test="count($highlights) &gt; 0">
             <h2 id="search-highlight-label" class="[ subtle-heading ][ text-black js-toc-ignore ]">Search Highlight Tools</h2>
             <div class="highlight-tools flex flex-flow-column gap-0_5 mb-1">

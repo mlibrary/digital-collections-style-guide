@@ -88,11 +88,19 @@ window.addEventListener('message', (event) => {
   console.log("-- viewer.mirador.message", event);
 
   if (event.data.event == 'updateMetadata') {
-    const identifier = event.data.identifier;
+    let identifier = event.data.identifier;
+    if ( identifier.indexOf('/cgi/') == -1 ) {
+      // remote image
+      let tmp = event.data.canvasId.split('/');
+      identifier = tmp.at(-3);
+
+    }
     const label = event.data.label;
     const link = document.querySelector('link[rel="self"]');
     
-    labelEl.innerText = label;
+    if ( labelEl ) {
+      labelEl.innerText = label;
+    }
 
     let parts = document.title.split(' | ');
     parts[0] = label;
@@ -103,7 +111,7 @@ window.addEventListener('message', (event) => {
     const idno = parts.at(-1);
     const baseIdentifier = parts.join(':');
 
-    console.log("-- viewer.mirador", identifier, label);
+    console.log("-- viewer.mirador", identifier, label, newSeq);
 
 
     const slDropdownEl = document.querySelector('#dropdown-action');

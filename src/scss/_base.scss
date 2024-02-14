@@ -97,6 +97,17 @@ a.bedazzled-link {
 
 a.bedazzled-link span:not(.material-icons) {
   text-decoration: underline;
+
+  &.postscript {
+    text-decoration: none;
+    color: var(--base-text-color);
+  }
+
+  &:hover {
+    .postscript {
+      text-decoration: underline;
+    }
+  }
 }
 
 a.bedazzled-link[data-selected="true"] .material-icons {

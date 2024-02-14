@@ -1,7 +1,7 @@
 <xsl:stylesheet version="1.0" xmlns="http://www.w3.org/1999/xhtml" xmlns:xsl="http://www.w3.org/1999/XSL/Transform" xmlns:dlxs="http://dlxs.org" xmlns:qui="http://dlxs.org/quombat/ui" xmlns:exsl="http://exslt.org/common" xmlns:str="http://exslt.org/strings" extension-element-prefixes="exsl str">
 
 
-  <xsl:template name="build-openurl-href">
+  <xsl:template name="build-openurl-href-v1">
     <!-- builds the HREF part of an OpenURL link, 
          takes the HEADER as param -->
     <xsl:param name="header" />
@@ -9,6 +9,27 @@
     <xsl:call-template name="build-openurl-context-object">
       <xsl:with-param name="header" select="$header" />
     </xsl:call-template>
+  </xsl:template>
+
+  <xsl:template name="build-mgetit-href">
+    <xsl:param name="header" />
+    <xsl:text>https://mgetit.lib.umich.edu/resolve?</xsl:text>
+    <xsl:call-template name="build-openurl-context-object">
+      <xsl:with-param name="header" select="$header" />
+    </xsl:call-template>
+  </xsl:template>
+
+  <xsl:template name="build-google-scholar-href">
+    <xsl:param name="header" />
+    <xsl:text>https://scholar.google.com/scholar?hl=en&amp;as_sdt=0,23&amp;q=</xsl:text>
+    <xsl:choose>
+      <xsl:when test="$header/FILEDESC/SOURCEDESC/BIBL/TITLE[@TYPE = 'article']">
+        <xsl:value-of select="$header/FILEDESC/SOURCEDESC/BIBL/TITLE[@TYPE = 'article']"/>
+      </xsl:when>
+      <xsl:when test="$header/FILEDESC/SOURCEDESC/BIBL/TITLE[@TYPE = 'serial']">
+        <xsl:value-of select="$header/FILEDESC/SOURCEDESC/BIBL/TITLE[@TYPE = 'serial']"/>
+      </xsl:when>
+    </xsl:choose>
   </xsl:template>
 
   <!-- <xsl:template name="build-openurl-link">

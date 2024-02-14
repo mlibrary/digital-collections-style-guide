@@ -39,6 +39,7 @@
           <xsl:value-of select="//qui:root/@analytics-code-for-coll" />
         </xsl:with-param>
       </xsl:call-template>
+      <xsl:call-template name="build-extra-html-attributes" />
 
       <xsl:if test="false() and normalize-space($collid)">
         <base href="/{substring($collid, 1, 1)}/{$collid}/" />
@@ -78,6 +79,8 @@
       </body>
     </html>
   </xsl:template>
+
+  <xsl:template name="build-extra-html-attributes" />
 
   <xsl:template name="build-extra-main-class" />
 

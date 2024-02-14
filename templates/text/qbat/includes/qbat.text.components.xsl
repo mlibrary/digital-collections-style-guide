@@ -504,9 +504,9 @@
   </xsl:template>
 
   <!-- #################### -->
-  <xsl:template match="tei:SIC">
+  <xsl:template match="tei:SIC" mode="v1">
     <xsl:if test="@CORR">
-      <span class="corr">
+      <span class="corr annotated">
         <xsl:value-of select="@CORR" />
         <xsl:text> </xsl:text>
       </span>
@@ -516,39 +516,84 @@
     </span>
   </xsl:template>
 
+  <xsl:template match="tei:SIC">
+    <xsl:param name="has-corr" />
+    <span class="sic">
+      <xsl:apply-templates />
+      <span class="sic--expanded">
+        <xsl:text> [</xsl:text>
+        <em>sic</em>
+        <xsl:choose>
+          <xsl:when test="@CORR">
+            <span class="corr annotated">
+              <xsl:value-of select="@CORR" />
+            </span>
+          </xsl:when>
+          <xsl:when test="normalize-space($has-corr)">
+            <xsl:apply-templates select="$has-corr" />
+          </xsl:when>
+        </xsl:choose>
+        <xsl:text>]</xsl:text>  
+      </span>
+    </span>
+  </xsl:template>
+
   <xsl:template match="tei:CORR">
-    <span class="corr">
+    <span data-wut="{local-name(preceding-sibling::node()[1])}">
+      <xsl:attribute name="class">
+        <xsl:text>corr</xsl:text>
+        <xsl:if test="local-name(preceding-sibling::node()[1]) = 'SIC'">
+          <xsl:text> annotated</xsl:text>
+        </xsl:if>
+      </xsl:attribute>
+      <xsl:text> </xsl:text>
       <xsl:apply-templates />
     </span>
     <!-- <xsl:text> </xsl:text> -->
   </xsl:template>
 
   <xsl:template match="tei:CHOICE">
+    <span class="choice">
     <xsl:choose>
       <xsl:when test="tei:SIC">
-        <xsl:apply-templates select="tei:SIC" />
-        <xsl:text> </xsl:text>
-        <xsl:apply-templates select="tei:CORR" />
+        <xsl:apply-templates select="tei:SIC">
+          <xsl:with-param name="has-corr" select="tei:CORR" />
+        </xsl:apply-templates>
+        <!-- <xsl:apply-templates select="tei:CORR">
+          <xsl:with-param name="has-sic" select="tei:SIC" />
+        </xsl:apply-templates> -->
       </xsl:when>
       <xsl:when test="tei:ABBR">
         <span class="abbr">
           <xsl:value-of select="tei:ABBR" />
-          <xsl:text> (</xsl:text>
-          <xsl:value-of select="tei:EXPAN" />
-          <xsl:text>)</xsl:text>
+          <span class="abbr--expanded annotated">
+            <xsl:text> (</xsl:text>
+            <xsl:value-of select="tei:EXPAN" />
+            <xsl:text>)</xsl:text>  
+          </span>
         </span>
       </xsl:when>
       <xsl:when test="tei:ORIG">
-        <xsl:apply-templates select="tei:ORIG" />
+        <span class="orig">
+          <xsl:apply-templates select="tei:ORIG" />
+          <xsl:if test="false()">
+          <span class="abbr--expanded annotated">
+            <xsl:text> (</xsl:text>
+            <xsl:apply-templates select="tei:REG" />
+            <xsl:text>)</xsl:text>
+          </span>
+          </xsl:if>
+        </span>
       </xsl:when>
     </xsl:choose>
     <xsl:text> </xsl:text>
+    </span>
   </xsl:template>
 
   <!-- #################### -->
   <xsl:template match="tei:GAP">
     <xsl:text> </xsl:text>
-    <span class="gap">
+    <span class="gap annotated">
       <xsl:choose>
         <xsl:when test="@DISP">
           <xsl:value-of select="@DISP" />
@@ -817,8 +862,8 @@
   <xsl:template match="tei:NAME[@REG]">
     <span class="name">
       <xsl:apply-templates />
-      <xsl:text> </xsl:text>
-      <span class="name--reg">
+      <span class="name--reg annotated">
+        <xsl:text> </xsl:text>
         <xsl:value-of select="@REG" />
       </span>
     </span>
@@ -1649,25 +1694,51 @@
   </xsl:template>
 
   <!-- #################### -->
+  <xsl:template match="tei:ADD" mode="replace">
+    <ins data-name="{local-name(preceding-sibling::node()[1])}" data-function="replace">
+      <xsl:call-template name="process-add-common" />
+      <span class="material-icons" aria-hidden="true">add</span>
+      <span><xsl:apply-templates/></span>    
+    </ins>  
+  </xsl:template>
+
   <xsl:template match="tei:ADD">
-    <ins>
-      <xsl:if test="@REND">
-        <xsl:attribute name="class">
-          <xsl:value-of select="concat('rend-', @REND)"/>
-        </xsl:attribute>
-      </xsl:if>
-      <xsl:if test="@DESC">
-        <xsl:attribute name="data-desc">
-          <xsl:value-of select="@DESC" />
-        </xsl:attribute>
-      </xsl:if>
-      <span class="material-icons" aria-hidden="true" style="font-size: 1rem; color: var(--color-neutral-200);">add</span>
-      <xsl:apply-templates/>
-    </ins>    
+    <xsl:choose>
+      <xsl:when test="preceding-sibling::node()[1][local-name() = 'DEL']">
+      <!-- <xsl:when test="preceding-sibling::tei:DEL"> -->
+        <xsl:if test="false()">
+          <ins data-name="{local-name(preceding-sibling::node()[1])}" data-function="replace">
+            <xsl:call-template name="process-add-common" />
+            <span class="material-icons">add</span>
+            <span><xsl:apply-templates/></span>    
+          </ins>  
+        </xsl:if>
+      </xsl:when>
+      <xsl:otherwise>
+        <ins data-name="{local-name(preceding-sibling::node()[1])}" data-function="add">
+          <xsl:call-template name="process-add-common" />
+          <span><xsl:apply-templates/></span>
+          <span class="material-icons" aria-hidden="true">expand_less</span>    
+        </ins>
+      </xsl:otherwise>
+    </xsl:choose>
+  </xsl:template>
+
+  <xsl:template name="process-add-common">
+    <xsl:if test="@REND">
+      <xsl:attribute name="class">
+        <xsl:value-of select="concat('rend-', @REND)"/>
+      </xsl:attribute>
+    </xsl:if>
+    <xsl:if test="@DESC">
+      <xsl:attribute name="data-desc">
+        <xsl:value-of select="@DESC" />
+      </xsl:attribute>
+    </xsl:if>
   </xsl:template>
 
   <!-- #################### -->
-  <xsl:template match="tei:DEL">
+  <xsl:template match="tei:DEL" mode="v1">
     <del>
       <xsl:if test="@REND">
         <xsl:attribute name="class">
@@ -1679,9 +1750,23 @@
           <xsl:value-of select="@DESC" />
         </xsl:attribute>
       </xsl:if>
-      <span class="material-icons" aria-hidden="true" style="font-size: 1rem; color: var(--color-neutral-200);">remove</span>
+      <span class="material-icons" aria-hidden="true">remove</span>
       <span><xsl:apply-templates/></span>
     </del>
+  </xsl:template>
+
+  <xsl:template match="tei:DEL">
+    <xsl:choose>
+      <xsl:when test="local-name(following-sibling::node()[1]) = 'ADD'">
+        <span class="edit-wrap">
+          <xsl:apply-templates select="." mode="v1" />
+          <xsl:apply-templates select="following-sibling::node()[1]" mode="replace" />
+        </span>
+      </xsl:when>
+      <xsl:otherwise>
+        <xsl:apply-templates select="." mode="v1" />
+      </xsl:otherwise>
+    </xsl:choose>
   </xsl:template>
 
   <!-- #################### -->
