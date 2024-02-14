@@ -209,7 +209,14 @@
         </xsl:if>
       </xsl:when>
       <xsl:otherwise>
-        <xsl:value-of select="@TYPE" />
+        <xsl:choose>
+          <xsl:when test="normalize-space(@TYPE)">
+            <xsl:value-of select="@TYPE" />
+          </xsl:when>
+          <xsl:otherwise>
+            <xsl:value-of select="key('get-lookup', 'uplift.section')" />
+          </xsl:otherwise>
+        </xsl:choose>
         <xsl:if test="@N">
           <xsl:text> - </xsl:text>
           <xsl:value-of select="@N" />
