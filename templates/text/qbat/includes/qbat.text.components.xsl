@@ -19,6 +19,8 @@
 
   <xsl:variable name="has-page-images" select="count(//tei:DLPSWRAP//tei:PB[@HREF]) &gt; 0" />
 
+  <xsl:variable name="referrerhref">null</xsl:variable>
+
   <xsl:template match="tei:DLPSWRAP[.//tei:PB or normalize-space(.)]">
     <xsl:variable name="pb" select=".//tei:PB" />
     <xsl:variable name="idno" select="$pb/@IDNO" />
@@ -1062,6 +1064,8 @@
       </xsl:otherwise>
     </xsl:choose>
   </xsl:template>
+
+  <xsl:template match="tei:NOTES/tei:SKIP" />
 
   <xsl:template match="tei:NOTE1|tei:NOTE2">
     <xsl:variable name="view" select="'text'" />
