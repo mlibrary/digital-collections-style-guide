@@ -39,6 +39,7 @@
       </head>
       <body> -->
     <xsl:choose>
+      <xsl:when test="normalize-space(tei:SourcePageData) = ''"></xsl:when>
       <xsl:when test="$item-encoding-level = '1'">
         <section style="white-space: pre-line">
           <xsl:apply-templates select="tei:SourcePageData" mode="html" />

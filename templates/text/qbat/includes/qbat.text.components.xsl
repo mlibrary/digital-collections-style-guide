@@ -818,7 +818,8 @@
   </xsl:template>
 
   <!-- #################### -->
-  <xsl:template match="tei:P" mode="build-p">
+  <xsl:template match="tei:P" mode="build-p" />
+  <xsl:template match="tei:P[normalize-space(.)]" mode="build-p" priority="101">
     <!-- normalize type value -->
     <xsl:variable name="type">
       <xsl:call-template name="normAttr">
