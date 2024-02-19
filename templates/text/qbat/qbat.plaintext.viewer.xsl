@@ -22,7 +22,7 @@
   </xsl:template>
 
   <xsl:template match="DocSource" mode="htmlxx">
-    <html lang="en">
+    <html lang="en" data-item-encoding-level="{$item-encoding-level}">
       <head>
         <title>W?</title>
       </head>
@@ -45,7 +45,9 @@
         </section>    
       </xsl:when>
       <xsl:otherwise>
-        <xsl:apply-templates mode="html" />
+        <article data-item-encoding-level="{$item-encoding-level}">
+          <xsl:apply-templates mode="html" />
+        </article>
       </xsl:otherwise>
     </xsl:choose>
     <!-- </body>

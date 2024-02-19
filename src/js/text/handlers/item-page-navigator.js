@@ -24,13 +24,20 @@ window.addEventListener('DOMContentLoaded', (event) => {
 
   const pageIndexDropdown = document.querySelector('#action-page-index');
 
+  let headingIdx = 0;
+  document.querySelector('.main-panel').querySelectorAll('h2,h3,h4,h5').forEach((el) => {
+    if ( el.getAttribute('id') ) { return ; }
+    headingIdx += 1;
+    el.setAttribute('id', `h${headingIdx}`);
+  })
+
   tocbot.init({
     // Where to render the table of contents.
     tocSelector: '.js-toc',
     // Where to grab the headings to build the table of contents.
     contentSelector: '.main-panel',
     // Which headings to grab inside of the contentSelector element.
-    headingSelector: 'h2, h3, h4, a.card[id]',
+    headingSelector: 'h2, h3, h4, h5, a.card[id]',
     // For headings inside relative or absolute positioned containers within content.
     hasInnerContainers: true,
     collapseDepth: 6,

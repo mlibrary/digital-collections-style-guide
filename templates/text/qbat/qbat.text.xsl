@@ -23,6 +23,8 @@
     </xsl:choose>
   </xsl:variable>
 
+  <xsl:variable name="item-encoding-level" select="//qui:block[@slot='metadata']/qui:metadata/@item-encoding-level" />
+
   <xsl:template name="build-extra-scripts">
 
     <script>
@@ -136,7 +138,7 @@
       <h2 id="notes" class="subtle-heading">Notes</h2>
       <ul class="list-unstyled">
         <xsl:for-each select="tei:NOTE">
-          <li class="mb-2">
+          <li class="mb-2 p-1 border-bottom" data-id="{node()/@ID}">
             <xsl:apply-templates select="*" mode="note" />
           </li>
         </xsl:for-each>

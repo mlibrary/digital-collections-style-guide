@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="utf-8"?>
 <xsl:stylesheet version="1.0" xmlns="http://www.w3.org/1999/xhtml" xmlns:xsl="http://www.w3.org/1999/XSL/Transform" xmlns:qui="http://dlxs.org/quombat/ui" xmlns:qbat="http://dlxs.org/quombat/quombat" xmlns:xhtml="http://www.w3.org/1999/xhtml" xmlns:dlxs="http://dlxs.org" xmlns:exsl="http://exslt.org/common" xmlns:math="http://exslt.org/math" xmlns:tei="http://www.tei-c.org/ns/1.0" extension-element-prefixes="exsl math dlxs">
 
-  <xsl:variable name="is-skip-consecutive-hi-elements" select="true()"/>
+  <xsl:variable name="is-skip-consecutive-hi-elements" select="true()" />
 
   <xsl:variable name="is-target" select="//qui:block[@slot='content']/@is-target" />
   
@@ -12,7 +12,8 @@
   <xsl:variable name="highlight-seq-last" select="//tei:TEXT//tei:Highlight[last()]/@seq" />
   <xsl:variable name="highlight-seq-first" select="//tei:TEXT//tei:Highlight[1]/@seq" /> -->
 
-  <xsl:variable name="highlights" select="//qui:block[@slot='content']/node()[local-name() != 'HEADER']//tei:Highlight" />
+  <xsl:variable name="highlights"
+    select="//qui:block[@slot='content']/node()[local-name() != 'HEADER']//tei:Highlight" />
   <xsl:variable name="highlight-seq-last" select="$highlights[last()]/@seq" />
   <xsl:variable name="highlight-seq-first" select="$highlights[1]/@seq" />
 
@@ -82,7 +83,105 @@
 
   <!-- NOTE1 PTRs -->
   <!-- #################### -->
+
+  <!-- cannot really guarantee whether PTR is preceding/following sibling -->
+  <!-- <xsl:apply-templates select="following-sibling::text()[1]" mode="linkify" /> -->
+
   <xsl:template match="tei:PTR[@HREF]">
+    <xsl:variable name="target" select="@TARGET" />
+    <xsl:variable name="type">
+      <xsl:call-template name="normAttr">
+        <xsl:with-param name="attr" select="@TYPE" />
+      </xsl:call-template>
+    </xsl:variable>
+    <xsl:choose>
+      <xsl:when test="$type='txt'">
+        <xsl:call-template name="txtpointer" />
+      </xsl:when>
+      <xsl:when test="//qui:block[@slot='content']//node()[@ID=$target]">
+        <a 
+          class="button button--secondary button--highlight footnote-link"
+          id="back{@TARGET}"
+          href="#{@TARGET}">
+          <xsl:choose>
+            <xsl:when test="@N != '*'">
+              <xsl:value-of select="@N" />
+            </xsl:when>
+            <xsl:otherwise>
+              <span class="material-icons" aria-hidden="true">tag</span>
+            </xsl:otherwise>
+          </xsl:choose>
+          <span class="visually-hidden">Jump to section</span>
+        </a> 
+      </xsl:when>
+      <xsl:when test="//qui:block[@slot='notes']//node()[@ID=$target]">
+        <a 
+          class="button button--secondary button--highlight footnote-link"
+          id="back{@TARGET}"
+          href="#fn{@TARGET}">
+          <xsl:choose>
+            <xsl:when test="@N != '*'">
+              <xsl:value-of select="@N" />
+            </xsl:when>
+            <xsl:otherwise>
+              <xsl:call-template name="build-footnote-icon" />
+            </xsl:otherwise>
+          </xsl:choose>
+          <span class="visually-hidden">Jump to note</span>
+        </a>
+      </xsl:when>
+      <xsl:when test="@TYPE = 'page'">
+        <a href="{@HREF}" class="button button--secondary button--highlight footnote-link">
+          <xsl:choose>
+            <xsl:when test="@N != '*'">
+              <xsl:value-of select="@N" />
+            </xsl:when>
+            <xsl:otherwise>
+              <span class="material-icons" aria-hidden="true">description</span>
+            </xsl:otherwise>
+          </xsl:choose>
+          <span class="visually-hidden">Open page</span>
+        </a>
+      </xsl:when>
+      <xsl:otherwise>
+        <xsl:variable name="id" select="@TARGET" />
+        <xsl:choose>
+          <xsl:when test="//qui:block[@slot='notes']//node()[@ID=$id]">
+            <a 
+              class="button button--secondary button--highlight footnote-link"
+              id="back{@TARGET}"
+              href="#fn{@TARGET}">
+              <xsl:choose>
+                <xsl:when test="@N != '*'">
+                  <xsl:value-of select="@N" />
+                </xsl:when>
+                <xsl:otherwise>
+                  <xsl:call-template name="build-footnote-icon" />
+                </xsl:otherwise>
+              </xsl:choose>
+            </a>
+          </xsl:when>
+          <xsl:when test="//qui:block[@slot='content']//node()[@ID=$id]">
+            <a 
+              class="button button--secondary button--highlight footnote-link"
+              id="back{@TARGET}"
+              href="#{@TARGET}">
+              <xsl:choose>
+                <xsl:when test="@N != '*'">
+                  <xsl:value-of select="@N" />
+                </xsl:when>
+                <xsl:otherwise>
+                  <span class="material-icons" aria-hidden="true">tag</span>
+                </xsl:otherwise>
+              </xsl:choose>
+            </a>              
+          </xsl:when>
+        </xsl:choose>
+      </xsl:otherwise>
+    </xsl:choose>
+  </xsl:template>
+
+  <xsl:template match="tei:PTR[@HREF]" mode="v1">
     <xsl:variable name="type">
       <xsl:call-template name="normAttr">
         <xsl:with-param name="attr" select="@TYPE" />
@@ -94,18 +193,31 @@
       </xsl:when>
       <xsl:otherwise>
         <xsl:variable name="id" select="@TARGET" />
-        <xsl:variable name="target" select="//qui:block[@slot='notes']//node()[@ID=$id]" />
+        <!-- <xsl:variable name="target"
+          select="//qui:block[@slot='notes']//node()[@ID=$id]" /> -->
+        <xsl:variable name="target">
+          <xsl:choose>
+            <xsl:when test="//qui:block[@slot='notes']//node()[@ID=$id]">
+              <xsl:value-of select="concat('#fn', $id)" />
+            </xsl:when>
+            <xsl:when test="//qui:block[@slot='content']//node()[@ID=$id]">
+              <xsl:value-of select="concat('#', $id)" />
+            </xsl:when>
+            <xsl:otheriwse></xsl:otheriwse>
+          </xsl:choose>
+        </xsl:variable>
         <xsl:if test="$target">
           <a 
             class="button button--secondary button--highlight footnote-link"
             id="back{@TARGET}"
-            href="#fn{@TARGET}">
+            href="{$target}">
             <xsl:choose>
               <xsl:when test="@N != '*'">
                 <xsl:value-of select="@N" />
               </xsl:when>
               <xsl:otherwise>
-                <span class="material-icons" aria-hidden="true">emergency</span>
+                <!-- <span class="material-icons" aria-hidden="true">emergency</span> -->
+                <xsl:call-template name="build-footnote-icon" />
               </xsl:otherwise>
             </xsl:choose>
           </a>
@@ -189,10 +301,10 @@
           <span href="{@HREF}" class="button button--ghost button--small">
             <xsl:text>View </xsl:text>
             <xsl:text> </xsl:text>
-            <xsl:value-of select="key('get-lookup','headerutils.str.page')" />
+              <xsl:value-of select="key('get-lookup','headerutils.str.page')" />
             <span class="visually-hidden">              
               <xsl:text> </xsl:text>
-              <xsl:value-of select="$pNum" />  
+                <xsl:value-of select="$pNum" />  
               <xsl:if test="normalize-space($feature)">
                 <xsl:text> - </xsl:text>
                 <xsl:value-of select="$feature" />
@@ -239,7 +351,7 @@
             <span href="{@HREF}" class="button button--ghost button--small">
               <xsl:text>View </xsl:text>
               <xsl:text> </xsl:text>
-                <xsl:value-of select="key('get-lookup','headerutils.str.page')" />
+              <xsl:value-of select="key('get-lookup','headerutils.str.page')" />
               <span class="visually-hidden">              
                 <xsl:text> </xsl:text>
                 <xsl:value-of select="$pNum" />  
@@ -279,7 +391,8 @@
       <xsl:value-of select="$pNum" />  
       <xsl:if test="normalize-space($feature)">
         <xsl:text> - </xsl:text>
-        <xsl:value-of select="$feature" />
+        <xsl:value-of
+          select="$feature" />
       </xsl:if>
     </xsl:variable>
     <h3 
@@ -344,7 +457,7 @@
       </xsl:call-template>
     </xsl:variable>
 
-    <section name="{local-name()}">
+    <section name="{local-name()}" data-item-encoding-level="{$item-encoding-level}">
       <xsl:if test="@ID">
         <xsl:attribute name="id"><xsl:value-of select="@ID" /></xsl:attribute>
       </xsl:if>
@@ -377,15 +490,28 @@
     </section>
   </xsl:template>
 
-  <xsl:template match="tei:DIV2[@TYPE][normalize-space(.)]">
+  <xsl:template match="tei:DIV2[@TYPE][normalize-space(.)]|tei:DIV3[@TYPE][normalize-space(.)]">
     <xsl:variable name="heading" select="key('get-lookup', concat('heading.', @TYPE))" />
-    <xsl:if test="normalize-space($heading)">
-      <div class="div-heading">
-        <xsl:value-of select="$heading" />
-      </div>
-      <!-- <p><strong><xsl:value-of select="$heading" /></strong></p> -->
-    </xsl:if>
-    <xsl:apply-templates />
+    <xsl:variable name="id" select="@ID" />
+    <div>
+      <xsl:apply-templates select="@ID" />
+      <xsl:if test="normalize-space($heading)">
+        <div class="div-heading">
+          <xsl:value-of select="$heading" />
+        </div>
+        <!-- <p><strong><xsl:value-of select="$heading" /></strong></p> -->
+      </xsl:if>
+      <xsl:apply-templates />
+      <xsl:if test="//qui:block[@slot='content']//tei:PTR[@TARGET=$id]">
+        <div>
+          <a class="button button--secondary text-xx-small"
+            href="#back{$id}">
+            <span class="material-icons" aria-hidden="true">keyboard_return</span>
+            <span>Return</span>
+          </a>
+        </div>
+      </xsl:if>
+    </div>
   </xsl:template>
 
   <!-- DIVINFO is handled elsewhere -->
@@ -410,17 +536,17 @@
               <xsl:with-param name="attr" select="parent::*/@TYPE" />
             </xsl:call-template>
           </xsl:variable>
-          <qui:section slot="infoheader">
-            <qui:field>
-              <qui:label>
-                <xsl:value-of select="key('get-lookup','text.components.str.2')" />
-                <xsl:value-of select="$parentDivType" />
-              </qui:label>
+          <section class="infoheader mb-1 text--small">
+            <div class="subtle-heading">
+              <xsl:value-of select="key('get-lookup','text.components.str.2')" />
+              <xsl:value-of select="$parentDivType" />
+            </div>
+            <dl class="record record--compact">
               <xsl:apply-templates select="tei:AUTHOR" mode="divinfoauth" />
               <xsl:apply-templates select="tei:KEYWORDS" mode="divinfokw" />
-            </qui:field>
-          </qui:section>
-        </xsl:when>
+            </dl>
+          </section>
+         </xsl:when>
       </xsl:choose>
     </xsl:for-each>
   </xsl:template>
@@ -447,15 +573,15 @@
 
   <!-- #################### -->
   <xsl:template match="tei:TITLEPART[@TYPE='sub']" priority="101">
-    <div class="fullview-heading fullview-heading-2">
+    <h4 class="fullview-heading fullview-heading-2">
       <xsl:apply-templates />
-    </div>
+    </h4>
   </xsl:template>
 
   <xsl:template match="tei:TITLEPART">
-    <div class="fullview-heading fullview-heading-1">
+    <h3 class="fullview-heading fullview-heading-1">
       <xsl:apply-templates />
-    </div>
+    </h3>
   </xsl:template>
 
   <!-- #################### -->
@@ -557,7 +683,7 @@
     <xsl:choose>
       <xsl:when test="tei:SIC">
         <xsl:apply-templates select="tei:SIC">
-          <xsl:with-param name="has-corr" select="tei:CORR" />
+            <xsl:with-param name="has-corr" select="tei:CORR" />
         </xsl:apply-templates>
         <!-- <xsl:apply-templates select="tei:CORR">
           <xsl:with-param name="has-sic" select="tei:SIC" />
@@ -565,21 +691,21 @@
       </xsl:when>
       <xsl:when test="tei:ABBR">
         <span class="abbr">
-          <xsl:value-of select="tei:ABBR" />
+            <xsl:value-of select="tei:ABBR" />
           <span class="abbr--expanded annotated">
             <xsl:text> (</xsl:text>
-            <xsl:value-of select="tei:EXPAN" />
+              <xsl:value-of select="tei:EXPAN" />
             <xsl:text>)</xsl:text>  
           </span>
         </span>
       </xsl:when>
       <xsl:when test="tei:ORIG">
         <span class="orig">
-          <xsl:apply-templates select="tei:ORIG" />
+            <xsl:apply-templates select="tei:ORIG" />
           <xsl:if test="false()">
           <span class="abbr--expanded annotated">
             <xsl:text> (</xsl:text>
-            <xsl:apply-templates select="tei:REG" />
+                <xsl:apply-templates select="tei:REG" />
             <xsl:text>)</xsl:text>
           </span>
           </xsl:if>
@@ -592,8 +718,51 @@
 
   <!-- #################### -->
   <xsl:template match="tei:GAP">
+    <xsl:variable name="reason-tmp">
+      <span class="gap--reason annotated">
+        <xsl:choose>
+          <xsl:when test="@DISP">
+            <xsl:value-of select="@DISP" />
+          </xsl:when>
+          <xsl:when test="@N">
+            <xsl:value-of select="@N" />
+          </xsl:when>
+          <xsl:when test="@EXTENT and @REASON">
+            <xsl:choose>
+              <xsl:when test="number(@EXTENT) = number(@EXTENT)">
+                <!-- do nothing -->
+              </xsl:when>
+              <xsl:otherwise>
+                <xsl:value-of select="concat(@EXTENT, '; ')" />
+              </xsl:otherwise>
+            </xsl:choose>
+            <xsl:value-of select="@REASON" />
+          </xsl:when>
+          <xsl:when test="@REASON">
+            <xsl:value-of select="@REASON" />
+          </xsl:when>
+        </xsl:choose>
+      </span>
+    </xsl:variable>
+    <xsl:variable name="reason" select="exsl:node-set($reason-tmp)" />
+    <span class="gap">
+      <xsl:choose>
+        <xsl:when test="@DISP">
+          <xsl:value-of select="@DISP" />
+        </xsl:when>
+        <xsl:otherwise>
+          <xsl:text>…</xsl:text>
+        </xsl:otherwise>
+      </xsl:choose>
+      <xsl:if test="normalize-space($reason)">
+        <xsl:apply-templates select="$reason" mode="copy" />
+      </xsl:if>
+    </span>
+  </xsl:template>
+
+  <xsl:template match="tei:GAP" mode="v1">
     <xsl:text> </xsl:text>
-    <span class="gap annotated">
+    <span class="gap xx-annotated">
       <xsl:choose>
         <xsl:when test="@DISP">
           <xsl:value-of select="@DISP" />
@@ -655,68 +824,64 @@
       </xsl:call-template>
     </xsl:variable>
     <!-- *** -->
-    <!-- assuming INDENT and TYPE="skipline|tei:author|tei:title|tei:subtitle" are mutually exclusive: -->
+    <!-- assuming INDENT and TYPE="skipline|tei:author|tei:title|tei:subtitle" are mutually
+    exclusive: -->
     <xsl:choose>
-    <xsl:when test="$type='title'">
-	<!-- create semantic h1 tag for article title  -->
-      <h3>
-        <xsl:attribute name="class">
+      <xsl:when test="$type='title'">
+        <!-- create semantic h1 tag for article title  -->
+        <h3>
+          <xsl:attribute name="class">
             <xsl:value-of select="concat($type,'-semantic')" />
-        </xsl:attribute>
+          </xsl:attribute>
           <xsl:call-template name="ParaAttrPassThru" />
           <xsl:apply-templates />
-      </h3>
-    </xsl:when>
-    <xsl:when test="$type='subtitle'">
-      <h4>
-        <xsl:attribute name="class">
+        </h3>
+      </xsl:when>
+      <xsl:when test="$type='subtitle'">
+        <h4>
+          <xsl:attribute name="class">
             <xsl:value-of select="concat($type,'-semantic')" />
-        </xsl:attribute>
+          </xsl:attribute>
           <xsl:call-template name="ParaAttrPassThru" />
           <xsl:apply-templates />
-      </h4>
-    </xsl:when>
-    <xsl:when test="$type='author'">
-      <qui:field slot="author">
-        <qui:values>
-          <qui:value>
-              <xsl:apply-templates />
-          </qui:value>
-        </qui:values>
-      </qui:field>
-    </xsl:when>
-    <xsl:otherwise>
-      <p>
-        <xsl:attribute name="class">
+        </h4>
+      </xsl:when>
+      <xsl:when test="$type='author'">
+        <p class="author">
+          <xsl:apply-templates />
+        </p>
+      </xsl:when>
+      <xsl:otherwise>
+        <p data-debug="otherwise">
+          <xsl:attribute name="class">
+            <xsl:choose>
+              <xsl:when test="ancestor::qui:block[@slot='content']/@item-encoding-level != '1'"> </xsl:when>
+              <xsl:otherwise>
+                <xsl:text>plaintext</xsl:text>
+              </xsl:otherwise>
+            </xsl:choose>
+          </xsl:attribute>
+          <xsl:call-template name="ParaAttrPassThru" />
           <xsl:choose>
-            <xsl:when test="ancestor::qui:block[@slot='content']/@item-encoding-level != '1'">
-            </xsl:when>
-            <xsl:otherwise>
-              <xsl:text>plaintext</xsl:text>
-            </xsl:otherwise>
-          </xsl:choose>
-        </xsl:attribute>
-        <xsl:call-template name="ParaAttrPassThru" />
-        <xsl:choose>
-          <xsl:when test="@INDENT">
-            <xsl:attribute name="style">
+            <xsl:when test="@INDENT">
+              <xsl:attribute name="style">
                 <xsl:value-of select="concat('margin-left:',@INDENT,'em')" />
-            </xsl:attribute>
+              </xsl:attribute>
             <xsl:apply-templates />
-          </xsl:when>
-          <xsl:when test="$type='skipline'">
+            </xsl:when>
+            <xsl:when test="$type='skipline'">
               <br />
             <xsl:text disable-output-escaping="yes">&amp;nbsp;</xsl:text>
             <br />
             <xsl:apply-templates />
-          </xsl:when>
-          <xsl:otherwise>
+            </xsl:when>
+            <xsl:otherwise>
               <xsl:apply-templates />
-          </xsl:otherwise>
-        </xsl:choose>        
-      </p>
-    </xsl:otherwise>
-   </xsl:choose>
+            </xsl:otherwise>
+          </xsl:choose>
+        </p>
+      </xsl:otherwise>
+    </xsl:choose>
   </xsl:template>
 
   <xsl:template name="ParaAttrPassThru">
@@ -832,11 +997,12 @@
 
   <!-- #################### -->
   <xsl:template match="tei:LIST">
+    <xsl:apply-templates select="*[not(self::tei:ITEM)] " />
     <xsl:choose>
       <xsl:when test="@TYPE='ordered' or @TYPE='numbered'">
         <ol class="list-numbered">
           <xsl:apply-templates select="@ID" />
-          <xsl:apply-templates />
+          <xsl:apply-templates select="tei:ITEM" />
         </ol>
       </xsl:when>
       <xsl:otherwise>
@@ -852,11 +1018,24 @@
               </xsl:otherwise>
             </xsl:choose>
           </xsl:attribute>
-          <xsl:apply-templates />
+          <xsl:apply-templates select="tei:ITEM" />
         </ul>
       </xsl:otherwise>
     </xsl:choose>
   </xsl:template>
+
+  <!-- <xsl:template match="tei:LIST[tei:HEAD]" priority="101">
+    <xsl:apply-templates select="tei:MILESTONE" />
+    <xsl:apply-templates select="tei:HEAD" mode="heading">
+      <xsl:with-param name="divlevel" select="9" />
+      <xsl:with-param name="class">
+        <xsl:value-of select="concat('fullview-heading fullview-heading-', '9') " />
+      </xsl:with-param>
+    </xsl:apply-templates>  
+    <ul class="list-bulleted">
+      <xsl:apply-templates select="tei:ITEM" />
+    </ul>
+  </xsl:template> -->
 
   <!-- #################### -->
   <xsl:template match="tei:NAME[@REG]">
@@ -871,9 +1050,17 @@
 
   <!-- #################### -->
   <xsl:template match="tei:NOTE/tei:NOTE1|tei:NOTE/tei:NOTE2" priority="101">
-    <p>
-      <xsl:apply-templates />
-    </p>
+    <xsl:choose>
+      <xsl:when test=".//tei:P">
+        <!-- nested paragraphs -->
+        <xsl:apply-templates />
+      </xsl:when>
+      <xsl:otherwise>
+        <p>
+          <xsl:apply-templates />
+        </p>
+      </xsl:otherwise>
+    </xsl:choose>
   </xsl:template>
 
   <xsl:template match="tei:NOTE1|tei:NOTE2">
@@ -931,7 +1118,8 @@
             <xsl:value-of select="@N" />
           </xsl:when>
           <xsl:otherwise>
-            <span class="material-icons" aria-hidden="true">emergency</span>
+            <!-- <span class="material-icons" aria-hidden="true">emergency</span> -->
+            <xsl:call-template name="build-footnote-icon" />
           </xsl:otherwise>
         </xsl:choose>
       </a>
@@ -964,6 +1152,56 @@
 
   <!-- #################### -->
   <xsl:template name="filterNotesInText">
+    <xsl:variable name="id" select="@ID" />
+    <xsl:variable name="target"
+      select="//qui:block[@slot='notes']//node()[@ID=$id]" />
+    <xsl:if test="$target">
+      <a 
+        class="button button--secondary button--highlight footnote-link"
+        id="back{@ID}"
+        href="#fn{@ID}">
+        <xsl:choose>
+          <xsl:when test="@N != '*'">
+            <xsl:value-of select="@N" />
+          </xsl:when>
+          <xsl:otherwise>
+            <!-- <span class="material-icons" aria-hidden="true">emergency</span> -->
+            <xsl:call-template name="build-footnote-icon" />
+          </xsl:otherwise>
+        </xsl:choose>
+      </a>
+    </xsl:if>
+  </xsl:template>
+
+  <xsl:template name="filterNotesInText-v2">
+    <xsl:choose>
+      <xsl:when test="tei:P and @N">
+        <xsl:call-template name="filterNumberedNoteWithParas" />
+      </xsl:when>
+      <xsl:otherwise>
+        <span class="note">
+          <xsl:choose>
+            <xsl:when test="@N">
+              <span class="note--number">
+                <xsl:value-of select="@N" />
+              </span>
+            </xsl:when>
+            <xsl:otherwise>
+              <span class="note--number">
+                <span class="material-icons">note</span>
+              </span>
+            </xsl:otherwise>
+          </xsl:choose>
+          <span class="note--content annotated">
+            <xsl:apply-templates
+              select="tei:BIBL|tei:DATE|tei:FIGURE|tei:FOREIGN|tei:GAP|tei:HEAD|tei:HI1|tei:HI2|tei:Highlight|tei:P|tei:PB|tei:Q1|tei:REF|tei:TABLE|text()" />
+          </span>
+        </span>
+      </xsl:otherwise>
+    </xsl:choose>
+  </xsl:template>
+
+  <xsl:template name="filterNotesInText--v1" mode="v1">
     <xsl:choose>
       <xsl:when test="tei:P and @N">
         <xsl:call-template name="filterNumberedNoteWithParas" />
@@ -1024,6 +1262,23 @@
 
   <!-- #################### -->
   <xsl:template name="filterNumberedNoteWithParas">
+    <div>
+      <xsl:for-each select="node()">
+        <xsl:apply-templates select="." mode="within-number">
+          <xsl:with-param name="position" select="position()" />
+        </xsl:apply-templates>
+      </xsl:for-each>
+    </div>
+  </xsl:template>
+
+  <xsl:template match="tei:P" mode="within-number">
+    <xsl:param name="position" />
+    <p>
+    </p>
+  </xsl:template>
+
+
+  <xsl:template name="filterNumberedNoteWithParas-v1">
     <xsl:for-each select="node()">
       <xsl:choose>
         <xsl:when test="local-name()='P'">
@@ -1181,7 +1436,7 @@
     </xsl:choose>
     <xsl:text> </xsl:text>
   </xsl:template>
-  
+
   <!-- #################### -->
   <xsl:template match="tei:EPIGRAPH|tei:SIGNED|tei:TRAILER|tei:CLOSER|tei:PREFACE|tei:ARGUMENT|tei:DEDICAT|tei:OPENER">
     <xsl:variable name="divclass">
@@ -1220,6 +1475,7 @@
       name="figClass" />
 
     <xsl:element name="img">
+      <xsl:attribute name="loading">lazy</xsl:attribute>
       <xsl:attribute name="src">
         <xsl:value-of select="$figHref" />
       </xsl:attribute>
@@ -1406,7 +1662,46 @@
   </xsl:template>
 
   <!-- #################### -->
+  <xsl:template match="tei:NOTE1//tei:MILESTONE" priority="101" />
+
+  <!-- <xsl:template match="tei:LIST/tei:MILESTONE" priority="101" /> -->
+
   <xsl:template match="tei:MILESTONE">
+    <xsl:choose>
+      <xsl:when test="@UNIT = 'paragraph page' and normalize-space(@N)">
+        <p class="milestone--paragraph-page">
+          <xsl:text>[par. p.</xsl:text>
+          <xsl:value-of select="@N" />
+          <xsl:text>]</xsl:text>
+        </p>
+      </xsl:when>
+      <xsl:when test="@UNIT = 'paragraph page'" />
+      <xsl:when test="@UNIT='typographic' and @N">
+        <div class="milestone--rule">
+          <span>
+            <xsl:value-of select="@N" />
+          </span>  
+        </div>
+      </xsl:when>
+      <xsl:when test="@REND='asterisk'">
+        <div class="milestone--rule">
+          <span>
+            <xsl:text>*&#xa0;*&#xa0;*</xsl:text>
+          </span>  
+        </div>
+      </xsl:when>
+      <xsl:when test="@REND='skipline'">
+        <div class="milestone--rule">
+          <xsl:text>&#xa0;</xsl:text>
+        </div>
+      </xsl:when>
+      <xsl:otherwise>
+        <hr />
+      </xsl:otherwise>
+    </xsl:choose>
+  </xsl:template>
+
+  <xsl:template match="tei:MILESTONE" mode="v1">
     <div class="p-1 m-1 text-align-center">
       <xsl:choose>
         <xsl:when test="@UNIT='typographic' and @N">
@@ -1418,6 +1713,13 @@
           <span style="white-space: nowrap; font-size: 1.5rem">
             <xsl:text>*&#xa0;*&#xa0;*</xsl:text>
           </span>
+        </xsl:when>
+        <xsl:when test="@UNIT = 'paragraph page'">
+          <p class="text-muted">
+            <xsl:text>[par. p.</xsl:text>
+            <xsl:value-of select="@N" />
+            <xsl:text>]</xsl:text>
+          </p>
         </xsl:when>
         <xsl:when test="@REND='skipline'">
           <xsl:text>&#xa0;</xsl:text>
@@ -1435,8 +1737,6 @@
     <!-- could do something more with this later? -->
     <xsl:apply-templates />
   </xsl:template>
-
-
 
 
   <!-- #################### -->
@@ -1462,10 +1762,34 @@
             select="following-sibling::tei:PTR" />
         </xsl:element>
       </xsl:when>
+      <!-- <xsl:when test="parent::tei:LIST">
+        <xsl:apply-templates select="." mode="heading">
+          <xsl:with-param name="divlevel" select="$divlevel" />
+          <xsl:with-param name="class">
+            <xsl:value-of select="concat('fullview-heading fullview-heading-', $divlevel) " />
+          </xsl:with-param>
+        </xsl:apply-templates>  
+      </xsl:when> -->
+      <xsl:when test="number($divlevel) = number($divlevel)">
+        <xsl:apply-templates select="." mode="heading">
+          <xsl:with-param name="divlevel" select="$divlevel" />
+          <xsl:with-param name="class">
+            <xsl:value-of select="concat('fullview-heading fullview-heading-', $divlevel) " />
+          </xsl:with-param>
+        </xsl:apply-templates>
+      </xsl:when>
       <xsl:otherwise>
         <div>
+          <xsl:if test="@ID">
+            <xsl:apply-templates select="@ID" />
+          </xsl:if>
+          <xsl:if test="tei:ANCHOR">
+            <xsl:attribute name="id">
+              <xsl:value-of select="tei:ANCHOR" />
+            </xsl:attribute>
+          </xsl:if>
           <xsl:attribute name="class">
-            <xsl:text>fullview-heading </xsl:text>
+            <xsl:text>otherwise fullview-heading </xsl:text>
             <xsl:if test="number($divlevel)">
               <xsl:value-of select="concat('fullview-heading-', $divlevel)" />
             </xsl:if>
@@ -1506,13 +1830,100 @@
     </xsl:choose>
   </xsl:template>
 
+  <xsl:template match="node()" mode="heading">
+    <xsl:param name="divlevel" />
+    <xsl:param name="class" />
+    <xsl:choose>
+      <xsl:when test="$divlevel = 1">
+        <h3 class="{$class}">
+          <xsl:apply-templates select="tei:ANCHOR" />
+          <xsl:call-template name="addRend" />
+        </h3>
+      </xsl:when>
+      <xsl:when test="$divlevel = 2">
+        <h4 class="{$class}">
+          <xsl:apply-templates select="tei:ANCHOR" />
+          <xsl:call-template name="addRend" />
+        </h4>
+      </xsl:when>
+      <xsl:when test="$divlevel = 3">
+        <h5 class="{$class}">
+          <xsl:apply-templates select="tei:ANCHOR" />
+          <xsl:call-template name="addRend" />
+        </h5>
+      </xsl:when>
+      <xsl:otherwise>
+        <div class="{$class}">
+          <xsl:apply-templates select="tei:ANCHOR" />
+          <xsl:call-template name="addRend" />
+        </div>
+      </xsl:otherwise>
+    </xsl:choose>
+  </xsl:template>
+
+  <xsl:template match="tei:ANCHOR">
+    <xsl:attribute name="id">
+      <xsl:value-of select="@ID" />
+    </xsl:attribute>
+  </xsl:template>
+
   <!-- #################### -->
   <xsl:template match="tei:KEYWORDS" mode="divinfokw">
     <!-- attributes: TYPE('sub')-->
-    <xsl:apply-templates/>
+    <xsl:apply-templates mode="divinfokw" />
   </xsl:template>
 
-  <xsl:template match="tei:TERM[not(ancestor::tei:HEADER)]">
+  <xsl:template match="tei:TERM" mode="divinfokw">
+    <xsl:variable name="termtype">
+      <xsl:call-template name="normAttr">
+        <xsl:with-param name="attr" select="./@TYPE"/>
+      </xsl:call-template>
+    </xsl:variable>
+    <xsl:variable name="preceedingTermType">
+      <xsl:if test="preceding-sibling::tei:TERM[@TYPE]">
+        <xsl:call-template name="normAttr">
+          <xsl:with-param name="attr" select="preceding-sibling::tei:TERM[@TYPE]"/>
+        </xsl:call-template>
+      </xsl:if>
+    </xsl:variable>
+    <xsl:variable name="followingTermType">
+      <xsl:if test="preceding-sibling::tei:TERM[@TYPE]">
+        <xsl:call-template name="normAttr">
+          <xsl:with-param name="attr" select="following-sibling::tei:TERM[@TYPE]"/>
+        </xsl:call-template>
+      </xsl:if>
+    </xsl:variable>
+    <div>
+      <dt>
+        <xsl:choose>
+          <xsl:when test="@DATE">
+            <xsl:choose>
+              <xsl:when test="$preceedingTermType='genre' or $followingTermType='genre'">
+                <xsl:value-of select="key('get-lookup','text.components.str.7')"/>
+              </xsl:when>
+              <xsl:otherwise>
+                <xsl:value-of select="key('get-lookup','text.components.str.8')"/>
+              </xsl:otherwise>
+            </xsl:choose>
+          </xsl:when>
+          <xsl:when test="$termtype='gender'">
+            <xsl:value-of select="key('get-lookup','text.components.str.9')"/>
+          </xsl:when>
+          <xsl:when test="$termtype='genre'">
+            <xsl:value-of select="key('get-lookup','text.components.str.10')"/>
+          </xsl:when>
+          <xsl:otherwise>
+            <xsl:value-of select="@TYPE"/>
+          </xsl:otherwise>
+        </xsl:choose>
+      </dt>
+      <dd>
+        <xsl:value-of select="."/>
+      </dd>
+    </div>
+  </xsl:template>
+
+  <xsl:template match="tei:TERM[not(ancestor::tei:HEADER)]" mode="v1">
     <xsl:variable name="termtype">
       <xsl:call-template name="normAttr">
         <xsl:with-param name="attr" select="./@TYPE"/>
@@ -1566,43 +1977,37 @@
 
   <!-- #################### -->
   <xsl:template match="tei:*" mode="divinfotitle">
-    <qui:field>
-      <qui:label>
+    <div>
+      <dt>
         <xsl:value-of select="key('get-lookup','text.components.str.11')"/>
-      </qui:label>
-      <qui:values>
-        <qui:value>
-          <xsl:value-of select="."/>
-        </qui:value>
-      </qui:values>
-    </qui:field>
+      </dt>
+      <dd>
+        <xsl:value-of select="."/>
+      </dd>
+    </div>
   </xsl:template>
 
   <xsl:template match="tei:*" mode="divinfopgref">
-    <qui:field>
-      <qui:label>
+    <div>
+      <dt>
         <xsl:value-of select="key('get-lookup','text.components.str.12')"/>
-      </qui:label>
-      <qui:values>
-        <qui:value>
-          <xsl:value-of select="."/>
-        </qui:value>
-      </qui:values>
-    </qui:field>
+      </dt>
+      <dd>
+        <xsl:value-of select="."/>
+      </dd>
+    </div>
   </xsl:template>
 
   <!-- #################### -->
   <xsl:template match="tei:*" mode="divinfoauth">
-    <qui:field>
-      <qui:label>
+    <div>
+      <dt>
         <xsl:value-of select="key('get-lookup','text.components.str.13')"/>
-      </qui:label>
-      <qui:values>
-        <qui:value>
-          <xsl:value-of select="."/>
-        </qui:value>
-      </qui:values>
-    </qui:field>
+      </dt>
+      <dd>
+        <xsl:value-of select="."/>
+      </dd>
+    </div>
   </xsl:template>
 
   <xsl:template match="@ID">
@@ -1662,8 +2067,17 @@
   </xsl:template>
 
   <!-- #################### -->
-  <xsl:template match="text()">
+  <xsl:template match="text()" mode="linkify">
     <xsl:value-of select="."/>
+  </xsl:template>
+
+  <xsl:template match="text()">
+    <xsl:choose>
+      <xsl:when test="false() and local-name(preceding-sibling::node()[1]) = 'PTR'" />
+      <xsl:otherwise>
+        <xsl:value-of select="."/>
+      </xsl:otherwise>
+    </xsl:choose>
   </xsl:template>
 
   <!--
@@ -1705,7 +2119,7 @@
   <xsl:template match="tei:ADD">
     <xsl:choose>
       <xsl:when test="preceding-sibling::node()[1][local-name() = 'DEL']">
-      <!-- <xsl:when test="preceding-sibling::tei:DEL"> -->
+        <!-- <xsl:when test="preceding-sibling::tei:DEL"> -->
         <xsl:if test="false()">
           <ins data-name="{local-name(preceding-sibling::node()[1])}" data-function="replace">
             <xsl:call-template name="process-add-common" />
@@ -1854,20 +2268,24 @@
         <xsl:when test="@HREF">
           <xsl:value-of select="@N" />
         </xsl:when>
+        <xsl:when test="@N">
+          <xsl:value-of select="@N" />
+        </xsl:when>
         <xsl:otherwise>
           <xsl:value-of select="//tei:PTR[@TARGET=$id]/@N" />
         </xsl:otherwise>
       </xsl:choose>
     </xsl:variable>
-    <div class="flex flex-flow-row gap-1 flex-align-start"
+    <div class="flex flex-flow-row gap-1 flex-align-center"
       id="fn{$id}">
-      <div class="text-bold text-medium">
+      <div class="text-bold text-medium footnote-anchor">
         <xsl:choose>
           <xsl:when test="$N != '*'">
             <xsl:value-of select="$N" />
           </xsl:when>
           <xsl:otherwise>
-            <span class="material-icons" aria-hidden="true">emergency</span>
+            <!-- <span class="material-icons" aria-hidden="true">emergency</span> -->
+            <xsl:call-template name="build-footnote-icon" />
           </xsl:otherwise>
         </xsl:choose>
       </div>
@@ -1918,6 +2336,18 @@
       <hr />
     </xsl:if>
     <xsl:apply-templates />
+  </xsl:template>
+
+  <xsl:template name="build-footnote-icon">
+    <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-x-diamond-fill" viewBox="0 0 16 16" aria-hidden="true">
+      <path d="M9.05.435c-.58-.58-1.52-.58-2.1 0L4.047 3.339 8 7.293l3.954-3.954L9.049.435zm3.61 3.611L8.708 8l3.954 3.954 2.904-2.905c.58-.58.58-1.519 0-2.098l-2.904-2.905zm-.706 8.614L8 8.708l-3.954 3.954 2.905 2.904c.58.58 1.519.58 2.098 0l2.905-2.904zm-8.614-.706L7.292 8 3.339 4.046.435 6.951c-.58.58-.58 1.519 0 2.098z"/>
+    </svg>    
+  </xsl:template>
+
+  <xsl:template match="@ID">
+    <xsl:attribute name="id">
+      <xsl:value-of select="." />
+    </xsl:attribute>
   </xsl:template>
 
 </xsl:stylesheet>

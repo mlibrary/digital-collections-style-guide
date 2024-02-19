@@ -116,12 +116,14 @@
 
       <xsl:apply-templates select="qui:link" />
 
+      <link rel="preconnect" href="https://fonts.googleapis.com" />
+      <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin="crossorigin" />
+
       <link
         rel="stylesheet"
         href="https://fonts.googleapis.com/icon?family=Material+Icons"
       />
       <link href="{$ds_url}/@umich-lib/web@1.3.0/umich-lib.css" rel="stylesheet" />
-      <!-- <link href="{$docroot}styles/styles.css" rel="stylesheet" /> -->
       <link href="{$docroot}dist/css/text/style.css" rel="stylesheet" />
 
       <script>

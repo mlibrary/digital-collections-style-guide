@@ -58,6 +58,12 @@ dl.record dd {
   border-bottom: none;
 }
 
+dl.record.record--compact {
+  dd, dt {
+    padding: var(--space-xx-small);
+  }
+}
+
 dl.record dd {
   /* for longer/wrapping dt */
   padding-left: var(--space-small);
