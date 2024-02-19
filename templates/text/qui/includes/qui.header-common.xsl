@@ -430,6 +430,11 @@
             <xsl:value-of select="TITLE[not(@TYPE='sort')][1]"/>
           </xsl:otherwise>
         </xsl:choose>
+        <xsl:if test="../SERIESSTMT/BIBLSCOPE[@TYPE = 'vol' or @TYPE = 'iss']">
+          <xsl:text> [</xsl:text>
+          <xsl:apply-templates select="../SERIESSTMT/BIBLSCOPE" />
+          <xsl:text>]</xsl:text>
+        </xsl:if>
       </xsl:with-param>
     </xsl:call-template>
   </xsl:template>
