@@ -999,6 +999,33 @@
   </xsl:template>
 
   <!-- #################### -->
+  <xsl:template match="tei:LIST[tei:LABEL]" priority="101">
+    <xsl:apply-templates select="*[not(self::tei:ITEM) and not(self::tei:LABEL)]" />
+    <dl class="record record--compcat">
+      <xsl:apply-templates select="tei:LABEL" mode="dlx" />
+    </dl>
+  </xsl:template>
+
+  <xsl:template match="tei:LABEL" mode="dlx">
+    <xsl:variable name="self" select="." />
+    <xsl:variable name="labels" select="following-sibling::tei:LABEL" />
+    <div>
+      <dt><xsl:apply-templates /></dt>
+      <!-- <xsl:apply-templates select="following-sibling::tei:ITEM[not(preceding-sibling -->
+      <xsl:apply-templates select="../tei:ITEM[
+        preceding-sibling::tei:LABEL[1] = $self
+      ]" mode="dl" />
+    </div>
+  </xsl:template>
+
+  <xsl:template match="tei:LABEL" mode="dl">
+    <dt><xsl:apply-templates /></dt>
+  </xsl:template>
+
+  <xsl:template match="tei:ITEM" mode="dl">
+    <dd><xsl:apply-templates /></dd>
+  </xsl:template>
+
   <xsl:template match="tei:LIST">
     <xsl:apply-templates select="*[not(self::tei:ITEM)] " />
     <xsl:choose>

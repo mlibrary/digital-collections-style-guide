@@ -2,6 +2,7 @@
 @use './base';
 @use './utils';
 @use './buttons';
+@use './record';
 @use './typography';
 @use './text/text';
 
@@ -55,6 +56,11 @@ li.MuiListItem-root {
     font-size: 0.875rem;
     white-space: wrap;
   }
+}
+
+dl.record {
+  width: 100%;
+  column-gap: 1rem;
 }
 
 @media screen and (max-width: 600px) {
