@@ -13,6 +13,7 @@
           <xsl:apply-templates select="//DocContent/DocSource" mode="copy-tei-guts" />
         </DocSource>
       </DocContent>
+      <xsl:apply-templates select="//NOTES" />
     </Top>
   </xsl:template>
 
@@ -37,5 +38,17 @@
     </xsl:element>
   </xsl:template>
 
+  <xsl:template match="NOTES">
+    <qui:block slot="notes"
+      mimetype="application/tei+xml"
+      >
+      <!-- <xsl:for-each select="/Top/FullTextResults/DocContent//NOTE1[@HREF]|/Top/FullTextResults/DocContent//NOTE2[@HREF]">
+        <tei:NOTE>
+          <xsl:apply-templates select="." mode="copy" />
+        </tei:NOTE>
+      </xsl:for-each> -->
+      <xsl:apply-templates select="." mode="copy-tei" />
+    </qui:block>
+  </xsl:template>
 
 </xsl:stylesheet>

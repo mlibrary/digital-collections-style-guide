@@ -1,4 +1,8 @@
-<xsl:stylesheet version="1.0" xmlns:xsl="http://www.w3.org/1999/XSL/Transform" xmlns:tei="http://www.tei-c.org/ns/1.0" >
+<xsl:stylesheet 
+  version="1.0" 
+  xmlns:xsl="http://www.w3.org/1999/XSL/Transform" 
+  xmlns:tei="http://www.tei-c.org/ns/1.0"
+  xmlns:qui="http://dlxs.org/quombat/ui">
 
   <xsl:variable name="identifier">
     <xsl:value-of select="//tiParam[@name='cc']" />
@@ -12,7 +16,8 @@
 
   <xsl:template match="/Top">
     <!-- <xsl:value-of select="//DocSource/SourcePageData" /> -->
-    <xsl:apply-templates select="//DocContent/DocSource" mode="html" />
+    <xsl:apply-templates select="//DocContent/DocSource/tei:SourcePageData/tei:ResultFragment" mode="html" />
+    <xsl:apply-templates select="//qui:block[@slot='notes']/tei:NOTES" />
   </xsl:template>
 
   <xsl:template match="DocContent" mode="basic">
@@ -32,37 +37,45 @@
     </html>
   </xsl:template>
 
-  <xsl:template match="DocSource" mode="html">
-    <!-- <html>
-      <head>
-        <title>WHAT IS HAPPENING</title>
-      </head>
-      <body> -->
+  <xsl:template match="tei:ResultFragment" mode="html">
     <xsl:choose>
-      <xsl:when test="normalize-space(tei:SourcePageData) = ''"></xsl:when>
+      <xsl:when test="normalize-space(.) = ''"></xsl:when>
       <xsl:when test="$item-encoding-level = '1'">
         <section style="white-space: pre-line">
-          <xsl:apply-templates select="tei:SourcePageData" mode="html" />
+          <xsl:apply-templates />
         </section>    
       </xsl:when>
       <xsl:otherwise>
         <article data-item-encoding-level="{$item-encoding-level}">
-          <xsl:apply-templates mode="html" />
+          <xsl:apply-templates />
         </article>
       </xsl:otherwise>
     </xsl:choose>
-    <!-- </body>
-    </html> -->
-  </xsl:template>
-
-  <xsl:template match="tei:SourcePageData" mode="html" >
-    <xsl:apply-templates />
   </xsl:template>
 
   <xsl:template match="tei:Highlight">
     <mark class="{@class}" id="id{@seq}" data-seq="{@seq}">
       <xsl:apply-templates />
     </mark>
+  </xsl:template>
+
+  <xsl:template match="tei:DLPSWRAP[normalize-space(.)]" priority="101">
+    <xsl:apply-templates />
+  </xsl:template>
+
+  <xsl:template match="tei:DLPSWRAP" priority="10" />
+
+  <xsl:template match="tei:NOTES">
+    <section class="[ records ]">
+      <h2 id="notes" class="subtle-heading">Notes</h2>
+      <ul class="list-unstyled">
+        <xsl:for-each select="tei:NOTE">
+          <li class="mb-2 p-1 border-bottom" data-id="{node()/@ID}">
+            <xsl:apply-templates select="*" mode="note" />
+          </li>
+        </xsl:for-each>
+      </ul>
+    </section>
   </xsl:template>
 
 </xsl:stylesheet>

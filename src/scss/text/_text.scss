@@ -7,7 +7,8 @@ p.plaintext {
  white-space: pre-line; 
 }
 
-section[data-item-encoding-level="4"] {
+section[data-item-encoding-level="4"],
+article[data-item-encoding-level="4"] {
   p.plaintext {
     white-space: normal;
   }
@@ -141,6 +142,7 @@ ul.fullview-toc {
   line-height: 0;
   border: 1px solid var(--color-neutral-500);
   vertical-align: bottom;
+  text-decoration: none;
 }
 
 .footnote-link .material-icons {
