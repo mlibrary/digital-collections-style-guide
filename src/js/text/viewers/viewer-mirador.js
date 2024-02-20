@@ -89,12 +89,12 @@ window.addEventListener('message', (event) => {
 
   if (event.data.event == 'updateMetadata') {
     let identifier = event.data.identifier;
-    if ( identifier.indexOf('/cgi/') == -1 ) {
-      // remote image
-      let tmp = event.data.canvasId.split('/');
-      identifier = tmp.at(-3);
+    // if ( identifier.indexOf('/cgi/') == -1 ) {
+    //   // remote image
+    //   let tmp = event.data.canvasId.split('/');
+    //   identifier = tmp.at(-3);
 
-    }
+    // }
     const label = event.data.label;
     const link = document.querySelector('link[rel="self"]');
     

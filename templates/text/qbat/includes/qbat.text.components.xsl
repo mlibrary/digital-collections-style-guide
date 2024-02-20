@@ -132,8 +132,21 @@
           <span class="visually-hidden">Jump to note</span>
         </a>
       </xsl:when>
+      <xsl:when test="//qui:block[@slot='notes']//tei:SKIP[@TARGET=$target][@reason='div']">
+        <a href="{@HREF}" target="_top" class="button button--secondary button--highlight footnote-link">
+          <xsl:choose>
+            <xsl:when test="@N != '*'">
+              <xsl:value-of select="@N" />
+            </xsl:when>
+            <xsl:otherwise>
+              <span class="material-icons" aria-hidden="true">description</span>
+            </xsl:otherwise>
+          </xsl:choose>
+          <span class="visually-hidden">Open page</span>
+        </a>
+      </xsl:when>
       <xsl:when test="@TYPE = 'page'">
-        <a href="{@HREF}" class="button button--secondary button--highlight footnote-link">
+        <a href="{@HREF}" target="_top" class="button button--secondary button--highlight footnote-link">
           <xsl:choose>
             <xsl:when test="@N != '*'">
               <xsl:value-of select="@N" />
