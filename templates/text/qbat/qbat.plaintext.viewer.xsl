@@ -41,13 +41,19 @@
     <xsl:choose>
       <xsl:when test="normalize-space(.) = ''"></xsl:when>
       <xsl:when test="$item-encoding-level = '1'">
+        <xsl:if test="preceding-sibling::tei:ResultFragment">
+          <hr />
+        </xsl:if>    
         <section style="white-space: pre-line">
           <xsl:apply-templates />
         </section>    
       </xsl:when>
       <xsl:otherwise>
+        <xsl:if test="preceding-sibling::tei:ResultFragment">
+          <hr />
+        </xsl:if>
         <article data-item-encoding-level="{$item-encoding-level}">
-          <xsl:apply-templates />
+        <xsl:apply-templates />
         </article>
       </xsl:otherwise>
     </xsl:choose>
