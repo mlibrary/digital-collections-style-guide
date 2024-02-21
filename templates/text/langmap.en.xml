@@ -455,6 +455,7 @@
     <Item key="uplift.header.str.serial">Serial</Item>
     <Item key="uplift.header.str.articletitle">Article Title</Item>
     <Item key="uplift.header.str.author">Author</Item>
+    <Item key="uplift.header.str.editor">Editor</Item>
     <Item key="uplift.header.str.canvas">Canvas</Item>
     <Item key="uplift.header.str.publicationinfo">Publication</Item>
     <Item key="uplift.header.str.pubinfo">Publication</Item>

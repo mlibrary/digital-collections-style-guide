@@ -228,7 +228,7 @@
 
   <xsl:template match="qui:block[@slot='more-information']">
     <xsl:if test="normalize-space(.)">
-      <xsl:if test="not(h2)">
+      <xsl:if test="not(.//xhtml:h2)">
         <h2 id="{@slot}">More Information</h2>
       </xsl:if>
       <xsl:apply-templates mode="copy" />
