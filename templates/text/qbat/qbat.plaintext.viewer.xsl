@@ -65,7 +65,7 @@
 
   <xsl:template match="tei:DLPSWRAP" priority="10" />
 
-  <xsl:template match="tei:NOTES">
+  <xsl:template match="tei:NOTES[normalize-space(.)]">
     <section class="[ records ]">
       <h2 id="notes" class="subtle-heading">Notes</h2>
       <ul class="list-unstyled">
