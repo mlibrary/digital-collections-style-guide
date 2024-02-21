@@ -81,6 +81,11 @@
           <xsl:value-of select="//CollGroupMembership" />
         </xsl:attribute>
       </xsl:if>
+      <xsl:if test="normalize-space(//Param[@name='q1'])">
+        <xsl:attribute name="q1">
+          <xsl:value-of select="//Param[@name='q1']" />
+        </xsl:attribute>
+      </xsl:if>
 
       <xsl:apply-templates 
         select="document('')//xsl:template[@name='ACK']">

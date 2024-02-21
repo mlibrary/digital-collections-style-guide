@@ -16,7 +16,7 @@
 
   <xsl:template match="/Top">
     <!-- <xsl:value-of select="//DocSource/SourcePageData" /> -->
-    <xsl:apply-templates select="//DocContent/DocSource/tei:SourcePageData/tei:ResultFragment" mode="html" />
+    <xsl:apply-templates select="//DocContent/DocSource/tei:SourcePageData//tei:ResultFragment" mode="html" />
     <xsl:apply-templates select="//qui:block[@slot='notes']/tei:NOTES" />
   </xsl:template>
 
