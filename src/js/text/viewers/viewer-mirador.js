@@ -89,12 +89,12 @@ window.addEventListener('message', (event) => {
 
   if (event.data.event == 'updateMetadata') {
     let identifier = event.data.identifier;
-    // if ( identifier.indexOf('/cgi/') == -1 ) {
-    //   // remote image
-    //   let tmp = event.data.canvasId.split('/');
-    //   identifier = tmp.at(-3);
-
-    // }
+    let canvasId = event.data.canvasId;
+    if ( identifier == 'default.jpg' ) {
+      // remote image; is there a better way to do this
+      let tmp = event.data.canvasId.split('/');
+      identifier = tmp.at(-3);
+    }
     const label = event.data.label;
     const link = document.querySelector('link[rel="self"]');
     
@@ -111,7 +111,7 @@ window.addEventListener('message', (event) => {
     const idno = parts.at(-1);
     const baseIdentifier = parts.join(':');
 
-    console.log("-- viewer.mirador", identifier, label, newSeq);
+    console.log("-- viewer.mirador.updateMetadata", canvasId, identifier, label, newSeq);
 
 
     const slDropdownEl = document.querySelector('#dropdown-action');
