@@ -402,7 +402,7 @@
                 </a>
               </li>
               <li>
-                <a href="{//qui:footer/qui:link[@rel='help']/@href}">
+                <a href="{//qui:nav/qui:link[@rel='help']/@href}">
                   <svg
                     xmlns="http://www.w3.org/2000/svg"
                     width="16"
