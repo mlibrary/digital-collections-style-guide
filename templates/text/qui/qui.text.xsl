@@ -99,8 +99,10 @@
   <xsl:template name="get-current-page-breadcrumb-label">
     <xsl:choose>
       <xsl:when test="//Param[@name='rgn'] = 'main'">Entire Text</xsl:when>
-      <xsl:when test="false() and //DLPSWRAP[1]/node()[@TYPE]">
-        <xsl:value-of select="//DLPSWRAP[1]/node()/@TYPE" />
+      <xsl:when test="true() and //DLPSWRAP[1]/node()[@TYPE]">
+        <xsl:variable name="value" select="//DLPSWRAP[1]/node()/@TYPE" />
+        <xsl:value-of select="dlxs:capitalize(substring($value, 1, 1))" />
+        <xsl:value-of select="substring($value, 2)" />
       </xsl:when>
       <xsl:when test="false() and //DLPSWRAP[1]/node()">
         <xsl:value-of select="local-name(//DLPSWRAP[1]/node())" />
