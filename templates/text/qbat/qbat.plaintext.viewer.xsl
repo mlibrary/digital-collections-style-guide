@@ -44,7 +44,7 @@
         <xsl:if test="preceding-sibling::tei:ResultFragment">
           <hr />
         </xsl:if>    
-        <section style="white-space: pre-line">
+        <section class="pre-line">
           <xsl:apply-templates />
         </section>    
       </xsl:when>

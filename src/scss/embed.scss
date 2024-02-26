@@ -63,6 +63,12 @@ dl.record {
   column-gap: 1rem;
 }
 
+.fullview-main {
+  display: block;
+  margin: 0;
+  width: 100%;
+}
+
 @media screen and (max-width: 600px) {
   .ocr-wrap {
     min-width: calc(100dvw - 50px) !important;

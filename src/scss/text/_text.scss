@@ -71,6 +71,11 @@ html[data-highlight-state="off"] .inline-highlight a {
   }
 }
 
+.pre-line {
+  white-space: pre-line;
+  line-height: 1.75;
+}
+
 ul.fullview-toc {
   list-style: initial;
   margin-left: 1rem;
@@ -79,6 +84,10 @@ ul.fullview-toc {
 .fullview-thumbnail, .fullview-blank {
   flex-basis: 350px;
   flex-shrink: 0;
+}
+
+.fullview-thumbnail > a {
+  display: block;
 }
 
 .fullview-thumbnail figure {
@@ -348,16 +357,36 @@ ins[data-function="replace"] {
 .fullview-main figure {
   border: 1px solid var(--color-neutral-100);
   padding: 1rem;
+  // padding-bottom: 0;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 0.5rem;
 }
 
 .fullview-main figure img {
   width: auto;
   max-width: 100%;
+  border: 1px solid var(--color-neutral-400);
+  padding: 0.5rem;
+}
+
+.fullview-main a:not(.button):hover img, 
+.fullview-main a:not(.button):hover span {
+  box-shadow: 0 0 0 2px #fff,0 0 0 3px var(--color-neutral-400); 
 }
 
 .fullview-main figure figcaption {
   font-size: 0.875rem;
-  padding: 0.5rem;
+  // padding: 0.5rem;
+
+  p {
+    margin: 0;
+
+    & + p {
+      margin-top: 1em;
+    }
+  }
 }
 
 .lg {
