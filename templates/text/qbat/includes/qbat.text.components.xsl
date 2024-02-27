@@ -731,6 +731,19 @@
     </span>
   </xsl:template>
 
+  <xsl:template match="tei:ABBR">
+    <span class="abbr">
+      <xsl:value-of select="." />
+      <xsl:if test="@EXPAN">
+        <span class="abbr--expanded annotated">
+          <xsl:text> (</xsl:text>
+            <xsl:value-of select="@EXPAN" />
+          <xsl:text>)</xsl:text>  
+        </span>
+      </xsl:if>
+    </span>
+  </xsl:template>
+
   <!-- #################### -->
   <xsl:template match="tei:GAP">
     <xsl:variable name="reason-tmp">
@@ -814,9 +827,11 @@
   </xsl:template>
 
   <xsl:template match="tei:SUPPLIED">
-    <xsl:text> [</xsl:text>
-    <xsl:apply-templates />
-    <xsl:text>] </xsl:text>
+    <span class="supplied">
+      <xsl:apply-templates />
+    </span>
+    <!-- <xsl:text> [</xsl:text>
+    <xsl:text>] </xsl:text> -->
   </xsl:template>
 
   <!-- #################### -->
@@ -1719,6 +1734,16 @@
           <xsl:value-of select="@N" />
           <xsl:text>]</xsl:text>
         </p>
+      </xsl:when>
+      <xsl:when test="@UNIT = 'verse'">
+        <span class="milestone--verse">
+          <xsl:text> [verse</xsl:text>
+          <xsl:if test="normalize-space(@N)">
+            <xsl:text> </xsl:text>
+            <xsl:value-of select="@N" />
+          </xsl:if>
+          <xsl:text>] </xsl:text>
+        </span>
       </xsl:when>
       <xsl:when test="@UNIT = 'paragraph page'" />
       <xsl:when test="@UNIT='typographic' and @N">

@@ -167,6 +167,7 @@
       <xsl:apply-templates select="./div[@data-slot='overview']|./div[@data-slot='information']" mode="copy" />
     </qui:block>
     <qui:block slot="contents">
+      <xsl:apply-templates select="./div[@data-slot='contents']/@data-format" mode="copy" />
       <xsl:choose>
         <xsl:when test="//CollCheckboxList/Coll">
           <qui:label>Publications</qui:label>

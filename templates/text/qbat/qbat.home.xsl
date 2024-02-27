@@ -167,17 +167,32 @@
         </xsl:otherwise>
       </xsl:choose>
     </h2>
-    <div class="[ gallery-view ]">
-      <xsl:for-each select="xhtml:figure">
-        <!-- <div class="[ card ]"> -->
-          <a class="[ card ][ border mb-1 ]" href="{@href}" id="{@id}">
-            <xsl:apply-templates select="xhtml:img" mode="card-image" />
-            <xsl:apply-templates select="xhtml:xfigcaption/xhtml:h3" mode="card-title" />
-            <xsl:apply-templates select="xhtml:figcaption" mode="card-body" />
-          </a>  
-        <!-- </div> -->
-      </xsl:for-each>
-    </div>
+    <xsl:choose>
+      <xsl:when test="@data-format='list'">
+        <ul>
+          <xsl:for-each select="xhtml:figure">
+            <li>
+              <a href="{@href}" id="{@id}">
+                <xsl:apply-templates select="xhtml:figcaption" mode="list" />
+              </a>
+            </li>
+          </xsl:for-each>
+        </ul>
+      </xsl:when>
+      <xsl:otherwise>
+        <div class="[ gallery-view ]">
+          <xsl:for-each select="xhtml:figure">
+            <!-- <div class="[ card ]"> -->
+              <a class="[ card ][ border mb-1 ]" href="{@href}" id="{@id}">
+                <xsl:apply-templates select="xhtml:img" mode="card-image" />
+                <xsl:apply-templates select="xhtml:xfigcaption/xhtml:h3" mode="card-title" />
+                <xsl:apply-templates select="xhtml:figcaption" mode="card-body" />
+              </a>  
+            <!-- </div> -->
+          </xsl:for-each>
+        </div>    
+      </xsl:otherwise>
+    </xsl:choose>
   </xsl:template>
 
   <xsl:template match="qui:block[@slot='contents']" />
@@ -207,6 +222,11 @@
       <xsl:apply-templates select="." mode="copy-guts" />
     </h3>
   </xsl:template>
+
+  <xsl:template match="xhtml:figcaption/xhtml:h3" mode="list" priority="101">
+    <xsl:apply-templates select="." mode="copy-guts" />
+  </xsl:template>
+
 
   <xsl:template match="qui:block[@slot='contentwarning']">
     <xsl:if test="normalize-space(.)">

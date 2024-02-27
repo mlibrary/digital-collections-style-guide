@@ -328,11 +328,24 @@ ins[data-function="replace"] {
 //   content: " [addition end] ";
 // }
 
+.unclear {
+  background-color: var(--color-maize-100);
+  color: var(--color-neutral-400);
+}
 
 .unclear::after {
   content: ' [unclear] ';
   /* color: #5e6f7d; */
   /* color: var(--color-neutral-400); */
+}
+
+.supplied {
+  background-color: var(--color-maize-100);
+  color: var(--color-neutral-400);
+
+  &::after {
+    content: ' [supplied by ed.]';
+  }
 }
 
 .fullview-main .name {
