@@ -1853,11 +1853,11 @@
           <xsl:if test="@ID">
             <xsl:apply-templates select="@ID" />
           </xsl:if>
-          <xsl:if test="tei:ANCHOR">
+          <!-- <xsl:if test="tei:ANCHOR">
             <xsl:attribute name="id">
               <xsl:value-of select="tei:ANCHOR" />
             </xsl:attribute>
-          </xsl:if>
+          </xsl:if> -->
           <xsl:attribute name="class">
             <xsl:text>otherwise fullview-heading </xsl:text>
             <xsl:if test="number($divlevel)">
@@ -1932,9 +1932,11 @@
   </xsl:template>
 
   <xsl:template match="tei:ANCHOR">
-    <xsl:attribute name="id">
-      <xsl:value-of select="@ID" />
-    </xsl:attribute>
+    <span>
+      <xsl:attribute name="id">
+        <xsl:value-of select="@ID" />
+      </xsl:attribute>  
+    </span>
   </xsl:template>
 
   <!-- #################### -->
