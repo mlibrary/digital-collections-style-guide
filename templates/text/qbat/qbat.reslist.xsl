@@ -1,5 +1,14 @@
 <?xml version="1.0" encoding="utf-8"?>
-<xsl:stylesheet version="1.0" xmlns="http://www.w3.org/1999/xhtml" xmlns:xsl="http://www.w3.org/1999/XSL/Transform" xmlns:qui="http://dlxs.org/quombat/ui" xmlns:xhtml="http://www.w3.org/1999/xhtml" xmlns:dlxs="http://dlxs.org" xmlns:exsl="http://exslt.org/common" extension-element-prefixes="exsl">
+<xsl:stylesheet 
+  version="1.0" 
+  xmlns="http://www.w3.org/1999/xhtml" 
+  xmlns:xsl="http://www.w3.org/1999/XSL/Transform" 
+  xmlns:qui="http://dlxs.org/quombat/ui" 
+  xmlns:xhtml="http://www.w3.org/1999/xhtml" 
+  xmlns:dlxs="http://dlxs.org" 
+  xmlns:exsl="http://exslt.org/common"
+  xmlns:str="http://exslt.org/strings" 
+  extension-element-prefixes="exsl str">
 
   <xsl:variable name="search-form" select="//qui:form[@id='collection-search']" />
   <xsl:variable name="sort-options" select="//qui:form[@id='sort-options']" />
@@ -45,13 +54,18 @@
         <xsl:if test="qui:metadata[@slot='item']">
           <xsl:apply-templates select="qui:metadata[@slot='item']" mode="callout" />
         </xsl:if>
-        <xsl:call-template name="build-results-summary-sort" />
-        <xsl:if test="$has-results">
-          <xsl:call-template name="build-portfolio-actions" />
-        </xsl:if>
-        <xsl:call-template name="build-results-list" />
-        <xsl:call-template name="build-results-pagination" />
-        <xsl:call-template name="build-hidden-portfolio-form" />
+        <xsl:choose>
+          <xsl:when test="$has-results">
+            <xsl:call-template name="build-results-summary-sort" />
+            <xsl:call-template name="build-portfolio-actions" />
+            <xsl:call-template name="build-results-list" />
+            <xsl:call-template name="build-results-pagination" />
+            <xsl:call-template name="build-hidden-portfolio-form" />    
+          </xsl:when>
+          <xsl:otherwise>
+            <xsl:call-template name="build-no-results" />
+          </xsl:otherwise>
+        </xsl:choose>
       </div>
     </div>
 
@@ -497,12 +511,48 @@
   </xsl:template>
 
   <xsl:template name="build-search-hints">
-    <h3>Other suggestions</h3>
+    <xsl:variable name="q1" select="//qui:form[@id='collection-search']/qui:input[@name='q1']/@value" />
+    <xsl:variable name="rgn" select="//qui:form[@id='collection-search']/qui:input[@name='rgn']/@value" />
+    <h3>Suggestions</h3>
     <ul class="[ list-bulleted ]">
-      <li>Check your spelling.</li>
-      <li>Try more general keywords.</li>
-      <li>Try different keywords that mean the same thing.</li>
-      <li>Try searching in <strong>Anywhere in record</strong>.</li>
+      <li>Check your spelling</li>
+      <li>Try more general keywords</li>
+      <li>Try different keywords that mean the same thing</li>
+      <xsl:if test="$rgn != 'full text'">
+        <li>Try searching in 
+          <strong><a data-collid="{$collid}" href="/cgi/t/text/text-idx?page=simple;q1={$q1};rgn=full+text;cc={$collid}">Full Text</a></strong></li>
+      </xsl:if>
+      <xsl:if test="contains($q1, ' ')">
+        <xsl:variable name="tokens" select="str:tokenize($q1, ' ')" />
+        <li>If you're searching for phrases like <em>dog cat</em>,
+          try the <strong>
+            <a data-href="/cgi/t/text/text-idx?page=proximity;q1={$q1};rgn={$rgn};cc={$collid}">
+              <xsl:attribute name="href">
+                <xsl:text>/cgi/t/text/text-idx?page=proximity;</xsl:text>
+                <xsl:value-of select="concat('q1', '=', $tokens[1], ';')" />
+                <xsl:value-of select="concat('q2', '=', $tokens[2], ';')" />
+                <xsl:if test="$tokens[position() &gt; 2]">
+                  <xsl:variable name="q3">
+                    <xsl:for-each select="$tokens[position() &gt; 2]">
+                      <xsl:value-of select="." />
+                      <xsl:if test="position() &lt; last()">
+                        <xsl:text> </xsl:text>
+                      </xsl:if>
+                    </xsl:for-each>
+                  </xsl:variable>
+                  <xsl:value-of select="concat('q3', '=', $q3, ';')" />
+                  <!-- <xsl:value-of select="concat('q3', '=', str:concat($tokens[position() &gt; 2]), ';')" /> -->
+                </xsl:if>
+                <!-- <xsl:for-each select="$tokens">
+                  <xsl:value-of select="concat('q', position(), '=', ., ';')" />
+                </xsl:for-each> -->
+                <xsl:value-of select="concat('rgn=', $rgn, ';')" />
+                <xsl:value-of select="concat('cc=', $collid)" />
+              </xsl:attribute>
+              <xsl:text>proximity search</xsl:text>
+            </a></strong>, 
+          e.g. <em>dog near within 40 characters cat</em></li>
+      </xsl:if>
     </ul>
   </xsl:template>
 
@@ -637,6 +687,15 @@
 
   <xsl:template name="build-breadcrumbs-extra-nav">
     <xsl:apply-templates select="qui:nav[@role='details']" mode="pagination-link" />
+  </xsl:template>
+
+  <xsl:template name="build-no-results">
+    <h2 class="results-heading">
+      <span class="[ bold ]">No results</span>
+      <xsl:text> match your search </xsl:text>
+      <xsl:apply-templates select="//qui:block[@slot='search-summary']" mode="copy-guts" />
+    </h2>
+    <xsl:call-template name="build-search-hints" />
   </xsl:template>
 
   <xsl:template match="qui:nav[@role='details']" mode="pagination-link">
@@ -788,5 +847,9 @@
   </xsl:template>
 
   <xsl:template match="qui:field[@key='bookmark']"></xsl:template>
+
+  <xsl:template match="qui:no-results" mode="copy">
+    <pre>ZILCH</pre>
+  </xsl:template>
 
 </xsl:stylesheet>

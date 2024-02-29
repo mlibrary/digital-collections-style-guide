@@ -890,6 +890,31 @@
     </qui:callout>
   </xsl:template>  
 
+  <xsl:template match="SearchDescription[CollTotals/HitCount=0]" priority="101">
+    <qui:block slot="search-summary">
+      <xsl:value-of select="key('get-lookup','reslist.str.for')"/>
+      <xsl:text> </xsl:text>
+      <span class="naturallanguage">
+        <xsl:apply-templates select="SearchInNaturalLanguage"/>
+      </span>
+      <xsl:if test="SearchQualifier != 'results.summary.singletextrestricted'">
+        <xsl:text> in </xsl:text>
+        <xsl:choose>
+          <xsl:when test="SearchQualifier!=''">
+            <span class="itemid">
+              <xsl:value-of select="key('get-lookup',SearchQualifier)"/>
+            </span>
+          </xsl:when>
+          <xsl:otherwise>
+            <span class="collid">
+              <xsl:apply-templates select="SearchCollid"/>
+            </span>
+          </xsl:otherwise>
+        </xsl:choose>  
+      </xsl:if>      
+    </qui:block>
+  </xsl:template>
+
   <xsl:template match="SearchDescription">
     <qui:block slot="search-summary">
       <!-- <xsl:value-of select="key('get-lookup','reslist.str.yousearched')"/> -->
