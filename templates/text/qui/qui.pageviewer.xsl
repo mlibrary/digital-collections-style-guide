@@ -150,7 +150,7 @@
 
   <xsl:template name="build-action-panel">
     <qui:block slot="actions">
-      <qui:download-options label="Item">
+      <qui:download-options label="Options">
         <xsl:for-each select="//PageSelect/Option[Focus='true']">
           <qui:option-group>
             <xsl:if test="Focus = 'true'">
