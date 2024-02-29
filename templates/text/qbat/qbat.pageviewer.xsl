@@ -161,13 +161,17 @@
     <xsl:if test="normalize-space(//qui:viewer/@manifest-id)">
       <h3 id="iiif-links">IIIF</h3>
       <dl class="record">
-        <xsl:call-template name="build-content-copy-metadata">
-          <xsl:with-param name="term">Manifest</xsl:with-param>
-          <xsl:with-param name="text" select="//qui:viewer/@manifest-id" />
-          <xsl:with-param name="class">url</xsl:with-param>
-        </xsl:call-template>
+        <xsl:apply-templates select="//qui:viewer/@manifest-id" mode="build-manifest-link" />
       </dl>
     </xsl:if>
+  </xsl:template>
+
+  <xsl:template match="@manifest-id" mode="build-manifest-link">
+    <xsl:call-template name="build-content-copy-metadata">
+      <xsl:with-param name="term">Manifest</xsl:with-param>
+      <xsl:with-param name="text" select="." />
+      <xsl:with-param name="class">url</xsl:with-param>
+    </xsl:call-template>
   </xsl:template>
 
   <xsl:template match="qui:field[@component='findingaid-link']" mode="dl">

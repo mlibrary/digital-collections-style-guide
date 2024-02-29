@@ -939,7 +939,11 @@
   <xsl:template match="qui:link" mode="copy" priority="99">
     <a href="{@href}">
       <xsl:apply-templates select="@class" mode="copy" />
+      <xsl:apply-templates select="@target" mode="copy" />
       <xsl:apply-templates mode="copy" />
+      <xsl:if test="@target = '_blank'">
+        <span class="visually-hidden"> (opens in new tab)</span>
+      </xsl:if>
     </a>
   </xsl:template>
 
