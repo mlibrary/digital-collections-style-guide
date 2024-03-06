@@ -778,12 +778,37 @@
 
   <xsl:template match="qui:values">
     <xsl:for-each select="qui:value">
-    <dd>
-      <xsl:apply-templates select="." mode="copy-guts" />
-    </dd>
-  </xsl:for-each>
-
+      <dd>
+        <xsl:apply-templates select="." mode="copy-guts" />
+      </dd>
+    </xsl:for-each>
   </xsl:template>
+
+  <xsl:template match="qui:field[@key='citation']" priority="101">
+    <xsl:variable name="key" select="@key" />
+    <xsl:variable name="term" select="normalize-space(qui:label)" />
+    <div>
+      <dt>
+        <xsl:if test="$key">
+          <xsl:attribute name="data-key"><xsl:value-of select="$key" /></xsl:attribute>
+        </xsl:if>
+        <xsl:value-of select="$term" />
+      </dt>
+      <dd>
+        <div class="text--copyable">
+          <span>
+            <!-- <xsl:if test="normalize-space($class)">
+              <xsl:attribute name="class"><xsl:value-of select="$class" /></xsl:attribute>
+            </xsl:if> -->
+            <xsl:apply-templates select="qui:values/qui:value" mode="copy-guts" />
+          </span>
+          <button class="button button--small" data-action="copy-text" aria-label="Copy Text">
+            <span class="material-icons" aria-hidden="true">content_copy</span>
+          </button>
+        </div>
+      </dd>
+    </div>
+  </xsl:template>  
 
   <xsl:template match="qui:hidden-input[@name='debug']" priority="100" />
 

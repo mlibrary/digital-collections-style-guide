@@ -62,7 +62,11 @@
     </qui:header>
    
     <qui:block slot="metadata">
-      <xsl:apply-templates select="$item-metadata" mode="copy" />
+      <xsl:apply-templates select="$item-metadata" mode="insert-item-citation">
+        <xsl:with-param name="citation">
+          <xsl:call-template name="build-citation-field" />
+        </xsl:with-param>
+      </xsl:apply-templates>
     </qui:block>
 
     <qui:block slot="content" 

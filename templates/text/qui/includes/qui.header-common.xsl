@@ -1,5 +1,5 @@
 <?xml version="1.0"?>
-<xsl:stylesheet xmlns="http://www.w3.org/1999/xhtml" xmlns:xsl="http://www.w3.org/1999/XSL/Transform" xmlns:xhtml="http://www.w3.org/1999/xhtml" xmlns:dlxs="http://dlxs.org" xmlns:qui="http://dlxs.org/quombat/ui" xmlns:exsl="http://exslt.org/common" xmlns:str="http://exslt.org/strings" version="1.0" extension-element-prefixes="exsl str">
+<xsl:stylesheet xmlns="http://www.w3.org/1999/xhtml" xmlns:xsl="http://www.w3.org/1999/XSL/Transform" xmlns:xhtml="http://www.w3.org/1999/xhtml" xmlns:dlxs="http://dlxs.org" xmlns:qui="http://dlxs.org/quombat/ui" xmlns:exsl="http://exslt.org/common" xmlns:str="http://exslt.org/strings" xmlns:date="http://exslt.org/dates-and-times" version="1.0" extension-element-prefixes="exsl str date">
   <xsl:variable name="add-biblscope-to-serialissue-title" select="false()" />
   <xsl:variable name="add-extent-to-pubinfo" select="false()" />
   <xsl:variable name="add-notesstmt" select="false()" />
@@ -1125,5 +1125,74 @@
   <xsl:template match="HEADER[@TYPE='tombstone']" mode="build-tombstone-link">
     <!-- default does not generate a link -->
   </xsl:template>
-  
+
+  <xsl:template name="build-citation-field">
+    <qui:field key="citation" data-component="input">
+      <qui:label>Cite this Item</qui:label>
+      <qui:values>
+        <qui:value>
+          <xsl:variable name="title">
+            <xsl:choose>
+              <xsl:when test="$item-metadata//qui:field[@key='articletitle']">
+                <xsl:value-of select="$item-metadata//qui:field[@key='articletitle']//qui:value" />
+              </xsl:when>
+              <xsl:otherwise>
+                <xsl:value-of select="$item-metadata//qui:field[@key='title']//qui:value" />
+              </xsl:otherwise>
+            </xsl:choose>  
+          </xsl:variable>
+          <xsl:text>&quot;</xsl:text>
+          <xsl:value-of select="normalize-space($title)" />
+          <xsl:if test="substring(normalize-space($title), string-length(normalize-space($title))) != '.'">
+            <xsl:text>.</xsl:text>
+          </xsl:if>
+          <xsl:text>&quot; </xsl:text>
+          <xsl:if test="$item-metadata//qui:field[@key='articletitle']">
+            <em>
+              <xsl:value-of select="$item-metadata//qui:field[@key='title']//qui:value" />
+              <xsl:text>. </xsl:text>
+            </em>
+          </xsl:if>
+          <xsl:if test="true()">
+            <xsl:text>In the digital collection </xsl:text>
+            <em>
+              <xsl:choose>
+                <xsl:when test="//TitleComplex/img">
+                  <xsl:value-of select="//TitleComplex/img/@alt" />
+                </xsl:when>
+                <xsl:otherwise>
+                  <xsl:value-of select="//TitleComplex" />
+                </xsl:otherwise>
+              </xsl:choose>
+              <xsl:text>. </xsl:text>
+            </em>
+            <xsl:text>https://name.umdl.umich.edu/</xsl:text>
+            <xsl:value-of select="substring($collid, 1, 1)" />
+            <xsl:text>/</xsl:text>
+            <xsl:value-of select="$collid" />
+            <xsl:text>/</xsl:text>
+            <xsl:value-of select="//Param[@name='idno']" />
+            <xsl:text>. </xsl:text>
+            <xsl:if test="normalize-space(key('get-lookup', 'uplift.citation.repository'))">
+              <xsl:value-of select="key('get-lookup', 'uplift.citation.repository')" />
+              <xsl:text>, </xsl:text>
+            </xsl:if>
+            <xsl:text>University of Michigan Library Digital Collections. </xsl:text>
+            <xsl:text>Accessed </xsl:text>
+            <xsl:value-of select="concat(date:month-name(), ' ', date:day-in-month(), ', ', date:year(), '.')" />
+          </xsl:if>
+        </qui:value>
+      </qui:values>
+    </qui:field>
+  </xsl:template>
+
+  <xsl:template match="qui:metadata" mode="insert-item-citation">
+    <xsl:param name="citation" />
+    <xsl:copy>
+      <xsl:apply-templates select="@*" mode="copy" />
+      <xsl:apply-templates mode="copy" />
+      <xsl:copy-of select="$citation" />
+    </xsl:copy>
+  </xsl:template>
+
 </xsl:stylesheet>

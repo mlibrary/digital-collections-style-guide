@@ -1,4 +1,4 @@
-<xsl:stylesheet version="1.0" xmlns="http://www.w3.org/1999/xhtml" xmlns:xhtml="http://www.w3.org/1999/xhtml"  xmlns:xsl="http://www.w3.org/1999/XSL/Transform" xmlns:dlxs="http://dlxs.org" xmlns:qui="http://dlxs.org/quombat/ui" xmlns:exsl="http://exslt.org/common" xmlns:str="http://exslt.org/strings" extension-element-prefixes="exsl str">
+<xsl:stylesheet version="1.0" xmlns="http://www.w3.org/1999/xhtml" xmlns:xhtml="http://www.w3.org/1999/xhtml"  xmlns:xsl="http://www.w3.org/1999/XSL/Transform" xmlns:dlxs="http://dlxs.org" xmlns:qui="http://dlxs.org/quombat/ui" xmlns:exsl="http://exslt.org/common" xmlns:str="http://exslt.org/strings" xmlns:date="http://exslt.org/dates-and-times" extension-element-prefixes="exsl str date">
 
   <xsl:output method="xml" version="1.0" encoding="utf-8" indent="yes" />
 
@@ -55,8 +55,11 @@
 
   <xsl:template name="build-item-header">
     <qui:block slot="metadata">
-      <!-- <xsl:apply-templates select="$item-metadata" mode="copy" /> -->
-      <xsl:apply-templates select="/Top/Item" mode="metadata" />      
+      <xsl:apply-templates select="$item-metadata" mode="insert-item-citation">
+        <xsl:with-param name="citation">
+          <xsl:call-template name="build-citation-field" />
+        </xsl:with-param>
+      </xsl:apply-templates>
     </qui:block>
   </xsl:template>
 
