@@ -143,12 +143,21 @@
             </xsl:otherwise>
           </xsl:choose>
         </xsl:if>
-        <xsl:for-each select="//BrowseFields/Field">
-          <qui:link href="{Link}" data-rel="browse-items" icon="layers">
-            <xsl:text>Browse by </xsl:text>
-            <xsl:value-of select="key('get-lookup', concat('browse.str.', Name, '.column'))" />
-          </qui:link>
-        </xsl:for-each>
+        <xsl:choose>
+          <xsl:when test="//BrowseFields/Field">
+            <xsl:for-each select="//BrowseFields/Field">
+              <qui:link href="{Link}" data-rel="browse-items" icon="layers">
+                <xsl:text>Browse by </xsl:text>
+                <xsl:value-of select="key('get-lookup', concat('browse.str.', Name, '.column'))" />
+              </qui:link>
+            </xsl:for-each>
+          </xsl:when>
+          <xsl:when test="//NavItem[Name='browse']/Tab='true'">
+            <qui:link href="{//NavItem[Name='browse']/Link}" data-rel="browse-items" icon="newspaper">
+              <xsl:text>Browse the Collection Contents</xsl:text>
+            </qui:link>
+          </xsl:when>
+        </xsl:choose>
       <!-- <qui:link href="/cgi/i/image/image-idx?c={$collid};view=reslist;q1={$collid};med=1" rel="browse-images" data-count="{//Stats/Images}" /> -->
         <xsl:apply-templates select="//qui:panel[@slot='browse'][not(@weight)]//qui:link" mode="copy" />
         <xsl:apply-templates select="/Top/Panels/div[@data-slot='browse']" mode="links" />
