@@ -23,18 +23,43 @@
 
   <xsl:template match="tei:DLPSWRAP[.//tei:PB or normalize-space(.)]">
     <xsl:variable name="pb" select=".//tei:PB" />
-    <xsl:variable name="idno" select="$pb/@IDNO" />
+    <xsl:variable name="idno">
+      <xsl:choose>
+        <xsl:when test="$pb/@ID">
+          <xsl:value-of select="$pb/@ID" />
+        </xsl:when>
+        <xsl:when test="node()[@NODE]">
+          <xsl:value-of select="node()/@NODE" />
+        </xsl:when>
+        <xsl:otherwise>
+          <xsl:value-of select="@ID" />
+        </xsl:otherwise>
+      </xsl:choose>
+    </xsl:variable>
     <xsl:variable name="id">
       <xsl:choose>
         <xsl:when test="$pb/@ID">
           <xsl:value-of select="$pb/@ID" />
+        </xsl:when>
+        <xsl:when test="@ID">
+          <xsl:value-of select="@ID" />
         </xsl:when>
         <xsl:otherwise>
           <xsl:value-of select="translate($idno, ':', '-')" />
         </xsl:otherwise>
       </xsl:choose>
     </xsl:variable>
-    <article id="{$id}-{$pb/@SEQ}-{position()}-article" class="fullview-page" data-count="{$highlights[1]/@seq}" data-idno="{$idno}">      
+    <xsl:variable name="seq">
+      <xsl:choose>
+        <xsl:when test="$pb/@SEQ">
+          <xsl:value-of select="$pb/@SEQ" />
+        </xsl:when>
+        <xsl:otherwise>
+          <xsl:value-of select="position()" />
+        </xsl:otherwise>
+      </xsl:choose>
+    </xsl:variable>
+    <article id="{$id}-{$seq}-{position()}-article" class="fullview-page" data-count="{$highlights[1]/@seq}" data-idno="{$idno}">      
       <xsl:apply-templates select="$pb" mode="build-p">
         <xsl:with-param name="base" select="$id" />
         <xsl:with-param name="idno" select="$idno" />
