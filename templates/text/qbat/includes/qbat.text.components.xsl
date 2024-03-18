@@ -28,8 +28,8 @@
         <xsl:when test="$pb/@ID">
           <xsl:value-of select="$pb/@ID" />
         </xsl:when>
-        <xsl:when test="node()[@NODE]">
-          <xsl:value-of select="node()/@NODE" />
+        <xsl:when test=".//node()[@NODE]">
+          <xsl:value-of select=".//node()[@NODE][1]/@NODE" />
         </xsl:when>
         <xsl:otherwise>
           <xsl:value-of select="@ID" />
