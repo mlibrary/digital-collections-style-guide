@@ -10,6 +10,8 @@
     version="5.0"
     />
 
+  <xsl:key match="/qui:root/qui:lookup/qui:item" name="get-lookup" use="@key" />
+
   <xsl:param name="docroot">/digital-collections-style-guide/</xsl:param>
   <xsl:param name="api_url"><xsl:value-of select="//qui:root/@api_url" /></xsl:param>
   <xsl:param name="ds_url">https://cdn.jsdelivr.net/npm</xsl:param>
@@ -830,6 +832,19 @@
   <xsl:template match="br" mode="copy" priority="100">
     <!-- <xsl:message>AHOY BR</xsl:message> -->
     <br />
+  </xsl:template>
+
+  <xsl:template match="qui:login" mode="copy" priority="100">
+    <a href="{//qui:link[@id='action-login']/@href}">
+      <xsl:choose>
+        <xsl:when test="normalize-space(.)">
+          <xsl:apply-templates mode="copy" />
+        </xsl:when>
+        <xsl:otherwise>
+          <xsl:text>log in</xsl:text>
+        </xsl:otherwise>
+      </xsl:choose>
+    </a>
   </xsl:template>
 
   <xsl:template match="@*|*|text()" mode="copy">

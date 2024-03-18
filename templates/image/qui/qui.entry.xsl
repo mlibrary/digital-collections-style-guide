@@ -81,6 +81,7 @@
     <xsl:variable name="publisher" select="//Publisher/Value" />
     <xsl:if test="//MediaInfo/istruct_ms = 'P' and //MediaInfo/AuthCheck/@allowed = 'yes'">
       <qui:viewer 
+        access="allowed"
         embed-href="{$config/@embed-href}" 
         manifest-id="{$config/@manifest-href}" 
         canvas-index="{$config/@canvas-index}" 
@@ -101,9 +102,18 @@
       </qui:viewer>
     </xsl:if>
     <xsl:if test="//MediaInfo/istruct_ms = 'P' and //MediaInfo/AuthCheck/@allowed = 'no'">
-      <qui:callout icon="warning" variant="warning" slot="viewer" dismissable="false">
+      <xsl:variable name="possible" select="//AuthCheck/@possible" />
+      <xsl:choose>
+        <xsl:when test="$possible = 'yes'">
+          <qui:viewer access="possible" />
+        </xsl:when>
+        <xsl:when test="$possible = 'no'">
+          <qui:viewer access="restricted" />
+        </xsl:when>
+      </xsl:choose>
+      <!-- <qui:callout icon="warning" variant="warning" slot="viewer" dismissable="false">
         <p>Access to this resource is restricted.</p>
-      </qui:callout>
+      </qui:callout> -->
     </xsl:if>
   </xsl:template>
 

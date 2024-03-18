@@ -1,0 +1,463 @@
+<!-- bbopenutils.xsl which serves bbopen.xsl, bbname.xsl -->
+<!-- "items1" used by bbresults_nav.xsl SliceSummary -->
+<!-- "portfolio" used by bbresults_nav.xsl CollectionName -->
+<lookup id="bbopenutils">
+<item key="portfolio">portfolio</item>
+<item key="porthelp"><b>Help</b> For Using Portfolios</item>
+<item key="bbopenpageheader">Portfolios</item>
+<item key="bbnamepageheader">Add&#xa0;to&#xa0;a&#xa0;New&#x0a;or Existing Portfolio</item>
+<item key="yourport">your portfolios</item>
+<item key="pubport">all public portfolios</item>
+<item key="bbagname">portfolio name</item>
+<item key="action">action</item>
+<item key="items1">items</item>
+<item key="shared">public</item>
+<item key="username">owner(s)</item>
+<item key="open3">open</item>
+<item key="add3">add</item>
+<item key="savename">save name</item>
+<item key="saveowners">save owners</item>
+<item key="bbdel3">delete...</item>
+<item key="bbexportprep3">download...</item>
+<item key="viewable">viewable by public</item>
+<item key="instructionbbname">To create a <b>new</b> portfolio with the selected images, enter a name in the <b>text box</b> and click <b>Submit</b>.<br />To <b>add</b> the selected images to an <b>existing</b> portfolio, find the portfolio name in the table below and click <b>add</b>.</item>
+<item key="0">no</item>
+<item key="1">yes</item>
+<item key="switch0">make&#xa0;public</item>
+<item key="switch1">make&#xa0;private</item>
+<item key="none present">None present.</item>
+</lookup>
+
+<!-- bbdel.xsl bbdelconf.xsl-->
+<lookup id="bbdel">
+<item key="successdel">Portfolio successfully deleted.</item>
+<item key="instructionbbdel">You may open a portfolio or close this window.</item>
+<item key="yes">Yes</item>
+<item key="no">No</item>
+<item key="instructionbbdelconf">Permanently delete portfolio?</item>
+<item key="name">Name of portfolio</item>
+</lookup>
+
+<!-- bbexport.xsl -->
+<lookup id="bbexport">
+<item key="exportfull-image">media</item>
+
+<item key="exportdescription">record</item>
+<item key="accessdenied">The media was not included due
+to a lack of access privileges. Sorry. You may view the record.</item>
+
+<item key="index">index</item>
+<item key="of"> of </item>
+<item key="viewonline">view online</item>
+<item key="exportPageTitle">export </item>
+<item key="guidelinesbuttontext">guidelines</item>
+<item key="guidelinesTitle">Guidelines For Use</item>
+<item key="portlastmod">portfolio last modified: </item>
+<item key="forhelp">For help or to request permission to publish: </item>
+
+</lookup>
+
+<!-- bbexportprep.xsl -->
+<lookup id="bbexportprep">
+<item key="returntoportfolios">return to the list of portfolios</item>
+<item key="morehelp">More Help</item>
+<item key="imagesize">image size</item>
+<item key="imagesizesmall">small</item>
+<item key="imagesizemedium">medium (presentation)</item>
+<item key="imagesizelarge">large</item>
+<item key="imagesizelargest">largest</item>
+<item key="download">download</item>
+<item key="whendone1P1">When done, all of the
+images (and/or other media) will reside on your computer for convenient
+use. HTML pages are also included for viewing records and easy
+navigation of images.</item>
+<item key="long">The download may take several minutes to complete.</item>
+<item key="portfoliodownloadsteps">Portfolio Download</item>
+<item key="bbexportpreppageheader">Portfolio Download</item>
+<item key="portfoliosdisabled">Portfolio functionality is
+turned off.</item>
+<item key="exportdisabled">Portfolio export functionality is turned
+off.</item>
+<item key="toomanyitemstodownload">Only the first $count items will be downloaded.</item>
+</lookup>
+
+<!-- displayheader_results.xsl -->
+<!-- <lookup id="displayheader_results_LEGACY">
+<item key="thumbnail">images with captions</item>
+<item key="thumbfull">images with record</item>
+<item key="reslist">captions only</item>
+<item key="bbthumbnail">images with captions</item>
+<item key="bbthumbfull">images with record</item>
+<item key="bbreslist">captions only</item>
+<item key="prep">prep tables in use</item>
+</lookup>
+ -->
+<lookup id="displayheader_results">
+<item key="thumbnail">grid</item>
+<item key="thumbfull">grid + details</item>
+<item key="reslist">list</item>
+<item key="icon-thumbnail">icon-th</item>
+<item key="icon-thumbfull">icon-picture</item>
+<item key="icon-reslist">icon-th-list</item>
+<item key="bbthumbnail">grid</item>
+<item key="bbthumbfull">grid + details</item>
+<item key="bbreslist">list</item>
+<item key="icon-bbthumbnail">icon-th</item>
+<item key="icon-bbthumbfull">icon-picture</item>
+<item key="icon-bbreslist">icon-th-list</item>
+<item key="prep">prep tables in use</item>
+</lookup>
+
+<!-- groups.xsl -->
+<lookup id="groups">
+<item key="groups">collection groups list</item>
+<item key="selectgroup">Select a collection group</item>
+<item key="instructiongroupspick">Collections are arranged into groups for searching. Click on a group name to search the collections in that group. A collection may include some content outside of the group's definition, and a collection could appear in more than one group. Click the title of a specific collection to search it alone. Sometimes it is advantageous to search a single collection. For example, search field and sorting options are often specific to the collection, allowing for a more refined search. </item>
+<item key="more">more</item>
+<item key="instructiongroupspick2">Some collections have a very narrow focus. Other collections are broader, and may encompass many sub-collections.  Occassionally an image appears in multiple collections, though generally there is a single authoritative source for each image.</item>
+<item key="collections">collections</item>
+<item key="media">images/media</item>
+<item key="records2">records</item>
+
+</lookup>
+
+
+<!-- searchutils.xsl -->
+<lookup id="searchutils">
+<item key="see">see search tips</item>
+
+<item key="instructioncollspick1">Select one or more databases to search. Click the database name to search it alone, often in more detail.</item>
+<item key="instructionsearch1">To search, enter a word or phrase in a box below and select a field from the menu.</item>
+<item key="instructionsearch2">It is not necessary to use more than one box.</item>
+<item key="instructionsearch3">You can search all the databases in this group, or use the <b>list of databases</b> to restrict your search to a subset.</item>
+<item key="newgroup">select a new group to search</item>
+<item key="in">in</item>
+<item key="rangehelp">e.g., 1954 to 1961, -825 to -800.</item>
+<item key="only">Has digital media</item>
+<item key="PleaseSelectColl">Please select at least one database to search.</item>
+</lookup>
+
+<!-- browse.xsl, index.xsl -->
+<lookup id="browse">
+<item key="browse">Browse</item>
+</lookup>
+
+<!-- collinfo.xsl -->
+<!-- index.xsl -->
+<lookup id="index">
+<item key="home">Home</item>
+<item key="collinfo">database info</item>
+<item key="closewindow">CLOSE WINDOW</item>
+<item key="thiscoll">this collection</item>
+<!-- <item key="browseallimages">Browse all media</item>
+<item key="browseallrecords">Browse all records</item>
+<item key="browsesampleimages">Browse sample media</item>
+<item key="browsesamplerecords">Browse sample records</item>
+<item key="browsemediaaddsmods">Browse newest additions and updates</item>
+<item key="browsemostviewed">Browse most viewed</item> -->
+<item key="browseallimages">All media</item>
+<item key="browseallrecords">All records</item>
+<item key="browsesampleimages">Sample media</item>
+<item key="browsesamplerecords">Sample records</item>
+<item key="browsemediaaddsmods">Newest additions and updates</item>
+<item key="browsemostviewed">Most viewed</item>
+<item key="access">Collection Access</item>
+<item key="access1">Access to this collection is restricted to authorized users.</item>
+<item key="access2">This collection is open to the public. You may have
+additional privileges if you log in.</item>
+<item key="access3">You are an authorized user of this collection.</item>
+<item key="access4">Access restricted.</item>
+<item key="sendcomments">Send comments on this collection to</item>
+<item key="brief">Collection Size</item>
+<item key="searchmulti">Search Multiple Collections</item>
+<item key="selectagroup1">Select a group</item>
+<item key="selectagroup2">of collections to search simultaneously. Search this collection together with others.</item>
+<item key="numberof">Number of Images and Records Online</item>
+<item key="images">Online Images/Media</item>
+<item key="records">Records</item>
+</lookup>
+
+<!-- noresults.xsl -->
+<lookup id="noresults">
+<item key="noresults">No Results</item>
+<item key="type_ic_range">ranges from</item>
+<item key="type_ic_exact">is exactly</item>
+<item key="type_default">contains the term(s)</item>
+<item key="type_allmedia"> media was added or updated within </item>
+<item key="days"> day(s).</item>
+<item key="to">to</item>
+</lookup>
+
+<!-- results.xsl -->
+<lookup id="results">
+<item key="and">and</item>
+<item key="view">view</item>
+<item key="record">record</item>
+<item key="digitalformat">digital format</item>
+<item key="notavail">not available</item>
+<item key="portfolioempty">This portfolio has no items.</item>
+<item key="missing">no longer available</item>
+<item key="restricted">Restricted.</item>
+<item key="trytolocate">try to locate</item>
+<item key="notifymaintainer">notify maintainer</item>
+<item key="nosortvalue">no sort value</item>
+</lookup>
+
+
+<!-- thumbfull.xsl -->
+<lookup id="thumbfull">
+<item key="instructionthumbfullresults">Click on thumbnails to view larger images and full records. <br />Click "descriptive info" link to view record data to the left.</item>
+<item key="descriptive">&lt;text</item>
+</lookup>
+
+<!-- reslist.xsl -->
+<lookup id="reslist">
+<item key="view4">view full record for <b>item</b></item>
+</lookup>
+
+<!-- displayheader.xsl -->
+<lookup id="displayheader">
+<item key="newsearch">advanced search</item>
+<item key="quicksearch">Quick Search</item>
+</lookup>
+
+<!-- results_nav.xsl -->
+<lookup id="results_nav">
+<item key="to1">to</item>
+<item key="of">of</item>
+<item key="hits">hits</item>
+
+<item key="login0">You are not logged in.</item>
+<item key="login1">You are logged in.</item>
+
+<item key="prev">previous</item>
+<item key="next">next</item>
+
+<item key="portfour">Portfolio storage is temporary.</item>
+<item key="portone">Portfolio storage is long term.</item>
+<item key="portthree">You do not own this portfolio.</item>
+<item key="porttwo">You do not own this portfolio.</item>
+
+</lookup>
+
+<!-- bbcustomorder.xsl -->
+<lookup id="bbcustomorder">
+<item key="instructionbbcustomorder">To change the position of any image record in this portfilio, select it's title in the list, and click an appropriate directional arrow to move it up or down.  When you are done, click the save custom order button to return to the previous display.</item>
+<item key="nocaption">no caption or caption too long.</item>
+</lookup>
+
+<!-- entry.xsl -->
+<lookup id="entry">
+<item key="bookmarkhelp">bookmark:</item>
+<item key="downloadmedia">download largest size</item>
+<item key="downloadmediacurrentsize">download current size</item>
+<item key="newwindow">new window</item>
+<item key="viewmediaonly">view media only</item>
+<item key="otherviewsnothumb">view</item>
+
+<item key="other">other views</item>
+<item key="other views">other views</item>
+<item key="other-views">other views</item>
+
+<item key="full image">full image</item>
+<item key="full-image">full-image</item>
+
+<item key="description">description</item>
+
+<item key="backtoresults">back to results</item>
+<item key="previtem">&lt;&lt; previous item</item>
+<item key="nextitem">next item &gt;&gt;</item>
+<item key="addport">add to portfolio</item>
+<item key="removeport">remove from portfolio</item>
+<item key="relatedports">portfolio inclusions</item>
+
+<item key="feedbacklink">Problems/comments about this item?</item>
+<item key="feedbackreply">To request a reply, please provide your email address.</item>
+<item key="feedbackcomments">Comments?</item>
+<item key="feedbackusername">Include your user name?</item>
+<item key="feedback">Feedback</item>
+
+
+</lookup>
+
+<!-- entry_imagetools.xsl -->
+<lookup id="entry_imagetools">
+
+<item key="video.sense">view</item>
+<item key="video">video</item>
+<item key="video.icon">icon-film</item>
+
+<item key="audio.sense">listen to</item>
+<item key="audio">audio</item>
+<item key="audio.icon">icon-volume-down</item>
+
+<item key="svg.sense">view</item>
+<item key="svg">flash movie</item>
+<item key="svg.icon">icon-film</item>
+
+<item key="doc.sense">view</item>
+<item key="doc">related document</item>
+<item key="doc.icon">icon-file</item>
+
+<item key="pdf.sense">view</item>
+<item key="pdf">PDF</item>
+<item key="pdf.icon">icon-file</item>
+
+<item key="zip.sense">download</item>
+<item key="zip">ZIP archive</item>
+<item key="zip.icon">icon-file</item>
+
+<item key="url.sense">view</item>
+<item key="url">linked content in new window</item>
+<item key="url.icon">icon-share</item>
+
+<item key="image.sense">view</item>
+<item key="image">image</item>
+<item key="image.icon">icon-picture</item>
+
+<item key="size">size</item>
+
+<item key="nomedia">Sorry, digital media is not available for this item.</item>
+
+<item key="panzoomhelp">How to interact with this image...</item>
+<item key="tozoomin">zoom in: double-click</item>
+<item key="tozoomout">zoom out: shift-double-click</item>
+<item key="topan">pan: drag</item>
+<item key="zoom">zoom</item>
+<item key="sizes">image sizes</item>
+
+
+</lookup>
+
+
+
+<!-- tips.xsl -->
+
+<lookup id="searchtips">
+<item key="searchtips">search tips</item>
+<item key="instructionsearchtips"><p><b>Matching words:</b> The search
+engine attempts to match any word or phrase exactly as you put it in
+the box.</p><p> e.g.: <i>Picasso and Rembrandt</i> in a box will look
+for</p><p> &#34;Picasso and Rembrandt&#34;</p><p>and produced no
+results.</p><p><b>Punctuation: </b>All punctuation is treated as an
+empty space.</p><p><b>Case</b>: The search engine is not case
+sensitive.</p><p><b>Wildcards:</b> Use wildcard * to expand word
+stems. This is a good way to search for variations on a
+word.</p><p><b>Choose image collections</b>: Limit your search to only
+those collections you choose in the image collections list.</p></item>
+</lookup>
+
+<!-- results.xsl -->
+<lookup id="BbagOptionsMenu">
+<item key="bbom.check">check all</item>
+<item key="bbom.uncheck">uncheck all</item>
+<item key="bbom.bbname">add checked to portfolio...</item>
+<item key="bbom.remove">remove checked from portfolio</item>
+</lookup>
+
+<lookup id="viewinstruct">
+<item key="thumbnail1">Use checkboxes to select images for adding to a
+portfolio, then click the "add to portfolio" button. Click on
+thumbnails to view larger images and full records.</item>
+<item key="thumbnail0">Click on thumbnails to view larger images and full records.</item>
+<item key="thumbfull0">Click on thumbnails to view larger images and full records. Click "descriptive info" link to view record data in this space.</item>
+<item key="thumbfull1" >Click on thumbnails to view larger images and full records. <br />Click "descriptive info" link to view record data in this space.</item>
+<item key="reslist1"  >Use checkboxes to select records for adding to a portfolio, then click the "add to portfolio" button. Click "view full record" link the full record.</item>
+<item key="reslist0"  >Click "view full record" link the full record.</item>
+<item key="bbthumbnail1" >Click on thumbnails to view larger images and full records.</item>
+<item key="bbthumbnail0" >Click on thumbnails to view larger images and full records.</item>
+<item key="bbthumbfull0" >Click on thumbnails to view larger images and full records. Click "descriptive info" link to view record data in this space.</item>
+<item key="bbthumbfull1">Click on the thumbnail image to display a
+large image. Click on the "descriptive info" link beneath any thumbnail image to see detailed record information in this space.</item>
+<item key="bbreslist1">Click "view full record" link the full record.</item>
+<item key="bbreslist0">Click "view full record" link the full record</item>
+<item key="bbcustomorder1">To change the position of any image record in this portfilio, select it's title in the list, and click an appropriate directional arrow to move it up or down.  When you are done, click the save custom order button to return to the previous display.</item>
+<item key="bbcustomorder0"></item>
+<item key="bbexport1">The portfolio package is ready for download as a ZIP file.</item>
+
+<item key="medianodownload">sorry, media is not available for
+download.</item>
+<item key="bbexport0"></item>
+</lookup>
+
+<lookup id="sort">
+<item key="sort">sort</item>
+<item key="sortnot2">too many results to sort</item>
+<item key="customize">customize order...</item>
+</lookup>
+
+<lookup id="misc">
+
+<!-- alt tags for graphics -->
+
+<!-- login/out -->
+<item key="login">login</item>
+<item key="logout">logout</item>
+
+<!-- open portfolio -->
+<item key="portfolios">portfolios</item>
+
+<!-- contact / help -->
+<item key="contact">contact</item>
+<item key="Contact">Contact</item>
+<item key="help">help</item>
+
+<!-- appears in "index", "searchutils"-->
+<item key="search2">Search</item>
+
+<item key="databases">Databases</item>
+<item key="collhome">collection home</item>
+
+<item key="close">close</item>
+
+<item key="multiple">Multiple Collections</item>
+
+
+</lookup>
+
+<lookup id="SearchFormOpsMenu">
+<item key="And">And</item>
+<item key="Or">Or</item>
+<item key="Not">Not</item>
+<item key="and not">And Not</item>
+</lookup>
+
+<lookup id="SearchFormSelMenu">
+<item key="ends">Ends with</item>
+<item key="contains">Contains</item>
+<item key="phrase">Contains the phrase</item>
+<item key="starts">Starts with</item>
+<item key="any">Contains any of these words</item>
+<item key="all">Contains all of these words</item>
+<item key="ic_exact">Exactly matches</item>
+<item key="regex">Matches</item>
+</lookup>
+
+<!-- moaaic-group, searchmaps.xsl -->
+<lookup id="searchmaps">
+<item key="searchmaps">Search for maps</item>
+<item key="instructionsearch1">Enter an exact word or phrase.</item>
+</lookup>
+
+<lookup id="NoResults">
+<item key="sorrynoresults">Sorry, no results were found when searching
+for items where...</item>
+<item key="pleasetry">Please try again.</item>
+<item key="mediaonly">Including an image or other media.</item>
+</lookup>
+
+<lookup id="context-badges">
+  <item key="collection-badge">filter_frames</item>
+  <item key="list-badge">view_list</item>
+  <item key="group-badge">topic</item>
+  <item key="multiple-badge">check_box</item>
+  <item key="root-badge">filter_center_focus</item>
+  <item key="default-badge">more_vert</item>
+</lookup>
+
+<lookup id="uplift" xmlns:qui="http://dlxs.org/quombat/ui">
+  <item key="uplift.access.allowed"></item>
+  <!-- <item key="uplift.access.possible">Access to media is restricted; you may have access if you <qui:login />.</item> -->
+  <item key="uplift.access.possible">Access to media is restricted to the <qui:login>University of Michigan community</qui:login>.</item>
+  <item key="uplift.access.restricted">Access to media is restricted.</item>
+</lookup>

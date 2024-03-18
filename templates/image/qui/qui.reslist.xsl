@@ -208,7 +208,20 @@
   </xsl:template>
 
   <xsl:template match="Results/Result">
+    <xsl:variable name="authcheck" select="MediaInfo//AuthCheck" />
+    <xsl:variable name="m_entryauth" select="MediaInfo//m_entryauth" />
     <qui:section identifier="{EntryId}">
+      <xsl:attribute name="access">
+        <xsl:choose>
+          <xsl:when test="$authcheck/@allowed = 'yes'">allowed</xsl:when>
+          <!-- you're authenticated but still do not have access -->
+          <xsl:when test="$authcheck/@possible = 'yes' and //UserAuthenticated = '1'">restricted</xsl:when>
+          <xsl:when test="$authcheck/@possible = 'yes'">possible</xsl:when>
+          <xsl:when test="$authcheck/@allowed = 'no'">restricted</xsl:when>
+          <!-- when there is no mediainfo -->
+          <xsl:otherwise>allowed</xsl:otherwise>
+        </xsl:choose>
+      </xsl:attribute>
       <qui:link rel="result" href="{Url[@name='EntryLink']}" identifier="{.//EntryWindowName}" marker="{@marker}" />
       <xsl:apply-templates select="MediaInfo" mode="iiif-link" />
       <qui:title>

@@ -181,7 +181,37 @@
       <xsl:value-of select="//qui:header[@role='main']" />
       <xsl:text>&quot;</xsl:text>
     </xsl:variable>
-    <xsl:variable name="viewer" select="//qui:viewer" />
+    <xsl:apply-templates select="//qui:viewer">
+      <xsl:with-param name="title" select="$title" />
+    </xsl:apply-templates>
+    <!-- <xsl:variable name="viewer" select="//qui:viewer" />
+    <xsl:if test="$viewer">
+      <h2 id="viewer-heading" class="visually-hidden">Viewer</h2>
+      <iframe 
+        id="viewer" 
+        class="[ viewer ]" 
+        allow="fullscreen" 
+        title="{$title}"
+        src="{ $viewer/@embed-href }"
+        data-mimetype="{$viewer/@mimetype}"
+        data-istruct_mt="{$viewer/@istruct_mt}">
+        <xsl:if test="$viewer/@viewer-max-height">
+          <xsl:attribute name="style">
+            <xsl:text>height: </xsl:text>
+            <xsl:value-of select="$viewer/@viewer-max-height" />
+            <xsl:text>px</xsl:text>
+          </xsl:attribute>
+        </xsl:if>
+      </iframe>
+    </xsl:if> -->
+    <xsl:if test="false() and //qui:callout[@slot='viewer']">
+      <xsl:apply-templates select="//qui:callout[@slot='viewer']" />
+    </xsl:if>
+  </xsl:template>
+
+  <xsl:template match="qui:viewer[@access='allowed']">
+    <xsl:param name="title" />
+    <xsl:variable name="viewer" select="." />
     <xsl:if test="$viewer">
       <h2 id="viewer-heading" class="visually-hidden">Viewer</h2>
       <iframe 
@@ -201,9 +231,18 @@
         </xsl:if>
       </iframe>
     </xsl:if>
-    <xsl:if test="//qui:callout[@slot='viewer']">
-      <xsl:apply-templates select="//qui:callout[@slot='viewer']" />
-    </xsl:if>
+  </xsl:template>
+
+  <xsl:template match="qui:viewer[@access='possible']">
+    <m-callout icon="info" variant="info">
+      <xsl:apply-templates select="key('get-lookup', 'uplift.access.possible')" mode="copy-guts" />
+    </m-callout>
+  </xsl:template>
+
+  <xsl:template match="qui:viewer[@access='restricted']">
+    <m-callout icon="warning" variant="warning">
+      <xsl:apply-templates select="key('get-lookup', 'uplift.access.restricted')" mode="copy-guts" />
+    </m-callout>
   </xsl:template>
 
   <xsl:template name="build-asset-viewer--inline">
