@@ -310,17 +310,21 @@
       </xsl:choose>
     </qui:header>
 
-    <xsl:if test="$item-metadata//qui:field[@key='serial']">
-      <qui:header role="submain">
-        <xsl:value-of select="$item-metadata//qui:field[@key='serial']//qui:value" />
-      </qui:header>
-    </xsl:if>
+    <xsl:call-template name="build-header-submain" />
 
     <qui:block slot="record">
       <xsl:apply-templates select="$item-metadata" mode="copy" />
       <xsl:call-template name="build-record-technical-metadata" />
     </qui:block>
 
+  </xsl:template>
+
+  <xsl:template name="build-header-submain">
+    <xsl:if test="$item-metadata//qui:field[@key='serial']">
+      <qui:header role="submain">
+        <xsl:value-of select="$item-metadata//qui:field[@key='serial']//qui:value" />
+      </qui:header>
+    </xsl:if>
   </xsl:template>
 
   <xsl:template match="DocMeta" mode="metadata">

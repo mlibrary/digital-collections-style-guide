@@ -209,6 +209,26 @@ window.addEventListener('message', (event) => {
       // }
     }
 
+    fetch(newPageviewHref, { credentials: 'include' })
+      .then((response) => {
+        if ( ! response.ok ) {
+          throw new Error(`Request error: ${response.status}`);
+        }
+        return response.text();
+      })
+      .then((text) => {
+        const newDocument = new DOMParser().parseFromString(text, "text/html");
+        const sections = document.querySelectorAll('.main-panel > section');
+        const newSections = newDocument.querySelectorAll('.main-panel > section');
+        for (let i = 0; i < newSections.length; i++) {
+          sections[i].innerHTML = newSections[i].innerHTML;
+        }
+
+        let newTitle = newDocument.querySelector('h1').innerHTML;
+        document.querySelector('h1').innerHTML = newTitle;
+        document.title = newDocument.title;        
+      });
+
     tocbot.refresh();
 
     ScreenReaderMessenger.getMessenger().say(`Viewing ${label}`);
