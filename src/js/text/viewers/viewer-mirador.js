@@ -8,6 +8,8 @@ DLXS.totalManifests = 0;
 let plaintextViewer = null;
 let plaintextUrl;
 
+let $viewer;
+let itemEncodingLevel;
 
 let updateDownloadMenu = function() {
   const slDropdownEl = document.querySelector('#dropdown-action');
@@ -209,25 +211,31 @@ window.addEventListener('message', (event) => {
       // }
     }
 
-    fetch(newPageviewHref, { credentials: 'include' })
-      .then((response) => {
-        if ( ! response.ok ) {
-          throw new Error(`Request error: ${response.status}`);
-        }
-        return response.text();
-      })
-      .then((text) => {
-        const newDocument = new DOMParser().parseFromString(text, "text/html");
-        const sections = document.querySelectorAll('.main-panel > section');
-        const newSections = newDocument.querySelectorAll('.main-panel > section');
-        for (let i = 0; i < newSections.length; i++) {
-          sections[i].innerHTML = newSections[i].innerHTML;
-        }
+    if ( itemEncodingLevel > 1 ) {
+      fetch(newPageviewHref, { credentials: 'include' })
+        .then((response) => {
+          if ( ! response.ok ) {
+            throw new Error(`Request error: ${response.status}`);
+          }
+          return response.text();
+        })
+        .then((text) => {
+          const newDocument = new DOMParser().parseFromString(text, "text/html");
+          const sections = document.querySelectorAll('.main-panel > section');
+          const newSections = newDocument.querySelectorAll('.main-panel > section');
+          for (let i = 0; i < newSections.length; i++) {
+            sections[i].innerHTML = newSections[i].innerHTML;
+          }
 
-        let newTitle = newDocument.querySelector('h1').innerHTML;
-        document.querySelector('h1').innerHTML = newTitle;
-        document.title = newDocument.title;        
-      });
+          let newTitle = newDocument.querySelector('h1').innerHTML;
+          document.querySelector('h1').innerHTML = newTitle;
+          document.title = newDocument.title;        
+        });
+      console.log("-- update.metadata OK", itemEncodingLevel);
+    } else {
+      console.log("-- update.metadata PUNT", itemEncodingLevel);
+    }
+
 
     tocbot.refresh();
 
@@ -266,6 +274,11 @@ window.addEventListener('message', (event) => {
 })
 
 window.addEventListener('DOMContentLoaded', (event) => {
+  $viewer = document.querySelector('#viewer');
+  if ( $viewer ) {
+    itemEncodingLevel = $viewer.dataset.itemEncodingLevel;
+  }
+  
   plaintextViewer = document.querySelector('#plaintext-viewer');
   if ( plaintextViewer ) {
     plaintextUrl = new URL(`${location.protocol}//${location.host}${plaintextViewer.dataset.href.replace(/;/g, '&')}`);
