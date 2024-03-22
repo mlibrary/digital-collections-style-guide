@@ -414,26 +414,30 @@
   </xsl:template>
 
   <xsl:template name="build-item-search-form">
-    <xsl:if test="//IncludeItemSearch = 'true'">
-      <qui:form id="item-search" action="{/Top/DlxsGlobals/ScriptName[@application='text']}">
-        <qui:hidden-input name="type" value="simple" />
-        <qui:hidden-input name="rgn" value="full text" />
-        <xsl:apply-templates select="//SearchForm/HiddenVars" />
-        <qui:input name="q1" value="{//Param[@name='q1']}" type="text" style="width: auto; flex-grow: 1;">
-          <qui:label>
-            <xsl:choose>
-              <xsl:when test="/Top/Item/DocEncodingType='serialissue'">
-                <xsl:value-of select="key('get-lookup','header.str.searchthisissue')"/>
-              </xsl:when>
-              <xsl:otherwise>
-                <xsl:value-of select="key('get-lookup','header.str.searchthistext')"/>
-              </xsl:otherwise>
-            </xsl:choose>
-          </qui:label>
-        </qui:input>
-        <qui:link href="{/Top/SimpleSearchWithinLink}" rel="advanced" />
-      </qui:form>
-    </xsl:if>
+    <xsl:choose>
+      <xsl:when test="/Top/Item/ItemHeader/HEADER/@TYPE = 'noocr'"></xsl:when>
+      <xsl:when test="//IncludeItemSearch = 'true'">
+        <qui:form id="item-search" action="{/Top/DlxsGlobals/ScriptName[@application='text']}">
+          <qui:hidden-input name="type" value="simple" />
+          <qui:hidden-input name="rgn" value="full text" />
+          <xsl:apply-templates select="//SearchForm/HiddenVars" />
+          <qui:input name="q1" value="{//Param[@name='q1']}" type="text" style="width: auto; flex-grow: 1;">
+            <qui:label>
+              <xsl:choose>
+                <xsl:when test="/Top/Item/DocEncodingType='serialissue'">
+                  <xsl:value-of select="key('get-lookup','header.str.searchthisissue')"/>
+                </xsl:when>
+                <xsl:otherwise>
+                  <xsl:value-of select="key('get-lookup','header.str.searchthistext')"/>
+                </xsl:otherwise>
+              </xsl:choose>
+            </qui:label>
+          </qui:input>
+          <qui:link href="{/Top/SimpleSearchWithinLink}" rel="advanced" />
+        </qui:form>
+      </xsl:when>
+      <xsl:otherwise />
+    </xsl:choose>
   </xsl:template>
 
   <!-- highlighting -->
