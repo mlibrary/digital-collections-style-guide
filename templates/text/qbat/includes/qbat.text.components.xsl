@@ -330,7 +330,7 @@
     </xsl:variable>
     <div class="pb-1 fullview-thumbnail" data-idno="{$idno}">
       <a href="{@HREF}">
-      <figure data-idno="{@IDNO}">
+      <figure>
           <img
             style="min-width: 100px"
             loading="lazy"
