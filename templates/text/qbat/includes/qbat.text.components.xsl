@@ -330,11 +330,11 @@
     </xsl:variable>
     <div class="pb-1 fullview-thumbnail" data-idno="{$idno}">
       <a href="{@HREF}">
-      <figure>
+      <figure data-idno="{@IDNO}">
           <img
             style="min-width: 100px"
             loading="lazy"
-            src="/cgi/t/text/api/image/{$collid}:{$idno}:{@SEQ}/full/!250,250/0/default.jpg"
+            src="/cgi/t/text/api/image/{$collid}:{@IDNO}:{@SEQ}/full/!250,250/0/default.jpg"
             alt="Scan of {key('get-lookup','headerutils.str.page')} {$pNum}"
           />
         <figcaption>
@@ -384,7 +384,7 @@
           <img
             style="min-width: 100px"
             loading="lazy"
-            src="/cgi/t/text/api/image/{$collid}:{$idno}:{@SEQ}/full/!250,250/0/default.jpg"
+            src="/cgi/t/text/api/image/{$collid}:{@IDNO}:{@SEQ}/full/!250,250/0/default.jpg"
             alt="Scan of {key('get-lookup','headerutils.str.page')} {$pNum}"
           />
           <figcaption>
