@@ -407,6 +407,17 @@ ins[data-function="replace"] {
   }
 }
 
+.figure--inline {
+  background: var(--color-maize-100);
+
+  // &:before {
+  //   content: ' [';
+  // }
+  // &:after {
+  //   content: '] ';
+  // }
+}
+
 .lg {
   margin-left: 1rem;
 }
@@ -493,6 +504,19 @@ ins[data-function="replace"] {
   font-size: 75%;
   vertical-align: top;
   text-decoration: dotted underline;
+}
+
+.segment--decorInit {
+  color: var(--color-indigo-500);
+  padding: 0 .3rem;
+  margin: 0 .3rem 0 0;
+  border: 2px solid;
+  border-radius: 8px;
+  font-family: "IBM Plex Mono", monospace;
+
+  font-size: 4rem;
+  float: left;
+  line-height: 1;  
 }
 
 .gap {

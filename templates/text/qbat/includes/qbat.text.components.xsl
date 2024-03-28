@@ -2309,7 +2309,7 @@
   </xsl:template>
 
   <!-- #################### -->
-  <xsl:template match="tei:SEG">
+  <xsl:template match="tei:SEG" mode="v1">
     <xsl:choose>
       <xsl:when test="@ID">
         <span id="{@ID}">
@@ -2320,6 +2320,23 @@
       	<xsl:apply-templates/>
       </xsl:otherwise>
     </xsl:choose>
+  </xsl:template>
+
+  <xsl:template match="tei:SEG">
+    <span>
+      <xsl:attribute name="class">
+        <xsl:text>segment </xsl:text>
+        <xsl:if test="@REND">
+          <xsl:value-of select="concat('segment--', @REND)" />
+        </xsl:if>
+      </xsl:attribute>
+      <xsl:if test="@ID">
+        <xsl:attribute name="ID">
+          <xsl:value-of select="@ID" />
+        </xsl:attribute>
+      </xsl:if>
+      <xsl:apply-templates />
+    </span>
   </xsl:template>
 
   <xsl:template match="tei:TITLE">

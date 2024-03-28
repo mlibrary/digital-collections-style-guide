@@ -144,6 +144,7 @@
           </xsl:choose>
         </xsl:if>
         <xsl:choose>
+          <xsl:when test="/Top/Panels/div[@data-slot='browse']/@data-mode='standalone'"></xsl:when>
           <xsl:when test="//BrowseFields/Field">
             <xsl:for-each select="//BrowseFields/Field">
               <qui:link href="{Link}" data-rel="browse-items" icon="layers">
