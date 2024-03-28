@@ -59,10 +59,12 @@ window.addEventListener('DOMContentLoaded', (event) => {
     headingSelector: 'h2, h3, h4, h5, a.card[id]',
     // For headings inside relative or absolute positioned containers within content.
     hasInnerContainers: true,
+    ignoreHiddenElements: true,
+
     collapseDepth: 6,
     scrollSmooth: true,
     headingObjectCallback: function(object, el) {
-      console.log("-- tocbot", el, el.children.length);
+      // console.log("-- tocbot", el, el.children.length);
       if ( el.classList.contains('card') ) {
         object.headingLevel = 3;
         object.textContent = el.querySelector('.card__heading').textContent;
