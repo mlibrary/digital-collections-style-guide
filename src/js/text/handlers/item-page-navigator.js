@@ -31,6 +31,25 @@ window.addEventListener('DOMContentLoaded', (event) => {
     el.setAttribute('id', `h${headingIdx}`);
   })
 
+  const _flatten = function(node) {
+    if ( node.nodeType == node.TEXT_NODE ) {
+      return node.nodeValue;
+    } else if ( node.nodeType == node.ELEMENT_NODE ) {
+      if ( node.nodeName == 'BUTTON' ) { return ''; }
+      if ( node.nodeName == 'A' ) { return ''; }
+      if ( node.querySelector('a,button') ) {
+        let tmp = [];
+        node.childNodes.forEach((el) => {
+          let value = _flatten(el);
+          if ( value ) { tmp.push(value); }
+        })
+        return tmp.join(' ');
+      } else {
+        return node.innerText;
+      }
+    }
+  }
+
   tocbot.init({
     // Where to render the table of contents.
     tocSelector: '.js-toc',
@@ -43,9 +62,20 @@ window.addEventListener('DOMContentLoaded', (event) => {
     collapseDepth: 6,
     scrollSmooth: true,
     headingObjectCallback: function(object, el) {
+      console.log("-- tocbot", el, el.children.length);
       if ( el.classList.contains('card') ) {
         object.headingLevel = 3;
         object.textContent = el.querySelector('.card__heading').textContent;
+      } else if ( el.querySelector('a,button') ) {
+        let tmp = [];
+        el.childNodes.forEach((node) => {
+          let value = _flatten(node);
+          if ( value ) {
+            tmp.push(value);
+          }
+          // tmp.push(_flatten(node));
+        })
+        object.textContent = tmp.join(' ');
       }
       return object;
     }
