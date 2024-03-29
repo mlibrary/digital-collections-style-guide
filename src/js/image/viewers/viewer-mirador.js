@@ -88,10 +88,22 @@ window.addEventListener('message', (event) => {
       .then((text) => {
         const newDocument = new DOMParser().parseFromString(text, "text/html");
         const sections = document.querySelectorAll('.main-panel > section');
-        const newSections = newDocument.querySelectorAll('.main-panel > section');
-        for (let i = 0; i < newSections.length; i++) {
-          sections[i].innerHTML = newSections[i].innerHTML;
+        const newSections = Array.from(newDocument.querySelectorAll('.main-panel > section'));
+
+        const parentNode = sections[0].parentNode;
+        let targetEl = sections[0].previousSibling;
+        for(let i = 0; i < sections.length; i++) {
+          sections[i].remove();
         }
+
+        const range = document.createRange();
+        newSections.forEach((section) => {
+          if ( section.querySelector('script') ) {
+            const documentFragment = range.createContextualFragment(section.outerHTML);
+            section = documentFragment.querySelector('section');
+          }
+          targetEl = parentNode.insertBefore(section, targetEl.nextSibling);
+        })
 
         let newTitle = newDocument.querySelector('h1').innerHTML;
         document.querySelector('h1').innerHTML = newTitle;
