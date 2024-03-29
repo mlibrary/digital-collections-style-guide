@@ -8,18 +8,21 @@ a[aria-current="page"] {
 }
 
 .viewer {
-  width: 98vw;
+  width: 96vw;
   // height: calc(99vh + 3.5rem + 8rem);
   // height: calc(99vh + 3.5rem);
-  height: 100dvh;
+  height: 96dvh;
   position: relative;
   border: 0;
   display: block;
-  margin-left: -49vw;
-  margin-right: -49vw;
+  // margin-left: -49vw;
+  // margin-right: -49vw;
+  margin-left: calc(-1vw * (96/2));
+  margin-right: calc(-1vw * (96/2));
   margin-bottom: 1rem;
   left: 50%;
   right: 50%;
+  box-shadow: 0px 26px 10px -3px rgba(0,0,0,0.1);
 }
 
 .viewer[data-mimetype="audio/mpeg"] {

@@ -74,6 +74,7 @@ html[data-highlight-state="off"] .inline-highlight a {
 .pre-line {
   white-space: pre-line;
   line-height: 1.75;
+  max-width: 80ch;
 }
 
 ul.fullview-toc {
