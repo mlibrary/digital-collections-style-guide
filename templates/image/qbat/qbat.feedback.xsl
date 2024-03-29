@@ -183,8 +183,9 @@
   </xsl:template>
 
   <xsl:template match="@to[. = 'content']" mode="message">
-    <p>We welcome your <strong>questions and comments about Digital Collections.</strong> 
-    Thanks for taking the time to write.</p>
+    <p>Do you have <strong>questions about this content?</strong>
+        Need to <strong>report a problem?</strong>
+        Thanks for taking the time to write.</p>
   </xsl:template>
 
   <xsl:template match="@to[. = 'tech']" mode="message">
