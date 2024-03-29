@@ -458,6 +458,6 @@ for items where...</item>
 <lookup id="uplift" xmlns:qui="http://dlxs.org/quombat/ui">
   <item key="uplift.access.allowed"></item>
   <!-- <item key="uplift.access.possible">Access to media is restricted; you may have access if you <qui:login />.</item> -->
-  <item key="uplift.access.possible">Access to media is restricted to the <qui:login>University of Michigan community</qui:login>.</item>
+  <item key="uplift.access.possible">Access to media is restricted to <qui:login>U-M users</qui:login>.</item>
   <item key="uplift.access.restricted">Access to media is restricted.</item>
 </lookup>
