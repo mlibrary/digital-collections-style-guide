@@ -1166,12 +1166,13 @@
               </xsl:choose>
               <xsl:text>. </xsl:text>
             </em>
-            <xsl:text>https://name.umdl.umich.edu/</xsl:text>
-            <xsl:value-of select="substring($collid, 1, 1)" />
+            <xsl:value-of select="//BookmarkableUrl" />
+            <!-- <xsl:text>https://name.umdl.umich.edu/</xsl:text> -->
+            <!-- <xsl:value-of select="substring($collid, 1, 1)" />
             <xsl:text>/</xsl:text>
             <xsl:value-of select="$collid" />
-            <xsl:text>/</xsl:text>
-            <xsl:value-of select="//Param[@name='idno']" />
+            <xsl:text>/</xsl:text> -->
+            <!-- <xsl:value-of select="//Param[@name='idno']" /> -->
             <xsl:text>. </xsl:text>
             <xsl:if test="normalize-space(key('get-lookup', 'uplift.citation.repository'))">
               <xsl:value-of select="key('get-lookup', 'uplift.citation.repository')" />
