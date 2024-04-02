@@ -57,16 +57,20 @@ window.addEventListener('DOMContentLoaded', (event) => {
         return;
       }
 
-      let href = selectedItem.value;
-      if ( href.indexOf(';') > -1 ) {
-        href += ';attachment=1';
-      } else {
-        href += '?attachment=1';
+      let attachmentHref = selectedItem.value.replaceAll(';', '&');
+      // if ( href.indexOf(';') > -1 ) {
+      //   href += ';attachment=1';
+      // } else {
+      //   href += '?attachment=1';
+      // }
+      if ( attachmentHref.indexOf('https://') < 0 ) {
+        attachmentHref = location.protocol + '//' + location.host + attachmentHref;
       }
-      if ( href.indexOf('https://') < 0 ) {
-        href = location.protocol + '//' + location.host + href;
-      }
-      location.href = href;
+
+      let attachmentUrl = new URL(attachmentHref);
+      attachmentUrl.searchParams.set('attachment', 1);
+
+      location.href = attachmentUrl.toString();
 
       window.dispatchEvent(new CustomEvent('dlxs:trackPageView', {
         detail: {
