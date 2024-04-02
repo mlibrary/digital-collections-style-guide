@@ -2390,7 +2390,7 @@
         </xsl:otherwise>
       </xsl:choose>
     </xsl:variable>
-    <div class="flex flex-flow-row gap-1 flex-align-center"
+    <div class="flex flex-flow-row gap-1 flex-align-center pl-1"
       id="fn{$id}">
       <div class="text-bold text-medium footnote-anchor">
         <xsl:choose>
