@@ -67,10 +67,10 @@
       <xsl:variable name="return-to-results-label">
         <xsl:choose>
           <xsl:when test="contains($return-to-results-link, 'page=browse')">
-            Browse Results
+            <xsl:text>Browse Results</xsl:text>
           </xsl:when>
           <xsl:otherwise>
-            Search Results
+            <xsl:text>Search Results</xsl:text>
           </xsl:otherwise>
         </xsl:choose>
       </xsl:variable>

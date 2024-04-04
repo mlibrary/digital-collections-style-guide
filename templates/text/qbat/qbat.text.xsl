@@ -94,6 +94,8 @@
       </div>
     </div>
 
+    <xsl:apply-templates select="//qui:nav[@role='sections']" mode="pagination-footer-link" />
+
   </xsl:template>
 
   <xsl:template name="build-navigation">
@@ -172,8 +174,16 @@
     </dl>
   </xsl:template>
 
+  <xsl:template match="qui:nav[@role='sections']" mode="pagination-footer-link">
+    <xsl:if test="qui:link[@rel='next-section' or @rel='previous-section'][not(@disabled)]">
+      <nav aria-label="Section navigation" class="[ pagination__row ][ flex flex-align-center justify-end sticky-bottom ]" style="padding-bottom: 0">
+        <xsl:apply-templates select="." mode="pagination-link" />
+      </nav>
+    </xsl:if>
+  </xsl:template>
+
   <xsl:template match="qui:nav[@role='sections']" mode="pagination-link">
-    <xsl:if test="qui:link[not(@disabled)]">
+    <xsl:if test="qui:link[@rel='next-section' or @rel='previous-section'][not(@disabled)]">
       <p class="[ pagination ][ nowrap ml-2 ]">
         <xsl:if test="qui:link[@rel='previous-section']">
           <svg
