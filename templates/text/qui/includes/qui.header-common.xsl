@@ -7,12 +7,14 @@
   <xsl:template name="build-header-metadata">
     <xsl:param name="encoding-type" />
     <xsl:param name="item-encoding-level" />
+    <xsl:param name="rend" />
     <xsl:param name="item" select="." />
     <xsl:param name="slot">item</xsl:param>
     
     <qui:metadata slot="{$slot}"
       item-encoding-level="{$item-encoding-level}"
       encoding-type="{$encoding-type}"
+      rend="{$rend}"
       root="{name($item)}">
       <xsl:if test="$item//HEADER[@TYPE='tombstone']">
         <xsl:attribute name="data-tombstone">true</xsl:attribute>
