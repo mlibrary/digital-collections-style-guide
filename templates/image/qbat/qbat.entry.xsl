@@ -240,8 +240,16 @@
   </xsl:template>
 
   <xsl:template match="qui:viewer[@access='restricted']">
-    <m-callout icon="warning" variant="warning">
-      <xsl:apply-templates select="key('get-lookup', 'uplift.access.restricted')" mode="copy-guts" />
+    <xsl:variable name="m_entryauth" select="@m_entryauth" />
+    <m-callout icon="warning" variant="warning" data-entryauth="{$m_entryauth}">
+      <xsl:choose>
+        <xsl:when test="key('get-lookup', concat('uplift.access.restricted.', $m_entryauth))">
+          <xsl:apply-templates select="key('get-lookup', concat('uplift.access.restricted.', $m_entryauth))" mode="copy-guts" />
+        </xsl:when>
+        <xsl:otherwise>
+          <xsl:apply-templates select="key('get-lookup', 'uplift.access.restricted')" mode="copy-guts" />
+        </xsl:otherwise>
+      </xsl:choose>
     </m-callout>
   </xsl:template>
 

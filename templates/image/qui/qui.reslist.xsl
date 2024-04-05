@@ -222,6 +222,7 @@
           <xsl:otherwise>allowed</xsl:otherwise>
         </xsl:choose>
       </xsl:attribute>
+      <xsl:attribute name="m_entryauth"><xsl:value-of select="$authcheck/@m_entryauth" /></xsl:attribute>
       <qui:link rel="result" href="{Url[@name='EntryLink']}" identifier="{.//EntryWindowName}" marker="{@marker}" />
       <xsl:apply-templates select="MediaInfo" mode="iiif-link" />
       <qui:title>

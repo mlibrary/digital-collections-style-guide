@@ -108,7 +108,7 @@
           <qui:viewer access="possible" />
         </xsl:when>
         <xsl:when test="$possible = 'no'">
-          <qui:viewer access="restricted" />
+          <qui:viewer access="restricted" m_entryauth="{//AuthCheck/@m_entryauth}" />
         </xsl:when>
       </xsl:choose>
       <!-- <qui:callout icon="warning" variant="warning" slot="viewer" dismissable="false">
