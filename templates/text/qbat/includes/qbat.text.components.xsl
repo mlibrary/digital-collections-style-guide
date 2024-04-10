@@ -13,7 +13,7 @@
   <xsl:variable name="highlight-seq-first" select="//tei:TEXT//tei:Highlight[1]/@seq" /> -->
 
   <xsl:variable name="highlights"
-    select="//qui:block[@slot='content']/node()[local-name() != 'HEADER']//tei:Highlight" />
+    select="//node()[local-name() != 'HEADER']//tei:Highlight" />
   <xsl:variable name="highlight-seq-last" select="$highlights[last()]/@seq" />
   <xsl:variable name="highlight-seq-first" select="$highlights[1]/@seq" />
 

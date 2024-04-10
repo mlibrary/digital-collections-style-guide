@@ -53,10 +53,6 @@ html[data-highlight-state="off"] .inline-highlight a {
   min-height: 0;
 }
 
-.hilite1 {
-  background-color: #ffff00;
-}
-
 .fullview-main {
   display: flex;
   gap: 1rem;
@@ -669,17 +665,6 @@ html[data-annotations-state="on"] {
   // .orig {
   //   background-color: var(--color-pink-100);
   // }
-}
-
-// highlights
-
-html[data-highlight-state="off"] .hilite1,
-html[data-highlight-state="off"] .hilite2,
-html[data-highlight-state="off"] .hilite3,
-html[data-highlight-state="off"] .hilite4,
-html[data-highlight-state="off"] .hilite5,
-html[data-highlight-state="off"] .hilite6,  {
-  background-color: transparent;
 }
 
 html {

@@ -6,6 +6,7 @@
 @use './record';
 @use './typography';
 @use './text/text';
+@use './text/hilite';
 
 main {
   margin: 0;
@@ -68,6 +69,10 @@ dl.record {
   display: block;
   margin: 0;
   width: 100%;
+}
+
+span.inline-highlight {
+  scroll-margin-top: 2rem;
 }
 
 @media screen and (max-width: 600px) {

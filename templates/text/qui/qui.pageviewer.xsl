@@ -132,6 +132,9 @@
         collid="{$collid}" 
         q1="{//Param[@name='q1']}"
         >
+        <xsl:for-each select="//Param[starts-with(@name, 'q')]">
+          <xsl:attribute name="{@name}"><xsl:value-of select="." /></xsl:attribute>
+        </xsl:for-each>
         <xsl:attribute name="has-ocr"><xsl:value-of select="$has-plain-text" /></xsl:attribute>
         <xsl:if test="//MediaInfo/ViewerMaxSize">
           <xsl:attribute name="viewer-max-width"><xsl:value-of select="//MediaInfo/ViewerMaxSize/@width" /></xsl:attribute>

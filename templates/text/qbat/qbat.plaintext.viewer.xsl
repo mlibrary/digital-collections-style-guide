@@ -46,7 +46,7 @@
         </xsl:if>    
         <section class="pre-line">
           <xsl:apply-templates />
-        </section>    
+        </section>
       </xsl:when>
       <xsl:otherwise>
         <xsl:if test="preceding-sibling::tei:ResultFragment">
@@ -59,11 +59,11 @@
     </xsl:choose>
   </xsl:template>
 
-  <xsl:template match="tei:Highlight">
+  <!-- <xsl:template match="tei:Highlight">
     <mark class="{@class}" id="id{@seq}" data-seq="{@seq}">
       <xsl:apply-templates />
     </mark>
-  </xsl:template>
+  </xsl:template> -->
 
   <xsl:template match="tei:DLPSWRAP[normalize-space(.)]" priority="101">
     <xsl:apply-templates />

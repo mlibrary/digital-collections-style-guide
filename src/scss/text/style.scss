@@ -29,6 +29,7 @@
 @use 'pageviewer';
 @use 'reslist--text';
 @use 'text';
+@use 'hilite';
 
 
 iframe[name="bookbag-sink"] {

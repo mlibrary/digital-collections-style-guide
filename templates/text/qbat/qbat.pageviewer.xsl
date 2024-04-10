@@ -90,10 +90,20 @@
       <h2 id="viewer-heading" class="visually-hidden">Viewer</h2>
       <xsl:variable name="embed-href">
         <xsl:value-of select="$viewer/@embed-href" />
-        <xsl:if test="normalize-space($viewer/@q1)">
+        <xsl:for-each select="$viewer/@*[starts-with(name(.), 'q')]">
+          <xsl:choose>
+            <xsl:when test="position() = 1">
+              <xsl:value-of select="concat('?', name(.), '=', .)" />
+            </xsl:when>
+            <xsl:otherwise>
+              <xsl:value-of select="concat('&amp;', name(.), '=', .)" />
+            </xsl:otherwise>
+          </xsl:choose>
+        </xsl:for-each>
+        <!-- <xsl:if test="normalize-space($viewer/@q1)">
           <xsl:text>?q1=</xsl:text>
           <xsl:value-of select="$viewer/@q1" />
-        </xsl:if>
+        </xsl:if> -->
       </xsl:variable>
       <iframe 
         id="viewer" 
