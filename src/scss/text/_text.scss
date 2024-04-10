@@ -673,7 +673,12 @@ html[data-annotations-state="on"] {
 
 // highlights
 
-html[data-highlight-state="off"] .hilite1 {
+html[data-highlight-state="off"] .hilite1,
+html[data-highlight-state="off"] .hilite2,
+html[data-highlight-state="off"] .hilite3,
+html[data-highlight-state="off"] .hilite4,
+html[data-highlight-state="off"] .hilite5,
+html[data-highlight-state="off"] .hilite6,  {
   background-color: transparent;
 }
 
