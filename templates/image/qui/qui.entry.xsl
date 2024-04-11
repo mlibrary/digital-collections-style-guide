@@ -111,9 +111,6 @@
           <qui:viewer access="restricted" m_entryauth="{//AuthCheck/@m_entryauth}" />
         </xsl:when>
       </xsl:choose>
-      <!-- <qui:callout icon="warning" variant="warning" slot="viewer" dismissable="false">
-        <p>Access to this resource is restricted.</p>
-      </qui:callout> -->
     </xsl:if>
   </xsl:template>
 

@@ -96,7 +96,6 @@
         </qui:footer>
       </qui:body>
       <qui:lookup>
-        <!-- <xsl:apply-templates select="/Top/DlxsGlobals/LangMap//lookup/item" mode="build-lookup" /> -->
         <xsl:for-each select="/Top/DlxsGlobals/LangMap//lookup/item[
           generate-id() = generate-id(key('gui-txt', @key)[1])]">
           <xsl:apply-templates select="." mode="build-lookup" />
@@ -351,8 +350,6 @@
   <xsl:template name="get-view">
     <xsl:value-of select="//Param[@name='view']|//Param[@name='page']" />
   </xsl:template>
-
-  <xsl:template name="describe-restricted-access">restricted</xsl:template>
 
   <xsl:template match="lookup" mode="build-lookup">
     <qui:lookup id="{@id}">
