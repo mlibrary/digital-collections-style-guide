@@ -341,7 +341,7 @@ ins[data-function="replace"] {
   color: var(--color-neutral-400);
 
   &::after {
-    content: ' [supplied by ed.]';
+    content: ' [supplied by ed.] ';
   }
 }
 
@@ -349,12 +349,12 @@ ins[data-function="replace"] {
   padding: 0 0.25rem;
   .name--reg {
     &::before {
-      content: '[';
+      content: ' [';
       font-weight: bold;
       font-size: 1.1rem;
     }
     &::after {
-      content: ']'; 
+      content: '] '; 
       font-weight: bold;
       font-size: 1.1rem;
     }
@@ -539,7 +539,7 @@ ins[data-function="replace"] {
       font-weight: bold;
     }
     &::after {
-      content: ']';
+      content: '] ';
       // color: var(--color-maize-500);
       font-weight: bold;
     }
