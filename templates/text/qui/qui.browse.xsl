@@ -188,7 +188,7 @@
   <xsl:template match="BrowseNav/String">
     <xsl:param name="default-value" />
     <qui:link href="{Link}">
-      <xsl:if test="Value/@selected = 'true'">
+      <xsl:if test="Value/@selected = 'true' or Value = $default-value">
         <xsl:attribute name="data-selected">true</xsl:attribute>
       </xsl:if>
       <qui:label><xsl:value-of select="Value" /></qui:label>
@@ -349,6 +349,16 @@
     <xsl:variable name="identifier" select="translate(Idno, 'ABCDEFGHIJKLMNOPQRSTUVWXYZ','abcdefghijklmnopqrstuvwxyz')" />
 
     <qui:section identifier="{$identifier}" auth-required="{AuthRequired}" encoding-type="{$encoding-type}" encoding-level="{$item-encoding-level}">
+      <xsl:choose>
+        <xsl:when test="HEADER/@TYPE='restricted'">
+          <xsl:attribute name="access">restricted</xsl:attribute>
+        </xsl:when>
+        <xsl:when test="ItemAccessState != 'fullaccessallowed'">
+          <xsl:attribute name="access"><xsl:value-of select="ItemAccessState" /></xsl:attribute>
+        </xsl:when>
+        <xsl:otherwise />
+      </xsl:choose>
+
       <xsl:apply-templates select="Tombstone" />
       <xsl:apply-templates select="DetailHref" />
       <!-- <xsl:apply-templates select="TocHref">
