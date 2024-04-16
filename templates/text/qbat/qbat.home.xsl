@@ -204,7 +204,7 @@
   </xsl:template>
 
   <xsl:template match="qui:header|xhtml:h3" mode="card-title">
-    <h3 class="[ card__heading ]" style="max-width: max(25ch); width: auto;"><xsl:value-of select="." /></h3>
+    <h3 class="[ card__heading ][ js-toc-ignore ]" style="max-width: max(25ch); width: auto;"><xsl:value-of select="." /></h3>
   </xsl:template>
 
   <xsl:template match="qui:body|xhtml:figcaption" mode="card-body">

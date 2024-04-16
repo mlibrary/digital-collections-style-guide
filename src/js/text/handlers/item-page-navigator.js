@@ -56,7 +56,7 @@ window.addEventListener('DOMContentLoaded', (event) => {
     // Where to grab the headings to build the table of contents.
     contentSelector: '.main-panel',
     // Which headings to grab inside of the contentSelector element.
-    headingSelector: 'h2, h3, h4, h5, a.card[id]',
+    headingSelector: 'h2, h3, h4, h5',
     // For headings inside relative or absolute positioned containers within content.
     hasInnerContainers: true,
     ignoreHiddenElements: true,
