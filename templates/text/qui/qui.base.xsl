@@ -400,7 +400,8 @@
   </xsl:template>
 
   <xsl:template match="text()" mode="copy">
-    <xsl:value-of select="normalize-space(.)" />
+    <!-- <xsl:value-of select="normalize-space(.)" /> -->
+    <xsl:copy></xsl:copy>
   </xsl:template>
 
   <xsl:template match="@*|*|text()" mode="copy">

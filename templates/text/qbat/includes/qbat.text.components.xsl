@@ -923,13 +923,13 @@
               <xsl:attribute name="style">
                 <xsl:value-of select="concat('margin-left:',@INDENT,'em')" />
               </xsl:attribute>
-            <xsl:apply-templates />
+              <xsl:apply-templates />
             </xsl:when>
             <xsl:when test="$type='skipline'">
               <br />
-            <xsl:text disable-output-escaping="yes">&amp;nbsp;</xsl:text>
-            <br />
-            <xsl:apply-templates />
+              <xsl:text disable-output-escaping="yes">&amp;nbsp;</xsl:text>
+              <br />
+              <xsl:apply-templates />
             </xsl:when>
             <xsl:otherwise>
               <xsl:apply-templates />
@@ -2172,7 +2172,8 @@
     <xsl:choose>
       <xsl:when test="false() and local-name(preceding-sibling::node()[1]) = 'PTR'" />
       <xsl:otherwise>
-        <xsl:value-of select="."/>
+        <!-- <xsl:value-of select="."/> -->
+        <xsl:copy></xsl:copy>
       </xsl:otherwise>
     </xsl:choose>
   </xsl:template>
