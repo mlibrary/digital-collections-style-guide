@@ -122,6 +122,7 @@
   <xsl:template name="build-fullview-action">
     <xsl:apply-templates select="//qui:link[@role='view-text']" mode="button">
       <xsl:with-param name="icon">article</xsl:with-param>
+      <xsl:with-param name="class">button--primary</xsl:with-param>
     </xsl:apply-templates>
   </xsl:template>
 
@@ -135,7 +136,8 @@
 
   <xsl:template match="qui:link" mode="button">
     <xsl:param name="icon" />
-    <a href="{@href}" class="button button--secondary text--small">
+    <xsl:param name="class">button--secondary</xsl:param>
+    <a href="{@href}" class="button {$class} text--small">
       <xsl:if test="$icon">
         <span class="material-icons" aria-hidden="true">
           <xsl:value-of select="$icon" />
