@@ -243,7 +243,7 @@
             <xsl:when test="//qui:block[@slot='content']//node()[@ID=$id]">
               <xsl:value-of select="concat('#', $id)" />
             </xsl:when>
-            <xsl:otheriwse></xsl:otheriwse>
+            <xsl:otherwise></xsl:otherwise>
           </xsl:choose>
         </xsl:variable>
         <xsl:if test="$target">
