@@ -159,7 +159,12 @@
         <xsl:if test="//NavItem[Name='contents']/Tab='true'">
           <qui:link rel="browse" icon="list" href="{//NavItem[Name='contents']/Link}">Contents</qui:link>
         </xsl:if>
-        <qui:link rel="search" icon="search" href="{//NavItem[Name='search']/Link}">Search</qui:link>
+        <xsl:choose>
+          <xsl:when test="//XcollMode = 'colls' and //TemplateName = 'home'"></xsl:when>
+          <xsl:otherwise>
+            <qui:link rel="search" icon="search" href="{//NavItem[Name='search']/Link}">Search</qui:link>
+          </xsl:otherwise>
+        </xsl:choose>          
         <xsl:if test="//NavItem/Name='bookbag'">
           <qui:link rel="portfolios" icon="bookmark" href="{//NavItem[Name='bookbag']/Link}">Bookbag</qui:link>
         </xsl:if>
