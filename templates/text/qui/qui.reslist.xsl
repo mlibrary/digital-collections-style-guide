@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8" ?>
-<xsl:stylesheet version="1.0" xmlns:xhtml="http://www.w3.org/1999/xhtml" xmlns:xsl="http://www.w3.org/1999/XSL/Transform" xmlns:dlxs="http://dlxs.org" xmlns:qbat="http://dlxs.org/quombat" xmlns:exsl="http://exslt.org/common" xmlns:qui="http://dlxs.org/quombat/ui" extension-element-prefixes="exsl" >
+<xsl:stylesheet version="1.0" xmlns:xhtml="http://www.w3.org/1999/xhtml" xmlns:xsl="http://www.w3.org/1999/XSL/Transform" xmlns:dlxs="http://dlxs.org" xmlns:qbat="http://dlxs.org/quombat" xmlns:exsl="http://exslt.org/common" xmlns:qui="http://dlxs.org/quombat/ui" xmlns:tei="http://www.tei-c.org/ns/1.0" extension-element-prefixes="exsl" >
   <xsl:output method="xml" version="1.0" encoding="utf-8" indent="yes" />
   <xsl:strip-space elements="*"/>
 
@@ -712,10 +712,17 @@
             <xsl:for-each select="ancestor::*[@TYPE]">
               <qui:value>
                 <qui:link rel="{name(.)}" href="{Link}">
-                  <xsl:value-of select="Divhead/HEAD" />
+                  <xsl:choose>
+                    <xsl:when test="normalize-space(Divhead/HEAD)">
+                      <xsl:value-of select="Divhead/HEAD" />
+                    </xsl:when>
+                    <xsl:otherwise>
+                      <xsl:value-of select="@TYPE" />
+                    </xsl:otherwise>
+                  </xsl:choose>
                 </qui:link>  
               </qui:value>
-            </xsl:for-each>      
+            </xsl:for-each>
           </qui:values>
         </qui:field>
         <xsl:apply-templates select="$item-metadata//qui:field|$item-metadata//qui:debug" mode="copy" />
@@ -826,11 +833,20 @@
             <qui:values format="ordered">
               <xsl:for-each select="ancestor::*[@TYPE]">
                 <qui:value>
-                  <qui:link rel="{name(.)}" href="{Link}">
-                    <xsl:value-of select="Divhead/HEAD" />
-                  </qui:link>  
+                  <xsl:apply-templates select="." mode="breadcrumb-link" />
                 </qui:value>
-              </xsl:for-each>      
+              </xsl:for-each>
+              <qui:value>
+                <span>
+                  <xsl:apply-templates select="." mode="breadcrumb-label" />
+                </span>
+                <!-- <xsl:apply-templates select="." mode="breadcrumb-link" /> -->
+              </qui:value>
+              <xsl:for-each select="descendant::*[@TYPE]">
+                <qui:value>
+                  <xsl:apply-templates select="." mode="breadcrumb-link" />
+                </qui:value>
+              </xsl:for-each>
             </qui:values>
           </qui:field>
           <xsl:apply-templates select="$details-metadata//qui:field|$details-metadata//qui:debug" mode="copy" />
@@ -843,11 +859,13 @@
                 <qui:values format="kwic">
                   <xsl:for-each select="descendant-or-self::Kwic|descendant-or-self::SummaryString">
                     <qui:value>
-                      <xsl:apply-templates select="." />
+                      <xsl:text>...</xsl:text>
+                      <xsl:apply-templates select="descendant-or-self::Kwic|descendant-or-self::SummaryString" mode="KwicContent" />
+                      <xsl:text>...</xsl:text>
                     </qui:value>
                   </xsl:for-each>
                 </qui:values>
-              </qui:field>z  
+              </qui:field>
             </qui:section>
           </qui:block>  
         </xsl:if>
@@ -859,6 +877,27 @@
       <xsl:with-param name="item-metadata" select="$item-metadata" />
     </xsl:apply-templates>
   </xsl:template>
+
+  <xsl:template match="*" mode="breadcrumb-link">
+    <qui:link rel="{name(.)}" href="{Link}">
+      <xsl:apply-templates select="." mode="breadcrumb-label" />
+    </qui:link>  
+  </xsl:template>
+
+  <xsl:template match="*" mode="breadcrumb-label">
+    <xsl:choose>
+      <xsl:when test="normalize-space(Divhead/HEAD)">
+        <xsl:value-of select="Divhead/HEAD" />
+      </xsl:when>
+      <xsl:otherwise>
+        <xsl:value-of select="@TYPE" />
+        <xsl:if test="@N">
+          <xsl:text> </xsl:text>
+          <xsl:value-of select="@N" />
+        </xsl:if>
+      </xsl:otherwise>
+    </xsl:choose>
+  </xsl:template>  
 
   <xsl:template match="@*" mode="dlxsify">
     <xsl:copy></xsl:copy>
@@ -1158,5 +1197,12 @@
     <xsl:value-of select="." />
     <xsl:text>"</xsl:text>
   </xsl:template>
+
+  <xsl:template match="Kwic//node()[name()][namespace-uri() = '']" mode="copy" priority="99">
+    <xsl:element name="tei:{name()}">
+      <xsl:apply-templates select="*|@*|text()" mode="copy" />
+    </xsl:element>
+  </xsl:template>
+
   
 </xsl:stylesheet>
