@@ -14,6 +14,53 @@
 
     <xsl:call-template name="build-entry-scripts" />
 
+    <style>
+      .viewer--interaction {
+        position: absolute;
+        top: 0;
+        bottom: 0;
+        left: 0;
+        right: 0;
+        background: black;
+        color: #eee;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        z-index: 10000;
+      
+        div {
+          max-width: 75%;
+        }
+      }
+
+      .metadata--interaction {
+        padding: 1rem;
+        background: black;
+        color: #eee;
+        position: sticky;
+        top: 1rem;
+      }
+
+      div[data-viewer-advisory="true"] {
+        position: relative;
+        dd {
+          display: none;
+        }
+        dd[data-viewer-advisory] {
+          display: list-item;
+          background: black;
+          color: white;
+        }
+      }
+
+      div[data-viewer-advisory="truexx"]::after {
+        content: "Viewer advisory";
+        background: black;
+        color: white;
+        grid-column: 2/3;
+      }
+    </style>
+
   </xsl:template>
 
   <xsl:template name="build-entry-scripts" />
@@ -59,6 +106,19 @@
   <xsl:template name="build-main-stacked">
 
     <xsl:apply-templates select="qui:block[@slot='actions']" />
+
+    <xsl:if test="false()">
+    <div class="metadata--interaction">
+      <p>You are about to access content that may contain sensitive material, including themes of a graphic or mature nature. The University of Michigan is committed to fostering a safe and inclusive environment for all individuals.</p>
+      <p>Please confirm that you wish to proceed with viewing this material.</p>
+      <div class="flex gap-1">
+        <button class="button button--cta" id="action--interaction">
+          <span class="material-icons" aria-hidden="true">done</span>
+          <span>I Acknowledge and Wish to Proceed</span>
+        </button>
+      </div>
+    </div>
+    </xsl:if>
 
     <xsl:apply-templates select="qui:block[@slot='record']" />
 
@@ -191,6 +251,7 @@
     <xsl:variable name="viewer" select="." />
     <xsl:if test="$viewer">
       <h2 id="viewer-heading" class="visually-hidden">Viewer</h2>
+      <div class="viewer">
       <iframe 
         id="viewer" 
         class="[ viewer ]" 
@@ -207,6 +268,19 @@
           </xsl:attribute>
         </xsl:if>
       </iframe>
+        <div class="viewer--interaction">
+          <div class="viewer--message">
+            <p>You are about to access content that may contain sensitive material, including themes of a graphic or mature nature. The University of Michigan is committed to fostering a safe and inclusive environment for all individuals.</p>
+            <p>Please confirm that you wish to proceed with viewing this material.</p>
+            <div class="flex gap-1">
+              <button class="button button--cta" id="action--interaction">
+                <span class="material-icons" aria-hidden="true">done</span>
+                <span>I Acknowledge and Wish to Proceed</span>
+              </button>
+            </div>
+          </div>          
+        </div>
+      </div>
     </xsl:if>
   </xsl:template>
 
@@ -833,6 +907,31 @@
         <xsl:apply-templates mode="copy" />
       </xsl:for-each>
     </m-callout>
+  </xsl:template>
+
+  <xsl:template match="qui:field[@key='marc700']|qui:field[@key='marc590']" priority="101">
+    <div data-key="{@key}" data-viewer-advisory="true">
+      <dt data-key="{@key}">
+        <xsl:apply-templates select="@*[starts-with(name(), 'data-')]" mode="copy" />
+        <xsl:apply-templates select="qui:label" mode="copy-guts" />
+      </dt>
+      <xsl:for-each select="qui:values/qui:value">
+        <dd>
+          <xsl:apply-templates select="." mode="copy-guts" />
+        </dd>
+      </xsl:for-each>
+      <dd data-viewer-advisory="true">
+        <!-- <p>Viewer discrestion is advised.</p> -->
+        <!-- <p>You are about to access content that may contain sensitive material, including themes of a graphic or mature nature. The University of Michigan is committed to fostering a safe and inclusive environment for all individuals.</p> -->
+        <p>Please confirm that you wish to proceed with viewing this material.</p>
+        <div class="flex gap-1">
+          <button class="button button--cta" id="action--interaction">
+            <span class="material-icons" aria-hidden="true">done</span>
+            <span>I Acknowledge and Wish to Proceed</span>
+          </button>
+        </div>  
+      </dd>
+    </div>
   </xsl:template>
 
 </xsl:stylesheet>
