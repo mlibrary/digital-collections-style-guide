@@ -1,47 +1,48 @@
+
 // --------------------------------------------------
 //
 // # Tables
 // 
 // --------------------------------------------------
 
-table {
+table:not([class]) {
   width: 100% !important;
   border: 0 !important; 
   border-collapse: collapse !important;
-}
 
-thead {
-  border-color: transparent;
-}
+    thead {
+    border-color: transparent;
+    }
 
-tr > * {
-  border-bottom: solid 1px var(--color-neutral-100);
-  padding: 1rem 0;
-  vertical-align: top;
-}
+    tr > * {
+    border-bottom: solid 1px var(--color-neutral-100);
+    padding: 1rem 0;
+    vertical-align: top;
+    }
 
-tr > *:not(:last-child) {
-  padding-right: 2rem;
-}
+    tr > *:not(:last-child) {
+    padding-right: 2rem;
+    }
 
-td, th {
-  padding: 1rem;
-  padding-left: 0;
-  vertical-align: top;
-}
+    td, th {
+    padding: 1rem;
+    padding-left: 0;
+    vertical-align: top;
+    }
 
-th {
-  text-align: left;
-  border-bottom: solid 2px var(--color-maize-400);
-  font-size: .875rem;
-  font-weight: 800;
-  letter-spacing: 1.25px;
-  text-transform: uppercase;
-  vertical-align: top;
-}
+    th {
+    text-align: left;
+    border-bottom: solid 2px var(--color-maize-400);
+    font-size: .875rem;
+    font-weight: 800;
+    letter-spacing: 1.25px;
+    text-transform: uppercase;
+    vertical-align: top;
+    }
 
-th:not([scope^='row']) {
-  border-bottom: solid var(--space-xxx-small) var(--color-maize-400);
+    th:not([scope^='row']) {
+    border-bottom: solid var(--space-xxx-small) var(--color-maize-400);
+    }  
 }
 
 .responsive-table table{
@@ -154,4 +155,154 @@ th:not([scope^='row']) {
     .responsive-table table tbody tr span[aria-hidden=true]{
         display:none
     }
+}
+
+/* https://unpkg.com/@umich-lib/web@1/umich-lib.css */
+
+table.m-table {
+  border-collapse: collapse;
+  border-spacing: 0;
+  width: 100%;
+}
+.m-table caption,
+.m-table th {
+  text-align: left;
+}
+.m-table caption {
+  color: var(--color-neutral-300);
+}
+.m-table tr > * {
+  border-bottom: solid 1px var(--color-neutral-100);
+  padding: var(--space-medium) 0;
+  vertical-align: top;
+}
+.m-table tr > *:not(:last-child) {
+  padding-right: var(--space-x-large);
+}
+.m-table th {
+  font-size: var(--text-xxx-small);
+  font-weight: var(--extrabold);
+  letter-spacing: 1.25px;
+  text-transform: uppercase;
+  vertical-align: middle;
+}
+.m-table th:not([scope^='row']) {
+  border-bottom: solid var(--space-xxx-small) var(--color-maize-400);
+}
+.m-table tr > *[data-th]:before {
+  content: attr(data-th) ':\00a0';
+  display: none;
+}
+.m-table tr > td[data-th]:before {
+  font-weight: var(--semibold);
+}
+@media only screen and (max-width: 1200px) {
+  .m-table--responsive-large thead {
+    position: absolute !important;
+    height: 1px;
+    width: 1px;
+    overflow: hidden;
+    clip: rect(1px 1px 1px 1px);
+    clip: rect(1px, 1px, 1px, 1px);
+  }
+  .m-table--responsive-large tr > * {
+    display: block;
+  }
+  .m-table--responsive-large tr > *:not(:last-child) {
+    border-bottom: 0;
+    padding-bottom: 0;
+    padding-right: 0;
+  }
+  .m-table--responsive-large tr > *[data-th]:not(th) + *[data-th] {
+    padding-top: 0;
+  }
+  .m-table--responsive-large tr > *[data-th]:before {
+    display: inline;
+  }
+}
+@media only screen and (max-width: 920px) {
+  .m-table--responsive-medium thead {
+    position: absolute !important;
+    height: 1px;
+    width: 1px;
+    overflow: hidden;
+    clip: rect(1px 1px 1px 1px);
+    clip: rect(1px, 1px, 1px, 1px);
+  }
+  .m-table--responsive-medium tr > * {
+    display: block;
+  }
+  .m-table--responsive-medium tr > *:not(:last-child) {
+    border-bottom: 0;
+    padding-bottom: 0;
+    padding-right: 0;
+  }
+  .m-table--responsive-medium tr > *[data-th]:not(th) + *[data-th] {
+    padding-top: 0;
+  }
+  .m-table--responsive-medium tr > *[data-th]:before {
+    display: inline;
+  }
+}
+@media only screen and (max-width: 720px) {
+  .m-table--responsive-small thead {
+    position: absolute !important;
+    height: 1px;
+    width: 1px;
+    overflow: hidden;
+    clip: rect(1px 1px 1px 1px);
+    clip: rect(1px, 1px, 1px, 1px);
+  }
+  .m-table--responsive-small tr > * {
+    display: block;
+  }
+  .m-table--responsive-small tr > *:not(:last-child) {
+    border-bottom: 0;
+    padding-bottom: 0;
+    padding-right: 0;
+  }
+  .m-table--responsive-small tr > *[data-th]:not(th) + *[data-th] {
+    padding-top: 0;
+  }
+  .m-table--responsive-small tr > *[data-th]:before {
+    display: inline;
+  }
+}
+.m-table--responsive thead {
+  position: absolute !important;
+  height: 1px;
+  width: 1px;
+  overflow: hidden;
+  clip: rect(1px 1px 1px 1px);
+  /* IE6, IE7 */
+  clip: rect(1px, 1px, 1px, 1px);
+}
+.m-table--responsive tr > * {
+  display: block;
+}
+.m-table--responsive tr > *:not(:last-child) {
+  border-bottom: 0;
+  padding-bottom: 0;
+  padding-right: 0;
+}
+.m-table--responsive tr > *[data-header]:not(th) + *[data-header] {
+  padding-top: 0;
+}
+.m-table--responsive tr > *[data-header]:before {
+  content: attr(data-header) ':\00a0';
+}
+.m-table--responsive tr > td[data-header]:before {
+  font-weight: var(--semibold);
+}
+
+.m-table--striped > tbody > tr:nth-of-type(odd) > * {
+  background-color: rgba( 0,0,0 , 0.025);
+}
+
+.m-table--striped tr > *:first-child {
+    padding-left: var(--space-medium);
+}
+
+.m-table--striped tr > *:last-child {
+    padding-right: var(--space-medium);
 }

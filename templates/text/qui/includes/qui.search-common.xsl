@@ -183,9 +183,9 @@
   <xsl:template match="GenreSelect">
     <qui:fieldset id="genre-fieldset" slot="restriction">
       <qui:legend><xsl:value-of select="key('get-lookup','searchforms.str.19')" /></qui:legend>
-      <qui:select name="{GenreSelect/Name}">
-        <xsl:apply-templates select="GenreSelect/Option">
-          <xsl:with-param name="default" select="GenreSelect/Default" />
+      <qui:select name="{Name}">
+        <xsl:apply-templates select="Option">
+          <xsl:with-param name="default" select="Default" />
         </xsl:apply-templates>
       </qui:select>
     </qui:fieldset>
@@ -194,9 +194,9 @@
   <xsl:template match="GenderSelect">
     <qui:fieldset id="genre-fieldset" slot="restriction">
       <qui:legend><xsl:value-of select="key('get-lookup','searchforms.str.20')" /></qui:legend>
-      <qui:select name="{GenderSelect/Name}">
-        <xsl:apply-templates select="GenderSelect/Option">
-          <xsl:with-param name="default" select="GenderSelect/Default" />
+      <qui:select name="{Name}">
+        <xsl:apply-templates select="Option">
+          <xsl:with-param name="default" select="Default" />
         </xsl:apply-templates>
       </qui:select>
     </qui:fieldset>
@@ -205,9 +205,9 @@
   <xsl:template match="PeriodSelect">
     <qui:fieldset id="genre-fieldset" slot="restriction">
       <qui:legend><xsl:value-of select="key('get-lookup','searchforms.str.21')" /></qui:legend>
-      <qui:select name="{PeriodSelect/Name}">
-        <xsl:apply-templates select="PeriodSelect/Option">
-          <xsl:with-param name="default" select="PeriodSelect/Default" />
+      <qui:select name="{Name}">
+        <xsl:apply-templates select="Option">
+          <xsl:with-param name="default" select="Default" />
         </xsl:apply-templates>
       </qui:select>
     </qui:fieldset>

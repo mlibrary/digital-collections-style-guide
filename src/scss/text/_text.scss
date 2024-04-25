@@ -55,7 +55,7 @@ html[data-highlight-state="off"] .inline-highlight a {
 
 .fullview-main {
   display: flex;
-  gap: 1rem;
+  gap: 2rem;
   flex-direction: row;
   flex-wrap: nowrap;
   margin-left: 1rem;
@@ -64,6 +64,10 @@ html[data-highlight-state="off"] .inline-highlight a {
 
   & .inner {
     width: 100%;
+  }
+
+  ul.list-bulleted {
+    padding-left: 1rem;
   }
 }
 
@@ -79,22 +83,26 @@ ul.fullview-toc {
 }
 
 .fullview-thumbnail, .fullview-blank {
-  flex-basis: 350px;
+  flex-basis: min-content;
   flex-shrink: 0;
 }
 
 .fullview-thumbnail > a {
   display: block;
+  position: sticky;
+  top: 1rem;
 }
 
 .fullview-thumbnail figure {
-  position: sticky;
-  top: 1rem;
   display: flex;
   flex-direction: column;
   align-items: center;
   gap: 0.5rem;
   margin-bottom: 1rem;
+
+  span.button {
+    white-space: nowrap;
+  }
 }
 
 .fullview-thumbnail img {
@@ -372,6 +380,7 @@ ins[data-function="replace"] {
   flex-direction: column;
   align-items: center;
   gap: 0.5rem;
+  margin: 0.25rem;
 }
 
 .fullview-main figure img {
@@ -752,5 +761,12 @@ html {
   100% {
     // background: transparent;
     box-shadow: none;
+  }
+}
+
+.wrap-continuation {
+  margin-bottom: 0;
+  &::marker {
+    font-size: 0;
   }
 }

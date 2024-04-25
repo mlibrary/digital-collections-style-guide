@@ -338,7 +338,7 @@
             alt="Scan of {key('get-lookup','headerutils.str.page')} {$pNum}"
           />
         <figcaption>
-          <span href="{@HREF}" class="button button--ghost button--small">
+          <span data-href="{@HREF}" class="button button--ghost button--small flex align-items-center">
             <xsl:text>View </xsl:text>
             <xsl:text> </xsl:text>
               <xsl:value-of select="key('get-lookup','headerutils.str.page')" />
@@ -388,7 +388,7 @@
             alt="Scan of {key('get-lookup','headerutils.str.page')} {$pNum}"
           />
           <figcaption>
-            <span href="{@HREF}" class="button button--ghost button--small">
+            <span data-href="{@HREF}" class="button button--ghost button--small flex-center">
               <xsl:text>View </xsl:text>
               <xsl:text> </xsl:text>
               <xsl:value-of select="key('get-lookup','headerutils.str.page')" />
@@ -965,6 +965,30 @@
 
   <!-- #################### -->
   <xsl:template match="tei:TABLE">
+    <table class="m-table m-table--responsive-small m-table--striped text-xxx-small">
+      <xsl:copy-of select="@*" />
+      <xsl:if test="@ID">
+        <xsl:attribute name="id"><xsl:value-of select="@ID" /></xsl:attribute>
+      </xsl:if>
+      <xsl:if test="false()">
+        <xsl:if test="not(@CLASS)">
+          <!-- distinguish as source xml table (vs. an html table) -->
+          <xsl:attribute name="class">
+            <xsl:text>xmltable</xsl:text>
+            <!-- allow for REND styles to be applied -->
+            <xsl:if test="@REND!=''">
+              <xsl:value-of select="concat('-rend-', @REND)" />
+            </xsl:if>
+          </xsl:attribute>
+        </xsl:if>  
+      </xsl:if>
+      <xsl:apply-templates select="./tei:CAPTION" />
+      <xsl:apply-templates select="*[not(local-name()='CAPTION')]" />
+    </table>
+    <!-- table caption follows the table -->
+  </xsl:template>
+
+  <xsl:template match="tei:TABLE" mode="v1">
     <div class="responsive-table">
       <table>
         <xsl:copy-of select="@*" />
@@ -1016,6 +1040,12 @@
   </xsl:template>
 
   <!-- #################### -->
+  <!-- <xsl:template match="tei:ROW[1]">
+    <thead>
+
+    </thead>
+  </xsl:template> -->
+
   <xsl:template match="tei:ROW">
     <tr>
       <xsl:if test="not(@CLASS)">
@@ -1046,6 +1076,10 @@
         <xsl:attribute name="id">
           <xsl:value-of select="@ID" />
         </xsl:attribute>
+      </xsl:if>
+      <xsl:if test="normalize-space(text()) = ''">
+        <xsl:attribute name="class">wrap-continuation</xsl:attribute>
+        <span class="visually-hidden">...</span>
       </xsl:if>
       <xsl:apply-templates />
     </li>
