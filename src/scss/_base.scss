@@ -390,3 +390,13 @@ m-website-header nav a .material-icons {
   gap: 0.25rem;
 }
 
+button.nav[aria-expanded]::after {
+    font-family: "Material Icons";
+    font-size: 2.5rem;
+    content: "\e5d2";
+    color: var(--color-neutral-400);
+}
+
+button.nav[aria-expanded="true"]::after {
+  content: "\e5cd";
+}
