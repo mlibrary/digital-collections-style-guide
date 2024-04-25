@@ -1614,6 +1614,19 @@
 
 
   <!-- #################### -->
+  <xsl:template match="tei:FIGURE[@FIGTYPE='INLINE'][not(@HREF_1)]" priority="101">
+    <div class="figure--inline">
+      <div class="figdesc--inline">
+        <!-- is the figure really missing?-->
+        <xsl:value-of select="key('get-lookup', 'text.components.str.5')" />
+        <xsl:text> </xsl:text>
+        <xsl:apply-templates select="tei:FIGDESC" />
+      </div>
+      <xsl:apply-templates select="*[not(local-name()='FIGDESC')]" />
+    </div>
+  </xsl:template>
+
+
   <xsl:template match="tei:FIGURE">
     <!-- attributes:ID,ENTITY[FIGTYPE=INLINE|tei:THUMB, HREF_1,HREF_2] -->
 

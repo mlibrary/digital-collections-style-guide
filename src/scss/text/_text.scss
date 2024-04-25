@@ -414,7 +414,12 @@ ins[data-function="replace"] {
 }
 
 .figure--inline {
-  background: var(--color-maize-100);
+  .figdesc--inline {
+    background: var(--color-maize-100);
+    font-weight: bold;
+    display: inline-block;
+    padding: 0.25rem;
+  }
 
   // &:before {
   //   content: ' [';
