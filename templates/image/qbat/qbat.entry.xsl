@@ -201,9 +201,9 @@
         data-istruct_mt="{$viewer/@istruct_mt}">
         <xsl:if test="$viewer/@viewer-max-height">
           <xsl:attribute name="style">
-            <xsl:text>height: </xsl:text>
+            <xsl:text>height: calc(</xsl:text>
             <xsl:value-of select="$viewer/@viewer-max-height" />
-            <xsl:text>px</xsl:text>
+            <xsl:text>* 1.5px);</xsl:text>
           </xsl:attribute>
         </xsl:if>
       </iframe>
