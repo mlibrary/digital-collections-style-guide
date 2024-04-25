@@ -923,13 +923,22 @@
       <dd data-viewer-advisory="true">
         <!-- <p>Viewer discrestion is advised.</p> -->
         <!-- <p>You are about to access content that may contain sensitive material, including themes of a graphic or mature nature. The University of Michigan is committed to fostering a safe and inclusive environment for all individuals.</p> -->
-        <p>Please confirm that you wish to proceed with viewing this material.</p>
-        <div class="flex gap-1">
-          <button class="button button--cta" id="action--interaction">
-            <span class="material-icons" aria-hidden="true">done</span>
-            <span>I Acknowledge and Wish to Proceed</span>
-          </button>
-        </div>  
+        <div class="flex align-items-top gap-1">
+          <div>
+            <span class="material-icons" aria-hidden="true" style="color: var(--color-maize-400);">warning</span>
+            <!-- <span class="visually-hidden">Warning</span> -->
+          </div>
+          <div>
+            <p class="mt-0"><strong>Warning</strong></p>
+            <p>Please confirm that you wish to proceed with viewing this material.</p>
+            <div class="flex gap-1">
+              <button class="button button--cta" id="action--interaction">
+                <span class="material-icons" aria-hidden="true">done</span>
+                <span>I Acknowledge and Wish to Proceed</span>
+              </button>
+            </div>      
+          </div>
+        </div>
       </dd>
     </div>
   </xsl:template>
