@@ -471,6 +471,13 @@
 
   <xsl:template match="tei:PB" />
 
+  <xsl:template match="tei:NOTE//tei:PB" priority="101">
+    <xsl:apply-templates select="." mode="build-page-link">
+      <xsl:with-param name="idno" select="@IDNO" />
+      <xsl:with-param name="base" select="..//*[@NODE]/@NODE" />
+    </xsl:apply-templates>
+  </xsl:template>
+
   <!-- #################### -->
   <xsl:template match="tei:EPB" />
 
