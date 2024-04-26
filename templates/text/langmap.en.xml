@@ -77,8 +77,8 @@
     <Item key="footer.str.reprintinfo">Reprint information for this collection</Item>
   </Lookup>
   <Lookup id="header">
-    <Item key="header.str.contents.old">Contents</Item>
-    <Item key="header.str.contents">Table of Contents</Item>
+    <Item key="header.str.contents">Contents</Item>
+    <Item key="header.str.contents.mm">Table of Contents</Item>
     <Item key="header.str.viewentiretext">View entire text</Item>
     <Item key="header.str.fullaccess">For full access to this item, please log in.</Item>
     <Item key="header.str.login">Login </Item>

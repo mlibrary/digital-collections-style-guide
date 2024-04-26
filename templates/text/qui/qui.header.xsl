@@ -167,18 +167,14 @@
         <xsl:when test="$do-build-link = 'false' or $non-linked-div = 'true'">
           <qui:span>
             <qui:span class="article-title">
-              <xsl:call-template name="build-outline-item-title" />
+              <!-- <xsl:call-template name="build-outline-item-title" /> -->
+              <xsl:apply-templates select="." mode="outline-item-title" />
             </qui:span>
             <xsl:call-template name="build-outline-item-details" />
           </qui:span>
         </xsl:when>
         <xsl:otherwise>
-          <qui:link href="{Link}" class="article-link">
-            <qui:span class="article-title">
-              <xsl:call-template name="build-outline-item-title" />
-            </qui:span>
-            <xsl:call-template name="build-outline-item-details" />  
-          </qui:link>
+          <xsl:apply-templates select="." mode="outline-item-link" />
         </xsl:otherwise>
       </xsl:choose>
       <xsl:if test="DIV2|DIV3|DIV4|DIV5|DIV6|DIV7|DIV8|DIV9|DIV10">
@@ -189,12 +185,22 @@
     </qui:li>
   </xsl:template>
 
+  <xsl:template match="*" mode="outline-item-link">
+    <qui:link href="{Link}" class="article-link">
+      <qui:span class="article-title">
+        <!-- <xsl:call-template name="build-outline-item-title" /> -->
+        <xsl:apply-templates select="." mode="outline-item-title" />
+      </qui:span>
+      <xsl:call-template name="build-outline-item-details" /> 
+    </qui:link>
+  </xsl:template>
+
   <xsl:template match="Divhead/HEAD/NOTE1|Divhead/HEAD/NOTE2" priority="101" mode="copy" />
 
-  <xsl:template name="build-outline-item-title">
+  <xsl:template name="build-outline-item-title" match="DIV1" mode="outline-item-title">
     <xsl:choose>
       <xsl:when test="Divhead/HEAD">
-        <xsl:apply-templates select="Divhead/HEAD" mode="copy" />
+        <xsl:apply-templates select="Divhead/HEAD" mode="copy-guts" />
       </xsl:when>
       <xsl:when test="Divhead/BIBL/TITLE">
         <xsl:for-each select="Divhead/BIBL/TITLE[not(@TYPE='sort')]">

@@ -81,7 +81,9 @@
   </xsl:template>
 
   <xsl:template name="build-contents-list">
-    <h2 class="subtle-heading">Contents</h2>
+    <h2 class="subtle-heading">
+      <xsl:value-of select="key('get-lookup', 'header.str.contents')" />
+    </h2>
     <xsl:apply-templates select="//qui:block[@slot='contents']/qui:ul" />
   </xsl:template>
 
