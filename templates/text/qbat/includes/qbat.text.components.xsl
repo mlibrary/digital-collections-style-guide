@@ -22,7 +22,7 @@
   <xsl:variable name="referrerhref">null</xsl:variable>
 
   <xsl:template match="tei:DLPSWRAP[.//tei:PB or normalize-space(.)]">
-    <xsl:variable name="pb" select=".//tei:PB" />
+    <xsl:variable name="pb" select=".//tei:PB[1]" />
     <xsl:variable name="idno">
       <xsl:choose>
         <xsl:when test="$pb/@ID">
@@ -59,15 +59,15 @@
         </xsl:otherwise>
       </xsl:choose>
     </xsl:variable>
-    <article id="{$id}-{$seq}-{position()}-article" class="fullview-page" data-count="{$highlights[1]/@seq}" data-idno="{$idno}">      
-      <xsl:apply-templates select="$pb" mode="build-p">
+    <article id="{$id}-{$seq}-{position()}-article" class="fullview-page" data-count="{$highlights[1]/@seq}" data-idno="{$idno}">
+      <xsl:apply-templates select="$pb[1]" mode="build-p">
         <xsl:with-param name="base" select="$id" />
         <xsl:with-param name="idno" select="$idno" />
       </xsl:apply-templates>
-      <div class="fullview-main">
+      <div class="fullview-main" data-count-pb="{count($pb)}">
         <xsl:choose>
-          <xsl:when test="$pb/@HREF">
-            <xsl:apply-templates select="$pb" mode="build-page-link">
+          <xsl:when test="$pb[1]/@HREF">
+            <xsl:apply-templates select="$pb[1]" mode="build-page-link">
               <!-- <xsl:with-param name="base" select="parent::*/@ID" /> -->
               <xsl:with-param name="base" select="$id" />
               <xsl:with-param name="idno" select="$idno" />
@@ -409,6 +409,7 @@
 
   <xsl:template match="tei:P/tei:PB|tei:PB" mode="build-p">
     <xsl:param name="base" />
+    <xsl:param name="idno" />
     <xsl:variable name="pNum">
       <xsl:choose>
         <xsl:when test="@DISPLAYN[string-length()&gt;=1]">
@@ -437,7 +438,7 @@
     </xsl:variable>
     <h3 
       class="flex align-items-center gap-0_5"
-      data-heading-label="{$heading}" data-p-num="{$pNum}">
+      data-heading-label="{$heading}" data-p-num="{$pNum}" data-base="{$base}" data-idno="{$idno}">
       <xsl:attribute name="data-wut">
         <xsl:choose>
           <xsl:when test="@DISPLAYN[string-length()&gt;=1]">
@@ -2438,9 +2439,9 @@
         </xsl:otherwise>
       </xsl:choose>
     </xsl:variable>
-    <div class="flex flex-flow-row gap-1 flex-align-center pl-1"
+    <div class="flex flex-flow-row gap-1 flex-align-start pl-1"
       id="fn{$id}">
-      <div class="text-bold text-medium footnote-anchor">
+      <div class="text-bold text-medium footnote-anchor mt-1" style="position: sticky; top: 1rem;">
         <xsl:choose>
           <xsl:when test="$N != '*'">
             <xsl:value-of select="$N" />

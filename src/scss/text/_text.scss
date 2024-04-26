@@ -163,6 +163,12 @@ ul.fullview-toc {
   font-size: 1.5rem;
 }
 
+.footnote-anchor {
+  align-self: flex-start;
+  position: sticky;
+  top: 1rem;
+}
+
 .footnote-anchor .bi-x-diamond-fill {
   height: 1.5rem;
   width: 1.5rem;
