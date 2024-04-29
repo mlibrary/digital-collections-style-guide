@@ -666,7 +666,7 @@
     <xsl:param name="details" />
     <xsl:param name="layout" />
 
-    <xsl:apply-templates select="$details//ScopintPage|$details//*[@NODE][Kwic]" mode="section">
+    <xsl:apply-templates select="$details//ScopingPage|$details//*[@NODE][Kwic]" mode="section">
       <xsl:with-param name="identifier" select="$identifier" />
       <xsl:with-param name="item-metadata" select="$item-metadata" />
       <xsl:with-param name="item-encoding-level" select="$item-encoding-level" />
