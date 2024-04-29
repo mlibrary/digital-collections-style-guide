@@ -99,6 +99,7 @@
           <xsl:attribute name="viewer-max-width"><xsl:value-of select="//MediaInfo/ViewerMaxSize/@width" /></xsl:attribute>
           <xsl:attribute name="viewer-max-height"><xsl:value-of select="//MediaInfo/ViewerMaxSize/@height" /></xsl:attribute>
         </xsl:if>
+        <xsl:apply-templates select="//MediaInfo/AuthCheck/@viewer-advisory" mode="copy" />
       </qui:viewer>
     </xsl:if>
     <xsl:if test="//MediaInfo/istruct_ms = 'P' and //MediaInfo/AuthCheck/@allowed = 'no'">

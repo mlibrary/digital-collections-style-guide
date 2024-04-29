@@ -38,6 +38,22 @@
       <div class="main-panel">
         <xsl:call-template name="build-search-form" />
         <xsl:call-template name="build-results-summary-sort" />
+
+        <xsl:if test="//qui:block[@slot='results']//qui:section//qui:link[@type='warning']">
+          <div class="viewer-advisory-message mb-1">
+            <div class="flex align-items-top gap-1">
+              <div>
+                <span class="material-icons" aria-hidden="true" style="color: var(--color-maize-400);">warning</span>
+              </div>
+              <div>
+                <p class="mt-0"><strong>Warning</strong></p>
+                <p>These results include content that may contain sensitive material. 
+                  You will have the option of confirming that you wish to view the material.</p>
+              </div>
+            </div>
+          </div>
+        </xsl:if>
+
         <xsl:if test="$has-results">
           <xsl:call-template name="build-portfolio-actions" />
         </xsl:if>
@@ -277,6 +293,9 @@
         </xsl:when>
         <xsl:otherwise>
           <div class="[ results-list__blank ]" aria-hidden="true">
+            <xsl:if test="qui:link[@rel='icon']/@type='warning'">
+              <xsl:attribute name="style">background: black; color: var(--color-maize-300); opacity: 1.0 !important;</xsl:attribute>
+            </xsl:if>
             <xsl:attribute name="data-type">
               <xsl:choose>
                 <xsl:when test="qui:link[@rel='icon']/@type='audio'">
@@ -290,6 +309,9 @@
                 </xsl:when>
                 <xsl:when test="qui:link[@rel='icon']/@type='restricted'">
                   <span>lock</span>
+                </xsl:when>
+                <xsl:when test="qui:link[@rel='icon']/@type='warning'">
+                  <span>warning</span>
                 </xsl:when>
                 <xsl:otherwise>blank</xsl:otherwise>
               </xsl:choose>

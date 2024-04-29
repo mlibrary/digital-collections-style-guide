@@ -224,13 +224,15 @@
             </xsl:attribute>
           </xsl:if>
         </iframe>
-        <div class="viewer--viewer-advisory" data-viewer-advisory="true">
-          <div class="viewer-advisory-message">
-            <xsl:call-template name="build-viewer-advisory-message">
-              <xsl:with-param name="mode">verbose</xsl:with-param>
-            </xsl:call-template>  
+        <xsl:if test="$viewer/@viewer-advisory = 'true'">
+          <div class="viewer--viewer-advisory" data-viewer-advisory="true">
+            <div class="viewer-advisory-message">
+              <xsl:call-template name="build-viewer-advisory-message">
+                <xsl:with-param name="mode">verbose</xsl:with-param>
+              </xsl:call-template>  
+            </div>
           </div>
-        </div>
+        </xsl:if>
       </div>
     </xsl:if>
   </xsl:template>
@@ -860,7 +862,7 @@
     </m-callout>
   </xsl:template>
 
-  <xsl:template match="qui:field[@key='marc700']|qui:field[@key='marc590']" priority="101">
+  <xsl:template match="qui:field[@viewer-advisory='true']" priority="101">
     <div data-key="{@key}" data-viewer-advisory="true">
       <dt data-key="{@key}">
         <xsl:apply-templates select="@*[starts-with(name(), 'data-')]" mode="copy" />
@@ -872,8 +874,6 @@
         </dd>
       </xsl:for-each>
       <dd class="viewer-advisory-message">
-        <!-- <p>Viewer discrestion is advised.</p> -->
-        <!-- <p>You are about to access content that may contain sensitive material, including themes of a graphic or mature nature. The University of Michigan is committed to fostering a safe and inclusive environment for all individuals.</p> -->
         <xsl:call-template name="build-viewer-advisory-message" />
       </dd>
     </div>

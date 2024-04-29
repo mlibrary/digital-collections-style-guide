@@ -355,6 +355,10 @@
     </xsl:if>
   </xsl:template>
 
+  <xsl:template match="MediaInfo[AuthCheck/@viewer-advisory='true']" mode="iiif-link" priority="250">
+    <qui:link rel="icon" type="warning" />
+  </xsl:template>
+
   <xsl:template match="MediaInfo[Type='image']" mode="iiif-link">
     <xsl:variable name="collid" select="ic_collid" />
     <xsl:variable name="m_id" select="m_id" />

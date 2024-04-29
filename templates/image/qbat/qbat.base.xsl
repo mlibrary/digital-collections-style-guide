@@ -690,6 +690,9 @@
 
   <xsl:template match="qui:field">
     <div data-key="{@key}">
+      <xsl:if test="@viewer-advisory='true'">
+        <xsl:attribute name="data-viewer-advisory">true</xsl:attribute>
+      </xsl:if>
       <dt data-key="{@key}">
         <xsl:apply-templates select="@*[starts-with(name(), 'data-')]" mode="copy" />
         <xsl:apply-templates select="qui:label" mode="copy-guts" />
