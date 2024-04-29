@@ -197,7 +197,7 @@
 
   <xsl:template match="Divhead/HEAD/NOTE1|Divhead/HEAD/NOTE2" priority="101" mode="copy" />
 
-  <xsl:template name="build-outline-item-title" match="DIV1" mode="outline-item-title">
+  <xsl:template name="build-outline-item-title" match="*" mode="outline-item-title">
     <xsl:choose>
       <xsl:when test="Divhead/HEAD">
         <xsl:apply-templates select="Divhead/HEAD" mode="copy-guts" />
