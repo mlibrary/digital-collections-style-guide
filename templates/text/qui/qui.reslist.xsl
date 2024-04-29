@@ -666,7 +666,7 @@
     <xsl:param name="details" />
     <xsl:param name="layout" />
 
-    <xsl:apply-templates select="$details/*" mode="section">
+    <xsl:apply-templates select="$details//ScopintPage|$details//*[@NODE][Kwic]" mode="section">
       <xsl:with-param name="identifier" select="$identifier" />
       <xsl:with-param name="item-metadata" select="$item-metadata" />
       <xsl:with-param name="item-encoding-level" select="$item-encoding-level" />
@@ -774,143 +774,154 @@
     <xsl:param name="item-metadata" />
     <xsl:param name="encoding-type" />
     <xsl:param name="item-encoding-level" />
+    <xsl:param name="ack">+</xsl:param>
 
     <xsl:choose>
+      <xsl:when test="*[@TYPE][@NODE][Kwic]">
+        <qui:branch-and-leaf node="{@NODE}" />
+        <xsl:apply-templates select="." mode="render-section">
+          <xsl:with-param name="identifier" />
+          <xsl:with-param name="item-metadata" />
+          <xsl:with-param name="encoding-type" />
+          <xsl:with-param name="item-encoding-level" />
+        </xsl:apply-templates>
+        <!-- <xsl:apply-templates select="*[@TYPE][@NODE]" mode="section">
+          <xsl:with-param name="ack">!</xsl:with-param>
+        </xsl:apply-templates> -->
+      </xsl:when>
       <xsl:when test="*[@TYPE][@NODE]">
-        <qui:branch node="{@NODE}" />
-        <xsl:apply-templates select="*[@TYPE][@NODE]" mode="section" />
+        <qui:branch node="{@NODE}" ack="syn" />
+        <xsl:apply-templates select="*[@TYPE][@NODE]" mode="section">
+          <xsl:with-param name="identifier" />
+          <xsl:with-param name="item-metadata" />
+          <xsl:with-param name="encoding-type" />
+          <xsl:with-param name="item-encoding-level" />
+        </xsl:apply-templates>
       </xsl:when>
       <xsl:otherwise>
-        <qui:leaf node="{@NODE}" />
-        <xsl:variable name="details-metadata-tmp">
-          <xsl:call-template name="build-header-metadata">
-            <xsl:with-param name="item" select="." />
-            <xsl:with-param name="encoding-type" select="$encoding-type" />
-            <xsl:with-param name="item-encoding-level" select="$item-encoding-level" />
-            <xsl:with-param name="slot">item</xsl:with-param>
-          </xsl:call-template>
-        </xsl:variable>
-        <xsl:variable name="details-metadata" select="exsl:node-set($details-metadata-tmp)" />
-        <qui:section identifier="{@NODE}" for="{$identifier}" template-name="{$template-name}" local-name="{local-name()}">
-          <!-- <xsl:apply-templates select="$item/TocHref">
-            <xsl:with-param name="item-encoding-level" xml:base="$item-encoding-level" />
-          </xsl:apply-templates> -->
-          <!-- <xsl:apply-templates select="ancestor::Item/TocHref">
-            <xsl:with-param name="item-encoding-level" xml:base="$item-encoding-level" />
-          </xsl:apply-templates> -->
-          <xsl:apply-templates select="MediaInfo" mode="iiif-link" />
-          <qui:link rel="result">
-            <xsl:attribute name="href">
-              <xsl:value-of select="ancestor-or-self::DIV1/Link" />
-            </xsl:attribute>
-          </qui:link>
-          <xsl:choose>
-            <xsl:when test="ViewPageThumbnailLink">
-              <qui:link href="{ViewPageThumbnailLink}" rel="iiif" />
-            </xsl:when>
-            <xsl:when test="ancestor-or-self::*/ViewPageThumbnailLink">
-              <qui:link href="{ancestor-or-self::*/ViewPageThumbnailLink}" rel="iiif" />
-            </xsl:when>
-          </xsl:choose>
-          <qui:title>
-            <xsl:choose>
-              <xsl:when test="$details-metadata//qui:field[@key='title']">
-                <xsl:apply-templates select="$details-metadata//qui:field[@key='title']/qui:values" mode="copy" />
-              </xsl:when>
-              <xsl:when test="Divhead/HEAD">
-                <xsl:value-of select="Divhead/HEAD" />
-              </xsl:when>
-              <xsl:when test="Kwic/HEAD">
-                <xsl:value-of select="Kwic/HEAD" />
-              </xsl:when>
-              <xsl:when test="ancestor::*[@NODE]/Divhead/HEAD">
-                <xsl:variable name="ancestor" select="ancestor::*[@NODE][Divhead/HEAD][1]" />
-                <!-- if we want the full path use $ancestor/descendant-or-self::*[@NODE][not(ancestor::Kwic)] -->
-                <xsl:variable name="nodes" select="$ancestor/descendant-or-self::*[@NODE][not(ancestor::Kwic)]" />
-                <xsl:value-of select="$ancestor/Divhead/HEAD" />
-                <xsl:if test="count($nodes) &gt; 2">
-                  <xsl:text> / ... </xsl:text>
-                </xsl:if>
-                <xsl:text> / </xsl:text>
-                <xsl:value-of select="@TYPE" />
-                <xsl:if test="@N">
-                  <xsl:text> </xsl:text>
-                  <xsl:value-of select="@N" />
-                </xsl:if>
+        <qui:leaf node="{@NODE}" ack="{$ack}" />
+        <xsl:apply-templates select="." mode="render-section">
+          <xsl:with-param name="identifier" />
+          <xsl:with-param name="item-metadata" />
+          <xsl:with-param name="encoding-type" />
+          <xsl:with-param name="item-encoding-level" />
+        </xsl:apply-templates>
+      </xsl:otherwise>
+    </xsl:choose>
+  </xsl:template>
 
-                <!-- <xsl:for-each select="$nodes">
-                  <xsl:choose>
-                    <xsl:when test="Divhead/HEAD">
-                      <xsl:value-of select="Divhead/HEAD" />
-                    </xsl:when>
-                    <xsl:otherwise>
-                      <xsl:value-of select="@TYPE" />
-                      <xsl:if test="@N">
-                        <xsl:text> </xsl:text>
-                        <xsl:value-of select="@N" />
-                      </xsl:if>
-                    </xsl:otherwise>
-                  </xsl:choose>
-                  <xsl:if test="position() != last()">
-                    <xsl:text> / </xsl:text>
-                  </xsl:if>
-                </xsl:for-each> -->
-              </xsl:when>
-              <xsl:otherwise>
-                <xsl:value-of select="@TYPE" />
-                <xsl:if test="@N">
-                  <xsl:text> </xsl:text>
-                  <xsl:value-of select="@N" />
-                </xsl:if>
-              </xsl:otherwise>
-            </xsl:choose>
-          </qui:title>
-          <!-- metadata -->
-          <qui:metadata>
-            <qui:field key="path">
-              <qui:label>Path</qui:label>
-              <qui:values format="ordered">
-                <xsl:for-each select="ancestor::*[@TYPE]">
+  <xsl:template match="*" mode="render-section">
+    <xsl:param name="identifier" />
+    <xsl:param name="item-metadata" />
+    <xsl:param name="encoding-type" />
+    <xsl:param name="item-encoding-level" />
+
+    <xsl:variable name="details-metadata-tmp">
+      <xsl:call-template name="build-header-metadata">
+        <xsl:with-param name="item" select="." />
+        <xsl:with-param name="encoding-type" select="$encoding-type" />
+        <xsl:with-param name="item-encoding-level" select="$item-encoding-level" />
+        <xsl:with-param name="slot">item</xsl:with-param>
+      </xsl:call-template>
+    </xsl:variable>
+    <xsl:variable name="details-metadata" select="exsl:node-set($details-metadata-tmp)" />
+    <qui:section identifier="{@NODE}" for="{$identifier}" template-name="{$template-name}" local-name="{local-name()}">
+      <xsl:apply-templates select="MediaInfo" mode="iiif-link" />
+      <qui:link rel="result">
+        <xsl:attribute name="href">
+          <xsl:value-of select="ancestor-or-self::DIV1/Link" />
+        </xsl:attribute>
+      </qui:link>
+      <xsl:choose>
+        <xsl:when test="ViewPageThumbnailLink">
+          <qui:link href="{ViewPageThumbnailLink}" rel="iiif" />
+        </xsl:when>
+        <xsl:when test="ancestor-or-self::*/ViewPageThumbnailLink">
+          <qui:link href="{ancestor-or-self::*/ViewPageThumbnailLink}" rel="iiif" />
+        </xsl:when>
+      </xsl:choose>
+      <qui:title>
+        <xsl:call-template name="build-ancestor-title" />
+        <xsl:choose>
+          <xsl:when test="$details-metadata//qui:field[@key='title']">
+            <xsl:apply-templates select="$details-metadata//qui:field[@key='title']/qui:values" mode="copy" />
+          </xsl:when>
+          <xsl:when test="normalize-space(Divhead/HEAD)">
+            <xsl:value-of select="Divhead/HEAD" />
+          </xsl:when>
+          <xsl:when test="normalize-space(Kwic/HEAD)">
+            <xsl:value-of select="Kwic/HEAD" />
+          </xsl:when>
+          <xsl:when test="ancestor::*[@NODE]/Divhead/HEAD">
+            <xsl:if test="false()">
+            <xsl:variable name="ancestor" select="ancestor::*[@NODE][Divhead/HEAD][1]" />
+            <!-- if we want the full path use $ancestor/descendant-or-self::*[@NODE][not(ancestor::Kwic)] -->
+            <xsl:variable name="nodes" select="$ancestor/descendant-or-self::*[@NODE][not(ancestor::Kwic)]" />
+            <xsl:value-of select="$ancestor/Divhead/HEAD" />
+            <xsl:if test="count($nodes) &gt; 2">
+              <xsl:text> / ... </xsl:text>
+            </xsl:if>
+            <xsl:text> / </xsl:text>
+            </xsl:if>
+            <xsl:value-of select="@TYPE" />
+            <xsl:if test="@N">
+              <xsl:text> </xsl:text>
+              <xsl:value-of select="@N" />
+            </xsl:if>
+          </xsl:when>
+          <xsl:otherwise>
+            <xsl:value-of select="@TYPE" />
+            <xsl:if test="@N">
+              <xsl:text> </xsl:text>
+              <xsl:value-of select="@N" />
+            </xsl:if>
+          </xsl:otherwise>
+        </xsl:choose>
+      </qui:title>
+      <!-- metadata -->
+      <qui:metadata>
+        <qui:field key="path">
+          <qui:label>Path</qui:label>
+          <qui:values format="ordered">
+            <xsl:for-each select="ancestor::*[@TYPE]">
+              <qui:value node="{@NODE}">
+                <xsl:apply-templates select="." mode="breadcrumb-link" />
+              </qui:value>
+            </xsl:for-each>
+            <qui:value>
+              <span>
+                <xsl:apply-templates select="." mode="breadcrumb-label" />
+              </span>
+              <!-- <xsl:apply-templates select="." mode="breadcrumb-link" /> -->
+            </qui:value>
+            <!-- <xsl:for-each select="descendant::*[@TYPE][not(ancestor::Kwic)]">
+              <qui:value>
+                <xsl:apply-templates select="." mode="breadcrumb-link" />
+              </qui:value>
+            </xsl:for-each> -->
+          </qui:values>
+        </qui:field>
+        <xsl:apply-templates select="$details-metadata//qui:field|$details-metadata//qui:debug" mode="copy" />
+      </qui:metadata>
+      <xsl:if test="Kwic">
+        <qui:block slot="matches">
+          <qui:section>
+            <qui:field key="matches">
+              <qui:label>Matches</qui:label>
+              <qui:values format="kwic">
+                <xsl:for-each select="Kwic|SummaryString">
                   <qui:value>
-                    <xsl:apply-templates select="." mode="breadcrumb-link" />
-                  </qui:value>
-                </xsl:for-each>
-                <qui:value>
-                  <span>
-                    <xsl:apply-templates select="." mode="breadcrumb-label" />
-                  </span>
-                  <!-- <xsl:apply-templates select="." mode="breadcrumb-link" /> -->
-                </qui:value>
-                <xsl:for-each select="descendant::*[@TYPE][not(ancestor::Kwic)]">
-                  <qui:value>
-                    <xsl:apply-templates select="." mode="breadcrumb-link" />
+                    <xsl:text>...</xsl:text>
+                    <xsl:apply-templates select=".|Kwic|SummaryString" mode="KwicContent" />
+                    <xsl:text>...</xsl:text>
                   </qui:value>
                 </xsl:for-each>
               </qui:values>
             </qui:field>
-            <xsl:apply-templates select="$details-metadata//qui:field|$details-metadata//qui:debug" mode="copy" />
-          </qui:metadata>
-          <xsl:if test="descendant-or-self::Kwic">
-            <qui:block slot="matches">
-              <qui:section>
-                <qui:field key="matches">
-                  <qui:label>Matches</qui:label>
-                  <qui:values format="kwic">
-                    <xsl:for-each select="descendant-or-self::Kwic|descendant-or-self::SummaryString">
-                      <qui:value>
-                        <xsl:text>...</xsl:text>
-                        <xsl:apply-templates select="descendant-or-self::Kwic|descendant-or-self::SummaryString" mode="KwicContent" />
-                        <xsl:text>...</xsl:text>
-                      </qui:value>
-                    </xsl:for-each>
-                  </qui:values>
-                </qui:field>
-              </qui:section>
-            </qui:block>  
-          </xsl:if>
-        </qui:section>  
-      </xsl:otherwise>
-    </xsl:choose>
+          </qui:section>
+        </qui:block>  
+      </xsl:if>
+    </qui:section>
   </xsl:template>
 
   <xsl:template match="*" mode="breadcrumb-link">
@@ -932,7 +943,24 @@
         </xsl:if>
       </xsl:otherwise>
     </xsl:choose>
-  </xsl:template>  
+  </xsl:template>
+
+  <xsl:template name="build-ancestor-title">
+    <!-- <xsl:variable name="ancestors" select="ancestor::*[@NODE][Divhead/HEAD][1]" /> -->
+    <!-- <xsl:variable name="nodes" select="$ancestor/descendant-or-self::*[@NODE][not(ancestor::Kwic)]" /> -->
+    <xsl:variable name="ancestors" select="ancestor::*[@NODE]" />
+    <xsl:variable name="divheads" select="$ancestors[Divhead/HEAD]" />
+    <xsl:if test="$divheads">
+      <xsl:if test="count($divheads) &gt; 1">
+        <xsl:text>... / </xsl:text>
+      </xsl:if>
+      <xsl:value-of select="$divheads[last()]/Divhead/HEAD" />
+      <xsl:if test="count($ancestors) &gt; 2">
+        <xsl:text> / ... </xsl:text>
+      </xsl:if>
+      <xsl:text> / </xsl:text>
+    </xsl:if>
+  </xsl:template>
 
   <xsl:template match="@*" mode="dlxsify">
     <xsl:copy></xsl:copy>
