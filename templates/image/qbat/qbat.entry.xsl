@@ -15,50 +15,6 @@
     <xsl:call-template name="build-entry-scripts" />
 
     <style>
-      .viewer--interaction {
-        position: absolute;
-        top: 0;
-        bottom: 0;
-        left: 0;
-        right: 0;
-        background: black;
-        color: #eee;
-        display: flex;
-        align-items: center;
-        justify-content: center;
-        z-index: 10000;
-      
-        div {
-          max-width: 75%;
-        }
-      }
-
-      .metadata--interaction {
-        padding: 1rem;
-        background: black;
-        color: #eee;
-        position: sticky;
-        top: 1rem;
-      }
-
-      div[data-viewer-advisory="true"] {
-        position: relative;
-        dd {
-          display: none;
-        }
-        dd[data-viewer-advisory] {
-          display: list-item;
-          background: black;
-          color: white;
-        }
-      }
-
-      div[data-viewer-advisory="truexx"]::after {
-        content: "Viewer advisory";
-        background: black;
-        color: white;
-        grid-column: 2/3;
-      }
     </style>
 
   </xsl:template>
@@ -252,33 +208,28 @@
     <xsl:if test="$viewer">
       <h2 id="viewer-heading" class="visually-hidden">Viewer</h2>
       <div class="viewer">
-      <iframe 
-        id="viewer" 
-        class="[ viewer ]" 
-        allow="fullscreen" 
-        title="{$title}"
-        src="{ $viewer/@embed-href }"
-        data-mimetype="{$viewer/@mimetype}"
-        data-istruct_mt="{$viewer/@istruct_mt}">
-        <xsl:if test="$viewer/@viewer-max-height">
-          <xsl:attribute name="style">
-            <xsl:text>height: calc(</xsl:text>
-            <xsl:value-of select="$viewer/@viewer-max-height" />
-            <xsl:text>* 1.5px);</xsl:text>
-          </xsl:attribute>
-        </xsl:if>
-      </iframe>
-        <div class="viewer--interaction">
-          <div class="viewer--message">
-            <p>You are about to access content that may contain sensitive material, including themes of a graphic or mature nature. The University of Michigan is committed to fostering a safe and inclusive environment for all individuals.</p>
-            <p>Please confirm that you wish to proceed with viewing this material.</p>
-            <div class="flex gap-1">
-              <button class="button button--cta" id="action--interaction">
-                <span class="material-icons" aria-hidden="true">done</span>
-                <span>I Acknowledge and Wish to Proceed</span>
-              </button>
-            </div>
-          </div>          
+        <iframe 
+          id="viewer" 
+          class="[ viewer ]" 
+          allow="fullscreen" 
+          title="{$title}"
+          src="{ $viewer/@embed-href }"
+          data-mimetype="{$viewer/@mimetype}"
+          data-istruct_mt="{$viewer/@istruct_mt}">
+          <xsl:if test="$viewer/@viewer-max-height">
+            <xsl:attribute name="style">
+              <xsl:text>height: calc(</xsl:text>
+              <xsl:value-of select="$viewer/@viewer-max-height" />
+              <xsl:text>* 1.5px);</xsl:text>
+            </xsl:attribute>
+          </xsl:if>
+        </iframe>
+        <div class="viewer--viewer-advisory" data-viewer-advisory="true">
+          <div class="viewer-advisory-message">
+            <xsl:call-template name="build-viewer-advisory-message">
+              <xsl:with-param name="mode">verbose</xsl:with-param>
+            </xsl:call-template>  
+          </div>
         </div>
       </div>
     </xsl:if>
@@ -920,26 +871,33 @@
           <xsl:apply-templates select="." mode="copy-guts" />
         </dd>
       </xsl:for-each>
-      <dd data-viewer-advisory="true">
+      <dd class="viewer-advisory-message">
         <!-- <p>Viewer discrestion is advised.</p> -->
         <!-- <p>You are about to access content that may contain sensitive material, including themes of a graphic or mature nature. The University of Michigan is committed to fostering a safe and inclusive environment for all individuals.</p> -->
-        <div class="flex align-items-top gap-1">
-          <div>
-            <span class="material-icons" aria-hidden="true" style="color: var(--color-maize-400);">warning</span>
-            <!-- <span class="visually-hidden">Warning</span> -->
-          </div>
-          <div>
-            <p class="mt-0"><strong>Warning</strong></p>
-            <p>Please confirm that you wish to proceed with viewing this material.</p>
-            <div class="flex gap-1">
-              <button class="button button--cta" id="action--interaction">
-                <span class="material-icons" aria-hidden="true">done</span>
-                <span>I Acknowledge and Wish to Proceed</span>
-              </button>
-            </div>      
-          </div>
-        </div>
+        <xsl:call-template name="build-viewer-advisory-message" />
       </dd>
+    </div>
+  </xsl:template>
+
+  <xsl:template name="build-viewer-advisory-message">
+    <xsl:param name="mode">brief</xsl:param>
+    <div class="flex align-items-top gap-1">
+      <div>
+        <span class="material-icons" aria-hidden="true" style="color: var(--color-maize-400);">warning</span>
+      </div>
+      <div>
+        <p class="mt-0"><strong>Warning</strong></p>
+        <xsl:if test="$mode = 'verbose'">
+          <p>You are about to access content that may contain sensitive material, including themes of a graphic or mature nature. The University of Michigan is committed to fostering a safe and inclusive environment for all individuals.</p>
+        </xsl:if>
+        <p>Please confirm that you wish to proceed with viewing this material.</p>
+        <div class="flex gap-1">
+          <button class="button button--cta" data-action="confirm-viewer-advisory">
+            <span class="material-icons" aria-hidden="true">done</span>
+            <span>I Acknowledge and Wish to Proceed</span>
+          </button>
+        </div>      
+      </div>
     </div>
   </xsl:template>
 
