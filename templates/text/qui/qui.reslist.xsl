@@ -1019,8 +1019,17 @@
 
   <xsl:template match="SearchDescription">
     <qui:block slot="search-summary">
-      <!-- <xsl:value-of select="key('get-lookup','reslist.str.yousearched')"/> -->
-      <xsl:value-of select="/Top/SearchDescription/CollTotals/HitCount" />
+      <xsl:variable name="hit-count">
+        <xsl:choose>
+          <xsl:when test="/Top/SearchDescription/CollTotals/HitRegionCount">
+            <xsl:value-of select="/Top/SearchDescription/CollTotals/HitRegionCount" />
+          </xsl:when>
+          <xsl:otherwise>
+            <xsl:value-of select="/Top/SearchDescription/CollTotals/HitCount" />
+          </xsl:otherwise>
+        </xsl:choose>
+      </xsl:variable>
+      <xsl:value-of select="$hit-count" />
       <xsl:text> matches </xsl:text>
       <xsl:text> in </xsl:text>
       <xsl:value-of select="/Top/SearchDescription/CollTotals/RecordCount" />

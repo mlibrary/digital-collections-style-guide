@@ -36,7 +36,7 @@
         <xsl:call-template name="build-browse-navigation" />
         <!-- <xsl:call-template name="build-search-form" /> -->
         <xsl:call-template name="build-results-summary-sort" />
-        <xsl:if test="$is-selectable">
+        <xsl:if test="false() and $is-selectable">
           <xsl:call-template name="build-portfolio-actions" />
         </xsl:if>
         <xsl:call-template name="build-results-list" />
