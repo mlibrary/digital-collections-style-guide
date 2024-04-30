@@ -50,7 +50,7 @@
         </xsl:if>
 
         <xsl:choose>
-          <xsl:when test="$view = 'simple'">
+          <xsl:when test="contains($view, 'simple')">
             <xsl:call-template name="build-simple-form" />
           </xsl:when>
           <xsl:when test="$view = 'bbaglist'">
