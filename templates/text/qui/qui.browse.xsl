@@ -142,6 +142,9 @@
       <xsl:for-each select="//BrowseStringForm/HiddenVars/Variable">
         <qui:hidden-input name="{@name}" value="{.}" />
       </xsl:for-each>
+      <xsl:if test="//BrowseNav/DefaultValue">
+        <qui:hidden-input name="value" value="{//BrowseNav/DefaultValue}" />
+      </xsl:if>
     </qui:form>
   </xsl:template>
 
