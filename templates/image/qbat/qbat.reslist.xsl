@@ -61,6 +61,29 @@
         <xsl:call-template name="build-results-pagination" />
         <xsl:call-template name="build-hidden-portfolio-form" />
       </div>
+      <svg>
+        <filter id="pixelate" x="0" y="0">
+          <feFlood x="4" y="4" height="2" width="2"/>
+          <feComposite width="10" height="10"/>
+          <feTile result="a"/>
+          <feComposite in="SourceGraphic" in2="a" operator="in"/>
+          <feMorphology operator="dilate" radius="5"/>
+        </filter>
+      </svg> 
+      <!-- <svg role="none">
+        <filter id="pixelate">
+          <feGaussianBlur stdDeviation="1.1" edgeMode="duplicate" />
+        </filter>
+      </svg> -->
+      <!-- <svg role="none">
+        <filter id="pixelate" x="0%" y="0%" width="100%" height="100%">
+          <feGaussianBlur stdDeviation="2" in="SourceGraphic" result="smoothed" />
+          <feImage width="15" height="15" xlink:href="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAAUAAAAFCAIAAAACDbGyAAAAAXNSR0IArs4c6QAAAARnQU1BAACxjwv8YQUAAAAJcEhZcwAADsMAAA7DAcdvqGQAAAAWSURBVAgdY1ywgOEDAwKxgJhIgFQ+AP/vCNK2s+8LAAAAAElFTkSuQmCC" result="displacement-map" />
+          <feTile in="displacement-map" result="pixelate-map" />
+          <feDisplacementMap in="smoothed" in2="pixelate-map" xChannelSelector="R" yChannelSelector="G" scale="50" result="pre-final"/>
+          <feComposite operator="in" in2="SourceGraphic"/>
+        </filter>        
+      </svg> -->
     </div>
 
   </xsl:template>
@@ -289,7 +312,7 @@
 
       <xsl:choose>
         <xsl:when test="qui:link[@rel='iiif']">
-          <img class="[ results-list__image ]" src="{qui:link[@rel='iiif']/@href}/full/140,/0/native.jpg" alt="{ItemDescription}" />
+          <xsl:apply-templates select="qui:link[@rel='iiif']" />
         </xsl:when>
         <xsl:otherwise>
           <div class="[ results-list__blank ]" aria-hidden="true">
@@ -356,6 +379,20 @@
             </m-callout>
           </xsl:when>
         </xsl:choose>
+        <xsl:if test="qui:link[@rel='iiif']/@viewer-advisory = 'true'">
+          <div class="viewer-advisory-message mb-1">
+            <div class="flex align-items-top gap-1">
+              <div>
+                <span class="material-icons" aria-hidden="true" style="color: var(--color-maize-400);">warning</span>
+              </div>
+              <div>
+                <p class="mt-0 mb-0">
+                  <strong>Warning: </strong>
+                  This result includes content that may contain sensitive material.</p>
+              </div>
+            </div>
+          </div>
+        </xsl:if>
         <dl class="[ results ]">
           <xsl:apply-templates select="qui:collection" />
           <xsl:apply-templates select="qui:block[@slot='metadata']//qui:field" />
@@ -378,6 +415,21 @@
       </div>
     </xsl:if>
 
+  </xsl:template>
+
+  <xsl:template match="qui:link[@rel='iiif'][@viewer-advisory='true']" priority="101">
+    <xsl:variable name="id" select="id(.)" />
+    <svg class="[ results-list__image ]" aria-hidden="true">
+      <image width="140" preserveAspectRatio="xMidYMid slice" href="{@href}/full/140,/0/native.jpg" filter="url(#pixelate)" />
+    </svg>
+  </xsl:template>
+
+  <xsl:template match="qui:link[@rel='iiif']">
+    <img class="[ results-list__image ]" src="{@href}/full/140,/0/native.jpg" alt="{../ItemDescription}">
+      <!-- <xsl:if test="qui:link[@rel='iiif']/@viewer-advisory = 'true'">
+        <xsl:attribute name="style">filter: url(#pixelate);</xsl:attribute>
+      </xsl:if> -->
+    </img>
   </xsl:template>
 
   <xsl:template match="qui:collection">
