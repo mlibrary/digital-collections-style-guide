@@ -59,7 +59,7 @@
       <xsl:when test="$item/BookmarkableUrl">
         <xsl:apply-templates select="$item/BookmarkableUrl" mode="metadata" />
       </xsl:when>
-      <xsl:when test="($template-name = 'pageviewer' or $template-name = 'browse') and normalize-space(//BookmarkableUrl)">
+      <xsl:when test="($template-name = 'pageviewer' or $template-name = 'browse' or $template-name = 'header') and normalize-space(//BookmarkableUrl)">
         <xsl:apply-templates select="//BookmarkableUrl" mode="metadata" />
       </xsl:when>
       <xsl:otherwise>
