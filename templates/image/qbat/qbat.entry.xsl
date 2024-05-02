@@ -208,6 +208,9 @@
     <xsl:if test="$viewer">
       <h2 id="viewer-heading" class="visually-hidden">Viewer</h2>
       <div class="viewer">
+        <xsl:if test="$viewer/@viewer-advisory='true'">
+          <xsl:attribute name="data-viewer-advisory">true</xsl:attribute>
+        </xsl:if>
         <iframe 
           id="viewer" 
           class="[ viewer ]" 
@@ -225,7 +228,7 @@
           </xsl:if>
         </iframe>
         <xsl:if test="$viewer/@viewer-advisory = 'true'">
-          <div class="viewer--viewer-advisory" data-viewer-advisory="true">
+          <div class="viewer--viewer-advisory">
             <div class="viewer-advisory-message">
               <xsl:call-template name="build-viewer-advisory-message">
                 <xsl:with-param name="mode">verbose</xsl:with-param>
