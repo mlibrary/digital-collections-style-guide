@@ -12,8 +12,9 @@
         <xsl:otherwise />
       </xsl:choose>
     </xsl:variable>
-    <xsl:variable name="is-advanced" select="$search-type != 'simple'" />
+    <xsl:variable name="is-advanced" select="not(contains($search-type, 'simple'))" />
     <xsl:variable name="is-browse" select="//Param[@name='page'] = 'browse'" />
+    <qui:debug search-type="{$search-type}" />
     <qui:form id="collection-search" data-advanced="{$is-advanced}" data-edit-action="{//SearchDescription/RefineSearchLink}">
       <xsl:attribute name="data-has-query">
         <xsl:choose>
@@ -22,7 +23,7 @@
         </xsl:choose>
       </xsl:attribute>
       <xsl:choose>
-        <xsl:when test="$is-advanced = 'true'">
+        <xsl:when test="$is-advanced">
           <xsl:apply-templates select="//SearchForm/Q">
             <xsl:with-param name="is-advanced" select="//SearchForm/Advanced" />
           </xsl:apply-templates>
@@ -38,12 +39,25 @@
       <!-- <xsl:apply-templates select="//Facets" mode="search-form" /> -->
       <xsl:choose>
         <xsl:when test="//ResultsLinks/HiddenVars/Variable[@name != 'q1']">
+          <qui:debug is-advanced="{$is-advanced}">resultslinks</qui:debug>
           <xsl:for-each select="//ResultsLinks/HiddenVars/Variable">
-            <xsl:if test="@name != 'debug'">
+            <xsl:choose>
+              <xsl:when test="$is-advanced = false() and @name = 'q1'"><qui:debug name="q1" /></xsl:when>
+              <xsl:when test="$is-advanced = false() and @name ='rgn'"><qui:debug name="rgn" /></xsl:when>
+              <xsl:when test="$is-advanced = false() and @name ='start'"><qui:debug name="start" /></xsl:when>
+              <!-- <xsl:when test="$is-advanced = false()"><qui:debug name="{@name}" /></xsl:when> -->
+              <xsl:when test="@name = 'debug'"></xsl:when>
+              <xsl:otherwise>
+                <qui:input type="hidden" role="search" name="{@name}" value="{.}" is-advanced="{$is-advanced}">
+                  <xsl:attribute name="disabled"><xsl:value-of select="$is-browse" /></xsl:attribute>
+                </qui:input>    
+              </xsl:otherwise>
+            </xsl:choose>          
+            <!-- <xsl:if test="@name != 'debug'">
               <qui:input type="hidden" role="search" name="{@name}" value="{.}">
                 <xsl:attribute name="disabled"><xsl:value-of select="$is-browse" /></xsl:attribute>
               </qui:input>  
-            </xsl:if>
+            </xsl:if> -->
           </xsl:for-each>
         </xsl:when>
         <xsl:when test="//SearchForm/HiddenVars/Variable">

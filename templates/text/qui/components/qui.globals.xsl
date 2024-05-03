@@ -173,7 +173,14 @@
 
   <xsl:variable name="subview" select="//Param[@name='subview']" />
 
-  <xsl:variable name="search-type" select="key('get-lookup', /Top/SearchDescription/SearchTypeName)" />
+  <!-- <xsl:variable name="search-type" select="key('get-lookup', /Top/SearchDescription/SearchTypeName)" /> -->
+  <xsl:variable name="search-type">
+    <xsl:choose>
+      <xsl:when test="//TemplateName = 'search'"><xsl:value-of select="//Param[@name='page']" /></xsl:when>
+      <xsl:when test="//TemplateName = 'home'">simple</xsl:when>
+      <xsl:when test="//Param[@name='type']"><xsl:value-of select="//Param[@name='type']" /></xsl:when>
+    </xsl:choose>
+  </xsl:variable>
 
   <xsl:variable name="cgiNode" select="/Top/DlxsGlobals/CurrentCgi"/>
   <xsl:variable name="subject-match-str">
