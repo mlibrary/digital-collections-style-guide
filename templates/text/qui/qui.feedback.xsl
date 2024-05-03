@@ -3,6 +3,7 @@
 
   <xsl:variable name="collid">
     <xsl:choose>
+      <xsl:when test="//Param[@name='ALLSELECTED'] = '1'">*</xsl:when>
       <xsl:when test="//Param[@name='cc']">
         <xsl:value-of select="//Param[@name='cc']" />
       </xsl:when>
@@ -19,6 +20,17 @@
         <xsl:value-of select="/Top/DlxsGlobals/CurrentCgi/Param[@name='to']" />
       </xsl:when>
       <xsl:otherwise>content</xsl:otherwise>
+    </xsl:choose>
+  </xsl:variable>
+
+  <xsl:variable name="m">
+    <xsl:choose>
+      <xsl:when test="/Top/DlxsGlobals/CurrentCgi/Param[@name='cc']">
+        <xsl:value-of select="/Top/DlxsGlobals/CurrentCgi/Param[@name='cc']" />
+      </xsl:when>
+      <xsl:otherwise>
+        <xsl:value-of select="//TemplateName" />
+      </xsl:otherwise>
     </xsl:choose>
   </xsl:variable>
 
