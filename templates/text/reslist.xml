@@ -78,7 +78,6 @@
     </HiddenVars>
     <SearchQuery>
       <RegionSearchSelect><?REGION_SEARCH_SELECT_XML?></RegionSearchSelect>
-      <RegionSearchSelect><?REGION_SEARCH_SELECT_XML?></RegionSearchSelect>
       <Region1SearchSelect><?REGION1_SEARCH_SELECT_XML?></Region1SearchSelect>
       <Region2SearchSelect><?REGION2_SEARCH_SELECT_XML?></Region2SearchSelect>
       <Region3SearchSelect><?REGION3_SEARCH_SELECT_XML?></Region3SearchSelect>

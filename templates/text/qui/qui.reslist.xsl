@@ -47,8 +47,11 @@
       <xsl:when test="count(//FisheyeLinks/FisheyeLink) = 0">
         <xsl:value-of select="1" />
       </xsl:when>
+      <xsl:when test="//FisheyeLinks/FisheyeLink[@focus='true']">
+        <xsl:value-of select="/FisheyeLinks/FisheyeLink[@focus='true']" />
+      </xsl:when>
       <xsl:otherwise>
-        <xsl:value-of select="count(//FisheyeLinks/FisheyeLink[LinkNumber[@focus='true']]//preceding-sibling::Url) + 1" />
+        <xsl:value-of select="count(//FisheyeLinks/FisheyeLink[LinkNumber[@focus='true']]//preceding-sibling::FisheyeLink) + 1" />
       </xsl:otherwise>
     </xsl:choose>
   </xsl:variable>
@@ -271,11 +274,11 @@
     <xsl:variable name="q" select="//SearchForm/Q[@name='q1']" />
     <xsl:variable name="is-advanced">
       <xsl:choose>
-        <xsl:when test="$search-type = 'simple' 
+        <xsl:when test="contains($search-type, 'simple')
           and ( 
             normalize-space(//SearchForm/CiteRestrictions//Default) or 
             normalize-space(//SearchForm/OtherRestrictions//Default) )">true</xsl:when>
-        <xsl:when test="$search-type = 'simple'">false</xsl:when>
+        <xsl:when test="contains($search-type, 'simple')">false</xsl:when>
         <xsl:otherwise>true</xsl:otherwise>
       </xsl:choose>
     </xsl:variable>
