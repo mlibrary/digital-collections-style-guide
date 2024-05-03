@@ -666,12 +666,24 @@
     <xsl:param name="details" />
     <xsl:param name="layout" />
 
-    <xsl:apply-templates select="$details//ScopingPage|$details//*[@NODE][Kwic]" mode="section">
-      <xsl:with-param name="identifier" select="$identifier" />
-      <xsl:with-param name="item-metadata" select="$item-metadata" />
-      <xsl:with-param name="item-encoding-level" select="$item-encoding-level" />
-      <xsl:with-param name="encoding-type" select="$encoding-type" />
-    </xsl:apply-templates>
+    <xsl:choose>
+      <xsl:when test="$details//ScopingPage">
+        <xsl:apply-templates select="$details//ScopingPage" mode="section">
+          <xsl:with-param name="identifier" select="$identifier" />
+          <xsl:with-param name="item-metadata" select="$item-metadata" />
+          <xsl:with-param name="item-encoding-level" select="$item-encoding-level" />
+          <xsl:with-param name="encoding-type" select="$encoding-type" />
+        </xsl:apply-templates>
+      </xsl:when>
+      <xsl:otherwise>
+        <xsl:apply-templates select="$details//*[@NODE][Kwic]" mode="section">
+          <xsl:with-param name="identifier" select="$identifier" />
+          <xsl:with-param name="item-metadata" select="$item-metadata" />
+          <xsl:with-param name="item-encoding-level" select="$item-encoding-level" />
+          <xsl:with-param name="encoding-type" select="$encoding-type" />
+        </xsl:apply-templates>
+      </xsl:otherwise>
+    </xsl:choose>
   </xsl:template>
 
   <xsl:template match="node()" mode="debug">
