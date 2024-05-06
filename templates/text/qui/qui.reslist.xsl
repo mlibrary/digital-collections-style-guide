@@ -489,7 +489,7 @@
         <qui:form slot="bookbag" rel="add" href="{BookbagAddHref}" data-identifier="{concat(@collid, ':', $identifier)}">
         </qui:form>
       </xsl:if>
-      <xsl:if test="not($encoding-type='serialissue')">
+      <xsl:if test="($encoding-type='serialissue')">
         <xsl:apply-templates select="FirstPageHref"/>
       </xsl:if>
       <xsl:apply-templates select="MediaInfo" mode="iiif-link" />
