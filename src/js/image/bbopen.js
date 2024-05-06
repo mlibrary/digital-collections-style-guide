@@ -12,6 +12,7 @@ window.addEventListener('DOMContentLoaded', (event) => {
 
   $main.dataset.state = 'ready';
 
+
   // portfolio display management
   const $fragment = document.createDocumentFragment();
   const $container = document.querySelector(".portfolio--list");
@@ -265,7 +266,7 @@ window.addEventListener('DOMContentLoaded', (event) => {
     div.dataset.numItems = numItemsEl.textContent;
 
     const collnameEl = div.querySelector('[data-key="collname"]');
-    div.dataset.collname = collnameEl.textContent.toLowerCase() + ' ' + div.dataset.owner.toLowerCase();
+    div.dataset.collname = collnameEl.textContent.toLowerCase().trim() + ' ' + div.dataset.owner.toLowerCase();
   })
 
   _filter();
