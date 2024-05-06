@@ -12,9 +12,15 @@
     <link rel="stylesheet" href="{$docroot}dist/css/image/bbopen.css" />
     <!-- <script src="{$docroot}dist/js/image/bbopen.js"></script> -->
 
+    <style>
+      .portfolio--list .portfolio {
+        display: none;
+      }
+    </style>
+
     <style id="portfolio-filter-rules" type="text/css">
       .portfolio--list .portfolio[data-page="1"] {
-        display: flex;
+        display: grid;
       }
     </style>
   </xsl:template>
@@ -154,7 +160,7 @@
   </xsl:template>
 
   <xsl:template match="qui:section" mode="result">
-    <section class="[ results-list--small ][ portfolio ]">
+    <section class="[ results-list--grid ][ portfolio ]">
       <xsl:if test="@recent">
         <xsl:attribute name="data-recent"><xsl:value-of select="@recent" /></xsl:attribute>
       </xsl:if>
@@ -168,31 +174,25 @@
         <xsl:apply-templates select="qui:link[@rel='open']" />
       </xsl:variable>
       <xsl:variable name="link" select="exsl:node-set($link-tmp)" />
-      <a class="[ flex ][ flex-grow-1 ]">
-        <xsl:attribute name="href">
-          <xsl:value-of select="$link//@href" />
-        </xsl:attribute>
-        <!-- <xsl:attribute name="data-available">
-          <xsl:value-of select="$link//@data-available" />
-        </xsl:attribute> -->
 
-        <xsl:choose>
-          <xsl:when test="qui:link[@rel='iiif']">
-            <img class="[ results-list__image ]" src="{qui:link[@rel='iiif']/@href}/full/!140,140/0/native.jpg" alt="{ItemDescription}" />
-          </xsl:when>
-          <xsl:otherwise>
-            <div class="[ results-list__blank ]" aria-hidden="true"></div>
-          </xsl:otherwise>
-        </xsl:choose>
-        <div class="[ results-list__content ]">
-          <h3 data-key="collname">
-            <xsl:apply-templates select="qui:title" />
+      <div class="[ results-list__blank ]" aria-hidden="true" data-type="blank">
+      </div>
+
+      <div class="results-card">
+        <div class="results-list__content flex flex-flow-column flex-grow-1">
+          <h3 data-key="collname" >
+            <a href="{$link//@href}" class="results-link">
+              <xsl:apply-templates select="qui:title" />              
+            </a>
           </h3>
-          <dl class="[ results ]">
-            <xsl:apply-templates select="qui:block[@slot='metadata']//qui:field" />
-          </dl>
         </div>
-      </a>
+      </div>
+
+      <div class="results-details">
+        <dl class="[ results ]">
+          <xsl:apply-templates select="qui:block[@slot='metadata']//qui:field" />
+        </dl>
+      </div>
     </section>
   </xsl:template>
 
