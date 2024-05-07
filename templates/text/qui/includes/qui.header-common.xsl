@@ -258,7 +258,7 @@
 
   <xsl:template match="*" name="build-subjects-for-monograph" mode="qui:monograph-subjects">
     <xsl:param name="item" select="." />
-    <xsl:if test="$item//KEYWORDS/child::TERM[not(@TYPE) or @TYPE='subject']">
+    <xsl:if test="$item//KEYWORDS/child::TERM[not(@TYPE) or @TYPE='subject' or @TYPE='genre']">
       <xsl:call-template name="build-res-item-subjects">
         <xsl:with-param name="subj-parent" select="$item"/>
       </xsl:call-template>
@@ -471,7 +471,7 @@
             </xsl:when>
             <xsl:when test="AUTHOR">
               <xsl:for-each select="AUTHOR">
-                <xsl:value-of select="."/>
+                <xsl:apply-templates select="*|text()" mode="copy" />
                 <xsl:if test="position() &lt; last()">, </xsl:if>    
               </xsl:for-each>
             </xsl:when>
@@ -856,7 +856,7 @@
       <qui:field key="subjects">
         <qui:label><xsl:value-of select="concat($label,$plural)"/></qui:label>
         <qui:values>
-          <xsl:for-each select="$subj-parent//KEYWORDS/TERM[not(@TYPE) or @TYPE='subject']">
+          <xsl:for-each select="$subj-parent//KEYWORDS/TERM[not(@TYPE) or @TYPE='subject' or @TYPE='genre']">
             <qui:value>
               <xsl:value-of select="." />
               <!-- <xsl:value-of select="concat('[',dlxs:stripEndingChars(.,'.,:;'),']')"/> -->
@@ -1196,6 +1196,11 @@
       <xsl:apply-templates mode="copy" />
       <xsl:copy-of select="$citation" />
     </xsl:copy>
+  </xsl:template>
+
+  <xsl:template match="AUTHOR/*[name()]" mode="copy">
+    <xsl:text> </xsl:text>
+    <xsl:apply-templates mode="copy" />
   </xsl:template>
 
 </xsl:stylesheet>
