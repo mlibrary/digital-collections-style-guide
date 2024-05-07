@@ -120,6 +120,7 @@
     <input type="hidden" name="view" value="reslist" /> -->
     <xsl:choose>
       <xsl:when test="$form/qui:hidden-input[@name='c']" />
+      <xsl:when test="$form/qui:input[@name='c']" />
       <xsl:otherwise>
         <input type="hidden" name="c" value="{//qui:root/@collid}" />
       </xsl:otherwise>
