@@ -3,7 +3,10 @@
 
   <xsl:variable name="is-skip-consecutive-hi-elements" select="true()" />
 
-  <xsl:variable name="is-target" select="//qui:block[@slot='content']/@is-target" />
+  <xsl:variable name="content" select="/qui:root/qui:main/qui:block[@slot='content']" />
+  <xsl:variable name="is-target" select="$content/@is-target" />
+
+  <xsl:variable name="notes" select="/qui:root/qui:main/qui:block[@slot='notes']" />
   
   <!-- <xsl:variable name="highlight-count" select="//qui:block[@slot='content']/@highlight-count"/>
   <xsl:variable name="highlight-count-offset" select="//qui:block[@slot='content']/@highlight-count-offset"/> -->
@@ -13,13 +16,19 @@
   <xsl:variable name="highlight-seq-first" select="//tei:TEXT//tei:Highlight[1]/@seq" /> -->
 
   <xsl:variable name="highlights"
-    select="//node()[local-name() != 'HEADER']//tei:Highlight" />
+    select="$content//node()[local-name() != 'HEADER']//tei:Highlight" />
   <xsl:variable name="highlight-seq-last" select="$highlights[last()]/@seq" />
   <xsl:variable name="highlight-seq-first" select="$highlights[1]/@seq" />
 
-  <xsl:variable name="has-page-images" select="count(//tei:DLPSWRAP//tei:PB[@HREF]) &gt; 0" />
+  <!-- <xsl:variable name="has-page-images" select="count(//tei:DLPSWRAP//tei:PB[@HREF]) &gt; 0" /> -->
+  <!-- <xsl:variable name="has-page-images" select="count(//tei:DLPSWRAP) &gt; 0" /> -->
+  <xsl:variable name="has-page-images" select="count(//tei:PB[@HREF]) &gt; 0" />
 
   <xsl:variable name="referrerhref">null</xsl:variable>
+
+  <!-- <xsl:template match="tei:DLPSWRAP[.//tei:PB or normalize-space(.)]" priority="200">
+    <article id="{@ID}">A wrap.</article>
+  </xsl:template> -->
 
   <xsl:template match="tei:DLPSWRAP[.//tei:PB or normalize-space(.)]">
     <xsl:variable name="pb" select=".//tei:PB[1]" />
@@ -59,6 +68,7 @@
         </xsl:otherwise>
       </xsl:choose>
     </xsl:variable>
+    <!-- <xsl:message>DLPSWRAP: <xsl:value-of select="$id" /></xsl:message> -->
     <article id="{$id}-{$seq}-{position()}-article" class="fullview-page" data-count="{$highlights[1]/@seq}" data-idno="{$idno}">
       <xsl:apply-templates select="$pb[1]" mode="build-p">
         <xsl:with-param name="base" select="$id" />
@@ -75,9 +85,6 @@
           </xsl:when>
           <xsl:when test="$has-page-images">
             <div class="pb-1 fullview-blank">
-              <!-- <div style="min-width: 100px; margin: 1rem">
-                <div style="padding: 0.5rem"></div>
-              </div> -->
             </div>
           </xsl:when>
           <xsl:otherwise></xsl:otherwise>
@@ -125,7 +132,7 @@
       <xsl:when test="$type='txt'">
         <xsl:call-template name="txtpointer" />
       </xsl:when>
-      <xsl:when test="//qui:block[@slot='content']//node()[@ID=$target]">
+      <xsl:when test="$content//node()[@ID=$target]">
         <a 
           class="button button--secondary button--highlight footnote-link"
           id="back{@TARGET}"
@@ -141,7 +148,7 @@
           <span class="visually-hidden">Jump to section</span>
         </a> 
       </xsl:when>
-      <xsl:when test="//qui:block[@slot='notes']//node()[@ID=$target]">
+      <xsl:when test="$notes//node()[@ID=$target]">
         <a 
           class="button button--secondary button--highlight footnote-link"
           id="back{@TARGET}"
@@ -157,7 +164,7 @@
           <span class="visually-hidden">Jump to note</span>
         </a>
       </xsl:when>
-      <xsl:when test="//qui:block[@slot='notes']//tei:SKIP[@TARGET=$target][@reason='div']">
+      <xsl:when test="$notes//tei:SKIP[@TARGET=$target][@reason='div']">
         <a href="{@HREF}" target="_top" class="button button--secondary button--highlight footnote-link">
           <xsl:choose>
             <xsl:when test="@N != '*'">
@@ -186,7 +193,7 @@
       <xsl:otherwise>
         <xsl:variable name="id" select="@TARGET" />
         <xsl:choose>
-          <xsl:when test="//qui:block[@slot='notes']//node()[@ID=$id]">
+          <xsl:when test="$notes//node()[@ID=$id]">
             <a 
               class="button button--secondary button--highlight footnote-link"
               id="back{@TARGET}"
@@ -201,7 +208,7 @@
               </xsl:choose>
             </a>
           </xsl:when>
-          <xsl:when test="//qui:block[@slot='content']//node()[@ID=$id]">
+          <xsl:when test="$content//node()[@ID=$id]">
             <a 
               class="button button--secondary button--highlight footnote-link"
               id="back{@TARGET}"
@@ -237,10 +244,10 @@
           select="//qui:block[@slot='notes']//node()[@ID=$id]" /> -->
         <xsl:variable name="target">
           <xsl:choose>
-            <xsl:when test="//qui:block[@slot='notes']//node()[@ID=$id]">
+            <xsl:when test="$notes//node()[@ID=$id]">
               <xsl:value-of select="concat('#fn', $id)" />
             </xsl:when>
-            <xsl:when test="//qui:block[@slot='content']//node()[@ID=$id]">
+            <xsl:when test="$content//node()[@ID=$id]">
               <xsl:value-of select="concat('#', $id)" />
             </xsl:when>
             <xsl:otherwise></xsl:otherwise>
@@ -338,7 +345,7 @@
             alt="Scan of {key('get-lookup','headerutils.str.page')} {$pNum}"
           />
         <figcaption>
-          <span data-href="{@HREF}" class="button button--ghost button--small flex align-items-center">
+          <span class="button button--ghost button--small flex align-items-center">
             <xsl:text>View </xsl:text>
             <xsl:text> </xsl:text>
               <xsl:value-of select="key('get-lookup','headerutils.str.page')" />
@@ -550,7 +557,7 @@
         <!-- <p><strong><xsl:value-of select="$heading" /></strong></p> -->
       </xsl:if>
       <xsl:apply-templates />
-      <xsl:if test="//qui:block[@slot='content']//tei:PTR[@TARGET=$id]">
+      <xsl:if test="$content//tei:PTR[@TARGET=$id]">
         <div>
           <a class="button button--secondary text-xx-small"
             href="#back{$id}">
@@ -1191,6 +1198,23 @@
   <xsl:template match="tei:NOTES/tei:SKIP" />
 
   <xsl:template match="tei:NOTE1|tei:NOTE2">
+    <a 
+      class="button button--secondary button--highlight footnote-link"
+      id="back{@ID}"
+      href="#fn{@ID}">
+      <xsl:choose>
+        <xsl:when test="@N != '*'">
+          <xsl:value-of select="@N" />
+        </xsl:when>
+        <xsl:otherwise>
+          <span class="material-icons" aria-hidden="true">tag</span>
+        </xsl:otherwise>
+      </xsl:choose>
+      <span class="visually-hidden">Jump to section</span>
+    </a>     
+  </xsl:template>
+
+  <xsl:template match="tei:NOTE1|tei:NOTE2" mode="x">
     <xsl:variable name="view" select="'text'" />
     <xsl:choose>
       <xsl:when test="not(@HREF)">
@@ -1281,7 +1305,7 @@
   <xsl:template name="filterNotesInText">
     <xsl:variable name="id" select="@ID" />
     <xsl:variable name="target"
-      select="//qui:block[@slot='notes']//node()[@ID=$id]" />
+      select="$notes//node()[@ID=$id]" />
     <xsl:if test="$target">
       <a 
         class="button button--secondary button--highlight footnote-link"
@@ -2442,7 +2466,7 @@
           <xsl:value-of select="@N" />
         </xsl:when>
         <xsl:otherwise>
-          <xsl:value-of select="//tei:PTR[@TARGET=$id]/@N" />
+          <xsl:value-of select="$content//tei:PTR[@TARGET=$id]/@N" />
         </xsl:otherwise>
       </xsl:choose>
     </xsl:variable>

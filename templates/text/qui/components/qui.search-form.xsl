@@ -3,31 +3,31 @@
   <xsl:template name="build-search-form">
     <xsl:variable name="q">
       <xsl:choose>
-        <xsl:when test="//Param[@name='q1']">
-          <xsl:value-of select="//Param[@name='q1']" />
+        <xsl:when test="/Top/DlxsGlobals/CurrentCgi/Param[@name='q1']">
+          <xsl:value-of select="/Top/DlxsGlobals/CurrentCgi/Param[@name='q1']" />
         </xsl:when>
-        <xsl:when test="//Param[@name='value']">
-          <xsl:value-of select="//Param[@name='value']" />
+        <xsl:when test="/Top/DlxsGlobals/CurrentCgi/Param[@name='value']">
+          <xsl:value-of select="/Top/DlxsGlobals/CurrentCgi/Param[@name='value']" />
         </xsl:when>
         <xsl:otherwise />
       </xsl:choose>
     </xsl:variable>
     <xsl:variable name="is-advanced" select="not(contains($search-type, 'simple'))" />
-    <xsl:variable name="is-browse" select="//Param[@name='page'] = 'browse'" />
+    <xsl:variable name="is-browse" select="/Top/DlxsGlobals/CurrentCgi/Param[@name='page'] = 'browse'" />
     <qui:debug search-type="{$search-type}" />
-    <qui:form id="collection-search" data-advanced="{$is-advanced}" data-edit-action="{//SearchDescription/RefineSearchLink}">
+    <qui:form id="collection-search" data-advanced="{$is-advanced}" data-edit-action="{/Top/SearchDescription/RefineSearchLink}">
       <xsl:attribute name="data-has-query">
         <xsl:choose>
-          <xsl:when test="//SearchDescription/RefineSearchLink">true</xsl:when>
+          <xsl:when test="/Top/SearchDescription/RefineSearchLink">true</xsl:when>
           <xsl:otherwise>false</xsl:otherwise>
         </xsl:choose>
       </xsl:attribute>
       <xsl:choose>
         <xsl:when test="$is-advanced">
-          <xsl:apply-templates select="//SearchForm/Q">
-            <xsl:with-param name="is-advanced" select="//SearchForm/Advanced" />
+          <xsl:apply-templates select="/Top/SearchForm/Q">
+            <xsl:with-param name="is-advanced" select="/Top/SearchForm/Advanced" />
           </xsl:apply-templates>
-          <xsl:apply-templates select="//SearchForm/Range" mode="search-form" />
+          <xsl:apply-templates select="/Top/SearchForm/Range" mode="search-form" />
         </xsl:when>
         <xsl:otherwise>
           <xsl:call-template name="build-search-input">
@@ -38,9 +38,9 @@
       </xsl:choose>
       <!-- <xsl:apply-templates select="//Facets" mode="search-form" /> -->
       <xsl:choose>
-        <xsl:when test="//ResultsLinks/HiddenVars/Variable[@name != 'q1']">
+        <xsl:when test="/Top/ResultsLinks/HiddenVars/Variable[@name != 'q1']">
           <qui:debug is-advanced="{$is-advanced}">resultslinks</qui:debug>
-          <xsl:for-each select="//ResultsLinks/HiddenVars/Variable">
+          <xsl:for-each select="/Top/ResultsLinks/HiddenVars/Variable">
             <xsl:choose>
               <xsl:when test="$is-advanced = false() and @name = 'q1'"><qui:debug name="q1" /></xsl:when>
               <xsl:when test="$is-advanced = false() and @name ='rgn'"><qui:debug name="rgn" /></xsl:when>
@@ -60,21 +60,21 @@
             </xsl:if> -->
           </xsl:for-each>
         </xsl:when>
-        <xsl:when test="//SearchForm/HiddenVars/Variable">
-          <xsl:for-each select="//SearchForm/HiddenVars/Variable">
+        <xsl:when test="/Top/SearchForm/HiddenVars/Variable">
+          <xsl:for-each select="/Top/SearchForm/HiddenVars/Variable">
             <xsl:if test="@name != 'debug'">
               <qui:input type="hidden" role="search" name="{@name}" value="{.}">
               </qui:input>  
             </xsl:if>
           </xsl:for-each>
-          <qui:input type="hidden" role="search" name="type" value="{normalize-space(substring-after(//NavItem[Name='search']/Link, 'page='))}" disabled="{$is-browse}" />
+          <qui:input type="hidden" role="search" name="type" value="{normalize-space(substring-after(/Top/MainNav/NavItem[Name='search']/Link, 'page='))}" disabled="{$is-browse}" />
         </xsl:when>
         <xsl:otherwise>
-          <qui:input type="hidden" role="search" name="type" value="{normalize-space(substring-after(//NavItem[Name='search']/Link, 'page='))}" disabled="{$is-browse}" />
+          <qui:input type="hidden" role="search" name="type" value="{normalize-space(substring-after(/Top/MainNav/NavItem[Name='search']/Link, 'page='))}" disabled="{$is-browse}" />
         </xsl:otherwise>
       </xsl:choose>
-      <xsl:if test="//SortSelect/Option[Focus='true']">
-        <qui:input type="hidden" name="sort" value="{//SortSelect/Option[Focus='true']/Value}" />
+      <xsl:if test="/Top/SortSelect/Option[Focus='true']">
+        <qui:input type="hidden" name="sort" value="{/Top/SortSelect/Option[Focus='true']/Value}" />
       </xsl:if>
     </qui:form>
   </xsl:template>
@@ -91,7 +91,7 @@
 
     <xsl:variable name="is-simple-search">
       <xsl:choose>
-        <xsl:when test="contains(//NavItem[Name='search']/Link, 'page=simple')">
+        <xsl:when test="contains(/Top/MainNav/NavItem[Name='search']/Link, 'page=simple')">
           <xsl:text>true</xsl:text>
         </xsl:when>
         <xsl:otherwise>
@@ -111,10 +111,10 @@
         </xsl:attribute>
         <xsl:choose>
           <xsl:when test="$is-simple-search = 'false'">
-            <xsl:apply-templates select="//SearchQuery/Region1SearchSelect/Option" />
+            <xsl:apply-templates select="/Top/SearchQuery/Region1SearchSelect/Option" />
           </xsl:when>
           <xsl:otherwise>
-            <xsl:apply-templates select="//SearchQuery/RegionSearchSelect/Option" />
+            <xsl:apply-templates select="/Top/SearchQuery/RegionSearchSelect/Option" />
           </xsl:otherwise>
         </xsl:choose>
       </qui:input>  

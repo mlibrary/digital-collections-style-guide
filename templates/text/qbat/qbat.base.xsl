@@ -22,6 +22,7 @@
   <xsl:variable name="view" select="//qui:root/@view" />
 
   <xsl:template match="qui:root">
+    <xsl:message>AHOY ROOT?</xsl:message>
     <html lang="en" data-root="{$docroot}" data-username="{$username}" data-view="{$view}" data-template="{//qui:root/@template}" data-initialized="false" style="opacity: 0">
       <xsl:call-template name="make-data-attribute">
         <xsl:with-param name="name">c</xsl:with-param>

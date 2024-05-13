@@ -123,16 +123,27 @@
   <xsl:template match="qui:block[@slot='content']">
     <section class="[ records ]">
       <h2 class="subtle-heading">Pages</h2>
+      <xsl:message>AHOY SOMETHING</xsl:message>
       <!-- <xsl:apply-templates select="qui:section/qui:div"></xsl:apply-templates> -->
+      <xsl:apply-templates />
+      <xsl:message>AHOY FIN</xsl:message>
+
+      <xsl:if test="false()">
       <xsl:choose>
         <xsl:when test=".//tei:DLPSWRAP">
-          <xsl:apply-templates select=".//tei:DLPSWRAP" />
+          <!-- <xsl:apply-templates select=".//tei:DLPSWRAP" /> -->
+          <!-- <pre><xsl:value-of select="count(.//tei:DLPSWRAP)" /></pre> -->
         </xsl:when>
         <xsl:otherwise>
           <xsl:apply-templates />
         </xsl:otherwise>
       </xsl:choose>
+      </xsl:if>
     </section>
+  </xsl:template>
+
+  <xsl:template match="tei:TEXT">
+    <xsl:apply-templates />
   </xsl:template>
 
   <xsl:template match="qui:block[@slot='notes'][tei:NOTE]">

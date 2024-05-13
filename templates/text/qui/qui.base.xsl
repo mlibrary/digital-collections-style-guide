@@ -2,17 +2,17 @@
 <xsl:stylesheet version="1.0" xmlns:xhtml="http://www.w3.org/1999/xhtml" xmlns:xsl="http://www.w3.org/1999/XSL/Transform" xmlns:dlxs="http://dlxs.org" xmlns:qbat="http://dlxs.org/quombat" xmlns:exsl="http://exslt.org/common" xmlns:qui="http://dlxs.org/quombat/ui" extension-element-prefixes="exsl" >
   <xsl:output method="xml" version="1.0" encoding="utf-8" indent="yes" />
 
-  <!-- <xsl:variable name="collid" select="normalize-space((//Param[@name='cc']|//Param[@name='c'])[1])" /> -->
+  <!-- <xsl:variable name="collid" select="normalize-space((/Top/DlxsGlobals/CurrentCgi/Param[@name='cc']|/Top/DlxsGlobals/CurrentCgi/Param[@name='c'])[1])" /> -->
   <xsl:variable name="collid">
     <xsl:choose>
-      <xsl:when test="//Param[@name='cc']">
-        <xsl:value-of select="//Param[@name='cc']" />
+      <xsl:when test="/Top/DlxsGlobals/CurrentCgi/Param[@name='cc']">
+        <xsl:value-of select="/Top/DlxsGlobals/CurrentCgi/Param[@name='cc']" />
       </xsl:when>
-      <xsl:when test="//Param[@name='xc'] = 1">
+      <xsl:when test="/Top/DlxsGlobals/CurrentCgi/Param[@name='xc'] = 1">
         <xsl:text>*</xsl:text>
       </xsl:when>
-      <xsl:when test="count(//Param[@name='c']) = 1">
-        <xsl:value-of select="//Param[@name='cc']" />
+      <xsl:when test="count(/Top/DlxsGlobals/CurrentCgi/Param[@name='c']) = 1">
+        <xsl:value-of select="/Top/DlxsGlobals/CurrentCgi/Param[@name='cc']" />
       </xsl:when>
       <xsl:otherwise>*</xsl:otherwise>
     </xsl:choose>
@@ -28,15 +28,15 @@
 
   <xsl:param name="context-type">
     <xsl:choose>
-      <xsl:when test="contains(//Param[@name='page'], 'bbag')">
+      <xsl:when test="contains(/Top/DlxsGlobals/CurrentCgi/Param[@name='page'], 'bbag')">
         <xsl:text>list</xsl:text>
       </xsl:when>
-      <xsl:when test="//Param[@name='bookbag'] = '1'">
+      <xsl:when test="/Top/DlxsGlobals/CurrentCgi/Param[@name='bookbag'] = '1'">
         <xsl:text>list</xsl:text>
       </xsl:when>
-      <xsl:when test="//Param[@name='xc'] = 1">
+      <xsl:when test="/Top/DlxsGlobals/CurrentCgi/Param[@name='xc'] = 1">
         <xsl:choose>
-          <xsl:when test="//Param[@name='g']">
+          <xsl:when test="/Top/DlxsGlobals/CurrentCgi/Param[@name='g']">
             <xsl:text>group</xsl:text>
           </xsl:when>
           <xsl:otherwise>
@@ -47,7 +47,7 @@
       <xsl:when test="//Para[@name='cc']">
         <xsl:text>collection</xsl:text>
       </xsl:when>
-      <xsl:when test="count(//Param[@name='c']) = 1">
+      <xsl:when test="count(/Top/DlxsGlobals/CurrentCgi/Param[@name='c']) = 1">
         <xsl:text>collection</xsl:text>
       </xsl:when>
       <xsl:otherwise>
@@ -81,16 +81,16 @@
           <xsl:value-of select="//CollGroupMembership" />
         </xsl:attribute>
       </xsl:if>
-      <xsl:if test="normalize-space(//Param[@name='q1'])">
+      <xsl:if test="normalize-space(/Top/DlxsGlobals/CurrentCgi/Param[@name='q1'])">
         <xsl:attribute name="q1">
-          <xsl:value-of select="//Param[@name='q1']" />
+          <xsl:value-of select="/Top/DlxsGlobals/CurrentCgi/Param[@name='q1']" />
         </xsl:attribute>
       </xsl:if>
 
-      <xsl:apply-templates 
+      <!-- <xsl:apply-templates 
         select="document('')//xsl:template[@name='ACK']">
         <xsl:with-param name="root" select="/Top" />
-      </xsl:apply-templates>
+      </xsl:apply-templates> -->
 
       <!-- fills html/head-->
       <qui:head>
@@ -111,17 +111,13 @@
         </qui:main>
         <qui:message>Message recived, La Jolla</qui:message>
         <qui:footer>
-          <qui:link rel="help" href="{normalize-space(//Help)}" />
-          <qui:link rel="collection-home" href="{//Home}" />
-          <qui:link rel="feedback" href="{//FeedbackUrl}" />
+          <!-- <qui:link rel="help" href="{normalize-space(//Help)}" /> -->
+          <!-- <qui:link rel="collection-home" href="{//Home}" /> -->
+          <qui:link rel="feedback" href="{/Top/DlxsGlobals/FeedbackUrl}" />
         </qui:footer>
       </qui:body>
       <qui:lookup>
-        <xsl:apply-templates select="/Top/DlxsGlobals/LangMap//Lookup/Item" mode="build-lookup" />
-        <!-- <xsl:apply-templates select="//Lookup[@id='text.components']" mode="build-lookup" />
-        <xsl:apply-templates select="//Lookup[@id='headerutils']" mode="build-lookup" />
-        <xsl:apply-templates select="//Lookup[@id='viewer']" mode="build-lookup" />
-        <xsl:apply-templates select="//Lookup[@id='uplift']" mode="build-lookup" /> -->
+        <xsl:apply-templates select="/Top/DlxsGlobals/LangMap/*/Lookup/Item" mode="build-lookup" />
       </qui:lookup>    
     </qui:root>
   </xsl:template>
@@ -137,36 +133,36 @@
 
   <xsl:template name="build-site-header">
     <qui:m-website-header name="Digital Collections">
-      <qui:search-form collid="{$collid}" value="{//Param[@name='q1']}" />
+      <qui:search-form collid="{$collid}" value="{/Top/DlxsGlobals/CurrentCgi/Param[@name='q1']}" />
       <qui:nav>
         <qui:link rel="feedback" icon="email" href="{//FeedbackUrl}">Contact Us</qui:link>
-        <qui:link rel="help" icon="help" href="{//NavHeader/MainNav/NavItem[Name='help']/Link}">Help</qui:link>
+        <qui:link rel="help" icon="help" href="{/Top/NavHeader/MainNav/NavItem[Name='help']/Link}">Help</qui:link>
         <xsl:if test="//NavItem[Name='browse']/Tab='true'">
-          <qui:link rel="browse" icon="list" href="{//NavItem[Name='browse']/Link}">Browse</qui:link>
+          <qui:link rel="browse" icon="list" href="{/Top/NavHeader/MainNav/NavItem[Name='browse']/Link}">Browse</qui:link>
         </xsl:if>
-        <xsl:if test="//NavItem[Name='browse']/Tab='false' and //CollectionIdno">
+        <xsl:if test="/Top/NavHeader/MainNav/NavItem[Name='browse']/Tab='false' and /Top/DlxsGlobals/CollectionIdno">
           <qui:link rel="browse" icon="list">
             <xsl:attribute name="href">
-              <xsl:value-of select="//ScriptName[@application='text']" />
+              <xsl:value-of select="/Top/DlxsGlobals/ScriptName[@application='text']" />
               <xsl:text>?cc=</xsl:text>
               <xsl:value-of select="$collid" />
               <xsl:text>;idno=</xsl:text>
-              <xsl:value-of select="//CollectionIdno" />
+              <xsl:value-of select="/Top/DlxsGlobals/CollectionIdno" />
             </xsl:attribute>
             Browse
           </qui:link>
         </xsl:if>
-        <xsl:if test="//NavItem[Name='contents']/Tab='true'">
-          <qui:link rel="browse" icon="list" href="{//NavItem[Name='contents']/Link}">Contents</qui:link>
+        <xsl:if test="/Top/NavHeader/MainNav/NavItem[Name='contents']/Tab='true'">
+          <qui:link rel="browse" icon="list" href="{/Top/NavHeader/MainNav/NavItem[Name='contents']/Link}">Contents</qui:link>
         </xsl:if>
         <xsl:choose>
-          <xsl:when test="//XcollMode = 'colls' and //TemplateName = 'home'"></xsl:when>
+          <xsl:when test="/Top/DlxsGlobals/XcollMode = 'colls' and $template-name = 'home'"></xsl:when>
           <xsl:otherwise>
-            <qui:link rel="search" icon="search" href="{//NavItem[Name='search']/Link}">Search</qui:link>
+            <qui:link rel="search" icon="search" href="{/Top/NavHeader/MainNav/NavItem[Name='search']/Link}">Search</qui:link>
           </xsl:otherwise>
         </xsl:choose>          
-        <xsl:if test="//NavItem/Name='bookbag'">
-          <qui:link rel="portfolios" icon="bookmark" href="{//NavItem[Name='bookbag']/Link}">Bookbag</qui:link>
+        <xsl:if test="/Top/NavHeader/MainNav/NavItem/Name='bookbag'">
+          <qui:link rel="portfolios" icon="bookmark" href="{/Top/NavHeader/MainNav/NavItem[Name='bookbag']/Link}">Bookbag</qui:link>
         </xsl:if>
         <xsl:call-template name="build-login-link" />
       </qui:nav>
@@ -198,7 +194,7 @@
   </xsl:template>
 
   <xsl:template name="build-login-link">
-    <qui:link href="{/Top//ReAuthLink}" id="action-login">
+    <qui:link href="{/Top/ReAuthLink}" id="action-login">
       <xsl:choose>
         <xsl:when test="/Top/DlxsGlobals/UserAuthenticated = '1'">
           <xsl:attribute name="data-logged-in">true</xsl:attribute>
@@ -246,7 +242,7 @@
       <xsl:when test="/Top/BookBagInfo/Field[@name='bbagname']">
         <xsl:value-of select="normalize-space(/Top/BookBagInfo/Field[@name='bbagname'])" />
       </xsl:when>
-      <xsl:when test="//Param[@name='xc'] = 1 and normalize-space(/Top/GroupName)">
+      <xsl:when test="/Top/DlxsGlobals/CurrentCgi/Param[@name='xc'] = 1 and normalize-space(/Top/GroupName)">
         <xsl:value-of select="normalize-space(/Top/GroupName)" />
       </xsl:when>
       <xsl:when test="/Top/CollName = 'multiple'">
@@ -280,28 +276,23 @@
       <xsl:when test="$context-type = 'collection'">
         <xsl:value-of select="/Top/NavHeader/MainNav/NavItem[Name='home']/Link" />
       </xsl:when>
-      <xsl:when test="$context-type = 'list' and //Param[@name='bbdbid']">
+      <xsl:when test="$context-type = 'list' and /Top/DlxsGlobals/CurrentCgi/Param[@name='bbdbid']">
         <xsl:value-of select="/Top/Home" />
       </xsl:when>
       <xsl:when test="$context-type = 'list'">
         <xsl:text>/cgi/t/text/text-idx?page=bbaglist</xsl:text>
       </xsl:when>
       <xsl:when test="$context-type = 'group'">
-        <xsl:value-of select="//MainNav/NavItem[Name='home']/Link" />
+        <xsl:value-of select="/Top/NavHeader/MainNav/MainNav/NavItem[Name='home']/Link" />
       </xsl:when>
       <xsl:when test="$context-type = 'multiple'">
-        <xsl:value-of select="//MainNav/NavItem[Name='home']/Link" />
+        <xsl:value-of select="/Top/NavHeader/MainNav/MainNav/NavItem[Name='home']/Link" />
       </xsl:when>
       <xsl:otherwise></xsl:otherwise>
     </xsl:choose>
   </xsl:template>
 
   <xsl:template name="get-collection-subtitle">
-    <xsl:if test="normalize-space(//Subtitle)">
-      <qui:collection-subtitle name="collection-subtitle">
-        <xsl:value-of select="//Subtitle" />
-      </qui:collection-subtitle>
-    </xsl:if>
   </xsl:template>
 
   <xsl:template name="build-panel-browse-filters">
@@ -416,18 +407,18 @@
   </xsl:template>
 
   <xsl:template name="get-view">
-    <xsl:value-of select="//Param[@name='view']|//Param[@name='page']" />
+    <xsl:value-of select="/Top/DlxsGlobals/CurrentCgi/Param[@name='view']|/Top/DlxsGlobals/CurrentCgi/Param[@name='page']" />
   </xsl:template>
 
   <xsl:template name="build-item-search-form">
     <xsl:choose>
       <xsl:when test="/Top/Item/ItemHeader/HEADER/@TYPE = 'noocr'"></xsl:when>
-      <xsl:when test="//IncludeItemSearch = 'true'">
+      <xsl:when test="/Top/IncludeItemSearch = 'true'">
         <qui:form id="item-search" action="{/Top/DlxsGlobals/ScriptName[@application='text']}">
           <qui:hidden-input name="type" value="simple" />
           <qui:hidden-input name="rgn" value="full text" />
-          <xsl:apply-templates select="//SearchForm/HiddenVars" />
-          <qui:input name="q1" value="{//Param[@name='q1']}" type="text" style="width: auto; flex-grow: 1;">
+          <xsl:apply-templates select="/Top/SearchForm/HiddenVars" />
+          <qui:input name="q1" value="{/Top/DlxsGlobals/CurrentCgi/Param[@name='q1']}" type="text" style="width: auto; flex-grow: 1;">
             <qui:label>
               <xsl:choose>
                 <xsl:when test="/Top/Item/DocEncodingType='serialissue'">
