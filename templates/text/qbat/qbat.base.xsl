@@ -47,7 +47,7 @@
       </xsl:if>
 
       <xsl:apply-templates select="qui:head" />
-      <body class="[ font-base-family ]" data-class="text" data-initialized="false" style="opacity: 0">
+      <body class="[ font-base-family ]" data-class="text" data-initialized="true" style="opacity: 1">
         <xsl:apply-templates select="build-body-data" />
 
         <!-- Google Tag Manager (noscript) -->
@@ -72,6 +72,8 @@
           </xsl:attribute>
           <xsl:apply-templates select="//qui:main" />
         </main>
+
+        <xsl:call-template name="build-not-main" />
 
         <xsl:call-template name="build-feedback-callout" />
         <xsl:call-template name="build-footer" />

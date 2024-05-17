@@ -45,6 +45,8 @@
     <!-- <xsl:text>[ mt-0 ]</xsl:text> -->
   </xsl:template>
 
+  <xsl:template name="build-cqfill-script" />
+
   <xsl:template match="qui:main">
 
     <xsl:call-template name="build-navigation" />
@@ -85,9 +87,8 @@
 
         <xsl:call-template name="build-item-header" />
 
-        <xsl:apply-templates select="//qui:block[@slot='content']" />
-
-        <xsl:apply-templates select="//qui:block[@slot='notes']" />
+        <!-- <xsl:apply-templates select="//qui:block[@slot='content']" />
+        <xsl:apply-templates select="//qui:block[@slot='notes']" /> -->
 
         <xsl:apply-templates select="//qui:block[@slot='metadata']/qui:metadata" mode="build-coins" />
 
@@ -96,6 +97,11 @@
 
     <xsl:apply-templates select="//qui:nav[@role='sections']" mode="pagination-footer-link" />
 
+  </xsl:template>
+
+  <xsl:template name="build-not-main">
+    <xsl:apply-templates select="//qui:block[@slot='content']" />
+    <xsl:apply-templates select="//qui:block[@slot='notes']" />
   </xsl:template>
 
   <xsl:template name="build-navigation">
@@ -118,6 +124,13 @@
 
   <xsl:template name="build-item-header">
     <xsl:apply-templates select="//qui:block[@slot='metadata']/qui:metadata" />
+  </xsl:template>
+
+  <xsl:template match="qui:block[@slot='content']" priority="1001">
+    <h2 class="subtle-heading">Pages</h2>
+    <xsl:message>AHOY SOMETHING</xsl:message>
+    <xsl:apply-templates />
+    <xsl:message>AHOY FINNISH</xsl:message>
   </xsl:template>
 
   <xsl:template match="qui:block[@slot='content']">
@@ -146,7 +159,25 @@
     <xsl:apply-templates />
   </xsl:template>
 
+  <xsl:template match="qui:block[@slot='notes'][tei:NOTE]" priority="1001">
+    <h2 id="notes" class="subtle-heading">Notes</h2>
+    <!-- <xsl:message>AHOY # NOTES: <xsl:value-of select="count(tei:NOTE)" /></xsl:message> -->
+    <xsl:apply-templates select="tei:NOTE" mode="note" />
+  </xsl:template>
+
   <xsl:template match="qui:block[@slot='notes'][tei:NOTE]">
+    <section class="[ records ]">
+      <h2 id="notes" class="subtle-heading">Notes</h2>
+      <xsl:apply-templates select="tei:NOTE" mode="note" />
+      <!-- <xsl:for-each select="tei:NOTE">
+        <li class="mb-2 p-1 border-bottom" data-id="{node()/@ID}">
+          <xsl:apply-templates select="*" mode="note" />
+        </li>
+      </xsl:for-each> -->
+    </section>
+  </xsl:template>
+
+  <!-- <xsl:template match="qui:block[@slot='notes'][tei:NOTE]">
     <section class="[ records ]">
       <h2 id="notes" class="subtle-heading">Notes</h2>
       <ul class="list-unstyled">
@@ -157,7 +188,7 @@
         </xsl:for-each>
       </ul>
     </section>
-  </xsl:template>
+  </xsl:template> -->
 
   <xsl:template match="qui:div[@class='page']">
     <div class="fullview-page">

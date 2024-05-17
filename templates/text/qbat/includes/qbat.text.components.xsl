@@ -26,9 +26,63 @@
 
   <xsl:variable name="referrerhref">null</xsl:variable>
 
-  <!-- <xsl:template match="tei:DLPSWRAP[.//tei:PB or normalize-space(.)]" priority="200">
-    <article id="{@ID}">A wrap.</article>
-  </xsl:template> -->
+  <xsl:template match="tei:DLPSWRAP[tei:FRONT/tei:DIV1[@TYPE='omitted front matter']]" priority="201" />
+
+  <xsl:template match="tei:DLPSWRAP[.//tei:PB or normalize-space(.)]" priority="200">
+    <xsl:variable name="pbs" select=".//tei:PB[1]" />
+    <article class="dlpswrap" id="{@ID}" data-pb-count="{count($pbs[1])}">
+      <xsl:apply-templates select="$pbs[1]" mode="page--link" />
+      <div>
+        <xsl:apply-templates />
+      </div>
+    </article>
+  </xsl:template> 
+
+  <xsl:template match="tei:PB" priority="1001" mode="page--link">
+    <xsl:variable name="pNum">
+      <xsl:choose>
+        <xsl:when test="@DISPLAYN[string-length()&gt;=1]">
+          <xsl:value-of select="@DISPLAYN" />
+        </xsl:when>
+        <xsl:when test="@N[string-length()&gt;=1]">
+          <xsl:value-of select="@N" />
+        </xsl:when>
+        <xsl:otherwise>
+          <xsl:value-of select="key('get-lookup','text.components.str.1')" />
+        </xsl:otherwise>
+      </xsl:choose>
+    </xsl:variable>
+    <xsl:variable name="feature">
+      <xsl:value-of select="key('get-lookup', concat('viewer.ftr.', dlxs:normAttr(@FTR)))" />
+    </xsl:variable>
+    <div class="page--link" data-ref="{@REF}">
+      <!-- <img src="data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" /> -->
+      <a href="{@HREF}">
+        <figure>
+            <img
+              loading="lazy"
+              src="/cgi/t/text/api/image/{$collid}:{@IDNO}:{@SEQ}/full/!250,250/0/default.jpg"
+              alt="Scan of {key('get-lookup','headerutils.str.page')} {$pNum}"
+            />
+          <figcaption>
+            <span>
+              <xsl:text>View </xsl:text>
+              <xsl:text> </xsl:text>
+                <xsl:value-of select="key('get-lookup','headerutils.str.page')" />
+              <span class="visually-hidden">              
+                <xsl:text> </xsl:text>
+                  <xsl:value-of select="$pNum" />  
+                <xsl:if test="normalize-space($feature)">
+                  <xsl:text> - </xsl:text>
+                  <xsl:value-of select="$feature" />
+                </xsl:if>
+              </span>
+            </span>
+          </figcaption>
+        </figure>
+        </a>
+      </div>
+  </xsl:template>
 
   <xsl:template match="tei:DLPSWRAP[.//tei:PB or normalize-space(.)]">
     <xsl:variable name="pb" select=".//tei:PB[1]" />
@@ -339,7 +393,7 @@
       <a href="{@HREF}">
       <figure>
           <img
-            style="min-width: 100px"
+            style="min-width: 100px; min-height: 100px;"
             loading="lazy"
             src="/cgi/t/text/api/image/{$collid}:{@IDNO}:{@SEQ}/full/!250,250/0/default.jpg"
             alt="Scan of {key('get-lookup','headerutils.str.page')} {$pNum}"
@@ -2454,6 +2508,27 @@
     </span>
   </xsl:template>
 
+  <xsl:template match="tei:NOTE/node()[@ID]" mode="note" priority="101">
+    <xsl:variable name="id" select="@ID" />
+    <!-- <xsl:variable name="ptr" select="//tei:PTR[@TARGET=$id]" /> -->
+    <xsl:variable name="N">
+      <xsl:choose>
+        <xsl:when test="@HREF">
+          <xsl:value-of select="@N" />
+        </xsl:when>
+        <xsl:when test="@N">
+          <xsl:value-of select="@N" />
+        </xsl:when>
+        <xsl:otherwise>
+          <xsl:value-of select="$content//tei:PTR[@TARGET=$id]/@N" />
+        </xsl:otherwise>
+      </xsl:choose>
+    </xsl:variable>
+    <article class="footnote" id="fn{$id}">
+      <xsl:apply-templates select="." />
+    </article>
+  </xsl:template>
+
   <xsl:template match="tei:NOTE/node()[@ID]" mode="note">
     <xsl:variable name="id" select="@ID" />
     <!-- <xsl:variable name="ptr" select="//tei:PTR[@TARGET=$id]" /> -->
@@ -2533,9 +2608,10 @@
   </xsl:template>
 
   <xsl:template name="build-footnote-icon">
-    <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-x-diamond-fill" viewBox="0 0 16 16" aria-hidden="true">
+    <span class="material-icons" aria-hidden="true">hash</span>
+    <!-- <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-x-diamond-fill" viewBox="0 0 16 16" aria-hidden="true">
       <path d="M9.05.435c-.58-.58-1.52-.58-2.1 0L4.047 3.339 8 7.293l3.954-3.954L9.049.435zm3.61 3.611L8.708 8l3.954 3.954 2.904-2.905c.58-.58.58-1.519 0-2.098l-2.904-2.905zm-.706 8.614L8 8.708l-3.954 3.954 2.905 2.904c.58.58 1.519.58 2.098 0l2.905-2.904zm-8.614-.706L7.292 8 3.339 4.046.435 6.951c-.58.58-.58 1.519 0 2.098z"/>
-    </svg>    
+    </svg>     -->
   </xsl:template>
 
   <xsl:template match="@ID">

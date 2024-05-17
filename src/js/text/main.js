@@ -28,3 +28,5 @@ import "./handlers/advanced-search-form.js";
 import "../wait-for-defined-components.js";
 import "../analytics.js";
 import "../mobile-nav.js";
+
+import "./viewers/text.js";
