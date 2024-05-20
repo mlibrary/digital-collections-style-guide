@@ -75,11 +75,11 @@
         </div>
       </div>
       <div class="[ flex flex-align-center flex-gap-0_5 ]">
-        <button class="button button--ghost button--small" name="down.x" value="1" type="submit">
+        <button class="button button--ghost button--small" name="up.x" value="1" type="submit">
           <span class="material-icons" aria-hidden="true">chevron_left</span>
           <span>Previous Page</span>          
         </button>
-        <button class="button button--ghost button--small" name="up.x" value="1" type="submit">
+        <button class="button button--ghost button--small" name="down.x" value="1" type="submit">
           <span>Next Page</span>          
           <span class="material-icons" aria-hidden="true">chevron_right</span>
         </button>
