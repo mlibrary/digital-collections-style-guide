@@ -321,7 +321,54 @@
 
   <!-- #################### -->
 
-  <xsl:template match="tei:P/tei:PB|tei:PB" mode="build-page-link">
+  <xsl:template match="tei:P/tei:PB|tei:PB" mode="build-page-link" priority="101">
+    <xsl:param name="base" />
+    <xsl:param name="idno" />
+    <xsl:variable name="pNum">
+      <xsl:choose>
+        <xsl:when test="@DISPLAYN[string-length()&gt;=1]">
+          <xsl:value-of select="@DISPLAYN" />
+        </xsl:when>
+        <xsl:when test="@N[string-length()&gt;=1]">
+          <xsl:value-of select="@N" />
+        </xsl:when>
+        <xsl:otherwise>
+          <xsl:value-of select="key('get-lookup','text.components.str.1')" />
+        </xsl:otherwise>
+      </xsl:choose>
+    </xsl:variable>
+    <xsl:variable name="feature">
+      <xsl:value-of select="key('get-lookup', concat('viewer.ftr.', dlxs:normAttr(@FTR)))" />
+    </xsl:variable>
+    <a class="fullview-thumbnail" data-idno="{$idno}" href="{@HREF}">
+      <figure class="thumbnail">
+        <div class="img">
+          <img
+            loading="lazy"
+            src="/cgi/t/text/api/image/{$collid}:{@IDNO}:{@SEQ}/full/!250,250/0/default.jpg"
+            alt="Scan of {key('get-lookup','headerutils.str.page')} {$pNum}"
+          />
+        </div>
+        <figcaption>
+          <span data-href="{@HREF}" class="button button--ghost button--small flex align-items-center">
+            <xsl:text>View </xsl:text>
+            <xsl:text> </xsl:text>
+              <xsl:value-of select="key('get-lookup','headerutils.str.page')" />
+            <span class="visually-hidden">              
+              <xsl:text> </xsl:text>
+                <xsl:value-of select="$pNum" />  
+              <xsl:if test="normalize-space($feature)">
+                <xsl:text> - </xsl:text>
+                <xsl:value-of select="$feature" />
+              </xsl:if>
+            </span>
+          </span>
+        </figcaption>
+      </figure>
+    </a>
+  </xsl:template>  
+
+  <xsl:template match="tei:P/tei:PB|tei:PB" mode="build-page-link-v1">
     <xsl:param name="base" />
     <xsl:param name="idno" />
     <xsl:variable name="pNum">
@@ -369,8 +416,7 @@
     </div>
   </xsl:template>
 
-  <!-- <xsl:template match="tei:Q1//tei:PB" mode="build-page-link" priority="101" /> -->
-
+  <!-- why is this ? -->
   <xsl:template match="tei:PB" mode="build-page-link">
     <xsl:param name="base" />
     <xsl:param name="idno" />
@@ -449,7 +495,7 @@
       </xsl:if>
     </xsl:variable>
     <h3 
-      class="flex align-items-center gap-0_5"
+      class="flex align-items-center gap-0_5 js-toc-ignore"
       data-heading-label="{$heading}" data-p-num="{$pNum}" data-base="{$base}" data-idno="{$idno}">
       <xsl:attribute name="data-wut">
         <xsl:choose>
@@ -1261,6 +1307,9 @@
       id="back{@ID}"
       href="#fn{@ID}">
         <xsl:choose>
+          <xsl:when test="@LABEL">
+            <xsl:value-of select="@LABEL" />
+          </xsl:when>
           <xsl:when test="@N != '*'">
             <xsl:value-of select="@N" />
           </xsl:when>
@@ -2470,6 +2519,9 @@
       id="fn{$id}">
       <div class="text-bold text-medium footnote-anchor mt-1" style="position: sticky; top: 1rem;">
         <xsl:choose>
+          <xsl:when test="@LABEL">
+            <xsl:value-of select="@LABEL" />
+          </xsl:when>
           <xsl:when test="$N != '*'">
             <xsl:value-of select="$N" />
           </xsl:when>

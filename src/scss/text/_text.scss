@@ -83,14 +83,16 @@ ul.fullview-toc {
 }
 
 .fullview-thumbnail, .fullview-blank {
-  flex-basis: min-content;
+  // flex-basis: min-content;
   flex-shrink: 0;
 }
 
-.fullview-thumbnail > a {
-  display: block;
+.fullview-thumbnail {
+  display: flex;
+  justify-content: center;
   position: sticky;
   top: 1rem;
+  align-self: start;
 }
 
 .fullview-thumbnail figure {
@@ -100,20 +102,37 @@ ul.fullview-toc {
   gap: 0.5rem;
   margin-bottom: 1rem;
 
+  & > div {
+    height: 250px;
+    width: 200px;
+    border: 1px solid transparent; // var(--color-neutral-400);
+    padding: 4px;
+    text-align: center;
+
+    img {
+      height: auto;
+      max-width: 100%;
+      max-height: 100%;
+      filter: drop-shadow(2px 4px 6px var(--color-neutral-400));
+    }
+  }
+
   span.button {
     white-space: nowrap;
   }
 }
 
-.fullview-thumbnail img {
-  border: 1px solid var(--color-neutral-400);
-  padding: 0.5rem;
-  width: auto;
-  max-width: 100%;
-}
+// .fullview-thumbnail img {
+//   border: 1px solid var(--color-neutral-400);
+//   padding: 0.5rem;
+//   width: auto;
+//   max-width: 100%;
+//   height: 250px;
+//   min-width: 150px;
+// }
 
-.fullview-thumbnail a:hover img, 
-.fullview-thumbnail a:hover span {
+.fullview-thumbnail:hover img, 
+.fullview-thumbnail:hover span {
   /* outline: 1px solid var(--color-neutral-300);
   outline-offset: 2px; */
   box-shadow: 0 0 0 2px #fff,0 0 0 3px var(--color-neutral-400); 
@@ -121,6 +140,9 @@ ul.fullview-toc {
 
 .fullview-page {
   padding-bottom: 2rem;
+  max-width: 100ch;
+  // margin-left: auto;
+  // margin-right: auto;
 }
 
 .fullview-heading {
@@ -378,7 +400,7 @@ ins[data-function="replace"] {
   }
 }
 
-.fullview-main figure {
+.fullview-main figure:not(.thumbnail) {
   border: 1px solid var(--color-neutral-100);
   padding: 1rem;
   // padding-bottom: 0;
@@ -389,7 +411,7 @@ ins[data-function="replace"] {
   margin: 0.25rem;
 }
 
-.fullview-main figure img {
+.fullview-main figure:not(.thumbnail) img {
   width: auto;
   max-width: 100%;
   border: 1px solid var(--color-neutral-400);
@@ -658,6 +680,7 @@ ins[data-function="replace"] {
 .inline-note-edge {
   font-weight: bold;
   font-size: 125%;
+  color: var(--color-maize-500);
 }
 
 // annotations
@@ -705,6 +728,11 @@ html {
 
   .fullview-blank {
     display: none;
+  }
+
+  .fullview-thumbnail {
+    position: static;
+    width: 100%;
   }
 }
 
