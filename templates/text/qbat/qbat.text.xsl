@@ -106,7 +106,9 @@
   </xsl:template>
 
   <xsl:template name="build-not-main">
+    <!-- <xsl:message>AHOY qbat/content/start</xsl:message> -->
     <xsl:apply-templates select="//qui:block[@slot='content']" mode="not-main" />
+    <!-- <xsl:message>AHOY qbat/content/fin</xsl:message> -->
     <xsl:apply-templates select="//qui:block[@slot='notes']" />
   </xsl:template>  
 

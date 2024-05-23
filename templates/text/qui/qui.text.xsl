@@ -74,8 +74,9 @@
       mimetype="application/tei+xml" 
       is-target="{$is-target}"
       item-encoding-level="{$item-encoding-level}"
-      idno="{$idno}">
-      <xsl:apply-templates select="/Top/FullTextResults/DocContent" mode="tei" />      
+      idno="{$idno}"
+      rgn="{/Top/DlxsGlobals/CurrentCgi/Param[@name='rgn']}">
+      <xsl:apply-templates select="/Top/FullTextResults/DocContent" mode="tei" />
     </qui:block>
 
     <qui:block slot="notes"
