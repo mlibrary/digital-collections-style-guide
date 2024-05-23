@@ -111,10 +111,10 @@
         </xsl:attribute>
         <xsl:choose>
           <xsl:when test="$is-simple-search = 'false'">
-            <xsl:apply-templates select="/Top/SearchQuery/Region1SearchSelect/Option" />
+            <xsl:apply-templates select="/Top/SearchForm/SearchQuery/Region1SearchSelect/Option" />
           </xsl:when>
           <xsl:otherwise>
-            <xsl:apply-templates select="/Top/SearchQuery/RegionSearchSelect/Option" />
+            <xsl:apply-templates select="/Top/SearchForm/SearchQuery/RegionSearchSelect/Option" />
           </xsl:otherwise>
         </xsl:choose>
       </qui:input>  
