@@ -1,5 +1,17 @@
 <?xml version="1.0" encoding="utf-8"?>
-<xsl:stylesheet version="1.0" xmlns="http://www.w3.org/1999/xhtml" xmlns:xsl="http://www.w3.org/1999/XSL/Transform" xmlns:qui="http://dlxs.org/quombat/ui" xmlns:qbat="http://dlxs.org/quombat/quombat" xmlns:xhtml="http://www.w3.org/1999/xhtml" xmlns:dlxs="http://dlxs.org" xmlns:exsl="http://exslt.org/common" xmlns:math="http://exslt.org/math" xmlns:tei="http://www.tei-c.org/ns/1.0" extension-element-prefixes="exsl math dlxs">
+<xsl:stylesheet 
+  version="1.0" 
+  xmlns="http://www.w3.org/1999/xhtml" 
+  xmlns:xsl="http://www.w3.org/1999/XSL/Transform" 
+  xmlns:qui="http://dlxs.org/quombat/ui" 
+  xmlns:qbat="http://dlxs.org/quombat/quombat" 
+  xmlns:xhtml="http://www.w3.org/1999/xhtml" 
+  xmlns:dlxs="http://dlxs.org" 
+  xmlns:exsl="http://exslt.org/common" 
+  xmlns:math="http://exslt.org/math" 
+  xmlns:tei="http://www.tei-c.org/ns/1.0" 
+  extension-element-prefixes="exsl math dlxs"
+  exclude-result-prefixes="exsl math dlxs tei qui qbat">
 
   <xsl:variable name="is-skip-consecutive-hi-elements" select="true()" />
 
@@ -27,15 +39,19 @@
   <xsl:variable name="referrerhref">null</xsl:variable>
 
   <xsl:template match="tei:DLPSWRAP[tei:FRONT/tei:DIV1[@TYPE='omitted front matter']]" priority="201" />
+  <xsl:template match="tei:DLPSWRAP[tei:BACK/tei:DIV1[@TYPE='omitted back matter']]" priority="201" />
+
+  <xsl:template match="tei:DLPSWRAP" priority="150" />
 
   <xsl:template match="tei:DLPSWRAP[.//tei:PB or normalize-space(.)]" priority="200">
     <xsl:variable name="pbs" select=".//tei:PB[1]" />
     <article class="dlpswrap" id="{@ID}" data-pb-count="{count($pbs[1])}">
       <xsl:apply-templates select="$pbs[1]" mode="page--link" />
-      <div>
+      <div class="article--inner">
         <xsl:apply-templates />
       </div>
     </article>
+    <div class="page--divider"></div>
   </xsl:template> 
 
   <xsl:template match="tei:PB" priority="1001" mode="page--link">
@@ -55,15 +71,44 @@
     <xsl:variable name="feature">
       <xsl:value-of select="key('get-lookup', concat('viewer.ftr.', dlxs:normAttr(@FTR)))" />
     </xsl:variable>
+    <a class="page--link" href="{@HREF}">
+      <figure>
+        <div>
+          <img
+            loading="lazy"
+            src="/cgi/t/text/api/image/{$collid}:{@IDNO}:{@SEQ}/full/!250,250/0/default.jpg"
+            alt="Scan of {key('get-lookup','headerutils.str.page')} {$pNum}"
+          />
+        </div>
+        <figcaption>
+          <span>
+            <xsl:text>View </xsl:text>
+            <xsl:text> </xsl:text>
+              <xsl:value-of select="key('get-lookup','headerutils.str.page')" />
+            <span class="visually-hidden">              
+              <xsl:text> </xsl:text>
+                <xsl:value-of select="$pNum" />  
+              <xsl:if test="normalize-space($feature)">
+                <xsl:text> - </xsl:text>
+                <xsl:value-of select="$feature" />
+              </xsl:if>
+            </span>
+          </span>
+        </figcaption>
+      </figure>
+    </a>    
+    <xsl:if test="false()">
     <div class="page--link" data-ref="{@REF}">
       <!-- <img src="data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" /> -->
       <a href="{@HREF}">
         <figure>
+          <div>
             <img
               loading="lazy"
               src="/cgi/t/text/api/image/{$collid}:{@IDNO}:{@SEQ}/full/!250,250/0/default.jpg"
               alt="Scan of {key('get-lookup','headerutils.str.page')} {$pNum}"
             />
+          </div>
           <figcaption>
             <span>
               <xsl:text>View </xsl:text>
@@ -82,6 +127,7 @@
         </figure>
         </a>
       </div>
+    </xsl:if>
   </xsl:template>
 
   <xsl:template match="tei:DLPSWRAP[.//tei:PB or normalize-space(.)]">
@@ -566,7 +612,7 @@
       </xsl:call-template>
     </xsl:variable>
 
-    <section name="{local-name()}" data-item-encoding-level="{$item-encoding-level}">
+    <section data-name="{local-name()}" data-item-encoding-level="{$item-encoding-level}">
       <xsl:if test="@ID">
         <xsl:attribute name="id"><xsl:value-of select="@ID" /></xsl:attribute>
       </xsl:if>
@@ -2608,7 +2654,7 @@
   </xsl:template>
 
   <xsl:template name="build-footnote-icon">
-    <span class="material-icons" aria-hidden="true">hash</span>
+    <span class="material-icons" aria-hidden="true">tag</span>
     <!-- <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-x-diamond-fill" viewBox="0 0 16 16" aria-hidden="true">
       <path d="M9.05.435c-.58-.58-1.52-.58-2.1 0L4.047 3.339 8 7.293l3.954-3.954L9.049.435zm3.61 3.611L8.708 8l3.954 3.954 2.904-2.905c.58-.58.58-1.519 0-2.098l-2.904-2.905zm-.706 8.614L8 8.708l-3.954 3.954 2.905 2.904c.58.58 1.519.58 2.098 0l2.905-2.904zm-8.614-.706L7.292 8 3.339 4.046.435 6.951c-.58.58-.58 1.519 0 2.098z"/>
     </svg>     -->

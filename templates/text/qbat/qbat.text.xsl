@@ -126,10 +126,21 @@
     <xsl:apply-templates select="//qui:block[@slot='metadata']/qui:metadata" />
   </xsl:template>
 
-  <xsl:template match="qui:block[@slot='content']" priority="1001">
+  <xsl:template match="qui:block[@slot='content']" priority="1002">
     <h2 class="subtle-heading">Pages</h2>
     <xsl:message>AHOY SOMETHING</xsl:message>
     <xsl:apply-templates />
+
+    <xsl:message>AHOY FINNISH</xsl:message>
+  </xsl:template>  
+
+  <xsl:template match="qui:block[@slot='content']" priority="1001" mode="x">
+    <h2 class="subtle-heading">Pages</h2>
+    <xsl:message>AHOY SOMETHING</xsl:message>
+    <div class="dlpswrap--block">
+      <xsl:apply-templates />
+    </div>
+
     <xsl:message>AHOY FINNISH</xsl:message>
   </xsl:template>
 
@@ -162,7 +173,7 @@
   <xsl:template match="qui:block[@slot='notes'][tei:NOTE]" priority="1001">
     <h2 id="notes" class="subtle-heading">Notes</h2>
     <!-- <xsl:message>AHOY # NOTES: <xsl:value-of select="count(tei:NOTE)" /></xsl:message> -->
-    <xsl:apply-templates select="tei:NOTE" mode="note" />
+    <!-- <xsl:apply-templates select="tei:NOTE" mode="note" /> -->
   </xsl:template>
 
   <xsl:template match="qui:block[@slot='notes'][tei:NOTE]">

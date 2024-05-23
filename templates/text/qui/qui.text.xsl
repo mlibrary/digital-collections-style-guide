@@ -5,6 +5,7 @@
 
   <xsl:variable name="has-plain-text" select="/Top/DocNavigation/PageNavForm/ViewSelect/Option[Value='text']" />
   <xsl:variable name="is-subj-search">yes</xsl:variable>
+  <xsl:variable name="include-bookmark">yes</xsl:variable>
 
   <xsl:variable name="idno" select="/Top/DlxsGlobals/CurrentCgi/Param[@name='idno']" />
 
@@ -72,7 +73,8 @@
     <qui:block slot="content" 
       mimetype="application/tei+xml" 
       is-target="{$is-target}"
-      item-encoding-level="{$item-encoding-level}" >
+      item-encoding-level="{$item-encoding-level}"
+      idno="{$idno}">
       <!-- <xsl:choose>
         <xsl:when test="/Top/FullTextResults/DocContent/DLPSTEXTCLASS">
           <xsl:apply-templates select="/Top/FullTextResults/DocContent/DLPSTEXTCLASS" mode="copy-guts" />

@@ -152,6 +152,8 @@
     </head>
   </xsl:template>
 
+  <xsl:template name="build-not-main"></xsl:template>
+
   <xsl:template name="build-app-script">
     <script src="{$docroot}dist/js/text/main.js"></script>
   </xsl:template>
