@@ -59,15 +59,15 @@
       <xsl:when test="$item/BookmarkableUrl">
         <xsl:apply-templates select="$item/BookmarkableUrl" mode="metadata" />
       </xsl:when>
-      <xsl:when test="($template-name = 'pageviewer' or $template-name = 'browse' or $template-name = 'header') and normalize-space(//BookmarkableUrl)">
-        <xsl:apply-templates select="//BookmarkableUrl" mode="metadata" />
+      <xsl:when test="($template-name = 'pageviewer' or $template-name = 'browse' or $template-name = 'header') and normalize-space(/Top/DlxsGlobals/BookmarkableUrl)">
+        <xsl:apply-templates select="/Top/DlxsGlobals/BookmarkableUrl" mode="metadata" />
       </xsl:when>
       <xsl:otherwise>
         <qui:field key="bookmark" component="input">
           <qui:label>Link to this Item</qui:label>
           <qui:values>
             <qui:value>
-              <xsl:value-of select="//ApiUrl" />
+              <xsl:value-of select="/Top/DlxsGlobals/ApiUrl" />
               <xsl:text>/</xsl:text>
               <xsl:value-of select="substring($collid, 1, 1)" />
               <xsl:text>/</xsl:text>
@@ -77,11 +77,11 @@
                 <xsl:when test="local-name($item) = 'Item' and $item/@idno">
                   <xsl:value-of select="$item/@idno" />
                 </xsl:when>
-                <xsl:when test="//Param[@name='node']">
-                  <xsl:value-of select="//Param[@name='node']" />
+                <xsl:when test="/Top/DlxsGlobals/CurrentCgi/Param[@name='node']">
+                  <xsl:value-of select="/Top/DlxsGlobals/CurrentCgi/Param[@name='node']" />
                 </xsl:when>
                 <xsl:otherwise>
-                  <xsl:value-of select="dlxs:downcase(//Param[@name='idno'])" />  
+                  <xsl:value-of select="dlxs:downcase(/Top/DlxsGlobals/CurrentCgi/Param[@name='idno'])" />  
                 </xsl:otherwise>
               </xsl:choose>    
             </qui:value>
@@ -300,7 +300,7 @@
               <qui:span data-key="canvas-label">
                 <xsl:value-of select="key('get-lookup', 'headerutils.str.page')" />
                 <xsl:text> #</xsl:text>
-                <xsl:value-of select="//CurrentCgi/Param[@name='seq']" />
+                <xsl:value-of select="/Top/DlxsGlobals/CurrentCgi/Param[@name='seq']" />
                 <xsl:if test="$label/PageType != 'viewer.ftr.uns'">
                   <xsl:text> - </xsl:text>
                   <xsl:value-of select="key('get-lookup', $label/PageType)" />
@@ -1174,7 +1174,7 @@
             <xsl:text>/</xsl:text>
             <xsl:value-of select="$collid" />
             <xsl:text>/</xsl:text> -->
-            <!-- <xsl:value-of select="//Param[@name='idno']" /> -->
+            <!-- <xsl:value-of select="/Top/DlxsGlobals/CurrentCgi/Param[@name='idno']" /> -->
             <xsl:text>. </xsl:text>
             <xsl:if test="normalize-space(key('get-lookup', 'uplift.citation.repository'))">
               <xsl:value-of select="key('get-lookup', 'uplift.citation.repository')" />

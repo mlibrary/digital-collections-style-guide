@@ -3,10 +3,11 @@
   <xsl:output method="xml" version="1.0" encoding="utf-8" indent="yes" />
   <!-- <xsl:strip-space elements="*"/> -->
 
-  <xsl:variable name="has-plain-text" select="//ViewSelect/Option[Value='text']" />
+  <xsl:variable name="has-plain-text" select="/Top/DocNavigation/PageNavForm/ViewSelect/Option[Value='text']" />
   <xsl:variable name="is-subj-search">yes</xsl:variable>
-
-  <xsl:variable name="idno" select="//Param[@name='idno']" />
+  <xsl:variable name="include-bookmark">yes</xsl:variable>
+  
+  <xsl:variable name="idno" select="/Top/DlxsGlobals/CurrentCgi/Param[@name='idno']" />
 
   <xsl:variable name="item-encoding-level">
     <xsl:choose>
@@ -72,39 +73,29 @@
     <qui:block slot="content" 
       mimetype="application/tei+xml" 
       is-target="{$is-target}"
-      item-encoding-level="{$item-encoding-level}" >
-      <xsl:choose>
-        <xsl:when test="/Top/FullTextResults/DocContent/DLPSTEXTCLASS">
-          <xsl:apply-templates select="/Top/FullTextResults/DocContent/DLPSTEXTCLASS" mode="copy-guts" />
-        </xsl:when>
-        <xsl:when test="/Top/FullTextResults/DocContent/DLPSWRAP">
-          <xsl:apply-templates select="/Top/FullTextResults/DocContent/DLPSWRAP" mode="copy" />
-        </xsl:when>
-        <xsl:when test="/Top/FullTextResults/DocContent">
-          <xsl:apply-templates select="/Top/FullTextResults/DocContent" mode="copy-guts" />
-        </xsl:when>
-      </xsl:choose>
+      item-encoding-level="{$item-encoding-level}"
+      idno="{$idno}">
+      <xsl:apply-templates select="/Top/FullTextResults/DocContent" mode="tei" />      
     </qui:block>
 
     <qui:block slot="notes"
       mimetype="application/tei+xml"
       >
-      <!-- <xsl:for-each select="/Top/FullTextResults/DocContent//NOTE1[@HREF]|/Top/FullTextResults/DocContent//NOTE2[@HREF]">
-        <tei:NOTE>
-          <xsl:apply-templates select="." mode="copy" />
-        </tei:NOTE>
-      </xsl:for-each> -->
-      <xsl:apply-templates select="/Top/FullTextResults/NOTES" mode="copy-guts" />
+      <xsl:apply-templates select="/Top/FullTextResults/NOTES" mode="tei" />
     </qui:block>
 
     <qui:message>BOO-YAH</qui:message>
   </xsl:template>
 
+  <xsl:template match="NOTES" mode="tei" priority="101">
+    <xsl:apply-templates mode="tei" />
+  </xsl:template>  
+
   <xsl:template name="get-current-page-breadcrumb-label">
     <xsl:choose>
-      <xsl:when test="//Param[@name='rgn'] = 'main'">Entire Text</xsl:when>
-      <xsl:when test="true() and //DLPSWRAP[1]/node()[@TYPE]">
-        <xsl:variable name="value" select="//DLPSWRAP[1]/node()/@TYPE" />
+      <xsl:when test="/Top/DlxsGlobals/CurrentCgi/Param[@name='rgn'] = 'main'">Entire Text</xsl:when>
+      <xsl:when test="true() and /Top/Document//DLPSWRAP[1]/node()[@TYPE]">
+        <xsl:variable name="value" select="/Top/DocContent//DLPSWRAP[1]/node()/@TYPE" />
         <xsl:value-of select="dlxs:capitalize(substring($value, 1, 1))" />
         <xsl:value-of select="substring($value, 2)" />
       </xsl:when>
@@ -120,7 +111,7 @@
   <xsl:template name="build-section-navigation">
     <!-- do we have M/N available in the PI handler? -->
     <xsl:variable name="tmp-xml">
-      <qui:nav role="sections" total="{normalize-space(//ReturnToResultsLink)}">
+      <qui:nav role="sections" total="{normalize-space(/Top/ReturnToResultsLink)}">
         <xsl:call-template name="build-results-navigation-link">
           <xsl:with-param name="rel">back</xsl:with-param>
           <xsl:with-param name="href" select="/Top/ReturnToResultsLink" />
@@ -176,8 +167,24 @@
     </xsl:element>
   </xsl:template>
 
-  <xsl:template match="DLPSTEXTCLASS/HEADER" mode="copy" priority="99" />
-  <xsl:template match="DLPSTEXTCLASS/TEXT/BODY/DIV1/BIBL" mode="copy" priority="99" />
+  <xsl:template match="DLPSTEXTCLASS/HEADER" mode="tei" priority="99" />
+  <xsl:template match="DLPSTEXTCLASS/TEXT/BODY/DIV1/BIBL" mode="tei" priority="99" />
+
+  <xsl:template match="DLPSTEXTCLASS|DocContent" mode="tei" priority="99">
+    <xsl:apply-templates select="*|@*|text()" mode="tei" />
+  </xsl:template>
+
+  <xsl:template match="node()" mode="tei" priority="99">
+    <xsl:element name="tei:{name()}">
+      <xsl:apply-templates select="*|@*|text()" mode="tei" />
+    </xsl:element>
+  </xsl:template>
+
+  <xsl:template match="@*|text()" mode="tei" priority="99">
+    <xsl:copy>
+      <xsl:apply-templates select="*|@*|text()" mode="tei" />
+    </xsl:copy>
+  </xsl:template>  
 
   <xsl:template name="build-results-navigation-link">
     <xsl:param name="rel" />

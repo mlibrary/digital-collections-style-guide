@@ -162,12 +162,6 @@
   <xsl:template match="qui:div/qui:nav" mode="copy" />
 
   <xsl:template match="qui:section|qui:metadata" priority="101">
-    <!-- <xsl:if test="@name != 'default'">
-      <h3 id="{@slug}"><xsl:value-of select="@name" /></h3>
-    </xsl:if>
-    <xsl:if test="@name = 'default'">
-      <h3 id="record_details">Record Details</h3>
-    </xsl:if> -->
     <h2 class="subtle-heading">About this Item</h2>
     <dl class="record" data-message="wtf">
       <xsl:apply-templates />

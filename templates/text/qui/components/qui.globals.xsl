@@ -162,23 +162,23 @@
 
   <xsl:variable name="page">
     <xsl:choose>
-      <xsl:when test="normalize-space(//Param[@name='page'])">
-        <xsl:value-of select="//Param[@name='page']" />
+      <xsl:when test="normalize-space(/Top/DlxsGlobals/CurrentCgi/Param[@name='page'])">
+        <xsl:value-of select="/Top/DlxsGlobals/CurrentCgi/Param[@name='page']" />
       </xsl:when>
       <xsl:otherwise>
-        <xsl:value-of select="//Param[@name='view']" />
+        <xsl:value-of select="/Top/DlxsGlobals/CurrentCgi/Param[@name='view']" />
       </xsl:otherwise>
     </xsl:choose>
   </xsl:variable>
 
-  <xsl:variable name="subview" select="//Param[@name='subview']" />
+  <xsl:variable name="subview" select="/Top/DlxsGlobals/CurrentCgi/Param[@name='subview']" />
 
   <!-- <xsl:variable name="search-type" select="key('get-lookup', /Top/SearchDescription/SearchTypeName)" /> -->
   <xsl:variable name="search-type">
     <xsl:choose>
-      <xsl:when test="//TemplateName = 'search'"><xsl:value-of select="//Param[@name='page']" /></xsl:when>
-      <xsl:when test="//TemplateName = 'home'">simple</xsl:when>
-      <xsl:when test="//Param[@name='type']"><xsl:value-of select="//Param[@name='type']" /></xsl:when>
+      <xsl:when test="/Top/DlxsGlobals/TemplateName = 'search'"><xsl:value-of select="/Top/DlxsGlobals/CurrentCgi/Param[@name='page']" /></xsl:when>
+      <xsl:when test="/Top/DlxsGlobals/TemplateName = 'home'">simple</xsl:when>
+      <xsl:when test="/Top/DlxsGlobals/Param[@name='type']"><xsl:value-of select="/Top/DlxsGlobals/CurrentCgi/Param[@name='type']" /></xsl:when>
     </xsl:choose>
   </xsl:variable>
 
