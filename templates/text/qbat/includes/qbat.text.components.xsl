@@ -1334,6 +1334,8 @@
       href="#fn{@ID}">
         <xsl:choose>
           <xsl:when test="@LABEL">
+            <xsl:value-of select="@N" />
+            <xsl:text> </xsl:text>
             <xsl:value-of select="@LABEL" />
           </xsl:when>
           <xsl:when test="@N != '*'">
@@ -2543,9 +2545,11 @@
     </xsl:variable>
     <div class="flex flex-flow-row gap-1 flex-align-start pl-1"
       id="fn{$id}">
-      <div class="text-bold text-medium footnote-anchor mt-1" style="position: sticky; top: 1rem;">
+      <div class="text-bold text-medium footnote-anchor mt-1" style="position: sticky; top: 1rem; white-space: nowrap;">
         <xsl:choose>
           <xsl:when test="@LABEL">
+            <xsl:value-of select="@N" />
+            <xsl:text> </xsl:text>
             <xsl:value-of select="@LABEL" />
           </xsl:when>
           <xsl:when test="$N != '*'">
