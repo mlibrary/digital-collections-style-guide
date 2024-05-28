@@ -69,6 +69,10 @@
       </div>
     </div>
 
+    <xsl:if test="$nav/@subview = 'detail'">
+      <xsl:apply-templates select="//qui:main/qui:nav[@role='details']" mode="footer" />
+   </xsl:if>
+
   </xsl:template>  
 
   <xsl:template name="check-side-actions">
@@ -241,6 +245,14 @@
 
   <xsl:template name="build-results-list">
     <xsl:apply-templates select="//qui:block[@slot='results']/qui:section" mode="result" />
+  </xsl:template>
+
+  <xsl:template match="qui:nav[@role='details']" mode="footer">
+    <xsl:if test="@total &gt; 1 and qui:link[@href]">
+      <nav id="pagination" aria-label="Item Search Results navigation" class="[ pagination__row ][ flex justify-end flex-align-center sticky-bottom ]">
+        <xsl:apply-templates select="." mode="pagination-link" />
+      </nav>
+    </xsl:if>
   </xsl:template>
 
   <xsl:template name="build-results-pagination">
