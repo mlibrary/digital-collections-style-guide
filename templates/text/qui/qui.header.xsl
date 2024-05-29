@@ -23,6 +23,11 @@
           <xsl:value-of select="key('get-lookup', 'results.str.9')" />
         </qui:callout>
       </xsl:when>
+      <xsl:when test="/Top/ItemAccessState='accessgeodenied'">
+        <qui:callout slot="access">
+          <xsl:value-of select="key('get-lookup', 'header.str.accessgeodenied')" />
+        </qui:callout>
+      </xsl:when>
       <xsl:when test="/Top/AuthRequired = 'true'">
         <qui:callout slot="access">
           <xsl:value-of select="key('get-lookup', 'header.str.fullaccess')" />
@@ -96,18 +101,33 @@
   </xsl:template>
 
   <xsl:template match="HeaderToc">
-    <qui:block slot="contents">
-      <qui:ul>
-        <xsl:choose>
-          <xsl:when test="ScopingPage">
-            <xsl:apply-templates select="ScopingPage" mode="outline" />
-          </xsl:when>
-          <xsl:when test="DIV1">
-            <xsl:apply-templates select="DIV1" mode="outline" />
-          </xsl:when>
-        </xsl:choose>
-      </qui:ul>
-    </qui:block>
+    <xsl:variable name="state" select="//ItemAccessState" />
+    <xsl:variable name="build-header-toc">
+      <xsl:choose>
+        <xsl:when test="$state = 'fullaccessallowed'">true</xsl:when>
+        <xsl:when test="//ItemHeader/HEADER/ENCODINGDESC/EDITORIALDECL/@N &gt; 1">true</xsl:when>
+        <xsl:otherwise>false</xsl:otherwise>
+      </xsl:choose>
+    </xsl:variable>
+    <qui:debug build-header-toc="{$build-header-toc}" state="{$state}" N="{//ItemHeader/HEADER/ENCODINGDESC/EDITORIALDECL/@N}">
+      <xsl:if test="ScopingPage">
+        <xsl:attribute name="has-scoping-page">true</xsl:attribute>
+      </xsl:if>
+    </qui:debug>
+    <xsl:if test="$build-header-toc = 'true'">
+      <qui:block slot="contents" encoding-type="{/Top/Item/DocEncodingType}">
+        <qui:ul>
+          <xsl:choose>
+            <xsl:when test="ScopingPage">
+              <xsl:apply-templates select="ScopingPage" mode="outline" />
+            </xsl:when>
+            <xsl:when test="DIV1">
+              <xsl:apply-templates select="DIV1" mode="outline" />
+            </xsl:when>
+          </xsl:choose>
+        </qui:ul>
+      </qui:block>
+    </xsl:if>
   </xsl:template>
 
   <xsl:template match="ScopingPage" mode="outline" priority="101">

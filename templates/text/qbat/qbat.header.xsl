@@ -28,7 +28,9 @@
       </xsl:if>
       <div class="main-panel">
         <xsl:call-template name="build-item-header" />
-        <xsl:call-template name="build-actions-toolbar" />
+        <xsl:if test="//qui:root/@item-access-state = 'fullaccessallowed'">
+          <xsl:call-template name="build-actions-toolbar" />
+        </xsl:if>
         <xsl:call-template name="build-contents-list" />
         <xsl:call-template name="build-contents-pagination" />
       </div>

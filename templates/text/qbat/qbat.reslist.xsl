@@ -319,19 +319,34 @@
       <div class="results-card">
         <div class="results-list__content flex flex-flow-column flex-grow-1">
           <h3>
-            <a href="{$link-href}" class="results-link">
-              <xsl:value-of select="$link-title" />
-            </a>
+            <xsl:choose>
+              <xsl:when test="normalize-space($link-href)">
+                <a href="{$link-href}" class="results-link">
+                  <xsl:value-of select="$link-title" />
+                </a>    
+              </xsl:when>
+              <xsl:otherwise>
+                <xsl:value-of select="$link-title" />
+              </xsl:otherwise>
+            </xsl:choose>
           </h3>
         </div>
       </div>
       <div class="results-details">
         <xsl:apply-templates select="qui:metadata" mode="build-coins" />
-        <xsl:if test="@access = 'restricted'">
-          <m-callout variant="warning" icon="warning">
-            <xsl:value-of select="key('get-lookup', 'results.str.9')" />
-          </m-callout>
-        </xsl:if>
+        <xsl:choose>
+          <xsl:when test="@access = 'restricted'">
+            <m-callout variant="warning" icon="warning">
+              <xsl:value-of select="key('get-lookup', 'results.str.9')" />
+            </m-callout>
+          </xsl:when>
+          <xsl:when test="@access != 'fullaccessallowed'">
+            <xsl:variable name="key" select="concat('header.str.', @access)" />
+            <m-callout variant="warning" icon="warning">
+              <xsl:value-of select="key('get-lookup', $key)" />
+            </m-callout>
+          </xsl:when>
+        </xsl:choose>
         <dl class="[ results ]">
           <!-- <xsl:apply-templates select="qui:collection" /> -->
           <!-- <xsl:apply-templates select="qui:block[@slot='metadata']//qui:field" /> -->
