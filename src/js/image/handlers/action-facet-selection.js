@@ -45,6 +45,7 @@ const _addInputFilter = function(input, $form) {
     fInput.setAttribute("type", "hidden");
     fInput.setAttribute("name", 'med');
     fInput.setAttribute("value", input.value);
+    fInput.dataset.via = input.id;
     $form.appendChild(fInput);
 
     message = 'add digital media filter';
@@ -59,12 +60,14 @@ const _addInputFilter = function(input, $form) {
     fInput.setAttribute("type", "hidden");
     fInput.setAttribute("name", `fn${numFacets + 1}`);
     fInput.setAttribute("value", input.name);
+    fInput.dataset.via = input.id;
     $form.appendChild(fInput);
 
     fInput = document.createElement("input");
     fInput.setAttribute("type", "hidden");
     fInput.setAttribute("name", `fq${numFacets + 1}`);
     fInput.setAttribute("value", input.value);
+    fInput.dataset.via = input.id;
     $form.appendChild(fInput);
 
     let category = input.closest("details").querySelector('summary').textContent;
@@ -79,6 +82,15 @@ const _handleInputFilter = function (input) {
   let message;
   console.log("-- filtering", input.value, 'to', input.checked ? 'checked' : 'empty');
   let $form = _getForm();
+
+  let $check = $form.querySelectorAll(`input[data-via="${input.id}"]`);
+  if ( $check.length ) {
+    $check.forEach((el) => {
+      el.remove();
+    })
+    return;
+  }
+
   if ( ! input.checked ) {
     message = _removeInputFilter(input, $form);
   } else {

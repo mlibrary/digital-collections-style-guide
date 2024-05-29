@@ -49,7 +49,7 @@
           </xsl:attribute>
           <xsl:text>Clear Search</xsl:text>
         </a> -->
-        <button data-action="go" data-href="{//qui:link[@rel='restart']/@href}">
+        <button data-action="go" data-href="{//qui:link[@rel='restart']/@href}" style="padding: 4px 8px">
           <xsl:attribute name="class">
             <xsl:text>[ button button--secondary flex ][ flex-center ]</xsl:text>
             <xsl:if test="not($selected-filters)">
