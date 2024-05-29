@@ -798,6 +798,7 @@
         <span class="filters__count">
           <xsl:text> (</xsl:text>
           <xsl:value-of select="@data-hit-count" />
+          <span class="visually-hidden"> matching records</span>
           <xsl:text>)</xsl:text>
         </span>
       </span>
