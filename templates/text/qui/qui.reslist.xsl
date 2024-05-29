@@ -1231,6 +1231,9 @@
         </xsl:choose>
       </xsl:attribute>
       <xsl:attribute name="data-hit-count">
+        <xsl:value-of select="CollTotals/HitCount" />
+      </xsl:attribute>
+      <xsl:attribute name="data-record-count">
         <xsl:value-of select="CollTotals/RecordCount" />
       </xsl:attribute>
       <qui:header>

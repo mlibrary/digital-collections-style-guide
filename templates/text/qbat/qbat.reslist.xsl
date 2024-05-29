@@ -788,17 +788,27 @@
           <xsl:otherwise>radio_button_unchecked</xsl:otherwise>
         </xsl:choose>
       </span>
-      <span>
+      <span style="text-decoration: none !important">
         <xsl:if test="@selected = 'selected'">
           <xsl:attribute name="style">text-decoration: none !important;</xsl:attribute>
         </xsl:if>
-        <span>
+        <span style="text-decoration: none !important">
           <xsl:value-of select="qui:header" />
         </span>
-        <span class="filters__count">
+        <span class="filters__count" style="font-size: 0.875rem; text-decoration: none !important;">
           <xsl:text> (</xsl:text>
-          <xsl:value-of select="@data-hit-count" />
-          <span class="visually-hidden"> matching records</span>
+          <xsl:choose>
+            <xsl:when test="normalize-space(@data-hit-count)">
+              <xsl:value-of select="@data-hit-count" />
+              <xsl:text> matches in </xsl:text>
+              <xsl:value-of select="@data-record-count" />
+              <xsl:text> items</xsl:text>
+            </xsl:when>
+            <xsl:otherwise>
+              <xsl:value-of select="@data-record-count" />
+              <xsl:text> matching items</xsl:text>
+            </xsl:otherwise>
+          </xsl:choose>
           <xsl:text>)</xsl:text>
         </span>
       </span>
