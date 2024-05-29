@@ -13,7 +13,7 @@
   </xsl:template>
 
   <xsl:template name="build-breadcrumbs">
-    <xsl:variable name="view" select="//Param[@name='view']|//Param[@name='page']" />
+    <xsl:variable name="view" select="/Top/DlxsGlobals/CurrentCgi/Param[@name='view']|/Top/DlxsGlobals/CurrentCgi/Param[@name='page']" />
     <qui:nav role="breadcrumb">
       <xsl:choose>
         <xsl:when test="$context-type = 'collection'">
@@ -21,7 +21,7 @@
             <xsl:text>Collection Home</xsl:text>
           </qui:link>
         </xsl:when>
-        <xsl:when test="$context-type = 'list' and //Param[@name='page'] != 'bbaglist'">
+        <xsl:when test="$context-type = 'list' and /Top/DlxsGlobals/CurrentCgi/Param[@name='page'] != 'bbaglist'">
           <qui:link href="/cgi/i/text/text-idx?page=bbaglist">
             <xsl:text>Bookbag</xsl:text>
           </qui:link>
@@ -46,8 +46,8 @@
         <xsl:otherwise>
         </xsl:otherwise>
       </xsl:choose>
-      <xsl:if test="$context-type != 'list' and //Param[@name='bookbag'] = '1'">
-        <qui:link href="{//MainNav/NavItem[Name='bookbag']/Link}">
+      <xsl:if test="$context-type != 'list' and /Top/DlxsGlobals/CurrentCgi/Param[@name='bookbag'] = '1'">
+        <qui:link href="{/Top/MainNav/NavItem[Name='bookbag']/Link}">
           <xsl:text>Bookbag</xsl:text>
         </qui:link>
       </xsl:if>
@@ -63,7 +63,7 @@
           </xsl:choose>
         </qui:link>
       </xsl:if>
-      <xsl:variable name="return-to-results-link" select="/Top//ReturnToResultsLink" />
+      <xsl:variable name="return-to-results-link" select="/Top/DlxsGlobals/ReturnToResultsLink" />
       <xsl:variable name="return-to-results-label">
         <xsl:choose>
           <xsl:when test="contains($return-to-results-link, 'page=browse')">
@@ -90,7 +90,7 @@
       </xsl:if>
       <xsl:call-template name="build-breadcrumbs-intermediate-links" />
       <xsl:if test="$page != 'bbaglist'">
-        <qui:link href="{/Top//CurrentUrl}">
+        <qui:link href="{/Top/DlxsGlobals/CurrentUrl}">
           <xsl:call-template name="get-current-page-breadcrumb-label" />
         </qui:link>
       </xsl:if>

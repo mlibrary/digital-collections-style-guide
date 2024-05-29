@@ -45,6 +45,8 @@
     <!-- <xsl:text>[ mt-0 ]</xsl:text> -->
   </xsl:template>
 
+  <xsl:template name="build-cqfill-script" />  
+
   <xsl:template match="qui:main">
 
     <xsl:call-template name="build-navigation" />
@@ -75,9 +77,9 @@
               </button>
             </div>  
           </xsl:if>
-          <h2 id="page-index-label" class="[ subtle-heading ][ text-black js-toc-ignore ]">Page Index</h2>
+          <!-- <h2 id="page-index-label" class="[ subtle-heading ][ text-black js-toc-ignore ]">Page Index</h2>
           <div class="toc js-toc"></div>
-          <select id="action-page-index"></select>
+          <select id="action-page-index"></select> -->
         </nav>
       </div>
       
@@ -85,18 +87,30 @@
 
         <xsl:call-template name="build-item-header" />
 
-        <xsl:apply-templates select="//qui:block[@slot='content']" />
+        <!-- <div style="width: 99dvw;">
+          <xsl:apply-templates select="//qui:block[@slot='content']" />
+        </div> -->
 
-        <xsl:apply-templates select="//qui:block[@slot='notes']" />
+        <!-- <xsl:apply-templates select="//qui:block[@slot='content']" />
+        <xsl:apply-templates select="//qui:block[@slot='notes']" /> -->
 
         <xsl:apply-templates select="//qui:block[@slot='metadata']/qui:metadata" mode="build-coins" />
 
       </div>
     </div>
 
+    <xsl:call-template name="build-not-main" />
+
     <xsl:apply-templates select="//qui:nav[@role='sections']" mode="pagination-footer-link" />
 
   </xsl:template>
+
+  <xsl:template name="build-not-main">
+    <!-- <xsl:message>AHOY qbat/content/start</xsl:message> -->
+    <xsl:apply-templates select="//qui:block[@slot='content']" mode="not-main" />
+    <!-- <xsl:message>AHOY qbat/content/fin</xsl:message> -->
+    <xsl:apply-templates select="//qui:block[@slot='notes']" />
+  </xsl:template>  
 
   <xsl:template name="build-navigation">
     <xsl:call-template name="build-breadcrumbs" />
@@ -120,9 +134,14 @@
     <xsl:apply-templates select="//qui:block[@slot='metadata']/qui:metadata" />
   </xsl:template>
 
-  <xsl:template match="qui:block[@slot='content']">
-    <section class="[ records ]">
-      <h2 class="subtle-heading">Pages</h2>
+  <xsl:template match="qui:block[@slot='content']" mode="in-main">
+    <h2 class="subtle-heading" id="pages">Pages</h2>
+    <xsl:apply-templates />
+  </xsl:template>
+
+  <xsl:template match="qui:block[@slot='content']" mode="not-main">
+    <section class="records">
+      <h2 class="subtle-heading" id="pages">Pages</h2>
       <!-- <xsl:apply-templates select="qui:section/qui:div"></xsl:apply-templates> -->
       <xsl:choose>
         <xsl:when test=".//tei:DLPSWRAP">
@@ -162,12 +181,6 @@
   <xsl:template match="qui:div/qui:nav" mode="copy" />
 
   <xsl:template match="qui:section|qui:metadata" priority="101">
-    <!-- <xsl:if test="@name != 'default'">
-      <h3 id="{@slug}"><xsl:value-of select="@name" /></h3>
-    </xsl:if>
-    <xsl:if test="@name = 'default'">
-      <h3 id="record_details">Record Details</h3>
-    </xsl:if> -->
     <h2 class="subtle-heading">About this Item</h2>
     <dl class="record" data-message="wtf">
       <xsl:apply-templates />
@@ -242,6 +255,15 @@
   </xsl:template>
   
   <xsl:template match="tei:HEADER" priority="101" />
+
+  <xsl:template match="qui:field[@key='bookmark']" priority="101">
+    <xsl:call-template name="build-content-copy-metadata">
+      <xsl:with-param name="term"><xsl:value-of select="qui:label" /></xsl:with-param>
+      <xsl:with-param name="key"><xsl:value-of select="@key" /></xsl:with-param>
+      <xsl:with-param name="text" select="normalize-space(qui:values/qui:value)" />
+      <xsl:with-param name="class">url</xsl:with-param>
+    </xsl:call-template>    
+  </xsl:template>
 
   <xsl:template match="text()" mode="build-title">
     <xsl:copy></xsl:copy>

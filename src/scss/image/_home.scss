@@ -119,7 +119,7 @@ button[data-action="expand-filter-list"] {
   display: none;
 }
 
-section.filters__selected {
+body[data-view="index"] section.filters__selected {
   display: none;
 }
 
