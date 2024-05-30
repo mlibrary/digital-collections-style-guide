@@ -67,10 +67,10 @@
               </qui:input>  
             </xsl:if>
           </xsl:for-each>
-          <qui:input type="hidden" role="search" name="type" value="{normalize-space(substring-after(/Top/MainNav/NavItem[Name='search']/Link, 'page='))}" disabled="{$is-browse}" />
+          <qui:input type="hidden" role="search" name="type" value="{normalize-space(substring-after(/Top/NavHeader/MainNav/NavItem[Name='search']/Link, 'page='))}" disabled="{$is-browse}" />
         </xsl:when>
         <xsl:otherwise>
-          <qui:input type="hidden" role="search" name="type" value="{normalize-space(substring-after(/Top/MainNav/NavItem[Name='search']/Link, 'page='))}" disabled="{$is-browse}" />
+          <qui:input type="hidden" role="search" name="type" value="{normalize-space(substring-after(/Top/NavHeader/MainNav/NavItem[Name='search']/Link, 'page='))}" disabled="{$is-browse}" />
         </xsl:otherwise>
       </xsl:choose>
       <xsl:if test="/Top/SortSelect/Option[Focus='true']">
@@ -91,7 +91,7 @@
 
     <xsl:variable name="is-simple-search">
       <xsl:choose>
-        <xsl:when test="contains(/Top/MainNav/NavItem[Name='search']/Link, 'page=simple')">
+        <xsl:when test="contains(/Top/NavHeader/MainNav/NavItem[Name='search']/Link, 'page=simple')">
           <xsl:text>true</xsl:text>
         </xsl:when>
         <xsl:otherwise>
