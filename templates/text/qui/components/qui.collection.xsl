@@ -47,7 +47,7 @@
         </xsl:otherwise>
       </xsl:choose>
       <xsl:if test="$context-type != 'list' and /Top/DlxsGlobals/CurrentCgi/Param[@name='bookbag'] = '1'">
-        <qui:link href="{/Top/MainNav/NavItem[Name='bookbag']/Link}">
+        <qui:link href="{/Top/NavHeader/MainNav/NavItem[Name='bookbag']/Link}">
           <xsl:text>Bookbag</xsl:text>
         </qui:link>
       </xsl:if>
