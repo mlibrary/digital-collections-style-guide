@@ -281,7 +281,7 @@
         <xsl:value-of select="/Top/Home" />
       </xsl:when>
       <xsl:when test="$context-type = 'list'">
-        <xsl:text>/cgi/t/text/text-idx?page=bbaglist</xsl:text>
+        <xsl:value-of select="/Top/NavHeader/MainNav/NavItem[Name='bookbag']/Link" />
       </xsl:when>
       <xsl:when test="$context-type = 'group'">
         <xsl:value-of select="/Top/NavHeader/MainNav/MainNav/NavItem[Name='home']/Link" />
