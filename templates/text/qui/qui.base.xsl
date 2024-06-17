@@ -157,6 +157,7 @@
         </xsl:if>
         <xsl:choose>
           <xsl:when test="/Top/DlxsGlobals/XcollMode = 'colls' and $template-name = 'home'"></xsl:when>
+          <xsl:when test="/Top/NavHeader/MainNav/NavItem[Name='search']/Tab = 'false'"></xsl:when>
           <xsl:otherwise>
             <qui:link rel="search" icon="search" href="{/Top/NavHeader/MainNav/NavItem[Name='search']/Link}">Search</qui:link>
           </xsl:otherwise>
