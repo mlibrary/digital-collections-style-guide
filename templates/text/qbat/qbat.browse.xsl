@@ -388,6 +388,19 @@
 
       <div class="results-details">
         <xsl:apply-templates select="qui:metadata[@slot='item']" mode="build-coins" />
+        <xsl:choose>
+          <xsl:when test="@access = 'restricted'">
+            <m-callout variant="warning" icon="warning">
+              <xsl:value-of select="key('get-lookup', 'results.str.9')" />
+            </m-callout>
+          </xsl:when>
+          <xsl:when test="@access != 'fullaccessallowed'">
+            <xsl:variable name="key" select="concat('header.str.', @access)" />
+            <m-callout variant="warning" icon="warning">
+              <xsl:value-of select="key('get-lookup', $key)" />
+            </m-callout>
+          </xsl:when>
+        </xsl:choose>
         <dl class="[ results ]">
           <!-- <xsl:apply-templates select="qui:collection" /> -->
           <xsl:apply-templates select="qui:metadata[@slot='item']//qui:field" />

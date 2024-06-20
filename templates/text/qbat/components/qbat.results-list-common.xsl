@@ -3,6 +3,9 @@
   
   <xsl:template name="build-results-item-badge">
     <xsl:choose>
+      <xsl:when test="@access != 'fullaccessallowed'">
+        <div class="[ results-list__blank ]" aria-hidden="true" data-type="description"></div>
+      </xsl:when>
       <xsl:when test="qui:link[@rel='iiif']">
         <img loading="lazy" class="[ results-list__image ]" src="{qui:link[@rel='iiif']/@href}" aria-hidden="true" alt="" />
       </xsl:when>

@@ -465,15 +465,22 @@
     <xsl:variable name="identifier" select="translate(ItemIdno, 'ABCDEFGHIJKLMNOPQRSTUVWXYZ','abcdefghijklmnopqrstuvwxyz')" />
 
     <qui:section identifier="{@idno}" collid="{@collid}" auth-required="{AuthRequired}" encoding-type="{DocEncodingType}" encoding-level="{ItemEncodingLevel}">
-      <xsl:if test="HEADER/@TYPE='restricted'">
-        <xsl:attribute name="access">restricted</xsl:attribute>
-      </xsl:if>
+        <xsl:choose>
+          <xsl:when test="HEADER/@TYPE='restricted'">
+          <xsl:attribute name="access">restricted</xsl:attribute>
+        </xsl:when>
+        <xsl:when test="ItemAccessState != 'fullaccessallowed'">
+          <xsl:attribute name="access"><xsl:value-of select="ItemAccessState" /></xsl:attribute>
+        </xsl:when>
+        <xsl:otherwise />
+      </xsl:choose>
       <xsl:apply-templates select="Tombstone" />
       <xsl:apply-templates select="DetailHref" />
       <xsl:apply-templates select="TocHref">
         <xsl:with-param name="item-encoding-level" xml:base="$item-encoding-level" />
       </xsl:apply-templates>
       <xsl:choose>
+        <xsl:when test="ItemAccessState != 'fullaccessallowed'"></xsl:when>
         <xsl:when test="normalize-space(ThumbnailLink)">
           <qui:link href="{ThumbnailLink}" rel="iiif" />
         </xsl:when>
