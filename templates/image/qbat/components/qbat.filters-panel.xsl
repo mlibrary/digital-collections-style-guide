@@ -131,7 +131,7 @@
       </div>
       <xsl:if test="$total &gt; 10">
         <p>
-          <button class="[ button filter__button ]" data-action="expand-filter-list">
+          <button class="[ button button--secondary filter__button ]" data-action="expand-filter-list">
             <span data-expanded="true">
               <xsl:text>Show fewer </xsl:text>
             </span>
