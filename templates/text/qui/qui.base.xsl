@@ -71,7 +71,7 @@
     <!-- <xsl:processing-instruction name="xml-stylesheet">
       <xsl:value-of select="concat('type=&quot;text/xsl&quot; href=&quot;', $docroot, '/templates/debug.qui.xsl&quot;')" />
     </xsl:processing-instruction> -->
-    <qui:root template="{$template-name}" view="{$view}" collid="{$collid}" username="{//AuthenticatedUsername}" context-type="{$context-type}" api_url="{$api_url}">
+    <qui:root template="{$template-name}" view="{$view}" collid="{$collid}" username="{//AuthenticatedUsername}" context-type="{$context-type}" api_url="{$api_url}" item-access-state="{//ItemAccessState}">
       <xsl:if test="//BbagOptionsMenu/UserIsOwner = 'true'">
         <xsl:attribute name="user-is-owner">true</xsl:attribute>
       </xsl:if>

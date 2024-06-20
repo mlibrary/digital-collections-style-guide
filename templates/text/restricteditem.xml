@@ -3,10 +3,19 @@
 <Top xmlns:dlxs="http://www.umdl.umich.edu/dlxs">
 
   <!-- XSL fallback files -->
-  <XslFallbackFileList>
-    <Filename>restricteditem.xsl</Filename>
-    <Filename>globalvariables.xsl</Filename>
+  <XslFallbackFileList pipeline="qui">
+    <Filename>qui/qui.base.xsl</Filename>
+    <Filename>../vendor/xslfunctions.xsl</Filename>
+    <Filename>qui/components/*.xsl</Filename>
+    <Filename>qui/qui.restricteditem.xsl</Filename>
   </XslFallbackFileList>
+
+  <XslFallbackFileList pipeline="qbat">
+    <Filename>qbat/qbat.base.xsl</Filename>
+    <Filename>qbat/components/*.xsl</Filename>
+    <Filename>qbat/qbat.restricteditem.xsl</Filename>
+  </XslFallbackFileList>
+
   <!-- Custom OPTIONAL XML for top-level file restricteditem.xml -->
   <CustomXml><?CHUNK filename="restricteditemextra.xml" optional="1"?></CustomXml>
 

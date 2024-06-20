@@ -32,6 +32,7 @@
   
   <ReturnToResultsLink><?RETURN_TO_RESULTS_LINK_XML?></ReturnToResultsLink>
   <AuthRequired><?AUTH_REQUIRED_XML?></AuthRequired>
+  <ItemAccessState><?ITEM_ACCESS_STATE_XML?></ItemAccessState>
   <IncludeItemSearch><?INCLUDE_ITEM_SEARCH_XML?></IncludeItemSearch>
   <BookbagAddHref><?BOOKBAG_ADD_REMOVE_ITEM_XML?></BookbagAddHref>
   <SimpleSearchWithinLink><?SIMPLE_SEARCH_WITHIN_LINK_XML?></SimpleSearchWithinLink>
