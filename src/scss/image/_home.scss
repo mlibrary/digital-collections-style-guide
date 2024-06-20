@@ -115,7 +115,7 @@ ul.nav li {
   margin-bottom: 0.25rem;
 }
 
-button[data-action="expand-filter-list"] {
+body[data-view="index"] button[data-action="expand-filter-list"] {
   display: none;
 }
 
