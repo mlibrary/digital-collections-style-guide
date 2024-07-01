@@ -105,12 +105,12 @@
       <qui:input slot="rgn" type="select">
         <xsl:attribute name="name">
           <xsl:choose>
-            <xsl:when test="$is-simple-search">rgn</xsl:when>
+            <xsl:when test="$is-simple-search = 'true'">rgn</xsl:when>
             <xsl:otherwise>rgn1</xsl:otherwise>
           </xsl:choose>  
         </xsl:attribute>
         <xsl:choose>
-          <xsl:when test="$is-simple-search = false()">
+          <xsl:when test="$is-simple-search = 'false'">
             <xsl:apply-templates select="/Top/SearchForm/SearchQuery/Region1SearchSelect/Option" />
           </xsl:when>
           <xsl:otherwise>
