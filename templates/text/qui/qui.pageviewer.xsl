@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8" ?>
-<xsl:stylesheet version="1.0" xmlns:xhtml="http://www.w3.org/1999/xhtml" xmlns:xsl="http://www.w3.org/1999/XSL/Transform" xmlns:dlxs="http://dlxs.org" xmlns:qbat="http://dlxs.org/quombat" xmlns:exsl="http://exslt.org/common" xmlns:date="http://exslt.org/dates-and-times" xmlns:qui="http://dlxs.org/quombat/ui" extension-element-prefixes="exsl date" >
+<xsl:stylesheet version="1.0" xmlns:xhtml="http://www.w3.org/1999/xhtml" xmlns:xsl="http://www.w3.org/1999/XSL/Transform" xmlns:dlxs="http://dlxs.org" xmlns:qbat="http://dlxs.org/quombat" xmlns:exsl="http://exslt.org/common" xmlns:date="http://exslt.org/dates-and-times" xmlns:qui="http://dlxs.org/quombat/ui" xmlns:str="http://exslt.org/strings" extension-element-prefixes="exsl date str" >
   <xsl:output method="xml" version="1.0" encoding="utf-8" indent="yes" />
   <xsl:strip-space elements="*"/>
 
@@ -545,11 +545,12 @@
                 <xsl:text>/</xsl:text>
                 <xsl:choose>
                   <xsl:when test="//Param[@name='node']">
-                    <xsl:value-of select="//Param[@name='node']" />
+                    <xsl:variable name="parts" select="str:tokenize(normalize-space(//Param[@name='node']), ':')" />
                     <xsl:if test="//Param[@name='seq']">
-                      <xsl:text>/</xsl:text>
                       <xsl:value-of select="//Param[@name='seq']" />
                     </xsl:if>
+                    <xsl:text>:</xsl:text>
+                    <xsl:value-of select="$parts[last()]" />
                   </xsl:when>
                   <xsl:otherwise>
                     <xsl:value-of select="dlxs:downcase(//Param[@name='idno'])" />  
