@@ -105,6 +105,7 @@
     <xsl:call-template name="build-panel-browse-links" />
     <xsl:call-template name="build-search-form" />
     <xsl:call-template name="build-panel-related-collections" />
+    <xsl:call-template name="build-panel-collection-stats" />
   </xsl:template>
 
   <xsl:template name="build-panel-custom">
@@ -332,5 +333,17 @@
         </qui:nav>
       </qui:panel>
     </xsl:if>
-  </xsl:template>  
+  </xsl:template>
+
+  <xsl:template name="build-panel-collection-stats">
+    <xsl:if test="normalize-space(//QuantityText)">
+      <qui:panel slot="stats">
+        <qui:header>Collection Statistics</qui:header>
+        <qui:block>
+          <p>There are <xsl:value-of select="/Top/QuantityTexts" /> 
+            <xsl:value-of select="key('get-lookup','browse.str.items.in.collection')"/>.</p>
+        </qui:block>
+      </qui:panel>  
+    </xsl:if>
+  </xsl:template>
 </xsl:stylesheet>
