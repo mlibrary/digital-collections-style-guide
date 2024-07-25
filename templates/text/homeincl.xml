@@ -21,6 +21,7 @@
 <NavHeader><?CHUNK filename="navheader.xml"?></NavHeader>
 
 <CurrentGroup><?CURRENT_GROUP_XML?></CurrentGroup>
+<QuantityTexts><?QUANTITY_TEXTS_XML?></QuantityTexts>
  
 <Footer>
   <?CHUNK filename="footer.xml"?>

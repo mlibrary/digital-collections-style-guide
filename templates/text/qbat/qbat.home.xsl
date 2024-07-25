@@ -75,6 +75,8 @@
         <xsl:apply-templates select="//qui:panel[@slot='related-collections']" />
 
         <xsl:apply-templates select="//qui:panel[@slot='access-restrictions']" />
+
+        <xsl:apply-templates select="//qui:panel[@slot='stats']" />
       </div>
       <div class="main-panel">
         <xsl:apply-templates select="//qui:panel[@slot='browse']">
