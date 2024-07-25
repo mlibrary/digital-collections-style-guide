@@ -336,7 +336,7 @@
   </xsl:template>
 
   <xsl:template name="build-panel-collection-stats">
-    <xsl:if test="normalize-space(//QuantityText)">
+    <xsl:if test="normalize-space(//QuantityTexts)">
       <qui:panel slot="stats">
         <qui:header>Collection Statistics</qui:header>
         <qui:block>
