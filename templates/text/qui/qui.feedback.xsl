@@ -28,6 +28,9 @@
       <xsl:when test="/Top/DlxsGlobals/CurrentCgi/Param[@name='cc']">
         <xsl:value-of select="/Top/DlxsGlobals/CurrentCgi/Param[@name='cc']" />
       </xsl:when>
+      <xsl:when test="/Top/DlxsGlobals/CurrentCgi/Param[@name='m']">
+        <xsl:value-of select="/Top/DlxsGlobals/CurrentCgi/Param[@name='m']" />
+      </xsl:when>
       <xsl:otherwise>
         <xsl:value-of select="//TemplateName" />
       </xsl:otherwise>
