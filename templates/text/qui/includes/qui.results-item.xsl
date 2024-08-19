@@ -310,7 +310,9 @@
 
       <xsl:when test="( /Top/DlxsGlobals/CurrentCgi/Param[@name='idno'] )
         and
-        /Top/DlxsGlobals/CurrentCgi/Param[@name='page'] = 'picklist'
+        ( /Top/DlxsGlobals/CurrentCgi/Param[@name='page'] = 'picklist' 
+           or 
+          /Top/DlxsGlobals/TemplateName = 'search' )
         " >
         <xsl:call-template name="process-monograph">
           <xsl:with-param name="item-encoding-level" select="$item-encoding-level"/>
