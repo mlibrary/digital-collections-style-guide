@@ -160,11 +160,13 @@
 
   <xsl:template match="qui:m-website-header">
     <xsl:variable name="root-href">
+      <!-- ?byFormat=Text%20Collections -->
       <xsl:choose>
         <xsl:when test="$docroot = '/'">/samples/</xsl:when>
         <xsl:when test="starts-with($api_url, 'https://dcp-proto')">/samples/</xsl:when>
-        <xsl:when test="starts-with($api_url, 'https://quod.lib')">/lib/colllist/?byFormat=Text%20Collections</xsl:when>
-        <xsl:otherwise>/cgi/c/collsize/coll-idx?byFormat=Text%20Collections</xsl:otherwise>
+        <xsl:when test="starts-with($api_url, 'https://quod.lib')">/lib/colllist/</xsl:when>
+        <xsl:when test="starts-with($api_url, 'https://preview.quod.lib')">/lib/colllist/</xsl:when>
+        <xsl:otherwise>/cgi/c/collsize/coll-idx</xsl:otherwise>
       </xsl:choose>
     </xsl:variable>
     <m-website-header name="{@name}" to="{$root-href}" data-docroot="{$docroot}">

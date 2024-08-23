@@ -27,7 +27,15 @@
           </qui:link>
         </xsl:when>
         <xsl:when test="$context-type = 'group' or $context-type = 'multiple'">
-          <qui:link href="/cgi/i/image/image-idx?page=groups">
+          <qui:link>
+            <xsl:attribute name="href">
+              <xsl:choose>
+                <xsl:when test="$docroot = '/'">/samples/</xsl:when>
+                <xsl:when test="starts-with($api_url, 'https://quod.lib')">/lib/colllist/?byFormat=Image%20Collections</xsl:when>
+                <xsl:when test="starts-with($api_url, 'https://preview.quod.lib')">/lib/colllist/?byFormat=Image%20Collections</xsl:when>
+                <xsl:otherwise>/cgi/c/collsize/coll-idx?byFormat=Image%20Collections</xsl:otherwise>
+              </xsl:choose>
+            </xsl:attribute>    
             <xsl:text>Image Collections</xsl:text>
           </qui:link>
         </xsl:when>

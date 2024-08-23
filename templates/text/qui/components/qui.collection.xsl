@@ -36,6 +36,7 @@
             <xsl:choose>
               <xsl:when test="$docroot = '/'">/samples/</xsl:when>
               <xsl:when test="starts-with($api_url, 'https://quod.lib')">/lib/colllist/?byFormat=Text%20Collections</xsl:when>
+              <xsl:when test="starts-with($api_url, 'https://preview.quod.lib')">/lib/colllist/?byFormat=Text%20Collections</xsl:when>
               <xsl:otherwise>/cgi/c/collsize/coll-idx?byFormat=Text%20Collections</xsl:otherwise>
             </xsl:choose>
           </xsl:variable>

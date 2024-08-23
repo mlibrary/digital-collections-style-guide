@@ -21,7 +21,15 @@
 
   <xsl:template name="build-breadcrumbs">
     <qui:nav role="breadcrumb">
-      <qui:link href="/cgi/i/image/image-idx?page=groups">
+      <qui:link>
+        <xsl:attribute name="href">
+          <xsl:choose>
+            <xsl:when test="$docroot = '/'">/samples/</xsl:when>
+            <xsl:when test="starts-with($api_url, 'https://quod.lib')">/lib/colllist/?byFormat=Image%20Collections</xsl:when>
+            <xsl:when test="starts-with($api_url, 'https://preview.quod.lib')">/lib/colllist/?byFormat=Image%20Collections</xsl:when>
+            <xsl:otherwise>/cgi/c/collsize/coll-idx?byFormat=Image%20Collections</xsl:otherwise>
+          </xsl:choose>
+        </xsl:attribute>
         <xsl:text>Digital Collections</xsl:text>
       </qui:link>
       <qui:link href="{/Top//CurrentUrl}" identifier="{/Top/@identifier}">

@@ -196,7 +196,7 @@
         <xsl:value-of select="normalize-space(/Top/GroupName)" />
       </xsl:when>
       <xsl:when test="/Top/CollName = 'multiple'">
-        Image Collections
+        U-M Library Image Collections
       </xsl:when>
       <xsl:otherwise>
         <xsl:value-of select="normalize-space(/Top/CollName/Full)" />
