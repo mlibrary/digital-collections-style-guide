@@ -42,7 +42,7 @@
       <xsl:call-template name="get-collection-title" />
     </qui:header>
     <qui:panel slot="browse">
-      <qui:link icon="book" href="/lib/colllist/?byFormat=Text%20Collections">Browse Digital Collections</qui:link>
+      <qui:link icon="book" href="/lib/colllist/?byFormat=Text%20Collections">Browse Digital Text Collections</qui:link>
     </qui:panel>
     <qui:block slot="information">
       <xhtml:p>
