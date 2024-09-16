@@ -308,7 +308,7 @@
       <xsl:value-of select="Value" />
     </qui:link>
     <xsl:for-each select="Url">
-      <qui:link href="{.}"><xsl:value-of select="." /></qui:link>
+      <qui:link href="{.}" variant="detail"><xsl:value-of select="." /></qui:link>
     </xsl:for-each>
   </xsl:template>
 
