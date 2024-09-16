@@ -547,6 +547,13 @@
     <link rel="{@rel}" href="{@href}" />
   </xsl:template>
 
+  <xsl:template match="qui:link[@variant='detail']" priority="901">
+    <a href="{@href}" target="_blank" class="text--small">
+      <xsl:value-of select="." />
+      <span class="visually-hidden"> (opens in a new tab)</span>
+    </a>
+  </xsl:template>
+
   <xsl:template match="qui:link">
     <xsl:param name="class" />
     <xsl:param name="attributes" />
@@ -776,6 +783,14 @@
         <xsl:when test="@rel = 'back'">Search Results</xsl:when>
         <xsl:otherwise><xsl:apply-templates mode="copy" /></xsl:otherwise>
       </xsl:choose>
+    </a>
+  </xsl:template>
+
+  <xsl:template match="qui:link[@variant='detail']" mode="copy" priority="101">
+    <a href="{@href}" target="_blank" class="text--small bedazzled-link" style="display: inline-flex; align-items: center; gap: 0.25rem;">
+      <span><xsl:value-of select="." /></span>
+      <span class="material-icons text--small" aria-hidden="true">open_in_new</span>
+      <span class="visually-hidden"> (opens in a new tab)</span>
     </a>
   </xsl:template>
 
