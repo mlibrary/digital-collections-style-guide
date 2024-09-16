@@ -18,7 +18,7 @@
   <xsl:variable name="content" select="/qui:root/qui:body/qui:main/qui:block[@slot='content']" />
   <xsl:variable name="is-target" select="$content/@is-target" />
 
-  <xsl:variable name="notes" select="/qui:root/qui:main/qui:block[@slot='notes']" />
+  <xsl:variable name="notes" select="/qui:root/qui:body/qui:main/qui:block[@slot='notes']" />
     
   <xsl:variable name="highlights"
     select="$content//node()[local-name() != 'HEADER']//tei:Highlight" />
@@ -113,6 +113,12 @@
         <xsl:with-param name="attr" select="@TYPE" />
       </xsl:call-template>
     </xsl:variable>
+    <xsl:variable name="has-appended-note">
+      <xsl:choose>
+        <xsl:when test="$notes//node()[@ID=$target]">true</xsl:when>
+        <xsl:otherwise>false</xsl:otherwise>
+      </xsl:choose>
+    </xsl:variable>
     <xsl:choose>
       <xsl:when test="$type='txt'">
         <xsl:call-template name="txtpointer" />
@@ -133,22 +139,6 @@
           <span class="visually-hidden">Jump to section</span>
         </a> 
       </xsl:when>
-      <xsl:when test="$content//node()[@ID=$target]">
-        <a 
-          class="button button--secondary button--highlight footnote-link"
-          id="back{@TARGET}"
-          href="#fn{@TARGET}">
-          <xsl:choose>
-            <xsl:when test="@N != '*'">
-              <xsl:value-of select="@N" />
-            </xsl:when>
-            <xsl:otherwise>
-              <xsl:call-template name="build-footnote-icon" />
-            </xsl:otherwise>
-          </xsl:choose>
-          <span class="visually-hidden">Jump to note</span>
-        </a>
-      </xsl:when>
       <xsl:when test="$notes//tei:SKIP[@TARGET=$target][@reason='div']">
         <a href="{@HREF}" target="_top" class="button button--secondary button--highlight footnote-link">
           <xsl:choose>
@@ -162,7 +152,7 @@
           <span class="visually-hidden">Open page</span>
         </a>
       </xsl:when>
-      <xsl:when test="@TYPE = 'page'">
+      <xsl:when test="@TYPE = 'page' and $has-appended-note = 'false'">
         <a href="{@HREF}" target="_top" class="button button--secondary button--highlight footnote-link">
           <xsl:choose>
             <xsl:when test="@N != '*'">
@@ -347,7 +337,7 @@
     </a>
   </xsl:template>  
 
-  <xsl:template match="tei:P/tei:PB|tei:PB" mode="build-page-link" priority="101">
+  <xsl:template match="tei:P/tei:PB[@IDNO]|tei:PB[@IDNO]" mode="build-page-link" priority="101">
     <xsl:param name="base" />
     <xsl:param name="idno" />
     <xsl:variable name="pNum">
@@ -394,7 +384,7 @@
     </a>
   </xsl:template>  
 
-  <xsl:template match="tei:P/tei:PB|tei:PB" mode="build-page-link-v1">
+  <xsl:template match="tei:P/tei:PB[@IDNO]|tei:PB[@IDNO]" mode="build-page-link-v1">
     <xsl:param name="base" />
     <xsl:param name="idno" />
     <xsl:variable name="pNum">
@@ -443,7 +433,7 @@
   </xsl:template>
 
   <!-- why is this ? -->
-  <xsl:template match="tei:PB" mode="build-page-link">
+  <xsl:template match="tei:PB[@IDNO]" mode="build-page-link">
     <xsl:param name="base" />
     <xsl:param name="idno" />
     <xsl:variable name="pNum">
