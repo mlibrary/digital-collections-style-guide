@@ -283,8 +283,8 @@
             just that collection.
           </p>
           <div class="[ flex ][ flex-gap-0_5 ]">
-            <button class="button button--small button--secondary" data-action="select-all-collid">Select All</button>
-            <button class="button button--small button--secondary" data-action="clear-all-collid">Clear All</button>
+            <button type="button" class="button button--small button--secondary" data-action="select-all-collid">Select All</button>
+            <button type="button" class="button button--small button--secondary" data-action="clear-all-collid">Clear All</button>
           </div>
           <ul>
             <xsl:for-each select="//qui:fieldset[@slot='collids']/qui:option">
