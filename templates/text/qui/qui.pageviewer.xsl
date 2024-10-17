@@ -159,38 +159,40 @@
             <xsl:if test="Focus = 'true'">
               <xsl:attribute name="data-active">true</xsl:attribute>
             </xsl:if>
-            <qui:download-item xx-href="{$api_url}/cgi/t/text/pdf-idx?cc={/Top/DlxsGlobals/CurrentCgi/Param[@name='cc']};idno={/Top/DlxsGlobals/CurrentCgi/Param[@name='idno']};seq={Value}" file-type="PDF" type="FILE">
-              <xsl:attribute name="href">
-                <xsl:value-of select="concat($api_url, '/cgi/t/text/')" />
-                <xsl:choose>
-                  <xsl:when test="$pdf-chunk &gt; 25">
-                    <xsl:text>request-pdf-idx</xsl:text>
-                  </xsl:when>
+            <xsl:if test="/Top/DocNavigation/PageNavForm/ViewSelect/Option[Value='pdf']">
+              <qui:download-item xx-href="{$api_url}/cgi/t/text/pdf-idx?cc={/Top/DlxsGlobals/CurrentCgi/Param[@name='cc']};idno={/Top/DlxsGlobals/CurrentCgi/Param[@name='idno']};seq={Value}" file-type="PDF" type="FILE">
+                <xsl:attribute name="href">
+                  <xsl:value-of select="concat($api_url, '/cgi/t/text/')" />
+                  <xsl:choose>
+                    <xsl:when test="$pdf-chunk &gt; 25">
+                      <xsl:text>request-pdf-idx</xsl:text>
+                    </xsl:when>
+                    <xsl:otherwise>
+                      <xsl:text>pdf-idx</xsl:text>
+                    </xsl:otherwise>
+                  </xsl:choose>
+                  <xsl:value-of select="concat('?cc=', $collid, ';idno=', $idno, ';seq=', Value)" />
+                </xsl:attribute>
+                <xsl:if test="$pdf-chunk &gt; 25">
+                  <xsl:attribute name="data-transfer">async</xsl:attribute>
+                </xsl:if>
+                <xsl:if test="$is-pdf-chunked and Label/Chunk">
+                  <xsl:attribute name="data-chunked">true</xsl:attribute>
+                </xsl:if>
+                <xsl:text>PDF - </xsl:text>
+                  <xsl:choose>
+                    <xsl:when test="$is-pdf-chunked and Label/Chunk"> 
+                      <xsl:text>Pages </xsl:text>
+                      <xsl:value-of select="Label/Chunk" />
+                    </xsl:when>
                   <xsl:otherwise>
-                    <xsl:text>pdf-idx</xsl:text>
+                    <xsl:text>Page </xsl:text>
+                    <xsl:apply-templates select="." mode="pagenum" />
                   </xsl:otherwise>
                 </xsl:choose>
-                <xsl:value-of select="concat('?cc=', $collid, ';idno=', $idno, ';seq=', Value)" />
-              </xsl:attribute>
-              <xsl:if test="$pdf-chunk &gt; 25">
-                <xsl:attribute name="data-transfer">async</xsl:attribute>
-              </xsl:if>
-              <xsl:if test="$is-pdf-chunked and Label/Chunk">
-                <xsl:attribute name="data-chunked">true</xsl:attribute>
-              </xsl:if>
-              <xsl:text>PDF - </xsl:text>
-                <xsl:choose>
-                  <xsl:when test="$is-pdf-chunked and Label/Chunk"> 
-                    <xsl:text>Pages </xsl:text>
-                    <xsl:value-of select="Label/Chunk" />
-                  </xsl:when>
-                <xsl:otherwise>
-                  <xsl:text>Page </xsl:text>
-                  <xsl:apply-templates select="." mode="pagenum" />
-                </xsl:otherwise>
-              </xsl:choose>
-              <!-- <xsl:text>)</xsl:text> -->
-            </qui:download-item>
+                <!-- <xsl:text>)</xsl:text> -->
+              </qui:download-item>
+            </xsl:if>
             <qui:download-item href="{$api_url}/cgi/t/text/api/image/{/Top/DlxsGlobals/CurrentCgi/Param[@name='cc']}:{/Top/DlxsGlobals/CurrentCgi/Param[@name='idno']}:{Value}/full/full/0/default.jpg" file-type="JPEG" type="IMAGE">
               <xsl:text>Image - Page </xsl:text>
               <xsl:apply-templates select="." mode="pagenum" />
