@@ -83,7 +83,7 @@
     <Item key="header.str.fullaccess">For full access to this item, please log in.</Item>
     <Item key="header.str.accessgeodenied">This item is restricted by copyright law to specific regions. As a result, this content is not available in your location.</Item>
     <Item key="header.str.accessrestricted">Access to this item is restricted.</Item>
-    <Item key="header.str.partialaccessallowed">WTF</Item>
+    <Item key="header.str.partialaccessallowed">Some features of this item may be restricted.</Item>
     <Item key="header.str.login">Login </Item>
     <Item key="header.str.addtobookbag">Add to bookbag</Item>
     <Item key="header.str.searchthistext"> Search this text</Item>
