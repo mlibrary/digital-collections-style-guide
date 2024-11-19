@@ -353,7 +353,7 @@
 
     <qui:section identifier="{$identifier}" auth-required="{AuthRequired}" encoding-type="{$encoding-type}" encoding-level="{$item-encoding-level}">
       <xsl:choose>
-        <xsl:when test="HEADER/@TYPE='restricted'">
+        <xsl:when test="ItemHeader/HEADER/@TYPE='restricted'">
           <xsl:attribute name="access">restricted</xsl:attribute>
         </xsl:when>
         <xsl:when test="ItemAccessState != 'fullaccessallowed'">
@@ -362,6 +362,7 @@
         <xsl:otherwise />
       </xsl:choose>
 
+      <xsl:apply-templates select="ItemHeader/HEADER[@TYPE='tombstone']" mode="build-tombstone-link" />
       <xsl:apply-templates select="Tombstone" />
       <xsl:apply-templates select="DetailHref" />
       <!-- <xsl:apply-templates select="TocHref">

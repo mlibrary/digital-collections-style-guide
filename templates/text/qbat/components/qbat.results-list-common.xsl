@@ -3,6 +3,9 @@
   
   <xsl:template name="build-results-item-badge">
     <xsl:choose>
+      <xsl:when test="qui:metadata/@data-tombstone='true'">
+        <div class="[ results-list__blank ]" aria-hidden="true" data-type="blank"></div>
+      </xsl:when>
       <xsl:when test="@access != 'fullaccessallowed'">
         <div class="[ results-list__blank ]" aria-hidden="true" data-type="description"></div>
       </xsl:when>

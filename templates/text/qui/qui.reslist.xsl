@@ -474,6 +474,7 @@
         </xsl:when>
         <xsl:otherwise />
       </xsl:choose>
+      <xsl:apply-templates select="HEADER[@TYPE='tombstone']" mode="build-tombstone-link" />
       <xsl:apply-templates select="Tombstone" />
       <xsl:apply-templates select="DetailHref" />
       <xsl:apply-templates select="TocHref">
@@ -714,6 +715,7 @@
       </xsl:apply-templates> -->
       <qui:link href="{ViewPageLink}" rel="result" />
       <qui:link href="{ViewPageThumbnailLink}" rel="iiif" />
+      <xsl:apply-templates select="HEADER[@TYPE='tombstone']" mode="build-tombstone-link" />
       <qui:title>
         <qui:values>
           <qui:value>
@@ -849,6 +851,7 @@
     <xsl:variable name="details-metadata" select="exsl:node-set($details-metadata-tmp)" />
     <qui:section identifier="{@NODE}" for="{$identifier}" template-name="{$template-name}" local-name="{local-name()}">
       <xsl:apply-templates select="MediaInfo" mode="iiif-link" />
+      <xsl:apply-templates select="HEADER[@TYPE='tombstone']" mode="build-tombstone-link" />
       <qui:link rel="result">
         <xsl:attribute name="href">
           <xsl:value-of select="ancestor-or-self::DIV1/Link" />
