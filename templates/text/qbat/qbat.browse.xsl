@@ -355,6 +355,9 @@
   <xsl:template match="qui:section" mode="result">
     <xsl:variable name="link-href">
       <xsl:choose>
+        <xsl:when test="qui:metadata/@data-tombstone = 'true'">
+          <!-- this should not be a link -->
+        </xsl:when>
         <xsl:when test="qui:link[@rel='result']">
           <xsl:value-of select="qui:link[@rel='result']/@href" />
         </xsl:when>
@@ -379,9 +382,16 @@
       <div class="results-card">
         <div class="results-list__content flex flex-flow-column flex-grow-1">
           <h3>
-            <a href="{$link-href}" class="results-link">
-              <xsl:value-of select="$link-title" />
-            </a>
+            <xsl:choose>
+              <xsl:when test="normalize-space($link-href)">
+                <a href="{$link-href}" class="results-link">
+                  <xsl:value-of select="$link-title" />
+                </a>    
+              </xsl:when>
+              <xsl:otherwise>
+                <xsl:value-of select="$link-title" />
+              </xsl:otherwise>
+            </xsl:choose>
           </h3>
         </div>
       </div>
@@ -404,7 +414,7 @@
         <dl class="[ results ]">
           <!-- <xsl:apply-templates select="qui:collection" /> -->
           <xsl:apply-templates select="qui:metadata[@slot='item']//qui:field" />
-          <xsl:if test="qui:link[@rel='toc' or @rel='detail']">
+          <xsl:if test="qui:link[@rel='toc' or @rel='detail'] and not(qui:link[@rel='tombstone'])">
             <div>
               <dt>Links</dt>
               <!-- <xsl:apply-templates select="qui:link[@rel='detail']" mode="summary" /> -->
@@ -418,6 +428,7 @@
         <xsl:apply-templates select="qui:block[@slot='summary']" mode="callout">
           <xsl:with-param name="title" select="normalize-space($link-title)" />
         </xsl:apply-templates>
+        <xsl:call-template name="build-tombstone-notification" />
       </div>
 
       <xsl:variable name="form" select="qui:form[@slot='bookbag']" />
