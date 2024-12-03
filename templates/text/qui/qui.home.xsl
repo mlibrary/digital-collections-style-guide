@@ -22,7 +22,15 @@
   </xsl:template>
 
   <xsl:template name="build-head-block">
-    <qui:base href="/{substring($collid, 1, 1)}/{$collid}/" />
+    <xsl:choose>
+      <xsl:when test="$collid = '*' and normalize-space(/Top/DlxsGlobals/CurrentCgi/Param[@name='g'])">
+        <xsl:variable name="groupid" select="normalize-space(/Top/DlxsGlobals/CurrentCgi/Param[@name='g'])" />
+        <qui:base href="/{substring($groupid, 1, 1)}/{$groupid}/" />
+      </xsl:when>
+      <xsl:otherwise>
+        <qui:base href="/{substring($collid, 1, 1)}/{$collid}/" />
+      </xsl:otherwise>
+    </xsl:choose>
   </xsl:template>
 
   <xsl:template name="build-body-main">
