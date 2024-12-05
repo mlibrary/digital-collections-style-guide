@@ -412,8 +412,8 @@
               collection for information.
             </p>
             <p>
-              <a href="https://www.lib.umich.edu/about-us/policies/takedown-policy-sensitive-information-u-m-digital-collections"
-                >Takedown Policy for Sensitive Information in U-M Digital
+              <a href="https://lib.umich.edu/about-us/policies/takedown-policy-private-information-u-m-digital-collections"
+                >Takedown Policy for Private Information in U-M Digital
                 Collections</a
               >
             </p>
