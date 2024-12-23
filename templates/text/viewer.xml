@@ -25,6 +25,8 @@
   <?MANIFEST_BEHAVIOR_XML?>
 </DocNavigation>
 
+<?MANIFEST_DATA_XML?>
+
 <Footer><?CHUNK filename="footer.xml"?></Footer>
 
 <DocContent>
