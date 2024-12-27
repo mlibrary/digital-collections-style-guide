@@ -347,6 +347,14 @@ input[type="text"] {
     position: relative;
   }
 
+  .split-panels--wrap {
+    min-height: 0;
+    display: grid;
+    grid-template-rows: minmax(0, 1fr);
+    overflow: hidden;
+    position: relative;
+  }
+
   .image-viewer-wrap {
     background: inherit;
     position: relative;
@@ -424,7 +432,7 @@ input[type="text"] {
   }
 
   input[name="seq"] {
-    width: 4ch; 
+    width: 7ch; 
     text-align: center; 
     font-size: 1em;
   }

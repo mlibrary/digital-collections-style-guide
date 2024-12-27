@@ -15,6 +15,10 @@ let $nav = {};
 let $tabGroup;
 let $fetching;
 
+let canvasMap = {};
+let lastCanvasIndex = -1;
+let totalCanvases = 0;
+
 let updateDownloadMenu = function () {
   const slDropdownEl = document.querySelector("#dropdown-action");
   slDropdownEl.disabled = true;
@@ -51,6 +55,29 @@ let updateDownloadMenu = function () {
   slDropdownEl.disabled = false;
   slDropdownEl.style.opacity = 1.0;
 };
+
+const updatePageHistory = function(canvasIndex) {
+  let data = canvasMap[canvasIndex];
+  const label = data.label;
+
+  const link = document.querySelector('link[rel="self"]');
+  const labelEl = document.querySelector('span[data-key="canvas-label"]');
+
+  if (labelEl) {
+    labelEl.innerText = label;
+  }
+
+  let parts = document.title.split(" | ");
+  parts[0] = label;
+  document.title = parts.join(" | ");
+
+  const idno = $viewer.dataset.idno;
+
+  // const slDropdownEl = document.querySelector("#dropdown-action");
+  // slDropdownEl.disabled = true;
+  // slDropdownEl.style.opacity = 0.5;
+  
+}
 
 const blankPage = `<section style="white-space: pre-line">
   <p  class="plaintext"></p>
@@ -321,7 +348,10 @@ window.addEventListener("DOMContentLoaded", (event) => {
   let tileSources = [];
   $viewer = document.querySelector(".viewer");
   $viewer.querySelectorAll("li[data-tile-source]").forEach((el) => {
-    tileSources.push(el.dataset.tileSource);
+    tileSources.push(el.dataset.tileSource.replace('https://quod.lib.umich.edu/', 'http://localhost:5555/'));
+    let $link = el.querySelector('a[data-canvas-index]');
+    canvasMap[$link.dataset.canvasIndex] = { label: $link.dataset.canvasLabel };
+    totalCanvases += 1;
   });
   let canvasIndex = parseInt($viewer.dataset.canvasIndex, 10);
   if ($viewer) {
@@ -350,6 +380,7 @@ window.addEventListener("DOMContentLoaded", (event) => {
   })
 
   $tabGroup.addEventListener("sl-tab-show", (event) => {
+    console.log("-- showing tab", event.detail.name);
     setTimeout(() => {
       let panel = event.detail.name;
       let $active = $nav[panel].querySelector(".active");
@@ -360,7 +391,7 @@ window.addEventListener("DOMContentLoaded", (event) => {
 
 
   let hostname = location.hostname != 'localhost' ? location.hostname : 'quod.lib.umich.edu';
-  plaintextUrl = new URL(`https://${location.hostname}`);
+  plaintextUrl = new URL(`https://${hostname}`);
 
   plaintextUrl.pathname = "/cgi/t/text/pageviewer-idx";
   plaintextUrl.searchParams.set("view", "text");
@@ -375,6 +406,23 @@ window.addEventListener("DOMContentLoaded", (event) => {
       buttons[key] = document.querySelector(`button[data-action="${key}"]`);
     }
   );
+
+  buttons.input = document.querySelector("#jumpToSeq");
+  buttons.input.addEventListener('focus', (event) => {
+    lastCanvasIndex = event.target.value;
+  });
+  buttons.input.addEventListener('change', (event) => {
+    let newCanvasIndex = parseInt(event.target.value, 10);
+    if (newCanvasIndex < 1) {
+      newCanvasIndex = lastCanvasIndex;
+      event.target.value = lastCanvasIndex;
+    } else if (newCanvasIndex > totalCanvases) {
+      newCanvasIndex = lastCanvasIndex;
+      event.target.value = lastCanvasIndex;
+    } else {
+      dragon.goToPage(newCanvasIndex - 1);
+    }
+  })
 
   let $target = $viewer.querySelector('div[data-slot="viewer"]');
   console.log("-- target:", $target);
@@ -418,8 +466,15 @@ window.addEventListener("DOMContentLoaded", (event) => {
         $a.parentElement.classList.add("active");
       }
     }
-    let $active = $nav[$tabGroup.activeTab.panel].querySelector(".active");
-    scrollIntoView($active);
+
+    console.log("-- active tab", $tabGroup, $tabGroup.activeTab);
+    if ( $tabGroup.activeTab ) {
+      setTimeout(() => {
+        let $active = $nav[$tabGroup.activeTab.panel].querySelector(".active");
+        scrollIntoView($active);
+      }, 0);
+    }
+
     fetchPlainText(canvasIndex)
       .then((value) => {
         let plainText = processPlainText(value);
@@ -434,6 +489,10 @@ window.addEventListener("DOMContentLoaded", (event) => {
         // panelTabs.plaintext = false;
         // inPageTransition = false;
       });
+
+    updatePageHistory(canvasIndex);
+    buttons.input.value = canvasIndex;
+    lastCanvasIndex = canvasIndex;
   });
 
   window.dragon = dragon;
@@ -441,12 +500,43 @@ window.addEventListener("DOMContentLoaded", (event) => {
   setTimeout(() => {
     console.log("-- goto.page", canvasIndex);
     dragon.goToPage(canvasIndex - 1);
+    // setTimeout(() => {
+    //   $tabGroup.updateComplete.then(() => {
+    //     let $active = $nav[$tabGroup.activeTab.panel].querySelector(".active");
+    //     scrollIntoView($active);
+    //   });
+    // })
     setTimeout(() => {
       dragon.viewport.goHome(true);
-      let $active = $nav[$tabGroup.activeTab.panel].querySelector(".active");
-      scrollIntoView($active);
+      // setTimeout(() => {
+      //   let $active = $nav[$tabGroup.activeTab.panel].querySelector(".active");
+      //   scrollIntoView($active);
+      // }, 0);
       $fetching.classList.remove("visible");
     }, 1000);
   }, 100);  
+
+  // let readyInterval = setInterval(() => {
+  //   if ( $tabGroup.updateComplete && $tabGroup.activePanel ) {
+  //     clearInterval(readyInterval);
+  //     $tabGroup.updateComplete.then(() => {
+  //       setTimeout(() => {
+  //         let $active = $nav[$tabGroup.activeTab.panel].querySelector(".active");
+  //         scrollIntoView($active);
+  //       })
+  //     });
+  //   }
+  // }, 100);
+
+  let readyInterval = setInterval(() => {
+    if ($tabGroup.activeTab) {
+      clearInterval(readyInterval);
+      let $active =
+        $nav[$tabGroup.activeTab.panel].querySelector(".active");
+      scrollIntoView($active);
+    }
+  }, 100);
+
+  console.log("-- tab group", $tabGroup.updateComplete);
 
 });
