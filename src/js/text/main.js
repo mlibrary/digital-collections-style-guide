@@ -21,6 +21,7 @@ import "./handlers/action-toggle-tree.js";
 import "./handlers/item-page-navigator.js";
 import "./handlers/action-truncate-text.js";
 import "./viewers/viewer-mirador.js";
+import "./viewers/viewer-inline.js";
 // import "./viewers/viewer-plaintext.js";
 
 import "./handlers/advanced-search-form.js";
