@@ -56,7 +56,7 @@ let updateDownloadMenu = function () {
   slDropdownEl.style.opacity = 1.0;
 };
 
-const updatePageHistory = function(canvasIndex) {
+const updatePageHistory = function (canvasIndex) {
   let data = canvasMap[canvasIndex];
   const label = data.label;
 
@@ -76,8 +76,7 @@ const updatePageHistory = function(canvasIndex) {
   // const slDropdownEl = document.querySelector("#dropdown-action");
   // slDropdownEl.disabled = true;
   // slDropdownEl.style.opacity = 0.5;
-  
-}
+};
 
 const blankPage = `<section style="white-space: pre-line">
   <p  class="plaintext"></p>
@@ -344,12 +343,16 @@ window.addEventListener("message", (event) => {
 });
 
 window.addEventListener("DOMContentLoaded", (event) => {
-
   let tileSources = [];
   $viewer = document.querySelector(".viewer");
   $viewer.querySelectorAll("li[data-tile-source]").forEach((el) => {
-    tileSources.push(el.dataset.tileSource.replace('https://quod.lib.umich.edu/', 'http://localhost:5555/'));
-    let $link = el.querySelector('a[data-canvas-index]');
+    tileSources.push(
+      el.dataset.tileSource.replace(
+        "https://quod.lib.umich.edu/",
+        "http://localhost:5555/"
+      )
+    );
+    let $link = el.querySelector("a[data-canvas-index]");
     canvasMap[$link.dataset.canvasIndex] = { label: $link.dataset.canvasLabel };
     totalCanvases += 1;
   });
@@ -366,7 +369,7 @@ window.addEventListener("DOMContentLoaded", (event) => {
 
   $fetching = $viewer.querySelector(".fetching");
 
-  [ 'items', 'ranges' ].forEach((tab) => {
+  ["items", "ranges"].forEach((tab) => {
     if ($nav[tab]) {
       $nav[tab].addEventListener("click", (event) => {
         if (!event.target.closest("a")) {
@@ -377,7 +380,7 @@ window.addEventListener("DOMContentLoaded", (event) => {
         dragon.goToPage(parseInt(el.dataset.canvasIndex, 10) - 1);
       });
     }
-  })
+  });
 
   $tabGroup.addEventListener("sl-tab-show", (event) => {
     console.log("-- showing tab", event.detail.name);
@@ -389,8 +392,8 @@ window.addEventListener("DOMContentLoaded", (event) => {
     }, 10);
   });
 
-
-  let hostname = location.hostname != 'localhost' ? location.hostname : 'quod.lib.umich.edu';
+  let hostname =
+    location.hostname != "localhost" ? location.hostname : "quod.lib.umich.edu";
   plaintextUrl = new URL(`https://${hostname}`);
 
   plaintextUrl.pathname = "/cgi/t/text/pageviewer-idx";
@@ -408,10 +411,10 @@ window.addEventListener("DOMContentLoaded", (event) => {
   );
 
   buttons.input = document.querySelector("#jumpToSeq");
-  buttons.input.addEventListener('focus', (event) => {
+  buttons.input.addEventListener("focus", (event) => {
     lastCanvasIndex = event.target.value;
   });
-  buttons.input.addEventListener('change', (event) => {
+  buttons.input.addEventListener("change", (event) => {
     let newCanvasIndex = parseInt(event.target.value, 10);
     if (newCanvasIndex < 1) {
       newCanvasIndex = lastCanvasIndex;
@@ -421,6 +424,74 @@ window.addEventListener("DOMContentLoaded", (event) => {
       event.target.value = lastCanvasIndex;
     } else {
       dragon.goToPage(newCanvasIndex - 1);
+    }
+  });
+
+  let viewerButtons = {};
+  viewerButtons.guide = $viewer.querySelector(
+    'button[data-action="toggle-guide"]'
+  );
+  viewerButtons.image = $viewer.querySelector(
+    'button[data-action="toggle-image"]'
+  );
+  viewerButtons.text = $viewer.querySelector(
+    'button[data-action="toggle-text"]'
+  );
+
+  console.log(viewerButtons);
+
+  if ( viewerButtons.guide ) {
+    viewerButtons.guide.addEventListener('click', (event) => {
+      let isPressed = !!!(viewerButtons.guide.getAttribute('aria-pressed') == 'true');
+      console.log("-- guide clicked", isPressed);
+      viewerButtons.guide.setAttribute('aria-pressed', isPressed );
+      viewerButtons.guide.closest('div.toggle').classList.toggle('toggled', isPressed);
+      $viewer.querySelector('[data-slot="guide"]').classList.toggle('hidden', ! isPressed);
+    })
+  }
+
+  let $splitPanel = $viewer.querySelector('sl-split-panel');
+  [ 'image', 'text' ].forEach((key) => {
+    if ( viewerButtons[key] ) {
+      viewerButtons[key].addEventListener("click", (event) => {
+        let isPressed = !!!(
+          viewerButtons[key].getAttribute("aria-pressed") == "true"
+        );
+
+        let otherKey = key == 'image' ? 'text' : 'image';
+        let otherIsPressed = !!(viewerButtons[otherKey].getAttribute('aria-pressed') == 'true');
+        if ( isPressed === false && otherIsPressed == isPressed ) {
+          // both keys are false, which is dumb; should probably toggle
+        } else {
+          otherKey = null;
+        }
+
+        console.log("-- guide clicked", isPressed);
+        viewerButtons[key].setAttribute("aria-pressed", isPressed);
+        viewerButtons[key]
+          .closest("div.toggle")
+          .classList.toggle("toggled", isPressed);
+        if ( key == 'image' ) {
+          $splitPanel.position = isPressed ? 60 : 0;
+        } else if ( key == 'text' ) {
+          $splitPanel.position = isPressed ? 60 : 100;
+        }
+        // now do complicated math
+        $splitPanel.dataset.collapsed = isPressed == false ? key : null;
+        let $divider = $splitPanel.shadowRoot.querySelector('div[part="divider"]');
+        if ( ! isPressed ) {
+          $divider.style.display = 'none';
+        } else {
+          $divider.style.display = null;
+        }
+
+        if ( otherKey) {
+          viewerButtons[otherKey].setAttribute("aria-pressed", true);
+          viewerButtons[otherKey]
+            .closest("div.toggle")
+            .classList.toggle("toggled", true);
+        }
+      });
     }
   })
 
@@ -433,7 +504,7 @@ window.addEventListener("DOMContentLoaded", (event) => {
   });
 
   let dragon = imageViewer.instance();
-  
+
   dragon.addHandler("canvas-scroll", (event) => {
     event.preventDefaultAction = false;
     event.preventDefault = false;
@@ -468,7 +539,7 @@ window.addEventListener("DOMContentLoaded", (event) => {
     }
 
     console.log("-- active tab", $tabGroup, $tabGroup.activeTab);
-    if ( $tabGroup.activeTab ) {
+    if ($tabGroup.activeTab) {
       setTimeout(() => {
         let $active = $nav[$tabGroup.activeTab.panel].querySelector(".active");
         scrollIntoView($active);
@@ -514,7 +585,7 @@ window.addEventListener("DOMContentLoaded", (event) => {
       // }, 0);
       $fetching.classList.remove("visible");
     }, 1000);
-  }, 100);  
+  }, 100);
 
   // let readyInterval = setInterval(() => {
   //   if ( $tabGroup.updateComplete && $tabGroup.activePanel ) {
@@ -531,12 +602,10 @@ window.addEventListener("DOMContentLoaded", (event) => {
   let readyInterval = setInterval(() => {
     if ($tabGroup.activeTab) {
       clearInterval(readyInterval);
-      let $active =
-        $nav[$tabGroup.activeTab.panel].querySelector(".active");
+      let $active = $nav[$tabGroup.activeTab.panel].querySelector(".active");
       scrollIntoView($active);
     }
   }, 100);
 
   console.log("-- tab group", $tabGroup.updateComplete);
-
 });
