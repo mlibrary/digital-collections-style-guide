@@ -19,49 +19,38 @@ let canvasMap = {};
 let lastCanvasIndex = -1;
 let totalCanvases = 0;
 
-let updateDownloadMenu = function () {
-  const slDropdownEl = document.querySelector("#dropdown-action");
-  slDropdownEl.disabled = true;
-  slDropdownEl.style.opacity = 0.5;
-  let slMenuEl = slDropdownEl.querySelector("sl-menu");
-  while (slMenuEl.firstChild) {
-    slMenuEl.removeChild(slMenuEl.firstChild);
+const toggleFullscreen = function() {
+  if ( document.fullscreenElement ) {
+    console.log("toggle.fullscreen exit", document.fullscreenElement);
+    document.exitFullscreen();
   }
-  let menuHtml = "";
-  for (let i = 0; i < DLXS.totalManifests; i++) {
-    let manifestId = DLXS.manifestsIndex[i];
-    let info = DLXS.manifestsData[manifestId];
-    if (!info.label) {
-      // manifest data hasn't been loaded yet
-      continue;
-    }
-    if (i > 0) {
-      menuHtml += `<sl-menu-label></sl-menu-label>`;
-    }
-    menuHtml += `<sl-menu-label>${info.label}</sl-menu-label>`;
-    for (let ii = 0; ii < info.sizes.length; ii++) {
-      let size = info.sizes[ii];
-      console.log("-- updateDownload size", size.width, size.height);
-      if (size.height >= 600 || size.width >= 600) {
-        let href = `${info.resourceId.replace("/tile/", "/image/")}/full/${
-          size.width
-        },${size.height}/0/default.jpg`;
-        menuHtml += `<sl-menu-item data-href="${href}" value="${href}">${size.width} x ${size.height} (JPEG)</sl-menu-item>`;
-      }
-    }
+  if ($viewer.requestFullscreen) {
+    console.log("toggle.fullscreen", $viewer.requestFullscreen)
+    $viewer.requestFullscreen();
   }
-  slMenuEl.innerHTML = menuHtml;
-
-  slDropdownEl.disabled = false;
-  slDropdownEl.style.opacity = 1.0;
-};
+}
 
 const updatePageHistory = function (canvasIndex) {
+
+  const section = document.querySelector(".main-panel > section");
+  if (!section) {
+    return;
+  }
+
+  let alert = section.querySelector(".alert");
+  if (!alert) {
+    alert = document.createElement("div");
+    alert.classList.add("alert");
+    section.insertBefore(alert, section.firstChild);
+  }
+
   let data = canvasMap[canvasIndex];
   const label = data.label;
 
   const link = document.querySelector('link[rel="self"]');
   const labelEl = document.querySelector('span[data-key="canvas-label"]');
+
+  const newSeq = String(canvasIndex).padStart(8, '0');
 
   if (labelEl) {
     labelEl.innerText = label;
@@ -70,12 +59,130 @@ const updatePageHistory = function (canvasIndex) {
   let parts = document.title.split(" | ");
   parts[0] = label;
   document.title = parts.join(" | ");
+    
+  const slDropdownEl = document.querySelector("#dropdown-action");
+  slDropdownEl.disabled = true;
+  slDropdownEl.style.opacity = 0.5;
 
   const idno = $viewer.dataset.idno;
 
-  // const slDropdownEl = document.querySelector("#dropdown-action");
-  // slDropdownEl.disabled = true;
-  // slDropdownEl.style.opacity = 0.5;
+  let self_href = link.getAttribute("href").replace(/;/g, "&");
+  if (self_href.substring(0, 1) == "/") {
+    self_href = `${location.protocol}//${location.host}${self_href}`;
+  }
+  let pageview_href = location.href.replace(/\;/g, "&");
+  let url = new URL(self_href);
+  let pageviewUrl = new URL(pageview_href);
+  let re1 = new RegExp(`/(${idno})/(\\d+):(\\d+)`, "i");
+  let re2 = new RegExp(`/(${idno})/(\\d+)`, "i");
+  let match;
+  if (url.pathname.indexOf("pageviewer-idx") > -1) {
+    url.searchParams.set("seq", newSeq);
+  }
+
+  if (pageviewUrl.pathname.indexOf("pageviewer-idx") > -1) {
+    pageviewUrl.searchParams.set("seq", newSeq);
+  } else if ((match = pageviewUrl.pathname.match(re1))) {
+    // console.log("-- match d:d", match);
+    match[2] = newSeq.replace(/^0+/, "");
+    pageviewUrl.pathname = pageviewUrl.pathname.replace(
+      re1,
+      `/${match[1]}/${match[2]}:${match[3]}`
+    );
+  } else if ((match = pageviewUrl.pathname.match(re2))) {
+    // console.log("-- match d", match);
+    match[2] = newSeq.replace(/^0+/, "");
+    pageviewUrl.pathname = pageviewUrl.pathname.replace(
+      re2,
+      `/${match[1]}/${match[2]}`
+    );
+  } else if (pageviewUrl.pathname.indexOf("/" + idno + "/") > -1) {
+    // console.log("-- match null", pageviewUrl.pathname);
+    let re = new RegExp(`/${idno}/\\d+`);
+    pageviewUrl.pathname = pageviewUrl.pathname.replace(
+      re,
+      `/${idno}/${newSeq.replace(/^0+/, "")}`
+    );
+  } else {
+    console.log("-- match FAIL", pageviewUrl.pathname, idno);
+  }
+  let newHref = url.toString();
+  let newPageviewHref = pageviewUrl.toString();
+
+  history.pushState({}, document.title, newPageviewHref);
+  document.querySelector('.breadcrumb li:last-child').setAttribute('href', newPageviewHref);
+
+  const bookmarkItem = document.querySelector('dt[data-key="bookmark-item"] + dd span.url');
+  if ( bookmarkItem ) {
+    let itemHref = bookmarkItem.innerText.trim();
+    bookmarkItem.innerText = newPageviewHref;
+  }
+
+  // what is the itemEncodingLevel > 1 business?
+  // to get the <h1> label of the page because the metadata can change
+  if ( itemEncodingLevel > 1 ) {
+    fetch(newPageviewHref, { credentials: 'include' })
+      .then((response) => {
+        if ( ! response.ok ) {
+          throw new Error(`Request error: ${response.status}`);
+        }
+        return response.text();
+      })
+      .then((text) => {
+        const newDocument = new DOMParser().parseFromString(text, "text/html");
+        const sections = document.querySelectorAll('.main-panel > section');
+        const newSections = newDocument.querySelectorAll('.main-panel > section');
+        for (let i = 0; i < newSections.length; i++) {
+          sections[i].innerHTML = newSections[i].innerHTML;
+        }
+
+        let newTitle = newDocument.querySelector('h1').innerHTML;
+        document.querySelector('h1').innerHTML = newTitle;
+        document.title = newDocument.title;        
+      });
+    console.log("-- update.metadata OK", itemEncodingLevel);
+  } else {
+    console.log("-- update.metadata PUNT", itemEncodingLevel);
+  }
+
+  const identifier = [ $viewer.dataset.cc, idno, newSeq ].join(':');
+  const baseIdentifier = "${$viewer.dataset.cc}:{idno}";
+  alert.innerHTML = `<p>Loading metadata for: ${identifier}</p>`;
+
+  tocbot.refresh();
+
+  // update download menu
+  let slMenuEl = document.querySelector('#dropdown-action sl-menu');
+  slMenuEl.querySelectorAll('sl-menu-item').forEach((itemEl) => {
+    let downloadHref = itemEl.dataset.href.replace(/;/g, '&');
+    let downloadUrl = new URL(downloadHref);
+    if ( downloadUrl.searchParams.has('seq') ) {
+      downloadUrl.searchParams.set('seq', newSeq);
+    } else if ( downloadUrl.pathname.indexOf(baseIdentifier) > -1 ) {
+      // replace the identifier in the path
+      let re = new RegExp(`${baseIdentifier}:\\d+`);
+      downloadUrl.pathname = downloadUrl.pathname.replace(re, identifier);
+    }
+    itemEl.dataset.href = downloadUrl.toString();
+    itemEl.setAttribute('value', downloadUrl.toString());
+
+    let newSeq2 = newSeq.replace(/^0*/, '');
+    let spanEl = itemEl.querySelector('.menu-label');
+    let newText = (spanEl.innerText.split(' -'))[0];
+    let pageData = DLXS.pageMap[newSeq2];
+    if ( itemEl.dataset.chunked == 'true' ) {
+      newText += ` - Pages ${pageData.chunk}`;
+    } else {
+      newText += ` - Page ${pageData.pageNum}`;
+    }
+
+    console.log("-- update", spanEl, DLXS.pageMap[newSeq2].pageNum, newText);
+    spanEl.innerText = newText;
+  })
+  slDropdownEl.disabled = false;
+  slDropdownEl.style.opacity = 1.0;
+
+  ScreenReaderMessenger.getMessenger().say(`Viewing ${label}`);
 };
 
 const blankPage = `<section style="white-space: pre-line">
@@ -122,236 +229,20 @@ const processPlainText = function (ocrText) {
   return parsedText;
 };
 
-window.addEventListener("message", (event) => {
-  const section = document.querySelector(".main-panel > section");
-  if (!section) {
-    return;
-  }
-
-  let alert = section.querySelector(".alert");
-  if (!alert) {
-    alert = document.createElement("div");
-    alert.classList.add("alert");
-    section.insertBefore(alert, section.firstChild);
-  }
-
-  const labelEl = document.querySelector('span[data-key="canvas-label"]');
-  console.log("-- viewer.mirador.message", event);
-
-  if (event.data.event == "updateMetadata") {
-    let identifier = event.data.identifier;
-    let canvasId = event.data.canvasId;
-    if (identifier == "default.jpg") {
-      // remote image; is there a better way to do this
-      let tmp = event.data.canvasId.split("/");
-      identifier = tmp.at(-3);
-    }
-    const label = event.data.label;
-    const link = document.querySelector('link[rel="self"]');
-
-    if (labelEl) {
-      labelEl.innerText = label;
-    }
-
-    let parts = document.title.split(" | ");
-    parts[0] = label;
-    document.title = parts.join(" | ");
-
-    parts = identifier.split(":");
-    const newSeq = parts.pop();
-    const idno = parts.at(-1);
-    const baseIdentifier = parts.join(":");
-
-    console.log(
-      "-- viewer.mirador.updateMetadata",
-      canvasId,
-      identifier,
-      label,
-      newSeq
-    );
-
-    const slDropdownEl = document.querySelector("#dropdown-action");
-    slDropdownEl.disabled = true;
-    slDropdownEl.style.opacity = 0.5;
-
-    console.log("-- plaintext.updateMetadata", identifier);
-
-    // this will be different when we get to portfolios
-    // let url = new URL(location.href.replace(/\;/g, "&"));
-    let self_href = link.getAttribute("href").replace(/;/g, "&");
-    if (self_href.substring(0, 1) == "/") {
-      self_href = `${location.protocol}//${location.host}${self_href}`;
-    }
-    let pageview_href = location.href.replace(/\;/g, "&");
-    let url = new URL(self_href);
-    let pageviewUrl = new URL(pageview_href);
-    let re1 = new RegExp(`/(${idno})/(\\d+):(\\d+)`, "i");
-    let re2 = new RegExp(`/(${idno})/(\\d+)`, "i");
-    let match;
-    if (url.pathname.indexOf("pageviewer-idx") > -1) {
-      url.searchParams.set("seq", newSeq);
-    }
-
-    if (pageviewUrl.pathname.indexOf("pageviewer-idx") > -1) {
-      pageviewUrl.searchParams.set("seq", newSeq);
-    } else if ((match = pageviewUrl.pathname.match(re1))) {
-      // console.log("-- match d:d", match);
-      match[2] = newSeq.replace(/^0+/, "");
-      pageviewUrl.pathname = pageviewUrl.pathname.replace(
-        re1,
-        `/${match[1]}/${match[2]}:${match[3]}`
-      );
-    } else if ((match = pageviewUrl.pathname.match(re2))) {
-      // console.log("-- match d", match);
-      match[2] = newSeq.replace(/^0+/, "");
-      pageviewUrl.pathname = pageviewUrl.pathname.replace(
-        re2,
-        `/${match[1]}/${match[2]}`
-      );
-    } else if (pageviewUrl.pathname.indexOf("/" + idno + "/") > -1) {
-      // console.log("-- match null", pageviewUrl.pathname);
-      let re = new RegExp(`/${idno}/\\d+`);
-      pageviewUrl.pathname = pageviewUrl.pathname.replace(
-        re,
-        `/${idno}/${newSeq.replace(/^0+/, "")}`
-      );
-    } else {
-      console.log("-- match FAIL", pageviewUrl.pathname, idno);
-    }
-    let newHref = url.toString();
-    let newPageviewHref = pageviewUrl.toString();
-    // console.log("-- match new href", newHref, newPageviewHref);
-
-    alert.innerHTML = `<p>Loading metadata for: ${identifier}</p>`;
-
-    // update download menu
-    let slMenuEl = document.querySelector("#dropdown-action sl-menu");
-    slMenuEl.querySelectorAll("sl-menu-item").forEach((itemEl) => {
-      let downloadHref = itemEl.dataset.href.replace(/;/g, "&");
-      let downloadUrl = new URL(downloadHref);
-      if (downloadUrl.searchParams.has("seq")) {
-        downloadUrl.searchParams.set("seq", newSeq);
-      } else if (downloadUrl.pathname.indexOf(baseIdentifier) > -1) {
-        // replace the identifier in the path
-        let re = new RegExp(`${baseIdentifier}:\\d+`);
-        downloadUrl.pathname = downloadUrl.pathname.replace(re, identifier);
-      }
-      itemEl.dataset.href = downloadUrl.toString();
-      itemEl.setAttribute("value", downloadUrl.toString());
-
-      let newSeq2 = newSeq.replace(/^0*/, "");
-      let spanEl = itemEl.querySelector(".menu-label");
-      let newText = spanEl.innerText.split(" -")[0];
-      let pageData = DLXS.pageMap[newSeq2];
-      if (itemEl.dataset.chunked == "true") {
-        newText += ` - Pages ${pageData.chunk}`;
-      } else {
-        newText += ` - Page ${pageData.pageNum}`;
-      }
-
-      console.log("-- update", spanEl, DLXS.pageMap[newSeq2].pageNum, newText);
-      spanEl.innerText = newText;
-    });
-    slDropdownEl.disabled = false;
-    slDropdownEl.style.opacity = 1.0;
-
-    history.pushState({}, document.title, newPageviewHref);
-    document
-      .querySelector(".breadcrumb li:last-child")
-      .setAttribute("href", newPageviewHref);
-
-    const bookmarkItem = document.querySelector(
-      'dt[data-key="bookmark-item"] + dd span.url'
-    );
-    if (bookmarkItem) {
-      let itemHref = bookmarkItem.innerText.trim();
-      bookmarkItem.innerText = newPageviewHref;
-      // if ( itemHref.indexOf('/cgi/') > -1 ) {
-      //   // just use newHref
-      //   bookmarkItem.innerText = newHref;
-      // } else {
-      //   // just pop on the new seq?
-      //   let tmp = itemHref.split('/');
-      //   tmp[tmp.length - 1] = newSeq.replace(/^0+/, '');
-      //   bookmarkItem.innerText = tmp.join('/');
-      // }
-    }
-
-    if (itemEncodingLevel > 1) {
-      fetch(newPageviewHref, { credentials: "include" })
-        .then((response) => {
-          if (!response.ok) {
-            throw new Error(`Request error: ${response.status}`);
-          }
-          return response.text();
-        })
-        .then((text) => {
-          const newDocument = new DOMParser().parseFromString(
-            text,
-            "text/html"
-          );
-          const sections = document.querySelectorAll(".main-panel > section");
-          const newSections = newDocument.querySelectorAll(
-            ".main-panel > section"
-          );
-          for (let i = 0; i < newSections.length; i++) {
-            sections[i].innerHTML = newSections[i].innerHTML;
-          }
-
-          let newTitle = newDocument.querySelector("h1").innerHTML;
-          document.querySelector("h1").innerHTML = newTitle;
-          document.title = newDocument.title;
-        });
-      console.log("-- update.metadata OK", itemEncodingLevel);
-    } else {
-      console.log("-- update.metadata PUNT", itemEncodingLevel);
-    }
-
-    tocbot.refresh();
-
-    ScreenReaderMessenger.getMessenger().say(`Viewing ${label}`);
-
-    const analyticsEvent = new Event("dlxs:trackPageView");
-    window.dispatchEvent(analyticsEvent);
-  }
-
-  if (event.data.event == "configureManifests") {
-    let manifestList = JSON.parse(event.data.manifestList);
-    manifestList.forEach((v, idx) => {
-      DLXS.manifestsIndex[idx] = v;
-      DLXS.manifestsData[v] = {};
-      DLXS.totalManifests += 1;
-    });
-  }
-
-  //   if (event.data.event == 'updateDownloadLinks') {
-  //     const identifier = event.data.identifier;
-  //     const resourceId = event.data.resourceId;
-  //     const manifestId = event.data.manifestId;
-  //     const label = event.data.label;
-
-  //     alert.innerHTML = `<p>Updating download links for: ${identifier}</p>`;
-
-  //     console.log("-- updateDownload", label, resourceId, manifestId);
-  //     fetch(resourceId + '/info.json')
-  //       .then(resp => resp.json())
-  //       .then((data) => {
-  //         DLXS.manifestsData[manifestId] = { sizes: data.sizes, resourceId: resourceId, label: label };
-  //         updateDownloadMenu();
-  //       })
-  //   }
-});
-
 window.addEventListener("DOMContentLoaded", (event) => {
   let tileSources = [];
   $viewer = document.querySelector(".viewer");
   $viewer.querySelectorAll("li[data-tile-source]").forEach((el) => {
-    tileSources.push(
-      el.dataset.tileSource.replace(
-        "https://quod.lib.umich.edu/",
-        "http://localhost:5555/"
-      )
-    );
+    if ( location.hostname == 'localhost' ) {
+      tileSources.push(
+        el.dataset.tileSource.replace(
+          "https://quod.lib.umich.edu/",
+          "http://localhost:5555/"
+        )
+      );
+    } else {
+      tileSources.push(el.dataset.tileSource);
+    }
     let $link = el.querySelector("a[data-canvas-index]");
     canvasMap[$link.dataset.canvasIndex] = { label: $link.dataset.canvasLabel };
     totalCanvases += 1;
@@ -411,21 +302,23 @@ window.addEventListener("DOMContentLoaded", (event) => {
   );
 
   buttons.input = document.querySelector("#jumpToSeq");
-  buttons.input.addEventListener("focus", (event) => {
-    lastCanvasIndex = event.target.value;
-  });
-  buttons.input.addEventListener("change", (event) => {
-    let newCanvasIndex = parseInt(event.target.value, 10);
-    if (newCanvasIndex < 1) {
-      newCanvasIndex = lastCanvasIndex;
-      event.target.value = lastCanvasIndex;
-    } else if (newCanvasIndex > totalCanvases) {
-      newCanvasIndex = lastCanvasIndex;
-      event.target.value = lastCanvasIndex;
-    } else {
-      dragon.goToPage(newCanvasIndex - 1);
-    }
-  });
+  if ( buttons.input ) {
+    buttons.input.addEventListener("focus", (event) => {
+      lastCanvasIndex = event.target.value;
+    });
+    buttons.input.addEventListener("change", (event) => {
+      let newCanvasIndex = parseInt(event.target.value, 10);
+      if (newCanvasIndex < 1) {
+        newCanvasIndex = lastCanvasIndex;
+        event.target.value = lastCanvasIndex;
+      } else if (newCanvasIndex > totalCanvases) {
+        newCanvasIndex = lastCanvasIndex;
+        event.target.value = lastCanvasIndex;
+      } else {
+        dragon.goToPage(newCanvasIndex - 1);
+      }
+    });
+  }
 
   let viewerButtons = {};
   viewerButtons.guide = $viewer.querySelector(
@@ -437,6 +330,8 @@ window.addEventListener("DOMContentLoaded", (event) => {
   viewerButtons.text = $viewer.querySelector(
     'button[data-action="toggle-text"]'
   );
+
+  document.querySelector(`button[data-action="toggle-fullscreen"]`).addEventListener('click', toggleFullscreen);
 
   console.log(viewerButtons);
 
@@ -451,6 +346,15 @@ window.addEventListener("DOMContentLoaded", (event) => {
   }
 
   let $splitPanel = $viewer.querySelector('sl-split-panel');
+  customElements.whenDefined('sl-split-panel').then(() => {
+    if ( $splitPanel.dataset.collapsed == 'true' ) {
+      $splitPanel.updateComplete.then(() => {
+        let $divider = $splitPanel.shadowRoot.querySelector('div[part="divider"]');
+        $divider.style.display = 'none';
+      })
+    }
+  });
+
   [ 'image', 'text' ].forEach((key) => {
     if ( viewerButtons[key] ) {
       viewerButtons[key].addEventListener("click", (event) => {
@@ -562,7 +466,9 @@ window.addEventListener("DOMContentLoaded", (event) => {
       });
 
     updatePageHistory(canvasIndex);
-    buttons.input.value = canvasIndex;
+    if ( buttons.input ) {
+      buttons.input.value = canvasIndex;
+    }
     lastCanvasIndex = canvasIndex;
   });
 
