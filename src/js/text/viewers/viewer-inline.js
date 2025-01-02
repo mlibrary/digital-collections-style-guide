@@ -12,6 +12,7 @@ let $viewer;
 let itemEncodingLevel;
 
 let viewerButtons = {};
+let buttons = {};
 let $splitPanel;
 
 let $nav = {};
@@ -236,53 +237,47 @@ const processPlainText = function (ocrText) {
   return parsedText;
 };
 
-const viewerToolbarController = function(key, otherKey, isPressed, isDisabled) {
-  // let otherKey = key == 'image' ? 'text' : 'image';
-  // viewerButtons[key].setAttribute("aria-pressed", isPressed);
+const updatePanelTabs = function(config) {
+  console.log("-- updatePanelTabs", config);
 
-  if ( key == 'text' && isDisabled ) {
-    viewerButtons[key].disabled = true;
-  }
+  if ( ! viewerButtons.text ) { return ; }
+  viewerButtons.image.disabled = config.disabled;
+  viewerButtons.text.disabled = config.disabled;
 
-  if ( key == 'text' && ! isDisabled && viewerButtons[key].disabled ) {
-    viewerButtons[key].disabled = false;
-    if ( viewerButtons[key].getAttribute("aria-pressed") == "false" ) {
-      return;
-    }
-  }
-
-  // viewerButtons[key].disabled = false;
-  // if ( key == 'text' && ! isPressed && viewerButtons[key].getAttribute('aria-pressed') == 'true' ) {
-  //   viewerButtons[key].disabled = true;
-  // }
-  // if ( key == 'text' && isPressed && viewerButtons[key].getAttribute('aria-pressed') == 'false' ) {
-  //   return;
-  // }
-
-  viewerButtons[key]
-    .closest("div.toggle")
-    .classList.toggle("toggled", isPressed);
-  if ( key == 'image' ) {
-    $splitPanel.position = isPressed ? 60 : 0
-  } else if ( key == 'text' ) {
-    $splitPanel.position = isPressed ? 60 : 100;
-  }
-
-  // now do complicated math
-  $splitPanel.dataset.collapsed = isPressed == false ? key : null;
-  let $divider = $splitPanel.shadowRoot.querySelector('div[part="divider"]');
-  if ( ! isPressed ) {
-    $divider.style.display = 'none';
-  } else {
-    $divider.style.display = null;
-  }
-
-  if ( otherKey) {
-    viewerButtons[otherKey].setAttribute("aria-pressed", true);
-    viewerButtons[otherKey]
+  [ 'image', 'text' ].forEach((key) => {
+    viewerButtons[key].setAttribute('aria-pressed', config[key]);
+    viewerButtons[key]
       .closest("div.toggle")
-      .classList.toggle("toggled", true);
+      .classList.toggle("toggled", config[key]);
+  })
+
+  let collapsed = null;
+  if ( config.image && config.text ) {
+    $splitPanel.position = 60;
+  } else if ( config.image ) {
+    $splitPanel.position = 100;
+    collapsed = 'text';
+  } else if ( config.text ) {
+    $splitPanel.position = 0;
+    collapsed = 'image';
   }
+
+  // complicated maths
+  $splitPanel.dataset.collapsed = collapsed;
+  let $divider = $splitPanel.shadowRoot.querySelector('div[part="divider"]');
+  if ( config.image && config.text ) {
+    console.log("-- updatePanelTabs.divider visible");
+    $divider.style.display = null;
+  } else {
+    console.log("-- updatePanelTabs.divider none");
+    $divider.style.display = 'none';    
+  }
+
+
+  // more complicated maths
+  ["zoomIn", "zoomOut", "home"].forEach((key) => {
+    buttons[key].disabled = ! config.image;
+  });
 }
 
 window.addEventListener("DOMContentLoaded", (event) => {
@@ -364,9 +359,8 @@ window.addEventListener("DOMContentLoaded", (event) => {
     if ( searchParams.has(qkey) ) {
       plaintextUrl.searchParams.set(qkey, searchParams.get(qkey));
     }
-  })
+  });
 
-  let buttons = {};
   ["zoomIn", "zoomOut", "home", "previousCanvas", "nextCanvas"].forEach(
     (key) => {
       buttons[key] = document.querySelector(`button[data-action="${key}"]`);
@@ -392,6 +386,18 @@ window.addEventListener("DOMContentLoaded", (event) => {
     });
   }
 
+  $splitPanel = $viewer.querySelector('sl-split-panel');
+  customElements.whenDefined('sl-split-panel').then(() => {
+    if ( $splitPanel.dataset.collapsed == 'true' ) {
+      $splitPanel.updateComplete.then(() => {
+        let $divider = $splitPanel.shadowRoot.querySelector('div[part="divider"]');
+        $divider.style.display = 'none';
+      })
+    }
+  });
+
+  $highlightToolsToolbar = $viewer.querySelector('#highlight-tools-toolbar');
+
   viewerButtons.guide = $viewer.querySelector(
     'button[data-action="toggle-guide"]'
   );
@@ -404,14 +410,6 @@ window.addEventListener("DOMContentLoaded", (event) => {
 
   document.querySelector(`button[data-action="toggle-fullscreen"]`).addEventListener('click', toggleFullscreen);
 
-  $highlightToolsToolbar = $viewer.querySelector('#highlight-tools-toolbar');
-  // $highlightToolsToolbar.querySelector('#action-toggle-highlight').addEventListener('click', (event) => {
-  //   let highlightState = document.documentElement.dataset.highlightState || 'on';
-  //   console.log("-- toggle highlight", highlightState);
-  //   highlightState = highlightState == 'on' ? 'off' : 'on';
-  //   document.documentElement.dataset.highlightState = highlightState;
-  // });
-
   if ( viewerButtons.guide ) {
     viewerButtons.guide.addEventListener('click', (event) => {
       let isPressed = !!!(viewerButtons.guide.getAttribute('aria-pressed') == 'true');
@@ -422,16 +420,6 @@ window.addEventListener("DOMContentLoaded", (event) => {
     })
   }
 
-  $splitPanel = $viewer.querySelector('sl-split-panel');
-  customElements.whenDefined('sl-split-panel').then(() => {
-    if ( $splitPanel.dataset.collapsed == 'true' ) {
-      $splitPanel.updateComplete.then(() => {
-        let $divider = $splitPanel.shadowRoot.querySelector('div[part="divider"]');
-        $divider.style.display = 'none';
-      })
-    }
-  });
-
   [ 'image', 'text' ].forEach((key) => {
     if ( viewerButtons[key] ) {
       viewerButtons[key].addEventListener("click", (event) => {
@@ -441,18 +429,15 @@ window.addEventListener("DOMContentLoaded", (event) => {
 
         let otherKey = key == 'image' ? 'text' : 'image';
         let otherIsPressed = !!(viewerButtons[otherKey].getAttribute('aria-pressed') == 'true');
-        console.log("-- click", innerWidth, key, isPressed, "/", otherKey, otherIsPressed);
-        if ( isPressed === false && otherIsPressed == isPressed ) {
-          // both keys are false, which is dumb; should probably toggle
-        } else if ( innerWidth < 800 ) {
+
+        if ( isPressed === false && isPressed == otherIsPressed ) {
           // toggle
-        } else {
-          otherKey = null;
+          otherIsPressed = true;
+        } else if ( isPressed && viewerWidth < 800 ) {
+          otherIsPressed = false;
         }
 
-        console.log("-- guide clicked", isPressed);
-        viewerButtons[key].setAttribute("aria-pressed", isPressed);
-        viewerToolbarController(key, otherKey, isPressed);
+        updatePanelTabs({ [key]: isPressed, [otherKey]: otherIsPressed });
       });
     }
   })
@@ -515,7 +500,8 @@ window.addEventListener("DOMContentLoaded", (event) => {
         $viewer.querySelector("div[data-slot='content']").innerHTML = plainText;
         $highlightToolsToolbar.classList.toggle('hidden', plainText.indexOf('<mark') == -1);
         $plainTextWrap.scrollTop = 0;
-        viewerToolbarController('text', undefined, undefined, !! plainText );
+        updatePanelTabs({ image: true, text: !! plainText, disabled: !! plainText === false });
+        // viewerToolbarController();
         $fetching.classList.remove("visible");
         
         // panelTabs.hasPageText = plainText != '';
@@ -540,18 +526,8 @@ window.addEventListener("DOMContentLoaded", (event) => {
   setTimeout(() => {
     console.log("-- goto.page", canvasIndex);
     dragon.goToPage(canvasIndex - 1);
-    // setTimeout(() => {
-    //   $tabGroup.updateComplete.then(() => {
-    //     let $active = $nav[$tabGroup.activeTab.panel].querySelector(".active");
-    //     scrollIntoView($active);
-    //   });
-    // })
     setTimeout(() => {
       dragon.viewport.goHome(true);
-      // setTimeout(() => {
-      //   let $active = $nav[$tabGroup.activeTab.panel].querySelector(".active");
-      //   scrollIntoView($active);
-      // }, 0);
       $fetching.classList.remove("visible");
     }, 1000);
   }, 100);
@@ -581,6 +557,21 @@ window.addEventListener("DOMContentLoaded", (event) => {
     return btn.getAttribute('aria-pressed') == 'true';
   }
 
+  const updatePanelTabsByViewerWidth = function() {
+    if ( viewerWidth < 800 && _isPressed(viewerButtons.image) && _isPressed(viewerButtons.text) ) {
+      updatePanelTabs({ image: true, text: false });
+    }
+  }
+
+  let initialized = false;
+  let panelTabInterval = setInterval(() => {
+    if ( $splitPanel.shadowRoot ) {
+      clearInterval(panelTabInterval);
+      initialized = true;
+      updatePanelTabsByViewerWidth();
+    }
+  }, 100);
+
   // bleeeh
   let promises = [ 'sl-resize-observer', 'sl-split-panel' ].map((tag) => customElements.whenDefined(tag));
 
@@ -588,19 +579,11 @@ window.addEventListener("DOMContentLoaded", (event) => {
     let resizeObserver = $viewer.querySelector('sl-resize-observer');
     resizeObserver.addEventListener('sl-resize', (event) => {
       const entry = event.detail.entries.at(-1);
-      if ( ! entry ) { return ; }
+      if ( ! entry ) { console.log("-- punting"); return ; }
+      if ( ! initialized ) { console.log("-- not initialized"); return; }
       viewerWidth = entry.contentRect.width;
       console.log("-- on.resize", viewerWidth);
-      if ( viewerWidth < 800 && _isPressed(viewerButtons.image) && _isPressed(viewerButtons.text) ) {
-        viewerToolbarController('text', undefined, false);
-        viewerButtons.text.setAttribute('aria-pressed', false);
-      }
-      // if ( viewerWidth < 800 && panelTabs.image && panelTabs.plaintext ) {
-      //   panelTabs.plaintext = false;
-      // }
+      updatePanelTabsByViewerWidth();
     })
   });
-
-
-  console.log("-- tab group", $tabGroup.updateComplete);
 });
