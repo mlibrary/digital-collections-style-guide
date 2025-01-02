@@ -11,9 +11,16 @@ let plaintextUrl;
 let $viewer;
 let itemEncodingLevel;
 
+let viewerButtons = {};
+let $splitPanel;
+
 let $nav = {};
 let $tabGroup;
 let $fetching;
+let $highlightToolsToolbar;
+
+let panelTabs = {};
+let viewerWidth;
 
 let canvasMap = {};
 let lastCanvasIndex = -1;
@@ -229,9 +236,61 @@ const processPlainText = function (ocrText) {
   return parsedText;
 };
 
+const viewerToolbarController = function(key, otherKey, isPressed, isDisabled) {
+  // let otherKey = key == 'image' ? 'text' : 'image';
+  // viewerButtons[key].setAttribute("aria-pressed", isPressed);
+
+  if ( key == 'text' && isDisabled ) {
+    viewerButtons[key].disabled = true;
+  }
+
+  if ( key == 'text' && ! isDisabled && viewerButtons[key].disabled ) {
+    viewerButtons[key].disabled = false;
+    if ( viewerButtons[key].getAttribute("aria-pressed") == "false" ) {
+      return;
+    }
+  }
+
+  // viewerButtons[key].disabled = false;
+  // if ( key == 'text' && ! isPressed && viewerButtons[key].getAttribute('aria-pressed') == 'true' ) {
+  //   viewerButtons[key].disabled = true;
+  // }
+  // if ( key == 'text' && isPressed && viewerButtons[key].getAttribute('aria-pressed') == 'false' ) {
+  //   return;
+  // }
+
+  viewerButtons[key]
+    .closest("div.toggle")
+    .classList.toggle("toggled", isPressed);
+  if ( key == 'image' ) {
+    $splitPanel.position = isPressed ? 60 : 0
+  } else if ( key == 'text' ) {
+    $splitPanel.position = isPressed ? 60 : 100;
+  }
+
+  // now do complicated math
+  $splitPanel.dataset.collapsed = isPressed == false ? key : null;
+  let $divider = $splitPanel.shadowRoot.querySelector('div[part="divider"]');
+  if ( ! isPressed ) {
+    $divider.style.display = 'none';
+  } else {
+    $divider.style.display = null;
+  }
+
+  if ( otherKey) {
+    viewerButtons[otherKey].setAttribute("aria-pressed", true);
+    viewerButtons[otherKey]
+      .closest("div.toggle")
+      .classList.toggle("toggled", true);
+  }
+}
+
 window.addEventListener("DOMContentLoaded", (event) => {
+
   let tileSources = [];
   $viewer = document.querySelector(".viewer");
+  viewerWidth = $viewer.clientWidth;
+
   $viewer.querySelectorAll("li[data-tile-source]").forEach((el) => {
     if ( location.hostname == 'localhost' ) {
       tileSources.push(
@@ -240,6 +299,12 @@ window.addEventListener("DOMContentLoaded", (event) => {
           "http://localhost:5555/"
         )
       );
+    } else if ( el.dataset.profile == 'http://iiif.io/api/image/2/level0.json' ) {
+      tileSources.push({
+        type: 'image',
+        url: el.dataset.imageId,
+        buildPyramid: false,
+      })
     } else {
       tileSources.push(el.dataset.tileSource);
     }
@@ -294,6 +359,13 @@ window.addEventListener("DOMContentLoaded", (event) => {
   plaintextUrl.searchParams.set("idno", $viewer.dataset.idno);
   plaintextUrl.searchParams.set("seq", canvasIndex);
 
+  let searchParams = new URLSearchParams(location.search.replace(/;/g, '&'));
+  [ 'q1', 'q2', 'q3', 'q4', 'q5', 'q6' ].forEach((qkey, qidx) => {
+    if ( searchParams.has(qkey) ) {
+      plaintextUrl.searchParams.set(qkey, searchParams.get(qkey));
+    }
+  })
+
   let buttons = {};
   ["zoomIn", "zoomOut", "home", "previousCanvas", "nextCanvas"].forEach(
     (key) => {
@@ -320,7 +392,6 @@ window.addEventListener("DOMContentLoaded", (event) => {
     });
   }
 
-  let viewerButtons = {};
   viewerButtons.guide = $viewer.querySelector(
     'button[data-action="toggle-guide"]'
   );
@@ -333,7 +404,13 @@ window.addEventListener("DOMContentLoaded", (event) => {
 
   document.querySelector(`button[data-action="toggle-fullscreen"]`).addEventListener('click', toggleFullscreen);
 
-  console.log(viewerButtons);
+  $highlightToolsToolbar = $viewer.querySelector('#highlight-tools-toolbar');
+  // $highlightToolsToolbar.querySelector('#action-toggle-highlight').addEventListener('click', (event) => {
+  //   let highlightState = document.documentElement.dataset.highlightState || 'on';
+  //   console.log("-- toggle highlight", highlightState);
+  //   highlightState = highlightState == 'on' ? 'off' : 'on';
+  //   document.documentElement.dataset.highlightState = highlightState;
+  // });
 
   if ( viewerButtons.guide ) {
     viewerButtons.guide.addEventListener('click', (event) => {
@@ -345,7 +422,7 @@ window.addEventListener("DOMContentLoaded", (event) => {
     })
   }
 
-  let $splitPanel = $viewer.querySelector('sl-split-panel');
+  $splitPanel = $viewer.querySelector('sl-split-panel');
   customElements.whenDefined('sl-split-panel').then(() => {
     if ( $splitPanel.dataset.collapsed == 'true' ) {
       $splitPanel.updateComplete.then(() => {
@@ -364,37 +441,18 @@ window.addEventListener("DOMContentLoaded", (event) => {
 
         let otherKey = key == 'image' ? 'text' : 'image';
         let otherIsPressed = !!(viewerButtons[otherKey].getAttribute('aria-pressed') == 'true');
+        console.log("-- click", innerWidth, key, isPressed, "/", otherKey, otherIsPressed);
         if ( isPressed === false && otherIsPressed == isPressed ) {
           // both keys are false, which is dumb; should probably toggle
+        } else if ( innerWidth < 800 ) {
+          // toggle
         } else {
           otherKey = null;
         }
 
         console.log("-- guide clicked", isPressed);
         viewerButtons[key].setAttribute("aria-pressed", isPressed);
-        viewerButtons[key]
-          .closest("div.toggle")
-          .classList.toggle("toggled", isPressed);
-        if ( key == 'image' ) {
-          $splitPanel.position = isPressed ? 60 : 0;
-        } else if ( key == 'text' ) {
-          $splitPanel.position = isPressed ? 60 : 100;
-        }
-        // now do complicated math
-        $splitPanel.dataset.collapsed = isPressed == false ? key : null;
-        let $divider = $splitPanel.shadowRoot.querySelector('div[part="divider"]');
-        if ( ! isPressed ) {
-          $divider.style.display = 'none';
-        } else {
-          $divider.style.display = null;
-        }
-
-        if ( otherKey) {
-          viewerButtons[otherKey].setAttribute("aria-pressed", true);
-          viewerButtons[otherKey]
-            .closest("div.toggle")
-            .classList.toggle("toggled", true);
-        }
+        viewerToolbarController(key, otherKey, isPressed);
       });
     }
   })
@@ -453,8 +511,13 @@ window.addEventListener("DOMContentLoaded", (event) => {
     fetchPlainText(canvasIndex)
       .then((value) => {
         let plainText = processPlainText(value);
-        document.querySelector(".plaintext-wrap").innerHTML = plainText;
+        let $plainTextWrap = $viewer.querySelector(".plaintext-wrap");
+        $viewer.querySelector("div[data-slot='content']").innerHTML = plainText;
+        $highlightToolsToolbar.classList.toggle('hidden', plainText.indexOf('<mark') == -1);
+        $plainTextWrap.scrollTop = 0;
+        viewerToolbarController('text', undefined, undefined, !! plainText );
         $fetching.classList.remove("visible");
+        
         // panelTabs.hasPageText = plainText != '';
       })
       .catch((error) => {
@@ -512,6 +575,32 @@ window.addEventListener("DOMContentLoaded", (event) => {
       scrollIntoView($active);
     }
   }, 100);
+
+  const _isPressed = function(btn) {
+    if ( ! btn ) { return false; }
+    return btn.getAttribute('aria-pressed') == 'true';
+  }
+
+  // bleeeh
+  let promises = [ 'sl-resize-observer', 'sl-split-panel' ].map((tag) => customElements.whenDefined(tag));
+
+  Promise.all(promises).then(() => {
+    let resizeObserver = $viewer.querySelector('sl-resize-observer');
+    resizeObserver.addEventListener('sl-resize', (event) => {
+      const entry = event.detail.entries.at(-1);
+      if ( ! entry ) { return ; }
+      viewerWidth = entry.contentRect.width;
+      console.log("-- on.resize", viewerWidth);
+      if ( viewerWidth < 800 && _isPressed(viewerButtons.image) && _isPressed(viewerButtons.text) ) {
+        viewerToolbarController('text', undefined, false);
+        viewerButtons.text.setAttribute('aria-pressed', false);
+      }
+      // if ( viewerWidth < 800 && panelTabs.image && panelTabs.plaintext ) {
+      //   panelTabs.plaintext = false;
+      // }
+    })
+  });
+
 
   console.log("-- tab group", $tabGroup.updateComplete);
 });

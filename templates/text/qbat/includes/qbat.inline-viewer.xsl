@@ -11,18 +11,40 @@
   <xsl:variable name="canvases" select="$manifest//fn:array[@key='sequences']/fn:map/fn:array[@key='canvases']/fn:map" />
   <xsl:variable name="item-encoding-level" select="$manifest/@item-encoding-level" />
   <xsl:variable name="has-plain-text" select="$manifest/@has-plain-text" />
+  <xsl:variable name="has-page-text">
+    <xsl:choose>
+      <xsl:when test="normalize-space($manifest/qui:block[@slot='plaintext']/tei:ResultFragments) != ''">true</xsl:when>
+      <xsl:otherwise>false</xsl:otherwise>
+    </xsl:choose>
+  </xsl:variable>
+  <xsl:variable name="notiles">
+    <xsl:choose>
+      <xsl:when test="$manifest/@data-cc = 'eebo' or $manifest/@data-cc = 'eebo2'">true</xsl:when>
+      <xsl:when test="$manifest/@data-cc = 'ecco'">true</xsl:when>
+      <xsl:when test="$manifest/@data-cc = 'evans'">true</xsl:when>
+      <xsl:otherwise>false</xsl:otherwise>
+    </xsl:choose>
+  </xsl:variable>
 
-  <xsl:template name="build-extra-scripts">
+  <xsl:variable name="notes" select="$manifest/qui:block[@slot='plaintext']" />
 
+  <xsl:template match="/" mode="add-header-tags">
     <script>
       window.mUse = window.mUse || [];
-      window.mUse.push('sl-dropdown', 'sl-menu', 'sl-menu-item', 'sl-dialog', 'sl-split-panel', 'sl-tab-group');
+      window.mUse.push('sl-resize-observer', 'sl-dropdown', 'sl-menu', 'sl-menu-item', 'sl-dialog', 'sl-split-panel', 'sl-tab-group');
     </script>
 
     <script src="/uplift-viewer/dist/js/inline.js"></script>
+  </xsl:template>
 
-    <xsl:call-template
-      name="build-entry-scripts" />
+  <xsl:template name="build-entry-scripts">
+
+    <script>
+      window.mUse = window.mUse || [];
+      window.mUse.push('sl-resize-observer', 'sl-dropdown', 'sl-menu', 'sl-menu-item', 'sl-dialog', 'sl-split-panel', 'sl-tab-group');
+    </script>
+
+    <script src="/uplift-viewer/dist/js/inline.js"></script>
 
   </xsl:template>
 
@@ -34,7 +56,9 @@
       data-node="{$manifest/@data-node}"
       data-has-ocr="{$manifest/@has-ocr}"
       data-rgn="{$manifest/@data-rgn}"
-      data-item-encoding-level="{$manifest/@item-encoding-level}">
+      data-item-encoding-level="{$manifest/@item-encoding-level}"
+      data-has-page-text="{$has-page-text}"
+      >
       <div class="inline--viewer">
         <sl-resize-observer>
           <div class="viewer--container">
@@ -57,6 +81,7 @@
         <sl-split-panel style="--divider-width: 8px;">
           <xsl:attribute name="position">
             <xsl:choose>
+              <xsl:when test="$has-page-text = 'false'">100</xsl:when>
               <xsl:when test="$has-plain-text = 'true'">60</xsl:when>
               <xsl:otherwise>100</xsl:otherwise>
             </xsl:choose>
@@ -64,13 +89,21 @@
           <xsl:if test="$has-plain-text = 'false'">
             <xsl:attribute name="data-collapsed">true</xsl:attribute>
           </xsl:if>
+          <xsl:if test="$has-page-text = 'false'">
+            <xsl:attribute name="data-collapsed">true</xsl:attribute>
+          </xsl:if>
           <sl-icon slot="divider" name="grip-vertical"></sl-icon>
           <div class="flex pane" slot="start" data-slot="viewer">
             <xsl:call-template name="build-seadragon-viewer" />
           </div>
           <div slot="end" class="pane">
-            <div class="plaintext-wrap flex" role="region">
-              <xsl:apply-templates select="$manifest/qui:block[@slot='plaintext']//tei:ResultFragment" mode="html" />
+            <!-- flex is only present if there's no plaintext -->
+            <div class="plaintext-wrap" role="region" tabindex="0">
+              <xsl:call-template name="build-highlight-tools" />
+              <div data-slot="content">
+                <xsl:apply-templates select="$manifest/qui:block[@slot='plaintext']//tei:ResultFragment" mode="html" />
+                <xsl:apply-templates select="$notes/tei:NOTES" />
+              </div>
             </div>
           </div>
         </sl-split-panel>
@@ -109,13 +142,13 @@
       <xsl:variable name="total-canvases" select="count($canvases)" />
       <xsl:if test="$total-canvases &gt; 1">
         <div class="toolbar-separator"></div>
-        <div class="flex flex-flow-row flex-align-center jump-to-seq">
+        <div class="flex flex-flow-row flex-row flex-align-center jump-to-seq">
           <label for="jumpToSeq" class="col-form-label">#</label>
           <input name="seq" id="jumpToSeq" type="text" autocomplete="off" value="{$manifest/@canvas-index}" />
           <span> / <xsl:value-of select="$total-canvases" /></span>
         </div>
         <div 
-          class="flex flex-flow-row flex-align-center" 
+          class="flex flex-flow-row flex-row flex-align-center" 
           dir="ltr"
           style="gap: 0.125rem">
           <sl-tooltip content="Previous item" hoist="hoist">
@@ -152,6 +185,31 @@
     </div>
   </xsl:template>
 
+  <xsl:template name="build-highlight-tools">
+    <div id="highlight-tools-toolbar">
+      <xsl:attribute name="class">
+        <xsl:text>highlight-tools flex flex-flow-row mb-1 justify-end </xsl:text>
+        <xsl:if test="not($manifest/qui:block[@slot='plaintext']//tei:Highlight)">hidden</xsl:if>
+      </xsl:attribute>
+      <div class="highlight-tools-toolbar flex flex-flow-row gap-0_25">
+        <sl-tooltip content="First matched term">
+          <a href="#hl1" class="button button--ghost button--square m-0">
+            <span class="material-icons" aria-hidden="true">arrow_forward</span>
+            <span class="visually-hidden">First matched term</span>
+          </a>
+        </sl-tooltip>
+        <sl-tooltip content="Toggle highlights">
+          <button id="action-toggle-highlight" 
+            class="button button--ghost button--square m-0" 
+            aria-label="Toggle highlights"
+            >
+            <span class="material-icons" aria-hidden="true">visibility</span>
+          </button>
+        </sl-tooltip>
+      </div>
+    </div>
+  </xsl:template>
+
   <xsl:template match="fn:map" mode="canvas">
     <xsl:variable name="resource" select="fn:array[@key='images']//fn:map[@key='resource']" />
     <xsl:variable name="image-id" select="$resource//fn:map[@key='service']/fn:string[@key='@id']" />
@@ -168,6 +226,8 @@
       </xsl:choose>
     </xsl:variable>
     <li 
+      data-image-id="{$image-id}"
+      data-service-profile="{$resource//fn:map[@key='service']/fn:string[@key='profile']}"
       data-tile-source="{$image-id}/info.json"
       >
       <xsl:attribute name="class">
@@ -179,7 +239,7 @@
       <a href="/cgi/t/text/pageviewer-idx?cc={$manifest/@data-cc};idno={$manifest/@data-idno};node={$manifest/@data-node};rgn={$manifest/@data-rgn};seq={position()};view=image" 
         data-canvas-index="{position()}" 
         data-canvas-label="{$canvas-label}"
-        class="button flex flex-flow-row flex-start w-100 canvas" 
+        class="button flex flex-flow-row flex-row flex-start w-100 canvas" 
         style="gap: 1rem;" 
         data-type="button">
         <div class="sequence-badge">
@@ -187,9 +247,11 @@
           <span><span aria-hidden="true">#</span> <xsl:value-of select="position()" /></span>
         </div>
         <div class="flex flex-flow-column" style="align-items: flex-start">
-          <div style="flex-basis: 50px; flex-shrink: 0;" class="flex justify-end">
-            <img loading="lazy" src="{$image-id}/full/,150/0/default.jpg" alt="" class="border" style="width: 50px; aspect-ratio: {$ratio}" />
-          </div>
+          <xsl:if test="$notiles = 'false'">
+            <div style="flex-basis: 50px; flex-shrink: 0;" class="flex justify-end">
+              <img loading="lazy" src="{$image-id}/full/,150/0/default.jpg" alt="" class="border" style="width: 50px; aspect-ratio: {$ratio}" />
+            </div>
+          </xsl:if>
           <p class="text-xxx-small m-0" style="font-weight: normal;">
             <xsl:value-of select="$canvas-label" />
           </p>
@@ -247,9 +309,9 @@
   </xsl:template>
 
   <xsl:template name="build-asset-viewer-toolbar">
-    <div class="header flex flex-flow-row flex-align-center flex-space-between">
+    <div class="header flex flex-flow-row flex-row flex-align-center flex-space-between">
       <span style="max-width: 50%"></span>
-      <div class="header--controls flex flex-flow-row flex-align-center justify-end">
+      <div class="header--controls flex flex-flow-row flex-row flex-align-center justify-end">
         <div class="toggle--group">
           <xsl:if test="count($canvases) &gt; 1 or $has-plain-text = 'true'">
             <div class="toggle toggled">
@@ -270,9 +332,28 @@
                 </button>
               </sl-tooltip>
             </div>          
-            <div class="toggle toggled">
+            <div>
+              <xsl:attribute name="class">
+                <xsl:text>toggle </xsl:text>
+                <xsl:choose>
+                  <xsl:when test="$has-page-text = 'false'">
+                  </xsl:when>
+                  <xsl:otherwise>
+                    <xsl:text>toggled</xsl:text>
+                  </xsl:otherwise>
+                </xsl:choose>
+              </xsl:attribute>
               <sl-tooltip content="Toggle text">
-                <button data-action="toggle-text" class="button button--ghost" aria-pressed="true" type="button">
+                <button data-action="toggle-text" class="button button--ghost" type="button">
+                  <xsl:choose>
+                    <xsl:when test="$has-page-text = 'false'">
+                      <xsl:attribute name="disabled">true</xsl:attribute>
+                      <xsl:attribute name="aria-pressed">true</xsl:attribute>
+                    </xsl:when>
+                    <xsl:otherwise>
+                      <xsl:attribute name="aria-pressed">true</xsl:attribute>
+                    </xsl:otherwise>
+                  </xsl:choose>
                   <span class="material-icons" aria-hidden="true">article</span>
                   <span>Text</span>
                 </button>
@@ -431,6 +512,19 @@
         </article>
       </xsl:otherwise>
     </xsl:choose>
+  </xsl:template>
+
+  <xsl:template match="tei:NOTES[normalize-space(.)]">
+    <section class="[ records ]">
+      <h2 id="notes" class="subtle-heading">Notes</h2>
+      <ul class="list-unstyled">
+        <xsl:for-each select="tei:NOTE">
+          <li class="mb-2 p-1 border-bottom" data-id="{node()/@ID}">
+            <xsl:apply-templates select="*" mode="note" />
+          </li>
+        </xsl:for-each>
+      </ul>
+    </section>
   </xsl:template>
 
 </xsl:stylesheet>

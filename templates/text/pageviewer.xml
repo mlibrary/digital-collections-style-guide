@@ -10,8 +10,8 @@
         <Filename>qui/components/*.xsl</Filename>
         <Filename>qui/includes/qui.header-common.xsl</Filename>
         <Filename>qui/includes/qui.header-pageviewer.xsl</Filename>
-        <Filename>qui/qui.pageviewer.xsl</Filename>
         <Filename>qui/includes/qui.inline-viewer.xsl</Filename>
+        <Filename>qui/qui.pageviewer.xsl</Filename>
     </XslFallbackFileList>
 
     <XslFallbackFileList pipeline="qbat">
@@ -19,8 +19,8 @@
         <Filename>../vendor/xslfunctions.xsl</Filename>
         <Filename>qbat/components/*.xsl</Filename>
         <Filename>qbat/includes/qbat.text.components.xsl</Filename>        
-        <Filename>qbat/qbat.pageviewer.xsl</Filename>
         <Filename>qbat/includes/qbat.inline-viewer.xsl</Filename>
+        <Filename>qbat/qbat.pageviewer.xsl</Filename>
     </XslFallbackFileList>
     
     <CustomXml>
