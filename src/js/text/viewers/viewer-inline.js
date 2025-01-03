@@ -10,6 +10,7 @@ let plaintextUrl;
 
 let $viewer;
 let itemEncodingLevel;
+let dragon;
 
 let viewerButtons = {};
 let buttons = {};
@@ -19,6 +20,7 @@ let $nav = {};
 let $tabGroup;
 let $fetching;
 let $highlightToolsToolbar;
+let $resizeObserver;
 
 let panelTabs = {};
 let viewerWidth;
@@ -280,12 +282,8 @@ const updatePanelTabs = function(config) {
   });
 }
 
-window.addEventListener("DOMContentLoaded", (event) => {
-
+const parseTileSources = function() {
   let tileSources = [];
-  $viewer = document.querySelector(".viewer");
-  viewerWidth = $viewer.clientWidth;
-
   $viewer.querySelectorAll("li[data-tile-source]").forEach((el) => {
     if ( location.hostname == 'localhost' ) {
       tileSources.push(
@@ -303,23 +301,14 @@ window.addEventListener("DOMContentLoaded", (event) => {
     } else {
       tileSources.push(el.dataset.tileSource);
     }
-    let $link = el.querySelector("a[data-canvas-index]");
-    canvasMap[$link.dataset.canvasIndex] = { label: $link.dataset.canvasLabel };
-    totalCanvases += 1;
+      let $link = el.querySelector("a[data-canvas-index]");
+      canvasMap[$link.dataset.canvasIndex] = { label: $link.dataset.canvasLabel };
+      totalCanvases += 1;
   });
-  let canvasIndex = parseInt($viewer.dataset.canvasIndex, 10);
-  if ($viewer) {
-    itemEncodingLevel = $viewer.dataset.itemEncodingLevel;
-  }
+  return tileSources;    
+}
 
-  $nav.items = $viewer.querySelector("#nav-index");
-  $nav.ranges = $viewer.querySelector("#nav-ranges");
-  $tabGroup = $viewer.querySelector("sl-tab-group");
-  window.$tabGroup = $tabGroup;
-  // window.$nav = $nav;
-
-  $fetching = $viewer.querySelector(".fetching");
-
+const setupGuideEvents = function() {
   ["items", "ranges"].forEach((tab) => {
     if ($nav[tab]) {
       $nav[tab].addEventListener("click", (event) => {
@@ -332,7 +321,9 @@ window.addEventListener("DOMContentLoaded", (event) => {
       });
     }
   });
+}
 
+const setupTabGroupEvents = function() {
   $tabGroup.addEventListener("sl-tab-show", (event) => {
     console.log("-- showing tab", event.detail.name);
     setTimeout(() => {
@@ -342,25 +333,9 @@ window.addEventListener("DOMContentLoaded", (event) => {
       scrollIntoView($active);
     }, 10);
   });
+}
 
-  let hostname =
-    location.hostname != "localhost" ? location.hostname : "quod.lib.umich.edu";
-  plaintextUrl = new URL(`https://${hostname}`);
-
-  plaintextUrl.pathname = "/cgi/t/text/pageviewer-idx";
-  plaintextUrl.searchParams.set("view", "text");
-  plaintextUrl.searchParams.set("tpl", "plaintext.viewer");
-  plaintextUrl.searchParams.set("cc", $viewer.dataset.cc);
-  plaintextUrl.searchParams.set("idno", $viewer.dataset.idno);
-  plaintextUrl.searchParams.set("seq", canvasIndex);
-
-  let searchParams = new URLSearchParams(location.search.replace(/;/g, '&'));
-  [ 'q1', 'q2', 'q3', 'q4', 'q5', 'q6' ].forEach((qkey, qidx) => {
-    if ( searchParams.has(qkey) ) {
-      plaintextUrl.searchParams.set(qkey, searchParams.get(qkey));
-    }
-  });
-
+const setupImageToolbarEvents = function() {
   ["zoomIn", "zoomOut", "home", "previousCanvas", "nextCanvas"].forEach(
     (key) => {
       buttons[key] = document.querySelector(`button[data-action="${key}"]`);
@@ -385,18 +360,15 @@ window.addEventListener("DOMContentLoaded", (event) => {
       }
     });
   }
+}
 
-  $splitPanel = $viewer.querySelector('sl-split-panel');
-  customElements.whenDefined('sl-split-panel').then(() => {
-    if ( $splitPanel.dataset.collapsed == 'true' ) {
-      $splitPanel.updateComplete.then(() => {
-        let $divider = $splitPanel.shadowRoot.querySelector('div[part="divider"]');
-        $divider.style.display = 'none';
-      })
-    }
-  });
-
-  $highlightToolsToolbar = $viewer.querySelector('#highlight-tools-toolbar');
+const setupPanelEvents = function() {
+  if ( $splitPanel.dataset.collapsed == 'true' ) {
+    $splitPanel.updateComplete.then(() => {
+      let $divider = $splitPanel.shadowRoot.querySelector('div[part="divider"]');
+      $divider.style.display = 'none';
+    })
+  }
 
   viewerButtons.guide = $viewer.querySelector(
     'button[data-action="toggle-guide"]'
@@ -441,7 +413,23 @@ window.addEventListener("DOMContentLoaded", (event) => {
       });
     }
   })
+}
 
+const setupResizeObserver = function() {
+  $resizeObserver.addEventListener('sl-resize', (event) => {
+    const entry = event.detail.entries.at(-1);
+    if ( ! entry ) { console.log("-- punting"); return ; }
+    if ($resizeObserver.dataset.layoutInitialized == 'false') {
+      console.log("-- not initialized");
+      return;
+    }
+    viewerWidth = entry.contentRect.width;
+    console.log("-- on.resize", viewerWidth);
+    updatePanelTabsByViewerWidth();
+  })
+}
+
+const installViewer = function({tileSources, canvasIndex, buttons}) {
   let $target = $viewer.querySelector('div[data-slot="viewer"]');
   console.log("-- target:", $target);
   let imageViewer = DLXS.ui.imageViewer($target, {
@@ -520,70 +508,118 @@ window.addEventListener("DOMContentLoaded", (event) => {
     }
     lastCanvasIndex = canvasIndex;
   });
+  return dragon;
+}
 
-  window.dragon = dragon;
+const buildPlaintextUrl = function() {
+  let hostname =
+    location.hostname != "localhost" ? location.hostname : "quod.lib.umich.edu";
+  let plaintextUrl = new URL(`https://${hostname}`);
 
-  setTimeout(() => {
-    console.log("-- goto.page", canvasIndex);
-    dragon.goToPage(canvasIndex - 1);
-    setTimeout(() => {
-      dragon.viewport.goHome(true);
-      $fetching.classList.remove("visible");
-    }, 1000);
-  }, 100);
+  plaintextUrl.pathname = "/cgi/t/text/pageviewer-idx";
+  plaintextUrl.searchParams.set("view", "text");
+  plaintextUrl.searchParams.set("tpl", "plaintext.viewer");
+  plaintextUrl.searchParams.set("cc", $viewer.dataset.cc);
+  plaintextUrl.searchParams.set("idno", $viewer.dataset.idno);
+  plaintextUrl.searchParams.set("seq", $viewer.dataset.canvasIndex);
 
-  // let readyInterval = setInterval(() => {
-  //   if ( $tabGroup.updateComplete && $tabGroup.activePanel ) {
-  //     clearInterval(readyInterval);
-  //     $tabGroup.updateComplete.then(() => {
-  //       setTimeout(() => {
-  //         let $active = $nav[$tabGroup.activeTab.panel].querySelector(".active");
-  //         scrollIntoView($active);
-  //       })
-  //     });
-  //   }
-  // }, 100);
-
-  let readyInterval = setInterval(() => {
-    if ($tabGroup.activeTab) {
-      clearInterval(readyInterval);
-      let $active = $nav[$tabGroup.activeTab.panel].querySelector(".active");
-      scrollIntoView($active);
+  let searchParams = new URLSearchParams(location.search.replace(/;/g, '&'));
+  [ 'q1', 'q2', 'q3', 'q4', 'q5', 'q6' ].forEach((qkey, qidx) => {
+    if ( searchParams.has(qkey) ) {
+      plaintextUrl.searchParams.set(qkey, searchParams.get(qkey));
     }
-  }, 100);
+  });
+  return plaintextUrl;
+}
 
+const updatePanelTabsByViewerWidth = function(callback) {
   const _isPressed = function(btn) {
     if ( ! btn ) { return false; }
     return btn.getAttribute('aria-pressed') == 'true';
   }
 
-  const updatePanelTabsByViewerWidth = function() {
-    if ( viewerWidth < 800 && _isPressed(viewerButtons.image) && _isPressed(viewerButtons.text) ) {
-      updatePanelTabs({ image: true, text: false });
-    }
+  if ( viewerWidth < 800 && _isPressed(viewerButtons.image) && _isPressed(viewerButtons.text) ) {
+    updatePanelTabs({ image: true, text: false });
   }
 
-  let initialized = false;
-  let panelTabInterval = setInterval(() => {
-    if ( $splitPanel.shadowRoot ) {
-      clearInterval(panelTabInterval);
-      initialized = true;
-      updatePanelTabsByViewerWidth();
+  if ( callback ) { callback(); }
+}
+
+function waitForShadowRoot(element) {
+  return new Promise((resolve, reject) => {
+    if (element.shadowRoot) {
+      resolve(element.shadowRoot);
+    } else {
+      const observer = new MutationObserver((mutations) => {
+        if (element.shadowRoot) {
+          observer.disconnect();
+          resolve(element.shadowRoot);
+        }
+      });
+
+      observer.observe(element, { attributes: true, subtree: true });
     }
-  }, 100);
-
-  // bleeeh
-  let promises = [ 'sl-resize-observer', 'sl-split-panel' ].map((tag) => customElements.whenDefined(tag));
-
-  Promise.all(promises).then(() => {
-    let resizeObserver = $viewer.querySelector('sl-resize-observer');
-    resizeObserver.addEventListener('sl-resize', (event) => {
-      const entry = event.detail.entries.at(-1);
-      if ( ! entry ) { console.log("-- punting"); return ; }
-      if ( ! initialized ) { console.log("-- not initialized"); return; }
-      viewerWidth = entry.contentRect.width;
-      console.log("-- on.resize", viewerWidth);
-      updatePanelTabsByViewerWidth();
-    })
   });
+}
+
+window.addEventListener("DOMContentLoaded", (event) => {
+
+  $viewer = document.querySelector(".viewer");
+  itemEncodingLevel = $viewer.dataset.itemEncodingLevel;
+  let canvasIndex = parseInt($viewer.dataset.canvasIndex, 10);
+
+  viewerWidth = $viewer.clientWidth;
+
+  $nav.items = $viewer.querySelector("#nav-index");
+  $nav.ranges = $viewer.querySelector("#nav-ranges");
+  $tabGroup = $viewer.querySelector("sl-tab-group");
+
+  $splitPanel = $viewer.querySelector('sl-split-panel');
+  $resizeObserver = $viewer.querySelector('sl-resize-observer')
+
+  $fetching = $viewer.querySelector(".fetching");
+  $highlightToolsToolbar = $viewer.querySelector('#highlight-tools-toolbar');
+
+  let promises = [];
+  promises.push(waitForShadowRoot($tabGroup));
+  promises.push(waitForShadowRoot($resizeObserver));
+  promises.push(waitForShadowRoot($splitPanel));
+  Promise.all(promises).then((results) => {
+    let tileSources = parseTileSources();
+
+    setupGuideEvents();
+    setupTabGroupEvents();
+    setupImageToolbarEvents();
+    setupPanelEvents();
+
+    plaintextUrl = buildPlaintextUrl();
+
+    dragon = installViewer({
+      tileSources,
+      canvasIndex,
+      buttons
+    });
+    window.dragon = dragon;
+
+    setTimeout(() => {
+      console.log("-- goto.page", canvasIndex);
+      dragon.goToPage(canvasIndex - 1);
+      setTimeout(() => {
+        dragon.viewport.goHome(true);
+        $fetching.classList.remove("visible");
+      }, 1000);
+    }, 100);
+
+    if ($tabGroup.activeTab) {
+      let $active = $nav[$tabGroup.activeTab.panel].querySelector(".active");
+      scrollIntoView($active);
+    }
+
+    setupResizeObserver();
+
+    updatePanelTabsByViewerWidth(() => { $resizeObserver.dataset.layoutInitialized = true; });
+
+  })
+
+
 });

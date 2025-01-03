@@ -60,7 +60,7 @@
       data-has-page-text="{$has-page-text}"
       >
       <div class="inline--viewer">
-        <sl-resize-observer>
+        <sl-resize-observer data-layout-initialized="false">
           <div class="viewer--container">
             <xsl:call-template name="build-asset-viewer-toolbar" />
             <div class="pane--group">
