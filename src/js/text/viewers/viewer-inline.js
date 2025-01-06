@@ -542,7 +542,7 @@ class DLXSViewer {
       this.state.dragon.goToPage(canvasIndex - 1);
       setTimeout(() => {
         this.state.dragon.viewport.goHome(true);
-        this.elements.fetching.remove("visible");
+        this.elements.fetching.classList.remove("visible");
       }, 1000);
     }, 100);
   }
