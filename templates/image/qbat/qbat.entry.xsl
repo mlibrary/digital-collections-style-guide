@@ -2,7 +2,7 @@
 
   <xsl:param name="prototype">stacked</xsl:param>
 
-  <xsl:variable name="meta-noindex">true</xsl:variable>
+  <xsl:variable name="meta-noindex">false</xsl:variable>
 
   <xsl:template name="build-extra-scripts">
 
