@@ -1,11 +1,10 @@
 import { ScreenReaderMessenger } from "../../sr-messaging";
 
 window.DLXS = window.DLXS || {};
-DLXS.manifestsData = {};
-DLXS.manifestsIndex = {};
-DLXS.totalManifests = 0;
+// DLXS.manifestsData = {};
+// DLXS.manifestsIndex = {};
+// DLXS.totalManifests = 0;
 
-let plaintextViewer = null;
 let plaintextUrl;
 
 let $viewer;
@@ -22,7 +21,6 @@ let $fetching;
 let $highlightToolsToolbar;
 let $resizeObserver;
 
-let panelTabs = {};
 let viewerWidth;
 
 let canvasMap = {};
