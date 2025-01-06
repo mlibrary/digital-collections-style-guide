@@ -326,7 +326,7 @@ class DLXSViewer {
             "http://localhost:5555/"
           )
         );
-      } else if ( el.dataset.profile == 'http://iiif.io/api/image/2/level0.json' ) {
+      } else if ( el.dataset.serviceProfile == 'http://iiif.io/api/image/2/level0.json' ) {
         tileSources.push({
           type: 'image',
           url: el.dataset.imageId,
