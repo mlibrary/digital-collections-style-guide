@@ -166,7 +166,7 @@ class DLXSViewer {
   setupSplitPanelDivider() {
     if ( this.elements.splitPanel.dataset.collapsed == 'true' ) {
       this.elements.splitPanel.updateComplete.then(() => {
-        let $divider = this.elements.shadowRoot.querySelector('div[part="divider"]');
+        let $divider = this.elements.splitPanel.shadowRoot.querySelector('div[part="divider"]');
         $divider.style.display = 'none';
       })
     }
@@ -539,7 +539,7 @@ class DLXSViewer {
 
   initializeViewerState(canvasIndex) {
     setTimeout(() => {
-      this.state.dragon.goToPage(canvasIndex - 1);
+      // this.state.dragon.goToPage(canvasIndex - 1);
       setTimeout(() => {
         this.state.dragon.viewport.goHome(true);
         this.elements.fetching.classList.remove("visible");

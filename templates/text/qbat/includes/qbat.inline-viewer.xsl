@@ -101,6 +101,7 @@
             <div class="plaintext-wrap" role="region" tabindex="0">
               <xsl:call-template name="build-highlight-tools" />
               <div data-slot="content">
+                <xsl:call-template name="build-ocr-warning-alert" />
                 <xsl:apply-templates select="$manifest/qui:block[@slot='plaintext']//tei:ResultFragment" mode="html" />
                 <xsl:apply-templates select="$notes/tei:NOTES" />
               </div>
