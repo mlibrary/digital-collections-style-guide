@@ -1,5 +1,6 @@
 <xsl:stylesheet version="1.0" xmlns="http://www.w3.org/1999/xhtml" xmlns:xhtml="http://www.w3.org/1999/xhtml" xmlns:xsl="http://www.w3.org/1999/XSL/Transform" xmlns:dlxs="http://dlxs.org" xmlns:qui="http://dlxs.org/quombat/ui">
 
+  <xsl:variable name="meta-noindex">true</xsl:variable>
   <xsl:variable name="search-form" select="//qui:form[@id='collection-search']" />
 
   <xsl:template match="qui:main">

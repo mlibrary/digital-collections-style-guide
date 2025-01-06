@@ -2,6 +2,8 @@
 
   <xsl:param name="prototype">stacked</xsl:param>
 
+  <xsl:variable name="meta-noindex">true</xsl:variable>
+
   <xsl:template name="build-extra-scripts">
 
     <script>
