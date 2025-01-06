@@ -653,10 +653,15 @@ class DLXSViewer {
   // Static factory method
   static initialize() {
     const viewer = new DLXSViewer();
-    window.addEventListener('DOMContentLoaded', () => viewer.init());
+    viewer.init();
+    // window.addEventListener('DOMContentLoaded', () => viewer.init());
     return viewer;
   }
 }
 
 // Initialize the viewer
-const viewer = DLXSViewer.initialize();
+window.addEventListener('DOMContentLoaded', (event) => {
+  if ( document.querySelector('.viewer[data-cc]') ) {
+    DLXSViewer.initialize();
+  }
+})
