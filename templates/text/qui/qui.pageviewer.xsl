@@ -32,6 +32,21 @@
   <xsl:variable name="pdf-chunk" select="//PdfChunked/@size" />
   <xsl:variable name="is-pdf-chunked" select="//PdfChunked = 'TRUE'" />
 
+  <xsl:template name="get-canonical-link">
+    <xsl:variable name="params" select="/Top/DlxsGlobals/CurrentCgi/Param" />
+    <xsl:text>https://quod.lib.umich.edu/cgi/t/text/pageviewer-idx?</xsl:text>
+    <xsl:text>cc=</xsl:text>
+    <xsl:value-of select="$params[@name='cc']" />
+    <xsl:text>;idno=</xsl:text>
+    <xsl:value-of select="$params[@name='idno']" />
+    <xsl:if test="$params[@name='node']">
+      <xsl:text>;node=</xsl:text>
+      <xsl:value-of select="$params[@name='node']" />
+    </xsl:if>
+    <xsl:text>;seq=</xsl:text>
+    <xsl:value-of select="$params[@name='seq']" />
+  </xsl:template>
+
   <xsl:template name="build-head-block">
     <!-- <xsl:call-template name="build-social-twitter" />
     <xsl:call-template name="build-social-facebook" /> -->
@@ -103,51 +118,6 @@
     <xsl:param name="href" />
     <xsl:if test="normalize-space($href)">
       <qui:link rel="{$rel}" href="{normalize-space($href)}" identifier="{$href/@identifier|$href/@name}" marker="{$href/@marker}" />
-    </xsl:if>
-  </xsl:template>
-
-  <xsl:template name="build-asset-viewer-configuration">
-    <xsl:variable name="behavior">
-      <xsl:choose>
-        <xsl:when test="//DocNavigation//Behavior">
-          <xsl:value-of select="//DocNavigation//Behavior" />
-        </xsl:when>
-        <xsl:otherwise>continuous</xsl:otherwise>
-      </xsl:choose>
-    </xsl:variable>
-
-    <xsl:variable name="mimetype">image/tiff</xsl:variable>
-  
-    <xsl:if test="true() or //MediaInfo/istruct_ms = 'P' and //MediaInfo/AuthCheck/@allowed = 'yes'">
-      <qui:viewer 
-        embed-href="{$api_url}/cgi/t/text/api/embed/{$collid}:{//CurrentCgi/Param[@name='idno']}:{//CurrentCgi/Param[@name='seq']}" 
-        manifest-id="{$api_url}/cgi/t/text/api/manifest/{$collid}:{//CurrentCgi/Param[@name='idno']}" 
-        canvas-index="{//CurrentCgi/Param[@name='seq']}" 
-        mode="{$behavior}" 
-        auth-check="true" 
-        mimetype="{$mimetype}" 
-        width="{//MediaInfo/width}" 
-        height="{//MediaInfo/height}" 
-        levels="{//MediaInfo/Levels}" 
-        collid="{$collid}" 
-        q1="{//Param[@name='q1']}"
-        >
-        <xsl:for-each select="//Param[starts-with(@name, 'q')]">
-          <xsl:attribute name="{@name}"><xsl:value-of select="." /></xsl:attribute>
-        </xsl:for-each>
-        <xsl:attribute name="has-ocr"><xsl:value-of select="$has-plain-text" /></xsl:attribute>
-        <xsl:if test="//MediaInfo/ViewerMaxSize">
-          <xsl:attribute name="viewer-max-width"><xsl:value-of select="//MediaInfo/ViewerMaxSize/@width" /></xsl:attribute>
-          <xsl:attribute name="viewer-max-height"><xsl:value-of select="//MediaInfo/ViewerMaxSize/@height" /></xsl:attribute>
-        </xsl:if>
-        <qui:debug><xsl:value-of select="$has-plain-text" /></qui:debug>
-      </qui:viewer>
-    </xsl:if>
-    <!-- does this have an analog -->
-    <xsl:if test="//MediaInfo/istruct_ms = 'P' and //MediaInfo/AuthCheck/@allowed = 'no'">
-      <qui:callout icon="warning" variant="warning" slot="viewer" dismissable="false">
-        <p>Access to this resource is restricted.</p>
-      </qui:callout>
     </xsl:if>
   </xsl:template>
 

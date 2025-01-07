@@ -1,6 +1,8 @@
 <?xml version="1.0" encoding="utf-8"?>
 <xsl:stylesheet version="1.0" xmlns="http://www.w3.org/1999/xhtml" xmlns:xsl="http://www.w3.org/1999/XSL/Transform" xmlns:qui="http://dlxs.org/quombat/ui" xmlns:qbat="http://dlxs.org/quombat/quombat" xmlns:xhtml="http://www.w3.org/1999/xhtml" xmlns:dlxs="http://dlxs.org" xmlns:exsl="http://exslt.org/common" xmlns:tei="http://www.tei-c.org/ns/1.0" extension-element-prefixes="exsl">
 
+  <xsl:variable name="meta-noindex">false</xsl:variable>
+
   <xsl:variable name="has-annotations">
     <xsl:choose>
       <xsl:when test="//qui:block[@slot='metadata']/qui:metadata/@item-encoding-level = 4">

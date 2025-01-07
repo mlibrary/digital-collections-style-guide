@@ -9,6 +9,7 @@
         <!-- <Filename>qbat/qbat.base.xsl</Filename> -->
         <Filename>../vendor/xslfunctions.xsl</Filename>
         <Filename>qbat/components/*.xsl</Filename>
+        <Filename>qbat/includes/qbat.ocr-warning-alert.xsl</Filename>        
         <Filename>qbat/includes/qbat.text.components.xsl</Filename>
         <Filename>qbat/qbat.plaintext.viewer.xsl</Filename>
     </XslFallbackFileList>

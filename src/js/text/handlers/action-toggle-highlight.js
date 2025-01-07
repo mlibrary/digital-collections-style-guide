@@ -10,10 +10,13 @@ window.addEventListener('DOMContentLoaded', (event) => {
       'on' : 
       'off';
 
+
+    let spanClass = btn.getAttribute('aria-label') ? ' class="hidden"' : '';
+
     if ( state == 'off' ) {
-      btn.innerHTML = `<span class="material-icons" aria-hidden="true">visibility_off</span> <span>Turn highlights on</span>`;
+      btn.innerHTML = `<span class="material-icons" aria-hidden="true">visibility_off</span><span${spanClass}> Turn highlights on</span>`;
     } else {
-      btn.innerHTML = `<span class="material-icons" aria-hidden="true">visibility</span> <span>Turn highlights off</span>`;
+      btn.innerHTML = `<span class="material-icons" aria-hidden="true">visibility</span><span${spanClass}> Turn highlights off</span>`;
     }
     
   })
