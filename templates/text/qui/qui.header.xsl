@@ -13,6 +13,22 @@
   <xsl:variable name="item-metadata" select="exsl:node-set($item-metadata-tmp)" />
   <xsl:variable name="idno" select="translate(//Param[@name='idno'], 'ABCDEFGHIJKLMNOPQRSTUVWXYZ','abcdefghijklmnopqrstuvwxyz')"/>
 
+  <xsl:template name="get-canonical-link">
+    <xsl:variable name="params" select="/Top/DlxsGlobals/CurrentCgi/Param" />
+    <xsl:text>https://quod.lib.umich.edu/cgi/t/text/text-idx?</xsl:text>
+    <xsl:text>cc=</xsl:text>
+    <xsl:value-of select="$params[@name='cc']" />
+    <xsl:text>;idno=</xsl:text>
+    <xsl:value-of select="$params[@name='idno']" />
+    <xsl:if test="$params[@name='node']">
+      <xsl:text>;node=</xsl:text>
+      <xsl:value-of select="$params[@name='node']" />
+    </xsl:if>
+    <xsl:text>;seq=</xsl:text>
+    <xsl:value-of select="$params[@name='seq']" />
+    <xsl:text>;view=toc</xsl:text>
+  </xsl:template>
+
   <xsl:template name="build-body-main">
     <xsl:call-template name="build-contents-navigation" />
     <xsl:call-template name="build-breadcrumbs" />
