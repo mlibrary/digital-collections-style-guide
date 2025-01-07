@@ -4,8 +4,6 @@
   xmlns:tei="http://www.tei-c.org/ns/1.0"
   xmlns:qui="http://dlxs.org/quombat/ui">
 
-  <xsl:variable name="show-ocr-warning-alert" select="false()" />
-
   <xsl:variable name="identifier">
     <xsl:value-of select="//tiParam[@name='cc']" />
     <xsl:text>:</xsl:text>
@@ -85,24 +83,6 @@
         </xsl:for-each>
       </ul>
     </section>
-  </xsl:template>
-
-  <xsl:template name="build-ocr-warning-alert">
-    <xsl:if test="$show-ocr-warning-alert">
-      <div class="message-callout info pt-0_5" style="margin-bottom: 1rem; padding-top: 0.5rem;">
-        <span class="material-icons" aria-hidden="true">info</span>
-        <div>
-          <p class="mt-0"><strong>Disclaimer</strong></p>
-          <p class="mb-0_5">Computer generated plain text may have errors.
-            <a href="/cgi/t/text/text-idx?cc={//Param[@name='cc']};page=help/about-ocr-errors" target="_blank">Read more about this.</a></p>
-        </div>
-        <xsl:if test="false()">
-        <p class="m-0"><strong>Disclaimer:</strong> 
-          Computer generated plain text may have errors.
-          <a href="/cgi/t/text/text-idx?cc={//Param[@name='cc']};page=help/about-ocr-errors" target="_blank">Read more about this.</a></p>
-        </xsl:if>          
-      </div>
-    </xsl:if>
   </xsl:template>
 
 </xsl:stylesheet>

@@ -1,5 +1,7 @@
 <xsl:stylesheet version="1.0" xmlns="http://www.w3.org/1999/xhtml" xmlns:xsl="http://www.w3.org/1999/XSL/Transform" xmlns:dlxs="http://dlxs.org" xmlns:qui="http://dlxs.org/quombat/ui" xmlns:exsl="http://exslt.org/common" xmlns:date="http://exslt.org/dates-and-times" extension-element-prefixes="exsl date">
 
+  <xsl:variable name="meta-noindex">false</xsl:variable>
+  
   <xsl:template name="build-cqfill-script">
   </xsl:template>
 

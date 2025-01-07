@@ -25,6 +25,22 @@
   </xsl:variable>
   <xsl:variable name="item-metadata" select="exsl:node-set($item-metadata-tmp)" />
 
+  <xsl:template name="get-canonical-link">
+    <xsl:variable name="params" select="/Top/DlxsGlobals/CurrentCgi/Param" />
+    <xsl:text>https://quod.lib.umich.edu/cgi/t/text/text-idx?</xsl:text>
+    <xsl:text>cc=</xsl:text>
+    <xsl:value-of select="$params[@name='cc']" />
+    <xsl:text>;idno=</xsl:text>
+    <xsl:value-of select="$params[@name='idno']" />
+    <xsl:if test="$params[@name='node']">
+      <xsl:text>;node=</xsl:text>
+      <xsl:value-of select="$params[@name='node']" />
+    </xsl:if>
+    <xsl:text>;rgn=</xsl:text>
+    <xsl:value-of select="$params[@name='rgn']" />
+    <xsl:text>;view=fulltext</xsl:text>
+  </xsl:template>
+
   <xsl:template name="build-head-block">
     <!-- <xsl:call-template name="build-social-twitter" />
     <xsl:call-template name="build-social-facebook" /> -->

@@ -1,6 +1,9 @@
 <?xml version="1.0" encoding="utf-8"?>
 <xsl:stylesheet version="1.0" xmlns="http://www.w3.org/1999/xhtml" xmlns:xsl="http://www.w3.org/1999/XSL/Transform" xmlns:qui="http://dlxs.org/quombat/ui" xmlns:xhtml="http://www.w3.org/1999/xhtml" xmlns:dlxs="http://dlxs.org" xmlns:exsl="http://exslt.org/common" extension-element-prefixes="exsl">
 
+  <!-- sooty is concerned so disable for now -->
+  <!-- <xsl:variable name="meta-noindex">false</xsl:variable> -->
+
   <xsl:variable name="search-form" select="//qui:form[@id='collection-search']" />
   <xsl:variable name="sort-options" select="//qui:form[@id='sort-options']" />
   <xsl:variable name="xc" select="//qui:block[@slot='results']/@data-xc" />
