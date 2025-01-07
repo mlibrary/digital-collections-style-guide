@@ -10,8 +10,7 @@
             may vary per collection, and all sorting is limited the maximum
             sort threshold allowed by the system (1000 items). In the upper right hand corner
             of the search results by item display you will see either a menu of sort
-            options, or a message indicating that the threshold has been exceeded.
-            If you see that the threshold has been exceeded, try using the "revise
+            options or you will not. If you have too many results to sort and would like to reduce the number, try using the "revise
             this search" link to add more terms to the search in hopes of retrieving
             a smaller result. </p>
       <table width="235" border="0" cellpadding="0" cellspacing="0" align="center">
@@ -26,18 +25,13 @@
           </td>
         </tr>
         <tr>
-          <td align="center" valign="top">
-            <img border="1" src="/t/text/help/graphics/plug.gif" alt="spacer"/>
-          </td>
-        </tr>
-        <tr>
           <td width="10" align="center">
             <strong>
               <span class="caption">b</span>
             </strong>
           </td>
           <td>
-            <img border="1" src="/digital-collections-style-guide/static/text/help/res-nosort.png" width="231" height="28" alt="no sort available"/>
+            <img border="1" src="/digital-collections-style-guide/static/text/help/res-nosort.png" alt="no sort available"/>
           </td>
         </tr>
         <tr>

@@ -63,13 +63,13 @@ results and easy access to a variety of viewing options for the items in the lis
       <table width="437" border="0" cellpadding="1" cellspacing="0" align="center">
         <tr>
           <td>
-            <img border="1" src="/t/text/help/graphics/res-detail.png" class="figure" alt="results detail"/>
+            <img border="1" src="/digital-collections-style-guide/static/text/help/res-detail.png" class="figure" alt="item results detail"/>
           </td>
         </tr>
         <tr>
           <td>
             <span class="caption"><strong>Fig. 3</strong>: Item results detail. Each search term occurrence is shown within
-                              its item context, including 1) breadcrumb path showing relative location, and
+                              its item context, including 1) its relative location (page or section, as appropriate), and
                               2) immediate textual context.</span>
           </td>
         </tr>
