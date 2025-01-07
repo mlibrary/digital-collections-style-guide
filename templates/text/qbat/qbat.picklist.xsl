@@ -596,10 +596,9 @@
   <xsl:template name="build-search-hints">
     <h3>Other suggestions</h3>
     <ul class="[ list-bulleted ]">
-      <li>Check your spelling.</li>
-      <li>Try more general keywords.</li>
-      <li>Try different keywords that mean the same thing.</li>
-      <li>Try searching in <strong>Anywhere in record</strong>.</li>
+	<li>Use fewer words, especially when searching names -- this is an exact search and names appear many ways</li>
+	<li>Check your spelling</li>
+	<li>Try the Advanced Search to find two or three words</li>
     </ul>
   </xsl:template>
 
