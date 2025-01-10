@@ -336,7 +336,10 @@ class DLXSViewer {
         tileSources.push(el.dataset.tileSource);
       }
       let $link = el.querySelector("a[data-canvas-index]");
-      this.state.canvasMap[$link.dataset.canvasIndex] = { label: $link.dataset.canvasLabel };
+      this.state.canvasMap[$link.dataset.canvasIndex] = { 
+        label: $link.dataset.canvasLabel,
+        node: $link.dataset.node 
+      };
       this.state.totalCanvases += 1;
     });
     return tileSources;    
@@ -410,6 +413,12 @@ class DLXSViewer {
     metadata.identifier = [ this.elements.viewer.dataset.cc, metadata.idno, metadata.newSeq ].join(':');
     metadata.baseIdentifier = [ this.elements.viewer.dataset.cc, metadata.idno ].join(':');
 
+    const newNode = { node: metadata.node };
+    if ( newNode.node ) {
+      newNode.short = (newNode.node.split(":")).at(-1);
+    }
+    
+
     let pageview_href = location.href.replace(/\;/g, "&");
     let pageviewUrl = new URL(pageview_href);
     let re1 = new RegExp(`/(${idno})/(\\d+):(\\d+)`, "i");
@@ -419,9 +428,15 @@ class DLXSViewer {
 
     if (pageviewUrl.pathname.indexOf("pageviewer-idx") > -1) {
       pageviewUrl.searchParams.set("seq", newSeq);
+      pageviewUrl.searchParams.set("node", newNode.node);
     } else if ((match = pageviewUrl.pathname.match(re1))) {
       // console.log("-- match d:d", match);
       match[2] = newSeq.replace(/^0+/, "");
+      if ( newNode.node ) {
+        match[3] = newNode.short;
+      } else {
+        match[3] = '1';
+      }
       pageviewUrl.pathname = pageviewUrl.pathname.replace(
         re1,
         `/${match[1]}/${match[2]}:${match[3]}`
@@ -429,16 +444,25 @@ class DLXSViewer {
     } else if ((match = pageviewUrl.pathname.match(re2))) {
       // console.log("-- match d", match);
       match[2] = newSeq.replace(/^0+/, "");
+      let nodeSuffix = '';
+      if ( newNode.node ) {
+        nodeSuffix = ':' + newNode.short;
+      }
+
       pageviewUrl.pathname = pageviewUrl.pathname.replace(
         re2,
-        `/${match[1]}/${match[2]}`
+        `/${match[1]}/${match[2]}${nodeSuffix}`
       );
     } else if (( match =pageviewUrl.pathname.match(re3) )) { // pageviewUrl.pathname.indexOf("/" + idno + "/")
       // console.log("-- match null", pageviewUrl.pathname);
       // let re = new RegExp(`/(${idno})/\\d+`);
+      let nodeSuffix = '';
+      if ( newNode.node ) {
+        nodeSuffix = ':' + newNode.short;
+      }
       pageviewUrl.pathname = pageviewUrl.pathname.replace(
         re3,
-        `/${idno}/${newSeq.replace(/^0+/, "")}`
+        `/${idno}/${newSeq.replace(/^0+/, "")}${nodeSuffix}`
       );
     } else {
       console.log("-- match FAIL", pageviewUrl.pathname, idno);
