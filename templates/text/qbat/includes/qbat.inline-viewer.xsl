@@ -237,12 +237,29 @@
           <xsl:text> active</xsl:text>
         </xsl:if>
       </xsl:attribute>
-      <a href="/cgi/t/text/pageviewer-idx?cc={$manifest/@data-cc};idno={$manifest/@data-idno};node={$manifest/@data-node};rgn={$manifest/@data-rgn};seq={position()};view=image" 
+      <xsl:variable name="node" select="fn:map[@key='service'][fn:string[@key='profile'][. = 'dlxs:tei:navigation']]/fn:string[@key='@id']" />
+      <a 
         data-canvas-index="{position()}" 
+        data-node="{$node}"
         data-canvas-label="{$canvas-label}"
         class="button flex flex-flow-row flex-row flex-start w-100 canvas" 
         style="gap: 1rem;" 
         data-type="button">
+        <xsl:attribute name="href">
+          <xsl:text>/cgi/t/text/pageviewer-idx?cc=</xsl:text>
+          <xsl:value-of select="$manifest/@data-cc" />
+          <xsl:text>;idno=</xsl:text>
+          <xsl:value-of select="$manifest/@data-idno" />
+          <xsl:if test="normalize-space($node)">
+            <xsl:text>;node=</xsl:text>
+            <xsl:value-of select="$node" />
+          </xsl:if>
+          <xsl:text>;rgn=</xsl:text>
+          <xsl:value-of select="$manifest/@data-rgn" />
+          <xsl:text>;seq=</xsl:text>
+          <xsl:value-of select="position()" />
+          <xsl:text>;view=image</xsl:text>
+        </xsl:attribute>
         <div class="sequence-badge">
           <span class="visually-hidden">Scan </span>
           <span><span aria-hidden="true">#</span> <xsl:value-of select="position()" /></span>
@@ -274,7 +291,8 @@
             <xsl:with-param name="canvases">
               <fn:array>
                 <xsl:for-each select="$canvases">
-                  <fn:string key="{position()}"><xsl:value-of select="fn:string[@key='@id']" /></fn:string>
+                  <xsl:variable name="node" select="fn:map[@key='service'][fn:string[@key='profile'][. = 'dlxs:tei:navigation']]/fn:string[@key='@id']" />
+                  <fn:string node="{$node}" key="{position()}"><xsl:value-of select="fn:string[@key='@id']" /></fn:string>
                 </xsl:for-each>
               </fn:array>
             </xsl:with-param>
@@ -288,6 +306,7 @@
     <xsl:param name="canvases" />
     <xsl:variable name="ranges" select="fn:array[@key='canvases']/fn:string" />
     <xsl:variable name="seq" select="exsl:node-set($canvases)//fn:string[. = $ranges[1]]/@key" />
+    <xsl:variable name="node" select="exsl:node-set($canvases)//fn:string[. = $ranges[1]]/@node" />
     <li data-seq="{$seq}">
       <xsl:attribute name="class">
         <xsl:text>p-0 mb-0</xsl:text>
@@ -295,9 +314,25 @@
           <xsl:text> active</xsl:text>
         </xsl:if>
       </xsl:attribute>
-      <a href="/cgi/t/text/pageviewer-idx?cc={$manifest/@data-cc};idno={$manifest/@data-idno};node={$manifest/@data-node};rgn={$manifest/@data-rgn};seq={$seq};view=image" 
+      <a 
         data-canvas-index="{$seq}"
+        data-node="{$node}"
         class="button canvas flex text-xxx-small" data-type="button">
+        <xsl:attribute name="href">
+          <xsl:text>/cgi/t/text/pageviewer-idx?cc=</xsl:text>
+          <xsl:value-of select="$manifest/@data-cc" />
+          <xsl:text>;idno=</xsl:text>
+          <xsl:value-of select="$manifest/@data-idno" />
+          <xsl:if test="normalize-space($node)">
+            <xsl:text>;node=</xsl:text>
+            <xsl:value-of select="$node" />
+          </xsl:if>
+          <xsl:text>;rgn=</xsl:text>
+          <xsl:value-of select="$manifest/@data-rgn" />
+          <xsl:text>;seq=</xsl:text>
+          <xsl:value-of select="$seq" />
+          <xsl:text>;view=image</xsl:text>
+        </xsl:attribute>
         <xsl:attribute name="data-canvas-indexes">
           <xsl:for-each select="$ranges">
             <xsl:variable name="this" select="." />
