@@ -414,6 +414,7 @@ class DLXSViewer {
     let pageviewUrl = new URL(pageview_href);
     let re1 = new RegExp(`/(${idno})/(\\d+):(\\d+)`, "i");
     let re2 = new RegExp(`/(${idno})/(\\d+)`, "i");
+    let re3 = new RegExp(`/(${idno})/?$`, "i");
     let match;
 
     if (pageviewUrl.pathname.indexOf("pageviewer-idx") > -1) {
@@ -432,11 +433,11 @@ class DLXSViewer {
         re2,
         `/${match[1]}/${match[2]}`
       );
-    } else if (pageviewUrl.pathname.indexOf("/" + idno + "/") > -1) {
+    } else if (( match =pageviewUrl.pathname.match(re3) )) { // pageviewUrl.pathname.indexOf("/" + idno + "/")
       // console.log("-- match null", pageviewUrl.pathname);
-      let re = new RegExp(`/${idno}/\\d+`);
+      // let re = new RegExp(`/(${idno})/\\d+`);
       pageviewUrl.pathname = pageviewUrl.pathname.replace(
-        re,
+        re3,
         `/${idno}/${newSeq.replace(/^0+/, "")}`
       );
     } else {
@@ -444,12 +445,23 @@ class DLXSViewer {
     }
     metadata.newPageviewHref = pageviewUrl.toString();
 
+    const canonicalUrl = new URL(pageviewUrl);
+    [ 'q1', 'q2', 'q3', 'q4', 'q5', 'q6' ].forEach((param) => {
+      canonicalUrl.searchParams.delete(param);
+    })
+    metadata.newCanonicalHref = canonicalUrl.toString();
+
     return metadata;
   }
 
   _updatePageMetadata(metadata) {
     const link = document.querySelector('link[rel="self"]');
     link.setAttribute('href', metadata.newPageviewHref);
+
+    const canonicalLink = document.querySelector('link[rel="canonical"]');
+    if ( canonicalLink ) {
+      canonicalLink.setAttribute('href', metadata.newCanonicalHref);
+    }
 
     const labelEl = document.querySelector('span[data-key="canvas-label"]');
     if (labelEl) {
