@@ -294,7 +294,7 @@
               <fn:array>
                 <xsl:for-each select="$canvases">
                   <xsl:variable name="node" select="fn:map[@key='service'][fn:string[@key='profile'][. = 'dlxs:tei:navigation']]/fn:string[@key='@id']" />
-                  <fn:string node="{$node}" key="{position()}"><xsl:value-of select="fn:string[@key='@id']" /></fn:string>
+                  <fn:string node="{$node}" canvas-index="{position()}" key="{fn:string[@key='data-seq']}"><xsl:value-of select="fn:string[@key='@id']" /></fn:string>
                 </xsl:for-each>
               </fn:array>
             </xsl:with-param>
@@ -308,11 +308,12 @@
     <xsl:param name="canvases" />
     <xsl:variable name="ranges" select="fn:array[@key='canvases']/fn:string" />
     <xsl:variable name="seq" select="exsl:node-set($canvases)//fn:string[. = $ranges[1]]/@key" />
+    <xsl:variable name="canvas-index" select="exsl:node-set($canvases)//fn:string[. = $ranges[1]]/@canvas-index" />
     <xsl:variable name="node" select="exsl:node-set($canvases)//fn:string[. = $ranges[1]]/@node" />
     <li data-seq="{$seq}">
       <xsl:attribute name="class">
         <xsl:text>p-0 mb-0</xsl:text>
-        <xsl:if test="exsl:node-set($canvases)//fn:string[. = $ranges]/@key = $manifest/@canvas-index">
+        <xsl:if test="exsl:node-set($canvases)//fn:string[. = $ranges]/@canvas-index = $manifest/@canvas-index">
           <xsl:text> active</xsl:text>
         </xsl:if>
       </xsl:attribute>
@@ -338,7 +339,7 @@
         <xsl:attribute name="data-canvas-indexes">
           <xsl:for-each select="$ranges">
             <xsl:variable name="this" select="." />
-            <xsl:value-of select="concat(':', exsl:node-set($canvases)//fn:string[. = $this]/@key, ':')" />
+            <xsl:value-of select="concat(':', exsl:node-set($canvases)//fn:string[. = $this]/@canvas-index, ':')" />
           </xsl:for-each>
         </xsl:attribute>
         <xsl:value-of select="fn:string[@key='label']" />
