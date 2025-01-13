@@ -243,7 +243,7 @@
         data-node="{$node}"
         data-canvas-label="{$canvas-label}"
         data-seq="{fn:number[@key='dlxs-seq']}"
-        data-padded-seq="{fn:string[@key='dlxs-padded-seq']}"
+        data-padded-seq="{fn:number[@key='dlxs-padded-seq']}"
         class="button flex flex-flow-row flex-row flex-start w-100 canvas" 
         style="gap: 1rem;" 
         data-type="button">
