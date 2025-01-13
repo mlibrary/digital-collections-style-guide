@@ -517,6 +517,8 @@
                 <xsl:text>/</xsl:text>
                 <xsl:choose>
                   <xsl:when test="//Param[@name='node']">
+                    <xsl:value-of select="dlxs:downcase(//Param[@name='idno'])" />  
+                    <xsl:text>/</xsl:text>
                     <xsl:variable name="parts" select="str:tokenize(normalize-space(//Param[@name='node']), ':')" />
                     <xsl:if test="//Param[@name='seq']">
                       <xsl:value-of select="//Param[@name='seq']" />
