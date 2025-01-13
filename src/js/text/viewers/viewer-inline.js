@@ -298,7 +298,12 @@ class DLXSViewer {
     }
   }
 
-  async fetchPlainText(seq) {
+  async fetchPlainText(canvasIndex) {
+
+    const metadata = this._getCanvasMetadata(canvasIndex);
+    const seq = metadata.seq;
+    console.log("AHOY fetchPlainText", canvasIndex, metadata);
+
     if (seq) {
       this.state.plaintextUrl.searchParams.set('seq', seq);
     }
