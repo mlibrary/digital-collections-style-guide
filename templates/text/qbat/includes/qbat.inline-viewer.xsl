@@ -318,7 +318,7 @@
         </xsl:if>
       </xsl:attribute>
       <a 
-        data-canvas-index="{$seq}"
+        data-canvas-index="{$canvas-index}"
         data-node="{$node}"
         class="button canvas flex text-xxx-small" data-type="button">
         <xsl:attribute name="href">
