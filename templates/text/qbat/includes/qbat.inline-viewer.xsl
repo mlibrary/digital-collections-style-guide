@@ -140,7 +140,7 @@
           <span class="material-icons" aria-hidden="true">home</span>
         </button>
       </sl-tooltip>
-      <xsl:variable name="total-canvases" select="count($canvases)" />
+      <xsl:variable name="total-canvases" select="$manifest/@total-canvases" />
       <xsl:if test="$total-canvases &gt; 1">
         <div class="toolbar-separator"></div>
         <div class="flex flex-flow-row flex-row flex-align-center jump-to-seq">
@@ -242,6 +242,8 @@
         data-canvas-index="{position()}" 
         data-node="{$node}"
         data-canvas-label="{$canvas-label}"
+        data-seq="{fn:number[@key='dlxs-seq']}"
+        data-padded-seq="{fn:string[@key='dlxs-padded-seq']}"
         class="button flex flex-flow-row flex-row flex-start w-100 canvas" 
         style="gap: 1rem;" 
         data-type="button">
@@ -257,7 +259,7 @@
           <xsl:text>;rgn=</xsl:text>
           <xsl:value-of select="$manifest/@data-rgn" />
           <xsl:text>;seq=</xsl:text>
-          <xsl:value-of select="position()" />
+          <xsl:value-of select="fn:number[@key='dlxs-seq']" />
           <xsl:text>;view=image</xsl:text>
         </xsl:attribute>
         <div class="sequence-badge">
@@ -349,7 +351,7 @@
       <span style="max-width: 50%"></span>
       <div class="header--controls flex flex-flow-row flex-row flex-align-center justify-end">
         <div class="toggle--group">
-          <xsl:if test="count($canvases) &gt; 1 or $has-plain-text = 'true'">
+          <xsl:if test="$manifest/@total-canvases &gt; 1 or $has-plain-text = 'true'">
             <div class="toggle toggled">
               <sl-tooltip content="Toggle guide">
                 <button data-action="toggle-guide" class="button button--ghost" aria-pressed="true" type="button">

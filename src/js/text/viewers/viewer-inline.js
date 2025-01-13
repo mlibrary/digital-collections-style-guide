@@ -338,7 +338,9 @@ class DLXSViewer {
       let $link = el.querySelector("a[data-canvas-index]");
       this.state.canvasMap[$link.dataset.canvasIndex] = { 
         label: $link.dataset.canvasLabel,
-        node: $link.dataset.node 
+        node: $link.dataset.node,
+        seq: $link.dataset.seq,
+        paddedSeq: $link.dataset.paddedSeq,
       };
       this.state.totalCanvases += 1;
     });
@@ -408,9 +410,9 @@ class DLXSViewer {
 
   _getCanvasMetadata(canvasIndex) {
     const metadata = this.state.canvasMap[canvasIndex];
-    const newSeq = metadata.newSeq = String(canvasIndex).padStart(8, "0");
+    const newSeq = metadata.seq;
     const idno = metadata.idno = this.elements.viewer.dataset.idno;
-    metadata.identifier = [ this.elements.viewer.dataset.cc, metadata.idno, metadata.newSeq ].join(':');
+    metadata.identifier = [ this.elements.viewer.dataset.cc, metadata.idno, metadata.paddedSeq ].join(':');
     metadata.baseIdentifier = [ this.elements.viewer.dataset.cc, metadata.idno ].join(':');
 
     const newNode = { node: metadata.node };
@@ -536,7 +538,7 @@ class DLXSViewer {
     document.title = parts.join(" | ");
   }
 
-  _updateDownloadLinks({baseIdentifier, identifier, newSeq}) {
+  _updateDownloadLinks({baseIdentifier, identifier, seq, paddedSeq}) {
     // update download menu
     const slDropdownEl = document.querySelector("#dropdown-action");
     slDropdownEl.disabled = true;
@@ -547,7 +549,7 @@ class DLXSViewer {
       let downloadHref = itemEl.dataset.href.replace(/;/g, '&');
       let downloadUrl = new URL(downloadHref);
       if ( downloadUrl.searchParams.has('seq') ) {
-        downloadUrl.searchParams.set('seq', newSeq);
+        downloadUrl.searchParams.set('seq', seq);
       } else if ( downloadUrl.pathname.indexOf(baseIdentifier) > -1 ) {
         // replace the identifier in the path
         let re = new RegExp(`${baseIdentifier}:\\d+`);
@@ -556,17 +558,16 @@ class DLXSViewer {
       itemEl.dataset.href = downloadUrl.toString();
       itemEl.setAttribute('value', downloadUrl.toString());
 
-      let newSeq2 = newSeq.replace(/^0*/, '');
       let spanEl = itemEl.querySelector('.menu-label');
       let newText = (spanEl.innerText.split(' -'))[0];
-      let pageData = DLXS.pageMap[newSeq2];
+      let pageData = DLXS.pageMap[seq];
       if ( itemEl.dataset.chunked == 'true' ) {
         newText += ` - Pages ${pageData.chunk}`;
       } else {
         newText += ` - Page ${pageData.pageNum}`;
       }
 
-      console.log("-- update", spanEl, DLXS.pageMap[newSeq2].pageNum, newText);
+      console.log("-- update", spanEl, DLXS.pageMap[seq].pageNum, newText);
       spanEl.innerText = newText;
     })
     slDropdownEl.disabled = false;
@@ -579,6 +580,10 @@ class DLXSViewer {
       setTimeout(() => {
         this.state.dragon.viewport.goHome(true);
         this.elements.fetching.classList.remove("visible");
+        if ( this.elements.nav.items ) {
+          const activeElement = this.elements.nav.items.querySelector('.active');
+          this.scrollIntoView(activeElement);
+        }
       }, 1000);
     }, 100);
   }
@@ -689,6 +694,7 @@ class DLXSViewer {
   // Static factory method
   static initialize() {
     const viewer = new DLXSViewer();
+    DLXS._viewer = viewer;
     viewer.init();
     // window.addEventListener('DOMContentLoaded', () => viewer.init());
     return viewer;

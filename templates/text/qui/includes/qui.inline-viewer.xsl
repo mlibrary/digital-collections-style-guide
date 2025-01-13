@@ -54,7 +54,8 @@
 
     <qui:viewer
       manifest-id="{$api_url}/cgi/t/text/api/manifest/{$collid}:{//CurrentCgi/Param[@name='idno']}"
-      canvas-index="{//CurrentCgi/Param[@name='seq']}"
+      canvas-index="{/Top/Manifest/@canvas-index}"
+      total-canvases="{/Top/Manifest/@total-canvases}"
       item-encoding-level="{$item-encoding-level}"
       has-plain-text="{$has-plain-text}"
       data-idno="{//CurrentCgi/Param[@name='idno']}"
