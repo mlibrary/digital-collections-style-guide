@@ -28,6 +28,10 @@
 
   <xsl:variable name="notes" select="$manifest/qui:block[@slot='plaintext']" />
 
+  <xsl:template name="build-extra-html-attributes">
+    <xsl:attribute name="data-annotations-state">off</xsl:attribute>
+  </xsl:template>
+
   <xsl:template match="/" mode="add-header-tags">
     <script>
       window.mUse = window.mUse || [];
@@ -99,8 +103,9 @@
           <div slot="end" class="pane">
             <!-- flex is only present if there's no plaintext -->
             <div class="plaintext-wrap" role="region" tabindex="0">
+              <xsl:call-template name="build-annotation-tools" />
               <xsl:call-template name="build-highlight-tools" />
-              <div data-slot="content">
+              <div data-slot="content" class="fullview-main">
                 <xsl:call-template name="build-ocr-warning-alert" />
                 <xsl:apply-templates select="$manifest/qui:block[@slot='plaintext']//tei:ResultFragment" mode="html" />
                 <xsl:apply-templates select="$notes/tei:NOTES" />
@@ -182,6 +187,18 @@
           </sl-tab-panel>
           <xsl:apply-templates select="$manifest//fn:array[@key='structures']" mode="tab-panel" />
         </sl-tab-group>
+      </div>
+    </div>
+  </xsl:template>
+
+  <xsl:template name="build-annotation-tools">
+    <div class="annotations-panel" style="display: none;">
+      <h2 id="annotations-label" class="[ subtle-heading ][ text-black js-toc-ignore visually-hidden ]">Annotations Tools</h2>
+      <div class="annotations-tools flex flex-flow-column gap-0_5 mb-1">
+        <button id="action-toggle-annotations" class="button button--ghost m-0">
+          <span class="material-icons" aria-hidden="true">visibility</span>
+          <span>Show annotations</span>
+        </button>
       </div>
     </div>
   </xsl:template>
