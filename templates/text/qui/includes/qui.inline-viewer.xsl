@@ -40,7 +40,14 @@
 
     <xsl:variable name="mimetype">image/tiff</xsl:variable>
 
-    <xsl:variable name="page_type" select="normalize-space(key('get-lookup', 'headerutils.str.page'))" />
+    <xsl:variable name="page_type">
+      <xsl:choose>
+        <xsl:when test="normalize-space(key('get-lookup', 'headerutils.str.page'))">
+          <xsl:value-of select="normalize-space(key('get-lookup', 'headerutils.str.page'))" />
+        </xsl:when>
+        <xsl:otherwise>Page</xsl:otherwise>
+      </xsl:choose>
+    </xsl:variable>
     <xsl:variable name="pages_type">
       <xsl:choose>
         <xsl:when test="normalize-space(key('get-lookup', 'headerutils.str.pages'))">
