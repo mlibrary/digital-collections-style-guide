@@ -38,7 +38,7 @@
     </xsl:if>
     <xsl:text>;rgn=</xsl:text>
     <xsl:value-of select="$params[@name='rgn']" />
-    <xsl:text>;view=fulltext</xsl:text>
+    <xsl:text>;view=text</xsl:text>
   </xsl:template>
 
   <xsl:template name="build-head-block">
