@@ -2370,6 +2370,14 @@
       </xsl:when>
       <xsl:otherwise>
         <ins data-name="{local-name(preceding-sibling::node()[1])}" data-function="add">
+          <!-- <xsl:attribute name="data-long-insert">
+            <xsl:choose>
+              <xsl:when test="string-length(.) &gt; 25">
+                <xsl:text>true</xsl:text>
+              </xsl:when>
+              <xsl:otherwise>false</xsl:otherwise>
+            </xsl:choose>
+          </xsl:attribute> -->
           <xsl:call-template name="process-add-common" />
           <span><xsl:apply-templates/></span>
           <span class="material-icons" aria-hidden="true">expand_less</span>    

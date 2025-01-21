@@ -258,7 +258,11 @@ ins[data-function="add"] {
   // margin-top: -0.5rem;
   // line-height: 1;
   vertical-align: super;
-  line-height: 0.5;
+  // -- tried setting line-height to 0.5 so 
+  // the line + carrot wouldn't cause the rest
+  // of the text to be affected, but there are 
+  // passages which are just a big giant set of 
+  // line-height: 0.5;
   background: var(--color-green-100);
 
   .material-icons {
@@ -266,6 +270,10 @@ ins[data-function="add"] {
     // color: var(--color-neutral-400);
     color: #008230; // imagine --color-green-600
   }
+
+  // &[data-long-insert="false"] {
+  //   line-height: 0.5;
+  // }
 
   &::before {
     content: " [addition start] ";
