@@ -284,10 +284,10 @@
         <xsl:value-of select="/Top/NavHeader/MainNav/NavItem[Name='bookbag']/Link" />
       </xsl:when>
       <xsl:when test="$context-type = 'group'">
-        <xsl:value-of select="/Top/NavHeader/MainNav/MainNav/NavItem[Name='home']/Link" />
+        <xsl:value-of select="/Top/NavHeader/MainNav/NavItem[Name='home']/Link" />
       </xsl:when>
       <xsl:when test="$context-type = 'multiple'">
-        <xsl:value-of select="/Top/NavHeader/MainNav/MainNav/NavItem[Name='home']/Link" />
+        <xsl:value-of select="/Top/NavHeader/MainNav/NavItem[Name='home']/Link" />
       </xsl:when>
       <xsl:otherwise></xsl:otherwise>
     </xsl:choose>
