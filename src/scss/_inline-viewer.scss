@@ -378,6 +378,10 @@ input[type="text"] {
     pointer-events: none;
   }
 
+  .highlight-tools a, .highlight-tools button {
+    pointer-events: all;
+  }
+
   .highlight-tools-toolbar {
     width: min-content; 
     background: #fff; 
