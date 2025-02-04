@@ -523,3 +523,9 @@ input[type="text"] {
   sl-split-panel[data-collapsed="text"] {
     grid-template-columns: auto 0 !important;
   }  
+
+.pane .fullview-main {
+  display: block;
+  margin: 0;
+  width: 100%;
+}
