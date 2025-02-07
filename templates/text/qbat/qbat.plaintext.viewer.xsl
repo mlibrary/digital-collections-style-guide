@@ -4,8 +4,10 @@
   xmlns:tei="http://www.tei-c.org/ns/1.0"
   xmlns:qui="http://dlxs.org/quombat/ui">
 
+  <xsl:variable name="collid" select="//Param[@name='cc']" />
+
   <xsl:variable name="identifier">
-    <xsl:value-of select="//tiParam[@name='cc']" />
+    <xsl:value-of select="//Param[@name='cc']" />
     <xsl:text>:</xsl:text>
     <xsl:value-of select="//Param[@name='idno']" />
     <xsl:text>:</xsl:text>
@@ -16,7 +18,12 @@
 
   <xsl:template match="/Top">
     <!-- <xsl:value-of select="//DocSource/SourcePageData" /> -->
-    <xsl:call-template name="build-ocr-warning-alert" />
+    <xsl:choose>
+      <xsl:when test="//Param[@name='attachment'] = '1'"></xsl:when>
+      <xsl:otherwise>
+        <xsl:call-template name="build-ocr-warning-alert" />
+      </xsl:otherwise>
+    </xsl:choose>
     <xsl:apply-templates select="//DocContent/DocSource/tei:SourcePageData//tei:ResultFragment" mode="html" />
     <xsl:apply-templates select="//qui:block[@slot='notes']/tei:NOTES" />
   </xsl:template>
