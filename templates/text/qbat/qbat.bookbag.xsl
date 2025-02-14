@@ -180,7 +180,7 @@
 
       <xsl:variable name="bb-id" select="generate-id()" />
       <label class="[ portfolio-selection ]" for="bb{$bb-id}">
-        <input id="bb{$bb-id}" type="checkbox" name="bbidno" value="{concat(@bcc, ':', @identifier)}" autocomplete="off" />
+        <input id="bb{$bb-id}" type="checkbox" name="bbidno" value="{concat(@bcc, '/', @identifier)}" autocomplete="off" />
         <span class="visually-hidden">Remove item from bookbag</span>
       </label>  
     </section> 

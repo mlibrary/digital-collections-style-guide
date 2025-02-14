@@ -60,7 +60,8 @@
             <xsl:call-template name="build-portfolio-actions" />
             <xsl:call-template name="build-results-list" />
             <xsl:call-template name="build-results-pagination" />
-            <xsl:call-template name="build-hidden-portfolio-form" />    
+            <xsl:call-template name="build-hidden-portfolio-form" />
+            <xsl:call-template name="build-search-history-item" />
           </xsl:when>
           <xsl:otherwise>
             <xsl:call-template name="build-no-results" />
@@ -892,6 +893,18 @@
 
   <xsl:template match="qui:no-results" mode="copy">
     <pre>ZILCH</pre>
+  </xsl:template>
+
+  <xsl:template name="build-search-history-item">
+    <xsl:variable name="item" select="//qui:block[@slot='search-history']" />
+    <span 
+      id="search-history-item"
+      class="hidden"
+      data-url="{$item/qui:link/@href}"
+      data-title="{$item/qui:title}"
+      data-collection="{$item/qui:metadata/qui:field[@key='collections']}//qui:value}"
+      data-results="{$item/qui:metadata/qui:field[@key='results']}//qui:value}" />
+
   </xsl:template>
 
 </xsl:stylesheet>
