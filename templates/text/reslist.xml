@@ -115,5 +115,7 @@
       </PubBetweenSelect>
     </OtherRestrictions>
   </SearchForm>  
-  
+
+  <SearchHistoryTable><?SEARCH_HISTORY_TABLE_XML?></SearchHistoryTable>
+
 </Top>

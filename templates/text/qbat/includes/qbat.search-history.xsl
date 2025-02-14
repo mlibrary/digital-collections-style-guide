@@ -19,8 +19,8 @@
     </div>
     <div class="[ flex flex-flow-rw ][ flex-gap-1 ]">
       <div class="side-panel"></div>
-      <div class="main-panel">
-        <xsl:choose>
+      <div class="main-panel" id="search-history">
+        <!-- <xsl:choose>
           <xsl:when test="not(//qui:block[@slot='history']/qui:section)">
             <div class="message-callout">
               <p>You have no search history.</p>
@@ -29,7 +29,7 @@
           <xsl:otherwise>
             <xsl:apply-templates select="//qui:block[@slot='history']/qui:section" mode="result" />
           </xsl:otherwise>
-        </xsl:choose>
+        </xsl:choose> -->
       </div>  
     </div>
   </xsl:template>

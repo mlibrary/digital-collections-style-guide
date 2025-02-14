@@ -228,6 +228,7 @@
 
     <xsl:if test="true() or $tmp//qui:link">
       <xsl:apply-templates select="$tmp" mode="copy" />
+      <xsl:apply-templates select="//SearchHistoryTable/Item" />
     </xsl:if>
     <xsl:variable name="refine-search-link">
       <xsl:choose>
@@ -494,7 +495,7 @@
         <qui:link rel="bookmark" href="{BookbagAddHref}" label="{key('get-lookup', 'results.str.21')}" />
       </xsl:if> -->
       <xsl:if test="normalize-space(BookbagAddHref)">
-        <qui:form slot="bookbag" rel="add" href="{BookbagAddHref}" data-identifier="{concat(@collid, ':', $identifier)}">
+        <qui:form slot="bookbag" rel="add" href="{BookbagAddHref}" data-identifier="{concat(@collid, '/', $identifier)}">
         </qui:form>
       </xsl:if>
       <xsl:if test="($encoding-type='serialissue')">
@@ -1303,6 +1304,46 @@
       <xsl:apply-templates select="*|@*|text()" mode="copy" />
     </xsl:element>
   </xsl:template>
+
+  <xsl:template match="SearchHistoryTable/Item">
+    <qui:block slot="search-history">
+      <qui:link href="{Href}" />
+      <qui:title>
+        <xsl:value-of select="Query" />
+      </qui:title>
+      <qui:metadata>
+        <qui:field key="collections">
+          <qui:values>
+            <qui:value>
+              <xsl:value-of select="Collections" />
+            </qui:value>
+          </qui:values>
+        </qui:field>
+        <xsl:apply-templates select="Results" />
+      </qui:metadata>
+    </qui:block>
+  </xsl:template>
+
+  <xsl:template match="SearchHistoryTable/Item/Results">
+    <qui:field key="results">
+      <qui:values>
+        <qui:value>
+          <xsl:value-of select="HitCount" />
+          <xsl:text> </xsl:text>
+          <xsl:choose>
+            <xsl:when test="HitCount = 1">match</xsl:when>
+            <xsl:otherwise>matches</xsl:otherwise>
+          </xsl:choose>
+          <xsl:text> in </xsl:text>
+          <xsl:value-of select="RecordCount" />
+          <xsl:choose>
+            <xsl:when test="RecordCount = 1"> item</xsl:when>
+            <xsl:otherwise> items</xsl:otherwise>
+          </xsl:choose>        
+        </qui:value>
+      </qui:values>
+    </qui:field>
+  </xsl:template>  
 
   
 </xsl:stylesheet>

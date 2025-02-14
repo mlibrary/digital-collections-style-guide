@@ -12,6 +12,8 @@ import "./handlers/action-results-focus.js";
 import "./handlers/action-toggle-side-panel.js";
 import "./handlers/action-toggle-highlight.js";
 import "./handlers/action-toggle-annotations.js";
+import "./handlers/action-update-search-history.js";
+import "./handlers/action-list-search-history.js";
 
 import "./handlers/action-bookbag-form.js";
 
