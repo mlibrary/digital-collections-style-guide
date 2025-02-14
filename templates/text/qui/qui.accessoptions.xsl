@@ -33,7 +33,7 @@
       </xsl:choose>
     </qui:block>
 
-    <xsl:if test="//NoAccess = 'false' and //SupportedAuthSystems[System = 'um']">
+    <xsl:if test="//NoAccess != 'true' and //SupportedAuthSystems[System = 'um']">
       <qui:block slot="login-information">
         <p>
           <xsl:text>University of Michigan staff, students, and others with U-M login privileges may </xsl:text>
