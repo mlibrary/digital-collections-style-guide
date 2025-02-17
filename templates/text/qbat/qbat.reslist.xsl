@@ -902,8 +902,8 @@
       class="hidden"
       data-url="{$item/qui:link/@href}"
       data-title="{$item/qui:title}"
-      data-collection="{$item/qui:metadata/qui:field[@key='collections']}//qui:value}"
-      data-results="{$item/qui:metadata/qui:field[@key='results']}//qui:value}" />
+      data-collection="{$item/qui:metadata/qui:field[@key='collections']//qui:value}"
+      data-results="{$item/qui:metadata/qui:field[@key='results']//qui:value}" />
 
   </xsl:template>
 
