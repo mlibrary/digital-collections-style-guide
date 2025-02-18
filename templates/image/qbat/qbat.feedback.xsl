@@ -11,7 +11,7 @@
   <xsl:variable name="to" select="//qui:root/@to" />
 
   <xsl:template match="qui:root">
-    <html lang="en" data-root="{$docroot}" data-username="{$username}" data-view="{$view}" data-initialized="false" style="opacity: 0">
+    <html lang="en" data-root="{$docroot}" data-username="{$username}" data-view="{$view}" data-initialized="false" style="opacity: 0" data-sid="{@sid}">
       <head>
         <meta charset="UTF-8" />
         <meta name="viewport" content="width=device-width, initial-scale=1.0" />
@@ -164,7 +164,7 @@
               if ( text.indexOf('SUCCESS') == -1 ) {
                 alert("NOPE");
               } else {
-                document.querySelector('#session-id').setAttribute('name', getCookie('DLXSsid'));
+                document.querySelector('#session-id').setAttribute('name', document.documentElement.dataset.sid);
                 $form.submit();
               }
             })
