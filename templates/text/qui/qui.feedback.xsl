@@ -40,7 +40,7 @@
   <xsl:param name="docroot">/digital-collections-style-guide</xsl:param>
 
   <xsl:template match="Top">
-    <qui:root view="feedback" collid="{$collid}" username="{//AuthenticatedUsername}" to="{normalize-space($to)}">
+    <qui:root view="feedback" collid="{$collid}" username="{//AuthenticatedUsername}" to="{normalize-space($to)}" sid="{/Top/DlxsGlobals/Sid}">
       <qui:form>
         <qui:hidden-input name="id">
           <xsl:attribute name="value">
