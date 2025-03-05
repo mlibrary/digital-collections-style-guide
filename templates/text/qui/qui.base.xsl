@@ -254,6 +254,9 @@
           <xsl:when test="contains(/Top/DlxsGlobals/Title,'.str')">
             <xsl:value-of select="key('get-lookup',/Top/DlxsGlobals/Title)"/>
           </xsl:when>
+          <xsl:when test="normalize-space(/Top/DlxsGlobals/Title)">
+            <xsl:value-of select="/Top/DlxsGlobals/Title" />
+          </xsl:when>
           <xsl:when test="not(/Top/DlxsGlobals/TitleComplex/img)">
             <xsl:value-of select="/Top/DlxsGlobals/TitleComplex" />
           </xsl:when>

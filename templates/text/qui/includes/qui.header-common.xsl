@@ -1159,6 +1159,9 @@
             <xsl:text>In the digital collection </xsl:text>
             <em>
               <xsl:choose>
+                <xsl:when test="normalize-space(/Top/DlxsGlobals/Title)">
+                  <xsl:value-of select="/Top/DlxsGlobals/Title" />
+                </xsl:when>
                 <xsl:when test="//TitleComplex/img">
                   <xsl:value-of select="//TitleComplex/img/@alt" />
                 </xsl:when>
