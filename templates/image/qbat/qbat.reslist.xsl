@@ -7,6 +7,8 @@
   <xsl:variable name="has-results" select="//qui:nav[@role='results']/@total &gt; 0" />
   <xsl:variable name="nav" select="//qui:nav[@role='results']" />
 
+  <xsl:variable name="show-viewer-advisory-alert" select="false()" />
+
   <xsl:template name="build-extra-scripts">
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@shoelace-style/shoelace@2.4.0/dist/themes/light.css" />
     <script type="module" src="https://cdn.jsdelivr.net/npm/@shoelace-style/shoelace@2.4.0/dist/shoelace-autoloader.js"></script>
@@ -39,7 +41,7 @@
         <xsl:call-template name="build-search-form" />
         <xsl:call-template name="build-results-summary-sort" />
 
-        <xsl:if test="//qui:block[@slot='results']//qui:section//qui:link[@viewer-advisory='true']">
+        <xsl:if test="$show-viewer-advisory-alert and //qui:block[@slot='results']//qui:section//qui:link[@viewer-advisory='true']">
           <div class="viewer-advisory-message mb-1">
             <div class="flex align-items-top gap-1">
               <div>
