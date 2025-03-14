@@ -14,7 +14,8 @@
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@shoelace-style/shoelace@2.4.0/dist/themes/light.css" />
     <script type="module" src="https://cdn.jsdelivr.net/npm/@shoelace-style/shoelace@2.4.0/dist/shoelace-autoloader.js"></script>
 
-    <xsl:call-template name="build-entry-scripts" />
+    <!-- <xsl:call-template name="build-entry-scripts" /> -->
+    <xsl:apply-templates select="/" mode="add-header-tags" />
 
     <style>
     </style>
@@ -40,7 +41,9 @@
 
     <xsl:call-template name="build-page-heading" />
 
-    <xsl:call-template name="build-asset-viewer" />
+    <!-- <xsl:call-template name="build-asset-viewer" /> -->
+
+    <xsl:apply-templates select="//qui:viewer" />
 
     <div class="[ flex flex-flow-rw ][ aside--wrap ]">
 
@@ -189,21 +192,6 @@
     </section>
   </xsl:template>
 
-  <xsl:template name="build-asset-viewer">
-    <xsl:call-template name="build-iframe-embed" />
-  </xsl:template>
-
-  <xsl:template name="build-iframe-embed">
-    <xsl:variable name="title">
-      <xsl:text>Viewer for &quot;</xsl:text>
-      <xsl:value-of select="//qui:header[@role='main']" />
-      <xsl:text>&quot;</xsl:text>
-    </xsl:variable>
-    <xsl:apply-templates select="//qui:viewer">
-      <xsl:with-param name="title" select="$title" />
-    </xsl:apply-templates>
-  </xsl:template>
-
   <xsl:template match="qui:viewer[@access='allowed']">
     <xsl:param name="title" />
     <xsl:variable name="viewer" select="." />
@@ -260,20 +248,6 @@
         </xsl:otherwise>
       </xsl:choose>
     </m-callout>
-  </xsl:template>
-
-  <xsl:template name="build-asset-viewer--inline">
-    <xsl:variable name="viewer" select="//qui:viewer" />
-    <xsl:if test="$viewer">
-      <div 
-        id="viewer"
-        class="viewer"
-        data-manifest-id="{$viewer/@manifest-id}" 
-        data-canvas-index="{$viewer/@canvas-index}"
-        data-provider="{$viewer/@provider}"
-        data-mode="{$viewer/@mode}">
-      </div>
-    </xsl:if>
   </xsl:template>
 
   <xsl:template match="qui:block[@slot='actions']">

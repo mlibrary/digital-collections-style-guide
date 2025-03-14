@@ -880,4 +880,6 @@
     </xsl:copy>
   </xsl:template>
 
+  <xsl:template match="/" mode="add-header-tags" />
+
 </xsl:stylesheet>

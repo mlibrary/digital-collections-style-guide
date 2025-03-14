@@ -272,6 +272,7 @@
   <xsl:template match="Field">
     <qui:field key="{@abbrev}">
       <xsl:apply-templates select="@viewer-advisory" mode="copy" />
+      <xsl:apply-templates select="@iiif-plaintext" mode="copy" />
       <xsl:apply-templates select="@*[starts-with(name(), 'data-')]" mode="copy" />
       <qui:label>
         <xsl:value-of select="Label" />
