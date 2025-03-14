@@ -491,6 +491,9 @@ class DLXSViewer {
         const plaintextSection = document.querySelector('div[data-slot="content"]');
         const newPlaintextSection = newDocument.querySelector('div[data-slot="content"]');
         plaintextSection.innerHTML = newPlaintextSection.innerHTML;
+        plaintextSection.closest(".plaintext-wrap").scrollTop = 0;
+        let hasText = plaintextSection.innerText.trim() != ''
+        this.updatePanelTabs({ image: true, text: !! plainText, disabled: !! plainText === false });
 
         let slMenuEl = document.querySelector('#dropdown-action sl-menu');
         let newSlMenuEl = newDocument.querySelector('#dropdown-action sl-menu');
