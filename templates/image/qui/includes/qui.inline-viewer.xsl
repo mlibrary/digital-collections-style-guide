@@ -64,7 +64,6 @@
         data-cc="{//CurrentCgi/Param[@name='cc']}"
         data-page-type="{$page_type}"
         data-pages-type="{$pages_type}"
-        
       >
         <xsl:attribute name="has-ocr"><xsl:value-of select="$has-plain-text" /></xsl:attribute>
         <xsl:copy-of select="$manifest" />

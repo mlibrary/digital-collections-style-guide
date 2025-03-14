@@ -60,6 +60,9 @@
       <xsl:if test="//BbagOptionsMenu/UserIsOwner = 'true'">
         <xsl:attribute name="user-is-owner">true</xsl:attribute>
       </xsl:if>
+      <xsl:if test="//CurrentCgi/Param[@name='prep'] = '1'">
+        <xsl:attribute name="prep">true</xsl:attribute>
+      </xsl:if>
       <xsl:attribute name="context-type"><xsl:value-of select="$context-type" /></xsl:attribute>
       <xsl:if test="normalize-space(//CollGroupMembership)">
         <xsl:attribute name="groupid">

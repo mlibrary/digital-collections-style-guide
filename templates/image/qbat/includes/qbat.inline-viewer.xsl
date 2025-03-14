@@ -270,6 +270,9 @@
           <xsl:text>;viewid=</xsl:text>
           <xsl:value-of select="node()[@key='dlxs-viewid']" />
           <xsl:text>;view=entry</xsl:text>
+          <xsl:if test="//qui:root/@prep = 'true'">
+            <xsl:text>;prep=1</xsl:text>
+          </xsl:if>
         </xsl:attribute>
         <div class="sequence-badge">
           <span class="visually-hidden">Scan </span>
