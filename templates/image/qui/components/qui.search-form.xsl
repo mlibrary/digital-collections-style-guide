@@ -32,6 +32,9 @@
           <qui:hidden-input name="c" value="{.}" />
         </xsl:for-each>
       </xsl:if>
+      <xsl:if test="//SortOptionsMenu/Default != 'none'">
+        <qui:hidden-input name="sort" value="{//SortOptionsMenu/Default}" />
+      </xsl:if>
     </qui:form>
   </xsl:template>
 

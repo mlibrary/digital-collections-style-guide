@@ -14,6 +14,9 @@ import "./handlers/action-copy-text.js";
 import "./handlers/action-item-download.js";
 import "./handlers/item-page-navigator.js";
 import "./viewers/viewer-mirador.js";
+import "./viewers/viewer-inline.js";
+
+import "./handlers/action-viewer-advisory.js";
 
 import "./handlers/advanced-search-form.js";
 

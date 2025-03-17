@@ -15,6 +15,8 @@
   <xsl:param name="docroot">/digital-collections-style-guide/</xsl:param>
   <xsl:param name="api_url"><xsl:value-of select="//qui:root/@api_url" /></xsl:param>
   <xsl:param name="ds_url">https://cdn.jsdelivr.net/npm</xsl:param>
+  <xsl:param name="css_mtime"></xsl:param>
+  <xsl:param name="js_mtime"></xsl:param>
 
   <xsl:variable name="collid" select="//qui:root/@collid" />
   <xsl:variable name="context-type" select="//qui:root/@context-type" />
@@ -122,7 +124,7 @@
         href="https://fonts.googleapis.com/icon?family=Material+Icons"
       />
       <link href="{$ds_url}/@umich-lib/web@1.3.0/umich-lib.css" rel="stylesheet" />
-      <link href="{$docroot}dist/css/text/style.css" rel="stylesheet" />
+      <link href="{$docroot}dist/css/text/style.css{$css_mtime}" rel="stylesheet" />
 
       <script>
         window.mUse = [ 'm-universal-header', 'm-website-header', 'm-logo' ];
@@ -152,7 +154,7 @@
   </xsl:template>
 
   <xsl:template name="build-app-script">
-    <script src="{$docroot}dist/js/text/main.js"></script>
+    <script src="{$docroot}dist/js/text/main.js{$js_mtime}"></script>
   </xsl:template>
   
   <xsl:template name="build-cqfill-script">

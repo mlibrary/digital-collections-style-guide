@@ -458,7 +458,7 @@
           <qui:values>
             <qui:value>
               <qui:link href="{/Top/NavHeader/MainNav/NavItem[Name='home']/Link}">
-                <xsl:apply-templates select="/Top/DlxsGlobals/TitleComplex" />
+                <xsl:apply-templates select="/Top/DlxsGlobals/Title" />
               </qui:link>
             </qui:value>
             <xsl:apply-templates select="//DocMeta/ItemHeader/HEADER/FILEDESC/PUBLICATIONSTMT/IDNO[@TYPE='eadid']" mode="collection-link-value" />
@@ -572,6 +572,9 @@
               <xsl:text>In the digital collection </xsl:text>
               <em>
                 <xsl:choose>
+                  <xsl:when test="normalize-space(/Top/DlxsGlobals/Title)">
+                    <xsl:value-of select="/Top/DlxsGlobals/Title" />
+                  </xsl:when>
                   <xsl:when test="//TitleComplex/img">
                     <xsl:value-of select="//TitleComplex/img/@alt" />
                   </xsl:when>
@@ -643,6 +646,10 @@
       </qui:input>
       <qui:link href="{/Top/SimpleSearchWithinLink}" rel="advanced" />
     </qui:form>
+  </xsl:template>
+
+  <xsl:template match="Title">
+    <xsl:value-of select="." />
   </xsl:template>
 
   <xsl:template match="TitleComplex">

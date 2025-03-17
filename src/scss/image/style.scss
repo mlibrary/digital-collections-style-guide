@@ -22,8 +22,12 @@
 @use '../typography';
 @use '../advanced_search';
 @use '../tabs';
+@use '../inline-viewer';
+
 
 // image specific
 @use 'advanced_search--image';
 @use 'home';
 @use 'entry';
+@use 'viewer-advisory';
+@use 'hilite';

@@ -14,7 +14,11 @@
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@shoelace-style/shoelace@2.4.0/dist/themes/light.css" />
     <script type="module" src="https://cdn.jsdelivr.net/npm/@shoelace-style/shoelace@2.4.0/dist/shoelace-autoloader.js"></script>
 
-    <xsl:call-template name="build-entry-scripts" />
+    <!-- <xsl:call-template name="build-entry-scripts" /> -->
+    <xsl:apply-templates select="/" mode="add-header-tags" />
+
+    <style>
+    </style>
 
   </xsl:template>
 
@@ -37,7 +41,9 @@
 
     <xsl:call-template name="build-page-heading" />
 
-    <xsl:call-template name="build-asset-viewer" />
+    <!-- <xsl:call-template name="build-asset-viewer" /> -->
+
+    <xsl:apply-templates select="//qui:viewer" />
 
     <div class="[ flex flex-flow-rw ][ aside--wrap ]">
 
@@ -61,6 +67,19 @@
   <xsl:template name="build-main-stacked">
 
     <xsl:apply-templates select="qui:block[@slot='actions']" />
+
+    <xsl:if test="false()">
+    <div class="metadata--interaction">
+      <p>You are about to access content that may contain sensitive material, including themes of a graphic or mature nature. The University of Michigan is committed to fostering a safe and inclusive environment for all individuals.</p>
+      <p>Please confirm that you wish to proceed with viewing this material.</p>
+      <div class="flex gap-1">
+        <button class="button button--cta" id="action--interaction">
+          <span class="material-icons" aria-hidden="true">done</span>
+          <span>I Acknowledge and Wish to Proceed</span>
+        </button>
+      </div>
+    </div>
+    </xsl:if>
 
     <xsl:apply-templates select="qui:block[@slot='record']" />
 
@@ -173,42 +192,41 @@
     </section>
   </xsl:template>
 
-  <xsl:template name="build-asset-viewer">
-    <xsl:call-template name="build-iframe-embed" />
-  </xsl:template>
-
-  <xsl:template name="build-iframe-embed">
-    <xsl:variable name="title">
-      <xsl:text>Viewer for &quot;</xsl:text>
-      <xsl:value-of select="//qui:header[@role='main']" />
-      <xsl:text>&quot;</xsl:text>
-    </xsl:variable>
-    <xsl:apply-templates select="//qui:viewer">
-      <xsl:with-param name="title" select="$title" />
-    </xsl:apply-templates>
-  </xsl:template>
-
   <xsl:template match="qui:viewer[@access='allowed']">
     <xsl:param name="title" />
     <xsl:variable name="viewer" select="." />
     <xsl:if test="$viewer">
       <h2 id="viewer-heading" class="visually-hidden">Viewer</h2>
-      <iframe 
-        id="viewer" 
-        class="[ viewer ]" 
-        allow="fullscreen" 
-        title="{$title}"
-        src="{ $viewer/@embed-href }"
-        data-mimetype="{$viewer/@mimetype}"
-        data-istruct_mt="{$viewer/@istruct_mt}">
-        <xsl:if test="$viewer/@viewer-max-height">
-          <xsl:attribute name="style">
-            <xsl:text>height: calc(</xsl:text>
-            <xsl:value-of select="$viewer/@viewer-max-height" />
-            <xsl:text>* 1.5px);</xsl:text>
-          </xsl:attribute>
+      <div class="viewer">
+        <xsl:if test="$viewer/@viewer-advisory='true'">
+          <xsl:attribute name="data-viewer-advisory">true</xsl:attribute>
         </xsl:if>
-      </iframe>
+        <iframe 
+          id="viewer" 
+          class="[ viewer ]" 
+          allow="fullscreen" 
+          title="{$title}"
+          src="{ $viewer/@embed-href }"
+          data-mimetype="{$viewer/@mimetype}"
+          data-istruct_mt="{$viewer/@istruct_mt}">
+          <xsl:if test="$viewer/@viewer-max-height">
+            <xsl:attribute name="style">
+              <xsl:text>height: calc(</xsl:text>
+              <xsl:value-of select="$viewer/@viewer-max-height" />
+              <xsl:text>* 1.5px);</xsl:text>
+            </xsl:attribute>
+          </xsl:if>
+        </iframe>
+        <xsl:if test="$viewer/@viewer-advisory = 'true'">
+          <div class="viewer--viewer-advisory">
+            <div class="viewer-advisory-message">
+              <xsl:call-template name="build-viewer-advisory-message">
+                <xsl:with-param name="mode">verbose</xsl:with-param>
+              </xsl:call-template>  
+            </div>
+          </div>
+        </xsl:if>
+      </div>
     </xsl:if>
   </xsl:template>
 
@@ -230,20 +248,6 @@
         </xsl:otherwise>
       </xsl:choose>
     </m-callout>
-  </xsl:template>
-
-  <xsl:template name="build-asset-viewer--inline">
-    <xsl:variable name="viewer" select="//qui:viewer" />
-    <xsl:if test="$viewer">
-      <div 
-        id="viewer"
-        class="viewer"
-        data-manifest-id="{$viewer/@manifest-id}" 
-        data-canvas-index="{$viewer/@canvas-index}"
-        data-provider="{$viewer/@provider}"
-        data-mode="{$viewer/@mode}">
-      </div>
-    </xsl:if>
   </xsl:template>
 
   <xsl:template match="qui:block[@slot='actions']">
@@ -835,6 +839,45 @@
         <xsl:apply-templates mode="copy" />
       </xsl:for-each>
     </m-callout>
+  </xsl:template>
+
+  <xsl:template match="qui:field[@viewer-advisory='true']" priority="101">
+    <div data-key="{@key}" data-viewer-advisory="true">
+      <dt data-key="{@key}">
+        <xsl:apply-templates select="@*[starts-with(name(), 'data-')]" mode="copy" />
+        <xsl:apply-templates select="qui:label" mode="copy-guts" />
+      </dt>
+      <xsl:for-each select="qui:values/qui:value">
+        <dd>
+          <xsl:apply-templates select="." mode="copy-guts" />
+        </dd>
+      </xsl:for-each>
+      <dd class="viewer-advisory-message">
+        <xsl:call-template name="build-viewer-advisory-message" />
+      </dd>
+    </div>
+  </xsl:template>
+
+  <xsl:template name="build-viewer-advisory-message">
+    <xsl:param name="mode">brief</xsl:param>
+    <div class="flex align-items-top gap-1">
+      <div>
+        <span class="material-icons" aria-hidden="true" style="color: var(--color-maize-400);">warning</span>
+      </div>
+      <div>
+        <p class="mt-0"><strong>Warning</strong></p>
+        <xsl:if test="$mode = 'verbose'">
+          <p>You are about to access content that may contain sensitive material, including themes of a graphic or mature nature. The University of Michigan is committed to fostering a safe and inclusive environment for all individuals.</p>
+        </xsl:if>
+        <p>Please confirm that you wish to proceed with viewing this material.</p>
+        <div class="flex gap-1">
+          <button class="button button--cta" data-action="confirm-viewer-advisory">
+            <span class="material-icons" aria-hidden="true">done</span>
+            <span>I Acknowledge and Wish to Proceed</span>
+          </button>
+        </div>      
+      </div>
+    </div>
   </xsl:template>
 
 </xsl:stylesheet>

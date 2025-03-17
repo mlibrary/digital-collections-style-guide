@@ -382,3 +382,10 @@ h3#portfolios::before {
   font-family: var(--material);
   font-size: 1rem;
 }
+
+.plaintext-wrap {
+  p {
+    margin-top: 0;
+    margin-bottom: 0.25rem;
+  }
+}

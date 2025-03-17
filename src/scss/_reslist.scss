@@ -196,6 +196,10 @@
   grid-area: metadata;
 }
 
+.results-details div[data-viewer-advisory="true"] {
+  display: none;
+}
+
 .results-details a {
   z-index: 1;
   position: relative;

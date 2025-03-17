@@ -11,7 +11,7 @@
         <xsl:value-of select="//Param[@name='cc']" />
       </xsl:when>
       <xsl:when test="count(//Param[@name='c']) = 1">
-        <xsl:value-of select="//Param[@name='cc']" />
+        <xsl:value-of select="//Param[@name='c']" />
       </xsl:when>
       <xsl:otherwise>*</xsl:otherwise>
     </xsl:choose>
@@ -59,6 +59,9 @@
     <qui:root view="{$view}" collid="{$collid}" username="{//AuthenticatedUsername}" context-type="{$context-type}" api_url="{$api_url}">
       <xsl:if test="//BbagOptionsMenu/UserIsOwner = 'true'">
         <xsl:attribute name="user-is-owner">true</xsl:attribute>
+      </xsl:if>
+      <xsl:if test="//CurrentCgi/Param[@name='prep'] = '1'">
+        <xsl:attribute name="prep">true</xsl:attribute>
       </xsl:if>
       <xsl:attribute name="context-type"><xsl:value-of select="$context-type" /></xsl:attribute>
       <xsl:if test="normalize-space(//CollGroupMembership)">
@@ -271,6 +274,8 @@
 
   <xsl:template match="Field">
     <qui:field key="{@abbrev}">
+      <xsl:apply-templates select="@viewer-advisory" mode="copy" />
+      <xsl:apply-templates select="@iiif-plaintext" mode="copy" />
       <xsl:apply-templates select="@*[starts-with(name(), 'data-')]" mode="copy" />
       <qui:label>
         <xsl:value-of select="Label" />
