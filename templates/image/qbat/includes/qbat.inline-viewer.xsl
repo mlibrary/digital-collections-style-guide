@@ -46,7 +46,7 @@
 
   </xsl:template>
 
-  <xsl:template name="build-asset-inline-viewer" match="qui:viewer[@viewer-mode='inline']">
+  <xsl:template name="build-asset-inline-viewer" match="qui:viewer[@viewer-mode='inline'][@access='allowed']" priority="101">
     <div class="viewer" 
       data-canvas-index="{$manifest/@canvas-index}"
       data-cc="{$manifest/@data-cc}"
@@ -55,6 +55,9 @@
       data-has-ocr="{$manifest/@has-ocr}"
       data-has-page-text="{$has-page-text}"
       >
+      <xsl:if test="@viewer-advisory='true'">
+        <xsl:attribute name="data-viewer-advisory">true</xsl:attribute>
+      </xsl:if>
       <div class="inline--viewer">
         <sl-resize-observer data-layout-initialized="false">
           <div class="viewer--container">
@@ -68,6 +71,15 @@
           </div>
         </sl-resize-observer>
       </div>
+      <xsl:if test="@viewer-advisory = 'true'">
+        <div class="viewer--viewer-advisory">
+          <div class="viewer-advisory-message">
+            <xsl:call-template name="build-viewer-advisory-message">
+              <xsl:with-param name="mode">verbose</xsl:with-param>
+            </xsl:call-template>  
+          </div>
+        </div>
+      </xsl:if>
     </div>
   </xsl:template>
 

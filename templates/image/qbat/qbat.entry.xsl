@@ -192,43 +192,6 @@
     </section>
   </xsl:template>
 
-  <xsl:template match="qui:viewer[@access='allowed']">
-    <xsl:param name="title" />
-    <xsl:variable name="viewer" select="." />
-    <xsl:if test="$viewer">
-      <h2 id="viewer-heading" class="visually-hidden">Viewer</h2>
-      <div class="viewer">
-        <xsl:if test="$viewer/@viewer-advisory='true'">
-          <xsl:attribute name="data-viewer-advisory">true</xsl:attribute>
-        </xsl:if>
-        <iframe 
-          id="viewer" 
-          class="[ viewer ]" 
-          allow="fullscreen" 
-          title="{$title}"
-          src="{ $viewer/@embed-href }"
-          data-mimetype="{$viewer/@mimetype}"
-          data-istruct_mt="{$viewer/@istruct_mt}">
-          <xsl:if test="$viewer/@viewer-max-height">
-            <xsl:attribute name="style">
-              <xsl:text>height: calc(</xsl:text>
-              <xsl:value-of select="$viewer/@viewer-max-height" />
-              <xsl:text>* 1.5px);</xsl:text>
-            </xsl:attribute>
-          </xsl:if>
-        </iframe>
-        <xsl:if test="$viewer/@viewer-advisory = 'true'">
-          <div class="viewer--viewer-advisory">
-            <div class="viewer-advisory-message">
-              <xsl:call-template name="build-viewer-advisory-message">
-                <xsl:with-param name="mode">verbose</xsl:with-param>
-              </xsl:call-template>  
-            </div>
-          </div>
-        </xsl:if>
-      </div>
-    </xsl:if>
-  </xsl:template>
 
   <xsl:template match="qui:viewer[@access='possible']">
     <m-callout icon="info" variant="info">
