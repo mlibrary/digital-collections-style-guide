@@ -11,7 +11,7 @@
         <xsl:value-of select="//Param[@name='cc']" />
       </xsl:when>
       <xsl:when test="count(//Param[@name='c']) = 1">
-        <xsl:value-of select="//Param[@name='cc']" />
+        <xsl:value-of select="//Param[@name='c']" />
       </xsl:when>
       <xsl:otherwise>*</xsl:otherwise>
     </xsl:choose>
