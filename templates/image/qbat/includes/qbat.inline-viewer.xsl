@@ -32,7 +32,7 @@
       window.mUse.push('sl-resize-observer', 'sl-dropdown', 'sl-menu', 'sl-menu-item', 'sl-dialog', 'sl-split-panel', 'sl-tab-group');
     </script>
 
-    <script src="/uplift-viewer/dist/js/inline.js"></script>
+    <script src="/uplift-viewer/dist/js/inline.js{$js_mtime}"></script>
   </xsl:template>
 
   <xsl:template name="build-entry-scripts">
@@ -63,6 +63,14 @@
           <xsl:text>height: calc(</xsl:text>
           <xsl:value-of select="@viewer-max-height" />
           <xsl:text>* 1.5px);</xsl:text>
+        </xsl:attribute>
+        <xsl:attribute name="data-viewer-size-max-height">
+          <xsl:value-of select="@viewer-max-height" />
+        </xsl:attribute>
+      </xsl:if>
+      <xsl:if test="@viewer-max-width">
+        <xsl:attribute name="data-viewer-size-max-width">
+          <xsl:value-of select="@viewer-max-width" />
         </xsl:attribute>
       </xsl:if>
       <div class="inline--viewer">
