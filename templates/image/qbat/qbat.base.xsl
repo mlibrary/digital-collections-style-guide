@@ -17,6 +17,7 @@
   <xsl:param name="ds_url">https://cdn.jsdelivr.net/npm</xsl:param>
   <xsl:param name="css_mtime"></xsl:param>
   <xsl:param name="js_mtime"></xsl:param>
+  <xsl:param name="inline_mtime"></xsl:param>
 
   <xsl:variable name="collid" select="//qui:root/@collid" />
   <xsl:variable name="context-type" select="//qui:root/@context-type" />

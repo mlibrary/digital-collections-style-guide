@@ -32,7 +32,7 @@
       window.mUse.push('sl-resize-observer', 'sl-dropdown', 'sl-menu', 'sl-menu-item', 'sl-dialog', 'sl-split-panel', 'sl-tab-group');
     </script>
 
-    <script src="/uplift-viewer/dist/js/inline.js{$js_mtime}"></script>
+    <script src="/uplift-viewer/dist/js/inline.js{$inline_mtime}"></script>
   </xsl:template>
 
   <xsl:template name="build-entry-scripts">
