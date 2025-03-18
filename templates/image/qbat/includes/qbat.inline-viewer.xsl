@@ -58,6 +58,13 @@
       <xsl:if test="@viewer-advisory='true'">
         <xsl:attribute name="data-viewer-advisory">true</xsl:attribute>
       </xsl:if>
+      <xsl:if test="@viewer-max-height">
+        <xsl:attribute name="style">
+          <xsl:text>height: calc(</xsl:text>
+          <xsl:value-of select="@viewer-max-height" />
+          <xsl:text>* 1.5px);</xsl:text>
+        </xsl:attribute>
+      </xsl:if>
       <div class="inline--viewer">
         <sl-resize-observer data-layout-initialized="false">
           <div class="viewer--container">

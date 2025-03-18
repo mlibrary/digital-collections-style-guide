@@ -84,6 +84,10 @@
         data-pages-type="{$pages_type}"
       >
         <xsl:attribute name="has-ocr"><xsl:value-of select="$has-plain-text" /></xsl:attribute>
+        <xsl:if test="//MediaInfo/ViewerMaxSize">
+          <xsl:attribute name="viewer-max-width"><xsl:value-of select="//MediaInfo/ViewerMaxSize/@width" /></xsl:attribute>
+          <xsl:attribute name="viewer-max-height"><xsl:value-of select="//MediaInfo/ViewerMaxSize/@height" /></xsl:attribute>
+        </xsl:if>
         <xsl:apply-templates select="//MediaInfo/AuthCheck/@viewer-advisory" mode="copy" />
 
         <xsl:copy-of select="$manifest" />
