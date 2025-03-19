@@ -2,6 +2,8 @@ import { ScreenReaderMessenger } from "../../sr-messaging";
 
 // Constants
 const VIEWPORT_BREAKPOINT = 800;
+const GUIDE_BREAKPOINT = 500;
+
 window.DLXS = window.DLXS || {};
 
 const blankPage = `<section style="white-space: pre-line">
@@ -250,7 +252,7 @@ class DLXSViewer {
     viewerButtons.image.disabled = config.disabled;
     viewerButtons.text.disabled = config.disabled;
 
-    ["image", "text"].forEach((key) => {
+    ["guide", "image", "text"].forEach((key) => {
       viewerButtons[key].setAttribute("aria-pressed", config[key]);
       viewerButtons[key]
         .closest("div.toggle")
@@ -266,6 +268,12 @@ class DLXSViewer {
     } else if (config.text) {
       $splitPanel.position = 0;
       collapsed = "image";
+    }
+
+    if (config.guide === false) {
+      this.elements.viewer
+        .querySelector('[data-slot="guide"]')
+        .classList.toggle("hidden", true);
     }
 
     // complicated maths
@@ -284,6 +292,7 @@ class DLXSViewer {
   }
 
   updatePanelTabsByViewerWidth(callback) {
+    const viewerButtons = this.elements.buttons.viewer;    
     const _isPressed = function (btn) {
       if (!btn) {
         return false;
@@ -291,12 +300,19 @@ class DLXSViewer {
       return btn.getAttribute("aria-pressed") == "true";
     };
 
-    if (
+    if (      
+      this.state.viewerWidth < GUIDE_BREAKPOINT &&
+      _isPressed(viewerButtons.guide) &&
+      _isPressed(viewerButtons.image) &&
+      _isPressed(viewerButtons.text)
+    ) {
+      this.updatePanelTabs({ guide: false, image: true, text: false });
+    } else if (
       this.state.viewerWidth < VIEWPORT_BREAKPOINT &&
       _isPressed(viewerButtons.image) &&
       _isPressed(viewerButtons.text)
     ) {
-      updatePanelTabs({ image: true, text: false });
+      this.updatePanelTabs({ image: true, text: false });
     }
 
     if (callback) {
