@@ -72,7 +72,7 @@
       <qui:viewer
         viewer-mode="inline"
         access="allowed"
-        manifest-id="{$manifest/fn:string[@key='id']}"
+        manifest-id="{$manifest/fn:string[@key='@id']}"
         canvas-index="{/Top/Manifest/@canvas-index}"
         mode="{$mode}" 
         total-canvases="{/Top/Manifest/@total-canvases}"
