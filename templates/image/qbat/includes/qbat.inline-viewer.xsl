@@ -35,17 +35,6 @@
     <script src="/uplift-viewer/dist/js/inline.js{$inline_mtime}"></script>
   </xsl:template>
 
-  <xsl:template name="build-entry-scripts">
-
-    <script>
-      window.mUse = window.mUse || [];
-      window.mUse.push('sl-resize-observer', 'sl-dropdown', 'sl-menu', 'sl-menu-item', 'sl-dialog', 'sl-split-panel', 'sl-tab-group');
-    </script>
-
-    <script src="/uplift-viewer/dist/js/inline.js"></script>
-
-  </xsl:template>
-
   <xsl:template name="build-asset-inline-viewer" match="qui:viewer[@viewer-mode='inline'][@access='allowed']" priority="101">
     <div class="viewer" 
       data-canvas-index="{$manifest/@canvas-index}"
