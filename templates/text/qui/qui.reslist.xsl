@@ -855,7 +855,8 @@
       <xsl:apply-templates select="HEADER[@TYPE='tombstone']" mode="build-tombstone-link" />
       <qui:link rel="result">
         <xsl:attribute name="href">
-          <xsl:value-of select="ancestor-or-self::DIV1/Link" />
+          <xsl:variable name="links" select="ancestor-or-self::*/Link" />
+          <xsl:value-of select="$links[last()]" />
         </xsl:attribute>
       </qui:link>
       <xsl:choose>
