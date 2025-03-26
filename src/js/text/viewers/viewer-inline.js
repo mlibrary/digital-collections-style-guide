@@ -651,11 +651,13 @@ class DLXSViewer {
         let $a = this.elements.nav.ranges.querySelector(
           `a[data-canvas-indexes*=":${canvasIndex}:"]`
         );
-        let $li = $a.parentElement;
-        if (!$li.classList.contains("active")) {
-          this.elements.nav.ranges.querySelector("li.active").classList.remove("active");
-          $a.parentElement.classList.add("active");
-        }
+        if ( $a ) {
+          let $li = $a.parentElement;
+          if (!$li.classList.contains("active")) {
+            this.elements.nav.ranges.querySelector("li.active").classList.remove("active");
+            $a.parentElement.classList.add("active");
+          }
+        } 
       }
 
       if (this.elements.tabGroup.activeTab) {
