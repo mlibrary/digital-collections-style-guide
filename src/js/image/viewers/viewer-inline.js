@@ -564,8 +564,8 @@ class DLXSViewer {
         let hasText = plaintextSection.innerText.trim() != "";
         this.updatePanelTabs({
           image: true,
-          text: !!plainText,
-          disabled: !!plainText === false,
+          text: !!hasText,
+          disabled: !!hasText === false,
         });
 
         let slMenuEl = document.querySelector("#dropdown-action sl-menu");

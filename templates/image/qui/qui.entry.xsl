@@ -370,7 +370,17 @@
 
   <xsl:template match="Level[FileType!='NA']">
     <xsl:variable name="part" select="Part[@name='MediaLink']" />
-    <qui:download-item height="{LevelHeight}" width="{LevelWidth}" href="{$part}" file-type="{FileType}" asset-type="{Type}">
+    <xsl:variable name="href">
+      <xsl:choose>
+        <xsl:when test="@slot='original'">
+          <xsl:value-of select="concat($part, '.', $part/@ext)" />
+        </xsl:when>
+        <xsl:otherwise>
+          <xsl:value-of select="$part" />
+        </xsl:otherwise>
+      </xsl:choose>
+    </xsl:variable>
+    <qui:download-item height="{LevelHeight}" width="{LevelWidth}" href="{$href}" file-type="{FileType}" asset-type="{Type}">
       <xsl:apply-templates select="@slot" mode="copy" />
       <xsl:apply-templates select="$part/@filename" mode="copy" />
       <xsl:if test="FileTypeIsZipCompressed = 'TRUE'">
