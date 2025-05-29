@@ -526,7 +526,12 @@ class DLXSViewer {
       bookmarkItem.innerText = metadata.newPageviewHref;
     }
 
-    if ( this.state.itemEncodingLevel == 1 ) { return ; }
+    if ( this.state.itemEncodingLevel == 1 ) {
+      setTimeout(() => {
+        document.querySelector('.main-panel .alert').remove();
+      }, 1000);
+      return ;
+    }
     this._updatePageSections(metadata);
   }
 
