@@ -15,6 +15,7 @@ window.addEventListener('DOMContentLoaded', (event) => {
 
   searchHistory.forEach((item) => {
     console.log("== search history", item);
+    if ( ! item.title ) { return ; }
     $main.insertAdjacentHTML(
       "beforeend",
       `<section class="[ results-list--small ]">
