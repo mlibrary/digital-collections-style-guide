@@ -133,8 +133,8 @@
       <script type="module" src="{$ds_url}/@umich-lib/web@1.3.0/dist/umich-lib/umich-lib.esm.js"></script>
       <script nomodule="" src="{$ds_url}/@umich-lib/web@1.3.0/dist/umich-lib/umich-lib.js"></script>
 
-      <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@shoelace-style/shoelace@2.4.0/dist/themes/light.css" />
-      <script type="module" src="https://cdn.jsdelivr.net/npm/@shoelace-style/shoelace@2.4.0/dist/shoelace-autoloader.js"></script>
+      <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@shoelace-style/shoelace@2.20.1/cdn/themes/light.min.css" />
+      <script type="module" src="https://cdn.jsdelivr.net/npm/@shoelace-style/shoelace@2.20.1/cdn/shoelace-autoloader.min.js"></script>
 
       <xsl:call-template name="build-app-script" />
 
@@ -166,8 +166,6 @@
     <xsl:variable name="root-href">
       <!-- ?byFormat=Text%20Collections -->
       <xsl:choose>
-        <xsl:when test="$docroot = '/'">/samples/</xsl:when>
-        <xsl:when test="starts-with($api_url, 'https://dcp-proto')">/samples/</xsl:when>
         <xsl:when test="starts-with($api_url, 'https://quod.lib')">/lib/colllist/</xsl:when>
         <xsl:when test="starts-with($api_url, 'https://preview.quod.lib')">/lib/colllist/</xsl:when>
         <xsl:otherwise>/cgi/c/collsize/coll-idx</xsl:otherwise>
