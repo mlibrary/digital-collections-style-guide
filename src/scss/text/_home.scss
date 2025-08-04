@@ -175,6 +175,7 @@ a.bedazzled-link span:not(.material-icons) {
 @media screen and (max-width: 900px) {
   .viewport-container .flex-flow-row {
     flex-direction: column;
+    align-items: start;
   }
 
   .viewport-container .flex-flow-row .main-panel {

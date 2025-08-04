@@ -17,12 +17,12 @@
         <p>Find:</p>
         <div>
           <div class="[ flex flex-gap-1 flex-align-center ][ parenthetical-expression ]">
-            <xsl:apply-templates select="qui:input[@name='q1']" />
+            <div class="parenthetical-left"><xsl:apply-templates select="qui:input[@name='q1']" /></div>
             <xsl:apply-templates select="qui:select[@name='op2']" />
-            <xsl:apply-templates select="qui:input[@name='q2']" />
+            <div class="parenthetical-right"><xsl:apply-templates select="qui:input[@name='q2']" /></div>
             <xsl:apply-templates select="qui:select[@name='amt2']" />
           </div>
-          <div class="[ flex flex-gap-1 mt-1 flex-align-center ]">
+          <div class="[ flex flex-gap-1 mt-1 flex-align-center flex-flow-row ]">
             <xsl:apply-templates select="qui:select[@name='op3']" />
             <xsl:apply-templates select="qui:input[@name='q3']" />
             <xsl:apply-templates select="qui:select[@name='amt3']" />

@@ -92,7 +92,8 @@ fieldset.fieldset--grid button[data-action="reset-clause"] {
 }
 
 .fieldset--clause--query [data-slot="query"] {
-  width: 100%;
+  // width: 100%;
+  width: clamp(15ch, 100%, 35ch);
 }
 
 .fieldset--clause--query [data-active="false"] {

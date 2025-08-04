@@ -21,19 +21,27 @@
     margin-bottom: 1.5rem;
 }
 
-.parenthetical-expression::before, 
-.parenthetical-expression::after {
+.parenthetical-left, 
+.parenthetical-right {
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+}
+
+.parenthetical-expression > .parenthetical-left::before, 
+.parenthetical-expression > .parenthetical-right::after {
   // margin-top: -1rem;
+  padding-bottom: 1rem;
   font-size: 4rem;
   color: var(--color-neutral-300);
   line-height: 1;
 }
 
-.parenthetical-expression::before {
+.parenthetical-expression > .parenthetical-left::before {
   content: "(";
 }
 
-.parenthetical-expression::after {
+.parenthetical-expression > .parenthetical-right::after {
   content: ")";
 }
 
