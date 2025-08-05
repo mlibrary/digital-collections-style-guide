@@ -4,19 +4,11 @@
   "description": "A workshop repo to design and develop the details of the digital collections front-end. ",
   "main": "index.js",
   "devDependencies": {
-    "@11ty/eleventy": "^1.0.0",
-    "@umich-lib/components": "^1",
-    "@xmldom/xmldom": "^0.8.1",
-    "esbuild": "^0.19.4",
-    "express-http-proxy": "^1.6.3",
-    "get-all-files": "^4.1.0",
-    "md5": "^2.3.0",
-    "nodemon": "^3.0.2",
+    "esbuild": "^0.25.8",
+    "nodemon": "^3.1.10",
     "npm-run-all": "^4.1.5",
-    "sass": "^1.69.5",
-    "xpath": "^0.0.32",
-    "yargs": "^17.3.1",
-    "zx": "^7.0.8"
+    "sass": "^1.89.2",
+    "fast-glob": "^3.2.11"
   },
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1",
@@ -25,8 +17,6 @@
     "build-sass": "node ./scripts/build-sass.mjs",
     "watch-sass": "nodemon -e scss --watch src/scss --exec 'node ./scripts/build-sass.mjs'",
     "start": "npm-run-all --parallel watch-js watch-sass",
-    "build-xml": "./samples/scripts/transform-xml-qui.mjs && ./samples/scripts/transform-qui-qbat.mjs && ./samples/scripts/build-indexes.mjs",
-    "proxy": "NODE_EXTRA_CA_CERTS=./intermediate.pem ./samples/scripts/textclass-proxy.mjs",
     "release": "rsync -av --exclude=node_modules --exclude=.git . quod-update.umdl.umich.edu:/quod/web/digital-collections-style-guide"
   },
   "repository": {
@@ -40,13 +30,6 @@
   },
   "homepage": "https://github.com/mlibrary/digital-collections-style-guide#readme",
   "dependencies": {
-    "colors": "^1.4.0",
-    "cookie-parser": "^1.4.5",
-    "express": "^4.17.1",
-    "isbot": "^4.1.1",
-    "jsdom": "^22.1.0",
-    "morgan": "^1.10.0",
-    "serve-static": "^1.13.2",
     "tocbot": "^4.18.2"
   }
 }

@@ -42,7 +42,7 @@
 
         <div style="width: 770px; max-width: 95%; margin: 0 auto">
           <div style="margin-left: -40px">
-            <m-website-header name="Digital Collections" to="/samples/"></m-website-header>
+            <m-website-header name="Digital Collections" to="/"></m-website-header>
           </div>
 
           <main class="[ ]" style="margin-top: 0">

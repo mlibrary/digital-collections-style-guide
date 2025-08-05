@@ -11,9 +11,6 @@
       window.mUse.push('sl-dropdown');
     </script>
 
-    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@shoelace-style/shoelace@2.4.0/dist/themes/light.css" />
-    <script type="module" src="https://cdn.jsdelivr.net/npm/@shoelace-style/shoelace@2.4.0/dist/shoelace-autoloader.js"></script>
-
     <xsl:call-template name="build-entry-scripts" />
     <xsl:apply-templates select="/" mode="add-header-tags" />
 

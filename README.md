@@ -1,35 +1,16 @@
 # digital-collections-style-guide
 
-A workshop repo to design and develop the details of the digital collections front-end.
+Everything about uplifting DLXS:
 
-## Running Faux DLXS
+* templates (`templates/image` and `templates/text`), which replace any fallback defined in collmgr (e.g. `web/t/text` and `web/i/image`)
+* styles (`src/scss`)
+* supporting javascript (`src/js`)
 
-Requires node v16.
-
-```
-npm install
-```
-
-then:
-
-```
-# on the Library VPN:
-./samples/scripts/serve.mjs
-
-# otherwise
-./samples/scripts/serve.mjs --proxy
-```
-
-## Get started
+## Building
 
 ```
 npm install
+npm run build-js
+npm run build-sass
 ```
-
-```
-npm start
-```
-
-This project uses 11ty. For more docs:
-https://www.11ty.dev/docs/getting-started/
 

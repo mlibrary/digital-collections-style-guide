@@ -1,3 +1,0 @@
-https://roger.quod.lib.umich.edu/c/clark1ic8lift?from=index;med=1;size=20;start=1;type=boolean;view=reslist;rgn1=ic_all;q1=detroit
-https://roger.quod.lib.umich.edu/cgi/i/image/image-idx?cc=clark1ic8lift;sort=marc710;start=1;type=boolean;view=reslist;rgn1=marc710;select1=phrase;q1=National%2520Ocean%2520Survey.;c=clark1ic8lift;size=50
-https://roger.quod.lib.umich.edu/c/clark1ic8lift/x-005247144/39015095421411_0001

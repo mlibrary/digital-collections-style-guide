@@ -5,6 +5,12 @@
   xmlns:qui="http://dlxs.org/quombat/ui">
 
   <xsl:variable name="collid" select="//Param[@name='cc']" />
+  <xsl:variable name="has-page-text">
+    <xsl:choose>
+      <xsl:when test="normalize-space(//DocContent/DocSource/qui:block[@slot='plaintext']/tei:ResultFragments) != ''">true</xsl:when>
+      <xsl:otherwise>false</xsl:otherwise>
+    </xsl:choose>
+  </xsl:variable>
 
   <xsl:variable name="identifier">
     <xsl:value-of select="//Param[@name='cc']" />
@@ -19,6 +25,7 @@
   <xsl:template match="/Top">
     <!-- <xsl:value-of select="//DocSource/SourcePageData" /> -->
     <xsl:choose>
+      <xsl:when test="$has-page-text = 'false'"></xsl:when>
       <xsl:when test="//Param[@name='attachment'] = '1'"></xsl:when>
       <xsl:otherwise>
         <xsl:call-template name="build-ocr-warning-alert" />
