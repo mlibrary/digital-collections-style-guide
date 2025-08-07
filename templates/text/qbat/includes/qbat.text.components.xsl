@@ -2504,9 +2504,7 @@
           class="hl-link button button--secondary button--highlight" 
           href="{concat('#hl', @seq - 1)}"
           aria-label="Highlight #{@seq - 1}">
-          <span class="material-icons" aria-hidden="true">
-            arrow_back
-          </span>
+          <span class="material-icons" aria-hidden="true">arrow_back</span>
         </a>
       </xsl:if>
       <mark class="{@class}">
@@ -2517,9 +2515,7 @@
           class="hl-link button button--secondary button--highlight" 
           href="{concat('#hl', @seq + 1)}"
           aria-label="Highlight #{@seq + 1}">
-          <span class="material-icons" aria-hidden="true">
-            arrow_forward
-          </span>              
+          <span class="material-icons" aria-hidden="true">arrow_forward</span>              
         </a>
       </xsl:if>
     </span>

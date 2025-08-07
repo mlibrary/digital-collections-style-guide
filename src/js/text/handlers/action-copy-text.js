@@ -43,3 +43,19 @@ document.addEventListener('click', (event) => {
   });
 
 });
+
+document.addEventListener("copy", function (e) {
+  // Get the selected text
+  const selectedText = window.getSelection().toString();
+
+  // Find and remove the unwanted element's text
+  const unwantedText = /\s+(arrow_forward|arrow_back)\s+/gms;
+  const cleanedText = selectedText.replace(unwantedText, " ");
+
+  // Set the modified text to the clipboard
+  e.clipboardData.setData("text/plain", cleanedText);
+  e.clipboardData.setData("text/html", cleanedText);
+
+  // Prevent the default copy action
+  e.preventDefault();
+});
