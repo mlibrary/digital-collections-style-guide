@@ -470,5 +470,6 @@
     <Item key="uplift.header.str.extent">scan</Item>
     <Item key="uplift.header.str.extent.plural">scans</Item>
     <Item key="uplift.header.str.link">Link to this Item</Item>
+    <Item key="uplift.header.str.content.warning">Content Warning</Item>
   </Lookup>
 </LookupTables>

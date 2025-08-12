@@ -648,17 +648,26 @@
 
   <xsl:template match="NOTESSTMT" mode="process-notes">
     <xsl:param name="key">note</xsl:param>
-    <xsl:if test="normalize-space(NOTE)">
+    <xsl:if test="normalize-space(NOTE[not(@TYPE='520-4')])">
       <xsl:call-template name="build-field">
         <xsl:with-param name="key"><xsl:value-of select="$key" /></xsl:with-param>
         <xsl:with-param name="value">
-          <xsl:for-each select="NOTE">
+          <xsl:for-each select="NOTE[not(@TYPE='520-4')]">
             <Value><xsl:value-of select="." /></Value>
           </xsl:for-each>
         </xsl:with-param>
       </xsl:call-template>  
     </xsl:if>
   </xsl:template>
+
+	<xsl:template match="NOTE[@TYPE='520-4']" mode="process-content-warning">
+		<xsl:call-template name="build-field">
+			<xsl:with-param name="key">uplift.header.content.warning</xsl:with-param>
+			<xsl:with-param name="value">
+				<xsl:value-of select="." />
+			</xsl:with-param>
+		</xsl:call-template>
+	</xsl:template>
   
   <xsl:template name="process-pubinfo-for-serialissue">
     <xsl:param name="bibl" />
