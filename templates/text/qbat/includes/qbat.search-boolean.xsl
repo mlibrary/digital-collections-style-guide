@@ -13,7 +13,7 @@
       <div class="[ fieldset--clause--region flex flex-flow-row flex-align-center ]" style="grid-column: 1/3;">
         <xsl:apply-templates select="qui:select[@slot='region']" />
       </div>
-      <div class="[ fieldset--clause--query flex flex-flow-row flex-align-top gap-1 ]">
+      <div class="[ fieldset--clause--query flex flex-flow-row flex-align-top gap-1 fieldset--clause--parenthetical ]">
         <p>Find:</p>
         <div>
           <div class="[ flex flex-gap-1 flex-align-center ][ parenthetical-expression ]">
