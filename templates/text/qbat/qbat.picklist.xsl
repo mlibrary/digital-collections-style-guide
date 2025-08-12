@@ -598,7 +598,7 @@
     <ul class="[ list-bulleted ]">
 	<li>Use fewer words, especially when searching names -- this is an exact search and names appear many ways</li>
 	<li>Check your spelling</li>
-	<li>Try the Advanced Search to find two or three words</li>
+	<li>Try the Search Options to find two or three words</li>
     </ul>
   </xsl:template>
 

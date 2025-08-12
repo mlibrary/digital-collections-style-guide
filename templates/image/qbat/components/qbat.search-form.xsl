@@ -16,7 +16,7 @@
             <xsl:call-template name="build-basic-search-input" />
           </xsl:otherwise>
         </xsl:choose>
-        <div class="advanced-link"><a href="/cgi/i/image/image-idx?c={$collid};page=search">Advanced Search</a></div>
+        <div class="advanced-link"><a href="/cgi/i/image/image-idx?c={$collid};page=search">Search Options</a></div>
       </div>
       <xsl:call-template name="build-search-hidden-fields">
         <xsl:with-param name="form" select="$form" />

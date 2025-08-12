@@ -990,10 +990,10 @@
         <button class="button button--primary button--small">Search</button>
         <xsl:if test="qui:link[@rel='advanced']">
           <a href="{qui:link[@rel='advanced']/@href}" class="text--small">
-            <xsl:text>Advanced</xsl:text>
             <span class="visually-hidden">
-              <xsl:text> Search</xsl:text>
+              <xsl:text>Search </xsl:text>
             </span>
+            <xsl:text>Options</xsl:text>
           </a>
         </xsl:if>
       </div>

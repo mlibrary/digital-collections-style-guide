@@ -30,7 +30,7 @@
     </qui:nav>
         
     <qui:header role="main">
-      <xsl:text>Advanced Search: </xsl:text>
+      <xsl:text>Search Options: </xsl:text>
       <xsl:value-of select="key('get-lookup', $key)" />
     </qui:header>
     <xsl:apply-templates select="//SearchHistoryTable" />

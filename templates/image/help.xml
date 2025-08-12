@@ -64,9 +64,9 @@
       </p>
 
 
-      <h3 id="advanced-search">Advanced Search</h3>
+      <h3 id="advanced-search">Search Options</h3>
 
-      <p>The advanced search interface allows you to create both simple and complex queries. You can search using only one field, or you may connect different kinds of search terms using Boolean operators (AND, OR, NOT).</p>
+      <p>The search interface allows you to create both simple and complex queries. You can search using only one field, or you may connect different kinds of search terms using Boolean operators (AND, OR, NOT).</p>
       <p>Below the search boxes you will find a checkbox to limit your results to include only records that include digital media (e.g. digital images or audio).</p>
 
       <!-- SCREENSHOT: SEARCH PAGE -->

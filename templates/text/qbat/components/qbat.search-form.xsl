@@ -17,7 +17,7 @@
           </xsl:otherwise>
         </xsl:choose>
         <xsl:if test="true() or @role = 'search'">
-          <div class="advanced-link"><a href="{//qui:nav/qui:link[@rel='search']/@href}">Advanced Search</a></div>
+          <div class="advanced-link"><a href="{//qui:nav/qui:link[@rel='search']/@href}">Search Options</a></div>
         </xsl:if>
       </div>
       <xsl:call-template name="build-search-hidden-fields">

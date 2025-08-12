@@ -11,7 +11,7 @@
       <xsl:when test="$page = 'index'">Index</xsl:when>
       <xsl:when test="$page = 'history'">Search History</xsl:when>
       <xsl:otherwise>
-        <xsl:text>Advanced Search</xsl:text>
+        <xsl:text>Search Options</xsl:text>
         <!-- <xsl:value-of select="key('get-lookup', concat('navheader.str.', $page))" /> -->
       </xsl:otherwise>
       <!-- <xsl:when test="$page = 'simple'">Advanced Search: Basic</xsl:when>

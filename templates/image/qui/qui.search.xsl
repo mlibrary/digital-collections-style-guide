@@ -10,7 +10,7 @@
   </xsl:template>
 
   <xsl:template name="get-title">
-    Advanced Search
+    Search Options
   </xsl:template>
 
   <xsl:template name="get-current-page-breadcrumb-label">

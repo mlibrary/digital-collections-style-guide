@@ -5,7 +5,7 @@
       <xsl:call-template name="build-collection-heading" />
 
       <xsl:if test="//qui:nav[@role='search']">
-        <nav aria-label="Advanced Search Options" class="horizontal-navigation-container mb-2">
+        <nav aria-label="Search Options" class="horizontal-navigation-container mb-2">
           <ul class="horizontal-navigation-list">
             <xsl:for-each select="//qui:nav[@role='search']/qui:link">
               <li>
