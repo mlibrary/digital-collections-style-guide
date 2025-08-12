@@ -281,6 +281,7 @@ class DLXSViewer {
     this.elements.resizeObserver.addEventListener('sl-resize', (event) => {
       const entry = event.detail.entries.at(-1);
       if ( ! entry ) { console.log("-- punting"); return ; }
+      if ( ! entry.target.classList.contains('.viewer--container') ) { return ; }
       if (this.elements.resizeObserver.dataset.layoutInitialized == 'false') {
         return;
       }

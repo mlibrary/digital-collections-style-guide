@@ -330,6 +330,7 @@ class DLXSViewer {
       if (this.elements.resizeObserver.dataset.layoutInitialized == "false") {
         return;
       }
+      if ( ! entry.target.classList.contains('.viewer--container') ) { return ; }
       this.state.viewerWidth = entry.contentRect.width;
       this.updatePanelTabsByViewerWidth();
     });
