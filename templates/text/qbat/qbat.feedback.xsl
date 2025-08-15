@@ -115,7 +115,7 @@
               </fieldset>
               
               <div class="form--container" style="align-items: center">
-                <div class="g-recaptcha" data-sitekey="6Ldah1EUAAAAAH7Cvi-8QDaDgRtGtW7oqA_GZ4ha"></div>
+                <div class="g-recaptcha" data-sitekey="6LczM6crAAAAAEKeETDUDVrLRCvKGQZUQSomPTNF"></div>
               </div>
 
               <div class="" style="text-align: right">
