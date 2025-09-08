@@ -195,20 +195,33 @@
   </xsl:template>
 
   <xsl:template name="build-login-link">
-    <qui:link href="{/Top/NavHeader/ReAuthLink}" id="action-login">
+    <xsl:variable name="auth-href">
       <xsl:choose>
-        <xsl:when test="/Top/DlxsGlobals/UserAuthenticated = '1'">
-          <xsl:attribute name="data-logged-in">true</xsl:attribute>
-          <xsl:attribute name="icon">logout</xsl:attribute>
-          <xsl:text>Log out</xsl:text>
+        <xsl:when test="/Top/NavHeader/ReAuthLink">
+          <xsl:value-of select="/Top/NavHeader/ReAuthLink" />
         </xsl:when>
-        <xsl:otherwise>
-          <xsl:attribute name="data-logged-in">false</xsl:attribute>
-          <xsl:attribute name="icon">login</xsl:attribute>
-          <xsl:text>Log in</xsl:text>
-        </xsl:otherwise>
+        <xsl:when test="/Top/ReAuthLink">
+          <xsl:value-of select="/Top/ReAuthLink" />
+        </xsl:when>
+        <xsl:otherwise />
       </xsl:choose>
-    </qui:link>
+    </xsl:variable>
+    <xsl:if test="normalize-space($auth-href)">
+      <qui:link href="{$auth-href}" id="action-login">
+        <xsl:choose>
+          <xsl:when test="/Top/DlxsGlobals/UserAuthenticated = '1'">
+            <xsl:attribute name="data-logged-in">true</xsl:attribute>
+            <xsl:attribute name="icon">logout</xsl:attribute>
+            <xsl:text>Log out</xsl:text>
+          </xsl:when>
+          <xsl:otherwise>
+            <xsl:attribute name="data-logged-in">false</xsl:attribute>
+            <xsl:attribute name="icon">login</xsl:attribute>
+            <xsl:text>Log in</xsl:text>
+          </xsl:otherwise>
+        </xsl:choose>
+      </qui:link>
+    </xsl:if>
   </xsl:template>
 
   <xsl:template name="build-head-block" />
