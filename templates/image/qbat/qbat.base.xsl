@@ -86,7 +86,7 @@
   <xsl:template name="build-body-data" />
 
   <xsl:template match="qui:skip-links">
-    <div aria-label="Skip links" class="[ skip-links ]">
+    <div role="navigation" aria-label="Skip links" class="[ skip-links ]">
       <div class="[ viewport-container ]">
         <ul>
           <xsl:for-each select="qui:link">

@@ -34,7 +34,7 @@
         <label for="search-select" class="visually-hidden"
           >Select a search filter:</label
         >
-        <select name="rgn1" id="search-select" class="[ dropdown dropdown--neutral select ] [ bold no-border ]">
+        <select name="rgn1" id="search-select" class="[ dropdown dropdown--neutral select ] [ bold no-border ]" autocomplete="on">
           <xsl:for-each select="$form/qui:control/qui:input[@slot='rgn']/qui:option">
             <option value="{@value}">
               <xsl:if test="@selected = 'selected'">
@@ -55,7 +55,8 @@
           type="search"
           name="q1"
           placeholder=""
-          data-value="{$q1}">
+          data-value="{$q1}"
+          autocomplete="on">
           <xsl:attribute name="value">
             <xsl:choose>
               <xsl:when test="$q1 = $collid">

@@ -92,7 +92,7 @@
   <xsl:template name="build-body-extra" />
 
   <xsl:template match="qui:skip-links">
-    <div aria-label="Skip links" class="[ skip-links ]">
+    <div role="navigation" aria-label="Skip links" class="[ skip-links ]">
       <div class="[ viewport-container ]">
         <ul>
           <xsl:for-each select="qui:link">
@@ -942,14 +942,26 @@
   </xsl:template>
 
   <xsl:template match="qui:input[@type='text']">
-    <xsl:apply-templates select="qui:label" />
-    <input>
+    <xsl:variable name="id">
+      <xsl:choose>
+        <xsl:when test="@id"><xsl:value-of select="@id" /></xsl:when>
+        <xsl:otherwise><xsl:value-of select="concat(@name, '-', generate-id())" /></xsl:otherwise>
+      </xsl:choose>
+    </xsl:variable>
+    <xsl:apply-templates select="qui:label">
+      <xsl:with-param name="for" select="$id" />
+    </xsl:apply-templates>
+    <input id="{$id}">
       <xsl:apply-templates select="@*" mode="copy" />
     </input>
   </xsl:template>
 
+  <xsl:template match="qui:input/@id" mode="copy" priority="101" />
+
   <xsl:template match="qui:label">
+    <xsl:param name="for" />
     <label>
+      <xsl:if test="$for"><xsl:attribute name="for"><xsl:value-of select="$for" /></xsl:attribute></xsl:if>
       <xsl:apply-templates select="@*|text()" mode="copy" />
     </label>
   </xsl:template>

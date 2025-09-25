@@ -58,7 +58,7 @@
         <xsl:call-template name="build-results-pagination" />
         <xsl:call-template name="build-hidden-portfolio-form" />
       </div>
-      <svg>
+      <svg role="img" aria-hidden="true">
         <filter id="pixelate" x="0" y="0">
           <feFlood x="4" y="4" height="2" width="2"/>
           <feComposite width="10" height="10"/>
@@ -248,7 +248,7 @@
     <xsl:if test="//qui:form[@action='bbaction']">
       <xsl:apply-templates select="//qui:callout[@slot='portfolio']" />
       <div class="[ flex flex-align-center ][ mb-1 gap-0_5 ]">
-        <button class="[ button button--secondary ] [ flex ]" aria-label="Add items to portfolio" data-action="select-all" data-checked="false">
+        <button class="[ button button--secondary ] [ flex ]" aria-label="Select all items" data-action="select-all" data-checked="false">
           <span>Select all items</span>
         </button>
         <button class="[ button button--secondary ] [ flex ]" aria-label="Add items to portfolio" data-action="add-items">
@@ -400,7 +400,7 @@
         <xsl:variable name="bb-id" select="generate-id()" />
         <label class="[ portfolio-selection ]" for="bb{$bb-id}">
           <input id="bb{$bb-id}" type="checkbox" name="bbidno" value="{@identifier}" autocomplete="off" />
-          <span class="visually-hidden">Add item to portfolio</span>
+          <span class="visually-hidden">Add item <xsl:value-of select="position()" /> to bookbag</span>
         </label>
       </xsl:if>
     </section>
