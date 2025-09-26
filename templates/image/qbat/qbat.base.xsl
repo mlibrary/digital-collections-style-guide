@@ -649,7 +649,7 @@
       <xsl:for-each select="qui:link">
         <li class="py-1">
           <xsl:if test="@data-badge='group'">
-            <span class="material-icons text-black no-underline">topic</span>
+            <span class="material-icons text-black no-underline" aria-hidden="true">topic</span>
           </xsl:if>
           <xsl:apply-templates select="." mode="copy" />
           <!-- <a href="{@href}" class="text-teal-400 underline">
