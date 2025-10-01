@@ -53,14 +53,14 @@
 
       <!-- SCREENSHOT: SIMPLE SEARCH PAGE -->
       <p class="figure">
-        <?IMAGE_TAG file="/digital-collections-style-guide/static/img/help/uplift-image-class-home.png"?>
+        <?IMAGE_TAG file="/digital-collections-style-guide/static/img/help/uplift-image-class-home.png" alt="Collection home page with simple search form." ?>
       </p>
 
       You can search across all record fields, or use the control to select a more specific field:
 
       <!-- SCREENSHOT: SEARCH FIELD -->
       <p class="figure">
-        <?IMAGE_TAG file="/digital-collections-style-guide/static/img/help/uplift-image-class-search-fields.png"?>
+        <?IMAGE_TAG file="/digital-collections-style-guide/static/img/help/uplift-image-class-search-fields.png" alt="User opening the a control on the simple search form to select a more specific field to search against."?>
       </p>
 
 
@@ -71,7 +71,7 @@
 
       <!-- SCREENSHOT: SEARCH PAGE -->
       <p class="figure">
-        <?IMAGE_TAG file="/digital-collections-style-guide/static/img/help/uplift-image-class-search-form.png"?>
+        <?IMAGE_TAG file="/digital-collections-style-guide/static/img/help/uplift-image-class-search-form.png" alt="Search form with multiple fields and boolean options." ?>
       </p>
 
       <p>Useful tips to remember when searching:</p>
@@ -97,7 +97,7 @@
 
       <!-- [ADD SCREENSHOT OF RESULTS PAGE HERE] -->
       <p class="figure">
-        <?IMAGE_TAG file="/digital-collections-style-guide/static/img/help/uplift-image-class-results.png"?>
+        <?IMAGE_TAG file="/digital-collections-style-guide/static/img/help/uplift-image-class-results.png" alt="Search results presented in a list." ?>
       </p>
 
       <h2 id="navigating-the-image-viewer-page">Navigating the Item View</h2>
@@ -118,7 +118,7 @@
 
       <!-- [ADD SCREENSHOT OF IMAGE VIEWER PAGE HERE] -->
       <p class="figure">
-        <?IMAGE_TAG file="/digital-collections-style-guide/static/img/help/uplift-image-class-entry.png"?>
+        <?IMAGE_TAG file="/digital-collections-style-guide/static/img/help/uplift-image-class-entry.png" alt="Item view, showing navigation, image viewer, and metadata sections." ?>
       </p>
 
 
@@ -130,7 +130,7 @@
       </p>
 
       <p class="figure">
-        <?IMAGE_TAG file="/digital-collections-style-guide/static/img/help/uplift-image-class-actions-download.png"?>
+        <?IMAGE_TAG file="/digital-collections-style-guide/static/img/help/uplift-image-class-actions-download.png" alt="Opening the Dropdown Image control to select a resolution." ?>
       </p>
 
       <p>For using images in applications such as PowerPoint it is recommended you download a mid-range size, or whatever fits best to the size of the projector:</p>
@@ -176,7 +176,7 @@
 
       <!-- [ADD SCREENSHOT OF ONE PUBLIC PORTFOLIO PAGE HERE] -->
       <p class="figure">
-        <?IMAGE_TAG file="graphics/image-class-portfolio-list.png"?>
+        <?IMAGE_TAG file="graphics/image-class-portfolio-list.png" alt="List of public porfolios." ?>
       </p>
 
       <h2 id="citationattribution">Citation/Attribution</h2>
