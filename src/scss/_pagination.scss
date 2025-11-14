@@ -6,26 +6,44 @@
   }
 }
 
-.pagination li {
-  display: inline-block;
-  margin: 0.5em 0;
+.pagination {
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
 }
 
-.pagination__item a {
+.pagination li {
+  display: inline-block;
+  margin: 0;
+  // margin: 0; 0.5em 0;
+}
+
+.pagination__item a, .pagination__item button {
   border: solid 1px var(--color-teal-400);
   border-radius: 4px;
   color: var(--color-teal-400);
-  padding: 0.5em 1em;
-  margin: 0.25em;
+  // padding: 0.5em 1em;
+  // margin: 0.25em;
+  padding: 0.4em 1em;
+  margin: 0;
   text-decoration: none;
+  min-height: auto;
+  font-weight: normal;
+  display: inline-flex;
+  align-items: center;
+  gap: 0.25rem;
 }
 
-.pagination__item a:hover {
+.pagination__item a:hover, .pagination__item button:hover {
   background: var(--color-teal-500);
   color: white;
+
+  svg {
+    fill: white;
+  }
 }
 
-.pagination__item a[disabled] {
+.pagination__item a[disabled], .pagination__item button[disabled] {
   opacity: 0.75;
   pointer-events: none;
 }
@@ -33,14 +51,14 @@
 .pagination__item a[disabled]:hover {
 }
 
-a[class*="previous"]::before {
+[class*="previous"]::before {
   font-family: var(--material);
   content: "\e408";
   color: inherit;
   vertical-align: middle;
 }
 
-a[class*="next"]::after {
+[class*="next"]::after {
   font-family: var(--material);
   content: "\e409";
   color: inherit;

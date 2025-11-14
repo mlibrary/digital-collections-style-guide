@@ -83,6 +83,10 @@ button {
 
 button[disabled] {
   opacity: 0.25;
+
+  &:hover {
+    box-shadow: none;
+  }
 }
 
 button.nav {
