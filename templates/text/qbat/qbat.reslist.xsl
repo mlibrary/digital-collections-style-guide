@@ -466,7 +466,7 @@
     <xsl:value-of select="." />
   </xsl:template> -->
 
-  <xsl:template match="qui:link[@rel='previous' or @rel='next'][@disabled]" priority="101">
+  <xsl:template match="qui:link[@rel='previous' or @rel='next'][@disabled]" priority="105">
     <button disabled="disabled">
       <xsl:apply-templates select="." mode="build-guts" />
     </button>
