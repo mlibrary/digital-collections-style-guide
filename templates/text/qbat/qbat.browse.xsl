@@ -240,40 +240,26 @@
     </xsl:if>
   </xsl:template>
 
+  <xsl:template match="qui:link[not(normalize-space(@href))]" mode="index" priority="101">
+    <li>
+      <button disabled="disabled" class="button">
+        <xsl:value-of select="qui:label" />
+      </button>
+    </li>
+  </xsl:template>
+
   <xsl:template match="qui:link" mode="index">
-    <li style="flex: 1; flex-grow: 0;">
-      <xsl:choose>
-        <xsl:when test="true() or normalize-space(@href)">
-          <a href="{@href}" style="width: 5ch; padding: 0.5em 1em; margin: 0; border-radius: 0;">
-            <xsl:attribute name="class">
-              <xsl:text>button</xsl:text>
-              <xsl:if test="@data-selected = 'true'">
-                <xsl:text> button--ghost</xsl:text>
-              </xsl:if>
-            </xsl:attribute>
-            <xsl:if test="not(normalize-space(@href))">
-              <xsl:attribute name="disabled">disabled</xsl:attribute>
-              <xsl:attribute name="aria-hidden">true</xsl:attribute>
-              <xsl:attribute name="tabindex">-1</xsl:attribute>
-            </xsl:if>
-            <xsl:apply-templates select="@data-selected" mode="copy" />
-            <xsl:value-of select="qui:label" />
-          </a>    
-        </xsl:when>
-        <xsl:otherwise>
-          <span style="width: 5ch; padding: 0.5em 1em; margin: 0; border-radius: 0;">
-            <xsl:attribute name="class">
-              <xsl:text>xbutton</xsl:text>
-            </xsl:attribute>
-            <xsl:value-of select="qui:label" />
-          </span>    
-        </xsl:otherwise>
-      </xsl:choose>
-      <xsl:if test="false() and qui:link">
-        <ul class="[ ml-2 ]">
-          <xsl:apply-templates select="qui:link" mode="index" />
-        </ul>
-      </xsl:if>
+    <li>
+      <a href="{@href}">
+        <xsl:attribute name="class">
+          <xsl:text>button</xsl:text>
+          <xsl:if test="@data-selected = 'true'">
+            <xsl:text> button--ghost</xsl:text>
+          </xsl:if>
+        </xsl:attribute>
+        <xsl:apply-templates select="@data-selected" mode="copy" />
+        <xsl:value-of select="qui:label" />
+      </a>    
     </li>
   </xsl:template>
 
@@ -496,47 +482,30 @@
     <xsl:value-of select="." />
   </xsl:template>
 
-  <xsl:template match="qui:link[@rel='previous']" priority="100">
-    <a>
-      <xsl:call-template name="build-href-or-identifier" />
-      <xsl:apply-templates select="@disabled" mode="copy" />
-      <svg
-          height="18px"
-          viewBox="0 0 20 20"
-          width="12px"
-          fill="#06080a"
-          aria-hidden="true"
-          style="transform: rotate(-180deg)"
-          focusable="false"
-          role="img"
-        >
-          <g>
-            <g><rect fill="none" height="20" width="20" /></g>
-          </g>
-          <g>
-            <polygon
-              points="4.59,16.59 6,18 14,10 6,2 4.59,3.41 11.17,10"
-            />
-          </g>
-        </svg>
-        <span>Previous</span>
-      </a>
+  <xsl:template match="qui:link[@rel='previous' or @rel='next'][@disabled]" priority="101">
+    <button disabled="disabled">
+      <xsl:apply-templates select="." mode="build-guts" />
+    </button>
   </xsl:template>
 
-  <xsl:template match="qui:link[@rel='next']" priority="100">
+  <xsl:template match="qui:link[@rel='previous' or @rel='next']" priority="100">
     <a>
       <xsl:call-template name="build-href-or-identifier" />
-      <xsl:apply-templates select="@disabled" mode="copy" />
-      <span>Next</span>
-      <svg
-          height="18px"
-          viewBox="0 0 20 20"
-          width="12px"
-          fill="#06080a"
-          aria-hidden="true"
-          focusable="false"
-          role="img"
-        >
+      <xsl:apply-templates select="." mode="build-guts" />
+    </a>      
+  </xsl:template>
+
+  <xsl:template match="qui:link[@rel='previous']" mode="build-guts">
+    <svg
+        height="18px"
+        viewBox="0 0 20 20"
+        width="12px"
+        fill="#06080a"
+        aria-hidden="true"
+        style="transform: rotate(-180deg)"
+        focusable="false"
+        role="img"
+      >
         <g>
           <g><rect fill="none" height="20" width="20" /></g>
         </g>
@@ -546,7 +515,29 @@
           />
         </g>
       </svg>
-    </a>
+      <span>Previous</span>
+  </xsl:template>
+
+  <xsl:template match="qui:link[@rel='next']" mode="build-guts">
+    <span>Next</span>
+    <svg
+        height="18px"
+        viewBox="0 0 20 20"
+        width="12px"
+        fill="#06080a"
+        aria-hidden="true"
+        focusable="false"
+        role="img"
+      >
+      <g>
+        <g><rect fill="none" height="20" width="20" /></g>
+      </g>
+      <g>
+        <polygon
+          points="4.59,16.59 6,18 14,10 6,2 4.59,3.41 11.17,10"
+        />
+      </g>
+    </svg>
   </xsl:template>
 
   <xsl:template match="@disabled" mode="copy" priority="100">

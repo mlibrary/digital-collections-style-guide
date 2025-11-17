@@ -466,47 +466,30 @@
     <xsl:value-of select="." />
   </xsl:template> -->
 
-  <xsl:template match="qui:link[@rel='previous']" priority="100">
-    <a>
-      <xsl:call-template name="build-href-or-identifier" />
-      <xsl:apply-templates select="@disabled" mode="copy" />
-      <svg
-          height="18px"
-          viewBox="0 0 20 20"
-          width="12px"
-          fill="#06080a"
-          aria-hidden="true"
-          style="transform: rotate(-180deg)"
-          focusable="false"
-          role="img"
-        >
-          <g>
-            <g><rect fill="none" height="20" width="20" /></g>
-          </g>
-          <g>
-            <polygon
-              points="4.59,16.59 6,18 14,10 6,2 4.59,3.41 11.17,10"
-            />
-          </g>
-        </svg>
-        <span>Previous</span>
-      </a>
+  <xsl:template match="qui:link[@rel='previous' or @rel='next'][@disabled]" priority="105">
+    <button disabled="disabled">
+      <xsl:apply-templates select="." mode="build-guts" />
+    </button>
   </xsl:template>
 
-  <xsl:template match="qui:link[@rel='next']" priority="100">
+  <xsl:template match="qui:link[@rel='previous' or @rel='next']" priority="101">
     <a>
       <xsl:call-template name="build-href-or-identifier" />
-      <xsl:apply-templates select="@disabled" mode="copy" />
-      <span>Next</span>
-      <svg
-          height="18px"
-          viewBox="0 0 20 20"
-          width="12px"
-          fill="#06080a"
-          aria-hidden="true"
-          focusable="false"
-          role="img"
-        >
+      <xsl:apply-templates select="." mode="build-guts" />
+    </a>      
+  </xsl:template>
+
+  <xsl:template match="qui:link[@rel='previous']" mode="build-guts">
+    <svg
+        height="18px"
+        viewBox="0 0 20 20"
+        width="12px"
+        fill="#06080a"
+        aria-hidden="true"
+        style="transform: rotate(-180deg)"
+        focusable="false"
+        role="img"
+      >
         <g>
           <g><rect fill="none" height="20" width="20" /></g>
         </g>
@@ -516,7 +499,29 @@
           />
         </g>
       </svg>
-    </a>
+      <span>Previous</span>
+  </xsl:template>
+
+  <xsl:template match="qui:link[@rel='next']" mode="build-guts">
+    <span>Next</span>
+    <svg
+        height="18px"
+        viewBox="0 0 20 20"
+        width="12px"
+        fill="#06080a"
+        aria-hidden="true"
+        focusable="false"
+        role="img"
+      >
+      <g>
+        <g><rect fill="none" height="20" width="20" /></g>
+      </g>
+      <g>
+        <polygon
+          points="4.59,16.59 6,18 14,10 6,2 4.59,3.41 11.17,10"
+        />
+      </g>
+    </svg>
   </xsl:template>
 
   <xsl:template match="@disabled" mode="copy" priority="100">

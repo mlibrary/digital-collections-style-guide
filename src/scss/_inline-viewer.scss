@@ -236,6 +236,10 @@ input[type="text"] {
     background: var(--color-teal-100);
   }
 
+  .tab-group-ranges {
+    background-color: #fff;
+  }
+
   .tab-group-ranges li + li {
     border-top: 1px solid var(--color-neutral-100);
   }
@@ -528,4 +532,8 @@ input[type="text"] {
   display: block;
   margin: 0;
   width: 100%;
+}
+
+li[data-image-id].active a {
+  color: var(--color-neutral-500);
 }
