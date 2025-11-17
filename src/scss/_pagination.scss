@@ -19,6 +19,7 @@
 }
 
 .pagination__item a, .pagination__item button {
+  background-color: #fff;
   border: solid 1px var(--color-teal-400);
   border-radius: 4px;
   color: var(--color-teal-400);
@@ -34,7 +35,7 @@
   gap: 0.25rem;
 }
 
-.pagination__item a:hover, .pagination__item button:hover {
+.pagination__item a:hover, .pagination__item button:not([disabled]):hover {
   background: var(--color-teal-500);
   color: white;
 
@@ -45,7 +46,13 @@
 
 .pagination__item a[disabled], .pagination__item button[disabled] {
   opacity: 0.75;
-  pointer-events: none;
+  // pointer-events: none;
+  cursor: not-allowed;
+  color: var(--color-neutral-200);
+  border: solid 1px var(--color-neutral-200);
+  svg {
+    fill: var(--color-neutral-200);
+  }
 }
 
 .pagination__item a[disabled]:hover {

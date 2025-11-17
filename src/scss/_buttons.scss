@@ -35,7 +35,7 @@ button {
   box-shadow: 0 0 0 2px #ffffff, 0 0 0 4px var(--color-indigo-400);
 }
 
-.button:hover {
+.button:not([disabled]):hover {
   box-shadow: 0 0 0 2px #fff, 0 0 0 3px var(--color-neutral-400);
 }
 
@@ -82,7 +82,9 @@ button {
 }
 
 button[disabled] {
-  opacity: 0.25;
+  opacity: 0.75;
+  cursor: not-allowed !important;
+  color: var(--color-neutral-200);
 
   &:hover {
     box-shadow: none;
