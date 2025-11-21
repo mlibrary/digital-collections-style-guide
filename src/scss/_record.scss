@@ -11,32 +11,51 @@ dl.record {
   display: block;
   width: 100%;
 
+  & > div {
+    grid-template-columns: 1fr;
+
+    & + div {
+      margin-top: 1rem;
+    }
+  }
+
+  dt, dd {
+    grid-column: 1;
+    padding-top: 0.25rem;
+    padding-bottom: 0.25rem;
+  }
+
   dd {
     padding-left: var(--space-small);
   }
 
   dd + dd {
-    grid-column: 2/3;
     border-top: 1px solid var(--color-indigo-100);
   }
 
-  @container record-container ( max-width: 500px ) {
+  @container record-container ( min-width: 500px ) {
+
     & > div {
-      grid-template-columns: 1fr;
+      display: grid;
+      grid-template-columns: 12rem 1fr;
+      column-gap: 0;
+      border-bottom: 1px solid var(--color-neutral-100);
 
       & + div {
-        margin-top: 1rem;
+        margin-top: 0;
       }
     }
 
-    dt, dd {
-      grid-column: 1;
-      padding-top: 0.25rem;
-      padding-bottom: 0.25rem;
+    dt {
+      grid-column: 1/2;
+      padding-top: var(--space-small);
+      padding-bottom: var(--space-small);
     }
 
-    dd + dd {
-      grid-column: 1 !important;
+    dd {
+      padding-top: var(--space-small);
+      padding-bottom: var(--space-small);
+      grid-column: 2/3;
     }
   }
 }
@@ -45,13 +64,6 @@ dl.record {
   .record {
     max-width: 90vw;
   }
-}
-
-.record > div {
-  display: grid;
-  grid-template-columns: 12rem 1fr;
-  column-gap: 0;
-  border-bottom: 1px solid var(--color-neutral-100);  
 }
 
 .record dd > *:first-child {
