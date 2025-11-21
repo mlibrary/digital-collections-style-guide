@@ -56,6 +56,12 @@ a[aria-current="page"] {
   position: relative;
 }
 
+@media ( max-width: 320px ) {
+  .toolbar {
+    grid-template-columns: 1fr;
+  }
+}
+
 .toolbar button[data-action="copy-text"] {
   position: relative;
 }

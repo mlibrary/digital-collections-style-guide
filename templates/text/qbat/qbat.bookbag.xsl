@@ -54,10 +54,19 @@
 
     <div class="[ mb-2 ]">
       <h2 class="[ subtle-heading ][ text-black ]">Bookbag Items</h2>
-      <xsl:call-template name="build-portfolio-actions" />    
-      <xsl:apply-templates select="//qui:block[@slot='items']/qui:section" mode="result">
-        <xsl:with-param name="mode">full</xsl:with-param>
-      </xsl:apply-templates>  
+      <xsl:choose>
+        <xsl:when test="//qui:block[@slot='items']/qui:section">
+          <xsl:call-template name="build-portfolio-actions" />
+          <xsl:apply-templates select="//qui:block[@slot='items']/qui:section" mode="result">
+            <xsl:with-param name="mode">full</xsl:with-param>
+          </xsl:apply-templates>  
+        </xsl:when>
+        <xsl:otherwise>
+          <div class="alert-info">
+            <p>You have no items in your bookbag.</p>
+          </div>
+        </xsl:otherwise>
+      </xsl:choose>
     </div>
 
     <xsl:call-template name="build-hidden-portfolio-form">
