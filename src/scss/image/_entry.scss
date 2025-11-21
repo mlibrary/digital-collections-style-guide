@@ -304,31 +304,31 @@ a.toc-link {
   }
 }
 
-@container aside--wrap (max-width: 670px ) {
-  /* .toolbar {
-    flex-direction: column; 
-  } */
+// @container aside--wrap (max-width: 670px ) {
+//   /* .toolbar {
+//     flex-direction: column; 
+//   } */
 
-  /* sl-dropdown {
-    width: 90%;
-  }
+//   /* sl-dropdown {
+//     width: 90%;
+//   }
 
-  button {
-    width: 90%;
-  }
+//   button {
+//     width: 90%;
+//   }
 
-  .toolbar form {
-    width: 90%;
-  } */
+//   .toolbar form {
+//     width: 90%;
+//   } */
 
-  .record>div {
-    grid-template-columns: 1fr;
-  }
+//   .record>div {
+//     grid-template-columns: 1fr;
+//   }
 
-  dl.record dd+dd {
-    grid-column: 1;
-  }
-}
+//   dl.record dd+dd {
+//     grid-column: 1;
+//   }
+// }
 
 nav.page-index {
   position: sticky;

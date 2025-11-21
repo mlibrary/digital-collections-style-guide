@@ -263,7 +263,7 @@
     <div class="[ mt-1 feedback-callout ]">
       <div class="viewport-container">
         <div class="[ pt-2 pb-2 ]">
-          <div class="flex flex-flow-row gap-0_5">
+          <div class="flex flex-row gap-0_5">
             <span class="material-icons contact-icon" aria-hidden="true">email</span>
             <span>
               Do you have questions about this content? Need to report a problem?
