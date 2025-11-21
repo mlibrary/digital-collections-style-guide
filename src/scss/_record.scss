@@ -33,7 +33,7 @@ dl.record {
     border-top: 1px solid var(--color-indigo-100);
   }
 
-  @container record-container ( min-width: 500px ) {
+  @container record-container ( min-width: 450px ) {
 
     & > div {
       display: grid;
