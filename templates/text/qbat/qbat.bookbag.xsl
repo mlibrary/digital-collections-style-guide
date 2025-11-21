@@ -44,11 +44,13 @@
       <xsl:apply-templates select="//qui:block[@slot='overview']" mode="copy-guts" />
     </div>
 
-    <div class="[ mb-2 ]">
-      <h2 class="[ subtle-heading ][ text-black ]">Search Bookbag Items</h2>
-      <xsl:call-template name="build-advanced-search-form-tabs" />
-    </div>
-    <xsl:call-template name="build-advanced-search-form" />
+    <xsl:if test="$search-form">
+      <div class="[ mb-2 ]">
+        <h2 class="[ subtle-heading ][ text-black ]">Search Bookbag Items</h2>
+        <xsl:call-template name="build-advanced-search-form-tabs" />
+      </div>
+      <xsl:call-template name="build-advanced-search-form" />
+    </xsl:if>
     
     <xsl:apply-templates select="qui:block[@slot='actions']" />  
 
