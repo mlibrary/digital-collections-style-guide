@@ -281,7 +281,7 @@
 
   <xsl:template match="qui:figure[@href]">
     <xsl:variable name="id" select="generate-id()" />
-    <a href="{@href}" id="{$id}" style="display: block; padding: 0 1.5rem;">
+    <a href="{@href}" id="{$id}" style="display: block; padding: 1rem 1.5rem;">
       <xsl:if test="qui:style">
         <style>
           <xsl:apply-templates select="qui:style">
