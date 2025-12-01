@@ -7,6 +7,10 @@
 .advanced-search--form {
   border: solid 1px var(--color-neutral-100);
   padding: 2rem 5.5vw;
+
+  @media (max-width: 320px) {
+    padding: 0.5rem;
+  }
 }
 
 .advanced-search--containers {
@@ -17,37 +21,30 @@
 
   container-type: inline-size;
   container-name: field-groups;
-}
 
-@container field-groups ( max-width: 720px ) {
-  .field-groups {
-    padding: 2rem 0;
+  @media (min-width: 320px) {
+    padding: 0.5rem;
+    margin: 0;
   }
 }
 
-@container field-groups ( max-width: 625px ) {
-  fieldset.fieldset--grid {
-    grid-template-columns: 1fr 6rem;
-    grid-template-areas:
-      "rgn ."
-      "select ."
-      "q clear";
-  }
-}
+// .advanced-grid--columns {
+//   display: grid;
+//   grid-template-columns: repeat(auto-fit, minmax(225px, 1fr));
+//   grid-gap: 2rem;
+// }
 
 .advanced-grid--columns {
-  display: grid;
-  grid-template-columns: repeat(auto-fit, minmax(225px, 1fr));
-  grid-gap: 2rem;
+  margin-bottom: 1rem;
 }
 
-.field-groups {
-  display: grid;
-  grid-template-columns: minmax(380px, 1fr);
-  gap: 1rem;
-  justify-content: center;
-  padding: 2rem 4.5vw;
-}
+// .field-groups {
+//   display: grid;
+//   grid-template-columns: minmax(380px, 1fr);
+//   gap: 1rem;
+//   justify-content: center;
+//   padding: 2rem 4.5vw;
+// }
 
 .fieldset--clause--select label[data-active="false"] {
   display: none;
@@ -55,12 +52,6 @@
 
 .fieldset--clause--select select[data-active="false"] {
   display: none;
-}
-
-fieldset.fieldset--grid--v1 {
-  display: grid;
-  grid-template-columns: repeat(2, minmax(20%, auto)) 40% 40px;
-  grid-column-gap: 0.5rem;
 }
 
 fieldset.fieldset--grid {
@@ -105,13 +96,45 @@ fieldset.fieldset--grid button[data-action="reset-clause"] {
 
 .fieldset--clause--operator label {
   text-transform: uppercase;
+  white-space: nowrap;
+  padding: 0.5rem 0;
 }
 
 fieldset {
   padding: 0.5rem 1rem;
+  margin: auto;
 }
 
 fieldset legend {
   font-weight: bold;
   margin-bottom: 1rem;
 }
+
+@container field-groups ( max-width: 720px ) {
+  .field-groups {
+    padding: 1rem 0.5rem;
+  }
+}
+
+@container field-groups ( max-width: 625px ) {
+  fieldset.fieldset--grid {
+    grid-template-columns: 1fr;
+    grid-template-areas:
+      "rgn"
+      "select"
+      "q"
+      "clear";
+
+    padding: 0;
+
+    select {
+      min-width: 0 !important;
+    }
+  }
+
+  button[data-action="reset-clause"] {
+    margin-left: auto;
+    align-self: end;
+  }
+}
+

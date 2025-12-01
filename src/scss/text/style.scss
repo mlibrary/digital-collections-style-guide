@@ -34,7 +34,7 @@
 @use 'browse';
 @use 'text';
 @use 'hilite';
-
+@use 'bookbag';
 
 iframe[name="bookbag-sink"] {
   width: 100%;
