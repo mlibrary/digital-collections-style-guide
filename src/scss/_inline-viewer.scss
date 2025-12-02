@@ -219,14 +219,36 @@ input[type="text"] {
   }
 
   button.canvas, a.canvas {
-    align-items: flex-start;
-    justify-content: flex-start;
-    gap: 0.5rem;
-    background: inherit;
-    margin-bottom: 0;
-    text-align: left;
-    font-weight: normal;
+
+    display: block;
+    text-align: none;
     width: 100%;
+    padding: 0.5rem 1rem;
+    text-decoration: none;
+
+    & > div {
+      display: flex;
+      flex-direction: row;
+      flex-wrap: nowrap;
+      align-items: start;
+      justify-content: start;
+      gap: 0.5rem;
+      background: inherit;
+      margin-bottom: 0;
+      text-align: left;
+      font-weight: normal;
+      width: 100%;
+
+      gap: 1rem;
+
+    }
+
+    .canvas-label {
+      font-size: var(--text-xx-small);
+      margin: 0;
+      font-weight: normal;
+    }
+
 
     border: none;
   }
@@ -259,6 +281,10 @@ input[type="text"] {
     overflow: hidden;
   }
 
+  sl-tab-panel::part(base) {
+    padding: 0 !important
+  }
+
   button {
     cursor: pointer;
   }
@@ -278,6 +304,7 @@ input[type="text"] {
     opacity: 0.75;
     border: 1px solid #ddd;
     text-wrap: nowrap;
+    position: relative;
   }
 
   li:hover .sequence-badge {
@@ -535,5 +562,9 @@ input[type="text"] {
 }
 
 li[data-image-id].active a {
+  color: var(--color-neutral-500);
+}
+
+.tab-group-ranges li.active a {
   color: var(--color-neutral-500);
 }
