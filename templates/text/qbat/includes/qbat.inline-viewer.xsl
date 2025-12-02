@@ -122,10 +122,6 @@
   </xsl:template>
 
   <xsl:template name="build-seadragon-viewer">
-    <!-- <div class="image-viewer-wrap"
-    >
-      <xsl:call-template name="build-image-tools" />
-    </div> -->
   </xsl:template>
 
   <xsl:template name="build-canvas-toolbar">
@@ -179,15 +175,13 @@
           <sl-tab slot="nav" panel="items"><xsl:value-of select="$manifest/@data-pages-type" /></sl-tab>
           <xsl:apply-templates select="$manifest//fn:array[@key='structures']" mode="tab" />
           <sl-tab-panel name="items">
-            <div style="height: 100%; overflow: auto;">
-              <ul id="nav-index" class="list-unstyled tab-group-ranges" style="margin: 0rem;">
-                <xsl:apply-templates select="$canvases" mode="canvas" />
-              </ul>
-            </div>
+            <ul id="nav-index" class="list-unstyled tab-group-ranges" style="margin: 0rem;">
+              <xsl:apply-templates select="$canvases" mode="canvas" />
+            </ul>
           </sl-tab-panel>
           <xsl:apply-templates select="$manifest//fn:array[@key='structures']" mode="tab-panel" />
         </sl-tab-group>
-      </div>
+      </div>      
     </div>
   </xsl:template>
 
@@ -261,8 +255,7 @@
         data-canvas-label="{$canvas-label}"
         data-seq="{fn:number[@key='dlxs-seq']}"
         data-padded-seq="{fn:number[@key='dlxs-padded-seq']}"
-        class="button flex flex-flow-row flex-row flex-start w-100 canvas" 
-        style="gap: 1rem;" 
+        class="canvas" 
         data-type="button">
         <xsl:attribute name="href">
           <xsl:text>/cgi/t/text/pageviewer-idx?cc=</xsl:text>
@@ -279,23 +272,23 @@
           <xsl:value-of select="fn:number[@key='dlxs-seq']" />
           <xsl:text>;view=image</xsl:text>
         </xsl:attribute>
-        <div class="sequence-badge">
-          <span class="visually-hidden">Scan </span>
-          <span><span aria-hidden="true">#</span> <xsl:value-of select="position()" /></span>
-        </div>
-        <div class="flex flex-flow-column" style="align-items: flex-start">
-          <xsl:if test="$notiles = 'false'">
-            <div style="flex-basis: 50px; flex-shrink: 0;" class="flex justify-end">
-              <img loading="lazy" src="{$image-id}/full/,150/0/default.jpg" alt="" class="border" style="width: 50px; aspect-ratio: {$ratio}" />
-            </div>
-          </xsl:if>
-          <p class="text-xxx-small m-0" style="font-weight: normal;">
-            <xsl:value-of select="$canvas-label" />
-          </p>
+        <div>
+          <div class="sequence-badge">
+            <span class="visually-hidden">Scan </span>
+            <span><span aria-hidden="true">#</span> <xsl:value-of select="position()" /></span>
+          </div>
+          <div class="canvas-label">
+            <xsl:if test="$notiles = 'false'">
+              <div>
+                <img loading="lazy" src="{$image-id}/full/,150/0/default.jpg" alt="" class="border" style="width: 50px; aspect-ratio: {$ratio}" />
+              </div>
+            </xsl:if>
+            <span><xsl:value-of select="$canvas-label" /></span>
+          </div>
         </div>
       </a>
     </li>
-  </xsl:template>
+  </xsl:template>  
 
   <xsl:template match="fn:array[@key='structures']" mode="tab">
     <sl-tab slot="nav" panel="ranges">Index</sl-tab>
@@ -304,20 +297,18 @@
   <xsl:template match="fn:array[@key='structures']" mode="tab-panel">
     <xsl:variable name="canvases" select="../fn:array[@key='sequences']//fn:array[@key='canvases']/fn:map" />
     <sl-tab-panel name="ranges">
-      <div style="height: 100%; overflow: auto;">
-        <ul id="nav-ranges" class="tab-group-ranges" style="margin: 0rem;">
-          <xsl:apply-templates select="fn:map" mode="structure">
-            <xsl:with-param name="canvases">
-              <fn:array>
-                <xsl:for-each select="$canvases">
-                  <xsl:variable name="node" select="fn:map[@key='service'][fn:string[@key='profile'][. = 'dlxs:tei:navigation']]/fn:string[@key='@id']" />
-                  <fn:string node="{$node}" canvas-index="{position()}" key="{fn:string[@key='data-seq']}"><xsl:value-of select="fn:string[@key='@id']" /></fn:string>
-                </xsl:for-each>
-              </fn:array>
-            </xsl:with-param>
-          </xsl:apply-templates>
-        </ul>
-      </div>
+      <ul id="nav-ranges" class="tab-group-ranges" style="margin: 0rem;">
+        <xsl:apply-templates select="fn:map" mode="structure">
+          <xsl:with-param name="canvases">
+            <fn:array>
+              <xsl:for-each select="$canvases">
+                <xsl:variable name="node" select="fn:map[@key='service'][fn:string[@key='profile'][. = 'dlxs:tei:navigation']]/fn:string[@key='@id']" />
+                <fn:string node="{$node}" canvas-index="{position()}" key="{fn:string[@key='data-seq']}"><xsl:value-of select="fn:string[@key='@id']" /></fn:string>
+              </xsl:for-each>
+            </fn:array>
+          </xsl:with-param>
+        </xsl:apply-templates>
+      </ul>
     </sl-tab-panel>
   </xsl:template>
 
@@ -337,7 +328,7 @@
       <a 
         data-canvas-index="{$canvas-index}"
         data-node="{$node}"
-        class="button canvas flex text-xxx-small" data-type="button">
+        class="canvas" data-type="button">
         <xsl:attribute name="href">
           <xsl:text>/cgi/t/text/pageviewer-idx?cc=</xsl:text>
           <xsl:value-of select="$manifest/@data-cc" />
@@ -359,7 +350,9 @@
             <xsl:value-of select="concat(':', exsl:node-set($canvases)//fn:string[. = $this]/@canvas-index, ':')" />
           </xsl:for-each>
         </xsl:attribute>
-        <xsl:value-of select="fn:string[@key='label']" />
+        <div class="canvas-label">
+          <span><xsl:value-of select="fn:string[@key='label']" /></span>
+        </div>
       </a>
     </li>
   </xsl:template>
@@ -427,124 +420,6 @@
           </button>
         </sl-tooltip>
       </div>
-    </div>
-  </xsl:template>
-
-  <xsl:template name="build-image-tools">
-    <div class="button--group image-tools-toolbar" aria-expanded="false">
-      <sl-tooltip content="Rotate right" data-slot="expanded">
-        <button class="button button--square button--ghost"
-          aria-label="Rotate right"
-          >
-          <span class="material-icons" aria-hidden="true">rotate_right</span>
-        </button>
-      </sl-tooltip>
-      <sl-tooltip content="Rotate left" data-slot="expanded">
-        <button class="button button--square button--ghost"
-          aria-label="Rotate left"
-          >
-          <span class="material-icons" aria-hidden="true">rotate_left</span>
-        </button>
-      </sl-tooltip>
-      <sl-tooltip content="Flip image" data-slot="expanded">
-        <button class="button button--square button--ghost" 
-          aria-label="Flip image"
-          >
-          <span class="material-icons" aria-hidden="true">swap_horiz</span>
-        </button>
-      </sl-tooltip>
-      <div style="position: relative;" data-slot="expanded">
-        <sl-tooltip content="Adjust brightness">
-          <button class="button button--square button--ghost" 
-            aria-label="Adjust brightness"
-            >
-            <span class="material-icons" aria-hidden="true">brightness_5</span>
-          </button>
-        </sl-tooltip>
-        <div class="image-options" data-slot="expanded">
-          <input 
-            name="brightness"
-            aria-label="Brightness"
-            type="range" 
-            orient="vertical" 
-            min="0" 
-            max="200" 
-            aria-valuetext=""
-            autocomplete="off"
-             />
-        </div>
-      </div>
-      <div style="position: relative" data-slot="expanded">
-        <sl-tooltip content="Adjust contrast">
-          <button class="button button--square button--ghost" 
-            aria-label="Adjust contrast"
-            >
-            <span class="material-icons" aria-hidden="true">exposure</span>
-          </button>
-        </sl-tooltip>
-        <div class="image-options hidden">
-          <input 
-            name="contrast"
-            aria-label="Contrast"
-            type="range" 
-            orient="vertical"
-            min="0" 
-            max="200"
-            autocomplete="off"
-            aria-valuetext="" 
-            />
-        </div>
-      </div>
-      <div style="position: relative" data-slot="expanded">
-        <sl-tooltip content="Adjust saturation">
-          <button class="button button--square button--ghost" 
-            aria-label="Adjust saturation"
-            >
-            <span class="material-icons" aria-hidden="true">gradient</span>
-          </button>
-        </sl-tooltip>
-        <div class="image-options hidden">
-          <input 
-            name="saturation"
-            aria-label="Saturation"
-            type="range" 
-            orient="vertical" 
-            min="0" 
-            max="200" 
-            aria-valuetext=""
-            autocomplete="off"
-            />
-        </div>
-      </div>
-      <sl-tooltip content="Grayscale" data-slot="expanded">
-        <button class="button button--square button--ghost" 
-          aria-label="Grayscale"
-          >
-          <span class="material-icons" aria-hidden="true">tonality</span>
-        </button>
-      </sl-tooltip>
-      <sl-tooltip content="Invert colors" data-slot="expanded">
-        <button class="button button--square button--ghost" 
-          aria-label="Invert colors"
-          >
-          <span class="material-icons" aria-hidden="true">invert_colors</span>
-        </button>
-      </sl-tooltip>
-      <sl-tooltip content="Revert image" data-slot="expanded">
-        <button class="button button--square button--ghost" aria-label="Revert image">
-          <span class="material-icons" aria-hidden="true">replay</span>
-        </button>
-      </sl-tooltip>
-      <sl-tooltip content="Close tools" data-slot="expanded">
-        <button class="button button--square button--ghost" aria-label="Close tools">
-          <span class="material-icons" aria-hidden="true">close</span>
-        </button>
-      </sl-tooltip>
-      <sl-tooltip content="Open tools" data-slot="collapsed">
-        <button class="button button--square button--ghost" aria-label="Open tools">
-          <span class="material-icons" aria-hidden="true">tune</span>
-        </button>
-      </sl-tooltip>
     </div>
   </xsl:template>
 
