@@ -275,8 +275,7 @@
         data-viewid="{node()[@key='dlxs-viewid']}"
         data-height="{fn:number[@key='height']}"
         data-width="{fn:number[@key='width']}"
-        class="button flex flex-flow-row flex-row flex-start w-100 canvas" 
-        style="gap: 1rem;" 
+        class="canvas" 
         data-type="button">
         <xsl:attribute name="href">
           <xsl:text>/cgi/i/image/image-idx?cc=</xsl:text>
@@ -290,19 +289,21 @@
             <xsl:text>;prep=1</xsl:text>
           </xsl:if>
         </xsl:attribute>
-        <div class="sequence-badge">
-          <span class="visually-hidden">Scan </span>
-          <span><span aria-hidden="true">#</span> <xsl:value-of select="position()" /></span>
-        </div>
-        <div class="flex flex-flow-column" style="align-items: flex-start">
-          <xsl:if test="$notiles = 'false'">
-            <div style="flex-basis: 50px; flex-shrink: 0;" class="flex justify-end">
-              <img loading="lazy" src="{$image-id}/full/,150/0/default.jpg" alt="" class="border" style="width: 50px; aspect-ratio: {$ratio}" />
-            </div>
-          </xsl:if>
-          <p class="text-xxx-small m-0" style="font-weight: normal;">
-            <xsl:value-of select="$canvas-label" />
-          </p>
+        <div>
+          <div class="sequence-badge">
+            <span class="visually-hidden">Scan </span>
+            <span><span aria-hidden="true">#</span> <xsl:value-of select="position()" /></span>
+          </div>
+          <div class="canvas-label">
+            <xsl:if test="$notiles = 'false'">
+              <div>
+                <img loading="lazy" src="{$image-id}/full/,150/0/default.jpg" alt="" class="border" style="width: 50px; aspect-ratio: {$ratio}" />
+              </div>
+            </xsl:if>
+            <span>
+              <xsl:value-of select="$canvas-label" />
+            </span>
+          </div>
         </div>
       </a>
     </li>
@@ -348,7 +349,7 @@
       <a 
         data-canvas-index="{$canvas-index}"
         data-node="{$node}"
-        class="button canvas flex text-xxx-small" data-type="button">
+        class="canvas" data-type="button">
         <xsl:attribute name="href">
           <xsl:text>/cgi/t/text/pageviewer-idx?cc=</xsl:text>
           <xsl:value-of select="$manifest/@data-cc" />
@@ -370,7 +371,9 @@
             <xsl:value-of select="concat(':', exsl:node-set($canvases)//fn:string[. = $this]/@canvas-index, ':')" />
           </xsl:for-each>
         </xsl:attribute>
-        <xsl:value-of select="fn:string[@key='label']" />
+        <div class="canvas-label">
+          <span><xsl:value-of select="fn:string[@key='label']" /></span>
+        </div>
       </a>
     </li>
   </xsl:template>
