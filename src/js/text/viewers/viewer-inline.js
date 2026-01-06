@@ -218,6 +218,7 @@ class DLXSViewer {
 
     [ 'guide', 'image', 'text' ].forEach((key) => {
       if ( ! viewerButtons[key] ) { return ; }
+      if ( config[key] === undefined ) { return ; }
       viewerButtons[key].setAttribute('aria-pressed', config[key]);
       viewerButtons[key]
         .closest("div.toggle")
