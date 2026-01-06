@@ -89,7 +89,7 @@ h3.viewport-narrow {
   width: 1.5rem;
 }
 
-.hero--caption:hover a, .hero--caption:active a {
+.hero--caption:hover a, .hero--caption a:active, .hero--caption a:focus {
   width: auto;
 }
 
