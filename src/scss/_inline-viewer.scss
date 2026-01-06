@@ -274,6 +274,10 @@ input[type="text"] {
     margin-left: 4px;
   }
 
+  sl-tab[aria-selected="true"]::part(base) {
+    color: var(--color-teal-500);
+  }
+  
   sl-tab-group::part(base) {
     display: grid !important;
     grid-template-rows: min-content 1fr;
@@ -355,10 +359,15 @@ input[type="text"] {
 
   .toggled {
     background: var(--color-teal-100) !important;
+    background: var(--color-teal-500) !important;
+
+    button {
+      color: var(--color-teal-100);
+    }
   }
 
   .toggled button {
-    color: var(--color-teal-400);
+    color: var(--color-teal-100);
   }
 
   .toggle:last-child {
@@ -441,6 +450,27 @@ input[type="text"] {
     justify-content: center;
     gap: 0.5rem;
     padding: 0.25rem;
+
+    @media screen and (max-width: 360px) {
+      gap: 0.25rem;
+
+      .jump-to-seq {
+        display: none;
+      }
+
+      input[name="seq"] {
+        width: 5ch;
+        font-size: 0.875rem;
+      }
+
+      label[for="jumpToSeq"] {
+        padding-right: 0.125rem;
+      }
+
+      .toolbar-separator {
+        margin: 0 0.125rem;
+      }
+    }
   }
 
   .image-viewer-toolbar button {
@@ -567,4 +597,10 @@ li[data-image-id].active a {
 
 .tab-group-ranges li.active a {
   color: var(--color-neutral-500);
+}
+
+.image-tools-toolbar {
+  @media screen and ( max-width: 360px ) {
+    flex-wrap: wrap !important;
+  }
 }
