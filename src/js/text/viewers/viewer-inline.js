@@ -213,11 +213,12 @@ class DLXSViewer {
     const $splitPanel = this.elements.splitPanel;
     const buttons = this.elements.buttons.toolbar;
 
-    if ( ! viewerButtons.text ) { return ; }
-    viewerButtons.image.disabled = config.disabled;
-    viewerButtons.text.disabled = config.disabled;
+    if ( viewerButtons.image ) { viewerButtons.image.disabled = config.disabled; }  
+    if ( viewerButtons.text ) { viewerButtons.text.disabled = config.disabled; }
 
     [ 'guide', 'image', 'text' ].forEach((key) => {
+      if ( ! viewerButtons[key] ) { return ; }
+      if ( config[key] === undefined ) { return ; }
       viewerButtons[key].setAttribute('aria-pressed', config[key]);
       viewerButtons[key]
         .closest("div.toggle")
@@ -250,10 +251,12 @@ class DLXSViewer {
       $divider.style.display = 'none';    
     }
 
-    // more complicated maths
-    ["zoomIn", "zoomOut", "home"].forEach((key) => {
-      buttons[key].disabled = ! config.image;
-    });
+    if ( viewerButtons.image ) {
+      // more complicated maths
+      ["zoomIn", "zoomOut", "home"].forEach((key) => {
+        buttons[key].disabled = !config.image;
+      });
+    }
   }
 
   updatePanelTabsByViewerWidth(callback){

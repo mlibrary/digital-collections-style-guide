@@ -61,7 +61,18 @@
 
   <xsl:template match="node()[Link]" mode="build-nav">
     <qui:link href="{Link}">
-      <xsl:value-of select="Divhead/HEAD" />
+      <xsl:variable name="link-text" select="normalize-space(Divhead/HEAD)" />
+      <xsl:choose>
+        <xsl:when test="normalize-space($link-text)">
+          <xsl:value-of select="$link-text" />
+        </xsl:when>
+        <xsl:when test="false() and @TYPE">
+          <xsl:value-of select="@TYPE" />
+        </xsl:when>
+        <xsl:otherwise>
+          <xsl:value-of select="key('get-lookup', 'uplift.section')" />
+        </xsl:otherwise>
+      </xsl:choose>
     </qui:link>
     <xsl:apply-templates select="./node()[Link]" mode="build-nav" />
   </xsl:template>

@@ -253,8 +253,8 @@
     <xsl:if test="qui:download-options/qui:download-item">
       <sl-dropdown id="dropdown-action" placement="bottom">
         <sl-button slot="trigger" caret="caret" class="sl-button--primary">
-          <span class="flex flex-center flex-gap-0_5 text-xx-small">
-            <span class="material-icons text-xx-small">file_download</span>
+          <span class="flex flex-center justify-center flex-gap-0_5 text-xx-small">
+            <span class="material-icons text-xx-small" aria-hidden="true">file_download</span>
             <span class="capitalize">
               <xsl:text>Download</xsl:text>
               <xsl:text> </xsl:text>
