@@ -28,6 +28,7 @@
 .breadcrumb li {
   display: inline;
   padding: var(--space-xx-small);
+  text-transform: capitalize;
 }
 
 .breadcrumb li:first-child {
