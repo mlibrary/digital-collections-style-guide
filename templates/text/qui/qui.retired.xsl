@@ -85,7 +85,7 @@
   </xsl:template>
 
   <xsl:template match="Redirect/Link" mode="compute">
-    <xsl:value-of select="Link" />
+    <xsl:value-of select="." />
   </xsl:template>
 
 </xsl:stylesheet>
