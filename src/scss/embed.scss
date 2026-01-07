@@ -77,6 +77,33 @@ span.inline-highlight {
   scroll-margin-top: 2rem;
 }
 
+sl-tab[aria-selected="true"]::part(base) {
+  color: var(--color-teal-500);
+}
+
+@media screen and (max-width: 360px) {
+  .image-viewer-toolbar {
+    gap: 0.25rem;
+
+    .jump-to-seq {
+      display: none;
+    }
+
+    input[name="seq"] {
+      width: 5ch;
+      font-size: 0.875rem;
+    }
+
+    label[for="jumpToSeq"] {
+      padding-right: 0.125rem;
+    }
+
+    .toolbar-separator {
+      margin: 0 0.125rem;
+    }
+  }
+}
+
 @media screen and (max-width: 600px) {
   .ocr-wrap {
     min-width: calc(100dvw - 50px) !important;
