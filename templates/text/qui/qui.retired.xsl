@@ -6,9 +6,11 @@
   </xsl:variable>
 
   <xsl:template name="build-head-block">
-    <qui:debug><xsl:copy-of select="//Redirect" /></qui:debug>
     <xsl:if test="//Redirect">
-      <qui:link rel="redirect" href="{//Redirect/Link}" auto-redirect="{$auto-redirect-setting}">
+      <xsl:variable name="link">
+        <xsl:apply-templates select="//Redirect/Link" mode="compute" />
+      </xsl:variable>
+      <qui:link rel="redirect" href="{$link}" auto-redirect="{$auto-redirect-setting}">
 \        <xsl:value-of select="//Redirect/Label" />
       </qui:link>
     </xsl:if>
@@ -80,6 +82,10 @@
         </xsl:otherwise>
       </xsl:choose>
     </a>
+  </xsl:template>
+
+  <xsl:template match="Redirect/Link" mode="compute">
+    <xsl:value-of select="Link" />
   </xsl:template>
 
 </xsl:stylesheet>
