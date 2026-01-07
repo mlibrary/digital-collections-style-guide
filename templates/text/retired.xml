@@ -2,14 +2,27 @@
 <Top xmlns:dlxs="http://www.umdl.umich.edu/dlxs">
 
   <!-- XSL fallback files -->
-  <XslFallbackFileList>
+  <!-- <XslFallbackFileList>
     <Filename>xsl2htmlutils.xsl</Filename>
     <Filename>footer.import.xsl</Filename>
     <Filename>globalvariables.xsl</Filename>
     <Filename>htmlhead.xsl</Filename>
     <Filename>misc.xsl</Filename>
     <Filename>retired.xsl</Filename>
-  </XslFallbackFileList>  
+  </XslFallbackFileList>   -->
+
+  <XslFallbackFileList pipeline="qui">
+    <Filename>../vendor/xslfunctions.xsl</Filename>
+    <Filename>qui/qui.base.xsl</Filename>
+    <Filename>qui/components/*.xsl</Filename>
+    <Filename>qui/qui.retired.xsl</Filename>
+  </XslFallbackFileList>
+
+  <XslFallbackFileList pipeline="qbat">
+    <Filename>qbat/qbat.base.xsl</Filename>
+    <Filename>qbat/components/*.xsl</Filename>
+    <Filename>qbat/qbat.retired.xsl</Filename>
+  </XslFallbackFileList>
 
 
   <!-- Custom OPTIONAL XML for top-level file index.xml<2> -->

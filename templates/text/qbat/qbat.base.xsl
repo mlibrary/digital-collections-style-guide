@@ -148,7 +148,7 @@
       </xsl:if>
 
       <xsl:call-template name="build-extra-scripts" />
-      <!-- <xsl:call-template name="build-extra-styles" /> -->
+      <xsl:call-template name="build-extra-styles" />
 
     </head>
   </xsl:template>
