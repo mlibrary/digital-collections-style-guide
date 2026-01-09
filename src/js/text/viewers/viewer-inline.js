@@ -577,13 +577,19 @@ class DLXSViewer {
     slMenuEl.querySelectorAll('sl-menu-item').forEach((itemEl) => {
       let downloadHref = itemEl.dataset.href.replace(/;/g, '&');
       let downloadUrl = new URL(downloadHref);
+      let didUpdateUrl = false;
       if ( downloadUrl.searchParams.has('seq') ) {
         downloadUrl.searchParams.set('seq', seq);
+        didUpdateUrl = true;
       } else if ( downloadUrl.pathname.indexOf(baseIdentifier) > -1 ) {
         // replace the identifier in the path
         let re = new RegExp(`${baseIdentifier}:\\d+`);
         downloadUrl.pathname = downloadUrl.pathname.replace(re, identifier);
+        didUpdateUrl = true;
       }
+
+      if ( ! didUpdateUrl ) { return ; }
+
       itemEl.dataset.href = downloadUrl.toString();
       itemEl.setAttribute('value', downloadUrl.toString());
 
