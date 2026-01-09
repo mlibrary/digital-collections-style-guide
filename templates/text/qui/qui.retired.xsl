@@ -86,7 +86,10 @@
   </xsl:template>
 
   <xsl:template match="Redirect" mode="print">
-    <a href="{Link}">
+    <xsl:variable name="link">
+      <xsl:apply-templates select="Link" mode="compute" />
+    </xsl:variable>
+    <a href="{$link}">
       <xsl:choose>
         <xsl:when test="normalize-space(Label)">
           <xsl:value-of select="Label" />

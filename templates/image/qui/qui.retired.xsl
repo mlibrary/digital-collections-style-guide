@@ -7,8 +7,11 @@
 
   <xsl:template name="build-head-block">
     <xsl:if test="//Redirect">
-      <qui:link rel="redirect" href="{//Redirect/Link}" auto-redirect="{$auto-redirect-setting}">
-\        <xsl:value-of select="//Redirect/Label" />
+      <xsl:variable name="link">
+        <xsl:apply-templates select="//Redirect/Link" mode="compute" />
+      </xsl:variable>
+      <qui:link rel="redirect" href="{$link}" auto-redirect="{$auto-redirect-setting}">
+        <xsl:value-of select="//Redirect/Label" />
       </qui:link>
     </xsl:if>
   </xsl:template>
@@ -18,7 +21,14 @@
   <xsl:template name="build-site-header" />
 
   <xsl:template name="get-title">
-    Offline
+    <xsl:choose>
+      <xsl:when test="//Redirect/RedirectType = 'move'">
+        <xsl:text>Collection Moved</xsl:text>
+      </xsl:when>
+      <xsl:otherwise>
+        <xsl:text>Offline</xsl:text>
+      </xsl:otherwise>
+    </xsl:choose>
   </xsl:template>
 
   <xsl:template name="build-body-main">
@@ -38,7 +48,14 @@
           <xsl:apply-templates select="//qui:block[@slot='closed-for-business']" mode="copy-guts" />
         </xsl:when>
         <xsl:otherwise>
-          <p>This collection has been retired.</p>
+          <xsl:choose>
+            <xsl:when test="//Redirect/RedirectType = 'move'">
+              <p>This collection has been moved.</p>
+            </xsl:when>
+            <xsl:otherwise>
+              <p>This collection has been retired.</p>
+            </xsl:otherwise>
+          </xsl:choose>
           <xsl:if test="//Redirect">
             <xsl:choose>
               <xsl:when test="$auto-redirect-setting = 'true'">
@@ -68,8 +85,15 @@
     </xsl:choose>
   </xsl:template>
 
+  <xsl:template match="Redirect/Link" mode="compute">
+    <xsl:value-of select="." />
+  </xsl:template>
+
   <xsl:template match="Redirect" mode="print">
-    <a href="{Link}">
+    <xsl:variable name="link">
+      <xsl:apply-templates select="Link" mode="compute" />
+    </xsl:variable>
+    <a href="{$link}">
       <xsl:choose>
         <xsl:when test="normalize-space(Label)">
           <xsl:value-of select="Label" />
