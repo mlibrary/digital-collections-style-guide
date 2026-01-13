@@ -162,7 +162,11 @@
             })
             .then(function(text) {
               if ( text.indexOf('SUCCESS') == -1 ) {
-                alert("NOPE");
+                let idx1 = text.indexOf('<pre>');
+                let idx2 = text.indexOf('</pre>', idx1+1);
+                let message = text.substring(idx1 + 5, idx2) || 'Unknown error';
+                alert(`There was an error with the reCAPTCHA: ${message}. Please try again.`);
+                grecaptcha.reset();
               } else {
                 document.querySelector('#session-id').setAttribute('name', document.documentElement.dataset.sid);
                 $form.submit();
