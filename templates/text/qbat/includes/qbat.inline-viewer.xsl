@@ -102,7 +102,7 @@
           </div>
           <div slot="end" class="pane">
             <!-- flex is only present if there's no plaintext -->
-            <div class="plaintext-wrap" role="region" tabindex="0">
+            <div class="plaintext-wrap" role="region" tabindex="0" aria-label="Text content">
               <xsl:call-template name="build-annotation-tools" />
               <xsl:call-template name="build-highlight-tools" />
               <div data-slot="content" class="fullview-main">
