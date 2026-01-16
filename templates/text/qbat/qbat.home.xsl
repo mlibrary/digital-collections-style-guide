@@ -319,6 +319,7 @@
   <xsl:template match="qui:img">
     <img height="{@height}" width="{@width}">
       <xsl:apply-templates select="@class" mode="copy" />
+      <xsl:apply-templates select="@alt" mode="copy" />
       <xsl:attribute name="src">
         <xsl:choose>
           <xsl:when test="starts-with(@src, 'http')">
