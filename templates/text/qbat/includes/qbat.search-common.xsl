@@ -97,26 +97,6 @@
     </div>
   </xsl:template>
 
-  <xsl:template match="qui:fieldset[@slot='restriction-cite']" mode="v1">
-    <h4 style="margin: 0; padding: 0 1rem;">Limit to:</h4>
-    <xsl:for-each select="qui:fieldset">
-      <fieldset class="[ no-border ][ fieldset--grid ]">
-        <div class="[ fieldset--clause--region ]">
-          <xsl:apply-templates select="qui:select[@slot='region']" />
-        </div>
-        <div class="[ fieldset--clause--select flex flex-align-center ]">
-          <span style="padding: 0rem 1rem; font-weight: bold;">matches the expression</span>
-        </div>
-          <div class="[ fieldset--clause--query ]">
-          <xsl:apply-templates select="qui:input[@slot='query']" />
-        </div>
-      </fieldset>
-      <xsl:if test="position() &lt; last()">
-        <div style="padding: 0rem 1rem; margin: 0rem; text-align: center;">AND</div>
-      </xsl:if>
-    </xsl:for-each>
-  </xsl:template>
-
   <xsl:template match="qui:fieldset[@slot='restriction-cite']">
     <fieldset class="[ no-border ]">
       <legend class="mb-0_5"><xsl:value-of select="qui:legend" /></legend>
@@ -124,7 +104,9 @@
         <fieldset class="[ no-border ][ fieldset--grid ]">
           <legend class="mb-0"><xsl:value-of select="qui:legend" /></legend>
           <div class="[ fieldset--clause--region ]">
-            <xsl:apply-templates select="qui:select[@slot='region']" />
+            <xsl:apply-templates select="qui:select[@slot='region']">
+              <xsl:with-param name="index" select="position()" />
+            </xsl:apply-templates>
           </div>
           <div class="[ fieldset--clause--select flex flex-align-center ]">
             <span style="padding: 0rem 1rem; font-weight: bold;">matches the expression</span>
@@ -185,12 +167,16 @@
   </xsl:template>
 
   <xsl:template match="qui:select[@slot='region']">
-    <label for="{@name}-{position()}" class="visually-hidden">Select a field:</label>
-    <xsl:apply-templates select="." mode="build-select" />
+    <xsl:param name="index" select="position()" />
+    <label for="{@name}-{$index}" class="visually-hidden">Select a field:</label>
+    <xsl:apply-templates select="." mode="build-select">
+      <xsl:with-param name="index" select="$index" />
+    </xsl:apply-templates>
   </xsl:template>
 
   <xsl:template match="qui:select[@slot='region']" mode="build-select">
-    <select class="[ dropdown--neutral ]" name="{@name}" id="{@name}-{position()}" autocomplete="off">
+    <xsl:param name="index" select="position()" />
+    <select class="[ dropdown--neutral ]" name="{@name}" id="{@name}-{$index}" autocomplete="off">
       <xsl:for-each select="qui:option">
         <option value="{@value}">
           <xsl:if test="@selected = 'true'">
@@ -216,8 +202,9 @@
  
   <xsl:template match="qui:select">
     <xsl:param name="name" select="@name" />
-    <label for="{$name}-{position()}" class="visually-hidden"><xsl:value-of select="@label" /></label>
-    <select class="[ dropdown--neutral ]" name="{@name}" id="{@name}-{position()}" autocomplete="off">
+    <xsl:param name="index" select="position()" />
+    <label for="{$name}-{$index}" class="visually-hidden"><xsl:value-of select="@label" /></label>
+    <select class="[ dropdown--neutral ]" name="{@name}" id="{@name}-{$index}" autocomplete="off">
       <xsl:for-each select="qui:option">
         <xsl:apply-templates select="." />
       </xsl:for-each>
