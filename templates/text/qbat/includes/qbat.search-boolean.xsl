@@ -9,7 +9,7 @@
 
   <xsl:template match="qui:fieldset[@slot='clause'][@type='boolean']">
     <fieldset class="[ no-border ][ fieldset--grid ]">
-      <legend class="visually-hidden">Search Terms</legend>
+      <legend class="xx-visually-hidden">Find items in fields:</legend>
       <div class="[ fieldset--clause--region flex flex-flow-row flex-align-center ]" style="grid-column: 1/3;">
         <xsl:apply-templates select="qui:select[@slot='region']" />
       </div>
@@ -35,10 +35,10 @@
     </fieldset>
   </xsl:template>
 
-  <xsl:template match="qui:select[@slot='region']">
+  <!-- <xsl:template match="qui:select[@slot='region']">
     <label class="nowrap" for="{@name}-{position()}">Search in field:</label>
     <xsl:apply-templates select="." mode="build-select" />
-  </xsl:template>
+  </xsl:template> -->
 
   <xsl:template match="qui:fieldset[@slot='clause'][@type='boolean']" mode="v1">
     <fieldset class="[ no-border ][ fieldset--grid ]">

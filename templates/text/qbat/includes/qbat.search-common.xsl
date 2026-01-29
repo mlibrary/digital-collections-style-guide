@@ -97,7 +97,7 @@
     </div>
   </xsl:template>
 
-  <xsl:template match="qui:fieldset[@slot='restriction-cite']">
+  <xsl:template match="qui:fieldset[@slot='restriction-cite']" mode="v1">
     <h4 style="margin: 0; padding: 0 1rem;">Limit to:</h4>
     <xsl:for-each select="qui:fieldset">
       <fieldset class="[ no-border ][ fieldset--grid ]">
@@ -117,8 +117,31 @@
     </xsl:for-each>
   </xsl:template>
 
-  <xsl:template match="qui:fieldset[@slot='restriction'][@class='range']">
-    <fieldset class="[ no-border ][ xx-fieldset--grid ]">
+  <xsl:template match="qui:fieldset[@slot='restriction-cite']">
+    <fieldset class="[ no-border ]">
+      <legend class="mb-0_5"><xsl:value-of select="qui:legend" /></legend>
+      <xsl:for-each select="qui:fieldset">
+        <fieldset class="[ no-border ][ fieldset--grid ]">
+          <legend class="mb-0"><xsl:value-of select="qui:legend" /></legend>
+          <div class="[ fieldset--clause--region ]">
+            <xsl:apply-templates select="qui:select[@slot='region']" />
+          </div>
+          <div class="[ fieldset--clause--select flex flex-align-center ]">
+            <span style="padding: 0rem 1rem; font-weight: bold;">matches the expression</span>
+          </div>
+            <div class="[ fieldset--clause--query ]">
+            <xsl:apply-templates select="qui:input[@slot='query']" />
+          </div>
+        </fieldset>
+        <xsl:if test="position() &lt; last()">
+          <div style="padding: 0rem 1rem; margin: 0rem; text-align: center;">AND</div>
+        </xsl:if>
+      </xsl:for-each>
+    </fieldset>
+  </xsl:template>  
+
+  <xsl:template match="qui:fieldset[@slot='restriction'][@class='range']" priority="101">
+    <fieldset class="[ no-border ][ x-xx-fieldset--grid ]">
       <legend style="font-weight: bold; margin-bottom: 1rem;"><xsl:value-of select="qui:legend" /></legend>
       <div style="display: flex; gap: 1rem; align-items: center;">
         <xsl:apply-templates select="qui:select[1]" />
@@ -132,10 +155,19 @@
     <xsl:call-template name="build-fieldset-clause" />
   </xsl:template>
 
+  <xsl:template match="qui:fieldset[@slot='restriction']">
+    <fieldset class="[ no-border ][ xx-fieldset--grid ]">
+      <legend style="font-weight: bold; margin-bottom: 1rem; color:"><xsl:value-of select="qui:legend" /></legend>
+      <div style="display: flex; gap: 1rem; align-items: center;">
+        <xsl:apply-templates select="qui:select" />
+      </div>
+    </fieldset>
+  </xsl:template>
+
   <xsl:template name="build-fieldset-clause">
     <xsl:apply-templates select="qui:select[@slot='op']" mode="radio" />
     <fieldset class="[ no-border ][ fieldset--grid ]" data-index="{substring(@data-name, 2)}">
-      <legend class="visually-hidden">Search Terms</legend>
+      <legend class="xx-visually-hidden">Find items in fields:</legend>
       <div class="[ fieldset--clause--region ]">
         <xsl:apply-templates select="qui:select[@slot='region']" />
       </div>

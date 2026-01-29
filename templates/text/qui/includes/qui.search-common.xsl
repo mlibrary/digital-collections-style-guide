@@ -165,12 +165,15 @@
 
   <xsl:template match="CiteRestrictions">
     <qui:fieldset slot="restriction-cite">
-      <qui:legend><xsl:value-of select="key('get-lookup','searchforms.str.16')" /></qui:legend>
+      <!-- <qui:legend><xsl:value-of select="key('get-lookup','searchforms.str.16')" /></qui:legend> -->
+      <qui:legend><xsl:text>Limit to citation info:</xsl:text></qui:legend>
       <xsl:for-each select="Cite">
         <xsl:variable name="default" select="Restrict/Default" />
         <qui:fieldset slot="clause" id="{Input/Name}-fieldset">
+          <!-- <qui:legend><xsl:text>Clause #</xsl:text><xsl:value-of select="position()" /></qui:legend> -->
+          <qui:legend><xsl:text>Limit to field #</xsl:text><xsl:value-of select="position()" /></qui:legend>
           <qui:input name="{Input/Name}" value="{Input/Default}" slot="query" />
-          <qui:select name="{Restrict/Name}" slot="region">
+          <qui:select name="{Restrict/Name}" slot="region" label="Select field">
             <xsl:apply-templates select="Restrict/Option">
               <xsl:with-param name="default" select="$default" />
             </xsl:apply-templates>
@@ -184,6 +187,9 @@
     <qui:fieldset id="genre-fieldset" slot="restriction">
       <qui:legend><xsl:value-of select="key('get-lookup','searchforms.str.19')" /></qui:legend>
       <qui:select name="{Name}">
+        <xsl:apply-templates select="." mode="get-select-label">
+          <xsl:with-param name="fieldset-label" select="key('get-lookup','searchforms.str.19')" />
+        </xsl:apply-templates>
         <xsl:apply-templates select="Option">
           <xsl:with-param name="default" select="Default" />
         </xsl:apply-templates>
@@ -195,6 +201,9 @@
     <qui:fieldset id="genre-fieldset" slot="restriction">
       <qui:legend><xsl:value-of select="key('get-lookup','searchforms.str.20')" /></qui:legend>
       <qui:select name="{Name}">
+        <xsl:apply-templates select="." mode="get-select-label" >
+          <xsl:with-param name="fieldset-label" select="key('get-lookup','searchforms.str.20')" />
+        </xsl:apply-templates>
         <xsl:apply-templates select="Option">
           <xsl:with-param name="default" select="Default" />
         </xsl:apply-templates>
@@ -206,6 +215,7 @@
     <qui:fieldset id="genre-fieldset" slot="restriction">
       <qui:legend><xsl:value-of select="key('get-lookup','searchforms.str.21')" /></qui:legend>
       <qui:select name="{Name}">
+        <xsl:apply-templates select="." mode="get-select-label" />
         <xsl:apply-templates select="Option">
           <xsl:with-param name="default" select="Default" />
         </xsl:apply-templates>
@@ -261,6 +271,25 @@
       </xsl:if>
       <xsl:value-of select="Name" />
     </qui:option>
+  </xsl:template>
+
+  <xsl:template match="*" mode="get-select-label">
+    <xsl:param name="fieldset-label" />
+    <xsl:variable name="select-label" select="substring-before(dlxs:capitalize(substring-after($fieldset-label, 'Restrict to ')), ':')" />
+    <xsl:attribute name="label">
+      <xsl:value-of select="$select-label" />
+    </xsl:attribute>
+    <!-- <xsl:variable name="possible-label" select="key('get-lookup', concat('select.', Name))" />
+    <xsl:attribute name="label">
+      <xsl:choose>
+        <xsl:when test="normalize-space($possible-label) != ''">
+          <xsl:value-of select="$possible-label" />
+          </xsl:when>
+          <xsl:otherwise>
+            <xsl:text>Option</xsl:text>
+          </xsl:otherwise>
+      </xsl:choose>
+    </xsl:attribute> -->
   </xsl:template>
 
 </xsl:stylesheet>
