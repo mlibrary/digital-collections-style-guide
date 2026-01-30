@@ -16,6 +16,7 @@
           <nav class="[ page-index ]" xx-aria-labelledby="page-index-label">
             <h2 id="page-index-label" class="[ subtle-heading ][ text-black js-toc-ignore ]">Page Index</h2>
             <div class="toc js-toc"></div>
+            <label class="visually-hidden" for="action-page-index">Jump to section:</label>
             <select id="action-page-index"></select>
           </nav>  
         </xsl:if>

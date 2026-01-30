@@ -6,6 +6,9 @@
 #action-page-index {
   display: none;;
 }
+label[for="action-page-index"] {
+  display: none;
+}
 
 nav.page-index {
   position: sticky;
@@ -132,6 +135,11 @@ a.toc-link.is-active-link {
     display: block;
     flex-grow: 1;
   }
+
+  nav.page-index label[for="action-page-index"] {
+    display: block;
+  }
+
 
   .page-navigation {
     display: none;
