@@ -294,6 +294,11 @@
   </xsl:template>
 
   <xsl:template name="build-results-list">
+    <h2 class="results-heading">
+      <xsl:text>Showing </xsl:text>
+      <xsl:value-of select="count(//qui:block[@slot='results']//qui:section[@type='item'])" />
+      <xsl:text> items</xsl:text>
+    </h2>
     <xsl:apply-templates select="//qui:block[@slot='results']" mode="result" />
   </xsl:template>
 
@@ -470,7 +475,6 @@
     <xsl:if test="position() mod 10 = 0 and position() != last()">
       <div class="[ results--jump-toolbar flex flex-gap-0_5 flex-align-center ]">
         <a href="#maincontent" data-behavior="focus-center" class="button button--ghost">Back to Top</a>
-        <a href="#pagination" data-behavior="focus-center" class="button button--ghost">Go to Pagination</a>
       </div>
     </xsl:if>
 
