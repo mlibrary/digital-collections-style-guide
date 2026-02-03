@@ -388,8 +388,59 @@ h3#portfolios::before {
 }
 
 .plaintext-wrap {
+  overscroll-behavior: contain;
+
   p {
     margin-top: 0;
     margin-bottom: 0.25rem;
+  }
+}
+
+.button--highlight {
+  padding: var(--space-xxx-small);
+  min-height: 0;
+}
+
+:target, .active-section {
+  // animation: target-fade 6s ease;
+  animation: target-fade-2 1.5s ease-in-out;
+  // box-shadow: 
+  //   6px 0 4px -4px var(--color-maize-500), 
+  //   -6px 0 4px -4px var(--color-maize-500);
+
+  scroll-margin-top: 1rem;
+  
+  .footnote-anchor {
+    color: var(--color-green-500);
+  }
+}
+
+@keyframes target-fade {
+  0% {
+    background: var(--color-maize-200);
+    box-shadow: 
+      6px 0 4px -4px var(--color-maize-500), 
+      -6px 0 4px -4px var(--color-maize-500);
+  }
+  10% {
+    background: var(--color-maize-100);
+  }
+  100% {
+    // background: transparent;
+    box-shadow: none;
+  }
+}
+
+@keyframes target-fade-2 {
+  from {
+    background-color: var(--color-green-100);
+    box-shadow: 
+      6px 0 4px -4px var(--color-green-500), 
+      -6px 0 4px -4px var(--color-green-500);
+  }
+  to {
+    box-shadow: 
+      6px 0 4px -4px transparent, 
+      -6px 0 4px -4px transparent;
   }
 }
