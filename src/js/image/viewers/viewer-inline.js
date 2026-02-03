@@ -744,5 +744,34 @@ class DLXSViewer {
 window.addEventListener('DOMContentLoaded', (event) => {
   if ( document.querySelector('.viewer[data-cc]') ) {
     DLXSViewer.initialize();
+
+    document.querySelectorAll('.plaintext-wrap a[href^="#"]').forEach(anchor => {
+        anchor.addEventListener('click', function (e) {
+            e.preventDefault();
+
+            const container = document.querySelector('.plaintext-wrap');
+            const hash = this.getAttribute('href');
+            const target = document.querySelector(this.getAttribute('href'));
+
+            if (target && container) {
+                // 1. Calculate the target's position relative to the container
+                const targetTop = target.offsetTop;
+                
+                // 2. Get the value of 1rem in pixels
+                const oneRem = parseFloat(getComputedStyle(document.documentElement).fontSize);
+
+                // 3. Scroll the container to the target position PLUS the 1rem offset
+                container.scrollTo({
+                    top: targetTop - oneRem, // Subtracting 1rem leaves a gap at the top
+                    behavior: 'smooth'
+                });
+
+                container.querySelectorAll('.footnote-container').forEach(el => el.classList.remove('active-section'));
+                target.classList.add('active-section');                
+
+                history.pushState(null, null, hash);
+            }
+        });
+    });    
   }
 })
