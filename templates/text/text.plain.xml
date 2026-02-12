@@ -1,0 +1,34 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+
+<!-- text.xml -->
+
+<?CHUNK filename="entitiesdoctype.chnk" optional="1"?>
+
+<Top xmlns:dlxs="http://www.umdl.umich.edu/dlxs">
+
+  <!-- XSL fallback files -->
+  <!-- <Filename>qui/includes/qui.text.components.xsl</Filename> -->
+  <XslFallbackFileList pipeline="qui">
+    <XslFallbackFileList pipeline="qui">
+        <Filename>qui/qui.text.plain.xsl</Filename>
+    </XslFallbackFileList>
+  </XslFallbackFileList>
+
+  <XslFallbackFileList pipeline="qbat">
+    <Filename>qbat/qbat.base.xsl</Filename>
+    <Filename>../vendor/xslfunctions.xsl</Filename>
+    <Filename>qbat/components/*.xsl</Filename>
+    <Filename>qbat/includes/qbat.text.components.xsl</Filename>
+    <Filename>qbat/qbat.text.plain.xsl</Filename>
+  </XslFallbackFileList>
+
+  <!-- Custom OPTIONAL XML for top-level file text.xml -->
+  <CustomXml><?CHUNK filename="textextra.xml" optional="1"?></CustomXml>
+
+  <DlxsGlobals><?CHUNK filename="dlxsclassglobals.xml"?></DlxsGlobals>
+
+  <FullTextResults>
+    <DocEncodingType><?DOC_ENCODING_TYPE_XML?></DocEncodingType>
+    <?XML_RESULTS?>
+  </FullTextResults>
+</Top>
