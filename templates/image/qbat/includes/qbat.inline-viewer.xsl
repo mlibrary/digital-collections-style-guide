@@ -36,6 +36,7 @@
   </xsl:template>
 
   <xsl:template name="build-asset-inline-viewer" match="qui:viewer[@viewer-mode='inline'][@access='allowed']" priority="101">
+    <h2 class="visually-hidden">Viewer</h2>
     <div class="viewer" 
       data-canvas-index="{$manifest/@canvas-index}"
       data-cc="{$manifest/@data-cc}"
