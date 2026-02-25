@@ -567,7 +567,7 @@ class DLXSViewer {
         );
         plaintextSection.innerHTML = newPlaintextSection.innerHTML;
         plaintextSection.closest(".plaintext-wrap").scrollTop = 0;
-        let hasText = plaintextSection.innerText.trim() != "";
+        let hasText = newPlaintextSection.dataset.hasPlaintext === "true";
         this.updatePanelTabs({
           image: true,
           text: !!hasText,

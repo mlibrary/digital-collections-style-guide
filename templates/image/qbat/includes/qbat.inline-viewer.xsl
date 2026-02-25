@@ -115,6 +115,15 @@
               <!-- <xsl:call-template name="build-annotation-tools" />
               <xsl:call-template name="build-highlight-tools" /> -->
               <div data-slot="content" class="fullview-main">
+                <xsl:attribute name="data-has-plaintext">
+                  <xsl:variable name="plaintext">
+                    <xsl:value-of select="//qui:section//qui:field[@iiif-plaintext='true']" />
+                  </xsl:variable>
+                  <xsl:choose>
+                    <xsl:when test="normalize-space($plaintext)">true</xsl:when>
+                    <xsl:otherwise>false</xsl:otherwise>
+                  </xsl:choose>
+                </xsl:attribute>
                 <xsl:call-template name="build-ocr-warning-alert" />
                 <xsl:apply-templates select="//qui:section//qui:field[@iiif-plaintext='true']" mode="plaintext" />
               </div>
