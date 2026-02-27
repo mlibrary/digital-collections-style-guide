@@ -118,6 +118,7 @@ window.addEventListener('DOMContentLoaded', (event) => {
       const data = event.data;
       if ( typeof(data) != 'object' ) { return ; }
       if ( ! data.status ) { return ; }
+      if ( event.origin != location.origin ) { return ; }
 
       updateDownloadProgress(data);
       // we would be opening the modal here
