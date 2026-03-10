@@ -816,6 +816,10 @@
     </xsl:for-each>
   </xsl:template>
 
+  <xsl:template match="qui:value[@TYPE='scopecontent']" mode="copy-guts" priority="500">
+    <xsl:apply-templates />
+  </xsl:template>
+
   <xsl:template match="qui:field[@key='citation']" priority="101">
     <xsl:variable name="key" select="@key" />
     <xsl:variable name="term" select="normalize-space(qui:label)" />

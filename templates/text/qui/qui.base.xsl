@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8" ?>
-<xsl:stylesheet version="1.0" xmlns:xhtml="http://www.w3.org/1999/xhtml" xmlns:xsl="http://www.w3.org/1999/XSL/Transform" xmlns:dlxs="http://dlxs.org" xmlns:qbat="http://dlxs.org/quombat" xmlns:exsl="http://exslt.org/common" xmlns:qui="http://dlxs.org/quombat/ui" extension-element-prefixes="exsl" >
+<xsl:stylesheet version="1.0" xmlns:xhtml="http://www.w3.org/1999/xhtml" xmlns:xsl="http://www.w3.org/1999/XSL/Transform" xmlns:dlxs="http://dlxs.org" xmlns:qbat="http://dlxs.org/quombat" xmlns:exsl="http://exslt.org/common" xmlns:qui="http://dlxs.org/quombat/ui" xmlns:tei="http://www.tei-c.org/ns/1.0" extension-element-prefixes="exsl" >
   <xsl:output method="xml" version="1.0" encoding="utf-8" indent="yes" />
 
   <!-- <xsl:variable name="collid" select="normalize-space((/Top/DlxsGlobals/CurrentCgi/Param[@name='cc']|/Top/DlxsGlobals/CurrentCgi/Param[@name='c'])[1])" /> -->
@@ -497,6 +497,18 @@
     <xsl:if test="true()">
       <message>TRUE</message>
     </xsl:if>
+  </xsl:template>
+
+	<xsl:template match="node()" mode="tei" priority="99">
+    <xsl:element name="tei:{name()}">
+      <xsl:apply-templates select="*|@*|text()" mode="tei" />
+    </xsl:element>
+  </xsl:template>
+
+  <xsl:template match="@*|text()" mode="tei" priority="99">
+    <xsl:copy>
+      <xsl:apply-templates select="*|@*|text()" mode="tei" />
+    </xsl:copy>
   </xsl:template>
 
 </xsl:stylesheet>
