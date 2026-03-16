@@ -900,6 +900,18 @@
     </a>
   </xsl:template>
 
+  <xsl:template match="xhtml:tt" mode="copy" priority="105">
+    <code>
+      <xsl:apply-templates select="@*|*|text()" mode="copy" />
+    </code>
+  </xsl:template>
+
+  <xsl:template match="tt" mode="copy" priority="105">
+    <code>
+      <xsl:apply-templates select="@*|*|text()" mode="copy" />
+    </code>
+  </xsl:template>
+
   <xsl:template match="@*|*|text()" mode="copy">
     <!-- <xsl:message>AHOY DEFAULT COPY <xsl:value-of select="namespace-uri()" />::<xsl:value-of select="local-name()" /> :: <xsl:value-of select="namespace-uri()" /></xsl:message> -->
     <xsl:copy>
