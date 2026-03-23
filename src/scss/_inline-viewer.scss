@@ -333,9 +333,11 @@ input[type="text"] {
   .toggle .button--ghost {
     border: none;
     margin: 0;
-    background: transparent;
   }
 
+  .toglged .button--ghost {
+    background: var(--color-teal-500) !important;
+  }
 
   .toggle--group {
     display: flex;
@@ -363,6 +365,7 @@ input[type="text"] {
 
     button {
       color: var(--color-teal-100);
+      background: var(--color-teal-500);
     }
   }
 
