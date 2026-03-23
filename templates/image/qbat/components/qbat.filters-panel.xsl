@@ -124,11 +124,14 @@
       <summary>
         <xsl:value-of select="qui:label" />
       </summary>
-      <div class="filter-item--list">
-        <xsl:call-template name="build-filter-item--value-list">
-          <xsl:with-param name="key" select="$key" />
-        </xsl:call-template>
-      </div>
+      <fieldset class="p-0 no-border pt-1">
+        <legend class="visually-hidden">Options for <xsl:value-of select="qui:label" /></legend>
+        <div class="filter-item--list">
+          <xsl:call-template name="build-filter-item--value-list">
+            <xsl:with-param name="key" select="$key" />
+          </xsl:call-template>
+        </div>
+      </fieldset>
       <xsl:if test="$total &gt; 10">
         <p>
           <button class="[ button button--secondary filter__button ]" data-action="expand-filter-list">

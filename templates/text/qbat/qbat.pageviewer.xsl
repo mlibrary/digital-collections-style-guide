@@ -7,7 +7,7 @@
 
     <script>
       window.mUse = window.mUse || [];
-      window.mUse.push('sl-dropdown', 'sl-menu', 'sl-menu-item', 'sl-dialog');
+      window.mUse.push('sl-dropdown', 'sl-button', 'sl-menu', 'sl-menu-item', 'sl-menu-label', 'sl-dialog', 'sl-tab-group', 'sl-tab', 'sl-tab-panel', 'sl-progress-bar', 'sl-icon', 'sl-divider');
     </script>
 
     <!-- <xsl:call-template name="build-entry-scripts" /> -->

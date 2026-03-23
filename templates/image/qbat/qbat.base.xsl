@@ -183,9 +183,9 @@
   </xsl:template>
 
   <xsl:template match="qui:sub-header">
-    <div class="website-sub-header">
+    <div class="website-sub-header" role="navigation" aria-describedby="website-link">
       <div class="[ viewport-container flex ][ flex-center flex-gap-0_5 ]">
-        <a href="{@href}" class="[ flex flex-center flex-gap-0_5 ]">
+        <a href="{@href}" class="[ flex flex-center flex-gap-0_5 ]" id="website-link">
           <span class="material-icons" aria-hidden="true">
             <xsl:value-of select="@data-badge" />
           </span>
@@ -243,7 +243,7 @@
       <xsl:call-template name="get-feedback-href" />
     </xsl:variable>
 
-    <div class="[ mt-1 feedback-callout ]">
+    <div class="[ mt-1 feedback-callout ]" role="region" aria-label="Send feedback">
       <div class="viewport-container">
         <div class="[ pt-2 pb-2 ]">
           <div class="flex flex-row gap-0_5">
@@ -898,6 +898,18 @@
         </xsl:otherwise>
       </xsl:choose>
     </a>
+  </xsl:template>
+
+  <xsl:template match="xhtml:tt" mode="copy" priority="105">
+    <code>
+      <xsl:apply-templates select="@*|*|text()" mode="copy" />
+    </code>
+  </xsl:template>
+
+  <xsl:template match="tt" mode="copy" priority="105">
+    <code>
+      <xsl:apply-templates select="@*|*|text()" mode="copy" />
+    </code>
   </xsl:template>
 
   <xsl:template match="@*|*|text()" mode="copy">

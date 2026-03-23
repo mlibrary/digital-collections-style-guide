@@ -74,7 +74,7 @@
                 
         <xsl:call-template name="build-feedback-callout" />
         <xsl:call-template name="build-footer" />
-        <iframe name="bookbag-sink" id="bookbag-sink"></iframe>
+        <iframe name="bookbag-sink" id="bookbag-sink" aria-hidden="true"></iframe>
         <xsl:call-template name="build-body-extra" />
       </body>
     </html>
@@ -194,9 +194,9 @@
   </xsl:template>
 
   <xsl:template match="qui:sub-header">
-    <div class="website-sub-header">
+    <div class="website-sub-header" role="navigation" aria-describedby="website-link">
       <div class="[ viewport-container flex ][ flex-center flex-gap-0_5 ]">
-        <a href="{@href}" class="[ flex flex-center flex-gap-0_5 ]">
+        <a href="{@href}" class="[ flex flex-center flex-gap-0_5 ]" id="website-link">
           <span class="material-icons" aria-hidden="true">
             <xsl:value-of select="@data-badge" />
           </span>
@@ -233,6 +233,13 @@
 
   <xsl:template name="build-breadcrumbs">
     <xsl:param name="classes" />
+    <xsl:apply-templates select="qui:nav[@role='breadcrumb']" role="build-breadcrumbs">
+      <xsl:with-param name="classes" select="$classes" />
+    </xsl:apply-templates>
+  </xsl:template>
+
+  <xsl:template match="qui:nav[@role='breadcrumb'][qui:link]" mode="build-breadcrumbs">
+    <xsl:param name="classes" />
     <div class="[ breadcrumb ][ {$classes} ]">
       <nav aria-label="Breadcrumb" style="flex-grow: 8">
         <ol>
@@ -251,7 +258,7 @@
       </nav>
       <xsl:call-template name="build-breadcrumbs-extra-nav" />
     </div>
-  </xsl:template>
+  </xsl:template>    
 
   <xsl:template name="build-breadcrumbs-extra-nav"></xsl:template>
 
@@ -260,7 +267,7 @@
       <xsl:call-template name="get-feedback-href" />
     </xsl:variable>
 
-    <div class="[ mt-1 feedback-callout ]">
+    <div class="[ mt-1 feedback-callout ]" role="region" aria-label="Send feedback">
       <div class="viewport-container">
         <div class="[ pt-2 pb-2 ]">
           <div class="flex flex-row gap-0_5">
@@ -1129,6 +1136,18 @@
         </xsl:otherwise>
       </xsl:choose>
     </xsl:attribute>
+  </xsl:template>
+
+  <xsl:template match="xhtml:tt" mode="copy" priority="105">
+    <code>
+      <xsl:apply-templates select="@*|*|text()" mode="copy" />
+    </code>
+  </xsl:template>
+
+  <xsl:template match="tt" mode="copy" priority="105">
+    <code>
+      <xsl:apply-templates select="@*|*|text()" mode="copy" />
+    </code>
   </xsl:template>
 
   <xsl:template match="@*|*|text()" mode="copy">
