@@ -233,6 +233,13 @@
 
   <xsl:template name="build-breadcrumbs">
     <xsl:param name="classes" />
+    <xsl:apply-templates select="qui:nav[@role='breadcrumb']" role="build-breadcrumbs">
+      <xsl:with-param name="classes" select="$classes" />
+    </xsl:apply-templates>
+  </xsl:template>
+
+  <xsl:template match="qui:nav[@role='breadcrumb'][qui:link]" mode="build-breadcrumbs">
+    <xsl:param name="classes" />
     <div class="[ breadcrumb ][ {$classes} ]">
       <nav aria-label="Breadcrumb" style="flex-grow: 8">
         <ol>
@@ -251,7 +258,7 @@
       </nav>
       <xsl:call-template name="build-breadcrumbs-extra-nav" />
     </div>
-  </xsl:template>
+  </xsl:template>    
 
   <xsl:template name="build-breadcrumbs-extra-nav"></xsl:template>
 
