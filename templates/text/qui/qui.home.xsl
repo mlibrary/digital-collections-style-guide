@@ -231,7 +231,9 @@
   </xsl:template>
 
   <xsl:template match="BannerImage[normalize-space(.)]">
-    <qui:hero-image src="{.}" />
+    <qui:hero-image src="{.}">
+      <xsl:apply-templates select="@y" mode="copy" />
+    </qui:hero-image>
   </xsl:template>
 
   <xsl:template match="BannerImage">
