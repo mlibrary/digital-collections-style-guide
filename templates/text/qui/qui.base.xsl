@@ -402,6 +402,17 @@
     </xhtml:span>
   </xsl:template>
 
+  <xsl:template match="FOREIGN" mode="copy" priority="100">
+    <xsl:variable name="language">
+      <xsl:call-template name="marc-to-iana">
+        <xsl:with-param name="marcCode" select="@LANG" />
+      </xsl:call-template>
+    </xsl:variable>
+    <span lang="{$language}">
+      <xsl:apply-templates select="*|text()" mode="copy" />
+    </span>
+  </xsl:template>
+
   <xsl:template match="*" mode="copy-guts">
     <xsl:apply-templates select="*|text()" mode="copy" />
   </xsl:template>
@@ -498,7 +509,7 @@
       <message>TRUE</message>
     </xsl:if>
   </xsl:template>
-
+  
 	<xsl:template match="node()" mode="tei" priority="99">
     <xsl:element name="tei:{name()}">
       <xsl:apply-templates select="*|@*|text()" mode="tei" />

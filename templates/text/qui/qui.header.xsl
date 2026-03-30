@@ -448,7 +448,7 @@
         </xsl:otherwise>
       </xsl:choose>
     </xsl:element>
-  </xsl:template>  
+  </xsl:template> 
   
   <xsl:template match="BIBL[ancestor::Divhead]">
     <xsl:choose>

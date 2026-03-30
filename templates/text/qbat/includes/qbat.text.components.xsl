@@ -746,7 +746,7 @@
 
   <!-- #################### -->
   <xsl:template match="tei:FOREIGN">
-    <span class="foreign">
+    <span class="foreign" lang="{@lang}">
       <xsl:value-of select="." />
     </span>
   </xsl:template>
