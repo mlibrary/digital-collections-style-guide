@@ -26,6 +26,7 @@
   </xsl:variable>
 
   <xsl:variable name="item-encoding-level" select="//qui:block[@slot='metadata']/qui:metadata/@item-encoding-level" />
+  <xsl:variable name="language" select="//qui:block[@slot='metadata']/qui:metadata/@language" />
 
   <xsl:template name="build-extra-scripts">
 
@@ -137,13 +138,13 @@
   </xsl:template>
 
   <xsl:template match="qui:block[@slot='content']" mode="in-main">
-    <h2 class="subtle-heading" id="pages">Pages</h2>
+    <h2 class="subtle-heading" id="pages" lang="en">Pages</h2>
     <xsl:apply-templates />
   </xsl:template>
 
   <xsl:template match="qui:block[@slot='content']" mode="not-main">
-    <section class="records">
-      <h2 class="subtle-heading" id="pages">Pages</h2>
+    <section class="records" lang="{ $language }">
+      <h2 class="subtle-heading" id="pages" lang="en">Pages</h2>
       <!-- <xsl:apply-templates select="qui:section/qui:div"></xsl:apply-templates> -->
       <xsl:choose>
         <xsl:when test=".//tei:DLPSWRAP">

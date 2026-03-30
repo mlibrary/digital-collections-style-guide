@@ -10,6 +10,7 @@
   <xsl:variable name="manifest" select="//qui:viewer" />
   <xsl:variable name="canvases" select="$manifest//fn:array[@key='sequences']/fn:map/fn:array[@key='canvases']/fn:map" />
   <xsl:variable name="item-encoding-level" select="$manifest/@item-encoding-level" />
+  <xsl:variable name="language" select="$manifest/@language" />
   <xsl:variable name="has-plain-text" select="$manifest/@has-plain-text" />
   <xsl:variable name="has-page-text">
     <xsl:choose>
@@ -105,7 +106,7 @@
             <div class="plaintext-wrap" role="region" tabindex="0" aria-label="Text content">
               <xsl:call-template name="build-annotation-tools" />
               <xsl:call-template name="build-highlight-tools" />
-              <div data-slot="content" class="fullview-main">
+              <div data-slot="content" class="fullview-main" lang="{ $language }">
                 <xsl:call-template name="build-ocr-warning-alert" />
                 <xsl:apply-templates select="$manifest/qui:block[@slot='plaintext']//tei:ResultFragment" mode="html" />
                 <xsl:apply-templates select="$notes/tei:NOTES" />

@@ -35,6 +35,8 @@
 
     <xsl:variable name="item-encoding-level" select="$item-metadata//qui:metadata/@item-encoding-level" />
 
+    <xsl:variable name="language" select="$item-metadata//qui:metadata/@language" />
+
     <xsl:variable
       name="manifest" select="/Top/Manifest/fn:map" />
 
@@ -64,6 +66,7 @@
       canvas-index="{/Top/Manifest/@canvas-index}"
       total-canvases="{/Top/Manifest/@total-canvases}"
       item-encoding-level="{$item-encoding-level}"
+      language="{$language}"
       has-plain-text="{$has-plain-text}"
       data-idno="{//CurrentCgi/Param[@name='idno']}"
       data-node="{//CurrentCgi/Param[@name='node']}"

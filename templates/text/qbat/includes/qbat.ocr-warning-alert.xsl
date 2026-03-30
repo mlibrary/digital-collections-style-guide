@@ -8,7 +8,7 @@
 
   <xsl:template name="build-ocr-warning-alert">
     <xsl:if test="$show-ocr-warning-alert">
-      <div class="message-callout info pt-0_5" style="margin-bottom: 1rem; padding-top: 0.5rem;">
+      <div class="message-callout info pt-0_5" style="margin-bottom: 1rem; padding-top: 0.5rem;" lang="en">
         <span class="material-icons" aria-hidden="true">info</span>
         <div>
           <p class="mt-0"><strong>Disclaimer</strong></p>

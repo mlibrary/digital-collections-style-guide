@@ -318,7 +318,7 @@
             alt="Scan of {key('get-lookup','headerutils.str.page')} {$pNum}"
           />
         </div>
-        <figcaption>
+        <figcaption lang="en">
           <span data-href="{@HREF}" class="button button--ghost button--small flex align-items-center">
             <xsl:text>View </xsl:text>
             <xsl:text> </xsl:text>
