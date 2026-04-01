@@ -8,6 +8,7 @@
   <xsl:variable name="has-page-text">
     <xsl:choose>
       <xsl:when test="normalize-space(//DocContent/DocSource/qui:block[@slot='plaintext']/tei:ResultFragments) != ''">true</xsl:when>
+      <xsl:when test="normalize-space(//DocContent/DocSource/tei:SourcePageData) != ''">true</xsl:when> 
       <xsl:otherwise>false</xsl:otherwise>
     </xsl:choose>
   </xsl:variable>
