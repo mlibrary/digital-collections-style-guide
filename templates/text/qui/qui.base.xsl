@@ -405,7 +405,7 @@
   <xsl:template match="FOREIGN" mode="copy" priority="100">
     <xsl:variable name="language">
       <xsl:call-template name="marc-to-iana">
-        <xsl:with-param name="marcCode" select="@LANG" />
+        <xsl:with-param name="marcCode" select="dlxs:downcase(@LANG)" />
       </xsl:call-template>
     </xsl:variable>
     <span lang="{$language}">

@@ -206,7 +206,7 @@
     <tei:FOREIGN>
       <xsl:variable name="language">
         <xsl:call-template name="marc-to-iana">
-          <xsl:with-param name="marcCode" select="@LANG" />
+          <xsl:with-param name="marcCode" select="dlxs:downcase(@LANG)" />
         </xsl:call-template>
       </xsl:variable>
       <xsl:attribute name="lang">
