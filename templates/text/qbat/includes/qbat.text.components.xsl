@@ -1562,8 +1562,17 @@
           <xsl:value-of select="concat('q1--', $type)" />
         </xsl:if>
       </xsl:attribute>
+      <xsl:apply-templates select="@*" />
       <xsl:apply-templates />
     </blockquote>
+  </xsl:template>
+
+  <xsl:template match="tei:LB">
+    <br />
+  </xsl:template>  
+
+  <xsl:template match="@lang" priority="101">
+    <xsl:copy></xsl:copy>
   </xsl:template>
 
   <xsl:template match="tei:BIBL[not(ancestor::tei:HEADER)]">
@@ -1659,6 +1668,7 @@
       </xsl:call-template>
     </xsl:variable>
     <div class="{$divclass}">
+      <xsl:apply-templates select="@lang" />
       <xsl:choose>
         <xsl:when test="@REND">
           <xsl:variable name="rendtype">
@@ -1982,6 +1992,7 @@
     <xsl:choose>
       <xsl:when test="parent::tei:FIGURE">
         <xsl:element name="div">
+          <xsl:apply-templates select="@lang" />
           <xsl:attribute name="class">
             <xsl:choose>
               <xsl:when test="$divlevel=1">
@@ -2017,6 +2028,7 @@
       </xsl:when>
       <xsl:otherwise>
         <div>
+          <xsl:apply-templates select="@lang" />
           <xsl:if test="@ID">
             <xsl:apply-templates select="@ID" />
           </xsl:if>
@@ -2073,24 +2085,28 @@
     <xsl:choose>
       <xsl:when test="$divlevel = 1">
         <h3 class="{$class}">
+          <xsl:apply-templates select="@lang" />
           <xsl:apply-templates select="tei:ANCHOR" />
           <xsl:call-template name="addRend" />
         </h3>
       </xsl:when>
       <xsl:when test="$divlevel = 2">
         <h4 class="{$class}">
+          <xsl:apply-templates select="@lang" />
           <xsl:apply-templates select="tei:ANCHOR" />
           <xsl:call-template name="addRend" />
         </h4>
       </xsl:when>
       <xsl:when test="$divlevel = 3">
         <h5 class="{$class}">
+          <xsl:apply-templates select="@lang" />
           <xsl:apply-templates select="tei:ANCHOR" />
           <xsl:call-template name="addRend" />
         </h5>
       </xsl:when>
       <xsl:otherwise>
         <div class="{$class}">
+          <xsl:apply-templates select="@lang" />
           <xsl:apply-templates select="tei:ANCHOR" />
           <xsl:call-template name="addRend" />
         </div>
@@ -2134,6 +2150,7 @@
     </xsl:variable>
     <div>
       <dt>
+        <xsl:apply-templates select="@lang" />
         <xsl:choose>
           <xsl:when test="@DATE">
             <xsl:choose>
@@ -2185,6 +2202,7 @@
     <div class="nobreak">
       <xsl:element name="span">
         <xsl:attribute name="class">termlabel</xsl:attribute>
+        <xsl:apply-templates select="@lang" />
         <xsl:choose>
           <xsl:when test="@DATE">
             <xsl:choose>
@@ -2212,6 +2230,13 @@
       </xsl:element>
       <!-- attributes: DATE,TYPE('publ''gender') -->
     </div>
+  </xsl:template>
+
+  <xsl:template match="tei:TERM">
+    <span>
+      <xsl:apply-templates select="@lang" />
+      <xsl:apply-templates />
+    </span>
   </xsl:template>
 
   <!-- #################### -->
@@ -2575,11 +2600,13 @@
     <xsl:choose>
       <xsl:when test="$rendtype='sub'">
         <sub>
+            <xsl:apply-templates select="@lang" />
             <xsl:apply-templates/>
         </sub>
       </xsl:when>
       <xsl:when test="$rendtype='sup'">
         <sup>
+            <xsl:apply-templates select="@lang" />
             <xsl:apply-templates/>
         </sup>
       </xsl:when>
@@ -2588,6 +2615,7 @@
           <xsl:attribute name="class">
               <xsl:value-of select="concat('rend-',$rendtype)"/>
           </xsl:attribute>
+          <xsl:apply-templates select="@lang" />
           <xsl:apply-templates/>
         </xsl:element>
       </xsl:otherwise>

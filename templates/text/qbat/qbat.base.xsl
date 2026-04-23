@@ -1154,6 +1154,10 @@
     </code>
   </xsl:template>
 
+  <xsl:template match="xhtml:LB" mode="copy" priority="105">
+    <br />
+  </xsl:template>
+
   <xsl:template match="@*|*|text()" mode="copy">
     <!-- <xsl:message>AHOY DEFAULT COPY <xsl:value-of select="namespace-uri()" />::<xsl:value-of select="local-name()" /> :: <xsl:value-of select="namespace-uri()" /></xsl:message> -->
     <xsl:copy>

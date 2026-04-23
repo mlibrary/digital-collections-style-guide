@@ -204,18 +204,29 @@
 
   <xsl:template match="FOREIGN" mode="tei" priority="250">
     <tei:FOREIGN>
-      <xsl:variable name="language">
+      <!-- <xsl:variable name="language">
         <xsl:call-template name="marc-to-iana">
           <xsl:with-param name="marcCode" select="dlxs:downcase(@LANG)" />
         </xsl:call-template>
       </xsl:variable>
       <xsl:attribute name="lang">
         <xsl:value-of select="$language" />
-      </xsl:attribute>
+      </xsl:attribute> -->
       <xsl:apply-templates select="@*" mode="tei" />
       <xsl:apply-templates select="*|text()" mode="tei" />
     </tei:FOREIGN>
   </xsl:template>  
+
+  <xsl:template match="@LANG" mode="tei" priority="101">
+      <xsl:variable name="language">
+        <xsl:call-template name="marc-to-iana">
+          <xsl:with-param name="marcCode" select="dlxs:downcase(.)" />
+        </xsl:call-template>
+      </xsl:variable>
+      <xsl:attribute name="lang">
+        <xsl:value-of select="$language" />
+      </xsl:attribute>
+  </xsl:template>
 
   <xsl:template match="node()" mode="tei" priority="99">
     <xsl:element name="tei:{name()}">

@@ -413,7 +413,19 @@
     </span>
   </xsl:template>
 
+  <xsl:template match="@LANG" mode="copy" priority="101">
+    <xsl:variable name="language">
+      <xsl:call-template name="marc-to-iana">
+        <xsl:with-param name="marcCode" select="dlxs:downcase(.)" />
+      </xsl:call-template>
+    </xsl:variable>
+    <xsl:attribute name="lang">
+      <xsl:value-of select="$language" />
+    </xsl:attribute>
+  </xsl:template>
+
   <xsl:template match="*" mode="copy-guts">
+    <xsl:apply-templates select="@LANG" mode="copy" />
     <xsl:apply-templates select="*|text()" mode="copy" />
   </xsl:template>
 
