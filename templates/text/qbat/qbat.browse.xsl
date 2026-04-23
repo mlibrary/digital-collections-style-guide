@@ -371,6 +371,18 @@
       <div class="results-card">
         <div class="results-list__content flex flex-flow-column flex-grow-1">
           <h3>
+            <xsl:variable name="lang">
+              <xsl:choose>
+                <xsl:when test="qui:metadata[@slot='item']/@language">
+                  <xsl:value-of select="qui:metadata[@slot='item']/@language" />
+                </xsl:when>
+              </xsl:choose>
+            </xsl:variable>
+            <xsl:if test="normalize-space($lang)">
+              <xsl:attribute name="lang">
+                <xsl:value-of select="$lang" />
+              </xsl:attribute>
+            </xsl:if>
             <xsl:choose>
               <xsl:when test="normalize-space($link-href)">
                 <a href="{$link-href}" class="results-link">

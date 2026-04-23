@@ -16,7 +16,7 @@
           <xsl:when test="$code = 'chi' or $code = 'zho'">zh</xsl:when>
           <xsl:when test="$code = 'rus'">ru</xsl:when>
           <xsl:when test="$code = 'lat'">la</xsl:when>
-          <xsl:when test="$code = 'gre' or $code = 'ell' or $code = 'grk'">el</xsl:when>
+          <xsl:when test="$code = 'gre' or $code = 'ell' or $code = 'grk' or $code = 'greek'">el</xsl:when>
           <xsl:when test="$code = 'und'">und</xsl:when>
           <xsl:when test="$code = 'mul'">mul</xsl:when>
           <xsl:when test="$code = 'scc'">sr</xsl:when>
