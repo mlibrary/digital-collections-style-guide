@@ -8,6 +8,7 @@
     <xsl:param name="encoding-type" />
     <xsl:param name="item-encoding-level" />
     <xsl:param name="rend" />
+    <xsl:param name="modified" />
     <xsl:param name="item" select="." />
     <xsl:param name="slot">item</xsl:param>
     
@@ -18,6 +19,11 @@
       root="{name($item)}">
       <xsl:if test="$item//HEADER[@TYPE='tombstone']">
         <xsl:attribute name="data-tombstone">true</xsl:attribute>
+      </xsl:if>
+      <xsl:if test="normalize-space($modified)">
+        <xsl:attribute name="modified">
+          <xsl:value-of select="$modified" />
+        </xsl:attribute>
       </xsl:if>
       <xsl:attribute name="language">
         <xsl:variable name="language-id" select="$item//HEADER/PROFILEDESC/LANGUSAGE/@ID|$item//HEADER/PROFILEDESC/LANGUSAGE/LANGUAGE/@ID" />

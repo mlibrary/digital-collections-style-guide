@@ -326,6 +326,8 @@
       </xsl:choose>
     </xsl:variable>
 
+    <xsl:variable name="modified" select="ItemHeader/HEADER/@modified" />
+
     <xsl:variable name="rend" select="ItemHeader//PROFILEDESC/LANGUSAGE/@REND" />
 
     <xsl:call-template name="build-header-metadata">
@@ -333,6 +335,7 @@
       <xsl:with-param name="encoding-type" select="$encoding-type" />
       <xsl:with-param name="item-encoding-level" select="$item-encoding-level" />
       <xsl:with-param name="rend" select="$rend" />
+      <xsl:with-param name="modified" select="$modified" />
       <xsl:with-param name="slot">root</xsl:with-param>
     </xsl:call-template>
       
