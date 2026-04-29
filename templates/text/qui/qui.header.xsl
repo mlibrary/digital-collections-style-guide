@@ -235,7 +235,7 @@
 
   <xsl:template name="build-outline-item-title" match="*" mode="outline-item-title">
     <xsl:choose>
-      <xsl:when test="Divhead/HEAD">
+      <xsl:when test="Divhead/HEAD[normalize-space(.)]">
         <xsl:apply-templates select="Divhead/HEAD" mode="copy-guts" />
       </xsl:when>
       <xsl:when test="Divhead/BIBL/TITLE">
