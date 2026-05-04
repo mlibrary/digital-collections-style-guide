@@ -62,6 +62,7 @@
   <ImageSizeTool><?IMAGESIZETOOL_XML ?></ImageSizeTool>
   <RevertSizeTool><?REVERTSIZETOOL_XML ?></RevertSizeTool>
   <MediaEquivsTool><?MEDIAEQUIVSTOOL_XML ?></MediaEquivsTool>
+  <?TABLE_METADATA?>
   <?RECORDFILT_XML name="entry"?>
   <?RECORDFILT_XML name="special" fields="dlxs_ma|dc_ti|dc_su|dc_de|dlxs_catalog|dlxs_hathitrust|dlxs_findaid"?>
   <MediaDownloadLink><?MEDIADOWNLOADLINK_XML ?></MediaDownloadLink>
