@@ -739,7 +739,8 @@
                 <qui:link rel="{name(.)}" href="{Link}">
                   <xsl:choose>
                     <xsl:when test="normalize-space(Divhead/HEAD)">
-                      <xsl:value-of select="Divhead/HEAD" />
+                      <!-- <xsl:value-of select="Divhead/HEAD" /> -->
+                      <xsl:apply-templates select="Divhead/HEAD" mode="skip-notes" />
                     </xsl:when>
                     <xsl:otherwise>
                       <xsl:value-of select="@TYPE" />
@@ -794,7 +795,7 @@
     </qui:section>
   </xsl:template>
 
-  <xsl:template match="node()[@TYPE][@NODE]" mode="section">
+  <xsl:template match="node()[@NODE]" mode="section">
     <xsl:param name="identifier" />
     <xsl:param name="item-metadata" />
     <xsl:param name="encoding-type" />
@@ -802,7 +803,7 @@
     <xsl:param name="ack">+</xsl:param>
 
     <xsl:choose>
-      <xsl:when test="*[@TYPE][@NODE][Kwic]">
+      <xsl:when test="*[@NODE][Kwic]">
         <qui:branch-and-leaf node="{@NODE}" />
         <xsl:apply-templates select="." mode="render-section">
           <xsl:with-param name="identifier" />
@@ -814,9 +815,9 @@
           <xsl:with-param name="ack">!</xsl:with-param>
         </xsl:apply-templates> -->
       </xsl:when>
-      <xsl:when test="*[@TYPE][@NODE]">
+      <xsl:when test="*[@NODE]">
         <qui:branch node="{@NODE}" ack="syn" />
-        <xsl:apply-templates select="*[@TYPE][@NODE]" mode="section">
+        <xsl:apply-templates select="*[@NODE]" mode="section">
           <xsl:with-param name="identifier" />
           <xsl:with-param name="item-metadata" />
           <xsl:with-param name="encoding-type" />
@@ -960,7 +961,8 @@
   <xsl:template match="*" mode="breadcrumb-label">
     <xsl:choose>
       <xsl:when test="normalize-space(Divhead/HEAD)">
-        <xsl:value-of select="Divhead/HEAD" />
+        <!-- <xsl:value-of select="Divhead/HEAD" /> -->
+        <xsl:apply-templates select="Divhead/HEAD" mode="skip-notes" />
       </xsl:when>
       <xsl:otherwise>
         <xsl:value-of select="@TYPE" />
@@ -975,18 +977,36 @@
   <xsl:template name="build-ancestor-title">
     <!-- <xsl:variable name="ancestors" select="ancestor::*[@NODE][Divhead/HEAD][1]" /> -->
     <!-- <xsl:variable name="nodes" select="$ancestor/descendant-or-self::*[@NODE][not(ancestor::Kwic)]" /> -->
-    <xsl:variable name="ancestors" select="ancestor::*[@NODE]" />
-    <xsl:variable name="divheads" select="$ancestors[Divhead/HEAD]" />
+    <xsl:variable name="node" select="@NODE" />
+    <xsl:variable name="ancestors" select="ancestor::*[@NODE][@NODE!=$node]" />
+    <xsl:variable name="divheads" select="$ancestors[./Divhead/HEAD]" />
     <xsl:if test="$divheads">
       <xsl:if test="count($divheads) &gt; 1">
         <xsl:text>... / </xsl:text>
       </xsl:if>
-      <xsl:value-of select="$divheads[last()]/Divhead/HEAD" />
+      <xsl:apply-templates select="$divheads[last()]/Divhead/HEAD" mode="skip-notes" />
+      <!-- <xsl:value-of select="$divheads[last()]/Divhead/HEAD" /> -->
       <xsl:if test="count($ancestors) &gt; 2">
         <xsl:text> / ... </xsl:text>
       </xsl:if>
       <xsl:text> / </xsl:text>
     </xsl:if>
+  </xsl:template>
+
+  <xsl:template match="Divhead/HEAD" mode="skip-notes" priority="100">
+    <xsl:apply-templates mode="skip-notes" />
+  </xsl:template>
+
+  <xsl:template match="HEAD/NOTE1" mode="skip-notes" />
+  <xsl:template match="HEAD/MILESTONE" mode="skip-notes" />
+  <xsl:template match="Divhead/HEAD//*[@REND='ITALIC']" mode="skip-notes" priority="101">
+    <em>
+      <xsl:apply-templates mode="skip-notes" />
+    </em>
+  </xsl:template>
+
+  <xsl:template match="*|text()" mode="skip-notes">
+    <xsl:value-of select="." /><xsl:if test="position() != last()"><xsl:text> </xsl:text></xsl:if>
   </xsl:template>
 
   <xsl:template match="@*" mode="dlxsify">

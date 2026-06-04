@@ -326,7 +326,7 @@
             <xsl:choose>
               <xsl:when test="normalize-space($link-href)">
                 <a href="{$link-href}" class="results-link">
-                  <xsl:value-of select="$link-title" />
+                  <xsl:copy-of select="$link-title" />
                 </a>    
               </xsl:when>
               <xsl:otherwise>
@@ -420,6 +420,10 @@
         <xsl:text>; </xsl:text>
       </xsl:if>
     </xsl:for-each>
+  </xsl:template>
+
+  <xsl:template match="qui:title" mode="title">
+    <xsl:apply-templates select="." mode="copy-guts" />
   </xsl:template>
 
   <xsl:template match="*[qui:values]" mode="title">
