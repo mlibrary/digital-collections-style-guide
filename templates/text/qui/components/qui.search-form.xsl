@@ -73,9 +73,15 @@
           <qui:input type="hidden" role="search" name="type" value="{normalize-space(substring-after(/Top/NavHeader/MainNav/NavItem[Name='search']/Link, 'page='))}" disabled="{$is-browse}" />
         </xsl:otherwise>
       </xsl:choose>
-      <xsl:if test="/Top/SortSelect/Option[Focus='true']">
-        <qui:input type="hidden" name="sort" value="{/Top/SortSelect/Option[Focus='true']/Value}" />
-      </xsl:if>
+      <xsl:choose>
+        <xsl:when test="/Top/ResultsLinks/SortSelect/Option[Focus='true']">
+          <qui:input type="hidden" name="sort" value="{/Top/ResultsLinks/SortSelect/Option[Focus='true']/Value}" />
+        </xsl:when>
+        <xsl:when test="/Top/SortSelect/Option[Focus='true']">
+          <qui:input type="hidden" name="sort" value="{/Top/SortSelect/Option[Focus='true']/Value}" />
+        </xsl:when>
+        <xsl:otherwise/>
+      </xsl:choose>
     </qui:form>
   </xsl:template>
 
