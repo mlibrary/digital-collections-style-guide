@@ -185,18 +185,17 @@
     <qui:block slot="information">
       <xsl:apply-templates select="./div[@data-slot='overview']|./div[@data-slot='information']" mode="copy" />
     </qui:block>
-    <qui:block slot="contents">
-      <xsl:apply-templates select="./div[@data-slot='contents']/@data-format" mode="copy" />
-      <xsl:choose>
-        <xsl:when test="//CollCheckboxList/Coll">
+    <xsl:choose>
+      <xsl:when test="//CollCheckboxList/Coll">
+        <qui:block slot="{./div[@data-slot='contents']/@data-format}">
           <qui:label>Publications</qui:label>
           <xsl:apply-templates select="//CollCheckboxList/Coll" />
-        </xsl:when>
-        <xsl:otherwise>
-          <xsl:apply-templates select="./div[@data-slot='contents']" mode="copy-guts" />
-        </xsl:otherwise>
-      </xsl:choose>
-    </qui:block>
+        </qui:block>
+      </xsl:when>
+      <xsl:otherwise>
+        <xsl:apply-templates select="./div[@data-slot='contents']" mode="copy-block" />
+      </xsl:otherwise>
+    </xsl:choose>
     <qui:block slot="contentwarning">
       <xsl:apply-templates select="./div[@data-slot='contentwarning']" mode="copy-guts" />
     </qui:block>
@@ -240,9 +239,22 @@
     <qui:debug>BOOGER</qui:debug>
   </xsl:template>
 
-  <xsl:template match="div[@data-slot='contents'][Content]" mode="copy-guts" priority="101">
+  <xsl:template match="div[@data-slot='contents']" mode="copy-block" priority="101">
+    <qui:block slot="contents">
+      <xsl:apply-templates select="@data-format" mode="copy" />
+      <xsl:apply-templates mode="copy" />
+    </qui:block>
+  </xsl:template>
+
+  <xsl:template match="div[@data-slot='contents']/h2" mode="copy" priority="101">
+    <qui:label>
+      <xsl:apply-templates mode="copy" />
+    </qui:label>
+  </xsl:template>
+
+  <xsl:template match="div[@data-slot='contents']/Content" mode="copy" priority="101">
     <!-- we are doing a nested thing -->
-    <xsl:for-each select="Content/section">
+    <xsl:for-each select="section">
       <xhtml:figure href="browse#{@id}" id="fig-{@id}">
         <xhtml:img src="{img/@src}" alt="{img/@alt}" />
         <xhtml:figcaption>
