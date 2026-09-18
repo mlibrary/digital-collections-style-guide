@@ -47,6 +47,10 @@
   float: right;
   margin: 1rem;
 }
+
+figure.float-right {
+  width: fit-content;
+}
   
 
 .float-right img, img.float-right {
@@ -56,7 +60,8 @@
 
 .float-right figcaption {
   font-size: 0.875rem;
-  max-width: 20ch;
+  // max-width: 20ch;
+  contain: inline-size;
 }
 
 img.brand {
