@@ -27,7 +27,7 @@
     <xsl:variable name="viewer" select="." />
     <xsl:if test="$viewer">
       <h2 id="viewer-heading" class="visually-hidden">Viewer</h2>
-      <div class="viewer">
+      <div class="viewer" data-mimetype="{$viewer/@mimetype}" data-istruct_mt="{$viewer/@istruct_mt}">
         <xsl:if test="$viewer/@viewer-advisory='true'">
           <xsl:attribute name="data-viewer-advisory">true</xsl:attribute>
         </xsl:if>
